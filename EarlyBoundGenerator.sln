@@ -1,0 +1,96 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", "{07E3CEC6-C64C-4967-9C8C-634FF91E7C05}"
+	ProjectSection(SolutionItems) = preProject
+		References\CrmSvcUtil.exe = References\CrmSvcUtil.exe
+		XrmToolBox\McTools.StopAdvertisement.dll = XrmToolBox\McTools.StopAdvertisement.dll
+		XrmToolBox\McTools.Xrm.Connection.dll = XrmToolBox\McTools.Xrm.Connection.dll
+		XrmToolBox\McTools.Xrm.Connection.WinForms.dll = XrmToolBox\McTools.Xrm.Connection.WinForms.dll
+		XrmToolBox\Microsoft.Crm.Sdk.Proxy.dll = XrmToolBox\Microsoft.Crm.Sdk.Proxy.dll
+		References\Microsoft.Xrm.Client.CodeGeneration.dll = References\Microsoft.Xrm.Client.CodeGeneration.dll
+		XrmToolBox\Microsoft.Xrm.Client.dll = XrmToolBox\Microsoft.Xrm.Client.dll
+		References\Microsoft.Xrm.Portal.dll = References\Microsoft.Xrm.Portal.dll
+		XrmToolBox\Microsoft.Xrm.Sdk.Deployment.dll = XrmToolBox\Microsoft.Xrm.Sdk.Deployment.dll
+		XrmToolBox\Microsoft.Xrm.Sdk.dll = XrmToolBox\Microsoft.Xrm.Sdk.dll
+		References\SetAssemblyVersion.exe = References\SetAssemblyVersion.exe
+		XrmToolBox\XrmToolBox.exe = XrmToolBox\XrmToolBox.exe
+		XrmToolBox\XrmToolBox.Extensibility.dll = XrmToolBox\XrmToolBox.Extensibility.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.Xrm", "DLaB.Xrm\DLaB.Xrm.csproj", "{79B56E5F-4EAF-405D-9EF0-AC655201A3C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.XrmToolboxCommon", "DLaB.XrmToolBoxCommon\DLaB.XrmToolboxCommon.csproj", "{B024C05F-39E5-4670-A6AE-BC1A96B6FF29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.EarlyBoundGenerator", "DLaB.EarlyBoundGenerator\DLaB.EarlyBoundGenerator.csproj", "{7DE85F1A-794C-4E95-9E23-FA29DC110ABA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7827FCAF-6AA2-46B9-BB88-0D3CA9DD4D32} = {7827FCAF-6AA2-46B9-BB88-0D3CA9DD4D32}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.CrmSvcUtilExtensions", "DLaB.CrmSvcUtilExtensions\DLaB.CrmSvcUtilExtensions.csproj", "{7827FCAF-6AA2-46B9-BB88-0D3CA9DD4D32}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs12
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = DLaB.Xrm\\DLaB.Xrm.csproj
+		SccProjectName1 = DLaB.Xrm
+		SccLocalPath1 = DLaB.Xrm
+		SccProjectUniqueName2 = DLaB.CrmSvcUtilExtensions\\DLaB.CrmSvcUtilExtensions.csproj
+		SccProjectName2 = DLaB.CrmSvcUtilExtensions
+		SccLocalPath2 = DLaB.CrmSvcUtilExtensions
+		SccProjectUniqueName3 = DLaB.EarlyBoundGenerator\\DLaB.EarlyBoundGenerator.csproj
+		SccProjectName3 = DLaB.EarlyBoundGenerator
+		SccLocalPath3 = DLaB.EarlyBoundGenerator
+		SccProjectUniqueName4 = DLaB.XrmToolBoxCommon\\DLaB.XrmToolboxCommon.csproj
+		SccProjectName4 = DLaB.XrmToolBoxCommon
+		SccLocalPath4 = DLaB.XrmToolBoxCommon
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79B56E5F-4EAF-405D-9EF0-AC655201A3C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79B56E5F-4EAF-405D-9EF0-AC655201A3C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79B56E5F-4EAF-405D-9EF0-AC655201A3C7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{79B56E5F-4EAF-405D-9EF0-AC655201A3C7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{79B56E5F-4EAF-405D-9EF0-AC655201A3C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79B56E5F-4EAF-405D-9EF0-AC655201A3C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79B56E5F-4EAF-405D-9EF0-AC655201A3C7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{79B56E5F-4EAF-405D-9EF0-AC655201A3C7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B024C05F-39E5-4670-A6AE-BC1A96B6FF29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B024C05F-39E5-4670-A6AE-BC1A96B6FF29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B024C05F-39E5-4670-A6AE-BC1A96B6FF29}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B024C05F-39E5-4670-A6AE-BC1A96B6FF29}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B024C05F-39E5-4670-A6AE-BC1A96B6FF29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B024C05F-39E5-4670-A6AE-BC1A96B6FF29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B024C05F-39E5-4670-A6AE-BC1A96B6FF29}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B024C05F-39E5-4670-A6AE-BC1A96B6FF29}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7DE85F1A-794C-4E95-9E23-FA29DC110ABA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DE85F1A-794C-4E95-9E23-FA29DC110ABA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DE85F1A-794C-4E95-9E23-FA29DC110ABA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7DE85F1A-794C-4E95-9E23-FA29DC110ABA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7DE85F1A-794C-4E95-9E23-FA29DC110ABA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DE85F1A-794C-4E95-9E23-FA29DC110ABA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DE85F1A-794C-4E95-9E23-FA29DC110ABA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7DE85F1A-794C-4E95-9E23-FA29DC110ABA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7827FCAF-6AA2-46B9-BB88-0D3CA9DD4D32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7827FCAF-6AA2-46B9-BB88-0D3CA9DD4D32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7827FCAF-6AA2-46B9-BB88-0D3CA9DD4D32}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7827FCAF-6AA2-46B9-BB88-0D3CA9DD4D32}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7827FCAF-6AA2-46B9-BB88-0D3CA9DD4D32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7827FCAF-6AA2-46B9-BB88-0D3CA9DD4D32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7827FCAF-6AA2-46B9-BB88-0D3CA9DD4D32}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7827FCAF-6AA2-46B9-BB88-0D3CA9DD4D32}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7827FCAF-6AA2-46B9-BB88-0D3CA9DD4D32}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DLaB.CrmSvcUtilExtensions</RootNamespace>
+    <AssemblyName>DLaB.CrmSvcUtilExtensions</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrmSvcUtil, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\CrmSvcUtil.exe</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.Client">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.Common">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.VersionControl.Client">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.VersionControl.Common">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Client.CodeGeneration, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Microsoft.Xrm.Client.CodeGeneration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Portal, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Microsoft.Xrm.Portal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Repos\XrmUnitTest\References\Microsoft.Xrm.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Action\CodeWriterFilterService.cs" />
+    <Compile Include="Action\CustomizeCodeDomService.cs" />
+    <Compile Include="Action\CustomCodeGenerationService.cs" />
+    <Compile Include="BaseCustomCodeGenerationService.cs" />
+    <Compile Include="Entity\AttributeConstGenerator.cs" />
+    <Compile Include="Entity\CustomCodeGenerationService.cs" />
+    <Compile Include="Entity\MemberAttributes.cs" />
+    <Compile Include="ConfigHelper.cs" />
+    <Compile Include="Entity\AnonymousTypeConstructorGenerator.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="OptionSet\CreateOptionSetEnums.cs" />
+    <Compile Include="Entity\CustomizeCodeDomService.cs" />
+    <Compile Include="Entity\EnumPropertyGenerator.cs" />
+    <Compile Include="OptionSet\CustomCodeGenerationService.cs" />
+    <Compile Include="OptionSet\FilterOptionSetEnums.cs" />
+    <Compile Include="Entity\CodeWriterFilterService.cs" />
+    <Compile Include="Entity\OverridePropertyNames.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>REM Move Project Output Dll to CrmSvcUtil Dir
+xcopy /I /Y "$(TargetPath)" "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
+
+REM Move Required Microsoft dlls and CrmSvcUtil to the CrmSvcUtil Dir
+xcopy /I /Y "$(TargetDir)Microsoft.TeamFoundation.C*.dll"  "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(TargetDir)Microsoft.TeamFoundation.V*.dll" "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y  "$(TargetDir)Microsoft.Xrm.Client.CodeGeneration.dll"  "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y  "$(TargetDir)Microsoft.Xrm.Client.dll"  "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y  "$(TargetDir)Microsoft.Xrm.Portal.dll"  "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y  "$(TargetDir)Microsoft.Xrm.Sdk.dll"  "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
+Copy "$(TargetDir)CrmSvcUtil.exe" "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\CrmSvcUtil.exe"
+</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>if $(ConfigurationName) == Release "$(DevEnvDir)tf" checkout /lock:none "$(ProjectDir)Properties\AssemblyInfo.cs"
+if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.exe" "$(ProjectDir)Properties\AssemblyInfo.cs"</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
