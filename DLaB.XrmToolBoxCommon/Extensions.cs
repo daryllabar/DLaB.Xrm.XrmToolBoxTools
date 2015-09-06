@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 using McTools.Xrm.Connection;
+using Microsoft.Xrm.Sdk.Metadata;
+using DLaB.Xrm;
 
 namespace DLaB.XrmToolboxCommon
 {
@@ -90,5 +94,16 @@ namespace DLaB.XrmToolboxCommon
             cryptoStream.Close();
             return Encoding.UTF8.GetString(numArray, 0, count);
         }
+
+        #region IEnumerable<EntityMetadata>
+
+        public static object[] ToObjectCollectionArray(this IEnumerable<EntityMetadata> entities)
+        {
+            return entities.
+                Select(e => new ObjectCollectionItem<EntityMetadata>(e.GetDisplayNameWithLogical(), e)).
+                OrderBy(r => r.DisplayName).Cast<object>().ToArray();
+        }
+
+        #endregion // IEnumerable<EntityMetadata>
     }
 }

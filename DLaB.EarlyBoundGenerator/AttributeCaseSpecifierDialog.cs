@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using DLaB.Xrm;
+using DLaB.Common;
 using DLaB.XrmToolboxCommon;
 using PropertyInterface = DLaB.XrmToolboxCommon.PropertyInterface;
 using Microsoft.Xrm.Sdk.Messages;

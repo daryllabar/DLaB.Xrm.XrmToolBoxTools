@@ -4,17 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B024C05F-39E5-4670-A6AE-BC1A96B6FF29}</ProjectGuid>
+    <ProjectGuid>{FCB8A4E4-622B-413A-A531-B612E5F1436C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DLaB.XrmToolboxCommon</RootNamespace>
-    <AssemblyName>DLaB.XrmToolboxCommon</AssemblyName>
+    <RootNamespace>DLaB.AttributeManager</RootNamespace>
+    <AssemblyName>DLaB.AttributeManager</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -35,79 +31,70 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DLaB.Common">
+      <HintPath>..\References\DLaB.Common.dll</HintPath>
+    </Reference>
     <Reference Include="DLaB.Xrm">
       <HintPath>..\References\DLaB.Xrm.dll</HintPath>
     </Reference>
+    <Reference Include="DLaB.Xrm.Entities">
+      <HintPath>..\References\DLaB.Xrm.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="DLaB.XrmToolboxCommon">
+      <HintPath>..\DLaB.XrmToolBoxCommon\bin\Debug\DLaB.XrmToolboxCommon.dll</HintPath>
+    </Reference>
     <Reference Include="McTools.Xrm.Connection">
       <HintPath>..\XrmToolBox\McTools.Xrm.Connection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Crm.Sdk.Proxy">
+      <HintPath>..\XrmToolBox\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xrm.Sdk">
       <HintPath>..\XrmToolBox\Microsoft.Xrm.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="XrmToolBox.Extensibility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="XrmToolBox.Extensibility">
       <HintPath>..\XrmToolBox\XrmToolBox.Extensibility.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DialogBase.cs">
-      <SubType>Form</SubType>
+    <Compile Include="AttributeMetadataCloner.cs" />
+    <Compile Include="AttributeManager.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DialogBase.Designer.cs">
-      <DependentUpon>DialogBase.cs</DependentUpon>
+    <Compile Include="AttributeManager.designer.cs">
+      <DependentUpon>AttributeManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="AttributeValueCopier.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="ObjectCollectionItem.cs" />
-    <Compile Include="PluginUserControlBase.cs" />
-    <Compile Include="Prompt.cs" />
+    <Compile Include="Logic.cs" />
+    <Compile Include="NewTypeAttributeCreationLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="PropertyInterface\IActions.cs" />
-    <Compile Include="PropertyInterface\IEntityMetadatas.cs" />
-    <Compile Include="PropertyInterface\IGlobalOptionSets.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Images\DLaB_Dynamics_Logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\tsbClose.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="DialogBase.resx">
-      <DependentUpon>DialogBase.cs</DependentUpon>
+    <EmbeddedResource Include="AttributeManager.resx">
+      <DependentUpon>AttributeManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Images\DLaB_Dynamics_Logo_Square.png" />
-    <Content Include="Images\DLaB_Dynamics_Logo_Square_120x120.png" />
-    <Content Include="Images\DLaB_Dynamics_Logo_Square_32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.exe" "$(ProjectDir)Properties\AssemblyInfo.cs"</PreBuildEvent>
+    <PreBuildEvent>if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.exe" "$(ProjectDir)Properties\AssemblyInfo.cs"
+</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>xcopy /I /Y "$(SolutionDir)XrmToolBox\*.*" "$(SolutionDir)XrmToolBox\$(ConfigurationName)\"</PostBuildEvent>
+    <PostBuildEvent>xcopy /I /Y "$(TargetDir)DLaB.*.dll" "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

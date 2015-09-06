@@ -39,6 +39,16 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DLaB.Common">
+      <HintPath>..\References\DLaB.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="DLaB.Xrm, Version=1.2015.7.6, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\DLaB.Xrm.dll</HintPath>
+    </Reference>
+    <Reference Include="DLaB.Xrm.Entities">
+      <HintPath>..\References\DLaB.Xrm.Entities.dll</HintPath>
+    </Reference>
     <Reference Include="McTools.Xrm.Connection, Version=1.0.3315.606, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\XrmToolBox\McTools.Xrm.Connection.dll</HintPath>
@@ -174,20 +184,14 @@
       <Project>{b024c05f-39e5-4670-a6ae-bc1a96b6ff29}</Project>
       <Name>DLaB.XrmToolboxCommon</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DLaB.Xrm\DLaB.Xrm.csproj">
-      <Project>{79b56e5f-4eaf-405d-9ef0-ac655201a3c7}</Project>
-      <Name>DLaB.Xrm</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>if $(ConfigurationName) == Release "$(DevEnvDir)tf" checkout /lock:none "$(ProjectDir)Properties\AssemblyInfo.cs"
-if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.exe" "$(ProjectDir)Properties\AssemblyInfo.cs"
+    <PreBuildEvent>if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.exe" "$(ProjectDir)Properties\AssemblyInfo.cs"
 </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>xcopy /I /Y "$(SolutionDir)XrmToolBox\*.*" "$(SolutionDir)XrmToolBox\$(ConfigurationName)\"
-xcopy /I /Y "$(TargetDir)DLaB.*.dll" "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\"</PostBuildEvent>
+    <PostBuildEvent>xcopy /I /Y "$(TargetDir)DLaB.*.dll" "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

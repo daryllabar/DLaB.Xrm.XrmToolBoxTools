@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using DLaB.Xrm.Core.Entities;
 using DLaB.Xrm.Entities;
 using DLaB.XrmToolboxCommon;
 using DLaB.Xrm;
