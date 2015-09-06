@@ -36,10 +36,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="McTools.Xrm.Connection">
-      <HintPath>..\..\XrmOptionSetConverter\XrmToolBox\McTools.Xrm.Connection.dll</HintPath>
+      <HintPath>..\XrmToolBox\McTools.Xrm.Connection.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xrm.Sdk">
-      <HintPath>..\..\XrmOptionSetConverter\XrmToolBox\Microsoft.Xrm.Sdk.dll</HintPath>
+      <HintPath>..\XrmToolBox\Microsoft.Xrm.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
