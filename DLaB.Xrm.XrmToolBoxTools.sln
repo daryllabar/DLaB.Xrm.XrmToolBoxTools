@@ -9,7 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", 
 		References\DLaB.Common.dll = References\DLaB.Common.dll
 		References\DLaB.Xrm.dll = References\DLaB.Xrm.dll
 		References\DLaB.Xrm.Entities.dll = References\DLaB.Xrm.Entities.dll
-		XrmToolBox\McTools.StopAdvertisement.dll = XrmToolBox\McTools.StopAdvertisement.dll
 		XrmToolBox\McTools.Xrm.Connection.dll = XrmToolBox\McTools.Xrm.Connection.dll
 		XrmToolBox\McTools.Xrm.Connection.WinForms.dll = XrmToolBox\McTools.Xrm.Connection.WinForms.dll
 		XrmToolBox\Microsoft.Crm.Sdk.Proxy.dll = XrmToolBox\Microsoft.Crm.Sdk.Proxy.dll

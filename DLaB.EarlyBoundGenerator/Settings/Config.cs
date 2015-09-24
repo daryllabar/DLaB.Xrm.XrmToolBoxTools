@@ -19,7 +19,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// <value>
         /// The CRM SVC utility relative path.
         /// </value>
-        public String CrmSvcUtilRelativePath { get; set; }
+        public string CrmSvcUtilRelativePath { get; set; }
         /// <summary>
         /// Specifies whether to include the command line in the early bound class used to generate it
         /// </summary>
@@ -107,35 +107,35 @@ namespace DLaB.EarlyBoundGenerator.Settings
         #region UserArguments Helpers
 
         [XmlIgnore]
-        public String ActionOutPath
+        public string ActionOutPath
         {
             get { return GetUserArgument(CreationType.Actions, UserArgumentNames.Out); }
             set { SetUserArgument(CreationType.Actions, UserArgumentNames.Out, value); }
         }
 
         [XmlIgnore]
-        public String EntityOutPath
+        public string EntityOutPath
         {
             get { return GetUserArgument(CreationType.Entities, UserArgumentNames.Out); }
             set { SetUserArgument(CreationType.Entities, UserArgumentNames.Out, value); }
         }
 
         [XmlIgnore]
-        public String Namespace
+        public string Namespace
         {
             get { return GetUserArgument(CreationType.All, UserArgumentNames.Namespace); }
             set { SetUserArgument(CreationType.All, UserArgumentNames.Namespace, value); }
         }
 
         [XmlIgnore]
-        public String OptionSetOutPath
+        public string OptionSetOutPath
         {
             get { return GetUserArgument(CreationType.OptionSets, UserArgumentNames.Out); }
             set { SetUserArgument(CreationType.OptionSets, UserArgumentNames.Out, value); }
         }
 
         [XmlIgnore]
-        public String ServiceContextName
+        public string ServiceContextName
         {
             get { return GetUserArgument(CreationType.Entities, UserArgumentNames.ServiceContextName); }
             set { SetUserArgument(CreationType.Entities, UserArgumentNames.ServiceContextName, value); }
@@ -212,11 +212,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 }
 
                 var splitValues = value.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()).ToList();
-                var hash = new HashSet<String>(splitValues);
+                var hash = new HashSet<string>(splitValues);
                 splitValues.AddRange(@default.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries).
                                               Where(key => !hash.Contains(key)));
 
-                return String.Join("|", splitValues);
+                return string.Join("|", splitValues);
             }
             catch (Exception ex)
             {
@@ -235,11 +235,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
                 var splitValues = value.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()).ToList();
                 // Split by Dictionary of hashset
-                var splitSplitValues = splitValues.ToDictionary(k => k.Split(new[] {','}).First().Trim(), v => new HashSet<String>(v.Split(new[] {','}).Skip(1).Select(s => s.Trim())));
+                var splitSplitValues = splitValues.ToDictionary(k => k.Split(new[] {','}).First().Trim(), v => new HashSet<string>(v.Split(new[] {','}).Skip(1).Select(s => s.Trim())));
                 foreach (var entry in @default.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()))
                 {
                     var values = entry.Split(new[] {','}).Select(s => s.Trim()).ToList();
-                    HashSet<String> hash;
+                    HashSet<string> hash;
                     if (splitSplitValues.TryGetValue(values.First(), out hash))
                     {
                         foreach (var commaValue in values.Skip(1).
@@ -255,7 +255,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 }
 
                 // All missing values have been added.  Join back Values
-                return String.Join("|", splitSplitValues.Select(entry => entry.Key + "," + String.Join(",", entry.Value)));
+                return string.Join("|", splitSplitValues.Select(entry => entry.Key + "," + string.Join(",", entry.Value)));
             }
             catch (Exception ex)
             {
@@ -347,7 +347,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         public string GetSettingValue(CreationType creationType, string setting)
         {
-            var value = CommandLineArguments.FirstOrDefault(s => String.Equals(s.Name, setting, StringComparison.InvariantCultureIgnoreCase)
+            var value = CommandLineArguments.FirstOrDefault(s => string.Equals(s.Name, setting, StringComparison.InvariantCultureIgnoreCase)
                                                                  && (s.SettingType == creationType || s.SettingType == CreationType.All));
 
             if (value == null)
@@ -361,16 +361,16 @@ namespace DLaB.EarlyBoundGenerator.Settings
         private string GetUserArgument(CreationType creationType, string setting)
         {
             var argument = UserArguments.FirstOrDefault(s =>
-                String.Equals(s.Name, setting, StringComparison.InvariantCultureIgnoreCase)
+                string.Equals(s.Name, setting, StringComparison.InvariantCultureIgnoreCase)
                 && s.SettingType == creationType);
 
-            return argument == null ? String.Empty : argument.Value;
+            return argument == null ? string.Empty : argument.Value;
         }
 
         private void SetUserArgument(CreationType creationType, string setting, string value)
         {
             var argument = UserArguments.FirstOrDefault(s =>
-                String.Equals(s.Name, setting, StringComparison.InvariantCultureIgnoreCase)
+                string.Equals(s.Name, setting, StringComparison.InvariantCultureIgnoreCase)
                 && s.SettingType == creationType);
 
             if (argument == null)
@@ -399,7 +399,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
     /// </summary>
     public class Config
     {
-        public String CrmSvcUtilRelativePath { get; set; }
+        public string CrmSvcUtilRelativePath { get; set; }
         public bool? IncludeCommandLine { get; set; }
         public bool? MaskPassword { get; set; }
         public ExtensionConfig ExtensionConfig { get; set; }

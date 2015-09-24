@@ -256,7 +256,7 @@ namespace DLaB.AttributeManager
                 var prefix = newSchemaName.Substring(0, index);
                 var postFix = newSchemaName.Substring(index, newSchemaName.Length - index);
 
-                relationship.SchemaName = String.Format("{0}{1}_{2}_{3}", prefix, relationship.ReferencedEntity, relationship.ReferencingEntity, postFix);
+                relationship.SchemaName = string.Format("{0}{1}_{2}_{3}", prefix, relationship.ReferencedEntity, relationship.ReferencingEntity, postFix);
             }
         }
     }

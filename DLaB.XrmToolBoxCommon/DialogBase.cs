@@ -26,7 +26,7 @@ namespace DLaB.XrmToolboxCommon
         {
             if (callingControl == null)
             {
-                throw new ArgumentNullException("callingControl");
+                throw new ArgumentNullException(nameof(callingControl));
             }
             CallingControl = callingControl;
         }
@@ -99,6 +99,11 @@ namespace DLaB.XrmToolboxCommon
         #region IWorkerHost Members
 
         private readonly Worker _worker = new Worker();
+
+        public void WorkAsync(string message, Action<DoWorkEventArgs> work, object argument, int messageWidth = 340, int messageHeight = 150)
+        {
+            _worker.WorkAsync(this, message, null, null, argument, messageWidth, messageHeight);
+        }
 
         public void WorkAsync(string message, Action<DoWorkEventArgs> work, Action<RunWorkerCompletedEventArgs> callback, object argument = null, int messageWidth = 340, int messageHeight = 150)
         {

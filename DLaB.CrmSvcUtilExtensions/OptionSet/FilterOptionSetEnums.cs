@@ -39,14 +39,14 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
     /// </summary>
     public sealed class FilterOptionSetEnums : ICodeWriterFilterService
     {
-        private HashSet<String> GeneratedOptionSets { get; set; }
+        private HashSet<string> GeneratedOptionSets { get; set; }
 
         private ICodeWriterFilterService DefaultService { get; set; }
 
         public FilterOptionSetEnums(ICodeWriterFilterService defaultService)
         {
             DefaultService = defaultService;
-            GeneratedOptionSets = new HashSet<String>();
+            GeneratedOptionSets = new HashSet<string>();
         }
 
         /// <summary>

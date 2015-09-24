@@ -19,7 +19,7 @@ namespace DLaB.CrmSvcUtilExtensions
         private static bool LoggingEnabled { get { return ConfigHelper.GetAppSettingOrDefault("LoggingEnabled", false); } }
         protected virtual string CommandLineText
         {
-            get { return ConfigHelper.GetAppSettingOrDefault("EntityCommandLineText", String.Empty); }
+            get { return ConfigHelper.GetAppSettingOrDefault("EntityCommandLineText", string.Empty); }
         }
         protected virtual CodeUnit SplitByCodeUnit { get { return CodeUnit.Class; } }
         protected abstract bool CreateOneFilePerCodeUnit { get; }
@@ -141,7 +141,7 @@ namespace DLaB.CrmSvcUtilExtensions
             Log("Completed writing file {0} to {1}", Path.GetFileName(outputFile), tempFile);
 
             // Check if the Header needs to be updated and or the file needs to be split
-            if (!String.IsNullOrWhiteSpace(CommandLineText) || RemoveRuntimeVersionComment)
+            if (!string.IsNullOrWhiteSpace(CommandLineText) || RemoveRuntimeVersionComment)
             {
                 var lines = GetFileTextWithUpdatedClassComment(tempFile, CommandLineText, RemoveRuntimeVersionComment);
                 if (CreateOneFilePerCodeUnit)
@@ -291,14 +291,14 @@ namespace DLaB.CrmSvcUtilExtensions
 
         private void SplitFileByCodeUnit(CodeUnit codeUnit, string filePath, IEnumerable<string> lines)
         {
-            var directory = Path.GetDirectoryName(filePath) ?? String.Empty;
+            var directory = Path.GetDirectoryName(filePath) ?? string.Empty;
             var currentStage = SplitStage.Header;
             var header = new List<string>();
             var code = new List<string>();
-            var name = String.Empty;
+            var name = string.Empty;
             var proxyTypesAssemblyAttributeLine = string.Empty;
             var skipNext = false;
-            var commandLine = String.Empty;
+            var commandLine = string.Empty;
             var codeUnitStartsWith = codeUnit == CodeUnit.Class ? "public partial class" : "public enum";
             var files = new List<FileToCreate>(); // Delay this to the end to multithread the creation.  100's of small files takes a long time if checking with TFS sequentially
 
@@ -309,7 +309,7 @@ namespace DLaB.CrmSvcUtilExtensions
                 switch (currentStage)
                 {
                     case SplitStage.Header:
-                        if (String.IsNullOrEmpty(line))
+                        if (string.IsNullOrEmpty(line))
                         {
                             currentStage = SplitStage.Namespace;
                             header.Add(line);
@@ -351,9 +351,9 @@ namespace DLaB.CrmSvcUtilExtensions
                                 header.Insert(header.IndexOf(@"// </auto-generated>")+1, commandLine);
                                 commandLine = string.Empty;
                                 // Put Proxy Types Assembly Attribute Line back in
-                                var i = header.IndexOf(String.Empty, 0) + 1;
+                                var i = header.IndexOf(string.Empty, 0) + 1;
                                 header.Insert(i++, proxyTypesAssemblyAttributeLine);
-                                header.Insert(i, String.Empty);
+                                header.Insert(i, string.Empty);
                                 currentStage = SplitStage.ServiceContext;
                             }
                             else
@@ -370,7 +370,7 @@ namespace DLaB.CrmSvcUtilExtensions
                         {
                             code.Add("}");
                             var fileName = Path.Combine(directory, name + ".cs");
-                            files.Add(new FileToCreate(fileName, String.Join(Environment.NewLine, header.Concat(code))));
+                            files.Add(new FileToCreate(fileName, string.Join(Environment.NewLine, header.Concat(code))));
                             code.Clear();
                             currentStage = SplitStage.CodeUnitHeader;
                         }
@@ -385,7 +385,7 @@ namespace DLaB.CrmSvcUtilExtensions
                 }
             }
 
-            files.Add(new FileToCreate(filePath, String.IsNullOrWhiteSpace(commandLine) ? String.Join(Environment.NewLine, header.Concat(code)) : commandLine, true));
+            files.Add(new FileToCreate(filePath, string.IsNullOrWhiteSpace(commandLine) ? string.Join(Environment.NewLine, header.Concat(code)) : commandLine, true));
 
             WriteFilesAsync(files);
         }
@@ -508,8 +508,8 @@ namespace DLaB.CrmSvcUtilExtensions
 
         private class FileToCreate
         {
-            public String Path { get; private set; }
-            public String Contents { get; private set; }
+            public string Path { get; private set; }
+            public string Contents { get; private set; }
             public Item TfsItem { get; set; }
             public bool IsMainFile { get; private set; }
 
@@ -599,7 +599,7 @@ namespace DLaB.CrmSvcUtilExtensions
                     return;
                 }
 
-                var line = String.Format(LineFormat, path.Substring(ProjectDir.Length + 1, path.Length - ProjectDir.Length - 1));
+                var line = string.Format(LineFormat, path.Substring(ProjectDir.Length + 1, path.Length - ProjectDir.Length - 1));
                 lock (_dictionaryLock)
                 {
                     if (ProjectFiles.ContainsKey(line))
@@ -624,7 +624,7 @@ namespace DLaB.CrmSvcUtilExtensions
             internal string GetContents()
             {
                 // Return lines before, plus ordered compile files, plus lines after
-                return String.Join(Environment.NewLine, Lines.Take(ProjectFileIndexStart).Concat(ProjectFiles.Keys).Concat(Lines.Skip(ProjectFileIndexEnd)));
+                return string.Join(Environment.NewLine, Lines.Take(ProjectFileIndexStart).Concat(ProjectFiles.Keys).Concat(Lines.Skip(ProjectFileIndexEnd)));
             }
         }
         #endregion // Split File Into Multiple Files By Class

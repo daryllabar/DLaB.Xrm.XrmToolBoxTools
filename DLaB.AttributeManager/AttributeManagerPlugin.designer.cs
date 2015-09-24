@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace DLaB.AttributeManager
 {
-    partial class AttributeManager
+    partial class AttributeManagerPlugin
     {
         /// <summary> 
         /// Required designer variable.
@@ -34,7 +34,7 @@ namespace DLaB.AttributeManager
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label label2;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AttributeManager));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AttributeManagerPlugin));
             this.lblSchemaName = new System.Windows.Forms.Label();
             this.cmbEntities = new System.Windows.Forms.ComboBox();
             this.btnLoadEntities = new System.Windows.Forms.Button();
@@ -58,11 +58,24 @@ namespace DLaB.AttributeManager
             this.Tip = new System.Windows.Forms.ToolTip(this.components);
             this.cmbNewAttribute = new System.Windows.Forms.ComboBox();
             this.lblNewAttribute = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabAttributeType = new System.Windows.Forms.TabPage();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabStringAttribute = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pStringType = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.strAttTxtMaximumLength = new System.Windows.Forms.TextBox();
+            this.strAttLblFormat = new System.Windows.Forms.Label();
+            this.strAttCmbFormat = new System.Windows.Forms.ComboBox();
+            this.tabNumberAttribute = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.pNumberType = new System.Windows.Forms.Panel();
+            this.tabOptionSetAttribute = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.pOptionType = new System.Windows.Forms.Panel();
+            this.tabLog = new System.Windows.Forms.TabPage();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.strAttCmbImeMode = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
@@ -70,10 +83,15 @@ namespace DLaB.AttributeManager
             this.panel1.SuspendLayout();
             this.grpSettings.SuspendLayout();
             this.grpSteps.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabAttributeType.SuspendLayout();
+            this.tabControl.SuspendLayout();
+            this.tabStringAttribute.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.pStringType.SuspendLayout();
+            this.tabNumberAttribute.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.tabOptionSetAttribute.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.tabLog.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -269,6 +287,7 @@ namespace DLaB.AttributeManager
             this.cmbNewAttributeType.Name = "cmbNewAttributeType";
             this.cmbNewAttributeType.Size = new System.Drawing.Size(147, 21);
             this.cmbNewAttributeType.TabIndex = 20;
+            this.cmbNewAttributeType.SelectedIndexChanged += new System.EventHandler(this.cmbNewAttributeType_SelectedIndexChanged);
             // 
             // txtDisplayName
             // 
@@ -340,7 +359,7 @@ namespace DLaB.AttributeManager
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtLog.Size = new System.Drawing.Size(676, 104);
+            this.txtLog.Size = new System.Drawing.Size(676, 227);
             this.txtLog.TabIndex = 0;
             // 
             // cmbNewAttribute
@@ -365,40 +384,31 @@ namespace DLaB.AttributeManager
             this.lblNewAttribute.TabIndex = 9;
             this.lblNewAttribute.Text = "New Attribute:";
             // 
-            // tabControl1
+            // tabControl
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabAttributeType);
-            this.tabControl1.Location = new System.Drawing.Point(16, 309);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(690, 259);
-            this.tabControl1.TabIndex = 11;
+            this.tabControl.Controls.Add(this.tabStringAttribute);
+            this.tabControl.Controls.Add(this.tabNumberAttribute);
+            this.tabControl.Controls.Add(this.tabOptionSetAttribute);
+            this.tabControl.Controls.Add(this.tabLog);
+            this.tabControl.Location = new System.Drawing.Point(16, 309);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(690, 259);
+            this.tabControl.TabIndex = 11;
             // 
-            // tabPage1
+            // tabStringAttribute
             // 
-            this.tabPage1.Controls.Add(this.txtLog);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(682, 110);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Log";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabAttributeType
-            // 
-            this.tabAttributeType.Controls.Add(this.tableLayoutPanel2);
-            this.tabAttributeType.Location = new System.Drawing.Point(4, 22);
-            this.tabAttributeType.Name = "tabAttributeType";
-            this.tabAttributeType.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAttributeType.Size = new System.Drawing.Size(682, 233);
-            this.tabAttributeType.TabIndex = 1;
-            this.tabAttributeType.Text = "Attribute Type Settings";
-            this.tabAttributeType.UseVisualStyleBackColor = true;
+            this.tabStringAttribute.Controls.Add(this.tableLayoutPanel2);
+            this.tabStringAttribute.Location = new System.Drawing.Point(4, 22);
+            this.tabStringAttribute.Name = "tabStringAttribute";
+            this.tabStringAttribute.Padding = new System.Windows.Forms.Padding(3);
+            this.tabStringAttribute.Size = new System.Drawing.Size(682, 233);
+            this.tabStringAttribute.TabIndex = 1;
+            this.tabStringAttribute.Text = "String Type Settings";
+            this.tabStringAttribute.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
@@ -406,7 +416,7 @@ namespace DLaB.AttributeManager
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 538F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.panel2, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.pStringType, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -417,19 +427,175 @@ namespace DLaB.AttributeManager
             this.tableLayoutPanel2.Size = new System.Drawing.Size(676, 227);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // panel2
+            // pStringType
             // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(72, 41);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(532, 144);
-            this.panel2.TabIndex = 0;
+            this.pStringType.Controls.Add(this.label6);
+            this.pStringType.Controls.Add(this.strAttCmbImeMode);
+            this.pStringType.Controls.Add(this.label5);
+            this.pStringType.Controls.Add(this.strAttTxtMaximumLength);
+            this.pStringType.Controls.Add(this.strAttLblFormat);
+            this.pStringType.Controls.Add(this.strAttCmbFormat);
+            this.pStringType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pStringType.Location = new System.Drawing.Point(72, 41);
+            this.pStringType.Name = "pStringType";
+            this.pStringType.Size = new System.Drawing.Size(532, 144);
+            this.pStringType.TabIndex = 0;
             // 
-            // AttributeManager
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(54, 42);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(90, 13);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Maximum Length:";
+            // 
+            // strAttTxtMaximumLength
+            // 
+            this.strAttTxtMaximumLength.Location = new System.Drawing.Point(151, 39);
+            this.strAttTxtMaximumLength.Name = "strAttTxtMaximumLength";
+            this.strAttTxtMaximumLength.Size = new System.Drawing.Size(171, 20);
+            this.strAttTxtMaximumLength.TabIndex = 2;
+            // 
+            // strAttLblFormat
+            // 
+            this.strAttLblFormat.AutoSize = true;
+            this.strAttLblFormat.Location = new System.Drawing.Point(103, 19);
+            this.strAttLblFormat.Name = "strAttLblFormat";
+            this.strAttLblFormat.Size = new System.Drawing.Size(42, 13);
+            this.strAttLblFormat.TabIndex = 1;
+            this.strAttLblFormat.Text = "Format:";
+            // 
+            // strAttCmbFormat
+            // 
+            this.strAttCmbFormat.FormattingEnabled = true;
+            this.strAttCmbFormat.Items.AddRange(new object[] {
+            "Email",
+            "Phone",
+            "PhoneticGuide",
+            "Text",
+            "TextArea",
+            "TickerSymbol",
+            "Url",
+            "VersionNumber"});
+            this.strAttCmbFormat.Location = new System.Drawing.Point(151, 16);
+            this.strAttCmbFormat.Name = "strAttCmbFormat";
+            this.strAttCmbFormat.Size = new System.Drawing.Size(171, 21);
+            this.strAttCmbFormat.TabIndex = 0;
+            // 
+            // tabNumberAttribute
+            // 
+            this.tabNumberAttribute.Controls.Add(this.tableLayoutPanel3);
+            this.tabNumberAttribute.Location = new System.Drawing.Point(4, 22);
+            this.tabNumberAttribute.Name = "tabNumberAttribute";
+            this.tabNumberAttribute.Size = new System.Drawing.Size(682, 233);
+            this.tabNumberAttribute.TabIndex = 2;
+            this.tabNumberAttribute.Text = "Number Type Settings";
+            this.tabNumberAttribute.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 3;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 538F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.pNumberType, 1, 1);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 3;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(682, 233);
+            this.tableLayoutPanel3.TabIndex = 1;
+            // 
+            // pNumberType
+            // 
+            this.pNumberType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pNumberType.Location = new System.Drawing.Point(75, 44);
+            this.pNumberType.Name = "pNumberType";
+            this.pNumberType.Size = new System.Drawing.Size(532, 144);
+            this.pNumberType.TabIndex = 0;
+            // 
+            // tabOptionSetAttribute
+            // 
+            this.tabOptionSetAttribute.Controls.Add(this.tableLayoutPanel4);
+            this.tabOptionSetAttribute.Location = new System.Drawing.Point(4, 22);
+            this.tabOptionSetAttribute.Name = "tabOptionSetAttribute";
+            this.tabOptionSetAttribute.Size = new System.Drawing.Size(682, 233);
+            this.tabOptionSetAttribute.TabIndex = 3;
+            this.tabOptionSetAttribute.Text = "Option Type Settings";
+            this.tabOptionSetAttribute.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 3;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 538F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.pOptionType, 1, 1);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 3;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(682, 233);
+            this.tableLayoutPanel4.TabIndex = 2;
+            // 
+            // pOptionType
+            // 
+            this.pOptionType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pOptionType.Location = new System.Drawing.Point(75, 44);
+            this.pOptionType.Name = "pOptionType";
+            this.pOptionType.Size = new System.Drawing.Size(532, 144);
+            this.pOptionType.TabIndex = 0;
+            // 
+            // tabLog
+            // 
+            this.tabLog.Controls.Add(this.txtLog);
+            this.tabLog.Location = new System.Drawing.Point(4, 22);
+            this.tabLog.Name = "tabLog";
+            this.tabLog.Padding = new System.Windows.Forms.Padding(3);
+            this.tabLog.Size = new System.Drawing.Size(682, 233);
+            this.tabLog.TabIndex = 0;
+            this.tabLog.Text = "Log";
+            this.tabLog.UseVisualStyleBackColor = true;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // strAttCmbImeMode
+            // 
+            this.strAttCmbImeMode.FormattingEnabled = true;
+            this.strAttCmbImeMode.Items.AddRange(new object[] {
+            "Auto",
+            "Inactive",
+            "Active",
+            "Disabled"});
+            this.strAttCmbImeMode.Location = new System.Drawing.Point(151, 65);
+            this.strAttCmbImeMode.Name = "strAttCmbImeMode";
+            this.strAttCmbImeMode.Size = new System.Drawing.Size(171, 21);
+            this.strAttCmbImeMode.TabIndex = 4;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(86, 68);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(59, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "IME Mode:";
+            // 
+            // AttributeManagerPlugin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.cmbNewAttribute);
             this.Controls.Add(this.lblNewAttribute);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -439,7 +605,7 @@ namespace DLaB.AttributeManager
             this.Controls.Add(this.btnLoadEntities);
             this.Controls.Add(this.cmbEntities);
             this.Controls.Add(label1);
-            this.Name = "AttributeManager";
+            this.Name = "AttributeManagerPlugin";
             this.Size = new System.Drawing.Size(724, 571);
             this.Load += new System.EventHandler(this.AttributeManager_Load);
             this.toolStrip1.ResumeLayout(false);
@@ -449,11 +615,17 @@ namespace DLaB.AttributeManager
             this.grpSettings.ResumeLayout(false);
             this.grpSettings.PerformLayout();
             this.grpSteps.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabAttributeType.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
+            this.tabStringAttribute.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.pStringType.ResumeLayout(false);
+            this.pStringType.PerformLayout();
+            this.tabNumberAttribute.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tabOptionSetAttribute.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tabLog.ResumeLayout(false);
+            this.tabLog.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -484,10 +656,23 @@ namespace DLaB.AttributeManager
         private CheckBox chkConvertAttributeType;
         private Label lblNewAttributeType;
         private ComboBox cmbNewAttributeType;
-        private TabControl tabControl1;
-        private TabPage tabPage1;
-        private TabPage tabAttributeType;
+        private TabControl tabControl;
+        private TabPage tabLog;
+        private TabPage tabStringAttribute;
         private TableLayoutPanel tableLayoutPanel2;
-        private Panel panel2;
+        private TabPage tabNumberAttribute;
+        private TabPage tabOptionSetAttribute;
+        private Panel pStringType;
+        private TableLayoutPanel tableLayoutPanel3;
+        private Panel pNumberType;
+        private TableLayoutPanel tableLayoutPanel4;
+        private Panel pOptionType;
+        private Label strAttLblFormat;
+        private ComboBox strAttCmbFormat;
+        private Label label5;
+        private TextBox strAttTxtMaximumLength;
+        private ContextMenuStrip contextMenuStrip1;
+        private Label label6;
+        private ComboBox strAttCmbImeMode;
     }
 }

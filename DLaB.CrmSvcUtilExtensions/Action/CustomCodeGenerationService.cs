@@ -10,7 +10,7 @@ namespace DLaB.CrmSvcUtilExtensions.Action
 
         protected override string CommandLineText
         {
-            get { return ConfigHelper.GetAppSettingOrDefault("ActionCommandLineText", String.Empty); }
+            get { return ConfigHelper.GetAppSettingOrDefault("ActionCommandLineText", string.Empty); }
         }
 
         protected override bool CreateOneFilePerCodeUnit
@@ -22,7 +22,7 @@ namespace DLaB.CrmSvcUtilExtensions.Action
         {
             base.WriteInternal(organizationMetadata, language, outputFile, targetNamespace, services);
             // Since no Actions.cs class gets created by default, they are all request / response classes, delete the file if there is no CommandLineText to be added
-            if (!CreateOneFilePerCodeUnit && String.IsNullOrEmpty(CommandLineText))
+            if (!CreateOneFilePerCodeUnit && string.IsNullOrEmpty(CommandLineText))
             {
                 File.Delete(outputFile);
             }

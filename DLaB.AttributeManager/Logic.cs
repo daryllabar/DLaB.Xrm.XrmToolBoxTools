@@ -256,7 +256,7 @@ namespace DLaB.AttributeManager
                 }
 
                 // Can only Remove existing if Tmp already exists, or temp will be created, or if performing rename and there is a Create
-                if (!(state.Temp != null || stepsToPerform.HasFlag(Steps.CreateTemp) || (!String.Equals(existingSchemaName, newSchemaName, StringComparison.OrdinalIgnoreCase) && stepsToPerform.HasFlag(Steps.CreateNewAttribute))))
+                if (!(state.Temp != null || stepsToPerform.HasFlag(Steps.CreateTemp) || (!string.Equals(existingSchemaName, newSchemaName, StringComparison.OrdinalIgnoreCase) && stepsToPerform.HasFlag(Steps.CreateNewAttribute))))
                 {
                     AssertInvalidState("Unable to Remove Existing Attribute!  Temporary Attribute " + existingSchemaName + TempPostfix + " does not exist!");
                 }
@@ -358,7 +358,7 @@ namespace DLaB.AttributeManager
                 ObjectId = attribute.MetadataId.GetValueOrDefault()
             });
 
-            var errors = new List<String>();
+            var errors = new List<string>();
             foreach (var d in depends.EntityCollection.ToEntityList<Dependency>())
             {
                 var type = (componenttype)d.DependentComponentType.GetValueOrDefault();
@@ -373,7 +373,7 @@ namespace DLaB.AttributeManager
 
             if (errors.Count > 0)
             {
-                throw new Exception("Dependencies found: " + String.Join(", ", errors));
+                throw new Exception("Dependencies found: " + string.Join(", ", errors));
             }
         }
 
@@ -487,7 +487,7 @@ namespace DLaB.AttributeManager
                         fault = fault.InnerFault;
                     }
 
-                    var errorDetails = String.Empty;
+                    var errorDetails = string.Empty;
                     if (fault.ErrorDetails.ContainsKey("CallStack"))
                     {
                         errorDetails = Environment.NewLine + fault.ErrorDetails["CallStack"];
@@ -510,7 +510,7 @@ namespace DLaB.AttributeManager
             var response = (RetrieveEntityResponse)service.Execute(new RetrieveEntityRequest { LogicalName = from.EntityLogicalName, EntityFilters = EntityFilters.Entity });
 
             Trace("Determining record count (accurate only up to 50000)");
-            var xml = String.Format(@"
+            var xml = string.Format(@"
             <fetch distinct='false' mapping='logical' aggregate='true'> 
                 <entity name='{0}'> 
                    <attribute name='{1}' alias='{1}_count' aggregate='count'/> 
@@ -609,7 +609,7 @@ namespace DLaB.AttributeManager
         private void Trace(string messageFormat, params object[] args)
         {
             Debug.Assert(OnLog != null, "OnLog != null");
-            OnLog(String.Format(messageFormat, args));
+            OnLog(string.Format(messageFormat, args));
         }
 
         private class AttributeMigrationState

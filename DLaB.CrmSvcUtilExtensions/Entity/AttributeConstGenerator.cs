@@ -56,7 +56,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                 // ReSharper disable once BitwiseOperatorOnEnumWithoutFlags
                 Attributes = System.CodeDom.MemberAttributes.Public | System.CodeDom.MemberAttributes.Const,
                 Name = prop.Name,
-                Type = new CodeTypeReference(typeof (String)),
+                Type = new CodeTypeReference(typeof (string)),
                 InitExpression = new CodePrimitiveExpression(attributeLogicalName)
             });
         }

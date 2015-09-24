@@ -14,14 +14,14 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         /// <summary>
         /// Contains Meta Data for entities, key'd by logical name
         /// </summary>
-        public static Dictionary<String, EntityMetadata> EntityMetadata { get; set; }
+        public static Dictionary<string, EntityMetadata> EntityMetadata { get; set; }
         public FilterOptionSetEnums EnumFilter { get; set; }
-        public HashSet<String> EntitiesToSkip { get; set; }
+        public HashSet<string> EntitiesToSkip { get; set; }
 
         static CodeWriterFilterService()
         {
             OptionSetMetadata = new Dictionary<Guid, OptionSetMetadataBase>();
-            EntityMetadata = new Dictionary<String, EntityMetadata>();
+            EntityMetadata = new Dictionary<string, EntityMetadata>();
 
         }
 

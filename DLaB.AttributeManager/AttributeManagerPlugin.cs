@@ -15,16 +15,16 @@ using XrmToolBox.Extensibility.Interfaces;
 
 namespace DLaB.AttributeManager
 {
-    public partial class AttributeManager : PluginControlBase
+    public partial class AttributeManagerPlugin : PluginControlBase
     {
         private bool AttributesNeedLoaded { get; set; }
-        private Object[] RenameSteps { get; set; }
-        private Object[] DefaultSteps { get; set; }
-        private Dictionary<string, Logic.Steps> StepMapper { get; set; }
+        private object[] RenameSteps { get; }
+        private object[] DefaultSteps { get; }
+        private Dictionary<string, Logic.Steps> StepMapper { get; }
         public Config Settings { get; set; }
         private EntityMetadata Metadata { get; set; }
 
-        public AttributeManager()
+        public AttributeManagerPlugin()
         {
             InitializeComponent();
 
@@ -38,9 +38,9 @@ namespace DLaB.AttributeManager
                 {"Remove Temporary Attribute", Logic.Steps.RemoveTemp}
             };
 
-            DefaultSteps = StepMapper.Keys.Cast<Object>().ToArray();
+            DefaultSteps = StepMapper.Keys.Cast<object>().ToArray();
 
-            RenameSteps = new Object[]
+            RenameSteps = new object[]
             {
                 StepMapper.First(p => p.Value == Logic.Steps.CreateNewAttribute).Key,
                 StepMapper.First(p => p.Value == Logic.Steps.MigrateToNewAttribute).Key,
@@ -49,7 +49,9 @@ namespace DLaB.AttributeManager
 
             lblNewAttributeType.Visible = false;
             cmbNewAttributeType.Visible = false;
-            tabAttributeType.Visible = false;
+            SetTabVisible(tabStringAttribute, false);
+            SetTabVisible(tabNumberAttribute, false);
+            SetTabVisible(tabOptionSetAttribute, false);
         }
 
         public override void ClosingPlugin(PluginCloseInfo info)
@@ -108,7 +110,7 @@ namespace DLaB.AttributeManager
             }, e =>
             {
                 Metadata = ((RetrieveEntityResponse)e.Result).EntityMetadata;
-                var attributes = Metadata.Attributes.Where(a => a.IsManaged == false && a.AttributeOf == null).
+                var attributes = Metadata.Attributes.Where(a => a.IsManaged == false && a.AttributeOf == null && a.IsCustomizable.Value).
                     Select(a => new ObjectCollectionItem<AttributeMetadata>((a.DisplayName.GetLocalOrDefaultText("N/A")) + " (" + a.LogicalName + ")", a)).
                     OrderBy(r => r.DisplayName).
                     Cast<Object>().
@@ -144,7 +146,7 @@ namespace DLaB.AttributeManager
             }
 
             var newName = txtNewAttributeName.Text;
-            if (String.IsNullOrWhiteSpace(newName) || !newName.Contains('_'))
+            if (string.IsNullOrWhiteSpace(newName) || !newName.Contains('_'))
             {
                 MessageBox.Show("Invalid new Schema Name!  Schema name must contain an '_'.", "Unable To Execute", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Enabled = true;
@@ -159,59 +161,72 @@ namespace DLaB.AttributeManager
                 return;
             }
 
-            Logic.LogHandler onLog;
-            var action = GetCurrentAction();
-            var newType = GetNewAttributeType();
-
             // Update Display Name
             var langCode = attribute.Value.DisplayName.UserLocalizedLabel.LanguageCode;
             attribute.Value.DisplayName.LocalizedLabels.First(l => l.LanguageCode == langCode).Label = txtDisplayName.Text;
 
-            WorkAsync("Performing Steps...", (w,e) => 
+            WorkAsync("Performing Steps...", (w, e) =>
             {
-                var migrator = new Logic(Service, ConnectionDetail, Metadata, Settings.TempSchemaPostfix, chkMigrate.Checked);
-                onLog = m => w.ReportProgress(0, m);
-                migrator.OnLog += onLog;
+                var info = (ExecuteStepsInfo) e.Argument;
+                Logic.LogHandler onLog = m => w.ReportProgress(0, m);
+                info.Migrator.OnLog += onLog;
                 try
                 {
-                    migrator.Run(attribute.Value, txtNewAttributeName.Text, steps, action, newType);
+                    info.Migrator.Run(info.CurrentAttribute, info.NewAttributeName, info.Steps, info.Action, info.NewAttribute);
                     w.ReportProgress(99, "Steps Completed!");
+                    e.Result = true;
                 }
                 catch (InvalidOperationException ex)
                 {
                     w.ReportProgress(int.MinValue, ex);
+                    e.Result = false;
                 }
                 catch (Exception ex)
                 {
                     w.ReportProgress(int.MinValue, ex);
+                    e.Result = false;
                 }
                 finally
                 {
-                    migrator.OnLog -= onLog;
+                    info.Migrator.OnLog -= onLog;
                 }
 
             }, e =>
             {
+                if (steps.HasFlag(Logic.Steps.MigrateToNewAttribute) && e.Result as bool? == true)
+                {
+                    AttributesNeedLoaded = true;
+                    ExecuteMethod(LoadAttributes);
+                }
                 Enabled = true;
-            }, e => {             
+            }, e =>
+            {
                 var text = e.UserState.ToString();
-                        
+
                 if (e.ProgressPercentage != int.MinValue)
                 {
                     var state = e.UserState as Exception;
-                    SetWorkingMessage(state != null ? state.Message : text);
+                    SetWorkingMessage(state?.Message ?? text);
                 }
                 txtLog.AppendText(text + Environment.NewLine);
+            }, new ExecuteStepsInfo
+            {
+                Action = GetCurrentAction(),
+                CurrentAttribute = attribute.Value,
+                NewAttribute = GetNewAttributeType(),
+                NewAttributeName = txtNewAttributeName.Text,
+                Migrator = new Logic(Service, ConnectionDetail, Metadata, Settings.TempSchemaPostfix, chkMigrate.Checked),
+                Steps = steps
             });
         }
 
         private AttributeMetadata GetNewAttributeType()
         {
             AttributeMetadata att;
-            switch (cmbNewAttributeType.SelectedItem as string)
+            switch (cmbNewAttributeType.Text)
             {
                 case "Single Line of Text":
-                    att = NewTypeAttributeCreationLogic.CreateText();
+                    att = NewTypeAttributeCreationLogic.CreateText(format: GetStringFormat());
                     break;
                 case "Option Set":
                     att = NewTypeAttributeCreationLogic.CreateOptionSet(null);
@@ -235,7 +250,7 @@ namespace DLaB.AttributeManager
                     att = NewTypeAttributeCreationLogic.CreateCurrency();
                     break;
                 case "Multiple Lines of Text":
-                    att = NewTypeAttributeCreationLogic.CreateText(2000, StringFormat.TextArea);
+                    att = NewTypeAttributeCreationLogic.CreateText(2000, format: GetStringFormat());
                     break;
                 case "Date and Time":
                     att = NewTypeAttributeCreationLogic.CreateDateTime();
@@ -244,7 +259,7 @@ namespace DLaB.AttributeManager
                     att = NewTypeAttributeCreationLogic.CreateLookup(null);
                     break;
                 default:
-                    throw new Exception("Unepxected Type: " + cmbNewAttributeType.SelectedItem);
+                    throw new Exception("Unepxected Type: " + cmbNewAttributeType.Text);
             
             }
 
@@ -270,7 +285,7 @@ namespace DLaB.AttributeManager
             //    action = Logic.Action.RemoveTemp;
             //}
             //else 
-            if (item != null && String.Equals(txtNewAttributeName.Text, item.Value.SchemaName, StringComparison.OrdinalIgnoreCase))
+            if (item != null && string.Equals(txtNewAttributeName.Text, item.Value.SchemaName, StringComparison.OrdinalIgnoreCase))
             {
                 action = Logic.Action.ChangeCase;
             }
@@ -285,6 +300,42 @@ namespace DLaB.AttributeManager
             }
 
             return action;
+        }
+
+        private StringFormat GetStringFormat()
+        {
+            StringFormat format;
+            switch (strAttCmbFormat.SelectedText)
+            {
+                case "Email":
+                    format = StringFormat.Email;
+                    break;
+                case "Phone":
+                    format = StringFormat.Phone;
+                    break;
+                case "PhoneticGuide":
+                    format = StringFormat.PhoneticGuide;
+                    break;
+
+                case "Text":
+                    format = StringFormat.Text;
+                    break;
+                case "TextArea":
+                    format = StringFormat.TextArea;
+                    break;
+                case "TickerSymbol":
+                    format = StringFormat.TickerSymbol;
+                    break;
+                case "Url":
+                    format = StringFormat.Url;
+                    break;
+                case "VersionNumber":
+                    format = StringFormat.VersionNumber;
+                    break;
+                default:
+                    throw new Exception("Unable to determine String Format for " + strAttCmbFormat.SelectedText);
+            }
+            return format;
         }
 
         #region Event Handlers
@@ -344,12 +395,15 @@ namespace DLaB.AttributeManager
                 txtDisplayName.Text = item.Value.DisplayName.UserLocalizedLabel.Label;
             }
 
-            btnExecuteSteps.Enabled = cmbAttributes.SelectedText == String.Empty;
+            btnExecuteSteps.Enabled = cmbAttributes.SelectedText == string.Empty;
         }
 
         private void cmbAttributes_MouseEnter(object sender, EventArgs e)
         {
-            ExecuteMethod(LoadAttributes);
+            if(cmbEntities.SelectedIndex > -1)
+            {
+                ExecuteMethod(LoadAttributes);
+            }
         }
 
         #endregion // cmbAttributes
@@ -359,7 +413,7 @@ namespace DLaB.AttributeManager
             var visible = chkConvertAttributeType.Checked;
             lblNewAttributeType.Visible = visible;
             cmbNewAttributeType.Visible = visible;
-            tabAttributeType.Visible = false;
+            tabStringAttribute.Visible = false;
             UpdateDisplayedSteps();
         }
 
@@ -375,6 +429,81 @@ namespace DLaB.AttributeManager
             }
 
             txtNewAttributeName.Text = item.Value.SchemaName;
+        }
+
+        private void cmbNewAttributeType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var stringTabVisible = false;
+            var optionTabVisible = false;
+            var numberTabVisible = false;
+            switch (cmbNewAttributeType.Text)
+            {
+                case "Single Line of Text":
+                    stringTabVisible = true;
+                    strAttTxtMaximumLength.Text = "100";
+                    strAttCmbFormat.Text = "Text";
+                    strAttCmbFormat.Visible = true;
+                    strAttLblFormat.Visible = true;
+                    strAttCmbImeMode.Text = "Auto";
+                    break;
+                case "Option Set":
+                    optionTabVisible = true;
+                    break;
+                case "Two Options":
+                    optionTabVisible = true;
+                    break;
+                case "Image":
+                    
+                    break;
+                case "Whole Number":
+                    numberTabVisible = true;
+                    break;
+                case "Floating Point Number":
+                    numberTabVisible = true;
+                    break;
+                case "Decimal Number":
+                    numberTabVisible = true;
+                    break;
+                case "Currency":
+                    numberTabVisible = true;
+                    break;
+                case "Multiple Lines of Text":
+                    stringTabVisible = true;
+                    strAttTxtMaximumLength.Text = "2000";
+                    strAttCmbFormat.SelectedItem = "Text Area";
+                    strAttCmbFormat.Visible = false;
+                    strAttLblFormat.Visible = false;
+                    strAttCmbImeMode.Text = "Auto";
+                    break;
+                case "Date and Time":
+                   
+                    break;
+                case "Lookup":
+                    
+                    break;
+                default:
+                    throw new Exception("Unepxected Type: " + cmbNewAttributeType.Text);
+
+            }
+
+            SetTabVisible(tabNumberAttribute, numberTabVisible);
+            SetTabVisible(tabStringAttribute , stringTabVisible);
+            SetTabVisible(tabOptionSetAttribute, optionTabVisible);
+        }
+
+        private void SetTabVisible(TabPage tab, bool visible)
+        {
+            if (visible)
+            {
+                if (!tabControl.TabPages.Contains(tab))
+                {
+                    tabControl.TabPages.Add(tab);
+                }
+            }
+            else
+            {
+                tabControl.TabPages.Remove(tab);
+            }
         }
 
         private void clbSteps_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -483,21 +612,31 @@ namespace DLaB.AttributeManager
         }
 
         #endregion // Event Handlers
+
+        private class ExecuteStepsInfo
+        {
+            public AttributeMetadata NewAttribute { get; set; }
+            public Logic.Action Action { get; set; }
+            public AttributeMetadata CurrentAttribute { get; set; }
+            public string NewAttributeName { get; set; }
+            public Logic Migrator { get; set; }
+            public Logic.Steps Steps { get; internal set; }
+        }
     }
 
     [Export(typeof(IXrmToolBoxPlugin)),
      ExportMetadata("Name", "Attribute Manager"),
-     ExportMetadata("Description", "Renames an attribute for an Entity, optionally preserving Data as well."),
+     ExportMetadata("Description", "Handles Creating/Updating an attribute for an Entityl."),
      ExportMetadata("SmallImageBase64", SmallImage32X32), // null for "no logo" image or base64 image content 
      ExportMetadata("BigImageBase64", LargeImage120X120), // null for "no logo" image or base64 image content 
      ExportMetadata("BackgroundColor", "White"), // Use a HTML color name
      ExportMetadata("PrimaryFontColor", "#000000"), // Or an hexadecimal code
      ExportMetadata("SecondaryFontColor", "DarkGray")]
-    public class EarlyBoundGenerator : PluginFactory
+    public class AttributeManager : PluginFactory
     {
         public override IXrmToolBoxPluginControl GetControl()
         {
-            return new AttributeManager();
+            return new AttributeManagerPlugin();
         }
     }
 }

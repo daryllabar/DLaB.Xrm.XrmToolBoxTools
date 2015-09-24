@@ -40,7 +40,7 @@ namespace DLaB.AttributeManager
                     case null:
                         break;
                     default:
-                        throw new ArgumentOutOfRangeException("format", format, "Unable to determine format Name for format: " + format);
+                        throw new ArgumentOutOfRangeException(nameof(format), format, "Unable to determine format Name for format: " + format);
                 }
             }
 
@@ -98,17 +98,17 @@ namespace DLaB.AttributeManager
         {
             if (precision < DoubleAttributeMetadata.MinSupportedPrecision || precision > DoubleAttributeMetadata.MaxSupportedPrecision)
             {
-                throw new ArgumentOutOfRangeException("precision", "Precision is out of Range!");
+                throw new ArgumentOutOfRangeException(nameof(precision), "Precision is out of Range!");
             }
 
             if (minValue < DoubleAttributeMetadata.MinSupportedValue)
             {
-                throw new ArgumentOutOfRangeException("minValue", "MinValue is out of Range!");
+                throw new ArgumentOutOfRangeException(nameof(minValue), "MinValue is out of Range!");
             }
 
             if (maxValue > DoubleAttributeMetadata.MaxSupportedValue)
             {
-                throw new ArgumentOutOfRangeException("maxValue", "MaxValue is out of Range!");
+                throw new ArgumentOutOfRangeException(nameof(maxValue), "MaxValue is out of Range!");
             }
 
             return new DoubleAttributeMetadata
@@ -124,17 +124,17 @@ namespace DLaB.AttributeManager
         {
             if (precision < DecimalAttributeMetadata.MinSupportedPrecision || precision > DecimalAttributeMetadata.MaxSupportedPrecision)
             {
-                throw new ArgumentOutOfRangeException("precision", "Precision is out of Range!");
+                throw new ArgumentOutOfRangeException(nameof(precision), "Precision is out of Range!");
             }
 
             if (minValue < (decimal)DecimalAttributeMetadata.MinSupportedValue)
             {
-                throw new ArgumentOutOfRangeException("minValue", "MinValue is out of Range!");
+                throw new ArgumentOutOfRangeException(nameof(minValue), "MinValue is out of Range!");
             }
 
             if (maxValue > (decimal)DecimalAttributeMetadata.MaxSupportedValue)
             {
-                throw new ArgumentOutOfRangeException("maxValue", "MaxValue is out of Range!");
+                throw new ArgumentOutOfRangeException(nameof(maxValue), "MaxValue is out of Range!");
             }
 
             return new DecimalAttributeMetadata

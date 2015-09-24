@@ -41,7 +41,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             constructor.ChainedConstructorArgs.Add(new CodeSnippetExpression(""));
             const string indent = "            ";
             // Rather than attempt to do this all through CodeDom, hard code this as C#
-            constructor.Statements.Add(new CodeSnippetStatement(String.Format(indent +
+            constructor.Statements.Add(new CodeSnippetStatement(string.Format(indent +
             "foreach (var p in anonymousType.GetType().GetProperties()){0}" +
             "{{{0}" +
             "    var value = p.GetValue(anonymousType, null);{0}" +

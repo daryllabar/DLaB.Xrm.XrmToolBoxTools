@@ -33,10 +33,10 @@ namespace DLaB.EarlyBoundGenerator
         private void SpecifyAttributesDialog_Load(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
-            if (String.IsNullOrWhiteSpace(ConfigValue)) { return; }
+            if (string.IsNullOrWhiteSpace(ConfigValue)) { return; }
 
-            ConfigValue = ConfigValue.Replace(" ", String.Empty);
-            ConfigValue = ConfigValue.Replace("\n", String.Empty);
+            ConfigValue = ConfigValue.Replace(" ", string.Empty);
+            ConfigValue = ConfigValue.Replace("\n", string.Empty);
 
             foreach (var entity in ConfigValue.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries).OrderBy(v => v))
             {
@@ -83,8 +83,8 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            ConfigValue = String.Empty;
-            var entities = new List<String>();
+            ConfigValue = string.Empty;
+            var entities = new List<string>();
             var rows = dataGridView1.Rows.Cast<DataGridViewRow>().
                 Select(row => new Tuple<string, string>(row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString())).ToList();
 
@@ -99,7 +99,7 @@ namespace DLaB.EarlyBoundGenerator
                 entities.Add(sb.ToString());
             }
 
-            ConfigValue = String.Join("|", entities);
+            ConfigValue = string.Join("|", entities);
             DialogResult = DialogResult.OK;
             Close();
         }

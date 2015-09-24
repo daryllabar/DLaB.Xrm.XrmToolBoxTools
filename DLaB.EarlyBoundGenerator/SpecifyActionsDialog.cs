@@ -4,9 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DLaB.Xrm.Entities;
 using DLaB.XrmToolboxCommon;
-using DLaB.Xrm;
 using Microsoft.Xrm.Sdk;
-using Microsoft.Xrm.Sdk.Metadata;
 using XrmToolBox.Extensibility;
 
 namespace DLaB.EarlyBoundGenerator
@@ -32,13 +30,13 @@ namespace DLaB.EarlyBoundGenerator
         {
             Enable(false);
 
-            if (String.IsNullOrWhiteSpace(SpecifiedActions))
+            if (string.IsNullOrWhiteSpace(SpecifiedActions))
             {
-                SpecifiedActions = String.Empty;
+                SpecifiedActions = string.Empty;
             }
             else
             {
-                SpecifiedActions = SpecifiedActions.Replace("\n", String.Empty);
+                SpecifiedActions = SpecifiedActions.Replace("\n", string.Empty);
             }
 
             RetrieveActionsOnLoad(LoadActions);
@@ -56,7 +54,7 @@ namespace DLaB.EarlyBoundGenerator
                 LstAll.Items.Clear();
                 LstSpecified.Items.Clear();
                 var localActions = actions.Select(e => e.ToEntity<Workflow>()).OrderBy(a => a.Name + a.Id).ToList(); // Keep from mulitiple Enumerations
-                var specified = new HashSet<String>(SpecifiedActions.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries));
+                var specified = new HashSet<string>(SpecifiedActions.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries));
 
                 LstSpecified.Items.AddRange(GetObjectCollection(localActions.Where((a, i) => specified.Contains(a.Name))));
                 LstAll.Items.AddRange(GetObjectCollection(localActions.Where((a, i) => !specified.Contains(a.Name))));
@@ -88,7 +86,7 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            SpecifiedActions = String.Join("|", LstSpecified.Items.Cast<ObjectCollectionItem<Workflow>>().Select(i => i.DisplayName));
+            SpecifiedActions = string.Join("|", LstSpecified.Items.Cast<ObjectCollectionItem<Workflow>>().Select(i => i.DisplayName));
             DialogResult = DialogResult.OK;
             Close();
         }

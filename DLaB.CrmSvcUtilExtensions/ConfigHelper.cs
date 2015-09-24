@@ -19,12 +19,12 @@ namespace DLaB.CrmSvcUtilExtensions
             try
             {
                 var dictionaryList = new Dictionary<string, List<string>>();
-                if (String.IsNullOrWhiteSpace(value))
+                if (string.IsNullOrWhiteSpace(value))
                 {
                     return dictionaryList;
                 }
 
-                value = value.Replace(" ", String.Empty);
+                value = value.Replace(" ", string.Empty);
 
                 foreach (var entity in value.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries))
                 {
@@ -59,7 +59,7 @@ namespace DLaB.CrmSvcUtilExtensions
         {
             try
             {
-                var configValues = GetAppSettingOrDefault(appSettingKey, String.Empty).
+                var configValues = GetAppSettingOrDefault(appSettingKey, string.Empty).
                     Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries).
                     Select(s => s.ToLower()).ToList();
 
@@ -100,7 +100,7 @@ namespace DLaB.CrmSvcUtilExtensions
                 else
                 {
                     var type = typeof (T);
-                    var parse = type.GetMethod("Parse", new Type[] {typeof (String)});
+                    var parse = type.GetMethod("Parse", new Type[] {typeof (string) });
 
                     if (parse == null)
                     {

@@ -75,7 +75,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                 }
             }
 
-            return String.Join(Environment.NewLine, lines.ToArray());
+            return string.Join(Environment.NewLine, lines.ToArray());
         }
 
         // ReSharper disable once UnusedParameter.Local

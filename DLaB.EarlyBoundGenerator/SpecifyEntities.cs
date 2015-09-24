@@ -30,15 +30,15 @@ namespace DLaB.EarlyBoundGenerator
         {
             Enable(false);
 
-            if (String.IsNullOrWhiteSpace(SpecifiedEntities))
+            if (string.IsNullOrWhiteSpace(SpecifiedEntities))
             {
-                SpecifiedEntities = String.Empty;
+                SpecifiedEntities = string.Empty;
             }
             else
             {
 
-                SpecifiedEntities = SpecifiedEntities.Replace(" ", String.Empty);
-                SpecifiedEntities = SpecifiedEntities.Replace("\n", String.Empty);
+                SpecifiedEntities = SpecifiedEntities.Replace(" ", string.Empty);
+                SpecifiedEntities = SpecifiedEntities.Replace("\n", string.Empty);
             }
 
             RetrieveEntityMetadatasOnLoad(LoadEntities);
@@ -57,7 +57,7 @@ namespace DLaB.EarlyBoundGenerator
                 LstSpecified.Items.Clear();
                 var localEntites = entities.ToList(); // Keep from mulitiple Enumerations
 
-                var specified = new HashSet<String>(SpecifiedEntities.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries));
+                var specified = new HashSet<string>(SpecifiedEntities.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries));
                 LstSpecified.Items.AddRange(localEntites.Where(e => specified.Contains(e.LogicalName)).ToObjectCollectionArray());
                 LstAll.Items.AddRange(localEntites.Where(e => !specified.Contains(e.LogicalName)).ToObjectCollectionArray());
             }
@@ -80,7 +80,7 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            SpecifiedEntities = String.Join("|", LstSpecified.Items.Cast<ObjectCollectionItem<EntityMetadata>>().Select(i => i.Value.LogicalName));
+            SpecifiedEntities = string.Join("|", LstSpecified.Items.Cast<ObjectCollectionItem<EntityMetadata>>().Select(i => i.Value.LogicalName));
             DialogResult = DialogResult.OK;
             Close();
         }

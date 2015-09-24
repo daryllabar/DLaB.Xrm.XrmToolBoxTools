@@ -104,7 +104,7 @@ namespace DLaB.EarlyBoundGenerator
                 return true;
             }
             var isValid = true;
-            var containsExtension = !String.IsNullOrWhiteSpace(Path.GetExtension(textPath.Text));
+            var containsExtension = !string.IsNullOrWhiteSpace(Path.GetExtension(textPath.Text));
             // Validate Path
             if (chk.Checked)
             {
@@ -160,7 +160,7 @@ namespace DLaB.EarlyBoundGenerator
                                 generator.CreateOptionSets();
                                 break;
                             default:
-                                throw new ArgumentOutOfRangeException("creationType");
+                                throw new ArgumentOutOfRangeException(nameof(creationType));
                         }
                         w.ReportProgress(99, "Creation Complete!");
                     }
@@ -538,7 +538,7 @@ namespace DLaB.EarlyBoundGenerator
         private static void ConditionallyAddRemoveExtension(TextBox textBox, string singleClassFileName, bool @checked)
         {
             var fileName = textBox.Text;
-            bool hasExtension = Path.GetExtension(fileName) != String.Empty;
+            bool hasExtension = Path.GetExtension(fileName) != string.Empty;
 
             if (@checked && hasExtension)
             {

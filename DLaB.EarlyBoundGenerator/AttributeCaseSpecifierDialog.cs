@@ -75,7 +75,7 @@ namespace DLaB.EarlyBoundGenerator
         private void BtnAdd_Click(object sender, EventArgs e)
         {
             var name = TxtAttribute.Text.Trim();
-            if (!String.Equals(AttributeSchemaName, name, StringComparison.InvariantCultureIgnoreCase))
+            if (!string.Equals(AttributeSchemaName, name, StringComparison.InvariantCultureIgnoreCase))
             {
                 MessageBox.Show(string.Format("Capitalization for attribute name must match exactly ({0} == {1})", AttributeSchemaName, name),
                     "Incorrect Attribute Name!", MessageBoxButtons.OK, MessageBoxIcon.Error);

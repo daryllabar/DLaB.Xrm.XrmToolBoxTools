@@ -16,7 +16,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// <summary>
         /// Pipe Delimited String containing the logical names of Actions to not generate
         /// </summary>
-        public String ActionsToSkip { get; set; }
+        public string ActionsToSkip { get; set; }
         /// <summary>
         /// Specifies that the debugger should skip stepping into generated entity files.
         /// </summary>
@@ -40,13 +40,13 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// <summary>
         /// Pipe Delimited String containing the logical names of Entities to not generate
         /// </summary>
-        public String EntitiesToSkip { get; set; }
+        public string EntitiesToSkip { get; set; }
         /// <summary>
         /// Formated as a single string in the format of "EntityName1,firstAttributeName, ... ,lastAttributeName|EntityName2,firstAttributeName, ... ,lastAttributeName|..."
         /// Basically split each entity by pipe, use then split by comma, with the first value being the entityName
         /// Allows for the ability to specify the capitalization of an attribute on an entity
         /// </summary>
-        public String EntityAttributeSpecifiedNames { get; set; }
+        public string EntityAttributeSpecifiedNames { get; set; }
         /// <summary>
         /// Specifies the generation of an Attributes Struct containing logical names for all attributes for the Entity
         /// </summary>
@@ -62,7 +62,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// <summary>
         /// Pipe Delimited String containing the logical names of Option Set Names to not generate
         /// </summary>
-        public String OptionSetsToSkip { get; set; }
+        public string OptionSetsToSkip { get; set; }
         /// <summary>
         /// Remove the Runtime Version in the header comment
         /// </summary>
@@ -71,12 +71,12 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// Used to manually specify an enum mapping for an OptionSetValue Property on an entity 
         /// Format: EntityName.PropertyName,EnumName|
         /// </summary>
-        public String PropertyEnumMappings { get; set; }
+        public string PropertyEnumMappings { get; set; }
         /// <summary>
         /// Used to manually specify an OptionSetValue Property of an entity that doesn't have an enum mapping 
         /// Format: EntityName.PropertyName|
         /// </summary>
-        public String UnmappedProperties { get; set; }
+        public string UnmappedProperties { get; set; }
         /// <summary>
         /// Uses TFS to checkout files
         /// </summary>
@@ -158,12 +158,12 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? GenerateEnumProperties { get; set; }
         public bool? AddDebuggerNonUserCode { get; set; }
         public bool? CreateOneFilePerAction { get; set; }
-        public String ActionsToSkip { get; set; }
-        public String EntitiesToSkip { get; set; }
-        public String EntityAttributeSpecifiedNames { get; set; }
-        public String OptionSetsToSkip { get; set; }
-        public String PropertyEnumMappings { get; set; }
-        public String UnmappedProperties { get; set; }
+        public string ActionsToSkip { get; set; }
+        public string EntitiesToSkip { get; set; }
+        public string EntityAttributeSpecifiedNames { get; set; }
+        public string OptionSetsToSkip { get; set; }
+        public string PropertyEnumMappings { get; set; }
+        public string UnmappedProperties { get; set; }
         public bool? AddNewFilesToProject { get; set; }
         public bool? RemoveRuntimeVersionComment { get; set; }
         public bool? UseTfsToCheckoutFiles { get; set; }

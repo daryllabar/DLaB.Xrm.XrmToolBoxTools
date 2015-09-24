@@ -75,7 +75,7 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(AttributeSchemaName))
+            if (string.IsNullOrWhiteSpace(AttributeSchemaName))
             {
                 MessageBox.Show(("No OptionSet Attribute Schema Name specified"),
                 "No OptionSet Name!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -197,7 +197,7 @@ namespace DLaB.EarlyBoundGenerator
 
         private void LoadOrRetrieveEntities()
         {
-            AttributeSchemaName = String.Empty;
+            AttributeSchemaName = string.Empty;
             MakeLocalVisible(true);
             Enable(false);
             RetrieveEntityMetadatasOnLoad(LoadEntities);
@@ -207,7 +207,7 @@ namespace DLaB.EarlyBoundGenerator
         {
             if (!RdoGlobal.Checked) { return; }
 
-            AttributeSchemaName = String.Empty;
+            AttributeSchemaName = string.Empty;
             MakeLocalVisible(false);
             Enable(false);
             var optionSets = ((PropertyInterface.IGlobalOptionSets)CallingControl).GlobalOptionSets;

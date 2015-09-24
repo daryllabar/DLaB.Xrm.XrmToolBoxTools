@@ -25,7 +25,7 @@ namespace DLaB.XrmToolboxCommon
             {
                 if (connection.PasswordIsEmpty)
                 {
-                    return String.Empty;
+                    return string.Empty;
                 }
             }
             // ReSharper disable once EmptyGeneralCatchClause
@@ -49,7 +49,7 @@ namespace DLaB.XrmToolboxCommon
 
             // Lookup Config Value
             var password = ConfigurationManager.AppSettings["EarlyBoundGenerator.CrmSvcUtil.UserPassword"];
-            if (!String.IsNullOrWhiteSpace(password))
+            if (!string.IsNullOrWhiteSpace(password))
             {
                 return password;
             }
@@ -57,7 +57,7 @@ namespace DLaB.XrmToolboxCommon
             MessageBox.Show(@"Unable to find ""EarlyBoundGenerator.CrmSvcUtil.UserPassword"" in app.config.");
 
             // Ask User for value
-            while (String.IsNullOrWhiteSpace(password))
+            while (string.IsNullOrWhiteSpace(password))
             {
                 password = Prompt.ShowDialog("Please enter your password:", "Enter Password");
             }

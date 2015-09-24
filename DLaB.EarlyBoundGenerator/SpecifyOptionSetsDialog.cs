@@ -16,7 +16,7 @@ namespace DLaB.EarlyBoundGenerator
         /// <summary>
         /// Pipe Delimited List of OptionSet Logical Names
         /// </summary>
-        public String OptionSets { get; set; }
+        public string OptionSets { get; set; }
 
         #region Constructor / Load
 
@@ -46,9 +46,9 @@ namespace DLaB.EarlyBoundGenerator
             ChkListBoxOptionSets.Items.Clear();
             try
             {
-                if (String.IsNullOrWhiteSpace(OptionSets)) { return; }
+                if (string.IsNullOrWhiteSpace(OptionSets)) { return; }
 
-                OptionSets = OptionSets.Replace(" ", String.Empty);
+                OptionSets = OptionSets.Replace(" ", string.Empty);
 
                 foreach (var optionSet in OptionSets.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries))
                 {
@@ -93,7 +93,7 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            OptionSets = String.Join("|", ChkListBoxOptionSets.Items.Cast<Object>().Select(o => o.ToString()));
+            OptionSets = string.Join("|", ChkListBoxOptionSets.Items.Cast<Object>().Select(o => o.ToString()));
             DialogResult = DialogResult.OK;
             Close();
         }

@@ -24,11 +24,11 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         public string GetNameForAttribute(EntityMetadata entityMetadata, AttributeMetadata attributeMetadata, IServiceProvider services)
         {
             List<string> specifiedNames;
-            String attributeName;
+            string attributeName;
             if (EntityAttributeSpecifiedNames.TryGetValue(entityMetadata.LogicalName.ToLower(), out specifiedNames) &&
-                specifiedNames.Any(s => String.Equals(s, attributeMetadata.LogicalName, StringComparison.OrdinalIgnoreCase)))
+                specifiedNames.Any(s => string.Equals(s, attributeMetadata.LogicalName, StringComparison.OrdinalIgnoreCase)))
             {
-                attributeName = specifiedNames.First(s => String.Equals(s, attributeMetadata.LogicalName, StringComparison.OrdinalIgnoreCase));
+                attributeName = specifiedNames.First(s => string.Equals(s, attributeMetadata.LogicalName, StringComparison.OrdinalIgnoreCase));
             }
             else
             {

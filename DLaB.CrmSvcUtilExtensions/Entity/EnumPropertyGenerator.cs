@@ -74,13 +74,13 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
 
         private void InitializeMappings()
         {
-            var specifedMappings = ConfigHelper.GetAppSettingOrDefault("PropertyEnumMappings",String.Empty).Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+            var specifedMappings = ConfigHelper.GetAppSettingOrDefault("PropertyEnumMappings", string.Empty).Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
             UnmappedProperties = ConfigHelper.GetDictionaryList(ConfigurationManager.AppSettings["UnmappedProperties"], true);
             SpecifiedMappings = new Dictionary<string, string>();
 
             foreach (var specifiedMapping in specifedMappings)
             {
-                if (String.IsNullOrWhiteSpace(specifiedMapping))
+                if (string.IsNullOrWhiteSpace(specifiedMapping))
                 {
                     continue;
                 }
@@ -175,7 +175,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                 Attributes = System.CodeDom.MemberAttributes.Static | System.CodeDom.MemberAttributes.Public,
             };
             get.Parameters.Add(new CodeParameterDeclarationExpression(typeof(Microsoft.Xrm.Sdk.Entity), "entity"));
-            get.Parameters.Add(new CodeParameterDeclarationExpression(typeof(String), "attributeLogicalName"));
+            get.Parameters.Add(new CodeParameterDeclarationExpression(typeof(string), "attributeLogicalName"));
 
             // entity.Attributes.ContainsKey(attributeLogicalName)
             var entityAttributesContainsKey =

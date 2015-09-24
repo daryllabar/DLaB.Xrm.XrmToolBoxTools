@@ -93,7 +93,7 @@ namespace DLaB.EarlyBoundGenerator
                         Config.ExtensionConfig.OptionSetCommandLineText = "\"" + p.StartInfo.FileName + "\" " + args;
                         break;
                     default:
-                        throw new ArgumentOutOfRangeException("creationType");
+                        throw new ArgumentOutOfRangeException(nameof(creationType));
                 }
             }
             UpdateCrmSvcUtilConfig(Config);
@@ -113,7 +113,7 @@ namespace DLaB.EarlyBoundGenerator
         protected bool AbleToMakeFileAccessible(string filePath)
         {
             var directory = Path.GetDirectoryName(filePath);
-            if (!String.IsNullOrWhiteSpace(directory) && !Directory.Exists(directory))
+            if (!string.IsNullOrWhiteSpace(directory) && !Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
             }
@@ -167,9 +167,9 @@ namespace DLaB.EarlyBoundGenerator
         private static string GetSafeArgs(Config config, Process p)
         {
             var args = p.StartInfo.Arguments;
-            if (config.MaskPassword && !String.IsNullOrWhiteSpace(config.Password))
+            if (config.MaskPassword && !string.IsNullOrWhiteSpace(config.Password))
             {
-                args = p.StartInfo.Arguments.Replace(config.Password, new String('*', config.Password.Length));
+                args = p.StartInfo.Arguments.Replace(config.Password, new string('*', config.Password.Length));
             }
             return args;
         }
@@ -229,7 +229,7 @@ namespace DLaB.EarlyBoundGenerator
 
         private static bool UpdateConfigAppSetting(Configuration file, string key, string configValue, bool keepWhiteSpace = false)
         {
-            configValue = configValue ?? String.Empty;
+            configValue = configValue ?? string.Empty;
             if (!keepWhiteSpace)
             {
                 configValue = configValue.Replace(" ", "");
@@ -272,13 +272,13 @@ namespace DLaB.EarlyBoundGenerator
                 }
             }
 
-            if (!String.IsNullOrWhiteSpace(config.Password))
+            if (!string.IsNullOrWhiteSpace(config.Password))
             {
                 sb.AppendFormat("/username:\"{0}\" ", config.UserName);
                 sb.AppendFormat("/password:\"{0}\" ", config.Password);
 
                 // Add Login Info
-                if (!config.UseCrmOnline && !String.IsNullOrWhiteSpace(config.Domain))
+                if (!config.UseCrmOnline && !string.IsNullOrWhiteSpace(config.Domain))
                 {
                     sb.AppendFormat("/domain:\"{0}\" ", config.Domain);
                 }
@@ -381,11 +381,11 @@ namespace DLaB.EarlyBoundGenerator
 
         public class LogMessageInfo
         {
-            public String Summary { get; set; }
-            public String Detail { get; set; }
+            public string Summary { get; set; }
+            public string Detail { get; set; }
 
             public LogMessageInfo(string message) : this(message, message) { }
-            public LogMessageInfo(string messageFormat, params object[] args) : this(String.Format(messageFormat, args)) { }
+            public LogMessageInfo(string messageFormat, params object[] args) : this(string.Format(messageFormat, args)) { }
 
             public LogMessageInfo(string summary, string detail)
             {
@@ -404,7 +404,7 @@ namespace DLaB.EarlyBoundGenerator
             {
                 if (format.Contains("{0}"))
                 {
-                    return String.Format(format, value);
+                    return string.Format(format, value);
                 }
 
                 return null;

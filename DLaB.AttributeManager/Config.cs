@@ -17,7 +17,7 @@ namespace DLaB.AttributeManager
         /// <value>
         /// The Postfix
         /// </value>
-        public String TempSchemaPostfix { get; set; }
+        public string TempSchemaPostfix { get; set; }
         
         /// <summary>
         /// The version of the AttributeManager Plugin
@@ -112,7 +112,7 @@ namespace DLaB.AttributeManager.POCO
     /// </summary>
     public class Config
     {
-        public String TempSchemaPostfix { get; set; }
-        public String Version { get; set; }
+        public string TempSchemaPostfix { get; set; }
+        public string Version { get; set; }
     }
 }

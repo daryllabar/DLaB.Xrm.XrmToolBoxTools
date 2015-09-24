@@ -69,12 +69,12 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(OptionSetSchemaName))
+            if (string.IsNullOrWhiteSpace(OptionSetSchemaName))
             {
                 MessageBox.Show(("No OptionSet Attribute Schema Name specified"),
                 "No OptionSet!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (String.IsNullOrWhiteSpace(EntityName) || String.IsNullOrWhiteSpace(AttributeName))
+            else if (string.IsNullOrWhiteSpace(EntityName) || string.IsNullOrWhiteSpace(AttributeName))
             {
                 MessageBox.Show(("No Entity Attribute was specified to map to the Option Set"),
                 "No Entity Attribute!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -211,7 +211,7 @@ namespace DLaB.EarlyBoundGenerator
         {
             if (!RdoLocal.Checked) { return; }
 
-            OptionSetSchemaName = String.Empty;
+            OptionSetSchemaName = string.Empty;
             MakeLocalVisible(true);
         }
 
@@ -219,7 +219,7 @@ namespace DLaB.EarlyBoundGenerator
         {
             if (!RdoGlobal.Checked) { return; }
 
-            OptionSetSchemaName = String.Empty;
+            OptionSetSchemaName = string.Empty;
             MakeLocalVisible(false);
             Enable(false);
             var optionSets = ((PropertyInterface.IGlobalOptionSets)CallingControl).GlobalOptionSets;

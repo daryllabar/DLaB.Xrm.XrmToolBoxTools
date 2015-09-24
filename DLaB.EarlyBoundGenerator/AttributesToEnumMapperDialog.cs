@@ -33,9 +33,9 @@ namespace DLaB.EarlyBoundGenerator
         private void AttributesToEnumMapperDialog_Load(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
-            if (String.IsNullOrWhiteSpace(ConfigValue)) { return; }
+            if (string.IsNullOrWhiteSpace(ConfigValue)) { return; }
 
-            ConfigValue = ConfigValue.Replace(" ", String.Empty);
+            ConfigValue = ConfigValue.Replace(" ", string.Empty);
 
             foreach (var entity in ConfigValue.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries))
             {
@@ -72,11 +72,11 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            ConfigValue = String.Empty;
+            ConfigValue = string.Empty;
             var mappings = dataGridView1.Rows.Cast<DataGridViewRow>().
-                Select(row => String.Format("{0}.{1},{2}", row.Cells[0].Value, row.Cells[1].Value, row.Cells[2].Value)).ToList();
+                Select(row => string.Format("{0}.{1},{2}", row.Cells[0].Value, row.Cells[1].Value, row.Cells[2].Value)).ToList();
 
-            ConfigValue = String.Join("|", mappings);
+            ConfigValue = string.Join("|", mappings);
             DialogResult = DialogResult.OK;
             Close();
         }
