@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows.Forms;
+using DLaB.Xrm;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Metadata;
@@ -14,7 +14,7 @@ namespace DLaB.XrmToolboxCommon
     public partial class DialogBase : Form, IWorkerHost
     {
         protected PluginControlBase CallingControl { get; set; }
-        protected IOrganizationService Service { get { return CallingControl.Service; } }
+        protected IOrganizationService Service => CallingControl.Service;
 
         public DialogBase()
         {
@@ -49,16 +49,20 @@ namespace DLaB.XrmToolboxCommon
         }
 
         private Action<IEnumerable<EntityMetadata>> _callBackForRetrieveEntityMetadatas;
+
         private void RetrieveEntities()
         {
-            WorkAsync("Retrieving Entities...", e =>
+            WorkAsync(new WorkAsyncInfo("Retrieving Entities...", e =>
             {
-                e.Result = Service.Execute(new RetrieveAllEntitiesRequest() { EntityFilters = EntityFilters.Entity, RetrieveAsIfPublished = true });
-            }, e =>
+                e.Result = Service.Execute(new RetrieveAllEntitiesRequest {EntityFilters = EntityFilters.Entity, RetrieveAsIfPublished = true});
+            })
             {
-                var entityContainer = ((PropertyInterface.IEntityMetadatas)CallingControl);
-                entityContainer.EntityMetadatas = ((RetrieveAllEntitiesResponse)e.Result).EntityMetadata;
-                _callBackForRetrieveEntityMetadatas(entityContainer.EntityMetadatas);
+                PostWorkCallBack = e =>
+                {
+                    var entityContainer = ((PropertyInterface.IEntityMetadatas) CallingControl);
+                    entityContainer.EntityMetadatas = ((RetrieveAllEntitiesResponse) e.Result).EntityMetadata;
+                    _callBackForRetrieveEntityMetadatas(entityContainer.EntityMetadatas);
+                }
             });
         }
 
@@ -78,46 +82,40 @@ namespace DLaB.XrmToolboxCommon
         }
 
         private Action<IEnumerable<Entity>> _callBackForRetrieveActions;
+
         private void RetrieveActions()
         {
-            WorkAsync("Retrieving Actions...", e =>
+            WorkAsync(new WorkAsyncInfo("Retrieving Actions...", e =>
             {
-                var qe = new QueryExpression("workflow");
-                qe.ColumnSet = new ColumnSet(true);
-                qe.Criteria.AddCondition("category", ConditionOperator.Equal, 3); // Action
-                qe.Criteria.AddCondition("parentworkflowid", ConditionOperator.Null);
-                e.Result = Service.RetrieveMultiple(qe);
-            }, e =>
+                e.Result = Service.GetEntities<Entity>(new ColumnSet(true),
+                    "category", 3, // Action
+                    "parentworkflowid", null);
+            })
             {
-                var actionContainer = ((PropertyInterface.IActions)CallingControl);
-                actionContainer.Actions = ((EntityCollection)e.Result).Entities;
-                _callBackForRetrieveActions(actionContainer.Actions);
+                PostWorkCallBack = e =>
+                {
+                    var actionContainer = ((PropertyInterface.IActions) CallingControl);
+                    actionContainer.Actions = ((EntityCollection) e.Result).Entities;
+                    _callBackForRetrieveActions(actionContainer.Actions);
+                }
             });
         }
+
         #endregion // Helper Methods
 
         #region IWorkerHost Members
 
         private readonly Worker _worker = new Worker();
 
-        public void WorkAsync(string message, Action<DoWorkEventArgs> work, object argument, int messageWidth = 340, int messageHeight = 150)
-        {
-            _worker.WorkAsync(this, message, null, null, argument, messageWidth, messageHeight);
-        }
-
-        public void WorkAsync(string message, Action<DoWorkEventArgs> work, Action<RunWorkerCompletedEventArgs> callback, object argument = null, int messageWidth = 340, int messageHeight = 150)
-        {
-            _worker.WorkAsync(this, message, work, callback, argument, messageWidth, messageHeight);
-        }
-
-        public void WorkAsync(string message, Action<BackgroundWorker, DoWorkEventArgs> work, Action<RunWorkerCompletedEventArgs> callback, Action<ProgressChangedEventArgs> progressChanged, object argument = null, int messageWidth = 340, int messageHeight = 150)
-        {
-            _worker.WorkAsync(this, message, work, callback, progressChanged, argument, messageWidth, messageHeight);
-        }
-
         public void SetWorkingMessage(string message, int width = 340, int height = 100)
         {
             _worker.SetWorkingMessage(this, message, width, height);
+        }
+
+        public void WorkAsync(WorkAsyncInfo info)
+        {
+            info.Host = this;
+            _worker.WorkAsync(info);
         }
 
         public void RaiseRequestConnectionEvent(RequestConnectionEventArgs args)

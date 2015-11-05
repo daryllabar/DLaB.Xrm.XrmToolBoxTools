@@ -165,6 +165,7 @@ namespace DLaB.AttributeManager
             // Replace Old Attribute with Tmp Attribute
             UpdateViews(Service, fromAtt, toAtt);
             UpdateForms(Service, fromAtt, toAtt);
+            UpdateWorkflows(Service, fromAtt, toAtt);
             PublishEntity(Service, fromAtt.EntityLogicalName);
             AssertCanDelete(Service, fromAtt);
             CopyData(Service, fromAtt, toAtt, actions);
@@ -390,6 +391,47 @@ namespace DLaB.AttributeManager
                 form.FormXml = form.FormXml.Replace("<control id=\"" + from.LogicalName + "\"", "<control id=\"" + to.LogicalName + "\"").
                     Replace("datafieldname=\"" + from.LogicalName + "\"", "datafieldname=\"" + to.LogicalName + "\"");
                 service.Update(form);
+            }
+        }
+
+        private void UpdateWorkflows(IOrganizationService service, AttributeMetadata from, AttributeMetadata to)
+        {
+            Trace("Checking for Workflow Dependencies");
+            var depends = ((RetrieveDependenciesForDeleteResponse)service.Execute(new RetrieveDependenciesForDeleteRequest
+            {
+                ComponentType = (int)componenttype.Attribute,
+                ObjectId = from.MetadataId.GetValueOrDefault()
+            })).EntityCollection.ToEntityList<Dependency>().Where(d => d.DependentComponentTypeEnum == componenttype.Workflow).ToList();
+
+            if (!depends.Any())
+            {
+                Trace("No Workflow Dependencies Found");
+                return;
+            }
+
+            foreach (var workflow in service.GetEntitiesById<Workflow>(depends.Select(d => d.DependentComponentObjectId.GetValueOrDefault())))
+            {
+                workflow.Xaml = workflow.Xaml.Replace("\"" + from.LogicalName + "\"", "\"" + to.LogicalName + "\"");
+                var activate = workflow.StateCode.Value == WorkflowState.Activated;
+                if (activate)
+                {
+                    service.Execute(new SetStateRequest()
+                    {
+                        EntityMoniker = workflow.ToEntityReference(),
+                        State = new OptionSetValue((int) WorkflowState.Draft),
+                        Status = new OptionSetValue((int) workflow_statuscode.Draft)
+                    });
+                }
+                service.Update(workflow);
+                if (activate)
+                {
+                    service.Execute(new SetStateRequest()
+                    {
+                        EntityMoniker = workflow.ToEntityReference(),
+                        State = new OptionSetValue((int)WorkflowState.Activated),
+                        Status = new OptionSetValue((int)workflow_statuscode.Activated)
+                    });
+                }
             }
         }
 

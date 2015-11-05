@@ -13,15 +13,13 @@ namespace DLaB.CrmSvcUtilExtensions
 {
     public abstract class BaseCustomCodeGenerationService : ICodeGenerationService
     {
-        public static bool UseTfsToCheckoutFiles { get { return ConfigHelper.GetAppSettingOrDefault("UseTfsToCheckoutFiles", false); } }
-        public static bool AddNewFilesToProject { get { return ConfigHelper.GetAppSettingOrDefault("AddNewFilesToProject", false); } }
-        public static bool RemoveRuntimeVersionComment { get { return ConfigHelper.GetAppSettingOrDefault("RemoveRuntimeVersionComment", true); } }
-        private static bool LoggingEnabled { get { return ConfigHelper.GetAppSettingOrDefault("LoggingEnabled", false); } }
-        protected virtual string CommandLineText
-        {
-            get { return ConfigHelper.GetAppSettingOrDefault("EntityCommandLineText", string.Empty); }
-        }
-        protected virtual CodeUnit SplitByCodeUnit { get { return CodeUnit.Class; } }
+        public static bool UseTfsToCheckoutFiles => ConfigHelper.GetAppSettingOrDefault("UseTfsToCheckoutFiles", false);
+        public static bool AddNewFilesToProject => ConfigHelper.GetAppSettingOrDefault("AddNewFilesToProject", false);
+        public static bool RemoveRuntimeVersionComment => ConfigHelper.GetAppSettingOrDefault("RemoveRuntimeVersionComment", true);
+        private static bool LoggingEnabled => ConfigHelper.GetAppSettingOrDefault("LoggingEnabled", false);
+
+        protected virtual string CommandLineText => ConfigHelper.GetAppSettingOrDefault("EntityCommandLineText", string.Empty);
+        protected virtual CodeUnit SplitByCodeUnit => CodeUnit.Class;
         protected abstract bool CreateOneFilePerCodeUnit { get; }
         protected Workspace TfsWorkspace { get; set; }
 
@@ -594,6 +592,7 @@ namespace DLaB.CrmSvcUtilExtensions
             private readonly object _dictionaryLock = new object();
             internal void AddFileIfMissing(string path)
             {
+                path = Path.GetFullPath(path);
                 if (!UpdateProjectFile || File.Exists(path) || !ProjectFound)
                 {
                     return;

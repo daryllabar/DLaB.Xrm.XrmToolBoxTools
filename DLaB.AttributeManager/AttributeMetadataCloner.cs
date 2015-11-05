@@ -55,12 +55,28 @@ namespace DLaB.AttributeManager
 
         private AttributeMetadata CloneAttributes(PicklistAttributeMetadata att)
         {
-            return new PicklistAttributeMetadata
+            var picklist =  new PicklistAttributeMetadata
             {
                 FormulaDefinition = att.FormulaDefinition,
                 DefaultFormValue = att.DefaultFormValue,
                 OptionSet = att.OptionSet
             };
+
+            if (!picklist.OptionSet.IsGlobal.Value)
+            {
+                // Can't reuse an existing local Option Set
+                var optionSet = picklist.OptionSet;
+                if (optionSet.Name.EndsWith(TempPostfix))
+                {
+                    optionSet.Name = optionSet.Name.Remove(optionSet.Name.Length - TempPostfix.Length);
+                }
+                else
+                {
+                    optionSet.Name = optionSet.Name + TempPostfix;
+                }
+                optionSet.MetadataId = null;
+            }
+            return picklist;
         }
 
         private AttributeMetadata CloneAttributes(DateTimeAttributeMetadata att)

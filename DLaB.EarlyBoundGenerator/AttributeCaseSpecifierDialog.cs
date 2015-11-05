@@ -90,15 +90,19 @@ namespace DLaB.EarlyBoundGenerator
 
         public void RetrieveEntities()
         {
-            WorkAsync("Retrieving Entities...", e =>
+            WorkAsync(new WorkAsyncInfo("Retrieving Entities...",
+            e =>
             {
                 e.Result = Service.Execute(new RetrieveAllEntitiesRequest() { EntityFilters = EntityFilters.Entity, RetrieveAsIfPublished = true });
-            }, e =>
+            })
             {
+                PostWorkCallBack = e =>
+                {
 
-                var entityContainer = ((PropertyInterface.IEntityMetadatas) CallingControl);
-                entityContainer.EntityMetadatas = ((RetrieveAllEntitiesResponse)e.Result).EntityMetadata;
-                LoadEntities(entityContainer.EntityMetadatas);
+                    var entityContainer = ((PropertyInterface.IEntityMetadatas) CallingControl);
+                    entityContainer.EntityMetadatas = ((RetrieveAllEntitiesResponse) e.Result).EntityMetadata;
+                    LoadEntities(entityContainer.EntityMetadatas);
+                }
             });
         }
 
@@ -125,7 +129,8 @@ namespace DLaB.EarlyBoundGenerator
                 return;
             }
 
-            WorkAsync("Retrieving Attributes...", e =>
+            WorkAsync(new WorkAsyncInfo("Retrieving Attributes...",
+            e =>
             {
                 e.Result = Service.Execute(new RetrieveEntityRequest()
                 {
@@ -133,25 +138,28 @@ namespace DLaB.EarlyBoundGenerator
                     EntityFilters = EntityFilters.Attributes,
                     RetrieveAsIfPublished = true
                 });
-            }, e =>
+            })
             {
-                try
+                PostWorkCallBack = e =>
                 {
-                    CmbAttributes.BeginUpdate();
-                    CmbAttributes.Items.Clear();
+                    try
+                    {
+                        CmbAttributes.BeginUpdate();
+                        CmbAttributes.Items.Clear();
 
-                    var result = ((RetrieveEntityResponse) e.Result).EntityMetadata.Attributes.
-                                 Select(a => new ObjectCollectionItem<AttributeMetadata>(a.SchemaName + " (" + a.LogicalName + ")", a)).
-                                 OrderBy(r => r.DisplayName);
+                        var result = ((RetrieveEntityResponse)e.Result).EntityMetadata.Attributes.
+                                     Select(a => new ObjectCollectionItem<AttributeMetadata>(a.SchemaName + " (" + a.LogicalName + ")", a)).
+                                     OrderBy(r => r.DisplayName);
 
-                    CmbAttributes.Items.AddRange(result.ToArray());
+                        CmbAttributes.Items.AddRange(result.ToArray());
+                    }
+                    finally
+                    {
+                        CmbAttributes.EndUpdate();
+                        Enable(true);
+                    }
                 }
-                finally
-                {
-                    CmbAttributes.EndUpdate();
-                    Enable(true);
-                }
-            });            
+            });      
         }
 
         private void Enable(bool enable)

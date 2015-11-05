@@ -47,11 +47,16 @@ namespace DLaB.AttributeManager
                 StepMapper.First(p => p.Value == Logic.Steps.RemoveExistingAttribute).Key
             };
 
-            lblNewAttributeType.Visible = false;
             cmbNewAttributeType.Visible = false;
             SetTabVisible(tabStringAttribute, false);
             SetTabVisible(tabNumberAttribute, false);
             SetTabVisible(tabOptionSetAttribute, false);
+
+            SetCurrencyNumberVisible(false);
+            SetDecimalNumberVisible(false);
+            SetWholeNumberVisible(false);
+            SetFloatNumberVisible(false);
+            numAttFormatCmb.SelectedIndex = 0;
         }
 
         public override void ClosingPlugin(PluginCloseInfo info)
@@ -65,21 +70,25 @@ namespace DLaB.AttributeManager
         public void LoadEntities()
         {
             Enabled = false;
-            WorkAsync("Retrieving Entities...", e =>
+            WorkAsync(new WorkAsyncInfo("Retrieving Entities...",
+                e =>
+                {
+                    e.Result = Service.Execute(new RetrieveAllEntitiesRequest() {EntityFilters = EntityFilters.Entity, RetrieveAsIfPublished = true});
+                })
             {
-                e.Result = Service.Execute(new RetrieveAllEntitiesRequest { EntityFilters = EntityFilters.Entity, RetrieveAsIfPublished = true });
-            }, e =>
-            {
-                cmbEntities.BeginUpdate();
-                cmbEntities.Items.Clear();
+                PostWorkCallBack = e =>
+                {
+                    cmbEntities.BeginUpdate();
+                    cmbEntities.Items.Clear();
 
-                var result = ((RetrieveAllEntitiesResponse)e.Result).EntityMetadata.
-                    Select(m => new ObjectCollectionItem<EntityMetadata>(m.DisplayName.GetLocalOrDefaultText("N/A") + " (" + m.LogicalName + ")",m)).
-                    OrderBy(r => r.DisplayName);
+                    var result = ((RetrieveAllEntitiesResponse) e.Result).EntityMetadata.
+                        Select(m => new ObjectCollectionItem<EntityMetadata>(m.DisplayName.GetLocalOrDefaultText("N/A") + " (" + m.LogicalName + ")", m)).
+                        OrderBy(r => r.DisplayName);
 
-                cmbEntities.Items.AddRange(result.Cast<Object>().ToArray());
-                cmbEntities.EndUpdate();
-                Enabled = true;
+                    cmbEntities.Items.AddRange(result.Cast<object>().ToArray());
+                    cmbEntities.EndUpdate();
+                    Enabled = true;
+                }
             });
         }
 
@@ -93,13 +102,14 @@ namespace DLaB.AttributeManager
             AttributesNeedLoaded = false;
 
             var entity = cmbEntities.SelectedItem as ObjectCollectionItem<EntityMetadata>;
-            if(entity == null){
+            if (entity == null)
+            {
                 return;
             }
 
             Enabled = false;
 
-            WorkAsync("Retrieving Attributes...", e =>
+            WorkAsync(new WorkAsyncInfo("Retrieving Attributes...", e =>
             {
                 e.Result = Service.Execute(new RetrieveEntityRequest
                 {
@@ -107,18 +117,21 @@ namespace DLaB.AttributeManager
                     EntityFilters = EntityFilters.Attributes | EntityFilters.Relationships,
                     RetrieveAsIfPublished = true
                 });
-            }, e =>
+            })
             {
-                Metadata = ((RetrieveEntityResponse)e.Result).EntityMetadata;
-                var attributes = Metadata.Attributes.Where(a => a.IsManaged == false && a.AttributeOf == null && a.IsCustomizable.Value).
-                    Select(a => new ObjectCollectionItem<AttributeMetadata>((a.DisplayName.GetLocalOrDefaultText("N/A")) + " (" + a.LogicalName + ")", a)).
-                    OrderBy(r => r.DisplayName).
-                    Cast<Object>().
-                    ToArray();
+                PostWorkCallBack = e =>
+                {
+                    Metadata = ((RetrieveEntityResponse) e.Result).EntityMetadata;
+                    var attributes = Metadata.Attributes.Where(a => a.IsManaged == false && a.AttributeOf == null && a.IsCustomizable.Value).
+                        Select(a => new ObjectCollectionItem<AttributeMetadata>((a.DisplayName.GetLocalOrDefaultText("N/A")) + " (" + a.LogicalName + ")", a)).
+                        OrderBy(r => r.DisplayName).
+                        Cast<object>().
+                        ToArray();
 
-                cmbAttributes.LoadItems(attributes);
-                cmbNewAttribute.LoadItems(attributes);
-                Enabled = true;
+                    cmbAttributes.LoadItems(attributes);
+                    cmbNewAttribute.LoadItems(attributes);
+                    Enabled = true;
+                }
             });
         }
 
@@ -138,7 +151,7 @@ namespace DLaB.AttributeManager
         {
             Enabled = false;
             var attribute = cmbAttributes.SelectedItem as ObjectCollectionItem<AttributeMetadata>;
-            if(attribute == null)
+            if (attribute == null)
             {
                 MessageBox.Show("No Attribute Selected!", "Unable To Execute", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Enabled = true;
@@ -152,10 +165,11 @@ namespace DLaB.AttributeManager
                 Enabled = true;
                 return;
             }
-            
+
             Logic.Steps steps = clbSteps.CheckedItems.Cast<string>().Aggregate<string, Logic.Steps>(0, (current, item) => current | StepMapper[item]);
 
-            if(steps == 0){
+            if (steps == 0)
+            {
                 MessageBox.Show("No Steps Selected!", "Unable To Execute", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Enabled = true;
                 return;
@@ -165,7 +179,7 @@ namespace DLaB.AttributeManager
             var langCode = attribute.Value.DisplayName.UserLocalizedLabel.LanguageCode;
             attribute.Value.DisplayName.LocalizedLabels.First(l => l.LanguageCode == langCode).Label = txtDisplayName.Text;
 
-            WorkAsync("Performing Steps...", (w, e) =>
+            WorkAsync(new WorkAsyncInfo("Performing Steps...", (w, e) =>
             {
                 var info = (ExecuteStepsInfo) e.Argument;
                 Logic.LogHandler onLog = m => w.ReportProgress(0, m);
@@ -191,32 +205,37 @@ namespace DLaB.AttributeManager
                     info.Migrator.OnLog -= onLog;
                 }
 
-            }, e =>
+            })
             {
-                if (steps.HasFlag(Logic.Steps.MigrateToNewAttribute) && e.Result as bool? == true)
+                PostWorkCallBack = e =>
                 {
-                    AttributesNeedLoaded = true;
-                    ExecuteMethod(LoadAttributes);
-                }
-                Enabled = true;
-            }, e =>
-            {
-                var text = e.UserState.ToString();
+                    if (steps.HasFlag(Logic.Steps.MigrateToNewAttribute) && e.Result as bool? == true)
+                    {
+                        AttributesNeedLoaded = true;
+                        ExecuteMethod(LoadAttributes);
+                    }
+                    Enabled = true;
+                },
+                ProgressChanged = e =>
+                {
+                    var text = e.UserState.ToString();
 
-                if (e.ProgressPercentage != int.MinValue)
+                    if (e.ProgressPercentage != int.MinValue)
+                    {
+                        var state = e.UserState as Exception;
+                        SetWorkingMessage(state?.Message ?? text);
+                    }
+                    txtLog.AppendText(text + Environment.NewLine);
+                },
+                AsyncArgument = new ExecuteStepsInfo
                 {
-                    var state = e.UserState as Exception;
-                    SetWorkingMessage(state?.Message ?? text);
+                    Action = GetCurrentAction(),
+                    CurrentAttribute = attribute.Value,
+                    NewAttribute = GetNewAttributeType(),
+                    NewAttributeName = txtNewAttributeName.Text,
+                    Migrator = new Logic(Service, ConnectionDetail, Metadata, Settings.TempSchemaPostfix, chkMigrate.Checked),
+                    Steps = steps
                 }
-                txtLog.AppendText(text + Environment.NewLine);
-            }, new ExecuteStepsInfo
-            {
-                Action = GetCurrentAction(),
-                CurrentAttribute = attribute.Value,
-                NewAttribute = GetNewAttributeType(),
-                NewAttributeName = txtNewAttributeName.Text,
-                Migrator = new Logic(Service, ConnectionDetail, Metadata, Settings.TempSchemaPostfix, chkMigrate.Checked),
-                Steps = steps
             });
         }
 
@@ -238,7 +257,18 @@ namespace DLaB.AttributeManager
                     att = NewTypeAttributeCreationLogic.CreateImage(null);
                     break;
                 case "Whole Number":
-                    att = NewTypeAttributeCreationLogic.CreateWholeNumber();
+                    int tmp;
+                    int? min = null;
+                    int? max = null;
+                    if (int.TryParse(numAttMinTxt.Text, out tmp))
+                    {
+                        min = tmp;
+                    }
+                    if (int.TryParse(numAttMaxTxt.Text, out tmp))
+                    {
+                        max = tmp;
+                    }
+                    att = NewTypeAttributeCreationLogic.CreateWholeNumber(format: GetIntergerFormat(), minValue: min, maxValue: max);
                     break;
                 case "Floating Point Number":
                     att = NewTypeAttributeCreationLogic.CreateFloatingPoint();
@@ -257,6 +287,9 @@ namespace DLaB.AttributeManager
                     break;
                 case "Lookup":
                     att = NewTypeAttributeCreationLogic.CreateLookup(null);
+                    break;
+                case "":
+                    att = null;
                     break;
                 default:
                     throw new Exception("Unepxected Type: " + cmbNewAttributeType.Text);
@@ -340,6 +373,68 @@ namespace DLaB.AttributeManager
 
         #region Event Handlers
 
+        #region Number Type Settings Tab
+
+        private void SetDecimalNumberVisible(bool visible)
+        {
+
+        }
+
+        private void SetCurrencyNumberVisible(bool visible)
+        {
+        }
+
+        private void SetFloatNumberVisible(bool visible)
+        {
+
+        }
+
+        private void SetWholeNumberVisible(bool visible)
+        {
+            numAttFormatLbl.Visible = visible;
+            numAttFormatCmb.Visible = visible;
+            numAttMaxLbl.Visible = visible;
+            numAttMaxTxt.Visible = visible;
+            numAttMinLbl.Visible = visible;
+            numAttMinTxt.Visible = visible;
+
+            if (visible)
+            {
+                numAttFormatCmb.SelectedIndex = 0;
+                numAttMinTxt.Text = IntegerAttributeMetadata.MinSupportedValue.ToString();
+                numAttMaxTxt.Text = IntegerAttributeMetadata.MaxSupportedValue.ToString();
+            }
+        }
+
+        private IntegerFormat GetIntergerFormat()
+        {
+            IntegerFormat format;
+
+            switch (numAttFormatCmb.SelectedItem.ToString())
+            {
+                case "None":
+                    format = IntegerFormat.None;
+                    break;
+                case "Duration":
+                    format = IntegerFormat.Duration;
+                    break;
+                case "TimeZone":
+                    format = IntegerFormat.TimeZone;
+                    break;
+                case "Language":
+                    format = IntegerFormat.Language;
+                    break;
+                case "Locale":
+                    format = IntegerFormat.Locale;
+                    break;
+                default:
+                    throw new Exception("Unable to determine Integer Format for " + numAttFormatCmb.SelectedItem);
+            }
+            return format;
+        }
+
+        #endregion Number Type Settings Tab
+
         private void btnLoadEntities_Click(object sender, EventArgs e)
         {
             ExecuteMethod(LoadEntities);
@@ -392,7 +487,10 @@ namespace DLaB.AttributeManager
             {
                 HideNewAttribute(GetCurrentAction().HasFlag(Logic.Action.RemoveTemp));
                 txtNewAttributeName.Text = item.Value.SchemaName;
-                txtDisplayName.Text = item.Value.DisplayName.UserLocalizedLabel.Label;
+                txtDisplayName.Text = item.Value.DisplayName.UserLocalizedLabel?.Label ?? item.Value.LogicalName;
+                txtOldSchema.Text = txtNewAttributeName.Text;
+                txtOldDisplay.Text = txtDisplayName.Text;
+                txtOldAttributType.Text = item.Value.AttributeType.GetValueOrDefault().ToString();
             }
 
             btnExecuteSteps.Enabled = cmbAttributes.SelectedText == string.Empty;
@@ -411,9 +509,21 @@ namespace DLaB.AttributeManager
         private void chkConvertAttributeType_CheckedChanged(object sender, EventArgs e)
         {
             var visible = chkConvertAttributeType.Checked;
-            lblNewAttributeType.Visible = visible;
             cmbNewAttributeType.Visible = visible;
-            tabStringAttribute.Visible = false;
+            if (visible)
+            {
+                if (!string.IsNullOrWhiteSpace(cmbNewAttributeType.Text))
+                {
+                    DisplayTabForNewAttributeSelected();
+                }
+            }
+            else
+            {
+                // Hide all Tabs
+                SetTabVisible(tabStringAttribute, false);
+                SetTabVisible(tabNumberAttribute, false);
+                SetTabVisible(tabOptionSetAttribute, false);
+            }
             UpdateDisplayedSteps();
         }
 
@@ -432,6 +542,11 @@ namespace DLaB.AttributeManager
         }
 
         private void cmbNewAttributeType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DisplayTabForNewAttributeSelected();
+        }
+
+        private void DisplayTabForNewAttributeSelected()
         {
             var stringTabVisible = false;
             var optionTabVisible = false;
@@ -453,10 +568,15 @@ namespace DLaB.AttributeManager
                     optionTabVisible = true;
                     break;
                 case "Image":
-                    
+
                     break;
                 case "Whole Number":
                     numberTabVisible = true;
+                    pNumberType.Visible = true;
+                    SetCurrencyNumberVisible(false);
+                    SetDecimalNumberVisible(false);
+                    SetFloatNumberVisible(false);
+                    SetWholeNumberVisible(true);
                     break;
                 case "Floating Point Number":
                     numberTabVisible = true;
@@ -476,18 +596,17 @@ namespace DLaB.AttributeManager
                     strAttCmbImeMode.Text = "Auto";
                     break;
                 case "Date and Time":
-                   
+
                     break;
                 case "Lookup":
-                    
+
                     break;
                 default:
                     throw new Exception("Unepxected Type: " + cmbNewAttributeType.Text);
-
             }
 
             SetTabVisible(tabNumberAttribute, numberTabVisible);
-            SetTabVisible(tabStringAttribute , stringTabVisible);
+            SetTabVisible(tabStringAttribute, stringTabVisible);
             SetTabVisible(tabOptionSetAttribute, optionTabVisible);
         }
 
@@ -497,7 +616,8 @@ namespace DLaB.AttributeManager
             {
                 if (!tabControl.TabPages.Contains(tab))
                 {
-                    tabControl.TabPages.Add(tab);
+                    tabControl.TabPages.Insert(0,tab);
+                    tabControl.SelectedTab = tab;
                 }
             }
             else
@@ -621,6 +741,22 @@ namespace DLaB.AttributeManager
             public string NewAttributeName { get; set; }
             public Logic Migrator { get; set; }
             public Logic.Steps Steps { get; internal set; }
+        }
+
+        private void RemoveNonNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && 
+                !char.IsDigit(e.KeyChar) && 
+                (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if (e.KeyChar == '.' && (((TextBox)sender).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 

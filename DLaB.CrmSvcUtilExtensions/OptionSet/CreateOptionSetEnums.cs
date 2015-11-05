@@ -26,7 +26,6 @@ using Microsoft.Crm.Services.Utility;
 using System.Diagnostics;
 using System.CodeDom;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 
 namespace DLaB.CrmSvcUtilExtensions.OptionSet
@@ -75,8 +74,8 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
                 // Iterate over all of the types that were created in the namespace.
                 for (var j = 0; j < types.Count;)
                 {
-                    // Remove the type if it is not an enum (all OptionSets are enums) or has no members.
-                    if (!types[j].IsEnum || types[j].Members.Count == 0 || Skip(types[j].Name))
+                    // Remove the type if it is not an enum (all OptionSets are enums) or has been defined to be skipped.
+                    if (!types[j].IsEnum || Skip(types[j].Name))
                     {
                         types.RemoveAt(j);
                     }

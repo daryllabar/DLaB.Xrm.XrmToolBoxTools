@@ -84,7 +84,7 @@ namespace DLaB.EarlyBoundGenerator
             { 
                 DialogResult = DialogResult.OK;
                 Close();
-            };
+            }
         }
 
         private void LoadEntities(IEnumerable<EntityMetadata> entities)
@@ -111,37 +111,40 @@ namespace DLaB.EarlyBoundGenerator
                 return;
             }
 
-            WorkAsync("Retrieving Attributes...", e =>
+            WorkAsync(new WorkAsyncInfo("Retrieving Attributes...", e =>
             {
-                e.Result = Service.Execute(new RetrieveEntityRequest()
+                e.Result = Service.Execute(new RetrieveEntityRequest
                 {
                     LogicalName = entity.Value.LogicalName,
                     EntityFilters = EntityFilters.Attributes,
                     RetrieveAsIfPublished = true
                 });
-            }, e =>
+            })
             {
-                try
+                PostWorkCallBack = e =>
                 {
-                    CmbAttributes.BeginUpdate();
-                    CmbAttributes.Items.Clear();
-                    CmbAttributes.Text = null;
+                    try
+                    {
+                        CmbAttributes.BeginUpdate();
+                        CmbAttributes.Items.Clear();
+                        CmbAttributes.Text = null;
 
-                    var result = ((RetrieveEntityResponse) e.Result).EntityMetadata.Attributes.
-                                 Where(a => 
-                                    (SelectOptionSetsForEntity && a.AttributeType == AttributeTypeCode.Picklist)
-                                    || a.IsLocalOptionSetAttribute()).
-                                 Select(a => new ObjectCollectionItem<AttributeMetadata>(a.SchemaName + " (" + a.LogicalName + ")", a)).
-                                 OrderBy(r => r.DisplayName);
+                        var result = ((RetrieveEntityResponse) e.Result).EntityMetadata.Attributes.
+                            Where(a =>
+                                (SelectOptionSetsForEntity && a.AttributeType == AttributeTypeCode.Picklist)
+                                || a.IsLocalOptionSetAttribute()).
+                            Select(a => new ObjectCollectionItem<AttributeMetadata>(a.SchemaName + " (" + a.LogicalName + ")", a)).
+                            OrderBy(r => r.DisplayName);
 
-                    CmbAttributes.Items.AddRange(result.ToArray());
+                        CmbAttributes.Items.AddRange(result.Cast<object>().ToArray());
+                    }
+                    finally
+                    {
+                        CmbAttributes.EndUpdate();
+                        Enable(true);
+                    }
                 }
-                finally
-                {
-                    CmbAttributes.EndUpdate();
-                    Enable(true);
-                }
-            });            
+            });
         }
 
         private void Enable(bool enable)
@@ -156,14 +159,17 @@ namespace DLaB.EarlyBoundGenerator
 
         public void RetrieveOptionSets()
         {
-            WorkAsync("Retrieving OptionSets...", e =>
+            WorkAsync(new WorkAsyncInfo("Retrieving OptionSets...", e =>
             {
-                e.Result = ((RetrieveAllOptionSetsResponse)Service.Execute(new RetrieveAllOptionSetsRequest())).OptionSetMetadata;
-            }, e =>
+                e.Result = ((RetrieveAllOptionSetsResponse) Service.Execute(new RetrieveAllOptionSetsRequest())).OptionSetMetadata;
+            })
             {
-                var entityContainer = ((PropertyInterface.IGlobalOptionSets)CallingControl);
-                entityContainer.GlobalOptionSets = ((IEnumerable<OptionSetMetadataBase>)e.Result);
-                LoadOptionSets(entityContainer.GlobalOptionSets);
+                PostWorkCallBack = e =>
+                {
+                    var entityContainer = (PropertyInterface.IGlobalOptionSets) CallingControl;
+                    entityContainer.GlobalOptionSets = (IEnumerable<OptionSetMetadataBase>) e.Result;
+                    LoadOptionSets(entityContainer.GlobalOptionSets);
+                }
             });
         }
 
@@ -179,7 +185,7 @@ namespace DLaB.EarlyBoundGenerator
                     Select(e => new ObjectCollectionItem<OptionSetMetadataBase>(e.Name, e)).
                     OrderBy(r => r.DisplayName).ToList();
 
-                CmbOptionSets.Items.AddRange(values.ToArray());
+                CmbOptionSets.Items.AddRange(values.Cast<object>().ToArray());
             }
             finally
             {

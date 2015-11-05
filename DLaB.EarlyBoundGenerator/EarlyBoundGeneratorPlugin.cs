@@ -129,14 +129,15 @@ namespace DLaB.EarlyBoundGenerator
         {
             EnableForm(false);
 
-            WorkAsync("Shelling out to Command Line...",
+            HydrateSettingsFromUI();
+            Settings.Save();
+
+            WorkAsync(new WorkAsyncInfo("Shelling out to Command Line...",
                 (w, e) => // Work To Do Asynchronously
                 {
-                    HydrateSettingsFromUI();
+                    var settings = (Config) e.Argument;
 
-                    //SetGenerateEnumSettings(Settings);
-
-                    var generator = new Logic(Settings);
+                    var generator = new Logic(settings);
                     Logic.LogHandler onLog = m => w.ReportProgress(0, m);
                     generator.OnLog += onLog;
                     try
@@ -176,8 +177,10 @@ namespace DLaB.EarlyBoundGenerator
                     {
                         generator.OnLog -= onLog;
                     }
-                },
-                e => // Creation has finished.  Cleanup
+                })
+            {
+                AsyncArgument = Settings,
+                PostWorkCallBack = e => // Creation has finished.  Cleanup
                 {
                     var result = e.Result as Logic.LogMessageInfo;
                     if (result != null)
@@ -185,9 +188,8 @@ namespace DLaB.EarlyBoundGenerator
                         TxtOutput.AppendText(result.Detail + Environment.NewLine);
                     }
                     EnableForm(true);
-                    Settings.Save();
                 },
-                e => // Logic wants to display an update
+                ProgressChanged = e => // Logic wants to display an update
                 {
                     string summary;
                     var result = e.UserState as Logic.LogMessageInfo;
@@ -209,7 +211,8 @@ namespace DLaB.EarlyBoundGenerator
                     {
                         SetWorkingMessage(summary);
                     }
-                });
+                }
+            });
         }
 
         // ReSharper disable once InconsistentNaming

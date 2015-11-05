@@ -83,7 +83,7 @@ namespace DLaB.EarlyBoundGenerator
             { 
                 DialogResult = DialogResult.OK;
                 Close();
-            };
+            }
         }
 
         private void LoadEntities(IEnumerable<EntityMetadata> entities)
@@ -128,17 +128,18 @@ namespace DLaB.EarlyBoundGenerator
                 return;
             }
 
-            WorkAsync("Retrieving Attributes...",
+            WorkAsync(new WorkAsyncInfo("Retrieving Attributes...",
                 e =>
                 {
-                    e.Result = Service.Execute(new RetrieveEntityRequest()
+                    e.Result = Service.Execute(new RetrieveEntityRequest
                     {
                         LogicalName = entity.Value.LogicalName,
                         EntityFilters = EntityFilters.Attributes,
                         RetrieveAsIfPublished = true
                     });
-                },
-                e =>
+                })
+            {
+                PostWorkCallBack = e =>
                 {
                     try
                     {
@@ -147,18 +148,19 @@ namespace DLaB.EarlyBoundGenerator
                         cmbAttributes.Text = null;
 
                         var result = ((RetrieveEntityResponse) e.Result).EntityMetadata.Attributes.
-                                                                         Where(a => a.AttributeType == AttributeTypeCode.Picklist && (!limitToLocalOptionSetAttributes || a.IsLocalOptionSetAttribute())).
-                                                                         Select(a =>new ObjectCollectionItem<AttributeMetadata>(a.SchemaName + " (" + a.LogicalName + ")", a)).
-                                                                         OrderBy(r => r.DisplayName);
+                            Where(a => a.AttributeType == AttributeTypeCode.Picklist && (!limitToLocalOptionSetAttributes || a.IsLocalOptionSetAttribute())).
+                            Select(a => new ObjectCollectionItem<AttributeMetadata>(a.SchemaName + " (" + a.LogicalName + ")", a)).
+                            OrderBy(r => r.DisplayName);
 
-                        cmbAttributes.Items.AddRange(result.ToArray());
+                        cmbAttributes.Items.AddRange(result.Cast<object>().ToArray());
                     }
                     finally
                     {
                         cmbAttributes.EndUpdate();
                         Enable(true);
                     }
-                });
+                }
+            });
         }
 
         private void Enable(bool enable)
@@ -175,14 +177,17 @@ namespace DLaB.EarlyBoundGenerator
 
         public void RetrieveOptionSets()
         {
-            WorkAsync("Retrieving OptionSets...", e =>
+            WorkAsync(new WorkAsyncInfo("Retrieving OptionSets...", e =>
             {
-                e.Result = ((RetrieveAllOptionSetsResponse)Service.Execute(new RetrieveAllOptionSetsRequest())).OptionSetMetadata;
-            }, e =>
+                e.Result = ((RetrieveAllOptionSetsResponse) Service.Execute(new RetrieveAllOptionSetsRequest())).OptionSetMetadata;
+            })
             {
-                var entityContainer = ((PropertyInterface.IGlobalOptionSets)CallingControl);
-                entityContainer.GlobalOptionSets = ((IEnumerable<OptionSetMetadataBase>)e.Result);
-                LoadOptionSets(entityContainer.GlobalOptionSets);
+                PostWorkCallBack = e =>
+                {
+                    var entityContainer = (PropertyInterface.IGlobalOptionSets) CallingControl;
+                    entityContainer.GlobalOptionSets = (IEnumerable<OptionSetMetadataBase>) e.Result;
+                    LoadOptionSets(entityContainer.GlobalOptionSets);
+                }
             });
         }
 
@@ -198,7 +203,7 @@ namespace DLaB.EarlyBoundGenerator
                     Select(e => new ObjectCollectionItem<OptionSetMetadataBase>(e.Name, e)).
                     OrderBy(r => r.DisplayName).ToList();
 
-                CmbOptionSets.Items.AddRange(values.ToArray());
+                CmbOptionSets.Items.AddRange(values.Cast<object>().ToArray());
             }
             finally
             {
