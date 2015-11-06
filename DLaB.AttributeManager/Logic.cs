@@ -163,12 +163,13 @@ namespace DLaB.AttributeManager
         private void MigrateAttribute(AttributeMetadata fromAtt, AttributeMetadata toAtt, Action actions)
         {
             // Replace Old Attribute with Tmp Attribute
+            CopyData(Service, fromAtt, toAtt, actions);
+            UpdateCharts(Service, fromAtt, toAtt);
             UpdateViews(Service, fromAtt, toAtt);
             UpdateForms(Service, fromAtt, toAtt);
             UpdateWorkflows(Service, fromAtt, toAtt);
             PublishEntity(Service, fromAtt.EntityLogicalName);
             AssertCanDelete(Service, fromAtt);
-            CopyData(Service, fromAtt, toAtt, actions);
         }
 
         private AttributeMigrationState GetApplicationMigrationState(IOrganizationService service, AttributeMetadata att, string newSchemaName, Action actions)
@@ -363,18 +364,60 @@ namespace DLaB.AttributeManager
             foreach (var d in depends.EntityCollection.ToEntityList<Dependency>())
             {
                 var type = (componenttype)d.DependentComponentType.GetValueOrDefault();
-                errors.Add(type + " " + d.DependentComponentObjectId.GetValueOrDefault());
-                if (type == componenttype.EntityRelationship)
-                {
-                    var response =
-                        (RetrieveRelationshipResponse)service.Execute(new RetrieveRelationshipRequest { MetadataId = d.DependentComponentObjectId.GetValueOrDefault() });
-                    Trace("Entity Relationship {0} must be manually removed/added", response.RelationshipMetadata.SchemaName);
+                var dependentId = d.DependentComponentObjectId.GetValueOrDefault();
+                var err = type + " " + dependentId;
+                switch (type) {
+                    case componenttype.EntityRelationship:
+                        var response =
+                            (RetrieveRelationshipResponse)service.Execute(new RetrieveRelationshipRequest { MetadataId = dependentId });
+                        Trace("Entity Relationship {0} must be manually removed/added", response.RelationshipMetadata.SchemaName);
+                        break;
+                    case componenttype.SavedQueryVisualization:
+                        var sqv = service.GetEntity<SavedQueryVisualization>(dependentId);
+                            err = $"{err} ({sqv.Name} - {sqv.CreatedBy.Name})";
+                        break;
+
+                    case componenttype.SavedQuery:
+                        var sq = service.GetEntity<SavedQuery>(dependentId);
+                            err = $"{err} ({sq.Name} - {sq.CreatedBy.Name})";
+                        break;
                 }
+
+                errors.Add(err);
             }
 
             if (errors.Count > 0)
             {
-                throw new Exception("Dependencies found: " + string.Join(", ", errors));
+                throw new Exception("Dependencies found: " + Environment.NewLine + "\t" + string.Join(Environment.NewLine + "\t", errors));
+            }
+        }
+
+        private void UpdateCharts(IOrganizationService service, AttributeMetadata from, AttributeMetadata to)
+        {
+            var fromValue = "name=\"" + from.LogicalName + "\"";
+            var toValue = "name=\"" + to.LogicalName + "\"";
+            var entityAttributeLikeExpression = $"%<entity name=\"{@from.EntityLogicalName}\">%{fromValue}%";
+
+            Trace("Retrieving System Charts with cond: " + fromValue);
+            var systemCharts = service.GetEntities<SavedQueryVisualization>(c => new { c.Id, c.DataDescription },
+                new ConditionExpression(SavedQueryVisualization.Fields.DataDescription, ConditionOperator.Like, entityAttributeLikeExpression));
+
+            foreach (var chart in systemCharts)
+            {
+                Trace("Updating Chart " + chart.Name);
+                chart.DataDescription = chart.DataDescription.Replace(fromValue, toValue);
+                service.Update(chart);
+            }
+
+            Trace("Retrieving User Charts with cond: " + fromValue);
+            var userCharts = service.GetEntities<UserQueryVisualization>(c => new { c.Id, c.DataDescription },
+                new ConditionExpression(UserQueryVisualization.Fields.DataDescription, ConditionOperator.Like, entityAttributeLikeExpression));
+
+            foreach (var chart in userCharts)
+            {
+                Trace("Updating Chart " + chart.Name);
+                chart.DataDescription = chart.DataDescription.Replace(fromValue, toValue);
+                service.Update(chart);
             }
         }
 
@@ -438,11 +481,18 @@ namespace DLaB.AttributeManager
         private void UpdateViews(IOrganizationService service, AttributeMetadata from, AttributeMetadata to)
         {
             Trace("Retrieving Views");
-            var queries = service.GetEntities<SavedQuery>(
-                new ConditionExpression("fetchxml", ConditionOperator.Like, "%<entity name=\"" + from.EntityLogicalName + "\">%name=\"" + from.LogicalName + "\"%"));
+            var queries = service.GetEntities<SavedQuery>(q => new { q.Id, q.Name, q.QueryType, q.FetchXml, q.LayoutXml },
+                new ConditionExpression("fetchxml", ConditionOperator.Like, "%<entity name=\"" + from.EntityLogicalName + "\">%name=\"" + from.LogicalName + "\"%"),
+                LogicalOperator.Or,
+                new ConditionExpression("fetchxml", ConditionOperator.Like, "%<entity name=\"" + from.EntityLogicalName + "\">%attribute=\"" + from.LogicalName + "\"%"));
 
             foreach (var query in queries)
             {
+                if (query.QueryType != 0)
+                {
+                    Trace($"Cannot update view '{query.Name}' as this is not a Public view - you must update this manually!");
+                    continue;
+                }
                 Trace("Updating View " + query.Name);
                 query.FetchXml = query.FetchXml.Replace("name=\"" + from.LogicalName + "\"", "name=\"" + to.LogicalName + "\"");
                 query.FetchXml = query.FetchXml.Replace("attribute=\"" + from.LogicalName + "\"", "attribute=\"" + to.LogicalName + "\"");
@@ -534,6 +584,9 @@ namespace DLaB.AttributeManager
                     {
                         errorDetails = Environment.NewLine + fault.ErrorDetails["CallStack"];
                     }
+
+                    errorDetails += string.Format("{0}{0}TRACE TEXT:{0}{1}", Environment.NewLine, fault.TraceText);
+
                     throw new Exception(fault.Message + errorDetails);
                 }
             }
