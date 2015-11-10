@@ -57,6 +57,12 @@ namespace DLaB.AttributeManager
 
         public static AttributeMetadata CreateOptionSet(OptionSetMetadata optionSet, int? defaultFormValue = null, string formulaDefinition = null)
         {
+            if (optionSet.IsGlobal.GetValueOrDefault())
+            {   
+                // Can't send Global Option Set Options
+                optionSet.Options.Clear();
+            }
+
             return new PicklistAttributeMetadata
             {
                 FormulaDefinition = formulaDefinition,

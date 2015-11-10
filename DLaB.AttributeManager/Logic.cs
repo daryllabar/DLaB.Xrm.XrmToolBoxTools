@@ -488,11 +488,6 @@ namespace DLaB.AttributeManager
 
             foreach (var query in queries)
             {
-                if (query.QueryType != 0)
-                {
-                    Trace($"Cannot update view '{query.Name}' as this is not a Public view - you must update this manually!");
-                    continue;
-                }
                 Trace("Updating View " + query.Name);
                 query.FetchXml = query.FetchXml.Replace("name=\"" + from.LogicalName + "\"", "name=\"" + to.LogicalName + "\"");
                 query.FetchXml = query.FetchXml.Replace("attribute=\"" + from.LogicalName + "\"", "attribute=\"" + to.LogicalName + "\"");

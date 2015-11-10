@@ -62,7 +62,12 @@ namespace DLaB.AttributeManager
                 OptionSet = att.OptionSet
             };
 
-            if (!picklist.OptionSet.IsGlobal.Value)
+            if (picklist.OptionSet.IsGlobal.GetValueOrDefault())
+            {
+                // Can't send 
+                picklist.OptionSet.Options.Clear();
+            }
+            else
             {
                 // Can't reuse an existing local Option Set
                 var optionSet = picklist.OptionSet;

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using DLaB.Common;
+using DLaB.Common.Exceptions;
 using DLaB.Xrm;
 using DLaB.XrmToolboxCommon;
 using Microsoft.Xrm.Sdk.Messages;
@@ -23,6 +24,7 @@ namespace DLaB.AttributeManager
         private Dictionary<string, Logic.Steps> StepMapper { get; }
         public Config Settings { get; set; }
         private EntityMetadata Metadata { get; set; }
+        private IEnumerable<OptionSetMetadataBase> OptionSetsMetadata { get; set; }
 
         public AttributeManagerPlugin()
         {
@@ -80,6 +82,7 @@ namespace DLaB.AttributeManager
                 {
                     cmbEntities.BeginUpdate();
                     cmbEntities.Items.Clear();
+                    OptionSetsMetadata = null; // Clear to be loaded again
 
                     var result = ((RetrieveAllEntitiesResponse) e.Result).EntityMetadata.
                         Select(m => new ObjectCollectionItem<EntityMetadata>(m.DisplayName.GetLocalOrDefaultText("N/A") + " (" + m.LogicalName + ")", m)).
@@ -178,6 +181,7 @@ namespace DLaB.AttributeManager
             // Update Display Name
             var langCode = attribute.Value.DisplayName.UserLocalizedLabel.LanguageCode;
             attribute.Value.DisplayName.LocalizedLabels.First(l => l.LanguageCode == langCode).Label = txtDisplayName.Text;
+            tabControl.SelectedTab = tabLog;
 
             WorkAsync(new WorkAsyncInfo("Performing Steps...", (w, e) =>
             {
@@ -247,10 +251,17 @@ namespace DLaB.AttributeManager
                 case "Single Line of Text":
                     att = NewTypeAttributeCreationLogic.CreateText(format: GetStringFormat());
                     break;
-                case "Option Set":
+                case "Global Option Set":
+                    var optionSet = (ObjectCollectionItem<OptionSetMetadata>) optAttGlobalOptionSetCmb.SelectedItem;
+                    var defaultValue = (ObjectCollectionItem<int?>) optAttDefaultValueCmb.SelectedItem;
+                    att = NewTypeAttributeCreationLogic.CreateOptionSet(optionSet.Value, defaultValue?.Value);
+                    break;
+                case "Local Option Set":
+                    // TODO Read from Tab
                     att = NewTypeAttributeCreationLogic.CreateOptionSet(null);
                     break;
                 case "Two Options":
+                    // TODO: new BooleanOptionSetMetadata()
                     att = NewTypeAttributeCreationLogic.CreateTwoOptions(null);
                     break;
                 case "Image":
@@ -490,15 +501,58 @@ namespace DLaB.AttributeManager
                 txtDisplayName.Text = item.Value.DisplayName.UserLocalizedLabel?.Label ?? item.Value.LogicalName;
                 txtOldSchema.Text = txtNewAttributeName.Text;
                 txtOldDisplay.Text = txtDisplayName.Text;
-                txtOldAttributType.Text = item.Value.AttributeType.GetValueOrDefault().ToString();
+                txtOldAttributType.Text = GetAttributeTypeDisplayValue(item.Value);
             }
 
             btnExecuteSteps.Enabled = cmbAttributes.SelectedText == string.Empty;
         }
 
+        private string GetAttributeTypeDisplayValue(AttributeMetadata attribute)
+        {
+            var displayValue = attribute.AttributeType.GetValueOrDefault().ToString();
+            switch (attribute.AttributeType.GetValueOrDefault())
+            {
+                case AttributeTypeCode.Picklist:
+                    var optionSetAtt = attribute as PicklistAttributeMetadata;
+                    if (optionSetAtt?.OptionSet != null)
+                    {
+                        displayValue = (optionSetAtt.OptionSet.IsGlobal.GetValueOrDefault() ? "Global Option Set - " : "Local Option Set - ") + 
+                            optionSetAtt.OptionSet.DisplayName.GetLocalOrDefaultText() + $" ({optionSetAtt.OptionSet.Name})";
+                    }
+
+                    break;
+
+                case AttributeTypeCode.Boolean:
+                case AttributeTypeCode.Customer:
+                case AttributeTypeCode.DateTime:
+                case AttributeTypeCode.Decimal:
+                case AttributeTypeCode.Double:
+                case AttributeTypeCode.Integer:
+                case AttributeTypeCode.Lookup:
+                case AttributeTypeCode.Memo:
+                case AttributeTypeCode.Money:
+                case AttributeTypeCode.Owner:
+                case AttributeTypeCode.PartyList:
+                case AttributeTypeCode.State:
+                case AttributeTypeCode.Status:
+                case AttributeTypeCode.String:
+                case AttributeTypeCode.Uniqueidentifier:
+                case AttributeTypeCode.CalendarRules:
+                case AttributeTypeCode.Virtual:
+                case AttributeTypeCode.BigInt:
+                case AttributeTypeCode.ManagedProperty:
+                case AttributeTypeCode.EntityName:
+                    break;
+                default:
+                    throw new EnumCaseUndefinedException<AttributeTypeCode>(attribute.AttributeType.GetValueOrDefault());
+            }
+
+            return displayValue;
+        }
+
         private void cmbAttributes_MouseEnter(object sender, EventArgs e)
         {
-            if(cmbEntities.SelectedIndex > -1)
+            if (cmbEntities.SelectedIndex > -1)
             {
                 ExecuteMethod(LoadAttributes);
             }
@@ -533,7 +587,7 @@ namespace DLaB.AttributeManager
 
             //   Hide New Attribute Name Text Field
             //   Populate the New Attribute Name Text Field
-            if (item == null || ! GetCurrentAction().HasFlag(Logic.Action.RemoveTemp))
+            if (item == null || !GetCurrentAction().HasFlag(Logic.Action.RemoveTemp))
             {
                 return;
             }
@@ -561,11 +615,21 @@ namespace DLaB.AttributeManager
                     strAttLblFormat.Visible = true;
                     strAttCmbImeMode.Text = "Auto";
                     break;
-                case "Option Set":
+                case "Global Option Set":
                     optionTabVisible = true;
+                    RetrieveOptionSets();
+                    optAttGlobalOptionSetCmb.Visible = true;
+                    optAttGlobalOptionSetLbl.Visible = true;
+                    break;
+                case "Local Option Set":
+                    optionTabVisible = true;
+                    optAttGlobalOptionSetCmb.Visible = false;
+                    optAttGlobalOptionSetLbl.Visible = false;
                     break;
                 case "Two Options":
                     optionTabVisible = true;
+                    optAttGlobalOptionSetCmb.Visible = false;
+                    optAttGlobalOptionSetLbl.Visible = false;
                     break;
                 case "Image":
 
@@ -610,13 +674,48 @@ namespace DLaB.AttributeManager
             SetTabVisible(tabOptionSetAttribute, optionTabVisible);
         }
 
+        private void RetrieveOptionSets()
+        {
+            if (OptionSetsMetadata != null)
+            {
+                return;
+            }
+
+            WorkAsync(new WorkAsyncInfo("Retrieving OptionSets...", e => { e.Result = ((RetrieveAllOptionSetsResponse) Service.Execute(new RetrieveAllOptionSetsRequest())).OptionSetMetadata; })
+            {
+                PostWorkCallBack = e =>
+                {
+                    OptionSetsMetadata = (IEnumerable<OptionSetMetadataBase>) e.Result;
+                    LoadOptionSets(OptionSetsMetadata);
+                }
+            });
+        }
+
+        private void LoadOptionSets(IEnumerable<OptionSetMetadataBase> optionSets)
+        {
+            try
+            {
+                optAttGlobalOptionSetCmb.BeginUpdate();
+                optAttGlobalOptionSetCmb.Items.Clear();
+                optAttGlobalOptionSetCmb.Text = null;
+
+                var values = optionSets.Where(m => m.IsGlobal.GetValueOrDefault() && m is OptionSetMetadata).Select(e => new ObjectCollectionItem<OptionSetMetadata>(e.Name, (OptionSetMetadata) e)).OrderBy(r => r.DisplayName).Cast<object>().ToArray();
+
+                optAttGlobalOptionSetCmb.Items.AddRange(values);
+            }
+            finally
+            {
+                optAttGlobalOptionSetCmb.EndUpdate();
+            }
+        }
+
         private void SetTabVisible(TabPage tab, bool visible)
         {
             if (visible)
             {
                 if (!tabControl.TabPages.Contains(tab))
                 {
-                    tabControl.TabPages.Insert(0,tab);
+                    tabControl.TabPages.Insert(0, tab);
                     tabControl.SelectedTab = tab;
                 }
             }
@@ -692,7 +791,7 @@ namespace DLaB.AttributeManager
 
         private void UpdateDisplayedSteps()
         {
-          var item = cmbAttributes.SelectedItem as ObjectCollectionItem<AttributeMetadata>;
+            var item = cmbAttributes.SelectedItem as ObjectCollectionItem<AttributeMetadata>;
             if (item == null)
             {
                 return;
@@ -705,7 +804,7 @@ namespace DLaB.AttributeManager
                 if (action.HasFlag(Logic.Action.RemoveTemp))
                 {
                     clbSteps.LoadItems(RenameSteps);
-                } 
+                }
                 else
                 {
                     clbSteps.Items.Clear();
@@ -745,29 +844,43 @@ namespace DLaB.AttributeManager
 
         private void RemoveNonNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && 
-                !char.IsDigit(e.KeyChar) && 
-                (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
 
             // only allow one decimal point
-            if (e.KeyChar == '.' && (((TextBox)sender).Text.IndexOf('.') > -1))
+            if (e.KeyChar == '.' && (((TextBox) sender).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }
         }
+
+        private void optAttGlobalOptionSetCmb_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            var optionSet = (ObjectCollectionItem<OptionSetMetadata>) optAttGlobalOptionSetCmb.SelectedItem;
+            optAttDefaultValueCmb.BeginUpdate();
+            optAttDefaultValueCmb.Items.Clear();
+            try
+            {
+                optAttGlobalOptionSetCmb.Items.Add(new ObjectCollectionItem<int?>("Unassigned Value", null));
+                optAttDefaultValueCmb.Items.AddRange(optionSet.Value.Options.Select(o => new ObjectCollectionItem<int?>(o.Label.GetLocalOrDefaultText(), o.Value.GetValueOrDefault())).Cast<object>().ToArray());
+            }
+            finally
+            {
+                optAttDefaultValueCmb.EndUpdate();
+            }
+        }
     }
 
-    [Export(typeof(IXrmToolBoxPlugin)),
-     ExportMetadata("Name", "Attribute Manager"),
-     ExportMetadata("Description", "Handles Creating/Updating an attribute for an Entityl."),
-     ExportMetadata("SmallImageBase64", SmallImage32X32), // null for "no logo" image or base64 image content 
-     ExportMetadata("BigImageBase64", LargeImage120X120), // null for "no logo" image or base64 image content 
-     ExportMetadata("BackgroundColor", "White"), // Use a HTML color name
-     ExportMetadata("PrimaryFontColor", "#000000"), // Or an hexadecimal code
-     ExportMetadata("SecondaryFontColor", "DarkGray")]
+    [Export(typeof (IXrmToolBoxPlugin)),
+        ExportMetadata("Name", "Attribute Manager"),   
+        ExportMetadata("Description", "Handles Creating/Updating an attribute for an Entityl."),
+        ExportMetadata("SmallImageBase64", SmallImage32X32), // null for "no logo" image or base64 image content 
+        ExportMetadata("BigImageBase64", LargeImage120X120), // null for "no logo" image or base64 image content 
+        ExportMetadata("BackgroundColor", "White"), // Use a HTML color name
+        ExportMetadata("PrimaryFontColor", "#000000"), // Or an hexadecimal code
+        ExportMetadata("SecondaryFontColor", "DarkGray")]
     public class AttributeManager : PluginFactory
     {
         public override IXrmToolBoxPluginControl GetControl()

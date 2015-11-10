@@ -93,6 +93,10 @@ namespace DLaB.AttributeManager
             this.tabLog = new System.Windows.Forms.TabPage();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.optAttGlobalOptionSetLbl = new System.Windows.Forms.Label();
+            this.optAttGlobalOptionSetCmb = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.optAttDefaultValueCmb = new System.Windows.Forms.ComboBox();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
@@ -114,6 +118,7 @@ namespace DLaB.AttributeManager
             this.pNumberType.SuspendLayout();
             this.tabOptionSetAttribute.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.pOptionType.SuspendLayout();
             this.tabLog.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -313,7 +318,8 @@ namespace DLaB.AttributeManager
             this.cmbNewAttributeType.FormattingEnabled = true;
             this.cmbNewAttributeType.Items.AddRange(new object[] {
             "Single Line of Text",
-            "Option Set",
+            "Global Option Set",
+            "Local Option Set",
             "Two Options",
             "Image",
             "Whole Number",
@@ -761,6 +767,10 @@ namespace DLaB.AttributeManager
             // 
             // pOptionType
             // 
+            this.pOptionType.Controls.Add(this.label8);
+            this.pOptionType.Controls.Add(this.optAttDefaultValueCmb);
+            this.pOptionType.Controls.Add(this.optAttGlobalOptionSetLbl);
+            this.pOptionType.Controls.Add(this.optAttGlobalOptionSetCmb);
             this.pOptionType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pOptionType.Location = new System.Drawing.Point(68, 10);
             this.pOptionType.Name = "pOptionType";
@@ -782,6 +792,57 @@ namespace DLaB.AttributeManager
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // optAttGlobalOptionSetLbl
+            // 
+            this.optAttGlobalOptionSetLbl.AutoSize = true;
+            this.optAttGlobalOptionSetLbl.Location = new System.Drawing.Point(3, 6);
+            this.optAttGlobalOptionSetLbl.Name = "optAttGlobalOptionSetLbl";
+            this.optAttGlobalOptionSetLbl.Size = new System.Drawing.Size(60, 13);
+            this.optAttGlobalOptionSetLbl.TabIndex = 9;
+            this.optAttGlobalOptionSetLbl.Text = "Option Set:";
+            // 
+            // optAttGlobalOptionSetCmb
+            // 
+            this.optAttGlobalOptionSetCmb.DisplayMember = "DisplayName";
+            this.optAttGlobalOptionSetCmb.FormattingEnabled = true;
+            this.optAttGlobalOptionSetCmb.Items.AddRange(new object[] {
+            "None",
+            "Duration",
+            "TimeZone",
+            "Language",
+            "Locale"});
+            this.optAttGlobalOptionSetCmb.Location = new System.Drawing.Point(83, 3);
+            this.optAttGlobalOptionSetCmb.Name = "optAttGlobalOptionSetCmb";
+            this.optAttGlobalOptionSetCmb.Size = new System.Drawing.Size(171, 21);
+            this.optAttGlobalOptionSetCmb.TabIndex = 8;
+            this.optAttGlobalOptionSetCmb.ValueMember = "Value";
+            this.optAttGlobalOptionSetCmb.SelectionChangeCommitted += new System.EventHandler(this.optAttGlobalOptionSetCmb_SelectionChangeCommitted);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 33);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(74, 13);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Default Value:";
+            // 
+            // optAttDefaultValueCmb
+            // 
+            this.optAttDefaultValueCmb.DisplayMember = "DisplayName";
+            this.optAttDefaultValueCmb.FormattingEnabled = true;
+            this.optAttDefaultValueCmb.Items.AddRange(new object[] {
+            "None",
+            "Duration",
+            "TimeZone",
+            "Language",
+            "Locale"});
+            this.optAttDefaultValueCmb.Location = new System.Drawing.Point(83, 30);
+            this.optAttDefaultValueCmb.Name = "optAttDefaultValueCmb";
+            this.optAttDefaultValueCmb.Size = new System.Drawing.Size(171, 21);
+            this.optAttDefaultValueCmb.TabIndex = 10;
+            this.optAttDefaultValueCmb.ValueMember = "Value";
             // 
             // AttributeManagerPlugin
             // 
@@ -829,6 +890,8 @@ namespace DLaB.AttributeManager
             this.pNumberType.PerformLayout();
             this.tabOptionSetAttribute.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
+            this.pOptionType.ResumeLayout(false);
+            this.pOptionType.PerformLayout();
             this.tabLog.ResumeLayout(false);
             this.tabLog.PerformLayout();
             this.ResumeLayout(false);
@@ -896,5 +959,9 @@ namespace DLaB.AttributeManager
         private Panel panel4;
         private Panel panel5;
         private Panel panel6;
+        private Label optAttGlobalOptionSetLbl;
+        private ComboBox optAttGlobalOptionSetCmb;
+        private Label label8;
+        private ComboBox optAttDefaultValueCmb;
     }
 }
