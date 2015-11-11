@@ -212,6 +212,7 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "GenerateAttributeNameConsts", config.ExtensionConfig.GenerateAttributeNameConsts.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateAnonymousTypeConstructor", config.ExtensionConfig.GenerateAnonymousTypeConstructor.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateEnumProperties", config.ExtensionConfig.GenerateEnumProperties.ToString()) |
+                    UpdateConfigAppSetting(file, "InvalidCSharpNamePrefix", config.ExtensionConfig.InvalidCSharpNamePrefix) |
                     UpdateConfigAppSetting(file, "OptionSetsToSkip", config.ExtensionConfig.OptionSetsToSkip) |
                     UpdateConfigAppSetting(file, "OptionSetCommandLineText", config.ExtensionConfig.OptionSetCommandLineText, true) |
                     UpdateConfigAppSetting(file, "PropertyEnumMappings", config.ExtensionConfig.PropertyEnumMappings) |

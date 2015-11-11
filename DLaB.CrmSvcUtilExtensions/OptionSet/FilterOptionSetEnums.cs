@@ -39,14 +39,17 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
     /// </summary>
     public sealed class FilterOptionSetEnums : ICodeWriterFilterService
     {
-        private HashSet<string> GeneratedOptionSets { get; set; }
+        private HashSet<string> GeneratedOptionSets { get; }
 
-        private ICodeWriterFilterService DefaultService { get; set; }
+        private ICodeWriterFilterService DefaultService { get; }
+
+        private string InvalidCSharpNamePrefix { get; }
 
         public FilterOptionSetEnums(ICodeWriterFilterService defaultService)
         {
             DefaultService = defaultService;
             GeneratedOptionSets = new HashSet<string>();
+            InvalidCSharpNamePrefix = ConfigHelper.GetAppSettingOrDefault("InvalidCSharpNamePrefix", "_");
         }
 
         /// <summary>
@@ -95,7 +98,7 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
             return generate;
         }
 
-        private static void HandleDuplicateNames(OptionSetMetadataBase optionSetMetadata)
+        private void HandleDuplicateNames(OptionSetMetadataBase optionSetMetadata)
         {
             var nonBooleanOptionSet = optionSetMetadata as OptionSetMetadata;
             if (nonBooleanOptionSet == null) { return; }
@@ -177,19 +180,19 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
         /// Fix to handle invalid C# naming conventions for optionSets
         /// </summary>
         /// <param name="optionMetadata"></param>
-        private static void HandleInvalidCSharpName(OptionMetadata optionMetadata)
+        private void HandleInvalidCSharpName(OptionMetadata optionMetadata)
         {
             optionMetadata.Label = new Label(GetValidCSharpName(optionMetadata), 1033);
         }
 
-        private static string GetValidCSharpName(OptionMetadata optionMetadata)
+        private string GetValidCSharpName(OptionMetadata optionMetadata)
         {
             string label = optionMetadata.Label.GetLocalOrDefaultText();
             //remove spaces and special characters
             label = Regex.Replace(label, @"[^a-zA-Z0-9_]", string.Empty);
             if (label.Length > 0 && !char.IsLetter(label, 0))
             {
-                label = "_" + label;
+                label = InvalidCSharpNamePrefix + label;
             }
             return label;
         }

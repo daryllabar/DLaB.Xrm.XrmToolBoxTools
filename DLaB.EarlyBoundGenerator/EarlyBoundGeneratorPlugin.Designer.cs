@@ -71,6 +71,8 @@ namespace DLaB.EarlyBoundGenerator
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ChkAddDebuggerNonUserCode = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.TxtInvalidCSharpNamePrefix = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.LblOptionSetPath = new System.Windows.Forms.Label();
             this.ChkCreateOneOptionSetFile = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -309,7 +311,7 @@ namespace DLaB.EarlyBoundGenerator
             // LblOptionSetsDirectory
             // 
             this.LblOptionSetsDirectory.AutoSize = true;
-            this.LblOptionSetsDirectory.Location = new System.Drawing.Point(341, 11);
+            this.LblOptionSetsDirectory.Location = new System.Drawing.Point(379, 11);
             this.LblOptionSetsDirectory.Name = "LblOptionSetsDirectory";
             this.LblOptionSetsDirectory.Size = new System.Drawing.Size(129, 13);
             this.LblOptionSetsDirectory.TabIndex = 16;
@@ -319,9 +321,9 @@ namespace DLaB.EarlyBoundGenerator
             // 
             this.TxtOptionSetPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtOptionSetPath.Location = new System.Drawing.Point(483, 8);
+            this.TxtOptionSetPath.Location = new System.Drawing.Point(525, 8);
             this.TxtOptionSetPath.Name = "TxtOptionSetPath";
-            this.TxtOptionSetPath.Size = new System.Drawing.Size(348, 20);
+            this.TxtOptionSetPath.Size = new System.Drawing.Size(306, 20);
             this.TxtOptionSetPath.TabIndex = 15;
             // 
             // BtnOpenEntityPathDialog
@@ -564,6 +566,8 @@ namespace DLaB.EarlyBoundGenerator
             // tabPage2
             // 
             this.tabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.tabPage2.Controls.Add(this.TxtInvalidCSharpNamePrefix);
+            this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.LblOptionSetsDirectory);
             this.tabPage2.Controls.Add(this.LblOptionSetPath);
             this.tabPage2.Controls.Add(this.ChkCreateOneOptionSetFile);
@@ -579,10 +583,26 @@ namespace DLaB.EarlyBoundGenerator
             this.tabPage2.Text = "Option Sets";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // TxtInvalidCSharpNamePrefix
+            // 
+            this.TxtInvalidCSharpNamePrefix.Location = new System.Drawing.Point(288, 34);
+            this.TxtInvalidCSharpNamePrefix.Name = "TxtInvalidCSharpNamePrefix";
+            this.TxtInvalidCSharpNamePrefix.Size = new System.Drawing.Size(45, 20);
+            this.TxtInvalidCSharpNamePrefix.TabIndex = 29;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(161, 37);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(121, 13);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "Prefix For Invalid Names";
+            // 
             // LblOptionSetPath
             // 
             this.LblOptionSetPath.AutoSize = true;
-            this.LblOptionSetPath.Location = new System.Drawing.Point(341, 11);
+            this.LblOptionSetPath.Location = new System.Drawing.Point(379, 11);
             this.LblOptionSetPath.Name = "LblOptionSetPath";
             this.LblOptionSetPath.Size = new System.Drawing.Size(124, 13);
             this.LblOptionSetPath.TabIndex = 27;
@@ -789,5 +809,7 @@ namespace DLaB.EarlyBoundGenerator
         private System.Windows.Forms.CheckBox ChkRemoveRuntimeComment;
         private System.Windows.Forms.CheckBox ChkGenerateAttributeNameConsts;
         private System.Windows.Forms.CheckBox ChkAddFilesToProject;
+        private System.Windows.Forms.TextBox TxtInvalidCSharpNamePrefix;
+        private System.Windows.Forms.Label label3;
     }
 }

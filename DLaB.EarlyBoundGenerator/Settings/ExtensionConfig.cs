@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace DLaB.EarlyBoundGenerator.Settings
@@ -59,6 +55,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// Specifies the generation of Enum properties for option sets
         /// </summary>
         public bool GenerateEnumProperties { get; set; }
+        /// <summary>
+        /// Specifies the Prefix to be used for OptionSets that would normally start with an invalid first character ie "1st"
+        /// </summary>
+        public string InvalidCSharpNamePrefix { get; set; }
         /// <summary>
         /// Pipe Delimited String containing the logical names of Option Set Names to not generate
         /// </summary>
@@ -123,6 +123,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 ActionsToSkip = null,
                 EntitiesToSkip = null,
                 EntityAttributeSpecifiedNames = null,
+                InvalidCSharpNamePrefix = "_",
                 OptionSetsToSkip = "organization_currencyformatcode|quote_statuscode",
                 PropertyEnumMappings =
                     "OpportunityProduct.OpportunityStateCode,opportunity_statuscode|" +
@@ -161,6 +162,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public string ActionsToSkip { get; set; }
         public string EntitiesToSkip { get; set; }
         public string EntityAttributeSpecifiedNames { get; set; }
+        public string InvalidCSharpNamePrefix { get; set; }
         public string OptionSetsToSkip { get; set; }
         public string PropertyEnumMappings { get; set; }
         public string UnmappedProperties { get; set; }

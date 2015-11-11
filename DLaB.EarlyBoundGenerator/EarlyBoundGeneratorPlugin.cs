@@ -53,11 +53,12 @@ namespace DLaB.EarlyBoundGenerator
             ChkRemoveRuntimeComment.Checked = Settings.ExtensionConfig.RemoveRuntimeVersionComment;
             ChkUseTFS.Checked = Settings.ExtensionConfig.UseTfsToCheckoutFiles;
             ChkUseXrmClient.Checked = Settings.ExtensionConfig.UseXrmClient;
-            TxtNamespace.Text = Settings.Namespace;
-            TxtServiceContextName.Text = Settings.ServiceContextName;
             TxtActionPath.Text = Settings.ActionOutPath;
             TxtEntityPath.Text = Settings.EntityOutPath;
+            TxtInvalidCSharpNamePrefix.Text = Settings.ExtensionConfig.InvalidCSharpNamePrefix;
+            TxtNamespace.Text = Settings.Namespace;
             TxtOptionSetPath.Text = Settings.OptionSetOutPath;
+            TxtServiceContextName.Text = Settings.ServiceContextName;
 
             // Hide or show labels based on checked preferences
             LblActionsDirectory.Visible = ChkCreateOneActionFile.Checked;
@@ -238,6 +239,7 @@ namespace DLaB.EarlyBoundGenerator
             Settings.ExtensionConfig.GenerateAttributeNameConsts = ChkGenerateAttributeNameConsts.Checked;
             Settings.ExtensionConfig.GenerateAnonymousTypeConstructor = ChkGenerateAnonymousTypeConstructor.Checked;
             Settings.ExtensionConfig.GenerateEnumProperties = ChkGenerateOptionSetEnums.Checked;
+            Settings.ExtensionConfig.InvalidCSharpNamePrefix = TxtInvalidCSharpNamePrefix.Text;
             Settings.ExtensionConfig.RemoveRuntimeVersionComment = ChkRemoveRuntimeComment.Checked;
             Settings.ExtensionConfig.UseXrmClient = ChkUseXrmClient.Checked;
             Settings.ExtensionConfig.UseTfsToCheckoutFiles = ChkUseTFS.Checked;
