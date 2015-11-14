@@ -41,15 +41,19 @@
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Client">
       <Private>True</Private>
+      <HintPath>..\Vendor\Microsoft.TeamFoundation.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Common">
       <Private>True</Private>
+      <HintPath>..\Vendor\Microsoft.TeamFoundation.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.VersionControl.Client">
       <Private>True</Private>
+      <HintPath>..\Vendor\Microsoft.TeamFoundation.VersionControl.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.VersionControl.Common">
       <Private>True</Private>
+      <HintPath>..\Vendor\Microsoft.TeamFoundation.VersionControl.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xrm.Client.CodeGeneration, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -61,7 +65,7 @@
     </Reference>
     <Reference Include="Microsoft.Xrm.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Repos\XrmUnitTest\References\Microsoft.Xrm.Sdk.dll</HintPath>
+      <HintPath>..\XrmToolBox\Microsoft.Xrm.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />

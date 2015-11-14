@@ -210,3 +210,9 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+
+
+### DLaB.Xrm.XrmToolBoxTools specific
+
+!Vendor/*
+!XrmToolBox\Microsoft.Xrm.Sdk.dll
