@@ -1,4 +1,4 @@
-# DLaB.Xrm.XrmToolBoxTools
+# DLaB.Xrm.XrmToolBoxTools [![Build status](https://ci.appveyor.com/api/projects/status/jj45w1o1wguy3ty0?svg=true)](https://ci.appveyor.com/project/daryllabar/dlab-xrm-xrmtoolboxtools)
 
 [![Join the chat at https://gitter.im/daryllabar/DLaB.Xrm.XrmToolBoxTools](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/daryllabar/DLaB.Xrm.XrmToolBoxTools?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
