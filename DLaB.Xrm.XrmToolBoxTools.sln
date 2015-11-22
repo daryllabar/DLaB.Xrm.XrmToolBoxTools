@@ -29,6 +29,18 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.XrmToolboxCommon", "DLaB.XrmToolBoxCommon\DLaB.XrmToolboxCommon.csproj", "{B024C05F-39E5-4670-A6AE-BC1A96B6FF29}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.AttributeManager", "DLaB.AttributeManager\DLaB.AttributeManager.csproj", "{FCB8A4E4-622B-413A-A531-B612E5F1436C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B024C05F-39E5-4670-A6AE-BC1A96B6FF29} = {B024C05F-39E5-4670-A6AE-BC1A96B6FF29}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Vendor", "Vendor", "{FA123BF3-0F9D-40D6-8F68-AAAC9984ECE9}"
+	ProjectSection(SolutionItems) = preProject
+		Vendor\Microsoft.TeamFoundation.Client.dll = Vendor\Microsoft.TeamFoundation.Client.dll
+		Vendor\Microsoft.TeamFoundation.Common.dll = Vendor\Microsoft.TeamFoundation.Common.dll
+		Vendor\Microsoft.TeamFoundation.VersionControl.Client.dll = Vendor\Microsoft.TeamFoundation.VersionControl.Client.dll
+		Vendor\Microsoft.TeamFoundation.VersionControl.Common.dll = Vendor\Microsoft.TeamFoundation.VersionControl.Common.dll
+		Vendor\Microsoft.TeamFoundation.VersionControl.Common.Integration.dll = Vendor\Microsoft.TeamFoundation.VersionControl.Common.Integration.dll
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
