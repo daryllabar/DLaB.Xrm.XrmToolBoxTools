@@ -187,7 +187,7 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
 
         private string GetValidCSharpName(OptionMetadata optionMetadata)
         {
-            string label = optionMetadata.Label.GetLocalOrDefaultText();
+            string label = optionMetadata.Label.GetLocalOrDefaultText(string.Empty);
             //remove spaces and special characters
             label = Regex.Replace(label, @"[^a-zA-Z0-9_]", string.Empty);
             if (label.Length > 0 && !char.IsLetter(label, 0))
