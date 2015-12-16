@@ -53,12 +53,17 @@ namespace DLaB.EarlyBoundGenerator.Settings
         public bool GenerateAnonymousTypeConstructor { get; set; }
         /// <summary>
         /// Specifies the generation of Enum properties for option sets
-        /// </summary>
+        /// </summary>                                          
         public bool GenerateEnumProperties { get; set; }
         /// <summary>
         /// Specifies the Prefix to be used for OptionSets that would normally start with an invalid first character ie "1st"
         /// </summary>
         public string InvalidCSharpNamePrefix { get; set; }
+        /// <summary>
+        /// Defines that Entities should be created with editable createdby, createdon, modifiedby, modifiedon, owningbusinessunit, owningteam, and owninguser properties.
+        /// Helpful for writing linq statements where those attributes are wanting to be returned in the select
+        /// </summary>
+        public bool MakeReadonlyFieldsEditable { get; set; }
         /// <summary>
         /// Pipe Delimited String containing the logical names of Option Set Names to not generate
         /// </summary>
@@ -124,6 +129,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 EntitiesToSkip = null,
                 EntityAttributeSpecifiedNames = null,
                 InvalidCSharpNamePrefix = "_",
+                MakeReadonlyFieldsEditable = false,
                 OptionSetsToSkip = "organization_currencyformatcode|quote_statuscode",
                 PropertyEnumMappings =
                     "OpportunityProduct.OpportunityStateCode,opportunity_statuscode|" +
@@ -163,6 +169,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public string EntitiesToSkip { get; set; }
         public string EntityAttributeSpecifiedNames { get; set; }
         public string InvalidCSharpNamePrefix { get; set; }
+        public bool? MakeReadonlyFieldsEditable { get; set; }
         public string OptionSetsToSkip { get; set; }
         public string PropertyEnumMappings { get; set; }
         public string UnmappedProperties { get; set; }

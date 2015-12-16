@@ -148,20 +148,25 @@ namespace DLaB.EarlyBoundGenerator
 
             if (creationType == CreationType.Actions && config.ExtensionConfig.CreateOneFilePerAction)
             {
-                return Path.Combine(filePath, "Actions.cs");
+                filePath = Path.Combine(filePath, "Actions.cs");
             }
             else if (creationType == CreationType.Entities && config.ExtensionConfig.CreateOneFilePerEntity)
             {
-                return Path.Combine(filePath, config.ServiceContextName + ".cs");
+                var entities = config.ServiceContextName;
+
+                if (string.IsNullOrWhiteSpace(entities))
+                {
+                    entities = "Entities";
+                }
+
+                filePath = Path.Combine(filePath, entities + ".cs");
             }
             else if (creationType == CreationType.OptionSets && config.ExtensionConfig.CreateOneFilePerOptionSet)
             {
-                return Path.Combine(filePath, "OptionSets.cs");
+                filePath = Path.Combine(filePath, "OptionSets.cs");
             }
-            else
-            {
-                return filePath;
-            }
+
+            return filePath;
         }
 
         private static string GetSafeArgs(Config config, Process p)
@@ -213,6 +218,7 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "GenerateAnonymousTypeConstructor", config.ExtensionConfig.GenerateAnonymousTypeConstructor.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateEnumProperties", config.ExtensionConfig.GenerateEnumProperties.ToString()) |
                     UpdateConfigAppSetting(file, "InvalidCSharpNamePrefix", config.ExtensionConfig.InvalidCSharpNamePrefix) |
+                    UpdateConfigAppSetting(file, "MakeReadonlyFieldsEditable", config.ExtensionConfig.MakeReadonlyFieldsEditable.ToString()) |
                     UpdateConfigAppSetting(file, "OptionSetsToSkip", config.ExtensionConfig.OptionSetsToSkip) |
                     UpdateConfigAppSetting(file, "OptionSetCommandLineText", config.ExtensionConfig.OptionSetCommandLineText, true) |
                     UpdateConfigAppSetting(file, "PropertyEnumMappings", config.ExtensionConfig.PropertyEnumMappings) |

@@ -83,6 +83,7 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnCreateActions = new System.Windows.Forms.Button();
             this.TxtActionPath = new System.Windows.Forms.TextBox();
             this.LblActionPath = new System.Windows.Forms.Label();
+            this.ChkMakeReadonlyFieldsEditable = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -478,6 +479,7 @@ namespace DLaB.EarlyBoundGenerator
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.ChkMakeReadonlyFieldsEditable);
             this.tabPage1.Controls.Add(this.ChkGenerateAttributeNameConsts);
             this.tabPage1.Controls.Add(this.ChkGenerateAnonymousTypeConstructor);
             this.tabPage1.Controls.Add(this.LblEntitiesDirectory);
@@ -727,6 +729,17 @@ namespace DLaB.EarlyBoundGenerator
             this.LblActionPath.TabIndex = 25;
             this.LblActionPath.Text = "Action Relative Path:";
             // 
+            // ChkMakeReadonlyFieldsEditable
+            // 
+            this.ChkMakeReadonlyFieldsEditable.AutoSize = true;
+            this.ChkMakeReadonlyFieldsEditable.Location = new System.Drawing.Point(483, 70);
+            this.ChkMakeReadonlyFieldsEditable.Name = "ChkMakeReadonlyFieldsEditable";
+            this.ChkMakeReadonlyFieldsEditable.Size = new System.Drawing.Size(172, 17);
+            this.ChkMakeReadonlyFieldsEditable.TabIndex = 28;
+            this.ChkMakeReadonlyFieldsEditable.Text = "Make Readonly Fields Editable";
+            this.ChkMakeReadonlyFieldsEditable.UseVisualStyleBackColor = true;
+            this.ChkMakeReadonlyFieldsEditable.MouseEnter += new System.EventHandler(this.ChkMakeReadonlyFieldsEditable_MouseEnter);
+            // 
             // EarlyBoundGeneratorPlugin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -811,5 +824,6 @@ namespace DLaB.EarlyBoundGenerator
         private System.Windows.Forms.CheckBox ChkAddFilesToProject;
         private System.Windows.Forms.TextBox TxtInvalidCSharpNamePrefix;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox ChkMakeReadonlyFieldsEditable;
     }
 }
