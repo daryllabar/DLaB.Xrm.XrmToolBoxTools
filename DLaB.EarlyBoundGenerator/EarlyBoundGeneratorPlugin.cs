@@ -46,7 +46,9 @@ namespace DLaB.EarlyBoundGenerator
             ChkCreateOneEntityFile.Checked = Settings.ExtensionConfig.CreateOneFilePerEntity;
             ChkCreateOneOptionSetFile.Checked = Settings.ExtensionConfig.CreateOneFilePerOptionSet;
             ChkIncludeCommandLine.Checked = Settings.IncludeCommandLine;
+            ChkMakeReadonlyFieldsEditable.Checked = Settings.ExtensionConfig.MakeReadonlyFieldsEditable;
             ChkMaskPassword.Checked = Settings.MaskPassword;
+
             ChkGenerateAttributeNameConsts.Checked = Settings.ExtensionConfig.GenerateAttributeNameConsts;
             ChkGenerateAnonymousTypeConstructor.Checked = Settings.ExtensionConfig.GenerateAnonymousTypeConstructor;
             ChkGenerateOptionSetEnums.Checked = Settings.ExtensionConfig.GenerateEnumProperties;
@@ -240,6 +242,7 @@ namespace DLaB.EarlyBoundGenerator
             Settings.ExtensionConfig.GenerateAnonymousTypeConstructor = ChkGenerateAnonymousTypeConstructor.Checked;
             Settings.ExtensionConfig.GenerateEnumProperties = ChkGenerateOptionSetEnums.Checked;
             Settings.ExtensionConfig.InvalidCSharpNamePrefix = TxtInvalidCSharpNamePrefix.Text;
+            Settings.ExtensionConfig.MakeReadonlyFieldsEditable = ChkMakeReadonlyFieldsEditable.Checked;
             Settings.ExtensionConfig.RemoveRuntimeVersionComment = ChkRemoveRuntimeComment.Checked;
             Settings.ExtensionConfig.UseXrmClient = ChkUseXrmClient.Checked;
             Settings.ExtensionConfig.UseTfsToCheckoutFiles = ChkUseTFS.Checked;
@@ -247,7 +250,7 @@ namespace DLaB.EarlyBoundGenerator
             Settings.MaskPassword = ChkMaskPassword.Checked;
             Settings.Namespace = TxtNamespace.Text;
             Settings.OptionSetOutPath = TxtOptionSetPath.Text;
-            Settings.ServiceContextName = TxtServiceContextName.Text;
+            Settings.ServiceContextName = string.IsNullOrWhiteSpace(TxtServiceContextName.Text) ? null : TxtServiceContextName.Text;
         }
 
         private void EnableForm(bool enable)
@@ -450,6 +453,11 @@ namespace DLaB.EarlyBoundGenerator
         private void ChkIncludeCommandLine_MouseEnter(object sender, EventArgs e)
         {
             TxtHelp.Text = @"Specifies whether to include the command line in the early bound class used to generate it.";
+        }
+
+        private void ChkMakeReadonlyFieldsEditable_MouseEnter(object sender, EventArgs e)
+        {
+            TxtHelp.Text = @"Defines that Entities should be created with editable createdby, createdon, modifiedby, modifiedon, owningbusinessunit, owningteam, and owninguser properties. Helpful for writing linq statements where those attributes are wanting to be returned in the select.";
         }
 
         private void ChkMaskPassword_MouseEnter(object sender, EventArgs e)

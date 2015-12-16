@@ -188,6 +188,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 GenerateAnonymousTypeConstructor = pocoConfig.GenerateAnonymousTypeConstructor.GetValueOrDefault(defaultConfig.GenerateAnonymousTypeConstructor),
                 GenerateEnumProperties = pocoConfig.GenerateEnumProperties.GetValueOrDefault(defaultConfig.GenerateEnumProperties),
                 InvalidCSharpNamePrefix = pocoConfig.InvalidCSharpNamePrefix ?? defaultConfig.InvalidCSharpNamePrefix,
+                MakeReadonlyFieldsEditable = pocoConfig.MakeReadonlyFieldsEditable ?? defaultConfig.MakeReadonlyFieldsEditable,
                 OptionSetsToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.OptionSetsToSkip, defaultConfig.OptionSetsToSkip),
                 PropertyEnumMappings = AddPipeDelimitedMissingDefaultValues(pocoConfig.PropertyEnumMappings, defaultConfig.PropertyEnumMappings),
                 RemoveRuntimeVersionComment = pocoConfig.RemoveRuntimeVersionComment.GetValueOrDefault(defaultConfig.RemoveRuntimeVersionComment),
@@ -280,9 +281,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
             return new Config
             {
                 IncludeCommandLine = true,
-                MaskPassword = true,
+                MaskPassword = true,    
                 ExtensionArguments = new List<Argument>(new [] {
-                
                     // Actions
                     new Argument(CreationType.Actions, "codecustomization", "DLaB.CrmSvcUtilExtensions.Action.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.Actions, "codegenerationservice", "DLaB.CrmSvcUtilExtensions.Action.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions"),
@@ -291,6 +291,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     new Argument(CreationType.Entities, "codegenerationservice", "DLaB.CrmSvcUtilExtensions.Entity.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.Entities, "codewriterfilter", "DLaB.CrmSvcUtilExtensions.Entity.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.Entities, "namingservice", "DLaB.CrmSvcUtilExtensions.Entity.OverridePropertyNames,DLaB.CrmSvcUtilExtensions"),
+                    new Argument(CreationType.Entities, "metadataproviderservice", "DLaB.CrmSvcUtilExtensions.Entity.MetadataProviderService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.OptionSets, "codecustomization", "DLaB.CrmSvcUtilExtensions.OptionSet.CreateOptionSetEnums,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.OptionSets, "codegenerationservice", "DLaB.CrmSvcUtilExtensions.OptionSet.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.OptionSets, "codewriterfilter", "DLaB.CrmSvcUtilExtensions.OptionSet.FilterOptionSetEnums,DLaB.CrmSvcUtilExtensions")
@@ -376,7 +377,14 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
             if (argument == null)
             {
-                UserArguments.Add(new Argument {Name = setting, SettingType = creationType, Value = value});
+                if (value != null)
+                {
+                    UserArguments.Add(new Argument {Name = setting, SettingType = creationType, Value = value});
+                }
+            }
+            else if (value == null)
+            {
+                UserArguments.Remove(argument);
             }
             else
             {

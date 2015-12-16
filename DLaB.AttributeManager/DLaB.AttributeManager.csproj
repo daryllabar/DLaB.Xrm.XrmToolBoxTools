@@ -40,9 +40,6 @@
     <Reference Include="DLaB.Xrm.Entities">
       <HintPath>..\References\DLaB.Xrm.Entities.dll</HintPath>
     </Reference>
-    <Reference Include="DLaB.XrmToolboxCommon">
-      <HintPath>..\DLaB.XrmToolBoxCommon\bin\Debug\DLaB.XrmToolboxCommon.dll</HintPath>
-    </Reference>
     <Reference Include="McTools.Xrm.Connection">
       <HintPath>..\XrmToolBox\McTools.Xrm.Connection.dll</HintPath>
     </Reference>
@@ -96,6 +93,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DLaB.XrmToolBoxCommon\DLaB.XrmToolboxCommon.csproj">
+      <Project>{b024c05f-39e5-4670-a6ae-bc1a96b6ff29}</Project>
+      <Name>DLaB.XrmToolboxCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -92,6 +92,7 @@
     <Compile Include="ConfigHelper.cs" />
     <Compile Include="Entity\AnonymousTypeConstructorGenerator.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Entity\MetadataProviderService.cs" />
     <Compile Include="OptionSet\CreateOptionSetEnums.cs" />
     <Compile Include="Entity\CustomizeCodeDomService.cs" />
     <Compile Include="Entity\EnumPropertyGenerator.cs" />
