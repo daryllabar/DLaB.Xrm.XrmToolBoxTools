@@ -109,7 +109,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             if (propertyLogicalName == null) { throw new Exception("Unable to determine property Logical Name"); }
 
             var attribute = data.Attributes.FirstOrDefault(a => a.LogicalName == propertyLogicalName);
-            var picklist = attribute as PicklistAttributeMetadata;
+            var picklist = attribute as EnumAttributeMetadata;
             string specifiedEnum;
             if (picklist == null) { return null; }
 

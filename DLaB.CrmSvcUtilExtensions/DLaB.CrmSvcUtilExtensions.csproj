@@ -276,8 +276,10 @@
 xcopy /I /Y "$(TargetPath)" "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
 
 REM Move Required Microsoft dlls and CrmSvcUtil to the CrmSvcUtil Dir
-xcopy /I /Y "$(TargetDir)Microsoft.TeamFoundation.C*.dll"  "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(TargetDir)Microsoft.TeamFoundation.Client.dll"  "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(TargetDir)Microsoft.TeamFoundation.Co*.dll"  "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
 xcopy /I /Y "$(TargetDir)Microsoft.TeamFoundation.V*.dll" "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y  "$(TargetDir)Microsoft.VisualStudio.Services.*.dll"  "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
 xcopy /I /Y  "$(TargetDir)Microsoft.Xrm.Client.CodeGeneration.dll"  "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
 xcopy /I /Y  "$(TargetDir)Microsoft.Xrm.Client.dll"  "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
 xcopy /I /Y  "$(TargetDir)Microsoft.Xrm.Portal.dll"  "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"

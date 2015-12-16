@@ -125,11 +125,11 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
             }
         }
 
-        private static HashSet<string> _optionSetsToSkip = ConfigHelper.GetHashSet("OptionSetsToSkip");
+        private static readonly HashSet<string> OptionSetsToSkip = ConfigHelper.GetHashSet("OptionSetsToSkip");
 
         private bool Skip(string name)
         {
-            return _optionSetsToSkip.Contains(name.ToLower()) || name.ToLower().StartsWith("duplicaterule_");
+            return OptionSetsToSkip.Contains(name.ToLower());
         }
     }
 }
