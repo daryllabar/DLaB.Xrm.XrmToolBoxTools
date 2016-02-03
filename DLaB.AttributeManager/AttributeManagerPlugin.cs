@@ -349,7 +349,7 @@ namespace DLaB.AttributeManager
         private StringFormat GetStringFormat()
         {
             StringFormat format;
-            switch (strAttCmbFormat.SelectedText)
+            switch (strAttCmbFormat.SelectedItem.ToString())
             {
                 case "Email":
                     format = StringFormat.Email;

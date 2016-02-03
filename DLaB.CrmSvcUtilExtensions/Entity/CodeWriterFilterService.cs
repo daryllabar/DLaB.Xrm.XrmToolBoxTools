@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using DLaB.CrmSvcUtilExtensions.OptionSet;
+﻿using DLaB.CrmSvcUtilExtensions.OptionSet;
 using Microsoft.Crm.Services.Utility;
 using Microsoft.Xrm.Sdk.Metadata;
 using System;
@@ -9,8 +8,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
 {
     class CodeWriterFilterService  : ICodeWriterFilterService
     {
-        private ICodeWriterFilterService DefaultService { get; set; }
-        public static Dictionary<Guid, OptionSetMetadataBase> OptionSetMetadata { get; set; }
+        private ICodeWriterFilterService DefaultService { get; }
         /// <summary>
         /// Contains Meta Data for entities, key'd by logical name
         /// </summary>
@@ -20,7 +18,6 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
 
         static CodeWriterFilterService()
         {
-            OptionSetMetadata = new Dictionary<Guid, OptionSetMetadataBase>();
             EntityMetadata = new Dictionary<string, EntityMetadata>();
 
         }
@@ -71,10 +68,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
 
         public bool GenerateOptionSet(OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
         {
-            if (EnumFilter.GenerateOptionSet(optionSetMetadata, services))
-            {
-                OptionSetMetadata.Add(optionSetMetadata.MetadataId.GetValueOrDefault(), optionSetMetadata);
-            }
+            EnumFilter.GenerateOptionSet(optionSetMetadata, services);
             return DefaultService.GenerateOptionSet(optionSetMetadata, services);
         }
 

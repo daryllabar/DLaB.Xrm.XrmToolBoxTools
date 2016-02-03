@@ -257,8 +257,8 @@ namespace DLaB.AttributeManager
                     AssertInvalidState("Unable to Remove Existing Attribute! Attribute " + existingSchemaName + " does not exist!");
                 }
 
-                // Can only Remove existing if Tmp already exists, or temp will be created, or if performing rename and there is a Create
-                if (!(state.Temp != null || stepsToPerform.HasFlag(Steps.CreateTemp) || (!string.Equals(existingSchemaName, newSchemaName, StringComparison.OrdinalIgnoreCase) && stepsToPerform.HasFlag(Steps.CreateNewAttribute))))
+                // Can only Remove existing if Tmp already exists, or temp will be created, or if performing rename and there is a Create Or the New Already exists
+                if (!(state.Temp != null || stepsToPerform.HasFlag(Steps.CreateTemp) || (!string.Equals(existingSchemaName, newSchemaName, StringComparison.OrdinalIgnoreCase) && (stepsToPerform.HasFlag(Steps.CreateNewAttribute) || state.New != null))))
                 {
                     AssertInvalidState("Unable to Remove Existing Attribute!  Temporary Attribute " + existingSchemaName + TempPostfix + " does not exist!");
                 }
@@ -381,6 +381,11 @@ namespace DLaB.AttributeManager
                         var sq = service.GetEntity<SavedQuery>(dependentId);
                             err = $"{err} ({sq.Name} - {sq.CreatedBy.Name})";
                         break;
+
+                    case componenttype.Workflow:
+                        var workflow = service.GetEntity<Workflow>(d.DependentComponentObjectId.GetValueOrDefault());
+                        err = err + " " + workflow.Name + " (" + workflow.CategoryEnum.ToString() + ")";
+                            break;
                 }
 
                 errors.Add(err);
@@ -454,6 +459,7 @@ namespace DLaB.AttributeManager
 
             foreach (var workflow in service.GetEntitiesById<Workflow>(depends.Select(d => d.DependentComponentObjectId.GetValueOrDefault())))
             {
+                Trace("Updating {0} - {1} ({2})", workflow.CategoryEnum.ToString(), workflow.Name, workflow.Id);
                 workflow.Xaml = workflow.Xaml.Replace("\"" + from.LogicalName + "\"", "\"" + to.LogicalName + "\"");
                 var activate = workflow.StateCode.Value == WorkflowState.Activated;
                 if (activate)
@@ -589,7 +595,7 @@ namespace DLaB.AttributeManager
             {
                 foreach (var request in requests)
                 {
-                    service.Save(((UpdateRequest)request).Target);
+                    service.Update(((UpdateRequest)request).Target);
                 }
             }
         }

@@ -205,12 +205,8 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             var invokeValueGetValue = new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("value"), "Value");
 
             // if(invokeContainsKey){return invokeGetAttributeValue;}else{return null}
-            get.Statements.Add(new CodeConditionStatement(invokeContainsKey,
-                new CodeStatement[]
-                {
-                    declareAndSetValue,
-                    new CodeConditionStatement(valueNeNull, new CodeMethodReturnStatement(invokeValueGetValue))
-                }));
+            get.Statements.Add(new CodeConditionStatement(invokeContainsKey, declareAndSetValue, 
+                new CodeConditionStatement(valueNeNull, new CodeMethodReturnStatement(invokeValueGetValue))));
 
             // return null;
             get.Statements.Add(new CodeMethodReturnStatement(new CodePrimitiveExpression(null)));

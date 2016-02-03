@@ -6,11 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", "{07E3CEC6-C64C-4967-9C8C-634FF91E7C05}"
 	ProjectSection(SolutionItems) = preProject
 		References\CrmSvcUtil.exe = References\CrmSvcUtil.exe
-		References\DLaB.Common.dll = References\DLaB.Common.dll
-		References\DLaB.Xrm.dll = References\DLaB.Xrm.dll
-		References\DLaB.Xrm.Entities.dll = References\DLaB.Xrm.Entities.dll
-		XrmToolBox\Microsoft.Crm.Sdk.Proxy.dll = XrmToolBox\Microsoft.Crm.Sdk.Proxy.dll
-		References\Microsoft.Xrm.Client.CodeGeneration.dll = References\Microsoft.Xrm.Client.CodeGeneration.dll
 		References\SetAssemblyVersion.exe = References\SetAssemblyVersion.exe
 	EndProjectSection
 EndProject
@@ -24,18 +19,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.XrmToolboxCommon", "DLaB.XrmToolBoxCommon\DLaB.XrmToolboxCommon.csproj", "{B024C05F-39E5-4670-A6AE-BC1A96B6FF29}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.AttributeManager", "DLaB.AttributeManager\DLaB.AttributeManager.csproj", "{FCB8A4E4-622B-413A-A531-B612E5F1436C}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XrmToolBox", "XrmToolBox", "{007FAC98-E7C2-4924-9F08-8DD26A2D35DD}"
-	ProjectSection(SolutionItems) = preProject
-		XrmToolBox\McTools.Xrm.Connection.dll = XrmToolBox\McTools.Xrm.Connection.dll
-		XrmToolBox\McTools.Xrm.Connection.WinForms.dll = XrmToolBox\McTools.Xrm.Connection.WinForms.dll
-		XrmToolBox\Microsoft.Xrm.Client.dll = XrmToolBox\Microsoft.Xrm.Client.dll
-		References\Microsoft.Xrm.Portal.dll = References\Microsoft.Xrm.Portal.dll
-		XrmToolBox\Microsoft.Xrm.Sdk.Deployment.dll = XrmToolBox\Microsoft.Xrm.Sdk.Deployment.dll
-		XrmToolBox\Microsoft.Xrm.Sdk.dll = XrmToolBox\Microsoft.Xrm.Sdk.dll
-		XrmToolBox\XrmToolBox.exe = XrmToolBox\XrmToolBox.exe
-		XrmToolBox\XrmToolBox.Extensibility.dll = XrmToolBox\XrmToolBox.Extensibility.dll
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,8 +45,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{007FAC98-E7C2-4924-9F08-8DD26A2D35DD} = {07E3CEC6-C64C-4967-9C8C-634FF91E7C05}
 	EndGlobalSection
 EndGlobal

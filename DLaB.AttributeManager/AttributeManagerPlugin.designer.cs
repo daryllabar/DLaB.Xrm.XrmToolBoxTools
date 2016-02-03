@@ -90,13 +90,13 @@ namespace DLaB.AttributeManager
             this.tabOptionSetAttribute = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.pOptionType = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.optAttDefaultValueCmb = new System.Windows.Forms.ComboBox();
+            this.optAttGlobalOptionSetLbl = new System.Windows.Forms.Label();
+            this.optAttGlobalOptionSetCmb = new System.Windows.Forms.ComboBox();
             this.tabLog = new System.Windows.Forms.TabPage();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.optAttGlobalOptionSetLbl = new System.Windows.Forms.Label();
-            this.optAttGlobalOptionSetCmb = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.optAttDefaultValueCmb = new System.Windows.Forms.ComboBox();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
@@ -777,21 +777,30 @@ namespace DLaB.AttributeManager
             this.pOptionType.Size = new System.Drawing.Size(532, 194);
             this.pOptionType.TabIndex = 0;
             // 
-            // tabLog
+            // label8
             // 
-            this.tabLog.Controls.Add(this.txtLog);
-            this.tabLog.Location = new System.Drawing.Point(4, 22);
-            this.tabLog.Name = "tabLog";
-            this.tabLog.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLog.Size = new System.Drawing.Size(669, 215);
-            this.tabLog.TabIndex = 0;
-            this.tabLog.Text = "Log";
-            this.tabLog.UseVisualStyleBackColor = true;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 33);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(74, 13);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Default Value:";
             // 
-            // contextMenuStrip1
+            // optAttDefaultValueCmb
             // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.optAttDefaultValueCmb.DisplayMember = "DisplayName";
+            this.optAttDefaultValueCmb.FormattingEnabled = true;
+            this.optAttDefaultValueCmb.Items.AddRange(new object[] {
+            "None",
+            "Duration",
+            "TimeZone",
+            "Language",
+            "Locale"});
+            this.optAttDefaultValueCmb.Location = new System.Drawing.Point(83, 30);
+            this.optAttDefaultValueCmb.Name = "optAttDefaultValueCmb";
+            this.optAttDefaultValueCmb.Size = new System.Drawing.Size(171, 21);
+            this.optAttDefaultValueCmb.TabIndex = 10;
+            this.optAttDefaultValueCmb.ValueMember = "Value";
             // 
             // optAttGlobalOptionSetLbl
             // 
@@ -819,30 +828,21 @@ namespace DLaB.AttributeManager
             this.optAttGlobalOptionSetCmb.ValueMember = "Value";
             this.optAttGlobalOptionSetCmb.SelectionChangeCommitted += new System.EventHandler(this.optAttGlobalOptionSetCmb_SelectionChangeCommitted);
             // 
-            // label8
+            // tabLog
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 33);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(74, 13);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Default Value:";
+            this.tabLog.Controls.Add(this.txtLog);
+            this.tabLog.Location = new System.Drawing.Point(4, 22);
+            this.tabLog.Name = "tabLog";
+            this.tabLog.Padding = new System.Windows.Forms.Padding(3);
+            this.tabLog.Size = new System.Drawing.Size(669, 215);
+            this.tabLog.TabIndex = 0;
+            this.tabLog.Text = "Log";
+            this.tabLog.UseVisualStyleBackColor = true;
             // 
-            // optAttDefaultValueCmb
+            // contextMenuStrip1
             // 
-            this.optAttDefaultValueCmb.DisplayMember = "DisplayName";
-            this.optAttDefaultValueCmb.FormattingEnabled = true;
-            this.optAttDefaultValueCmb.Items.AddRange(new object[] {
-            "None",
-            "Duration",
-            "TimeZone",
-            "Language",
-            "Locale"});
-            this.optAttDefaultValueCmb.Location = new System.Drawing.Point(83, 30);
-            this.optAttDefaultValueCmb.Name = "optAttDefaultValueCmb";
-            this.optAttDefaultValueCmb.Size = new System.Drawing.Size(171, 21);
-            this.optAttDefaultValueCmb.TabIndex = 10;
-            this.optAttDefaultValueCmb.ValueMember = "Value";
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // AttributeManagerPlugin
             // 
