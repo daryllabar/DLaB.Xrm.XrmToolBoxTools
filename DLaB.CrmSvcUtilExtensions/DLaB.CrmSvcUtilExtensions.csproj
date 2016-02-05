@@ -322,20 +322,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>REM Move Project Output Dll to CrmSvcUtil Dir
-xcopy /I /Y "$(TargetPath)" "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
-
-REM Move Required Microsoft dlls and CrmSvcUtil to the CrmSvcUtil Dir
-xcopy /I /Y "$(TargetDir)Microsoft.TeamFoundation.Client.dll"  "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
-xcopy /I /Y "$(TargetDir)Microsoft.TeamFoundation.Co*.dll"  "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
-xcopy /I /Y "$(TargetDir)Microsoft.TeamFoundation.V*.dll" "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
-xcopy /I /Y  "$(TargetDir)Microsoft.VisualStudio.Services.*.dll"  "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
-xcopy /I /Y  "$(TargetDir)Microsoft.Xrm.Client.CodeGeneration.dll"  "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
-xcopy /I /Y  "$(TargetDir)Microsoft.Xrm.Client.dll"  "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
-xcopy /I /Y  "$(TargetDir)Microsoft.Xrm.Portal.dll"  "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
-xcopy /I /Y  "$(TargetDir)Microsoft.Xrm.Sdk.dll"  "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\"
-Copy "$(TargetDir)CrmSvcUtil.exe" "$(SolutionDir)XrmToolBox\$(ConfigurationName)\Plugins\CrmSvcUtil Ref\CrmSvcUtil.exe"
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.exe" "$(ProjectDir)Properties\AssemblyInfo.cs"</PreBuildEvent>

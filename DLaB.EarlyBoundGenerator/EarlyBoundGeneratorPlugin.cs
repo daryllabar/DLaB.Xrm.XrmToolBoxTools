@@ -14,7 +14,7 @@ using PropertyInterface = DLaB.XrmToolboxCommon.PropertyInterface;
 
 namespace DLaB.EarlyBoundGenerator
 {
-    public partial class EarlyBoundGeneratorPlugin : PluginControlBase, IGitHubPlugin, IPayPalPlugin, IHelpPlugin, PropertyInterface.IEntityMetadatas, PropertyInterface.IGlobalOptionSets, PropertyInterface.IActions
+    public partial class EarlyBoundGeneratorPlugin : DLaBPluginControlBase, PropertyInterface.IEntityMetadatas, PropertyInterface.IGlobalOptionSets, PropertyInterface.IActions
     {
         public Config Settings { get; set; }
         public IEnumerable<Entity> Actions { get; set; }
@@ -23,23 +23,15 @@ namespace DLaB.EarlyBoundGenerator
 
         #region XrmToolBox Menu Interfaces
 
-        #region IGitHubPlugin
-
-        public string RepositoryName => "DLaB.Xrm.XrmToolBoxTools";
-        public string UserName => "daryllabar";
-
-        #endregion IGitHubPlugin
-
         #region IPayPalPlugin
 
-        public string DonationDescription => "Support Development for the Early Bound Generator!";
-        public string EmailAccount => "d3labar@hotmail.com";
+        public override string DonationDescription => "Support Development for the Early Bound Generator!";
 
         #endregion IPayPalPlugin
 
         #region IHelpPlugin
 
-        public string HelpUrl => "https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/wiki/Early-Bound-Generator";
+        public override string HelpUrl => "https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/wiki/Early-Bound-Generator";
 
         #endregion IHelpPlugin
 

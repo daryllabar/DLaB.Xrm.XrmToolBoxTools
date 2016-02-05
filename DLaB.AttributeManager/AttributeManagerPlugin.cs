@@ -16,7 +16,7 @@ using XrmToolBox.Extensibility.Interfaces;
 
 namespace DLaB.AttributeManager
 {
-    public partial class AttributeManagerPlugin : PluginControlBase
+    public partial class AttributeManagerPlugin : DLaBPluginControlBase
     {
         private bool AttributesNeedLoaded { get; set; }
         private object[] RenameSteps { get; }
@@ -60,6 +60,22 @@ namespace DLaB.AttributeManager
             SetFloatNumberVisible(false);
             numAttFormatCmb.SelectedIndex = 0;
         }
+
+        #region XrmToolBox Menu Interfaces
+
+        #region IPayPalPlugin
+
+        public override string DonationDescription => "Support Development for the Attribute Manager!";
+
+        #endregion IPayPalPlugin
+
+        #region IHelpPlugin
+
+        public override string HelpUrl => "https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/wiki/Attribute-Manager";
+
+        #endregion IHelpPlugin
+
+        #endregion XrmToolBox Menu Interfaces
 
         public override void ClosingPlugin(PluginCloseInfo info)
         {
@@ -156,7 +172,7 @@ namespace DLaB.AttributeManager
             var attribute = cmbAttributes.SelectedItem as ObjectCollectionItem<AttributeMetadata>;
             if (attribute == null)
             {
-                MessageBox.Show("No Attribute Selected!", "Unable To Execute", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(@"No Attribute Selected!", @"Unable To Execute", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Enabled = true;
                 return;
             }
@@ -164,7 +180,7 @@ namespace DLaB.AttributeManager
             var newName = txtNewAttributeName.Text;
             if (string.IsNullOrWhiteSpace(newName) || !newName.Contains('_'))
             {
-                MessageBox.Show("Invalid new Schema Name!  Schema name must contain an '_'.", "Unable To Execute", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(@"Invalid new Schema Name!  Schema name must contain an '_'.", @"Unable To Execute", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Enabled = true;
                 return;
             }
@@ -173,7 +189,7 @@ namespace DLaB.AttributeManager
 
             if (steps == 0)
             {
-                MessageBox.Show("No Steps Selected!", "Unable To Execute", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(@"No Steps Selected!", @"Unable To Execute", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Enabled = true;
                 return;
             }
@@ -386,6 +402,9 @@ namespace DLaB.AttributeManager
 
         #region Number Type Settings Tab
 
+        // TODO: Implement Number Type Settings
+
+        // ReSharper disable UnusedParameter.Local
         private void SetDecimalNumberVisible(bool visible)
         {
 
@@ -399,6 +418,7 @@ namespace DLaB.AttributeManager
         {
 
         }
+        // ReSharper restore UnusedParameter.Local
 
         private void SetWholeNumberVisible(bool visible)
         {
@@ -609,11 +629,11 @@ namespace DLaB.AttributeManager
             {
                 case "Single Line of Text":
                     stringTabVisible = true;
-                    strAttTxtMaximumLength.Text = "100";
-                    strAttCmbFormat.Text = "Text";
+                    strAttTxtMaximumLength.Text = @"100";
+                    strAttCmbFormat.Text = @"Text";
                     strAttCmbFormat.Visible = true;
                     strAttLblFormat.Visible = true;
-                    strAttCmbImeMode.Text = "Auto";
+                    strAttCmbImeMode.Text = @"Auto";
                     break;
                 case "Global Option Set":
                     optionTabVisible = true;
@@ -653,11 +673,11 @@ namespace DLaB.AttributeManager
                     break;
                 case "Multiple Lines of Text":
                     stringTabVisible = true;
-                    strAttTxtMaximumLength.Text = "2000";
+                    strAttTxtMaximumLength.Text = @"2000";
                     strAttCmbFormat.SelectedItem = "Text Area";
                     strAttCmbFormat.Visible = false;
                     strAttLblFormat.Visible = false;
-                    strAttCmbImeMode.Text = "Auto";
+                    strAttCmbImeMode.Text = @"Auto";
                     break;
                 case "Date and Time":
 
