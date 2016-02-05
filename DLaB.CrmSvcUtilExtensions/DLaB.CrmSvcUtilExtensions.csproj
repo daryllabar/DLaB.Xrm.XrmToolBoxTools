@@ -42,11 +42,11 @@
       <HintPath>..\References\CrmSvcUtil.exe</HintPath>
     </Reference>
     <Reference Include="McTools.Xrm.Connection, Version=1.2016.1.30, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MscrmTools.Xrm.Connection.1.2016.1.29\lib\net\McTools.Xrm.Connection.dll</HintPath>
+      <HintPath>..\packages\MscrmTools.Xrm.Connection.1.2016.1.30\lib\net\McTools.Xrm.Connection.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="McTools.Xrm.Connection.WinForms, Version=1.2016.1.30, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MscrmTools.Xrm.Connection.1.2016.1.29\lib\net\McTools.Xrm.Connection.WinForms.dll</HintPath>
+      <HintPath>..\packages\MscrmTools.Xrm.Connection.1.2016.1.30\lib\net\McTools.Xrm.Connection.WinForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Crm.Sdk.Proxy, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
