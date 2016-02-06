@@ -37,9 +37,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrmSvcUtil, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="CrmSvcUtil, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\References\CrmSvcUtil.exe</HintPath>
+      <HintPath>..\packages\Microsoft.CrmSdk.CoreTools.8.0.0\content\bin\coretools\CrmSvcUtil.exe</HintPath>
     </Reference>
     <Reference Include="McTools.Xrm.Connection, Version=1.2016.1.30, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MscrmTools.Xrm.Connection.1.2016.1.30\lib\net\McTools.Xrm.Connection.dll</HintPath>
