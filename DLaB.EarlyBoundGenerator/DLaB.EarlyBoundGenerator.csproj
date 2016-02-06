@@ -32,7 +32,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\Plugins\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -243,8 +243,28 @@
 </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>xcopy /I /Y "$(TargetDir)DLaB.*.dll" "$(TargetDir)Plugins\"
+DEL /Q "$(TargetDir)DLaB.*"
+DEL /Q "$(TargetDir)Microsoft.IdentityModel.dll"    
+DEL /Q "$(TargetDir)Microsoft.Xrm.Sdk.Workflow.dll"
+
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)CrmSvcUtil.exe" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)CrmSvcUtil.exe.config" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)DLaB.CrmSvcUtilExtensions.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Crm.Sdk.Proxy.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.IdentityModel.Clients.ActiveDirectory.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.TeamFoundation.Client.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.TeamFoundation.Common.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.TeamFoundation.Core.WebApi.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.TeamFoundation.VersionControl.Client.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.TeamFoundation.VersionControl.Common.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.TeamFoundation.VersionControl.Common.Integration.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.VisualStudio.Services.Client.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.VisualStudio.Services.Common.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.VisualStudio.Services.WebApi.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Portal.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Client.CodeGeneration.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Tooling.*.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
