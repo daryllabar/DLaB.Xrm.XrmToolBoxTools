@@ -23,5 +23,17 @@ namespace DLaB.EarlyBoundGenerator.Settings
             Name = name;
             Value = value;
         }
+
+        public Argument(CreationType settingType, CrmSrvUtilService service, string value) :this(settingType, service.ToString().ToLower(), value)
+        { }
+    }
+
+    public enum CrmSrvUtilService
+    {
+        CodeCustomization,
+        CodeGenerationService,
+        CodeWriterFilter,
+        MetadataProviderService,
+        NamingService
     }
 }

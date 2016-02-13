@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Metadata;
 
 namespace DLaB.CrmSvcUtilExtensions
 {
@@ -54,5 +55,33 @@ namespace DLaB.CrmSvcUtilExtensions
         }
 
         #endregion // Label
+
+        #region OptionSetMetadataBase
+
+        public static List<OptionMetadata> GetOptions(this OptionSetMetadataBase metadata)
+        {
+            List<OptionMetadata> options;
+            var booleanOptionSet = metadata as BooleanOptionSetMetadata;
+            var nonBooleanOptionSet = metadata as OptionSetMetadata;
+            if (booleanOptionSet != null)
+            {
+                options = new List<OptionMetadata>
+                {
+                    booleanOptionSet.FalseOption,
+                    booleanOptionSet.TrueOption
+                };
+            }
+            else if (nonBooleanOptionSet != null)
+            {
+                options = nonBooleanOptionSet.Options.ToList();
+            }
+            else
+            {
+                throw new NotImplementedException($"OptionSetMetadataBase was of type {metadata.GetType().FullName}.  Only BooleanOptionSetMetadata or OptionSetMetadata are implemented");
+            }
+            return options;
+        }
+
+        #endregion OptionSetMetadataBase
     }
 }

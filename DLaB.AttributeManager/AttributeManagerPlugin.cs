@@ -141,14 +141,20 @@ namespace DLaB.AttributeManager
                 PostWorkCallBack = e =>
                 {
                     Metadata = ((RetrieveEntityResponse) e.Result).EntityMetadata;
-                    var attributes = Metadata.Attributes.Where(a => a.IsManaged == false && a.AttributeOf == null && a.IsCustomizable.Value).
+                    var attributes = Metadata.Attributes.Where(a => 
+                            !a.IsManaged.Value && 
+                            a.AttributeOf == null && 
+                            a.IsCustomizable.Value &&
+                            !a.IsPrimaryId.Value).
                         Select(a => new ObjectCollectionItem<AttributeMetadata>((a.DisplayName.GetLocalOrDefaultText("N/A")) + " (" + a.LogicalName + ")", a)).
                         OrderBy(r => r.DisplayName).
                         Cast<object>().
                         ToArray();
 
                     cmbAttributes.LoadItems(attributes);
+                    cmbAttributes.Text = string.Empty;
                     cmbNewAttribute.LoadItems(attributes);
+                    cmbNewAttribute.Text = string.Empty;
                     Enabled = true;
                 }
             });
@@ -261,11 +267,15 @@ namespace DLaB.AttributeManager
 
         private AttributeMetadata GetNewAttributeType()
         {
+            if (!chkConvertAttributeType.Checked)
+            {
+                return null;
+            }
             AttributeMetadata att;
             switch (cmbNewAttributeType.Text)
             {
                 case "Single Line of Text":
-                    att = NewTypeAttributeCreationLogic.CreateText(format: GetStringFormat());
+                    att = NewTypeAttributeCreationLogic.CreateText(formatName: GetStringFormat());
                     break;
                 case "Global Option Set":
                     var optionSet = (ObjectCollectionItem<OptionSetMetadata>) optAttGlobalOptionSetCmb.SelectedItem;
@@ -295,7 +305,7 @@ namespace DLaB.AttributeManager
                     {
                         max = tmp;
                     }
-                    att = NewTypeAttributeCreationLogic.CreateWholeNumber(format: GetIntergerFormat(), minValue: min, maxValue: max);
+                    att = NewTypeAttributeCreationLogic.CreateWholeNumber(GetIntergerFormat(), min, max);
                     break;
                 case "Floating Point Number":
                     att = NewTypeAttributeCreationLogic.CreateFloatingPoint();
@@ -307,7 +317,7 @@ namespace DLaB.AttributeManager
                     att = NewTypeAttributeCreationLogic.CreateCurrency();
                     break;
                 case "Multiple Lines of Text":
-                    att = NewTypeAttributeCreationLogic.CreateText(2000, format: GetStringFormat());
+                    att = NewTypeAttributeCreationLogic.CreateText(2000, GetStringFormat());
                     break;
                 case "Date and Time":
                     att = NewTypeAttributeCreationLogic.CreateDateTime();
@@ -362,35 +372,35 @@ namespace DLaB.AttributeManager
             return action;
         }
 
-        private StringFormat GetStringFormat()
+        private StringFormatName GetStringFormat()
         {
-            StringFormat format;
+            StringFormatName format;
             switch (strAttCmbFormat.SelectedItem.ToString())
             {
                 case "Email":
-                    format = StringFormat.Email;
+                    format = StringFormatName.Email;
                     break;
                 case "Phone":
-                    format = StringFormat.Phone;
+                    format = StringFormatName.Phone;
                     break;
                 case "PhoneticGuide":
-                    format = StringFormat.PhoneticGuide;
+                    format = StringFormatName.PhoneticGuide;
                     break;
 
                 case "Text":
-                    format = StringFormat.Text;
+                    format = StringFormatName.Text;
                     break;
                 case "TextArea":
-                    format = StringFormat.TextArea;
+                    format = StringFormatName.TextArea;
                     break;
                 case "TickerSymbol":
-                    format = StringFormat.TickerSymbol;
+                    format = StringFormatName.TickerSymbol;
                     break;
                 case "Url":
-                    format = StringFormat.Url;
+                    format = StringFormatName.Url;
                     break;
                 case "VersionNumber":
-                    format = StringFormat.VersionNumber;
+                    format = StringFormatName.VersionNumber;
                     break;
                 default:
                     throw new Exception("Unable to determine String Format for " + strAttCmbFormat.SelectedText);
@@ -889,6 +899,15 @@ namespace DLaB.AttributeManager
             finally
             {
                 optAttDefaultValueCmb.EndUpdate();
+            }
+        }
+
+        private void SelectAllKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.A)
+            {
+                (sender as TextBox)?.SelectAll();
+                e.Handled = true;
             }
         }
     }

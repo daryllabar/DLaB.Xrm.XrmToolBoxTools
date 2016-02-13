@@ -71,7 +71,7 @@ namespace DLaB.CrmSvcUtilExtensions
         {
             try
             {
-                WriteInternal(organizationMetadata, language, outputFile, targetNamespace, services);
+                WriteInternal(organizationMetadata, language, Path.GetFullPath(outputFile), targetNamespace, services);
             }
             catch (Exception ex)
             {
@@ -122,9 +122,11 @@ namespace DLaB.CrmSvcUtilExtensions
         {
             if (UseTfsToCheckoutFiles)
             {
+                Log("Getting TFS Workspace for file " + outputFile);
                 var workspaceInfo = Workstation.Current.GetLocalWorkspaceInfo(outputFile);
                 var server = new TfsTeamProjectCollection(workspaceInfo.ServerUri);
                 TfsWorkspace = workspaceInfo.GetWorkspace(server);
+                Log("TFS Workspace {0}found!", TfsWorkspace == null ? "not " : string.Empty);
             }
 
             EnsureFileIsAccessible(outputFile);
@@ -221,8 +223,7 @@ namespace DLaB.CrmSvcUtilExtensions
             }
             // ReSharper restore AssignNullToNotNullAttribute
 
-            if (!File.Exists(filePath) || 
-                !File.GetAttributes(filePath).HasFlag(FileAttributes.ReadOnly)) { return; }
+            if(!File.Exists(filePath) || !File.GetAttributes(filePath).HasFlag(FileAttributes.ReadOnly)) { return; }
 
             try
             {
@@ -390,9 +391,9 @@ namespace DLaB.CrmSvcUtilExtensions
 
         private void WriteFilesAsync(List<FileToCreate> files)
         {
-            var project = new ProjectFile(files, AddNewFilesToProject, UseTfsToCheckoutFiles ? TfsWorkspace: null);
+            var project = new ProjectFile(files, AddNewFilesToProject, UseTfsToCheckoutFiles ? TfsWorkspace : null);
 
-            if (Debugger.IsAttached)
+            if (!Debugger.IsAttached)
             {
                 foreach (var file in files)
                 {
@@ -511,7 +512,7 @@ namespace DLaB.CrmSvcUtilExtensions
             public Item TfsItem { get; set; }
             public bool IsMainFile { get; private set; }
 
-            public Boolean HasChanged
+            public bool HasChanged
             {
                 get
                 {
@@ -593,27 +594,44 @@ namespace DLaB.CrmSvcUtilExtensions
             internal void AddFileIfMissing(string path)
             {
                 path = Path.GetFullPath(path);
-                if (!UpdateProjectFile || File.Exists(path) || !ProjectFound)
+
+                if (!UpdateProjectFile || !ProjectFound)
                 {
                     return;
                 }
 
+                Log("Checking if project \"{0}\" contains file \"{1}\"", ProjectPath, path);
                 var line = string.Format(LineFormat, path.Substring(ProjectDir.Length + 1, path.Length - ProjectDir.Length - 1));
                 lock (_dictionaryLock)
                 {
                     if (ProjectFiles.ContainsKey(line))
                     {
+                        Log("Project \"{0}\" contains file \"{1}\"", ProjectPath, path);
                         return;
                     }
 
+                    Log("Project \"{0}\" does not contains file \"{1}\"", ProjectPath, path);
                     ProjectFiles.Add(line, line);
                 }
                 if (TfsWorkspace != null)
                 {
                     // Create File so it can be added:
                     using (File.Create(path))
+                    { 
+                        Console.WriteLine("Created New File: " + path);
+                    }
+                    var pendingCompleted = TfsWorkspace.PendAdd(path, false);
+                    if (pendingCompleted == 0)
                     {
-                        TfsWorkspace.PendAdd(path, false);
+                        pendingCompleted = TfsWorkspace.PendEdit(path);
+                    }
+                    if (pendingCompleted == 0)
+                    {
+                        Log("Unable to Add \"{0}\" to TFS.", path);
+                    }
+                    else
+                    {
+                        Log("Unable to Add \"{0}\" to TFS.", path);
                     }
                 }
 
@@ -624,6 +642,23 @@ namespace DLaB.CrmSvcUtilExtensions
             {
                 // Return lines before, plus ordered compile files, plus lines after
                 return string.Join(Environment.NewLine, Lines.Take(ProjectFileIndexStart).Concat(ProjectFiles.Keys).Concat(Lines.Skip(ProjectFileIndexEnd)));
+            }
+
+            // ReSharper disable once UnusedMember.Local
+            private void Log(string log)
+            {
+                if (LoggingEnabled)
+                {
+                    Console.WriteLine(DateTime.Now.ToString("hh:MM:ss:fff") + ": " + log);
+                }
+            }
+
+            private void Log(string logFormat, params object[] args)
+            {
+                if (LoggingEnabled)
+                {
+                    Console.WriteLine(DateTime.Now.ToString("hh:MM:ss:fff") + ": " + logFormat, args);
+                }
             }
         }
         #endregion // Split File Into Multiple Files By Class

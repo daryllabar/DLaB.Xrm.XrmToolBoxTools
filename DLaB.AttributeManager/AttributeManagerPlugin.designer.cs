@@ -496,6 +496,7 @@ namespace DLaB.AttributeManager
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtLog.Size = new System.Drawing.Size(663, 209);
             this.txtLog.TabIndex = 0;
+            this.txtLog.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SelectAllKeyDownHandler);
             // 
             // cmbNewAttribute
             // 

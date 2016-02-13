@@ -13,7 +13,6 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         /// Contains Meta Data for entities, key'd by logical name
         /// </summary>
         public static Dictionary<string, EntityMetadata> EntityMetadata { get; set; }
-        public FilterOptionSetEnums EnumFilter { get; set; }
         public HashSet<string> EntitiesToSkip { get; set; }
 
         static CodeWriterFilterService()
@@ -25,7 +24,6 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         public CodeWriterFilterService(ICodeWriterFilterService defaultService)
         {
             DefaultService = defaultService;
-            EnumFilter = new FilterOptionSetEnums(defaultService);
             EntitiesToSkip = ConfigHelper.GetHashSet("EntitiesToSkip");
         }
 
@@ -68,7 +66,6 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
 
         public bool GenerateOptionSet(OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
         {
-            EnumFilter.GenerateOptionSet(optionSetMetadata, services);
             return DefaultService.GenerateOptionSet(optionSetMetadata, services);
         }
 

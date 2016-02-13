@@ -5,49 +5,13 @@ namespace DLaB.AttributeManager
 {
     public class NewTypeAttributeCreationLogic
     {
-        public static AttributeMetadata CreateText(int? maxLength = null, StringFormat? format = StringFormat.Text, StringFormatName formatName = null, ImeMode? imeMode = ImeMode.Auto, string yomiOf = null, string formulaDefinition = null)
+        public static AttributeMetadata CreateText(int? maxLength = null, StringFormatName formatName = null, ImeMode? imeMode = ImeMode.Auto, string yomiOf = null, string formulaDefinition = null)
         {
             maxLength = formulaDefinition != null && maxLength == null ? 4000 : 100;
 
-            if (formatName == null)
-            {
-                switch (format)
-                {
-                    case StringFormat.Email:
-                        formatName = StringFormatName.Email;
-                        break;
-                    case StringFormat.Text:
-                        formatName = StringFormatName.Text;
-                        break;
-                    case StringFormat.TextArea:
-                        formatName = StringFormatName.TextArea;
-                        break;
-                    case StringFormat.Url:
-                        formatName = StringFormatName.Url;
-                        break;
-                    case StringFormat.TickerSymbol:
-                        formatName = StringFormatName.TickerSymbol;
-                        break;
-                    case StringFormat.PhoneticGuide:
-                        formatName = StringFormatName.PhoneticGuide;
-                        break;
-                    case StringFormat.VersionNumber:
-                        formatName = StringFormatName.VersionNumber;
-                        break;
-                    case StringFormat.Phone:
-                        formatName = StringFormatName.Url;
-                        break;
-                    case null:
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException(nameof(format), format, "Unable to determine format Name for format: " + format);
-                }
-            }
-
             return new StringAttributeMetadata
             {
-                Format = format,
-                FormatName = formatName,
+                FormatName = formatName ?? StringFormatName.Text,
                 ImeMode = imeMode,
                 MaxLength = maxLength,
                 YomiOf = yomiOf,

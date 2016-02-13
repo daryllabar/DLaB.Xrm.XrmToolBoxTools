@@ -109,35 +109,35 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [XmlIgnore]
         public string ActionOutPath
         {
-            get { return GetUserArgument(CreationType.Actions, UserArgumentNames.Out); }
+            get { return GetUserArgument(CreationType.Actions, UserArgumentNames.Out).Value; }
             set { SetUserArgument(CreationType.Actions, UserArgumentNames.Out, value); }
         }
 
         [XmlIgnore]
         public string EntityOutPath
         {
-            get { return GetUserArgument(CreationType.Entities, UserArgumentNames.Out); }
+            get { return GetUserArgument(CreationType.Entities, UserArgumentNames.Out).Value; }
             set { SetUserArgument(CreationType.Entities, UserArgumentNames.Out, value); }
         }
 
         [XmlIgnore]
         public string Namespace
         {
-            get { return GetUserArgument(CreationType.All, UserArgumentNames.Namespace); }
+            get { return GetUserArgument(CreationType.All, UserArgumentNames.Namespace).Value; }
             set { SetUserArgument(CreationType.All, UserArgumentNames.Namespace, value); }
         }
 
         [XmlIgnore]
         public string OptionSetOutPath
         {
-            get { return GetUserArgument(CreationType.OptionSets, UserArgumentNames.Out); }
+            get { return GetUserArgument(CreationType.OptionSets, UserArgumentNames.Out).Value; }
             set { SetUserArgument(CreationType.OptionSets, UserArgumentNames.Out, value); }
         }
 
         [XmlIgnore]
         public string ServiceContextName
         {
-            get { return GetUserArgument(CreationType.Entities, UserArgumentNames.ServiceContextName); }
+            get { return GetUserArgument(CreationType.Entities, UserArgumentNames.ServiceContextName).Value; }
             set { SetUserArgument(CreationType.Entities, UserArgumentNames.ServiceContextName, value); }
         }
 
@@ -167,11 +167,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
             var pocoConfig = poco.ExtensionConfig;
 
             CrmSvcUtilRelativePath = poco.CrmSvcUtilRelativePath ?? @default.CrmSvcUtilRelativePath;
-            if (CrmSvcUtilRelativePath == @"CrmSvcUtil Ref\crmsvcutil.exe")
-            {
-                // 5.14.2015 XTB changed to use the Plugins Directory, but then MEF changed Paths to be realtive to Dll. 
-                CrmSvcUtilRelativePath = @default.CrmSvcUtilRelativePath;
-            }
+            RemoveObsoleteValues(poco, @default);
+
             IncludeCommandLine = poco.IncludeCommandLine.GetValueOrDefault(@default.IncludeCommandLine);
             MaskPassword = poco.MaskPassword.GetValueOrDefault(@default.MaskPassword);
             ExtensionConfig = new ExtensionConfig
@@ -189,10 +186,12 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 GenerateEnumProperties = pocoConfig.GenerateEnumProperties.GetValueOrDefault(defaultConfig.GenerateEnumProperties),
                 InvalidCSharpNamePrefix = pocoConfig.InvalidCSharpNamePrefix ?? defaultConfig.InvalidCSharpNamePrefix,
                 MakeReadonlyFieldsEditable = pocoConfig.MakeReadonlyFieldsEditable ?? defaultConfig.MakeReadonlyFieldsEditable,
+                LocalOptionSetFormat = pocoConfig.LocalOptionSetFormat ?? defaultConfig.LocalOptionSetFormat,
                 OptionSetsToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.OptionSetsToSkip, defaultConfig.OptionSetsToSkip),
                 PropertyEnumMappings = AddPipeDelimitedMissingDefaultValues(pocoConfig.PropertyEnumMappings, defaultConfig.PropertyEnumMappings),
                 RemoveRuntimeVersionComment = pocoConfig.RemoveRuntimeVersionComment.GetValueOrDefault(defaultConfig.RemoveRuntimeVersionComment),
                 UnmappedProperties = AddPipeThenCommaDelimitedMissingDefaultValues(pocoConfig.UnmappedProperties, defaultConfig.UnmappedProperties),
+                UseDeprecatedOptionSetNaming = pocoConfig.UseDeprecatedOptionSetNaming.GetValueOrDefault(defaultConfig.UseDeprecatedOptionSetNaming),
                 UseTfsToCheckoutFiles = pocoConfig.UseTfsToCheckoutFiles.GetValueOrDefault(defaultConfig.UseTfsToCheckoutFiles),
                 UseXrmClient = pocoConfig.UseXrmClient.GetValueOrDefault(defaultConfig.UseXrmClient)
             };
@@ -202,6 +201,29 @@ namespace DLaB.EarlyBoundGenerator.Settings
             Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
             _filePath = filePath;
+        }
+
+        private void RemoveObsoleteValues(POCO.Config poco, Config @default)
+        {
+            if (CrmSvcUtilRelativePath == @"CrmSvcUtil Ref\crmsvcutil.exe")
+            {
+                // 5.14.2015 XTB changed to use the Plugins Directory, but then MEF changed Paths to be realtive to Dll. 
+                CrmSvcUtilRelativePath = @default.CrmSvcUtilRelativePath;
+            }
+            foreach (var value in poco.ExtensionArguments.Where(a => string.Equals(a.Value, "DLaB.CrmSvcUtilExtensions.Entity.OverridePropertyNames,DLaB.CrmSvcUtilExtensions", StringComparison.InvariantCultureIgnoreCase)).ToList())
+            {
+                // Pre 2.13.2016, this was the default value.  Replaced with a single naming service that both Entities and OptionSets can use
+                poco.ExtensionArguments.Remove(value);
+            }
+
+            // Pre 2.13.2016, this was the default value.  Not Needed Anymore
+            var old = "OpportunityProduct.OpportunityStateCode,opportunity_statuscode|" +
+                      "OpportunityProduct.PricingErrorCode,qooi_pricingerrorcode|" +
+                      "ResourceGroup.GroupTypeCode,constraintbasedgroup_grouptypecode";
+            if (string.Equals(poco.ExtensionConfig.PropertyEnumMappings, old, StringComparison.InvariantCultureIgnoreCase) || string.Equals(poco.ExtensionConfig.PropertyEnumMappings, old + "|", StringComparison.InvariantCultureIgnoreCase))
+            {
+                poco.ExtensionConfig.PropertyEnumMappings = string.Empty;
+            }
         }
 
         private string AddPipeDelimitedMissingDefaultValues(string value, string @default)
@@ -284,17 +306,18 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 MaskPassword = true,    
                 ExtensionArguments = new List<Argument>(new [] {
                     // Actions
-                    new Argument(CreationType.Actions, "codecustomization", "DLaB.CrmSvcUtilExtensions.Action.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.Actions, "codegenerationservice", "DLaB.CrmSvcUtilExtensions.Action.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.Actions, "codewriterfilter", "DLaB.CrmSvcUtilExtensions.Action.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.Entities, "codecustomization", "DLaB.CrmSvcUtilExtensions.Entity.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.Entities, "codegenerationservice", "DLaB.CrmSvcUtilExtensions.Entity.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.Entities, "codewriterfilter", "DLaB.CrmSvcUtilExtensions.Entity.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.Entities, "namingservice", "DLaB.CrmSvcUtilExtensions.Entity.OverridePropertyNames,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.Entities, "metadataproviderservice", "DLaB.CrmSvcUtilExtensions.Entity.MetadataProviderService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.OptionSets, "codecustomization", "DLaB.CrmSvcUtilExtensions.OptionSet.CreateOptionSetEnums,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.OptionSets, "codegenerationservice", "DLaB.CrmSvcUtilExtensions.OptionSet.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.OptionSets, "codewriterfilter", "DLaB.CrmSvcUtilExtensions.OptionSet.FilterOptionSetEnums,DLaB.CrmSvcUtilExtensions")
+                    new Argument(CreationType.Actions, CrmSrvUtilService.CodeCustomization, "DLaB.CrmSvcUtilExtensions.Action.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions"),
+                    new Argument(CreationType.Actions, CrmSrvUtilService.CodeGenerationService, "DLaB.CrmSvcUtilExtensions.Action.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions"),
+                    new Argument(CreationType.Actions, CrmSrvUtilService.CodeWriterFilter, "DLaB.CrmSvcUtilExtensions.Action.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions"),
+                    new Argument(CreationType.Entities, CrmSrvUtilService.CodeCustomization, "DLaB.CrmSvcUtilExtensions.Entity.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions"),
+                    new Argument(CreationType.Entities, CrmSrvUtilService.CodeGenerationService, "DLaB.CrmSvcUtilExtensions.Entity.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions"),
+                    new Argument(CreationType.Entities, CrmSrvUtilService.CodeWriterFilter, "DLaB.CrmSvcUtilExtensions.Entity.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions"),
+                    new Argument(CreationType.Entities, CrmSrvUtilService.NamingService, "DLaB.CrmSvcUtilExtensions.NamingService,DLaB.CrmSvcUtilExtensions"),
+                    new Argument(CreationType.Entities, CrmSrvUtilService.MetadataProviderService, "DLaB.CrmSvcUtilExtensions.Entity.MetadataProviderService,DLaB.CrmSvcUtilExtensions"),
+                    new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeCustomization, "DLaB.CrmSvcUtilExtensions.OptionSet.CreateOptionSetEnums,DLaB.CrmSvcUtilExtensions"),
+                    new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeGenerationService, "DLaB.CrmSvcUtilExtensions.OptionSet.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions"),
+                    new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, "DLaB.CrmSvcUtilExtensions.OptionSet.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions"),
+                    new Argument(CreationType.OptionSets, CrmSrvUtilService.NamingService, "DLaB.CrmSvcUtilExtensions.NamingService,DLaB.CrmSvcUtilExtensions")
                 }),
                 ExtensionConfig = ExtensionConfig.GetDefault(),
                 UserArguments = new List<Argument>(new [] {
@@ -360,20 +383,56 @@ namespace DLaB.EarlyBoundGenerator.Settings
             return value.Value;
         }
 
-        private string GetUserArgument(CreationType creationType, string setting)
+        public Argument GetExtensionArgument(CreationType creationType, CrmSrvUtilService service)
+        {
+            return GetExtensionArgument(creationType, service.ToString().ToLower());
+        }
+
+        public Argument GetExtensionArgument(CreationType creationType, string setting)
+        {
+            return ExtensionArguments.FirstOrDefault(a => a.SettingType == creationType && 
+                                                          string.Equals(a.Name, setting, StringComparison.InvariantCultureIgnoreCase)) ?? 
+                new Argument(creationType, setting, string.Empty);
+        }
+
+        public void SetExtensionArgument(CreationType creationType, CrmSrvUtilService service, string value)
+        {
+            SetExtensionArgument(creationType, service.ToString().ToLower(), value);
+        }
+
+        public void SetExtensionArgument(CreationType creationType, string setting, string value)
+        {
+            var argument = GetExtensionArgument(creationType, setting);
+
+            if (argument == null)
+            {
+                if (value != null)
+                {
+                    ExtensionArguments.Add(new Argument { Name = setting, SettingType = creationType, Value = value });
+                }
+            }
+            else if (value == null)
+            {
+                ExtensionArguments.Remove(argument);
+            }
+            else
+            {
+                argument.Value = value;
+            }
+        }
+
+        private Argument GetUserArgument(CreationType creationType, string setting)
         {
             var argument = UserArguments.FirstOrDefault(s =>
                 string.Equals(s.Name, setting, StringComparison.InvariantCultureIgnoreCase)
                 && s.SettingType == creationType);
 
-            return argument == null ? string.Empty : argument.Value;
+            return argument ?? new Argument(creationType, setting, string.Empty);
         }
 
         private void SetUserArgument(CreationType creationType, string setting, string value)
         {
-            var argument = UserArguments.FirstOrDefault(s =>
-                string.Equals(s.Name, setting, StringComparison.InvariantCultureIgnoreCase)
-                && s.SettingType == creationType);
+            var argument = GetUserArgument(creationType, setting);
 
             if (argument == null)
             {

@@ -65,6 +65,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public bool MakeReadonlyFieldsEditable { get; set; }
         /// <summary>
+        /// Defines the format of Local Option Sets where {0} is the Entity Schema Name, and {1} is the Attribute Schema Name.  
+        /// The format Specified in the SDK is {0}{1}, but the default is {0}_{1}, but used to be prefix_{0}_{1}(all lower case)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+        /// </summary>
+        public string LocalOptionSetFormat { get; set; }
+        /// <summary>
         /// Pipe Delimited String containing the logical names of Option Set Names to not generate
         /// </summary>
         public string OptionSetsToSkip { get; set; }
@@ -82,6 +87,13 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// Format: EntityName.PropertyName|
         /// </summary>
         public string UnmappedProperties { get; set; }
+        /// <summary>
+        /// Creates Local OptionSets Using the Deprecated Naming Convention. prefix_oobentityname_prefix_attribute
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if [use Deprecated Option Set Naming]; otherwise, <c>false</c>.
+        /// </value>
+        public bool UseDeprecatedOptionSetNaming { get; set; }
         /// <summary>
         /// Uses TFS to checkout files
         /// </summary>
@@ -130,11 +142,9 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 EntityAttributeSpecifiedNames = null,
                 InvalidCSharpNamePrefix = "_",
                 MakeReadonlyFieldsEditable = false,
+                LocalOptionSetFormat = "{0}_{1}",
                 OptionSetsToSkip = "organization_currencyformatcode|quote_statuscode",
-                PropertyEnumMappings =
-                    "OpportunityProduct.OpportunityStateCode,opportunity_statuscode|" +
-                    "OpportunityProduct.PricingErrorCode,qooi_pricingerrorcode|" +
-                    "ResourceGroup.GroupTypeCode,constraintbasedgroup_grouptypecode|",
+                PropertyEnumMappings = string.Empty,
                 RemoveRuntimeVersionComment = true,
                 UnmappedProperties =
                     "DuplicateRule,BaseEntityTypeCode,MatchingEntityTypeCode|" +
@@ -144,6 +154,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     "Quote,StatusCode|" + 
                     "QuoteDetail,QuoteStateCode|" + 
                     "SalesOrderDetail,SalesOrderStateCode|",
+                UseDeprecatedOptionSetNaming = false,
                 UseTfsToCheckoutFiles = false,
                 UseXrmClient = false
             };
@@ -170,11 +181,13 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public string EntityAttributeSpecifiedNames { get; set; }
         public string InvalidCSharpNamePrefix { get; set; }
         public bool? MakeReadonlyFieldsEditable { get; set; }
+        public string LocalOptionSetFormat { get; set; }
         public string OptionSetsToSkip { get; set; }
         public string PropertyEnumMappings { get; set; }
         public string UnmappedProperties { get; set; }
         public bool? AddNewFilesToProject { get; set; }
         public bool? RemoveRuntimeVersionComment { get; set; }
+        public bool? UseDeprecatedOptionSetNaming { get; set; }
         public bool? UseTfsToCheckoutFiles { get; set; }
         public bool? UseXrmClient { get; set; }
     }

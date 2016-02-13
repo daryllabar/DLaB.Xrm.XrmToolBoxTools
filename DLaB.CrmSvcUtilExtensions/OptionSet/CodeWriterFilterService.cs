@@ -14,6 +14,7 @@
 //  PARTICULAR PURPOSE.
 //
 // =====================================================================
+//<snippetFilteringService>
 
 // Define SKIP_STATE_OPTIONSETS if you plan on using this extension in conjunction with
 // the unextended CrmSvcUtil, since it already generates state optionsets.
@@ -27,37 +28,34 @@ using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 using System.Linq;
 
-
 namespace DLaB.CrmSvcUtilExtensions.OptionSet
 {
     /// <summary>
     /// Specifies that OptionSets should be created.  Works in conjunction with CreateOptionSetEnums, since it also specifies other
     /// data to be created, but the CreateOptionSetEnums removes it from the DOM after it's already been added, since it needs the metadata.
-    /// Also fixes any Invalid C# naming conventions
-    /// Also fixes duplicate OptionSetValueNames
+    /// Prevents duplicate OptionSetGeneration
     /// </summary>
-    [Obsolete("Use the CodeWriterFilter, true")]
-    public sealed class FilterOptionSetEnums : ICodeWriterFilterService
+    public sealed class CodeWriterFilterService : ICodeWriterFilterService
     {
         private HashSet<string> GeneratedOptionSets { get; }
 
         private ICodeWriterFilterService DefaultService { get; }
 
-        private string InvalidCSharpNamePrefix { get; }
-
-        public FilterOptionSetEnums(ICodeWriterFilterService defaultService)
+        public CodeWriterFilterService(ICodeWriterFilterService defaultService)
         {
             DefaultService = defaultService;
             GeneratedOptionSets = new HashSet<string>();
-            InvalidCSharpNamePrefix = ConfigHelper.GetAppSettingOrDefault("InvalidCSharpNamePrefix", "_");
         }
 
+        private static readonly HashSet<string> OptionSetsToSkip = ConfigHelper.GetHashSet("OptionSetsToSkip");
+
         /// <summary>
-        /// Does not mark the OptionSet for generation if it has already been marked for
-        /// generation.  This could get called for the same Global Option Set multiple times because it's on multiple Entites
+        /// Does not mark the OptionSet for generation if it has already been generated.  
+        /// This could get called for the same Global Option Set multiple times because it's on multiple Entites
         /// </summary>
         public bool GenerateOptionSet(OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
         {
+
 #if SKIP_STATE_OPTIONSETS
             // Only skip the state optionsets if the user of the extension wishes to.
             if (optionSetMetadata.OptionSetType == OptionSetType.State)
@@ -65,6 +63,10 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
                 return false;
             }
 #endif
+            if (Skip(optionSetMetadata.Name))
+            {
+                return false;
+            }
 
             bool generate = false;
 
@@ -90,43 +92,29 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
                 }
             }
 
-            if (generate)
+            // Remove Dups
+            var metadataOptionSet = optionSetMetadata as OptionSetMetadata;
+            if (generate && metadataOptionSet != null)
             {
-                HandleDuplicateNames(optionSetMetadata);
+                var namingService = new NamingService((INamingService)services.GetService(typeof(INamingService)));
+                var names = new HashSet<string>();
+                foreach (var option in metadataOptionSet.Options.ToList())
+                {
+                    var name = namingService.GetNameForOption(optionSetMetadata, option, services);
+                    if (names.Contains(name))
+                    {
+                        metadataOptionSet.Options.Remove(option);
+                    }
+                    names.Add(name);
+                }
             }
 
             return generate;
         }
 
-        private void HandleDuplicateNames(OptionSetMetadataBase optionSetMetadata)
+        private bool Skip(string name)
         {
-            var nonBooleanOptionSet = optionSetMetadata as OptionSetMetadata;
-            if (nonBooleanOptionSet == null) { return; }
-
-            foreach (var option in nonBooleanOptionSet.Options.ToList())
-            {
-                bool addValue = false;
-                foreach (var otherOption in nonBooleanOptionSet.Options.Where(o =>
-                    option != o &&
-                    GetValidCSharpName(o) == GetValidCSharpName(option)).ToList())
-                {
-                    // options have identical text values, Remove if the int values are the same, add int to name if they are different
-                    if (option.Value == otherOption.Value)
-                    {
-                        nonBooleanOptionSet.Options.Remove(otherOption);
-                    }
-                    else
-                    {
-                        otherOption.Label.UserLocalizedLabel.Label = $"{otherOption.Label.GetLocalOrDefaultText()}_{otherOption.Value}";
-                        addValue = true;
-                    }
-                }
-
-                if (addValue)
-                {
-                    option.Label.UserLocalizedLabel.Label = $"{option.Label.GetLocalOrDefaultText()}_{option.Value}";
-                }
-            }
+            return OptionSetsToSkip.Contains(name.ToLower());
         }
 
         /// <summary>
@@ -171,30 +159,9 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
 
         public bool GenerateOption(OptionMetadata optionMetadata, IServiceProvider services)
         {
-            HandleInvalidCSharpName(optionMetadata);
-
             return DefaultService.GenerateOption(optionMetadata, services);
         }
-
-        /// <summary>
-        /// Fix to handle invalid C# naming conventions for optionSets
-        /// </summary>
-        /// <param name="optionMetadata"></param>
-        private void HandleInvalidCSharpName(OptionMetadata optionMetadata)
-        {
-            optionMetadata.Label = new Label(GetValidCSharpName(optionMetadata), 1033);
-        }
-
-        private string GetValidCSharpName(OptionMetadata optionMetadata)
-        {
-            string label = optionMetadata.Label.GetLocalOrDefaultText(string.Empty);
-            //remove spaces and special characters
-            label = Regex.Replace(label, @"[^a-zA-Z0-9_]", string.Empty);
-            if (label.Length > 0 && !char.IsLetter(label, 0))
-            {
-                label = InvalidCSharpNamePrefix + label;
-            }
-            return label;
-        }
     }
+
+    //</snippetFilteringService>
 }

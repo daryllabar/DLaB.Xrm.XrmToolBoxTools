@@ -68,11 +68,13 @@ namespace DLaB.EarlyBoundGenerator
             ChkGenerateAnonymousTypeConstructor.Checked = Settings.ExtensionConfig.GenerateAnonymousTypeConstructor;
             ChkGenerateOptionSetEnums.Checked = Settings.ExtensionConfig.GenerateEnumProperties;
             ChkRemoveRuntimeComment.Checked = Settings.ExtensionConfig.RemoveRuntimeVersionComment;
+            ChkUseDeprecatedOptionSetNaming.Checked = Settings.ExtensionConfig.UseDeprecatedOptionSetNaming;
             ChkUseTFS.Checked = Settings.ExtensionConfig.UseTfsToCheckoutFiles;
             ChkUseXrmClient.Checked = Settings.ExtensionConfig.UseXrmClient;
             TxtActionPath.Text = Settings.ActionOutPath;
             TxtEntityPath.Text = Settings.EntityOutPath;
             TxtInvalidCSharpNamePrefix.Text = Settings.ExtensionConfig.InvalidCSharpNamePrefix;
+            TxtOptionSetFormat.Text = Settings.ExtensionConfig.LocalOptionSetFormat;
             TxtNamespace.Text = Settings.Namespace;
             TxtOptionSetPath.Text = Settings.OptionSetOutPath;
             TxtServiceContextName.Text = Settings.ServiceContextName;
@@ -248,19 +250,34 @@ namespace DLaB.EarlyBoundGenerator
 
             Settings.ActionOutPath = TxtActionPath.Text;
             Settings.EntityOutPath = TxtEntityPath.Text;
-            Settings.ExtensionConfig.AddDebuggerNonUserCode = ChkAddDebuggerNonUserCode.Checked;
-            Settings.ExtensionConfig.AddNewFilesToProject = ChkAddFilesToProject.Checked;
-            Settings.ExtensionConfig.CreateOneFilePerAction = ChkCreateOneActionFile.Checked;
-            Settings.ExtensionConfig.CreateOneFilePerEntity = ChkCreateOneEntityFile.Checked;
-            Settings.ExtensionConfig.CreateOneFilePerOptionSet = ChkCreateOneOptionSetFile.Checked;
-            Settings.ExtensionConfig.GenerateAttributeNameConsts = ChkGenerateAttributeNameConsts.Checked;
-            Settings.ExtensionConfig.GenerateAnonymousTypeConstructor = ChkGenerateAnonymousTypeConstructor.Checked;
-            Settings.ExtensionConfig.GenerateEnumProperties = ChkGenerateOptionSetEnums.Checked;
-            Settings.ExtensionConfig.InvalidCSharpNamePrefix = TxtInvalidCSharpNamePrefix.Text;
-            Settings.ExtensionConfig.MakeReadonlyFieldsEditable = ChkMakeReadonlyFieldsEditable.Checked;
-            Settings.ExtensionConfig.RemoveRuntimeVersionComment = ChkRemoveRuntimeComment.Checked;
-            Settings.ExtensionConfig.UseXrmClient = ChkUseXrmClient.Checked;
-            Settings.ExtensionConfig.UseTfsToCheckoutFiles = ChkUseTFS.Checked;
+            if (ChkUseDeprecatedOptionSetNaming.Checked)
+            {
+                Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, @"DLaB.CrmSvcUtilExtensions.OptionSet.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions");
+                Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService, string.Empty);
+            }
+            else
+            {
+                var defaultConfig = Config.GetDefault();
+                Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, defaultConfig.GetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter).Value);
+                Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService, defaultConfig.GetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService).Value);
+            }
+
+            var extensions = Settings.ExtensionConfig;
+            extensions.AddDebuggerNonUserCode = ChkAddDebuggerNonUserCode.Checked;
+            extensions.AddNewFilesToProject = ChkAddFilesToProject.Checked;
+            extensions.CreateOneFilePerAction = ChkCreateOneActionFile.Checked;
+            extensions.CreateOneFilePerEntity = ChkCreateOneEntityFile.Checked;
+            extensions.CreateOneFilePerOptionSet = ChkCreateOneOptionSetFile.Checked;
+            extensions.GenerateAttributeNameConsts = ChkGenerateAttributeNameConsts.Checked;
+            extensions.GenerateAnonymousTypeConstructor = ChkGenerateAnonymousTypeConstructor.Checked;
+            extensions.GenerateEnumProperties = ChkGenerateOptionSetEnums.Checked;
+            extensions.InvalidCSharpNamePrefix = TxtInvalidCSharpNamePrefix.Text;
+            extensions.MakeReadonlyFieldsEditable = ChkMakeReadonlyFieldsEditable.Checked;
+            extensions.LocalOptionSetFormat = TxtOptionSetFormat.Text;
+            extensions.RemoveRuntimeVersionComment = ChkRemoveRuntimeComment.Checked;
+            extensions.UseXrmClient = ChkUseXrmClient.Checked;
+            extensions.UseDeprecatedOptionSetNaming = ChkUseDeprecatedOptionSetNaming.Checked;
+            extensions.UseTfsToCheckoutFiles = ChkUseTFS.Checked;
             Settings.IncludeCommandLine = ChkIncludeCommandLine.Checked;
             Settings.MaskPassword = ChkMaskPassword.Checked;
             Settings.Namespace = TxtNamespace.Text;
@@ -485,6 +502,11 @@ namespace DLaB.EarlyBoundGenerator
             TxtHelp.Text = @"Removes the ""//   Runtime Version:X.X.X.X"" comment from the header of generated files.  This helps to alleviate unnecessary differences that pop up when the classes are generated from machines with different .Net Framework updates installed.";
         }
 
+        private void ChkUseDeprecatedOptionSetNaming_MouseEnter(object sender, EventArgs e)
+        {
+            TxtHelp.Text = @"Creates Local OptionSets Using the Deprecated Naming Convention. prefix_oobentityname_prefix_attribute";
+        }
+
         private void ChkUseTFS_MouseEnter(object sender, EventArgs e)
         {
             TxtHelp.Text = @"Will use TFS to attempt to check out the early bound classes.";
@@ -495,6 +517,11 @@ namespace DLaB.EarlyBoundGenerator
             TxtHelp.Text = @"Specifies the Service Context should inherit from CrmOrganizationServiceContext, and conversly, Entities from Xrm.Client.Entity." + Environment.NewLine +
                 @"This results in a dependence on Microsoft.Xrm.Client.dll that must be accounted for during plugins and workflows since it isn't included with CRM by default:" + Environment.NewLine +
                 @"http://develop1.net/public/post/MicrosoftXrmClient-Part-1.aspx .";
+        }
+
+        private void TxtOptionSetFormat_MouseEnter(object sender, EventArgs e)
+        {
+            TxtHelp.Text = @"The Format of Local Option Sets where {0} is the Entity Schema Name, and {1} is the Attribute Schema Name.  The format Specified in the SDK is {0}{1}, but the default is {0}_{1}, but used to be prefix_{0}_{1}(all lower case)";
         }
 
         private void TxtServiceContextName_MouseEnter(object sender, EventArgs e)
@@ -517,7 +544,6 @@ namespace DLaB.EarlyBoundGenerator
         }
 
         #endregion // HelpText
-
 
         private void BtnOpenActionPathDialog_Click(object sender, EventArgs e)
         {
@@ -561,6 +587,12 @@ namespace DLaB.EarlyBoundGenerator
             ChkAddFilesToProject.Visible = !ChkCreateOneEntityFile.Checked;
 
             ConditionallyAddRemoveExtension(TxtOptionSetPath, "OptionSets.cs", ChkCreateOneOptionSetFile.Checked);
+        }
+
+        private void ChkUseDeprecatedOptionSetNaming_CheckedChanged(object sender, EventArgs e)
+        {
+            LblOptionSetFormat.Visible = !ChkUseDeprecatedOptionSetNaming.Checked;
+            TxtOptionSetFormat.Visible = !ChkUseDeprecatedOptionSetNaming.Checked;
         }
 
         private static void ConditionallyAddRemoveExtension(TextBox textBox, string singleClassFileName, bool @checked)

@@ -204,28 +204,31 @@ namespace DLaB.EarlyBoundGenerator
                     throw;
                 }
 
-                if (UpdateConfigAppSetting(file, "ActionCommandLineText", config.ExtensionConfig.ActionCommandLineText, true) |
-                    UpdateConfigAppSetting(file, "ActionsToSkip", config.ExtensionConfig.ActionsToSkip) |
-                    UpdateConfigAppSetting(file, "AddDebuggerNonUserCode", config.ExtensionConfig.AddDebuggerNonUserCode.ToString()) |
-                    UpdateConfigAppSetting(file, "AddNewFilesToProject", config.ExtensionConfig.AddNewFilesToProject.ToString()) |
-                    UpdateConfigAppSetting(file, "CreateOneFilePerAction", config.ExtensionConfig.CreateOneFilePerAction.ToString()) |
-                    UpdateConfigAppSetting(file, "CreateOneFilePerEntity", config.ExtensionConfig.CreateOneFilePerEntity.ToString()) |
-                    UpdateConfigAppSetting(file, "CreateOneFilePerOptionSet", config.ExtensionConfig.CreateOneFilePerOptionSet.ToString()) |
-                    UpdateConfigAppSetting(file, "EntityAttributeSpecifiedNames", config.ExtensionConfig.EntityAttributeSpecifiedNames) |
-                    UpdateConfigAppSetting(file, "EntityCommandLineText", config.ExtensionConfig.EntityCommandLineText, true) |
-                    UpdateConfigAppSetting(file, "EntitiesToSkip", config.ExtensionConfig.EntitiesToSkip) |
-                    UpdateConfigAppSetting(file, "GenerateAttributeNameConsts", config.ExtensionConfig.GenerateAttributeNameConsts.ToString()) |
-                    UpdateConfigAppSetting(file, "GenerateAnonymousTypeConstructor", config.ExtensionConfig.GenerateAnonymousTypeConstructor.ToString()) |
-                    UpdateConfigAppSetting(file, "GenerateEnumProperties", config.ExtensionConfig.GenerateEnumProperties.ToString()) |
-                    UpdateConfigAppSetting(file, "InvalidCSharpNamePrefix", config.ExtensionConfig.InvalidCSharpNamePrefix) |
-                    UpdateConfigAppSetting(file, "MakeReadonlyFieldsEditable", config.ExtensionConfig.MakeReadonlyFieldsEditable.ToString()) |
-                    UpdateConfigAppSetting(file, "OptionSetsToSkip", config.ExtensionConfig.OptionSetsToSkip) |
-                    UpdateConfigAppSetting(file, "OptionSetCommandLineText", config.ExtensionConfig.OptionSetCommandLineText, true) |
-                    UpdateConfigAppSetting(file, "PropertyEnumMappings", config.ExtensionConfig.PropertyEnumMappings) |
-                    UpdateConfigAppSetting(file, "RemoveRuntimeVersionComment", config.ExtensionConfig.RemoveRuntimeVersionComment.ToString()) |
-                    UpdateConfigAppSetting(file, "UnmappedProperties", config.ExtensionConfig.UnmappedProperties) |
-                    UpdateConfigAppSetting(file, "UseTfsToCheckoutFiles", config.ExtensionConfig.UseTfsToCheckoutFiles.ToString()) |
-                    UpdateConfigAppSetting(file, "UseXrmClient", config.ExtensionConfig.UseXrmClient.ToString()))
+                var extensions = config.ExtensionConfig;
+                if (UpdateConfigAppSetting(file, "ActionCommandLineText", extensions.ActionCommandLineText, true) |
+                    UpdateConfigAppSetting(file, "ActionsToSkip", extensions.ActionsToSkip) |
+                    UpdateConfigAppSetting(file, "AddDebuggerNonUserCode", extensions.AddDebuggerNonUserCode.ToString()) |
+                    UpdateConfigAppSetting(file, "AddNewFilesToProject", extensions.AddNewFilesToProject.ToString()) |
+                    UpdateConfigAppSetting(file, "CreateOneFilePerAction", extensions.CreateOneFilePerAction.ToString()) |
+                    UpdateConfigAppSetting(file, "CreateOneFilePerEntity", extensions.CreateOneFilePerEntity.ToString()) |
+                    UpdateConfigAppSetting(file, "CreateOneFilePerOptionSet", extensions.CreateOneFilePerOptionSet.ToString()) |
+                    UpdateConfigAppSetting(file, "EntityAttributeSpecifiedNames", extensions.EntityAttributeSpecifiedNames) |
+                    UpdateConfigAppSetting(file, "EntityCommandLineText", extensions.EntityCommandLineText, true) |
+                    UpdateConfigAppSetting(file, "EntitiesToSkip", extensions.EntitiesToSkip) |
+                    UpdateConfigAppSetting(file, "GenerateAttributeNameConsts", extensions.GenerateAttributeNameConsts.ToString()) |
+                    UpdateConfigAppSetting(file, "GenerateAnonymousTypeConstructor", extensions.GenerateAnonymousTypeConstructor.ToString()) |
+                    UpdateConfigAppSetting(file, "GenerateEnumProperties", extensions.GenerateEnumProperties.ToString()) |
+                    UpdateConfigAppSetting(file, "InvalidCSharpNamePrefix", extensions.InvalidCSharpNamePrefix) |
+                    UpdateConfigAppSetting(file, "MakeReadonlyFieldsEditable", extensions.MakeReadonlyFieldsEditable.ToString()) |
+                    UpdateConfigAppSetting(file, "LocalOptionSetFormat", extensions.LocalOptionSetFormat) |
+                    UpdateConfigAppSetting(file, "OptionSetsToSkip", extensions.OptionSetsToSkip) |
+                    UpdateConfigAppSetting(file, "OptionSetCommandLineText", extensions.OptionSetCommandLineText, true) |
+                    UpdateConfigAppSetting(file, "PropertyEnumMappings", extensions.PropertyEnumMappings) |
+                    UpdateConfigAppSetting(file, "RemoveRuntimeVersionComment", extensions.RemoveRuntimeVersionComment.ToString()) |
+                    UpdateConfigAppSetting(file, "UseDeprecatedOptionSetNaming", extensions.UseDeprecatedOptionSetNaming.ToString()) |
+                    UpdateConfigAppSetting(file, "UnmappedProperties", extensions.UnmappedProperties) |
+                    UpdateConfigAppSetting(file, "UseTfsToCheckoutFiles", extensions.UseTfsToCheckoutFiles.ToString()) |
+                    UpdateConfigAppSetting(file, "UseXrmClient", extensions.UseXrmClient.ToString()))
 
                 {
                     file.Save(ConfigurationSaveMode.Minimal);

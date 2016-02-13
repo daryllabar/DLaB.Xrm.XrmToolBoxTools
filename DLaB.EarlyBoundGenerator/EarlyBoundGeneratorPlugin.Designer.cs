@@ -65,12 +65,14 @@ namespace DLaB.EarlyBoundGenerator
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.ChkMakeReadonlyFieldsEditable = new System.Windows.Forms.CheckBox();
             this.ChkGenerateAttributeNameConsts = new System.Windows.Forms.CheckBox();
             this.ChkGenerateAnonymousTypeConstructor = new System.Windows.Forms.CheckBox();
             this.LblEntitiesDirectory = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ChkAddDebuggerNonUserCode = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.ChkUseDeprecatedOptionSetNaming = new System.Windows.Forms.CheckBox();
             this.TxtInvalidCSharpNamePrefix = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.LblOptionSetPath = new System.Windows.Forms.Label();
@@ -83,7 +85,8 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnCreateActions = new System.Windows.Forms.Button();
             this.TxtActionPath = new System.Windows.Forms.TextBox();
             this.LblActionPath = new System.Windows.Forms.Label();
-            this.ChkMakeReadonlyFieldsEditable = new System.Windows.Forms.CheckBox();
+            this.LblOptionSetFormat = new System.Windows.Forms.Label();
+            this.TxtOptionSetFormat = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -505,6 +508,17 @@ namespace DLaB.EarlyBoundGenerator
             this.tabPage1.Text = "Entities";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // ChkMakeReadonlyFieldsEditable
+            // 
+            this.ChkMakeReadonlyFieldsEditable.AutoSize = true;
+            this.ChkMakeReadonlyFieldsEditable.Location = new System.Drawing.Point(483, 70);
+            this.ChkMakeReadonlyFieldsEditable.Name = "ChkMakeReadonlyFieldsEditable";
+            this.ChkMakeReadonlyFieldsEditable.Size = new System.Drawing.Size(172, 17);
+            this.ChkMakeReadonlyFieldsEditable.TabIndex = 28;
+            this.ChkMakeReadonlyFieldsEditable.Text = "Make Readonly Fields Editable";
+            this.ChkMakeReadonlyFieldsEditable.UseVisualStyleBackColor = true;
+            this.ChkMakeReadonlyFieldsEditable.MouseEnter += new System.EventHandler(this.ChkMakeReadonlyFieldsEditable_MouseEnter);
+            // 
             // ChkGenerateAttributeNameConsts
             // 
             this.ChkGenerateAttributeNameConsts.AutoSize = true;
@@ -568,6 +582,9 @@ namespace DLaB.EarlyBoundGenerator
             // tabPage2
             // 
             this.tabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.tabPage2.Controls.Add(this.LblOptionSetFormat);
+            this.tabPage2.Controls.Add(this.TxtOptionSetFormat);
+            this.tabPage2.Controls.Add(this.ChkUseDeprecatedOptionSetNaming);
             this.tabPage2.Controls.Add(this.TxtInvalidCSharpNamePrefix);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.LblOptionSetsDirectory);
@@ -585,9 +602,21 @@ namespace DLaB.EarlyBoundGenerator
             this.tabPage2.Text = "Option Sets";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // ChkUseDeprecatedOptionSetNaming
+            // 
+            this.ChkUseDeprecatedOptionSetNaming.AutoSize = true;
+            this.ChkUseDeprecatedOptionSetNaming.Location = new System.Drawing.Point(164, 29);
+            this.ChkUseDeprecatedOptionSetNaming.Name = "ChkUseDeprecatedOptionSetNaming";
+            this.ChkUseDeprecatedOptionSetNaming.Size = new System.Drawing.Size(190, 17);
+            this.ChkUseDeprecatedOptionSetNaming.TabIndex = 30;
+            this.ChkUseDeprecatedOptionSetNaming.Text = "Use Deprecated OptionSet Names";
+            this.ChkUseDeprecatedOptionSetNaming.UseVisualStyleBackColor = true;
+            this.ChkUseDeprecatedOptionSetNaming.CheckedChanged += new System.EventHandler(this.ChkUseDeprecatedOptionSetNaming_CheckedChanged);
+            this.ChkUseDeprecatedOptionSetNaming.MouseEnter += new System.EventHandler(this.ChkUseDeprecatedOptionSetNaming_MouseEnter);
+            // 
             // TxtInvalidCSharpNamePrefix
             // 
-            this.TxtInvalidCSharpNamePrefix.Location = new System.Drawing.Point(288, 34);
+            this.TxtInvalidCSharpNamePrefix.Location = new System.Drawing.Point(282, 79);
             this.TxtInvalidCSharpNamePrefix.Name = "TxtInvalidCSharpNamePrefix";
             this.TxtInvalidCSharpNamePrefix.Size = new System.Drawing.Size(45, 20);
             this.TxtInvalidCSharpNamePrefix.TabIndex = 29;
@@ -595,7 +624,7 @@ namespace DLaB.EarlyBoundGenerator
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(161, 37);
+            this.label3.Location = new System.Drawing.Point(155, 82);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(121, 13);
             this.label3.TabIndex = 28;
@@ -729,16 +758,24 @@ namespace DLaB.EarlyBoundGenerator
             this.LblActionPath.TabIndex = 25;
             this.LblActionPath.Text = "Action Relative Path:";
             // 
-            // ChkMakeReadonlyFieldsEditable
+            // LblOptionSetFormat
             // 
-            this.ChkMakeReadonlyFieldsEditable.AutoSize = true;
-            this.ChkMakeReadonlyFieldsEditable.Location = new System.Drawing.Point(483, 70);
-            this.ChkMakeReadonlyFieldsEditable.Name = "ChkMakeReadonlyFieldsEditable";
-            this.ChkMakeReadonlyFieldsEditable.Size = new System.Drawing.Size(172, 17);
-            this.ChkMakeReadonlyFieldsEditable.TabIndex = 28;
-            this.ChkMakeReadonlyFieldsEditable.Text = "Make Readonly Fields Editable";
-            this.ChkMakeReadonlyFieldsEditable.UseVisualStyleBackColor = true;
-            this.ChkMakeReadonlyFieldsEditable.MouseEnter += new System.EventHandler(this.ChkMakeReadonlyFieldsEditable_MouseEnter);
+            this.LblOptionSetFormat.AutoSize = true;
+            this.LblOptionSetFormat.Location = new System.Drawing.Point(174, 55);
+            this.LblOptionSetFormat.Name = "LblOptionSetFormat";
+            this.LblOptionSetFormat.Size = new System.Drawing.Size(102, 13);
+            this.LblOptionSetFormat.TabIndex = 32;
+            this.LblOptionSetFormat.Text = "Local Name Format:";
+            // 
+            // TxtOptionFormat
+            // 
+            this.TxtOptionSetFormat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtOptionSetFormat.Location = new System.Drawing.Point(282, 53);
+            this.TxtOptionSetFormat.Name = "TxtOptionSetFormat";
+            this.TxtOptionSetFormat.Size = new System.Drawing.Size(85, 20);
+            this.TxtOptionSetFormat.TabIndex = 31;
+            this.TxtOptionSetFormat.MouseEnter += new System.EventHandler(this.TxtOptionSetFormat_MouseEnter);
             // 
             // EarlyBoundGeneratorPlugin
             // 
@@ -825,5 +862,8 @@ namespace DLaB.EarlyBoundGenerator
         private System.Windows.Forms.TextBox TxtInvalidCSharpNamePrefix;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox ChkMakeReadonlyFieldsEditable;
+        private System.Windows.Forms.CheckBox ChkUseDeprecatedOptionSetNaming;
+        private System.Windows.Forms.Label LblOptionSetFormat;
+        private System.Windows.Forms.TextBox TxtOptionSetFormat;
     }
 }

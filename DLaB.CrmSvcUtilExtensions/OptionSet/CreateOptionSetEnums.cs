@@ -25,7 +25,6 @@ using System;
 using Microsoft.Crm.Services.Utility;
 using System.Diagnostics;
 using System.CodeDom;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace DLaB.CrmSvcUtilExtensions.OptionSet
@@ -58,13 +57,13 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
 
             //#endif
 
-            RemoveNonOptionSetDefintionsAndSkippedSets(codeUnit);
+            RemoveNonOptionSetDefinitions(codeUnit);
             SortOptionSets(codeUnit);
 
             Trace.TraceInformation("Exiting ICustomizeCodeDomService.CustomizeCodeDom");
         }
 
-        private void RemoveNonOptionSetDefintionsAndSkippedSets(CodeCompileUnit codeUnit)
+        private void RemoveNonOptionSetDefinitions(CodeCompileUnit codeUnit)
         {
             // Iterate over all of the namespaces that were generated.
             for (var i = 0; i < codeUnit.Namespaces.Count; ++i)
@@ -75,7 +74,7 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
                 for (var j = 0; j < types.Count;)
                 {
                     // Remove the type if it is not an enum (all OptionSets are enums) or has been defined to be skipped.
-                    if (!types[j].IsEnum || Skip(types[j].Name))
+                    if (!types[j].IsEnum)
                     {
                         types.RemoveAt(j);
                     }
@@ -123,13 +122,6 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
                 }
                 nameSpace.Types.AddRange(tmpType.OrderBy(n => n.Name).ToArray());
             }
-        }
-
-        private static readonly HashSet<string> OptionSetsToSkip = ConfigHelper.GetHashSet("OptionSetsToSkip");
-
-        private bool Skip(string name)
-        {
-            return OptionSetsToSkip.Contains(name.ToLower());
         }
     }
 }

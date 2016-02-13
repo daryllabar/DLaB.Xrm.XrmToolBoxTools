@@ -307,13 +307,14 @@
     <Compile Include="Entity\AnonymousTypeConstructorGenerator.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Entity\MetadataProviderService.cs" />
+    <Compile Include="NamingService.cs" />
     <Compile Include="OptionSet\CreateOptionSetEnums.cs" />
     <Compile Include="Entity\CustomizeCodeDomService.cs" />
     <Compile Include="Entity\EnumPropertyGenerator.cs" />
     <Compile Include="OptionSet\CustomCodeGenerationService.cs" />
     <Compile Include="OptionSet\FilterOptionSetEnums.cs" />
     <Compile Include="Entity\CodeWriterFilterService.cs" />
-    <Compile Include="Entity\OverridePropertyNames.cs" />
+    <Compile Include="OptionSet\CodeWriterFilterService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

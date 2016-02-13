@@ -15,10 +15,15 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         public Dictionary<string, string> SpecifiedMappings { get; private set; }
         public Dictionary<string, List<string>> UnmappedProperties { get; private set; }
 
+        public INamingService NamingService { get; private set; }
+        public IServiceProvider Services { get; private set; }
+
         #region ICustomizeCodeDomService Members
 
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
+            NamingService = new NamingService((INamingService)services.GetService(typeof(INamingService)));
+            Services = services;
             InitializeMappings();
             var types = codeUnit.Namespaces[0].Types;
             foreach (CodeTypeDeclaration type in types)
@@ -113,7 +118,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             string specifiedEnum;
             if (picklist == null) { return null; }
 
-            var enumName = picklist.OptionSet.Name;
+            var enumName = NamingService.GetNameForOptionSet(data, picklist.OptionSet, Services);
             if (SpecifiedMappings.TryGetValue(entityLogicalName.ToLower() + "." + prop.Name.ToLower(), out specifiedEnum))
             {
                 enumName = specifiedEnum;
