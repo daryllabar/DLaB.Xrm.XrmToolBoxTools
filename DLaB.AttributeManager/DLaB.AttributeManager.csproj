@@ -130,6 +130,9 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="Logic.cs" />
     <Compile Include="NewTypeAttributeCreationLogic.cs" />
+    <Compile Include="OptionSetTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -155,6 +158,14 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\cmd_add.png" />
+    <Content Include="Images\cmd_movedown.png" />
+    <Content Include="Images\cmd_moveup.png" />
+    <Content Include="Images\cmd_sortasc.png" />
+    <Content Include="Images\cmd_sortdes.png" />
+    <Content Include="Images\ico_16_remove.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
