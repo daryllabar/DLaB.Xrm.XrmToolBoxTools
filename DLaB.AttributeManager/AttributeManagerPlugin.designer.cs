@@ -182,7 +182,7 @@ namespace DLaB.AttributeManager
             // 
             label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label10.AutoSize = true;
-            label10.Location = new System.Drawing.Point(464, 33);
+            label10.Location = new System.Drawing.Point(391, 33);
             label10.Name = "label10";
             label10.Size = new System.Drawing.Size(36, 13);
             label10.TabIndex = 24;
@@ -192,7 +192,7 @@ namespace DLaB.AttributeManager
             // 
             label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label11.AutoSize = true;
-            label11.Location = new System.Drawing.Point(464, 55);
+            label11.Location = new System.Drawing.Point(391, 55);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(37, 13);
             label11.TabIndex = 25;
@@ -202,7 +202,7 @@ namespace DLaB.AttributeManager
             // 
             label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label12.AutoSize = true;
-            label12.Location = new System.Drawing.Point(464, 80);
+            label12.Location = new System.Drawing.Point(391, 80);
             label12.Name = "label12";
             label12.Size = new System.Drawing.Size(63, 13);
             label12.TabIndex = 26;
@@ -212,7 +212,7 @@ namespace DLaB.AttributeManager
             // 
             label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label13.AutoSize = true;
-            label13.Location = new System.Drawing.Point(465, 6);
+            label13.Location = new System.Drawing.Point(392, 6);
             label13.Name = "label13";
             label13.Size = new System.Drawing.Size(53, 13);
             label13.TabIndex = 31;
@@ -555,7 +555,7 @@ namespace DLaB.AttributeManager
             // 
             // btnExecuteSteps
             // 
-            this.btnExecuteSteps.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.btnExecuteSteps.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExecuteSteps.Location = new System.Drawing.Point(8, 131);
             this.btnExecuteSteps.Name = "btnExecuteSteps";
@@ -580,9 +580,9 @@ namespace DLaB.AttributeManager
             // 
             this.TxtOptionSetLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtOptionSetLabel.Enabled = false;
-            this.TxtOptionSetLabel.Location = new System.Drawing.Point(531, 30);
+            this.TxtOptionSetLabel.Location = new System.Drawing.Point(459, 30);
             this.TxtOptionSetLabel.Name = "TxtOptionSetLabel";
-            this.TxtOptionSetLabel.Size = new System.Drawing.Size(196, 20);
+            this.TxtOptionSetLabel.Size = new System.Drawing.Size(201, 20);
             this.TxtOptionSetLabel.TabIndex = 27;
             this.Tip.SetToolTip(this.TxtOptionSetLabel, "Postfix to append to the Option Set Value Name to create an unsued temporary name" +
         "");
@@ -591,9 +591,9 @@ namespace DLaB.AttributeManager
             // 
             this.TxtOptionSetValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtOptionSetValue.Enabled = false;
-            this.TxtOptionSetValue.Location = new System.Drawing.Point(531, 56);
+            this.TxtOptionSetValue.Location = new System.Drawing.Point(459, 56);
             this.TxtOptionSetValue.Name = "TxtOptionSetValue";
-            this.TxtOptionSetValue.Size = new System.Drawing.Size(196, 20);
+            this.TxtOptionSetValue.Size = new System.Drawing.Size(201, 20);
             this.TxtOptionSetValue.TabIndex = 28;
             this.Tip.SetToolTip(this.TxtOptionSetValue, "Postfix to append to the Option Set Value Name to create an unsued temporary name" +
         "");
@@ -602,17 +602,17 @@ namespace DLaB.AttributeManager
             // 
             this.TxtOptionSetDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtOptionSetDescription.Enabled = false;
-            this.TxtOptionSetDescription.Location = new System.Drawing.Point(531, 82);
+            this.TxtOptionSetDescription.Location = new System.Drawing.Point(459, 82);
             this.TxtOptionSetDescription.Multiline = true;
             this.TxtOptionSetDescription.Name = "TxtOptionSetDescription";
-            this.TxtOptionSetDescription.Size = new System.Drawing.Size(196, 50);
+            this.TxtOptionSetDescription.Size = new System.Drawing.Size(201, 50);
             this.TxtOptionSetDescription.TabIndex = 29;
             this.Tip.SetToolTip(this.TxtOptionSetDescription, "Postfix to append to the Option Set Value Name to create an unsued temporary name" +
         "");
             // 
             // cmbNewAttribute
             // 
-            this.cmbNewAttribute.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.cmbNewAttribute.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbNewAttribute.DisplayMember = "DisplayName";
             this.cmbNewAttribute.FormattingEnabled = true;
@@ -634,8 +634,8 @@ namespace DLaB.AttributeManager
             // 
             // tabControl
             // 
-            this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl.Controls.Add(this.tabStringAttribute);
             this.tabControl.Controls.Add(this.tabNumberAttribute);
@@ -872,11 +872,11 @@ namespace DLaB.AttributeManager
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 4;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowCount = 3;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(669, 215);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
@@ -900,9 +900,9 @@ namespace DLaB.AttributeManager
             this.PnlLocalOptionSet.Controls.Add(this.CmbAttLocalOptionSet);
             this.PnlLocalOptionSet.Controls.Add(label9);
             this.PnlLocalOptionSet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PnlLocalOptionSet.Location = new System.Drawing.Point(3, 70);
+            this.PnlLocalOptionSet.Location = new System.Drawing.Point(3, 83);
             this.PnlLocalOptionSet.Name = "PnlLocalOptionSet";
-            this.PnlLocalOptionSet.Size = new System.Drawing.Size(680, 134);
+            this.PnlLocalOptionSet.Size = new System.Drawing.Size(663, 129);
             this.PnlLocalOptionSet.TabIndex = 12;
             // 
             // CmbPublisher
@@ -910,9 +910,9 @@ namespace DLaB.AttributeManager
             this.CmbPublisher.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CmbPublisher.DisplayMember = "DisplayName";
             this.CmbPublisher.FormattingEnabled = true;
-            this.CmbPublisher.Location = new System.Drawing.Point(531, 3);
+            this.CmbPublisher.Location = new System.Drawing.Point(459, 3);
             this.CmbPublisher.Name = "CmbPublisher";
-            this.CmbPublisher.Size = new System.Drawing.Size(196, 21);
+            this.CmbPublisher.Size = new System.Drawing.Size(201, 21);
             this.CmbPublisher.TabIndex = 30;
             this.CmbPublisher.ValueMember = "Value";
             this.CmbPublisher.SelectedIndexChanged += new System.EventHandler(this.CmbPublisher_SelectedIndexChanged);
@@ -926,16 +926,24 @@ namespace DLaB.AttributeManager
             this.PicAttLocalOptionSortAsc.TabIndex = 23;
             this.PicAttLocalOptionSortAsc.TabStop = false;
             this.PicAttLocalOptionSortAsc.Click += new System.EventHandler(this.PicAttLocalOptionSortAsc_Click);
+            this.PicAttLocalOptionSortAsc.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ImageButton_MouseDown);
+            this.PicAttLocalOptionSortAsc.MouseEnter += new System.EventHandler(this.ImageButton_MouseEnter);
+            this.PicAttLocalOptionSortAsc.MouseLeave += new System.EventHandler(this.ImageButton_MouseLeave);
+            this.PicAttLocalOptionSortAsc.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ImageButton_MouseUp);
             // 
             // PicAttLocalOptionSortDesc
             // 
             this.PicAttLocalOptionSortDesc.Image = ((System.Drawing.Image)(resources.GetObject("PicAttLocalOptionSortDesc.Image")));
-            this.PicAttLocalOptionSortDesc.Location = new System.Drawing.Point(96, 20);
+            this.PicAttLocalOptionSortDesc.Location = new System.Drawing.Point(159, 20);
             this.PicAttLocalOptionSortDesc.Name = "PicAttLocalOptionSortDesc";
             this.PicAttLocalOptionSortDesc.Size = new System.Drawing.Size(16, 16);
             this.PicAttLocalOptionSortDesc.TabIndex = 22;
             this.PicAttLocalOptionSortDesc.TabStop = false;
             this.PicAttLocalOptionSortDesc.Click += new System.EventHandler(this.PicAttLocalOptionSortDesc_Click);
+            this.PicAttLocalOptionSortDesc.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ImageButton_MouseDown);
+            this.PicAttLocalOptionSortDesc.MouseEnter += new System.EventHandler(this.ImageButton_MouseEnter);
+            this.PicAttLocalOptionSortDesc.MouseLeave += new System.EventHandler(this.ImageButton_MouseLeave);
+            this.PicAttLocalOptionSortDesc.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ImageButton_MouseUp);
             // 
             // PicAttLocalOptionMoveDown
             // 
@@ -946,6 +954,10 @@ namespace DLaB.AttributeManager
             this.PicAttLocalOptionMoveDown.TabIndex = 21;
             this.PicAttLocalOptionMoveDown.TabStop = false;
             this.PicAttLocalOptionMoveDown.Click += new System.EventHandler(this.PicAttLocalOptionMoveDown_Click);
+            this.PicAttLocalOptionMoveDown.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ImageButton_MouseDown);
+            this.PicAttLocalOptionMoveDown.MouseEnter += new System.EventHandler(this.ImageButton_MouseEnter);
+            this.PicAttLocalOptionMoveDown.MouseLeave += new System.EventHandler(this.ImageButton_MouseLeave);
+            this.PicAttLocalOptionMoveDown.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ImageButton_MouseUp);
             // 
             // PicAttLocalOptionMoveUp
             // 
@@ -956,6 +968,10 @@ namespace DLaB.AttributeManager
             this.PicAttLocalOptionMoveUp.TabIndex = 20;
             this.PicAttLocalOptionMoveUp.TabStop = false;
             this.PicAttLocalOptionMoveUp.Click += new System.EventHandler(this.PicAttLocalOptionMoveUp_Click);
+            this.PicAttLocalOptionMoveUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ImageButton_MouseDown);
+            this.PicAttLocalOptionMoveUp.MouseEnter += new System.EventHandler(this.ImageButton_MouseEnter);
+            this.PicAttLocalOptionMoveUp.MouseLeave += new System.EventHandler(this.ImageButton_MouseLeave);
+            this.PicAttLocalOptionMoveUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ImageButton_MouseUp);
             // 
             // PicAttLocalOptionDelete
             // 
@@ -966,6 +982,10 @@ namespace DLaB.AttributeManager
             this.PicAttLocalOptionDelete.TabIndex = 19;
             this.PicAttLocalOptionDelete.TabStop = false;
             this.PicAttLocalOptionDelete.Click += new System.EventHandler(this.PicAttLocalOptionDelete_Click);
+            this.PicAttLocalOptionDelete.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ImageButton_MouseDown);
+            this.PicAttLocalOptionDelete.MouseEnter += new System.EventHandler(this.ImageButton_MouseEnter);
+            this.PicAttLocalOptionDelete.MouseLeave += new System.EventHandler(this.ImageButton_MouseLeave);
+            this.PicAttLocalOptionDelete.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ImageButton_MouseUp);
             // 
             // PicAttLocalOptionAdd
             // 
@@ -976,6 +996,10 @@ namespace DLaB.AttributeManager
             this.PicAttLocalOptionAdd.TabIndex = 18;
             this.PicAttLocalOptionAdd.TabStop = false;
             this.PicAttLocalOptionAdd.Click += new System.EventHandler(this.PicAttLocalOptionAdd_Click);
+            this.PicAttLocalOptionAdd.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ImageButton_MouseDown);
+            this.PicAttLocalOptionAdd.MouseEnter += new System.EventHandler(this.ImageButton_MouseEnter);
+            this.PicAttLocalOptionAdd.MouseLeave += new System.EventHandler(this.ImageButton_MouseLeave);
+            this.PicAttLocalOptionAdd.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ImageButton_MouseUp);
             // 
             // CmbAttLocalOptionSet
             // 
@@ -986,7 +1010,7 @@ namespace DLaB.AttributeManager
             this.CmbAttLocalOptionSet.FormattingEnabled = true;
             this.CmbAttLocalOptionSet.Location = new System.Drawing.Point(71, 42);
             this.CmbAttLocalOptionSet.Name = "CmbAttLocalOptionSet";
-            this.CmbAttLocalOptionSet.Size = new System.Drawing.Size(381, 88);
+            this.CmbAttLocalOptionSet.Size = new System.Drawing.Size(291, 83);
             this.CmbAttLocalOptionSet.TabIndex = 14;
             // 
             // pOptionType
@@ -996,9 +1020,9 @@ namespace DLaB.AttributeManager
             this.pOptionType.Controls.Add(this.optAttGlobalOptionSetLbl);
             this.pOptionType.Controls.Add(this.optAttGlobalOptionSetCmb);
             this.pOptionType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pOptionType.Location = new System.Drawing.Point(68, 10);
+            this.pOptionType.Location = new System.Drawing.Point(68, 23);
             this.pOptionType.Name = "pOptionType";
-            this.pOptionType.Size = new System.Drawing.Size(532, 194);
+            this.pOptionType.Size = new System.Drawing.Size(532, 54);
             this.pOptionType.TabIndex = 0;
             // 
             // label8
@@ -1082,6 +1106,7 @@ namespace DLaB.AttributeManager
             this.Controls.Add(this.btnLoadEntities);
             this.Controls.Add(this.cmbEntities);
             this.Controls.Add(label1);
+            this.MinimumSize = new System.Drawing.Size(711, 532);
             this.Name = "AttributeManagerPlugin";
             this.Size = new System.Drawing.Size(711, 532);
             this.Load += new System.EventHandler(this.AttributeManager_Load);

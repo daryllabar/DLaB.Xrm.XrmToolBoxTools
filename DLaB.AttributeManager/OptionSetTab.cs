@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -119,6 +120,36 @@ namespace DLaB.AttributeManager
 
             TxtOptionSetValue.Text = nextValue.ToString();
 
+        }
+
+        private void ImageButton_MouseEnter(object sender, EventArgs e)
+        {
+            SetBackgroundColor(sender, Color.LightBlue, Color.RoyalBlue);
+        }
+
+        private void SetBackgroundColor(object sender, Color color, Color colorIfMouseDown)
+        {
+            var image = sender as PictureBox;
+            if (image == null)
+            {
+                return;
+            }
+            image.BackColor = System.Windows.Input.Mouse.LeftButton == System.Windows.Input.MouseButtonState.Pressed ? colorIfMouseDown : color;
+        }
+
+        private void ImageButton_MouseLeave(object sender, EventArgs e)
+        {
+            SetBackgroundColor(sender, Color.Transparent, Color.LightBlue);
+        }
+
+        private void ImageButton_MouseUp(object sender, MouseEventArgs e)
+        {
+            SetBackgroundColor(sender, Color.Transparent, Color.Transparent);
+        }
+
+        private void ImageButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            SetBackgroundColor(sender, Color.RoyalBlue, Color.RoyalBlue);
         }
     }
 }
