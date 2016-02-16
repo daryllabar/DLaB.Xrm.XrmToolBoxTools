@@ -312,9 +312,12 @@
     <Compile Include="Entity\CustomizeCodeDomService.cs" />
     <Compile Include="Entity\EnumPropertyGenerator.cs" />
     <Compile Include="OptionSet\CustomCodeGenerationService.cs" />
-    <Compile Include="OptionSet\FilterOptionSetEnums.cs" />
     <Compile Include="Entity\CodeWriterFilterService.cs" />
     <Compile Include="OptionSet\CodeWriterFilterService.cs" />
+    <Compile Include="OptionSet\Transliteration\CodeCustomisationService.cs" />
+    <Compile Include="OptionSet\Transliteration\FilteringService.cs" />
+    <Compile Include="OptionSet\Transliteration\TransliterationAlphabet.cs" />
+    <Compile Include="OptionSet\Transliteration\TransliterationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -322,6 +325,8 @@
     <None Include="CrmSvcUtil.exe.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="OptionSet\Transliteration\Alphabets\1049.json" />
+    <None Include="OptionSet\Transliteration\Alphabets\1058.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
