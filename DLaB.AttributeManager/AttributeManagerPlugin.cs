@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -8,6 +9,7 @@ using System.Windows.Forms;
 using DLaB.Common;
 using DLaB.Common.Exceptions;
 using DLaB.Xrm;
+using DLaB.Xrm.Entities;
 using DLaB.XrmToolboxCommon;
 using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Metadata;
@@ -29,6 +31,8 @@ namespace DLaB.AttributeManager
         public AttributeManagerPlugin()
         {
             InitializeComponent();
+            Publishers = new List<Publisher>();
+            LocalOptions = new List<OptionMetadata>();
 
             StepMapper = new Dictionary<string, Logic.Steps>
             {
@@ -650,16 +654,20 @@ namespace DLaB.AttributeManager
                     RetrieveOptionSets();
                     optAttGlobalOptionSetCmb.Visible = true;
                     optAttGlobalOptionSetLbl.Visible = true;
+                    PnlLocalOptionSet.Visible = false;
                     break;
                 case "Local Option Set":
                     optionTabVisible = true;
                     optAttGlobalOptionSetCmb.Visible = false;
                     optAttGlobalOptionSetLbl.Visible = false;
+                    ShowLocalOptionSet();
                     break;
                 case "Two Options":
                     optionTabVisible = true;
                     optAttGlobalOptionSetCmb.Visible = false;
                     optAttGlobalOptionSetLbl.Visible = false;
+                    PnlLocalOptionSet.Visible = true;
+                    ShowLocalOptionSet();
                     break;
                 case "Image":
 
