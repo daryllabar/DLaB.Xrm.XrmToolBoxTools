@@ -314,8 +314,6 @@
     <Compile Include="OptionSet\CustomCodeGenerationService.cs" />
     <Compile Include="Entity\CodeWriterFilterService.cs" />
     <Compile Include="OptionSet\CodeWriterFilterService.cs" />
-    <Compile Include="OptionSet\Transliteration\CodeCustomisationService.cs" />
-    <Compile Include="OptionSet\Transliteration\FilteringService.cs" />
     <Compile Include="OptionSet\Transliteration\TransliterationAlphabet.cs" />
     <Compile Include="OptionSet\Transliteration\TransliterationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
