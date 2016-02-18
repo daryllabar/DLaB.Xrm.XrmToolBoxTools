@@ -252,6 +252,11 @@ xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)CrmSvcUtil.exe" "$
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)CrmSvcUtil.exe.config" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)DLaB.CrmSvcUtilExtensions.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Crm.Sdk.Proxy.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
+
+xcopy /I /Y "$(TargetDir)Microsoft.Xrm.Sdk.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\OptionSet\Transliteration\Alphabets\*" "$(TargetDir)Plugins\CrmSvcUtil Ref\alphabets"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Newtonsoft.Json.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
+
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.IdentityModel.Clients.ActiveDirectory.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.TeamFoundation.Client.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.TeamFoundation.Common.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"

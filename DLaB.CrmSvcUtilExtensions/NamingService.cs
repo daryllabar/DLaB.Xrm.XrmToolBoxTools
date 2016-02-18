@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Microsoft.Crm.Services.Utility;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 
 namespace DLaB.CrmSvcUtilExtensions
 {
+    using OptionSet.Transliteration;
+    
     public class NamingService : INamingService
     {
         private INamingService DefaultService { get; set; }
@@ -156,21 +156,47 @@ namespace DLaB.CrmSvcUtilExtensions
 
         public string GetNameForOption(OptionSetMetadataBase optionSetMetadata, OptionMetadata optionMetadata, IServiceProvider services)
         {
-            var name = DefaultService.GetNameForOption(optionSetMetadata, optionMetadata, services);
-            var newName = GetValidCSharpName(name);
+            var defaultName = DefaultService.GetNameForOption(optionSetMetadata, optionMetadata, services);
+
+            defaultName = Transliterate(optionMetadata, defaultName);
+
+            var newName = GetValidCSharpName(defaultName);
             newName = AppendValueForDuplicateOptionSetValueNames(optionSetMetadata, newName, optionMetadata.Value.GetValueOrDefault(), services);
 
-            if (newName == name)
+            if (newName == defaultName)
             {
-                Trace.TraceInformation("The name of this option is {0}", name);
+                Trace.TraceInformation("The name of this option is {0}", defaultName);
             }
             else
             {
-                Trace.TraceInformation("The name of this option was {0} but has been changed to {1}", name, newName);
+                Trace.TraceInformation("The name of this option was {0} but has been changed to {1}", defaultName, newName);
             }
 
             return newName;
         }
+
+        private static string Transliterate(OptionMetadata optionMetadata, string defaultName)
+        {
+            var defaultNameIsInEnglish = !string.IsNullOrEmpty(defaultName) && !defaultName.Contains("UnknownLabel");
+            if (defaultNameIsInEnglish)
+            {
+                return defaultName;
+            }
+
+            var localizedLabel =
+                optionMetadata.Label
+                    .LocalizedLabels
+                    .FirstOrDefault(x =>
+                        TransliterationService.AvailableCodes.Value.Contains(x.LanguageCode));
+
+            if (localizedLabel == null)
+            {
+                return defaultName;
+            }
+
+            return TransliterationService.Transliterate(localizedLabel.LanguageCode, localizedLabel.Label);
+        }
+
 
         /// <summary>
         /// Checks to make sure that the name begins with a valid character. If the name does not begin with a valid character, then add an underscore to the beginning of the name.
@@ -200,7 +226,12 @@ namespace DLaB.CrmSvcUtilExtensions
             // Look through all options, populating the namesAndValues Collection
             foreach (var option in metadata.GetOptions())
             {
-                var name = GetValidCSharpName(DefaultService.GetNameForOption(metadata, option, services));
+                var defaultName = DefaultService.GetNameForOption(metadata, option, services);
+
+                defaultName = Transliterate(option, defaultName);
+
+                var name = GetValidCSharpName(defaultName);
+
                 nameValueDups[name] = nameValueDups.ContainsKey(name);
             }
             return nameValueDups;
