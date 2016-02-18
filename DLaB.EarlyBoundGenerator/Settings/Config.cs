@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
+using Microsoft.Xrm.Sdk.Client;
 
 namespace DLaB.EarlyBoundGenerator.Settings
 {
@@ -64,9 +65,17 @@ namespace DLaB.EarlyBoundGenerator.Settings
         public List<Argument> UserArguments { get; set; }
 
         #region NonSerialized Properties
+        [XmlIgnore]
+        public AuthenticationProviderType AuthType { get; set; }
 
         [XmlIgnore]
         public bool UseCrmOnline { get; set; }
+
+        [XmlIgnore]
+        public bool UseConnectionString { get; set; }
+
+        [XmlIgnore]
+        public string ConnectionString { get; set; }
 
         [XmlIgnore]
         public string Domain { get; set; }
@@ -149,7 +158,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         private Config()
         {
-            CrmSvcUtilRelativePath = @"Plugins\CrmSvcUtil Ref\crmsvcutil.exe";
+            CrmSvcUtilRelativePath = Common.Config.GetAppSettingOrDefault("CrmSvcUtilRelativePath", @"Plugins\CrmSvcUtil Ref\crmsvcutil.exe");
+            UseConnectionString = Common.Config.GetAppSettingOrDefault("UseConnectionString", false);
             Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 

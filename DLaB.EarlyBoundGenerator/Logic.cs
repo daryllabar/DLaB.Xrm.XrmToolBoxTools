@@ -263,7 +263,10 @@ namespace DLaB.EarlyBoundGenerator
         private string GetConfigArguments(Config config, CreationType type)
         {
             var sb = new StringBuilder();
-            sb.AppendFormat("/url:\"{0}\" ", config.Url);
+            if (!config.UseConnectionString)
+            {
+                sb.AppendFormat("/url:\"{0}\" ", config.Url);
+            }
 
             foreach (var argument in config.CommandLineArguments.Where(a => a.SettingType == CreationType.All || a.SettingType == type))
             {
@@ -284,13 +287,36 @@ namespace DLaB.EarlyBoundGenerator
 
             if (!string.IsNullOrWhiteSpace(config.Password))
             {
-                sb.AppendFormat("/username:\"{0}\" ", config.UserName);
-                sb.AppendFormat("/password:\"{0}\" ", config.Password);
-
-                // Add Login Info
-                if (!config.UseCrmOnline && !string.IsNullOrWhiteSpace(config.Domain))
+                if (Config.UseConnectionString)
                 {
-                    sb.AppendFormat("/domain:\"{0}\" ", config.Domain);
+                    // Fix for https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/issues/14 - Problem with CRM 2016 on premises with ADFS
+                    // CrmSvcUtil.exe /out:entitie.cs / connectionstring:"Url=https://serverName.domain.com:444/orgName;Domain=myDomain;UserName=username;Password=*****"
+                    // And this command doesn't work :
+                    // CrmSvcUtil.exe /out:entitie.cs /url:"https://serverName.domain.com:444/orgName" / domain:"myDomain" / username:"username" / password:"*****"
+
+                    var domain = string.Empty;
+                    if (!string.IsNullOrWhiteSpace(config.Domain))
+                    {
+                        domain = "Domain=" +config.Domain + ";";
+                    }
+                    var password = config.Password.Replace("\"", "^\"").Replace("&", "^&");  // Handle Double Quotes and &s???
+                    var builder = new System.Data.Common.DbConnectionStringBuilder
+                    {
+                        {"A", $"Url={config.Url};{domain}UserName={config.UserName};Password={password}"}
+                    };
+                    
+                    sb.AppendFormat("/connectionstring:{0} ", builder.ConnectionString.Substring(2)); // Replace "A=" with "/connectionstring:"
+                }
+                else
+                {
+                    sb.AppendFormat("/username:\"{0}\" ", config.UserName);
+                    sb.AppendFormat("/password:\"{0}\" ", config.Password);
+
+                    // Add Login Info
+                    if (!config.UseCrmOnline && !string.IsNullOrWhiteSpace(config.Domain))
+                    {
+                        sb.AppendFormat("/domain:\"{0}\" ", config.Domain);
+                    }
                 }
             }
 

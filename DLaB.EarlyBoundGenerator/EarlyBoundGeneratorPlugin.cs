@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using DLaB.EarlyBoundGenerator.Settings;
 using DLaB.XrmToolboxCommon;
 using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Client;
 using Microsoft.Xrm.Sdk.Metadata;
 using XrmToolBox.Extensibility;
 using XrmToolBox.Extensibility.Interfaces;
@@ -240,12 +241,17 @@ namespace DLaB.EarlyBoundGenerator
         {
             if (ConnectionDetail != null)
             {
+                TxtOutput.AppendText("CRM Authentication Type Detected: " + ConnectionDetail.AuthType + Environment.NewLine);
+                Settings.AuthType = ConnectionDetail.AuthType;
                 Settings.Domain = ConnectionDetail.UserDomain;
                 Settings.Password = ConnectionDetail.GetUserPassword();
                 Settings.SupportsActions = ConnectionDetail.OrganizationMajorVersion >= Crm2013;
-                Settings.Url = ConnectionDetail.OrganizationServiceUrl;
+                Settings.UseConnectionString = Settings.UseConnectionString || Settings.AuthType == AuthenticationProviderType.ActiveDirectory;
                 Settings.UseCrmOnline = ConnectionDetail.UseOnline;
                 Settings.UserName = ConnectionDetail.UserName;
+                Settings.Url = Settings.UseConnectionString ? 
+                    ConnectionDetail.OrganizationServiceUrl.Replace(@"/XRMServices/2011/Organization.svc", string.Empty) : 
+                    ConnectionDetail.OrganizationServiceUrl;
             }
 
             Settings.ActionOutPath = TxtActionPath.Text;
