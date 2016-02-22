@@ -14,6 +14,7 @@ namespace DLaB.CrmSvcUtilExtensions
     
     public class NamingService : INamingService
     {
+        private string ValidCSharpNameRegEx { get; set; }
         private INamingService DefaultService { get; set; }
         private Dictionary<string, List<string>> EntityAttributeSpecifiedNames { get; set; }
         private string InvalidCSharpNamePrefix { get; }
@@ -33,6 +34,7 @@ namespace DLaB.CrmSvcUtilExtensions
             InvalidCSharpNamePrefix = ConfigHelper.GetAppSettingOrDefault("InvalidCSharpNamePrefix", "_");
             LocalOptionSetFormat = ConfigHelper.GetAppSettingOrDefault("LocalOptionSetFormat", "{0}_{1}");
             UseDeprecatedOptionSetNaming = ConfigHelper.GetAppSettingOrDefault("UseDeprecatedOptionSetNaming", false);
+            ValidCSharpNameRegEx = ConfigHelper.GetAppSettingOrDefault("ValidCSharpNameRegEx", @"[^a-zA-Z0-9_]");
         }
 
         /// <summary>
@@ -189,14 +191,10 @@ namespace DLaB.CrmSvcUtilExtensions
                     .FirstOrDefault(x =>
                         TransliterationService.AvailableCodes.Value.Contains(x.LanguageCode));
 
-            if (localizedLabel == null)
-            {
-                return defaultName;
-            }
-
-            return TransliterationService.Transliterate(localizedLabel.LanguageCode, localizedLabel.Label);
+            return localizedLabel == null ? 
+                defaultName.RemoveDiacritics() : 
+                TransliterationService.Transliterate(localizedLabel.LanguageCode, localizedLabel.Label);
         }
-
 
         /// <summary>
         /// Checks to make sure that the name begins with a valid character. If the name does not begin with a valid character, then add an underscore to the beginning of the name.
@@ -204,7 +202,7 @@ namespace DLaB.CrmSvcUtilExtensions
         private string GetValidCSharpName(string name)
         {
             //remove spaces and special characters
-            name = Regex.Replace(name, @"[^a-zA-Z0-9_]", string.Empty);
+            name = Regex.Replace(name, ValidCSharpNameRegEx, string.Empty);
             if (name.Length > 0 && !char.IsLetter(name, 0))
             {
                 name = InvalidCSharpNamePrefix + name;

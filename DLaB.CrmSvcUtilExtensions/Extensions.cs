@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -83,5 +84,26 @@ namespace DLaB.CrmSvcUtilExtensions
         }
 
         #endregion OptionSetMetadataBase
+
+        #region String
+
+        /// <summary>
+        /// Removes the diacritics.  In Unicode characters with diacritics are combination of 2 (or more) characters, 
+        /// for example "ê" is compound of "e" and "^", "ü" is compound of "u" and "¨", etc. 
+        /// This method allow to only keep the base character, in my examples "e" and "u"
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <returns></returns>
+        public static string RemoveDiacritics(this string text)
+        {
+            var normalizedString = text.Normalize(NormalizationForm.FormD);
+            var diacriticLess = from c in normalizedString
+                                let unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c)
+                                where unicodeCategory != UnicodeCategory.NonSpacingMark
+                                select c;
+            return new string(diacriticLess.ToArray()).Normalize(NormalizationForm.FormC);
+        }
+
+        #endregion String
     }
 }

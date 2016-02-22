@@ -8,13 +8,13 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet.Transliteration
 {
     public static class TransliterationService
     {
-        private static readonly string path = Path.Combine("Plugins", "CrmSvcUtil Ref", "alphabets");
+        private static readonly string Path = System.IO.Path.Combine("Plugins", "CrmSvcUtil Ref", "alphabets");
 
         private static readonly List<TransliterationAlphabet> Alphabets = new List<TransliterationAlphabet>();
         public static Lazy<List<int>> AvailableCodes { get; } =
             new Lazy<List<int>>(() =>
-                Directory.GetFiles(path)
-                .Select(Path.GetFileName)
+                Directory.GetFiles(Path)
+                .Select(System.IO.Path.GetFileName)
                 .Select(x => x.Split('.')[0])
                 .Select(int.Parse).ToList());
 
@@ -31,7 +31,7 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet.Transliteration
             var alphabetJson = 
                 JObject.Parse(
                     File.ReadAllText(
-                        Path.Combine(path, languageCode + ".json")));
+                        System.IO.Path.Combine(Path, languageCode + ".json")));
 
             //var dictionary = new Dictionary<char, string>();
             var dictionary = 
