@@ -67,6 +67,7 @@ namespace DLaB.EarlyBoundGenerator
             ChkMaskPassword.Checked = Settings.MaskPassword;
             ChkGenerateAttributeNameConsts.Checked = Settings.ExtensionConfig.GenerateAttributeNameConsts;
             ChkGenerateAnonymousTypeConstructor.Checked = Settings.ExtensionConfig.GenerateAnonymousTypeConstructor;
+            ChkGenerateEntityRelationships.Checked = Settings.ExtensionConfig.GenerateEntityRelationships;
             ChkGenerateOptionSetEnums.Checked = Settings.ExtensionConfig.GenerateEnumProperties;
             ChkRemoveRuntimeComment.Checked = Settings.ExtensionConfig.RemoveRuntimeVersionComment;
             ChkUseDeprecatedOptionSetNaming.Checked = Settings.ExtensionConfig.UseDeprecatedOptionSetNaming;
@@ -276,6 +277,7 @@ namespace DLaB.EarlyBoundGenerator
             extensions.CreateOneFilePerOptionSet = ChkCreateOneOptionSetFile.Checked;
             extensions.GenerateAttributeNameConsts = ChkGenerateAttributeNameConsts.Checked;
             extensions.GenerateAnonymousTypeConstructor = ChkGenerateAnonymousTypeConstructor.Checked;
+            extensions.GenerateEntityRelationships = ChkGenerateEntityRelationships.Checked;
             extensions.GenerateEnumProperties = ChkGenerateOptionSetEnums.Checked;
             extensions.InvalidCSharpNamePrefix = TxtInvalidCSharpNamePrefix.Text;
             extensions.MakeReadonlyFieldsEditable = ChkMakeReadonlyFieldsEditable.Checked;
@@ -481,6 +483,11 @@ namespace DLaB.EarlyBoundGenerator
         private void ChkGenerateAnonymousTypeConstructor_MouseEnter(object sender, EventArgs e)
         {
             TxtHelp.Text = @"Adds an Object Constructor to each early bound entity class to simplify LINQ Projections (http://stackoverflow.com/questions/27623542).";
+        }
+
+        private void ChkGenerateEntityRelationships_MouseEnter(object sender, EventArgs e)
+        {
+            TxtHelp.Text = @"Specifies if 1:N, N:1, and N:N relationships are generated for entities.";
         }
 
         private void ChkGenerateOptionSetEnums_MouseEnter(object sender, EventArgs e)

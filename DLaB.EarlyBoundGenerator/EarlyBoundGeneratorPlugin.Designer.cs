@@ -72,6 +72,8 @@ namespace DLaB.EarlyBoundGenerator
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ChkAddDebuggerNonUserCode = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.LblOptionSetFormat = new System.Windows.Forms.Label();
+            this.TxtOptionSetFormat = new System.Windows.Forms.TextBox();
             this.ChkUseDeprecatedOptionSetNaming = new System.Windows.Forms.CheckBox();
             this.TxtInvalidCSharpNamePrefix = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -85,8 +87,7 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnCreateActions = new System.Windows.Forms.Button();
             this.TxtActionPath = new System.Windows.Forms.TextBox();
             this.LblActionPath = new System.Windows.Forms.Label();
-            this.LblOptionSetFormat = new System.Windows.Forms.Label();
-            this.TxtOptionSetFormat = new System.Windows.Forms.TextBox();
+            this.ChkGenerateEntityRelationships = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -254,7 +255,7 @@ namespace DLaB.EarlyBoundGenerator
             // ChkUseXrmClient
             // 
             this.ChkUseXrmClient.AutoSize = true;
-            this.ChkUseXrmClient.Location = new System.Drawing.Point(164, 121);
+            this.ChkUseXrmClient.Location = new System.Drawing.Point(483, 97);
             this.ChkUseXrmClient.Name = "ChkUseXrmClient";
             this.ChkUseXrmClient.Size = new System.Drawing.Size(95, 17);
             this.ChkUseXrmClient.TabIndex = 23;
@@ -290,7 +291,7 @@ namespace DLaB.EarlyBoundGenerator
             // ChkGenerateOptionSetEnums
             // 
             this.ChkGenerateOptionSetEnums.AutoSize = true;
-            this.ChkGenerateOptionSetEnums.Location = new System.Drawing.Point(164, 98);
+            this.ChkGenerateOptionSetEnums.Location = new System.Drawing.Point(164, 121);
             this.ChkGenerateOptionSetEnums.Name = "ChkGenerateOptionSetEnums";
             this.ChkGenerateOptionSetEnums.Size = new System.Drawing.Size(200, 17);
             this.ChkGenerateOptionSetEnums.TabIndex = 18;
@@ -482,6 +483,7 @@ namespace DLaB.EarlyBoundGenerator
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.ChkGenerateEntityRelationships);
             this.tabPage1.Controls.Add(this.ChkMakeReadonlyFieldsEditable);
             this.tabPage1.Controls.Add(this.ChkGenerateAttributeNameConsts);
             this.tabPage1.Controls.Add(this.ChkGenerateAnonymousTypeConstructor);
@@ -601,6 +603,25 @@ namespace DLaB.EarlyBoundGenerator
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Option Sets";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // LblOptionSetFormat
+            // 
+            this.LblOptionSetFormat.AutoSize = true;
+            this.LblOptionSetFormat.Location = new System.Drawing.Point(174, 55);
+            this.LblOptionSetFormat.Name = "LblOptionSetFormat";
+            this.LblOptionSetFormat.Size = new System.Drawing.Size(102, 13);
+            this.LblOptionSetFormat.TabIndex = 32;
+            this.LblOptionSetFormat.Text = "Local Name Format:";
+            // 
+            // TxtOptionSetFormat
+            // 
+            this.TxtOptionSetFormat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtOptionSetFormat.Location = new System.Drawing.Point(282, 53);
+            this.TxtOptionSetFormat.Name = "TxtOptionSetFormat";
+            this.TxtOptionSetFormat.Size = new System.Drawing.Size(85, 20);
+            this.TxtOptionSetFormat.TabIndex = 31;
+            this.TxtOptionSetFormat.MouseEnter += new System.EventHandler(this.TxtOptionSetFormat_MouseEnter);
             // 
             // ChkUseDeprecatedOptionSetNaming
             // 
@@ -758,24 +779,16 @@ namespace DLaB.EarlyBoundGenerator
             this.LblActionPath.TabIndex = 25;
             this.LblActionPath.Text = "Action Relative Path:";
             // 
-            // LblOptionSetFormat
+            // ChkGenerateEntityRelationships
             // 
-            this.LblOptionSetFormat.AutoSize = true;
-            this.LblOptionSetFormat.Location = new System.Drawing.Point(174, 55);
-            this.LblOptionSetFormat.Name = "LblOptionSetFormat";
-            this.LblOptionSetFormat.Size = new System.Drawing.Size(102, 13);
-            this.LblOptionSetFormat.TabIndex = 32;
-            this.LblOptionSetFormat.Text = "Local Name Format:";
-            // 
-            // TxtOptionFormat
-            // 
-            this.TxtOptionSetFormat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtOptionSetFormat.Location = new System.Drawing.Point(282, 53);
-            this.TxtOptionSetFormat.Name = "TxtOptionSetFormat";
-            this.TxtOptionSetFormat.Size = new System.Drawing.Size(85, 20);
-            this.TxtOptionSetFormat.TabIndex = 31;
-            this.TxtOptionSetFormat.MouseEnter += new System.EventHandler(this.TxtOptionSetFormat_MouseEnter);
+            this.ChkGenerateEntityRelationships.AutoSize = true;
+            this.ChkGenerateEntityRelationships.Location = new System.Drawing.Point(164, 98);
+            this.ChkGenerateEntityRelationships.Name = "ChkGenerateEntityRelationships";
+            this.ChkGenerateEntityRelationships.Size = new System.Drawing.Size(165, 17);
+            this.ChkGenerateEntityRelationships.TabIndex = 29;
+            this.ChkGenerateEntityRelationships.Text = "Generate Entity Relationships";
+            this.ChkGenerateEntityRelationships.UseVisualStyleBackColor = true;
+            this.ChkGenerateEntityRelationships.MouseEnter += new System.EventHandler(this.ChkGenerateEntityRelationships_MouseEnter);
             // 
             // EarlyBoundGeneratorPlugin
             // 
@@ -865,5 +878,6 @@ namespace DLaB.EarlyBoundGenerator
         private System.Windows.Forms.CheckBox ChkUseDeprecatedOptionSetNaming;
         private System.Windows.Forms.Label LblOptionSetFormat;
         private System.Windows.Forms.TextBox TxtOptionSetFormat;
+        private System.Windows.Forms.CheckBox ChkGenerateEntityRelationships;
     }
 }

@@ -52,6 +52,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public bool GenerateAnonymousTypeConstructor { get; set; }
         /// <summary>
+        /// Specifies the generation of Relationships properties for Entities
+        /// </summary>
+        public bool GenerateEntityRelationships { get; set; }
+        /// <summary>
         /// Specifies the generation of Enum properties for option sets
         /// </summary>                                          
         public bool GenerateEnumProperties { get; set; }
@@ -136,6 +140,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 CreateOneFilePerOptionSet = false,
                 GenerateAttributeNameConsts = false,
                 GenerateAnonymousTypeConstructor = true,
+                GenerateEntityRelationships = true,
                 GenerateEnumProperties = true,
                 ActionsToSkip = null,
                 EntitiesToSkip = null,
@@ -173,6 +178,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? CreateOneFilePerOptionSet { get; set; }
         public bool? GenerateAttributeNameConsts { get; set; }
         public bool? GenerateAnonymousTypeConstructor { get; set; }
+        public bool? GenerateEntityRelationships { get; set; }
         public bool? GenerateEnumProperties { get; set; }
         public bool? AddDebuggerNonUserCode { get; set; }
         public bool? CreateOneFilePerAction { get; set; }
