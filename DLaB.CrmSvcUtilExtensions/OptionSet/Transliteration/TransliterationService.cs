@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json.Linq;
@@ -8,7 +9,7 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet.Transliteration
 {
     public static class TransliterationService
     {
-        private static readonly string Path = System.IO.Path.Combine("Plugins", "CrmSvcUtil Ref", "alphabets");
+        private static readonly string Path = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName), "alphabets");
 
         private static readonly List<TransliterationAlphabet> Alphabets = new List<TransliterationAlphabet>();
         public static Lazy<List<int>> AvailableCodes { get; } =
