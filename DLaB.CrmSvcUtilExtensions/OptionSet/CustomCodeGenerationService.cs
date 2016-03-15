@@ -6,14 +6,10 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
     {
         public CustomCodeGenerationService(ICodeGenerationService service) : base(service) {}
 
-        protected override bool CreateOneFilePerCodeUnit
-        {
-            get { return ConfigHelper.GetAppSettingOrDefault("CreateOneFilePerOptionSet", false); }
-        }
+        protected override string CommandLineText => ConfigHelper.GetAppSettingOrDefault("OptionSetCommandLineText", string.Empty);
 
-        protected override CodeUnit SplitByCodeUnit
-        {
-            get { return CodeUnit.Enum; }
-        }
+        protected override bool CreateOneFilePerCodeUnit => ConfigHelper.GetAppSettingOrDefault("CreateOneFilePerOptionSet", false);
+
+        protected override CodeUnit SplitByCodeUnit => CodeUnit.Enum;
     }
 }
