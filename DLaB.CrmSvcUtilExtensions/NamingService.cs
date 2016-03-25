@@ -5,7 +5,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Microsoft.Crm.Services.Utility;
-using Microsoft.TeamFoundation.Common;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 
@@ -59,9 +58,8 @@ namespace DLaB.CrmSvcUtilExtensions
                         ((EnumAttributeMetadata)a).OptionSet.MetadataId == optionSetMetadata.MetadataId
                      select a).FirstOrDefault();
 
-                // Check for null, since statuscode attributes on custom entities are not
-                // global, but their optionsets are not included in the attribute
-                // metadata of the entity, either.
+                // Check for null, since statuscode attributes on custom entities are not global, 
+                // but their optionsets are not included in the attribute metadata of the entity, either.
                 if (attribute == null)
                 {
                     if (optionSetMetadata.OptionSetType.GetValueOrDefault() == OptionSetType.Status && DefaultService.GetNameForOptionSet(entityMetadata, optionSetMetadata, services).EndsWith("statuscode"))
@@ -106,6 +104,8 @@ namespace DLaB.CrmSvcUtilExtensions
                     return "Goal_FiscalPeriod";
                 case "goal_fiscalyear":
                     return "Goal_FiscalYear";
+                case "incident_caseorigincode":
+                    return "Incident_CaseOriginCode";
                 case "initialcommunication":
                     return "InitialCommunication";
                 case "lead_salesstage":
@@ -260,8 +260,22 @@ namespace DLaB.CrmSvcUtilExtensions
                 var name = GetValidCSharpName(defaultName);
 
                 nameValueDups[name] = nameValueDups.ContainsKey(name);
+
+                if (metadata.OptionSetType == OptionSetType.Status)
+                {
+                    // For Statuses, also do State
+                    name = AppendState(option, name);
+                    nameValueDups[name] = nameValueDups.ContainsKey(name);
+                }
             }
             return nameValueDups;
+        }
+
+        private static string AppendState(OptionMetadata option, string name)
+        {
+            var statusOption = (StatusOptionMetadata) option;
+            name += "_" + (statusOption.State == 0 ? "Active" : "Inactive");
+            return name;
         }
 
         /// <summary>
@@ -282,20 +296,33 @@ namespace DLaB.CrmSvcUtilExtensions
                 OptionNameValueDuplicates[optionSetMetadata] = duplicateNameValues;
             }
 
-            if (duplicateNameValues[name])
+            if (!duplicateNameValues[name])
             {
-                // Postfix name with numerical value
-                if (value < 0)
-                {
-                    // Handle Negativives
-                    return name + "_neg" + Math.Abs(value.GetValueOrDefault());
-                }
-
-                return name + "_" + value;
+                // No Dup, return
+                return name;
             }
 
-            return name;
+            if (optionSetMetadata.OptionSetType == OptionSetType.Status)
+            {
+                name = AppendState(optionSetMetadata.GetOptions().Single(o => o.Value == value), name);
+                if (!duplicateNameValues[name])
+                {
+                    // Appended with State, No Dup, return
+                    return name;
+                }
+            }
 
+            // Postfix name with numerical value
+            if (value < 0)
+            {
+                // Handle Negativives
+                {
+                    name += "_neg" + Math.Abs(value.GetValueOrDefault());
+                    return name;
+                }
+            }
+            name += "_" + value;
+            return name;
         }
 
         /// <summary>
