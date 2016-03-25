@@ -50,8 +50,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         {
             
             var attributeLogicalName = (from CodeAttributeDeclaration att in prop.CustomAttributes
-                                        where att.AttributeType.BaseType == XrmAttributeLogicalName ||
-                                              att.AttributeType.BaseType == XrmRelationshipSchemaName
+                                        where att.AttributeType.BaseType == XrmAttributeLogicalName || HasAttributeAndRelationship(prop, att)
                                         select new 
                                         {
                                             FieldName = ((CodePrimitiveExpression)att.Arguments[0].Value).Value.ToString(),
@@ -71,6 +70,13 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                 Type = new CodeTypeReference(typeof (string)),
                 InitExpression = new CodePrimitiveExpression(attributeLogicalName)
             });
+        }
+
+        private static bool HasAttributeAndRelationship(CodeMemberProperty prop, CodeAttributeDeclaration att)
+        {
+            return att.AttributeType.BaseType == XrmRelationshipSchemaName &&
+                    prop.CustomAttributes.Cast<CodeAttributeDeclaration>().Any(a => a.AttributeType.BaseType == XrmAttributeLogicalName)
+                ;
         }
 
         /// <summary>
