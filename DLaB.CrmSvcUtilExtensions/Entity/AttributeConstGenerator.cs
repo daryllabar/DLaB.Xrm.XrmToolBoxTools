@@ -6,6 +6,7 @@ using System.Linq;
 using Microsoft.Crm.Services.Utility;
 using System.Reflection;
 using System.IO;
+using Microsoft.Xrm.Sdk;
 
 namespace DLaB.CrmSvcUtilExtensions.Entity
 {
@@ -42,11 +43,22 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             }
         }
 
+        private const string XrmAttributeLogicalName = "Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute";
+        private const string XrmRelationshipSchemaName = "Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute";
+
         private static void CreateAttributeConstForProperty(CodeTypeDeclaration type, CodeMemberProperty prop, HashSet<string> attributes)
         {
+            
             var attributeLogicalName = (from CodeAttributeDeclaration att in prop.CustomAttributes
-                where att.AttributeType.BaseType == "Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute"
-                select ((CodePrimitiveExpression) att.Arguments[0].Value).Value.ToString()).FirstOrDefault();
+                                        where att.AttributeType.BaseType == XrmAttributeLogicalName ||
+                                              att.AttributeType.BaseType == XrmRelationshipSchemaName
+                                        select new 
+                                        {
+                                            FieldName = ((CodePrimitiveExpression)att.Arguments[0].Value).Value.ToString(),
+                                            Order = att.AttributeType.BaseType == XrmRelationshipSchemaName ? 0 : 1
+                                        }).
+                                        OrderBy(a => a.Order).
+                                        FirstOrDefault()?.FieldName;
 
             if (attributes.Contains(prop.Name) || attributeLogicalName == null) return;
 
