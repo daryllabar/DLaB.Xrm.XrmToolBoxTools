@@ -15,6 +15,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         #region Properties
 
         /// <summary>
+        /// Use speech synthesizer to notify of code generation completion.
+        /// </summary>
+        public bool AudibleCompletionNotification { get; set; }
+        /// <summary>
         /// The CRM Service utility relative path.
         /// </summary>
         /// <value>
@@ -179,6 +183,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             CrmSvcUtilRelativePath = poco.CrmSvcUtilRelativePath ?? @default.CrmSvcUtilRelativePath;
             RemoveObsoleteValues(poco, @default);
 
+            AudibleCompletionNotification = poco.AudibleCompletionNotification.GetValueOrDefault(@default.AudibleCompletionNotification);
             IncludeCommandLine = poco.IncludeCommandLine.GetValueOrDefault(@default.IncludeCommandLine);
             MaskPassword = poco.MaskPassword.GetValueOrDefault(@default.MaskPassword);
             ExtensionConfig = new ExtensionConfig
@@ -313,6 +318,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         {
             return new Config
             {
+                AudibleCompletionNotification = true,
                 IncludeCommandLine = true,
                 MaskPassword = true,    
                 ExtensionArguments = new List<Argument>(new [] {
@@ -478,6 +484,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
     /// </summary>
     public class Config
     {
+        public bool? AudibleCompletionNotification { get; set; }
         public string CrmSvcUtilRelativePath { get; set; }
         public bool? IncludeCommandLine { get; set; }
         public bool? MaskPassword { get; set; }

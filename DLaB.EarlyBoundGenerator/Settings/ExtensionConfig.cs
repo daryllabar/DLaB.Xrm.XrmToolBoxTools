@@ -192,6 +192,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public string PropertyEnumMappings { get; set; }
         public string UnmappedProperties { get; set; }
         public bool? AddNewFilesToProject { get; set; }
+        public bool? AudibleCompletionNotification { get; set; }
         public bool? RemoveRuntimeVersionComment { get; set; }
         public bool? UseDeprecatedOptionSetNaming { get; set; }
         public bool? UseTfsToCheckoutFiles { get; set; }

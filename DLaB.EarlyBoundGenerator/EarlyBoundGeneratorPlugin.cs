@@ -59,6 +59,7 @@ namespace DLaB.EarlyBoundGenerator
             Settings = Config.Load(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
             ChkAddDebuggerNonUserCode.Checked = Settings.ExtensionConfig.AddDebuggerNonUserCode;
             ChkAddFilesToProject.Checked = Settings.ExtensionConfig.AddNewFilesToProject;
+            ChkAudibleCompletion.Checked = Settings.AudibleCompletionNotification;
             ChkCreateOneActionFile.Checked = Settings.ExtensionConfig.CreateOneFilePerAction;
             ChkCreateOneEntityFile.Checked = Settings.ExtensionConfig.CreateOneFilePerEntity;
             ChkCreateOneOptionSetFile.Checked = Settings.ExtensionConfig.CreateOneFilePerOptionSet;
@@ -286,6 +287,7 @@ namespace DLaB.EarlyBoundGenerator
             extensions.UseXrmClient = ChkUseXrmClient.Checked;
             extensions.UseDeprecatedOptionSetNaming = ChkUseDeprecatedOptionSetNaming.Checked;
             extensions.UseTfsToCheckoutFiles = ChkUseTFS.Checked;
+            Settings.AudibleCompletionNotification = ChkAudibleCompletion.Checked;
             Settings.IncludeCommandLine = ChkIncludeCommandLine.Checked;
             Settings.MaskPassword = ChkMaskPassword.Checked;
             Settings.Namespace = TxtNamespace.Text;
@@ -458,6 +460,11 @@ namespace DLaB.EarlyBoundGenerator
         private void ChkAddFilesToProject_MouseEnter(object sender, EventArgs e)
         {
             TxtHelp.Text = @"Adds any files that don't exist to the first project file found in the hierarchy of the output path.";
+        }
+
+        private void ChkAudibleCompletion_MouseEnter(object sender, EventArgs e)
+        {
+            TxtHelp.Text = @"Use speech synthesizer to notify of code generation completion.  May not work on VMs or machines without sound cards.";
         }
 
         private void ChkCreateOneActionFile_MouseEnter(object sender, EventArgs e)

@@ -107,7 +107,7 @@ namespace DLaB.EarlyBoundGenerator
                 consoleOutput.AppendLine(line);
             }
 
-            HandleResult(filePath, date, creationType, consoleOutput.ToString());
+            HandleResult(filePath, date, creationType, consoleOutput.ToString(), Config.AudibleCompletionNotification);
         }
 
         protected bool AbleToMakeFileAccessible(string filePath)
@@ -329,9 +329,8 @@ namespace DLaB.EarlyBoundGenerator
             Create(CreationType.OptionSets);
         }
 
-        private void HandleResult(string filePath, DateTime date, CreationType creationType, string consoleOutput)
+        private void HandleResult(string filePath, DateTime date, CreationType creationType, string consoleOutput, bool speakResult)
         {
-            var speaker = new SpeechSynthesizer();
             try
             {
                 //if (creationType == CreationType.Actions && Config.ExtensionConfig.CreateOneFilePerAction)
@@ -363,27 +362,27 @@ namespace DLaB.EarlyBoundGenerator
                 //else 
                 if (date != File.GetLastWriteTimeUtc(filePath) || consoleOutput.Contains(filePath + " was unchanged."))
                 {
-                    lock (_speakToken)
-                    {
-                        speaker.Speak(creationType + " Completed Successfully");
-                    }
+                    Speak(creationType + " Completed Successfully", speakResult);
                     return;
                 }
             }
             catch(Exception ex)
             {
                 UpdateStatus("Error", ex.ToString());
-                lock (_speakToken)
-                {
-                    speaker.Speak(creationType + " Errored");
-                }
+                Speak(creationType + " Errored", speakResult);
             }
 
-            //int result;
+            UpdateStatus("Error", "Output file was not updated or not found!  " + filePath);
+
+        }
+
+        private void Speak(string words, bool speakResult)
+        {
+            if (!speakResult) { return; }
+            var speaker = new SpeechSynthesizer();
             lock (_speakToken)
             {
-                UpdateStatus("Error", "Output file was not updated or not found!  "  + filePath);
-                speaker.Speak(creationType + " Errored");
+                speaker.Speak(words);
             }
         }
 

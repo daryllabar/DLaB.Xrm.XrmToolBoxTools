@@ -35,6 +35,7 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnCreateEntities = new System.Windows.Forms.Button();
             this.TxtOutput = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ChkAudibleCompletion = new System.Windows.Forms.CheckBox();
             this.ChkAddFilesToProject = new System.Windows.Forms.CheckBox();
             this.ChkRemoveRuntimeComment = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -65,6 +66,7 @@ namespace DLaB.EarlyBoundGenerator
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.ChkGenerateEntityRelationships = new System.Windows.Forms.CheckBox();
             this.ChkMakeReadonlyFieldsEditable = new System.Windows.Forms.CheckBox();
             this.ChkGenerateAttributeNameConsts = new System.Windows.Forms.CheckBox();
             this.ChkGenerateAnonymousTypeConstructor = new System.Windows.Forms.CheckBox();
@@ -87,7 +89,6 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnCreateActions = new System.Windows.Forms.Button();
             this.TxtActionPath = new System.Windows.Forms.TextBox();
             this.LblActionPath = new System.Windows.Forms.Label();
-            this.ChkGenerateEntityRelationships = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -113,9 +114,10 @@ namespace DLaB.EarlyBoundGenerator
             // 
             // BtnCreateAll
             // 
-            this.BtnCreateAll.Location = new System.Drawing.Point(6, 136);
+            this.BtnCreateAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnCreateAll.Location = new System.Drawing.Point(6, 155);
             this.BtnCreateAll.Name = "BtnCreateAll";
-            this.BtnCreateAll.Size = new System.Drawing.Size(204, 21);
+            this.BtnCreateAll.Size = new System.Drawing.Size(219, 21);
             this.BtnCreateAll.TabIndex = 1;
             this.BtnCreateAll.Text = "Create All";
             this.BtnCreateAll.UseVisualStyleBackColor = true;
@@ -140,17 +142,18 @@ namespace DLaB.EarlyBoundGenerator
             this.TxtOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtOutput.Location = new System.Drawing.Point(0, 372);
+            this.TxtOutput.Location = new System.Drawing.Point(0, 391);
             this.TxtOutput.Multiline = true;
             this.TxtOutput.Name = "TxtOutput";
             this.TxtOutput.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.TxtOutput.Size = new System.Drawing.Size(890, 172);
+            this.TxtOutput.Size = new System.Drawing.Size(890, 153);
             this.TxtOutput.TabIndex = 1;
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.ChkAudibleCompletion);
             this.groupBox1.Controls.Add(this.ChkAddFilesToProject);
             this.groupBox1.Controls.Add(this.ChkRemoveRuntimeComment);
             this.groupBox1.Controls.Add(this.BtnCreateAll);
@@ -162,10 +165,21 @@ namespace DLaB.EarlyBoundGenerator
             this.groupBox1.Controls.Add(this.ChkIncludeCommandLine);
             this.groupBox1.Location = new System.Drawing.Point(3, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(884, 162);
+            this.groupBox1.Size = new System.Drawing.Size(884, 181);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Settings";
+            // 
+            // ChkAudibleCompletion
+            // 
+            this.ChkAudibleCompletion.AutoSize = true;
+            this.ChkAudibleCompletion.Location = new System.Drawing.Point(6, 136);
+            this.ChkAudibleCompletion.Name = "ChkAudibleCompletion";
+            this.ChkAudibleCompletion.Size = new System.Drawing.Size(194, 17);
+            this.ChkAudibleCompletion.TabIndex = 12;
+            this.ChkAudibleCompletion.Text = "Use Audible Completion Notification";
+            this.ChkAudibleCompletion.UseVisualStyleBackColor = true;
+            this.ChkAudibleCompletion.MouseEnter += new System.EventHandler(this.ChkAudibleCompletion_MouseEnter);
             // 
             // ChkAddFilesToProject
             // 
@@ -192,7 +206,7 @@ namespace DLaB.EarlyBoundGenerator
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(213, 21);
+            this.label1.Location = new System.Drawing.Point(228, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 13);
             this.label1.TabIndex = 9;
@@ -202,20 +216,21 @@ namespace DLaB.EarlyBoundGenerator
             // 
             this.TxtNamespace.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtNamespace.Location = new System.Drawing.Point(286, 20);
+            this.TxtNamespace.Location = new System.Drawing.Point(301, 20);
             this.TxtNamespace.Name = "TxtNamespace";
-            this.TxtNamespace.Size = new System.Drawing.Size(592, 20);
+            this.TxtNamespace.Size = new System.Drawing.Size(577, 20);
             this.TxtNamespace.TabIndex = 8;
             // 
             // TxtHelp
             // 
-            this.TxtHelp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.TxtHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtHelp.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtHelp.Location = new System.Drawing.Point(216, 46);
+            this.TxtHelp.Location = new System.Drawing.Point(231, 46);
             this.TxtHelp.Multiline = true;
             this.TxtHelp.Name = "TxtHelp";
-            this.TxtHelp.Size = new System.Drawing.Size(662, 111);
+            this.TxtHelp.Size = new System.Drawing.Size(647, 130);
             this.TxtHelp.TabIndex = 7;
             // 
             // ChkUseTFS
@@ -475,7 +490,7 @@ namespace DLaB.EarlyBoundGenerator
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.actionsTab);
-            this.tabControl1.Location = new System.Drawing.Point(3, 172);
+            this.tabControl1.Location = new System.Drawing.Point(3, 191);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(878, 194);
@@ -509,6 +524,17 @@ namespace DLaB.EarlyBoundGenerator
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Entities";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // ChkGenerateEntityRelationships
+            // 
+            this.ChkGenerateEntityRelationships.AutoSize = true;
+            this.ChkGenerateEntityRelationships.Location = new System.Drawing.Point(164, 98);
+            this.ChkGenerateEntityRelationships.Name = "ChkGenerateEntityRelationships";
+            this.ChkGenerateEntityRelationships.Size = new System.Drawing.Size(165, 17);
+            this.ChkGenerateEntityRelationships.TabIndex = 29;
+            this.ChkGenerateEntityRelationships.Text = "Generate Entity Relationships";
+            this.ChkGenerateEntityRelationships.UseVisualStyleBackColor = true;
+            this.ChkGenerateEntityRelationships.MouseEnter += new System.EventHandler(this.ChkGenerateEntityRelationships_MouseEnter);
             // 
             // ChkMakeReadonlyFieldsEditable
             // 
@@ -779,17 +805,6 @@ namespace DLaB.EarlyBoundGenerator
             this.LblActionPath.TabIndex = 25;
             this.LblActionPath.Text = "Action Relative Path:";
             // 
-            // ChkGenerateEntityRelationships
-            // 
-            this.ChkGenerateEntityRelationships.AutoSize = true;
-            this.ChkGenerateEntityRelationships.Location = new System.Drawing.Point(164, 98);
-            this.ChkGenerateEntityRelationships.Name = "ChkGenerateEntityRelationships";
-            this.ChkGenerateEntityRelationships.Size = new System.Drawing.Size(165, 17);
-            this.ChkGenerateEntityRelationships.TabIndex = 29;
-            this.ChkGenerateEntityRelationships.Text = "Generate Entity Relationships";
-            this.ChkGenerateEntityRelationships.UseVisualStyleBackColor = true;
-            this.ChkGenerateEntityRelationships.MouseEnter += new System.EventHandler(this.ChkGenerateEntityRelationships_MouseEnter);
-            // 
             // EarlyBoundGeneratorPlugin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -879,5 +894,6 @@ namespace DLaB.EarlyBoundGenerator
         private System.Windows.Forms.Label LblOptionSetFormat;
         private System.Windows.Forms.TextBox TxtOptionSetFormat;
         private System.Windows.Forms.CheckBox ChkGenerateEntityRelationships;
+        private System.Windows.Forms.CheckBox ChkAudibleCompletion;
     }
 }

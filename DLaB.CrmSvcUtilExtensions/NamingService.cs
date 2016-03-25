@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Microsoft.Crm.Services.Utility;
+using Microsoft.TeamFoundation.Common;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 
@@ -77,15 +78,15 @@ namespace DLaB.CrmSvcUtilExtensions
                 }
             }
             var name = DefaultService.GetNameForOptionSet(entityMetadata, optionSetMetadata, services);
-            name = UpdateCasingForGlobalOptionSets(name);
+            name = UpdateCasingForGlobalOptionSets(name, optionSetMetadata);
             return name;
         }
 
-        private string UpdateCasingForGlobalOptionSets(string name)
+        private string UpdateCasingForGlobalOptionSets(string name, OptionSetMetadataBase optionSetMetadata)
         {
             switch (name.ToLower())
             {
-                case "budgeststatus":
+                case "budgetstatus":
                     return "BudgetStatus";
                 case "componentstate":
                     return "ComponentState";
@@ -152,8 +153,36 @@ namespace DLaB.CrmSvcUtilExtensions
                 case "workflowlog_objecttypecode":
                     return "WorkflowLog_ObjectTypeCode";
                 default:
-                    return name;
+                    return UpdateCasingForCustomGlobalOptionSets(name, optionSetMetadata);
             }
+        }
+
+        private static string UpdateCasingForCustomGlobalOptionSets(string name, OptionSetMetadataBase optionSetMetadata)
+        {
+            var displayName = optionSetMetadata.DisplayName?.GetLocalOrDefaultText() ?? string.Empty;
+            if (string.IsNullOrWhiteSpace(displayName))
+            {
+                return name;
+            }
+
+            displayName = displayName.RemoveDiacritics().Replace(" ", ""); // Remove spaces
+            if (name.EndsWith(displayName.ToLower()))
+            {
+                name = name.Replace(displayName.ToLower(), displayName);
+            }
+            else if (name.Contains(displayName.ToLower()) && name.IndexOf(displayName.ToLower(), StringComparison.Ordinal) == name.LastIndexOf(displayName.ToLower(), StringComparison.Ordinal))
+            {
+                // Name only contains the display name, and only once, but also contains other characters.  Captialize the Display Name, and the next character
+                // as long as more than one character exists: given HelloWorld, helloworldstatus => HelloWorldStatus but helloworlds => HelloWorlds
+                // May need to check for plural instead... s/es/ies
+                var index = name.IndexOf(displayName.ToLower(), StringComparison.Ordinal) + displayName.Length;
+                name = name.Replace(displayName.ToLower(), displayName);
+                if (index < name.Length - 1)
+                {
+                    name = name.Substring(0, index) + char.ToUpper(name[index]) + name.Substring(index + 1, name.Length - index - 1);
+                }
+            }
+            return name;
         }
 
         public string GetNameForOption(OptionSetMetadataBase optionSetMetadata, OptionMetadata optionMetadata, IServiceProvider services)
