@@ -232,6 +232,7 @@ namespace DLaB.AttributeManager
             this.cmbEntities.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbEntities.DisplayMember = "DisplayName";
+            this.cmbEntities.Enabled = false;
             this.cmbEntities.FormattingEnabled = true;
             this.cmbEntities.Location = new System.Drawing.Point(93, 30);
             this.cmbEntities.Name = "cmbEntities";
@@ -277,6 +278,7 @@ namespace DLaB.AttributeManager
             this.cmbAttributes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbAttributes.DisplayMember = "DisplayName";
+            this.cmbAttributes.Enabled = false;
             this.cmbAttributes.FormattingEnabled = true;
             this.cmbAttributes.Location = new System.Drawing.Point(93, 57);
             this.cmbAttributes.Name = "cmbAttributes";

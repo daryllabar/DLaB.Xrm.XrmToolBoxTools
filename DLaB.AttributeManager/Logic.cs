@@ -37,7 +37,8 @@ namespace DLaB.AttributeManager
             RemoveExistingAttribute = 4,
             CreateNewAttribute = 8,
             MigrateToNewAttribute = 16,
-            RemoveTemp = 32
+            RemoveTemp = 32,
+            MigrationToTempRequired = 64
         }
 
         [Flags]
@@ -198,6 +199,7 @@ namespace DLaB.AttributeManager
 
         private void AssertValidStepsForState(string existingSchemaName, string newSchemaName, Steps stepsToPerform, AttributeMigrationState state, Action actions)
         {
+            // TODO CLEAN THIS UP!
             if (actions.HasFlag(Action.ChangeType) && existingSchemaName == newSchemaName && state.Old != null && state.New != null)
             {
                 Trace("Only an attribute type change has been requested.  Attempting to differentiate between existing and new.");
@@ -227,7 +229,7 @@ namespace DLaB.AttributeManager
                 }
             }
 
-            Trace("Validating Current CRM State Before Preforming Steps:");
+            Trace("Validating Current CRM State Before Performing Steps:");
 
             if (stepsToPerform.HasFlag(Steps.CreateTemp) && state.Temp != null)
             {
@@ -279,11 +281,15 @@ namespace DLaB.AttributeManager
 
             if (stepsToPerform.HasFlag(Steps.CreateNewAttribute))
             {
-                // Can only Create Global if Local does not exist or will be removed
-                if (!(state.Old == null || stepsToPerform.HasFlag(Steps.RemoveExistingAttribute)))
+                if (stepsToPerform.HasFlag(Steps.MigrationToTempRequired))
                 {
-                    AssertInvalidState("Unable to create new Attribute!  Old Attribute " + existingSchemaName + " still exists!");
+                    // Temp is required, Can only Create New, if Old doesn't exist, or will be removed
+                    if(!(state.Old == null || stepsToPerform.HasFlag(Steps.RemoveExistingAttribute)))
+                    {
+                        AssertInvalidState("Unable to create new Attribute!  Old Attribute " + existingSchemaName + " still exists!");
+                    }
                 }
+
 
                 // Can only Create Global if doesn't already exist
                 if (state.New != null)

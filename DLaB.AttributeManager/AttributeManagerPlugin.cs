@@ -110,6 +110,8 @@ namespace DLaB.AttributeManager
 
                     cmbEntities.Items.AddRange(result.Cast<object>().ToArray());
                     cmbEntities.EndUpdate();
+                    cmbEntities.Enabled = true;
+                    cmbAttributes.Enabled = true;
                     Enabled = true;
                 }
             });
@@ -149,7 +151,8 @@ namespace DLaB.AttributeManager
                             !a.IsManaged.Value && 
                             a.AttributeOf == null && 
                             a.IsCustomizable.Value &&
-                            !a.IsPrimaryId.Value).
+                            !a.IsPrimaryId.Value &&
+                            !IsBaseCurrency(a)).
                         Select(a => new ObjectCollectionItem<AttributeMetadata>((a.DisplayName.GetLocalOrDefaultText("N/A")) + " (" + a.LogicalName + ")", a)).
                         OrderBy(r => r.DisplayName).
                         Cast<object>().
@@ -162,6 +165,11 @@ namespace DLaB.AttributeManager
                     Enabled = true;
                 }
             });
+        }
+
+        private bool IsBaseCurrency(AttributeMetadata attribute)
+        {
+            return attribute.AttributeType == AttributeTypeCode.Money && ((MoneyAttributeMetadata) attribute).IsBaseCurrency.GetValueOrDefault(false);
         }
 
         #region Steps
@@ -195,7 +203,7 @@ namespace DLaB.AttributeManager
                 return;
             }
 
-            Logic.Steps steps = clbSteps.CheckedItems.Cast<string>().Aggregate<string, Logic.Steps>(0, (current, item) => current | StepMapper[item]);
+            var steps = clbSteps.CheckedItems.Cast<string>().Aggregate<string, Logic.Steps>(0, (current, item) => current | StepMapper[item]);
 
             if (steps == 0)
             {
@@ -203,6 +211,13 @@ namespace DLaB.AttributeManager
                 Enabled = true;
                 return;
             }
+
+            if (clbSteps.Items.Count == 6)
+            {
+                // Create of Temporary is required.  Add it to the steps
+                steps |= Logic.Steps.MigrationToTempRequired;
+            }
+
 
             // Update Display Name
             var langCode = attribute.Value.DisplayName.UserLocalizedLabel.LanguageCode;
@@ -214,32 +229,33 @@ namespace DLaB.AttributeManager
                 var info = (ExecuteStepsInfo) e.Argument;
                 Logic.LogHandler onLog = m => w.ReportProgress(0, m);
                 info.Migrator.OnLog += onLog;
+                var result = new ExecuteStepsResult
+                {
+                    Steps = info.Steps,
+                    Successful = false
+                };
+                e.Result = result;
                 try
                 {
                     info.Migrator.Run(info.CurrentAttribute, info.NewAttributeName, info.Steps, info.Action, info.NewAttribute);
                     w.ReportProgress(99, "Steps Completed!");
-                    e.Result = true;
-                }
-                catch (InvalidOperationException ex)
-                {
-                    w.ReportProgress(int.MinValue, ex);
-                    e.Result = false;
+                    result.Successful = true;
                 }
                 catch (Exception ex)
                 {
                     w.ReportProgress(int.MinValue, ex);
-                    e.Result = false;
+                    result.Successful = false;
                 }
                 finally
                 {
                     info.Migrator.OnLog -= onLog;
                 }
-
             })
             {
                 PostWorkCallBack = e =>
                 {
-                    if (steps.HasFlag(Logic.Steps.MigrateToNewAttribute) && e.Result as bool? == true)
+                    var result = (ExecuteStepsResult) e.Result;
+                    if (result.Steps.HasFlag(Logic.Steps.MigrateToNewAttribute) && result.Successful)
                     {
                         AttributesNeedLoaded = true;
                         ExecuteMethod(LoadAttributes);
@@ -880,6 +896,12 @@ namespace DLaB.AttributeManager
             public Logic.Steps Steps { get; internal set; }
         }
 
+        private class ExecuteStepsResult
+        {
+            public bool Successful { get; set; }
+            public Logic.Steps Steps { get; set; }
+        }
+
         private void RemoveNonNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
@@ -922,7 +944,7 @@ namespace DLaB.AttributeManager
 
     [Export(typeof (IXrmToolBoxPlugin)),
         ExportMetadata("Name", "Attribute Manager"),   
-        ExportMetadata("Description", "Handles Creating/Updating an attribute for an Entityl."),
+        ExportMetadata("Description", "Handles Creating/Updating an attribute for an Entity."),
         ExportMetadata("SmallImageBase64", SmallImage32X32), // null for "no logo" image or base64 image content 
         ExportMetadata("BigImageBase64", LargeImage120X120), // null for "no logo" image or base64 image content 
         ExportMetadata("BackgroundColor", "White"), // Use a HTML color name

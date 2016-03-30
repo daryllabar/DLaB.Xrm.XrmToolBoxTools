@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace DLaB.XrmToolboxCommon
     /// Useful for puting in winform ObjectCollections
     /// </summary>
     /// <typeparam name="T"></typeparam>
+    [DebuggerDisplay("Name: {DisplayName}, Value: {Value}")]
     public class ObjectCollectionItem<T>
     {
         public string DisplayName { get; set; }
