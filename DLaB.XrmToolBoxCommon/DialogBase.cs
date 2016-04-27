@@ -87,7 +87,7 @@ namespace DLaB.XrmToolboxCommon
         {
             WorkAsync(new WorkAsyncInfo("Retrieving Actions...", e =>
             {
-                e.Result = Service.GetEntities<Entity>(new ColumnSet(true),
+                e.Result = Service.GetEntities("workflow", new ColumnSet(true),
                     "category", 3, // Action
                     "parentworkflowid", null);
             })
@@ -95,7 +95,7 @@ namespace DLaB.XrmToolboxCommon
                 PostWorkCallBack = e =>
                 {
                     var actionContainer = ((PropertyInterface.IActions) CallingControl);
-                    actionContainer.Actions = ((EntityCollection) e.Result).Entities;
+                    actionContainer.Actions = (List<Entity>) e.Result;
                     _callBackForRetrieveActions(actionContainer.Actions);
                 }
             });

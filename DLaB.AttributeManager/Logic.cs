@@ -69,7 +69,7 @@ namespace DLaB.AttributeManager
 
         public void Run(AttributeMetadata att, string newAttributeSchemaName, Steps stepsToPerform, Action actions, AttributeMetadata newAttributeType = null)
         {
-            var state = GetApplicationMigrationState(Service, att, newAttributeSchemaName, actions);
+            var state = GetApplicationMigrationState(Service, att, newAttributeSchemaName);
             AssertValidStepsForState(att.SchemaName, newAttributeSchemaName, stepsToPerform, state, actions);
             var oldAtt = state.Old;
             var tmpAtt = state.Temp;
@@ -173,7 +173,7 @@ namespace DLaB.AttributeManager
             AssertCanDelete(Service, fromAtt);
         }
 
-        private AttributeMigrationState GetApplicationMigrationState(IOrganizationService service, AttributeMetadata att, string newSchemaName, Action actions)
+        private AttributeMigrationState GetApplicationMigrationState(IOrganizationService service, AttributeMetadata att, string newSchemaName)
         {
             var entityName = att.EntityLogicalName;
             var schemaName = att.SchemaName;
@@ -362,33 +362,33 @@ namespace DLaB.AttributeManager
             Trace("Checking for Delete Dependencies for " + attribute.EntityLogicalName + "." + attribute.LogicalName);
             var depends = (RetrieveDependenciesForDeleteResponse)service.Execute(new RetrieveDependenciesForDeleteRequest
             {
-                ComponentType = (int)componenttype.Attribute,
+                ComponentType = (int)ComponentType.Attribute,
                 ObjectId = attribute.MetadataId.GetValueOrDefault()
             });
 
             var errors = new List<string>();
             foreach (var d in depends.EntityCollection.ToEntityList<Dependency>())
             {
-                var type = (componenttype)d.DependentComponentType.GetValueOrDefault();
+                var type = (ComponentType)d.DependentComponentType.GetValueOrDefault();
                 var dependentId = d.DependentComponentObjectId.GetValueOrDefault();
                 var err = type + " " + dependentId;
                 switch (type) {
-                    case componenttype.EntityRelationship:
+                    case ComponentType.EntityRelationship:
                         var response =
                             (RetrieveRelationshipResponse)service.Execute(new RetrieveRelationshipRequest { MetadataId = dependentId });
                         Trace("Entity Relationship {0} must be manually removed/added", response.RelationshipMetadata.SchemaName);
                         break;
-                    case componenttype.SavedQueryVisualization:
+                    case ComponentType.SavedQueryVisualization:
                         var sqv = service.GetEntity<SavedQueryVisualization>(dependentId);
                             err = $"{err} ({sqv.Name} - {sqv.CreatedBy.Name})";
                         break;
 
-                    case componenttype.SavedQuery:
+                    case ComponentType.SavedQuery:
                         var sq = service.GetEntity<SavedQuery>(dependentId);
                             err = $"{err} ({sq.Name} - {sq.CreatedBy.Name})";
                         break;
 
-                    case componenttype.Workflow:
+                    case ComponentType.Workflow:
                         var workflow = service.GetEntity<Workflow>(d.DependentComponentObjectId.GetValueOrDefault());
                         err = err + " " + workflow.Name + " (" + workflow.CategoryEnum.ToString() + ")";
                             break;
@@ -453,9 +453,9 @@ namespace DLaB.AttributeManager
             Trace("Checking for Workflow Dependencies");
             var depends = ((RetrieveDependenciesForDeleteResponse)service.Execute(new RetrieveDependenciesForDeleteRequest
             {
-                ComponentType = (int)componenttype.Attribute,
+                ComponentType = (int)ComponentType.Attribute,
                 ObjectId = from.MetadataId.GetValueOrDefault()
-            })).EntityCollection.ToEntityList<Dependency>().Where(d => d.DependentComponentTypeEnum == componenttype.Workflow).ToList();
+            })).EntityCollection.ToEntityList<Dependency>().Where(d => d.DependentComponentTypeEnum == ComponentType.Workflow).ToList();
 
             if (!depends.Any())
             {
@@ -474,7 +474,7 @@ namespace DLaB.AttributeManager
                     {
                         EntityMoniker = workflow.ToEntityReference(),
                         State = new OptionSetValue((int) WorkflowState.Draft),
-                        Status = new OptionSetValue((int) workflow_statuscode.Draft)
+                        Status = new OptionSetValue((int) Workflow_StatusCode.Draft)
                     });
                 }
                 service.Update(workflow);
@@ -484,7 +484,7 @@ namespace DLaB.AttributeManager
                     {
                         EntityMoniker = workflow.ToEntityReference(),
                         State = new OptionSetValue((int)WorkflowState.Activated),
-                        Status = new OptionSetValue((int)workflow_statuscode.Activated)
+                        Status = new OptionSetValue((int)Workflow_StatusCode.Activated)
                     });
                 }
             }
