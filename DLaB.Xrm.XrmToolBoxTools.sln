@@ -19,6 +19,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.XrmToolboxCommon", "DL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.AttributeManager", "DLaB.AttributeManager\DLaB.AttributeManager.csproj", "{FCB8A4E4-622B-413A-A531-B612E5F1436C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{4209BA61-6ECE-4CD2-9E4E-56701E72C88C}"
+	ProjectSection(SolutionItems) = preProject
+		DLaB.EarlyBoundGenerator\DLaB.XrmToolBoxTools.nuspec = DLaB.EarlyBoundGenerator\DLaB.XrmToolBoxTools.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

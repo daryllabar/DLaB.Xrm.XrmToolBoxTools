@@ -83,15 +83,6 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
                 generate = true;
             }
 
-            if (generate && optionSetMetadata.Name != null)
-            {
-                string name = optionSetMetadata.Name;
-                if (name.ToLower().EndsWith("set"))
-                {
-                    optionSetMetadata.Name = name + "Enum";
-                }
-            }
-
             // Remove Dups
             var metadataOptionSet = optionSetMetadata as OptionSetMetadata;
             if (generate && metadataOptionSet != null)
