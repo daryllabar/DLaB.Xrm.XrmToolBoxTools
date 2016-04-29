@@ -80,7 +80,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         private void InitializeMappings()
         {
             var specifedMappings = ConfigHelper.GetAppSettingOrDefault("PropertyEnumMappings", string.Empty).Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
-            UnmappedProperties = ConfigHelper.GetDictionaryList(ConfigurationManager.AppSettings["UnmappedProperties"], true);
+            UnmappedProperties = ConfigHelper.GetDictionaryList("UnmappedProperties", true);
             SpecifiedMappings = new Dictionary<string, string>();
 
             foreach (var specifiedMapping in specifedMappings)

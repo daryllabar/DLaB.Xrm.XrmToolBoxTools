@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
+using DLaB.Common;
 using Microsoft.Crm.Services.Utility;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
@@ -29,7 +30,7 @@ namespace DLaB.CrmSvcUtilExtensions
         public NamingService(INamingService defaultService)
         {
             DefaultService = defaultService;
-            EntityAttributeSpecifiedNames = ConfigHelper.GetDictionaryList(ConfigurationManager.AppSettings["EntityAttributeSpecifiedNames"], false);
+            EntityAttributeSpecifiedNames = ConfigHelper.GetDictionaryList("EntityAttributeSpecifiedNames", false);
             OptionNameValueDuplicates = new Dictionary<OptionSetMetadataBase, Dictionary<string, bool>>();
             InvalidCSharpNamePrefix = ConfigHelper.GetAppSettingOrDefault("InvalidCSharpNamePrefix", "_");
             LocalOptionSetFormat = ConfigHelper.GetAppSettingOrDefault("LocalOptionSetFormat", "{0}_{1}");

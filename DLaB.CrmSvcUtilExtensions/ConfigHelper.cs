@@ -1,77 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Runtime.Remoting.Channels;
+using DLaB.Common;
 
 namespace DLaB.CrmSvcUtilExtensions
 {
     public class ConfigHelper
     {
         /// <summary>
-        /// Parses the value by "|", then by "," into a Dictionary of String.  The key will always be lowercased.
+        /// Looks up the appSetting, parses the value by "|", then by "," into a Dictionary of String.  The key will always be lowercased.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="appSetting"></param>
         /// <param name="lowerCaseValues"></param>
         /// <returns></returns>
-        internal static Dictionary<string, List<string>> GetDictionaryList(string value, bool lowerCaseValues)
+        internal static Dictionary<string, List<string>> GetDictionaryList(string appSetting, bool lowerCaseValues)
         {
             try
             {
-                var dictionaryList = new Dictionary<string, List<string>>();
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    return dictionaryList;
-                }
-
-                value = value.Replace(" ", string.Empty);
-
-                foreach (var entity in value.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries))
-                {
-                    var splitAttributes = entity.Split(',');
-                    var attributes = new List<string>();
-
-                    for (var i = 1; i < splitAttributes.Length; i++)
+                return Config.GetDictionaryList<string, string>(appSetting, string.Empty,
+                    new ConfigKeyValuesSplitInfo
                     {
-                        if (lowerCaseValues)
-                        {
-                            attributes.Add(splitAttributes[i].ToLower());
-                        }
-                        else
-                        {
-                            attributes.Add(splitAttributes[i]);
-                        }
-                    }
-
-                    dictionaryList.Add(splitAttributes[0].ToLower(), attributes);
-                }
-                return dictionaryList;
+                        ConvertValuesToLower = lowerCaseValues
+                    });
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception attempting to GetDictionaryList for config key: " + value);
-                Console.WriteLine(ex.ToString());
-                throw;
-            }
-        }
-
-        internal static HashSet<string> GetHashSet(string appSettingKey)
-        {
-            try
-            {
-                var configValues = GetAppSettingOrDefault(appSettingKey, string.Empty).
-                    Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries).
-                    Select(s => s.ToLower()).ToList();
-
-                if (configValues.Any())
-                {
-                    return new HashSet<string>(configValues);
-                }
-                return new HashSet<string>();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception attempting to GetHashSet for config key: " + appSettingKey);
+                Console.WriteLine("Exception attempting to GetDictionaryList for config key: " + appSetting);
                 Console.WriteLine(ex.ToString());
                 throw;
             }
@@ -91,27 +44,7 @@ namespace DLaB.CrmSvcUtilExtensions
         {
             try
             {
-                T value;
-                var config = ConfigurationManager.AppSettings[appSetting];
-                if (config == null)
-                {
-                    value = defaultValue;
-                }
-                else
-                {
-                    var type = typeof (T);
-                    var parse = type.GetMethod("Parse", new Type[] {typeof (string) });
-
-                    if (parse == null)
-                    {
-                        value = (T) Convert.ChangeType(config, type);
-                    }
-                    else
-                    {
-                        value = (T) parse.Invoke(null, new Object[] {config});
-                    }
-                }
-                return value;
+                return Config.GetAppSettingOrDefault(appSetting, defaultValue);
             }
             catch (Exception ex)
             {

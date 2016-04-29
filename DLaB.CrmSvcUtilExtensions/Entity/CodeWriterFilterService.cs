@@ -1,8 +1,9 @@
-﻿using DLaB.CrmSvcUtilExtensions.OptionSet;
-using Microsoft.Crm.Services.Utility;
+﻿using Microsoft.Crm.Services.Utility;
 using Microsoft.Xrm.Sdk.Metadata;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using DLaB.Common;
 
 namespace DLaB.CrmSvcUtilExtensions.Entity
 {
@@ -14,6 +15,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         /// </summary>
         public static Dictionary<string, EntityMetadata> EntityMetadata { get; set; }
         public HashSet<string> EntitiesToSkip { get; set; }
+        public List<string> EntityPrefixesToSkip { get; set; } 
 
         public bool GenerateEntityRelationships { get; set; }
 
@@ -25,7 +27,8 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         public CodeWriterFilterService(ICodeWriterFilterService defaultService)
         {
             DefaultService = defaultService;
-            EntitiesToSkip = ConfigHelper.GetHashSet("EntitiesToSkip");
+            EntitiesToSkip = Config.GetHashSet<string>("EntitiesToSkip");
+            EntityPrefixesToSkip = Config.GetAppSettingListOrDefault("EntityPrefixesToSkip", new List<string>(), new []{ ConfigKeyValueSplitInfo.Entry_Seperator });
             GenerateEntityRelationships = ConfigHelper.GetAppSettingOrDefault("GenerateEntityRelationships", true);
         }
 
@@ -58,7 +61,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             {
                 EntityMetadata.Add(entityMetadata.LogicalName, entityMetadata);
             }
-            return !EntitiesToSkip.Contains(entityMetadata.LogicalName);
+            return !EntitiesToSkip.Contains(entityMetadata.LogicalName) && !EntityPrefixesToSkip.Any(p => entityMetadata.LogicalName.StartsWith(p));
         }
 
         public bool GenerateRelationship(RelationshipMetadataBase relationshipMetadata, EntityMetadata otherEntityMetadata, IServiceProvider services)

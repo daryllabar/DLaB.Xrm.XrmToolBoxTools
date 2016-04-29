@@ -22,11 +22,10 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using Microsoft.Crm.Services.Utility;
-using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 using System.Linq;
+using DLaB.Common;
 
 namespace DLaB.CrmSvcUtilExtensions.OptionSet
 {
@@ -47,7 +46,8 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
             GeneratedOptionSets = new HashSet<string>();
         }
 
-        private static readonly HashSet<string> OptionSetsToSkip = ConfigHelper.GetHashSet("OptionSetsToSkip");
+        private static readonly HashSet<string> OptionSetsToSkip = Config.GetHashSet<string>("OptionSetsToSkip");
+        private static readonly List<string> OptionSetPrefixesToSkip = Config.GetAppSettingListOrDefault("OptionSetPrefixesToSkip", new List<string>(), new[] { ConfigKeyValueSplitInfo.Entry_Seperator });
 
         /// <summary>
         /// Does not mark the OptionSet for generation if it has already been generated.  
@@ -105,7 +105,8 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
 
         private bool Skip(string name)
         {
-            return OptionSetsToSkip.Contains(name.ToLower());
+            name = name.ToLower();
+            return OptionSetsToSkip.Contains(name) || OptionSetPrefixesToSkip.Any(p => name.StartsWith(p));
         }
 
         /// <summary>

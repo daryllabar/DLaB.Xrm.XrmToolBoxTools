@@ -2,24 +2,25 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.XrmToolBoxTools</id>
-	  <version>1.2016.3.31</version>
+	<version>1.2016.4.27</version>
+	<title>DLaB Tools for XrmToolBox</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
     <licenseUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Contains Early Bound Generator and Attribute Manager.</description>
+    <description>Early Bound Generator and Attribute Manager.</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>
     <dependencies>
-      <dependency id="XrmToolBox" version="1.2016.3.30" />
+      <dependency id="XrmToolBox" version="1.2016.4.27" />
     </dependencies>
   </metadata>
   <files>
     <file src="bin\Release\Plugins\DLaB.*.dll" target="lib\net452\plugins" />
     <file src="bin\Release\Plugins\CrmSvcUtil Ref\*.*" target="lib\net452\plugins\CrmSvcUtil Ref" />
-	  <file src="bin\Release\Plugins\CrmSvcUtil Ref\alphabets\*.*" target="lib\net452\plugins\CrmSvcUtil Ref\alphabets" />
+	<file src="bin\Release\Plugins\CrmSvcUtil Ref\alphabets\*.*" target="lib\net452\plugins\CrmSvcUtil Ref\alphabets" />
   </files>
 </package>  

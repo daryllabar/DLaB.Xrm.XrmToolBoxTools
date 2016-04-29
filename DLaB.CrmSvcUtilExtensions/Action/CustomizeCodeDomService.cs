@@ -26,8 +26,8 @@ using Microsoft.Crm.Services.Utility;
 using System.Diagnostics;
 using System.CodeDom;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
+using DLaB.Common;
 
 namespace DLaB.CrmSvcUtilExtensions.Action
 {
@@ -87,7 +87,8 @@ namespace DLaB.CrmSvcUtilExtensions.Action
             }
         }
 
-        private static HashSet<string> _actionsToSkip = ConfigHelper.GetHashSet("ActionsToSkip");
+        private static readonly HashSet<string> ActionsToSkip = Config.GetHashSet<string>("ActionsToSkip");
+        private static readonly List<string> ActionPrefixesToSkip = Config.GetAppSettingListOrDefault("ActionPrefixesToSkip", new List<string>(), new []{ ConfigKeyValueSplitInfo.Entry_Seperator});
 
         private bool Skip(string name)
         {
@@ -105,7 +106,8 @@ namespace DLaB.CrmSvcUtilExtensions.Action
             {
                 name = name.Substring(index + 1, name.Length - index - 1);
             }
-            return _actionsToSkip.Contains(name.ToLower());   
+            name = name.ToLower();
+            return ActionsToSkip.Contains(name) || ActionPrefixesToSkip.Any(p => name.StartsWith(p));   
         }
     }
 }
