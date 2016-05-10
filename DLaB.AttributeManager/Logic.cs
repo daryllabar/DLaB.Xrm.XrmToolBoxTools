@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using DLaB.Common.Exceptions;
 using DLaB.Xrm;
 using DLaB.Xrm.Entities;
 using McTools.Xrm.Connection;
@@ -376,7 +377,7 @@ namespace DLaB.AttributeManager
                     case ComponentType.EntityRelationship:
                         var response =
                             (RetrieveRelationshipResponse)service.Execute(new RetrieveRelationshipRequest { MetadataId = dependentId });
-                        Trace("Entity Relationship {0} must be manually removed/added", response.RelationshipMetadata.SchemaName);
+                        Trace("Entity Relationship / Mapping {0} must be manually removed/added", response.RelationshipMetadata.SchemaName);
                         break;
                     case ComponentType.SavedQueryVisualization:
                         var sqv = service.GetEntity<SavedQueryVisualization>(dependentId);
@@ -439,21 +440,106 @@ namespace DLaB.AttributeManager
                 "objecttypecode", from.EntityLogicalName,
                 new ConditionExpression("formxml", ConditionOperator.Like, "%<control id=\"" + from.LogicalName + "\"%"));
 
+            /*
+             * <row>
+             *   <cell id="{056d159e-9144-d809-378b-9e04a7626953}" showlabel="true" locklevel="0">
+             *     <labels>
+             *       <label description="Points" languagecode="1033" />
+             *     </labels>
+             *     <control id="new_points" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="new_points" disabled="true" />
+             *   </cell>
+             * </row>
+             */
+
             foreach (var form in forms)
             {
                 Trace("Updating Form " + form.Name);
-                form.FormXml = form.FormXml.Replace("<control id=\"" + from.LogicalName + "\"", "<control id=\"" + to.LogicalName + "\"").
+                var fromControlStart = "<control id=\"" + from.LogicalName + "\"";
+                const string classIdStart = "classid=\"{";
+                var index = form.FormXml.IndexOf(fromControlStart, StringComparison.OrdinalIgnoreCase);
+                while (index >= 0)
+                {
+                    index = form.FormXml.IndexOf(classIdStart, index, StringComparison.OrdinalIgnoreCase) + classIdStart.Length;
+                    var classIdEnd = form.FormXml.IndexOf("}",index, StringComparison.OrdinalIgnoreCase);
+                    form.FormXml = form.FormXml.Remove(index, classIdEnd - index).
+                                                Insert(index, GetClassId(to));
+                    index = form.FormXml.IndexOf(fromControlStart, index, StringComparison.OrdinalIgnoreCase);
+                }
+                form.FormXml = form.FormXml.Replace(fromControlStart, "<control id=\"" + to.LogicalName + "\"").
                     Replace("datafieldname=\"" + from.LogicalName + "\"", "datafieldname=\"" + to.LogicalName + "\"");
                 service.Update(form);
+            }
+        }
+
+        private string GetClassId(AttributeMetadata att)
+        {
+            switch (att.AttributeType.GetValueOrDefault(AttributeTypeCode.String))
+            {
+                case AttributeTypeCode.Boolean:
+                    return "B0C6723A-8503-4FD7-BB28-C8A06AC933C2"; // CheckBoxControl
+                case AttributeTypeCode.DateTime:
+                    return "5B773807-9FB2-42DB-97C3-7A91EFF8ADFF"; // DateTimeControl
+                case AttributeTypeCode.Decimal:
+                    return "C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E"; // DecimalControl
+                case AttributeTypeCode.Double:
+                    return "0D2C745A-E5A8-4C8F-BA63-C6D3BB604660"; // FloatControl
+                case AttributeTypeCode.Integer:
+                    return "C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F"; // IntegerControl 
+                case AttributeTypeCode.Lookup:
+                    return "270BD3DB-D9AF-4782-9025-509E298DEC0A"; // LookupControl
+                case AttributeTypeCode.Money:
+                    return "533B9E00-756B-4312-95A0-DC888637AC78"; // MoneyControl
+                case AttributeTypeCode.PartyList:
+                    return "CBFB742C-14E7-4A17-96BB-1A13F7F64AA2"; // PartyListControl
+                case AttributeTypeCode.Picklist:
+                    return "3EF39988-22BB-4F0B-BBBE-64B5A3748AEE"; // PickListControl
+                case AttributeTypeCode.Status:
+                    return "5D68B988-0661-4DB2-BC3E-17598AD3BE6C"; // PicklistStatusControl
+                case AttributeTypeCode.String:
+                    var format = ((StringAttributeMetadata) att).Format.GetValueOrDefault();
+                    switch (format)
+                    {
+                        case StringFormat.Email:
+                            return "ADA2203E-B4CD-49BE-9DDF-234642B43B52"; // EmailAddressControl
+                        case StringFormat.Text:
+                            return "4273EDBD-AC1D-40D3-9FB2-095C621B552D"; // TextBoxControl
+                        case StringFormat.TextArea:
+                            return "E0DECE4B-6FC8-4A8F-A065-082708572369"; // TextAreaControl
+                        case StringFormat.Url:
+                            return "71716B6C-711E-476C-8AB8-5D11542BFB47"; // UrlControl
+                        case StringFormat.TickerSymbol:
+                            return "1E1FC551-F7A8-43AF-AC34-A8DC35C7B6D4"; // TickerControl
+                        case StringFormat.Phone:
+                            return "8C10015A-B339-4982-9474-A95FE05631A5"; // PhoneNumberControl
+                        case StringFormat.PhoneticGuide:
+                        case StringFormat.VersionNumber:
+                            throw new NotImplementedException("Unable to determine the Control ClassId for StringAttribute.Formt of " + format);
+                        default:
+                            throw new EnumCaseUndefinedException<StringFormat>(format);
+                    }
+                case AttributeTypeCode.BigInt:
+                    return "C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F"; // IntegerControl
+                case AttributeTypeCode.EntityName:
+                case AttributeTypeCode.Virtual:
+                case AttributeTypeCode.CalendarRules:
+                case AttributeTypeCode.Customer:
+                case AttributeTypeCode.ManagedProperty:
+                case AttributeTypeCode.Memo:
+                case AttributeTypeCode.Owner:
+                case AttributeTypeCode.State:
+                case AttributeTypeCode.Uniqueidentifier:
+                    throw new NotImplementedException("Unable to determine the Control ClassId for AttributeTypeCode." + att.AttributeType);
+                default:
+                    throw new EnumCaseUndefinedException<AttributeTypeCode>(att.AttributeType.GetValueOrDefault(AttributeTypeCode.String));
             }
         }
 
         private void UpdateWorkflows(IOrganizationService service, AttributeMetadata from, AttributeMetadata to)
         {
             Trace("Checking for Workflow Dependencies");
-            var depends = ((RetrieveDependenciesForDeleteResponse)service.Execute(new RetrieveDependenciesForDeleteRequest
+            var depends = ((RetrieveDependenciesForDeleteResponse) service.Execute(new RetrieveDependenciesForDeleteRequest
             {
-                ComponentType = (int)ComponentType.Attribute,
+                ComponentType = (int) ComponentType.Attribute,
                 ObjectId = from.MetadataId.GetValueOrDefault()
             })).EntityCollection.ToEntityList<Dependency>().Where(d => d.DependentComponentTypeEnum == ComponentType.Workflow).ToList();
 
@@ -467,7 +553,7 @@ namespace DLaB.AttributeManager
             {
                 Trace("Updating {0} - {1} ({2})", workflow.CategoryEnum.ToString(), workflow.Name, workflow.Id);
                 workflow.Xaml = workflow.Xaml.Replace("\"" + from.LogicalName + "\"", "\"" + to.LogicalName + "\"");
-                var activate = workflow.StateCode.Value == WorkflowState.Activated;
+                var activate = workflow.StateCode == WorkflowState.Activated;
                 if (activate)
                 {
                     service.Execute(new SetStateRequest()
@@ -477,14 +563,30 @@ namespace DLaB.AttributeManager
                         Status = new OptionSetValue((int) Workflow_StatusCode.Draft)
                     });
                 }
+
+                var triggers = service.GetEntities<ProcessTrigger>(ProcessTrigger.Fields.ProcessId, workflow.Id, 
+                                                                   ProcessTrigger.Fields.ControlName, from.LogicalName);
+                if (triggers.Count > 0)
+                {
+                    foreach (var trigger in triggers)
+                    {
+                        Trace("Updating Trigger {0} for Workflow", trigger.Id);
+                        service.Update(new ProcessTrigger
+                        {
+                            Id = trigger.Id,
+                            ControlName = to.LogicalName
+                        });
+                    }
+                }
+                
                 service.Update(workflow);
                 if (activate)
                 {
                     service.Execute(new SetStateRequest()
                     {
                         EntityMoniker = workflow.ToEntityReference(),
-                        State = new OptionSetValue((int)WorkflowState.Activated),
-                        Status = new OptionSetValue((int)Workflow_StatusCode.Activated)
+                        State = new OptionSetValue((int) WorkflowState.Activated),
+                        Status = new OptionSetValue((int) Workflow_StatusCode.Activated)
                     });
                 }
             }
@@ -493,10 +595,14 @@ namespace DLaB.AttributeManager
         private void UpdateViews(IOrganizationService service, AttributeMetadata from, AttributeMetadata to)
         {
             Trace("Retrieving Views");
-            var queries = service.GetEntities<SavedQuery>(q => new { q.Id, q.Name, q.QueryType, q.FetchXml, q.LayoutXml },
-                new ConditionExpression("fetchxml", ConditionOperator.Like, "%<entity name=\"" + from.EntityLogicalName + "\">%name=\"" + from.LogicalName + "\"%"),
-                LogicalOperator.Or,
-                new ConditionExpression("fetchxml", ConditionOperator.Like, "%<entity name=\"" + from.EntityLogicalName + "\">%attribute=\"" + from.LogicalName + "\"%"));
+            var queries = service.GetEntities<SavedQuery>(q => new
+            {
+                q.Id,
+                q.Name,
+                q.QueryType,
+                q.FetchXml,
+                q.LayoutXml
+            }, new ConditionExpression("fetchxml", ConditionOperator.Like, "%<entity name=\"" + from.EntityLogicalName + "\">%name=\"" + from.LogicalName + "\"%"), LogicalOperator.Or, new ConditionExpression("fetchxml", ConditionOperator.Like, "%<entity name=\"" + from.EntityLogicalName + "\">%attribute=\"" + from.LogicalName + "\"%"));
 
             foreach (var query in queries)
             {
@@ -521,9 +627,12 @@ namespace DLaB.AttributeManager
             Trace("Copying data from {0} to {1}", from.LogicalName, to.LogicalName);
             var requests = new OrganizationRequestCollection();
             // Grab from and to, and only update if not equal.  This is to speed things up if it has failed part way through
-            foreach (var entity in service.GetAllEntities<Entity>(new QueryExpression(from.EntityLogicalName) { ColumnSet = new ColumnSet(from.LogicalName, to.LogicalName) }))
+            foreach (var entity in service.GetAllEntities<Entity>(new QueryExpression(from.EntityLogicalName)
             {
-                if (count++ % 100 == 0 || count == total)
+                ColumnSet = new ColumnSet(from.LogicalName, to.LogicalName)
+            }))
+            {
+                if (count++%100 == 0 || count == total)
                 {
                     if (requests.Any())
                     {
@@ -540,18 +649,24 @@ namespace DLaB.AttributeManager
                     value = CopyValue(from, to, value);
                 }
                 var toValue = entity.GetAttributeValue<Object>(to.LogicalName);
-                
+
                 if (value != null)
                 {
-                    if (value.Equals(toValue)) continue;
+                    if (value.Equals(toValue)) { continue; }
 
                     entity.Attributes[to.LogicalName] = value;
-                    requests.Add(new UpdateRequest { Target = entity });
+                    requests.Add(new UpdateRequest
+                    {
+                        Target = entity
+                    });
                 }
                 else if (toValue != null)
                 {
                     entity.Attributes[to.LogicalName] = null;
-                    requests.Add(new UpdateRequest { Target = entity });
+                    requests.Add(new UpdateRequest
+                    {
+                        Target = entity
+                    });
                 }
             }
 
@@ -567,16 +682,15 @@ namespace DLaB.AttributeManager
         {
             if (SupportsExecuteMultipleRequest)
             {
-                var response = (ExecuteMultipleResponse)service.Execute(
-                    new ExecuteMultipleRequest
+                var response = (ExecuteMultipleResponse) service.Execute(new ExecuteMultipleRequest
+                {
+                    Settings = new ExecuteMultipleSettings
                     {
-                        Settings = new ExecuteMultipleSettings
-                        {
-                            ContinueOnError = false,
-                            ReturnResponses = false
-                        },
-                        Requests = requests
-                    });
+                        ContinueOnError = false,
+                        ReturnResponses = false
+                    },
+                    Requests = requests
+                });
 
                 if (response.IsFaulted)
                 {
@@ -601,7 +715,7 @@ namespace DLaB.AttributeManager
             {
                 foreach (var request in requests)
                 {
-                    service.Update(((UpdateRequest)request).Target);
+                    service.Update(((UpdateRequest) request).Target);
                 }
             }
         }
@@ -609,7 +723,11 @@ namespace DLaB.AttributeManager
         private int GetRecordCount(IOrganizationService service, AttributeMetadata from)
         {
             Trace("Retrieving {0} id attribute name", from.EntityLogicalName);
-            var response = (RetrieveEntityResponse)service.Execute(new RetrieveEntityRequest { LogicalName = from.EntityLogicalName, EntityFilters = EntityFilters.Entity });
+            var response = (RetrieveEntityResponse) service.Execute(new RetrieveEntityRequest
+            {
+                LogicalName = from.EntityLogicalName,
+                EntityFilters = EntityFilters.Entity
+            });
 
             Trace("Determining record count (accurate only up to 50000)");
             var xml = string.Format(@"
@@ -646,7 +764,7 @@ namespace DLaB.AttributeManager
             AttributeMetadata clone;
             try
             {
-                clone = CreateAttributeWithDifferentNameInternal(service, (dynamic)existingAtt, newSchemaName, newAttributeType);
+                clone = CreateAttributeWithDifferentNameInternal(service, (dynamic) existingAtt, newSchemaName, newAttributeType);
             }
             catch
             {
@@ -694,11 +812,7 @@ namespace DLaB.AttributeManager
             Trace("Publishing Entity " + logicalName);
             service.Execute(new PublishXmlRequest
             {
-                ParameterXml = "<importexportxml>"
-              + "    <entities>"
-              + "        <entity>" + logicalName + "</entity>"
-              + "    </entities>"
-              + "</importexportxml>"
+                ParameterXml = "<importexportxml>" + "    <entities>" + "        <entity>" + logicalName + "</entity>" + "    </entities>" + "</importexportxml>"
             });
         }
 

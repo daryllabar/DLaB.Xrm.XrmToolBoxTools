@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -148,10 +147,10 @@ namespace DLaB.AttributeManager
                 {
                     Metadata = ((RetrieveEntityResponse) e.Result).EntityMetadata;
                     var attributes = Metadata.Attributes.Where(a => 
-                            !a.IsManaged.Value && 
+                            !a.IsManaged.GetValueOrDefault() && 
                             a.AttributeOf == null && 
                             a.IsCustomizable.Value &&
-                            !a.IsPrimaryId.Value &&
+                            !a.IsPrimaryId.GetValueOrDefault() &&
                             !IsBaseCurrency(a)).
                         Select(a => new ObjectCollectionItem<AttributeMetadata>((a.DisplayName.GetLocalOrDefaultText("N/A")) + " (" + a.LogicalName + ")", a)).
                         OrderBy(r => r.DisplayName).
