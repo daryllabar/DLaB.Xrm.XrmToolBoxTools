@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DLaB.Common;
 using DLaB.XrmToolboxCommon;
 using DLaB.Xrm;
 using XrmToolBox.Extensibility;
@@ -76,7 +77,7 @@ namespace DLaB.EarlyBoundGenerator
             var mappings = dataGridView1.Rows.Cast<DataGridViewRow>().
                 Select(row => string.Format("{0}.{1},{2}", row.Cells[0].Value, row.Cells[1].Value, row.Cells[2].Value)).ToList();
 
-            ConfigValue = string.Join("|", mappings);
+            ConfigValue = Config.ToString(mappings);
             DialogResult = DialogResult.OK;
             Close();
         }

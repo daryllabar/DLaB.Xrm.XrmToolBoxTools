@@ -46,8 +46,8 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
             GeneratedOptionSets = new HashSet<string>();
         }
 
-        private static readonly HashSet<string> OptionSetsToSkip = Config.GetHashSet<string>("OptionSetsToSkip");
-        private static readonly List<string> OptionSetPrefixesToSkip = Config.GetAppSettingListOrDefault("OptionSetPrefixesToSkip", new List<string>(), new[] { ConfigKeyValueSplitInfo.Entry_Seperator });
+        private static readonly HashSet<string> OptionSetsToSkip = Config.GetHashSet("OptionSetsToSkip", new HashSet<string>());
+        private static readonly List<string> OptionSetPrefixesToSkip = Config.GetList("OptionSetPrefixesToSkip", new List<string>());
 
         /// <summary>
         /// Does not mark the OptionSet for generation if it has already been generated.  

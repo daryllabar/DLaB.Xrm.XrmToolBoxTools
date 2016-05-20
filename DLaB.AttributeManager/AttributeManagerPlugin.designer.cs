@@ -49,9 +49,10 @@ namespace DLaB.AttributeManager
             this.clbSteps = new System.Windows.Forms.CheckedListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grpSettings = new System.Windows.Forms.GroupBox();
+            this.chkDelete = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblNewAttributeGrid = new System.Windows.Forms.Label();
             this.txtOldSchema = new System.Windows.Forms.TextBox();
             this.cmbNewAttributeType = new System.Windows.Forms.ComboBox();
             this.txtDisplayName = new System.Windows.Forms.TextBox();
@@ -324,6 +325,7 @@ namespace DLaB.AttributeManager
             // 
             this.grpSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpSettings.Controls.Add(this.chkDelete);
             this.grpSettings.Controls.Add(this.tableLayoutPanel1);
             this.grpSettings.Controls.Add(this.chkConvertAttributeType);
             this.grpSettings.Controls.Add(this.chkMigrate);
@@ -333,6 +335,18 @@ namespace DLaB.AttributeManager
             this.grpSettings.TabIndex = 8;
             this.grpSettings.TabStop = false;
             this.grpSettings.Text = "Settings";
+            // 
+            // chkDelete
+            // 
+            this.chkDelete.AutoSize = true;
+            this.chkDelete.Location = new System.Drawing.Point(6, 13);
+            this.chkDelete.Name = "chkDelete";
+            this.chkDelete.Size = new System.Drawing.Size(99, 17);
+            this.chkDelete.TabIndex = 26;
+            this.chkDelete.Text = "Delete Attribute";
+            this.Tip.SetToolTip(this.chkDelete, "Copy the value for each entity to the new Option Set field?");
+            this.chkDelete.UseVisualStyleBackColor = true;
+            this.chkDelete.CheckedChanged += new System.EventHandler(this.chkDelete_CheckedChanged);
             // 
             // tableLayoutPanel1
             // 
@@ -365,21 +379,21 @@ namespace DLaB.AttributeManager
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label7);
+            this.panel3.Controls.Add(this.lblNewAttributeGrid);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(264, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(169, 24);
             this.panel3.TabIndex = 28;
             // 
-            // label7
+            // lblNewAttributeGrid
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(0, 11);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(32, 13);
-            this.label7.TabIndex = 24;
-            this.label7.Text = "New:";
+            this.lblNewAttributeGrid.AutoSize = true;
+            this.lblNewAttributeGrid.Location = new System.Drawing.Point(0, 11);
+            this.lblNewAttributeGrid.Name = "lblNewAttributeGrid";
+            this.lblNewAttributeGrid.Size = new System.Drawing.Size(32, 13);
+            this.lblNewAttributeGrid.TabIndex = 24;
+            this.lblNewAttributeGrid.Text = "New:";
             // 
             // txtOldSchema
             // 
@@ -521,7 +535,7 @@ namespace DLaB.AttributeManager
             // chkConvertAttributeType
             // 
             this.chkConvertAttributeType.AutoSize = true;
-            this.chkConvertAttributeType.Location = new System.Drawing.Point(148, 19);
+            this.chkConvertAttributeType.Location = new System.Drawing.Point(305, 13);
             this.chkConvertAttributeType.Name = "chkConvertAttributeType";
             this.chkConvertAttributeType.Size = new System.Drawing.Size(132, 17);
             this.chkConvertAttributeType.TabIndex = 22;
@@ -535,7 +549,7 @@ namespace DLaB.AttributeManager
             this.chkMigrate.AutoSize = true;
             this.chkMigrate.Checked = true;
             this.chkMigrate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkMigrate.Location = new System.Drawing.Point(6, 19);
+            this.chkMigrate.Location = new System.Drawing.Point(175, 13);
             this.chkMigrate.Name = "chkMigrate";
             this.chkMigrate.Size = new System.Drawing.Size(87, 17);
             this.chkMigrate.TabIndex = 10;
@@ -570,6 +584,7 @@ namespace DLaB.AttributeManager
             // txtLog
             // 
             this.txtLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtLog.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLog.Location = new System.Drawing.Point(3, 3);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
@@ -1209,7 +1224,7 @@ namespace DLaB.AttributeManager
         private BackgroundWorker backgroundWorker1;
         private TableLayoutPanel tableLayoutPanel1;
         private Panel panel3;
-        private Label label7;
+        private Label lblNewAttributeGrid;
         private TextBox txtOldSchema;
         private TextBox txtOldAttributType;
         private Panel panel2;
@@ -1234,5 +1249,6 @@ namespace DLaB.AttributeManager
         private TextBox TxtOptionSetDescription;
         private TextBox TxtOptionSetValue;
         private TextBox TxtOptionSetLabel;
+        private CheckBox chkDelete;
     }
 }

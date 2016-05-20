@@ -20,8 +20,9 @@ namespace DLaB.AttributeManager
     public partial class AttributeManagerPlugin : DLaBPluginControlBase
     {
         private bool AttributesNeedLoaded { get; set; }
-        private object[] RenameSteps { get; }
         private object[] DefaultSteps { get; }
+        private object[] DeleteSteps { get; }
+        private object[] RenameSteps { get; }
         private Dictionary<string, Logic.Steps> StepMapper { get; }
         public Config Settings { get; set; }
         private EntityMetadata Metadata { get; set; }
@@ -49,6 +50,11 @@ namespace DLaB.AttributeManager
             {
                 StepMapper.First(p => p.Value == Logic.Steps.CreateNewAttribute).Key,
                 StepMapper.First(p => p.Value == Logic.Steps.MigrateToNewAttribute).Key,
+                StepMapper.First(p => p.Value == Logic.Steps.RemoveExistingAttribute).Key
+            };
+
+            DeleteSteps = new object[]
+            {
                 StepMapper.First(p => p.Value == Logic.Steps.RemoveExistingAttribute).Key
             };
 
@@ -374,7 +380,11 @@ namespace DLaB.AttributeManager
             //    action = Logic.Action.RemoveTemp;
             //}
             //else 
-            if (item != null && string.Equals(txtNewAttributeName.Text, item.Value.SchemaName, StringComparison.OrdinalIgnoreCase))
+            if (chkDelete.Checked)
+            {
+                action = Logic.Action.Delete;
+            }
+            else if (item != null && string.Equals(txtNewAttributeName.Text, item.Value.SchemaName, StringComparison.OrdinalIgnoreCase))
             {
                 action = Logic.Action.ChangeCase;
             }
@@ -630,6 +640,24 @@ namespace DLaB.AttributeManager
             UpdateDisplayedSteps();
         }
 
+        private void chkDelete_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkDelete.Checked)
+            {
+                chkConvertAttributeType.Checked = false;
+                chkMigrate.Checked = false;
+            }
+
+            chkConvertAttributeType.Visible = !chkDelete.Checked;
+            chkMigrate.Visible              = !chkDelete.Checked;
+            lblNewAttributeGrid.Visible     = !chkDelete.Checked;
+            txtNewAttributeName.Visible     = !chkDelete.Checked;
+            txtDisplayName.Visible          = !chkDelete.Checked;
+            cmbNewAttributeType.Visible     = !chkDelete.Checked;
+
+            UpdateDisplayedSteps();
+        }
+
         private void cmbNewAttribute_SelectedIndexChanged(object sender, EventArgs e)
         {
             var item = cmbNewAttribute.SelectedItem as ObjectCollectionItem<AttributeMetadata>;
@@ -851,7 +879,11 @@ namespace DLaB.AttributeManager
             }
 
             var action = GetCurrentAction();
-            if (txtNewAttributeName.Text == item.Value.SchemaName && !action.HasFlag(Logic.Action.ChangeType))
+            if (action.HasFlag(Logic.Action.Delete))
+            {
+                clbSteps.LoadItems(DeleteSteps);
+            }
+            else if (txtNewAttributeName.Text == item.Value.SchemaName && !action.HasFlag(Logic.Action.ChangeType))
             {
                 // Exactly Equal
                 if (action.HasFlag(Logic.Action.RemoveTemp))

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using DLaB.Common;
 using DLaB.XrmToolboxCommon;
 using XrmToolBox.Extensibility;
 
@@ -71,7 +72,7 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            SpecifiedValues = string.Join("|", LstValues.Items.Cast<ObjectCollectionItem<string>>().Select(i => i.DisplayName));
+            SpecifiedValues = Config.ToString(LstValues.Items.Cast<ObjectCollectionItem<string>>().Select(i => i.DisplayName));
             DialogResult = DialogResult.OK;
             Close();
         }

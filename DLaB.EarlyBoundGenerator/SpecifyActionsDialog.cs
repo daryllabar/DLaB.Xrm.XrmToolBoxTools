@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using DLaB.Common;
 using DLaB.Xrm.Entities;
 using DLaB.XrmToolboxCommon;
 using Microsoft.Xrm.Sdk;
@@ -86,7 +87,7 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            SpecifiedActions = string.Join("|", LstSpecified.Items.Cast<ObjectCollectionItem<Workflow>>().Select(i => i.DisplayName));
+            SpecifiedActions = Config.ToString(LstSpecified.Items.Cast<ObjectCollectionItem<Workflow>>().Select(i => i.DisplayName));
             DialogResult = DialogResult.OK;
             Close();
         }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DLaB.Common;
 using DLaB.XrmToolboxCommon;
 using DLaB.Xrm;
 using XrmToolBox.Extensibility;
@@ -99,7 +100,7 @@ namespace DLaB.EarlyBoundGenerator
                 entities.Add(sb.ToString());
             }
 
-            ConfigValue = string.Join("|", entities);
+            ConfigValue = Config.ToString(entities);
             DialogResult = DialogResult.OK;
             Close();
         }

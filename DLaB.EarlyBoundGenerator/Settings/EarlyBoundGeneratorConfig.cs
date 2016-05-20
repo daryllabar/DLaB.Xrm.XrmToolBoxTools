@@ -5,12 +5,13 @@ using System.Linq;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
+using DLaB.Common;
 using Microsoft.Xrm.Sdk.Client;
 
 namespace DLaB.EarlyBoundGenerator.Settings
 {
     [Serializable]
-    public class Config
+    public class EarlyBoundGeneratorConfig
     {
         #region Properties
 
@@ -160,7 +161,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         #endregion // Properties       
 
-        private Config()
+        private EarlyBoundGeneratorConfig()
         {
             CrmSvcUtilRelativePath = Common.Config.GetAppSettingOrDefault("CrmSvcUtilRelativePath", @"Plugins\CrmSvcUtil Ref\crmsvcutil.exe");
             UseConnectionString = Common.Config.GetAppSettingOrDefault("UseConnectionString", false);
@@ -170,11 +171,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
         #region Add Missing Default settings
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Config"/> class.
+        /// Initializes a new instance of the <see cref="EarlyBoundGeneratorConfig"/> class.
         /// </summary>
         /// <param name="poco">The poco.</param>
         /// <param name="filePath">The file path.</param>
-        private Config(POCO.Config poco, string filePath)
+        private EarlyBoundGeneratorConfig(POCO.Config poco, string filePath)
         {
             var @default = GetDefault();
             var defaultConfig = @default.ExtensionConfig;
@@ -219,7 +220,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             _filePath = filePath;
         }
 
-        private void RemoveObsoleteValues(POCO.Config poco, Config @default)
+        private void RemoveObsoleteValues(POCO.Config poco, EarlyBoundGeneratorConfig @default)
         {
             if (CrmSvcUtilRelativePath == @"CrmSvcUtil Ref\crmsvcutil.exe")
             {
@@ -256,7 +257,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 splitValues.AddRange(@default.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries).
                                               Where(key => !hash.Contains(key)));
 
-                return string.Join("|", splitValues);
+                return Config.ToString(splitValues);
             }
             catch (Exception ex)
             {
@@ -295,7 +296,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 }
 
                 // All missing values have been added.  Join back Values
-                return string.Join("|", splitSplitValues.Select(entry => entry.Key + "," + string.Join(",", entry.Value)));
+                return Config.ToString(splitSplitValues);
             }
             catch (Exception ex)
             {
@@ -314,9 +315,9 @@ namespace DLaB.EarlyBoundGenerator.Settings
             return value;
         }
 
-        public static Config GetDefault()
+        public static EarlyBoundGeneratorConfig GetDefault()
         {
-            return new Config
+            return new EarlyBoundGeneratorConfig
             {
                 AudibleCompletionNotification = true,
                 IncludeCommandLine = true,
@@ -351,7 +352,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         #endregion // Add Missing Default settings
 
-        public static Config Load(string filePath)
+        public static EarlyBoundGeneratorConfig Load(string filePath)
         {
             filePath = Path.Combine(filePath, "DLaB.EarlyBoundGenerator.Settings.xml");
             if (!File.Exists(filePath))
@@ -368,13 +369,13 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 poco = (POCO.Config)serializer.Deserialize(fs);
                 fs.Close();
             }
-            var settings = new Config(poco, filePath);
+            var settings = new EarlyBoundGeneratorConfig(poco, filePath);
             return settings;
         }
 
         public void Save()
         {
-            var serializer = new XmlSerializer(typeof (Config));
+            var serializer = new XmlSerializer(typeof (EarlyBoundGeneratorConfig));
             var settings = new XmlWriterSettings
             {
                 Indent = true,

@@ -48,7 +48,8 @@ namespace DLaB.AttributeManager
             Rename = 1,
             ChangeCase = 2,
             RemoveTemp = 4,
-            ChangeType = 8
+            ChangeType = 8,
+            Delete = 16
         }
 
         public Logic(IOrganizationService service, ConnectionDetail connectionDetail, EntityMetadata metadata, string tempPostFix, bool migrateData)
@@ -78,6 +79,11 @@ namespace DLaB.AttributeManager
 
             switch (actions)
             {
+                case Action.Delete:
+                    ClearFieldDependencies(oldAtt);
+                    RemoveExisting(stepsToPerform, oldAtt);
+                    break;
+
                 case Action.RemoveTemp:
                     RemoveTemp(stepsToPerform, tmpAtt);
                     break;
@@ -100,6 +106,20 @@ namespace DLaB.AttributeManager
                     RemoveTemp(stepsToPerform, tmpAtt);
                     break;
             }
+        }
+
+        private void ClearFieldDependencies(AttributeMetadata att)
+        {
+            Trace("Beginning Step: Clearing Field Dependencies");
+            UpdateCharts(Service, att);
+            UpdateViews(Service, att);
+            UpdateForms(Service, att);
+            UpdateRelationships(Service, att);
+            UpdateMappings(Service, att);
+            UpdateWorkflows(Service, att);
+            PublishEntity(Service, att.EntityLogicalName);
+            AssertCanDelete(Service, att);
+            Trace("Completed Step: Clearing Field Dependencies" + Environment.NewLine);
         }
 
         private void CreateTemp(Steps stepsToPerform, AttributeMetadata oldAtt, ref AttributeMetadata tmpAtt, AttributeMetadata newAttributeType)
@@ -260,14 +280,22 @@ namespace DLaB.AttributeManager
                     AssertInvalidState("Unable to Remove Existing Attribute! Attribute " + existingSchemaName + " does not exist!");
                 }
 
-                // Can only Remove existing if Tmp already exists, or temp will be created, or if performing rename and there is a Create Or the New Already exists
-                if (!(state.Temp != null || stepsToPerform.HasFlag(Steps.CreateTemp) || (!string.Equals(existingSchemaName, newSchemaName, StringComparison.OrdinalIgnoreCase) && (stepsToPerform.HasFlag(Steps.CreateNewAttribute) || state.New != null))))
+                // Can only Remove existing if Tmp already exists, or temp will be created, or action is to delete, or if performing rename and there is a Create Or the New Already exists
+                if (!(
+                        state.Temp != null 
+                        || stepsToPerform.HasFlag(Steps.CreateTemp) 
+                        || actions.HasFlag(Action.Delete)
+                        || (!string.Equals(existingSchemaName, newSchemaName, StringComparison.OrdinalIgnoreCase) 
+                            && (stepsToPerform.HasFlag(Steps.CreateNewAttribute) || state.New != null))))
                 {
                     AssertInvalidState("Unable to Remove Existing Attribute!  Temporary Attribute " + existingSchemaName + TempPostfix + " does not exist!");
                 }
 
-                // Can only Remove existing if Tmp will be migrated, or has been migrated
-                if (!((actions.HasFlag(Action.ChangeCase) && stepsToPerform.HasFlag(Steps.MigrateToTemp)) || (actions.HasFlag(Action.Rename) && stepsToPerform.HasFlag(Steps.MigrateToNewAttribute))))
+                // Can only Remove existing if Tmp will be migrated, or has been migrated, or action is delete
+                if (!(
+                        (actions.HasFlag(Action.ChangeCase) && stepsToPerform.HasFlag(Steps.MigrateToTemp)) 
+                        || (actions.HasFlag(Action.Rename) && stepsToPerform.HasFlag(Steps.MigrateToNewAttribute))
+                        || actions.HasFlag(Action.Delete)))
                 {
                     try
                     {
@@ -374,11 +402,23 @@ namespace DLaB.AttributeManager
                 var dependentId = d.DependentComponentObjectId.GetValueOrDefault();
                 var err = type + " " + dependentId;
                 switch (type) {
+                    case ComponentType.Attribute:
+                        var req = new RetrieveAttributeRequest
+                        {
+                            MetadataId = dependentId
+                        };
+                        var dependent = ((RetrieveAttributeResponse)service.Execute(req)).AttributeMetadata;
+                       
+                        err = $"{err} ({dependent.EntityLogicalName + " : " + dependent.DisplayName.GetLocalOrDefaultText()}";
+                        break;
+
                     case ComponentType.EntityRelationship:
                         var response =
                             (RetrieveRelationshipResponse)service.Execute(new RetrieveRelationshipRequest { MetadataId = dependentId });
                         Trace("Entity Relationship / Mapping {0} must be manually removed/added", response.RelationshipMetadata.SchemaName);
+
                         break;
+
                     case ComponentType.SavedQueryVisualization:
                         var sqv = service.GetEntity<SavedQueryVisualization>(dependentId);
                             err = $"{err} ({sqv.Name} - {sqv.CreatedBy.Name})";
@@ -391,7 +431,7 @@ namespace DLaB.AttributeManager
 
                     case ComponentType.Workflow:
                         var workflow = service.GetEntity<Workflow>(d.DependentComponentObjectId.GetValueOrDefault());
-                        err = err + " " + workflow.Name + " (" + workflow.CategoryEnum.ToString() + ")";
+                        err = err + " " + workflow.Name + " (" + workflow.CategoryEnum + ")";
                             break;
                 }
 
@@ -406,40 +446,67 @@ namespace DLaB.AttributeManager
 
         private void UpdateCharts(IOrganizationService service, AttributeMetadata from, AttributeMetadata to)
         {
-            var fromValue = "name=\"" + from.LogicalName + "\"";
-            var toValue = "name=\"" + to.LogicalName + "\"";
-            var entityAttributeLikeExpression = $"%<entity name=\"{@from.EntityLogicalName}\">%{fromValue}%";
-
-            Trace("Retrieving System Charts with cond: " + fromValue);
-            var systemCharts = service.GetEntities<SavedQueryVisualization>(c => new { c.Id, c.DataDescription },
-                new ConditionExpression(SavedQueryVisualization.Fields.DataDescription, ConditionOperator.Like, entityAttributeLikeExpression));
-
-            foreach (var chart in systemCharts)
+            foreach (var chart in GetSystemChartsWithAttribute(service, from))
             {
                 Trace("Updating Chart " + chart.Name);
-                chart.DataDescription = chart.DataDescription.Replace(fromValue, toValue);
+                chart.DataDescription = ReplaceFetchXmlAttribute(chart.DataDescription, from.LogicalName, to.LogicalName);
+
                 service.Update(chart);
             }
 
-            Trace("Retrieving User Charts with cond: " + fromValue);
-            var userCharts = service.GetEntities<UserQueryVisualization>(c => new { c.Id, c.DataDescription },
-                new ConditionExpression(UserQueryVisualization.Fields.DataDescription, ConditionOperator.Like, entityAttributeLikeExpression));
-
-            foreach (var chart in userCharts)
+            foreach (var chart in GetUserChartsWithAttribute(service, from))
             {
                 Trace("Updating Chart " + chart.Name);
-                chart.DataDescription = chart.DataDescription.Replace(fromValue, toValue);
+                chart.DataDescription = ReplaceFetchXmlAttribute(chart.DataDescription, from.LogicalName, to.LogicalName);
                 service.Update(chart);
             }
         }
 
+        private List<SavedQueryVisualization> GetSystemChartsWithAttribute(IOrganizationService service, AttributeMetadata from)
+        {
+            var qe = QueryExpressionFactory.Create<SavedQueryVisualization>(q => new
+            {
+                q.Id,
+                q.DataDescription
+            });
+
+            AddFetchXmlCriteria(qe, SavedQueryVisualization.Fields.DataDescription, from.EntityLogicalName, from.LogicalName);
+
+            Trace("Retrieving System Charts with Query: " + qe.GetSqlStatement());
+            return service.GetEntities(qe);
+        }
+
+        private List<UserQueryVisualization> GetUserChartsWithAttribute(IOrganizationService service, AttributeMetadata from)
+        {
+            var qe = QueryExpressionFactory.Create<UserQueryVisualization>(q => new
+            {
+                q.Id,
+                q.DataDescription
+            });
+
+            AddFetchXmlCriteria(qe, UserQueryVisualization.Fields.DataDescription, from.EntityLogicalName, from.LogicalName);
+
+            Trace("Retrieving System Charts with Query: " + qe.GetSqlStatement());
+            return service.GetEntities(qe);
+        }
+
+        private List<SystemForm> GetFormsWithAttribute(IOrganizationService service, AttributeMetadata att)
+        {
+            var qe = QueryExpressionFactory.Create<SystemForm>(q => new
+            {
+                q.Id,
+                q.Name,
+                q.FormXml
+            },
+                SystemForm.Fields.ObjectTypeCode, att.EntityLogicalName,
+                new ConditionExpression("formxml", ConditionOperator.Like, "%<control %datafieldname=\"" + att.LogicalName + "\"%"));
+
+            Trace("Retrieving Forms with Query: " + qe.GetSqlStatement());
+            return service.GetEntities(qe);
+        }
+
         private void UpdateForms(IOrganizationService service, AttributeMetadata from, AttributeMetadata to)
         {
-            Trace("Retrieving Forms");
-            var forms = service.GetEntities<SystemForm>(
-                "objecttypecode", from.EntityLogicalName,
-                new ConditionExpression("formxml", ConditionOperator.Like, "%<control id=\"" + from.LogicalName + "\"%"));
-
             /*
              * <row>
              *   <cell id="{056d159e-9144-d809-378b-9e04a7626953}" showlabel="true" locklevel="0">
@@ -448,24 +515,43 @@ namespace DLaB.AttributeManager
              *     </labels>
              *     <control id="new_points" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="new_points" disabled="true" />
              *   </cell>
+             *   <cell id="{056d159e-9144-d809-378b-9e04a7626953}" showlabel="true" locklevel="0">
+             *     <labels>
+             *       <label description="Points" languagecode="1033" />
+             *     </labels>
+             *     <control id="header_new_points" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="new_points" disabled="true" />
+             *   </cell>
              * </row>
              */
 
-            foreach (var form in forms)
+            foreach (var form in GetFormsWithAttribute(service, from))
             {
                 Trace("Updating Form " + form.Name);
-                var fromControlStart = "<control id=\"" + from.LogicalName + "\"";
+                var fromDataFieldStart = "datafieldname=\"" + from.LogicalName + "\"";
+                var fromControlStart = "<control id=\"";
                 const string classIdStart = "classid=\"{";
-                var index = form.FormXml.IndexOf(fromControlStart, StringComparison.OrdinalIgnoreCase);
+                var xml = form.FormXml;
+                var dataFieldIndex = xml.IndexOf(fromDataFieldStart, StringComparison.OrdinalIgnoreCase);
+                if (dataFieldIndex < 0)
+                {
+                    break;
+                }
+                var index = xml.LastIndexOf(fromControlStart, dataFieldIndex, StringComparison.OrdinalIgnoreCase);
                 while (index >= 0)
                 {
-                    index = form.FormXml.IndexOf(classIdStart, index, StringComparison.OrdinalIgnoreCase) + classIdStart.Length;
-                    var classIdEnd = form.FormXml.IndexOf("}",index, StringComparison.OrdinalIgnoreCase);
-                    form.FormXml = form.FormXml.Remove(index, classIdEnd - index).
+                    index = xml.IndexOf(classIdStart, index, StringComparison.OrdinalIgnoreCase) + classIdStart.Length;
+                    var classIdEnd = xml.IndexOf("}",index, StringComparison.OrdinalIgnoreCase);
+                    xml = xml.Remove(index, classIdEnd - index).
                                                 Insert(index, GetClassId(to));
-                    index = form.FormXml.IndexOf(fromControlStart, index, StringComparison.OrdinalIgnoreCase);
+
+                    dataFieldIndex = xml.IndexOf(fromDataFieldStart, ++dataFieldIndex, StringComparison.OrdinalIgnoreCase);
+                    if (dataFieldIndex < 0)
+                    {
+                        break;
+                    }
+                    index = xml.LastIndexOf(fromControlStart, dataFieldIndex, StringComparison.OrdinalIgnoreCase);
                 }
-                form.FormXml = form.FormXml.Replace(fromControlStart, "<control id=\"" + to.LogicalName + "\"").
+                form.FormXml = xml.Replace(fromControlStart, "<control id=\"" + to.LogicalName + "\"").
                     Replace("datafieldname=\"" + from.LogicalName + "\"", "datafieldname=\"" + to.LogicalName + "\"");
                 service.Update(form);
             }
@@ -534,13 +620,13 @@ namespace DLaB.AttributeManager
             }
         }
 
-        private void UpdateWorkflows(IOrganizationService service, AttributeMetadata from, AttributeMetadata to)
+        private void UpdateWorkflows(IOrganizationService service, AttributeMetadata att, AttributeMetadata to)
         {
             Trace("Checking for Workflow Dependencies");
             var depends = ((RetrieveDependenciesForDeleteResponse) service.Execute(new RetrieveDependenciesForDeleteRequest
             {
                 ComponentType = (int) ComponentType.Attribute,
-                ObjectId = from.MetadataId.GetValueOrDefault()
+                ObjectId = att.MetadataId.GetValueOrDefault()
             })).EntityCollection.ToEntityList<Dependency>().Where(d => d.DependentComponentTypeEnum == ComponentType.Workflow).ToList();
 
             if (!depends.Any())
@@ -552,7 +638,8 @@ namespace DLaB.AttributeManager
             foreach (var workflow in service.GetEntitiesById<Workflow>(depends.Select(d => d.DependentComponentObjectId.GetValueOrDefault())))
             {
                 Trace("Updating {0} - {1} ({2})", workflow.CategoryEnum.ToString(), workflow.Name, workflow.Id);
-                workflow.Xaml = workflow.Xaml.Replace("\"" + from.LogicalName + "\"", "\"" + to.LogicalName + "\"");
+                var xml = UpdateBusinessProcessFlowClassId(workflow.Xaml, att, to);
+                workflow.Xaml = xml.Replace("\"" + att.LogicalName + "\"", "\"" + to.LogicalName + "\"");
                 var activate = workflow.StateCode == WorkflowState.Activated;
                 if (activate)
                 {
@@ -564,10 +651,13 @@ namespace DLaB.AttributeManager
                     });
                 }
 
-                var triggers = service.GetEntities<ProcessTrigger>(ProcessTrigger.Fields.ProcessId, workflow.Id, 
-                                                                   ProcessTrigger.Fields.ControlName, from.LogicalName);
-                if (triggers.Count > 0)
+                try
                 {
+                    var triggers = service.GetEntities<ProcessTrigger>(ProcessTrigger.Fields.ProcessId,
+                        workflow.Id,
+                        ProcessTrigger.Fields.ControlName,
+                        att.LogicalName);
+
                     foreach (var trigger in triggers)
                     {
                         Trace("Updating Trigger {0} for Workflow", trigger.Id);
@@ -577,44 +667,102 @@ namespace DLaB.AttributeManager
                             ControlName = to.LogicalName
                         });
                     }
+
+                    service.Update(workflow);
                 }
-                
-                service.Update(workflow);
-                if (activate)
+                finally
                 {
-                    service.Execute(new SetStateRequest()
+                    if (activate)
                     {
-                        EntityMoniker = workflow.ToEntityReference(),
-                        State = new OptionSetValue((int) WorkflowState.Activated),
-                        Status = new OptionSetValue((int) Workflow_StatusCode.Activated)
-                    });
+                        service.Execute(new SetStateRequest()
+                        {
+                            EntityMoniker = workflow.ToEntityReference(),
+                            State = new OptionSetValue((int) WorkflowState.Activated),
+                            Status = new OptionSetValue((int) Workflow_StatusCode.Activated)
+                        });
+                    }
                 }
             }
         }
 
+        private string UpdateBusinessProcessFlowClassId(string xml, AttributeMetadata att, AttributeMetadata to)
+        {
+            var fromDataFieldStart = "DataFieldName=\"" + att.LogicalName + "\"";
+            var fromControlStart = "<mcwb:Control ";
+            const string classIdStart = "ClassId=\"{";
+            var dataFieldIndex = xml.IndexOf(fromDataFieldStart, StringComparison.OrdinalIgnoreCase);
+            if (dataFieldIndex < 0)
+            {
+                return xml;
+            }
+            var index = xml.LastIndexOf(fromControlStart, dataFieldIndex, StringComparison.OrdinalIgnoreCase);
+            while (index >= 0)
+            {
+                index = xml.IndexOf(classIdStart, index, StringComparison.OrdinalIgnoreCase) + classIdStart.Length;
+                var classIdEnd = xml.IndexOf("}", index, StringComparison.OrdinalIgnoreCase);
+                xml = xml.Remove(index, classIdEnd - index).
+                          Insert(index, GetClassId(to));
+
+                dataFieldIndex = xml.IndexOf(fromDataFieldStart, ++dataFieldIndex, StringComparison.OrdinalIgnoreCase);
+                if (dataFieldIndex < 0)
+                {
+                    break;
+                }
+                index = xml.LastIndexOf(fromControlStart, dataFieldIndex, StringComparison.OrdinalIgnoreCase);
+            }
+            return xml;
+        }
+
         private void UpdateViews(IOrganizationService service, AttributeMetadata from, AttributeMetadata to)
         {
-            Trace("Retrieving Views");
-            var queries = service.GetEntities<SavedQuery>(q => new
+            foreach (var query in GetViewsWithAttribute(service, from))
+            {
+                Trace("Updating View " + query.Name);
+                query.FetchXml = ReplaceFetchXmlAttribute(query.FetchXml, from.LogicalName, to.LogicalName);
+
+                if (query.LayoutXml != null)
+                {
+                    query.LayoutXml = ReplaceFetchXmlAttribute(query.LayoutXml, from.LogicalName, to.LogicalName, true);
+                }
+                service.Update(query);
+            }
+        }
+
+        private List<SavedQuery> GetViewsWithAttribute(IOrganizationService service, AttributeMetadata @from)
+        {
+            var qe = QueryExpressionFactory.Create<SavedQuery>(q => new
             {
                 q.Id,
                 q.Name,
                 q.QueryType,
                 q.FetchXml,
                 q.LayoutXml
-            }, new ConditionExpression("fetchxml", ConditionOperator.Like, "%<entity name=\"" + from.EntityLogicalName + "\">%name=\"" + from.LogicalName + "\"%"), LogicalOperator.Or, new ConditionExpression("fetchxml", ConditionOperator.Like, "%<entity name=\"" + from.EntityLogicalName + "\">%attribute=\"" + from.LogicalName + "\"%"));
+            });
 
-            foreach (var query in queries)
+            AddFetchXmlCriteria(qe, SavedQuery.Fields.FetchXml, @from.EntityLogicalName, @from.LogicalName);
+
+            Trace("Retrieving Views with Query: " + qe.GetSqlStatement());
+            var views = service.GetEntities(qe);
+            return views;
+        }
+
+        private string ReplaceFetchXmlAttribute(string xml, string from, string to, bool nameOnly = false)
+        {
+            xml = xml.Replace($"name=\"{from}\"", $"name=\"{to}\"");
+            if (nameOnly)
             {
-                Trace("Updating View " + query.Name);
-                query.FetchXml = query.FetchXml.Replace("name=\"" + from.LogicalName + "\"", "name=\"" + to.LogicalName + "\"");
-                query.FetchXml = query.FetchXml.Replace("attribute=\"" + from.LogicalName + "\"", "attribute=\"" + to.LogicalName + "\"");
-                if (query.LayoutXml != null)
-                {
-                    query.LayoutXml = query.LayoutXml.Replace("name=\"" + from.LogicalName + "\"", "name=\"" + to.LogicalName + "\"");
-                }
-                service.Update(query);
+                return xml;
             }
+            return xml.Replace($"attribute=\"{from}\"", $"attribute=\"{to}\"");
+        }
+
+        private static void AddFetchXmlCriteria(QueryExpression qe, string fieldName, string entityName, string attributeName)
+        {
+            qe.WhereEqual(
+                new ConditionExpression(fieldName, ConditionOperator.Like, $"%<entity name=\"{entityName}\">%name=\"{attributeName}\"%</entity>%"), 
+                LogicalOperator.Or, 
+                new ConditionExpression(fieldName, ConditionOperator.Like, $"%<entity name=\"{entityName}\">%attribute=\"{attributeName}\"%</entity>%"));
+
         }
 
         private void CopyData(IOrganizationService service, AttributeMetadata from, AttributeMetadata to, Action actions)

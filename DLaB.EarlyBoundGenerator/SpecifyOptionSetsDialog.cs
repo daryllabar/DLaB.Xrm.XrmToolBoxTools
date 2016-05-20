@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using DLaB.Common;
 using DLaB.XrmToolboxCommon;
 using XrmToolBox.Extensibility;
 
@@ -88,7 +89,7 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            OptionSets = string.Join("|", ChkListBoxOptionSets.Items.Cast<Object>().Select(o => o.ToString()));
+            OptionSets = Config.ToString(ChkListBoxOptionSets.Items.Cast<object>().Select(o => o.ToString()));
             DialogResult = DialogResult.OK;
             Close();
         }

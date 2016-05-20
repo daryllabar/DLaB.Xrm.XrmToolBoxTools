@@ -14,12 +14,12 @@ namespace DLaB.EarlyBoundGenerator
     {
         private readonly object _updateAppConfigToken = new Object();
         private readonly object _speakToken = new Object();
-        private Config Config { get; set; }
-        private Boolean _configUpdated;
+        private EarlyBoundGeneratorConfig EarlyBoundGeneratorConfig { get; set; }
+        private bool _configUpdated;
 
-        public Logic(Config config)
+        public Logic(EarlyBoundGeneratorConfig earlyBoundGeneratorConfig)
         {
-            Config = config;
+            EarlyBoundGeneratorConfig = earlyBoundGeneratorConfig;
         }
 
         public void CreateActions()
@@ -29,7 +29,7 @@ namespace DLaB.EarlyBoundGenerator
 
         public void ExecuteAll()
         {
-            if (Config.SupportsActions)
+            if (EarlyBoundGeneratorConfig.SupportsActions)
             {
                 Parallel.Invoke(CreateActions, CreateEntities, CreateOptionSets);
             }
@@ -47,12 +47,12 @@ namespace DLaB.EarlyBoundGenerator
 
         private void Create(CreationType creationType)
         {
-            var filePath = GetOutputFilePath(Config, creationType);
+            var filePath = GetOutputFilePath(EarlyBoundGeneratorConfig, creationType);
             // Check for file to be editable if not using TFS and creating only one file
-            if (!Config.ExtensionConfig.UseTfsToCheckoutFiles 
-                && ((creationType == CreationType.Actions && !Config.ExtensionConfig.CreateOneFilePerAction) || 
-                    (creationType == CreationType.Entities && !Config.ExtensionConfig.CreateOneFilePerEntity) ||
-                    (creationType == CreationType.OptionSets && !Config.ExtensionConfig.CreateOneFilePerOptionSet))
+            if (!EarlyBoundGeneratorConfig.ExtensionConfig.UseTfsToCheckoutFiles 
+                && ((creationType == CreationType.Actions && !EarlyBoundGeneratorConfig.ExtensionConfig.CreateOneFilePerAction) || 
+                    (creationType == CreationType.Entities && !EarlyBoundGeneratorConfig.ExtensionConfig.CreateOneFilePerEntity) ||
+                    (creationType == CreationType.OptionSets && !EarlyBoundGeneratorConfig.ExtensionConfig.CreateOneFilePerOptionSet))
                 && !AbleToMakeFileAccessible(filePath))
             {
                 return;
@@ -63,11 +63,11 @@ namespace DLaB.EarlyBoundGenerator
             {
                 StartInfo =
                 {
-                    FileName = Config.CrmSvcUtilPath,
+                    FileName = EarlyBoundGeneratorConfig.CrmSvcUtilPath,
                     RedirectStandardError = true,
                     RedirectStandardOutput = true,
                     UseShellExecute = false,
-                    Arguments = GetConfigArguments(Config, creationType),
+                    Arguments = GetConfigArguments(EarlyBoundGeneratorConfig, creationType),
                 },
             };
 
@@ -76,27 +76,27 @@ namespace DLaB.EarlyBoundGenerator
                 throw new FileNotFoundException("Unable to locate CrmSvcUtil at path '" + p.StartInfo.FileName +"'.  Update the CrmSvcUtilRelativePath in the DLaB.EarlyBoundGeneratorPlugin.Settings.xml file and try again.");
             }
 
-            var args = GetSafeArgs(Config, p);
-            if (Config.IncludeCommandLine)
+            var args = GetSafeArgs(EarlyBoundGeneratorConfig, p);
+            if (EarlyBoundGeneratorConfig.IncludeCommandLine)
             {
                 switch (creationType)
                 {
                     case CreationType.Actions:
-                        Config.ExtensionConfig.ActionCommandLineText = "\"" + p.StartInfo.FileName + "\" " + args;
+                        EarlyBoundGeneratorConfig.ExtensionConfig.ActionCommandLineText = "\"" + p.StartInfo.FileName + "\" " + args;
                         break;
                     case CreationType.All:
                         break;
                     case CreationType.Entities:
-                        Config.ExtensionConfig.EntityCommandLineText = "\"" + p.StartInfo.FileName + "\" " + args;
+                        EarlyBoundGeneratorConfig.ExtensionConfig.EntityCommandLineText = "\"" + p.StartInfo.FileName + "\" " + args;
                         break;
                     case CreationType.OptionSets:
-                        Config.ExtensionConfig.OptionSetCommandLineText = "\"" + p.StartInfo.FileName + "\" " + args;
+                        EarlyBoundGeneratorConfig.ExtensionConfig.OptionSetCommandLineText = "\"" + p.StartInfo.FileName + "\" " + args;
                         break;
                     default:
                         throw new ArgumentOutOfRangeException(nameof(creationType));
                 }
             }
-            UpdateCrmSvcUtilConfig(Config);
+            UpdateCrmSvcUtilConfig(EarlyBoundGeneratorConfig);
             UpdateStatus("Shelling out to CrmSrvUtil for creating " + creationType, "Executing \"" + p.StartInfo.FileName + "\" " + args);
             p.Start();
             var consoleOutput = new StringBuilder();
@@ -107,7 +107,7 @@ namespace DLaB.EarlyBoundGenerator
                 consoleOutput.AppendLine(line);
             }
 
-            HandleResult(filePath, date, creationType, consoleOutput.ToString(), Config.AudibleCompletionNotification);
+            HandleResult(filePath, date, creationType, consoleOutput.ToString(), EarlyBoundGeneratorConfig.AudibleCompletionNotification);
         }
 
         protected bool AbleToMakeFileAccessible(string filePath)
@@ -141,18 +141,18 @@ namespace DLaB.EarlyBoundGenerator
             return false;
         }
 
-        private string GetOutputFilePath(Config config, CreationType creationType)
+        private string GetOutputFilePath(EarlyBoundGeneratorConfig earlyBoundGeneratorConfig, CreationType creationType)
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            var filePath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), Config.GetSettingValue(creationType, Config.UserArgumentNames.Out));
+            var filePath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), EarlyBoundGeneratorConfig.GetSettingValue(creationType, EarlyBoundGeneratorConfig.UserArgumentNames.Out));
 
-            if (creationType == CreationType.Actions && config.ExtensionConfig.CreateOneFilePerAction)
+            if (creationType == CreationType.Actions && earlyBoundGeneratorConfig.ExtensionConfig.CreateOneFilePerAction)
             {
                 filePath = Path.Combine(filePath, "Actions.cs");
             }
-            else if (creationType == CreationType.Entities && config.ExtensionConfig.CreateOneFilePerEntity)
+            else if (creationType == CreationType.Entities && earlyBoundGeneratorConfig.ExtensionConfig.CreateOneFilePerEntity)
             {
-                var entities = config.ServiceContextName;
+                var entities = earlyBoundGeneratorConfig.ServiceContextName;
 
                 if (string.IsNullOrWhiteSpace(entities))
                 {
@@ -161,7 +161,7 @@ namespace DLaB.EarlyBoundGenerator
 
                 filePath = Path.Combine(filePath, entities + ".cs");
             }
-            else if (creationType == CreationType.OptionSets && config.ExtensionConfig.CreateOneFilePerOptionSet)
+            else if (creationType == CreationType.OptionSets && earlyBoundGeneratorConfig.ExtensionConfig.CreateOneFilePerOptionSet)
             {
                 filePath = Path.Combine(filePath, "OptionSets.cs");
             }
@@ -169,17 +169,17 @@ namespace DLaB.EarlyBoundGenerator
             return filePath;
         }
 
-        private static string GetSafeArgs(Config config, Process p)
+        private static string GetSafeArgs(EarlyBoundGeneratorConfig earlyBoundGeneratorConfig, Process p)
         {
             var args = p.StartInfo.Arguments;
-            if (config.MaskPassword && !string.IsNullOrWhiteSpace(config.Password))
+            if (earlyBoundGeneratorConfig.MaskPassword && !string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.Password))
             {
-                args = p.StartInfo.Arguments.Replace(config.Password, new string('*', config.Password.Length));
+                args = p.StartInfo.Arguments.Replace(earlyBoundGeneratorConfig.Password, new string('*', earlyBoundGeneratorConfig.Password.Length));
             }
             return args;
         }
 
-        private void UpdateCrmSvcUtilConfig(Config config)
+        private void UpdateCrmSvcUtilConfig(EarlyBoundGeneratorConfig earlyBoundGeneratorConfig)
         {
             lock (_updateAppConfigToken)
             {
@@ -187,7 +187,7 @@ namespace DLaB.EarlyBoundGenerator
                 //load custom config file
                 Configuration file;
 
-                string filePath = Path.GetFullPath(config.CrmSvcUtilPath) + ".config";
+                string filePath = Path.GetFullPath(earlyBoundGeneratorConfig.CrmSvcUtilPath) + ".config";
                 var map = new ExeConfigurationFileMap { ExeConfigFilename = filePath };
                 try
                 {
@@ -198,13 +198,13 @@ namespace DLaB.EarlyBoundGenerator
                     if (ex.BareMessage == "Root element is missing.")
                     {
                         File.Delete(filePath);
-                        UpdateCrmSvcUtilConfig(config);
+                        UpdateCrmSvcUtilConfig(earlyBoundGeneratorConfig);
                         return;
                     }
                     throw;
                 }
 
-                var extensions = config.ExtensionConfig;
+                var extensions = earlyBoundGeneratorConfig.ExtensionConfig;
                 if (UpdateConfigAppSetting(file, "ActionCommandLineText", extensions.ActionCommandLineText, true) |
                     UpdateConfigAppSetting(file, "ActionsToSkip", extensions.ActionsToSkip) |
                     UpdateConfigAppSetting(file, "AddDebuggerNonUserCode", extensions.AddDebuggerNonUserCode.ToString()) |
@@ -261,20 +261,20 @@ namespace DLaB.EarlyBoundGenerator
             return update;
         }
 
-        private string GetConfigArguments(Config config, CreationType type)
+        private string GetConfigArguments(EarlyBoundGeneratorConfig earlyBoundGeneratorConfig, CreationType type)
         {
             var sb = new StringBuilder();
-            if (!config.UseConnectionString)
+            if (!earlyBoundGeneratorConfig.UseConnectionString)
             {
-                sb.AppendFormat("/url:\"{0}\" ", config.Url);
+                sb.AppendFormat("/url:\"{0}\" ", earlyBoundGeneratorConfig.Url);
             }
 
-            foreach (var argument in config.CommandLineArguments.Where(a => a.SettingType == CreationType.All || a.SettingType == type))
+            foreach (var argument in earlyBoundGeneratorConfig.CommandLineArguments.Where(a => a.SettingType == CreationType.All || a.SettingType == type))
             {
                 var value = argument.Value;
                 if (argument.Name == "out")
                 {
-                    value = GetOutputFilePath(config, type);
+                    value = GetOutputFilePath(earlyBoundGeneratorConfig, type);
                 }
                 if (argument.Value == null)
                 {
@@ -286,9 +286,9 @@ namespace DLaB.EarlyBoundGenerator
                 }
             }
 
-            if (!string.IsNullOrWhiteSpace(config.Password))
+            if (!string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.Password))
             {
-                if (Config.UseConnectionString)
+                if (EarlyBoundGeneratorConfig.UseConnectionString)
                 {
                     // Fix for https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/issues/14 - Problem with CRM 2016 on premises with ADFS
                     // CrmSvcUtil.exe /out:entitie.cs / connectionstring:"Url=https://serverName.domain.com:444/orgName;Domain=myDomain;UserName=username;Password=*****"
@@ -296,27 +296,27 @@ namespace DLaB.EarlyBoundGenerator
                     // CrmSvcUtil.exe /out:entitie.cs /url:"https://serverName.domain.com:444/orgName" / domain:"myDomain" / username:"username" / password:"*****"
 
                     var domain = string.Empty;
-                    if (!string.IsNullOrWhiteSpace(config.Domain))
+                    if (!string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.Domain))
                     {
-                        domain = "Domain=" +config.Domain + ";";
+                        domain = "Domain=" +earlyBoundGeneratorConfig.Domain + ";";
                     }
-                    var password = config.Password.Replace("\"", "^\"").Replace("&", "^&");  // Handle Double Quotes and &s???
+                    var password = earlyBoundGeneratorConfig.Password.Replace("\"", "^\"").Replace("&", "^&");  // Handle Double Quotes and &s???
                     var builder = new System.Data.Common.DbConnectionStringBuilder
                     {
-                        {"A", $"Url={config.Url};{domain}UserName={config.UserName};Password={password}"}
+                        {"A", $"Url={earlyBoundGeneratorConfig.Url};{domain}UserName={earlyBoundGeneratorConfig.UserName};Password={password}"}
                     };
                     
                     sb.AppendFormat("/connectionstring:{0} ", builder.ConnectionString.Substring(2)); // Replace "A=" with "/connectionstring:"
                 }
                 else
                 {
-                    sb.AppendFormat("/username:\"{0}\" ", config.UserName);
-                    sb.AppendFormat("/password:\"{0}\" ", config.Password);
+                    sb.AppendFormat("/username:\"{0}\" ", earlyBoundGeneratorConfig.UserName);
+                    sb.AppendFormat("/password:\"{0}\" ", earlyBoundGeneratorConfig.Password);
 
                     // Add Login Info
-                    if (!config.UseCrmOnline && !string.IsNullOrWhiteSpace(config.Domain))
+                    if (!earlyBoundGeneratorConfig.UseCrmOnline && !string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.Domain))
                     {
-                        sb.AppendFormat("/domain:\"{0}\" ", config.Domain);
+                        sb.AppendFormat("/domain:\"{0}\" ", earlyBoundGeneratorConfig.Domain);
                     }
                 }
             }

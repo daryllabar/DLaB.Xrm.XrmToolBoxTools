@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using DLaB.Common;
 using DLaB.XrmToolboxCommon;
 using DLaB.Xrm;
 using Microsoft.Xrm.Sdk.Metadata;
@@ -80,7 +81,7 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            SpecifiedEntities = string.Join("|", LstSpecified.Items.Cast<ObjectCollectionItem<EntityMetadata>>().Select(i => i.Value.LogicalName));
+            SpecifiedEntities = Config.ToString(LstSpecified.Items.Cast<ObjectCollectionItem<EntityMetadata>>().Select(i => i.Value.LogicalName));
             DialogResult = DialogResult.OK;
             Close();
         }

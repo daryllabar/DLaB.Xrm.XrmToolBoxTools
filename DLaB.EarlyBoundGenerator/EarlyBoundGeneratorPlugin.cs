@@ -11,13 +11,14 @@ using Microsoft.Xrm.Sdk.Client;
 using Microsoft.Xrm.Sdk.Metadata;
 using XrmToolBox.Extensibility;
 using XrmToolBox.Extensibility.Interfaces;
+using DLaB.Common;
 using PropertyInterface = DLaB.XrmToolboxCommon.PropertyInterface;
 
 namespace DLaB.EarlyBoundGenerator
 {
     public partial class EarlyBoundGeneratorPlugin : DLaBPluginControlBase, PropertyInterface.IEntityMetadatas, PropertyInterface.IGlobalOptionSets, PropertyInterface.IActions
     {
-        public Config Settings { get; set; }
+        public EarlyBoundGeneratorConfig Settings { get; set; }
         public IEnumerable<Entity> Actions { get; set; }
         public IEnumerable<EntityMetadata> EntityMetadatas { get; set; }
         public IEnumerable<OptionSetMetadataBase> GlobalOptionSets { get; set; }
@@ -56,7 +57,7 @@ namespace DLaB.EarlyBoundGenerator
             {
                 DisplayActionsIfSupported(false);
             }
-            Settings = Config.Load(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+            Settings = EarlyBoundGeneratorConfig.Load(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
             ChkAddDebuggerNonUserCode.Checked = Settings.ExtensionConfig.AddDebuggerNonUserCode;
             ChkAddFilesToProject.Checked = Settings.ExtensionConfig.AddNewFilesToProject;
             ChkAudibleCompletion.Checked = Settings.AudibleCompletionNotification;
@@ -158,7 +159,7 @@ namespace DLaB.EarlyBoundGenerator
             WorkAsync(new WorkAsyncInfo("Shelling out to Command Line...",
                 (w, e) => // Work To Do Asynchronously
                 {
-                    var settings = (Config) e.Argument;
+                    var settings = (EarlyBoundGeneratorConfig) e.Argument;
 
                     var generator = new Logic(settings);
                     Logic.LogHandler onLog = m => w.ReportProgress(0, m);
@@ -243,6 +244,7 @@ namespace DLaB.EarlyBoundGenerator
         {
             if (ConnectionDetail != null)
             {
+                
                 TxtOutput.AppendText("CRM Authentication Type Detected: " + ConnectionDetail.AuthType + Environment.NewLine);
                 Settings.AuthType = ConnectionDetail.AuthType;
                 Settings.Domain = ConnectionDetail.UserDomain;
@@ -251,9 +253,16 @@ namespace DLaB.EarlyBoundGenerator
                 Settings.UseConnectionString = Settings.UseConnectionString || Settings.AuthType == AuthenticationProviderType.ActiveDirectory;
                 Settings.UseCrmOnline = ConnectionDetail.UseOnline;
                 Settings.UserName = ConnectionDetail.UserName;
-                Settings.Url = Settings.UseConnectionString ? 
-                    ConnectionDetail.OrganizationServiceUrl.Replace(@"/XRMServices/2011/Organization.svc", string.Empty) : 
-                    ConnectionDetail.OrganizationServiceUrl;
+                Settings.Url = GetUrlString();
+
+                if (Settings.UseConnectionString && string.IsNullOrWhiteSpace(Settings.Password))
+                {
+                    // Fix for https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/issues/43
+                    // Difficulties with Early Bound Generator #43
+
+                    var askForPassowrd = new PasswordDialog(this);
+                    Settings.Password = askForPassowrd.ShowDialog(this) == DialogResult.OK ? askForPassowrd.Password : "UNKNOWN";
+                }
             }
 
             Settings.ActionOutPath = TxtActionPath.Text;
@@ -265,7 +274,7 @@ namespace DLaB.EarlyBoundGenerator
             }
             else
             {
-                var defaultConfig = Config.GetDefault();
+                var defaultConfig = EarlyBoundGeneratorConfig.GetDefault();
                 Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, defaultConfig.GetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter).Value);
                 Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService, defaultConfig.GetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService).Value);
             }
@@ -293,6 +302,26 @@ namespace DLaB.EarlyBoundGenerator
             Settings.Namespace = TxtNamespace.Text;
             Settings.OptionSetOutPath = TxtOptionSetPath.Text;
             Settings.ServiceContextName = string.IsNullOrWhiteSpace(TxtServiceContextName.Text) ? null : TxtServiceContextName.Text;
+        }
+
+        private string GetUrlString()
+        {
+            var url = ConnectionDetail.OrganizationServiceUrl;
+            url = Settings.UseConnectionString
+                ? url.Replace(@"/XRMServices/2011/Organization.svc", string.Empty)
+                :  url;
+            int start;
+            var prefix = url.SubstringByString(0, "//", out start) + "//";
+            if (start < 0)
+            {
+                return url;
+            }
+            var end = url.IndexOf(".", start, StringComparison.Ordinal);
+            if (end < 0)
+            {
+                return url;
+            }
+            return prefix + ConnectionDetail.OrganizationUrlName + url.Substring(end);
         }
 
         private void EnableForm(bool enable)

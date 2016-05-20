@@ -65,15 +65,15 @@ namespace DLaB.CrmSvcUtilExtensions
                 {
                     if (optionSetMetadata.OptionSetType.GetValueOrDefault() == OptionSetType.Status && DefaultService.GetNameForOptionSet(entityMetadata, optionSetMetadata, services).EndsWith("statuscode"))
                     {
-                        return string.Format(LocalOptionSetFormat, DefaultService.GetNameForEntity(entityMetadata, services), "StatusCode");
+                        return string.Format(LocalOptionSetFormat, GetNameForEntity(entityMetadata, services), "StatusCode");
                     }
                 }
                 else
                 {
                     // Concatenate the name of the entity and the name of the attribute
                     // together to form the OptionSet name.
-                    return string.Format(LocalOptionSetFormat, DefaultService.GetNameForEntity(entityMetadata, services),
-                           DefaultService.GetNameForAttribute(entityMetadata, attribute, services));
+                    return string.Format(LocalOptionSetFormat, GetNameForEntity(entityMetadata, services),
+                           GetNameForAttribute(entityMetadata, attribute, services));
                 }
             }
             var name = DefaultService.GetNameForOptionSet(entityMetadata, optionSetMetadata, services);

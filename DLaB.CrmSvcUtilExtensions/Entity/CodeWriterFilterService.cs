@@ -27,8 +27,8 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         public CodeWriterFilterService(ICodeWriterFilterService defaultService)
         {
             DefaultService = defaultService;
-            EntitiesToSkip = Config.GetHashSet<string>("EntitiesToSkip");
-            EntityPrefixesToSkip = Config.GetAppSettingListOrDefault("EntityPrefixesToSkip", new List<string>(), new []{ ConfigKeyValueSplitInfo.Entry_Seperator });
+            EntitiesToSkip = Config.GetHashSet("EntitiesToSkip", new HashSet<string>());
+            EntityPrefixesToSkip = Config.GetList("EntityPrefixesToSkip", new List<string>());
             GenerateEntityRelationships = ConfigHelper.GetAppSettingOrDefault("GenerateEntityRelationships", true);
         }
 

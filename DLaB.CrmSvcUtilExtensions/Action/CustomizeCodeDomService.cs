@@ -87,8 +87,8 @@ namespace DLaB.CrmSvcUtilExtensions.Action
             }
         }
 
-        private static readonly HashSet<string> ActionsToSkip = Config.GetHashSet<string>("ActionsToSkip");
-        private static readonly List<string> ActionPrefixesToSkip = Config.GetAppSettingListOrDefault("ActionPrefixesToSkip", new List<string>(), new []{ ConfigKeyValueSplitInfo.Entry_Seperator});
+        private static readonly HashSet<string> ActionsToSkip = Config.GetHashSet("ActionsToSkip", new HashSet<string>());
+        private static readonly List<string> ActionPrefixesToSkip = Config.GetList("ActionPrefixesToSkip", new List<string>());
 
         private bool Skip(string name)
         {
