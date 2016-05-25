@@ -253,7 +253,7 @@ namespace DLaB.EarlyBoundGenerator
                 Settings.UseConnectionString = Settings.UseConnectionString || Settings.AuthType == AuthenticationProviderType.ActiveDirectory;
                 Settings.UseCrmOnline = ConnectionDetail.UseOnline;
                 Settings.UserName = ConnectionDetail.UserName;
-                Settings.Url = GetUrlString();
+                Settings.Url = GetUrlString(ConnectionDetail.AuthType);
 
                 if (Settings.UseConnectionString && string.IsNullOrWhiteSpace(Settings.Password))
                 {
@@ -262,6 +262,10 @@ namespace DLaB.EarlyBoundGenerator
 
                     var askForPassowrd = new PasswordDialog(this);
                     Settings.Password = askForPassowrd.ShowDialog(this) == DialogResult.OK ? askForPassowrd.Password : "UNKNOWN";
+                }
+                if (ConnectionDetail.AuthType == AuthenticationProviderType.ActiveDirectory && string.IsNullOrWhiteSpace(Settings.UserName))
+                {
+                    ConnectionDetail.UserName = System.Security.Principal.WindowsIdentity.GetCurrent()?.Name;
                 }
             }
 
@@ -304,12 +308,17 @@ namespace DLaB.EarlyBoundGenerator
             Settings.ServiceContextName = string.IsNullOrWhiteSpace(TxtServiceContextName.Text) ? null : TxtServiceContextName.Text;
         }
 
-        private string GetUrlString()
+        private string GetUrlString(AuthenticationProviderType auth)
         {
             var url = ConnectionDetail.OrganizationServiceUrl;
             url = Settings.UseConnectionString
                 ? url.Replace(@"/XRMServices/2011/Organization.svc", string.Empty)
                 :  url;
+
+            if (auth == AuthenticationProviderType.ActiveDirectory)
+            {
+                return url;
+            }
             int start;
             var prefix = url.SubstringByString(0, "//", out start) + "//";
             if (start < 0)

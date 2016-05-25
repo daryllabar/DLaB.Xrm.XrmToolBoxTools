@@ -551,8 +551,8 @@ namespace DLaB.AttributeManager
                     }
                     index = xml.LastIndexOf(fromControlStart, dataFieldIndex, StringComparison.OrdinalIgnoreCase);
                 }
-                form.FormXml = xml.Replace(fromControlStart, "<control id=\"" + to.LogicalName + "\"").
-                    Replace("datafieldname=\"" + from.LogicalName + "\"", "datafieldname=\"" + to.LogicalName + "\"");
+                form.FormXml = xml.Replace(fromControlStart + from.LogicalName + "\"", fromControlStart + to.LogicalName + "\"")
+                                  .Replace(fromDataFieldStart, "datafieldname=\"" + to.LogicalName + "\"");
                 service.Update(form);
             }
         }
@@ -689,7 +689,7 @@ namespace DLaB.AttributeManager
         {
             var fromDataFieldStart = "DataFieldName=\"" + att.LogicalName + "\"";
             var fromControlStart = "<mcwb:Control ";
-            const string classIdStart = "ClassId=\"{";
+            const string classIdStart = "ClassId=\"";
             var dataFieldIndex = xml.IndexOf(fromDataFieldStart, StringComparison.OrdinalIgnoreCase);
             if (dataFieldIndex < 0)
             {
@@ -699,7 +699,7 @@ namespace DLaB.AttributeManager
             while (index >= 0)
             {
                 index = xml.IndexOf(classIdStart, index, StringComparison.OrdinalIgnoreCase) + classIdStart.Length;
-                var classIdEnd = xml.IndexOf("}", index, StringComparison.OrdinalIgnoreCase);
+                var classIdEnd = xml.IndexOf("\" ", index, StringComparison.OrdinalIgnoreCase);
                 xml = xml.Remove(index, classIdEnd - index).
                           Insert(index, GetClassId(to));
 
