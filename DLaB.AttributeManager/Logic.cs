@@ -190,6 +190,8 @@ namespace DLaB.AttributeManager
             UpdateViews(Service, fromAtt, toAtt);
             UpdateForms(Service, fromAtt, toAtt);
             UpdateWorkflows(Service, fromAtt, toAtt);
+            UpdatePluginStepFilters(Service, fromAtt, toAtt);
+            UpdatePluginStepImages(Service, fromAtt, toAtt);
             PublishEntity(Service, fromAtt.EntityLogicalName);
             AssertCanDelete(Service, fromAtt);
         }
@@ -617,6 +619,69 @@ namespace DLaB.AttributeManager
                     throw new NotImplementedException("Unable to determine the Control ClassId for AttributeTypeCode." + att.AttributeType);
                 default:
                     throw new EnumCaseUndefinedException<AttributeTypeCode>(att.AttributeType.GetValueOrDefault(AttributeTypeCode.String));
+            }
+        }
+
+        private void UpdatePluginStepFilters(IOrganizationService service, AttributeMetadata att, AttributeMetadata to)
+        {
+            var qe = QueryExpressionFactory.Create<SdkMessageProcessingStep>();
+            AddConditionsForValueInCsv(qe.Criteria, qe.EntityName, SdkMessageProcessingStep.Fields.FilteringAttributes, att.LogicalName);
+
+            Trace("Checking for Plugin Registration Step Filtering Attribute Dependencies with Query: " + qe.GetSqlStatement());
+
+            foreach (var step in service.GetEntities(qe))
+            {
+                var filter = ReplaceCsvValues(step.FilteringAttributes, att.LogicalName, to.LogicalName);
+                Trace("Updating {0} - \"{1}\" to \"{2}\"", step.Name, step.FilteringAttributes, filter);
+                service.Update(new SdkMessageProcessingStep()
+                {
+                    Id = step.Id,
+                    FilteringAttributes = filter
+                });
+            }
+        }
+
+        private static void AddConditionsForValueInCsv(FilterExpression filter, string entityName, string fieldName, string value)
+        {
+            filter.WhereEqual(entityName,
+                new ConditionExpression(fieldName, ConditionOperator.Like, $"%,{value},%"),
+                LogicalOperator.Or,
+                new ConditionExpression(fieldName, ConditionOperator.Like, $"{value},%"),
+                LogicalOperator.Or,
+                new ConditionExpression(fieldName, ConditionOperator.Like, $"%,{value}"),
+                LogicalOperator.Or,
+                fieldName, "{0}"
+                );
+        }
+
+        private static string ReplaceCsvValues(string value, string from, string to)
+        {
+            var values = value.Split(',');
+            var index = Array.IndexOf(values, from);
+            while (index >= 0)
+            {
+                values[index] = to;
+                index = Array.IndexOf(values, from);
+            }
+            return string.Join(",", values);
+        }
+
+        private void UpdatePluginStepImages(IOrganizationService service, AttributeMetadata att, AttributeMetadata to)
+        {
+            var qe = QueryExpressionFactory.Create<SdkMessageProcessingStepImage>();
+            AddConditionsForValueInCsv(qe.Criteria, qe.EntityName, SdkMessageProcessingStepImage.Fields.Attributes1, att.LogicalName);
+
+            Trace("Checking for Plugin Registration Step Filtering Attribute Dependencies with Query: " + qe.GetSqlStatement());
+
+            foreach (var step in service.GetEntities(qe))
+            {
+                var filter = ReplaceCsvValues(step.Attributes1, att.LogicalName, to.LogicalName);
+                Trace("Updating {0} - \"{1}\" to \"{2}\"", step.Name, step.Attributes1, filter);
+                service.Update(new SdkMessageProcessingStepImage
+                {
+                    Id = step.Id,
+                    Attributes1 = filter
+                });
             }
         }
 
