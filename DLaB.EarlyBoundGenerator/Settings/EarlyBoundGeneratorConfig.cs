@@ -11,6 +11,8 @@ using Microsoft.Xrm.Sdk.Client;
 namespace DLaB.EarlyBoundGenerator.Settings
 {
     [Serializable]
+    [XmlType("Config")]
+    [XmlRoot("Config")]
     public class EarlyBoundGeneratorConfig
     {
         #region Properties
@@ -39,7 +41,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// <value>
         ///   <c>true</c> if [mask password]; otherwise, <c>false</c>.
         /// </value>
-        public Boolean MaskPassword { get; set; }
+        public bool MaskPassword { get; set; }
         /// <summary>
         /// The version of the EarlyBoundGeneratorPlugin
         /// </summary>
@@ -100,10 +102,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [NonSerialized] private string _filePath;
 
         [XmlIgnore]
-        public IEnumerable<Argument> CommandLineArguments
-        {
-            get { return UserArguments.Union(ExtensionArguments); }
-        }
+        public IEnumerable<Argument> CommandLineArguments => UserArguments.Union(ExtensionArguments);
 
         [XmlIgnore]
         public string CrmSvcUtilPath
@@ -163,8 +162,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         private EarlyBoundGeneratorConfig()
         {
-            CrmSvcUtilRelativePath = Common.Config.GetAppSettingOrDefault("CrmSvcUtilRelativePath", @"Plugins\CrmSvcUtil Ref\crmsvcutil.exe");
-            UseConnectionString = Common.Config.GetAppSettingOrDefault("UseConnectionString", false);
+            CrmSvcUtilRelativePath = Config.GetAppSettingOrDefault("CrmSvcUtilRelativePath", @"Plugins\CrmSvcUtil Ref\crmsvcutil.exe");
+            UseConnectionString = Config.GetAppSettingOrDefault("UseConnectionString", false);
             Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
@@ -187,6 +186,17 @@ namespace DLaB.EarlyBoundGenerator.Settings
             AudibleCompletionNotification = poco.AudibleCompletionNotification.GetValueOrDefault(@default.AudibleCompletionNotification);
             IncludeCommandLine = poco.IncludeCommandLine.GetValueOrDefault(@default.IncludeCommandLine);
             MaskPassword = poco.MaskPassword.GetValueOrDefault(@default.MaskPassword);
+
+
+            if (new Version(poco.Version) < new Version("1.2016.6.1"))
+            {
+                // Storing of UnmappedProperties and EntityAttributeSpecified Names switched from Key,Value1,Value2|Key,Value1,Value2 to Key:Value1,Value2|Key:Value1,Value2
+                // Also convert from a List to a HashSet
+                pocoConfig.EntityAttributeSpecifiedNames = ConvertNonColonDelimitedDictionaryListToDictionaryHash(pocoConfig.EntityAttributeSpecifiedNames);
+                pocoConfig.UnmappedProperties = ConvertNonColonDelimitedDictionaryListToDictionaryHash(pocoConfig.UnmappedProperties);
+
+            }
+
             ExtensionConfig = new ExtensionConfig
             {
                 ActionsToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.ActionsToSkip, defaultConfig.ActionsToSkip),
@@ -196,7 +206,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 CreateOneFilePerEntity = pocoConfig.CreateOneFilePerEntity.GetValueOrDefault(defaultConfig.CreateOneFilePerEntity),
                 CreateOneFilePerOptionSet = pocoConfig.CreateOneFilePerOptionSet.GetValueOrDefault(defaultConfig.CreateOneFilePerOptionSet),
                 EntitiesToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.EntitiesToSkip, defaultConfig.EntitiesToSkip),
-                EntityAttributeSpecifiedNames = AddPipeThenCommaDelimitedMissingDefaultValues(pocoConfig.EntityAttributeSpecifiedNames, defaultConfig.EntityAttributeSpecifiedNames),
+                EntityAttributeSpecifiedNames = AddMissingDictionaryHashDefaultValues(pocoConfig.EntityAttributeSpecifiedNames, defaultConfig.EntityAttributeSpecifiedNames),
                 GenerateAttributeNameConsts = pocoConfig.GenerateAttributeNameConsts.GetValueOrDefault(defaultConfig.GenerateAttributeNameConsts),
                 GenerateAnonymousTypeConstructor = pocoConfig.GenerateAnonymousTypeConstructor.GetValueOrDefault(defaultConfig.GenerateAnonymousTypeConstructor),
                 GenerateEntityRelationships = pocoConfig.GenerateEntityRelationships.GetValueOrDefault(defaultConfig.GenerateEntityRelationships),
@@ -207,7 +217,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 OptionSetsToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.OptionSetsToSkip, defaultConfig.OptionSetsToSkip),
                 PropertyEnumMappings = AddPipeDelimitedMissingDefaultValues(pocoConfig.PropertyEnumMappings, defaultConfig.PropertyEnumMappings),
                 RemoveRuntimeVersionComment = pocoConfig.RemoveRuntimeVersionComment.GetValueOrDefault(defaultConfig.RemoveRuntimeVersionComment),
-                UnmappedProperties = AddPipeThenCommaDelimitedMissingDefaultValues(pocoConfig.UnmappedProperties, defaultConfig.UnmappedProperties),
+                UnmappedProperties = AddMissingDictionaryHashDefaultValues(pocoConfig.UnmappedProperties, defaultConfig.UnmappedProperties),
                 UseDeprecatedOptionSetNaming = pocoConfig.UseDeprecatedOptionSetNaming.GetValueOrDefault(defaultConfig.UseDeprecatedOptionSetNaming),
                 UseTfsToCheckoutFiles = pocoConfig.UseTfsToCheckoutFiles.GetValueOrDefault(defaultConfig.UseTfsToCheckoutFiles),
                 UseXrmClient = pocoConfig.UseXrmClient.GetValueOrDefault(defaultConfig.UseXrmClient)
@@ -217,7 +227,29 @@ namespace DLaB.EarlyBoundGenerator.Settings
             UserArguments = AddMissingArguments(poco.UserArguments, @default.UserArguments);
             Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
+
             _filePath = filePath;
+        }
+
+        private static string ConvertNonColonDelimitedDictionaryListToDictionaryHash(string oldValue)
+        {
+            if (oldValue == null)
+            {
+                return null;
+            }
+            var oldValues = Config.GetList<string>(Guid.NewGuid().ToString(), oldValue, new ConfigKeyValueSplitInfo { EntrySeperators = new [] {'|'}});
+            var newValues = new Dictionary<string, HashSet<string>>();
+            foreach (var entry in oldValues)
+            {
+                var hash = new HashSet<string>();
+                var values = entry.Split(',');
+                newValues.Add(values.First(), hash);
+                foreach (var value in values.Skip(1).Where(v => !hash.Contains(v)))
+                {
+                    hash.Add(value);
+                }
+            }
+            return Config.ToString(newValues);
         }
 
         private void RemoveObsoleteValues(POCO.Config poco, EarlyBoundGeneratorConfig @default)
@@ -265,7 +297,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             }
         }
 
-        private string AddPipeThenCommaDelimitedMissingDefaultValues(string value, string @default)
+        private string AddMissingDictionaryHashDefaultValues(string value, string @default)
         {
             try
             {
@@ -273,30 +305,26 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 {
                     return @default ?? value;
                 }
+                var values = Config.GetDictionaryHash<string, string>(Guid.NewGuid().ToString(), value);
+                var defaultValues = Config.GetDictionaryHash<string, string>(Guid.NewGuid().ToString(), @default);
 
-                var splitValues = value.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()).ToList();
-                // Split by Dictionary of hashset
-                var splitSplitValues = splitValues.ToDictionary(k => k.Split(new[] {','}).First().Trim(), v => new HashSet<string>(v.Split(new[] {','}).Skip(1).Select(s => s.Trim())));
-                foreach (var entry in @default.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()))
+                foreach (var entry in defaultValues)
                 {
-                    var values = entry.Split(new[] {','}).Select(s => s.Trim()).ToList();
                     HashSet<string> hash;
-                    if (splitSplitValues.TryGetValue(values.First(), out hash))
+                    if (!values.TryGetValue(entry.Key, out hash))
                     {
-                        foreach (var commaValue in values.Skip(1).
-                            Where(commaValue => !hash.Contains(commaValue)))
-                        {
-                            hash.Add(commaValue);
-                        }
+                        hash = new HashSet<string>();
+                        values[entry.Key] = hash;
                     }
-                    else
+
+                    foreach (var item in entry.Value.Where(v => !hash.Contains(v)))
                     {
-                        splitSplitValues.Add(values.First(), new HashSet<string>(values.Skip(1)));
+                        hash.Add(item);
                     }
                 }
 
                 // All missing values have been added.  Join back Values
-                return Config.ToString(splitSplitValues);
+                return Config.ToString(values);
             }
             catch (Exception ex)
             {
@@ -354,23 +382,30 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         public static EarlyBoundGeneratorConfig Load(string filePath)
         {
-            filePath = Path.Combine(filePath, "DLaB.EarlyBoundGenerator.Settings.xml");
-            if (!File.Exists(filePath))
+            try
             {
-                var config = GetDefault();
-                config._filePath = filePath;
-                return config;
-            }
+                filePath = Path.Combine(filePath, "DLaB.EarlyBoundGenerator.Settings.xml");
+                if (!File.Exists(filePath))
+                {
+                    var config = GetDefault();
+                    config._filePath = filePath;
+                    return config;
+                }
 
-            var serializer = new XmlSerializer(typeof(POCO.Config));
-            POCO.Config poco;
-            using (var fs = new FileStream(filePath, FileMode.Open))
-            {
-                poco = (POCO.Config)serializer.Deserialize(fs);
-                fs.Close();
+                var serializer = new XmlSerializer(typeof (POCO.Config));
+                POCO.Config poco;
+                using (var fs = new FileStream(filePath, FileMode.Open))
+                {
+                    poco = (POCO.Config) serializer.Deserialize(fs);
+                    fs.Close();
+                }
+                var settings = new EarlyBoundGeneratorConfig(poco, filePath);
+                return settings;
             }
-            var settings = new EarlyBoundGeneratorConfig(poco, filePath);
-            return settings;
+            catch (Exception ex)
+            {
+                throw new Exception("An error occured attempting to load Xml configuration: " + filePath, ex);
+            }
         }
 
         public void Save()

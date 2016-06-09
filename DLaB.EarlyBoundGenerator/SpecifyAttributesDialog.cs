@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DLaB.Common;
 using DLaB.XrmToolboxCommon;
-using DLaB.Xrm;
 using XrmToolBox.Extensibility;
 
 namespace DLaB.EarlyBoundGenerator
@@ -39,13 +33,13 @@ namespace DLaB.EarlyBoundGenerator
             ConfigValue = ConfigValue.Replace(" ", string.Empty);
             ConfigValue = ConfigValue.Replace("\n", string.Empty);
 
-            foreach (var entity in ConfigValue.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries).OrderBy(v => v))
-            {
-                var splitAttributes = entity.Split(',');
+            var setting = Config.GetDictionaryHash<string, string>(Guid.NewGuid().ToString(), ConfigValue);
 
-                foreach (var attribute in splitAttributes.Skip(1).OrderBy(v => v))
+            foreach (var kvp in setting)
+            {
+                foreach (var attribute in kvp.Value.OrderBy(v => v))
                 {
-                    AddRow(splitAttributes[0].ToLower(), attribute);
+                    AddRow(kvp.Key.ToLower(), attribute);
                 }
             }
         }
@@ -72,7 +66,7 @@ namespace DLaB.EarlyBoundGenerator
 
         protected virtual void OpenAddDialog()
         {
-            var dialog = new OptionSetSpecifierDialog(CallingControl, true);
+            var dialog = new OptionSetSpecifierDialog(CallingControl, true, "Specify Attribute");
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
@@ -85,22 +79,21 @@ namespace DLaB.EarlyBoundGenerator
         private void BtnSave_Click(object sender, EventArgs e)
         {
             ConfigValue = string.Empty;
-            var entities = new List<string>();
             var rows = dataGridView1.Rows.Cast<DataGridViewRow>().
                 Select(row => new Tuple<string, string>(row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString())).ToList();
 
+            var values = new Dictionary<string,HashSet<string>>();
             foreach (var entity in rows.GroupBy(k => k.Item1, v => v.Item2))
             {
-                var sb = new StringBuilder();
-                sb.Append(entity.Key);
-                foreach (var attribute in entity)
+                var hashSet = new HashSet<string>();
+                values.Add(entity.Key, hashSet);
+                foreach (var attribute in entity.Where(a => !hashSet.Contains(a)))
                 {
-                    sb.Append("," + attribute);
+                    hashSet.Add(attribute);
                 }
-                entities.Add(sb.ToString());
             }
 
-            ConfigValue = Config.ToString(entities);
+            ConfigValue = Config.ToString(values);
             DialogResult = DialogResult.OK;
             Close();
         }

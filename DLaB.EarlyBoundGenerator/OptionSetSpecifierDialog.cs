@@ -16,6 +16,7 @@ namespace DLaB.EarlyBoundGenerator
         #region Properties
 
         public string AttributeSchemaName { get; set; }
+        private string FormName { get; set; }
         public bool SelectOptionSetsForEntity { get; set; }
 
         #endregion // Properties
@@ -27,10 +28,11 @@ namespace DLaB.EarlyBoundGenerator
             InitializeComponent();
         }
 
-        public OptionSetSpecifierDialog(PluginControlBase callingControl, bool selectOptionSetsForEntity)
+        public OptionSetSpecifierDialog(PluginControlBase callingControl, bool selectOptionSetsForEntity, string title = null)
             : base(callingControl)
         {
             InitializeComponent();
+            FormName = title;
             SelectOptionSetsForEntity = selectOptionSetsForEntity;
         }
 
@@ -40,6 +42,7 @@ namespace DLaB.EarlyBoundGenerator
             LblOptionSet.Visible = false;
             CmbOptionSets.Visible = false;
 
+            Text = FormName ?? Text;
             if (SelectOptionSetsForEntity)
             {
                 LoadOrRetrieveEntities();
@@ -77,7 +80,7 @@ namespace DLaB.EarlyBoundGenerator
         {
             if (string.IsNullOrWhiteSpace(AttributeSchemaName))
             {
-                MessageBox.Show(("No OptionSet Attribute Schema Name specified"),
+                MessageBox.Show("No OptionSet Attribute Schema Name specified",
                 "No OptionSet Name!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else 

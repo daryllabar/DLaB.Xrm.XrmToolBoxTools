@@ -12,11 +12,11 @@ namespace DLaB.CrmSvcUtilExtensions
         /// <param name="appSetting"></param>
         /// <param name="lowerCaseValues"></param>
         /// <returns></returns>
-        internal static Dictionary<string, List<string>> GetDictionaryList(string appSetting, bool lowerCaseValues)
+        internal static Dictionary<string, HashSet<string>> GetDictionaryHash(string appSetting, bool lowerCaseValues)
         {
             try
             {
-                return Config.GetDictionaryList<string, string>(appSetting, string.Empty,
+                return Config.GetDictionaryHash<string, string>(appSetting, string.Empty,
                     new ConfigKeyValuesSplitInfo
                     {
                         ConvertValuesToLower = lowerCaseValues
@@ -24,7 +24,7 @@ namespace DLaB.CrmSvcUtilExtensions
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception attempting to GetDictionaryList for config key: " + appSetting);
+                Console.WriteLine("Exception attempting to GetDictionaryHash for config key: " + appSetting);
                 Console.WriteLine(ex.ToString());
                 throw;
             }

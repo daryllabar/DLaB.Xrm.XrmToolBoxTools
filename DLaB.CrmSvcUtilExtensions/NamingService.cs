@@ -17,7 +17,7 @@ namespace DLaB.CrmSvcUtilExtensions
     {
         private string ValidCSharpNameRegEx { get; set; }
         private INamingService DefaultService { get; set; }
-        private Dictionary<string, List<string>> EntityAttributeSpecifiedNames { get; set; }
+        private Dictionary<string, HashSet<string>> EntityAttributeSpecifiedNames { get; set; }
         private string InvalidCSharpNamePrefix { get; }
         private string LocalOptionSetFormat { get; }
         private bool UseDeprecatedOptionSetNaming { get; }
@@ -30,7 +30,7 @@ namespace DLaB.CrmSvcUtilExtensions
         public NamingService(INamingService defaultService)
         {
             DefaultService = defaultService;
-            EntityAttributeSpecifiedNames = ConfigHelper.GetDictionaryList("EntityAttributeSpecifiedNames", false);
+            EntityAttributeSpecifiedNames = ConfigHelper.GetDictionaryHash("EntityAttributeSpecifiedNames", false);
             OptionNameValueDuplicates = new Dictionary<OptionSetMetadataBase, Dictionary<string, bool>>();
             InvalidCSharpNamePrefix = ConfigHelper.GetAppSettingOrDefault("InvalidCSharpNamePrefix", "_");
             LocalOptionSetFormat = ConfigHelper.GetAppSettingOrDefault("LocalOptionSetFormat", "{0}_{1}");
@@ -335,7 +335,7 @@ namespace DLaB.CrmSvcUtilExtensions
         /// <returns></returns>
         public string GetNameForAttribute(EntityMetadata entityMetadata, AttributeMetadata attributeMetadata, IServiceProvider services)
         {
-            List<string> specifiedNames;
+            HashSet<string> specifiedNames;
             string attributeName;
             if (EntityAttributeSpecifiedNames.TryGetValue(entityMetadata.LogicalName.ToLower(), out specifiedNames) &&
                 specifiedNames.Any(s => string.Equals(s, attributeMetadata.LogicalName, StringComparison.OrdinalIgnoreCase)))

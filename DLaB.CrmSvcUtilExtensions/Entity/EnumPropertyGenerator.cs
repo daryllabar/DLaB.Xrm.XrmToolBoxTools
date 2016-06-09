@@ -13,7 +13,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
     class EnumPropertyGenerator : ICustomizeCodeDomService
     {
         public Dictionary<string, string> SpecifiedMappings { get; private set; }
-        public Dictionary<string, List<string>> UnmappedProperties { get; private set; }
+        public Dictionary<string, HashSet<string>> UnmappedProperties { get; private set; }
 
         public INamingService NamingService { get; private set; }
         public IServiceProvider Services { get; private set; }
@@ -53,7 +53,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
 
         private bool SkipProperty(CodeMemberProperty property, CodeTypeDeclaration type)
         {
-            List<string> attributes;
+            HashSet<string> attributes;
             return property == null ||
                    !IsOptionSetProperty(property) ||
                    (UnmappedProperties.TryGetValue(type.Name.ToLower(), out attributes) && attributes.Contains(property.Name.ToLower())) ||
@@ -80,7 +80,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         private void InitializeMappings()
         {
             var specifedMappings = ConfigHelper.GetAppSettingOrDefault("PropertyEnumMappings", string.Empty).Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
-            UnmappedProperties = ConfigHelper.GetDictionaryList("UnmappedProperties", true);
+            UnmappedProperties = ConfigHelper.GetDictionaryHash("UnmappedProperties", true);
             SpecifiedMappings = new Dictionary<string, string>();
 
             foreach (var specifiedMapping in specifedMappings)

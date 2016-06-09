@@ -38,8 +38,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public string EntitiesToSkip { get; set; }
         /// <summary>
-        /// Formated as a single string in the format of "EntityName1,firstAttributeName, ... ,lastAttributeName|EntityName2,firstAttributeName, ... ,lastAttributeName|..."
-        /// Basically split each entity by pipe, use then split by comma, with the first value being the entityName
+        /// Formated as a single string in the format of "EntityName1:firstAttributeName, ... ,lastAttributeName|EntityName2:firstAttributeName, ... ,lastAttributeName|..."
+        /// Basically split each entity by pipe, use then split by colon, then comma, with the first value being the entityName
         /// Allows for the ability to specify the capitalization of an attribute on an entity
         /// </summary>
         public string EntityAttributeSpecifiedNames { get; set; }
@@ -152,13 +152,13 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 PropertyEnumMappings = string.Empty,
                 RemoveRuntimeVersionComment = true,
                 UnmappedProperties =
-                    "DuplicateRule,BaseEntityTypeCode,MatchingEntityTypeCode|" +
-                    "InvoiceDetail,InvoiceStateCode|" + 
-                    "LeadAddress,AddressTypeCode,ShippingMethodCode|" + 
-                    "Organization,CurrencyFormatCode,DateFormatCode,TimeFormatCode,WeekStartDayCode|" +
-                    "Quote,StatusCode|" + 
-                    "QuoteDetail,QuoteStateCode|" + 
-                    "SalesOrderDetail,SalesOrderStateCode|",
+                    "DuplicateRule:BaseEntityTypeCode,MatchingEntityTypeCode|" +
+                    "InvoiceDetail:InvoiceStateCode|" + 
+                    "LeadAddress:AddressTypeCode,ShippingMethodCode|" + 
+                    "Organization:CurrencyFormatCode,DateFormatCode,TimeFormatCode,WeekStartDayCode|" +
+                    "Quote:StatusCode|" + 
+                    "QuoteDetail:QuoteStateCode|" + 
+                    "SalesOrderDetail:SalesOrderStateCode|",
                 UseDeprecatedOptionSetNaming = false,
                 UseTfsToCheckoutFiles = false,
                 UseXrmClient = false
@@ -192,7 +192,6 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public string PropertyEnumMappings { get; set; }
         public string UnmappedProperties { get; set; }
         public bool? AddNewFilesToProject { get; set; }
-        public bool? AudibleCompletionNotification { get; set; }
         public bool? RemoveRuntimeVersionComment { get; set; }
         public bool? UseDeprecatedOptionSetNaming { get; set; }
         public bool? UseTfsToCheckoutFiles { get; set; }

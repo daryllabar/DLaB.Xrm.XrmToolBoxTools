@@ -22,6 +22,7 @@ namespace DLaB.EarlyBoundGenerator
         public IEnumerable<Entity> Actions { get; set; }
         public IEnumerable<EntityMetadata> EntityMetadatas { get; set; }
         public IEnumerable<OptionSetMetadataBase> GlobalOptionSets { get; set; }
+        private bool SkipSaveSettings { get; set; }
 
         #region XrmToolBox Menu Interfaces
 
@@ -57,7 +58,16 @@ namespace DLaB.EarlyBoundGenerator
             {
                 DisplayActionsIfSupported(false);
             }
-            Settings = EarlyBoundGeneratorConfig.Load(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+            try
+            {
+                Settings = EarlyBoundGeneratorConfig.Load(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+            }
+            catch (Exception ex)
+            {
+                TxtOutput.AppendText("Unable to Load Settings form Config: " + ex);
+                SkipSaveSettings = true;
+                Settings = EarlyBoundGeneratorConfig.GetDefault();
+            }
             ChkAddDebuggerNonUserCode.Checked = Settings.ExtensionConfig.AddDebuggerNonUserCode;
             ChkAddFilesToProject.Checked = Settings.ExtensionConfig.AddNewFilesToProject;
             ChkAudibleCompletion.Checked = Settings.AudibleCompletionNotification;
@@ -96,7 +106,7 @@ namespace DLaB.EarlyBoundGenerator
         public override void ClosingPlugin(PluginCloseInfo info)
         {
             base.ClosingPlugin(info);
-            if (info.Cancel) return;
+            if (info.Cancel || SkipSaveSettings) return;
 
             ConnectionDetail = null; // Don't save the Connection Details when closing.
             HydrateSettingsFromUI();
@@ -154,7 +164,10 @@ namespace DLaB.EarlyBoundGenerator
             EnableForm(false);
 
             HydrateSettingsFromUI();
-            Settings.Save();
+            if (!SkipSaveSettings)
+            {
+                Settings.Save();
+            }
 
             WorkAsync(new WorkAsyncInfo("Shelling out to Command Line...",
                 (w, e) => // Work To Do Asynchronously
@@ -243,8 +256,7 @@ namespace DLaB.EarlyBoundGenerator
         private void HydrateSettingsFromUI()
         {
             if (ConnectionDetail != null)
-            {
-                
+            {   
                 TxtOutput.AppendText("CRM Authentication Type Detected: " + ConnectionDetail.AuthType + Environment.NewLine);
                 Settings.AuthType = ConnectionDetail.AuthType;
                 Settings.Domain = ConnectionDetail.UserDomain;
