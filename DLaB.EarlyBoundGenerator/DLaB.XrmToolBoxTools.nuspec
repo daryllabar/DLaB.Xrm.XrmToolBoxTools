@@ -13,10 +13,13 @@
     <description>Early Bound Generator and Attribute Manager.</description>
     <releaseNotes>Attribute Manager:
 - Added Delete Attribute Ability
-- Added Lots of additional support around migrating forms, workflows, and BPF
+- Added Lots of additional support around migrating forms, workflows, Plugin steps, and BPF
+
 EarlyBoundGenerator:
 - Added support for using standard Org Url.
-- Minor Bug Fixes</releaseNotes>
+- Minor Bug Fixes
+- Minor Change in the way certain settings are stored
+    </releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>
     <dependencies>
