@@ -13,7 +13,7 @@ namespace DLaB.CrmSvcUtilExtensions
 {
     public abstract class BaseCustomCodeGenerationService : ICodeGenerationService
     {
-        public static bool UseTfsToCheckoutFiles => ConfigHelper.GetAppSettingOrDefault("UseTfsToCheckoutFiles", false);
+        public static bool UseTfsToCheckoutFiles { get; private set; } = ConfigHelper.GetAppSettingOrDefault("UseTfsToCheckoutFiles", false);
         public static bool AddNewFilesToProject => ConfigHelper.GetAppSettingOrDefault("AddNewFilesToProject", false);
         public static bool RemoveRuntimeVersionComment => ConfigHelper.GetAppSettingOrDefault("RemoveRuntimeVersionComment", true);
         private static bool LoggingEnabled => ConfigHelper.GetAppSettingOrDefault("LoggingEnabled", false);
@@ -124,9 +124,17 @@ namespace DLaB.CrmSvcUtilExtensions
             {
                 Log("Getting TFS Workspace for file " + outputFile);
                 var workspaceInfo = Workstation.Current.GetLocalWorkspaceInfo(outputFile);
-                var server = new TfsTeamProjectCollection(workspaceInfo.ServerUri);
-                TfsWorkspace = workspaceInfo.GetWorkspace(server);
-                Log("TFS Workspace {0}found!", TfsWorkspace == null ? "not " : string.Empty);
+                if (workspaceInfo?.ServerUri == null)
+                {
+                    Log("No TFS Workspace Found for path:" + outputFile);
+                    UseTfsToCheckoutFiles = false;
+                }
+                else
+                {
+                    var server = new TfsTeamProjectCollection(workspaceInfo.ServerUri);
+                    TfsWorkspace = workspaceInfo.GetWorkspace(server);
+                    Log("TFS Workspace {0}found!", TfsWorkspace == null ? "not " : string.Empty);
+                }
             }
 
             EnsureFileIsAccessible(outputFile);
