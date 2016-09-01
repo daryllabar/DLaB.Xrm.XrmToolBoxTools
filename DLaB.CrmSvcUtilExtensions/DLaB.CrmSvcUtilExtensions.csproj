@@ -39,7 +39,7 @@
   <ItemGroup>
     <Reference Include="CrmSvcUtil, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.CrmSdk.CoreTools.8.0.2.1\content\bin\coretools\CrmSvcUtil.exe</HintPath>
+      <HintPath>..\packages\Microsoft.CrmSdk.CoreTools.8.1.0.2\content\bin\coretools\CrmSvcUtil.exe</HintPath>
     </Reference>
     <Reference Include="DLaB.Common, Version=1.0.1.12, Culture=neutral, PublicKeyToken=046d6d5d1685e1b4, processorArchitecture=MSIL">
       <HintPath>..\packages\DLaB.Common.1.0.1.12\lib\net452\DLaB.Common.dll</HintPath>
@@ -272,10 +272,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.3.2.1\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Xrm.Client, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.CrmSdk.CoreTools.8.0.2.1\content\bin\coretools\Microsoft.Xrm.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xrm.Client.CodeGeneration, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
