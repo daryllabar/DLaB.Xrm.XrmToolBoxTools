@@ -7,8 +7,6 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Xml;
-using DLaB.Common;
-using DLaB.CrmSvcUtilExtensions.Serialization;
 using Microsoft.Crm.Services.Utility;
 using Microsoft.Xrm.Sdk.Metadata;
 
