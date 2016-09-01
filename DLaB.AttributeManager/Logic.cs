@@ -186,6 +186,7 @@ namespace DLaB.AttributeManager
         {
             // Replace Old Attribute with Tmp Attribute
             CopyData(Service, fromAtt, toAtt, actions);
+            UpdateCalculatedFields(Service, fromAtt, toAtt);
             UpdateCharts(Service, fromAtt, toAtt);
             UpdateViews(Service, fromAtt, toAtt);
             UpdateForms(Service, fromAtt, toAtt);
@@ -444,6 +445,48 @@ namespace DLaB.AttributeManager
             {
                 throw new Exception("Dependencies found: " + Environment.NewLine + "\t" + string.Join(Environment.NewLine + "\t", errors));
             }
+        }
+
+        private void UpdateCalculatedFields(IOrganizationService service, AttributeMetadata from, AttributeMetadata to)
+        {
+            Trace("Checking for Calculated Field Dependencies");
+            var depends = ((RetrieveDependenciesForDeleteResponse)service.Execute(new RetrieveDependenciesForDeleteRequest
+            {
+                ComponentType = (int)ComponentType.Attribute,
+                ObjectId = from.MetadataId.GetValueOrDefault()
+            })).EntityCollection.ToEntityList<Dependency>().Where(d => d.DependentComponentTypeEnum == ComponentType.Attribute).ToList();
+
+            if (!depends.Any())
+            {
+                Trace("No Calculated Dependencies Found");
+                return;
+            }
+
+            foreach (var dependency in depends)
+            {
+                Trace($"Retrieving Dependent Attribute {dependency.DependentComponentObjectId}");
+                var att = ((RetrieveAttributeResponse) Service.Execute(new RetrieveAttributeRequest
+                {
+                    MetadataId = dependency.DependentComponentObjectId.GetValueOrDefault()
+                })).AttributeMetadata;
+                Trace($"Updating Dependent Attribute: {att.DisplayName.GetLocalOrDefaultText()}");
+
+                var response = UpdateFormulaDefintionLogic.Update(att, from, to);
+                if (!response.HasFormula)
+                {
+                    Trace("Dependency does not have a Formula Definition.  Unable to Remove Dependency.");
+                }
+
+                Trace($"Updating FormulatDefinition from {response.CurrentForumla} to {response.NewFormula}.");
+                Service.Execute(new UpdateAttributeRequest
+                {
+                    Attribute = att,
+                    EntityName = att.EntityLogicalName
+                });
+                Trace($"Successfully Removed Dependency for Dependent Attribute: {att.DisplayName.GetLocalOrDefaultText()}");
+            }
+
+           
         }
 
         private void UpdateCharts(IOrganizationService service, AttributeMetadata from, AttributeMetadata to)

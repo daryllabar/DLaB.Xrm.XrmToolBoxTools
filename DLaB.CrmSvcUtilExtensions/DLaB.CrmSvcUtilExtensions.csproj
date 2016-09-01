@@ -343,14 +343,14 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="XrmToolBox, Version=1.2016.5.27, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="XrmToolBox, Version=1.2016.6.29, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\XrmToolBoxPackage.1.2016.5.27\lib\net452\XrmToolBox.exe</HintPath>
+      <HintPath>..\packages\XrmToolBoxPackage.1.2016.6.29\lib\net452\XrmToolBox.exe</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="XrmToolBox.Extensibility, Version=1.2016.5.27, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="XrmToolBox.Extensibility, Version=1.2016.6.29, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\XrmToolBoxPackage.1.2016.5.27\lib\net452\XrmToolBox.Extensibility.dll</HintPath>
+      <HintPath>..\packages\XrmToolBoxPackage.1.2016.6.29\lib\net452\XrmToolBox.Extensibility.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -1233,7 +1233,7 @@
     </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>if $(ConfigurationName) == Released "$(SolutionDir)References\SetAssemblyVersion.exe" "$(ProjectDir)Properties\AssemblyInfo.cs"</PreBuildEvent>
+    <PreBuildEvent>if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.exe" "$(ProjectDir)Properties\AssemblyInfo.cs"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
