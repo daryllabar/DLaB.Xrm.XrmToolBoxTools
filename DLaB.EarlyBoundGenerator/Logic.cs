@@ -12,9 +12,9 @@ namespace DLaB.EarlyBoundGenerator
 {
     public class Logic
     {
-        private readonly object _updateAppConfigToken = new Object();
-        private readonly object _speakToken = new Object();
-        private EarlyBoundGeneratorConfig EarlyBoundGeneratorConfig { get; set; }
+        private readonly object _updateAppConfigToken = new object();
+        private readonly object _speakToken = new object();
+        private EarlyBoundGeneratorConfig EarlyBoundGeneratorConfig { get; }
         private bool _configUpdated;
 
         public Logic(EarlyBoundGeneratorConfig earlyBoundGeneratorConfig)

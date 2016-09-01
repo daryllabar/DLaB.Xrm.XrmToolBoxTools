@@ -1,11 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", "{07E3CEC6-C64C-4967-9C8C-634FF91E7C05}"
 	ProjectSection(SolutionItems) = preProject
 		References\SetAssemblyVersion.exe = References\SetAssemblyVersion.exe
+		References\SetAssemblyVersion.exe.config = References\SetAssemblyVersion.exe.config
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.EarlyBoundGenerator", "DLaB.EarlyBoundGenerator\DLaB.EarlyBoundGenerator.csproj", "{7DE85F1A-794C-4E95-9E23-FA29DC110ABA}"
