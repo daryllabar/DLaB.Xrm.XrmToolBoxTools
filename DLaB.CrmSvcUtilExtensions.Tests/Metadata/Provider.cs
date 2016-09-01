@@ -38,14 +38,13 @@ namespace DLaB.CrmSvcUtilExtensions.Tests.Metadata
             //Don't Unzip if the XML file if same or newer
             if (File.Exists(xmlPath))
             {
-                if (File.GetLastWriteTime(xmlPath) >= File.GetLastWriteTime(zipPath))
+                if (File.GetLastWriteTime(xmlPath) >= File.GetLastWriteTime(zipPath) || File.GetCreationTime(xmlPath) >= File.GetLastWriteTime(zipPath))
                 {
                     return;
                 }
             }
 
-
-
+            ZipFile.ExtractToDirectory(zipPath, Path.GetDirectoryName(zipPath));
         }
     }
 }
