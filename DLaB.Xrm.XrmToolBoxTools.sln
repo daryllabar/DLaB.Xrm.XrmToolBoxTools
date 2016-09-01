@@ -24,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{4209BA61
 		DLaB.EarlyBoundGenerator\DLaB.XrmToolBoxTools.nuspec = DLaB.EarlyBoundGenerator\DLaB.XrmToolBoxTools.nuspec
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.CrmSvcUtilExtensions.Tests", "DLaB.CrmSvcUtilExtensions.Tests\DLaB.CrmSvcUtilExtensions.Tests.csproj", "{9E7917B8-42E9-44CA-993A-15D7E60363EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{FCB8A4E4-622B-413A-A531-B612E5F1436C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCB8A4E4-622B-413A-A531-B612E5F1436C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCB8A4E4-622B-413A-A531-B612E5F1436C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E7917B8-42E9-44CA-993A-15D7E60363EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E7917B8-42E9-44CA-993A-15D7E60363EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E7917B8-42E9-44CA-993A-15D7E60363EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E7917B8-42E9-44CA-993A-15D7E60363EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

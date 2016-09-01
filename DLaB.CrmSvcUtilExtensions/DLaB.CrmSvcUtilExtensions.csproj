@@ -377,6 +377,7 @@
     <Compile Include="Entity\AnonymousTypeConstructorGenerator.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Entity\MetadataProviderService.cs" />
+    <Compile Include="Metadata.cs" />
     <Compile Include="NamingService.cs" />
     <Compile Include="OptionSet\CreateOptionSetEnums.cs" />
     <Compile Include="Entity\CustomizeCodeDomService.cs" />
@@ -388,6 +389,16 @@
     <Compile Include="OptionSet\Transliteration\TransliterationAlphabet.cs" />
     <Compile Include="OptionSet\Transliteration\TransliterationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\MetadataFilter.cs" />
+    <Compile Include="Serialization\MetadataMessage.cs" />
+    <Compile Include="Serialization\MetadataMessages.cs" />
+    <Compile Include="Serialization\MetadataPair.cs" />
+    <Compile Include="Serialization\MetadataRequest.cs" />
+    <Compile Include="Serialization\MetadataRequestField.cs" />
+    <Compile Include="Serialization\MetadataResponse.cs" />
+    <Compile Include="Serialization\MetadataResponseField.cs" />
+    <Compile Include="Serialization\SdkMessageResolver.cs" />
+    <Compile Include="Serialization\SerializableEntityMetadata.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -400,6 +411,7 @@
     <None Include="CrmSvcUtil.exe.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="OptionSet\Transliteration\Alphabets\1031.json" />
     <None Include="OptionSet\Transliteration\Alphabets\1049.json" />
     <None Include="OptionSet\Transliteration\Alphabets\1058.json" />
     <None Include="packages.config">
@@ -1226,6 +1238,7 @@
     <Content Include="bin\Release\zh-Hant\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
     <Content Include="Microsoft.Xrm.Client.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
