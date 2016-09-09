@@ -40,18 +40,18 @@
     <Reference Include="CrmSvcUtil">
       <HintPath>..\packages\Microsoft.CrmSdk.CoreTools.8.1.0.2\content\bin\coretools\CrmSvcUtil.exe</HintPath>
     </Reference>
-    <Reference Include="DLaB.Common, Version=1.0.1.12, Culture=neutral, PublicKeyToken=046d6d5d1685e1b4, processorArchitecture=MSIL">
-      <HintPath>..\packages\DLaB.Common.1.0.1.12\lib\net452\DLaB.Common.dll</HintPath>
+    <Reference Include="DLaB.Common, Version=1.0.1.13, Culture=neutral, PublicKeyToken=046d6d5d1685e1b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\DLaB.Common.1.0.1.13\lib\net452\DLaB.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="McTools.Xrm.Connection, Version=1.2016.5.27, Culture=neutral, PublicKeyToken=96037217801d9658, processorArchitecture=MSIL">
+    <Reference Include="McTools.Xrm.Connection, Version=1.2016.3.29, Culture=neutral, PublicKeyToken=96037217801d9658, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\MscrmTools.Xrm.Connection.1.2016.5.27\lib\net452\McTools.Xrm.Connection.dll</HintPath>
+      <HintPath>..\packages\MscrmTools.Xrm.Connection.1.2016.3.30\lib\net\McTools.Xrm.Connection.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="McTools.Xrm.Connection.WinForms, Version=1.2016.5.27, Culture=neutral, PublicKeyToken=f1559f79cf894e27, processorArchitecture=MSIL">
+    <Reference Include="McTools.Xrm.Connection.WinForms, Version=1.2016.3.29, Culture=neutral, PublicKeyToken=f1559f79cf894e27, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\MscrmTools.Xrm.Connection.1.2016.5.27\lib\net452\McTools.Xrm.Connection.WinForms.dll</HintPath>
+      <HintPath>..\packages\MscrmTools.Xrm.Connection.1.2016.3.30\lib\net\McTools.Xrm.Connection.WinForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Crm.Sdk.Proxy, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -63,15 +63,13 @@
       <HintPath>..\packages\Microsoft.IdentityModel.6.1.7600.16394\lib\net35\Microsoft.IdentityModel.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.26.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.24.304111323\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.CrmSdk.CoreTools.8.1.0.2\content\bin\coretools\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.26.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.24.304111323\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.CrmSdk.CoreTools.8.1.0.2\content\bin\coretools\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ServiceBus, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -343,14 +341,14 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="XrmToolBox, Version=1.2016.6.29, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="XrmToolBox, Version=1.2016.5.27, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\XrmToolBoxPackage.1.2016.6.29\lib\net452\XrmToolBox.exe</HintPath>
+      <HintPath>..\packages\XrmToolBoxPackage.1.2016.5.27\lib\net452\XrmToolBox.exe</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="XrmToolBox.Extensibility, Version=1.2016.6.29, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="XrmToolBox.Extensibility, Version=1.2016.5.27, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\XrmToolBoxPackage.1.2016.6.29\lib\net452\XrmToolBox.Extensibility.dll</HintPath>
+      <HintPath>..\packages\XrmToolBoxPackage.1.2016.5.27\lib\net452\XrmToolBox.Extensibility.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

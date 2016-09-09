@@ -6,7 +6,7 @@ using Microsoft.Xrm.Client.CodeGeneration;
 
 namespace DLaB.CrmSvcUtilExtensions.Entity
 {
-    class CustomizeCodeDomService : ICustomizeCodeDomService
+    public class CustomizeCodeDomService : ICustomizeCodeDomService
     {
         public static bool AddDebuggerNonUserCode { get { return ConfigHelper.GetAppSettingOrDefault("AddDebuggerNonUserCode", true); } }
         public static bool GenerateAnonymousTypeConstructor { get { return ConfigHelper.GetAppSettingOrDefault("GenerateAnonymousTypeConstructor", true); } }

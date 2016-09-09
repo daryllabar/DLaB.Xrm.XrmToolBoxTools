@@ -39,6 +39,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.CrmSdk.CoreTools.8.1.0.2\content\bin\coretools\CrmSvcUtil.exe</HintPath>
     </Reference>
+    <Reference Include="DLaB.Common, Version=1.0.1.13, Culture=neutral, PublicKeyToken=046d6d5d1685e1b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\DLaB.Common.1.0.1.13\lib\net452\DLaB.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Crm.Sdk.Proxy, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.8.1.0.2\lib\net452\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
       <Private>True</Private>
