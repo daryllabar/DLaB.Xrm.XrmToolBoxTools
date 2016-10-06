@@ -172,7 +172,7 @@ namespace DLaB.CrmSvcUtilExtensions
             }
             else
             {
-                File.Copy(tempFile, outputFile);
+                File.Copy(tempFile, outputFile, true);
                 if (UndoCheckoutIfUnchanged(outputFile))
                 {
                     Console.WriteLine(outputFile + " was unchanged.");

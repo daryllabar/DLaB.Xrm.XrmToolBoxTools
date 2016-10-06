@@ -399,6 +399,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="OptionSet\Transliteration\Alphabets\1031.json" />
+    <None Include="OptionSet\Transliteration\Alphabets\1045.json" />
     <None Include="OptionSet\Transliteration\Alphabets\1049.json" />
     <None Include="OptionSet\Transliteration\Alphabets\1058.json" />
     <None Include="packages.config">
