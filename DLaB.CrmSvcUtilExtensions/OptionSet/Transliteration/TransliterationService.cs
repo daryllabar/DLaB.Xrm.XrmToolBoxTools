@@ -12,12 +12,14 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet.Transliteration
         private static readonly string Path = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName), "alphabets");
 
         private static readonly List<TransliterationAlphabet> Alphabets = new List<TransliterationAlphabet>();
-        public static Lazy<List<int>> AvailableCodes { get; } =
-            new Lazy<List<int>>(() =>
-                Directory.GetFiles(Path)
-                .Select(System.IO.Path.GetFileName)
-                .Select(x => x.Split('.')[0])
-                .Select(int.Parse).ToList());
+        private static readonly Lazy<HashSet<int>> LazyAvailableCodes =
+            new Lazy<HashSet<int>>(() => new HashSet<int>(
+            Directory.GetFiles(Path)
+            .Select(System.IO.Path.GetFileName)
+            .Select(x => x.Split('.')[0])
+            .Select(int.Parse)));
+
+        public static HashSet<int> AvailableCodes { get; } = LazyAvailableCodes.Value;
 
         public static string Transliterate(int languageCode, string label)
         {
@@ -26,6 +28,8 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet.Transliteration
 
             return alphabet.Transliterate(label);
         }
+
+        public static bool HasCode(int languageCode) { return AvailableCodes.Contains(languageCode); }
 
         private static TransliterationAlphabet LoadAlphabet(int languageCode)
         {

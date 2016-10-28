@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
-using DLaB.Common;
 using Microsoft.Crm.Services.Utility;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
@@ -209,21 +207,28 @@ namespace DLaB.CrmSvcUtilExtensions
 
         private static string Transliterate(OptionMetadata optionMetadata, string defaultName)
         {
-            var defaultNameIsInEnglish = !string.IsNullOrEmpty(defaultName) && !defaultName.Contains("UnknownLabel");
+            var defaultNameIsInEnglish = IsLabelPopulated(defaultName);
             if (defaultNameIsInEnglish)
             {
                 return defaultName;
             }
+            var localizedLabels = optionMetadata.Label.LocalizedLabels;
 
-            var localizedLabel =
-                optionMetadata.Label
-                    .LocalizedLabels
-                    .FirstOrDefault(x =>
-                        TransliterationService.AvailableCodes.Value.Contains(x.LanguageCode));
+            var localizedLabel = localizedLabels.FirstOrDefault(x => TransliterationService.HasCode(x.LanguageCode));
 
-            return localizedLabel == null ? 
-                defaultName.RemoveDiacritics() : 
+            return localizedLabel == null ?
+                localizedLabels.FirstOrDefault(x => IsLabelPopulated(x.Label))?.Label?.RemoveDiacritics() : 
                 TransliterationService.Transliterate(localizedLabel.LanguageCode, localizedLabel.Label);
+        }
+
+        /// <summary>
+        /// Determines whether the name is null, or empty, or "UnknownLabel"
+        /// </summary>
+        /// <param name="label">The name.</param>
+        /// <returns></returns>
+        private static bool IsLabelPopulated(string label)
+        {
+            return !string.IsNullOrEmpty(label) && !label.Contains("UnknownLabel");
         }
 
         /// <summary>
