@@ -17,7 +17,7 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet.Transliteration
         }
 
         /// <summary>
-        /// Transliterate from Latin to specified aplhabet.
+        /// Transliterate from Latin to specified alphabet.
         /// </summary>
         /// <param name="text">Text to transliterate.</param>
         /// <returns>Returns transliterated text.</returns>

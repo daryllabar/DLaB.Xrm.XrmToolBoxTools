@@ -96,6 +96,10 @@ namespace DLaB.CrmSvcUtilExtensions
         /// <returns></returns>
         public static string RemoveDiacritics(this string text)
         {
+            if (text == null)
+            {
+                return null;
+            }
             var normalizedString = text.Normalize(NormalizationForm.FormD);
             var diacriticLess = from c in normalizedString
                                 let unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c)

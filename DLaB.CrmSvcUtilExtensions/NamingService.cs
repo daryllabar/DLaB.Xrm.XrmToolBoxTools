@@ -193,14 +193,9 @@ namespace DLaB.CrmSvcUtilExtensions
             var newName = GetValidCSharpName(defaultName);
             newName = AppendValueForDuplicateOptionSetValueNames(optionSetMetadata, newName, optionMetadata.Value.GetValueOrDefault(), services);
 
-            if (newName == defaultName)
-            {
-                Trace.TraceInformation("The name of this option is {0}", defaultName);
-            }
-            else
-            {
-                Trace.TraceInformation("The name of this option was {0} but has been changed to {1}", defaultName, newName);
-            }
+            Trace.TraceInformation(newName == defaultName
+                ? $"The name of this option is {defaultName}"
+                : $"The name of this option was {defaultName} but has been changed to {newName}");
 
             return newName;
         }
@@ -214,10 +209,10 @@ namespace DLaB.CrmSvcUtilExtensions
             }
             var localizedLabels = optionMetadata.Label.LocalizedLabels;
 
-            var localizedLabel = localizedLabels.FirstOrDefault(x => TransliterationService.HasCode(x.LanguageCode));
+            var localizedLabel = localizedLabels.FirstOrDefault(x => TransliterationService.HasCode(x.LanguageCode) && IsLabelPopulated(x.Label));
 
             return localizedLabel == null ?
-                localizedLabels.FirstOrDefault(x => IsLabelPopulated(x.Label))?.Label?.RemoveDiacritics() : 
+                localizedLabels.FirstOrDefault(x => IsLabelPopulated(x.Label))?.Label?.RemoveDiacritics() ?? string.Empty : 
                 TransliterationService.Transliterate(localizedLabel.LanguageCode, localizedLabel.Label);
         }
 

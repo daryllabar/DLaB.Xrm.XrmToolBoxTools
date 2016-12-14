@@ -668,6 +668,8 @@ namespace DLaB.AttributeManager
         private void UpdatePluginStepFilters(IOrganizationService service, AttributeMetadata att, AttributeMetadata to)
         {
             var qe = QueryExpressionFactory.Create<SdkMessageProcessingStep>();
+            qe.AddLink<SdkMessageFilter>(SdkMessageFilter.Fields.SdkMessageFilterId)
+                .WhereEqual(SdkMessageFilter.Fields.PrimaryObjectTypeCode, att.EntityLogicalName);
             AddConditionsForValueInCsv(qe.Criteria, qe.EntityName, SdkMessageProcessingStep.Fields.FilteringAttributes, att.LogicalName);
 
             Trace("Checking for Plugin Registration Step Filtering Attribute Dependencies with Query: " + qe.GetSqlStatement());
@@ -712,9 +714,11 @@ namespace DLaB.AttributeManager
         private void UpdatePluginStepImages(IOrganizationService service, AttributeMetadata att, AttributeMetadata to)
         {
             var qe = QueryExpressionFactory.Create<SdkMessageProcessingStepImage>();
+            qe.AddLink<SdkMessageFilter>(SdkMessageFilter.Fields.SdkMessageFilterId)
+                .WhereEqual(SdkMessageFilter.Fields.PrimaryObjectTypeCode, att.EntityLogicalName);
             AddConditionsForValueInCsv(qe.Criteria, qe.EntityName, SdkMessageProcessingStepImage.Fields.Attributes1, att.LogicalName);
 
-            Trace("Checking for Plugin Registration Step Filtering Attribute Dependencies with Query: " + qe.GetSqlStatement());
+            Trace("Checking for Plugin Registration Step Images Attribute Dependencies with Query: " + qe.GetSqlStatement());
 
             foreach (var step in service.GetEntities(qe))
             {
