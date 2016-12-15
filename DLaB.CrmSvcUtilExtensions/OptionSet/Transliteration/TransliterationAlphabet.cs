@@ -36,7 +36,7 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet.Transliteration
             {
                 if (char.IsLower(c))
                 {
-                    result += this.Transliterate(c);
+                    result += Transliterate(c);
                 }
                 else
                 {

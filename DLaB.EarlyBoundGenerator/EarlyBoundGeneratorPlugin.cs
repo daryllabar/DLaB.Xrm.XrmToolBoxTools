@@ -277,7 +277,7 @@ namespace DLaB.EarlyBoundGenerator
                 }
                 if (ConnectionDetail.AuthType == AuthenticationProviderType.ActiveDirectory && string.IsNullOrWhiteSpace(Settings.UserName))
                 {
-                    ConnectionDetail.UserName = System.Security.Principal.WindowsIdentity.GetCurrent()?.Name;
+                    Settings.UserName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
                 }
             }
 
