@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DLaB.EarlyBoundGenerator.Settings;
 using System.Speech.Synthesis;
+using DLaB.Common;
 
 namespace DLaB.EarlyBoundGenerator
 {
@@ -16,6 +17,7 @@ namespace DLaB.EarlyBoundGenerator
         private readonly object _speakToken = new object();
         private EarlyBoundGeneratorConfig EarlyBoundGeneratorConfig { get; }
         private bool _configUpdated;
+        private bool _useInteractiveMode;
 
         public Logic(EarlyBoundGeneratorConfig earlyBoundGeneratorConfig)
         {
@@ -103,7 +105,15 @@ namespace DLaB.EarlyBoundGenerator
             while (!p.StandardOutput.EndOfStream)
             {
                 var line = p.StandardOutput.ReadLine();
-                UpdateStatus(line);
+                if (!string.IsNullOrWhiteSpace(line) && line.Contains("[****") && line.Contains("****]"))
+                {
+                    line = line.SubstringByString("[****", "****]");
+                    UpdateStatus(line);
+                }
+                else
+                {
+                    UpdateDetail(line);
+                }
                 consoleOutput.AppendLine(line);
             }
 
@@ -131,13 +141,13 @@ namespace DLaB.EarlyBoundGenerator
             }
             catch (Exception ex)
             {
-                UpdateStatus("Unable to set IsReadOnly Flag to false " + filePath + Environment.NewLine + ex);
+                UpdateDetail("Unable to set IsReadOnly Flag to false " + filePath + Environment.NewLine + ex);
                 return false;
             }
 
             if (!File.GetAttributes(filePath).HasFlag(FileAttributes.ReadOnly)) { return true; }
 
-            UpdateStatus("File \"" + filePath + "\" is read only, please checkout the file before running");
+            UpdateDetail("File \"" + filePath + "\" is read only, please checkout the file before running");
             return false;
         }
 
@@ -166,7 +176,7 @@ namespace DLaB.EarlyBoundGenerator
                 filePath = Path.Combine(filePath, "OptionSets.cs");
             }
 
-            return filePath;
+            return Path.GetFullPath(filePath);
         }
 
         private static string GetSafeArgs(EarlyBoundGeneratorConfig earlyBoundGeneratorConfig, Process p)
@@ -321,6 +331,11 @@ namespace DLaB.EarlyBoundGenerator
                 }
             }
 
+            if (_useInteractiveMode)
+            {
+                sb.Append("/interactivelogin:true ");
+            }
+
             return sb.ToString();
         }
 
@@ -333,6 +348,13 @@ namespace DLaB.EarlyBoundGenerator
         {
             try
             {
+                if (consoleOutput.Contains("Unable to Login to Dynamics CRM"))
+                {
+                    UpdateStatus("Unable to login.  Attempting to login using interactive mode.");
+                    _useInteractiveMode = true;
+                    Create(creationType);
+                    return;
+                }
                 //if (creationType == CreationType.Actions && Config.ExtensionConfig.CreateOneFilePerAction)
                 //{
                 //    var tempPath = filePath;
@@ -391,15 +413,14 @@ namespace DLaB.EarlyBoundGenerator
         public delegate void LogHandler(LogMessageInfo info);
         public event LogHandler OnLog;
 
-        private void UpdateStatus(string message)
+        private void UpdateDetail(string message)
         {
             UpdateStatus(new LogMessageInfo(message));
         }
 
-        // ReSharper disable once UnusedMember.Local
-        private void UpdateStatus(string messageFormat, params object[] args)
+        private void UpdateStatus(string status)
         {
-            UpdateStatus(new LogMessageInfo(messageFormat, args));
+            UpdateStatus(new LogMessageInfo(status, status));
         }
 
         private void UpdateStatus(string summary, string detail)
@@ -409,10 +430,7 @@ namespace DLaB.EarlyBoundGenerator
 
         private void UpdateStatus(LogMessageInfo info)
         {
-            if (OnLog != null)
-            {
-                OnLog(info);
-            }
+            OnLog?.Invoke(info);
         }
 
         public class LogMessageInfo
@@ -420,7 +438,7 @@ namespace DLaB.EarlyBoundGenerator
             public string Summary { get; set; }
             public string Detail { get; set; }
 
-            public LogMessageInfo(string message) : this(message, message) { }
+            public LogMessageInfo(string message) : this(null, message) { }
             public LogMessageInfo(string messageFormat, params object[] args) : this(string.Format(messageFormat, args)) { }
 
             public LogMessageInfo(string summary, string detail)
@@ -429,7 +447,7 @@ namespace DLaB.EarlyBoundGenerator
                 var conditionalFormat = ConditionallyFormat(summary, detail);
                 if (conditionalFormat != null)
                 {
-                    summary = conditionalFormat;
+                    summary = null;
                     detail = conditionalFormat;
                 }
                 Summary = summary;
@@ -438,7 +456,7 @@ namespace DLaB.EarlyBoundGenerator
 
             private string ConditionallyFormat(string format, string value)
             {
-                if (format.Contains("{0}"))
+                if (!string.IsNullOrWhiteSpace(format) && format.Contains("{0}"))
                 {
                     return string.Format(format, value);
                 }

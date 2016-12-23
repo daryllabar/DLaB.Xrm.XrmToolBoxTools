@@ -7,6 +7,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using DLaB.Common;
 using Microsoft.Xrm.Sdk.Client;
+using XrmToolBox.Extensibility;
 
 namespace DLaB.EarlyBoundGenerator.Settings
 {
@@ -105,17 +106,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         public IEnumerable<Argument> CommandLineArguments => UserArguments.Union(ExtensionArguments);
 
         [XmlIgnore]
-        public string CrmSvcUtilPath
-        {
-            get
-            {
-                // If the path exists, use it.  If not, combing relative path
-                return Directory.Exists(CrmSvcUtilRelativePath)
-                    ? CrmSvcUtilRelativePath
-                    // ReSharper disable once AssignNullToNotNullAttribute
-                    : Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), CrmSvcUtilRelativePath);
-            }
-        }
+        public string CrmSvcUtilPath => 
+            Directory.Exists(CrmSvcUtilRelativePath)
+                ? CrmSvcUtilRelativePath
+                : Path.Combine(Paths.PluginsPath, CrmSvcUtilRelativePath);
 
         #region UserArguments Helpers
 
@@ -162,7 +156,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         private EarlyBoundGeneratorConfig()
         {
-            CrmSvcUtilRelativePath = Config.GetAppSettingOrDefault("CrmSvcUtilRelativePath", @"Plugins\CrmSvcUtil Ref\crmsvcutil.exe");
+            CrmSvcUtilRelativePath = Config.GetAppSettingOrDefault("CrmSvcUtilRelativePath", @"CrmSvcUtil Ref\crmsvcutil.exe");
             UseConnectionString = Config.GetAppSettingOrDefault("UseConnectionString", false);
             Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
@@ -254,9 +248,9 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         private void RemoveObsoleteValues(POCO.Config poco, EarlyBoundGeneratorConfig @default)
         {
-            if (CrmSvcUtilRelativePath == @"CrmSvcUtil Ref\crmsvcutil.exe")
+            if (CrmSvcUtilRelativePath == @"Plugins\CrmSvcUtil Ref\crmsvcutil.exe")
             {
-                // 5.14.2015 XTB changed to use the Plugins Directory, but then MEF changed Paths to be realtive to Dll. 
+                // 12.15.2016 XTB changed to use use the User directory, no plugin folder needed now
                 CrmSvcUtilRelativePath = @default.CrmSvcUtilRelativePath;
             }
             foreach (var value in poco.ExtensionArguments.Where(a => string.Equals(a.Value, "DLaB.CrmSvcUtilExtensions.Entity.OverridePropertyNames,DLaB.CrmSvcUtilExtensions", StringComparison.InvariantCultureIgnoreCase)).ToList())
@@ -355,6 +349,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     new Argument(CreationType.Actions, CrmSrvUtilService.CodeCustomization, "DLaB.CrmSvcUtilExtensions.Action.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.Actions, CrmSrvUtilService.CodeGenerationService, "DLaB.CrmSvcUtilExtensions.Action.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.Actions, CrmSrvUtilService.CodeWriterFilter, "DLaB.CrmSvcUtilExtensions.Action.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions"),
+                    new Argument(CreationType.Actions, CrmSrvUtilService.MetadataProviderService, "DLaB.CrmSvcUtilExtensions.Entity.BaseMetadataProviderService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.Entities, CrmSrvUtilService.CodeCustomization, "DLaB.CrmSvcUtilExtensions.Entity.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.Entities, CrmSrvUtilService.CodeGenerationService, "DLaB.CrmSvcUtilExtensions.Entity.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.Entities, CrmSrvUtilService.CodeWriterFilter, "DLaB.CrmSvcUtilExtensions.Entity.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions"),
@@ -363,16 +358,17 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeCustomization, "DLaB.CrmSvcUtilExtensions.OptionSet.CreateOptionSetEnums,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeGenerationService, "DLaB.CrmSvcUtilExtensions.OptionSet.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, "DLaB.CrmSvcUtilExtensions.OptionSet.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.OptionSets, CrmSrvUtilService.NamingService, "DLaB.CrmSvcUtilExtensions.NamingService,DLaB.CrmSvcUtilExtensions")
+                    new Argument(CreationType.OptionSets, CrmSrvUtilService.NamingService, "DLaB.CrmSvcUtilExtensions.NamingService,DLaB.CrmSvcUtilExtensions"),
+                    new Argument(CreationType.OptionSets, CrmSrvUtilService.MetadataProviderService, "DLaB.CrmSvcUtilExtensions.BaseMetadataProviderService,DLaB.CrmSvcUtilExtensions")
                 }),
                 ExtensionConfig = ExtensionConfig.GetDefault(),
                 UserArguments = new List<Argument>(new [] {
                     new Argument(CreationType.Actions, "generateActions", null), 
-                    new Argument(CreationType.Actions, "out", @"Plugins\CrmSvcUtil Ref\Actions.cs"),
+                    new Argument(CreationType.Actions, "out", Path.Combine(Paths.PluginsPath, @"CrmSvcUtil Ref\Actions.cs")),
                     new Argument(CreationType.All, "namespace", "CrmEarlyBound"),
-                    new Argument(CreationType.Entities, "out", @"Plugins\CrmSvcUtil Ref\Entities.cs"),
+                    new Argument(CreationType.Entities, "out", Path.Combine(Paths.PluginsPath, @"CrmSvcUtil Ref\Entities.cs")),
                     new Argument(CreationType.Entities, "servicecontextname", "CrmServiceContext"),
-                    new Argument(CreationType.OptionSets, "out", @"Plugins\CrmSvcUtil Ref\OptionSets.cs")
+                    new Argument(CreationType.OptionSets, "out", Path.Combine(Paths.PluginsPath, @"CrmSvcUtil Ref\OptionSets.cs"))
                 }),            
             };
         }

@@ -236,7 +236,10 @@ namespace DLaB.EarlyBoundGenerator
                     }
                     else
                     {
-                        TxtOutput.AppendText(result.Detail + Environment.NewLine);
+                        if (result.Detail != null)
+                        {
+                            TxtOutput.AppendText(result.Detail + Environment.NewLine);
+                        }
                         summary = result.Summary;
                     }
                     // Status Update
@@ -246,7 +249,10 @@ namespace DLaB.EarlyBoundGenerator
                     }
                     else
                     {
-                        SetWorkingMessage(summary);
+                        if (summary != null)
+                        {
+                            SetWorkingMessage(summary);
+                        }
                     }
                 }
             });

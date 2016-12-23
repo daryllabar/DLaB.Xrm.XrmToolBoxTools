@@ -15,7 +15,7 @@
 - None
 
 EarlyBoundGenerator:
-- Fixed issue with wrong version of Activer Directory Dll being referenced
+- Fixed issue with wrong version of Active Directory Dll being referenced
     </releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>
@@ -26,6 +26,6 @@ EarlyBoundGenerator:
   <files>
     <file src="bin\Release\Plugins\DLaB.*.dll" target="lib\net452\plugins" />
     <file src="bin\Release\Plugins\CrmSvcUtil Ref\*.*" target="lib\net452\plugins\CrmSvcUtil Ref" />
-	<file src="bin\Release\Plugins\CrmSvcUtil Ref\alphabets\*.*" target="lib\net452\plugins\CrmSvcUtil Ref\alphabets" />
+	  <file src="bin\Release\Plugins\CrmSvcUtil Ref\alphabets\*.*" target="lib\net452\plugins\CrmSvcUtil Ref\alphabets" />
   </files>
 </package>

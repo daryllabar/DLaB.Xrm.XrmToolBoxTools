@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
+using DLaB.Common;
+using DLaB.Common.VersionControl;
 using Microsoft.Crm.Services.Utility;
-using Microsoft.TeamFoundation.Client;
-using Microsoft.TeamFoundation.VersionControl.Client;
 
 namespace DLaB.CrmSvcUtilExtensions
 {
@@ -21,8 +20,8 @@ namespace DLaB.CrmSvcUtilExtensions
         protected virtual string CommandLineText => ConfigHelper.GetAppSettingOrDefault("EntityCommandLineText", string.Empty);
         protected virtual CodeUnit SplitByCodeUnit => CodeUnit.Class;
         protected abstract bool CreateOneFilePerCodeUnit { get; }
-        protected Workspace TfsWorkspace { get; set; }
 
+        private VsTfsSourceControlProvider Tfs { get; set; }
         private readonly ICodeGenerationService _defaultService;
 
         protected BaseCustomCodeGenerationService(ICodeGenerationService service)
@@ -122,21 +121,14 @@ namespace DLaB.CrmSvcUtilExtensions
         {
             if (UseTfsToCheckoutFiles)
             {
-                Log("Getting TFS Workspace for file " + outputFile);
-                var workspaceInfo = Workstation.Current.GetLocalWorkspaceInfo(outputFile);
-                if (workspaceInfo?.ServerUri == null)
+                Action<string> write = s => { if (LoggingEnabled) { Log(s); } };
+                Tfs = new VsTfsSourceControlProvider(null, new ProcessExecutorInfo
                 {
-                    Log("No TFS Workspace Found for path:" + outputFile);
-                    UseTfsToCheckoutFiles = false;
-                }
-                else
-                {
-                    var server = new TfsTeamProjectCollection(workspaceInfo.ServerUri);
-                    TfsWorkspace = workspaceInfo.GetWorkspace(server);
-                    Log("TFS Workspace {0}found!", TfsWorkspace == null ? "not " : string.Empty);
-                }
+                    OnOutputReceived = write,
+                    OnErrorReceived = write
+                });
             }
-
+            DisplayMessage("Ensuring Context File is Accessible");
             EnsureFileIsAccessible(outputFile);
 
             Log("Creating Temp file");
@@ -144,7 +136,7 @@ namespace DLaB.CrmSvcUtilExtensions
             Log("File " + tempFile + " Created");
             
             // Write the file out as normal
-            Log("Writing file {0} to {1}", Path.GetFileName(outputFile), tempFile);
+            DisplayMessage($"Writing file {Path.GetFileName(outputFile)} to {tempFile}");
             _defaultService.Write(organizationMetadata, language, tempFile, targetNamespace, services);
             Log("Completed writing file {0} to {1}", Path.GetFileName(outputFile), tempFile);
 
@@ -154,11 +146,12 @@ namespace DLaB.CrmSvcUtilExtensions
                 var lines = GetFileTextWithUpdatedClassComment(tempFile, CommandLineText, RemoveRuntimeVersionComment);
                 if (CreateOneFilePerCodeUnit)
                 {
+                    DisplayMessage($"Splitting File {outputFile} By Code Unit");
                     SplitFileByCodeUnit(SplitByCodeUnit, outputFile, lines);
                 }
                 else
                 {
-                    Log("Updating file " + outputFile);
+                    DisplayMessage($"Updating File {outputFile}");
                     File.WriteAllLines(outputFile, lines);
                     if (UndoCheckoutIfUnchanged(outputFile))
                     {
@@ -168,10 +161,12 @@ namespace DLaB.CrmSvcUtilExtensions
             }
             else if (CreateOneFilePerCodeUnit)
             {
+                DisplayMessage($"Splitting File {outputFile} By Code Unit");
                 SplitFileByCodeUnit(SplitByCodeUnit, outputFile, File.ReadAllLines(tempFile));
             }
             else
             {
+                DisplayMessage($"Copying File {outputFile}");
                 File.Copy(tempFile, outputFile, true);
                 if (UndoCheckoutIfUnchanged(outputFile))
                 {
@@ -179,11 +174,10 @@ namespace DLaB.CrmSvcUtilExtensions
                 }
             }
 
-            Log("Cleaning up Temporary File " + tempFile);
+            DisplayMessage($"Cleaning up Temporary File {tempFile}");
             File.Delete(tempFile);
             Log("Completed cleaning up Temporary File");
-
-            Console.WriteLine(tempFile + " Moved To: " + outputFile);
+            DisplayMessage(tempFile + " Moved To: " + outputFile);
         }
 
         #endregion // Internal Implementations
@@ -215,11 +209,6 @@ namespace DLaB.CrmSvcUtilExtensions
 
         #region Checkout File / Remove Readonly Flag
 
-        private void CheckoutFile(string fileName)
-        {
-            TfsWorkspace.PendEdit(fileName);
-        }
-
         protected void EnsureFileIsAccessible(string filePath)
         {
             Log("Checking accessibility for file: " + filePath);
@@ -235,16 +224,7 @@ namespace DLaB.CrmSvcUtilExtensions
 
             try
             {
-                if (UseTfsToCheckoutFiles)
-                {
-                    Log("Checking out from TFS file: " + filePath);
-                    CheckoutFile(filePath);
-                    Log("Check out complete for file: " + filePath);
-                }
-                else
-                {
-                    new FileInfo(filePath) {IsReadOnly = false}.Refresh();
-                }
+                new FileInfo(filePath) {IsReadOnly = false}.Refresh();
             }
             catch (Exception ex)
             {
@@ -268,28 +248,10 @@ namespace DLaB.CrmSvcUtilExtensions
             {
                 return false;
             }
+
             Log("Checking accessibility for file " + fileName);
 
-            var items = TfsWorkspace.VersionControlServer.GetItems(fileName, new WorkspaceVersionSpec(TfsWorkspace), RecursionType.None).Items;
-            if (!items.Any())
-            {
-                // Most likely the item doesn't exist in TFS and so no need to undo checkout if unchanged
-                return false;
-            }
-            var item = items[0];
-            bool unchanged;
-
-            using (var fs = File.OpenRead(fileName))
-            {
-                unchanged = item.HashValue.SequenceEqual(MD5.Create().ComputeHash(fs));
-            }
-
-            if (unchanged)
-            {
-                TfsWorkspace.Undo(fileName);
-            }
-
-            return unchanged;
+            return Tfs.UndoCheckoutIfUnchanged(fileName);
         }
 
         #endregion // Checkout File / Remove Readonly Flag
@@ -307,7 +269,7 @@ namespace DLaB.CrmSvcUtilExtensions
             var skipNext = false;
             var commandLine = string.Empty;
             var codeUnitStartsWith = codeUnit == CodeUnit.Class ? "public partial class" : "public enum";
-            var files = new List<FileToCreate>(); // Delay this to the end to multithread the creation.  100's of small files takes a long time if checking with TFS sequentially
+            var files = new List<FileToWrite>(); // Delay this to the end to multithread the creation.  100's of small files takes a long time if checking with TFS sequentially
 
             foreach (var line in lines)
             {
@@ -377,7 +339,7 @@ namespace DLaB.CrmSvcUtilExtensions
                         {
                             code.Add("}");
                             var fileName = Path.Combine(directory, name + ".cs");
-                            files.Add(new FileToCreate(fileName, string.Join(Environment.NewLine, header.Concat(code))));
+                            files.Add(new FileToWrite(fileName, string.Join(Environment.NewLine, header.Concat(code))));
                             code.Clear();
                             currentStage = SplitStage.CodeUnitHeader;
                         }
@@ -392,25 +354,68 @@ namespace DLaB.CrmSvcUtilExtensions
                 }
             }
 
-            files.Add(new FileToCreate(filePath, string.IsNullOrWhiteSpace(commandLine) ? string.Join(Environment.NewLine, header.Concat(code)) : commandLine, true));
+            files.Add(new FileToWrite(filePath, string.IsNullOrWhiteSpace(commandLine) ? string.Join(Environment.NewLine, header.Concat(code)) : commandLine, true));
 
             WriteFilesAsync(files);
         }
 
-        private void WriteFilesAsync(List<FileToCreate> files)
+        private void WriteFilesAsync(List<FileToWrite> files)
         {
-            var project = new ProjectFile(files, AddNewFilesToProject, UseTfsToCheckoutFiles ? TfsWorkspace : null);
+            var project = new ProjectFile(files, AddNewFilesToProject, Tfs);
 
-            if (!Debugger.IsAttached)
+            if (UseTfsToCheckoutFiles)
             {
-                foreach (var file in files)
+                DisplayMessage("Creating Required Directories");
+                foreach (var dir in files.Select(f => f.Directory).Distinct())
                 {
-                    WriteFileIfDifferent(project, file);
+                    if (dir != null && !Directory.Exists(dir))
+                    {
+                        Directory.CreateDirectory(dir);
+                    }
+                }
+                DisplayMessage("Getting Latest from TFS");
+                // Get Latest Version of all files
+                foreach (var batch in files.Select(f => f.Path).Batch(50))
+                {
+                    Tfs.Get(true, batch.ToArray());
+                }
+
+                if (!Debugger.IsAttached)
+                {
+                    DisplayMessage("Creating Temporary Files");
+                    foreach (var file in files)
+                    {
+                        WriteFilesForTfs(project, file);
+                    }
+                    CheckoutChangedFiles(files);
+                    DisplayMessage("Updating Changed Files");
+                    foreach (var file in files)
+                    {
+                        CopyChangedFiles(file);
+                    }
+                }
+                else
+                {
+                    DisplayMessage("Creating Temporary Files");
+                    Parallel.ForEach(files, f => WriteFilesForTfs(project, f));
+                    CheckoutChangedFiles(files);
+                    DisplayMessage("Updating Changed Files");
+                    Parallel.ForEach(files, CopyChangedFiles);
                 }
             }
             else
             {
-                Parallel.ForEach(files, f => WriteFileIfDifferent(project, f));  
+                if (!Debugger.IsAttached)
+                {
+                    foreach (var file in files)
+                    {
+                        WriteFileIfDifferent(project, file);
+                    }
+                }
+                else
+                {
+                    Parallel.ForEach(files, f => WriteFileIfDifferent(project, f));
+                }
             }
 
             if (AddNewFilesToProject && !project.ProjectFound)
@@ -420,37 +425,93 @@ namespace DLaB.CrmSvcUtilExtensions
 
             if (project.ProjectUpdated)
             {
-                WriteFileIfDifferent(new ProjectFile(null, false, null), new FileToCreate(project.ProjectPath, project.GetContents()));
+                WriteFileIfDifferent(new ProjectFile(null, false, null), new FileToWrite(project.ProjectPath, project.GetContents()));
             }
         }
-
-        private void SetSourceControlInfo (FileToCreate file)
+        private void CheckoutChangedFiles(List<FileToWrite> files)
         {
-            if (!UseTfsToCheckoutFiles)
-            {
-                return;
-            }
-
-            var items = TfsWorkspace.VersionControlServer.GetItems(file.Path, new WorkspaceVersionSpec(TfsWorkspace), RecursionType.None).Items;
-            if (items.Any())
-            {
-                file.TfsItem = items[0];
-            }
-            // else, Most likely the item doesn't exist in TFS and so nothing to add
+            DisplayMessage("Checking out Changed Files From TFS");
+            Tfs.Checkout(files.Where(f => f.HasChanged && f.TempFile != null).Select(f => f.Path).ToArray());
         }
 
-        private void WriteFileIfDifferent(ProjectFile project, FileToCreate file)
+        private void WriteFilesForTfs(ProjectFile project, FileToWrite file)
         {
-            SetSourceControlInfo(file);
-            if (!file.HasChanged)
+            Log("Processing file: " + file.Path);
+            if (File.Exists(file.Path))
             {
-                if (file.IsMainFile)
+                var tfsFile = File.ReadAllText(file.Path);
+                if (tfsFile.Equals(file.Contents))
                 {
-                    if (UseTfsToCheckoutFiles)
+                    Log(file.Path + " was unchanged.");
+                    return;
+                }
+                file.TempFile = Path.Combine(file.Directory, "zzzTempEarlyBoundGenerator." + Path.GetFileName(file.Path) + ".tmp");
+                Log("Creating Temp File " + file.TempFile);
+                File.WriteAllText(file.TempFile, file.Contents);
+                file.HasChanged = true;
+            }
+            else
+            {
+                File.WriteAllText(file.Path, file.Contents);
+                Tfs.Add(file.Path);
+                Console.WriteLine(file.Path + " created.");
+                project.AddFileIfMissing(file.Path);
+            }
+        }
+
+        private void CopyChangedFiles(FileToWrite file)
+        {
+            if (file.TempFile == null)
+            {
+                return;                
+            }
+            File.Copy(file.TempFile, file.Path, true);
+            File.Delete(file.TempFile);
+        }
+
+        private void WriteFileIfDifferent(ProjectFile project, FileToWrite file)
+        {
+            Log("Processing file: " + file.Path);
+            if (UseTfsToCheckoutFiles)
+            {
+                if (File.Exists(file.Path))
+                {
+                    Trace.TraceInformation(Path.GetFileName(file.Path) + " Checking out and updating if different.");
+                    var tempFile = Path.Combine(file.Directory, "zzzTempEarlyBoundGenerator." + Path.GetFileName(file.Path) + ".tmp");
+                    try
                     {
-                        TfsWorkspace.Undo(file.Path);
+                        Log("Creating Temp File " + tempFile);
+                        File.WriteAllText(tempFile, file.Contents);
+                        var hasChanged = Tfs.AreDifferent(file.Path, tempFile);
+                        if (hasChanged)
+                        {
+                            Console.WriteLine($"{file.Path} was changed.  Checking Out from TFS.");
+                            Tfs.Checkout(file.Path);
+                            Log("Updating File locally");
+                            File.Copy(tempFile, file.Path, true);
+
+                        }
+                        var message = file.Path + $" was {(hasChanged ? "" : "un")}changed.";
+                        if (file.IsMainFile)
+                        {
+                            Console.WriteLine(message);
+                        }
+                        else
+                        {
+                            Log(message);
+                        }
                     }
-                    Console.WriteLine(file.Path + " was unchanged.");
+                    finally
+                    {
+                        File.Delete(tempFile);
+                    }
+                }
+                else
+                {
+                    File.WriteAllText(file.Path, file.Contents);
+                    Tfs.Add(file.Path);
+                    Console.WriteLine(file.Path + " created.");
+                    project.AddFileIfMissing(file.Path);
                 }
                 return;
             }
@@ -458,7 +519,7 @@ namespace DLaB.CrmSvcUtilExtensions
             EnsureFileIsAccessible(file.Path);
             project.AddFileIfMissing(file.Path);
 
-            Trace.TraceInformation(Path.GetFileName(file.Path) + " created / updated..");
+            Trace.TraceInformation(Path.GetFileName(file.Path) + " created / updated.");
             Log("Writing file: " + file.Path);
             File.WriteAllText(file.Path, file.Contents);
             Log("Completed file: " + file);
@@ -480,6 +541,15 @@ namespace DLaB.CrmSvcUtilExtensions
             }
 
             return line.Substring(start, end - start);
+        }
+
+        /// <summary>
+        /// Displays the message with a header always
+        /// </summary>
+        /// <param name="message">The message.</param>
+        private void DisplayMessage(string message)
+        {
+            Console.WriteLine($"[**** {message} ****]");
         }
 
         protected void Log(string log)
@@ -513,26 +583,21 @@ namespace DLaB.CrmSvcUtilExtensions
             Enum
         }
 
-        private class FileToCreate
+        private class FileToWrite
         {
+            public string Directory => System.IO.Path.GetDirectoryName(Path);
             public string Path { get; private set; }
             public string Contents { get; private set; }
-            public Item TfsItem { get; set; }
             public bool IsMainFile { get; private set; }
+            public bool HasChanged { get; set; }
+            public string TempFile { get; set; }
 
-            public bool HasChanged
-            {
-                get
-                {
-                    return TfsItem == null || !TfsItem.HashValue.SequenceEqual(MD5.Create().ComputeHash(System.Text.Encoding.Default.GetBytes(Contents)));
-                }
-            }
-
-            public FileToCreate(string path, string contents, bool isMainFile = false)
+            public FileToWrite(string path, string contents, bool isMainFile = false)
             {
                 Path = path;
                 Contents = contents;
                 IsMainFile = isMainFile;
+                HasChanged = true;
             }
         }
 
@@ -548,16 +613,16 @@ namespace DLaB.CrmSvcUtilExtensions
             private SortedDictionary<string, string> ProjectFiles { get; set; }
             internal bool ProjectUpdated { get; private set; }
             private string LineFormat { get; set; }
-            private Workspace TfsWorkspace { get; set; }
+            private VsTfsSourceControlProvider Tfs { get; set; }
 
             // ReSharper disable once SuggestBaseTypeForParameter
-            public ProjectFile(List<FileToCreate> files, bool updateProjectFile, Workspace tfsWorkspace)
+            public ProjectFile(List<FileToWrite> files, bool updateProjectFile, VsTfsSourceControlProvider tfs)
             {
                 if (updateProjectFile && files.Count > 0)
                 {
                     ProjectFiles = new SortedDictionary<string, string>(StringComparer.OrdinalIgnoreCase);
                     // ReSharper disable once AssignNullToNotNullAttribute
-                    var file = GetProjectPath(new DirectoryInfo(Path.GetDirectoryName(files[0].Path)));
+                    var file = GetProjectPath(new DirectoryInfo(files[0].Directory));
                     ProjectFound = file != null;
                     if (file == null)
                     {
@@ -580,7 +645,7 @@ namespace DLaB.CrmSvcUtilExtensions
 
                 UpdateProjectFile = updateProjectFile;
                 ProjectUpdated = false;
-                TfsWorkspace = tfsWorkspace;
+                Tfs = tfs;
             }
 
             private FileInfo GetProjectPath(DirectoryInfo directory)
@@ -621,28 +686,12 @@ namespace DLaB.CrmSvcUtilExtensions
                     Log("Project \"{0}\" does not contains file \"{1}\"", ProjectPath, path);
                     ProjectFiles.Add(line, line);
                 }
-                if (TfsWorkspace != null)
+                if (UseTfsToCheckoutFiles)
                 {
-                    // Create File so it can be added:
-                    using (File.Create(path))
-                    { 
-                        Console.WriteLine("Created New File: " + path);
-                    }
-                    var pendingCompleted = TfsWorkspace.PendAdd(path, false);
-                    if (pendingCompleted == 0)
-                    {
-                        pendingCompleted = TfsWorkspace.PendEdit(path);
-                    }
-                    if (pendingCompleted == 0)
-                    {
-                        Log("Unable to Add \"{0}\" to TFS.", path);
-                    }
-                    else
-                    {
-                        Log("Unable to Add \"{0}\" to TFS.", path);
-                    }
+                    Tfs.Add(path);
                 }
 
+                Console.WriteLine(path + " added to project.");
                 ProjectUpdated = true;
             }
 

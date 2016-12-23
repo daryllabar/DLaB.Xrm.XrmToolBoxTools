@@ -186,18 +186,8 @@ namespace DLaB.CrmSvcUtilExtensions
 
         public string GetNameForOption(OptionSetMetadataBase optionSetMetadata, OptionMetadata optionMetadata, IServiceProvider services)
         {
-            var defaultName = DefaultService.GetNameForOption(optionSetMetadata, optionMetadata, services);
-
-            defaultName = Transliterate(optionMetadata, defaultName);
-
-            var newName = GetValidCSharpName(defaultName);
-            newName = AppendValueForDuplicateOptionSetValueNames(optionSetMetadata, newName, optionMetadata.Value.GetValueOrDefault(), services);
-
-            Trace.TraceInformation(newName == defaultName
-                ? $"The name of this option is {defaultName}"
-                : $"The name of this option was {defaultName} but has been changed to {newName}");
-
-            return newName;
+            var possiblyDuplicateName = GetPossiblyDuplicateNameForOption(optionSetMetadata, services, optionMetadata);
+            return AppendValueForDuplicateOptionSetValueNames(optionSetMetadata, possiblyDuplicateName, optionMetadata.Value.GetValueOrDefault(), services);
         }
 
         private static string Transliterate(OptionMetadata optionMetadata, string defaultName)
@@ -246,7 +236,7 @@ namespace DLaB.CrmSvcUtilExtensions
         }
 
         /// <summary>
-        /// Checks to make sure that the name does not already exist for the OptionSetto be generated.
+        /// Checks to make sure that the name does not already exist for the OptionSet to be generated.
         /// </summary>
         private Dictionary<string, bool> GetDuplicateNameValues(OptionSetMetadataBase metadata, IServiceProvider services)
         {
@@ -254,11 +244,7 @@ namespace DLaB.CrmSvcUtilExtensions
             // Look through all options, populating the namesAndValues Collection
             foreach (var option in metadata.GetOptions())
             {
-                var defaultName = DefaultService.GetNameForOption(metadata, option, services);
-
-                defaultName = Transliterate(option, defaultName);
-
-                var name = GetValidCSharpName(defaultName);
+                var name = GetPossiblyDuplicateNameForOption(metadata, services, option);
 
                 nameValueDups[name] = nameValueDups.ContainsKey(name);
 
@@ -270,6 +256,20 @@ namespace DLaB.CrmSvcUtilExtensions
                 }
             }
             return nameValueDups;
+        }
+
+        private string GetPossiblyDuplicateNameForOption(OptionSetMetadataBase metadata, IServiceProvider services, OptionMetadata option)
+        {
+            var defaultName = DefaultService.GetNameForOption(metadata, option, services);
+
+            defaultName = Transliterate(option, defaultName);
+
+            var name = GetValidCSharpName(defaultName);
+            if (defaultName == string.Empty)
+            {
+                name = name + option.Value;
+            }
+            return name;
         }
 
         private static string AppendState(OptionMetadata option, string name)
