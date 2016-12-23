@@ -173,6 +173,9 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="XrmToolBox.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\cmd_add.png" />
@@ -194,12 +197,11 @@
 </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>xcopy /I /Y "$(TargetPath)" "$(SolutionDir)DLaB.EarlyBoundGenerator\$(OutDir)Plugins\$(TargetFileName)"
+    <PostBuildEvent>xcopy /I /Y "$(TargetPath)" "$(SolutionDir)DLaB.EarlyBoundGenerator\$(OutDir)Plugins\"
 xcopy /I /Y "$(TargetDir)DLaB.*.dll" "$(TargetDir)Plugins\"
 DEL /Q "$(TargetDir)DLaB.*"
 DEL /Q "$(TargetDir)Microsoft.IdentityModel.dll"    
 DEL /Q "$(TargetDir)Microsoft.Xrm.Sdk.Workflow.dll"
-
 </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

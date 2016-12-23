@@ -650,12 +650,13 @@ namespace DLaB.AttributeManager
                     }
                 case AttributeTypeCode.BigInt:
                     return "C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F"; // IntegerControl
+                case AttributeTypeCode.Memo:
+                    return "E0DECE4B-6FC8-4A8F-A065-082708572369"; // TextAreaControl
                 case AttributeTypeCode.EntityName:
                 case AttributeTypeCode.Virtual:
                 case AttributeTypeCode.CalendarRules:
                 case AttributeTypeCode.Customer:
                 case AttributeTypeCode.ManagedProperty:
-                case AttributeTypeCode.Memo:
                 case AttributeTypeCode.Owner:
                 case AttributeTypeCode.State:
                 case AttributeTypeCode.Uniqueidentifier:
@@ -670,7 +671,7 @@ namespace DLaB.AttributeManager
             var qe = QueryExpressionFactory.Create<SdkMessageProcessingStep>();
             qe.AddLink<SdkMessageFilter>(SdkMessageFilter.Fields.SdkMessageFilterId)
                 .WhereEqual(SdkMessageFilter.Fields.PrimaryObjectTypeCode, att.EntityLogicalName);
-            AddConditionsForValueInCsv(qe.Criteria, qe.EntityName, SdkMessageProcessingStep.Fields.FilteringAttributes, att.LogicalName);
+            AddConditionsForValueInCsv(qe.Criteria, SdkMessageProcessingStep.Fields.FilteringAttributes, att.LogicalName);
 
             Trace("Checking for Plugin Registration Step Filtering Attribute Dependencies with Query: " + qe.GetSqlStatement());
 
@@ -686,9 +687,9 @@ namespace DLaB.AttributeManager
             }
         }
 
-        private static void AddConditionsForValueInCsv(FilterExpression filter, string entityName, string fieldName, string value)
+        private static void AddConditionsForValueInCsv(FilterExpression filter, string fieldName, string value)
         {
-            filter.WhereEqual(entityName,
+            filter.WhereEqual(
                 new ConditionExpression(fieldName, ConditionOperator.Like, $"%,{value},%"),
                 LogicalOperator.Or,
                 new ConditionExpression(fieldName, ConditionOperator.Like, $"{value},%"),
@@ -714,9 +715,9 @@ namespace DLaB.AttributeManager
         private void UpdatePluginStepImages(IOrganizationService service, AttributeMetadata att, AttributeMetadata to)
         {
             var qe = QueryExpressionFactory.Create<SdkMessageProcessingStepImage>();
-            qe.AddLink<SdkMessageFilter>(SdkMessageFilter.Fields.SdkMessageFilterId)
+            qe.AddLink<SdkMessageFilter>(SdkMessageProcessingStepImage.Fields.SdkMessageProcessingStepId, SdkMessageFilter.Fields.SdkMessageFilterId)
                 .WhereEqual(SdkMessageFilter.Fields.PrimaryObjectTypeCode, att.EntityLogicalName);
-            AddConditionsForValueInCsv(qe.Criteria, qe.EntityName, SdkMessageProcessingStepImage.Fields.Attributes1, att.LogicalName);
+            AddConditionsForValueInCsv(qe.Criteria, SdkMessageProcessingStepImage.Fields.Attributes1, att.LogicalName);
 
             Trace("Checking for Plugin Registration Step Images Attribute Dependencies with Query: " + qe.GetSqlStatement());
 

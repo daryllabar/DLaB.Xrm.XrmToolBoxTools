@@ -203,7 +203,6 @@ namespace DLaB.AttributeManager
         {
             return new MemoAttributeMetadata
             {
-                Format = att.Format,
                 ImeMode = att.ImeMode,
                 MaxLength = att.MaxLength
             };
