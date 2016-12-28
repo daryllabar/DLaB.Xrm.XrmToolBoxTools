@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.IO;
-using System.Reflection;
 using System.Windows.Forms;
 using DLaB.EarlyBoundGenerator.Settings;
 using DLaB.XrmToolboxCommon;
@@ -11,7 +10,6 @@ using Microsoft.Xrm.Sdk.Client;
 using Microsoft.Xrm.Sdk.Metadata;
 using XrmToolBox.Extensibility;
 using XrmToolBox.Extensibility.Interfaces;
-using DLaB.Common;
 using PropertyInterface = DLaB.XrmToolboxCommon.PropertyInterface;
 
 namespace DLaB.EarlyBoundGenerator
@@ -22,7 +20,9 @@ namespace DLaB.EarlyBoundGenerator
         public IEnumerable<Entity> Actions { get; set; }
         public IEnumerable<EntityMetadata> EntityMetadatas { get; set; }
         public IEnumerable<OptionSetMetadataBase> GlobalOptionSets { get; set; }
+        public ConnectionSettings ConnectionSettings { get; set; }
         private bool SkipSaveSettings { get; set; }
+        private bool FormLoaded { get; set; }
 
         #region XrmToolBox Menu Interfaces
 
@@ -44,6 +44,7 @@ namespace DLaB.EarlyBoundGenerator
 
         public EarlyBoundGeneratorPlugin()
         {
+            FormLoaded = false;
             InitializeComponent();
         }
 
@@ -58,16 +59,25 @@ namespace DLaB.EarlyBoundGenerator
             {
                 DisplayActionsIfSupported(false);
             }
+
+            SetConnectionSettingOnLoad();
+            HydrateUiFromSettings(ConnectionSettings.FullSettingsPath);
+            FormLoaded = true;
+        }
+
+        private void HydrateUiFromSettings(string settingsPath)
+        {
             try
             {
-                Settings = EarlyBoundGeneratorConfig.Load(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+                Settings = EarlyBoundGeneratorConfig.Load(settingsPath);
             }
             catch (Exception ex)
             {
-                TxtOutput.AppendText("Unable to Load Settings form Config: " + ex);
+                TxtOutput.AppendText($"Unable to Load Settings from Config file: {settingsPath}.  {ex}");
                 SkipSaveSettings = true;
                 Settings = EarlyBoundGeneratorConfig.GetDefault();
             }
+
             ChkAddDebuggerNonUserCode.Checked = Settings.ExtensionConfig.AddDebuggerNonUserCode;
             ChkAddFilesToProject.Checked = Settings.ExtensionConfig.AddNewFilesToProject;
             ChkAudibleCompletion.Checked = Settings.AudibleCompletionNotification;
@@ -103,6 +113,11 @@ namespace DLaB.EarlyBoundGenerator
             SetAddFilesToProjectVisibility();
         }
 
+        private void SaveSettings()
+        {
+            Settings.Save(ConnectionSettings.SettingsPath);
+        }
+
         public override void ClosingPlugin(PluginCloseInfo info)
         {
             base.ClosingPlugin(info);
@@ -110,7 +125,7 @@ namespace DLaB.EarlyBoundGenerator
 
             ConnectionDetail = null; // Don't save the Connection Details when closing.
             HydrateSettingsFromUI();
-            Settings.Save();
+            SaveSettings();
         }
 
         private void Create(CreationType creationType)
@@ -166,7 +181,7 @@ namespace DLaB.EarlyBoundGenerator
             HydrateSettingsFromUI();
             if (!SkipSaveSettings)
             {
-                Settings.Save();
+                SaveSettings();
             }
 
             WorkAsync(new WorkAsyncInfo("Shelling out to Command Line...",
@@ -271,7 +286,7 @@ namespace DLaB.EarlyBoundGenerator
                 Settings.UseConnectionString = Settings.UseConnectionString || Settings.AuthType == AuthenticationProviderType.ActiveDirectory;
                 Settings.UseCrmOnline = ConnectionDetail.UseOnline;
                 Settings.UserName = ConnectionDetail.UserName;
-                Settings.Url = GetUrlString(ConnectionDetail.AuthType);
+                Settings.Url = GetUrlString();
 
                 if (Settings.UseConnectionString && string.IsNullOrWhiteSpace(Settings.Password))
                 {
@@ -289,6 +304,7 @@ namespace DLaB.EarlyBoundGenerator
 
             Settings.ActionOutPath = TxtActionPath.Text;
             Settings.EntityOutPath = TxtEntityPath.Text;
+            Settings.RootPath = Path.GetDirectoryName(Path.GetFullPath(TxtSettingsPath.Text));
             if (ChkUseDeprecatedOptionSetNaming.Checked)
             {
                 Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, @"DLaB.CrmSvcUtilExtensions.OptionSet.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions");
@@ -326,29 +342,29 @@ namespace DLaB.EarlyBoundGenerator
             Settings.ServiceContextName = string.IsNullOrWhiteSpace(TxtServiceContextName.Text) ? null : TxtServiceContextName.Text;
         }
 
-        private string GetUrlString(AuthenticationProviderType auth)
+        private string GetUrlString()
         {
             var url = ConnectionDetail.OrganizationServiceUrl;
-            url = Settings.UseConnectionString
+            return Settings.UseConnectionString
                 ? url.Replace(@"/XRMServices/2011/Organization.svc", string.Empty)
                 :  url;
 
-            if (auth == AuthenticationProviderType.ActiveDirectory)
-            {
-                return url;
-            }
-            int start;
-            var prefix = url.SubstringByString(0, "//", out start) + "//";
-            if (start < 0)
-            {
-                return url;
-            }
-            var end = url.IndexOf(".", start, StringComparison.Ordinal);
-            if (end < 0)
-            {
-                return url;
-            }
-            return prefix + ConnectionDetail.OrganizationUrlName + url.Substring(end);
+            //if (auth == AuthenticationProviderType.ActiveDirectory)
+            //{
+            //    return url;
+            //}
+            //int start;
+            //var prefix = url.SubstringByString(0, "//", out start) + "//";
+            //if (start < 0)
+            //{
+            //    return url;
+            //}
+            //var end = url.IndexOf(".", start, StringComparison.Ordinal);
+            //if (end < 0)
+            //{
+            //    return url;
+            //}
+            //return prefix + ConnectionDetail.OrganizationUrlName + url.Substring(end);
         }
 
         private void EnableForm(bool enable)
@@ -403,7 +419,7 @@ namespace DLaB.EarlyBoundGenerator
             var result = dialog.ShowDialog();
             if (result != DialogResult.OK) return;
             Settings.ExtensionConfig.EntityAttributeSpecifiedNames = dialog.ConfigValue;
-            Settings.Save();
+            SaveSettings();
         }
 
         private void BtnActionsToSkip_Click(object sender, EventArgs e)
@@ -411,7 +427,7 @@ namespace DLaB.EarlyBoundGenerator
             var dialog = new SpecifyActionsDialog(this) { SpecifiedActions = Settings.ExtensionConfig.ActionsToSkip };
             if (dialog.ShowDialog() != DialogResult.OK) return;
             Settings.ExtensionConfig.ActionsToSkip = dialog.SpecifiedActions;
-            Settings.Save();
+            SaveSettings();
         }
 
         private void BtnEntitesToSkip_Click(object sender, EventArgs e)
@@ -420,7 +436,7 @@ namespace DLaB.EarlyBoundGenerator
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 Settings.ExtensionConfig.EntitiesToSkip = dialog.SpecifiedEntities;
-                Settings.Save();
+                SaveSettings();
             }
         }
 
@@ -430,7 +446,7 @@ namespace DLaB.EarlyBoundGenerator
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 Settings.ExtensionConfig.OptionSetsToSkip = dialog.OptionSets;
-                Settings.Save();
+                SaveSettings();
             }
         }
 
@@ -441,7 +457,7 @@ namespace DLaB.EarlyBoundGenerator
             if (result == DialogResult.OK)
             {
                 Settings.ExtensionConfig.PropertyEnumMappings = dialog.ConfigValue;
-                Settings.Save();
+                SaveSettings();
             }
         }
 
@@ -452,197 +468,27 @@ namespace DLaB.EarlyBoundGenerator
             if (result == DialogResult.OK)
             {
                 Settings.ExtensionConfig.UnmappedProperties = dialog.ConfigValue;
-                Settings.Save();
+                SaveSettings();
             }
         }
-
-        #region HelpText
-
-        private void BtnActionsToSkip_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Allows for the ability to specify Actions to not generate.";
-        }
-
-        private void BtnCreateActions_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Generates the Activity Classes.";
-        }
-
-        private void BtnCreateAll_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Asynchronously generates the Entites, Option Sets, and Actions (if available), with their perspective settings.";
-        }
-
-        private void BtnCreateEntities_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Generates the Entity Classes.";
-        }
-
-        private void BtnCreateOptionSets_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Generates the Enums for the Option Sets.";
-        }
-
-        private void BtnEntitesToSkip_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Allows for the ability to specify Entities to not generate.";
-        }
-
-        private void BtnEnumMappings_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Manually specifies an enum mapping for an OptionSetValue Property on an entity.";
-        }
-
-        private void BtnOptionSetsToSkip_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Allows for the ability to specify OptionSets to not generate.";
-        }
-
-        private void BtnSpecifyAttributeNames_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Allows for the ability to specify the capitalization of an attribute on an entity.";
-        }
-
-        private void BtnUnmappedProperties_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Allows for the ability to specify an OptionSetValue Property of an entity that doesn't have an enum mapping.";
-        }
-
-        private void ChkAddDebuggerNonUserCode_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Specifies that the DebuggerNonUserCodeAttribute should be applied to all generated properties and methods.";
-        }
-
-        private void ChkAddFilesToProject_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Adds any files that don't exist to the first project file found in the hierarchy of the output path.";
-        }
-
-        private void ChkAudibleCompletion_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Use speech synthesizer to notify of code generation completion.  May not work on VMs or machines without sound cards.";
-        }
-
-        private void ChkCreateOneActionFile_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Specifies that each Activity will be created in its own file.";
-        }
-
-        private void ChkCreateOneEntityFile_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Specifies that each Entity will be created in its own file.";
-        }
-
-        private void ChkCreateOneOptionSetFile_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Specifies that each Enum will be created in its own file.";
-        }
-
-        private void ChkGenerateAttributeNameConsts_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Adds a Struct to each Entity class that contains the Logical Names of all attributes for the Entity.";
-        }
-
-        private void ChkGenerateAnonymousTypeConstructor_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Adds an Object Constructor to each early bound entity class to simplify LINQ Projections (http://stackoverflow.com/questions/27623542).";
-        }
-
-        private void ChkGenerateEntityRelationships_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Specifies if 1:N, N:1, and N:N relationships are generated for entities.";
-        }
-
-        private void ChkGenerateOptionSetEnums_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Adds an additional property to each early bound entity class, for each optionset property it normally contains, with Enum postfixed to the existing optionset name.";
-        }
-
-        private void ChkIncludeCommandLine_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Specifies whether to include the command line in the early bound class used to generate it.";
-        }
-
-        private void ChkMakeReadonlyFieldsEditable_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Defines that Entities should be created with editable createdby, createdon, modifiedby, modifiedon, owningbusinessunit, owningteam, and owninguser properties. Helpful for writing linq statements where those attributes are wanting to be returned in the select.";
-        }
-
-        private void ChkMaskPassword_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Masks the password in the command line.";
-        }
-
-        private void ChkRemoveRuntimeComment_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Removes the ""//   Runtime Version:X.X.X.X"" comment from the header of generated files.  This helps to alleviate unnecessary differences that pop up when the classes are generated from machines with different .Net Framework updates installed.";
-        }
-
-        private void ChkUseDeprecatedOptionSetNaming_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Creates Local OptionSets Using the Deprecated Naming Convention. prefix_oobentityname_prefix_attribute";
-        }
-
-        private void ChkUseTFS_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Will use TFS to attempt to check out the early bound classes.";
-        }
-
-        private void ChkUseXrmClient_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Specifies the Service Context should inherit from CrmOrganizationServiceContext, and conversly, Entities from Xrm.Client.Entity." + Environment.NewLine +
-                @"This results in a dependence on Microsoft.Xrm.Client.dll that must be accounted for during plugins and workflows since it isn't included with CRM by default:" + Environment.NewLine +
-                @"http://develop1.net/public/post/MicrosoftXrmClient-Part-1.aspx .";
-        }
-
-        private void TxtOptionSetFormat_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"The Format of Local Option Sets where {0} is the Entity Schema Name, and {1} is the Attribute Schema Name.  The format Specified in the SDK is {0}{1}, but the default is {0}_{1}, but used to be prefix_{0}_{1}(all lower case)";
-        }
-
-        private void TxtServiceContextName_MouseEnter(object sender, EventArgs e)
-        {
-            TxtHelp.Text = @"Specifies that the name of the Generated CRM Context.";
-        }
-
-        private void ShowActionPathText(object sender, EventArgs e)
-        {
-            TxtHelp.Text = ChkCreateOneActionFile.Checked ? 
-                @"Since ""Create One File Per Action"" is checked, this needs to be a file path that ends in "".cs""" : 
-                @"Since ""Create One File Per Action"" is not checked, this needs to be a path to a directory.";
-        }
-
-        private void ShowEntityPathText(object sender, EventArgs e)
-        {
-            TxtHelp.Text = ChkCreateOneEntityFile.Checked ? 
-                @"Since ""Create One File Per Entity"" is checked, this needs to be a file path that ends in "".cs""" : 
-                @"Since ""Create One File Per Entity"" is not checked, this needs to be a path to a directory.";
-        }
-
-        #endregion // HelpText
 
         private void BtnOpenActionPathDialog_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                TxtActionPath.Text = openFileDialog1.FileName;
-            }
+            openFileDialog1.SetCsFilePath(TxtActionPath, ConnectionSettings.SettingsDirectoryName);
         }
 
         private void BtnOpenEntityPathDialog_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                TxtEntityPath.Text = openFileDialog1.FileName;
-            }
+            openFileDialog1.SetCsFilePath(TxtEntityPath, ConnectionSettings.SettingsDirectoryName);
         }
 
         private void BtnOpenOptionSetPathDialog_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                TxtOptionSetPath.Text = openFileDialog1.FileName;
-            }
+            openFileDialog1.SetCsFilePath(TxtOptionSetPath, ConnectionSettings.SettingsDirectoryName);
+        }
+        private void BtnOpenSettingsPathDialog_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.SetXmlFilePath(TxtSettingsPath);
         }
 
         private void ChkCreateOneActionFile_CheckedChanged(object sender, EventArgs e)
@@ -702,6 +548,24 @@ namespace DLaB.EarlyBoundGenerator
             ExecuteMethod(DisplayActionsIfSupported, true);
         }
 
+        private void TxtSettingsPath_TextChanged(object sender, EventArgs e)
+        {
+            if (!FormLoaded)
+            {
+                return;
+            }
+            var file = Path.GetFullPath(TxtSettingsPath.Text);
+            if (File.Exists(file))
+            {
+                SetConnectionSettingOnSettingsFileChanged();
+            }
+            else
+            {
+                MessageBox.Show($@"File ""{file}"" Not Found!  Unable to Update the Settings");
+            }
+
+        }
+
         public void DisplayActionsIfSupported(bool displayErrorIfUnsupported)
         {
             if (ConnectionDetail.OrganizationMajorVersion < Crm2013)
@@ -718,12 +582,64 @@ namespace DLaB.EarlyBoundGenerator
             }
         }
 
+        private void SetConnectionSettingOnLoad()
+        {
+            // Has Connection
+            // - Use Connection's Setting, or default
+            ConnectionSettings = ConnectionSettings.GetForConnection(ConnectionDetail) ?? ConnectionSettings.GetDefault();
+            TxtSettingsPath.Text = ConnectionSettings.SettingsPath;
+        }
+
+        private void SetConnectionSettingOnConnectionChanged()
+        {
+            if (ConnectionDetail == null)
+            {
+                // No Connection Specified, leave Connection Settings unchanged
+                return;
+            }
+
+            var localSettings = ConnectionSettings.GetForConnection(ConnectionDetail);
+
+            if (localSettings == null)
+            {
+                // New Connection did not have a settings file associated with it, use current
+                ConnectionSettings.Save(ConnectionDetail);
+            }
+            else
+            {
+                // New Connection Did Have a Connection Settings, load settings
+                ConnectionSettings = localSettings;
+                TxtSettingsPath.TextChanged -= TxtSettingsPath_TextChanged;
+                TxtSettingsPath.Text = ConnectionSettings.SettingsPath;
+                TxtSettingsPath.TextChanged += TxtSettingsPath_TextChanged;
+                HydrateUiFromSettings(ConnectionSettings.FullSettingsPath);
+            }
+        }
+
+        private void SetConnectionSettingOnSettingsFileChanged()
+        {
+            ConnectionSettings = new ConnectionSettings
+            {
+                SettingsPath = TxtSettingsPath.Text
+            };
+
+            if (ConnectionDetail != null)
+            {
+                ConnectionSettings.Save(ConnectionDetail);
+            }
+        }
+
         private void EarlyBoundGenerator_ConnectionUpdated(object sender, ConnectionUpdatedEventArgs e)
         {
+            if (!FormLoaded)
+            {
+                return;
+            }
             EntityMetadatas = null;
             GlobalOptionSets = null;
             Actions = null;
             DisplayActionsIfSupported(false);
+            SetConnectionSettingOnConnectionChanged();
         }
     }
 

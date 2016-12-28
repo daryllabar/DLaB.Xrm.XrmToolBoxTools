@@ -95,12 +95,13 @@ namespace DLaB.EarlyBoundGenerator.Settings
         public string Password { get; set; }
 
         [XmlIgnore]
+        public string RootPath { get; set; }
+
+        [XmlIgnore]
         public bool SupportsActions { get; set; }
 
         [XmlIgnore]
         public string Url { get; set; }
-
-        [NonSerialized] private string _filePath;
 
         [XmlIgnore]
         public IEnumerable<Argument> CommandLineArguments => UserArguments.Union(ExtensionArguments);
@@ -220,9 +221,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             ExtensionArguments = AddMissingArguments(poco.ExtensionArguments, @default.ExtensionArguments);
             UserArguments = AddMissingArguments(poco.UserArguments, @default.UserArguments);
             Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-
-
-            _filePath = filePath;
         }
 
         private static string ConvertNonColonDelimitedDictionaryListToDictionaryHash(string oldValue)
@@ -349,7 +347,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     new Argument(CreationType.Actions, CrmSrvUtilService.CodeCustomization, "DLaB.CrmSvcUtilExtensions.Action.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.Actions, CrmSrvUtilService.CodeGenerationService, "DLaB.CrmSvcUtilExtensions.Action.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.Actions, CrmSrvUtilService.CodeWriterFilter, "DLaB.CrmSvcUtilExtensions.Action.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.Actions, CrmSrvUtilService.MetadataProviderService, "DLaB.CrmSvcUtilExtensions.Entity.BaseMetadataProviderService,DLaB.CrmSvcUtilExtensions"),
+                    new Argument(CreationType.Actions, CrmSrvUtilService.MetadataProviderService, "DLaB.CrmSvcUtilExtensions.BaseMetadataProviderService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.Entities, CrmSrvUtilService.CodeCustomization, "DLaB.CrmSvcUtilExtensions.Entity.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.Entities, CrmSrvUtilService.CodeGenerationService, "DLaB.CrmSvcUtilExtensions.Entity.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.Entities, CrmSrvUtilService.CodeWriterFilter, "DLaB.CrmSvcUtilExtensions.Entity.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions"),
@@ -364,11 +362,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 ExtensionConfig = ExtensionConfig.GetDefault(),
                 UserArguments = new List<Argument>(new [] {
                     new Argument(CreationType.Actions, "generateActions", null), 
-                    new Argument(CreationType.Actions, "out", Path.Combine(Paths.PluginsPath, @"CrmSvcUtil Ref\Actions.cs")),
+                    new Argument(CreationType.Actions, "out",  @"CrmSvcUtil Ref\Actions.cs"),
                     new Argument(CreationType.All, "namespace", "CrmEarlyBound"),
-                    new Argument(CreationType.Entities, "out", Path.Combine(Paths.PluginsPath, @"CrmSvcUtil Ref\Entities.cs")),
+                    new Argument(CreationType.Entities, "out", @"CrmSvcUtil Ref\Entities.cs"),
                     new Argument(CreationType.Entities, "servicecontextname", "CrmServiceContext"),
-                    new Argument(CreationType.OptionSets, "out", Path.Combine(Paths.PluginsPath, @"CrmSvcUtil Ref\OptionSets.cs"))
+                    new Argument(CreationType.OptionSets, "out",  @"CrmSvcUtil Ref\OptionSets.cs")
                 }),            
             };
         }
@@ -380,13 +378,12 @@ namespace DLaB.EarlyBoundGenerator.Settings
         {
             try
             {
-                filePath = Path.Combine(filePath, "DLaB.EarlyBoundGenerator.Settings.xml");
                 if (!File.Exists(filePath))
                 {
                     var config = GetDefault();
-                    config._filePath = filePath;
                     return config;
                 }
+
 
                 var serializer = new XmlSerializer(typeof (POCO.Config));
                 POCO.Config poco;
@@ -404,15 +401,15 @@ namespace DLaB.EarlyBoundGenerator.Settings
             }
         }
 
-        public void Save()
+        public void Save(string filePath)
         {
             var serializer = new XmlSerializer(typeof (EarlyBoundGeneratorConfig));
-            var settings = new XmlWriterSettings
+            var xmlWriterSettings = new XmlWriterSettings
             {
                 Indent = true,
                 NewLineOnAttributes = true,
             };
-            using (var xmlWriter = XmlWriter.Create(_filePath, settings))
+            using (var xmlWriter = XmlWriter.Create(filePath, xmlWriterSettings))
             {
                 serializer.Serialize(xmlWriter, this);
                 xmlWriter.Close();

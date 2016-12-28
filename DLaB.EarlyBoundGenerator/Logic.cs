@@ -65,7 +65,7 @@ namespace DLaB.EarlyBoundGenerator
             {
                 StartInfo =
                 {
-                    FileName = EarlyBoundGeneratorConfig.CrmSvcUtilPath,
+                    FileName = Path.GetFullPath(EarlyBoundGeneratorConfig.CrmSvcUtilPath),
                     RedirectStandardError = true,
                     RedirectStandardOutput = true,
                     UseShellExecute = false,
@@ -154,7 +154,7 @@ namespace DLaB.EarlyBoundGenerator
         private string GetOutputFilePath(EarlyBoundGeneratorConfig earlyBoundGeneratorConfig, CreationType creationType)
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            var filePath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), EarlyBoundGeneratorConfig.GetSettingValue(creationType, EarlyBoundGeneratorConfig.UserArgumentNames.Out));
+            var filePath = Path.Combine(EarlyBoundGeneratorConfig.RootPath, EarlyBoundGeneratorConfig.GetSettingValue(creationType, EarlyBoundGeneratorConfig.UserArgumentNames.Out));
 
             if (creationType == CreationType.Actions && earlyBoundGeneratorConfig.ExtensionConfig.CreateOneFilePerAction)
             {

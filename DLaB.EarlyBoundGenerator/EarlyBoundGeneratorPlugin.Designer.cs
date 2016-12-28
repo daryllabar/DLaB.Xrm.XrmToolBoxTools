@@ -30,11 +30,14 @@ namespace DLaB.EarlyBoundGenerator
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.Label label4;
             this.BtnCreateOptionSets = new System.Windows.Forms.Button();
             this.BtnCreateAll = new System.Windows.Forms.Button();
             this.BtnCreateEntities = new System.Windows.Forms.Button();
             this.TxtOutput = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BtnOpenSettingsPathDialog = new System.Windows.Forms.Button();
+            this.TxtSettingsPath = new System.Windows.Forms.TextBox();
             this.ChkAudibleCompletion = new System.Windows.Forms.CheckBox();
             this.ChkAddFilesToProject = new System.Windows.Forms.CheckBox();
             this.ChkRemoveRuntimeComment = new System.Windows.Forms.CheckBox();
@@ -89,6 +92,7 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnCreateActions = new System.Windows.Forms.Button();
             this.TxtActionPath = new System.Windows.Forms.TextBox();
             this.LblActionPath = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -98,6 +102,15 @@ namespace DLaB.EarlyBoundGenerator
             this.actionsTab.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(222, 18);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(73, 13);
+            label4.TabIndex = 14;
+            label4.Text = "Settings Path:";
             // 
             // BtnCreateOptionSets
             // 
@@ -153,6 +166,9 @@ namespace DLaB.EarlyBoundGenerator
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.BtnOpenSettingsPathDialog);
+            this.groupBox1.Controls.Add(label4);
+            this.groupBox1.Controls.Add(this.TxtSettingsPath);
             this.groupBox1.Controls.Add(this.ChkAudibleCompletion);
             this.groupBox1.Controls.Add(this.ChkAddFilesToProject);
             this.groupBox1.Controls.Add(this.ChkRemoveRuntimeComment);
@@ -169,6 +185,31 @@ namespace DLaB.EarlyBoundGenerator
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Settings";
+            // 
+            // BtnOpenSettingsPathDialog
+            // 
+            this.BtnOpenSettingsPathDialog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.helpProvider1.SetHelpString(this.BtnOpenSettingsPathDialog, "Overrides Capitalization of Entity Attributes");
+            this.BtnOpenSettingsPathDialog.Location = new System.Drawing.Point(851, 13);
+            this.BtnOpenSettingsPathDialog.Name = "BtnOpenSettingsPathDialog";
+            this.helpProvider1.SetShowHelp(this.BtnOpenSettingsPathDialog, true);
+            this.BtnOpenSettingsPathDialog.Size = new System.Drawing.Size(27, 23);
+            this.BtnOpenSettingsPathDialog.TabIndex = 15;
+            this.BtnOpenSettingsPathDialog.Text = "...";
+            this.BtnOpenSettingsPathDialog.UseVisualStyleBackColor = true;
+            this.BtnOpenSettingsPathDialog.Click += new System.EventHandler(this.BtnOpenSettingsPathDialog_Click);
+            this.BtnOpenSettingsPathDialog.MouseEnter += new System.EventHandler(this.ShowSettingsPathText);
+            // 
+            // TxtSettingsPath
+            // 
+            this.TxtSettingsPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtSettingsPath.Location = new System.Drawing.Point(301, 15);
+            this.TxtSettingsPath.Name = "TxtSettingsPath";
+            this.TxtSettingsPath.Size = new System.Drawing.Size(544, 20);
+            this.TxtSettingsPath.TabIndex = 13;
+            this.TxtSettingsPath.TextChanged += new System.EventHandler(this.TxtSettingsPath_TextChanged);
+            this.TxtSettingsPath.MouseEnter += new System.EventHandler(this.ShowSettingsPathText);
             // 
             // ChkAudibleCompletion
             // 
@@ -206,7 +247,7 @@ namespace DLaB.EarlyBoundGenerator
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(228, 23);
+            this.label1.Location = new System.Drawing.Point(228, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 13);
             this.label1.TabIndex = 9;
@@ -216,7 +257,7 @@ namespace DLaB.EarlyBoundGenerator
             // 
             this.TxtNamespace.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtNamespace.Location = new System.Drawing.Point(301, 20);
+            this.TxtNamespace.Location = new System.Drawing.Point(301, 41);
             this.TxtNamespace.Name = "TxtNamespace";
             this.TxtNamespace.Size = new System.Drawing.Size(577, 20);
             this.TxtNamespace.TabIndex = 8;
@@ -227,10 +268,10 @@ namespace DLaB.EarlyBoundGenerator
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtHelp.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtHelp.Location = new System.Drawing.Point(231, 46);
+            this.TxtHelp.Location = new System.Drawing.Point(231, 67);
             this.TxtHelp.Multiline = true;
             this.TxtHelp.Name = "TxtHelp";
-            this.TxtHelp.Size = new System.Drawing.Size(647, 130);
+            this.TxtHelp.Size = new System.Drawing.Size(647, 109);
             this.TxtHelp.TabIndex = 7;
             // 
             // ChkUseTFS
@@ -327,6 +368,7 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnOpenOptionSetPathDialog.Text = "...";
             this.BtnOpenOptionSetPathDialog.UseVisualStyleBackColor = true;
             this.BtnOpenOptionSetPathDialog.Click += new System.EventHandler(this.BtnOpenOptionSetPathDialog_Click);
+            this.BtnOpenOptionSetPathDialog.MouseEnter += new System.EventHandler(this.ShowOptionSetPathText);
             // 
             // LblOptionSetsDirectory
             // 
@@ -345,6 +387,7 @@ namespace DLaB.EarlyBoundGenerator
             this.TxtOptionSetPath.Name = "TxtOptionSetPath";
             this.TxtOptionSetPath.Size = new System.Drawing.Size(306, 20);
             this.TxtOptionSetPath.TabIndex = 15;
+            this.TxtOptionSetPath.MouseEnter += new System.EventHandler(this.ShowOptionSetPathText);
             // 
             // BtnOpenEntityPathDialog
             // 
@@ -895,5 +938,7 @@ namespace DLaB.EarlyBoundGenerator
         private System.Windows.Forms.TextBox TxtOptionSetFormat;
         private System.Windows.Forms.CheckBox ChkGenerateEntityRelationships;
         private System.Windows.Forms.CheckBox ChkAudibleCompletion;
+        private System.Windows.Forms.Button BtnOpenSettingsPathDialog;
+        private System.Windows.Forms.TextBox TxtSettingsPath;
     }
 }

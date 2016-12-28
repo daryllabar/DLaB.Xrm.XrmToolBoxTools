@@ -105,5 +105,42 @@ namespace DLaB.XrmToolboxCommon
         }
 
         #endregion // IEnumerable<EntityMetadata>
+
+        #region OpenFileDialog
+
+        public static void SetCsFilePath(this OpenFileDialog dialog, TextBox textBox, string rootPath = null)
+        {
+            dialog.DefaultExt = "cs";
+            dialog.Filter = @"C# files|*.cs";
+            SetInitialDirectory(dialog, textBox, rootPath);
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                textBox.Text = dialog.FileName;
+            }
+        }
+
+        private static void SetInitialDirectory(OpenFileDialog dialog, TextBox textBox, string rootPath)
+        {
+            if (!string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                dialog.InitialDirectory =
+                    Path.GetDirectoryName(string.IsNullOrWhiteSpace(rootPath)
+                        ? Path.GetFullPath(textBox.Text)
+                        : Path.GetFullPath(Path.Combine(rootPath, textBox.Text)));
+            }
+        }
+
+        public static void SetXmlFilePath(this OpenFileDialog dialog, TextBox textBox, string rootPath = null)
+        {
+            dialog.DefaultExt = "xml";
+            dialog.Filter = @"Xml files|*.xml";
+            SetInitialDirectory(dialog, textBox, rootPath);
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                textBox.Text = dialog.FileName;
+            }
+        }
+
+        #endregion OpenFileDialog
     }
 }
