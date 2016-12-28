@@ -8,11 +8,11 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
 {
     public class CustomizeCodeDomService : ICustomizeCodeDomService
     {
-        public static bool AddDebuggerNonUserCode { get { return ConfigHelper.GetAppSettingOrDefault("AddDebuggerNonUserCode", true); } }
-        public static bool GenerateAnonymousTypeConstructor { get { return ConfigHelper.GetAppSettingOrDefault("GenerateAnonymousTypeConstructor", true); } }
-        public static bool GenerateAttributeNameConsts { get { return ConfigHelper.GetAppSettingOrDefault("GenerateAttributeNameConsts", false); } }
-        public static bool GenerateEnumProperties { get { return ConfigHelper.GetAppSettingOrDefault("GenerateEnumProperties", true); } }
-        public static bool UseXrmClient { get { return ConfigHelper.GetAppSettingOrDefault("UseXrmClient", false); } }
+        public static bool AddDebuggerNonUserCode => ConfigHelper.GetAppSettingOrDefault("AddDebuggerNonUserCode", true);
+        public static bool GenerateAnonymousTypeConstructor => ConfigHelper.GetAppSettingOrDefault("GenerateAnonymousTypeConstructor", true);
+        public static bool GenerateAttributeNameConsts => ConfigHelper.GetAppSettingOrDefault("GenerateAttributeNameConsts", false);
+        public static bool GenerateEnumProperties => ConfigHelper.GetAppSettingOrDefault("GenerateEnumProperties", true);
+        public static bool UseXrmClient => ConfigHelper.GetAppSettingOrDefault("UseXrmClient", false);
         public IDictionary<string, string> Parameters { get; set; }
 
         public CustomizeCodeDomService(IDictionary<string, string> parameters)

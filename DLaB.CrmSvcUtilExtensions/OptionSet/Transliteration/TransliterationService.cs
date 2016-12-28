@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using Newtonsoft.Json.Linq;
+using System.Runtime.Serialization.Json;
 
 namespace DLaB.CrmSvcUtilExtensions.OptionSet.Transliteration
 {
@@ -33,23 +33,44 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet.Transliteration
 
         private static TransliterationAlphabet LoadAlphabet(int languageCode)
         {
-            var alphabetJson = 
-                JObject.Parse(
-                    File.ReadAllText(
-                        System.IO.Path.Combine(Path, languageCode + ".json")));
+            var serializer = new DataContractJsonSerializer(typeof(AlphabetPoco));
+            var path = System.IO.Path.Combine(Path, languageCode + ".json");
+            AlphabetPoco alphabetJson;
+            using (var stream = GenerateStreamFromString(File.ReadAllText(path)))
+            {
+                alphabetJson = (AlphabetPoco)serializer.ReadObject(stream);
+            }
 
-            //var dictionary = new Dictionary<char, string>();
-            var dictionary = 
-                alphabetJson["alphabet"]
+            if (alphabetJson.alphabet.Any(a =>
+                a == null ||
+                a.Length < 2 ||
+                string.IsNullOrWhiteSpace(a[0]) ||
+                a[1] == null))
+            {
+                throw new Exception($"Error in format of Transliteration file {path}");    
+            }
+
+            var dictionary =
+                alphabetJson.alphabet
                 .ToDictionary(
-                    x => (char)x[0], 
-                    x => (string)x[1]);
+                    x => x[0][0],
+                    x => x[1]);
 
             var alphabet = new TransliterationAlphabet(languageCode, dictionary);
 
             Alphabets.Add(alphabet);
 
             return alphabet;
+        }
+
+        public static Stream GenerateStreamFromString(string s)
+        {
+            MemoryStream stream = new MemoryStream();
+            StreamWriter writer = new StreamWriter(stream);
+            writer.Write(s);
+            writer.Flush();
+            stream.Position = 0;
+            return stream;
         }
     }
 }
