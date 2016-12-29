@@ -57,9 +57,10 @@ namespace DLaB.AttributeManager
         {
             var picklist =  new PicklistAttributeMetadata
             {
-                FormulaDefinition = att.FormulaDefinition,
                 DefaultFormValue = att.DefaultFormValue,
-                OptionSet = att.OptionSet
+                FormulaDefinition = att.FormulaDefinition,
+                OptionSet = att.OptionSet,
+                SourceType = att.SourceType
             };
 
             if (picklist.OptionSet.IsGlobal.GetValueOrDefault())
@@ -89,8 +90,9 @@ namespace DLaB.AttributeManager
             return new DateTimeAttributeMetadata
             {
                 Format = att.Format,
+                FormulaDefinition = att.FormulaDefinition,
                 ImeMode = att.ImeMode,
-                FormulaDefinition = att.FormulaDefinition
+                SourceType = att.SourceType
             };
         }
 
@@ -100,7 +102,8 @@ namespace DLaB.AttributeManager
             {
                 DefaultValue = att.DefaultValue,
                 FormulaDefinition = att.FormulaDefinition,
-                OptionSet = new BooleanOptionSetMetadata(att.OptionSet.TrueOption, att.OptionSet.FalseOption)
+                OptionSet = new BooleanOptionSetMetadata(att.OptionSet.TrueOption, att.OptionSet.FalseOption),
+                SourceType = att.SourceType
             };
         }
 
@@ -109,9 +112,10 @@ namespace DLaB.AttributeManager
             return new IntegerAttributeMetadata
             {
                 Format = att.Format,
+                FormulaDefinition = att.FormulaDefinition,
                 MaxValue = att.MaxValue,
                 MinValue = att.MinValue,
-                FormulaDefinition = att.FormulaDefinition
+                SourceType = att.SourceType                
             };
         }
 
@@ -119,11 +123,12 @@ namespace DLaB.AttributeManager
         {
             return new DecimalAttributeMetadata
             {
+                FormulaDefinition = att.FormulaDefinition,
+                ImeMode = att.ImeMode,
                 MaxValue = att.MaxValue,
                 MinValue = att.MinValue,
                 Precision = att.Precision,
-                ImeMode = att.ImeMode,
-                FormulaDefinition = att.FormulaDefinition
+                SourceType = att.SourceType
             };
         }
 
@@ -132,11 +137,12 @@ namespace DLaB.AttributeManager
             return new StringAttributeMetadata
             {
                 Format = att.Format,
+                FormulaDefinition = att.FormulaDefinition,
                 FormatName = att.FormatName,
                 ImeMode = att.ImeMode,
                 MaxLength = att.MaxLength,
-                YomiOf = att.YomiOf,
-                FormulaDefinition = att.FormulaDefinition
+                SourceType = att.SourceType,
+                YomiOf = att.YomiOf
             };
         }
 
@@ -183,13 +189,14 @@ namespace DLaB.AttributeManager
         {
             return new MoneyAttributeMetadata
             {
+                CalculationOf = att.CalculationOf,
+                FormulaDefinition = att.FormulaDefinition,
                 ImeMode = att.ImeMode,
                 MaxValue = att.MaxValue,
                 MinValue = att.MinValue,
                 Precision = att.Precision,
                 PrecisionSource = att.PrecisionSource,
-                CalculationOf = att.CalculationOf,
-                FormulaDefinition = att.FormulaDefinition
+                SourceType = att.SourceType
             };
         }
 
@@ -228,6 +235,7 @@ namespace DLaB.AttributeManager
             return newAttribute;
         }
 
+        // ReSharper disable once UnusedParameter.Local
         private AttributeMetadata CreateAttributeWithDifferentNameInternal(IOrganizationService service, LookupAttributeMetadata existingAtt, string newSchemaName, AttributeMetadata newAttributeType)
         {
             if (newAttributeType != null)
