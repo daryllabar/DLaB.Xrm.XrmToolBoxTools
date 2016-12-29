@@ -20,12 +20,12 @@
  - Added Language JSON for Italian (1040) #71
  - Added Language JSON for Norwegian (1044) #72
  - Added Language JSON for Polish (1045) #59 
- - Added Save/Load configuration Waiting For Publish #55
- - Added Using TFS Command Line, rather than C# dlls to Check out from TFS enhancement Waiting For Publish #57
+ - Added Save/Load configuration #55
+ - Added Using TFS Command Line, rather than C# dlls to Check out from TFS enhancement #57
  - Added Default to first Localized Value if none is found for Option Set #63
  - Fixed Error generating option sets using default settings - null argument #64
- - Fixed Option Sets not getting added to TFS Waiting For Publish #11 
- - Fixed Using Current Credentials is missing UserName bug Waiting For Publish #47
+ - Fixed Option Sets not getting added to TFS #11 
+ - Fixed Using Current Credentials is missing UserName bug #47
  - Fixed Error creating Entities.cs #58
 
 V1.2016.9.10
