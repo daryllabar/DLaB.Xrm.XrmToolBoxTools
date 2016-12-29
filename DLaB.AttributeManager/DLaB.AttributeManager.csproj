@@ -194,7 +194,7 @@
 </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>xcopy /I /Y "$(TargetPath)" "$(SolutionDir)DLaB.EarlyBoundGenerator\$(OutDir)Plugins\"
+    <PostBuildEvent>xcopy /I /Y "$(TargetPath)" "$(SolutionDir)DLaB.EarlyBoundGenerator\$(OutDir)MscrmTools\XrmToolBox\Plugins\"
 xcopy /I /Y "$(TargetDir)DLaB.*.dll" "$(TargetDir)Plugins\"
 DEL /Q "$(TargetDir)DLaB.*"
 DEL /Q "$(TargetDir)Microsoft.IdentityModel.dll"    

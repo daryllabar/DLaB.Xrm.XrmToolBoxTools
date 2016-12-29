@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.XrmToolBoxTools</id>
-	  <version>1.2016.9.10</version>
+	  <version>1.2016.12.28</version>
 	  <title>DLaB Tools for XrmToolBox</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,21 +11,39 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Early Bound Generator and Attribute Manager.</description>
-    <releaseNotes>Attribute Manager:
-- None
+    <releaseNotes>V1.2016.12.28
+ Attribute Manager:
+ - Only Change Plugin Step Filters and Images that are for the current entity bug #60
+ - Ability to change the name/convert to a calculated or rollup field #67
+ 
+ EarlyBoundGenerator:
+ - Added Language JSON for Italian (1040) #71
+ - Added Language JSON for Norwegian (1044) #72
+ - Added Language JSON for Polish (1045) #59 
+ - Added Save/Load configuration Waiting For Publish #55
+ - Added Using TFS Command Line, rather than C# dlls to Check out from TFS enhancement Waiting For Publish #57
+ - Added Default to first Localized Value if none is found for Option Set #63
+ - Fixed Error generating option sets using default settings - null argument #64
+ - Fixed Option Sets not getting added to TFS Waiting For Publish #11 
+ - Fixed Using Current Credentials is missing UserName bug Waiting For Publish #47
+ - Fixed Error creating Entities.cs #58
 
-EarlyBoundGenerator:
-- Fixed issue with wrong version of Active Directory Dll being referenced
+V1.2016.9.10
+ Attribute Manager:
+ - None
+ 
+ EarlyBoundGenerator:
+ - Fixed issue with wrong version of Active Directory Dll being referenced
     </releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>
     <dependencies>
-      <dependency id="XrmToolBox" version="1.2016.4.27" />
+      <dependency id="XrmToolBox" version="1.2016.11.4" />
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\Plugins\DLaB.*.dll" target="lib\net452\plugins" />
-    <file src="bin\Release\Plugins\CrmSvcUtil Ref\*.*" target="lib\net452\plugins\CrmSvcUtil Ref" />
-	  <file src="bin\Release\Plugins\CrmSvcUtil Ref\alphabets\*.*" target="lib\net452\plugins\CrmSvcUtil Ref\alphabets" />
+    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.*.dll" target="lib\net452\plugins" />
+    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\*.*" target="lib\net452\plugins\CrmSvcUtil Ref" />
+	  <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\alphabets\*.*" target="lib\net452\plugins\CrmSvcUtil Ref\alphabets" />
   </files>
 </package>

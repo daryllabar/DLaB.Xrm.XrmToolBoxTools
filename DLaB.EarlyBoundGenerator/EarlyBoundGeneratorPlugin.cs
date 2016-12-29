@@ -627,6 +627,10 @@ namespace DLaB.EarlyBoundGenerator
             {
                 ConnectionSettings.Save(ConnectionDetail);
             }
+            if (File.Exists(ConnectionSettings.FullSettingsPath))
+            {
+                HydrateUiFromSettings(ConnectionSettings.FullSettingsPath);
+            }
         }
 
         private void EarlyBoundGenerator_ConnectionUpdated(object sender, ConnectionUpdatedEventArgs e)

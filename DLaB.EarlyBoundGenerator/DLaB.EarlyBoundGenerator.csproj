@@ -302,7 +302,9 @@ xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Clie
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Client.CodeGeneration.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Tooling.*.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Sdk.Deployment.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Sdk.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"</PostBuildEvent>
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Sdk.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"
+
+if $(ConfigurationName) == Release xcopy /I /Y "$(TargetDir)Plugins\*.*" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
