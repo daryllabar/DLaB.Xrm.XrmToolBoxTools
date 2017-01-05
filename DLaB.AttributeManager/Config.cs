@@ -79,7 +79,7 @@ namespace DLaB.AttributeManager
 
             var serializer = new XmlSerializer(typeof(POCO.Config));
             POCO.Config poco;
-            using (var fs = new FileStream(filePath, FileMode.Open))
+            using (var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
                 poco = (POCO.Config)serializer.Deserialize(fs);
                 fs.Close();

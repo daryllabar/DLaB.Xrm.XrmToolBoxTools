@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
 using DLaB.Common;
+using DLaB.Common.VersionControl;
 using Microsoft.Xrm.Sdk.Client;
 using XrmToolBox.Extensibility;
 
@@ -385,9 +386,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 }
 
 
+
                 var serializer = new XmlSerializer(typeof (POCO.Config));
                 POCO.Config poco;
-                using (var fs = new FileStream(filePath, FileMode.Open))
+                using (var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
                 {
                     poco = (POCO.Config) serializer.Deserialize(fs);
                     fs.Close();
@@ -403,6 +405,39 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         public void Save(string filePath)
         {
+            var undoCheckoutIfUnchanged = false;
+            var attributes = File.GetAttributes(filePath);
+            if (attributes.HasFlag(FileAttributes.ReadOnly))
+            {
+                attributes = attributes & ~FileAttributes.ReadOnly;
+                if (this.ExtensionConfig.UseTfsToCheckoutFiles)
+                {
+                    try
+                    {
+                        var tfs = new VsTfsSourceControlProvider();
+                        tfs.Checkout(filePath);
+                        if (File.GetAttributes(filePath).HasFlag(FileAttributes.ReadOnly))
+                        {
+                            // something failed, just make it editable.
+                            File.SetAttributes(filePath, attributes);
+                        }
+                        else
+                        {
+                            undoCheckoutIfUnchanged = true;
+                        }
+                    }
+                    catch
+                    {
+                        // eat it and just make it editable.
+                        File.SetAttributes(filePath, attributes);
+                    }
+                }
+                else
+                {
+                    File.SetAttributes(filePath, attributes);
+                }
+            }
+
             var serializer = new XmlSerializer(typeof (EarlyBoundGeneratorConfig));
             var xmlWriterSettings = new XmlWriterSettings
             {
@@ -413,6 +448,12 @@ namespace DLaB.EarlyBoundGenerator.Settings
             {
                 serializer.Serialize(xmlWriter, this);
                 xmlWriter.Close();
+            }
+
+            if (undoCheckoutIfUnchanged)
+            {
+                var tfs = new VsTfsSourceControlProvider();
+                tfs.UndoCheckoutIfUnchanged(filePath);
             }
         }
 

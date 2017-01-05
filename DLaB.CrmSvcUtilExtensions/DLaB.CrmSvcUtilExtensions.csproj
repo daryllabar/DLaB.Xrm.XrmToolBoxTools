@@ -41,8 +41,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\CrmSvcUtil.exe</HintPath>
     </Reference>
-    <Reference Include="DLaB.Common, Version=1.0.3.11, Culture=neutral, PublicKeyToken=046d6d5d1685e1b4, processorArchitecture=MSIL">
-      <HintPath>..\packages\DLaB.Common.1.0.3-alpha11\lib\net452\DLaB.Common.dll</HintPath>
+    <Reference Include="DLaB.Common, Version=1.0.3.12, Culture=neutral, PublicKeyToken=046d6d5d1685e1b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\DLaB.Common.1.0.3-alpha12\lib\net452\DLaB.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Xrm.Client">

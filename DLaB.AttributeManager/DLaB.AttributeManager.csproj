@@ -164,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="AttributeManager.nuspec" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -192,7 +193,7 @@
 </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>xcopy /I /Y "$(TargetDir)DLaB.*.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\"
+    <PostBuildEvent>xcopy "$(TargetDir)DLaB.*.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\" /I /Y
 DEL /Q "$(TargetDir)DLaB.*"
 
 if "$(ConfigurationName)" == "Release" goto RunILMerge
