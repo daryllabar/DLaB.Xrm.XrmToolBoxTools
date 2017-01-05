@@ -1,22 +1,22 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>DLaB.Xrm.XrmToolBoxTools</id>
-	  <version>1.2016.12.28</version>
-	  <title>DLaB Tools for XrmToolBox</title>
+    <id>DLaB.Xrm.EarlyBoundGenerator</id>
+	  <version>1.2016.12.29</version>
+	  <title>Early Bound Generator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
     <licenseUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Early Bound Generator and Attribute Manager.</description>
-    <releaseNotes>V1.2016.12.28
- Attribute Manager:
- - Only Change Plugin Step Filters and Images that are for the current entity bug #60
- - Ability to change the name/convert to a calculated or rollup field #67
- 
- EarlyBoundGenerator:
+    <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
+    <releaseNotes>V1.2016.12.29
+ - Split off into seperate NuGet Package
+ - Removed use of Early Bounded Entities
+ - Fixed configuration handling #74
+
+V1.2016.12.28
  - Added Language JSON for Italian (1040) #71
  - Added Language JSON for Norwegian (1044) #72
  - Added Language JSON for Polish (1045) #59 
@@ -29,10 +29,6 @@
  - Fixed Error creating Entities.cs #58
 
 V1.2016.9.10
- Attribute Manager:
- - None
- 
- EarlyBoundGenerator:
  - Fixed issue with wrong version of Active Directory Dll being referenced
     </releaseNotes>
     <copyright>Copyright 2016</copyright>
@@ -42,7 +38,7 @@ V1.2016.9.10
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.*.dll" target="lib\net452\plugins" />
+    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator.dll" target="lib\net452\plugins" />
     <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\*.*" target="lib\net452\plugins\CrmSvcUtil Ref" />
 	  <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\alphabets\*.*" target="lib\net452\plugins\CrmSvcUtil Ref\alphabets" />
   </files>

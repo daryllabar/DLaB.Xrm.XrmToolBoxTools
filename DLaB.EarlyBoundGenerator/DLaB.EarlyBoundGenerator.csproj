@@ -43,10 +43,6 @@
       <HintPath>..\packages\DLaB.Xrm.2016.1.1.9.27\lib\net452\DLaB.Xrm.2016.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DLaB.Xrm.Entities, Version=8.1.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DLaB.Xrm.Entities.8.1.0.1\lib\net452\DLaB.Xrm.Entities.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="McTools.Xrm.Connection, Version=1.2016.9.1, Culture=neutral, PublicKeyToken=96037217801d9658, processorArchitecture=MSIL">
       <HintPath>..\packages\MscrmTools.Xrm.Connection.1.2016.9.1\lib\net452\McTools.Xrm.Connection.dll</HintPath>
       <Private>True</Private>
@@ -262,6 +258,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -275,13 +272,14 @@
       <Name>DLaB.XrmToolboxCommon</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.exe" "$(ProjectDir)Properties\AssemblyInfo.cs"
 </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>xcopy /I /Y "$(TargetDir)DLaB.*.dll" "$(TargetDir)Plugins\"
+    <PostBuildEvent>xcopy /I /Y "$(TargetDir)DLaB.*.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\"
 DEL /Q "$(TargetDir)DLaB.*"
 DEL /Q "$(TargetDir)Microsoft.IdentityModel.dll"    
 DEL /Q "$(TargetDir)Microsoft.Xrm.Sdk.Workflow.dll"
@@ -304,7 +302,23 @@ xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Tool
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Sdk.Deployment.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Sdk.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"
 
-if $(ConfigurationName) == Release xcopy /I /Y "$(TargetDir)Plugins\*.*" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\"</PostBuildEvent>
+if "$(ConfigurationName)" == "Release" goto RunILMerge
+
+goto exit
+
+:RunILMerge
+
+REM **** Create ILMerge Directory ****
+md "$(TargetDir)IlMerge"
+
+REM **** Delete Previous Log ****
+del "$(TargetDir)IlMerge\Log.txt"
+
+REM **** Run IlMerge ****
+"$(SolutionDir)packages\ILMerge.2.14.1208\tools\ILMerge.exe" /log:"$(TargetDir)IlMerge\Log.txt" /targetplatform:"v4,c:\windows\Microsoft.NET\Framework\v4.0.30319" /out:"$(TargetDir)IlMerge\$(TargetFileName)" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\$(TargetFileName)" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.Common.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.Xrm.2016.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.XrmToolboxCommon.dll"
+
+ xcopy /I /Y "$(TargetDir)IlMerge\*.*" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\"
+:exit</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

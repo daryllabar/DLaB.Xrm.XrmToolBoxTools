@@ -29,13 +29,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         public static ConnectionSettings GetForConnection(ConnectionDetail connectionDetail)
         {
-            if (connectionDetail == null)
-            {
-                return null; 
-            }
             ConnectionSettings localSettings;
-            SettingsManager.Instance.TryLoad(typeof(EarlyBoundGeneratorPlugin), out localSettings, connectionDetail.ConnectionName);
-            return localSettings;
+            // ReSharper disable once UnusedVariable
+            var loadedSuccessfully = SettingsManager.Instance.TryLoad(typeof(EarlyBoundGeneratorPlugin), out localSettings, connectionDetail?.ConnectionName) ||
+                                     SettingsManager.Instance.TryLoad(typeof(EarlyBoundGeneratorPlugin), out localSettings);
+            return localSettings ?? GetDefault();
         }
     }
 }

@@ -70,12 +70,21 @@ namespace DLaB.EarlyBoundGenerator
             try
             {
                 Settings = EarlyBoundGeneratorConfig.Load(settingsPath);
+                SkipSaveSettings = false;
             }
             catch (Exception ex)
             {
                 TxtOutput.AppendText($"Unable to Load Settings from Config file: {settingsPath}.  {ex}");
-                SkipSaveSettings = true;
-                Settings = EarlyBoundGeneratorConfig.GetDefault();
+                var result = MessageBox.Show(@"The Settings File is either empty or malformed.  Would you like to reset the file to the default settings?", @"Unable to Load Settings!", MessageBoxButtons.YesNo, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                if (result == DialogResult.Yes)
+                {
+                    Settings = EarlyBoundGeneratorConfig.GetDefault();
+
+                }
+                else
+                {
+                    SkipSaveSettings = true;
+                }
             }
 
             ChkAddDebuggerNonUserCode.Checked = Settings.ExtensionConfig.AddDebuggerNonUserCode;
@@ -121,11 +130,11 @@ namespace DLaB.EarlyBoundGenerator
         public override void ClosingPlugin(PluginCloseInfo info)
         {
             base.ClosingPlugin(info);
+            HydrateSettingsFromUI();
+            SaveSettings();
             if (info.Cancel || SkipSaveSettings) return;
 
             ConnectionDetail = null; // Don't save the Connection Details when closing.
-            HydrateSettingsFromUI();
-            SaveSettings();
         }
 
         private void Create(CreationType creationType)
