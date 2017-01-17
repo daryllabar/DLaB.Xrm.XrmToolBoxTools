@@ -715,7 +715,8 @@ namespace DLaB.AttributeManager
         private void UpdatePluginStepImages(IOrganizationService service, AttributeMetadata att, AttributeMetadata to)
         {
             var qe = QueryExpressionFactory.Create<SdkMessageProcessingStepImage>();
-            qe.AddLink<SdkMessageFilter>(SdkMessageProcessingStepImage.Fields.SdkMessageProcessingStepId, SdkMessageFilter.Fields.SdkMessageFilterId)
+            qe.AddLink<SdkMessageProcessingStep>(SdkMessageProcessingStepImage.Fields.SdkMessageProcessingStepId)
+                .AddLink<SdkMessageFilter>(SdkMessageProcessingStep.Fields.SdkMessageFilterId)
                 .WhereEqual(SdkMessageFilter.Fields.PrimaryObjectTypeCode, att.EntityLogicalName);
             AddConditionsForValueInCsv(qe.Criteria, SdkMessageProcessingStepImage.Fields.Attributes1, att.LogicalName);
 
@@ -885,6 +886,8 @@ namespace DLaB.AttributeManager
             var total = GetRecordCount(service, from);
             var count = 0;
 
+            var watch = new Stopwatch();
+            watch.Start(); 
             Trace("Copying data from {0} to {1}", from.LogicalName, to.LogicalName);
             var requests = new OrganizationRequestCollection();
             // Grab from and to, and only update if not equal.  This is to speed things up if it has failed part way through
@@ -936,7 +939,8 @@ namespace DLaB.AttributeManager
                 PerformUpdates(service, requests);
             }
 
-            Trace("Data Migration Complete", count, total);
+            watch.Stop();
+            Trace("Data Migration Complete.  Total {0} records in {1} seconds.", total, watch.ElapsedMilliseconds / 1000);
         }
 
         private void PerformUpdates(IOrganizationService service, OrganizationRequestCollection requests)

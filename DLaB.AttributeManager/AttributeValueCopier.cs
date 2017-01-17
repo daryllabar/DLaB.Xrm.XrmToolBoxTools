@@ -77,7 +77,17 @@ namespace DLaB.AttributeManager
         private object CopyValueInternal(AttributeMetadata oldAttribute, IntegerAttributeMetadata newAttribute, object value)
         {
             int output;
-            if (int.TryParse(value.ToString(), out output))
+            var unformatted = value.ToString();
+            // Handle 1.0000
+            if (unformatted.Contains("."))
+            {
+                while (unformatted.EndsWith("0") || unformatted.EndsWith("."))
+                {
+                    unformatted = unformatted.Substring(0, unformatted.Length - 1);
+                }
+            }
+
+            if (int.TryParse(unformatted, out output))
             {
                 return output;
             }
