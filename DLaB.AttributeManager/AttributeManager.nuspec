@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.AttributeManager</id>
-	  <version>1.2017.1.5</version>
+	  <version>1.2017.1.17</version>
 	  <title>Attribute Manager</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,12 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>BETA! - Used to rename/delete/or change the type of an attribute.</description>
-    <releaseNotes>V1.2017.1.5
+    <releaseNotes>V1.2017.1.17
+ - Fixed MessageProccessingStepImage not getting removed #81
+ - Fixed 1.000 not converted to integer #80
+ - Added Timing of Data Migration
+      
+V1.2017.1.5
  - Removed Readonly Flag on Settings
       
 V1.2016.12.29
