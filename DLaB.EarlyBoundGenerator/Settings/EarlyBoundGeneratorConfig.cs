@@ -405,38 +405,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         public void Save(string filePath)
         {
-            var undoCheckoutIfUnchanged = false;
             var attributes = File.GetAttributes(filePath);
-            if (attributes.HasFlag(FileAttributes.ReadOnly))
-            {
-                attributes = attributes & ~FileAttributes.ReadOnly;
-                if (this.ExtensionConfig.UseTfsToCheckoutFiles)
-                {
-                    try
-                    {
-                        var tfs = new VsTfsSourceControlProvider();
-                        tfs.Checkout(filePath);
-                        if (File.GetAttributes(filePath).HasFlag(FileAttributes.ReadOnly))
-                        {
-                            // something failed, just make it editable.
-                            File.SetAttributes(filePath, attributes);
-                        }
-                        else
-                        {
-                            undoCheckoutIfUnchanged = true;
-                        }
-                    }
-                    catch
-                    {
-                        // eat it and just make it editable.
-                        File.SetAttributes(filePath, attributes);
-                    }
-                }
-                else
-                {
-                    File.SetAttributes(filePath, attributes);
-                }
-            }
+            var undoCheckoutIfUnchanged = EnsureFileIsEditable(filePath, attributes);
 
             var serializer = new XmlSerializer(typeof (EarlyBoundGeneratorConfig));
             var xmlWriterSettings = new XmlWriterSettings
@@ -455,6 +425,45 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 var tfs = new VsTfsSourceControlProvider();
                 tfs.UndoCheckoutIfUnchanged(filePath);
             }
+        }
+
+        private bool EnsureFileIsEditable(string filePath, FileAttributes attributes)
+        {
+            var undoCheckoutIfUnchanged = false;
+            if (!attributes.HasFlag(FileAttributes.ReadOnly))
+            {
+                return false;
+            }
+
+            attributes = attributes & ~FileAttributes.ReadOnly;
+            if (this.ExtensionConfig.UseTfsToCheckoutFiles)
+            {
+                try
+                {
+                    var tfs = new VsTfsSourceControlProvider();
+                    tfs.Checkout(filePath);
+                    if (File.GetAttributes(filePath).HasFlag(FileAttributes.ReadOnly))
+                    {
+                        // something failed, just make it editable.
+                        File.SetAttributes(filePath, attributes);
+                    }
+                    else
+                    {
+                        undoCheckoutIfUnchanged = true;
+                    }
+                }
+                catch
+                {
+                    // eat it and just make it editable.
+                    File.SetAttributes(filePath, attributes);
+                }
+            }
+            else
+            {
+                File.SetAttributes(filePath, attributes);
+            }
+
+            return undoCheckoutIfUnchanged;
         }
 
         public string GetSettingValue(CreationType creationType, string setting)

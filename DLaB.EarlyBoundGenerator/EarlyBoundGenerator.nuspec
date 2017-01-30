@@ -11,7 +11,10 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V1.2017.1.5
+    <releaseNotes>V1.2017.1.30
+ - Fixed DLaB.EarlyBoundGenerator.Settings.xml isn't generated #83
+
+V1.2017.1.5
  - Fixed TFS Get/Checkout command errors if longer than 32000 #77
  - Fixed If EBG Config file is readonly it fails to read the settings #76
  
