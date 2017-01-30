@@ -195,6 +195,7 @@
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetDir)DLaB.*.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\" /I /Y
 DEL /Q "$(TargetDir)DLaB.*"
+DEL /Q "$(TargetDir)MscrmTools\XrmToolBox\Plugins\*.*"
 
 if "$(ConfigurationName)" == "Release" goto RunILMerge
 
