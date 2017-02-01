@@ -281,11 +281,11 @@
 </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>xcopy /I /Y "$(TargetDir)DLaB.*.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\"
+    <PostBuildEvent>DEL /Q "$(TargetDir)MscrmTools\XrmToolBox\Plugins\*.*"
+xcopy /I /Y "$(TargetDir)DLaB.*.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\"
 DEL /Q "$(TargetDir)DLaB.*"
 DEL /Q "$(TargetDir)Microsoft.IdentityModel.dll"    
 DEL /Q "$(TargetDir)Microsoft.Xrm.Sdk.Workflow.dll"
-DEL /Q "$(TargetDir)MscrmTools\XrmToolBox\Plugins\*.*"
 
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)CrmSvcUtil.exe" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)CrmSvcUtil.exe.config" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"

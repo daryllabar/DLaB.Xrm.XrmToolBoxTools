@@ -405,8 +405,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         public void Save(string filePath)
         {
-            var attributes = File.GetAttributes(filePath);
-            var undoCheckoutIfUnchanged = EnsureFileIsEditable(filePath, attributes);
+            var undoCheckoutIfUnchanged = FileRequiresUndoCheckout(filePath);
 
             var serializer = new XmlSerializer(typeof (EarlyBoundGeneratorConfig));
             var xmlWriterSettings = new XmlWriterSettings
@@ -427,8 +426,14 @@ namespace DLaB.EarlyBoundGenerator.Settings
             }
         }
 
-        private bool EnsureFileIsEditable(string filePath, FileAttributes attributes)
+        private bool FileRequiresUndoCheckout(string filePath)
         {
+            if (!File.Exists(filePath))
+            {
+                return false;
+            }
+            var attributes = File.GetAttributes(filePath);
+
             var undoCheckoutIfUnchanged = false;
             if (!attributes.HasFlag(FileAttributes.ReadOnly))
             {
