@@ -86,7 +86,7 @@ namespace DLaB.EarlyBoundGenerator
 
         private void ChkGenerateAttributeNameConsts_MouseEnter(object sender, EventArgs e)
         {
-            TxtHelp.Text = @"Adds a Struct to each Entity class that contains the Logical Names of all attributes for the Entity.";
+            TxtHelp.Text = @"Adds a Static Class to each Entity class that contains the Logical Names of all attributes for the Entity.";
         }
 
         private void ChkGenerateAnonymousTypeConstructor_MouseEnter(object sender, EventArgs e)
