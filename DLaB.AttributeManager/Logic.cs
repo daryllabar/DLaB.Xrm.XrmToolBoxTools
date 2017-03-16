@@ -672,6 +672,10 @@ namespace DLaB.AttributeManager
             qe.AddLink<SdkMessageFilter>(SdkMessageFilter.Fields.SdkMessageFilterId)
                 .WhereEqual(SdkMessageFilter.Fields.PrimaryObjectTypeCode, att.EntityLogicalName);
             AddConditionsForValueInCsv(qe.Criteria, SdkMessageProcessingStep.Fields.FilteringAttributes, att.LogicalName);
+            qe.WhereIn(SdkMessageProcessingStep.Fields.Stage,
+                (int)SdkMessageProcessingStep_Stage.Postoperation,
+                (int)SdkMessageProcessingStep_Stage.Preoperation,
+                (int)SdkMessageProcessingStep_Stage.Prevalidation);
 
             Trace("Checking for Plugin Registration Step Filtering Attribute Dependencies with Query: " + qe.GetSqlStatement());
 
@@ -679,7 +683,7 @@ namespace DLaB.AttributeManager
             {
                 var filter = ReplaceCsvValues(step.FilteringAttributes, att.LogicalName, to.LogicalName);
                 Trace("Updating {0} - \"{1}\" to \"{2}\"", step.Name, step.FilteringAttributes, filter);
-                service.Update(new SdkMessageProcessingStep()
+                service.Update(new SdkMessageProcessingStep
                 {
                     Id = step.Id,
                     FilteringAttributes = filter
@@ -709,6 +713,12 @@ namespace DLaB.AttributeManager
                 values[index] = to;
                 index = Array.IndexOf(values, from);
             }
+            return string.Join(",", values);
+        }
+
+        private static string RemoveValueFromCsvValues(string csv, string value)
+        {
+            var values = csv.Split(',').Where(s => s != value);
             return string.Join(",", values);
         }
 
@@ -751,9 +761,13 @@ namespace DLaB.AttributeManager
 
             foreach (var workflow in service.GetEntitiesById<Workflow>(depends.Select(d => d.DependentComponentObjectId.GetValueOrDefault())))
             {
+                var workflowToUpdate = new Workflow
+                {
+                    Id = workflow.Id
+                };
                 Trace("Updating {0} - {1} ({2})", workflow.CategoryEnum.ToString(), workflow.Name, workflow.Id);
                 var xml = UpdateBusinessProcessFlowClassId(workflow.Xaml, att, to);
-                workflow.Xaml = xml.Replace("\"" + att.LogicalName + "\"", "\"" + to.LogicalName + "\"");
+                workflowToUpdate.Xaml = xml.Replace("\"" + att.LogicalName + "\"", "\"" + to.LogicalName + "\"");
                 var activate = workflow.StateCode == WorkflowState.Activated;
                 if (activate)
                 {
@@ -782,7 +796,17 @@ namespace DLaB.AttributeManager
                         });
                     }
 
-                    service.Update(workflow);
+                    if (workflow.TriggerOnUpdateAttributeList != null)
+                    {
+                        var onUpdateFilters = ReplaceCsvValues(workflow.TriggerOnUpdateAttributeList, att.LogicalName, to.LogicalName);
+                        if (onUpdateFilters != workflow.TriggerOnUpdateAttributeList)
+                        {
+                            Trace("Updating {0} On Update Filter - \"{1}\" to \"{2}\"", workflow.Name, workflow.TriggerOnUpdateAttributeList, onUpdateFilters);
+                            workflowToUpdate.TriggerOnUpdateAttributeList = onUpdateFilters;
+                        }
+                    }
+
+                    service.Update(workflowToUpdate);
                 }
                 finally
                 {

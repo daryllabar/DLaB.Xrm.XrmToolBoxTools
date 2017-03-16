@@ -153,10 +153,11 @@ namespace DLaB.AttributeManager
 
             foreach (var workflow in service.GetEntitiesById<Workflow>(depends.Select(d => d.DependentComponentObjectId.GetValueOrDefault())))
             {
+                var workflowToUpdate = new Workflow { Id = workflow.Id };
                 Trace("Updating {0} - {1} ({2})", workflow.CategoryEnum.ToString(), workflow.Name, workflow.Id);
-                workflow.Xaml = RemoveParentXmlNodesWithTagValue(workflow.Xaml, "mxswa:ActivityReference AssemblyQualifiedName=\"Microsoft.Crm.Workflow.Activities.StepComposite,", "mcwb:Control", "DataFieldName", att.LogicalName, "mxswa:ActivityReference");
+                workflowToUpdate.Xaml = RemoveParentXmlNodesWithTagValue(workflow.Xaml, "mxswa:ActivityReference AssemblyQualifiedName=\"Microsoft.Crm.Workflow.Activities.StepComposite,", "mcwb:Control", "DataFieldName", att.LogicalName, "mxswa:ActivityReference");
                 var unsupportedXml = RemoveXmlNodesWithTagValue(workflow.Xaml, "mxswa:GetEntityProperty", "Attribute", att.LogicalName);
-                if (workflow.Xaml != unsupportedXml)
+                if (workflowToUpdate.Xaml != unsupportedXml)
                 {
                     throw new NotImplementedException("Attribute is used in a Business Rules Get Entity Property.  This is unsupported for manual deletion.  Delete the Business Rule " + workflow.Name + " manually to be able to delete the attribute.");
                 }
@@ -184,7 +185,17 @@ namespace DLaB.AttributeManager
                         service.Delete(ProcessTrigger.EntityLogicalName, trigger.Id);
                     }
 
-                    service.Update(workflow);
+                    if (workflow.TriggerOnUpdateAttributeList != null)
+                    {
+                        var newValue = RemoveValueFromCsvValues(workflow.TriggerOnUpdateAttributeList, att.LogicalName);
+                        if (newValue != workflow.TriggerOnUpdateAttributeList)
+                        {
+                            Trace("Updating workflow {0} Trigger On Update Filter - \"{1}\" to \"{2}\"", workflow.Name, workflow.TriggerOnUpdateAttributeList, newValue);
+                            workflowToUpdate.TriggerOnUpdateAttributeList = newValue;
+                        }
+                    }
+
+                    service.Update(workflowToUpdate);
                 }
                 finally
                 {
