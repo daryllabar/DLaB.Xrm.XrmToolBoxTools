@@ -69,8 +69,9 @@ namespace DLaB.AttributeManager
             return new HashSet<int>(resp.LocaleIds);
         }
 
-        public void Run(AttributeMetadata att, string newAttributeSchemaName, Steps stepsToPerform, Action actions, AttributeMetadata newAttributeType = null)
+        public void Run(AttributeMetadata att, string newAttributeSchemaName, Steps stepsToPerform, Action actions, AttributeMetadata newAttributeType = null, Dictionary<string,string> migrationMapping = null)
         {
+            migrationMapping = migrationMapping ?? new Dictionary<string, string>();
             var state = GetApplicationMigrationState(Service, att, newAttributeSchemaName);
             AssertValidStepsForState(att.SchemaName, newAttributeSchemaName, stepsToPerform, state, actions);
             var oldAtt = state.Old;
@@ -91,7 +92,7 @@ namespace DLaB.AttributeManager
                 case Action.Rename:
                 case Action.Rename | Action.ChangeType:
                     CreateNew(newAttributeSchemaName, stepsToPerform, oldAtt, ref newAtt, newAttributeType); // Create or Retrieve the New Attribute
-                    MigrateToNew(stepsToPerform, oldAtt, newAtt, actions);
+                    MigrateToNew(stepsToPerform, oldAtt, newAtt, actions, migrationMapping);
                     RemoveExisting(stepsToPerform, oldAtt);
                     break;
 
@@ -99,10 +100,10 @@ namespace DLaB.AttributeManager
                 case Action.ChangeCase | Action.ChangeType:
                 case Action.ChangeType:
                     CreateTemp(stepsToPerform, oldAtt, ref tmpAtt, newAttributeType); // Either Create or Retrieve the Temp
-                    MigrateToTemp(stepsToPerform, oldAtt, tmpAtt, actions);
+                    MigrateToTemp(stepsToPerform, oldAtt, tmpAtt, actions, migrationMapping);
                     RemoveExisting(stepsToPerform, oldAtt);
                     CreateNew(newAttributeSchemaName, stepsToPerform, tmpAtt, ref newAtt, newAttributeType);
-                    MigrateToNew(stepsToPerform, tmpAtt, newAtt, actions);
+                    MigrateToNew(stepsToPerform, tmpAtt, newAtt, actions, migrationMapping);
                     RemoveTemp(stepsToPerform, tmpAtt);
                     break;
             }
@@ -142,12 +143,12 @@ namespace DLaB.AttributeManager
             }
         }
 
-        private void MigrateToNew(Steps stepsToPerform, AttributeMetadata tmpAtt, AttributeMetadata newAtt, Action actions)
+        private void MigrateToNew(Steps stepsToPerform, AttributeMetadata tmpAtt, AttributeMetadata newAtt, Action actions, Dictionary<string, string> migrationMapping)
         {
             if (stepsToPerform.HasFlag(Steps.MigrateToNewAttribute))
             {
                 Trace("Beginning Step: Migrate To New Attribute");
-                MigrateAttribute(tmpAtt, newAtt, actions);
+                MigrateAttribute(tmpAtt, newAtt, actions, migrationMapping);
                 Trace("Completed Step: Migrate To New Attribute" + Environment.NewLine);
             }
         }
@@ -172,20 +173,20 @@ namespace DLaB.AttributeManager
             }
         }
 
-        private void MigrateToTemp(Steps stepsToPerform, AttributeMetadata oldAtt, AttributeMetadata tmpAtt, Action actions)
+        private void MigrateToTemp(Steps stepsToPerform, AttributeMetadata oldAtt, AttributeMetadata tmpAtt, Action actions, Dictionary<string, string> migrationMapping)
         {
             if (stepsToPerform.HasFlag(Steps.MigrateToTemp))
             {
                 Trace("Beginning Step: Migrate To Temp");
-                MigrateAttribute(oldAtt, tmpAtt, actions);
+                MigrateAttribute(oldAtt, tmpAtt, actions, migrationMapping);
                 Trace("Completed Step: Migrate To Temp" + Environment.NewLine);
             }
         }
 
-        private void MigrateAttribute(AttributeMetadata fromAtt, AttributeMetadata toAtt, Action actions)
+        private void MigrateAttribute(AttributeMetadata fromAtt, AttributeMetadata toAtt, Action actions, Dictionary<string,string> migrationMapping)
         {
             // Replace Old Attribute with Tmp Attribute
-            CopyData(Service, fromAtt, toAtt, actions);
+            CopyData(Service, fromAtt, toAtt, actions, migrationMapping);
             UpdateCalculatedFields(Service, fromAtt, toAtt);
             UpdateCharts(Service, fromAtt, toAtt);
             UpdateViews(Service, fromAtt, toAtt);
@@ -903,7 +904,7 @@ namespace DLaB.AttributeManager
 
         }
 
-        private void CopyData(IOrganizationService service, AttributeMetadata from, AttributeMetadata to, Action actions)
+        private void CopyData(IOrganizationService service, AttributeMetadata from, AttributeMetadata to, Action actions, Dictionary<string,string> migrationMapping)
         {
             if (!MigrateData) { return; }
 
@@ -914,11 +915,19 @@ namespace DLaB.AttributeManager
             watch.Start(); 
             Trace("Copying data from {0} to {1}", from.LogicalName, to.LogicalName);
             var requests = new OrganizationRequestCollection();
-            // Grab from and to, and only update if not equal.  This is to speed things up if it has failed part way through
-            foreach (var entity in service.GetAllEntities<Entity>(new QueryExpression(from.EntityLogicalName)
+
+            var qe = new QueryExpression(from.EntityLogicalName)
             {
                 ColumnSet = new ColumnSet(from.LogicalName, to.LogicalName)
-            }))
+            };
+            qe.WhereEqual(
+                new ConditionExpression(from.LogicalName, ConditionOperator.NotNull),
+                LogicalOperator.Or,
+                new ConditionExpression(from.LogicalName, ConditionOperator.Null),
+                new ConditionExpression(to.LogicalName, ConditionOperator.NotNull));
+            
+            // Grab from and to, and only update if not equal.  This is to speed things up if it has failed part way through
+            foreach (var entity in service.GetAllEntities<Entity>(qe))
             {
                 if (count++%100 == 0 || count == total)
                 {
@@ -931,12 +940,22 @@ namespace DLaB.AttributeManager
                     requests.Clear();
                 }
 
-                var value = entity.GetAttributeValue<Object>(from.LogicalName);
-                if (actions.HasFlag(Action.ChangeType) && from.GetType() != to.GetType())
+                var value = entity.GetAttributeValue<object>(from.LogicalName);
+                if (actions.HasFlag(Action.ChangeType))
                 {
-                    value = CopyValue(from, to, value);
+                    // If they types have changed, or going from a local to global option set or vis-a-versa
+                    if (from.GetType() != to.GetType() || from is PicklistAttributeMetadata)
+                    {
+                        value = CopyValue(from, to, value, migrationMapping);
+                    }
                 }
-                var toValue = entity.GetAttributeValue<Object>(to.LogicalName);
+                // If not changing the type, don't need to do a mapping.
+                //else if(migrationMapping.Count > 0)
+                //{
+                //    value = MapValue(value, migrationMapping);
+                //}
+
+                var toValue = entity.GetAttributeValue<object>(to.LogicalName);
 
                 if (value != null)
                 {

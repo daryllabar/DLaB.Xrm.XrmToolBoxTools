@@ -10,6 +10,7 @@ using DLaB.Common.Exceptions;
 using DLaB.Xrm;
 using DLaB.Xrm.Entities;
 using DLaB.XrmToolboxCommon;
+using Microsoft.VisualBasic.FileIO;
 using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Metadata;
 using XrmToolBox.Extensibility;
@@ -62,6 +63,7 @@ namespace DLaB.AttributeManager
             SetTabVisible(tabStringAttribute, false);
             SetTabVisible(tabNumberAttribute, false);
             SetTabVisible(tabOptionSetAttribute, false);
+            SetMappingFileVisible();
 
             SetCurrencyNumberVisible(false);
             SetDecimalNumberVisible(false);
@@ -242,7 +244,7 @@ namespace DLaB.AttributeManager
                 e.Result = result;
                 try
                 {
-                    info.Migrator.Run(info.CurrentAttribute, info.NewAttributeName, info.Steps, info.Action, info.NewAttribute);
+                    info.Migrator.Run(info.CurrentAttribute, info.NewAttributeName, info.Steps, info.Action, info.NewAttribute, GetMigrationMapping());
                     w.ReportProgress(99, "Steps Completed!");
                     result.Successful = true;
                 }
@@ -288,6 +290,48 @@ namespace DLaB.AttributeManager
                     Steps = steps
                 }
             });
+        }
+
+        private Dictionary<string,string> GetMigrationMapping()
+        {
+            var path = txtMappingFile.Text;
+            if(string.IsNullOrWhiteSpace(path))
+            {
+                return null;
+            }
+            if (!File.Exists(path))
+            {
+                MessageBox.Show(@"Mapping file: ""{path}"" was not found!  No Mapping will be performed!", 
+                                @"No Mapping File", 
+                                MessageBoxButtons.OK, 
+                                MessageBoxIcon.Warning);
+                return null;
+            }
+
+            var mapping = new Dictionary<string, string>();
+            using (var parser = new TextFieldParser(path))
+            {
+                parser.TextFieldType = FieldType.Delimited;
+                parser.SetDelimiters(",");
+                var line = 0;
+                while (!parser.EndOfData)
+                {
+                    line++;
+                    //Processing row
+                    var fields = parser.ReadFields();
+                    if (fields == null || fields.Length == 0)
+                    {
+                        continue;
+                    }
+                    if (fields.Length != 2)
+                    {
+                        throw new Exception(@"Error parsing file: ""{path}"" on line {line}.  Expected 2 values per line, found {fields.Length}." );
+                    }
+
+                    mapping.Add(fields[0], fields[1]);
+                }
+            }
+            return mapping;
         }
 
         private AttributeMetadata GetNewAttributeType()
@@ -806,6 +850,14 @@ namespace DLaB.AttributeManager
             }
         }
 
+        private void SetMappingFileVisible()
+        {
+            var visible = chkMigrate.Checked;
+            lblMappingFile.Visible = visible;
+            txtMappingFile.Visible = visible;
+            btnMappingFile.Visible = visible;
+        }
+
         private void clbSteps_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             clbSteps.ItemCheck -= clbSteps_ItemCheck;
@@ -868,6 +920,20 @@ namespace DLaB.AttributeManager
         private void txtNewAttributeName_TextChanged(object sender, EventArgs e)
         {
             UpdateDisplayedSteps();
+        }
+
+        private void chkMigrate_CheckedChanged(object sender, EventArgs e)
+        {
+            SetMappingFileVisible();
+        }
+        private void btnMappingFile_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = @"CSV files (*.csv)|*.csv";
+            if (openFileDialog1.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            txtMappingFile.Text = openFileDialog1.FileName;
         }
 
         private void UpdateDisplayedSteps()

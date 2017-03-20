@@ -49,6 +49,9 @@ namespace DLaB.AttributeManager
             this.clbSteps = new System.Windows.Forms.CheckedListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grpSettings = new System.Windows.Forms.GroupBox();
+            this.btnMappingFile = new System.Windows.Forms.Button();
+            this.lblMappingFile = new System.Windows.Forms.Label();
+            this.txtMappingFile = new System.Windows.Forms.TextBox();
             this.chkDelete = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -115,6 +118,8 @@ namespace DLaB.AttributeManager
             this.tabLog = new System.Windows.Forms.TabPage();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label9 = new System.Windows.Forms.Label();
@@ -305,7 +310,7 @@ namespace DLaB.AttributeManager
             "Remove Temporary Attribute"});
             this.clbSteps.Location = new System.Drawing.Point(8, 19);
             this.clbSteps.Name = "clbSteps";
-            this.clbSteps.Size = new System.Drawing.Size(205, 109);
+            this.clbSteps.Size = new System.Drawing.Size(205, 124);
             this.clbSteps.TabIndex = 6;
             this.Tip.SetToolTip(this.clbSteps, "Allows stopping and the migation process at any point");
             this.clbSteps.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbSteps_ItemCheck);
@@ -318,23 +323,59 @@ namespace DLaB.AttributeManager
             this.panel1.Controls.Add(this.grpSteps);
             this.panel1.Location = new System.Drawing.Point(16, 111);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(677, 171);
+            this.panel1.Size = new System.Drawing.Size(677, 199);
             this.panel1.TabIndex = 9;
             // 
             // grpSettings
             // 
-            this.grpSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.grpSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpSettings.Controls.Add(this.btnMappingFile);
+            this.grpSettings.Controls.Add(this.lblMappingFile);
+            this.grpSettings.Controls.Add(this.txtMappingFile);
             this.grpSettings.Controls.Add(this.chkDelete);
             this.grpSettings.Controls.Add(this.tableLayoutPanel1);
             this.grpSettings.Controls.Add(this.chkConvertAttributeType);
             this.grpSettings.Controls.Add(this.chkMigrate);
             this.grpSettings.Location = new System.Drawing.Point(3, 3);
             this.grpSettings.Name = "grpSettings";
-            this.grpSettings.Size = new System.Drawing.Size(446, 160);
+            this.grpSettings.Size = new System.Drawing.Size(446, 188);
             this.grpSettings.TabIndex = 8;
             this.grpSettings.TabStop = false;
             this.grpSettings.Text = "Settings";
+            // 
+            // btnMappingFile
+            // 
+            this.btnMappingFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMappingFile.Location = new System.Drawing.Point(417, 35);
+            this.btnMappingFile.Name = "btnMappingFile";
+            this.btnMappingFile.Size = new System.Drawing.Size(26, 23);
+            this.btnMappingFile.TabIndex = 29;
+            this.btnMappingFile.Text = "...";
+            this.btnMappingFile.UseVisualStyleBackColor = true;
+            this.btnMappingFile.Visible = false;
+            this.btnMappingFile.Click += new System.EventHandler(this.btnMappingFile_Click);
+            // 
+            // lblMappingFile
+            // 
+            this.lblMappingFile.AutoSize = true;
+            this.lblMappingFile.Location = new System.Drawing.Point(-3, 39);
+            this.lblMappingFile.Name = "lblMappingFile";
+            this.lblMappingFile.Size = new System.Drawing.Size(67, 13);
+            this.lblMappingFile.TabIndex = 28;
+            this.lblMappingFile.Text = "Mapping File";
+            this.lblMappingFile.Visible = false;
+            // 
+            // txtMappingFile
+            // 
+            this.txtMappingFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMappingFile.Location = new System.Drawing.Point(74, 36);
+            this.txtMappingFile.Name = "txtMappingFile";
+            this.txtMappingFile.Size = new System.Drawing.Size(337, 20);
+            this.txtMappingFile.TabIndex = 27;
+            this.txtMappingFile.Visible = false;
             // 
             // chkDelete
             // 
@@ -367,23 +408,23 @@ namespace DLaB.AttributeManager
             this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel5, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel6, 0, 3);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 33);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 61);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(436, 121);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(440, 121);
             this.tableLayoutPanel1.TabIndex = 25;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.lblNewAttributeGrid);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(264, 3);
+            this.panel3.Location = new System.Drawing.Point(266, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(169, 24);
+            this.panel3.Size = new System.Drawing.Size(171, 24);
             this.panel3.TabIndex = 28;
             // 
             // lblNewAttributeGrid
@@ -401,7 +442,7 @@ namespace DLaB.AttributeManager
             this.txtOldSchema.Enabled = false;
             this.txtOldSchema.Location = new System.Drawing.Point(90, 33);
             this.txtOldSchema.Name = "txtOldSchema";
-            this.txtOldSchema.Size = new System.Drawing.Size(168, 20);
+            this.txtOldSchema.Size = new System.Drawing.Size(170, 20);
             this.txtOldSchema.TabIndex = 24;
             this.Tip.SetToolTip(this.txtOldSchema, "Postfix to append to the Option Set Value Name to create an unsued temporary name" +
         "");
@@ -423,18 +464,18 @@ namespace DLaB.AttributeManager
             "Multiple Lines of Text",
             "Date and Time",
             "Lookup"});
-            this.cmbNewAttributeType.Location = new System.Drawing.Point(264, 93);
+            this.cmbNewAttributeType.Location = new System.Drawing.Point(266, 93);
             this.cmbNewAttributeType.Name = "cmbNewAttributeType";
-            this.cmbNewAttributeType.Size = new System.Drawing.Size(169, 21);
+            this.cmbNewAttributeType.Size = new System.Drawing.Size(171, 21);
             this.cmbNewAttributeType.TabIndex = 20;
             this.cmbNewAttributeType.SelectedIndexChanged += new System.EventHandler(this.cmbNewAttributeType_SelectedIndexChanged);
             // 
             // txtDisplayName
             // 
             this.txtDisplayName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDisplayName.Location = new System.Drawing.Point(264, 63);
+            this.txtDisplayName.Location = new System.Drawing.Point(266, 63);
             this.txtDisplayName.Name = "txtDisplayName";
-            this.txtDisplayName.Size = new System.Drawing.Size(169, 20);
+            this.txtDisplayName.Size = new System.Drawing.Size(171, 20);
             this.txtDisplayName.TabIndex = 19;
             this.Tip.SetToolTip(this.txtDisplayName, "Postfix to append to the Option Set Value Name to create an unsued temporary name" +
         "");
@@ -442,9 +483,9 @@ namespace DLaB.AttributeManager
             // txtNewAttributeName
             // 
             this.txtNewAttributeName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNewAttributeName.Location = new System.Drawing.Point(264, 33);
+            this.txtNewAttributeName.Location = new System.Drawing.Point(266, 33);
             this.txtNewAttributeName.Name = "txtNewAttributeName";
-            this.txtNewAttributeName.Size = new System.Drawing.Size(169, 20);
+            this.txtNewAttributeName.Size = new System.Drawing.Size(171, 20);
             this.txtNewAttributeName.TabIndex = 17;
             this.Tip.SetToolTip(this.txtNewAttributeName, "Postfix to append to the Option Set Value Name to create an unsued temporary name" +
         "");
@@ -456,7 +497,7 @@ namespace DLaB.AttributeManager
             this.txtOldAttributType.Enabled = false;
             this.txtOldAttributType.Location = new System.Drawing.Point(90, 93);
             this.txtOldAttributType.Name = "txtOldAttributType";
-            this.txtOldAttributType.Size = new System.Drawing.Size(168, 20);
+            this.txtOldAttributType.Size = new System.Drawing.Size(170, 20);
             this.txtOldAttributType.TabIndex = 26;
             this.Tip.SetToolTip(this.txtOldAttributType, "Postfix to append to the Option Set Value Name to create an unsued temporary name" +
         "");
@@ -467,7 +508,7 @@ namespace DLaB.AttributeManager
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(90, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(168, 24);
+            this.panel2.Size = new System.Drawing.Size(170, 24);
             this.panel2.TabIndex = 27;
             // 
             // label4
@@ -485,7 +526,7 @@ namespace DLaB.AttributeManager
             this.txtOldDisplay.Enabled = false;
             this.txtOldDisplay.Location = new System.Drawing.Point(90, 63);
             this.txtOldDisplay.Name = "txtOldDisplay";
-            this.txtOldDisplay.Size = new System.Drawing.Size(168, 20);
+            this.txtOldDisplay.Size = new System.Drawing.Size(170, 20);
             this.txtOldDisplay.TabIndex = 25;
             this.Tip.SetToolTip(this.txtOldDisplay, "Postfix to append to the Option Set Value Name to create an unsued temporary name" +
         "");
@@ -556,6 +597,7 @@ namespace DLaB.AttributeManager
             this.chkMigrate.Text = "Migrate Data";
             this.Tip.SetToolTip(this.chkMigrate, "Copy the value for each entity to the new Option Set field?");
             this.chkMigrate.UseVisualStyleBackColor = true;
+            this.chkMigrate.CheckedChanged += new System.EventHandler(this.chkMigrate_CheckedChanged);
             // 
             // grpSteps
             // 
@@ -564,16 +606,16 @@ namespace DLaB.AttributeManager
             this.grpSteps.Controls.Add(this.btnExecuteSteps);
             this.grpSteps.Location = new System.Drawing.Point(455, 3);
             this.grpSteps.Name = "grpSteps";
-            this.grpSteps.Size = new System.Drawing.Size(219, 160);
+            this.grpSteps.Size = new System.Drawing.Size(219, 188);
             this.grpSteps.TabIndex = 7;
             this.grpSteps.TabStop = false;
             this.grpSteps.Text = "Steps";
             // 
             // btnExecuteSteps
             // 
-            this.btnExecuteSteps.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnExecuteSteps.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExecuteSteps.Location = new System.Drawing.Point(8, 131);
+            this.btnExecuteSteps.Location = new System.Drawing.Point(8, 159);
             this.btnExecuteSteps.Name = "btnExecuteSteps";
             this.btnExecuteSteps.Size = new System.Drawing.Size(205, 23);
             this.btnExecuteSteps.TabIndex = 8;
@@ -589,7 +631,7 @@ namespace DLaB.AttributeManager
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtLog.Size = new System.Drawing.Size(663, 209);
+            this.txtLog.Size = new System.Drawing.Size(663, 181);
             this.txtLog.TabIndex = 0;
             this.txtLog.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SelectAllKeyDownHandler);
             // 
@@ -658,10 +700,10 @@ namespace DLaB.AttributeManager
             this.tabControl.Controls.Add(this.tabNumberAttribute);
             this.tabControl.Controls.Add(this.tabOptionSetAttribute);
             this.tabControl.Controls.Add(this.tabLog);
-            this.tabControl.Location = new System.Drawing.Point(13, 288);
+            this.tabControl.Location = new System.Drawing.Point(13, 316);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(677, 241);
+            this.tabControl.Size = new System.Drawing.Size(677, 213);
             this.tabControl.TabIndex = 11;
             // 
             // tabStringAttribute
@@ -670,7 +712,7 @@ namespace DLaB.AttributeManager
             this.tabStringAttribute.Location = new System.Drawing.Point(4, 22);
             this.tabStringAttribute.Name = "tabStringAttribute";
             this.tabStringAttribute.Padding = new System.Windows.Forms.Padding(3);
-            this.tabStringAttribute.Size = new System.Drawing.Size(669, 215);
+            this.tabStringAttribute.Size = new System.Drawing.Size(669, 187);
             this.tabStringAttribute.TabIndex = 1;
             this.tabStringAttribute.Text = "String Type Settings";
             this.tabStringAttribute.UseVisualStyleBackColor = true;
@@ -682,7 +724,6 @@ namespace DLaB.AttributeManager
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 538F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.pStringType, 1, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
@@ -775,7 +816,7 @@ namespace DLaB.AttributeManager
             this.tabNumberAttribute.Controls.Add(this.tableLayoutPanel3);
             this.tabNumberAttribute.Location = new System.Drawing.Point(4, 22);
             this.tabNumberAttribute.Name = "tabNumberAttribute";
-            this.tabNumberAttribute.Size = new System.Drawing.Size(669, 215);
+            this.tabNumberAttribute.Size = new System.Drawing.Size(669, 187);
             this.tabNumberAttribute.TabIndex = 2;
             this.tabNumberAttribute.Text = "Number Type Settings";
             this.tabNumberAttribute.UseVisualStyleBackColor = true;
@@ -787,7 +828,6 @@ namespace DLaB.AttributeManager
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 538F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.pNumberType, 1, 1);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
@@ -873,7 +913,7 @@ namespace DLaB.AttributeManager
             this.tabOptionSetAttribute.Controls.Add(this.tableLayoutPanel4);
             this.tabOptionSetAttribute.Location = new System.Drawing.Point(4, 22);
             this.tabOptionSetAttribute.Name = "tabOptionSetAttribute";
-            this.tabOptionSetAttribute.Size = new System.Drawing.Size(669, 215);
+            this.tabOptionSetAttribute.Size = new System.Drawing.Size(669, 187);
             this.tabOptionSetAttribute.TabIndex = 3;
             this.tabOptionSetAttribute.Text = "Option Type Settings";
             this.tabOptionSetAttribute.UseVisualStyleBackColor = true;
@@ -886,7 +926,6 @@ namespace DLaB.AttributeManager
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Controls.Add(this.PnlLocalOptionSet, 0, 2);
             this.tableLayoutPanel4.Controls.Add(this.pOptionType, 1, 1);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
@@ -1099,7 +1138,7 @@ namespace DLaB.AttributeManager
             this.tabLog.Location = new System.Drawing.Point(4, 22);
             this.tabLog.Name = "tabLog";
             this.tabLog.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLog.Size = new System.Drawing.Size(669, 215);
+            this.tabLog.Size = new System.Drawing.Size(669, 187);
             this.tabLog.TabIndex = 0;
             this.tabLog.Text = "Log";
             this.tabLog.UseVisualStyleBackColor = true;
@@ -1108,6 +1147,10 @@ namespace DLaB.AttributeManager
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // AttributeManagerPlugin
             // 
@@ -1250,5 +1293,10 @@ namespace DLaB.AttributeManager
         private TextBox TxtOptionSetValue;
         private TextBox TxtOptionSetLabel;
         private CheckBox chkDelete;
+        private Button btnMappingFile;
+        private Label lblMappingFile;
+        private TextBox txtMappingFile;
+        private OpenFileDialog openFileDialog1;
+        private ColorDialog colorDialog1;
     }
 }

@@ -48,7 +48,7 @@ V1.2016.9.10
     <copyright>Copyright 2016</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>
     <dependencies>
-      <dependency id="XrmToolBoxPackage" version="1.2017.2.13" /> 
+      <dependency id="XrmToolBox" version="1.2017.2.13" />
     </dependencies>
   </metadata>
   <files>
