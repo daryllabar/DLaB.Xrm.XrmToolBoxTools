@@ -141,7 +141,7 @@ namespace DLaB.AttributeManager
 
         private object CopyValueInternal(PicklistAttributeMetadata oldAttribute, PicklistAttributeMetadata newAttribute, object value, Dictionary<string, string> migrationMapping)
         {
-            var copy = value.ToString();
+            var copy = ((OptionSetValue)value).Value.ToString();
             string mappedValue;
             copy = migrationMapping.TryGetValue(copy, out mappedValue) ? mappedValue : copy;
             return new OptionSetValue(int.Parse(copy));

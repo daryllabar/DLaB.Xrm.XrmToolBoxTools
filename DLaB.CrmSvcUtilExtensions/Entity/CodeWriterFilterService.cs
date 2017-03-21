@@ -75,7 +75,17 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
 
         public bool GenerateOptionSet(OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
         {
-            return DefaultService.GenerateOptionSet(optionSetMetadata, services);
+            //if (optionSetMetadata.OptionSetType.Value == OptionSetType.State
+            //        || optionSetMetadata.OptionSetType.Value == OptionSetType.Status
+            //        || optionSetMetadata.OptionSetType.Value == OptionSetType.Picklist && optionSetMetadata.IsGlobal == false)
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+                return DefaultService.GenerateOptionSet(optionSetMetadata, services);
+            // }
+
         }
 
         #endregion
