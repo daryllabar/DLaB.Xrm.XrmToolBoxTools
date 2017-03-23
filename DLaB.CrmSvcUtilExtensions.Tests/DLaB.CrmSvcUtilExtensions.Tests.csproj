@@ -147,8 +147,8 @@
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>xcopy /I /Y "$(SolutionDir)packages\Microsoft.CrmSdk.CoreTools.8.2.0.3\content\bin\coretools\*.dll" "$(TargetDir)"
-xcopy /I /Y "$(SolutionDir)packages\Microsoft.CrmSdk.CoreTools.8.2.0.3\content\bin\coretools\CrmSvcUtil.exe" "$(TargetDir)"</PreBuildEvent>
+    <PreBuildEvent>xcopy /I /Y "$(SolutionDir)packages\Microsoft.CrmSdk.CoreTools.8.2.0.4\content\bin\coretools\*.dll" "$(TargetDir)"
+xcopy /I /Y "$(SolutionDir)packages\Microsoft.CrmSdk.CoreTools.8.2.0.4\content\bin\coretools\CrmSvcUtil.exe" "$(TargetDir)"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -356,8 +356,7 @@ namespace DLaB.AttributeManager
                     att = NewTypeAttributeCreationLogic.CreateOptionSet(null);
                     break;
                 case "Two Options":
-                    // TODO: new BooleanOptionSetMetadata()
-                    att = NewTypeAttributeCreationLogic.CreateTwoOptions(null);
+                    att = NewTypeAttributeCreationLogic.CreateTwoOptions(new BooleanOptionSetMetadata(TrueOption, FalseOption), DefaultTwoOptionSetValue);
                     break;
                 case "Image":
                     att = NewTypeAttributeCreationLogic.CreateImage(null);
@@ -747,14 +746,14 @@ namespace DLaB.AttributeManager
                     optionTabVisible = true;
                     optAttGlobalOptionSetCmb.Visible = false;
                     optAttGlobalOptionSetLbl.Visible = false;
-                    ShowLocalOptionSet();
+                    ShowLocalOptionSet(false);
                     break;
                 case "Two Options":
                     optionTabVisible = true;
                     optAttGlobalOptionSetCmb.Visible = false;
                     optAttGlobalOptionSetLbl.Visible = false;
                     PnlLocalOptionSet.Visible = true;
-                    ShowLocalOptionSet();
+                    ShowLocalOptionSet(true);
                     break;
                 case "Image":
 

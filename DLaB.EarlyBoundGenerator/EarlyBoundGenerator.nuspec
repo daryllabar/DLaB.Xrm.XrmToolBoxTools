@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator</id>
-	  <version>1.2017.3.3</version>
+	  <version>1.2017.3.23</version>
 	  <title>Early Bound Generator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,11 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V1.2017.3.3
+    <releaseNotes>V1.2017.3.23
+ - Fix for OptionSet Attributes Are Getting Generated as Objects Not OptionSetValues #87
+ - Fix for Missing References to Xrm.Tooling.Ui #92
+
+V1.2017.3.3
  - Worked with Microsoft to get the correct version of the CrmSvcUtil from Nuget.  Should fix #84.
       
 V1.2017.1.31
