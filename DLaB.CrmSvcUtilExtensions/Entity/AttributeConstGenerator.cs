@@ -6,7 +6,6 @@ using System.Linq;
 using Microsoft.Crm.Services.Utility;
 using System.Reflection;
 using System.IO;
-using Microsoft.Xrm.Sdk;
 
 namespace DLaB.CrmSvcUtilExtensions.Entity
 {
@@ -22,9 +21,9 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                                  Where(type => type.IsClass && !type.IsContextType()))
             {
                 attributes.Clear();
-                var @struct = new CodeTypeDeclaration {
+                var @class = new CodeTypeDeclaration {
                     Name = AttributeConstsStructName, 
-                    IsStruct = true, 
+                    IsClass = true,
                     TypeAttributes = TypeAttributes.Public
                 };
 
@@ -33,12 +32,12 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                                        where prop != null 
                                        select prop)
                 {
-                    CreateAttributeConstForProperty(@struct, member, attributes);
+                    CreateAttributeConstForProperty(@class, member, attributes);
                 }
 
                 if (attributes.Any())
                 {
-                    type.Members.Insert(0, GenerateTypeWithoutEmptyLines(@struct));
+                    type.Members.Insert(0, GenerateTypeWithoutEmptyLines(@class));
                 }
             }
         }
@@ -48,7 +47,6 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
 
         private static void CreateAttributeConstForProperty(CodeTypeDeclaration type, CodeMemberProperty prop, HashSet<string> attributes)
         {
-            
             var attributeLogicalName = (from CodeAttributeDeclaration att in prop.CustomAttributes
                                         where att.AttributeType.BaseType == XrmAttributeLogicalName || HasAttributeAndRelationship(prop, att)
                                         select new 
@@ -65,7 +63,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             type.Members.Add(new CodeMemberField
             {
                 // ReSharper disable once BitwiseOperatorOnEnumWithoutFlags
-                Attributes = System.CodeDom.MemberAttributes.Public | System.CodeDom.MemberAttributes.Const,
+                Attributes = System.CodeDom.MemberAttributes.Public | System.CodeDom.MemberAttributes.Static,
                 Name = prop.Name,
                 Type = new CodeTypeReference(typeof (string)),
                 InitExpression = new CodePrimitiveExpression(attributeLogicalName)
