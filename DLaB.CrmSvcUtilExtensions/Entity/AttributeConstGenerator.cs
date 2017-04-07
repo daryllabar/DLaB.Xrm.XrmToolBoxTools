@@ -11,9 +11,9 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
 {
     public class AttributeConstGenerator : ICustomizeCodeDomService
     {
-        public static string AttributeConstsStructName { get { return ConfigHelper.GetAppSettingOrDefault("AttributeConstsStructName", "Fields"); } }
+        public static string AttributeConstsClassName { get { return ConfigHelper.GetAppSettingOrDefault("AttributeConstsClassName", "Fields"); } }
 
-        public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
+        public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)   
         {
             var types = codeUnit.Namespaces[0].Types;
             var attributes = new HashSet<string>();
@@ -22,10 +22,16 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             {
                 attributes.Clear();
                 var @class = new CodeTypeDeclaration {
-                    Name = AttributeConstsStructName, 
+                    Name = AttributeConstsClassName, 
                     IsClass = true,
                     TypeAttributes = TypeAttributes.Public
                 };
+
+                @class.StartDirectives.Add(new CodeRegionDirective(
+                    CodeRegionMode.Start, Environment.NewLine + "\tstatic"));
+
+                @class.EndDirectives.Add(new CodeRegionDirective(
+                    CodeRegionMode.End, string.Empty));
 
                 foreach (var member in from CodeTypeMember member in type.Members 
                                        let prop = member as CodeMemberProperty 
