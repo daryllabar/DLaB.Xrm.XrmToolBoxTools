@@ -27,12 +27,6 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                     TypeAttributes = TypeAttributes.Public
                 };
 
-                @class.StartDirectives.Add(new CodeRegionDirective(
-                    CodeRegionMode.Start, Environment.NewLine + "\tstatic"));
-
-                @class.EndDirectives.Add(new CodeRegionDirective(
-                    CodeRegionMode.End, string.Empty));
-
                 foreach (var member in from CodeTypeMember member in type.Members 
                                        let prop = member as CodeMemberProperty 
                                        where prop != null 
@@ -69,7 +63,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             type.Members.Add(new CodeMemberField
             {
                 // ReSharper disable once BitwiseOperatorOnEnumWithoutFlags
-                Attributes = System.CodeDom.MemberAttributes.Public | System.CodeDom.MemberAttributes.Static,
+                Attributes = System.CodeDom.MemberAttributes.Public | System.CodeDom.MemberAttributes.Const,
                 Name = prop.Name,
                 Type = new CodeTypeReference(typeof (string)),
                 InitExpression = new CodePrimitiveExpression(attributeLogicalName)
@@ -101,7 +95,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                     IndentString = "\t",
                     BlankLinesBetweenMembers = false
                 });
-                return new CodeSnippetTypeMember("\t\t" + sourceWriter);
+                return new CodeSnippetTypeMember("\t\t" + sourceWriter.ToString().Replace("public class", "public static class"));
             }
         }
     }

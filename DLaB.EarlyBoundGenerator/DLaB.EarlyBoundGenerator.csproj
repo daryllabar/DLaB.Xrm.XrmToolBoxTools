@@ -283,28 +283,29 @@
 </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>DEL /Q "$(TargetDir)Plugins\*.*"
-xcopy /I /Y "$(TargetDir)DLaB.*.dll" "$(TargetDir)Plugins\"
+    <PostBuildEvent>DEL /Q "$(TargetDir)MscrmTools\XrmToolBox\Plugins\*.*"
+xcopy /I /Y "$(TargetDir)DLaB.*.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\"
 DEL /Q "$(TargetDir)DLaB.*"
 DEL /Q "$(TargetDir)Microsoft.IdentityModel.dll"    
+DEL /Q "$(TargetDir)Microsoft.Xrm.Sdk.Workflow.dll"
 
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)CrmSvcUtil.exe" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)CrmSvcUtil.exe.config" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)DLaB.CrmSvcUtilExtensions.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)DLaB.Common.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Crm.Sdk.Proxy.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)CrmSvcUtil.exe" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)CrmSvcUtil.exe.config" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)DLaB.CrmSvcUtilExtensions.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)DLaB.Common.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Crm.Sdk.Proxy.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"
 
-xcopy /I /Y "$(TargetDir)Microsoft.Xrm.Sdk.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\OptionSet\Transliteration\Alphabets\*" "$(TargetDir)Plugins\CrmSvcUtil Ref\alphabets"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Newtonsoft.Json.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(TargetDir)Microsoft.Xrm.Sdk.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\OptionSet\Transliteration\Alphabets\*" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\alphabets"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Newtonsoft.Json.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"
 
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.IdentityModel.Clients.ActiveDirectory.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Portal.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Client.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Client.CodeGeneration.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Tooling.*.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Sdk.Deployment.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Sdk.dll" "$(TargetDir)Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.IdentityModel.Clients.ActiveDirectory.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Portal.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Client.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Client.CodeGeneration.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Tooling.*.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Sdk.Deployment.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Sdk.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\"
 
 if "$(ConfigurationName)" == "Release" goto RunILMerge
 
@@ -321,7 +322,7 @@ del "$(TargetDir)IlMerge\Log.txt"
 REM **** Run IlMerge ****
 "$(SolutionDir)packages\ILMerge.2.14.1208\tools\ILMerge.exe" /log:"$(TargetDir)IlMerge\Log.txt" /targetplatform:"v4,c:\windows\Microsoft.NET\Framework\v4.0.30319" /out:"$(TargetDir)IlMerge\$(TargetFileName)" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\$(TargetFileName)" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.Common.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.Xrm.2016.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.XrmToolboxCommon.dll"
 
- xcopy /I /Y "$(TargetDir)IlMerge\*.*" "$(TargetDir)Plugins\"
+ xcopy /I /Y "$(TargetDir)IlMerge\*.*" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\"
 :exit</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
