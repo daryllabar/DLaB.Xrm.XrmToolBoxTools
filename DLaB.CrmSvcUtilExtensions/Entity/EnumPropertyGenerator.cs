@@ -56,7 +56,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             if (!CreateBaseClasses)
             {
                 // If creating Base Classes, this will be included in the base class
-                AddEntityOptionSetEnumDeclaration(types);
+                types.Add(GetEntityOptionSetEnumDeclaration());
             }
         }
 
@@ -171,8 +171,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             return property;
         }
 
-
-        public static void AddEntityOptionSetEnumDeclaration(CodeTypeDeclarationCollection types)
+        private static CodeTypeDeclaration GetEntityOptionSetEnumDeclaration()
         {
             var enumClass = new CodeTypeDeclaration("EntityOptionSetEnum")
             {
@@ -180,6 +179,13 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                 TypeAttributes = TypeAttributes.Sealed | TypeAttributes.NotPublic,
             };
 
+            enumClass.Members.Add(CreateGetEnumMethod());
+
+            return enumClass;
+        }
+
+        public static CodeMemberMethod CreateGetEnumMethod()
+        {
             // public static int? GetEnum(Microsoft.Xrm.Sdk.Entity entity, string attributeLogicalName)
             var get = new CodeMemberMethod
             {
@@ -208,8 +214,10 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                     Name = "value",
                     InitExpression = new CodeMethodInvokeExpression(
                         new CodeMethodReferenceExpression(
-                            new CodeArgumentReferenceExpression("entity"), "GetAttributeValue", new CodeTypeReference(typeof(OptionSetValue))),
-                            new CodeArgumentReferenceExpression("attributeLogicalName"))
+                            new CodeArgumentReferenceExpression("entity"),
+                            "GetAttributeValue",
+                            new CodeTypeReference(typeof(OptionSetValue))),
+                        new CodeArgumentReferenceExpression("attributeLogicalName"))
                 };
 
             // value != null
@@ -219,15 +227,13 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             var invokeValueGetValue = new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("value"), "Value");
 
             // if(invokeContainsKey){return invokeGetAttributeValue;}else{return null}
-            get.Statements.Add(new CodeConditionStatement(invokeContainsKey, declareAndSetValue, 
+            get.Statements.Add(new CodeConditionStatement(invokeContainsKey,
+                declareAndSetValue,
                 new CodeConditionStatement(valueNeNull, new CodeMethodReturnStatement(invokeValueGetValue))));
 
             // return null;
             get.Statements.Add(new CodeMethodReturnStatement(new CodePrimitiveExpression(null)));
-
-            enumClass.Members.Add(get);
-
-            types.Add(enumClass);
+            return get;
         }
     }
 }
