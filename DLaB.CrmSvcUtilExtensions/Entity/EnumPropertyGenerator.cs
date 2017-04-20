@@ -11,11 +11,17 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
 {
     class EnumPropertyGenerator : ICustomizeCodeDomService
     {
+        public bool CreateBaseClasses { get; }
         public Dictionary<string, string> SpecifiedMappings { get; private set; }
         public Dictionary<string, HashSet<string>> UnmappedProperties { get; private set; }
 
         public INamingService NamingService { get; private set; }
         public IServiceProvider Services { get; private set; }
+
+        public EnumPropertyGenerator(bool createBaseClasses)
+        {
+            CreateBaseClasses = createBaseClasses;
+        }
 
         #region ICustomizeCodeDomService Members
 
@@ -47,7 +53,11 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                 }
             }
 
-            AddEntityOptionSetEnumDeclaration(types);
+            if (!CreateBaseClasses)
+            {
+                // If creating Base Classes, this will be included in the base class
+                AddEntityOptionSetEnumDeclaration(types);
+            }
         }
 
         private bool SkipProperty(CodeMemberProperty property, CodeTypeDeclaration type)
@@ -144,7 +154,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                     new CodeCastExpression(
                         enumName,
                         new CodeMethodInvokeExpression(
-                            new CodeTypeReferenceExpression("EntityOptionSetEnum"),
+                            CreateBaseClasses ? (CodeExpression)new CodeThisReferenceExpression() : new CodeTypeReferenceExpression("EntityOptionSetEnum"),
                             "GetEnum",
                             new CodeThisReferenceExpression(),
                             new CodePrimitiveExpression(propertyLogicalName)))));
@@ -162,7 +172,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         }
 
 
-        private static void AddEntityOptionSetEnumDeclaration(CodeTypeDeclarationCollection types)
+        public static void AddEntityOptionSetEnumDeclaration(CodeTypeDeclarationCollection types)
         {
             var enumClass = new CodeTypeDeclaration("EntityOptionSetEnum")
             {

@@ -9,6 +9,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
     public class CustomizeCodeDomService : ICustomizeCodeDomService
     {
         public static bool AddDebuggerNonUserCode => ConfigHelper.GetAppSettingOrDefault("AddDebuggerNonUserCode", true);
+        public bool CreateBaseClasses => ConfigHelper.GetAppSettingOrDefault("CreateBaseClasses", false);
         public static bool GenerateAnonymousTypeConstructor => ConfigHelper.GetAppSettingOrDefault("GenerateAnonymousTypeConstructor", true);
         public static bool GenerateAttributeNameConsts => ConfigHelper.GetAppSettingOrDefault("GenerateAttributeNameConsts", false);
         public static bool GenerateEnumProperties => ConfigHelper.GetAppSettingOrDefault("GenerateEnumProperties", true);
@@ -28,6 +29,10 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             {
                 new CodeCustomization(Parameters).CustomizeCodeDom(codeUnit, services);
             }
+            else
+            {
+                new EntityBaseClassGenerator().CustomizeCodeDom(codeUnit, services);
+            }
             if (GenerateAnonymousTypeConstructor)
             {
                 new AnonymousTypeConstructorGenerator().CustomizeCodeDom(codeUnit, services);
@@ -38,7 +43,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             }
             if (GenerateEnumProperties)
             {
-                new EnumPropertyGenerator().CustomizeCodeDom(codeUnit, services);
+                new EnumPropertyGenerator(CreateBaseClasses).CustomizeCodeDom(codeUnit, services);
             }
             if (AddDebuggerNonUserCode)
             {

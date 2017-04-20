@@ -12,7 +12,7 @@ namespace DLaB.CrmSvcUtilExtensions
 {
     public abstract class BaseCustomCodeGenerationService : ICodeGenerationService
     {
-        public static bool UseTfsToCheckoutFiles { get; private set; } = ConfigHelper.GetAppSettingOrDefault("UseTfsToCheckoutFiles", false);
+        public static bool UseTfsToCheckoutFiles { get; } = ConfigHelper.GetAppSettingOrDefault("UseTfsToCheckoutFiles", false);
         public static bool AddNewFilesToProject => ConfigHelper.GetAppSettingOrDefault("AddNewFilesToProject", false);
         public static bool RemoveRuntimeVersionComment => ConfigHelper.GetAppSettingOrDefault("RemoveRuntimeVersionComment", true);
         private static bool LoggingEnabled => ConfigHelper.GetAppSettingOrDefault("LoggingEnabled", false);
@@ -22,11 +22,11 @@ namespace DLaB.CrmSvcUtilExtensions
         protected abstract bool CreateOneFilePerCodeUnit { get; }
 
         private VsTfsSourceControlProvider Tfs { get; set; }
-        private readonly ICodeGenerationService _defaultService;
+        protected ICodeGenerationService DefaultService { get; }
 
         protected BaseCustomCodeGenerationService(ICodeGenerationService service)
         {
-            _defaultService = service;
+            DefaultService = service;
         }
 
         #region ICodeGenerationService Members
@@ -84,37 +84,37 @@ namespace DLaB.CrmSvcUtilExtensions
 
         protected virtual CodeGenerationType GetTypeForAttributeInternal(Microsoft.Xrm.Sdk.Metadata.EntityMetadata entityMetadata, Microsoft.Xrm.Sdk.Metadata.AttributeMetadata attributeMetadata, IServiceProvider services)
         {
-            return _defaultService.GetTypeForAttribute(entityMetadata, attributeMetadata, services);
+            return DefaultService.GetTypeForAttribute(entityMetadata, attributeMetadata, services);
         }
 
         protected virtual CodeGenerationType GetTypeForEntityInternal(Microsoft.Xrm.Sdk.Metadata.EntityMetadata entityMetadata, IServiceProvider services)
         {
-            return _defaultService.GetTypeForEntity(entityMetadata, services);
+            return DefaultService.GetTypeForEntity(entityMetadata, services);
         }
 
         protected virtual CodeGenerationType GetTypeForMessagePairInternal(SdkMessagePair messagePair, IServiceProvider services)
         {
-            return _defaultService.GetTypeForMessagePair(messagePair, services);
+            return DefaultService.GetTypeForMessagePair(messagePair, services);
         }
 
         protected virtual CodeGenerationType GetTypeForOptionInternal(Microsoft.Xrm.Sdk.Metadata.OptionSetMetadataBase optionSetMetadata, Microsoft.Xrm.Sdk.Metadata.OptionMetadata optionMetadata, IServiceProvider services)
         {
-            return _defaultService.GetTypeForOption(optionSetMetadata, optionMetadata, services);
+            return DefaultService.GetTypeForOption(optionSetMetadata, optionMetadata, services);
         }
 
         protected virtual CodeGenerationType GetTypeForOptionSetInternal(Microsoft.Xrm.Sdk.Metadata.EntityMetadata entityMetadata, Microsoft.Xrm.Sdk.Metadata.OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
         {
-            return _defaultService.GetTypeForOptionSet(entityMetadata, optionSetMetadata, services);
+            return DefaultService.GetTypeForOptionSet(entityMetadata, optionSetMetadata, services);
         }
 
         protected virtual CodeGenerationType GetTypeForRequestFieldInternal(SdkMessageRequest request, SdkMessageRequestField requestField, IServiceProvider services)
         {
-            return _defaultService.GetTypeForRequestField(request, requestField, services);
+            return DefaultService.GetTypeForRequestField(request, requestField, services);
         }
 
         protected virtual CodeGenerationType GetTypeForResponseFieldInternal(SdkMessageResponse response, SdkMessageResponseField responseField, IServiceProvider services)
         {
-            return _defaultService.GetTypeForResponseField(response, responseField, services);
+            return DefaultService.GetTypeForResponseField(response, responseField, services);
         }
 
         protected virtual void WriteInternal(IOrganizationMetadata organizationMetadata, string language, string outputFile, string targetNamespace, IServiceProvider services)
@@ -137,7 +137,7 @@ namespace DLaB.CrmSvcUtilExtensions
             
             // Write the file out as normal
             DisplayMessage($"Writing file {Path.GetFileName(outputFile)} to {tempFile}");
-            _defaultService.Write(organizationMetadata, language, tempFile, targetNamespace, services);
+            DefaultService.Write(organizationMetadata, language, tempFile, targetNamespace, services);
             Log("Completed writing file {0} to {1}", Path.GetFileName(outputFile), tempFile);
 
             // Check if the Header needs to be updated and or the file needs to be split

@@ -139,6 +139,7 @@
     <Compile Include="BaseCustomCodeGenerationService.cs" />
     <Compile Include="Entity\AttributeConstGenerator.cs" />
     <Compile Include="Entity\CustomCodeGenerationService.cs" />
+    <Compile Include="Entity\EntityBaseClassGenerator.cs" />
     <Compile Include="Entity\MemberAttributes.cs" />
     <Compile Include="ConfigHelper.cs" />
     <Compile Include="Entity\AnonymousTypeConstructorGenerator.cs" />
