@@ -13,7 +13,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             var types = codeUnit.Namespaces[0].Types;
             foreach (CodeTypeDeclaration type in types)
             {
-                if (!type.IsClass || type.IsContextType()) { continue; }
+                if (!type.IsClass || type.IsContextType() || type.IsBaseEntityType()) { continue; }
 
                 type.Members.Add(GetAnonymousTypeConstructor(type));
             }

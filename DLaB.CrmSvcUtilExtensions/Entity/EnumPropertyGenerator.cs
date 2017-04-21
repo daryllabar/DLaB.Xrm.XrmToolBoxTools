@@ -33,7 +33,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             var types = codeUnit.Namespaces[0].Types;
             foreach (CodeTypeDeclaration type in types)
             {
-                if (!type.IsClass || type.IsContextType()) { continue; }
+                if (!type.IsClass || type.IsContextType() || type.IsBaseEntityType()) { continue; }
 
                 var logicalName = type.GetFieldInitalizedValue("EntityLogicalName");
                 var propertiesToAdd = new List<CodeMemberProperty>();
@@ -154,7 +154,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                     new CodeCastExpression(
                         enumName,
                         new CodeMethodInvokeExpression(
-                            CreateBaseClasses ? (CodeExpression)new CodeThisReferenceExpression() : new CodeTypeReferenceExpression("EntityOptionSetEnum"),
+                            CreateBaseClasses ? new CodeTypeReferenceExpression(EntityBaseClassGenerator.BaseEntityName) : new CodeTypeReferenceExpression("EntityOptionSetEnum"),
                             "GetEnum",
                             new CodeThisReferenceExpression(),
                             new CodePrimitiveExpression(propertyLogicalName)))));

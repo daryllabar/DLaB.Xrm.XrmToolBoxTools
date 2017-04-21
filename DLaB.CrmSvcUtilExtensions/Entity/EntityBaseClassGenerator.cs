@@ -17,10 +17,13 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             "CreatedOnBehalfBy",
             "ImportSequenceNumber",
             "ModifiedBy",
+            "ModifiedOn",
             "ModifiedOnBehalfBy",
             "OverriddenCreatedOn",
-            "statecode",
-            "statuscode",
+            "OnPropertyChanged",
+            "OnPropertyChanging",
+            "PropertyChanged",
+            "PropertyChanging",
             "TimeZoneRuleVersionNumber",
             "UTCConversionTimeZoneCode",
             "VersionNumber"
@@ -40,18 +43,19 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         }));
 
         public static string BaseEntityName => ConfigHelper.GetAppSettingOrDefault("BaseEntityClassName", "EarlyBoundEntity");
-        public static string OrgEntityName => ConfigHelper.GetAppSettingOrDefault("OrgEntityClassName", "OrgEntityName");
-        public static string UserEntityName => ConfigHelper.GetAppSettingOrDefault("UserEntityClassName", "UserEntityName");
+        public static string OrgEntityName => ConfigHelper.GetAppSettingOrDefault("OrgEntityClassName", "OrganizationOwnedEntity");
+        public static string UserEntityName => ConfigHelper.GetAppSettingOrDefault("UserEntityClassName", "UserOwnedEntity");
 
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
-            var types = codeUnit.Namespaces[0].Types.Cast<CodeTypeDeclaration>().ToList();
+            var typesCollection = codeUnit.Namespaces[0].Types;
+            var types = typesCollection.Cast<CodeTypeDeclaration>().ToList();
             var orgEntities = types.Where(t => TypeContainsAllMembers(t, OrgEntityMembers)).ToList();
             var userEntities = types.Where(t => TypeContainsAllMembers(t, UserEntityMembers)).ToList();
 
-            types.Add(GetEarlyBoundEntityClassDeclaration(orgEntities.FirstOrDefault()));
-            types.Add(GetOrgEntity(orgEntities.FirstOrDefault()));
-            types.Add(GetUserEntity(userEntities.FirstOrDefault()));
+            typesCollection.Add(GetEarlyBoundEntityClassDeclaration(orgEntities.FirstOrDefault()));
+            typesCollection.Add(GetOrgEntity(orgEntities.FirstOrDefault()));
+            typesCollection.Add(GetUserEntity(userEntities.FirstOrDefault()));
 
             UpdateEntityClassesToUseBaseClass(orgEntities, OrgEntityName, OrgEntityMembers);
             UpdateEntityClassesToUseBaseClass(userEntities, UserEntityName, UserEntityMembers);
@@ -76,13 +80,56 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             var entityClass = new CodeTypeDeclaration(BaseEntityName)
             {
                 IsClass = true,
-                TypeAttributes = TypeAttributes.Public,
-                BaseTypes = { new CodeTypeReference(typeof(Microsoft.Xrm.Sdk.Entity)) }
+                TypeAttributes = TypeAttributes.Public | TypeAttributes.Abstract,
+                BaseTypes = {
+                    new CodeTypeReference(typeof(Microsoft.Xrm.Sdk.Entity)),
+                    new CodeTypeReference(typeof(System.ComponentModel.INotifyPropertyChanging)),
+                    new CodeTypeReference(typeof(System.ComponentModel.INotifyPropertyChanged))
+                }
             };
 
-            entityClass.Members.AddRange(type.Members.Cast<CodeTypeMember>().Where(p => BaseEntityMembers.Contains(p.Name)).ToArray());
+            AddEntityConstructors(entityClass);
 
+            entityClass.Members.AddRange(type.Members.Cast<CodeTypeMember>().Where(p => BaseEntityMembers.Contains(p.Name)).Select(GetCodeTypeMember).ToArray());
+
+            if (CustomizeCodeDomService.GenerateEnumProperties)
+            {
+                entityClass.Members.Add(EnumPropertyGenerator.CreateGetEnumMethod());
+            }
             return entityClass;
+        }
+
+        private static CodeTypeMember GetCodeTypeMember(CodeTypeMember p)
+        {
+            if ((p.Name == "OnPropertyChanged" || p.Name == "OnPropertyChanging") 
+                && p.Attributes.HasFlag(System.CodeDom.MemberAttributes.Private))
+            {
+                // ReSharper disable BitwiseOperatorOnEnumWithoutFlags
+                p.Attributes = (p.Attributes & ~System.CodeDom.MemberAttributes.Private) | System.CodeDom.MemberAttributes.Family;
+                // ReSharper restore BitwiseOperatorOnEnumWithoutFlags
+            }
+            return p;
+        }
+
+        private static void AddEntityConstructors(CodeTypeDeclaration entityClass)
+        {
+            var entityConstructors = typeof(Microsoft.Xrm.Sdk.Entity).GetConstructors();
+
+            foreach (var constructor in entityConstructors)
+            {
+                var codeConstructor = new CodeConstructor
+                {
+                    Attributes = System.CodeDom.MemberAttributes.Public,
+                };
+
+                foreach (var param in constructor.GetParameters())
+                {
+                    codeConstructor.Parameters.Add(new CodeParameterDeclarationExpression(param.ParameterType, param.Name));
+                    codeConstructor.BaseConstructorArgs.Add(new CodeArgumentReferenceExpression(param.Name));
+                }
+
+                entityClass.Members.Add(codeConstructor);
+            }
         }
 
         public static CodeTypeDeclaration GetOrgEntity(CodeTypeDeclaration type)
@@ -93,6 +140,8 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                 TypeAttributes = TypeAttributes.Public,
                 BaseTypes = { new CodeTypeReference(BaseEntityName) }
             };
+
+            AddEntityConstructors(entityClass);
 
             var entityOnlyMembers = new HashSet<string>(OrgEntityMembers.Where(m => !BaseEntityMembers.Contains(m)));
 
@@ -109,6 +158,8 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                 TypeAttributes = TypeAttributes.Public,
                 BaseTypes = { new CodeTypeReference(BaseEntityName) }
             };
+
+            AddEntityConstructors(entityClass);
 
             var entityOnlyMembers = new HashSet<string>(UserEntityMembers.Where(m => !BaseEntityMembers.Contains(m)));
 

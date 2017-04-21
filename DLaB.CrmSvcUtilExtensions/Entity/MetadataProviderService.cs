@@ -42,6 +42,12 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                             prop.SetValue(att, true);
                         }
                         break;
+                    case "statecode":
+                        att.SchemaName = "StateCode";
+                        break;
+                    case "statuscode":
+                        att.SchemaName = "StatusCode";
+                        break;
                 }
             }
             return metadata;

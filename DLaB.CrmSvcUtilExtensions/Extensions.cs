@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using DLaB.CrmSvcUtilExtensions.Entity;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 
@@ -34,6 +35,14 @@ namespace DLaB.CrmSvcUtilExtensions
             var baseType = type.BaseTypes[0].BaseType;
             return baseType == "Microsoft.Xrm.Client.CrmOrganizationServiceContext"
                    || baseType == "Microsoft.Xrm.Sdk.Client.OrganizationServiceContext";
+        }
+
+        public static bool IsBaseEntityType(this CodeTypeDeclaration type)
+        {
+            var name = type.Name;
+            return name == EntityBaseClassGenerator.BaseEntityName
+                   || name == EntityBaseClassGenerator.OrgEntityName
+                   || name == EntityBaseClassGenerator.UserEntityName;
         }
 
         #endregion // CodeTypeDeclaration

@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Xml;
 using Microsoft.Crm.Services.Utility;
-using Microsoft.Xrm.Sdk.Metadata;
 
 namespace DLaB.CrmSvcUtilExtensions
 {
@@ -20,6 +17,7 @@ namespace DLaB.CrmSvcUtilExtensions
 
         protected string FilePath { get;}
 
+        // ReSharper disable once UnusedParameter.Local
         public BaseMetadataProviderService(IMetadataProviderService defaultService, IDictionary<string, string> parameters)
         {
             DefaultService = defaultService;

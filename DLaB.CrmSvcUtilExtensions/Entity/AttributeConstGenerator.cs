@@ -11,7 +11,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
 {
     public class AttributeConstGenerator : ICustomizeCodeDomService
     {
-        public static string AttributeConstsClassName { get { return ConfigHelper.GetAppSettingOrDefault("AttributeConstsClassName", "Fields"); } }
+        public static string AttributeConstsClassName => ConfigHelper.GetAppSettingOrDefault("AttributeConstsClassName", "Fields");
 
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)   
         {
