@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator</id>
-	  <version>1.2017.4.9</version>
+	  <version>1.2017.6.14</version>
 	  <title>Early Bound Generator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,12 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V1.2017.4.9
+    <releaseNotes>V1.2017.6.14
+ - Fix for Error in format of Transliteration file #105
+ - Fix for Generated Account.cs Entity cannot find AccountState (StateCodeEnum) #48
+ - Fix for Reading from Cached Metadata causing Null Ref
+ 
+ V1.2017.4.9
  - Implmented Change Field Type to Static Class #82
 
 V1.2017.3.23
