@@ -16,16 +16,13 @@
 // =====================================================================
 //<snippetFilteringService>
 
-// Define SKIP_STATE_OPTIONSETS if you plan on using this extension in conjunction with
-// the unextended CrmSvcUtil, since it already generates state optionsets.
-#define SKIP_STATE_OPTIONSETS
-
 using System;
 using System.Collections.Generic;
 using Microsoft.Crm.Services.Utility;
 using Microsoft.Xrm.Sdk.Metadata;
 using System.Linq;
 using DLaB.Common;
+using DLaB.CrmSvcUtilExtensions.Entity;
 
 namespace DLaB.CrmSvcUtilExtensions.OptionSet
 {
@@ -56,13 +53,11 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
         public bool GenerateOptionSet(OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
         {
 
-#if SKIP_STATE_OPTIONSETS
-            // Only skip the state optionsets if the user of the extension wishes to.
-            if (optionSetMetadata.OptionSetType == OptionSetType.State)
+            // Skip the state optionsets unless the XrmClient is used 
+            if (!CustomizeCodeDomService.UseXrmClient && optionSetMetadata.OptionSetType == OptionSetType.State)
             {
                 return false;
             }
-#endif
             if (Skip(optionSetMetadata.Name))
             {
                 return false;

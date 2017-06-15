@@ -24,15 +24,7 @@ namespace DLaB.CrmSvcUtilExtensions
             FilePath = ConfigHelper.GetAppSettingOrDefault("SerializedMetadataFilePath", "metadata.xml");
         }
 
-        public IOrganizationMetadata LoadMetadata()
-        {
-            if (Metadata == null)
-            {
-                Metadata = LoadMetadataInternal();
-            }
-
-            return Metadata;
-        }
+        public IOrganizationMetadata LoadMetadata() { return Metadata ?? (Metadata = LoadMetadataInternal()); }
 
         protected virtual IOrganizationMetadata LoadMetadataInternal()
         {
@@ -47,7 +39,7 @@ namespace DLaB.CrmSvcUtilExtensions
 
                 if (ConfigHelper.GetAppSettingOrDefault("SerializeMetadata", false))
                 {
-                    SerializeMetadata(Metadata, FilePath);
+                    SerializeMetadata(metadata, FilePath);
                 }
             }
 
