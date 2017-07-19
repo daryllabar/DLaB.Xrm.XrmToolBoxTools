@@ -9,6 +9,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
     public class CustomizeCodeDomService : ICustomizeCodeDomService
     {
         public static bool AddDebuggerNonUserCode => ConfigHelper.GetAppSettingOrDefault("AddDebuggerNonUserCode", true);
+        public static bool AddPrimaryAttributeConsts => ConfigHelper.GetAppSettingOrDefault("AddPrimaryAttributeConsts", true);
         public bool CreateBaseClasses => ConfigHelper.GetAppSettingOrDefault("CreateBaseClasses", false) && !UseXrmClient;
         public static bool GenerateAnonymousTypeConstructor => ConfigHelper.GetAppSettingOrDefault("GenerateAnonymousTypeConstructor", true);
         public static bool GenerateAttributeNameConsts => ConfigHelper.GetAppSettingOrDefault("GenerateAttributeNameConsts", false);
@@ -28,6 +29,10 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             if (UseXrmClient)
             {
                 new CodeCustomization(Parameters).CustomizeCodeDom(codeUnit, services);
+            }
+            if (AddPrimaryAttributeConsts)
+            {
+                new PrimaryAttributeGenerator().CustomizeCodeDom(codeUnit, services);
             }
             if (GenerateAttributeNameConsts)
             {

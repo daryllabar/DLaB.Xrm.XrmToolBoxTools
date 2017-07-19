@@ -137,6 +137,7 @@
     <Compile Include="Action\CustomizeCodeDomService.cs" />
     <Compile Include="Action\CustomCodeGenerationService.cs" />
     <Compile Include="BaseCustomCodeGenerationService.cs" />
+    <Compile Include="Entity\PrimaryAttributeGenerator.cs" />
     <Compile Include="Entity\AttributeConstGenerator.cs" />
     <Compile Include="Entity\CustomCodeGenerationService.cs" />
     <Compile Include="Entity\EntityBaseClassGenerator.cs" />

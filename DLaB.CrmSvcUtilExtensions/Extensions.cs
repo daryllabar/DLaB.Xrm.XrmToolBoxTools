@@ -25,6 +25,20 @@ namespace DLaB.CrmSvcUtilExtensions
             throw new Exception("Field " + fieldName + " was not found for type " + type.Name);
         }
 
+        public static string GetEntityLogicalName(this CodeTypeDeclaration type)
+        {
+            try
+            {
+                return ((CodePrimitiveExpression) type.CustomAttributes.Cast<CodeAttributeDeclaration>().
+                                                       First(a => a.Name == "Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute").Arguments[0].
+                                                       Value).Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Unable to get the EntityLogicalName for " + type.Name, ex);
+            }
+        }
+
         /// <summary>
         /// Determines if the type inherits from one of the known Xrm OrganizationServiceContext types.
         /// </summary>
