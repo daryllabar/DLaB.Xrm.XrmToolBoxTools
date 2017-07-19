@@ -79,7 +79,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         private bool OptionSetIsSkipped(CodeMemberProperty property, string entityLogicalName)
         {
             var info = GetOptionSetEnumInfo(property, entityLogicalName);
-            return !OptionSet.CodeWriterFilterService.IsOptionSetGenerated(info.EnumTypeName);
+            return info != null && !OptionSet.CodeWriterFilterService.IsOptionSetGenerated(info.EnumTypeName);
         }
 
         // If using the Xrm Client, OptionSets are converted to nullable Ints

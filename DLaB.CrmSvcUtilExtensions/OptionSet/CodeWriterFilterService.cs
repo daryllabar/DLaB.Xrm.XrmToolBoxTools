@@ -101,7 +101,7 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
         public static bool IsOptionSetGenerated(string name)
         {
             name = name.ToLower();
-            return OptionSetsToSkip.Contains(name) || OptionSetPrefixesToSkip.Any(p => name.StartsWith(p));
+            return !OptionSetsToSkip.Contains(name) && !OptionSetPrefixesToSkip.Any(p => name.StartsWith(p));
         }
 
         /// <summary>
