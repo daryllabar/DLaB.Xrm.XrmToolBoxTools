@@ -37,6 +37,12 @@ namespace DLaB.CrmSvcUtilExtensions.Action
     /// </summary>
     public sealed class CustomizeCodeDomService : ICustomizeCodeDomService
     {
+        public bool MakeResponseActionsEditable { get; }
+
+        public CustomizeCodeDomService()
+        {
+            MakeResponseActionsEditable = ConfigHelper.GetAppSettingOrDefault("MakeResponseActionsEditable", false);
+        }
         /// <summary>
         /// Remove the unnecessary classes that we generated for entities. 
         /// </summary>
@@ -59,12 +65,12 @@ namespace DLaB.CrmSvcUtilExtensions.Action
 
             //#endif
 
-            RemoveActionsToSkip(codeUnit);
+            ProcessActions(codeUnit);
 
             Trace.TraceInformation("Exiting ICustomizeCodeDomService.CustomizeCodeDom");
         }
 
-        private void RemoveActionsToSkip(CodeCompileUnit codeUnit)
+        private void ProcessActions(CodeCompileUnit codeUnit)
         {
             // Iterate over all of the namespaces that were generated.
             for (var i = 0; i < codeUnit.Namespaces.Count; ++i)
@@ -81,8 +87,26 @@ namespace DLaB.CrmSvcUtilExtensions.Action
                     }
                     else
                     {
-                        j ++;
+                        ProcessAction(types[j]);
+                        j++;
                     }
+                }
+            }
+        }
+
+        private void ProcessAction(CodeTypeDeclaration action)
+        {
+            var orgResponse = new CodeTypeReference(typeof(Microsoft.Xrm.Sdk.OrganizationResponse)).BaseType;
+            if (MakeResponseActionsEditable && action.BaseTypes.OfType<CodeTypeReference>().Any(r => r.BaseType == orgResponse))
+            {
+                foreach (var prop in from CodeTypeMember member in action.Members
+                                       let propDom = member as CodeMemberProperty
+                                       where propDom != null && !propDom.HasSet 
+                                       select propDom)
+                {
+                    var thisMember = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), "Results");
+                    var indexOf = new CodeArrayIndexerExpression(thisMember, new CodePrimitiveExpression(prop.Name));
+                    prop.SetStatements.Add(new CodeAssignStatement(indexOf, new CodePropertySetValueReferenceExpression()));
                 }
             }
         }

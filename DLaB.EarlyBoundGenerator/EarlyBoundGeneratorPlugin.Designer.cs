@@ -92,6 +92,7 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnCreateActions = new System.Windows.Forms.Button();
             this.TxtActionPath = new System.Windows.Forms.TextBox();
             this.LblActionPath = new System.Windows.Forms.Label();
+            this.ChkEditableResponseActions = new System.Windows.Forms.CheckBox();
             label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -761,6 +762,7 @@ namespace DLaB.EarlyBoundGenerator
             // 
             // actionsTab
             // 
+            this.actionsTab.Controls.Add(this.ChkEditableResponseActions);
             this.actionsTab.Controls.Add(this.LblActionsDirectory);
             this.actionsTab.Controls.Add(this.ChkCreateOneActionFile);
             this.actionsTab.Controls.Add(this.tableLayoutPanel3);
@@ -847,6 +849,17 @@ namespace DLaB.EarlyBoundGenerator
             this.LblActionPath.Size = new System.Drawing.Size(107, 13);
             this.LblActionPath.TabIndex = 25;
             this.LblActionPath.Text = "Action Relative Path:";
+            // 
+            // ChkEditableResponseActions
+            // 
+            this.ChkEditableResponseActions.AutoSize = true;
+            this.ChkEditableResponseActions.Location = new System.Drawing.Point(164, 29);
+            this.ChkEditableResponseActions.Name = "ChkEditableResponseActions";
+            this.ChkEditableResponseActions.Size = new System.Drawing.Size(150, 17);
+            this.ChkEditableResponseActions.TabIndex = 30;
+            this.ChkEditableResponseActions.Text = "Make Responses Editable";
+            this.ChkEditableResponseActions.UseVisualStyleBackColor = true;
+            this.ChkEditableResponseActions.MouseEnter += new System.EventHandler(this.ChkEditableResponseActions_MouseEnter);
             // 
             // EarlyBoundGeneratorPlugin
             // 
@@ -940,5 +953,6 @@ namespace DLaB.EarlyBoundGenerator
         private System.Windows.Forms.CheckBox ChkAudibleCompletion;
         private System.Windows.Forms.Button BtnOpenSettingsPathDialog;
         private System.Windows.Forms.TextBox TxtSettingsPath;
+        private System.Windows.Forms.CheckBox ChkEditableResponseActions;
     }
 }

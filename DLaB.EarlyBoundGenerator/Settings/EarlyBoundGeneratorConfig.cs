@@ -209,6 +209,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 GenerateEnumProperties = pocoConfig.GenerateEnumProperties.GetValueOrDefault(defaultConfig.GenerateEnumProperties),
                 InvalidCSharpNamePrefix = pocoConfig.InvalidCSharpNamePrefix ?? defaultConfig.InvalidCSharpNamePrefix,
                 MakeReadonlyFieldsEditable = pocoConfig.MakeReadonlyFieldsEditable ?? defaultConfig.MakeReadonlyFieldsEditable,
+                MakeResponseActionsEditable = pocoConfig.MakeResponseActionsEditable ?? defaultConfig.MakeResponseActionsEditable,
                 LocalOptionSetFormat = pocoConfig.LocalOptionSetFormat ?? defaultConfig.LocalOptionSetFormat,
                 OptionSetsToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.OptionSetsToSkip, defaultConfig.OptionSetsToSkip),
                 PropertyEnumMappings = AddPipeDelimitedMissingDefaultValues(pocoConfig.PropertyEnumMappings, defaultConfig.PropertyEnumMappings),

@@ -93,6 +93,7 @@ namespace DLaB.EarlyBoundGenerator
             ChkCreateOneActionFile.Checked = Settings.ExtensionConfig.CreateOneFilePerAction;
             ChkCreateOneEntityFile.Checked = Settings.ExtensionConfig.CreateOneFilePerEntity;
             ChkCreateOneOptionSetFile.Checked = Settings.ExtensionConfig.CreateOneFilePerOptionSet;
+            ChkEditableResponseActions.Checked = Settings.ExtensionConfig.MakeResponseActionsEditable;
             ChkIncludeCommandLine.Checked = Settings.IncludeCommandLine;
             ChkMakeReadonlyFieldsEditable.Checked = Settings.ExtensionConfig.MakeReadonlyFieldsEditable;
             ChkMaskPassword.Checked = Settings.MaskPassword;
@@ -338,6 +339,7 @@ namespace DLaB.EarlyBoundGenerator
             extensions.GenerateEnumProperties = ChkGenerateOptionSetEnums.Checked;
             extensions.InvalidCSharpNamePrefix = TxtInvalidCSharpNamePrefix.Text;
             extensions.MakeReadonlyFieldsEditable = ChkMakeReadonlyFieldsEditable.Checked;
+            extensions.MakeResponseActionsEditable = ChkEditableResponseActions.Checked;
             extensions.LocalOptionSetFormat = TxtOptionSetFormat.Text;
             extensions.RemoveRuntimeVersionComment = ChkRemoveRuntimeComment.Checked;
             extensions.UseXrmClient = ChkUseXrmClient.Checked;

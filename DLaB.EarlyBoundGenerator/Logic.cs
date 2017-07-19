@@ -231,6 +231,7 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "GenerateEnumProperties", extensions.GenerateEnumProperties.ToString()) |
                     UpdateConfigAppSetting(file, "InvalidCSharpNamePrefix", extensions.InvalidCSharpNamePrefix) |
                     UpdateConfigAppSetting(file, "MakeReadonlyFieldsEditable", extensions.MakeReadonlyFieldsEditable.ToString()) |
+                    UpdateConfigAppSetting(file, "MakeResponseActionsEditable", extensions.MakeResponseActionsEditable.ToString()) |
                     UpdateConfigAppSetting(file, "LocalOptionSetFormat", extensions.LocalOptionSetFormat) |
                     UpdateConfigAppSetting(file, "OptionSetsToSkip", extensions.OptionSetsToSkip) |
                     UpdateConfigAppSetting(file, "OptionSetCommandLineText", extensions.OptionSetCommandLineText, true) |

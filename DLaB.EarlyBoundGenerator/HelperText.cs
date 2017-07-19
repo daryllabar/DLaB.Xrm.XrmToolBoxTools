@@ -84,6 +84,11 @@ namespace DLaB.EarlyBoundGenerator
             TxtHelp.Text = @"Specifies that each Enum will be created in its own file.";
         }
 
+        private void ChkEditableResponseActions_MouseEnter(object sender, EventArgs e)
+        {
+            TxtHelp.Text = @"Specifies that the properties of Response Actions should be editable.";
+        }
+
         private void ChkGenerateAttributeNameConsts_MouseEnter(object sender, EventArgs e)
         {
             TxtHelp.Text = @"Adds a Static Class to each Entity class that contains the Logical Names of all attributes for the Entity.";

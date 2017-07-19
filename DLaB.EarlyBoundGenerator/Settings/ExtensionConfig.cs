@@ -69,6 +69,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public bool MakeReadonlyFieldsEditable { get; set; }
         /// <summary>
+        /// Specifies that the properties of Response Actions should be editable.
+        /// </summary>
+        public bool MakeResponseActionsEditable { get; set; }
+        /// <summary>
         /// Defines the format of Local Option Sets where {0} is the Entity Schema Name, and {1} is the Attribute Schema Name.  
         /// The format Specified in the SDK is {0}{1}, but the default is {0}_{1}, but used to be prefix_{0}_{1}(all lower case)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
         /// </summary>
@@ -147,6 +151,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 EntityAttributeSpecifiedNames = null,
                 InvalidCSharpNamePrefix = "_",
                 MakeReadonlyFieldsEditable = false,
+                MakeResponseActionsEditable = false,
                 LocalOptionSetFormat = "{0}_{1}",
                 OptionSetsToSkip = "organization_currencyformatcode|quote_statuscode",
                 PropertyEnumMappings = string.Empty,
@@ -187,6 +192,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public string EntityAttributeSpecifiedNames { get; set; }
         public string InvalidCSharpNamePrefix { get; set; }
         public bool? MakeReadonlyFieldsEditable { get; set; }
+        public bool? MakeResponseActionsEditable { get; set; }
         public string LocalOptionSetFormat { get; set; }
         public string OptionSetsToSkip { get; set; }
         public string PropertyEnumMappings { get; set; }
