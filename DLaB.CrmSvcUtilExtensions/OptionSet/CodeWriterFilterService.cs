@@ -58,7 +58,7 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
             {
                 return false;
             }
-            if (Skip(optionSetMetadata.Name))
+            if (!IsOptionSetGenerated(optionSetMetadata.Name))
             {
                 return false;
             }
@@ -98,7 +98,7 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
             return generate;
         }
 
-        private bool Skip(string name)
+        public static bool IsOptionSetGenerated(string name)
         {
             name = name.ToLower();
             return OptionSetsToSkip.Contains(name) || OptionSetPrefixesToSkip.Any(p => name.StartsWith(p));

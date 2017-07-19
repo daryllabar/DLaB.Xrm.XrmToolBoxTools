@@ -40,7 +40,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                 foreach (var member in type.Members)
                 {
                     var property = member as CodeMemberProperty;
-                    if (SkipProperty(property, type))
+                    if (SkipProperty(property, type, logicalName))
                     {
                         continue;
                     }
@@ -60,19 +60,26 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             }
         }
 
-        private bool SkipProperty(CodeMemberProperty property, CodeTypeDeclaration type)
+        private bool SkipProperty(CodeMemberProperty property, CodeTypeDeclaration type, string entityLogicalName)
         {
             HashSet<string> attributes;
             return property == null ||
                    !IsOptionSetProperty(property) ||
                    (UnmappedProperties.TryGetValue(type.Name.ToLower(), out attributes) && attributes.Contains(property.Name.ToLower())) ||
-                   property.CustomAttributes.Cast<CodeAttributeDeclaration>().Any(att => att.Name == "System.ObsoleteAttribute");
+                   property.CustomAttributes.Cast<CodeAttributeDeclaration>().Any(att => att.Name == "System.ObsoleteAttribute") ||
+                   OptionSetIsSkipped(property, entityLogicalName);
         }
 
         private static bool IsOptionSetProperty(CodeMemberProperty property)
         {
             // By default this check will work
             return property.Type.BaseType == "Microsoft.Xrm.Sdk.OptionSetValue" || IsNullableIntPropery(property);
+        }
+
+        private bool OptionSetIsSkipped(CodeMemberProperty property, string entityLogicalName)
+        {
+            var info = GetOptionSetEnumInfo(property, entityLogicalName);
+            return !OptionSet.CodeWriterFilterService.IsOptionSetGenerated(info.EnumTypeName);
         }
 
         // If using the Xrm Client, OptionSets are converted to nullable Ints
@@ -113,12 +120,60 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         //    yield break;
         //}
 
+        private class EnumPropertyInfo
+        {
+            public string EnumTypeName { get; set; }
+            public string NullableEnumTypeName => EnumTypeName + "?";
+            public string PropertyName { get; set; }
+            public string LogicalName { get; set; }
+        }
+
         private CodeMemberProperty GetOptionSetEnumType(CodeMemberProperty prop, string entityLogicalName)
         {
+            var info = GetOptionSetEnumInfo(prop, entityLogicalName);
+            if (info == null)
+            {
+                return null;                
+            }
+
+            var property = new CodeMemberProperty
+            {
+                Name = info.PropertyName,
+                Type = new CodeTypeReference(info.NullableEnumTypeName),
+                Attributes = System.CodeDom.MemberAttributes.Public
+            };
+
+            // [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("AttributeLogicalName")]
+            property.CustomAttributes.Add(new CodeAttributeDeclaration("Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute", new CodeAttributeArgument(new CodePrimitiveExpression(info.LogicalName))));
+
+            property.GetStatements.Add(
+                new CodeMethodReturnStatement(
+                    new CodeCastExpression(
+                        info.NullableEnumTypeName,
+                        new CodeMethodInvokeExpression(
+                            CreateBaseClasses ? new CodeTypeReferenceExpression(EntityBaseClassGenerator.BaseEntityName) : new CodeTypeReferenceExpression("EntityOptionSetEnum"),
+                            "GetEnum",
+                            new CodeThisReferenceExpression(),
+                            new CodePrimitiveExpression(info.LogicalName)))));
+
+            if (prop.HasSet)
+            {
+                var setSnippet = IsNullableIntPropery(prop) ? "(int?)value" : "value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null";
+
+                property.SetStatements.Add(
+                    new CodeAssignStatement(
+                        new CodeVariableReferenceExpression(prop.Name),
+                        new CodeSnippetExpression(setSnippet)));
+            }
+            return property;
+        }
+
+        private EnumPropertyInfo GetOptionSetEnumInfo(CodeMemberProperty prop, string entityLogicalName)
+        {
             var data = CodeWriterFilterService.EntityMetadata[entityLogicalName];
-            string propertyLogicalName = (from CodeAttributeDeclaration att in prop.CustomAttributes
-                                          where att.AttributeType.BaseType == "Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute" 
-                                          select ((CodePrimitiveExpression) att.Arguments[0].Value).Value.ToString()).FirstOrDefault();
+            var propertyLogicalName = (from CodeAttributeDeclaration att in prop.CustomAttributes
+                                       where att.AttributeType.BaseType == "Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute"
+                                       select ((CodePrimitiveExpression) att.Arguments[0].Value).Value.ToString()).FirstOrDefault();
 
             if (propertyLogicalName == null) { throw new Exception("Unable to determine property Logical Name"); }
 
@@ -137,38 +192,12 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                 enumName += "Enum";
             }
 
-            enumName += "?";
-
-            var property = new CodeMemberProperty
+            return new EnumPropertyInfo
             {
-                Name = prop.Name + "Enum",
-                Type = new CodeTypeReference(enumName),
-                Attributes = System.CodeDom.MemberAttributes.Public
+                EnumTypeName = enumName,
+                PropertyName = prop.Name + "Enum",
+                LogicalName = propertyLogicalName
             };
-
-            // [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("AttributeLogicalName")]
-            property.CustomAttributes.Add(new CodeAttributeDeclaration("Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute", new CodeAttributeArgument(new CodePrimitiveExpression(propertyLogicalName))));
-
-            property.GetStatements.Add(
-                new CodeMethodReturnStatement(
-                    new CodeCastExpression(
-                        enumName,
-                        new CodeMethodInvokeExpression(
-                            CreateBaseClasses ? new CodeTypeReferenceExpression(EntityBaseClassGenerator.BaseEntityName) : new CodeTypeReferenceExpression("EntityOptionSetEnum"),
-                            "GetEnum",
-                            new CodeThisReferenceExpression(),
-                            new CodePrimitiveExpression(propertyLogicalName)))));
-
-            if (prop.HasSet)
-            {
-                var setSnippet = IsNullableIntPropery(prop) ? "(int?)value" : "value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null";
-
-                property.SetStatements.Add(
-                    new CodeAssignStatement(
-                        new CodeVariableReferenceExpression(prop.Name),
-                        new CodeSnippetExpression(setSnippet)));
-            }
-            return property;
         }
 
         private static CodeTypeDeclaration GetEntityOptionSetEnumDeclaration()
