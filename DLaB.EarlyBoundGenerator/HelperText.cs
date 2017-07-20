@@ -89,6 +89,11 @@ namespace DLaB.EarlyBoundGenerator
             TxtHelp.Text = @"Specifies that the properties of Response Actions should be editable.";
         }
 
+        private void ChkGenerateActionAttributeNameConsts_MouseEnter(object sender, EventArgs e)
+        {
+            TxtHelp.Text = @"Adds a Static Class to each Action class that contains the Logical Names of all attributes for the Action.";
+        }
+
         private void ChkGenerateAttributeNameConsts_MouseEnter(object sender, EventArgs e)
         {
             TxtHelp.Text = @"Adds a Static Class to each Entity class that contains the Logical Names of all attributes for the Entity.";

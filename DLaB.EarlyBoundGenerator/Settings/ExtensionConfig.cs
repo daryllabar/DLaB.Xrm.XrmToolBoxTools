@@ -44,6 +44,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public string EntityAttributeSpecifiedNames { get; set; }
         /// <summary>
+        /// Specifies the generation of an Attributes Struct containing logical names for all attributes for the Action
+        /// </summary>
+        public bool GenerateActionAttributeNameConsts { get; set; }        
+        /// <summary>
         /// Specifies the generation of an Attributes Struct containing logical names for all attributes for the Entity
         /// </summary>
         public bool GenerateAttributeNameConsts { get; set; }
@@ -142,6 +146,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 CreateOneFilePerAction = false,
                 CreateOneFilePerEntity = false,
                 CreateOneFilePerOptionSet = false,
+                GenerateActionAttributeNameConsts = false,
                 GenerateAttributeNameConsts = false,
                 GenerateAnonymousTypeConstructor = true,
                 GenerateEntityRelationships = true,
@@ -181,6 +186,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
     {
         public bool? CreateOneFilePerEntity { get; set; }
         public bool? CreateOneFilePerOptionSet { get; set; }
+        public bool? GenerateActionAttributeNameConsts { get; set; }
         public bool? GenerateAttributeNameConsts { get; set; }
         public bool? GenerateAnonymousTypeConstructor { get; set; }
         public bool? GenerateEntityRelationships { get; set; }

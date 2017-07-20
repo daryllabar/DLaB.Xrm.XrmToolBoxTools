@@ -86,13 +86,14 @@ namespace DLaB.EarlyBoundGenerator
             this.ChkCreateOneOptionSetFile = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.actionsTab = new System.Windows.Forms.TabPage();
+            this.ChkEditableResponseActions = new System.Windows.Forms.CheckBox();
             this.LblActionsDirectory = new System.Windows.Forms.Label();
             this.ChkCreateOneActionFile = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.BtnCreateActions = new System.Windows.Forms.Button();
             this.TxtActionPath = new System.Windows.Forms.TextBox();
             this.LblActionPath = new System.Windows.Forms.Label();
-            this.ChkEditableResponseActions = new System.Windows.Forms.CheckBox();
+            this.ChkGenerateActionAttributeNameConsts = new System.Windows.Forms.CheckBox();
             label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -762,6 +763,7 @@ namespace DLaB.EarlyBoundGenerator
             // 
             // actionsTab
             // 
+            this.actionsTab.Controls.Add(this.ChkGenerateActionAttributeNameConsts);
             this.actionsTab.Controls.Add(this.ChkEditableResponseActions);
             this.actionsTab.Controls.Add(this.LblActionsDirectory);
             this.actionsTab.Controls.Add(this.ChkCreateOneActionFile);
@@ -778,6 +780,17 @@ namespace DLaB.EarlyBoundGenerator
             this.actionsTab.Text = "Actions";
             this.actionsTab.UseVisualStyleBackColor = true;
             this.actionsTab.Enter += new System.EventHandler(this.actionsTab_Enter);
+            // 
+            // ChkEditableResponseActions
+            // 
+            this.ChkEditableResponseActions.AutoSize = true;
+            this.ChkEditableResponseActions.Location = new System.Drawing.Point(164, 52);
+            this.ChkEditableResponseActions.Name = "ChkEditableResponseActions";
+            this.ChkEditableResponseActions.Size = new System.Drawing.Size(150, 17);
+            this.ChkEditableResponseActions.TabIndex = 30;
+            this.ChkEditableResponseActions.Text = "Make Responses Editable";
+            this.ChkEditableResponseActions.UseVisualStyleBackColor = true;
+            this.ChkEditableResponseActions.MouseEnter += new System.EventHandler(this.ChkEditableResponseActions_MouseEnter);
             // 
             // LblActionsDirectory
             // 
@@ -850,16 +863,16 @@ namespace DLaB.EarlyBoundGenerator
             this.LblActionPath.TabIndex = 25;
             this.LblActionPath.Text = "Action Relative Path:";
             // 
-            // ChkEditableResponseActions
+            // ChkGenerateActionAttributeNameConsts
             // 
-            this.ChkEditableResponseActions.AutoSize = true;
-            this.ChkEditableResponseActions.Location = new System.Drawing.Point(164, 29);
-            this.ChkEditableResponseActions.Name = "ChkEditableResponseActions";
-            this.ChkEditableResponseActions.Size = new System.Drawing.Size(150, 17);
-            this.ChkEditableResponseActions.TabIndex = 30;
-            this.ChkEditableResponseActions.Text = "Make Responses Editable";
-            this.ChkEditableResponseActions.UseVisualStyleBackColor = true;
-            this.ChkEditableResponseActions.MouseEnter += new System.EventHandler(this.ChkEditableResponseActions_MouseEnter);
+            this.ChkGenerateActionAttributeNameConsts.AutoSize = true;
+            this.ChkGenerateActionAttributeNameConsts.Location = new System.Drawing.Point(164, 29);
+            this.ChkGenerateActionAttributeNameConsts.Name = "ChkGenerateActionAttributeNameConsts";
+            this.ChkGenerateActionAttributeNameConsts.Size = new System.Drawing.Size(178, 17);
+            this.ChkGenerateActionAttributeNameConsts.TabIndex = 31;
+            this.ChkGenerateActionAttributeNameConsts.Text = "Generate Attribute Name Consts";
+            this.ChkGenerateActionAttributeNameConsts.UseVisualStyleBackColor = true;
+            this.ChkGenerateActionAttributeNameConsts.MouseEnter += new System.EventHandler(this.ChkGenerateActionAttributeNameConsts_MouseEnter);
             // 
             // EarlyBoundGeneratorPlugin
             // 
@@ -954,5 +967,6 @@ namespace DLaB.EarlyBoundGenerator
         private System.Windows.Forms.Button BtnOpenSettingsPathDialog;
         private System.Windows.Forms.TextBox TxtSettingsPath;
         private System.Windows.Forms.CheckBox ChkEditableResponseActions;
+        private System.Windows.Forms.CheckBox ChkGenerateActionAttributeNameConsts;
     }
 }

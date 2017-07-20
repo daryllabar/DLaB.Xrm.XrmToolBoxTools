@@ -37,6 +37,8 @@ namespace DLaB.CrmSvcUtilExtensions.Action
     /// </summary>
     public sealed class CustomizeCodeDomService : ICustomizeCodeDomService
     {
+        public static bool GenerateActionAttributeNameConsts => ConfigHelper.GetAppSettingOrDefault("GenerateActionAttributeNameConsts", false);
+
         public bool MakeResponseActionsEditable { get; }
 
         public CustomizeCodeDomService()
@@ -66,6 +68,11 @@ namespace DLaB.CrmSvcUtilExtensions.Action
             //#endif
 
             ProcessActions(codeUnit);
+
+            if (GenerateActionAttributeNameConsts)
+            {
+                new AttributeConstGenerator().CustomizeCodeDom(codeUnit, services);
+            }
 
             Trace.TraceInformation("Exiting ICustomizeCodeDomService.CustomizeCodeDom");
         }

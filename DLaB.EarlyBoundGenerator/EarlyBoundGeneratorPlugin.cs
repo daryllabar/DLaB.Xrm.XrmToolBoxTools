@@ -97,6 +97,7 @@ namespace DLaB.EarlyBoundGenerator
             ChkIncludeCommandLine.Checked = Settings.IncludeCommandLine;
             ChkMakeReadonlyFieldsEditable.Checked = Settings.ExtensionConfig.MakeReadonlyFieldsEditable;
             ChkMaskPassword.Checked = Settings.MaskPassword;
+            ChkGenerateActionAttributeNameConsts.Checked = Settings.ExtensionConfig.GenerateActionAttributeNameConsts;
             ChkGenerateAttributeNameConsts.Checked = Settings.ExtensionConfig.GenerateAttributeNameConsts;
             ChkGenerateAnonymousTypeConstructor.Checked = Settings.ExtensionConfig.GenerateAnonymousTypeConstructor;
             ChkGenerateEntityRelationships.Checked = Settings.ExtensionConfig.GenerateEntityRelationships;
@@ -333,6 +334,7 @@ namespace DLaB.EarlyBoundGenerator
             extensions.CreateOneFilePerAction = ChkCreateOneActionFile.Checked;
             extensions.CreateOneFilePerEntity = ChkCreateOneEntityFile.Checked;
             extensions.CreateOneFilePerOptionSet = ChkCreateOneOptionSetFile.Checked;
+            extensions.GenerateActionAttributeNameConsts = ChkGenerateActionAttributeNameConsts.Checked;
             extensions.GenerateAttributeNameConsts = ChkGenerateAttributeNameConsts.Checked;
             extensions.GenerateAnonymousTypeConstructor = ChkGenerateAnonymousTypeConstructor.Checked;
             extensions.GenerateEntityRelationships = ChkGenerateEntityRelationships.Checked;
