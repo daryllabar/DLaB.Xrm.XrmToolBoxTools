@@ -1,4 +1,5 @@
 ﻿using System.CodeDom;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DLaB.CrmSvcUtilExtensions.Entity
@@ -21,6 +22,10 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                                         FirstOrDefault()?.FieldName;
         }
 
+        protected override void AddNonPropertyValues(CodeTypeDeclaration constantsClass, CodeTypeDeclaration type, HashSet<string> attributes)
+        {
+            // None
+        }
 
         private static bool HasAttributeAndRelationship(CodeMemberProperty prop, CodeAttributeDeclaration att)
         {

@@ -27,6 +27,7 @@ namespace DLaB.CrmSvcUtilExtensions
                     TypeAttributes = TypeAttributes.Public
                 };
 
+                AddNonPropertyValues(@class, type, attributes);
                 foreach (var member in from CodeTypeMember member in type.Members 
                                        let prop = member as CodeMemberProperty 
                                        where prop != null 
@@ -47,19 +48,25 @@ namespace DLaB.CrmSvcUtilExtensions
         /// </summary>
         /// <returns></returns>
         protected abstract string GetAttributeLogicalName(CodeMemberProperty prop);
+        protected abstract void AddNonPropertyValues(CodeTypeDeclaration constantsClass, CodeTypeDeclaration type, HashSet<string> attributes);
 
         private void CreateAttributeConstForProperty(CodeTypeDeclaration type, CodeMemberProperty prop, HashSet<string> attributes)
         {
-            var attributeLogicalName = GetAttributeLogicalName(prop);
-            if (attributes.Contains(prop.Name) || attributeLogicalName == null) return;
+            AddAttributeConstIfNotExists(type, prop.Name, GetAttributeLogicalName(prop), attributes);
+        }
 
-            attributes.Add(prop.Name);
-            type.Members.Add(new CodeMemberField
+        protected int AddAttributeConstIfNotExists(CodeTypeDeclaration type, string name, string attributeLogicalName, HashSet<string> attributes)
+        {
+            if (attributes.Contains(name) || attributeLogicalName == null)
+                return -1;
+
+            attributes.Add(name);
+            return type.Members.Add(new CodeMemberField
             {
                 // ReSharper disable once BitwiseOperatorOnEnumWithoutFlags
                 Attributes = MemberAttributes.Public | MemberAttributes.Const,
-                Name = prop.Name,
-                Type = new CodeTypeReference(typeof (string)),
+                Name = name,
+                Type = new CodeTypeReference(typeof(string)),
                 InitExpression = new CodePrimitiveExpression(attributeLogicalName)
             });
         }

@@ -29,13 +29,47 @@ namespace DLaB.CrmSvcUtilExtensions
         {
             try
             {
-                return ((CodePrimitiveExpression) type.CustomAttributes.Cast<CodeAttributeDeclaration>().
-                                                       First(a => a.Name == "Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute").Arguments[0].
-                                                       Value).Value.ToString();
+                return ((CodePrimitiveExpression)type.GetCustomAttribute("Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute").Arguments[0].Value).Value.ToString();
             }
             catch (Exception ex)
             {
                 throw new Exception("Unable to get the EntityLogicalName for " + type.Name, ex);
+            }
+        }
+
+        public static string GetRequestProxyAttribute(this CodeTypeDeclaration type)
+        {
+            try
+            {
+                return ((CodePrimitiveExpression)type.GetCustomAttribute("Microsoft.Xrm.Sdk.Client.RequestProxyAttribute")?.Arguments[0].Value)?.Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Unable to get the EntityLogicalName for " + type.Name, ex);
+            }
+        }
+
+        public static string GetResponseProxyAttribute(this CodeTypeDeclaration type)
+        {
+            try
+            {
+                return ((CodePrimitiveExpression)type.GetCustomAttribute("Microsoft.Xrm.Sdk.Client.ResponseProxyAttribute")?.Arguments[0].Value)?.Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Unable to get the EntityLogicalName for " + type.Name, ex);
+            }
+        }
+
+        public static CodeAttributeDeclaration GetCustomAttribute(this CodeTypeDeclaration type, string attributeName)
+        {
+            try
+            {
+                return type.CustomAttributes.Cast<CodeAttributeDeclaration>().FirstOrDefault(a => a.Name == attributeName);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Unable to get the Custom Attribute {attributeName} for {type.Name}", ex);
             }
         }
 
