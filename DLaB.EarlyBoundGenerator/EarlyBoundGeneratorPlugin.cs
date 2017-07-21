@@ -190,6 +190,14 @@ namespace DLaB.EarlyBoundGenerator
             EnableForm(false);
 
             HydrateSettingsFromUI();
+            if (new Version(Settings.Version) < new Version(Settings.SettingsVersion))
+            {
+                if(MessageBox.Show($@"This version of the Early Bound Generator ({Settings.Version}) is older than the previous ran version from the settings ({Settings.SettingsVersion}).  You should probably update the plugin before running.  Are you sure you want to countinue?", "Older Version detected", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation) != DialogResult.Yes)
+                {
+                    EnableForm(true);
+                    return;
+                }
+            }
             if (!SkipSaveSettings)
             {
                 SaveSettings();

@@ -45,6 +45,13 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </value>
         public bool MaskPassword { get; set; }
         /// <summary>
+        /// Gets or sets the last ran version.
+        /// </summary>
+        /// <value>
+        /// The last ran version.
+        /// </value>
+        public string SettingsVersion{ get; set; }
+        /// <summary>
         /// The version of the EarlyBoundGeneratorPlugin
         /// </summary>
         /// <value>
@@ -190,7 +197,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 // Also convert from a List to a HashSet
                 pocoConfig.EntityAttributeSpecifiedNames = ConvertNonColonDelimitedDictionaryListToDictionaryHash(pocoConfig.EntityAttributeSpecifiedNames);
                 pocoConfig.UnmappedProperties = ConvertNonColonDelimitedDictionaryListToDictionaryHash(pocoConfig.UnmappedProperties);
+            }
 
+            if (new Version(poco.Version) > Assembly.GetExecutingAssembly().GetName().Version)
+            {
+                
             }
 
             ExtensionConfig = new ExtensionConfig
@@ -223,6 +234,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
             ExtensionArguments = AddMissingArguments(poco.ExtensionArguments, @default.ExtensionArguments);
             UserArguments = AddMissingArguments(poco.UserArguments, @default.UserArguments);
+            SettingsVersion = poco.Version;
             Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
@@ -386,8 +398,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     var config = GetDefault();
                     return config;
                 }
-
-
 
                 var serializer = new XmlSerializer(typeof (POCO.Config));
                 POCO.Config poco;
