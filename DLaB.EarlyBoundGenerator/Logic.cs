@@ -216,7 +216,7 @@ namespace DLaB.EarlyBoundGenerator
 
                 var extensions = earlyBoundGeneratorConfig.ExtensionConfig;
                 if (UpdateConfigAppSetting(file, "ActionCommandLineText", extensions.ActionCommandLineText, true) |
-                    UpdateConfigAppSetting(file, "ActionsToSkip", extensions.ActionsToSkip.Replace("-","")) |
+                    UpdateConfigAppSetting(file, "ActionsToSkip", extensions.ActionsToSkip?.Replace("-","")) |
                     UpdateConfigAppSetting(file, "AddDebuggerNonUserCode", extensions.AddDebuggerNonUserCode.ToString()) |
                     UpdateConfigAppSetting(file, "AddNewFilesToProject", extensions.AddNewFilesToProject.ToString()) |
                     UpdateConfigAppSetting(file, "CreateOneFilePerAction", extensions.CreateOneFilePerAction.ToString()) |

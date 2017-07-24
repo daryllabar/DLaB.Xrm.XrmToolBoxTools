@@ -234,7 +234,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
             ExtensionArguments = AddMissingArguments(poco.ExtensionArguments, @default.ExtensionArguments);
             UserArguments = AddMissingArguments(poco.UserArguments, @default.UserArguments);
-            SettingsVersion = poco.Version;
+            SettingsVersion = string.IsNullOrWhiteSpace(poco.Version) ? "0.0.0.0" : poco.Version;
             Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
