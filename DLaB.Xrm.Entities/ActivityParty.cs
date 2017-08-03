@@ -484,18 +484,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_activityparty
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_activityparty")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_activityparty
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_activityparty
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_activityparty", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_activityparty", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_activityparty");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_activityparty", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_activityparty", null, value);
 				this.OnPropertyChanged("userentityinstancedata_activityparty");
 			}
 		}
@@ -505,18 +505,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("account_activity_parties")]
-		public DLaB.Xrm.Entities.Account account_activity_parties
+		public Entities.Account account_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("account_activity_parties", null);
+				return this.GetRelatedEntity<Entities.Account>("account_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("account_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("account_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.Account>("account_activity_parties", null, value);
 				this.OnPropertyChanged("account_activity_parties");
 			}
 		}
@@ -526,18 +526,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("resourcespecid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ActivityPartyResourceSpec")]
-		public DLaB.Xrm.Entities.ResourceSpec ActivityPartyResourceSpec
+		public Entities.ResourceSpec ActivityPartyResourceSpec
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ResourceSpec>("ActivityPartyResourceSpec", null);
+				return this.GetRelatedEntity<Entities.ResourceSpec>("ActivityPartyResourceSpec", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ActivityPartyResourceSpec");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ResourceSpec>("ActivityPartyResourceSpec", null, value);
+				this.SetRelatedEntity<Entities.ResourceSpec>("ActivityPartyResourceSpec", null, value);
 				this.OnPropertyChanged("ActivityPartyResourceSpec");
 			}
 		}
@@ -547,18 +547,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("activitypointer_activity_parties")]
-		public DLaB.Xrm.Entities.ActivityPointer activitypointer_activity_parties
+		public Entities.ActivityPointer activitypointer_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activitypointer_activity_parties", null);
+				return this.GetRelatedEntity<Entities.ActivityPointer>("activitypointer_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("activitypointer_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activitypointer_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.ActivityPointer>("activitypointer_activity_parties", null, value);
 				this.OnPropertyChanged("activitypointer_activity_parties");
 			}
 		}
@@ -568,18 +568,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("appointment_activity_parties")]
-		public DLaB.Xrm.Entities.Appointment appointment_activity_parties
+		public Entities.Appointment appointment_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Appointment>("appointment_activity_parties", null);
+				return this.GetRelatedEntity<Entities.Appointment>("appointment_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("appointment_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Appointment>("appointment_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.Appointment>("appointment_activity_parties", null, value);
 				this.OnPropertyChanged("appointment_activity_parties");
 			}
 		}
@@ -589,18 +589,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_activity_parties")]
-		public DLaB.Xrm.Entities.BulkOperation bulkoperation_activity_parties
+		public Entities.BulkOperation bulkoperation_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BulkOperation>("bulkoperation_activity_parties", null);
+				return this.GetRelatedEntity<Entities.BulkOperation>("bulkoperation_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("bulkoperation_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BulkOperation>("bulkoperation_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.BulkOperation>("bulkoperation_activity_parties", null, value);
 				this.OnPropertyChanged("bulkoperation_activity_parties");
 			}
 		}
@@ -610,18 +610,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("campaign_activity_parties")]
-		public DLaB.Xrm.Entities.Campaign campaign_activity_parties
+		public Entities.Campaign campaign_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Campaign>("campaign_activity_parties", null);
+				return this.GetRelatedEntity<Entities.Campaign>("campaign_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("campaign_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Campaign>("campaign_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.Campaign>("campaign_activity_parties", null, value);
 				this.OnPropertyChanged("campaign_activity_parties");
 			}
 		}
@@ -631,18 +631,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("campaignactivity_activity_parties")]
-		public DLaB.Xrm.Entities.CampaignActivity campaignactivity_activity_parties
+		public Entities.CampaignActivity campaignactivity_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("campaignactivity_activity_parties", null);
+				return this.GetRelatedEntity<Entities.CampaignActivity>("campaignactivity_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("campaignactivity_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("campaignactivity_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.CampaignActivity>("campaignactivity_activity_parties", null, value);
 				this.OnPropertyChanged("campaignactivity_activity_parties");
 			}
 		}
@@ -652,18 +652,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("campaignactivity_activityparties")]
-		public DLaB.Xrm.Entities.CampaignActivity campaignactivity_activityparties
+		public Entities.CampaignActivity campaignactivity_activityparties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("campaignactivity_activityparties", null);
+				return this.GetRelatedEntity<Entities.CampaignActivity>("campaignactivity_activityparties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("campaignactivity_activityparties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("campaignactivity_activityparties", null, value);
+				this.SetRelatedEntity<Entities.CampaignActivity>("campaignactivity_activityparties", null, value);
 				this.OnPropertyChanged("campaignactivity_activityparties");
 			}
 		}
@@ -673,18 +673,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("campaignresponse_activity_parties")]
-		public DLaB.Xrm.Entities.CampaignResponse campaignresponse_activity_parties
+		public Entities.CampaignResponse campaignresponse_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignResponse>("campaignresponse_activity_parties", null);
+				return this.GetRelatedEntity<Entities.CampaignResponse>("campaignresponse_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("campaignresponse_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CampaignResponse>("campaignresponse_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.CampaignResponse>("campaignresponse_activity_parties", null, value);
 				this.OnPropertyChanged("campaignresponse_activity_parties");
 			}
 		}
@@ -694,18 +694,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contact_activity_parties")]
-		public DLaB.Xrm.Entities.Contact contact_activity_parties
+		public Entities.Contact contact_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("contact_activity_parties", null);
+				return this.GetRelatedEntity<Entities.Contact>("contact_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contact_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("contact_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.Contact>("contact_activity_parties", null, value);
 				this.OnPropertyChanged("contact_activity_parties");
 			}
 		}
@@ -715,18 +715,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contract_activity_parties")]
-		public DLaB.Xrm.Entities.Contract contract_activity_parties
+		public Entities.Contract contract_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contract>("contract_activity_parties", null);
+				return this.GetRelatedEntity<Entities.Contract>("contract_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contract_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contract>("contract_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.Contract>("contract_activity_parties", null, value);
 				this.OnPropertyChanged("contract_activity_parties");
 			}
 		}
@@ -736,18 +736,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("email_activity_parties")]
-		public DLaB.Xrm.Entities.Email email_activity_parties
+		public Entities.Email email_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Email>("email_activity_parties", null);
+				return this.GetRelatedEntity<Entities.Email>("email_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("email_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Email>("email_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.Email>("email_activity_parties", null, value);
 				this.OnPropertyChanged("email_activity_parties");
 			}
 		}
@@ -757,18 +757,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("equipment_activity_parties")]
-		public DLaB.Xrm.Entities.Equipment equipment_activity_parties
+		public Entities.Equipment equipment_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Equipment>("equipment_activity_parties", null);
+				return this.GetRelatedEntity<Entities.Equipment>("equipment_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("equipment_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Equipment>("equipment_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.Equipment>("equipment_activity_parties", null, value);
 				this.OnPropertyChanged("equipment_activity_parties");
 			}
 		}
@@ -778,18 +778,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("fax_activity_parties")]
-		public DLaB.Xrm.Entities.Fax fax_activity_parties
+		public Entities.Fax fax_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Fax>("fax_activity_parties", null);
+				return this.GetRelatedEntity<Entities.Fax>("fax_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("fax_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Fax>("fax_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.Fax>("fax_activity_parties", null, value);
 				this.OnPropertyChanged("fax_activity_parties");
 			}
 		}
@@ -799,18 +799,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_activity_parties")]
-		public DLaB.Xrm.Entities.Incident incident_activity_parties
+		public Entities.Incident incident_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Incident>("incident_activity_parties", null);
+				return this.GetRelatedEntity<Entities.Incident>("incident_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("incident_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Incident>("incident_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.Incident>("incident_activity_parties", null, value);
 				this.OnPropertyChanged("incident_activity_parties");
 			}
 		}
@@ -820,18 +820,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incidentresolution_activity_parties")]
-		public DLaB.Xrm.Entities.IncidentResolution incidentresolution_activity_parties
+		public Entities.IncidentResolution incidentresolution_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.IncidentResolution>("incidentresolution_activity_parties", null);
+				return this.GetRelatedEntity<Entities.IncidentResolution>("incidentresolution_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("incidentresolution_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.IncidentResolution>("incidentresolution_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.IncidentResolution>("incidentresolution_activity_parties", null, value);
 				this.OnPropertyChanged("incidentresolution_activity_parties");
 			}
 		}
@@ -841,18 +841,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("invoice_activity_parties")]
-		public DLaB.Xrm.Entities.Invoice invoice_activity_parties
+		public Entities.Invoice invoice_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Invoice>("invoice_activity_parties", null);
+				return this.GetRelatedEntity<Entities.Invoice>("invoice_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("invoice_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Invoice>("invoice_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.Invoice>("invoice_activity_parties", null, value);
 				this.OnPropertyChanged("invoice_activity_parties");
 			}
 		}
@@ -862,18 +862,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_activity_parties")]
-		public DLaB.Xrm.Entities.KnowledgeArticle knowledgearticle_activity_parties
+		public Entities.KnowledgeArticle knowledgearticle_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_activity_parties", null);
+				return this.GetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("knowledgearticle_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_activity_parties", null, value);
 				this.OnPropertyChanged("knowledgearticle_activity_parties");
 			}
 		}
@@ -883,18 +883,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_activity_parties")]
-		public DLaB.Xrm.Entities.Lead lead_activity_parties
+		public Entities.Lead lead_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Lead>("lead_activity_parties", null);
+				return this.GetRelatedEntity<Entities.Lead>("lead_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lead_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Lead>("lead_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.Lead>("lead_activity_parties", null, value);
 				this.OnPropertyChanged("lead_activity_parties");
 			}
 		}
@@ -904,18 +904,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("letter_activity_parties")]
-		public DLaB.Xrm.Entities.Letter letter_activity_parties
+		public Entities.Letter letter_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Letter>("letter_activity_parties", null);
+				return this.GetRelatedEntity<Entities.Letter>("letter_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("letter_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Letter>("letter_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.Letter>("letter_activity_parties", null, value);
 				this.OnPropertyChanged("letter_activity_parties");
 			}
 		}
@@ -925,18 +925,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_activity_parties")]
-		public DLaB.Xrm.Entities.Opportunity opportunity_activity_parties
+		public Entities.Opportunity opportunity_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("opportunity_activity_parties", null);
+				return this.GetRelatedEntity<Entities.Opportunity>("opportunity_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("opportunity_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.Opportunity>("opportunity_activity_parties", null, value);
 				this.OnPropertyChanged("opportunity_activity_parties");
 			}
 		}
@@ -946,18 +946,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunityclose_activity_parties")]
-		public DLaB.Xrm.Entities.OpportunityClose opportunityclose_activity_parties
+		public Entities.OpportunityClose opportunityclose_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.OpportunityClose>("opportunityclose_activity_parties", null);
+				return this.GetRelatedEntity<Entities.OpportunityClose>("opportunityclose_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunityclose_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.OpportunityClose>("opportunityclose_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.OpportunityClose>("opportunityclose_activity_parties", null, value);
 				this.OnPropertyChanged("opportunityclose_activity_parties");
 			}
 		}
@@ -967,18 +967,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("orderclose_activity_parties")]
-		public DLaB.Xrm.Entities.OrderClose orderclose_activity_parties
+		public Entities.OrderClose orderclose_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.OrderClose>("orderclose_activity_parties", null);
+				return this.GetRelatedEntity<Entities.OrderClose>("orderclose_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("orderclose_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.OrderClose>("orderclose_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.OrderClose>("orderclose_activity_parties", null, value);
 				this.OnPropertyChanged("orderclose_activity_parties");
 			}
 		}
@@ -988,18 +988,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("phonecall_activity_parties")]
-		public DLaB.Xrm.Entities.PhoneCall phonecall_activity_parties
+		public Entities.PhoneCall phonecall_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.PhoneCall>("phonecall_activity_parties", null);
+				return this.GetRelatedEntity<Entities.PhoneCall>("phonecall_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("phonecall_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.PhoneCall>("phonecall_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.PhoneCall>("phonecall_activity_parties", null, value);
 				this.OnPropertyChanged("phonecall_activity_parties");
 			}
 		}
@@ -1009,18 +1009,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("queue_activity_parties")]
-		public DLaB.Xrm.Entities.Queue queue_activity_parties
+		public Entities.Queue queue_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Queue>("queue_activity_parties", null);
+				return this.GetRelatedEntity<Entities.Queue>("queue_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("queue_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Queue>("queue_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.Queue>("queue_activity_parties", null, value);
 				this.OnPropertyChanged("queue_activity_parties");
 			}
 		}
@@ -1030,18 +1030,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("quote_activity_parties")]
-		public DLaB.Xrm.Entities.Quote quote_activity_parties
+		public Entities.Quote quote_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Quote>("quote_activity_parties", null);
+				return this.GetRelatedEntity<Entities.Quote>("quote_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("quote_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Quote>("quote_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.Quote>("quote_activity_parties", null, value);
 				this.OnPropertyChanged("quote_activity_parties");
 			}
 		}
@@ -1051,18 +1051,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("quoteclose_activity_parties")]
-		public DLaB.Xrm.Entities.QuoteClose quoteclose_activity_parties
+		public Entities.QuoteClose quoteclose_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.QuoteClose>("quoteclose_activity_parties", null);
+				return this.GetRelatedEntity<Entities.QuoteClose>("quoteclose_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("quoteclose_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.QuoteClose>("quoteclose_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.QuoteClose>("quoteclose_activity_parties", null, value);
 				this.OnPropertyChanged("quoteclose_activity_parties");
 			}
 		}
@@ -1072,18 +1072,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recurringappointmentmaster_activity_parties")]
-		public DLaB.Xrm.Entities.RecurringAppointmentMaster recurringappointmentmaster_activity_parties
+		public Entities.RecurringAppointmentMaster recurringappointmentmaster_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RecurringAppointmentMaster>("recurringappointmentmaster_activity_parties", null);
+				return this.GetRelatedEntity<Entities.RecurringAppointmentMaster>("recurringappointmentmaster_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("recurringappointmentmaster_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RecurringAppointmentMaster>("recurringappointmentmaster_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.RecurringAppointmentMaster>("recurringappointmentmaster_activity_parties", null, value);
 				this.OnPropertyChanged("recurringappointmentmaster_activity_parties");
 			}
 		}
@@ -1093,18 +1093,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("salesorder_activity_parties")]
-		public DLaB.Xrm.Entities.SalesOrder salesorder_activity_parties
+		public Entities.SalesOrder salesorder_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("salesorder_activity_parties", null);
+				return this.GetRelatedEntity<Entities.SalesOrder>("salesorder_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("salesorder_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("salesorder_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.SalesOrder>("salesorder_activity_parties", null, value);
 				this.OnPropertyChanged("salesorder_activity_parties");
 			}
 		}
@@ -1114,18 +1114,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("serviceappointment_activity_parties")]
-		public DLaB.Xrm.Entities.ServiceAppointment serviceappointment_activity_parties
+		public Entities.ServiceAppointment serviceappointment_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ServiceAppointment>("serviceappointment_activity_parties", null);
+				return this.GetRelatedEntity<Entities.ServiceAppointment>("serviceappointment_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("serviceappointment_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ServiceAppointment>("serviceappointment_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.ServiceAppointment>("serviceappointment_activity_parties", null, value);
 				this.OnPropertyChanged("serviceappointment_activity_parties");
 			}
 		}
@@ -1135,18 +1135,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("socialactivity_activity_parties")]
-		public DLaB.Xrm.Entities.SocialActivity socialactivity_activity_parties
+		public Entities.SocialActivity socialactivity_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SocialActivity>("socialactivity_activity_parties", null);
+				return this.GetRelatedEntity<Entities.SocialActivity>("socialactivity_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("socialactivity_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SocialActivity>("socialactivity_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.SocialActivity>("socialactivity_activity_parties", null, value);
 				this.OnPropertyChanged("socialactivity_activity_parties");
 			}
 		}
@@ -1156,18 +1156,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("system_user_activity_parties")]
-		public DLaB.Xrm.Entities.SystemUser system_user_activity_parties
+		public Entities.SystemUser system_user_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("system_user_activity_parties", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("system_user_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("system_user_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("system_user_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("system_user_activity_parties", null, value);
 				this.OnPropertyChanged("system_user_activity_parties");
 			}
 		}
@@ -1177,18 +1177,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("task_activity_parties")]
-		public DLaB.Xrm.Entities.Task task_activity_parties
+		public Entities.Task task_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Task>("task_activity_parties", null);
+				return this.GetRelatedEntity<Entities.Task>("task_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("task_activity_parties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Task>("task_activity_parties", null, value);
+				this.SetRelatedEntity<Entities.Task>("task_activity_parties", null, value);
 				this.OnPropertyChanged("task_activity_parties");
 			}
 		}

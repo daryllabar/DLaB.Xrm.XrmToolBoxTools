@@ -150,18 +150,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N contactquotes_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contactquotes_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Quote> contactquotes_association
+		public System.Collections.Generic.IEnumerable<Entities.Quote> contactquotes_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Quote>("contactquotes_association", null);
+				return this.GetRelatedEntities<Entities.Quote>("contactquotes_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contactquotes_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Quote>("contactquotes_association", null, value);
+				this.SetRelatedEntities<Entities.Quote>("contactquotes_association", null, value);
 				this.OnPropertyChanged("contactquotes_association");
 			}
 		}

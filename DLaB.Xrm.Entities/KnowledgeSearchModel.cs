@@ -506,7 +506,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the Knowledge Search Model
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.KnowledgeSearchModelState> StateCode
+		public System.Nullable<Entities.KnowledgeSearchModelState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -514,7 +514,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.KnowledgeSearchModelState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.KnowledgeSearchModelState), optionSet.Value)));
+					return ((Entities.KnowledgeSearchModelState)(System.Enum.ToObject(typeof(Entities.KnowledgeSearchModelState), optionSet.Value)));
 				}
 				else
 				{
@@ -561,18 +561,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N knowledgesearchmodel_textanalyticsentitymapping
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgesearchmodel_textanalyticsentitymapping")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.TextAnalyticsEntityMapping> knowledgesearchmodel_textanalyticsentitymapping
+		public System.Collections.Generic.IEnumerable<Entities.TextAnalyticsEntityMapping> knowledgesearchmodel_textanalyticsentitymapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.TextAnalyticsEntityMapping>("knowledgesearchmodel_textanalyticsentitymapping", null);
+				return this.GetRelatedEntities<Entities.TextAnalyticsEntityMapping>("knowledgesearchmodel_textanalyticsentitymapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("knowledgesearchmodel_textanalyticsentitymapping");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.TextAnalyticsEntityMapping>("knowledgesearchmodel_textanalyticsentitymapping", null, value);
+				this.SetRelatedEntities<Entities.TextAnalyticsEntityMapping>("knowledgesearchmodel_textanalyticsentitymapping", null, value);
 				this.OnPropertyChanged("knowledgesearchmodel_textanalyticsentitymapping");
 			}
 		}
@@ -582,18 +582,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("azureserviceconnectionid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("azureserviceconnection_knowledgesearchmodel")]
-		public DLaB.Xrm.Entities.AzureServiceConnection azureserviceconnection_knowledgesearchmodel
+		public Entities.AzureServiceConnection azureserviceconnection_knowledgesearchmodel
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.AzureServiceConnection>("azureserviceconnection_knowledgesearchmodel", null);
+				return this.GetRelatedEntity<Entities.AzureServiceConnection>("azureserviceconnection_knowledgesearchmodel", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("azureserviceconnection_knowledgesearchmodel");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.AzureServiceConnection>("azureserviceconnection_knowledgesearchmodel", null, value);
+				this.SetRelatedEntity<Entities.AzureServiceConnection>("azureserviceconnection_knowledgesearchmodel", null, value);
 				this.OnPropertyChanged("azureserviceconnection_knowledgesearchmodel");
 			}
 		}
@@ -603,18 +603,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_knowledgesearchmodel_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_knowledgesearchmodel_createdby
+		public Entities.SystemUser lk_knowledgesearchmodel_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgesearchmodel_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_knowledgesearchmodel_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_knowledgesearchmodel_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgesearchmodel_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_knowledgesearchmodel_createdby", null, value);
 				this.OnPropertyChanged("lk_knowledgesearchmodel_createdby");
 			}
 		}
@@ -624,18 +624,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_knowledgesearchmodel_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_knowledgesearchmodel_createdonbehalfby
+		public Entities.SystemUser lk_knowledgesearchmodel_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgesearchmodel_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_knowledgesearchmodel_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_knowledgesearchmodel_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgesearchmodel_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_knowledgesearchmodel_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_knowledgesearchmodel_createdonbehalfby");
 			}
 		}
@@ -645,18 +645,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_knowledgesearchmodel_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_knowledgesearchmodel_modifiedby
+		public Entities.SystemUser lk_knowledgesearchmodel_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgesearchmodel_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_knowledgesearchmodel_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_knowledgesearchmodel_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgesearchmodel_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_knowledgesearchmodel_modifiedby", null, value);
 				this.OnPropertyChanged("lk_knowledgesearchmodel_modifiedby");
 			}
 		}
@@ -666,18 +666,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_knowledgesearchmodel_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_knowledgesearchmodel_modifiedonbehalfby
+		public Entities.SystemUser lk_knowledgesearchmodel_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgesearchmodel_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_knowledgesearchmodel_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_knowledgesearchmodel_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgesearchmodel_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_knowledgesearchmodel_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_knowledgesearchmodel_modifiedonbehalfby");
 			}
 		}
@@ -687,12 +687,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_knowledgesearchmodel")]
-		public DLaB.Xrm.Entities.Organization organization_knowledgesearchmodel
+		public Entities.Organization organization_knowledgesearchmodel
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_knowledgesearchmodel", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_knowledgesearchmodel", null);
 			}
 		}
 		

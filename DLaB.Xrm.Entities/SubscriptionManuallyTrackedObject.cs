@@ -206,18 +206,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_subscriptionmanuallytrackedobject
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_subscriptionmanuallytrackedobject")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_subscriptionmanuallytrackedobject
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_subscriptionmanuallytrackedobject
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_subscriptionmanuallytrackedobject", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_subscriptionmanuallytrackedobject", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_subscriptionmanuallytrackedobject");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_subscriptionmanuallytrackedobject", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_subscriptionmanuallytrackedobject", null, value);
 				this.OnPropertyChanged("userentityinstancedata_subscriptionmanuallytrackedobject");
 			}
 		}

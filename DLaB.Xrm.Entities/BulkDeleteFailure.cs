@@ -349,18 +349,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_bulkdeletefailure
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_bulkdeletefailure")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_bulkdeletefailure
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_bulkdeletefailure
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_bulkdeletefailure", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_bulkdeletefailure", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_bulkdeletefailure");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_bulkdeletefailure", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_bulkdeletefailure", null, value);
 				this.OnPropertyChanged("userentityinstancedata_bulkdeletefailure");
 			}
 		}
@@ -370,12 +370,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Account_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Account Account_BulkDeleteFailures
+		public Entities.Account Account_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Account>("Account_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -384,12 +384,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ActivityMimeAttachment_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.ActivityMimeAttachment ActivityMimeAttachment_BulkDeleteFailures
+		public Entities.ActivityMimeAttachment ActivityMimeAttachment_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ActivityMimeAttachment>("ActivityMimeAttachment_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.ActivityMimeAttachment>("ActivityMimeAttachment_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -398,12 +398,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ActivityPointer_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.ActivityPointer ActivityPointer_BulkDeleteFailures
+		public Entities.ActivityPointer ActivityPointer_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("ActivityPointer_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.ActivityPointer>("ActivityPointer_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -412,12 +412,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Annotation_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Annotation Annotation_BulkDeleteFailures
+		public Entities.Annotation Annotation_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Annotation>("Annotation_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Annotation>("Annotation_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -426,12 +426,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("AnnualFiscalCalendar_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.AnnualFiscalCalendar AnnualFiscalCalendar_BulkDeleteFailures
+		public Entities.AnnualFiscalCalendar AnnualFiscalCalendar_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.AnnualFiscalCalendar>("AnnualFiscalCalendar_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.AnnualFiscalCalendar>("AnnualFiscalCalendar_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -440,12 +440,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Appointment_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Appointment Appointment_BulkDeleteFailures
+		public Entities.Appointment Appointment_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Appointment>("Appointment_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Appointment>("Appointment_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -454,12 +454,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("AttributeMap_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.AttributeMap AttributeMap_BulkDeleteFailures
+		public Entities.AttributeMap AttributeMap_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.AttributeMap>("AttributeMap_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.AttributeMap>("AttributeMap_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -468,12 +468,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("bulkdeleteoperationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkDeleteOperation_BulkDeleteFailure")]
-		public DLaB.Xrm.Entities.BulkDeleteOperation BulkDeleteOperation_BulkDeleteFailure
+		public Entities.BulkDeleteOperation BulkDeleteOperation_BulkDeleteFailure
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BulkDeleteOperation>("BulkDeleteOperation_BulkDeleteFailure", null);
+				return this.GetRelatedEntity<Entities.BulkDeleteOperation>("BulkDeleteOperation_BulkDeleteFailure", null);
 			}
 		}
 		
@@ -482,12 +482,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.BulkOperation BulkOperation_BulkDeleteFailures
+		public Entities.BulkOperation BulkOperation_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BulkOperation>("BulkOperation_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.BulkOperation>("BulkOperation_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -496,12 +496,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperationLog_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.BulkOperationLog BulkOperationLog_BulkDeleteFailures
+		public Entities.BulkOperationLog BulkOperationLog_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BulkOperationLog>("BulkOperationLog_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.BulkOperationLog>("BulkOperationLog_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -510,12 +510,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BusinessUnit_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.BusinessUnit BusinessUnit_BulkDeleteFailures
+		public Entities.BusinessUnit BusinessUnit_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("BusinessUnit_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("BusinessUnit_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -524,12 +524,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BusinessUnitNewsArticle_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.BusinessUnitNewsArticle BusinessUnitNewsArticle_BulkDeleteFailures
+		public Entities.BusinessUnitNewsArticle BusinessUnitNewsArticle_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnitNewsArticle>("BusinessUnitNewsArticle_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.BusinessUnitNewsArticle>("BusinessUnitNewsArticle_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -538,12 +538,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Calendar_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Calendar Calendar_BulkDeleteFailures
+		public Entities.Calendar Calendar_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Calendar>("Calendar_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Calendar>("Calendar_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -552,12 +552,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Campaign_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Campaign Campaign_BulkDeleteFailures
+		public Entities.Campaign Campaign_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Campaign>("Campaign_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Campaign>("Campaign_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -566,12 +566,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignActivity_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.CampaignActivity CampaignActivity_BulkDeleteFailures
+		public Entities.CampaignActivity CampaignActivity_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("CampaignActivity_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.CampaignActivity>("CampaignActivity_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -580,12 +580,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignResponse_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.CampaignResponse CampaignResponse_BulkDeleteFailures
+		public Entities.CampaignResponse CampaignResponse_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignResponse>("CampaignResponse_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.CampaignResponse>("CampaignResponse_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -594,12 +594,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("channelaccessprofile_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.ChannelAccessProfile channelaccessprofile_BulkDeleteFailures
+		public Entities.ChannelAccessProfile channelaccessprofile_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfile>("channelaccessprofile_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.ChannelAccessProfile>("channelaccessprofile_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -608,12 +608,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Competitor_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Competitor Competitor_BulkDeleteFailures
+		public Entities.Competitor Competitor_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Competitor>("Competitor_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Competitor>("Competitor_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -622,12 +622,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ConstraintBasedGroup_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.ConstraintBasedGroup ConstraintBasedGroup_BulkDeleteFailures
+		public Entities.ConstraintBasedGroup ConstraintBasedGroup_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ConstraintBasedGroup>("ConstraintBasedGroup_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.ConstraintBasedGroup>("ConstraintBasedGroup_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -636,12 +636,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contact_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Contact Contact_BulkDeleteFailures
+		public Entities.Contact Contact_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Contact>("Contact_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -650,12 +650,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contract_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Contract Contract_BulkDeleteFailures
+		public Entities.Contract Contract_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contract>("Contract_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Contract>("Contract_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -664,12 +664,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ContractDetail_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.ContractDetail ContractDetail_BulkDeleteFailures
+		public Entities.ContractDetail ContractDetail_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ContractDetail>("ContractDetail_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.ContractDetail>("ContractDetail_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -678,12 +678,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ContractTemplate_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.ContractTemplate ContractTemplate_BulkDeleteFailures
+		public Entities.ContractTemplate ContractTemplate_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ContractTemplate>("ContractTemplate_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.ContractTemplate>("ContractTemplate_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -692,12 +692,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CustomerAddress_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.CustomerAddress CustomerAddress_BulkDeleteFailures
+		public Entities.CustomerAddress CustomerAddress_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CustomerAddress>("CustomerAddress_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.CustomerAddress>("CustomerAddress_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -706,12 +706,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CustomerOpportunityRole_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.CustomerOpportunityRole CustomerOpportunityRole_BulkDeleteFailures
+		public Entities.CustomerOpportunityRole CustomerOpportunityRole_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CustomerOpportunityRole>("CustomerOpportunityRole_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.CustomerOpportunityRole>("CustomerOpportunityRole_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -720,12 +720,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CustomerRelationship_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.CustomerRelationship CustomerRelationship_BulkDeleteFailures
+		public Entities.CustomerRelationship CustomerRelationship_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CustomerRelationship>("CustomerRelationship_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.CustomerRelationship>("CustomerRelationship_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -734,12 +734,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Discount_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Discount Discount_BulkDeleteFailures
+		public Entities.Discount Discount_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Discount>("Discount_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Discount>("Discount_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -748,12 +748,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("DiscountType_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.DiscountType DiscountType_BulkDeleteFailures
+		public Entities.DiscountType DiscountType_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.DiscountType>("DiscountType_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.DiscountType>("DiscountType_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -762,12 +762,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("DisplayString_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.DisplayString DisplayString_BulkDeleteFailures
+		public Entities.DisplayString DisplayString_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.DisplayString>("DisplayString_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.DisplayString>("DisplayString_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -776,12 +776,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Email_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Email Email_BulkDeleteFailures
+		public Entities.Email Email_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Email>("Email_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Email>("Email_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -790,12 +790,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("emailserverprofile_bulkdeletefailures")]
-		public DLaB.Xrm.Entities.EmailServerProfile emailserverprofile_bulkdeletefailures
+		public Entities.EmailServerProfile emailserverprofile_bulkdeletefailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EmailServerProfile>("emailserverprofile_bulkdeletefailures", null);
+				return this.GetRelatedEntity<Entities.EmailServerProfile>("emailserverprofile_bulkdeletefailures", null);
 			}
 		}
 		
@@ -804,12 +804,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Entitlement entitlement_BulkDeleteFailures
+		public Entities.Entitlement entitlement_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Entitlement>("entitlement_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -818,12 +818,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlementchannel_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.EntitlementChannel entitlementchannel_BulkDeleteFailures
+		public Entities.EntitlementChannel entitlementchannel_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EntitlementChannel>("entitlementchannel_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.EntitlementChannel>("entitlementchannel_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -832,12 +832,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlementtemplate_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.EntitlementTemplate entitlementtemplate_BulkDeleteFailures
+		public Entities.EntitlementTemplate entitlementtemplate_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplate_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplate_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -846,12 +846,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("EntityMap_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.EntityMap EntityMap_BulkDeleteFailures
+		public Entities.EntityMap EntityMap_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EntityMap>("EntityMap_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.EntityMap>("EntityMap_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -860,12 +860,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Equipment_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Equipment Equipment_BulkDeleteFailures
+		public Entities.Equipment Equipment_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Equipment>("Equipment_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Equipment>("Equipment_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -874,12 +874,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("externalparty_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.ExternalParty externalparty_BulkDeleteFailures
+		public Entities.ExternalParty externalparty_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ExternalParty>("externalparty_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.ExternalParty>("externalparty_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -888,12 +888,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("externalpartyitem_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.ExternalPartyItem externalpartyitem_BulkDeleteFailures
+		public Entities.ExternalPartyItem externalpartyitem_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ExternalPartyItem>("externalpartyitem_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.ExternalPartyItem>("externalpartyitem_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -902,12 +902,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Fax_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Fax Fax_BulkDeleteFailures
+		public Entities.Fax Fax_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Fax>("Fax_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Fax>("Fax_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -916,12 +916,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("FixedMonthlyFiscalCalendar_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.FixedMonthlyFiscalCalendar FixedMonthlyFiscalCalendar_BulkDeleteFailures
+		public Entities.FixedMonthlyFiscalCalendar FixedMonthlyFiscalCalendar_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.FixedMonthlyFiscalCalendar>("FixedMonthlyFiscalCalendar_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.FixedMonthlyFiscalCalendar>("FixedMonthlyFiscalCalendar_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -930,12 +930,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Import_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Import Import_BulkDeleteFailures
+		public Entities.Import Import_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Import>("Import_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Import>("Import_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -944,12 +944,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ImportFile_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.ImportFile ImportFile_BulkDeleteFailures
+		public Entities.ImportFile ImportFile_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ImportFile>("ImportFile_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.ImportFile>("ImportFile_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -958,12 +958,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ImportLog_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.ImportLog ImportLog_BulkDeleteFailures
+		public Entities.ImportLog ImportLog_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ImportLog>("ImportLog_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.ImportLog>("ImportLog_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -972,12 +972,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ImportMap_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.ImportMap ImportMap_BulkDeleteFailures
+		public Entities.ImportMap ImportMap_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ImportMap>("ImportMap_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.ImportMap>("ImportMap_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -986,12 +986,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Incident_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Incident Incident_BulkDeleteFailures
+		public Entities.Incident Incident_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Incident>("Incident_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1000,12 +1000,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("IncidentResolution_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.IncidentResolution IncidentResolution_BulkDeleteFailures
+		public Entities.IncidentResolution IncidentResolution_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.IncidentResolution>("IncidentResolution_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.IncidentResolution>("IncidentResolution_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1014,12 +1014,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Invoice_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Invoice Invoice_BulkDeleteFailures
+		public Entities.Invoice Invoice_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Invoice>("Invoice_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Invoice>("Invoice_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1028,12 +1028,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("InvoiceDetail_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.InvoiceDetail InvoiceDetail_BulkDeleteFailures
+		public Entities.InvoiceDetail InvoiceDetail_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.InvoiceDetail>("InvoiceDetail_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.InvoiceDetail>("InvoiceDetail_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1042,12 +1042,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("IsvConfig_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.IsvConfig IsvConfig_BulkDeleteFailures
+		public Entities.IsvConfig IsvConfig_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.IsvConfig>("IsvConfig_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.IsvConfig>("IsvConfig_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1056,12 +1056,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KbArticle_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.KbArticle KbArticle_BulkDeleteFailures
+		public Entities.KbArticle KbArticle_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KbArticle>("KbArticle_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.KbArticle>("KbArticle_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1070,12 +1070,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KbArticleComment_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.KbArticleComment KbArticleComment_BulkDeleteFailures
+		public Entities.KbArticleComment KbArticleComment_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KbArticleComment>("KbArticleComment_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.KbArticleComment>("KbArticleComment_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1084,12 +1084,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KbArticleTemplate_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.KbArticleTemplate KbArticleTemplate_BulkDeleteFailures
+		public Entities.KbArticleTemplate KbArticleTemplate_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KbArticleTemplate>("KbArticleTemplate_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.KbArticleTemplate>("KbArticleTemplate_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1098,12 +1098,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.KnowledgeArticle knowledgearticle_BulkDeleteFailures
+		public Entities.KnowledgeArticle knowledgearticle_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1112,12 +1112,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.KnowledgeBaseRecord KnowledgeBaseRecord_BulkDeleteFailures
+		public Entities.KnowledgeBaseRecord KnowledgeBaseRecord_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1126,12 +1126,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Lead Lead_BulkDeleteFailures
+		public Entities.Lead Lead_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Lead>("Lead_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Lead>("Lead_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1140,12 +1140,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Letter_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Letter Letter_BulkDeleteFailures
+		public Entities.Letter Letter_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Letter>("Letter_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Letter>("Letter_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1154,12 +1154,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("List_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.List List_BulkDeleteFailures
+		public Entities.List List_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.List>("List_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.List>("List_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1168,12 +1168,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("MonthlyFiscalCalendar_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.MonthlyFiscalCalendar MonthlyFiscalCalendar_BulkDeleteFailures
+		public Entities.MonthlyFiscalCalendar MonthlyFiscalCalendar_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.MonthlyFiscalCalendar>("MonthlyFiscalCalendar_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.MonthlyFiscalCalendar>("MonthlyFiscalCalendar_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1182,12 +1182,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.msdyn_PostAlbum msdyn_postalbum_BulkDeleteFailures
+		public Entities.msdyn_PostAlbum msdyn_postalbum_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1196,12 +1196,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postconfig_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.msdyn_PostConfig msdyn_postconfig_BulkDeleteFailures
+		public Entities.msdyn_PostConfig msdyn_postconfig_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostConfig>("msdyn_postconfig_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.msdyn_PostConfig>("msdyn_postconfig_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1210,12 +1210,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postruleconfig_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.msdyn_PostRuleConfig msdyn_postruleconfig_BulkDeleteFailures
+		public Entities.msdyn_PostRuleConfig msdyn_postruleconfig_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostRuleConfig>("msdyn_postruleconfig_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.msdyn_PostRuleConfig>("msdyn_postruleconfig_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1224,12 +1224,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_wallsavedquery_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.msdyn_wallsavedquery msdyn_wallsavedquery_BulkDeleteFailures
+		public Entities.msdyn_wallsavedquery msdyn_wallsavedquery_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_wallsavedquery>("msdyn_wallsavedquery_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.msdyn_wallsavedquery>("msdyn_wallsavedquery_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1238,12 +1238,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_wallsavedqueryusersettings_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.msdyn_wallsavedqueryusersettings msdyn_wallsavedqueryusersettings_BulkDeleteFailures
+		public Entities.msdyn_wallsavedqueryusersettings msdyn_wallsavedqueryusersettings_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_wallsavedqueryusersettings>("msdyn_wallsavedqueryusersettings_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.msdyn_wallsavedqueryusersettings>("msdyn_wallsavedqueryusersettings_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1252,12 +1252,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Opportunity Opportunity_BulkDeleteFailures
+		public Entities.Opportunity Opportunity_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Opportunity>("Opportunity_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1266,12 +1266,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("OpportunityClose_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.OpportunityClose OpportunityClose_BulkDeleteFailures
+		public Entities.OpportunityClose OpportunityClose_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.OpportunityClose>("OpportunityClose_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.OpportunityClose>("OpportunityClose_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1280,12 +1280,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("OpportunityProduct_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.OpportunityProduct OpportunityProduct_BulkDeleteFailures
+		public Entities.OpportunityProduct OpportunityProduct_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.OpportunityProduct>("OpportunityProduct_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.OpportunityProduct>("OpportunityProduct_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1294,12 +1294,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("OrderClose_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.OrderClose OrderClose_BulkDeleteFailures
+		public Entities.OrderClose OrderClose_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.OrderClose>("OrderClose_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.OrderClose>("OrderClose_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1308,12 +1308,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Organization_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Organization Organization_BulkDeleteFailures
+		public Entities.Organization Organization_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("Organization_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Organization>("Organization_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1322,12 +1322,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("PhoneCall_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.PhoneCall PhoneCall_BulkDeleteFailures
+		public Entities.PhoneCall PhoneCall_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.PhoneCall>("PhoneCall_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.PhoneCall>("PhoneCall_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1336,12 +1336,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("post_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Post post_BulkDeleteFailures
+		public Entities.Post post_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Post>("post_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Post>("post_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1350,12 +1350,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("PriceLevel_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.PriceLevel PriceLevel_BulkDeleteFailures
+		public Entities.PriceLevel PriceLevel_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.PriceLevel>("PriceLevel_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.PriceLevel>("PriceLevel_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1364,12 +1364,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Privilege_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Privilege Privilege_BulkDeleteFailures
+		public Entities.Privilege Privilege_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Privilege>("Privilege_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Privilege>("Privilege_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1378,12 +1378,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Product_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Product Product_BulkDeleteFailures
+		public Entities.Product Product_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Product>("Product_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Product>("Product_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1392,12 +1392,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductPriceLevel_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.ProductPriceLevel ProductPriceLevel_BulkDeleteFailures
+		public Entities.ProductPriceLevel ProductPriceLevel_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProductPriceLevel>("ProductPriceLevel_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.ProductPriceLevel>("ProductPriceLevel_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1406,12 +1406,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductSubstitute_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.ProductSubstitute ProductSubstitute_BulkDeleteFailures
+		public Entities.ProductSubstitute ProductSubstitute_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProductSubstitute>("ProductSubstitute_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.ProductSubstitute>("ProductSubstitute_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1420,12 +1420,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("profilerule_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.ChannelAccessProfileRule profilerule_BulkDeleteFailures
+		public Entities.ChannelAccessProfileRule profilerule_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfileRule>("profilerule_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.ChannelAccessProfileRule>("profilerule_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1434,12 +1434,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("QuarterlyFiscalCalendar_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.QuarterlyFiscalCalendar QuarterlyFiscalCalendar_BulkDeleteFailures
+		public Entities.QuarterlyFiscalCalendar QuarterlyFiscalCalendar_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.QuarterlyFiscalCalendar>("QuarterlyFiscalCalendar_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.QuarterlyFiscalCalendar>("QuarterlyFiscalCalendar_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1448,12 +1448,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Queue_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Queue Queue_BulkDeleteFailures
+		public Entities.Queue Queue_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Queue>("Queue_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Queue>("Queue_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1462,12 +1462,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("QueueItem_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.QueueItem QueueItem_BulkDeleteFailures
+		public Entities.QueueItem QueueItem_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.QueueItem>("QueueItem_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.QueueItem>("QueueItem_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1476,12 +1476,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Quote_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Quote Quote_BulkDeleteFailures
+		public Entities.Quote Quote_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Quote>("Quote_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Quote>("Quote_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1490,12 +1490,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("QuoteClose_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.QuoteClose QuoteClose_BulkDeleteFailures
+		public Entities.QuoteClose QuoteClose_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.QuoteClose>("QuoteClose_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.QuoteClose>("QuoteClose_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1504,12 +1504,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("QuoteDetail_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.QuoteDetail QuoteDetail_BulkDeleteFailures
+		public Entities.QuoteDetail QuoteDetail_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.QuoteDetail>("QuoteDetail_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.QuoteDetail>("QuoteDetail_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1518,12 +1518,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("RecurringAppointmentMaster_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.RecurringAppointmentMaster RecurringAppointmentMaster_BulkDeleteFailures
+		public Entities.RecurringAppointmentMaster RecurringAppointmentMaster_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RecurringAppointmentMaster>("RecurringAppointmentMaster_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.RecurringAppointmentMaster>("RecurringAppointmentMaster_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1532,12 +1532,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("RelationshipRole_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.RelationshipRole RelationshipRole_BulkDeleteFailures
+		public Entities.RelationshipRole RelationshipRole_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RelationshipRole>("RelationshipRole_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.RelationshipRole>("RelationshipRole_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1546,12 +1546,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("RelationshipRoleMap_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.RelationshipRoleMap RelationshipRoleMap_BulkDeleteFailures
+		public Entities.RelationshipRoleMap RelationshipRoleMap_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RelationshipRoleMap>("RelationshipRoleMap_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.RelationshipRoleMap>("RelationshipRoleMap_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1560,12 +1560,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Resource_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Resource Resource_BulkDeleteFailures
+		public Entities.Resource Resource_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Resource>("Resource_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Resource>("Resource_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1574,12 +1574,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ResourceGroup_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.ResourceGroup ResourceGroup_BulkDeleteFailures
+		public Entities.ResourceGroup ResourceGroup_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ResourceGroup>("ResourceGroup_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.ResourceGroup>("ResourceGroup_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1588,12 +1588,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ResourceSpec_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.ResourceSpec ResourceSpec_BulkDeleteFailures
+		public Entities.ResourceSpec ResourceSpec_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ResourceSpec>("ResourceSpec_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.ResourceSpec>("ResourceSpec_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1602,12 +1602,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Role_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Role Role_BulkDeleteFailures
+		public Entities.Role Role_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Role>("Role_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Role>("Role_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1616,12 +1616,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("routingrule_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.RoutingRule routingrule_BulkDeleteFailures
+		public Entities.RoutingRule routingrule_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RoutingRule>("routingrule_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.RoutingRule>("routingrule_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1630,12 +1630,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("routingruleitem_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.RoutingRuleItem routingruleitem_BulkDeleteFailures
+		public Entities.RoutingRuleItem routingruleitem_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RoutingRuleItem>("routingruleitem_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.RoutingRuleItem>("routingruleitem_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1644,12 +1644,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesLiterature_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.SalesLiterature SalesLiterature_BulkDeleteFailures
+		public Entities.SalesLiterature SalesLiterature_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesLiterature>("SalesLiterature_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.SalesLiterature>("SalesLiterature_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1658,12 +1658,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesLiteratureItem_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.SalesLiteratureItem SalesLiteratureItem_BulkDeleteFailures
+		public Entities.SalesLiteratureItem SalesLiteratureItem_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesLiteratureItem>("SalesLiteratureItem_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.SalesLiteratureItem>("SalesLiteratureItem_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1672,12 +1672,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesOrder_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.SalesOrder SalesOrder_BulkDeleteFailures
+		public Entities.SalesOrder SalesOrder_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("SalesOrder_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.SalesOrder>("SalesOrder_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1686,12 +1686,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesOrderDetail_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.SalesOrderDetail SalesOrderDetail_BulkDeleteFailures
+		public Entities.SalesOrderDetail SalesOrderDetail_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesOrderDetail>("SalesOrderDetail_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.SalesOrderDetail>("SalesOrderDetail_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1700,12 +1700,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SavedQuery_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.SavedQuery SavedQuery_BulkDeleteFailures
+		public Entities.SavedQuery SavedQuery_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SavedQuery>("SavedQuery_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.SavedQuery>("SavedQuery_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1714,12 +1714,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SemiAnnualFiscalCalendar_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.SemiAnnualFiscalCalendar SemiAnnualFiscalCalendar_BulkDeleteFailures
+		public Entities.SemiAnnualFiscalCalendar SemiAnnualFiscalCalendar_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SemiAnnualFiscalCalendar>("SemiAnnualFiscalCalendar_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.SemiAnnualFiscalCalendar>("SemiAnnualFiscalCalendar_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1728,12 +1728,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Service_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Service Service_BulkDeleteFailures
+		public Entities.Service Service_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Service>("Service_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Service>("Service_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1742,12 +1742,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ServiceAppointment_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.ServiceAppointment ServiceAppointment_BulkDeleteFailures
+		public Entities.ServiceAppointment ServiceAppointment_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ServiceAppointment>("ServiceAppointment_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.ServiceAppointment>("ServiceAppointment_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1756,12 +1756,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Site_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Site Site_BulkDeleteFailures
+		public Entities.Site Site_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Site>("Site_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Site>("Site_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1770,12 +1770,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("slabase_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.SLA slabase_BulkDeleteFailures
+		public Entities.SLA slabase_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SLA>("slabase_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.SLA>("slabase_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1784,12 +1784,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SocialActivity_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.SocialActivity SocialActivity_BulkDeleteFailures
+		public Entities.SocialActivity SocialActivity_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SocialActivity>("SocialActivity_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.SocialActivity>("SocialActivity_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1798,12 +1798,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Subject_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Subject Subject_BulkDeleteFailures
+		public Entities.Subject Subject_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Subject>("Subject_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Subject>("Subject_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1812,12 +1812,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SystemForm_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.SystemForm SystemForm_BulkDeleteFailures
+		public Entities.SystemForm SystemForm_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemForm>("SystemForm_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.SystemForm>("SystemForm_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1826,12 +1826,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SystemUser_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.SystemUser SystemUser_BulkDeleteFailures
+		public Entities.SystemUser SystemUser_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("SystemUser_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("SystemUser_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1840,12 +1840,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Task_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Task Task_BulkDeleteFailures
+		public Entities.Task Task_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Task>("Task_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Task>("Task_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1854,12 +1854,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Team_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Team Team_BulkDeleteFailures
+		public Entities.Team Team_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("Team_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Team>("Team_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1868,12 +1868,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Template_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Template Template_BulkDeleteFailures
+		public Entities.Template Template_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Template>("Template_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Template>("Template_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1882,12 +1882,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Territory_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Territory Territory_BulkDeleteFailures
+		public Entities.Territory Territory_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Territory>("Territory_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Territory>("Territory_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1896,12 +1896,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("theme_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.Theme theme_BulkDeleteFailures
+		public Entities.Theme theme_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Theme>("theme_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.Theme>("theme_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1910,12 +1910,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("UoM_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.UoM UoM_BulkDeleteFailures
+		public Entities.UoM UoM_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.UoM>("UoM_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.UoM>("UoM_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1924,12 +1924,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("UoMSchedule_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.UoMSchedule UoMSchedule_BulkDeleteFailures
+		public Entities.UoMSchedule UoMSchedule_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.UoMSchedule>("UoMSchedule_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.UoMSchedule>("UoMSchedule_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1938,12 +1938,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("UserForm_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.UserForm UserForm_BulkDeleteFailures
+		public Entities.UserForm UserForm_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.UserForm>("UserForm_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.UserForm>("UserForm_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1952,12 +1952,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("usermapping_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.UserMapping usermapping_BulkDeleteFailures
+		public Entities.UserMapping usermapping_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.UserMapping>("usermapping_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.UserMapping>("usermapping_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1966,12 +1966,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("UserQuery_BulkDeleteFailures")]
-		public DLaB.Xrm.Entities.UserQuery UserQuery_BulkDeleteFailures
+		public Entities.UserQuery UserQuery_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.UserQuery>("UserQuery_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Entities.UserQuery>("UserQuery_BulkDeleteFailures", null);
 			}
 		}
 		

@@ -256,18 +256,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_audit
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_audit")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_audit
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_audit
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_audit", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_audit", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_audit");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_audit", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_audit", null, value);
 				this.OnPropertyChanged("userentityinstancedata_audit");
 			}
 		}
@@ -277,12 +277,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("callinguserid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_audit_callinguserid")]
-		public DLaB.Xrm.Entities.SystemUser lk_audit_callinguserid
+		public Entities.SystemUser lk_audit_callinguserid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_audit_callinguserid", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_audit_callinguserid", null);
 			}
 		}
 		
@@ -291,12 +291,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("userid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_audit_userid")]
-		public DLaB.Xrm.Entities.SystemUser lk_audit_userid
+		public Entities.SystemUser lk_audit_userid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_audit_userid", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_audit_userid", null);
 			}
 		}
 		

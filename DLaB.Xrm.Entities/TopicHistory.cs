@@ -173,18 +173,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("topicmodelexecutionhistoryid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("topicmodelexecutionhistory_topichistory")]
-		public DLaB.Xrm.Entities.TopicModelExecutionHistory topicmodelexecutionhistory_topichistory
+		public Entities.TopicModelExecutionHistory topicmodelexecutionhistory_topichistory
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TopicModelExecutionHistory>("topicmodelexecutionhistory_topichistory", null);
+				return this.GetRelatedEntity<Entities.TopicModelExecutionHistory>("topicmodelexecutionhistory_topichistory", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("topicmodelexecutionhistory_topichistory");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TopicModelExecutionHistory>("topicmodelexecutionhistory_topichistory", null, value);
+				this.SetRelatedEntity<Entities.TopicModelExecutionHistory>("topicmodelexecutionhistory_topichistory", null, value);
 				this.OnPropertyChanged("topicmodelexecutionhistory_topichistory");
 			}
 		}

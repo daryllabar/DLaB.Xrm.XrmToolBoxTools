@@ -453,18 +453,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_plugintracelog")]
-		public DLaB.Xrm.Entities.SystemUser createdby_plugintracelog
+		public Entities.SystemUser createdby_plugintracelog
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdby_plugintracelog", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("createdby_plugintracelog", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("createdby_plugintracelog");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdby_plugintracelog", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("createdby_plugintracelog", null, value);
 				this.OnPropertyChanged("createdby_plugintracelog");
 			}
 		}
@@ -474,18 +474,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_plugintracelogbase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_plugintracelogbase_createdonbehalfby
+		public Entities.SystemUser lk_plugintracelogbase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_plugintracelogbase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_plugintracelogbase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_plugintracelogbase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_plugintracelogbase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_plugintracelogbase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_plugintracelogbase_createdonbehalfby");
 			}
 		}

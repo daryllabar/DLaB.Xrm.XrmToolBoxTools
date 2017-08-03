@@ -497,18 +497,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N CustomerOpportunityRole_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CustomerOpportunityRole_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> CustomerOpportunityRole_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> CustomerOpportunityRole_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("CustomerOpportunityRole_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("CustomerOpportunityRole_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CustomerOpportunityRole_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("CustomerOpportunityRole_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("CustomerOpportunityRole_AsyncOperations", null, value);
 				this.OnPropertyChanged("CustomerOpportunityRole_AsyncOperations");
 			}
 		}
@@ -517,18 +517,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N CustomerOpportunityRole_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CustomerOpportunityRole_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> CustomerOpportunityRole_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> CustomerOpportunityRole_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("CustomerOpportunityRole_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("CustomerOpportunityRole_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CustomerOpportunityRole_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("CustomerOpportunityRole_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("CustomerOpportunityRole_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("CustomerOpportunityRole_BulkDeleteFailures");
 			}
 		}
@@ -537,18 +537,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N CustomerOpportunityRole_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CustomerOpportunityRole_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> CustomerOpportunityRole_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> CustomerOpportunityRole_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("CustomerOpportunityRole_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("CustomerOpportunityRole_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CustomerOpportunityRole_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("CustomerOpportunityRole_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("CustomerOpportunityRole_ProcessSessions", null, value);
 				this.OnPropertyChanged("CustomerOpportunityRole_ProcessSessions");
 			}
 		}
@@ -557,18 +557,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_customeropportunityrole
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_customeropportunityrole")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_customeropportunityrole
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_customeropportunityrole
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_customeropportunityrole", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_customeropportunityrole", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_customeropportunityrole");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_customeropportunityrole", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_customeropportunityrole", null, value);
 				this.OnPropertyChanged("userentityinstancedata_customeropportunityrole");
 			}
 		}
@@ -578,18 +578,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customerid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("account_customer_opportunity_roles")]
-		public DLaB.Xrm.Entities.Account account_customer_opportunity_roles
+		public Entities.Account account_customer_opportunity_roles
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("account_customer_opportunity_roles", null);
+				return this.GetRelatedEntity<Entities.Account>("account_customer_opportunity_roles", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("account_customer_opportunity_roles");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("account_customer_opportunity_roles", null, value);
+				this.SetRelatedEntity<Entities.Account>("account_customer_opportunity_roles", null, value);
 				this.OnPropertyChanged("account_customer_opportunity_roles");
 			}
 		}
@@ -599,18 +599,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_customer_opportunity_roles")]
-		public DLaB.Xrm.Entities.BusinessUnit business_customer_opportunity_roles
+		public Entities.BusinessUnit business_customer_opportunity_roles
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_customer_opportunity_roles", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_customer_opportunity_roles", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_customer_opportunity_roles");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_customer_opportunity_roles", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_customer_opportunity_roles", null, value);
 				this.OnPropertyChanged("business_customer_opportunity_roles");
 			}
 		}
@@ -620,18 +620,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customerid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contact_customer_opportunity_roles")]
-		public DLaB.Xrm.Entities.Contact contact_customer_opportunity_roles
+		public Entities.Contact contact_customer_opportunity_roles
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("contact_customer_opportunity_roles", null);
+				return this.GetRelatedEntity<Entities.Contact>("contact_customer_opportunity_roles", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contact_customer_opportunity_roles");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("contact_customer_opportunity_roles", null, value);
+				this.SetRelatedEntity<Entities.Contact>("contact_customer_opportunity_roles", null, value);
 				this.OnPropertyChanged("contact_customer_opportunity_roles");
 			}
 		}
@@ -641,18 +641,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_customeropportunityrole_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_customeropportunityrole_createdby
+		public Entities.SystemUser lk_customeropportunityrole_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customeropportunityrole_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_customeropportunityrole_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_customeropportunityrole_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customeropportunityrole_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_customeropportunityrole_createdby", null, value);
 				this.OnPropertyChanged("lk_customeropportunityrole_createdby");
 			}
 		}
@@ -662,18 +662,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_customeropportunityrole_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_customeropportunityrole_createdonbehalfby
+		public Entities.SystemUser lk_customeropportunityrole_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customeropportunityrole_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_customeropportunityrole_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_customeropportunityrole_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customeropportunityrole_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_customeropportunityrole_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_customeropportunityrole_createdonbehalfby");
 			}
 		}
@@ -683,18 +683,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_customeropportunityrole_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_customeropportunityrole_modifiedby
+		public Entities.SystemUser lk_customeropportunityrole_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customeropportunityrole_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_customeropportunityrole_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_customeropportunityrole_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customeropportunityrole_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_customeropportunityrole_modifiedby", null, value);
 				this.OnPropertyChanged("lk_customeropportunityrole_modifiedby");
 			}
 		}
@@ -704,18 +704,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_customeropportunityrole_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_customeropportunityrole_modifiedonbehalfby
+		public Entities.SystemUser lk_customeropportunityrole_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customeropportunityrole_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_customeropportunityrole_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_customeropportunityrole_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customeropportunityrole_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_customeropportunityrole_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_customeropportunityrole_modifiedonbehalfby");
 			}
 		}
@@ -725,18 +725,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("opportunityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_customer_opportunity_roles")]
-		public DLaB.Xrm.Entities.Opportunity opportunity_customer_opportunity_roles
+		public Entities.Opportunity opportunity_customer_opportunity_roles
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("opportunity_customer_opportunity_roles", null);
+				return this.GetRelatedEntity<Entities.Opportunity>("opportunity_customer_opportunity_roles", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_customer_opportunity_roles");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("opportunity_customer_opportunity_roles", null, value);
+				this.SetRelatedEntity<Entities.Opportunity>("opportunity_customer_opportunity_roles", null, value);
 				this.OnPropertyChanged("opportunity_customer_opportunity_roles");
 			}
 		}
@@ -746,18 +746,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("opportunityroleid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("relationship_role_customer_opportunity_roles")]
-		public DLaB.Xrm.Entities.RelationshipRole relationship_role_customer_opportunity_roles
+		public Entities.RelationshipRole relationship_role_customer_opportunity_roles
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RelationshipRole>("relationship_role_customer_opportunity_roles", null);
+				return this.GetRelatedEntity<Entities.RelationshipRole>("relationship_role_customer_opportunity_roles", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("relationship_role_customer_opportunity_roles");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RelationshipRole>("relationship_role_customer_opportunity_roles", null, value);
+				this.SetRelatedEntity<Entities.RelationshipRole>("relationship_role_customer_opportunity_roles", null, value);
 				this.OnPropertyChanged("relationship_role_customer_opportunity_roles");
 			}
 		}
@@ -767,18 +767,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_customer_opportunity_roles")]
-		public DLaB.Xrm.Entities.Team team_customer_opportunity_roles
+		public Entities.Team team_customer_opportunity_roles
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_customer_opportunity_roles", null);
+				return this.GetRelatedEntity<Entities.Team>("team_customer_opportunity_roles", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_customer_opportunity_roles");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_customer_opportunity_roles", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_customer_opportunity_roles", null, value);
 				this.OnPropertyChanged("team_customer_opportunity_roles");
 			}
 		}
@@ -788,18 +788,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_customer_opportunity_roles")]
-		public DLaB.Xrm.Entities.SystemUser user_customer_opportunity_roles
+		public Entities.SystemUser user_customer_opportunity_roles
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_customer_opportunity_roles", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_customer_opportunity_roles", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_customer_opportunity_roles");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_customer_opportunity_roles", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_customer_opportunity_roles", null, value);
 				this.OnPropertyChanged("user_customer_opportunity_roles");
 			}
 		}

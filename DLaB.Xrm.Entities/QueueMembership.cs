@@ -150,18 +150,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N queuemembership_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("queuemembership_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Queue> queuemembership_association
+		public System.Collections.Generic.IEnumerable<Entities.Queue> queuemembership_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Queue>("queuemembership_association", null);
+				return this.GetRelatedEntities<Entities.Queue>("queuemembership_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("queuemembership_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Queue>("queuemembership_association", null, value);
+				this.SetRelatedEntities<Entities.Queue>("queuemembership_association", null, value);
 				this.OnPropertyChanged("queuemembership_association");
 			}
 		}

@@ -382,18 +382,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_socialinsightsconfiguration_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_socialinsightsconfiguration_createdby
+		public Entities.SystemUser lk_socialinsightsconfiguration_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_socialinsightsconfiguration_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_socialinsightsconfiguration_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_socialinsightsconfiguration_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_socialinsightsconfiguration_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_socialinsightsconfiguration_createdby", null, value);
 				this.OnPropertyChanged("lk_socialinsightsconfiguration_createdby");
 			}
 		}
@@ -403,18 +403,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_socialinsightsconfiguration_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_socialinsightsconfiguration_createdonbehalfby
+		public Entities.SystemUser lk_socialinsightsconfiguration_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_socialinsightsconfiguration_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_socialinsightsconfiguration_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_socialinsightsconfiguration_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_socialinsightsconfiguration_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_socialinsightsconfiguration_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_socialinsightsconfiguration_createdonbehalfby");
 			}
 		}
@@ -424,18 +424,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_socialinsightsconfiguration_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_socialinsightsconfiguration_modifiedby
+		public Entities.SystemUser lk_socialinsightsconfiguration_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_socialinsightsconfiguration_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_socialinsightsconfiguration_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_socialinsightsconfiguration_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_socialinsightsconfiguration_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_socialinsightsconfiguration_modifiedby", null, value);
 				this.OnPropertyChanged("lk_socialinsightsconfiguration_modifiedby");
 			}
 		}
@@ -445,18 +445,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_socialinsightsconfiguration_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_socialinsightsconfiguration_modifiedonbehalfby
+		public Entities.SystemUser lk_socialinsightsconfiguration_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_socialinsightsconfiguration_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_socialinsightsconfiguration_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_socialinsightsconfiguration_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_socialinsightsconfiguration_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_socialinsightsconfiguration_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_socialinsightsconfiguration_modifiedonbehalfby");
 			}
 		}
@@ -466,12 +466,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_socialinsightsconfiguration")]
-		public DLaB.Xrm.Entities.Organization organization_socialinsightsconfiguration
+		public Entities.Organization organization_socialinsightsconfiguration
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_socialinsightsconfiguration", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_socialinsightsconfiguration", null);
 			}
 		}
 		
@@ -480,18 +480,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("formid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("socialinsightsconfiguration_systemform")]
-		public DLaB.Xrm.Entities.SystemForm socialinsightsconfiguration_systemform
+		public Entities.SystemForm socialinsightsconfiguration_systemform
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemForm>("socialinsightsconfiguration_systemform", null);
+				return this.GetRelatedEntity<Entities.SystemForm>("socialinsightsconfiguration_systemform", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("socialinsightsconfiguration_systemform");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemForm>("socialinsightsconfiguration_systemform", null, value);
+				this.SetRelatedEntity<Entities.SystemForm>("socialinsightsconfiguration_systemform", null, value);
 				this.OnPropertyChanged("socialinsightsconfiguration_systemform");
 			}
 		}
@@ -501,18 +501,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("formid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("socialinsightsconfiguration_userform")]
-		public DLaB.Xrm.Entities.UserForm socialinsightsconfiguration_userform
+		public Entities.UserForm socialinsightsconfiguration_userform
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.UserForm>("socialinsightsconfiguration_userform", null);
+				return this.GetRelatedEntity<Entities.UserForm>("socialinsightsconfiguration_userform", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("socialinsightsconfiguration_userform");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.UserForm>("socialinsightsconfiguration_userform", null, value);
+				this.SetRelatedEntity<Entities.UserForm>("socialinsightsconfiguration_userform", null, value);
 				this.OnPropertyChanged("socialinsightsconfiguration_userform");
 			}
 		}

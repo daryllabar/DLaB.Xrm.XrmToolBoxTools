@@ -435,7 +435,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the transaction currency.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.TransactionCurrencyState> StateCode
+		public System.Nullable<Entities.TransactionCurrencyState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -443,7 +443,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.TransactionCurrencyState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.TransactionCurrencyState), optionSet.Value)));
+					return ((Entities.TransactionCurrencyState)(System.Enum.ToObject(typeof(Entities.TransactionCurrencyState), optionSet.Value)));
 				}
 				else
 				{
@@ -546,18 +546,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N basecurrency_organization
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("basecurrency_organization")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Organization> basecurrency_organization
+		public System.Collections.Generic.IEnumerable<Entities.Organization> basecurrency_organization
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Organization>("basecurrency_organization", null);
+				return this.GetRelatedEntities<Entities.Organization>("basecurrency_organization", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("basecurrency_organization");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Organization>("basecurrency_organization", null, value);
+				this.SetRelatedEntities<Entities.Organization>("basecurrency_organization", null, value);
 				this.OnPropertyChanged("basecurrency_organization");
 			}
 		}
@@ -566,18 +566,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N DynamicPropertyAssociation_TransactionCurrency
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("DynamicPropertyAssociation_TransactionCurrency")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DynamicPropertyAssociation> DynamicPropertyAssociation_TransactionCurrency
+		public System.Collections.Generic.IEnumerable<Entities.DynamicPropertyAssociation> DynamicPropertyAssociation_TransactionCurrency
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DynamicPropertyAssociation>("DynamicPropertyAssociation_TransactionCurrency", null);
+				return this.GetRelatedEntities<Entities.DynamicPropertyAssociation>("DynamicPropertyAssociation_TransactionCurrency", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("DynamicPropertyAssociation_TransactionCurrency");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DynamicPropertyAssociation>("DynamicPropertyAssociation_TransactionCurrency", null, value);
+				this.SetRelatedEntities<Entities.DynamicPropertyAssociation>("DynamicPropertyAssociation_TransactionCurrency", null, value);
 				this.OnPropertyChanged("DynamicPropertyAssociation_TransactionCurrency");
 			}
 		}
@@ -586,18 +586,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N DynamicPropertyOptionSetItem_TransactionCurrency
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("DynamicPropertyOptionSetItem_TransactionCurrency")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DynamicPropertyOptionSetItem> DynamicPropertyOptionSetItem_TransactionCurrency
+		public System.Collections.Generic.IEnumerable<Entities.DynamicPropertyOptionSetItem> DynamicPropertyOptionSetItem_TransactionCurrency
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DynamicPropertyOptionSetItem>("DynamicPropertyOptionSetItem_TransactionCurrency", null);
+				return this.GetRelatedEntities<Entities.DynamicPropertyOptionSetItem>("DynamicPropertyOptionSetItem_TransactionCurrency", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("DynamicPropertyOptionSetItem_TransactionCurrency");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DynamicPropertyOptionSetItem>("DynamicPropertyOptionSetItem_TransactionCurrency", null, value);
+				this.SetRelatedEntities<Entities.DynamicPropertyOptionSetItem>("DynamicPropertyOptionSetItem_TransactionCurrency", null, value);
 				this.OnPropertyChanged("DynamicPropertyOptionSetItem_TransactionCurrency");
 			}
 		}
@@ -606,18 +606,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_account
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_account")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Account> transactioncurrency_account
+		public System.Collections.Generic.IEnumerable<Entities.Account> transactioncurrency_account
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Account>("transactioncurrency_account", null);
+				return this.GetRelatedEntities<Entities.Account>("transactioncurrency_account", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_account");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Account>("transactioncurrency_account", null, value);
+				this.SetRelatedEntities<Entities.Account>("transactioncurrency_account", null, value);
 				this.OnPropertyChanged("transactioncurrency_account");
 			}
 		}
@@ -626,18 +626,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_ActivityPointer
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_ActivityPointer")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityPointer> TransactionCurrency_ActivityPointer
+		public System.Collections.Generic.IEnumerable<Entities.ActivityPointer> TransactionCurrency_ActivityPointer
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityPointer>("TransactionCurrency_ActivityPointer", null);
+				return this.GetRelatedEntities<Entities.ActivityPointer>("TransactionCurrency_ActivityPointer", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_ActivityPointer");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityPointer>("TransactionCurrency_ActivityPointer", null, value);
+				this.SetRelatedEntities<Entities.ActivityPointer>("TransactionCurrency_ActivityPointer", null, value);
 				this.OnPropertyChanged("TransactionCurrency_ActivityPointer");
 			}
 		}
@@ -646,18 +646,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_annualfiscalcalendar
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_annualfiscalcalendar")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AnnualFiscalCalendar> transactioncurrency_annualfiscalcalendar
+		public System.Collections.Generic.IEnumerable<Entities.AnnualFiscalCalendar> transactioncurrency_annualfiscalcalendar
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AnnualFiscalCalendar>("transactioncurrency_annualfiscalcalendar", null);
+				return this.GetRelatedEntities<Entities.AnnualFiscalCalendar>("transactioncurrency_annualfiscalcalendar", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_annualfiscalcalendar");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AnnualFiscalCalendar>("transactioncurrency_annualfiscalcalendar", null, value);
+				this.SetRelatedEntities<Entities.AnnualFiscalCalendar>("transactioncurrency_annualfiscalcalendar", null, value);
 				this.OnPropertyChanged("transactioncurrency_annualfiscalcalendar");
 			}
 		}
@@ -666,18 +666,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_Appointment
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Appointment")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Appointment> TransactionCurrency_Appointment
+		public System.Collections.Generic.IEnumerable<Entities.Appointment> TransactionCurrency_Appointment
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Appointment>("TransactionCurrency_Appointment", null);
+				return this.GetRelatedEntities<Entities.Appointment>("TransactionCurrency_Appointment", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Appointment");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Appointment>("TransactionCurrency_Appointment", null, value);
+				this.SetRelatedEntities<Entities.Appointment>("TransactionCurrency_Appointment", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Appointment");
 			}
 		}
@@ -686,18 +686,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> TransactionCurrency_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> TransactionCurrency_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("TransactionCurrency_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("TransactionCurrency_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("TransactionCurrency_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("TransactionCurrency_AsyncOperations", null, value);
 				this.OnPropertyChanged("TransactionCurrency_AsyncOperations");
 			}
 		}
@@ -706,18 +706,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_BusinessUnit
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_BusinessUnit")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BusinessUnit> TransactionCurrency_BusinessUnit
+		public System.Collections.Generic.IEnumerable<Entities.BusinessUnit> TransactionCurrency_BusinessUnit
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BusinessUnit>("TransactionCurrency_BusinessUnit", null);
+				return this.GetRelatedEntities<Entities.BusinessUnit>("TransactionCurrency_BusinessUnit", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_BusinessUnit");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BusinessUnit>("TransactionCurrency_BusinessUnit", null, value);
+				this.SetRelatedEntities<Entities.BusinessUnit>("TransactionCurrency_BusinessUnit", null, value);
 				this.OnPropertyChanged("TransactionCurrency_BusinessUnit");
 			}
 		}
@@ -726,18 +726,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_campaign
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_campaign")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Campaign> transactioncurrency_campaign
+		public System.Collections.Generic.IEnumerable<Entities.Campaign> transactioncurrency_campaign
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Campaign>("transactioncurrency_campaign", null);
+				return this.GetRelatedEntities<Entities.Campaign>("transactioncurrency_campaign", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_campaign");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Campaign>("transactioncurrency_campaign", null, value);
+				this.SetRelatedEntities<Entities.Campaign>("transactioncurrency_campaign", null, value);
 				this.OnPropertyChanged("transactioncurrency_campaign");
 			}
 		}
@@ -746,18 +746,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_campaignactivity
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_campaignactivity")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.CampaignActivity> transactioncurrency_campaignactivity
+		public System.Collections.Generic.IEnumerable<Entities.CampaignActivity> transactioncurrency_campaignactivity
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.CampaignActivity>("transactioncurrency_campaignactivity", null);
+				return this.GetRelatedEntities<Entities.CampaignActivity>("transactioncurrency_campaignactivity", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_campaignactivity");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.CampaignActivity>("transactioncurrency_campaignactivity", null, value);
+				this.SetRelatedEntities<Entities.CampaignActivity>("transactioncurrency_campaignactivity", null, value);
 				this.OnPropertyChanged("transactioncurrency_campaignactivity");
 			}
 		}
@@ -766,18 +766,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_CampaignResponse
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_CampaignResponse")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.CampaignResponse> TransactionCurrency_CampaignResponse
+		public System.Collections.Generic.IEnumerable<Entities.CampaignResponse> TransactionCurrency_CampaignResponse
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.CampaignResponse>("TransactionCurrency_CampaignResponse", null);
+				return this.GetRelatedEntities<Entities.CampaignResponse>("TransactionCurrency_CampaignResponse", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_CampaignResponse");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.CampaignResponse>("TransactionCurrency_CampaignResponse", null, value);
+				this.SetRelatedEntities<Entities.CampaignResponse>("TransactionCurrency_CampaignResponse", null, value);
 				this.OnPropertyChanged("TransactionCurrency_CampaignResponse");
 			}
 		}
@@ -786,18 +786,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_ChannelAccessProfile
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_ChannelAccessProfile")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ChannelAccessProfile> TransactionCurrency_ChannelAccessProfile
+		public System.Collections.Generic.IEnumerable<Entities.ChannelAccessProfile> TransactionCurrency_ChannelAccessProfile
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ChannelAccessProfile>("TransactionCurrency_ChannelAccessProfile", null);
+				return this.GetRelatedEntities<Entities.ChannelAccessProfile>("TransactionCurrency_ChannelAccessProfile", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_ChannelAccessProfile");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ChannelAccessProfile>("TransactionCurrency_ChannelAccessProfile", null, value);
+				this.SetRelatedEntities<Entities.ChannelAccessProfile>("TransactionCurrency_ChannelAccessProfile", null, value);
 				this.OnPropertyChanged("TransactionCurrency_ChannelAccessProfile");
 			}
 		}
@@ -806,18 +806,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_competitor
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_competitor")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Competitor> transactioncurrency_competitor
+		public System.Collections.Generic.IEnumerable<Entities.Competitor> transactioncurrency_competitor
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Competitor>("transactioncurrency_competitor", null);
+				return this.GetRelatedEntities<Entities.Competitor>("transactioncurrency_competitor", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_competitor");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Competitor>("transactioncurrency_competitor", null, value);
+				this.SetRelatedEntities<Entities.Competitor>("transactioncurrency_competitor", null, value);
 				this.OnPropertyChanged("transactioncurrency_competitor");
 			}
 		}
@@ -826,18 +826,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_Connection
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Connection")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> TransactionCurrency_Connection
+		public System.Collections.Generic.IEnumerable<Entities.Connection> TransactionCurrency_Connection
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("TransactionCurrency_Connection", null);
+				return this.GetRelatedEntities<Entities.Connection>("TransactionCurrency_Connection", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Connection");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("TransactionCurrency_Connection", null, value);
+				this.SetRelatedEntities<Entities.Connection>("TransactionCurrency_Connection", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Connection");
 			}
 		}
@@ -846,18 +846,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_contact
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_contact")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Contact> transactioncurrency_contact
+		public System.Collections.Generic.IEnumerable<Entities.Contact> transactioncurrency_contact
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Contact>("transactioncurrency_contact", null);
+				return this.GetRelatedEntities<Entities.Contact>("transactioncurrency_contact", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_contact");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Contact>("transactioncurrency_contact", null, value);
+				this.SetRelatedEntities<Entities.Contact>("transactioncurrency_contact", null, value);
 				this.OnPropertyChanged("transactioncurrency_contact");
 			}
 		}
@@ -866,18 +866,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_contract
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_contract")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Contract> transactioncurrency_contract
+		public System.Collections.Generic.IEnumerable<Entities.Contract> transactioncurrency_contract
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Contract>("transactioncurrency_contract", null);
+				return this.GetRelatedEntities<Entities.Contract>("transactioncurrency_contract", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_contract");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Contract>("transactioncurrency_contract", null, value);
+				this.SetRelatedEntities<Entities.Contract>("transactioncurrency_contract", null, value);
 				this.OnPropertyChanged("transactioncurrency_contract");
 			}
 		}
@@ -886,18 +886,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_contractdetail
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_contractdetail")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ContractDetail> transactioncurrency_contractdetail
+		public System.Collections.Generic.IEnumerable<Entities.ContractDetail> transactioncurrency_contractdetail
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ContractDetail>("transactioncurrency_contractdetail", null);
+				return this.GetRelatedEntities<Entities.ContractDetail>("transactioncurrency_contractdetail", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_contractdetail");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ContractDetail>("transactioncurrency_contractdetail", null, value);
+				this.SetRelatedEntities<Entities.ContractDetail>("transactioncurrency_contractdetail", null, value);
 				this.OnPropertyChanged("transactioncurrency_contractdetail");
 			}
 		}
@@ -906,18 +906,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_ConvertRule
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_ConvertRule")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ConvertRule> TransactionCurrency_ConvertRule
+		public System.Collections.Generic.IEnumerable<Entities.ConvertRule> TransactionCurrency_ConvertRule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ConvertRule>("TransactionCurrency_ConvertRule", null);
+				return this.GetRelatedEntities<Entities.ConvertRule>("TransactionCurrency_ConvertRule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_ConvertRule");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ConvertRule>("TransactionCurrency_ConvertRule", null, value);
+				this.SetRelatedEntities<Entities.ConvertRule>("TransactionCurrency_ConvertRule", null, value);
 				this.OnPropertyChanged("TransactionCurrency_ConvertRule");
 			}
 		}
@@ -926,18 +926,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_convertruleitem
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_convertruleitem")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ConvertRuleItem> transactioncurrency_convertruleitem
+		public System.Collections.Generic.IEnumerable<Entities.ConvertRuleItem> transactioncurrency_convertruleitem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ConvertRuleItem>("transactioncurrency_convertruleitem", null);
+				return this.GetRelatedEntities<Entities.ConvertRuleItem>("transactioncurrency_convertruleitem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_convertruleitem");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ConvertRuleItem>("transactioncurrency_convertruleitem", null, value);
+				this.SetRelatedEntities<Entities.ConvertRuleItem>("transactioncurrency_convertruleitem", null, value);
 				this.OnPropertyChanged("transactioncurrency_convertruleitem");
 			}
 		}
@@ -946,18 +946,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_CustomerAddress
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_CustomerAddress")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.CustomerAddress> TransactionCurrency_CustomerAddress
+		public System.Collections.Generic.IEnumerable<Entities.CustomerAddress> TransactionCurrency_CustomerAddress
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.CustomerAddress>("TransactionCurrency_CustomerAddress", null);
+				return this.GetRelatedEntities<Entities.CustomerAddress>("TransactionCurrency_CustomerAddress", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_CustomerAddress");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.CustomerAddress>("TransactionCurrency_CustomerAddress", null, value);
+				this.SetRelatedEntities<Entities.CustomerAddress>("TransactionCurrency_CustomerAddress", null, value);
 				this.OnPropertyChanged("TransactionCurrency_CustomerAddress");
 			}
 		}
@@ -966,18 +966,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_discount
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_discount")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Discount> transactioncurrency_discount
+		public System.Collections.Generic.IEnumerable<Entities.Discount> transactioncurrency_discount
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Discount>("transactioncurrency_discount", null);
+				return this.GetRelatedEntities<Entities.Discount>("transactioncurrency_discount", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_discount");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Discount>("transactioncurrency_discount", null, value);
+				this.SetRelatedEntities<Entities.Discount>("transactioncurrency_discount", null, value);
 				this.OnPropertyChanged("transactioncurrency_discount");
 			}
 		}
@@ -986,18 +986,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_discounttype
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_discounttype")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DiscountType> transactioncurrency_discounttype
+		public System.Collections.Generic.IEnumerable<Entities.DiscountType> transactioncurrency_discounttype
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DiscountType>("transactioncurrency_discounttype", null);
+				return this.GetRelatedEntities<Entities.DiscountType>("transactioncurrency_discounttype", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_discounttype");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DiscountType>("transactioncurrency_discounttype", null, value);
+				this.SetRelatedEntities<Entities.DiscountType>("transactioncurrency_discounttype", null, value);
 				this.OnPropertyChanged("transactioncurrency_discounttype");
 			}
 		}
@@ -1006,18 +1006,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_DuplicateBaseRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_DuplicateBaseRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> TransactionCurrency_DuplicateBaseRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> TransactionCurrency_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("TransactionCurrency_DuplicateBaseRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("TransactionCurrency_DuplicateBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_DuplicateBaseRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("TransactionCurrency_DuplicateBaseRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("TransactionCurrency_DuplicateBaseRecord", null, value);
 				this.OnPropertyChanged("TransactionCurrency_DuplicateBaseRecord");
 			}
 		}
@@ -1026,18 +1026,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_DuplicateMatchingRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_DuplicateMatchingRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> TransactionCurrency_DuplicateMatchingRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> TransactionCurrency_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("TransactionCurrency_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("TransactionCurrency_DuplicateMatchingRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_DuplicateMatchingRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("TransactionCurrency_DuplicateMatchingRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("TransactionCurrency_DuplicateMatchingRecord", null, value);
 				this.OnPropertyChanged("TransactionCurrency_DuplicateMatchingRecord");
 			}
 		}
@@ -1046,18 +1046,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_Dynamicpropertyinsatance
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Dynamicpropertyinsatance")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DynamicPropertyInstance> TransactionCurrency_Dynamicpropertyinsatance
+		public System.Collections.Generic.IEnumerable<Entities.DynamicPropertyInstance> TransactionCurrency_Dynamicpropertyinsatance
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DynamicPropertyInstance>("TransactionCurrency_Dynamicpropertyinsatance", null);
+				return this.GetRelatedEntities<Entities.DynamicPropertyInstance>("TransactionCurrency_Dynamicpropertyinsatance", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Dynamicpropertyinsatance");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DynamicPropertyInstance>("TransactionCurrency_Dynamicpropertyinsatance", null, value);
+				this.SetRelatedEntities<Entities.DynamicPropertyInstance>("TransactionCurrency_Dynamicpropertyinsatance", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Dynamicpropertyinsatance");
 			}
 		}
@@ -1066,18 +1066,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_Email
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Email")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Email> TransactionCurrency_Email
+		public System.Collections.Generic.IEnumerable<Entities.Email> TransactionCurrency_Email
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Email>("TransactionCurrency_Email", null);
+				return this.GetRelatedEntities<Entities.Email>("TransactionCurrency_Email", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Email");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Email>("TransactionCurrency_Email", null, value);
+				this.SetRelatedEntities<Entities.Email>("TransactionCurrency_Email", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Email");
 			}
 		}
@@ -1086,18 +1086,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_Entitlement
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Entitlement")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Entitlement> TransactionCurrency_Entitlement
+		public System.Collections.Generic.IEnumerable<Entities.Entitlement> TransactionCurrency_Entitlement
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Entitlement>("TransactionCurrency_Entitlement", null);
+				return this.GetRelatedEntities<Entities.Entitlement>("TransactionCurrency_Entitlement", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Entitlement");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Entitlement>("TransactionCurrency_Entitlement", null, value);
+				this.SetRelatedEntities<Entities.Entitlement>("TransactionCurrency_Entitlement", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Entitlement");
 			}
 		}
@@ -1106,18 +1106,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_entitlementchannel
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_entitlementchannel")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.EntitlementChannel> TransactionCurrency_entitlementchannel
+		public System.Collections.Generic.IEnumerable<Entities.EntitlementChannel> TransactionCurrency_entitlementchannel
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.EntitlementChannel>("TransactionCurrency_entitlementchannel", null);
+				return this.GetRelatedEntities<Entities.EntitlementChannel>("TransactionCurrency_entitlementchannel", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_entitlementchannel");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.EntitlementChannel>("TransactionCurrency_entitlementchannel", null, value);
+				this.SetRelatedEntities<Entities.EntitlementChannel>("TransactionCurrency_entitlementchannel", null, value);
 				this.OnPropertyChanged("TransactionCurrency_entitlementchannel");
 			}
 		}
@@ -1126,18 +1126,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_entitlementtemplate
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_entitlementtemplate")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.EntitlementTemplate> TransactionCurrency_entitlementtemplate
+		public System.Collections.Generic.IEnumerable<Entities.EntitlementTemplate> TransactionCurrency_entitlementtemplate
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.EntitlementTemplate>("TransactionCurrency_entitlementtemplate", null);
+				return this.GetRelatedEntities<Entities.EntitlementTemplate>("TransactionCurrency_entitlementtemplate", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_entitlementtemplate");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.EntitlementTemplate>("TransactionCurrency_entitlementtemplate", null, value);
+				this.SetRelatedEntities<Entities.EntitlementTemplate>("TransactionCurrency_entitlementtemplate", null, value);
 				this.OnPropertyChanged("TransactionCurrency_entitlementtemplate");
 			}
 		}
@@ -1146,18 +1146,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_entitlementtemplatechannel
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_entitlementtemplatechannel")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.EntitlementTemplateChannel> TransactionCurrency_entitlementtemplatechannel
+		public System.Collections.Generic.IEnumerable<Entities.EntitlementTemplateChannel> TransactionCurrency_entitlementtemplatechannel
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.EntitlementTemplateChannel>("TransactionCurrency_entitlementtemplatechannel", null);
+				return this.GetRelatedEntities<Entities.EntitlementTemplateChannel>("TransactionCurrency_entitlementtemplatechannel", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_entitlementtemplatechannel");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.EntitlementTemplateChannel>("TransactionCurrency_entitlementtemplatechannel", null, value);
+				this.SetRelatedEntities<Entities.EntitlementTemplateChannel>("TransactionCurrency_entitlementtemplatechannel", null, value);
 				this.OnPropertyChanged("TransactionCurrency_entitlementtemplatechannel");
 			}
 		}
@@ -1166,18 +1166,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_Equipment
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Equipment")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Equipment> TransactionCurrency_Equipment
+		public System.Collections.Generic.IEnumerable<Entities.Equipment> TransactionCurrency_Equipment
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Equipment>("TransactionCurrency_Equipment", null);
+				return this.GetRelatedEntities<Entities.Equipment>("TransactionCurrency_Equipment", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Equipment");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Equipment>("TransactionCurrency_Equipment", null, value);
+				this.SetRelatedEntities<Entities.Equipment>("TransactionCurrency_Equipment", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Equipment");
 			}
 		}
@@ -1186,18 +1186,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_ExternalParty
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_ExternalParty")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ExternalParty> TransactionCurrency_ExternalParty
+		public System.Collections.Generic.IEnumerable<Entities.ExternalParty> TransactionCurrency_ExternalParty
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ExternalParty>("TransactionCurrency_ExternalParty", null);
+				return this.GetRelatedEntities<Entities.ExternalParty>("TransactionCurrency_ExternalParty", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_ExternalParty");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ExternalParty>("TransactionCurrency_ExternalParty", null, value);
+				this.SetRelatedEntities<Entities.ExternalParty>("TransactionCurrency_ExternalParty", null, value);
 				this.OnPropertyChanged("TransactionCurrency_ExternalParty");
 			}
 		}
@@ -1206,18 +1206,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_externalpartyitem
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_externalpartyitem")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ExternalPartyItem> TransactionCurrency_externalpartyitem
+		public System.Collections.Generic.IEnumerable<Entities.ExternalPartyItem> TransactionCurrency_externalpartyitem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ExternalPartyItem>("TransactionCurrency_externalpartyitem", null);
+				return this.GetRelatedEntities<Entities.ExternalPartyItem>("TransactionCurrency_externalpartyitem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_externalpartyitem");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ExternalPartyItem>("TransactionCurrency_externalpartyitem", null, value);
+				this.SetRelatedEntities<Entities.ExternalPartyItem>("TransactionCurrency_externalpartyitem", null, value);
 				this.OnPropertyChanged("TransactionCurrency_externalpartyitem");
 			}
 		}
@@ -1226,18 +1226,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_Fax
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Fax")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Fax> TransactionCurrency_Fax
+		public System.Collections.Generic.IEnumerable<Entities.Fax> TransactionCurrency_Fax
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Fax>("TransactionCurrency_Fax", null);
+				return this.GetRelatedEntities<Entities.Fax>("TransactionCurrency_Fax", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Fax");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Fax>("TransactionCurrency_Fax", null, value);
+				this.SetRelatedEntities<Entities.Fax>("TransactionCurrency_Fax", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Fax");
 			}
 		}
@@ -1246,18 +1246,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_fixedmonthlyfiscalcalendar
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_fixedmonthlyfiscalcalendar")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.FixedMonthlyFiscalCalendar> transactioncurrency_fixedmonthlyfiscalcalendar
+		public System.Collections.Generic.IEnumerable<Entities.FixedMonthlyFiscalCalendar> transactioncurrency_fixedmonthlyfiscalcalendar
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.FixedMonthlyFiscalCalendar>("transactioncurrency_fixedmonthlyfiscalcalendar", null);
+				return this.GetRelatedEntities<Entities.FixedMonthlyFiscalCalendar>("transactioncurrency_fixedmonthlyfiscalcalendar", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_fixedmonthlyfiscalcalendar");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.FixedMonthlyFiscalCalendar>("transactioncurrency_fixedmonthlyfiscalcalendar", null, value);
+				this.SetRelatedEntities<Entities.FixedMonthlyFiscalCalendar>("transactioncurrency_fixedmonthlyfiscalcalendar", null, value);
 				this.OnPropertyChanged("transactioncurrency_fixedmonthlyfiscalcalendar");
 			}
 		}
@@ -1266,18 +1266,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_Goal
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Goal")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Goal> TransactionCurrency_Goal
+		public System.Collections.Generic.IEnumerable<Entities.Goal> TransactionCurrency_Goal
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Goal>("TransactionCurrency_Goal", null);
+				return this.GetRelatedEntities<Entities.Goal>("TransactionCurrency_Goal", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Goal");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Goal>("TransactionCurrency_Goal", null, value);
+				this.SetRelatedEntities<Entities.Goal>("TransactionCurrency_Goal", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Goal");
 			}
 		}
@@ -1286,18 +1286,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_Incident
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Incident")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Incident> TransactionCurrency_Incident
+		public System.Collections.Generic.IEnumerable<Entities.Incident> TransactionCurrency_Incident
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Incident>("TransactionCurrency_Incident", null);
+				return this.GetRelatedEntities<Entities.Incident>("TransactionCurrency_Incident", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Incident");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Incident>("TransactionCurrency_Incident", null, value);
+				this.SetRelatedEntities<Entities.Incident>("TransactionCurrency_Incident", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Incident");
 			}
 		}
@@ -1306,18 +1306,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_invoice
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_invoice")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Invoice> transactioncurrency_invoice
+		public System.Collections.Generic.IEnumerable<Entities.Invoice> transactioncurrency_invoice
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Invoice>("transactioncurrency_invoice", null);
+				return this.GetRelatedEntities<Entities.Invoice>("transactioncurrency_invoice", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_invoice");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Invoice>("transactioncurrency_invoice", null, value);
+				this.SetRelatedEntities<Entities.Invoice>("transactioncurrency_invoice", null, value);
 				this.OnPropertyChanged("transactioncurrency_invoice");
 			}
 		}
@@ -1326,18 +1326,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_invoicedetail
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_invoicedetail")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.InvoiceDetail> transactioncurrency_invoicedetail
+		public System.Collections.Generic.IEnumerable<Entities.InvoiceDetail> transactioncurrency_invoicedetail
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.InvoiceDetail>("transactioncurrency_invoicedetail", null);
+				return this.GetRelatedEntities<Entities.InvoiceDetail>("transactioncurrency_invoicedetail", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_invoicedetail");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.InvoiceDetail>("transactioncurrency_invoicedetail", null, value);
+				this.SetRelatedEntities<Entities.InvoiceDetail>("transactioncurrency_invoicedetail", null, value);
 				this.OnPropertyChanged("transactioncurrency_invoicedetail");
 			}
 		}
@@ -1346,18 +1346,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_KbArticle
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_KbArticle")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.KbArticle> TransactionCurrency_KbArticle
+		public System.Collections.Generic.IEnumerable<Entities.KbArticle> TransactionCurrency_KbArticle
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.KbArticle>("TransactionCurrency_KbArticle", null);
+				return this.GetRelatedEntities<Entities.KbArticle>("TransactionCurrency_KbArticle", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_KbArticle");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.KbArticle>("TransactionCurrency_KbArticle", null, value);
+				this.SetRelatedEntities<Entities.KbArticle>("TransactionCurrency_KbArticle", null, value);
 				this.OnPropertyChanged("TransactionCurrency_KbArticle");
 			}
 		}
@@ -1366,18 +1366,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_knowledgearticle
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_knowledgearticle")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.KnowledgeArticle> TransactionCurrency_knowledgearticle
+		public System.Collections.Generic.IEnumerable<Entities.KnowledgeArticle> TransactionCurrency_knowledgearticle
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.KnowledgeArticle>("TransactionCurrency_knowledgearticle", null);
+				return this.GetRelatedEntities<Entities.KnowledgeArticle>("TransactionCurrency_knowledgearticle", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_knowledgearticle");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.KnowledgeArticle>("TransactionCurrency_knowledgearticle", null, value);
+				this.SetRelatedEntities<Entities.KnowledgeArticle>("TransactionCurrency_knowledgearticle", null, value);
 				this.OnPropertyChanged("TransactionCurrency_knowledgearticle");
 			}
 		}
@@ -1386,18 +1386,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_knowledgearticleincident
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_knowledgearticleincident")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.KnowledgeArticleIncident> transactioncurrency_knowledgearticleincident
+		public System.Collections.Generic.IEnumerable<Entities.KnowledgeArticleIncident> transactioncurrency_knowledgearticleincident
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.KnowledgeArticleIncident>("transactioncurrency_knowledgearticleincident", null);
+				return this.GetRelatedEntities<Entities.KnowledgeArticleIncident>("transactioncurrency_knowledgearticleincident", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_knowledgearticleincident");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.KnowledgeArticleIncident>("transactioncurrency_knowledgearticleincident", null, value);
+				this.SetRelatedEntities<Entities.KnowledgeArticleIncident>("transactioncurrency_knowledgearticleincident", null, value);
 				this.OnPropertyChanged("transactioncurrency_knowledgearticleincident");
 			}
 		}
@@ -1406,18 +1406,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_knowledgearticleviews
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_knowledgearticleviews")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.KnowledgeArticleViews> transactioncurrency_knowledgearticleviews
+		public System.Collections.Generic.IEnumerable<Entities.KnowledgeArticleViews> transactioncurrency_knowledgearticleviews
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.KnowledgeArticleViews>("transactioncurrency_knowledgearticleviews", null);
+				return this.GetRelatedEntities<Entities.KnowledgeArticleViews>("transactioncurrency_knowledgearticleviews", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_knowledgearticleviews");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.KnowledgeArticleViews>("transactioncurrency_knowledgearticleviews", null, value);
+				this.SetRelatedEntities<Entities.KnowledgeArticleViews>("transactioncurrency_knowledgearticleviews", null, value);
 				this.OnPropertyChanged("transactioncurrency_knowledgearticleviews");
 			}
 		}
@@ -1426,18 +1426,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_KnowledgeBaseRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_KnowledgeBaseRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.KnowledgeBaseRecord> TransactionCurrency_KnowledgeBaseRecord
+		public System.Collections.Generic.IEnumerable<Entities.KnowledgeBaseRecord> TransactionCurrency_KnowledgeBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.KnowledgeBaseRecord>("TransactionCurrency_KnowledgeBaseRecord", null);
+				return this.GetRelatedEntities<Entities.KnowledgeBaseRecord>("TransactionCurrency_KnowledgeBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_KnowledgeBaseRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.KnowledgeBaseRecord>("TransactionCurrency_KnowledgeBaseRecord", null, value);
+				this.SetRelatedEntities<Entities.KnowledgeBaseRecord>("TransactionCurrency_KnowledgeBaseRecord", null, value);
 				this.OnPropertyChanged("TransactionCurrency_KnowledgeBaseRecord");
 			}
 		}
@@ -1446,18 +1446,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_lead
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_lead")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Lead> transactioncurrency_lead
+		public System.Collections.Generic.IEnumerable<Entities.Lead> transactioncurrency_lead
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Lead>("transactioncurrency_lead", null);
+				return this.GetRelatedEntities<Entities.Lead>("transactioncurrency_lead", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_lead");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Lead>("transactioncurrency_lead", null, value);
+				this.SetRelatedEntities<Entities.Lead>("transactioncurrency_lead", null, value);
 				this.OnPropertyChanged("transactioncurrency_lead");
 			}
 		}
@@ -1466,18 +1466,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_LeadAddress
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_LeadAddress")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.LeadAddress> TransactionCurrency_LeadAddress
+		public System.Collections.Generic.IEnumerable<Entities.LeadAddress> TransactionCurrency_LeadAddress
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.LeadAddress>("TransactionCurrency_LeadAddress", null);
+				return this.GetRelatedEntities<Entities.LeadAddress>("TransactionCurrency_LeadAddress", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_LeadAddress");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.LeadAddress>("TransactionCurrency_LeadAddress", null, value);
+				this.SetRelatedEntities<Entities.LeadAddress>("TransactionCurrency_LeadAddress", null, value);
 				this.OnPropertyChanged("TransactionCurrency_LeadAddress");
 			}
 		}
@@ -1486,18 +1486,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_Letter
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Letter")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Letter> TransactionCurrency_Letter
+		public System.Collections.Generic.IEnumerable<Entities.Letter> TransactionCurrency_Letter
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Letter>("TransactionCurrency_Letter", null);
+				return this.GetRelatedEntities<Entities.Letter>("TransactionCurrency_Letter", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Letter");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Letter>("TransactionCurrency_Letter", null, value);
+				this.SetRelatedEntities<Entities.Letter>("TransactionCurrency_Letter", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Letter");
 			}
 		}
@@ -1506,18 +1506,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_list
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_list")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.List> transactioncurrency_list
+		public System.Collections.Generic.IEnumerable<Entities.List> transactioncurrency_list
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.List>("transactioncurrency_list", null);
+				return this.GetRelatedEntities<Entities.List>("transactioncurrency_list", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_list");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.List>("transactioncurrency_list", null, value);
+				this.SetRelatedEntities<Entities.List>("transactioncurrency_list", null, value);
 				this.OnPropertyChanged("transactioncurrency_list");
 			}
 		}
@@ -1526,18 +1526,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_MailMergeTemplate
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_MailMergeTemplate")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.MailMergeTemplate> TransactionCurrency_MailMergeTemplate
+		public System.Collections.Generic.IEnumerable<Entities.MailMergeTemplate> TransactionCurrency_MailMergeTemplate
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.MailMergeTemplate>("TransactionCurrency_MailMergeTemplate", null);
+				return this.GetRelatedEntities<Entities.MailMergeTemplate>("TransactionCurrency_MailMergeTemplate", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_MailMergeTemplate");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.MailMergeTemplate>("TransactionCurrency_MailMergeTemplate", null, value);
+				this.SetRelatedEntities<Entities.MailMergeTemplate>("TransactionCurrency_MailMergeTemplate", null, value);
 				this.OnPropertyChanged("TransactionCurrency_MailMergeTemplate");
 			}
 		}
@@ -1546,18 +1546,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_monthlyfiscalcalendar
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_monthlyfiscalcalendar")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.MonthlyFiscalCalendar> transactioncurrency_monthlyfiscalcalendar
+		public System.Collections.Generic.IEnumerable<Entities.MonthlyFiscalCalendar> transactioncurrency_monthlyfiscalcalendar
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.MonthlyFiscalCalendar>("transactioncurrency_monthlyfiscalcalendar", null);
+				return this.GetRelatedEntities<Entities.MonthlyFiscalCalendar>("transactioncurrency_monthlyfiscalcalendar", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_monthlyfiscalcalendar");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.MonthlyFiscalCalendar>("transactioncurrency_monthlyfiscalcalendar", null, value);
+				this.SetRelatedEntities<Entities.MonthlyFiscalCalendar>("transactioncurrency_monthlyfiscalcalendar", null, value);
 				this.OnPropertyChanged("transactioncurrency_monthlyfiscalcalendar");
 			}
 		}
@@ -1566,18 +1566,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_officegraphdocument
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_officegraphdocument")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.OfficeGraphDocument> TransactionCurrency_officegraphdocument
+		public System.Collections.Generic.IEnumerable<Entities.OfficeGraphDocument> TransactionCurrency_officegraphdocument
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.OfficeGraphDocument>("TransactionCurrency_officegraphdocument", null);
+				return this.GetRelatedEntities<Entities.OfficeGraphDocument>("TransactionCurrency_officegraphdocument", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_officegraphdocument");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.OfficeGraphDocument>("TransactionCurrency_officegraphdocument", null, value);
+				this.SetRelatedEntities<Entities.OfficeGraphDocument>("TransactionCurrency_officegraphdocument", null, value);
 				this.OnPropertyChanged("TransactionCurrency_officegraphdocument");
 			}
 		}
@@ -1586,18 +1586,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_opportunity
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_opportunity")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Opportunity> transactioncurrency_opportunity
+		public System.Collections.Generic.IEnumerable<Entities.Opportunity> transactioncurrency_opportunity
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Opportunity>("transactioncurrency_opportunity", null);
+				return this.GetRelatedEntities<Entities.Opportunity>("transactioncurrency_opportunity", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_opportunity");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Opportunity>("transactioncurrency_opportunity", null, value);
+				this.SetRelatedEntities<Entities.Opportunity>("transactioncurrency_opportunity", null, value);
 				this.OnPropertyChanged("transactioncurrency_opportunity");
 			}
 		}
@@ -1606,18 +1606,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_opportunityclose
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_opportunityclose")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.OpportunityClose> transactioncurrency_opportunityclose
+		public System.Collections.Generic.IEnumerable<Entities.OpportunityClose> transactioncurrency_opportunityclose
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.OpportunityClose>("transactioncurrency_opportunityclose", null);
+				return this.GetRelatedEntities<Entities.OpportunityClose>("transactioncurrency_opportunityclose", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_opportunityclose");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.OpportunityClose>("transactioncurrency_opportunityclose", null, value);
+				this.SetRelatedEntities<Entities.OpportunityClose>("transactioncurrency_opportunityclose", null, value);
 				this.OnPropertyChanged("transactioncurrency_opportunityclose");
 			}
 		}
@@ -1626,18 +1626,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_opportunityproduct
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_opportunityproduct")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.OpportunityProduct> transactioncurrency_opportunityproduct
+		public System.Collections.Generic.IEnumerable<Entities.OpportunityProduct> transactioncurrency_opportunityproduct
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.OpportunityProduct>("transactioncurrency_opportunityproduct", null);
+				return this.GetRelatedEntities<Entities.OpportunityProduct>("transactioncurrency_opportunityproduct", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_opportunityproduct");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.OpportunityProduct>("transactioncurrency_opportunityproduct", null, value);
+				this.SetRelatedEntities<Entities.OpportunityProduct>("transactioncurrency_opportunityproduct", null, value);
 				this.OnPropertyChanged("transactioncurrency_opportunityproduct");
 			}
 		}
@@ -1646,18 +1646,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_PhoneCall
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_PhoneCall")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PhoneCall> TransactionCurrency_PhoneCall
+		public System.Collections.Generic.IEnumerable<Entities.PhoneCall> TransactionCurrency_PhoneCall
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PhoneCall>("TransactionCurrency_PhoneCall", null);
+				return this.GetRelatedEntities<Entities.PhoneCall>("TransactionCurrency_PhoneCall", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_PhoneCall");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PhoneCall>("TransactionCurrency_PhoneCall", null, value);
+				this.SetRelatedEntities<Entities.PhoneCall>("TransactionCurrency_PhoneCall", null, value);
 				this.OnPropertyChanged("TransactionCurrency_PhoneCall");
 			}
 		}
@@ -1666,18 +1666,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_position
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_position")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Position> transactioncurrency_position
+		public System.Collections.Generic.IEnumerable<Entities.Position> transactioncurrency_position
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Position>("transactioncurrency_position", null);
+				return this.GetRelatedEntities<Entities.Position>("transactioncurrency_position", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_position");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Position>("transactioncurrency_position", null, value);
+				this.SetRelatedEntities<Entities.Position>("transactioncurrency_position", null, value);
 				this.OnPropertyChanged("transactioncurrency_position");
 			}
 		}
@@ -1686,18 +1686,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_pricelevel
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_pricelevel")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PriceLevel> transactioncurrency_pricelevel
+		public System.Collections.Generic.IEnumerable<Entities.PriceLevel> transactioncurrency_pricelevel
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PriceLevel>("transactioncurrency_pricelevel", null);
+				return this.GetRelatedEntities<Entities.PriceLevel>("transactioncurrency_pricelevel", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_pricelevel");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PriceLevel>("transactioncurrency_pricelevel", null, value);
+				this.SetRelatedEntities<Entities.PriceLevel>("transactioncurrency_pricelevel", null, value);
 				this.OnPropertyChanged("transactioncurrency_pricelevel");
 			}
 		}
@@ -1706,18 +1706,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> TransactionCurrency_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> TransactionCurrency_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("TransactionCurrency_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("TransactionCurrency_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("TransactionCurrency_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("TransactionCurrency_ProcessSessions", null, value);
 				this.OnPropertyChanged("TransactionCurrency_ProcessSessions");
 			}
 		}
@@ -1726,18 +1726,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_product
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_product")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Product> transactioncurrency_product
+		public System.Collections.Generic.IEnumerable<Entities.Product> transactioncurrency_product
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Product>("transactioncurrency_product", null);
+				return this.GetRelatedEntities<Entities.Product>("transactioncurrency_product", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_product");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Product>("transactioncurrency_product", null, value);
+				this.SetRelatedEntities<Entities.Product>("transactioncurrency_product", null, value);
 				this.OnPropertyChanged("transactioncurrency_product");
 			}
 		}
@@ -1746,18 +1746,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_ProductAssociation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_ProductAssociation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProductAssociation> transactioncurrency_ProductAssociation
+		public System.Collections.Generic.IEnumerable<Entities.ProductAssociation> transactioncurrency_ProductAssociation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProductAssociation>("transactioncurrency_ProductAssociation", null);
+				return this.GetRelatedEntities<Entities.ProductAssociation>("transactioncurrency_ProductAssociation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_ProductAssociation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProductAssociation>("transactioncurrency_ProductAssociation", null, value);
+				this.SetRelatedEntities<Entities.ProductAssociation>("transactioncurrency_ProductAssociation", null, value);
 				this.OnPropertyChanged("transactioncurrency_ProductAssociation");
 			}
 		}
@@ -1766,18 +1766,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_productpricelevel
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_productpricelevel")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProductPriceLevel> transactioncurrency_productpricelevel
+		public System.Collections.Generic.IEnumerable<Entities.ProductPriceLevel> transactioncurrency_productpricelevel
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProductPriceLevel>("transactioncurrency_productpricelevel", null);
+				return this.GetRelatedEntities<Entities.ProductPriceLevel>("transactioncurrency_productpricelevel", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_productpricelevel");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProductPriceLevel>("transactioncurrency_productpricelevel", null, value);
+				this.SetRelatedEntities<Entities.ProductPriceLevel>("transactioncurrency_productpricelevel", null, value);
 				this.OnPropertyChanged("transactioncurrency_productpricelevel");
 			}
 		}
@@ -1786,18 +1786,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_ProductSubstitute
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_ProductSubstitute")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProductSubstitute> transactioncurrency_ProductSubstitute
+		public System.Collections.Generic.IEnumerable<Entities.ProductSubstitute> transactioncurrency_ProductSubstitute
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProductSubstitute>("transactioncurrency_ProductSubstitute", null);
+				return this.GetRelatedEntities<Entities.ProductSubstitute>("transactioncurrency_ProductSubstitute", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_ProductSubstitute");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProductSubstitute>("transactioncurrency_ProductSubstitute", null, value);
+				this.SetRelatedEntities<Entities.ProductSubstitute>("transactioncurrency_ProductSubstitute", null, value);
 				this.OnPropertyChanged("transactioncurrency_ProductSubstitute");
 			}
 		}
@@ -1806,18 +1806,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_profilerule
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_profilerule")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ChannelAccessProfileRule> TransactionCurrency_profilerule
+		public System.Collections.Generic.IEnumerable<Entities.ChannelAccessProfileRule> TransactionCurrency_profilerule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ChannelAccessProfileRule>("TransactionCurrency_profilerule", null);
+				return this.GetRelatedEntities<Entities.ChannelAccessProfileRule>("TransactionCurrency_profilerule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_profilerule");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ChannelAccessProfileRule>("TransactionCurrency_profilerule", null, value);
+				this.SetRelatedEntities<Entities.ChannelAccessProfileRule>("TransactionCurrency_profilerule", null, value);
 				this.OnPropertyChanged("TransactionCurrency_profilerule");
 			}
 		}
@@ -1826,18 +1826,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_profileruleitem
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_profileruleitem")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ChannelAccessProfileRuleItem> TransactionCurrency_profileruleitem
+		public System.Collections.Generic.IEnumerable<Entities.ChannelAccessProfileRuleItem> TransactionCurrency_profileruleitem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ChannelAccessProfileRuleItem>("TransactionCurrency_profileruleitem", null);
+				return this.GetRelatedEntities<Entities.ChannelAccessProfileRuleItem>("TransactionCurrency_profileruleitem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_profileruleitem");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ChannelAccessProfileRuleItem>("TransactionCurrency_profileruleitem", null, value);
+				this.SetRelatedEntities<Entities.ChannelAccessProfileRuleItem>("TransactionCurrency_profileruleitem", null, value);
 				this.OnPropertyChanged("TransactionCurrency_profileruleitem");
 			}
 		}
@@ -1846,18 +1846,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_quarterlyfiscalcalendar
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_quarterlyfiscalcalendar")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.QuarterlyFiscalCalendar> transactioncurrency_quarterlyfiscalcalendar
+		public System.Collections.Generic.IEnumerable<Entities.QuarterlyFiscalCalendar> transactioncurrency_quarterlyfiscalcalendar
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.QuarterlyFiscalCalendar>("transactioncurrency_quarterlyfiscalcalendar", null);
+				return this.GetRelatedEntities<Entities.QuarterlyFiscalCalendar>("transactioncurrency_quarterlyfiscalcalendar", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_quarterlyfiscalcalendar");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.QuarterlyFiscalCalendar>("transactioncurrency_quarterlyfiscalcalendar", null, value);
+				this.SetRelatedEntities<Entities.QuarterlyFiscalCalendar>("transactioncurrency_quarterlyfiscalcalendar", null, value);
 				this.OnPropertyChanged("transactioncurrency_quarterlyfiscalcalendar");
 			}
 		}
@@ -1866,18 +1866,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_Queue
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Queue")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Queue> TransactionCurrency_Queue
+		public System.Collections.Generic.IEnumerable<Entities.Queue> TransactionCurrency_Queue
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Queue>("TransactionCurrency_Queue", null);
+				return this.GetRelatedEntities<Entities.Queue>("TransactionCurrency_Queue", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Queue");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Queue>("TransactionCurrency_Queue", null, value);
+				this.SetRelatedEntities<Entities.Queue>("TransactionCurrency_Queue", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Queue");
 			}
 		}
@@ -1886,18 +1886,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_QueueItem
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_QueueItem")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.QueueItem> TransactionCurrency_QueueItem
+		public System.Collections.Generic.IEnumerable<Entities.QueueItem> TransactionCurrency_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.QueueItem>("TransactionCurrency_QueueItem", null);
+				return this.GetRelatedEntities<Entities.QueueItem>("TransactionCurrency_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_QueueItem");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.QueueItem>("TransactionCurrency_QueueItem", null, value);
+				this.SetRelatedEntities<Entities.QueueItem>("TransactionCurrency_QueueItem", null, value);
 				this.OnPropertyChanged("TransactionCurrency_QueueItem");
 			}
 		}
@@ -1906,18 +1906,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_quote
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_quote")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Quote> transactioncurrency_quote
+		public System.Collections.Generic.IEnumerable<Entities.Quote> transactioncurrency_quote
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Quote>("transactioncurrency_quote", null);
+				return this.GetRelatedEntities<Entities.Quote>("transactioncurrency_quote", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_quote");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Quote>("transactioncurrency_quote", null, value);
+				this.SetRelatedEntities<Entities.Quote>("transactioncurrency_quote", null, value);
 				this.OnPropertyChanged("transactioncurrency_quote");
 			}
 		}
@@ -1926,18 +1926,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_quotedetail
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_quotedetail")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.QuoteDetail> transactioncurrency_quotedetail
+		public System.Collections.Generic.IEnumerable<Entities.QuoteDetail> transactioncurrency_quotedetail
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.QuoteDetail>("transactioncurrency_quotedetail", null);
+				return this.GetRelatedEntities<Entities.QuoteDetail>("transactioncurrency_quotedetail", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_quotedetail");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.QuoteDetail>("transactioncurrency_quotedetail", null, value);
+				this.SetRelatedEntities<Entities.QuoteDetail>("transactioncurrency_quotedetail", null, value);
 				this.OnPropertyChanged("transactioncurrency_quotedetail");
 			}
 		}
@@ -1946,18 +1946,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_RecurringAppointmentMaster
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_RecurringAppointmentMaster")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.RecurringAppointmentMaster> TransactionCurrency_RecurringAppointmentMaster
+		public System.Collections.Generic.IEnumerable<Entities.RecurringAppointmentMaster> TransactionCurrency_RecurringAppointmentMaster
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.RecurringAppointmentMaster>("TransactionCurrency_RecurringAppointmentMaster", null);
+				return this.GetRelatedEntities<Entities.RecurringAppointmentMaster>("TransactionCurrency_RecurringAppointmentMaster", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_RecurringAppointmentMaster");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.RecurringAppointmentMaster>("TransactionCurrency_RecurringAppointmentMaster", null, value);
+				this.SetRelatedEntities<Entities.RecurringAppointmentMaster>("TransactionCurrency_RecurringAppointmentMaster", null, value);
 				this.OnPropertyChanged("TransactionCurrency_RecurringAppointmentMaster");
 			}
 		}
@@ -1966,18 +1966,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_ReportCategory
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_ReportCategory")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ReportCategory> TransactionCurrency_ReportCategory
+		public System.Collections.Generic.IEnumerable<Entities.ReportCategory> TransactionCurrency_ReportCategory
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ReportCategory>("TransactionCurrency_ReportCategory", null);
+				return this.GetRelatedEntities<Entities.ReportCategory>("TransactionCurrency_ReportCategory", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_ReportCategory");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ReportCategory>("TransactionCurrency_ReportCategory", null, value);
+				this.SetRelatedEntities<Entities.ReportCategory>("TransactionCurrency_ReportCategory", null, value);
 				this.OnPropertyChanged("TransactionCurrency_ReportCategory");
 			}
 		}
@@ -1986,18 +1986,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_Routingrule
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Routingrule")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.RoutingRule> TransactionCurrency_Routingrule
+		public System.Collections.Generic.IEnumerable<Entities.RoutingRule> TransactionCurrency_Routingrule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.RoutingRule>("TransactionCurrency_Routingrule", null);
+				return this.GetRelatedEntities<Entities.RoutingRule>("TransactionCurrency_Routingrule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Routingrule");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.RoutingRule>("TransactionCurrency_Routingrule", null, value);
+				this.SetRelatedEntities<Entities.RoutingRule>("TransactionCurrency_Routingrule", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Routingrule");
 			}
 		}
@@ -2006,18 +2006,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_routingruleitem
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_routingruleitem")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.RoutingRuleItem> TransactionCurrency_routingruleitem
+		public System.Collections.Generic.IEnumerable<Entities.RoutingRuleItem> TransactionCurrency_routingruleitem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.RoutingRuleItem>("TransactionCurrency_routingruleitem", null);
+				return this.GetRelatedEntities<Entities.RoutingRuleItem>("TransactionCurrency_routingruleitem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_routingruleitem");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.RoutingRuleItem>("TransactionCurrency_routingruleitem", null, value);
+				this.SetRelatedEntities<Entities.RoutingRuleItem>("TransactionCurrency_routingruleitem", null, value);
 				this.OnPropertyChanged("TransactionCurrency_routingruleitem");
 			}
 		}
@@ -2026,18 +2026,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_SalesLiterature
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_SalesLiterature")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SalesLiterature> TransactionCurrency_SalesLiterature
+		public System.Collections.Generic.IEnumerable<Entities.SalesLiterature> TransactionCurrency_SalesLiterature
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SalesLiterature>("TransactionCurrency_SalesLiterature", null);
+				return this.GetRelatedEntities<Entities.SalesLiterature>("TransactionCurrency_SalesLiterature", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_SalesLiterature");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SalesLiterature>("TransactionCurrency_SalesLiterature", null, value);
+				this.SetRelatedEntities<Entities.SalesLiterature>("TransactionCurrency_SalesLiterature", null, value);
 				this.OnPropertyChanged("TransactionCurrency_SalesLiterature");
 			}
 		}
@@ -2046,18 +2046,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_salesorder
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_salesorder")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SalesOrder> transactioncurrency_salesorder
+		public System.Collections.Generic.IEnumerable<Entities.SalesOrder> transactioncurrency_salesorder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SalesOrder>("transactioncurrency_salesorder", null);
+				return this.GetRelatedEntities<Entities.SalesOrder>("transactioncurrency_salesorder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_salesorder");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SalesOrder>("transactioncurrency_salesorder", null, value);
+				this.SetRelatedEntities<Entities.SalesOrder>("transactioncurrency_salesorder", null, value);
 				this.OnPropertyChanged("transactioncurrency_salesorder");
 			}
 		}
@@ -2066,18 +2066,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_salesorderdetail
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_salesorderdetail")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SalesOrderDetail> transactioncurrency_salesorderdetail
+		public System.Collections.Generic.IEnumerable<Entities.SalesOrderDetail> transactioncurrency_salesorderdetail
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SalesOrderDetail>("transactioncurrency_salesorderdetail", null);
+				return this.GetRelatedEntities<Entities.SalesOrderDetail>("transactioncurrency_salesorderdetail", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_salesorderdetail");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SalesOrderDetail>("transactioncurrency_salesorderdetail", null, value);
+				this.SetRelatedEntities<Entities.SalesOrderDetail>("transactioncurrency_salesorderdetail", null, value);
 				this.OnPropertyChanged("transactioncurrency_salesorderdetail");
 			}
 		}
@@ -2086,18 +2086,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_semiannualfiscalcalendar
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_semiannualfiscalcalendar")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SemiAnnualFiscalCalendar> transactioncurrency_semiannualfiscalcalendar
+		public System.Collections.Generic.IEnumerable<Entities.SemiAnnualFiscalCalendar> transactioncurrency_semiannualfiscalcalendar
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SemiAnnualFiscalCalendar>("transactioncurrency_semiannualfiscalcalendar", null);
+				return this.GetRelatedEntities<Entities.SemiAnnualFiscalCalendar>("transactioncurrency_semiannualfiscalcalendar", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_semiannualfiscalcalendar");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SemiAnnualFiscalCalendar>("transactioncurrency_semiannualfiscalcalendar", null, value);
+				this.SetRelatedEntities<Entities.SemiAnnualFiscalCalendar>("transactioncurrency_semiannualfiscalcalendar", null, value);
 				this.OnPropertyChanged("transactioncurrency_semiannualfiscalcalendar");
 			}
 		}
@@ -2106,18 +2106,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_ServiceAppointment
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_ServiceAppointment")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ServiceAppointment> TransactionCurrency_ServiceAppointment
+		public System.Collections.Generic.IEnumerable<Entities.ServiceAppointment> TransactionCurrency_ServiceAppointment
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ServiceAppointment>("TransactionCurrency_ServiceAppointment", null);
+				return this.GetRelatedEntities<Entities.ServiceAppointment>("TransactionCurrency_ServiceAppointment", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_ServiceAppointment");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ServiceAppointment>("TransactionCurrency_ServiceAppointment", null, value);
+				this.SetRelatedEntities<Entities.ServiceAppointment>("TransactionCurrency_ServiceAppointment", null, value);
 				this.OnPropertyChanged("TransactionCurrency_ServiceAppointment");
 			}
 		}
@@ -2126,18 +2126,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_SharePointDocument
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_SharePointDocument")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SharePointDocument> TransactionCurrency_SharePointDocument
+		public System.Collections.Generic.IEnumerable<Entities.SharePointDocument> TransactionCurrency_SharePointDocument
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SharePointDocument>("TransactionCurrency_SharePointDocument", null);
+				return this.GetRelatedEntities<Entities.SharePointDocument>("TransactionCurrency_SharePointDocument", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_SharePointDocument");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SharePointDocument>("TransactionCurrency_SharePointDocument", null, value);
+				this.SetRelatedEntities<Entities.SharePointDocument>("TransactionCurrency_SharePointDocument", null, value);
 				this.OnPropertyChanged("TransactionCurrency_SharePointDocument");
 			}
 		}
@@ -2146,18 +2146,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_SharePointDocumentLocation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_SharePointDocumentLocation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SharePointDocumentLocation> TransactionCurrency_SharePointDocumentLocation
+		public System.Collections.Generic.IEnumerable<Entities.SharePointDocumentLocation> TransactionCurrency_SharePointDocumentLocation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SharePointDocumentLocation>("TransactionCurrency_SharePointDocumentLocation", null);
+				return this.GetRelatedEntities<Entities.SharePointDocumentLocation>("TransactionCurrency_SharePointDocumentLocation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_SharePointDocumentLocation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SharePointDocumentLocation>("TransactionCurrency_SharePointDocumentLocation", null, value);
+				this.SetRelatedEntities<Entities.SharePointDocumentLocation>("TransactionCurrency_SharePointDocumentLocation", null, value);
 				this.OnPropertyChanged("TransactionCurrency_SharePointDocumentLocation");
 			}
 		}
@@ -2166,18 +2166,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_SharePointSite
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_SharePointSite")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SharePointSite> TransactionCurrency_SharePointSite
+		public System.Collections.Generic.IEnumerable<Entities.SharePointSite> TransactionCurrency_SharePointSite
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SharePointSite>("TransactionCurrency_SharePointSite", null);
+				return this.GetRelatedEntities<Entities.SharePointSite>("TransactionCurrency_SharePointSite", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_SharePointSite");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SharePointSite>("TransactionCurrency_SharePointSite", null, value);
+				this.SetRelatedEntities<Entities.SharePointSite>("TransactionCurrency_SharePointSite", null, value);
 				this.OnPropertyChanged("TransactionCurrency_SharePointSite");
 			}
 		}
@@ -2186,18 +2186,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_SimilarityRule
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_SimilarityRule")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SimilarityRule> TransactionCurrency_SimilarityRule
+		public System.Collections.Generic.IEnumerable<Entities.SimilarityRule> TransactionCurrency_SimilarityRule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SimilarityRule>("TransactionCurrency_SimilarityRule", null);
+				return this.GetRelatedEntities<Entities.SimilarityRule>("TransactionCurrency_SimilarityRule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_SimilarityRule");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SimilarityRule>("TransactionCurrency_SimilarityRule", null, value);
+				this.SetRelatedEntities<Entities.SimilarityRule>("TransactionCurrency_SimilarityRule", null, value);
 				this.OnPropertyChanged("TransactionCurrency_SimilarityRule");
 			}
 		}
@@ -2206,18 +2206,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_SLA
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_SLA")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SLA> TransactionCurrency_SLA
+		public System.Collections.Generic.IEnumerable<Entities.SLA> TransactionCurrency_SLA
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SLA>("TransactionCurrency_SLA", null);
+				return this.GetRelatedEntities<Entities.SLA>("TransactionCurrency_SLA", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_SLA");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SLA>("TransactionCurrency_SLA", null, value);
+				this.SetRelatedEntities<Entities.SLA>("TransactionCurrency_SLA", null, value);
 				this.OnPropertyChanged("TransactionCurrency_SLA");
 			}
 		}
@@ -2226,18 +2226,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_SLAItem
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_SLAItem")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SLAItem> TransactionCurrency_SLAItem
+		public System.Collections.Generic.IEnumerable<Entities.SLAItem> TransactionCurrency_SLAItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SLAItem>("TransactionCurrency_SLAItem", null);
+				return this.GetRelatedEntities<Entities.SLAItem>("TransactionCurrency_SLAItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_SLAItem");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SLAItem>("TransactionCurrency_SLAItem", null, value);
+				this.SetRelatedEntities<Entities.SLAItem>("TransactionCurrency_SLAItem", null, value);
 				this.OnPropertyChanged("TransactionCurrency_SLAItem");
 			}
 		}
@@ -2246,18 +2246,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_slakpiinstance
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_slakpiinstance")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SLAKPIInstance> TransactionCurrency_slakpiinstance
+		public System.Collections.Generic.IEnumerable<Entities.SLAKPIInstance> TransactionCurrency_slakpiinstance
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SLAKPIInstance>("TransactionCurrency_slakpiinstance", null);
+				return this.GetRelatedEntities<Entities.SLAKPIInstance>("TransactionCurrency_slakpiinstance", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_slakpiinstance");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SLAKPIInstance>("TransactionCurrency_slakpiinstance", null, value);
+				this.SetRelatedEntities<Entities.SLAKPIInstance>("TransactionCurrency_slakpiinstance", null, value);
 				this.OnPropertyChanged("TransactionCurrency_slakpiinstance");
 			}
 		}
@@ -2266,18 +2266,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_socialactivity
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_socialactivity")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SocialActivity> transactioncurrency_socialactivity
+		public System.Collections.Generic.IEnumerable<Entities.SocialActivity> transactioncurrency_socialactivity
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SocialActivity>("transactioncurrency_socialactivity", null);
+				return this.GetRelatedEntities<Entities.SocialActivity>("transactioncurrency_socialactivity", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_socialactivity");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SocialActivity>("transactioncurrency_socialactivity", null, value);
+				this.SetRelatedEntities<Entities.SocialActivity>("transactioncurrency_socialactivity", null, value);
 				this.OnPropertyChanged("transactioncurrency_socialactivity");
 			}
 		}
@@ -2286,18 +2286,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_SocialProfile
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_SocialProfile")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SocialProfile> transactioncurrency_SocialProfile
+		public System.Collections.Generic.IEnumerable<Entities.SocialProfile> transactioncurrency_SocialProfile
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SocialProfile>("transactioncurrency_SocialProfile", null);
+				return this.GetRelatedEntities<Entities.SocialProfile>("transactioncurrency_SocialProfile", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_SocialProfile");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SocialProfile>("transactioncurrency_SocialProfile", null, value);
+				this.SetRelatedEntities<Entities.SocialProfile>("transactioncurrency_SocialProfile", null, value);
 				this.OnPropertyChanged("transactioncurrency_SocialProfile");
 			}
 		}
@@ -2306,18 +2306,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_SystemUser
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_SystemUser")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SystemUser> TransactionCurrency_SystemUser
+		public System.Collections.Generic.IEnumerable<Entities.SystemUser> TransactionCurrency_SystemUser
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SystemUser>("TransactionCurrency_SystemUser", null);
+				return this.GetRelatedEntities<Entities.SystemUser>("TransactionCurrency_SystemUser", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_SystemUser");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SystemUser>("TransactionCurrency_SystemUser", null, value);
+				this.SetRelatedEntities<Entities.SystemUser>("TransactionCurrency_SystemUser", null, value);
 				this.OnPropertyChanged("TransactionCurrency_SystemUser");
 			}
 		}
@@ -2326,18 +2326,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_Task
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Task")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Task> TransactionCurrency_Task
+		public System.Collections.Generic.IEnumerable<Entities.Task> TransactionCurrency_Task
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Task>("TransactionCurrency_Task", null);
+				return this.GetRelatedEntities<Entities.Task>("TransactionCurrency_Task", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Task");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Task>("TransactionCurrency_Task", null, value);
+				this.SetRelatedEntities<Entities.Task>("TransactionCurrency_Task", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Task");
 			}
 		}
@@ -2346,18 +2346,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_Team
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Team")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Team> TransactionCurrency_Team
+		public System.Collections.Generic.IEnumerable<Entities.Team> TransactionCurrency_Team
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Team>("TransactionCurrency_Team", null);
+				return this.GetRelatedEntities<Entities.Team>("TransactionCurrency_Team", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Team");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Team>("TransactionCurrency_Team", null, value);
+				this.SetRelatedEntities<Entities.Team>("TransactionCurrency_Team", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Team");
 			}
 		}
@@ -2366,18 +2366,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_Territory
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Territory")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Territory> TransactionCurrency_Territory
+		public System.Collections.Generic.IEnumerable<Entities.Territory> TransactionCurrency_Territory
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Territory>("TransactionCurrency_Territory", null);
+				return this.GetRelatedEntities<Entities.Territory>("TransactionCurrency_Territory", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Territory");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Territory>("TransactionCurrency_Territory", null, value);
+				this.SetRelatedEntities<Entities.Territory>("TransactionCurrency_Territory", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Territory");
 			}
 		}
@@ -2386,18 +2386,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_Theme
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Theme")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Theme> TransactionCurrency_Theme
+		public System.Collections.Generic.IEnumerable<Entities.Theme> TransactionCurrency_Theme
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Theme>("TransactionCurrency_Theme", null);
+				return this.GetRelatedEntities<Entities.Theme>("TransactionCurrency_Theme", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Theme");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Theme>("TransactionCurrency_Theme", null, value);
+				this.SetRelatedEntities<Entities.Theme>("TransactionCurrency_Theme", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Theme");
 			}
 		}
@@ -2406,18 +2406,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransactionCurrency_UserMapping
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_UserMapping")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserMapping> TransactionCurrency_UserMapping
+		public System.Collections.Generic.IEnumerable<Entities.UserMapping> TransactionCurrency_UserMapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserMapping>("TransactionCurrency_UserMapping", null);
+				return this.GetRelatedEntities<Entities.UserMapping>("TransactionCurrency_UserMapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_UserMapping");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserMapping>("TransactionCurrency_UserMapping", null, value);
+				this.SetRelatedEntities<Entities.UserMapping>("TransactionCurrency_UserMapping", null, value);
 				this.OnPropertyChanged("TransactionCurrency_UserMapping");
 			}
 		}
@@ -2426,18 +2426,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N transactioncurrency_usersettings
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_usersettings")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserSettings> transactioncurrency_usersettings
+		public System.Collections.Generic.IEnumerable<Entities.UserSettings> transactioncurrency_usersettings
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserSettings>("transactioncurrency_usersettings", null);
+				return this.GetRelatedEntities<Entities.UserSettings>("transactioncurrency_usersettings", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_usersettings");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserSettings>("transactioncurrency_usersettings", null, value);
+				this.SetRelatedEntities<Entities.UserSettings>("transactioncurrency_usersettings", null, value);
 				this.OnPropertyChanged("transactioncurrency_usersettings");
 			}
 		}
@@ -2446,18 +2446,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_transactioncurrency
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_transactioncurrency")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_transactioncurrency
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_transactioncurrency
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_transactioncurrency", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_transactioncurrency", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_transactioncurrency");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_transactioncurrency", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_transactioncurrency", null, value);
 				this.OnPropertyChanged("userentityinstancedata_transactioncurrency");
 			}
 		}
@@ -2467,18 +2467,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_transactioncurrency_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_transactioncurrency_createdonbehalfby
+		public Entities.SystemUser lk_transactioncurrency_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_transactioncurrency_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_transactioncurrency_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_transactioncurrency_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_transactioncurrency_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_transactioncurrency_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_transactioncurrency_createdonbehalfby");
 			}
 		}
@@ -2488,18 +2488,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_transactioncurrency_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_transactioncurrency_modifiedonbehalfby
+		public Entities.SystemUser lk_transactioncurrency_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_transactioncurrency_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_transactioncurrency_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_transactioncurrency_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_transactioncurrency_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_transactioncurrency_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_transactioncurrency_modifiedonbehalfby");
 			}
 		}
@@ -2509,18 +2509,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_transactioncurrencybase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_transactioncurrencybase_createdby
+		public Entities.SystemUser lk_transactioncurrencybase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_transactioncurrencybase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_transactioncurrencybase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_transactioncurrencybase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_transactioncurrencybase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_transactioncurrencybase_createdby", null, value);
 				this.OnPropertyChanged("lk_transactioncurrencybase_createdby");
 			}
 		}
@@ -2530,18 +2530,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_transactioncurrencybase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_transactioncurrencybase_modifiedby
+		public Entities.SystemUser lk_transactioncurrencybase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_transactioncurrencybase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_transactioncurrencybase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_transactioncurrencybase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_transactioncurrencybase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_transactioncurrencybase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_transactioncurrencybase_modifiedby");
 			}
 		}
@@ -2551,12 +2551,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_transactioncurrencies")]
-		public DLaB.Xrm.Entities.Organization organization_transactioncurrencies
+		public Entities.Organization organization_transactioncurrencies
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_transactioncurrencies", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_transactioncurrencies", null);
 			}
 		}
 		

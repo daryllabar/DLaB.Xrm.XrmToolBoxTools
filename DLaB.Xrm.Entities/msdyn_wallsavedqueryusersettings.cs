@@ -701,7 +701,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the Wall View User Setting
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.msdyn_wallsavedqueryusersettingsState> statecode
+		public System.Nullable<Entities.msdyn_wallsavedqueryusersettingsState> statecode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -709,7 +709,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.msdyn_wallsavedqueryusersettingsState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.msdyn_wallsavedqueryusersettingsState), optionSet.Value)));
+					return ((Entities.msdyn_wallsavedqueryusersettingsState)(System.Enum.ToObject(typeof(Entities.msdyn_wallsavedqueryusersettingsState), optionSet.Value)));
 				}
 				else
 				{
@@ -809,18 +809,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_wallsavedqueryusersettings_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_wallsavedqueryusersettings_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> msdyn_wallsavedqueryusersettings_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> msdyn_wallsavedqueryusersettings_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("msdyn_wallsavedqueryusersettings_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("msdyn_wallsavedqueryusersettings_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_wallsavedqueryusersettings_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("msdyn_wallsavedqueryusersettings_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("msdyn_wallsavedqueryusersettings_AsyncOperations", null, value);
 				this.OnPropertyChanged("msdyn_wallsavedqueryusersettings_AsyncOperations");
 			}
 		}
@@ -829,18 +829,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_wallsavedqueryusersettings_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_wallsavedqueryusersettings_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> msdyn_wallsavedqueryusersettings_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> msdyn_wallsavedqueryusersettings_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("msdyn_wallsavedqueryusersettings_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("msdyn_wallsavedqueryusersettings_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_wallsavedqueryusersettings_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("msdyn_wallsavedqueryusersettings_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("msdyn_wallsavedqueryusersettings_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("msdyn_wallsavedqueryusersettings_BulkDeleteFailures");
 			}
 		}
@@ -849,18 +849,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_wallsavedqueryusersettings_MailboxTrackingFolders
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_wallsavedqueryusersettings_MailboxTrackingFolders")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.MailboxTrackingFolder> msdyn_wallsavedqueryusersettings_MailboxTrackingFolders
+		public System.Collections.Generic.IEnumerable<Entities.MailboxTrackingFolder> msdyn_wallsavedqueryusersettings_MailboxTrackingFolders
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.MailboxTrackingFolder>("msdyn_wallsavedqueryusersettings_MailboxTrackingFolders", null);
+				return this.GetRelatedEntities<Entities.MailboxTrackingFolder>("msdyn_wallsavedqueryusersettings_MailboxTrackingFolders", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_wallsavedqueryusersettings_MailboxTrackingFolders");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.MailboxTrackingFolder>("msdyn_wallsavedqueryusersettings_MailboxTrackingFolders", null, value);
+				this.SetRelatedEntities<Entities.MailboxTrackingFolder>("msdyn_wallsavedqueryusersettings_MailboxTrackingFolders", null, value);
 				this.OnPropertyChanged("msdyn_wallsavedqueryusersettings_MailboxTrackingFolders");
 			}
 		}
@@ -869,18 +869,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_wallsavedqueryusersettings_PrincipalObjectAttributeAccesses
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_wallsavedqueryusersettings_PrincipalObjectAttributeAccesses")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> msdyn_wallsavedqueryusersettings_PrincipalObjectAttributeAccesses
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> msdyn_wallsavedqueryusersettings_PrincipalObjectAttributeAccesses
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("msdyn_wallsavedqueryusersettings_PrincipalObjectAttributeAccesses", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("msdyn_wallsavedqueryusersettings_PrincipalObjectAttributeAccesses", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_wallsavedqueryusersettings_PrincipalObjectAttributeAccesses");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("msdyn_wallsavedqueryusersettings_PrincipalObjectAttributeAccesses", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("msdyn_wallsavedqueryusersettings_PrincipalObjectAttributeAccesses", null, value);
 				this.OnPropertyChanged("msdyn_wallsavedqueryusersettings_PrincipalObjectAttributeAccesses");
 			}
 		}
@@ -889,18 +889,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_wallsavedqueryusersettings_ProcessSession
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_wallsavedqueryusersettings_ProcessSession")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> msdyn_wallsavedqueryusersettings_ProcessSession
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> msdyn_wallsavedqueryusersettings_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("msdyn_wallsavedqueryusersettings_ProcessSession", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("msdyn_wallsavedqueryusersettings_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_wallsavedqueryusersettings_ProcessSession");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("msdyn_wallsavedqueryusersettings_ProcessSession", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("msdyn_wallsavedqueryusersettings_ProcessSession", null, value);
 				this.OnPropertyChanged("msdyn_wallsavedqueryusersettings_ProcessSession");
 			}
 		}
@@ -909,18 +909,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_wallsavedqueryusersettings_UserEntityInstanceDatas
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_wallsavedqueryusersettings_UserEntityInstanceDatas")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> msdyn_wallsavedqueryusersettings_UserEntityInstanceDatas
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> msdyn_wallsavedqueryusersettings_UserEntityInstanceDatas
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("msdyn_wallsavedqueryusersettings_UserEntityInstanceDatas", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("msdyn_wallsavedqueryusersettings_UserEntityInstanceDatas", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_wallsavedqueryusersettings_UserEntityInstanceDatas");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("msdyn_wallsavedqueryusersettings_UserEntityInstanceDatas", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("msdyn_wallsavedqueryusersettings_UserEntityInstanceDatas", null, value);
 				this.OnPropertyChanged("msdyn_wallsavedqueryusersettings_UserEntityInstanceDatas");
 			}
 		}
@@ -930,18 +930,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_msdyn_wallsavedqueryusersettings")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_msdyn_wallsavedqueryusersettings
+		public Entities.BusinessUnit business_unit_msdyn_wallsavedqueryusersettings
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_msdyn_wallsavedqueryusersettings", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_msdyn_wallsavedqueryusersettings", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_msdyn_wallsavedqueryusersettings");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_msdyn_wallsavedqueryusersettings", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_msdyn_wallsavedqueryusersettings", null, value);
 				this.OnPropertyChanged("business_unit_msdyn_wallsavedqueryusersettings");
 			}
 		}
@@ -951,18 +951,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_wallsavedqueryusersettings_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_msdyn_wallsavedqueryusersettings_createdby
+		public Entities.SystemUser lk_msdyn_wallsavedqueryusersettings_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_wallsavedqueryusersettings_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_msdyn_wallsavedqueryusersettings_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_msdyn_wallsavedqueryusersettings_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_wallsavedqueryusersettings_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_msdyn_wallsavedqueryusersettings_createdby", null, value);
 				this.OnPropertyChanged("lk_msdyn_wallsavedqueryusersettings_createdby");
 			}
 		}
@@ -972,18 +972,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_wallsavedqueryusersettings_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_msdyn_wallsavedqueryusersettings_createdonbehalfby
+		public Entities.SystemUser lk_msdyn_wallsavedqueryusersettings_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_wallsavedqueryusersettings_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_msdyn_wallsavedqueryusersettings_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_msdyn_wallsavedqueryusersettings_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_wallsavedqueryusersettings_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_msdyn_wallsavedqueryusersettings_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_msdyn_wallsavedqueryusersettings_createdonbehalfby");
 			}
 		}
@@ -993,18 +993,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_wallsavedqueryusersettings_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_msdyn_wallsavedqueryusersettings_modifiedby
+		public Entities.SystemUser lk_msdyn_wallsavedqueryusersettings_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_wallsavedqueryusersettings_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_msdyn_wallsavedqueryusersettings_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_msdyn_wallsavedqueryusersettings_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_wallsavedqueryusersettings_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_msdyn_wallsavedqueryusersettings_modifiedby", null, value);
 				this.OnPropertyChanged("lk_msdyn_wallsavedqueryusersettings_modifiedby");
 			}
 		}
@@ -1014,18 +1014,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_wallsavedqueryusersettings_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_msdyn_wallsavedqueryusersettings_modifiedonbehalfby
+		public Entities.SystemUser lk_msdyn_wallsavedqueryusersettings_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_wallsavedqueryusersettings_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_msdyn_wallsavedqueryusersettings_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_msdyn_wallsavedqueryusersettings_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_wallsavedqueryusersettings_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_msdyn_wallsavedqueryusersettings_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_msdyn_wallsavedqueryusersettings_modifiedonbehalfby");
 			}
 		}
@@ -1035,18 +1035,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_userid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_systemuser_wallsavedqueryusersettings_userid")]
-		public DLaB.Xrm.Entities.SystemUser msdyn_systemuser_wallsavedqueryusersettings_userid
+		public Entities.SystemUser msdyn_systemuser_wallsavedqueryusersettings_userid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("msdyn_systemuser_wallsavedqueryusersettings_userid", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("msdyn_systemuser_wallsavedqueryusersettings_userid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_systemuser_wallsavedqueryusersettings_userid");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("msdyn_systemuser_wallsavedqueryusersettings_userid", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("msdyn_systemuser_wallsavedqueryusersettings_userid", null, value);
 				this.OnPropertyChanged("msdyn_systemuser_wallsavedqueryusersettings_userid");
 			}
 		}
@@ -1056,18 +1056,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_wallsavedqueryid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_wallsavedquery_wallsavedqueryusersettings")]
-		public DLaB.Xrm.Entities.msdyn_wallsavedquery msdyn_wallsavedquery_wallsavedqueryusersettings
+		public Entities.msdyn_wallsavedquery msdyn_wallsavedquery_wallsavedqueryusersettings
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_wallsavedquery>("msdyn_wallsavedquery_wallsavedqueryusersettings", null);
+				return this.GetRelatedEntity<Entities.msdyn_wallsavedquery>("msdyn_wallsavedquery_wallsavedqueryusersettings", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_wallsavedquery_wallsavedqueryusersettings");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_wallsavedquery>("msdyn_wallsavedquery_wallsavedqueryusersettings", null, value);
+				this.SetRelatedEntity<Entities.msdyn_wallsavedquery>("msdyn_wallsavedquery_wallsavedqueryusersettings", null, value);
 				this.OnPropertyChanged("msdyn_wallsavedquery_wallsavedqueryusersettings");
 			}
 		}
@@ -1077,18 +1077,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_msdyn_wallsavedqueryusersettings")]
-		public DLaB.Xrm.Entities.Team team_msdyn_wallsavedqueryusersettings
+		public Entities.Team team_msdyn_wallsavedqueryusersettings
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_msdyn_wallsavedqueryusersettings", null);
+				return this.GetRelatedEntity<Entities.Team>("team_msdyn_wallsavedqueryusersettings", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_msdyn_wallsavedqueryusersettings");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_msdyn_wallsavedqueryusersettings", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_msdyn_wallsavedqueryusersettings", null, value);
 				this.OnPropertyChanged("team_msdyn_wallsavedqueryusersettings");
 			}
 		}
@@ -1098,18 +1098,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_msdyn_wallsavedqueryusersettings")]
-		public DLaB.Xrm.Entities.SystemUser user_msdyn_wallsavedqueryusersettings
+		public Entities.SystemUser user_msdyn_wallsavedqueryusersettings
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_msdyn_wallsavedqueryusersettings", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_msdyn_wallsavedqueryusersettings", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_msdyn_wallsavedqueryusersettings");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_msdyn_wallsavedqueryusersettings", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_msdyn_wallsavedqueryusersettings", null, value);
 				this.OnPropertyChanged("user_msdyn_wallsavedqueryusersettings");
 			}
 		}

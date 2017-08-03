@@ -1774,18 +1774,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Competitor_Annotation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Competitor_Annotation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> Competitor_Annotation
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> Competitor_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("Competitor_Annotation", null);
+				return this.GetRelatedEntities<Entities.Annotation>("Competitor_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Competitor_Annotation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("Competitor_Annotation", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("Competitor_Annotation", null, value);
 				this.OnPropertyChanged("Competitor_Annotation");
 			}
 		}
@@ -1794,18 +1794,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Competitor_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Competitor_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> Competitor_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> Competitor_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Competitor_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("Competitor_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Competitor_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Competitor_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("Competitor_AsyncOperations", null, value);
 				this.OnPropertyChanged("Competitor_AsyncOperations");
 			}
 		}
@@ -1814,18 +1814,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Competitor_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Competitor_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> Competitor_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> Competitor_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Competitor_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("Competitor_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Competitor_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Competitor_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("Competitor_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("Competitor_BulkDeleteFailures");
 			}
 		}
@@ -1834,18 +1834,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N competitor_connections1
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("competitor_connections1")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> competitor_connections1
+		public System.Collections.Generic.IEnumerable<Entities.Connection> competitor_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("competitor_connections1", null);
+				return this.GetRelatedEntities<Entities.Connection>("competitor_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("competitor_connections1");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("competitor_connections1", null, value);
+				this.SetRelatedEntities<Entities.Connection>("competitor_connections1", null, value);
 				this.OnPropertyChanged("competitor_connections1");
 			}
 		}
@@ -1854,18 +1854,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N competitor_connections2
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("competitor_connections2")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> competitor_connections2
+		public System.Collections.Generic.IEnumerable<Entities.Connection> competitor_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("competitor_connections2", null);
+				return this.GetRelatedEntities<Entities.Connection>("competitor_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("competitor_connections2");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("competitor_connections2", null, value);
+				this.SetRelatedEntities<Entities.Connection>("competitor_connections2", null, value);
 				this.OnPropertyChanged("competitor_connections2");
 			}
 		}
@@ -1874,18 +1874,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Competitor_DuplicateBaseRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Competitor_DuplicateBaseRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> Competitor_DuplicateBaseRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> Competitor_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Competitor_DuplicateBaseRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("Competitor_DuplicateBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Competitor_DuplicateBaseRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Competitor_DuplicateBaseRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("Competitor_DuplicateBaseRecord", null, value);
 				this.OnPropertyChanged("Competitor_DuplicateBaseRecord");
 			}
 		}
@@ -1894,18 +1894,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Competitor_DuplicateMatchingRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Competitor_DuplicateMatchingRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> Competitor_DuplicateMatchingRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> Competitor_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Competitor_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("Competitor_DuplicateMatchingRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Competitor_DuplicateMatchingRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Competitor_DuplicateMatchingRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("Competitor_DuplicateMatchingRecord", null, value);
 				this.OnPropertyChanged("Competitor_DuplicateMatchingRecord");
 			}
 		}
@@ -1914,18 +1914,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N competitor_opportunity_activities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("competitor_opportunity_activities")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.OpportunityClose> competitor_opportunity_activities
+		public System.Collections.Generic.IEnumerable<Entities.OpportunityClose> competitor_opportunity_activities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.OpportunityClose>("competitor_opportunity_activities", null);
+				return this.GetRelatedEntities<Entities.OpportunityClose>("competitor_opportunity_activities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("competitor_opportunity_activities");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.OpportunityClose>("competitor_opportunity_activities", null, value);
+				this.SetRelatedEntities<Entities.OpportunityClose>("competitor_opportunity_activities", null, value);
 				this.OnPropertyChanged("competitor_opportunity_activities");
 			}
 		}
@@ -1934,18 +1934,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N competitor_PostFollows
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("competitor_PostFollows")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PostFollow> competitor_PostFollows
+		public System.Collections.Generic.IEnumerable<Entities.PostFollow> competitor_PostFollows
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PostFollow>("competitor_PostFollows", null);
+				return this.GetRelatedEntities<Entities.PostFollow>("competitor_PostFollows", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("competitor_PostFollows");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PostFollow>("competitor_PostFollows", null, value);
+				this.SetRelatedEntities<Entities.PostFollow>("competitor_PostFollows", null, value);
 				this.OnPropertyChanged("competitor_PostFollows");
 			}
 		}
@@ -1954,18 +1954,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N competitor_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("competitor_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> competitor_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> competitor_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("competitor_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("competitor_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("competitor_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("competitor_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("competitor_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("competitor_principalobjectattributeaccess");
 			}
 		}
@@ -1974,18 +1974,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Competitor_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Competitor_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> Competitor_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> Competitor_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Competitor_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("Competitor_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Competitor_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Competitor_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("Competitor_ProcessSessions", null, value);
 				this.OnPropertyChanged("Competitor_ProcessSessions");
 			}
 		}
@@ -1994,18 +1994,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_competitor
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_competitor")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_competitor
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_competitor
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_competitor", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_competitor", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_competitor");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_competitor", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_competitor", null, value);
 				this.OnPropertyChanged("userentityinstancedata_competitor");
 			}
 		}
@@ -2014,18 +2014,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N competitorproduct_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("competitorproduct_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Product> competitorproduct_association
+		public System.Collections.Generic.IEnumerable<Entities.Product> competitorproduct_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Product>("competitorproduct_association", null);
+				return this.GetRelatedEntities<Entities.Product>("competitorproduct_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("competitorproduct_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Product>("competitorproduct_association", null, value);
+				this.SetRelatedEntities<Entities.Product>("competitorproduct_association", null, value);
 				this.OnPropertyChanged("competitorproduct_association");
 			}
 		}
@@ -2034,18 +2034,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N competitorsalesliterature_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("competitorsalesliterature_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SalesLiterature> competitorsalesliterature_association
+		public System.Collections.Generic.IEnumerable<Entities.SalesLiterature> competitorsalesliterature_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SalesLiterature>("competitorsalesliterature_association", null);
+				return this.GetRelatedEntities<Entities.SalesLiterature>("competitorsalesliterature_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("competitorsalesliterature_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SalesLiterature>("competitorsalesliterature_association", null, value);
+				this.SetRelatedEntities<Entities.SalesLiterature>("competitorsalesliterature_association", null, value);
 				this.OnPropertyChanged("competitorsalesliterature_association");
 			}
 		}
@@ -2054,18 +2054,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N leadcompetitors_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("leadcompetitors_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Lead> leadcompetitors_association
+		public System.Collections.Generic.IEnumerable<Entities.Lead> leadcompetitors_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Lead>("leadcompetitors_association", null);
+				return this.GetRelatedEntities<Entities.Lead>("leadcompetitors_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("leadcompetitors_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Lead>("leadcompetitors_association", null, value);
+				this.SetRelatedEntities<Entities.Lead>("leadcompetitors_association", null, value);
 				this.OnPropertyChanged("leadcompetitors_association");
 			}
 		}
@@ -2074,18 +2074,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N opportunitycompetitors_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunitycompetitors_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Opportunity> opportunitycompetitors_association
+		public System.Collections.Generic.IEnumerable<Entities.Opportunity> opportunitycompetitors_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Opportunity>("opportunitycompetitors_association", null);
+				return this.GetRelatedEntities<Entities.Opportunity>("opportunitycompetitors_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunitycompetitors_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Opportunity>("opportunitycompetitors_association", null, value);
+				this.SetRelatedEntities<Entities.Opportunity>("opportunitycompetitors_association", null, value);
 				this.OnPropertyChanged("opportunitycompetitors_association");
 			}
 		}
@@ -2095,18 +2095,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_competitor_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_competitor_createdonbehalfby
+		public Entities.SystemUser lk_competitor_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_competitor_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_competitor_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_competitor_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_competitor_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_competitor_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_competitor_createdonbehalfby");
 			}
 		}
@@ -2116,18 +2116,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_competitor_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_competitor_modifiedonbehalfby
+		public Entities.SystemUser lk_competitor_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_competitor_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_competitor_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_competitor_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_competitor_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_competitor_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_competitor_modifiedonbehalfby");
 			}
 		}
@@ -2137,18 +2137,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_competitorbase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_competitorbase_createdby
+		public Entities.SystemUser lk_competitorbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_competitorbase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_competitorbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_competitorbase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_competitorbase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_competitorbase_createdby", null, value);
 				this.OnPropertyChanged("lk_competitorbase_createdby");
 			}
 		}
@@ -2158,18 +2158,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_competitorbase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_competitorbase_modifiedby
+		public Entities.SystemUser lk_competitorbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_competitorbase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_competitorbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_competitorbase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_competitorbase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_competitorbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_competitorbase_modifiedby");
 			}
 		}
@@ -2179,12 +2179,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_competitors")]
-		public DLaB.Xrm.Entities.Organization organization_competitors
+		public Entities.Organization organization_competitors
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_competitors", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_competitors", null);
 			}
 		}
 		
@@ -2193,18 +2193,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stageid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_competitors")]
-		public DLaB.Xrm.Entities.ProcessStage processstage_competitors
+		public Entities.ProcessStage processstage_competitors
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProcessStage>("processstage_competitors", null);
+				return this.GetRelatedEntity<Entities.ProcessStage>("processstage_competitors", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_competitors");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProcessStage>("processstage_competitors", null, value);
+				this.SetRelatedEntity<Entities.ProcessStage>("processstage_competitors", null, value);
 				this.OnPropertyChanged("processstage_competitors");
 			}
 		}
@@ -2214,18 +2214,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_competitor")]
-		public DLaB.Xrm.Entities.TransactionCurrency transactioncurrency_competitor
+		public Entities.TransactionCurrency transactioncurrency_competitor
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_competitor", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_competitor", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_competitor");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_competitor", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_competitor", null, value);
 				this.OnPropertyChanged("transactioncurrency_competitor");
 			}
 		}

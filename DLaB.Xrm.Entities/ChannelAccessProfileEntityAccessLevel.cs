@@ -241,18 +241,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N ChannelAccessProfile_Privilege
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ChannelAccessProfile_Privilege")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Privilege> ChannelAccessProfile_Privilege
+		public System.Collections.Generic.IEnumerable<Entities.Privilege> ChannelAccessProfile_Privilege
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Privilege>("ChannelAccessProfile_Privilege", null);
+				return this.GetRelatedEntities<Entities.Privilege>("ChannelAccessProfile_Privilege", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ChannelAccessProfile_Privilege");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Privilege>("ChannelAccessProfile_Privilege", null, value);
+				this.SetRelatedEntities<Entities.Privilege>("ChannelAccessProfile_Privilege", null, value);
 				this.OnPropertyChanged("ChannelAccessProfile_Privilege");
 			}
 		}

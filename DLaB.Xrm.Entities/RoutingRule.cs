@@ -487,7 +487,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the Routing Rule
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.RoutingRuleState> StateCode
+		public System.Nullable<Entities.RoutingRuleState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -495,7 +495,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.RoutingRuleState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.RoutingRuleState), optionSet.Value)));
+					return ((Entities.RoutingRuleState)(System.Enum.ToObject(typeof(Entities.RoutingRuleState), optionSet.Value)));
 				}
 				else
 				{
@@ -635,18 +635,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N routingrule_Annotation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("routingrule_Annotation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> routingrule_Annotation
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> routingrule_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("routingrule_Annotation", null);
+				return this.GetRelatedEntities<Entities.Annotation>("routingrule_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("routingrule_Annotation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("routingrule_Annotation", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("routingrule_Annotation", null, value);
 				this.OnPropertyChanged("routingrule_Annotation");
 			}
 		}
@@ -655,18 +655,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N routingrule_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("routingrule_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> routingrule_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> routingrule_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("routingrule_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("routingrule_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("routingrule_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("routingrule_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("routingrule_AsyncOperations", null, value);
 				this.OnPropertyChanged("routingrule_AsyncOperations");
 			}
 		}
@@ -675,18 +675,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N routingrule_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("routingrule_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> routingrule_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> routingrule_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("routingrule_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("routingrule_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("routingrule_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("routingrule_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("routingrule_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("routingrule_BulkDeleteFailures");
 			}
 		}
@@ -695,18 +695,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N routingrule_entries
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("routingrule_entries")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.RoutingRuleItem> routingrule_entries
+		public System.Collections.Generic.IEnumerable<Entities.RoutingRuleItem> routingrule_entries
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.RoutingRuleItem>("routingrule_entries", null);
+				return this.GetRelatedEntities<Entities.RoutingRuleItem>("routingrule_entries", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("routingrule_entries");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.RoutingRuleItem>("routingrule_entries", null, value);
+				this.SetRelatedEntities<Entities.RoutingRuleItem>("routingrule_entries", null, value);
 				this.OnPropertyChanged("routingrule_entries");
 			}
 		}
@@ -715,18 +715,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N routingrule_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("routingrule_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> routingrule_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> routingrule_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("routingrule_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("routingrule_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("routingrule_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("routingrule_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("routingrule_ProcessSessions", null, value);
 				this.OnPropertyChanged("routingrule_ProcessSessions");
 			}
 		}
@@ -735,18 +735,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N routingrule_userentityinstancedatas
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("routingrule_userentityinstancedatas")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> routingrule_userentityinstancedatas
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> routingrule_userentityinstancedatas
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("routingrule_userentityinstancedatas", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("routingrule_userentityinstancedatas", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("routingrule_userentityinstancedatas");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("routingrule_userentityinstancedatas", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("routingrule_userentityinstancedatas", null, value);
 				this.OnPropertyChanged("routingrule_userentityinstancedatas");
 			}
 		}
@@ -756,18 +756,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_routingrule")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_routingrule
+		public Entities.BusinessUnit business_unit_routingrule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_routingrule", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_routingrule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_routingrule");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_routingrule", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_routingrule", null, value);
 				this.OnPropertyChanged("business_unit_routingrule");
 			}
 		}
@@ -777,18 +777,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_routingrule_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_routingrule_createdby
+		public Entities.SystemUser lk_routingrule_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_routingrule_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_routingrule_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_routingrule_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_routingrule_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_routingrule_createdby", null, value);
 				this.OnPropertyChanged("lk_routingrule_createdby");
 			}
 		}
@@ -798,18 +798,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_routingrule_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_routingrule_createdonbehalfby
+		public Entities.SystemUser lk_routingrule_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_routingrule_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_routingrule_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_routingrule_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_routingrule_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_routingrule_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_routingrule_createdonbehalfby");
 			}
 		}
@@ -819,18 +819,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_routingrule_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_routingrule_modifiedby
+		public Entities.SystemUser lk_routingrule_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_routingrule_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_routingrule_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_routingrule_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_routingrule_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_routingrule_modifiedby", null, value);
 				this.OnPropertyChanged("lk_routingrule_modifiedby");
 			}
 		}
@@ -840,18 +840,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_routingrule_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_routingrule_modifiedonbehalfby
+		public Entities.SystemUser lk_routingrule_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_routingrule_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_routingrule_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_routingrule_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_routingrule_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_routingrule_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_routingrule_modifiedonbehalfby");
 			}
 		}
@@ -861,12 +861,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_RoutingRules")]
-		public DLaB.Xrm.Entities.Organization organization_RoutingRules
+		public Entities.Organization organization_RoutingRules
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_RoutingRules", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_RoutingRules", null);
 			}
 		}
 		
@@ -875,18 +875,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_routingrule")]
-		public DLaB.Xrm.Entities.Team team_routingrule
+		public Entities.Team team_routingrule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_routingrule", null);
+				return this.GetRelatedEntity<Entities.Team>("team_routingrule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_routingrule");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_routingrule", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_routingrule", null, value);
 				this.OnPropertyChanged("team_routingrule");
 			}
 		}
@@ -896,18 +896,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Routingrule")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_Routingrule
+		public Entities.TransactionCurrency TransactionCurrency_Routingrule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_Routingrule", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_Routingrule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Routingrule");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_Routingrule", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_Routingrule", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Routingrule");
 			}
 		}
@@ -917,18 +917,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_routingrule")]
-		public DLaB.Xrm.Entities.SystemUser user_routingrule
+		public Entities.SystemUser user_routingrule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_routingrule", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_routingrule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_routingrule");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_routingrule", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_routingrule", null, value);
 				this.OnPropertyChanged("user_routingrule");
 			}
 		}
@@ -938,18 +938,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("workflowid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Workflow_routingrule")]
-		public DLaB.Xrm.Entities.Workflow Workflow_routingrule
+		public Entities.Workflow Workflow_routingrule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Workflow>("Workflow_routingrule", null);
+				return this.GetRelatedEntity<Entities.Workflow>("Workflow_routingrule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Workflow_routingrule");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Workflow>("Workflow_routingrule", null, value);
+				this.SetRelatedEntity<Entities.Workflow>("Workflow_routingrule", null, value);
 				this.OnPropertyChanged("Workflow_routingrule");
 			}
 		}

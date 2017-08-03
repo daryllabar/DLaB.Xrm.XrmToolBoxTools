@@ -573,18 +573,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_workflowlog
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_workflowlog")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_workflowlog
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_workflowlog
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_workflowlog", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_workflowlog", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_workflowlog");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_workflowlog", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_workflowlog", null, value);
 				this.OnPropertyChanged("userentityinstancedata_workflowlog");
 			}
 		}
@@ -594,18 +594,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_workflowlogs")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_workflowlogs
+		public Entities.BusinessUnit business_unit_workflowlogs
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_workflowlogs", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_workflowlogs", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_workflowlogs");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_workflowlogs", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_workflowlogs", null, value);
 				this.OnPropertyChanged("business_unit_workflowlogs");
 			}
 		}
@@ -615,18 +615,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("childworkflowinstanceid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_workflowlog_asyncoperation_childworkflow")]
-		public DLaB.Xrm.Entities.AsyncOperation lk_workflowlog_asyncoperation_childworkflow
+		public Entities.AsyncOperation lk_workflowlog_asyncoperation_childworkflow
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.AsyncOperation>("lk_workflowlog_asyncoperation_childworkflow", null);
+				return this.GetRelatedEntity<Entities.AsyncOperation>("lk_workflowlog_asyncoperation_childworkflow", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_workflowlog_asyncoperation_childworkflow");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.AsyncOperation>("lk_workflowlog_asyncoperation_childworkflow", null, value);
+				this.SetRelatedEntity<Entities.AsyncOperation>("lk_workflowlog_asyncoperation_childworkflow", null, value);
 				this.OnPropertyChanged("lk_workflowlog_asyncoperation_childworkflow");
 			}
 		}
@@ -636,18 +636,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("asyncoperationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_workflowlog_asyncoperations")]
-		public DLaB.Xrm.Entities.AsyncOperation lk_workflowlog_asyncoperations
+		public Entities.AsyncOperation lk_workflowlog_asyncoperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.AsyncOperation>("lk_workflowlog_asyncoperations", null);
+				return this.GetRelatedEntity<Entities.AsyncOperation>("lk_workflowlog_asyncoperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_workflowlog_asyncoperations");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.AsyncOperation>("lk_workflowlog_asyncoperations", null, value);
+				this.SetRelatedEntity<Entities.AsyncOperation>("lk_workflowlog_asyncoperations", null, value);
 				this.OnPropertyChanged("lk_workflowlog_asyncoperations");
 			}
 		}
@@ -657,18 +657,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_workflowlog_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_workflowlog_createdby
+		public Entities.SystemUser lk_workflowlog_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_workflowlog_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_workflowlog_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_workflowlog_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_workflowlog_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_workflowlog_createdby", null, value);
 				this.OnPropertyChanged("lk_workflowlog_createdby");
 			}
 		}
@@ -678,18 +678,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_workflowlog_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_workflowlog_createdonbehalfby
+		public Entities.SystemUser lk_workflowlog_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_workflowlog_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_workflowlog_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_workflowlog_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_workflowlog_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_workflowlog_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_workflowlog_createdonbehalfby");
 			}
 		}
@@ -699,18 +699,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_workflowlog_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_workflowlog_modifiedby
+		public Entities.SystemUser lk_workflowlog_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_workflowlog_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_workflowlog_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_workflowlog_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_workflowlog_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_workflowlog_modifiedby", null, value);
 				this.OnPropertyChanged("lk_workflowlog_modifiedby");
 			}
 		}
@@ -720,18 +720,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_workflowlog_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_workflowlog_modifiedonbehalfby
+		public Entities.SystemUser lk_workflowlog_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_workflowlog_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_workflowlog_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_workflowlog_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_workflowlog_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_workflowlog_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_workflowlog_modifiedonbehalfby");
 			}
 		}
@@ -741,18 +741,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("asyncoperationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_workflowlog_processsession")]
-		public DLaB.Xrm.Entities.ProcessSession lk_workflowlog_processsession
+		public Entities.ProcessSession lk_workflowlog_processsession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProcessSession>("lk_workflowlog_processsession", null);
+				return this.GetRelatedEntity<Entities.ProcessSession>("lk_workflowlog_processsession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_workflowlog_processsession");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProcessSession>("lk_workflowlog_processsession", null, value);
+				this.SetRelatedEntity<Entities.ProcessSession>("lk_workflowlog_processsession", null, value);
 				this.OnPropertyChanged("lk_workflowlog_processsession");
 			}
 		}
@@ -762,18 +762,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("childworkflowinstanceid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_workflowlog_processsession_childworkflow")]
-		public DLaB.Xrm.Entities.ProcessSession lk_workflowlog_processsession_childworkflow
+		public Entities.ProcessSession lk_workflowlog_processsession_childworkflow
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProcessSession>("lk_workflowlog_processsession_childworkflow", null);
+				return this.GetRelatedEntity<Entities.ProcessSession>("lk_workflowlog_processsession_childworkflow", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_workflowlog_processsession_childworkflow");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProcessSession>("lk_workflowlog_processsession_childworkflow", null, value);
+				this.SetRelatedEntity<Entities.ProcessSession>("lk_workflowlog_processsession_childworkflow", null, value);
 				this.OnPropertyChanged("lk_workflowlog_processsession_childworkflow");
 			}
 		}
@@ -783,18 +783,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_workflowlog")]
-		public DLaB.Xrm.Entities.Team team_workflowlog
+		public Entities.Team team_workflowlog
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_workflowlog", null);
+				return this.GetRelatedEntity<Entities.Team>("team_workflowlog", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_workflowlog");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_workflowlog", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_workflowlog", null, value);
 				this.OnPropertyChanged("team_workflowlog");
 			}
 		}

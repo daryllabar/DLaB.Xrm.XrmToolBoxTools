@@ -150,18 +150,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_productsalesliterature
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_productsalesliterature")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_productsalesliterature
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_productsalesliterature
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_productsalesliterature", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_productsalesliterature", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_productsalesliterature");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_productsalesliterature", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_productsalesliterature", null, value);
 				this.OnPropertyChanged("userentityinstancedata_productsalesliterature");
 			}
 		}
@@ -170,18 +170,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N productsalesliterature_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("productsalesliterature_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Product> productsalesliterature_association
+		public System.Collections.Generic.IEnumerable<Entities.Product> productsalesliterature_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Product>("productsalesliterature_association", null);
+				return this.GetRelatedEntities<Entities.Product>("productsalesliterature_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("productsalesliterature_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Product>("productsalesliterature_association", null, value);
+				this.SetRelatedEntities<Entities.Product>("productsalesliterature_association", null, value);
 				this.OnPropertyChanged("productsalesliterature_association");
 			}
 		}

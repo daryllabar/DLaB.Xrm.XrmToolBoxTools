@@ -612,18 +612,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N profileruleitem_Annotations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("profileruleitem_Annotations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> profileruleitem_Annotations
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> profileruleitem_Annotations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("profileruleitem_Annotations", null);
+				return this.GetRelatedEntities<Entities.Annotation>("profileruleitem_Annotations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("profileruleitem_Annotations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("profileruleitem_Annotations", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("profileruleitem_Annotations", null, value);
 				this.OnPropertyChanged("profileruleitem_Annotations");
 			}
 		}
@@ -633,18 +633,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_profileruleitem_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_profileruleitem_createdby
+		public Entities.SystemUser lk_profileruleitem_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_profileruleitem_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_profileruleitem_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_profileruleitem_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_profileruleitem_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_profileruleitem_createdby", null, value);
 				this.OnPropertyChanged("lk_profileruleitem_createdby");
 			}
 		}
@@ -654,18 +654,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_profileruleitem_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_profileruleitem_createdonbehalfby
+		public Entities.SystemUser lk_profileruleitem_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_profileruleitem_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_profileruleitem_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_profileruleitem_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_profileruleitem_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_profileruleitem_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_profileruleitem_createdonbehalfby");
 			}
 		}
@@ -675,18 +675,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_profileruleitem_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_profileruleitem_modifiedby
+		public Entities.SystemUser lk_profileruleitem_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_profileruleitem_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_profileruleitem_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_profileruleitem_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_profileruleitem_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_profileruleitem_modifiedby", null, value);
 				this.OnPropertyChanged("lk_profileruleitem_modifiedby");
 			}
 		}
@@ -696,18 +696,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_profileruleitem_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_profileruleitem_modifiedonbehalfby
+		public Entities.SystemUser lk_profileruleitem_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_profileruleitem_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_profileruleitem_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_profileruleitem_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_profileruleitem_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_profileruleitem_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_profileruleitem_modifiedonbehalfby");
 			}
 		}
@@ -717,18 +717,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("channelaccessprofileruleid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("profilerule_entries")]
-		public DLaB.Xrm.Entities.ChannelAccessProfileRule profilerule_entries
+		public Entities.ChannelAccessProfileRule profilerule_entries
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfileRule>("profilerule_entries", null);
+				return this.GetRelatedEntity<Entities.ChannelAccessProfileRule>("profilerule_entries", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("profilerule_entries");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfileRule>("profilerule_entries", null, value);
+				this.SetRelatedEntity<Entities.ChannelAccessProfileRule>("profilerule_entries", null, value);
 				this.OnPropertyChanged("profilerule_entries");
 			}
 		}
@@ -738,18 +738,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("associatedchannelaccessprofile")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("profileruleitem_associated_channelaccessprofile")]
-		public DLaB.Xrm.Entities.ChannelAccessProfile profileruleitem_associated_channelaccessprofile
+		public Entities.ChannelAccessProfile profileruleitem_associated_channelaccessprofile
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfile>("profileruleitem_associated_channelaccessprofile", null);
+				return this.GetRelatedEntity<Entities.ChannelAccessProfile>("profileruleitem_associated_channelaccessprofile", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("profileruleitem_associated_channelaccessprofile");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfile>("profileruleitem_associated_channelaccessprofile", null, value);
+				this.SetRelatedEntity<Entities.ChannelAccessProfile>("profileruleitem_associated_channelaccessprofile", null, value);
 				this.OnPropertyChanged("profileruleitem_associated_channelaccessprofile");
 			}
 		}
@@ -759,18 +759,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_profileruleitem")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_profileruleitem
+		public Entities.TransactionCurrency TransactionCurrency_profileruleitem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_profileruleitem", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_profileruleitem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_profileruleitem");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_profileruleitem", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_profileruleitem", null, value);
 				this.OnPropertyChanged("TransactionCurrency_profileruleitem");
 			}
 		}

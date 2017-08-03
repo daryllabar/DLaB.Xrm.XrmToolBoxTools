@@ -540,7 +540,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the import log.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.ImportLogState> StateCode
+		public System.Nullable<Entities.ImportLogState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -548,7 +548,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.ImportLogState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.ImportLogState), optionSet.Value)));
+					return ((Entities.ImportLogState)(System.Enum.ToObject(typeof(Entities.ImportLogState), optionSet.Value)));
 				}
 				else
 				{
@@ -581,18 +581,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ImportLog_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ImportLog_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> ImportLog_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> ImportLog_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("ImportLog_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("ImportLog_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ImportLog_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("ImportLog_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("ImportLog_AsyncOperations", null, value);
 				this.OnPropertyChanged("ImportLog_AsyncOperations");
 			}
 		}
@@ -601,18 +601,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ImportLog_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ImportLog_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> ImportLog_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> ImportLog_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("ImportLog_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("ImportLog_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ImportLog_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("ImportLog_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("ImportLog_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("ImportLog_BulkDeleteFailures");
 			}
 		}
@@ -621,18 +621,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_importlog
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_importlog")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_importlog
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_importlog
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_importlog", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_importlog", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_importlog");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_importlog", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_importlog", null, value);
 				this.OnPropertyChanged("userentityinstancedata_importlog");
 			}
 		}
@@ -642,18 +642,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BusinessUnit_ImportLogs")]
-		public DLaB.Xrm.Entities.BusinessUnit BusinessUnit_ImportLogs
+		public Entities.BusinessUnit BusinessUnit_ImportLogs
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("BusinessUnit_ImportLogs", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("BusinessUnit_ImportLogs", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BusinessUnit_ImportLogs");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("BusinessUnit_ImportLogs", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("BusinessUnit_ImportLogs", null, value);
 				this.OnPropertyChanged("BusinessUnit_ImportLogs");
 			}
 		}
@@ -663,18 +663,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importfileid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ImportLog_ImportFile")]
-		public DLaB.Xrm.Entities.ImportFile ImportLog_ImportFile
+		public Entities.ImportFile ImportLog_ImportFile
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ImportFile>("ImportLog_ImportFile", null);
+				return this.GetRelatedEntity<Entities.ImportFile>("ImportLog_ImportFile", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ImportLog_ImportFile");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ImportFile>("ImportLog_ImportFile", null, value);
+				this.SetRelatedEntity<Entities.ImportFile>("ImportLog_ImportFile", null, value);
 				this.OnPropertyChanged("ImportLog_ImportFile");
 			}
 		}
@@ -684,18 +684,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importlog_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_importlog_createdonbehalfby
+		public Entities.SystemUser lk_importlog_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importlog_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_importlog_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importlog_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importlog_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_importlog_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_importlog_createdonbehalfby");
 			}
 		}
@@ -705,18 +705,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importlog_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_importlog_modifiedonbehalfby
+		public Entities.SystemUser lk_importlog_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importlog_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_importlog_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importlog_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importlog_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_importlog_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_importlog_modifiedonbehalfby");
 			}
 		}
@@ -726,18 +726,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importlogbase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_importlogbase_createdby
+		public Entities.SystemUser lk_importlogbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importlogbase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_importlogbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importlogbase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importlogbase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_importlogbase_createdby", null, value);
 				this.OnPropertyChanged("lk_importlogbase_createdby");
 			}
 		}
@@ -747,18 +747,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importlogbase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_importlogbase_modifiedby
+		public Entities.SystemUser lk_importlogbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importlogbase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_importlogbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importlogbase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importlogbase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_importlogbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_importlogbase_modifiedby");
 			}
 		}
@@ -768,18 +768,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SystemUser_ImportLogs")]
-		public DLaB.Xrm.Entities.SystemUser SystemUser_ImportLogs
+		public Entities.SystemUser SystemUser_ImportLogs
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("SystemUser_ImportLogs", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("SystemUser_ImportLogs", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SystemUser_ImportLogs");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("SystemUser_ImportLogs", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("SystemUser_ImportLogs", null, value);
 				this.OnPropertyChanged("SystemUser_ImportLogs");
 			}
 		}
@@ -789,18 +789,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_ImportLogs")]
-		public DLaB.Xrm.Entities.Team team_ImportLogs
+		public Entities.Team team_ImportLogs
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_ImportLogs", null);
+				return this.GetRelatedEntity<Entities.Team>("team_ImportLogs", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_ImportLogs");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_ImportLogs", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_ImportLogs", null, value);
 				this.OnPropertyChanged("team_ImportLogs");
 			}
 		}

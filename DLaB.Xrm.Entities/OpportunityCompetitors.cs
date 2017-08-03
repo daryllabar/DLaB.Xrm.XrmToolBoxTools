@@ -150,18 +150,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N opportunitycompetitors_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunitycompetitors_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Opportunity> opportunitycompetitors_association
+		public System.Collections.Generic.IEnumerable<Entities.Opportunity> opportunitycompetitors_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Opportunity>("opportunitycompetitors_association", null);
+				return this.GetRelatedEntities<Entities.Opportunity>("opportunitycompetitors_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunitycompetitors_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Opportunity>("opportunitycompetitors_association", null, value);
+				this.SetRelatedEntities<Entities.Opportunity>("opportunitycompetitors_association", null, value);
 				this.OnPropertyChanged("opportunitycompetitors_association");
 			}
 		}

@@ -584,18 +584,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N slakpiinstance_incident_firstresponsebykpi
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("slakpiinstance_incident_firstresponsebykpi")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Incident> slakpiinstance_incident_firstresponsebykpi
+		public System.Collections.Generic.IEnumerable<Entities.Incident> slakpiinstance_incident_firstresponsebykpi
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Incident>("slakpiinstance_incident_firstresponsebykpi", null);
+				return this.GetRelatedEntities<Entities.Incident>("slakpiinstance_incident_firstresponsebykpi", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("slakpiinstance_incident_firstresponsebykpi");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Incident>("slakpiinstance_incident_firstresponsebykpi", null, value);
+				this.SetRelatedEntities<Entities.Incident>("slakpiinstance_incident_firstresponsebykpi", null, value);
 				this.OnPropertyChanged("slakpiinstance_incident_firstresponsebykpi");
 			}
 		}
@@ -604,18 +604,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N slakpiinstance_incident_resolvebykpi
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("slakpiinstance_incident_resolvebykpi")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Incident> slakpiinstance_incident_resolvebykpi
+		public System.Collections.Generic.IEnumerable<Entities.Incident> slakpiinstance_incident_resolvebykpi
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Incident>("slakpiinstance_incident_resolvebykpi", null);
+				return this.GetRelatedEntities<Entities.Incident>("slakpiinstance_incident_resolvebykpi", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("slakpiinstance_incident_resolvebykpi");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Incident>("slakpiinstance_incident_resolvebykpi", null, value);
+				this.SetRelatedEntities<Entities.Incident>("slakpiinstance_incident_resolvebykpi", null, value);
 				this.OnPropertyChanged("slakpiinstance_incident_resolvebykpi");
 			}
 		}
@@ -625,18 +625,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_slakpiinstance")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_slakpiinstance
+		public Entities.BusinessUnit business_unit_slakpiinstance
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_slakpiinstance", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_slakpiinstance", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_slakpiinstance");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_slakpiinstance", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_slakpiinstance", null, value);
 				this.OnPropertyChanged("business_unit_slakpiinstance");
 			}
 		}
@@ -646,18 +646,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_slakpiinstancebase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_slakpiinstancebase_createdby
+		public Entities.SystemUser lk_slakpiinstancebase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_slakpiinstancebase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_slakpiinstancebase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_slakpiinstancebase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_slakpiinstancebase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_slakpiinstancebase_createdby", null, value);
 				this.OnPropertyChanged("lk_slakpiinstancebase_createdby");
 			}
 		}
@@ -667,18 +667,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_slakpiinstancebase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_slakpiinstancebase_createdonbehalfby
+		public Entities.SystemUser lk_slakpiinstancebase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_slakpiinstancebase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_slakpiinstancebase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_slakpiinstancebase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_slakpiinstancebase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_slakpiinstancebase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_slakpiinstancebase_createdonbehalfby");
 			}
 		}
@@ -688,18 +688,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_slakpiinstancebase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_slakpiinstancebase_modifiedby
+		public Entities.SystemUser lk_slakpiinstancebase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_slakpiinstancebase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_slakpiinstancebase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_slakpiinstancebase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_slakpiinstancebase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_slakpiinstancebase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_slakpiinstancebase_modifiedby");
 			}
 		}
@@ -709,18 +709,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_slakpiinstancebase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_slakpiinstancebase_modifiedonbehalfby
+		public Entities.SystemUser lk_slakpiinstancebase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_slakpiinstancebase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_slakpiinstancebase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_slakpiinstancebase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_slakpiinstancebase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_slakpiinstancebase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_slakpiinstancebase_modifiedonbehalfby");
 			}
 		}
@@ -730,18 +730,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regarding")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("slakpiinstance_incident")]
-		public DLaB.Xrm.Entities.Incident slakpiinstance_incident
+		public Entities.Incident slakpiinstance_incident
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Incident>("slakpiinstance_incident", null);
+				return this.GetRelatedEntity<Entities.Incident>("slakpiinstance_incident", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("slakpiinstance_incident");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Incident>("slakpiinstance_incident", null, value);
+				this.SetRelatedEntity<Entities.Incident>("slakpiinstance_incident", null, value);
 				this.OnPropertyChanged("slakpiinstance_incident");
 			}
 		}
@@ -751,18 +751,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_slakpiinstance")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_slakpiinstance
+		public Entities.TransactionCurrency TransactionCurrency_slakpiinstance
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_slakpiinstance", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_slakpiinstance", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_slakpiinstance");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_slakpiinstance", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_slakpiinstance", null, value);
 				this.OnPropertyChanged("TransactionCurrency_slakpiinstance");
 			}
 		}

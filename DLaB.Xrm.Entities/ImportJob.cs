@@ -407,18 +407,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_importjob
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_importjob")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_importjob
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_importjob
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_importjob", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_importjob", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_importjob");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_importjob", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_importjob", null, value);
 				this.OnPropertyChanged("userentityinstancedata_importjob");
 			}
 		}
@@ -428,18 +428,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importjobbase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_importjobbase_createdby
+		public Entities.SystemUser lk_importjobbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importjobbase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_importjobbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importjobbase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importjobbase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_importjobbase_createdby", null, value);
 				this.OnPropertyChanged("lk_importjobbase_createdby");
 			}
 		}
@@ -449,18 +449,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importjobbase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_importjobbase_createdonbehalfby
+		public Entities.SystemUser lk_importjobbase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importjobbase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_importjobbase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importjobbase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importjobbase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_importjobbase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_importjobbase_createdonbehalfby");
 			}
 		}
@@ -470,18 +470,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importjobbase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_importjobbase_modifiedby
+		public Entities.SystemUser lk_importjobbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importjobbase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_importjobbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importjobbase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importjobbase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_importjobbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_importjobbase_modifiedby");
 			}
 		}
@@ -491,18 +491,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importjobbase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_importjobbase_modifiedonbehalfby
+		public Entities.SystemUser lk_importjobbase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importjobbase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_importjobbase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importjobbase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importjobbase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_importjobbase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_importjobbase_modifiedonbehalfby");
 			}
 		}
@@ -512,12 +512,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_importjob")]
-		public DLaB.Xrm.Entities.Organization organization_importjob
+		public Entities.Organization organization_importjob
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_importjob", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_importjob", null);
 			}
 		}
 		

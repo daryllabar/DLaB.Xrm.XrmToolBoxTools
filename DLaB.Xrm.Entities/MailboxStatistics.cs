@@ -306,12 +306,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mailboxid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("mailbox_mailboxstatistics")]
-		public DLaB.Xrm.Entities.Mailbox mailbox_mailboxstatistics
+		public Entities.Mailbox mailbox_mailboxstatistics
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Mailbox>("mailbox_mailboxstatistics", null);
+				return this.GetRelatedEntity<Entities.Mailbox>("mailbox_mailboxstatistics", null);
 			}
 		}
 		
@@ -320,12 +320,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_mailboxstatistics")]
-		public DLaB.Xrm.Entities.Organization organization_mailboxstatistics
+		public Entities.Organization organization_mailboxstatistics
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_mailboxstatistics", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_mailboxstatistics", null);
 			}
 		}
 		

@@ -1452,7 +1452,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the mailbox is active or inactive.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.MailboxState> StateCode
+		public System.Nullable<Entities.MailboxState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -1460,7 +1460,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.MailboxState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.MailboxState), optionSet.Value)));
+					return ((Entities.MailboxState)(System.Enum.ToObject(typeof(Entities.MailboxState), optionSet.Value)));
 				}
 				else
 				{
@@ -1686,18 +1686,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N activitypointer_sendermailboxid_mailbox
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("activitypointer_sendermailboxid_mailbox")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityPointer> activitypointer_sendermailboxid_mailbox
+		public System.Collections.Generic.IEnumerable<Entities.ActivityPointer> activitypointer_sendermailboxid_mailbox
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityPointer>("activitypointer_sendermailboxid_mailbox", null);
+				return this.GetRelatedEntities<Entities.ActivityPointer>("activitypointer_sendermailboxid_mailbox", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("activitypointer_sendermailboxid_mailbox");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityPointer>("activitypointer_sendermailboxid_mailbox", null, value);
+				this.SetRelatedEntities<Entities.ActivityPointer>("activitypointer_sendermailboxid_mailbox", null, value);
 				this.OnPropertyChanged("activitypointer_sendermailboxid_mailbox");
 			}
 		}
@@ -1706,18 +1706,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N email_sendermailboxid_mailbox
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("email_sendermailboxid_mailbox")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Email> email_sendermailboxid_mailbox
+		public System.Collections.Generic.IEnumerable<Entities.Email> email_sendermailboxid_mailbox
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Email>("email_sendermailboxid_mailbox", null);
+				return this.GetRelatedEntities<Entities.Email>("email_sendermailboxid_mailbox", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("email_sendermailboxid_mailbox");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Email>("email_sendermailboxid_mailbox", null, value);
+				this.SetRelatedEntities<Entities.Email>("email_sendermailboxid_mailbox", null, value);
 				this.OnPropertyChanged("email_sendermailboxid_mailbox");
 			}
 		}
@@ -1726,18 +1726,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Mailbox_Annotation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Mailbox_Annotation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> Mailbox_Annotation
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> Mailbox_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("Mailbox_Annotation", null);
+				return this.GetRelatedEntities<Entities.Annotation>("Mailbox_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Mailbox_Annotation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("Mailbox_Annotation", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("Mailbox_Annotation", null, value);
 				this.OnPropertyChanged("Mailbox_Annotation");
 			}
 		}
@@ -1746,18 +1746,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N mailbox_asyncoperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("mailbox_asyncoperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> mailbox_asyncoperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> mailbox_asyncoperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("mailbox_asyncoperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("mailbox_asyncoperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("mailbox_asyncoperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("mailbox_asyncoperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("mailbox_asyncoperations", null, value);
 				this.OnPropertyChanged("mailbox_asyncoperations");
 			}
 		}
@@ -1766,18 +1766,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N mailbox_mailboxstatistics
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("mailbox_mailboxstatistics")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.MailboxStatistics> mailbox_mailboxstatistics
+		public System.Collections.Generic.IEnumerable<Entities.MailboxStatistics> mailbox_mailboxstatistics
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.MailboxStatistics>("mailbox_mailboxstatistics", null);
+				return this.GetRelatedEntities<Entities.MailboxStatistics>("mailbox_mailboxstatistics", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("mailbox_mailboxstatistics");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.MailboxStatistics>("mailbox_mailboxstatistics", null, value);
+				this.SetRelatedEntities<Entities.MailboxStatistics>("mailbox_mailboxstatistics", null, value);
 				this.OnPropertyChanged("mailbox_mailboxstatistics");
 			}
 		}
@@ -1786,18 +1786,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Mailbox_MailboxTrackingFolder
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Mailbox_MailboxTrackingFolder")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.MailboxTrackingFolder> Mailbox_MailboxTrackingFolder
+		public System.Collections.Generic.IEnumerable<Entities.MailboxTrackingFolder> Mailbox_MailboxTrackingFolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.MailboxTrackingFolder>("Mailbox_MailboxTrackingFolder", null);
+				return this.GetRelatedEntities<Entities.MailboxTrackingFolder>("Mailbox_MailboxTrackingFolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Mailbox_MailboxTrackingFolder");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.MailboxTrackingFolder>("Mailbox_MailboxTrackingFolder", null, value);
+				this.SetRelatedEntities<Entities.MailboxTrackingFolder>("Mailbox_MailboxTrackingFolder", null, value);
 				this.OnPropertyChanged("Mailbox_MailboxTrackingFolder");
 			}
 		}
@@ -1806,18 +1806,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N mailbox_processsessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("mailbox_processsessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> mailbox_processsessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> mailbox_processsessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("mailbox_processsessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("mailbox_processsessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("mailbox_processsessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("mailbox_processsessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("mailbox_processsessions", null, value);
 				this.OnPropertyChanged("mailbox_processsessions");
 			}
 		}
@@ -1826,18 +1826,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N mailbox_userentityinstancedatas
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("mailbox_userentityinstancedatas")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> mailbox_userentityinstancedatas
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> mailbox_userentityinstancedatas
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("mailbox_userentityinstancedatas", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("mailbox_userentityinstancedatas", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("mailbox_userentityinstancedatas");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("mailbox_userentityinstancedatas", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("mailbox_userentityinstancedatas", null, value);
 				this.OnPropertyChanged("mailbox_userentityinstancedatas");
 			}
 		}
@@ -1846,18 +1846,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N queue_defaultmailbox_mailbox
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("queue_defaultmailbox_mailbox")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Queue> queue_defaultmailbox_mailbox
+		public System.Collections.Generic.IEnumerable<Entities.Queue> queue_defaultmailbox_mailbox
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Queue>("queue_defaultmailbox_mailbox", null);
+				return this.GetRelatedEntities<Entities.Queue>("queue_defaultmailbox_mailbox", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("queue_defaultmailbox_mailbox");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Queue>("queue_defaultmailbox_mailbox", null, value);
+				this.SetRelatedEntities<Entities.Queue>("queue_defaultmailbox_mailbox", null, value);
 				this.OnPropertyChanged("queue_defaultmailbox_mailbox");
 			}
 		}
@@ -1866,18 +1866,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N systemuser_defaultmailbox_mailbox
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("systemuser_defaultmailbox_mailbox")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SystemUser> systemuser_defaultmailbox_mailbox
+		public System.Collections.Generic.IEnumerable<Entities.SystemUser> systemuser_defaultmailbox_mailbox
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SystemUser>("systemuser_defaultmailbox_mailbox", null);
+				return this.GetRelatedEntities<Entities.SystemUser>("systemuser_defaultmailbox_mailbox", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("systemuser_defaultmailbox_mailbox");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SystemUser>("systemuser_defaultmailbox_mailbox", null, value);
+				this.SetRelatedEntities<Entities.SystemUser>("systemuser_defaultmailbox_mailbox", null, value);
 				this.OnPropertyChanged("systemuser_defaultmailbox_mailbox");
 			}
 		}
@@ -1886,18 +1886,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N tracelog_Mailbox
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("tracelog_Mailbox")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.TraceLog> tracelog_Mailbox
+		public System.Collections.Generic.IEnumerable<Entities.TraceLog> tracelog_Mailbox
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.TraceLog>("tracelog_Mailbox", null);
+				return this.GetRelatedEntities<Entities.TraceLog>("tracelog_Mailbox", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("tracelog_Mailbox");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.TraceLog>("tracelog_Mailbox", null, value);
+				this.SetRelatedEntities<Entities.TraceLog>("tracelog_Mailbox", null, value);
 				this.OnPropertyChanged("tracelog_Mailbox");
 			}
 		}
@@ -1907,18 +1907,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_mailbox")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_mailbox
+		public Entities.BusinessUnit business_unit_mailbox
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_mailbox", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_mailbox", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_mailbox");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_mailbox", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_mailbox", null, value);
 				this.OnPropertyChanged("business_unit_mailbox");
 			}
 		}
@@ -1928,18 +1928,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailserverprofile")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("emailserverprofile_mailbox")]
-		public DLaB.Xrm.Entities.EmailServerProfile emailserverprofile_mailbox
+		public Entities.EmailServerProfile emailserverprofile_mailbox
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EmailServerProfile>("emailserverprofile_mailbox", null);
+				return this.GetRelatedEntity<Entities.EmailServerProfile>("emailserverprofile_mailbox", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("emailserverprofile_mailbox");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.EmailServerProfile>("emailserverprofile_mailbox", null, value);
+				this.SetRelatedEntity<Entities.EmailServerProfile>("emailserverprofile_mailbox", null, value);
 				this.OnPropertyChanged("emailserverprofile_mailbox");
 			}
 		}
@@ -1949,18 +1949,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_mailbox_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_mailbox_createdby
+		public Entities.SystemUser lk_mailbox_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_mailbox_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_mailbox_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_mailbox_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_mailbox_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_mailbox_createdby", null, value);
 				this.OnPropertyChanged("lk_mailbox_createdby");
 			}
 		}
@@ -1970,18 +1970,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_mailbox_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_mailbox_createdonbehalfby
+		public Entities.SystemUser lk_mailbox_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_mailbox_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_mailbox_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_mailbox_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_mailbox_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_mailbox_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_mailbox_createdonbehalfby");
 			}
 		}
@@ -1991,18 +1991,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_mailbox_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_mailbox_modifiedby
+		public Entities.SystemUser lk_mailbox_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_mailbox_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_mailbox_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_mailbox_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_mailbox_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_mailbox_modifiedby", null, value);
 				this.OnPropertyChanged("lk_mailbox_modifiedby");
 			}
 		}
@@ -2012,18 +2012,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_mailbox_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_mailbox_modifiedonbehalfby
+		public Entities.SystemUser lk_mailbox_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_mailbox_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_mailbox_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_mailbox_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_mailbox_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_mailbox_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_mailbox_modifiedonbehalfby");
 			}
 		}
@@ -2033,12 +2033,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("mailbox_regarding_queue")]
-		public DLaB.Xrm.Entities.Queue mailbox_regarding_queue
+		public Entities.Queue mailbox_regarding_queue
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Queue>("mailbox_regarding_queue", null);
+				return this.GetRelatedEntity<Entities.Queue>("mailbox_regarding_queue", null);
 			}
 		}
 		
@@ -2047,12 +2047,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("mailbox_regarding_systemuser")]
-		public DLaB.Xrm.Entities.SystemUser mailbox_regarding_systemuser
+		public Entities.SystemUser mailbox_regarding_systemuser
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("mailbox_regarding_systemuser", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("mailbox_regarding_systemuser", null);
 			}
 		}
 		
@@ -2061,12 +2061,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_mailbox")]
-		public DLaB.Xrm.Entities.Organization organization_mailbox
+		public Entities.Organization organization_mailbox
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_mailbox", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_mailbox", null);
 			}
 		}
 		
@@ -2075,18 +2075,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_mailbox")]
-		public DLaB.Xrm.Entities.Team team_mailbox
+		public Entities.Team team_mailbox
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_mailbox", null);
+				return this.GetRelatedEntity<Entities.Team>("team_mailbox", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_mailbox");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_mailbox", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_mailbox", null, value);
 				this.OnPropertyChanged("team_mailbox");
 			}
 		}
@@ -2096,18 +2096,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_mailbox")]
-		public DLaB.Xrm.Entities.SystemUser user_mailbox
+		public Entities.SystemUser user_mailbox
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_mailbox", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_mailbox", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_mailbox");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_mailbox", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_mailbox", null, value);
 				this.OnPropertyChanged("user_mailbox");
 			}
 		}

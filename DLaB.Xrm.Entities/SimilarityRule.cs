@@ -613,7 +613,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the Similarity Rule
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.SimilarityRuleState> statecode
+		public System.Nullable<Entities.SimilarityRuleState> statecode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -621,7 +621,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.SimilarityRuleState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.SimilarityRuleState), optionSet.Value)));
+					return ((Entities.SimilarityRuleState)(System.Enum.ToObject(typeof(Entities.SimilarityRuleState), optionSet.Value)));
 				}
 				else
 				{
@@ -741,18 +741,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N similarityrule_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("similarityrule_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> similarityrule_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> similarityrule_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("similarityrule_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("similarityrule_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("similarityrule_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("similarityrule_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("similarityrule_AsyncOperations", null, value);
 				this.OnPropertyChanged("similarityrule_AsyncOperations");
 			}
 		}
@@ -761,18 +761,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N similarityrule_textanalyticsentitymapping
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("similarityrule_textanalyticsentitymapping")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.TextAnalyticsEntityMapping> similarityrule_textanalyticsentitymapping
+		public System.Collections.Generic.IEnumerable<Entities.TextAnalyticsEntityMapping> similarityrule_textanalyticsentitymapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.TextAnalyticsEntityMapping>("similarityrule_textanalyticsentitymapping", null);
+				return this.GetRelatedEntities<Entities.TextAnalyticsEntityMapping>("similarityrule_textanalyticsentitymapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("similarityrule_textanalyticsentitymapping");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.TextAnalyticsEntityMapping>("similarityrule_textanalyticsentitymapping", null, value);
+				this.SetRelatedEntities<Entities.TextAnalyticsEntityMapping>("similarityrule_textanalyticsentitymapping", null, value);
 				this.OnPropertyChanged("similarityrule_textanalyticsentitymapping");
 			}
 		}
@@ -782,18 +782,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_similarityrule_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_similarityrule_createdonbehalfby
+		public Entities.SystemUser lk_similarityrule_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_similarityrule_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_similarityrule_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_similarityrule_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_similarityrule_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_similarityrule_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_similarityrule_createdonbehalfby");
 			}
 		}
@@ -803,18 +803,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_similarityrule_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_similarityrule_modifiedonbehalfby
+		public Entities.SystemUser lk_similarityrule_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_similarityrule_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_similarityrule_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_similarityrule_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_similarityrule_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_similarityrule_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_similarityrule_modifiedonbehalfby");
 			}
 		}
@@ -824,12 +824,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_similarityrule")]
-		public DLaB.Xrm.Entities.Organization organization_similarityrule
+		public Entities.Organization organization_similarityrule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_similarityrule", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_similarityrule", null);
 			}
 		}
 		
@@ -838,18 +838,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_SimilarityRule")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_SimilarityRule
+		public Entities.TransactionCurrency TransactionCurrency_SimilarityRule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_SimilarityRule", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_SimilarityRule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_SimilarityRule");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_SimilarityRule", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_SimilarityRule", null, value);
 				this.OnPropertyChanged("TransactionCurrency_SimilarityRule");
 			}
 		}

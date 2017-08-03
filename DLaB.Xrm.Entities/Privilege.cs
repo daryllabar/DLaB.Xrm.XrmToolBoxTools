@@ -290,18 +290,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Privilege_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Privilege_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> Privilege_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> Privilege_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Privilege_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("Privilege_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Privilege_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Privilege_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("Privilege_AsyncOperations", null, value);
 				this.OnPropertyChanged("Privilege_AsyncOperations");
 			}
 		}
@@ -310,18 +310,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Privilege_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Privilege_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> Privilege_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> Privilege_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Privilege_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("Privilege_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Privilege_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Privilege_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("Privilege_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("Privilege_BulkDeleteFailures");
 			}
 		}
@@ -330,18 +330,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_privilege
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_privilege")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_privilege
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_privilege
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_privilege", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_privilege", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_privilege");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_privilege", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_privilege", null, value);
 				this.OnPropertyChanged("userentityinstancedata_privilege");
 			}
 		}
@@ -350,18 +350,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N ChannelAccessProfile_Privilege
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ChannelAccessProfile_Privilege")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ChannelAccessProfile> ChannelAccessProfile_Privilege
+		public System.Collections.Generic.IEnumerable<Entities.ChannelAccessProfile> ChannelAccessProfile_Privilege
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ChannelAccessProfile>("ChannelAccessProfile_Privilege", null);
+				return this.GetRelatedEntities<Entities.ChannelAccessProfile>("ChannelAccessProfile_Privilege", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ChannelAccessProfile_Privilege");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ChannelAccessProfile>("ChannelAccessProfile_Privilege", null, value);
+				this.SetRelatedEntities<Entities.ChannelAccessProfile>("ChannelAccessProfile_Privilege", null, value);
 				this.OnPropertyChanged("ChannelAccessProfile_Privilege");
 			}
 		}
@@ -370,18 +370,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N roleprivileges_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("roleprivileges_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Role> roleprivileges_association
+		public System.Collections.Generic.IEnumerable<Entities.Role> roleprivileges_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Role>("roleprivileges_association", null);
+				return this.GetRelatedEntities<Entities.Role>("roleprivileges_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("roleprivileges_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Role>("roleprivileges_association", null, value);
+				this.SetRelatedEntities<Entities.Role>("roleprivileges_association", null, value);
 				this.OnPropertyChanged("roleprivileges_association");
 			}
 		}

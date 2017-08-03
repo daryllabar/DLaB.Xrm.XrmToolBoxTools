@@ -150,18 +150,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_principalentitymap
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_principalentitymap")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_principalentitymap
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_principalentitymap
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_principalentitymap", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_principalentitymap", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_principalentitymap");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_principalentitymap", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_principalentitymap", null, value);
 				this.OnPropertyChanged("userentityinstancedata_principalentitymap");
 			}
 		}

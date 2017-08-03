@@ -472,18 +472,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N territory_accounts
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("territory_accounts")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Account> territory_accounts
+		public System.Collections.Generic.IEnumerable<Entities.Account> territory_accounts
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Account>("territory_accounts", null);
+				return this.GetRelatedEntities<Entities.Account>("territory_accounts", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("territory_accounts");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Account>("territory_accounts", null, value);
+				this.SetRelatedEntities<Entities.Account>("territory_accounts", null, value);
 				this.OnPropertyChanged("territory_accounts");
 			}
 		}
@@ -492,18 +492,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Territory_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Territory_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> Territory_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> Territory_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Territory_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("Territory_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Territory_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Territory_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("Territory_AsyncOperations", null, value);
 				this.OnPropertyChanged("Territory_AsyncOperations");
 			}
 		}
@@ -512,18 +512,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Territory_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Territory_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> Territory_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> Territory_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Territory_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("Territory_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Territory_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Territory_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("Territory_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("Territory_BulkDeleteFailures");
 			}
 		}
@@ -532,18 +532,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N territory_connections1
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("territory_connections1")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> territory_connections1
+		public System.Collections.Generic.IEnumerable<Entities.Connection> territory_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("territory_connections1", null);
+				return this.GetRelatedEntities<Entities.Connection>("territory_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("territory_connections1");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("territory_connections1", null, value);
+				this.SetRelatedEntities<Entities.Connection>("territory_connections1", null, value);
 				this.OnPropertyChanged("territory_connections1");
 			}
 		}
@@ -552,18 +552,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N territory_connections2
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("territory_connections2")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> territory_connections2
+		public System.Collections.Generic.IEnumerable<Entities.Connection> territory_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("territory_connections2", null);
+				return this.GetRelatedEntities<Entities.Connection>("territory_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("territory_connections2");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("territory_connections2", null, value);
+				this.SetRelatedEntities<Entities.Connection>("territory_connections2", null, value);
 				this.OnPropertyChanged("territory_connections2");
 			}
 		}
@@ -572,18 +572,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Territory_DuplicateBaseRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Territory_DuplicateBaseRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> Territory_DuplicateBaseRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> Territory_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Territory_DuplicateBaseRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("Territory_DuplicateBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Territory_DuplicateBaseRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Territory_DuplicateBaseRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("Territory_DuplicateBaseRecord", null, value);
 				this.OnPropertyChanged("Territory_DuplicateBaseRecord");
 			}
 		}
@@ -592,18 +592,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Territory_DuplicateMatchingRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Territory_DuplicateMatchingRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> Territory_DuplicateMatchingRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> Territory_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Territory_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("Territory_DuplicateMatchingRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Territory_DuplicateMatchingRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Territory_DuplicateMatchingRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("Territory_DuplicateMatchingRecord", null, value);
 				this.OnPropertyChanged("Territory_DuplicateMatchingRecord");
 			}
 		}
@@ -612,18 +612,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N territory_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("territory_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> territory_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> territory_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("territory_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("territory_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("territory_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("territory_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("territory_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("territory_principalobjectattributeaccess");
 			}
 		}
@@ -632,18 +632,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Territory_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Territory_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> Territory_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> Territory_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Territory_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("Territory_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Territory_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Territory_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("Territory_ProcessSessions", null, value);
 				this.OnPropertyChanged("Territory_ProcessSessions");
 			}
 		}
@@ -652,18 +652,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N territory_system_users
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("territory_system_users")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SystemUser> territory_system_users
+		public System.Collections.Generic.IEnumerable<Entities.SystemUser> territory_system_users
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SystemUser>("territory_system_users", null);
+				return this.GetRelatedEntities<Entities.SystemUser>("territory_system_users", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("territory_system_users");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SystemUser>("territory_system_users", null, value);
+				this.SetRelatedEntities<Entities.SystemUser>("territory_system_users", null, value);
 				this.OnPropertyChanged("territory_system_users");
 			}
 		}
@@ -672,18 +672,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_territory
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_territory")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_territory
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_territory
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_territory", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_territory", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_territory");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_territory", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_territory", null, value);
 				this.OnPropertyChanged("userentityinstancedata_territory");
 			}
 		}
@@ -693,18 +693,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_territory_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_territory_createdonbehalfby
+		public Entities.SystemUser lk_territory_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_territory_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_territory_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_territory_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_territory_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_territory_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_territory_createdonbehalfby");
 			}
 		}
@@ -714,18 +714,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_territory_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_territory_modifiedonbehalfby
+		public Entities.SystemUser lk_territory_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_territory_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_territory_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_territory_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_territory_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_territory_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_territory_modifiedonbehalfby");
 			}
 		}
@@ -735,18 +735,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_territorybase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_territorybase_createdby
+		public Entities.SystemUser lk_territorybase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_territorybase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_territorybase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_territorybase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_territorybase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_territorybase_createdby", null, value);
 				this.OnPropertyChanged("lk_territorybase_createdby");
 			}
 		}
@@ -756,18 +756,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_territorybase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_territorybase_modifiedby
+		public Entities.SystemUser lk_territorybase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_territorybase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_territorybase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_territorybase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_territorybase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_territorybase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_territorybase_modifiedby");
 			}
 		}
@@ -777,12 +777,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_territories")]
-		public DLaB.Xrm.Entities.Organization organization_territories
+		public Entities.Organization organization_territories
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_territories", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_territories", null);
 			}
 		}
 		
@@ -791,18 +791,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("managerid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("system_user_territories")]
-		public DLaB.Xrm.Entities.SystemUser system_user_territories
+		public Entities.SystemUser system_user_territories
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("system_user_territories", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("system_user_territories", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("system_user_territories");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("system_user_territories", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("system_user_territories", null, value);
 				this.OnPropertyChanged("system_user_territories");
 			}
 		}
@@ -812,18 +812,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Territory")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_Territory
+		public Entities.TransactionCurrency TransactionCurrency_Territory
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_Territory", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_Territory", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Territory");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_Territory", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_Territory", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Territory");
 			}
 		}

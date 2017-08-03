@@ -969,18 +969,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N customer_address_contract_line_items
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("customer_address_contract_line_items")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ContractDetail> customer_address_contract_line_items
+		public System.Collections.Generic.IEnumerable<Entities.ContractDetail> customer_address_contract_line_items
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ContractDetail>("customer_address_contract_line_items", null);
+				return this.GetRelatedEntities<Entities.ContractDetail>("customer_address_contract_line_items", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("customer_address_contract_line_items");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ContractDetail>("customer_address_contract_line_items", null, value);
+				this.SetRelatedEntities<Entities.ContractDetail>("customer_address_contract_line_items", null, value);
 				this.OnPropertyChanged("customer_address_contract_line_items");
 			}
 		}
@@ -989,18 +989,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N customer_address_contracts_as_billing_address
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("customer_address_contracts_as_billing_address")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Contract> customer_address_contracts_as_billing_address
+		public System.Collections.Generic.IEnumerable<Entities.Contract> customer_address_contracts_as_billing_address
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Contract>("customer_address_contracts_as_billing_address", null);
+				return this.GetRelatedEntities<Entities.Contract>("customer_address_contracts_as_billing_address", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("customer_address_contracts_as_billing_address");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Contract>("customer_address_contracts_as_billing_address", null, value);
+				this.SetRelatedEntities<Entities.Contract>("customer_address_contracts_as_billing_address", null, value);
 				this.OnPropertyChanged("customer_address_contracts_as_billing_address");
 			}
 		}
@@ -1009,18 +1009,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N customer_address_contracts_as_service_address
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("customer_address_contracts_as_service_address")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Contract> customer_address_contracts_as_service_address
+		public System.Collections.Generic.IEnumerable<Entities.Contract> customer_address_contracts_as_service_address
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Contract>("customer_address_contracts_as_service_address", null);
+				return this.GetRelatedEntities<Entities.Contract>("customer_address_contracts_as_service_address", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("customer_address_contracts_as_service_address");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Contract>("customer_address_contracts_as_service_address", null, value);
+				this.SetRelatedEntities<Entities.Contract>("customer_address_contracts_as_service_address", null, value);
 				this.OnPropertyChanged("customer_address_contracts_as_service_address");
 			}
 		}
@@ -1029,18 +1029,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N CustomerAddress_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CustomerAddress_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> CustomerAddress_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> CustomerAddress_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("CustomerAddress_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("CustomerAddress_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CustomerAddress_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("CustomerAddress_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("CustomerAddress_AsyncOperations", null, value);
 				this.OnPropertyChanged("CustomerAddress_AsyncOperations");
 			}
 		}
@@ -1049,18 +1049,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N CustomerAddress_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CustomerAddress_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> CustomerAddress_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> CustomerAddress_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("CustomerAddress_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("CustomerAddress_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CustomerAddress_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("CustomerAddress_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("CustomerAddress_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("CustomerAddress_BulkDeleteFailures");
 			}
 		}
@@ -1069,18 +1069,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N customeraddress_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("customeraddress_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> customeraddress_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> customeraddress_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("customeraddress_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("customeraddress_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("customeraddress_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("customeraddress_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("customeraddress_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("customeraddress_principalobjectattributeaccess");
 			}
 		}
@@ -1089,18 +1089,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N CustomerAddress_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CustomerAddress_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> CustomerAddress_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> CustomerAddress_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("CustomerAddress_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("CustomerAddress_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CustomerAddress_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("CustomerAddress_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("CustomerAddress_ProcessSessions", null, value);
 				this.OnPropertyChanged("CustomerAddress_ProcessSessions");
 			}
 		}
@@ -1109,18 +1109,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_customeraddress
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_customeraddress")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_customeraddress
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_customeraddress
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_customeraddress", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_customeraddress", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_customeraddress");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_customeraddress", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_customeraddress", null, value);
 				this.OnPropertyChanged("userentityinstancedata_customeraddress");
 			}
 		}
@@ -1130,18 +1130,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Account_CustomerAddress")]
-		public DLaB.Xrm.Entities.Account Account_CustomerAddress
+		public Entities.Account Account_CustomerAddress
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_CustomerAddress", null);
+				return this.GetRelatedEntity<Entities.Account>("Account_CustomerAddress", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Account_CustomerAddress");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_CustomerAddress", null, value);
+				this.SetRelatedEntity<Entities.Account>("Account_CustomerAddress", null, value);
 				this.OnPropertyChanged("Account_CustomerAddress");
 			}
 		}
@@ -1151,18 +1151,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contact_CustomerAddress")]
-		public DLaB.Xrm.Entities.Contact Contact_CustomerAddress
+		public Entities.Contact Contact_CustomerAddress
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_CustomerAddress", null);
+				return this.GetRelatedEntity<Entities.Contact>("Contact_CustomerAddress", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Contact_CustomerAddress");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_CustomerAddress", null, value);
+				this.SetRelatedEntity<Entities.Contact>("Contact_CustomerAddress", null, value);
 				this.OnPropertyChanged("Contact_CustomerAddress");
 			}
 		}
@@ -1172,18 +1172,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_customeraddress_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_customeraddress_createdonbehalfby
+		public Entities.SystemUser lk_customeraddress_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customeraddress_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_customeraddress_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_customeraddress_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customeraddress_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_customeraddress_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_customeraddress_createdonbehalfby");
 			}
 		}
@@ -1193,18 +1193,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_customeraddress_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_customeraddress_modifiedonbehalfby
+		public Entities.SystemUser lk_customeraddress_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customeraddress_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_customeraddress_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_customeraddress_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customeraddress_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_customeraddress_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_customeraddress_modifiedonbehalfby");
 			}
 		}
@@ -1214,18 +1214,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_customeraddressbase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_customeraddressbase_createdby
+		public Entities.SystemUser lk_customeraddressbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customeraddressbase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_customeraddressbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_customeraddressbase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customeraddressbase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_customeraddressbase_createdby", null, value);
 				this.OnPropertyChanged("lk_customeraddressbase_createdby");
 			}
 		}
@@ -1235,18 +1235,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_customeraddressbase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_customeraddressbase_modifiedby
+		public Entities.SystemUser lk_customeraddressbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customeraddressbase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_customeraddressbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_customeraddressbase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customeraddressbase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_customeraddressbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_customeraddressbase_modifiedby");
 			}
 		}
@@ -1256,18 +1256,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_CustomerAddress")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_CustomerAddress
+		public Entities.TransactionCurrency TransactionCurrency_CustomerAddress
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_CustomerAddress", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_CustomerAddress", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_CustomerAddress");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_CustomerAddress", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_CustomerAddress", null, value);
 				this.OnPropertyChanged("TransactionCurrency_CustomerAddress");
 			}
 		}

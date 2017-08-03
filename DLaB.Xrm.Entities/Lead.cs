@@ -2664,7 +2664,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the lead is open, qualified, or disqualified. Qualified and disqualified leads are read-only and can't be edited unless they are reactivated.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.LeadState> StateCode
+		public System.Nullable<Entities.LeadState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -2672,7 +2672,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.LeadState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.LeadState), optionSet.Value)));
+					return ((Entities.LeadState)(System.Enum.ToObject(typeof(Entities.LeadState), optionSet.Value)));
 				}
 				else
 				{
@@ -3005,18 +3005,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N account_originating_lead
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("account_originating_lead")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Account> account_originating_lead
+		public System.Collections.Generic.IEnumerable<Entities.Account> account_originating_lead
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Account>("account_originating_lead", null);
+				return this.GetRelatedEntities<Entities.Account>("account_originating_lead", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("account_originating_lead");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Account>("account_originating_lead", null, value);
+				this.SetRelatedEntities<Entities.Account>("account_originating_lead", null, value);
 				this.OnPropertyChanged("account_originating_lead");
 			}
 		}
@@ -3025,18 +3025,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N contact_originating_lead
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contact_originating_lead")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Contact> contact_originating_lead
+		public System.Collections.Generic.IEnumerable<Entities.Contact> contact_originating_lead
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Contact>("contact_originating_lead", null);
+				return this.GetRelatedEntities<Entities.Contact>("contact_originating_lead", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contact_originating_lead");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Contact>("contact_originating_lead", null, value);
+				this.SetRelatedEntities<Entities.Contact>("contact_originating_lead", null, value);
 				this.OnPropertyChanged("contact_originating_lead");
 			}
 		}
@@ -3045,18 +3045,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N CreatedLead_BulkOperationLogs
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CreatedLead_BulkOperationLogs")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkOperationLog> CreatedLead_BulkOperationLogs
+		public System.Collections.Generic.IEnumerable<Entities.BulkOperationLog> CreatedLead_BulkOperationLogs
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkOperationLog>("CreatedLead_BulkOperationLogs", null);
+				return this.GetRelatedEntities<Entities.BulkOperationLog>("CreatedLead_BulkOperationLogs", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CreatedLead_BulkOperationLogs");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkOperationLog>("CreatedLead_BulkOperationLogs", null, value);
+				this.SetRelatedEntities<Entities.BulkOperationLog>("CreatedLead_BulkOperationLogs", null, value);
 				this.OnPropertyChanged("CreatedLead_BulkOperationLogs");
 			}
 		}
@@ -3065,18 +3065,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N lead_activity_parties
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_activity_parties")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> lead_activity_parties
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> lead_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("lead_activity_parties", null);
+				return this.GetRelatedEntities<Entities.ActivityParty>("lead_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lead_activity_parties");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("lead_activity_parties", null, value);
+				this.SetRelatedEntities<Entities.ActivityParty>("lead_activity_parties", null, value);
 				this.OnPropertyChanged("lead_activity_parties");
 			}
 		}
@@ -3085,18 +3085,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Lead_ActivityPointers
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_ActivityPointers")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityPointer> Lead_ActivityPointers
+		public System.Collections.Generic.IEnumerable<Entities.ActivityPointer> Lead_ActivityPointers
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityPointer>("Lead_ActivityPointers", null);
+				return this.GetRelatedEntities<Entities.ActivityPointer>("Lead_ActivityPointers", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_ActivityPointers");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityPointer>("Lead_ActivityPointers", null, value);
+				this.SetRelatedEntities<Entities.ActivityPointer>("Lead_ActivityPointers", null, value);
 				this.OnPropertyChanged("Lead_ActivityPointers");
 			}
 		}
@@ -3105,18 +3105,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N lead_addresses
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_addresses")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.LeadAddress> lead_addresses
+		public System.Collections.Generic.IEnumerable<Entities.LeadAddress> lead_addresses
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.LeadAddress>("lead_addresses", null);
+				return this.GetRelatedEntities<Entities.LeadAddress>("lead_addresses", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lead_addresses");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.LeadAddress>("lead_addresses", null, value);
+				this.SetRelatedEntities<Entities.LeadAddress>("lead_addresses", null, value);
 				this.OnPropertyChanged("lead_addresses");
 			}
 		}
@@ -3125,18 +3125,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Lead_Annotation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_Annotation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> Lead_Annotation
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> Lead_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("Lead_Annotation", null);
+				return this.GetRelatedEntities<Entities.Annotation>("Lead_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_Annotation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("Lead_Annotation", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("Lead_Annotation", null, value);
 				this.OnPropertyChanged("Lead_Annotation");
 			}
 		}
@@ -3145,18 +3145,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Lead_Appointments
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_Appointments")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Appointment> Lead_Appointments
+		public System.Collections.Generic.IEnumerable<Entities.Appointment> Lead_Appointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Appointment>("Lead_Appointments", null);
+				return this.GetRelatedEntities<Entities.Appointment>("Lead_Appointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_Appointments");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Appointment>("Lead_Appointments", null, value);
+				this.SetRelatedEntities<Entities.Appointment>("Lead_Appointments", null, value);
 				this.OnPropertyChanged("Lead_Appointments");
 			}
 		}
@@ -3165,18 +3165,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Lead_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> Lead_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> Lead_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Lead_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("Lead_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Lead_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("Lead_AsyncOperations", null, value);
 				this.OnPropertyChanged("Lead_AsyncOperations");
 			}
 		}
@@ -3185,18 +3185,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Lead_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> Lead_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> Lead_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Lead_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("Lead_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Lead_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("Lead_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("Lead_BulkDeleteFailures");
 			}
 		}
@@ -3205,18 +3205,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N lead_connections1
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_connections1")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> lead_connections1
+		public System.Collections.Generic.IEnumerable<Entities.Connection> lead_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("lead_connections1", null);
+				return this.GetRelatedEntities<Entities.Connection>("lead_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lead_connections1");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("lead_connections1", null, value);
+				this.SetRelatedEntities<Entities.Connection>("lead_connections1", null, value);
 				this.OnPropertyChanged("lead_connections1");
 			}
 		}
@@ -3225,18 +3225,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N lead_connections2
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_connections2")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> lead_connections2
+		public System.Collections.Generic.IEnumerable<Entities.Connection> lead_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("lead_connections2", null);
+				return this.GetRelatedEntities<Entities.Connection>("lead_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lead_connections2");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("lead_connections2", null, value);
+				this.SetRelatedEntities<Entities.Connection>("lead_connections2", null, value);
 				this.OnPropertyChanged("lead_connections2");
 			}
 		}
@@ -3245,18 +3245,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Lead_DuplicateBaseRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_DuplicateBaseRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> Lead_DuplicateBaseRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> Lead_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Lead_DuplicateBaseRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("Lead_DuplicateBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_DuplicateBaseRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Lead_DuplicateBaseRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("Lead_DuplicateBaseRecord", null, value);
 				this.OnPropertyChanged("Lead_DuplicateBaseRecord");
 			}
 		}
@@ -3265,18 +3265,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Lead_DuplicateMatchingRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_DuplicateMatchingRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> Lead_DuplicateMatchingRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> Lead_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Lead_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("Lead_DuplicateMatchingRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_DuplicateMatchingRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Lead_DuplicateMatchingRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("Lead_DuplicateMatchingRecord", null, value);
 				this.OnPropertyChanged("Lead_DuplicateMatchingRecord");
 			}
 		}
@@ -3285,18 +3285,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Lead_Email_EmailSender
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_Email_EmailSender")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Email> Lead_Email_EmailSender
+		public System.Collections.Generic.IEnumerable<Entities.Email> Lead_Email_EmailSender
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Email>("Lead_Email_EmailSender", null);
+				return this.GetRelatedEntities<Entities.Email>("Lead_Email_EmailSender", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_Email_EmailSender");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Email>("Lead_Email_EmailSender", null, value);
+				this.SetRelatedEntities<Entities.Email>("Lead_Email_EmailSender", null, value);
 				this.OnPropertyChanged("Lead_Email_EmailSender");
 			}
 		}
@@ -3305,18 +3305,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Lead_Emails
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_Emails")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Email> Lead_Emails
+		public System.Collections.Generic.IEnumerable<Entities.Email> Lead_Emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Email>("Lead_Emails", null);
+				return this.GetRelatedEntities<Entities.Email>("Lead_Emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_Emails");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Email>("Lead_Emails", null, value);
+				this.SetRelatedEntities<Entities.Email>("Lead_Emails", null, value);
 				this.OnPropertyChanged("Lead_Emails");
 			}
 		}
@@ -3325,18 +3325,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Lead_Faxes
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_Faxes")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Fax> Lead_Faxes
+		public System.Collections.Generic.IEnumerable<Entities.Fax> Lead_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Fax>("Lead_Faxes", null);
+				return this.GetRelatedEntities<Entities.Fax>("Lead_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_Faxes");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Fax>("Lead_Faxes", null, value);
+				this.SetRelatedEntities<Entities.Fax>("Lead_Faxes", null, value);
 				this.OnPropertyChanged("Lead_Faxes");
 			}
 		}
@@ -3345,18 +3345,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Lead_Letters
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_Letters")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Letter> Lead_Letters
+		public System.Collections.Generic.IEnumerable<Entities.Letter> Lead_Letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Letter>("Lead_Letters", null);
+				return this.GetRelatedEntities<Entities.Letter>("Lead_Letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_Letters");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Letter>("Lead_Letters", null, value);
+				this.SetRelatedEntities<Entities.Letter>("Lead_Letters", null, value);
 				this.OnPropertyChanged("Lead_Letters");
 			}
 		}
@@ -3365,18 +3365,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Lead_MailboxTrackingFolder
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_MailboxTrackingFolder")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.MailboxTrackingFolder> Lead_MailboxTrackingFolder
+		public System.Collections.Generic.IEnumerable<Entities.MailboxTrackingFolder> Lead_MailboxTrackingFolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.MailboxTrackingFolder>("Lead_MailboxTrackingFolder", null);
+				return this.GetRelatedEntities<Entities.MailboxTrackingFolder>("Lead_MailboxTrackingFolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_MailboxTrackingFolder");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.MailboxTrackingFolder>("Lead_MailboxTrackingFolder", null, value);
+				this.SetRelatedEntities<Entities.MailboxTrackingFolder>("Lead_MailboxTrackingFolder", null, value);
 				this.OnPropertyChanged("Lead_MailboxTrackingFolder");
 			}
 		}
@@ -3385,18 +3385,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N lead_master_lead
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_master_lead", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Lead> Referencedlead_master_lead
+		public System.Collections.Generic.IEnumerable<Entities.Lead> Referencedlead_master_lead
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Lead>("lead_master_lead", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.Lead>("lead_master_lead", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedlead_master_lead");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Lead>("lead_master_lead", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.Lead>("lead_master_lead", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedlead_master_lead");
 			}
 		}
@@ -3405,18 +3405,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Lead_Phonecalls
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_Phonecalls")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PhoneCall> Lead_Phonecalls
+		public System.Collections.Generic.IEnumerable<Entities.PhoneCall> Lead_Phonecalls
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PhoneCall>("Lead_Phonecalls", null);
+				return this.GetRelatedEntities<Entities.PhoneCall>("Lead_Phonecalls", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_Phonecalls");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PhoneCall>("Lead_Phonecalls", null, value);
+				this.SetRelatedEntities<Entities.PhoneCall>("Lead_Phonecalls", null, value);
 				this.OnPropertyChanged("Lead_Phonecalls");
 			}
 		}
@@ -3425,18 +3425,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N lead_PostFollows
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_PostFollows")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PostFollow> lead_PostFollows
+		public System.Collections.Generic.IEnumerable<Entities.PostFollow> lead_PostFollows
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PostFollow>("lead_PostFollows", null);
+				return this.GetRelatedEntities<Entities.PostFollow>("lead_PostFollows", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lead_PostFollows");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PostFollow>("lead_PostFollows", null, value);
+				this.SetRelatedEntities<Entities.PostFollow>("lead_PostFollows", null, value);
 				this.OnPropertyChanged("lead_PostFollows");
 			}
 		}
@@ -3445,18 +3445,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N lead_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> lead_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> lead_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("lead_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("lead_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lead_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("lead_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("lead_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("lead_principalobjectattributeaccess");
 			}
 		}
@@ -3465,18 +3465,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Lead_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> Lead_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> Lead_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Lead_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("Lead_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Lead_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("Lead_ProcessSessions", null, value);
 				this.OnPropertyChanged("Lead_ProcessSessions");
 			}
 		}
@@ -3485,18 +3485,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Lead_RecurringAppointmentMasters
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_RecurringAppointmentMasters")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.RecurringAppointmentMaster> Lead_RecurringAppointmentMasters
+		public System.Collections.Generic.IEnumerable<Entities.RecurringAppointmentMaster> Lead_RecurringAppointmentMasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.RecurringAppointmentMaster>("Lead_RecurringAppointmentMasters", null);
+				return this.GetRelatedEntities<Entities.RecurringAppointmentMaster>("Lead_RecurringAppointmentMasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_RecurringAppointmentMasters");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.RecurringAppointmentMaster>("Lead_RecurringAppointmentMasters", null, value);
+				this.SetRelatedEntities<Entities.RecurringAppointmentMaster>("Lead_RecurringAppointmentMasters", null, value);
 				this.OnPropertyChanged("Lead_RecurringAppointmentMasters");
 			}
 		}
@@ -3505,18 +3505,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Lead_ServiceAppointments
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_ServiceAppointments")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ServiceAppointment> Lead_ServiceAppointments
+		public System.Collections.Generic.IEnumerable<Entities.ServiceAppointment> Lead_ServiceAppointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ServiceAppointment>("Lead_ServiceAppointments", null);
+				return this.GetRelatedEntities<Entities.ServiceAppointment>("Lead_ServiceAppointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_ServiceAppointments");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ServiceAppointment>("Lead_ServiceAppointments", null, value);
+				this.SetRelatedEntities<Entities.ServiceAppointment>("Lead_ServiceAppointments", null, value);
 				this.OnPropertyChanged("Lead_ServiceAppointments");
 			}
 		}
@@ -3525,18 +3525,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Lead_SharepointDocument
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_SharepointDocument")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SharePointDocument> Lead_SharepointDocument
+		public System.Collections.Generic.IEnumerable<Entities.SharePointDocument> Lead_SharepointDocument
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SharePointDocument>("Lead_SharepointDocument", null);
+				return this.GetRelatedEntities<Entities.SharePointDocument>("Lead_SharepointDocument", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_SharepointDocument");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SharePointDocument>("Lead_SharepointDocument", null, value);
+				this.SetRelatedEntities<Entities.SharePointDocument>("Lead_SharepointDocument", null, value);
 				this.OnPropertyChanged("Lead_SharepointDocument");
 			}
 		}
@@ -3545,18 +3545,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Lead_SharepointDocumentLocation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_SharepointDocumentLocation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SharePointDocumentLocation> Lead_SharepointDocumentLocation
+		public System.Collections.Generic.IEnumerable<Entities.SharePointDocumentLocation> Lead_SharepointDocumentLocation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SharePointDocumentLocation>("Lead_SharepointDocumentLocation", null);
+				return this.GetRelatedEntities<Entities.SharePointDocumentLocation>("Lead_SharepointDocumentLocation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_SharepointDocumentLocation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SharePointDocumentLocation>("Lead_SharepointDocumentLocation", null, value);
+				this.SetRelatedEntities<Entities.SharePointDocumentLocation>("Lead_SharepointDocumentLocation", null, value);
 				this.OnPropertyChanged("Lead_SharepointDocumentLocation");
 			}
 		}
@@ -3565,18 +3565,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Lead_SocialActivities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_SocialActivities")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SocialActivity> Lead_SocialActivities
+		public System.Collections.Generic.IEnumerable<Entities.SocialActivity> Lead_SocialActivities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SocialActivity>("Lead_SocialActivities", null);
+				return this.GetRelatedEntities<Entities.SocialActivity>("Lead_SocialActivities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_SocialActivities");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SocialActivity>("Lead_SocialActivities", null, value);
+				this.SetRelatedEntities<Entities.SocialActivity>("Lead_SocialActivities", null, value);
 				this.OnPropertyChanged("Lead_SocialActivities");
 			}
 		}
@@ -3585,18 +3585,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Lead_Tasks
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_Tasks")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Task> Lead_Tasks
+		public System.Collections.Generic.IEnumerable<Entities.Task> Lead_Tasks
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Task>("Lead_Tasks", null);
+				return this.GetRelatedEntities<Entities.Task>("Lead_Tasks", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_Tasks");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Task>("Lead_Tasks", null, value);
+				this.SetRelatedEntities<Entities.Task>("Lead_Tasks", null, value);
 				this.OnPropertyChanged("Lead_Tasks");
 			}
 		}
@@ -3605,18 +3605,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N opportunity_originating_lead
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_originating_lead")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Opportunity> opportunity_originating_lead
+		public System.Collections.Generic.IEnumerable<Entities.Opportunity> opportunity_originating_lead
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Opportunity>("opportunity_originating_lead", null);
+				return this.GetRelatedEntities<Entities.Opportunity>("opportunity_originating_lead", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_originating_lead");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Opportunity>("opportunity_originating_lead", null, value);
+				this.SetRelatedEntities<Entities.Opportunity>("opportunity_originating_lead", null, value);
 				this.OnPropertyChanged("opportunity_originating_lead");
 			}
 		}
@@ -3625,18 +3625,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N SourceLead_BulkOperationLogs
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SourceLead_BulkOperationLogs")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkOperationLog> SourceLead_BulkOperationLogs
+		public System.Collections.Generic.IEnumerable<Entities.BulkOperationLog> SourceLead_BulkOperationLogs
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkOperationLog>("SourceLead_BulkOperationLogs", null);
+				return this.GetRelatedEntities<Entities.BulkOperationLog>("SourceLead_BulkOperationLogs", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SourceLead_BulkOperationLogs");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkOperationLog>("SourceLead_BulkOperationLogs", null, value);
+				this.SetRelatedEntities<Entities.BulkOperationLog>("SourceLead_BulkOperationLogs", null, value);
 				this.OnPropertyChanged("SourceLead_BulkOperationLogs");
 			}
 		}
@@ -3645,18 +3645,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_lead
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_lead")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_lead
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_lead
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_lead", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_lead", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_lead");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_lead", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_lead", null, value);
 				this.OnPropertyChanged("userentityinstancedata_lead");
 			}
 		}
@@ -3665,18 +3665,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N accountleads_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("accountleads_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Account> accountleads_association
+		public System.Collections.Generic.IEnumerable<Entities.Account> accountleads_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Account>("accountleads_association", null);
+				return this.GetRelatedEntities<Entities.Account>("accountleads_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("accountleads_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Account>("accountleads_association", null, value);
+				this.SetRelatedEntities<Entities.Account>("accountleads_association", null, value);
 				this.OnPropertyChanged("accountleads_association");
 			}
 		}
@@ -3685,18 +3685,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N contactleads_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contactleads_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Contact> contactleads_association
+		public System.Collections.Generic.IEnumerable<Entities.Contact> contactleads_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Contact>("contactleads_association", null);
+				return this.GetRelatedEntities<Entities.Contact>("contactleads_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contactleads_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Contact>("contactleads_association", null, value);
+				this.SetRelatedEntities<Entities.Contact>("contactleads_association", null, value);
 				this.OnPropertyChanged("contactleads_association");
 			}
 		}
@@ -3705,18 +3705,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N leadcompetitors_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("leadcompetitors_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Competitor> leadcompetitors_association
+		public System.Collections.Generic.IEnumerable<Entities.Competitor> leadcompetitors_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Competitor>("leadcompetitors_association", null);
+				return this.GetRelatedEntities<Entities.Competitor>("leadcompetitors_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("leadcompetitors_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Competitor>("leadcompetitors_association", null, value);
+				this.SetRelatedEntities<Entities.Competitor>("leadcompetitors_association", null, value);
 				this.OnPropertyChanged("leadcompetitors_association");
 			}
 		}
@@ -3725,18 +3725,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N leadproduct_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("leadproduct_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Product> leadproduct_association
+		public System.Collections.Generic.IEnumerable<Entities.Product> leadproduct_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Product>("leadproduct_association", null);
+				return this.GetRelatedEntities<Entities.Product>("leadproduct_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("leadproduct_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Product>("leadproduct_association", null, value);
+				this.SetRelatedEntities<Entities.Product>("leadproduct_association", null, value);
 				this.OnPropertyChanged("leadproduct_association");
 			}
 		}
@@ -3745,18 +3745,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N listlead_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("listlead_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.List> listlead_association
+		public System.Collections.Generic.IEnumerable<Entities.List> listlead_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.List>("listlead_association", null);
+				return this.GetRelatedEntities<Entities.List>("listlead_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("listlead_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.List>("listlead_association", null, value);
+				this.SetRelatedEntities<Entities.List>("listlead_association", null, value);
 				this.OnPropertyChanged("listlead_association");
 			}
 		}
@@ -3766,18 +3766,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_leads")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_leads
+		public Entities.BusinessUnit business_unit_leads
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_leads", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_leads", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_leads");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_leads", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_leads", null, value);
 				this.OnPropertyChanged("business_unit_leads");
 			}
 		}
@@ -3787,18 +3787,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("campaignid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("campaign_leads")]
-		public DLaB.Xrm.Entities.Campaign campaign_leads
+		public Entities.Campaign campaign_leads
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Campaign>("campaign_leads", null);
+				return this.GetRelatedEntity<Entities.Campaign>("campaign_leads", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("campaign_leads");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Campaign>("campaign_leads", null, value);
+				this.SetRelatedEntity<Entities.Campaign>("campaign_leads", null, value);
 				this.OnPropertyChanged("campaign_leads");
 			}
 		}
@@ -3808,18 +3808,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("relatedobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignResponse_Lead")]
-		public DLaB.Xrm.Entities.CampaignResponse CampaignResponse_Lead
+		public Entities.CampaignResponse CampaignResponse_Lead
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignResponse>("CampaignResponse_Lead", null);
+				return this.GetRelatedEntity<Entities.CampaignResponse>("CampaignResponse_Lead", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CampaignResponse_Lead");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CampaignResponse>("CampaignResponse_Lead", null, value);
+				this.SetRelatedEntity<Entities.CampaignResponse>("CampaignResponse_Lead", null, value);
 				this.OnPropertyChanged("CampaignResponse_Lead");
 			}
 		}
@@ -3829,18 +3829,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customerid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_customer_accounts")]
-		public DLaB.Xrm.Entities.Account lead_customer_accounts
+		public Entities.Account lead_customer_accounts
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("lead_customer_accounts", null);
+				return this.GetRelatedEntity<Entities.Account>("lead_customer_accounts", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lead_customer_accounts");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("lead_customer_accounts", null, value);
+				this.SetRelatedEntity<Entities.Account>("lead_customer_accounts", null, value);
 				this.OnPropertyChanged("lead_customer_accounts");
 			}
 		}
@@ -3850,18 +3850,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customerid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_customer_contacts")]
-		public DLaB.Xrm.Entities.Contact lead_customer_contacts
+		public Entities.Contact lead_customer_contacts
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("lead_customer_contacts", null);
+				return this.GetRelatedEntity<Entities.Contact>("lead_customer_contacts", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lead_customer_contacts");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("lead_customer_contacts", null, value);
+				this.SetRelatedEntity<Entities.Contact>("lead_customer_contacts", null, value);
 				this.OnPropertyChanged("lead_customer_contacts");
 			}
 		}
@@ -3871,12 +3871,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("masterid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_master_lead", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.Lead Referencinglead_master_lead
+		public Entities.Lead Referencinglead_master_lead
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Lead>("lead_master_lead", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.Lead>("lead_master_lead", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 		}
 		
@@ -3885,18 +3885,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_owning_team")]
-		public DLaB.Xrm.Entities.Team lead_owning_team
+		public Entities.Team lead_owning_team
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("lead_owning_team", null);
+				return this.GetRelatedEntity<Entities.Team>("lead_owning_team", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lead_owning_team");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("lead_owning_team", null, value);
+				this.SetRelatedEntity<Entities.Team>("lead_owning_team", null, value);
 				this.OnPropertyChanged("lead_owning_team");
 			}
 		}
@@ -3906,18 +3906,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_owning_user")]
-		public DLaB.Xrm.Entities.SystemUser lead_owning_user
+		public Entities.SystemUser lead_owning_user
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lead_owning_user", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lead_owning_user", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lead_owning_user");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lead_owning_user", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lead_owning_user", null, value);
 				this.OnPropertyChanged("lead_owning_user");
 			}
 		}
@@ -3927,18 +3927,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentaccountid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_parent_account")]
-		public DLaB.Xrm.Entities.Account lead_parent_account
+		public Entities.Account lead_parent_account
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("lead_parent_account", null);
+				return this.GetRelatedEntity<Entities.Account>("lead_parent_account", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lead_parent_account");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("lead_parent_account", null, value);
+				this.SetRelatedEntity<Entities.Account>("lead_parent_account", null, value);
 				this.OnPropertyChanged("lead_parent_account");
 			}
 		}
@@ -3948,18 +3948,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentcontactid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_parent_contact")]
-		public DLaB.Xrm.Entities.Contact lead_parent_contact
+		public Entities.Contact lead_parent_contact
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("lead_parent_contact", null);
+				return this.GetRelatedEntity<Entities.Contact>("lead_parent_contact", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lead_parent_contact");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("lead_parent_contact", null, value);
+				this.SetRelatedEntity<Entities.Contact>("lead_parent_contact", null, value);
 				this.OnPropertyChanged("lead_parent_contact");
 			}
 		}
@@ -3969,18 +3969,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("qualifyingopportunityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_qualifying_opportunity")]
-		public DLaB.Xrm.Entities.Opportunity lead_qualifying_opportunity
+		public Entities.Opportunity lead_qualifying_opportunity
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("lead_qualifying_opportunity", null);
+				return this.GetRelatedEntity<Entities.Opportunity>("lead_qualifying_opportunity", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lead_qualifying_opportunity");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("lead_qualifying_opportunity", null, value);
+				this.SetRelatedEntity<Entities.Opportunity>("lead_qualifying_opportunity", null, value);
 				this.OnPropertyChanged("lead_qualifying_opportunity");
 			}
 		}
@@ -3990,18 +3990,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_lead_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_lead_createdonbehalfby
+		public Entities.SystemUser lk_lead_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_lead_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_lead_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_lead_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_lead_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_lead_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_lead_createdonbehalfby");
 			}
 		}
@@ -4011,18 +4011,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_lead_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_lead_modifiedonbehalfby
+		public Entities.SystemUser lk_lead_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_lead_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_lead_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_lead_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_lead_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_lead_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_lead_modifiedonbehalfby");
 			}
 		}
@@ -4032,18 +4032,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_leadbase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_leadbase_createdby
+		public Entities.SystemUser lk_leadbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_leadbase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_leadbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_leadbase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_leadbase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_leadbase_createdby", null, value);
 				this.OnPropertyChanged("lk_leadbase_createdby");
 			}
 		}
@@ -4053,18 +4053,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_leadbase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_leadbase_modifiedby
+		public Entities.SystemUser lk_leadbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_leadbase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_leadbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_leadbase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_leadbase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_leadbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_leadbase_modifiedby");
 			}
 		}
@@ -4074,18 +4074,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("originatingcaseid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("OriginatingCase_Lead")]
-		public DLaB.Xrm.Entities.Incident OriginatingCase_Lead
+		public Entities.Incident OriginatingCase_Lead
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Incident>("OriginatingCase_Lead", null);
+				return this.GetRelatedEntity<Entities.Incident>("OriginatingCase_Lead", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("OriginatingCase_Lead");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Incident>("OriginatingCase_Lead", null, value);
+				this.SetRelatedEntity<Entities.Incident>("OriginatingCase_Lead", null, value);
 				this.OnPropertyChanged("OriginatingCase_Lead");
 			}
 		}
@@ -4095,18 +4095,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stageid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_lead")]
-		public DLaB.Xrm.Entities.ProcessStage processstage_lead
+		public Entities.ProcessStage processstage_lead
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProcessStage>("processstage_lead", null);
+				return this.GetRelatedEntity<Entities.ProcessStage>("processstage_lead", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_lead");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProcessStage>("processstage_lead", null, value);
+				this.SetRelatedEntity<Entities.ProcessStage>("processstage_lead", null, value);
 				this.OnPropertyChanged("processstage_lead");
 			}
 		}
@@ -4116,18 +4116,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_lead")]
-		public DLaB.Xrm.Entities.TransactionCurrency transactioncurrency_lead
+		public Entities.TransactionCurrency transactioncurrency_lead
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_lead", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_lead", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_lead");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_lead", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_lead", null, value);
 				this.OnPropertyChanged("transactioncurrency_lead");
 			}
 		}

@@ -444,18 +444,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N attribute_map_attribute_maps
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("attribute_map_attribute_maps", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AttributeMap> Referencedattribute_map_attribute_maps
+		public System.Collections.Generic.IEnumerable<Entities.AttributeMap> Referencedattribute_map_attribute_maps
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AttributeMap>("attribute_map_attribute_maps", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.AttributeMap>("attribute_map_attribute_maps", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedattribute_map_attribute_maps");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AttributeMap>("attribute_map_attribute_maps", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.AttributeMap>("attribute_map_attribute_maps", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedattribute_map_attribute_maps");
 			}
 		}
@@ -464,18 +464,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N AttributeMap_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("AttributeMap_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> AttributeMap_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> AttributeMap_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("AttributeMap_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("AttributeMap_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("AttributeMap_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("AttributeMap_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("AttributeMap_AsyncOperations", null, value);
 				this.OnPropertyChanged("AttributeMap_AsyncOperations");
 			}
 		}
@@ -484,18 +484,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N AttributeMap_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("AttributeMap_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> AttributeMap_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> AttributeMap_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("AttributeMap_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("AttributeMap_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("AttributeMap_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("AttributeMap_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("AttributeMap_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("AttributeMap_BulkDeleteFailures");
 			}
 		}
@@ -504,18 +504,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_attributemap
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_attributemap")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_attributemap
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_attributemap
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_attributemap", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_attributemap", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_attributemap");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_attributemap", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_attributemap", null, value);
 				this.OnPropertyChanged("userentityinstancedata_attributemap");
 			}
 		}
@@ -525,18 +525,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentattributemapid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("attribute_map_attribute_maps", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.AttributeMap Referencingattribute_map_attribute_maps
+		public Entities.AttributeMap Referencingattribute_map_attribute_maps
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.AttributeMap>("attribute_map_attribute_maps", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.AttributeMap>("attribute_map_attribute_maps", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencingattribute_map_attribute_maps");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.AttributeMap>("attribute_map_attribute_maps", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Entities.AttributeMap>("attribute_map_attribute_maps", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencingattribute_map_attribute_maps");
 			}
 		}
@@ -546,18 +546,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_attributemap")]
-		public DLaB.Xrm.Entities.SystemUser createdby_attributemap
+		public Entities.SystemUser createdby_attributemap
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdby_attributemap", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("createdby_attributemap", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("createdby_attributemap");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdby_attributemap", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("createdby_attributemap", null, value);
 				this.OnPropertyChanged("createdby_attributemap");
 			}
 		}
@@ -567,18 +567,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdonbehalfby_attributemap")]
-		public DLaB.Xrm.Entities.SystemUser createdonbehalfby_attributemap
+		public Entities.SystemUser createdonbehalfby_attributemap
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdonbehalfby_attributemap", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("createdonbehalfby_attributemap", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("createdonbehalfby_attributemap");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdonbehalfby_attributemap", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("createdonbehalfby_attributemap", null, value);
 				this.OnPropertyChanged("createdonbehalfby_attributemap");
 			}
 		}
@@ -588,18 +588,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entitymapid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entity_map_attribute_maps")]
-		public DLaB.Xrm.Entities.EntityMap entity_map_attribute_maps
+		public Entities.EntityMap entity_map_attribute_maps
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EntityMap>("entity_map_attribute_maps", null);
+				return this.GetRelatedEntity<Entities.EntityMap>("entity_map_attribute_maps", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entity_map_attribute_maps");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.EntityMap>("entity_map_attribute_maps", null, value);
+				this.SetRelatedEntity<Entities.EntityMap>("entity_map_attribute_maps", null, value);
 				this.OnPropertyChanged("entity_map_attribute_maps");
 			}
 		}
@@ -609,18 +609,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_attributemap")]
-		public DLaB.Xrm.Entities.SystemUser modifiedby_attributemap
+		public Entities.SystemUser modifiedby_attributemap
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("modifiedby_attributemap", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("modifiedby_attributemap", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("modifiedby_attributemap");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("modifiedby_attributemap", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("modifiedby_attributemap", null, value);
 				this.OnPropertyChanged("modifiedby_attributemap");
 			}
 		}
@@ -630,18 +630,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedonbehalfby_attributemap")]
-		public DLaB.Xrm.Entities.SystemUser modifiedonbehalfby_attributemap
+		public Entities.SystemUser modifiedonbehalfby_attributemap
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("modifiedonbehalfby_attributemap", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("modifiedonbehalfby_attributemap", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("modifiedonbehalfby_attributemap");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("modifiedonbehalfby_attributemap", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("modifiedonbehalfby_attributemap", null, value);
 				this.OnPropertyChanged("modifiedonbehalfby_attributemap");
 			}
 		}
@@ -651,12 +651,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_attributemap")]
-		public DLaB.Xrm.Entities.Organization organization_attributemap
+		public Entities.Organization organization_attributemap
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_attributemap", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_attributemap", null);
 			}
 		}
 		

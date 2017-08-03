@@ -842,18 +842,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N FixedMonthlyFiscalCalendar_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("FixedMonthlyFiscalCalendar_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> FixedMonthlyFiscalCalendar_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> FixedMonthlyFiscalCalendar_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("FixedMonthlyFiscalCalendar_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("FixedMonthlyFiscalCalendar_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("FixedMonthlyFiscalCalendar_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("FixedMonthlyFiscalCalendar_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("FixedMonthlyFiscalCalendar_AsyncOperations", null, value);
 				this.OnPropertyChanged("FixedMonthlyFiscalCalendar_AsyncOperations");
 			}
 		}
@@ -862,18 +862,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N FixedMonthlyFiscalCalendar_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("FixedMonthlyFiscalCalendar_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> FixedMonthlyFiscalCalendar_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> FixedMonthlyFiscalCalendar_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("FixedMonthlyFiscalCalendar_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("FixedMonthlyFiscalCalendar_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("FixedMonthlyFiscalCalendar_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("FixedMonthlyFiscalCalendar_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("FixedMonthlyFiscalCalendar_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("FixedMonthlyFiscalCalendar_BulkDeleteFailures");
 			}
 		}
@@ -883,18 +883,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_fixedmonthlyfiscalcalendar_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_fixedmonthlyfiscalcalendar_createdby
+		public Entities.SystemUser lk_fixedmonthlyfiscalcalendar_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fixedmonthlyfiscalcalendar_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_fixedmonthlyfiscalcalendar_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_fixedmonthlyfiscalcalendar_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fixedmonthlyfiscalcalendar_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_fixedmonthlyfiscalcalendar_createdby", null, value);
 				this.OnPropertyChanged("lk_fixedmonthlyfiscalcalendar_createdby");
 			}
 		}
@@ -904,18 +904,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_fixedmonthlyfiscalcalendar_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_fixedmonthlyfiscalcalendar_createdonbehalfby
+		public Entities.SystemUser lk_fixedmonthlyfiscalcalendar_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fixedmonthlyfiscalcalendar_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_fixedmonthlyfiscalcalendar_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_fixedmonthlyfiscalcalendar_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fixedmonthlyfiscalcalendar_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_fixedmonthlyfiscalcalendar_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_fixedmonthlyfiscalcalendar_createdonbehalfby");
 			}
 		}
@@ -925,18 +925,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_fixedmonthlyfiscalcalendar_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_fixedmonthlyfiscalcalendar_modifiedby
+		public Entities.SystemUser lk_fixedmonthlyfiscalcalendar_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fixedmonthlyfiscalcalendar_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_fixedmonthlyfiscalcalendar_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_fixedmonthlyfiscalcalendar_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fixedmonthlyfiscalcalendar_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_fixedmonthlyfiscalcalendar_modifiedby", null, value);
 				this.OnPropertyChanged("lk_fixedmonthlyfiscalcalendar_modifiedby");
 			}
 		}
@@ -946,18 +946,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_fixedmonthlyfiscalcalendar_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_fixedmonthlyfiscalcalendar_modifiedonbehalfby
+		public Entities.SystemUser lk_fixedmonthlyfiscalcalendar_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fixedmonthlyfiscalcalendar_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_fixedmonthlyfiscalcalendar_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_fixedmonthlyfiscalcalendar_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fixedmonthlyfiscalcalendar_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_fixedmonthlyfiscalcalendar_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_fixedmonthlyfiscalcalendar_modifiedonbehalfby");
 			}
 		}
@@ -967,18 +967,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("salespersonid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_fixedmonthlyfiscalcalendar_salespersonid")]
-		public DLaB.Xrm.Entities.SystemUser lk_fixedmonthlyfiscalcalendar_salespersonid
+		public Entities.SystemUser lk_fixedmonthlyfiscalcalendar_salespersonid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fixedmonthlyfiscalcalendar_salespersonid", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_fixedmonthlyfiscalcalendar_salespersonid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_fixedmonthlyfiscalcalendar_salespersonid");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fixedmonthlyfiscalcalendar_salespersonid", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_fixedmonthlyfiscalcalendar_salespersonid", null, value);
 				this.OnPropertyChanged("lk_fixedmonthlyfiscalcalendar_salespersonid");
 			}
 		}
@@ -988,18 +988,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_fixedmonthlyfiscalcalendar")]
-		public DLaB.Xrm.Entities.TransactionCurrency transactioncurrency_fixedmonthlyfiscalcalendar
+		public Entities.TransactionCurrency transactioncurrency_fixedmonthlyfiscalcalendar
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_fixedmonthlyfiscalcalendar", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_fixedmonthlyfiscalcalendar", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_fixedmonthlyfiscalcalendar");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_fixedmonthlyfiscalcalendar", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_fixedmonthlyfiscalcalendar", null, value);
 				this.OnPropertyChanged("transactioncurrency_fixedmonthlyfiscalcalendar");
 			}
 		}

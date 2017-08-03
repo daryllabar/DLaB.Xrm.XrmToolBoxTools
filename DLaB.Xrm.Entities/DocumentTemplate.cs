@@ -436,18 +436,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_documenttemplatebase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_documenttemplatebase_createdby
+		public Entities.SystemUser lk_documenttemplatebase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_documenttemplatebase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_documenttemplatebase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_documenttemplatebase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_documenttemplatebase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_documenttemplatebase_createdby", null, value);
 				this.OnPropertyChanged("lk_documenttemplatebase_createdby");
 			}
 		}
@@ -457,18 +457,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_documenttemplatebase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_documenttemplatebase_createdonbehalfby
+		public Entities.SystemUser lk_documenttemplatebase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_documenttemplatebase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_documenttemplatebase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_documenttemplatebase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_documenttemplatebase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_documenttemplatebase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_documenttemplatebase_createdonbehalfby");
 			}
 		}
@@ -478,18 +478,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_documenttemplatebase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_documenttemplatebase_modifiedby
+		public Entities.SystemUser lk_documenttemplatebase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_documenttemplatebase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_documenttemplatebase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_documenttemplatebase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_documenttemplatebase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_documenttemplatebase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_documenttemplatebase_modifiedby");
 			}
 		}
@@ -499,18 +499,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_documenttemplatebase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_documenttemplatebase_modifiedonbehalfby
+		public Entities.SystemUser lk_documenttemplatebase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_documenttemplatebase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_documenttemplatebase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_documenttemplatebase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_documenttemplatebase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_documenttemplatebase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_documenttemplatebase_modifiedonbehalfby");
 			}
 		}
@@ -520,12 +520,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_documenttemplatebase_organization")]
-		public DLaB.Xrm.Entities.Organization lk_documenttemplatebase_organization
+		public Entities.Organization lk_documenttemplatebase_organization
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("lk_documenttemplatebase_organization", null);
+				return this.GetRelatedEntity<Entities.Organization>("lk_documenttemplatebase_organization", null);
 			}
 		}
 		

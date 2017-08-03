@@ -707,18 +707,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ProductPriceLevel_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductPriceLevel_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> ProductPriceLevel_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> ProductPriceLevel_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("ProductPriceLevel_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("ProductPriceLevel_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ProductPriceLevel_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("ProductPriceLevel_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("ProductPriceLevel_AsyncOperations", null, value);
 				this.OnPropertyChanged("ProductPriceLevel_AsyncOperations");
 			}
 		}
@@ -727,18 +727,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ProductPriceLevel_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductPriceLevel_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> ProductPriceLevel_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> ProductPriceLevel_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("ProductPriceLevel_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("ProductPriceLevel_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ProductPriceLevel_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("ProductPriceLevel_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("ProductPriceLevel_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("ProductPriceLevel_BulkDeleteFailures");
 			}
 		}
@@ -747,18 +747,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ProductPriceLevel_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductPriceLevel_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> ProductPriceLevel_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> ProductPriceLevel_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("ProductPriceLevel_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("ProductPriceLevel_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ProductPriceLevel_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("ProductPriceLevel_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("ProductPriceLevel_ProcessSessions", null, value);
 				this.OnPropertyChanged("ProductPriceLevel_ProcessSessions");
 			}
 		}
@@ -767,18 +767,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ProductPriceLevel_RecommendationCache_AdditionalDataRecordId
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductPriceLevel_RecommendationCache_AdditionalDataRecordId")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.RecommendationCache> ProductPriceLevel_RecommendationCache_AdditionalDataRecordId
+		public System.Collections.Generic.IEnumerable<Entities.RecommendationCache> ProductPriceLevel_RecommendationCache_AdditionalDataRecordId
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.RecommendationCache>("ProductPriceLevel_RecommendationCache_AdditionalDataRecordId", null);
+				return this.GetRelatedEntities<Entities.RecommendationCache>("ProductPriceLevel_RecommendationCache_AdditionalDataRecordId", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ProductPriceLevel_RecommendationCache_AdditionalDataRecordId");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.RecommendationCache>("ProductPriceLevel_RecommendationCache_AdditionalDataRecordId", null, value);
+				this.SetRelatedEntities<Entities.RecommendationCache>("ProductPriceLevel_RecommendationCache_AdditionalDataRecordId", null, value);
 				this.OnPropertyChanged("ProductPriceLevel_RecommendationCache_AdditionalDataRecordId");
 			}
 		}
@@ -787,18 +787,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_productpricelevel
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_productpricelevel")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_productpricelevel
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_productpricelevel
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_productpricelevel", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_productpricelevel", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_productpricelevel");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_productpricelevel", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_productpricelevel", null, value);
 				this.OnPropertyChanged("userentityinstancedata_productpricelevel");
 			}
 		}
@@ -808,18 +808,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("discounttypeid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("discount_type_product_price_levels")]
-		public DLaB.Xrm.Entities.DiscountType discount_type_product_price_levels
+		public Entities.DiscountType discount_type_product_price_levels
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.DiscountType>("discount_type_product_price_levels", null);
+				return this.GetRelatedEntity<Entities.DiscountType>("discount_type_product_price_levels", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("discount_type_product_price_levels");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.DiscountType>("discount_type_product_price_levels", null, value);
+				this.SetRelatedEntity<Entities.DiscountType>("discount_type_product_price_levels", null, value);
 				this.OnPropertyChanged("discount_type_product_price_levels");
 			}
 		}
@@ -829,18 +829,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_productpricelevel_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_productpricelevel_createdonbehalfby
+		public Entities.SystemUser lk_productpricelevel_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_productpricelevel_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_productpricelevel_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_productpricelevel_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_productpricelevel_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_productpricelevel_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_productpricelevel_createdonbehalfby");
 			}
 		}
@@ -850,18 +850,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_productpricelevel_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_productpricelevel_modifiedonbehalfby
+		public Entities.SystemUser lk_productpricelevel_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_productpricelevel_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_productpricelevel_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_productpricelevel_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_productpricelevel_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_productpricelevel_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_productpricelevel_modifiedonbehalfby");
 			}
 		}
@@ -871,18 +871,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_productpricelevelbase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_productpricelevelbase_createdby
+		public Entities.SystemUser lk_productpricelevelbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_productpricelevelbase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_productpricelevelbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_productpricelevelbase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_productpricelevelbase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_productpricelevelbase_createdby", null, value);
 				this.OnPropertyChanged("lk_productpricelevelbase_createdby");
 			}
 		}
@@ -892,18 +892,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_productpricelevelbase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_productpricelevelbase_modifiedby
+		public Entities.SystemUser lk_productpricelevelbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_productpricelevelbase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_productpricelevelbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_productpricelevelbase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_productpricelevelbase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_productpricelevelbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_productpricelevelbase_modifiedby");
 			}
 		}
@@ -913,18 +913,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pricelevelid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("price_level_product_price_levels")]
-		public DLaB.Xrm.Entities.PriceLevel price_level_product_price_levels
+		public Entities.PriceLevel price_level_product_price_levels
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.PriceLevel>("price_level_product_price_levels", null);
+				return this.GetRelatedEntity<Entities.PriceLevel>("price_level_product_price_levels", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("price_level_product_price_levels");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.PriceLevel>("price_level_product_price_levels", null, value);
+				this.SetRelatedEntity<Entities.PriceLevel>("price_level_product_price_levels", null, value);
 				this.OnPropertyChanged("price_level_product_price_levels");
 			}
 		}
@@ -934,18 +934,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stageid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_productpricelevels")]
-		public DLaB.Xrm.Entities.ProcessStage processstage_productpricelevels
+		public Entities.ProcessStage processstage_productpricelevels
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProcessStage>("processstage_productpricelevels", null);
+				return this.GetRelatedEntity<Entities.ProcessStage>("processstage_productpricelevels", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_productpricelevels");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProcessStage>("processstage_productpricelevels", null, value);
+				this.SetRelatedEntity<Entities.ProcessStage>("processstage_productpricelevels", null, value);
 				this.OnPropertyChanged("processstage_productpricelevels");
 			}
 		}
@@ -955,18 +955,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("productid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("product_price_levels")]
-		public DLaB.Xrm.Entities.Product product_price_levels
+		public Entities.Product product_price_levels
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Product>("product_price_levels", null);
+				return this.GetRelatedEntity<Entities.Product>("product_price_levels", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("product_price_levels");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Product>("product_price_levels", null, value);
+				this.SetRelatedEntity<Entities.Product>("product_price_levels", null, value);
 				this.OnPropertyChanged("product_price_levels");
 			}
 		}
@@ -976,18 +976,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_productpricelevel")]
-		public DLaB.Xrm.Entities.TransactionCurrency transactioncurrency_productpricelevel
+		public Entities.TransactionCurrency transactioncurrency_productpricelevel
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_productpricelevel", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_productpricelevel", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_productpricelevel");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_productpricelevel", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_productpricelevel", null, value);
 				this.OnPropertyChanged("transactioncurrency_productpricelevel");
 			}
 		}
@@ -997,18 +997,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uomscheduleid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measure_schedule_product_price_level")]
-		public DLaB.Xrm.Entities.UoMSchedule unit_of_measure_schedule_product_price_level
+		public Entities.UoMSchedule unit_of_measure_schedule_product_price_level
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.UoMSchedule>("unit_of_measure_schedule_product_price_level", null);
+				return this.GetRelatedEntity<Entities.UoMSchedule>("unit_of_measure_schedule_product_price_level", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("unit_of_measure_schedule_product_price_level");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.UoMSchedule>("unit_of_measure_schedule_product_price_level", null, value);
+				this.SetRelatedEntity<Entities.UoMSchedule>("unit_of_measure_schedule_product_price_level", null, value);
 				this.OnPropertyChanged("unit_of_measure_schedule_product_price_level");
 			}
 		}
@@ -1018,18 +1018,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uomid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measurement_product_price_levels")]
-		public DLaB.Xrm.Entities.UoM unit_of_measurement_product_price_levels
+		public Entities.UoM unit_of_measurement_product_price_levels
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.UoM>("unit_of_measurement_product_price_levels", null);
+				return this.GetRelatedEntity<Entities.UoM>("unit_of_measurement_product_price_levels", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("unit_of_measurement_product_price_levels");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.UoM>("unit_of_measurement_product_price_levels", null, value);
+				this.SetRelatedEntity<Entities.UoM>("unit_of_measurement_product_price_levels", null, value);
 				this.OnPropertyChanged("unit_of_measurement_product_price_levels");
 			}
 		}

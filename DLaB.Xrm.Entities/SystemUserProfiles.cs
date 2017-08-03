@@ -150,18 +150,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N systemuserprofiles_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("systemuserprofiles_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SystemUser> systemuserprofiles_association
+		public System.Collections.Generic.IEnumerable<Entities.SystemUser> systemuserprofiles_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SystemUser>("systemuserprofiles_association", null);
+				return this.GetRelatedEntities<Entities.SystemUser>("systemuserprofiles_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("systemuserprofiles_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SystemUser>("systemuserprofiles_association", null, value);
+				this.SetRelatedEntities<Entities.SystemUser>("systemuserprofiles_association", null, value);
 				this.OnPropertyChanged("systemuserprofiles_association");
 			}
 		}

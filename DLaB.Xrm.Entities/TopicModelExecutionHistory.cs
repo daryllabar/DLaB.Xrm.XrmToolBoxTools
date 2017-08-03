@@ -528,18 +528,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N topicmodelexecutionhistory_topichistory
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("topicmodelexecutionhistory_topichistory")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.TopicHistory> topicmodelexecutionhistory_topichistory
+		public System.Collections.Generic.IEnumerable<Entities.TopicHistory> topicmodelexecutionhistory_topichistory
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.TopicHistory>("topicmodelexecutionhistory_topichistory", null);
+				return this.GetRelatedEntities<Entities.TopicHistory>("topicmodelexecutionhistory_topichistory", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("topicmodelexecutionhistory_topichistory");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.TopicHistory>("topicmodelexecutionhistory_topichistory", null, value);
+				this.SetRelatedEntities<Entities.TopicHistory>("topicmodelexecutionhistory_topichistory", null, value);
 				this.OnPropertyChanged("topicmodelexecutionhistory_topichistory");
 			}
 		}
@@ -549,18 +549,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_topicmodelexecutionhistory_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_topicmodelexecutionhistory_createdby
+		public Entities.SystemUser lk_topicmodelexecutionhistory_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_topicmodelexecutionhistory_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_topicmodelexecutionhistory_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_topicmodelexecutionhistory_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_topicmodelexecutionhistory_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_topicmodelexecutionhistory_createdby", null, value);
 				this.OnPropertyChanged("lk_topicmodelexecutionhistory_createdby");
 			}
 		}
@@ -570,18 +570,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_topicmodelexecutionhistory_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_topicmodelexecutionhistory_createdonbehalfby
+		public Entities.SystemUser lk_topicmodelexecutionhistory_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_topicmodelexecutionhistory_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_topicmodelexecutionhistory_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_topicmodelexecutionhistory_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_topicmodelexecutionhistory_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_topicmodelexecutionhistory_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_topicmodelexecutionhistory_createdonbehalfby");
 			}
 		}
@@ -591,18 +591,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_topicmodelexecutionhistory_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_topicmodelexecutionhistory_modifiedby
+		public Entities.SystemUser lk_topicmodelexecutionhistory_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_topicmodelexecutionhistory_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_topicmodelexecutionhistory_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_topicmodelexecutionhistory_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_topicmodelexecutionhistory_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_topicmodelexecutionhistory_modifiedby", null, value);
 				this.OnPropertyChanged("lk_topicmodelexecutionhistory_modifiedby");
 			}
 		}
@@ -612,18 +612,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_topicmodelexecutionhistory_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_topicmodelexecutionhistory_modifiedonbehalfby
+		public Entities.SystemUser lk_topicmodelexecutionhistory_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_topicmodelexecutionhistory_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_topicmodelexecutionhistory_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_topicmodelexecutionhistory_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_topicmodelexecutionhistory_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_topicmodelexecutionhistory_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_topicmodelexecutionhistory_modifiedonbehalfby");
 			}
 		}
@@ -633,12 +633,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_topicmodelexecutionhistory")]
-		public DLaB.Xrm.Entities.Organization organization_topicmodelexecutionhistory
+		public Entities.Organization organization_topicmodelexecutionhistory
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_topicmodelexecutionhistory", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_topicmodelexecutionhistory", null);
 			}
 		}
 		
@@ -647,18 +647,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("topicmodelid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("topicmodel_topicmodelexecutionhistory")]
-		public DLaB.Xrm.Entities.TopicModel topicmodel_topicmodelexecutionhistory
+		public Entities.TopicModel topicmodel_topicmodelexecutionhistory
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TopicModel>("topicmodel_topicmodelexecutionhistory", null);
+				return this.GetRelatedEntity<Entities.TopicModel>("topicmodel_topicmodelexecutionhistory", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("topicmodel_topicmodelexecutionhistory");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TopicModel>("topicmodel_topicmodelexecutionhistory", null, value);
+				this.SetRelatedEntity<Entities.TopicModel>("topicmodel_topicmodelexecutionhistory", null, value);
 				this.OnPropertyChanged("topicmodel_topicmodelexecutionhistory");
 			}
 		}
@@ -668,18 +668,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("topicmodelconfigurationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("topicmodelconfiguration_topicmodelexecutionhistory")]
-		public DLaB.Xrm.Entities.TopicModelConfiguration topicmodelconfiguration_topicmodelexecutionhistory
+		public Entities.TopicModelConfiguration topicmodelconfiguration_topicmodelexecutionhistory
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TopicModelConfiguration>("topicmodelconfiguration_topicmodelexecutionhistory", null);
+				return this.GetRelatedEntity<Entities.TopicModelConfiguration>("topicmodelconfiguration_topicmodelexecutionhistory", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("topicmodelconfiguration_topicmodelexecutionhistory");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TopicModelConfiguration>("topicmodelconfiguration_topicmodelexecutionhistory", null, value);
+				this.SetRelatedEntity<Entities.TopicModelConfiguration>("topicmodelconfiguration_topicmodelexecutionhistory", null, value);
 				this.OnPropertyChanged("topicmodelconfiguration_topicmodelexecutionhistory");
 			}
 		}

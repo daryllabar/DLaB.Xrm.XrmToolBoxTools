@@ -454,18 +454,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("dynamicpropertyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Dynamicproperty_DynamicPropertyAssociation")]
-		public DLaB.Xrm.Entities.DynamicProperty Dynamicproperty_DynamicPropertyAssociation
+		public Entities.DynamicProperty Dynamicproperty_DynamicPropertyAssociation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.DynamicProperty>("Dynamicproperty_DynamicPropertyAssociation", null);
+				return this.GetRelatedEntity<Entities.DynamicProperty>("Dynamicproperty_DynamicPropertyAssociation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Dynamicproperty_DynamicPropertyAssociation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.DynamicProperty>("Dynamicproperty_DynamicPropertyAssociation", null, value);
+				this.SetRelatedEntity<Entities.DynamicProperty>("Dynamicproperty_DynamicPropertyAssociation", null, value);
 				this.OnPropertyChanged("Dynamicproperty_DynamicPropertyAssociation");
 			}
 		}
@@ -475,12 +475,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("DynamicPropertyAssociation_organization")]
-		public DLaB.Xrm.Entities.Organization DynamicPropertyAssociation_organization
+		public Entities.Organization DynamicPropertyAssociation_organization
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("DynamicPropertyAssociation_organization", null);
+				return this.GetRelatedEntity<Entities.Organization>("DynamicPropertyAssociation_organization", null);
 			}
 		}
 		
@@ -489,18 +489,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("DynamicPropertyAssociation_TransactionCurrency")]
-		public DLaB.Xrm.Entities.TransactionCurrency DynamicPropertyAssociation_TransactionCurrency
+		public Entities.TransactionCurrency DynamicPropertyAssociation_TransactionCurrency
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("DynamicPropertyAssociation_TransactionCurrency", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("DynamicPropertyAssociation_TransactionCurrency", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("DynamicPropertyAssociation_TransactionCurrency");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("DynamicPropertyAssociation_TransactionCurrency", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("DynamicPropertyAssociation_TransactionCurrency", null, value);
 				this.OnPropertyChanged("DynamicPropertyAssociation_TransactionCurrency");
 			}
 		}
@@ -510,18 +510,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_DynamicPropertyAssociationattribute_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_DynamicPropertyAssociationattribute_createdby
+		public Entities.SystemUser lk_DynamicPropertyAssociationattribute_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicPropertyAssociationattribute_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_DynamicPropertyAssociationattribute_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_DynamicPropertyAssociationattribute_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicPropertyAssociationattribute_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_DynamicPropertyAssociationattribute_createdby", null, value);
 				this.OnPropertyChanged("lk_DynamicPropertyAssociationattribute_createdby");
 			}
 		}
@@ -531,18 +531,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_DynamicPropertyAssociationattribute_CreatedOnBehalfBy")]
-		public DLaB.Xrm.Entities.SystemUser lk_DynamicPropertyAssociationattribute_CreatedOnBehalfBy
+		public Entities.SystemUser lk_DynamicPropertyAssociationattribute_CreatedOnBehalfBy
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicPropertyAssociationattribute_CreatedOnBehalfBy", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_DynamicPropertyAssociationattribute_CreatedOnBehalfBy", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_DynamicPropertyAssociationattribute_CreatedOnBehalfBy");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicPropertyAssociationattribute_CreatedOnBehalfBy", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_DynamicPropertyAssociationattribute_CreatedOnBehalfBy", null, value);
 				this.OnPropertyChanged("lk_DynamicPropertyAssociationattribute_CreatedOnBehalfBy");
 			}
 		}
@@ -552,18 +552,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_DynamicPropertyAssociationattribute_ModifiedBy")]
-		public DLaB.Xrm.Entities.SystemUser lk_DynamicPropertyAssociationattribute_ModifiedBy
+		public Entities.SystemUser lk_DynamicPropertyAssociationattribute_ModifiedBy
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicPropertyAssociationattribute_ModifiedBy", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_DynamicPropertyAssociationattribute_ModifiedBy", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_DynamicPropertyAssociationattribute_ModifiedBy");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicPropertyAssociationattribute_ModifiedBy", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_DynamicPropertyAssociationattribute_ModifiedBy", null, value);
 				this.OnPropertyChanged("lk_DynamicPropertyAssociationattribute_ModifiedBy");
 			}
 		}
@@ -573,18 +573,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_DynamicPropertyAssociationattribute_ModifiedOnBehalfBy")]
-		public DLaB.Xrm.Entities.SystemUser lk_DynamicPropertyAssociationattribute_ModifiedOnBehalfBy
+		public Entities.SystemUser lk_DynamicPropertyAssociationattribute_ModifiedOnBehalfBy
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicPropertyAssociationattribute_ModifiedOnBehalfBy", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_DynamicPropertyAssociationattribute_ModifiedOnBehalfBy", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_DynamicPropertyAssociationattribute_ModifiedOnBehalfBy");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicPropertyAssociationattribute_ModifiedOnBehalfBy", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_DynamicPropertyAssociationattribute_ModifiedOnBehalfBy", null, value);
 				this.OnPropertyChanged("lk_DynamicPropertyAssociationattribute_ModifiedOnBehalfBy");
 			}
 		}
@@ -594,18 +594,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Product_DynamicPropertyAssociation")]
-		public DLaB.Xrm.Entities.Product Product_DynamicPropertyAssociation
+		public Entities.Product Product_DynamicPropertyAssociation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Product>("Product_DynamicPropertyAssociation", null);
+				return this.GetRelatedEntity<Entities.Product>("Product_DynamicPropertyAssociation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Product_DynamicPropertyAssociation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Product>("Product_DynamicPropertyAssociation", null, value);
+				this.SetRelatedEntity<Entities.Product>("Product_DynamicPropertyAssociation", null, value);
 				this.OnPropertyChanged("Product_DynamicPropertyAssociation");
 			}
 		}
@@ -615,18 +615,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductAssociation_DynamicPropertyAssociation")]
-		public DLaB.Xrm.Entities.ProductAssociation ProductAssociation_DynamicPropertyAssociation
+		public Entities.ProductAssociation ProductAssociation_DynamicPropertyAssociation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProductAssociation>("ProductAssociation_DynamicPropertyAssociation", null);
+				return this.GetRelatedEntity<Entities.ProductAssociation>("ProductAssociation_DynamicPropertyAssociation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ProductAssociation_DynamicPropertyAssociation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProductAssociation>("ProductAssociation_DynamicPropertyAssociation", null, value);
+				this.SetRelatedEntity<Entities.ProductAssociation>("ProductAssociation_DynamicPropertyAssociation", null, value);
 				this.OnPropertyChanged("ProductAssociation_DynamicPropertyAssociation");
 			}
 		}

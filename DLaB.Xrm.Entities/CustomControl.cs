@@ -442,18 +442,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N customcontrol_resource_id
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("customcontrol_resource_id")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.CustomControlResource> customcontrol_resource_id
+		public System.Collections.Generic.IEnumerable<Entities.CustomControlResource> customcontrol_resource_id
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.CustomControlResource>("customcontrol_resource_id", null);
+				return this.GetRelatedEntities<Entities.CustomControlResource>("customcontrol_resource_id", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("customcontrol_resource_id");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.CustomControlResource>("customcontrol_resource_id", null, value);
+				this.SetRelatedEntities<Entities.CustomControlResource>("customcontrol_resource_id", null, value);
 				this.OnPropertyChanged("customcontrol_resource_id");
 			}
 		}
@@ -463,12 +463,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("customcontrol_organization")]
-		public DLaB.Xrm.Entities.Organization customcontrol_organization
+		public Entities.Organization customcontrol_organization
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("customcontrol_organization", null);
+				return this.GetRelatedEntity<Entities.Organization>("customcontrol_organization", null);
 			}
 		}
 		
@@ -477,18 +477,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_customcontrol_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_customcontrol_createdby
+		public Entities.SystemUser lk_customcontrol_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customcontrol_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_customcontrol_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_customcontrol_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customcontrol_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_customcontrol_createdby", null, value);
 				this.OnPropertyChanged("lk_customcontrol_createdby");
 			}
 		}
@@ -498,18 +498,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_customcontrol_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_customcontrol_createdonbehalfby
+		public Entities.SystemUser lk_customcontrol_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customcontrol_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_customcontrol_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_customcontrol_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customcontrol_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_customcontrol_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_customcontrol_createdonbehalfby");
 			}
 		}
@@ -519,18 +519,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_customcontrol_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_customcontrol_modifiedby
+		public Entities.SystemUser lk_customcontrol_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customcontrol_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_customcontrol_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_customcontrol_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customcontrol_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_customcontrol_modifiedby", null, value);
 				this.OnPropertyChanged("lk_customcontrol_modifiedby");
 			}
 		}
@@ -540,18 +540,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_customcontrol_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_customcontrol_modifiedonbehalfby
+		public Entities.SystemUser lk_customcontrol_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customcontrol_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_customcontrol_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_customcontrol_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customcontrol_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_customcontrol_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_customcontrol_modifiedonbehalfby");
 			}
 		}

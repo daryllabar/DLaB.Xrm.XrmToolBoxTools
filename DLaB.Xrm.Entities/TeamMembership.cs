@@ -150,18 +150,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_teammembership
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_teammembership")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_teammembership
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_teammembership
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_teammembership", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_teammembership", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_teammembership");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_teammembership", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_teammembership", null, value);
 				this.OnPropertyChanged("userentityinstancedata_teammembership");
 			}
 		}
@@ -170,18 +170,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N teammembership_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("teammembership_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Team> teammembership_association
+		public System.Collections.Generic.IEnumerable<Entities.Team> teammembership_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Team>("teammembership_association", null);
+				return this.GetRelatedEntities<Entities.Team>("teammembership_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("teammembership_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Team>("teammembership_association", null, value);
+				this.SetRelatedEntities<Entities.Team>("teammembership_association", null, value);
 				this.OnPropertyChanged("teammembership_association");
 			}
 		}

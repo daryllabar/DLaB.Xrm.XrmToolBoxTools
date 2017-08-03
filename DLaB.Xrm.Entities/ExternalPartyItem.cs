@@ -525,7 +525,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the external party item is enabled or disabled.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.ExternalPartyItemState> StateCode
+		public System.Nullable<Entities.ExternalPartyItemState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -533,7 +533,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.ExternalPartyItemState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.ExternalPartyItemState), optionSet.Value)));
+					return ((Entities.ExternalPartyItemState)(System.Enum.ToObject(typeof(Entities.ExternalPartyItemState), optionSet.Value)));
 				}
 				else
 				{
@@ -613,18 +613,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N externalpartyitem_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("externalpartyitem_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> externalpartyitem_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> externalpartyitem_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("externalpartyitem_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("externalpartyitem_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("externalpartyitem_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("externalpartyitem_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("externalpartyitem_AsyncOperations", null, value);
 				this.OnPropertyChanged("externalpartyitem_AsyncOperations");
 			}
 		}
@@ -633,18 +633,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N externalpartyitem_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("externalpartyitem_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> externalpartyitem_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> externalpartyitem_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("externalpartyitem_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("externalpartyitem_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("externalpartyitem_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("externalpartyitem_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("externalpartyitem_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("externalpartyitem_BulkDeleteFailures");
 			}
 		}
@@ -653,18 +653,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N externalpartyitem_ProcessSession
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("externalpartyitem_ProcessSession")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> externalpartyitem_ProcessSession
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> externalpartyitem_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("externalpartyitem_ProcessSession", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("externalpartyitem_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("externalpartyitem_ProcessSession");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("externalpartyitem_ProcessSession", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("externalpartyitem_ProcessSession", null, value);
 				this.OnPropertyChanged("externalpartyitem_ProcessSession");
 			}
 		}
@@ -674,18 +674,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contact_ExternalPartyItems")]
-		public DLaB.Xrm.Entities.Contact Contact_ExternalPartyItems
+		public Entities.Contact Contact_ExternalPartyItems
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_ExternalPartyItems", null);
+				return this.GetRelatedEntity<Entities.Contact>("Contact_ExternalPartyItems", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Contact_ExternalPartyItems");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_ExternalPartyItems", null, value);
+				this.SetRelatedEntity<Entities.Contact>("Contact_ExternalPartyItems", null, value);
 				this.OnPropertyChanged("Contact_ExternalPartyItems");
 			}
 		}
@@ -695,18 +695,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("externalpartyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("externalparty_entries")]
-		public DLaB.Xrm.Entities.ExternalParty externalparty_entries
+		public Entities.ExternalParty externalparty_entries
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ExternalParty>("externalparty_entries", null);
+				return this.GetRelatedEntity<Entities.ExternalParty>("externalparty_entries", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("externalparty_entries");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ExternalParty>("externalparty_entries", null, value);
+				this.SetRelatedEntity<Entities.ExternalParty>("externalparty_entries", null, value);
 				this.OnPropertyChanged("externalparty_entries");
 			}
 		}
@@ -716,18 +716,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("channelaccessprofileid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_externalpartyitem_channelaccessprofileid")]
-		public DLaB.Xrm.Entities.ChannelAccessProfile lk_externalpartyitem_channelaccessprofileid
+		public Entities.ChannelAccessProfile lk_externalpartyitem_channelaccessprofileid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfile>("lk_externalpartyitem_channelaccessprofileid", null);
+				return this.GetRelatedEntity<Entities.ChannelAccessProfile>("lk_externalpartyitem_channelaccessprofileid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_externalpartyitem_channelaccessprofileid");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfile>("lk_externalpartyitem_channelaccessprofileid", null, value);
+				this.SetRelatedEntity<Entities.ChannelAccessProfile>("lk_externalpartyitem_channelaccessprofileid", null, value);
 				this.OnPropertyChanged("lk_externalpartyitem_channelaccessprofileid");
 			}
 		}
@@ -737,18 +737,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_externalpartyitem_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_externalpartyitem_createdby
+		public Entities.SystemUser lk_externalpartyitem_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_externalpartyitem_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_externalpartyitem_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_externalpartyitem_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_externalpartyitem_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_externalpartyitem_createdby", null, value);
 				this.OnPropertyChanged("lk_externalpartyitem_createdby");
 			}
 		}
@@ -758,18 +758,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_externalpartyitem_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_externalpartyitem_createdonbehalfby
+		public Entities.SystemUser lk_externalpartyitem_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_externalpartyitem_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_externalpartyitem_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_externalpartyitem_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_externalpartyitem_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_externalpartyitem_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_externalpartyitem_createdonbehalfby");
 			}
 		}
@@ -779,18 +779,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_externalpartyitem_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_externalpartyitem_modifiedby
+		public Entities.SystemUser lk_externalpartyitem_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_externalpartyitem_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_externalpartyitem_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_externalpartyitem_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_externalpartyitem_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_externalpartyitem_modifiedby", null, value);
 				this.OnPropertyChanged("lk_externalpartyitem_modifiedby");
 			}
 		}
@@ -800,18 +800,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_externalpartyitem_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_externalpartyitem_modifiedonbehalfby
+		public Entities.SystemUser lk_externalpartyitem_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_externalpartyitem_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_externalpartyitem_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_externalpartyitem_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_externalpartyitem_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_externalpartyitem_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_externalpartyitem_modifiedonbehalfby");
 			}
 		}
@@ -821,18 +821,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SystemUser_ExternalPartyItems")]
-		public DLaB.Xrm.Entities.SystemUser SystemUser_ExternalPartyItems
+		public Entities.SystemUser SystemUser_ExternalPartyItems
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("SystemUser_ExternalPartyItems", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("SystemUser_ExternalPartyItems", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SystemUser_ExternalPartyItems");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("SystemUser_ExternalPartyItems", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("SystemUser_ExternalPartyItems", null, value);
 				this.OnPropertyChanged("SystemUser_ExternalPartyItems");
 			}
 		}
@@ -842,18 +842,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_externalpartyitem")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_externalpartyitem
+		public Entities.TransactionCurrency TransactionCurrency_externalpartyitem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_externalpartyitem", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_externalpartyitem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_externalpartyitem");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_externalpartyitem", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_externalpartyitem", null, value);
 				this.OnPropertyChanged("TransactionCurrency_externalpartyitem");
 			}
 		}

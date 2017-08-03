@@ -562,18 +562,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_sdkmessageprocessingstepimage
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_sdkmessageprocessingstepimage")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_sdkmessageprocessingstepimage
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_sdkmessageprocessingstepimage
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_sdkmessageprocessingstepimage", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_sdkmessageprocessingstepimage", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_sdkmessageprocessingstepimage");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_sdkmessageprocessingstepimage", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_sdkmessageprocessingstepimage", null, value);
 				this.OnPropertyChanged("userentityinstancedata_sdkmessageprocessingstepimage");
 			}
 		}
@@ -583,18 +583,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_sdkmessageprocessingstepimage")]
-		public DLaB.Xrm.Entities.SystemUser createdby_sdkmessageprocessingstepimage
+		public Entities.SystemUser createdby_sdkmessageprocessingstepimage
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdby_sdkmessageprocessingstepimage", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("createdby_sdkmessageprocessingstepimage", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("createdby_sdkmessageprocessingstepimage");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdby_sdkmessageprocessingstepimage", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("createdby_sdkmessageprocessingstepimage", null, value);
 				this.OnPropertyChanged("createdby_sdkmessageprocessingstepimage");
 			}
 		}
@@ -604,18 +604,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sdkmessageprocessingstepimage_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_sdkmessageprocessingstepimage_createdonbehalfby
+		public Entities.SystemUser lk_sdkmessageprocessingstepimage_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sdkmessageprocessingstepimage_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_sdkmessageprocessingstepimage_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_sdkmessageprocessingstepimage_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sdkmessageprocessingstepimage_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_sdkmessageprocessingstepimage_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_sdkmessageprocessingstepimage_createdonbehalfby");
 			}
 		}
@@ -625,18 +625,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sdkmessageprocessingstepimage_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_sdkmessageprocessingstepimage_modifiedonbehalfby
+		public Entities.SystemUser lk_sdkmessageprocessingstepimage_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sdkmessageprocessingstepimage_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_sdkmessageprocessingstepimage_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_sdkmessageprocessingstepimage_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sdkmessageprocessingstepimage_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_sdkmessageprocessingstepimage_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_sdkmessageprocessingstepimage_modifiedonbehalfby");
 			}
 		}
@@ -646,18 +646,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_sdkmessageprocessingstepimage")]
-		public DLaB.Xrm.Entities.SystemUser modifiedby_sdkmessageprocessingstepimage
+		public Entities.SystemUser modifiedby_sdkmessageprocessingstepimage
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("modifiedby_sdkmessageprocessingstepimage", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("modifiedby_sdkmessageprocessingstepimage", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("modifiedby_sdkmessageprocessingstepimage");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("modifiedby_sdkmessageprocessingstepimage", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("modifiedby_sdkmessageprocessingstepimage", null, value);
 				this.OnPropertyChanged("modifiedby_sdkmessageprocessingstepimage");
 			}
 		}
@@ -667,12 +667,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_sdkmessageprocessingstepimage")]
-		public DLaB.Xrm.Entities.Organization organization_sdkmessageprocessingstepimage
+		public Entities.Organization organization_sdkmessageprocessingstepimage
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_sdkmessageprocessingstepimage", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_sdkmessageprocessingstepimage", null);
 			}
 		}
 		
@@ -681,18 +681,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sdkmessageprocessingstepid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sdkmessageprocessingstepid_sdkmessageprocessingstepimage")]
-		public DLaB.Xrm.Entities.SdkMessageProcessingStep sdkmessageprocessingstepid_sdkmessageprocessingstepimage
+		public Entities.SdkMessageProcessingStep sdkmessageprocessingstepid_sdkmessageprocessingstepimage
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SdkMessageProcessingStep>("sdkmessageprocessingstepid_sdkmessageprocessingstepimage", null);
+				return this.GetRelatedEntity<Entities.SdkMessageProcessingStep>("sdkmessageprocessingstepid_sdkmessageprocessingstepimage", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("sdkmessageprocessingstepid_sdkmessageprocessingstepimage");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SdkMessageProcessingStep>("sdkmessageprocessingstepid_sdkmessageprocessingstepimage", null, value);
+				this.SetRelatedEntity<Entities.SdkMessageProcessingStep>("sdkmessageprocessingstepid_sdkmessageprocessingstepimage", null, value);
 				this.OnPropertyChanged("sdkmessageprocessingstepid_sdkmessageprocessingstepimage");
 			}
 		}

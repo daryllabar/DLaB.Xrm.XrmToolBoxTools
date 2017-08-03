@@ -412,7 +412,7 @@ namespace DLaB.Xrm.Entities
 		/// Enter the account, contact, or lead that submitted the campaign response, if it was received from an existing prospect or customer.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customer")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> Customer
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> Customer
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -421,7 +421,7 @@ namespace DLaB.Xrm.Entities
 				if (((collection != null) 
 							&& (collection.Entities != null)))
 				{
-					return System.Linq.Enumerable.Cast<DLaB.Xrm.Entities.ActivityParty>(collection.Entities);
+					return System.Linq.Enumerable.Cast<Entities.ActivityParty>(collection.Entities);
 				}
 				else
 				{
@@ -541,7 +541,7 @@ namespace DLaB.Xrm.Entities
 		/// For system use only.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("from")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> From
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> From
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -550,7 +550,7 @@ namespace DLaB.Xrm.Entities
 				if (((collection != null) 
 							&& (collection.Entities != null)))
 				{
-					return System.Linq.Enumerable.Cast<DLaB.Xrm.Entities.ActivityParty>(collection.Entities);
+					return System.Linq.Enumerable.Cast<Entities.ActivityParty>(collection.Entities);
 				}
 				else
 				{
@@ -850,7 +850,7 @@ namespace DLaB.Xrm.Entities
 		/// Enter the vendor account or contact to capture any third-party used to obtain the campaign response.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partner")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> Partner
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> Partner
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -859,7 +859,7 @@ namespace DLaB.Xrm.Entities
 				if (((collection != null) 
 							&& (collection.Entities != null)))
 				{
-					return System.Linq.Enumerable.Cast<DLaB.Xrm.Entities.ActivityParty>(collection.Entities);
+					return System.Linq.Enumerable.Cast<Entities.ActivityParty>(collection.Entities);
 				}
 				else
 				{
@@ -1099,7 +1099,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the campaign response is open, closed, or canceled. Closed and canceled campaign responses are read-only and can't be edited.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.CampaignResponseState> StateCode
+		public System.Nullable<Entities.CampaignResponseState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -1107,7 +1107,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.CampaignResponseState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.CampaignResponseState), optionSet.Value)));
+					return ((Entities.CampaignResponseState)(System.Enum.ToObject(typeof(Entities.CampaignResponseState), optionSet.Value)));
 				}
 				else
 				{
@@ -1367,18 +1367,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N campaignresponse_activity_parties
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("campaignresponse_activity_parties")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> campaignresponse_activity_parties
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> campaignresponse_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("campaignresponse_activity_parties", null);
+				return this.GetRelatedEntities<Entities.ActivityParty>("campaignresponse_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("campaignresponse_activity_parties");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("campaignresponse_activity_parties", null, value);
+				this.SetRelatedEntities<Entities.ActivityParty>("campaignresponse_activity_parties", null, value);
 				this.OnPropertyChanged("campaignresponse_activity_parties");
 			}
 		}
@@ -1387,18 +1387,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N CampaignResponse_Annotation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignResponse_Annotation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> CampaignResponse_Annotation
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> CampaignResponse_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("CampaignResponse_Annotation", null);
+				return this.GetRelatedEntities<Entities.Annotation>("CampaignResponse_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CampaignResponse_Annotation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("CampaignResponse_Annotation", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("CampaignResponse_Annotation", null, value);
 				this.OnPropertyChanged("CampaignResponse_Annotation");
 			}
 		}
@@ -1407,18 +1407,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N CampaignResponse_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignResponse_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> CampaignResponse_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> CampaignResponse_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("CampaignResponse_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("CampaignResponse_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CampaignResponse_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("CampaignResponse_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("CampaignResponse_AsyncOperations", null, value);
 				this.OnPropertyChanged("CampaignResponse_AsyncOperations");
 			}
 		}
@@ -1427,18 +1427,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N CampaignResponse_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignResponse_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> CampaignResponse_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> CampaignResponse_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("CampaignResponse_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("CampaignResponse_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CampaignResponse_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("CampaignResponse_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("CampaignResponse_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("CampaignResponse_BulkDeleteFailures");
 			}
 		}
@@ -1447,18 +1447,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N CampaignResponse_DuplicateBaseRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignResponse_DuplicateBaseRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> CampaignResponse_DuplicateBaseRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> CampaignResponse_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("CampaignResponse_DuplicateBaseRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("CampaignResponse_DuplicateBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CampaignResponse_DuplicateBaseRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("CampaignResponse_DuplicateBaseRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("CampaignResponse_DuplicateBaseRecord", null, value);
 				this.OnPropertyChanged("CampaignResponse_DuplicateBaseRecord");
 			}
 		}
@@ -1467,18 +1467,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N CampaignResponse_DuplicateMatchingRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignResponse_DuplicateMatchingRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> CampaignResponse_DuplicateMatchingRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> CampaignResponse_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("CampaignResponse_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("CampaignResponse_DuplicateMatchingRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CampaignResponse_DuplicateMatchingRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("CampaignResponse_DuplicateMatchingRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("CampaignResponse_DuplicateMatchingRecord", null, value);
 				this.OnPropertyChanged("CampaignResponse_DuplicateMatchingRecord");
 			}
 		}
@@ -1487,18 +1487,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N CampaignResponse_Lead
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignResponse_Lead")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Lead> CampaignResponse_Lead
+		public System.Collections.Generic.IEnumerable<Entities.Lead> CampaignResponse_Lead
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Lead>("CampaignResponse_Lead", null);
+				return this.GetRelatedEntities<Entities.Lead>("CampaignResponse_Lead", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CampaignResponse_Lead");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Lead>("CampaignResponse_Lead", null, value);
+				this.SetRelatedEntities<Entities.Lead>("CampaignResponse_Lead", null, value);
 				this.OnPropertyChanged("CampaignResponse_Lead");
 			}
 		}
@@ -1507,18 +1507,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N campaignresponse_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("campaignresponse_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> campaignresponse_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> campaignresponse_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("campaignresponse_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("campaignresponse_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("campaignresponse_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("campaignresponse_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("campaignresponse_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("campaignresponse_principalobjectattributeaccess");
 			}
 		}
@@ -1527,18 +1527,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N CampaignResponse_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignResponse_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> CampaignResponse_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> CampaignResponse_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("CampaignResponse_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("CampaignResponse_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CampaignResponse_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("CampaignResponse_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("CampaignResponse_ProcessSessions", null, value);
 				this.OnPropertyChanged("CampaignResponse_ProcessSessions");
 			}
 		}
@@ -1547,18 +1547,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N CampaignResponse_QueueItem
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignResponse_QueueItem")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.QueueItem> CampaignResponse_QueueItem
+		public System.Collections.Generic.IEnumerable<Entities.QueueItem> CampaignResponse_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.QueueItem>("CampaignResponse_QueueItem", null);
+				return this.GetRelatedEntities<Entities.QueueItem>("CampaignResponse_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CampaignResponse_QueueItem");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.QueueItem>("CampaignResponse_QueueItem", null, value);
+				this.SetRelatedEntities<Entities.QueueItem>("CampaignResponse_QueueItem", null, value);
 				this.OnPropertyChanged("CampaignResponse_QueueItem");
 			}
 		}
@@ -1567,18 +1567,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_campaignresponse
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_campaignresponse")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_campaignresponse
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_campaignresponse
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_campaignresponse", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_campaignresponse", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_campaignresponse");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_campaignresponse", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_campaignresponse", null, value);
 				this.OnPropertyChanged("userentityinstancedata_campaignresponse");
 			}
 		}
@@ -1588,18 +1588,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("originatingactivityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("activity_campaignresponse")]
-		public DLaB.Xrm.Entities.ActivityPointer activity_campaignresponse
+		public Entities.ActivityPointer activity_campaignresponse
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_campaignresponse", null);
+				return this.GetRelatedEntity<Entities.ActivityPointer>("activity_campaignresponse", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("activity_campaignresponse");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_campaignresponse", null, value);
+				this.SetRelatedEntity<Entities.ActivityPointer>("activity_campaignresponse", null, value);
 				this.OnPropertyChanged("activity_campaignresponse");
 			}
 		}
@@ -1609,18 +1609,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("activity_pointer_campaignresponse")]
-		public DLaB.Xrm.Entities.ActivityPointer activity_pointer_campaignresponse
+		public Entities.ActivityPointer activity_pointer_campaignresponse
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_campaignresponse", null);
+				return this.GetRelatedEntity<Entities.ActivityPointer>("activity_pointer_campaignresponse", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("activity_pointer_campaignresponse");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_campaignresponse", null, value);
+				this.SetRelatedEntity<Entities.ActivityPointer>("activity_pointer_campaignresponse", null, value);
 				this.OnPropertyChanged("activity_pointer_campaignresponse");
 			}
 		}
@@ -1630,18 +1630,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("originatingactivityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("appointment_campaignresponse")]
-		public DLaB.Xrm.Entities.Appointment appointment_campaignresponse
+		public Entities.Appointment appointment_campaignresponse
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Appointment>("appointment_campaignresponse", null);
+				return this.GetRelatedEntity<Entities.Appointment>("appointment_campaignresponse", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("appointment_campaignresponse");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Appointment>("appointment_campaignresponse", null, value);
+				this.SetRelatedEntity<Entities.Appointment>("appointment_campaignresponse", null, value);
 				this.OnPropertyChanged("appointment_campaignresponse");
 			}
 		}
@@ -1651,18 +1651,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_CampaignResponse")]
-		public DLaB.Xrm.Entities.BulkOperation BulkOperation_CampaignResponse
+		public Entities.BulkOperation BulkOperation_CampaignResponse
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BulkOperation>("BulkOperation_CampaignResponse", null);
+				return this.GetRelatedEntity<Entities.BulkOperation>("BulkOperation_CampaignResponse", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperation_CampaignResponse");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BulkOperation>("BulkOperation_CampaignResponse", null, value);
+				this.SetRelatedEntity<Entities.BulkOperation>("BulkOperation_CampaignResponse", null, value);
 				this.OnPropertyChanged("BulkOperation_CampaignResponse");
 			}
 		}
@@ -1672,18 +1672,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_campaignresponse_activities")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_campaignresponse_activities
+		public Entities.BusinessUnit business_unit_campaignresponse_activities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_campaignresponse_activities", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_campaignresponse_activities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_campaignresponse_activities");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_campaignresponse_activities", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_campaignresponse_activities", null, value);
 				this.OnPropertyChanged("business_unit_campaignresponse_activities");
 			}
 		}
@@ -1693,18 +1693,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Campaign_CampaignResponses")]
-		public DLaB.Xrm.Entities.Campaign Campaign_CampaignResponses
+		public Entities.Campaign Campaign_CampaignResponses
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Campaign>("Campaign_CampaignResponses", null);
+				return this.GetRelatedEntity<Entities.Campaign>("Campaign_CampaignResponses", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Campaign_CampaignResponses");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Campaign>("Campaign_CampaignResponses", null, value);
+				this.SetRelatedEntity<Entities.Campaign>("Campaign_CampaignResponses", null, value);
 				this.OnPropertyChanged("Campaign_CampaignResponses");
 			}
 		}
@@ -1714,18 +1714,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("originatingactivityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("email_campaignresponse")]
-		public DLaB.Xrm.Entities.Email email_campaignresponse
+		public Entities.Email email_campaignresponse
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Email>("email_campaignresponse", null);
+				return this.GetRelatedEntity<Entities.Email>("email_campaignresponse", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("email_campaignresponse");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Email>("email_campaignresponse", null, value);
+				this.SetRelatedEntity<Entities.Email>("email_campaignresponse", null, value);
 				this.OnPropertyChanged("email_campaignresponse");
 			}
 		}
@@ -1735,18 +1735,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("originatingactivityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("fax_campaignresponse")]
-		public DLaB.Xrm.Entities.Fax fax_campaignresponse
+		public Entities.Fax fax_campaignresponse
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Fax>("fax_campaignresponse", null);
+				return this.GetRelatedEntity<Entities.Fax>("fax_campaignresponse", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("fax_campaignresponse");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Fax>("fax_campaignresponse", null, value);
+				this.SetRelatedEntity<Entities.Fax>("fax_campaignresponse", null, value);
 				this.OnPropertyChanged("fax_campaignresponse");
 			}
 		}
@@ -1756,18 +1756,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("originatingactivityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("letter_campaignresponse")]
-		public DLaB.Xrm.Entities.Letter letter_campaignresponse
+		public Entities.Letter letter_campaignresponse
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Letter>("letter_campaignresponse", null);
+				return this.GetRelatedEntity<Entities.Letter>("letter_campaignresponse", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("letter_campaignresponse");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Letter>("letter_campaignresponse", null, value);
+				this.SetRelatedEntity<Entities.Letter>("letter_campaignresponse", null, value);
 				this.OnPropertyChanged("letter_campaignresponse");
 			}
 		}
@@ -1777,18 +1777,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_campaignresponse_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_campaignresponse_createdby
+		public Entities.SystemUser lk_campaignresponse_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_campaignresponse_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_campaignresponse_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_campaignresponse_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_campaignresponse_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_campaignresponse_createdby", null, value);
 				this.OnPropertyChanged("lk_campaignresponse_createdby");
 			}
 		}
@@ -1798,18 +1798,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_campaignresponse_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_campaignresponse_createdonbehalfby
+		public Entities.SystemUser lk_campaignresponse_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_campaignresponse_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_campaignresponse_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_campaignresponse_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_campaignresponse_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_campaignresponse_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_campaignresponse_createdonbehalfby");
 			}
 		}
@@ -1819,18 +1819,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_campaignresponse_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_campaignresponse_modifiedby
+		public Entities.SystemUser lk_campaignresponse_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_campaignresponse_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_campaignresponse_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_campaignresponse_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_campaignresponse_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_campaignresponse_modifiedby", null, value);
 				this.OnPropertyChanged("lk_campaignresponse_modifiedby");
 			}
 		}
@@ -1840,18 +1840,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_campaignresponse_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_campaignresponse_modifiedonbehalfby
+		public Entities.SystemUser lk_campaignresponse_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_campaignresponse_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_campaignresponse_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_campaignresponse_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_campaignresponse_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_campaignresponse_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_campaignresponse_modifiedonbehalfby");
 			}
 		}
@@ -1861,18 +1861,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("originatingactivityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("phonecall_campaignresponse")]
-		public DLaB.Xrm.Entities.PhoneCall phonecall_campaignresponse
+		public Entities.PhoneCall phonecall_campaignresponse
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.PhoneCall>("phonecall_campaignresponse", null);
+				return this.GetRelatedEntity<Entities.PhoneCall>("phonecall_campaignresponse", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("phonecall_campaignresponse");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.PhoneCall>("phonecall_campaignresponse", null, value);
+				this.SetRelatedEntity<Entities.PhoneCall>("phonecall_campaignresponse", null, value);
 				this.OnPropertyChanged("phonecall_campaignresponse");
 			}
 		}
@@ -1882,18 +1882,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stageid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_campaignresponses")]
-		public DLaB.Xrm.Entities.ProcessStage processstage_campaignresponses
+		public Entities.ProcessStage processstage_campaignresponses
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProcessStage>("processstage_campaignresponses", null);
+				return this.GetRelatedEntity<Entities.ProcessStage>("processstage_campaignresponses", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_campaignresponses");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProcessStage>("processstage_campaignresponses", null, value);
+				this.SetRelatedEntity<Entities.ProcessStage>("processstage_campaignresponses", null, value);
 				this.OnPropertyChanged("processstage_campaignresponses");
 			}
 		}
@@ -1903,18 +1903,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("originatingactivityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recurringappointmentmaster_campaignresponse")]
-		public DLaB.Xrm.Entities.RecurringAppointmentMaster recurringappointmentmaster_campaignresponse
+		public Entities.RecurringAppointmentMaster recurringappointmentmaster_campaignresponse
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RecurringAppointmentMaster>("recurringappointmentmaster_campaignresponse", null);
+				return this.GetRelatedEntity<Entities.RecurringAppointmentMaster>("recurringappointmentmaster_campaignresponse", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("recurringappointmentmaster_campaignresponse");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RecurringAppointmentMaster>("recurringappointmentmaster_campaignresponse", null, value);
+				this.SetRelatedEntity<Entities.RecurringAppointmentMaster>("recurringappointmentmaster_campaignresponse", null, value);
 				this.OnPropertyChanged("recurringappointmentmaster_campaignresponse");
 			}
 		}
@@ -1924,18 +1924,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_campaignresponse")]
-		public DLaB.Xrm.Entities.Team team_campaignresponse
+		public Entities.Team team_campaignresponse
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_campaignresponse", null);
+				return this.GetRelatedEntity<Entities.Team>("team_campaignresponse", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_campaignresponse");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_campaignresponse", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_campaignresponse", null, value);
 				this.OnPropertyChanged("team_campaignresponse");
 			}
 		}
@@ -1945,18 +1945,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_CampaignResponse")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_CampaignResponse
+		public Entities.TransactionCurrency TransactionCurrency_CampaignResponse
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_CampaignResponse", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_CampaignResponse", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_CampaignResponse");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_CampaignResponse", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_CampaignResponse", null, value);
 				this.OnPropertyChanged("TransactionCurrency_CampaignResponse");
 			}
 		}
@@ -1966,18 +1966,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_campaignresponse")]
-		public DLaB.Xrm.Entities.SystemUser user_campaignresponse
+		public Entities.SystemUser user_campaignresponse
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_campaignresponse", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_campaignresponse", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_campaignresponse");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_campaignresponse", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_campaignresponse", null, value);
 				this.OnPropertyChanged("user_campaignresponse");
 			}
 		}

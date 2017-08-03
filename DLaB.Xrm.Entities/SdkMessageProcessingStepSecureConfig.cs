@@ -302,18 +302,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SdkMessageProcessingStep> sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep
+		public System.Collections.Generic.IEnumerable<Entities.SdkMessageProcessingStep> sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SdkMessageProcessingStep>("sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep", null);
+				return this.GetRelatedEntities<Entities.SdkMessageProcessingStep>("sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SdkMessageProcessingStep>("sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep", null, value);
+				this.SetRelatedEntities<Entities.SdkMessageProcessingStep>("sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep", null, value);
 				this.OnPropertyChanged("sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep");
 			}
 		}
@@ -322,18 +322,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_sdkmessageprocessingstepsecureconfig
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_sdkmessageprocessingstepsecureconfig")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_sdkmessageprocessingstepsecureconfig
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_sdkmessageprocessingstepsecureconfig
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_sdkmessageprocessingstepsecureconfig", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_sdkmessageprocessingstepsecureconfig", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_sdkmessageprocessingstepsecureconfig");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_sdkmessageprocessingstepsecureconfig", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_sdkmessageprocessingstepsecureconfig", null, value);
 				this.OnPropertyChanged("userentityinstancedata_sdkmessageprocessingstepsecureconfig");
 			}
 		}
@@ -343,18 +343,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_sdkmessageprocessingstepsecureconfig")]
-		public DLaB.Xrm.Entities.SystemUser createdby_sdkmessageprocessingstepsecureconfig
+		public Entities.SystemUser createdby_sdkmessageprocessingstepsecureconfig
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdby_sdkmessageprocessingstepsecureconfig", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("createdby_sdkmessageprocessingstepsecureconfig", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("createdby_sdkmessageprocessingstepsecureconfig");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdby_sdkmessageprocessingstepsecureconfig", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("createdby_sdkmessageprocessingstepsecureconfig", null, value);
 				this.OnPropertyChanged("createdby_sdkmessageprocessingstepsecureconfig");
 			}
 		}
@@ -364,18 +364,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby
+		public Entities.SystemUser lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby");
 			}
 		}
@@ -385,18 +385,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby
+		public Entities.SystemUser lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby");
 			}
 		}
@@ -406,18 +406,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_sdkmessageprocessingstepsecureconfig")]
-		public DLaB.Xrm.Entities.SystemUser modifiedby_sdkmessageprocessingstepsecureconfig
+		public Entities.SystemUser modifiedby_sdkmessageprocessingstepsecureconfig
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("modifiedby_sdkmessageprocessingstepsecureconfig", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("modifiedby_sdkmessageprocessingstepsecureconfig", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("modifiedby_sdkmessageprocessingstepsecureconfig");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("modifiedby_sdkmessageprocessingstepsecureconfig", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("modifiedby_sdkmessageprocessingstepsecureconfig", null, value);
 				this.OnPropertyChanged("modifiedby_sdkmessageprocessingstepsecureconfig");
 			}
 		}
@@ -427,12 +427,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_sdkmessageprocessingstepsecureconfig")]
-		public DLaB.Xrm.Entities.Organization organization_sdkmessageprocessingstepsecureconfig
+		public Entities.Organization organization_sdkmessageprocessingstepsecureconfig
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_sdkmessageprocessingstepsecureconfig", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_sdkmessageprocessingstepsecureconfig", null);
 			}
 		}
 		

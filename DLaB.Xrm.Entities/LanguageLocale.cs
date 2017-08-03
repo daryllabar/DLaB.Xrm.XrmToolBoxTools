@@ -215,7 +215,7 @@ namespace DLaB.Xrm.Entities
 		/// State Code
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.LanguageLocaleState> statecode
+		public System.Nullable<Entities.LanguageLocaleState> statecode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -223,7 +223,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.LanguageLocaleState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.LanguageLocaleState), optionSet.Value)));
+					return ((Entities.LanguageLocaleState)(System.Enum.ToObject(typeof(Entities.LanguageLocaleState), optionSet.Value)));
 				}
 				else
 				{
@@ -283,18 +283,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N knowledgearticle_languagelocaleid
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_languagelocaleid")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.KnowledgeArticle> knowledgearticle_languagelocaleid
+		public System.Collections.Generic.IEnumerable<Entities.KnowledgeArticle> knowledgearticle_languagelocaleid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_languagelocaleid", null);
+				return this.GetRelatedEntities<Entities.KnowledgeArticle>("knowledgearticle_languagelocaleid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("knowledgearticle_languagelocaleid");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_languagelocaleid", null, value);
+				this.SetRelatedEntities<Entities.KnowledgeArticle>("knowledgearticle_languagelocaleid", null, value);
 				this.OnPropertyChanged("knowledgearticle_languagelocaleid");
 			}
 		}
@@ -304,12 +304,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("languagelocale_organization")]
-		public DLaB.Xrm.Entities.Organization languagelocale_organization
+		public Entities.Organization languagelocale_organization
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("languagelocale_organization", null);
+				return this.GetRelatedEntity<Entities.Organization>("languagelocale_organization", null);
 			}
 		}
 		

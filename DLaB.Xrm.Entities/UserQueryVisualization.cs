@@ -487,18 +487,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_userqueryvisualization
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_userqueryvisualization")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_userqueryvisualization
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_userqueryvisualization
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_userqueryvisualization", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_userqueryvisualization", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_userqueryvisualization");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_userqueryvisualization", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_userqueryvisualization", null, value);
 				this.OnPropertyChanged("userentityinstancedata_userqueryvisualization");
 			}
 		}
@@ -508,18 +508,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_userqueryvisualizations")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_userqueryvisualizations
+		public Entities.BusinessUnit business_unit_userqueryvisualizations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_userqueryvisualizations", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_userqueryvisualizations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_userqueryvisualizations");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_userqueryvisualizations", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_userqueryvisualizations", null, value);
 				this.OnPropertyChanged("business_unit_userqueryvisualizations");
 			}
 		}
@@ -529,18 +529,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_userqueryvisualization_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_userqueryvisualization_createdby
+		public Entities.SystemUser lk_userqueryvisualization_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_userqueryvisualization_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_userqueryvisualization_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_userqueryvisualization_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_userqueryvisualization_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_userqueryvisualization_createdby", null, value);
 				this.OnPropertyChanged("lk_userqueryvisualization_createdby");
 			}
 		}
@@ -550,18 +550,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_userqueryvisualization_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_userqueryvisualization_modifiedby
+		public Entities.SystemUser lk_userqueryvisualization_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_userqueryvisualization_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_userqueryvisualization_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_userqueryvisualization_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_userqueryvisualization_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_userqueryvisualization_modifiedby", null, value);
 				this.OnPropertyChanged("lk_userqueryvisualization_modifiedby");
 			}
 		}
@@ -571,18 +571,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_userqueryvisualizationbase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_userqueryvisualizationbase_createdonbehalfby
+		public Entities.SystemUser lk_userqueryvisualizationbase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_userqueryvisualizationbase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_userqueryvisualizationbase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_userqueryvisualizationbase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_userqueryvisualizationbase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_userqueryvisualizationbase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_userqueryvisualizationbase_createdonbehalfby");
 			}
 		}
@@ -592,18 +592,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_userqueryvisualizationbase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_userqueryvisualizationbase_modifiedonbehalfby
+		public Entities.SystemUser lk_userqueryvisualizationbase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_userqueryvisualizationbase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_userqueryvisualizationbase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_userqueryvisualizationbase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_userqueryvisualizationbase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_userqueryvisualizationbase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_userqueryvisualizationbase_modifiedonbehalfby");
 			}
 		}
@@ -613,18 +613,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_userqueryvisualizations")]
-		public DLaB.Xrm.Entities.Team team_userqueryvisualizations
+		public Entities.Team team_userqueryvisualizations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_userqueryvisualizations", null);
+				return this.GetRelatedEntity<Entities.Team>("team_userqueryvisualizations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_userqueryvisualizations");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_userqueryvisualizations", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_userqueryvisualizations", null, value);
 				this.OnPropertyChanged("team_userqueryvisualizations");
 			}
 		}
@@ -634,18 +634,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_userqueryvisualizations")]
-		public DLaB.Xrm.Entities.SystemUser user_userqueryvisualizations
+		public Entities.SystemUser user_userqueryvisualizations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_userqueryvisualizations", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_userqueryvisualizations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_userqueryvisualizations");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_userqueryvisualizations", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_userqueryvisualizations", null, value);
 				this.OnPropertyChanged("user_userqueryvisualizations");
 			}
 		}
@@ -655,18 +655,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("webresourceid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("webresource_userqueryvisualizations")]
-		public DLaB.Xrm.Entities.WebResource webresource_userqueryvisualizations
+		public Entities.WebResource webresource_userqueryvisualizations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.WebResource>("webresource_userqueryvisualizations", null);
+				return this.GetRelatedEntity<Entities.WebResource>("webresource_userqueryvisualizations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("webresource_userqueryvisualizations");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.WebResource>("webresource_userqueryvisualizations", null, value);
+				this.SetRelatedEntity<Entities.WebResource>("webresource_userqueryvisualizations", null, value);
 				this.OnPropertyChanged("webresource_userqueryvisualizations");
 			}
 		}

@@ -335,7 +335,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the import entity mapping.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.ImportEntityMappingState> StateCode
+		public System.Nullable<Entities.ImportEntityMappingState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -343,7 +343,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.ImportEntityMappingState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.ImportEntityMappingState), optionSet.Value)));
+					return ((Entities.ImportEntityMappingState)(System.Enum.ToObject(typeof(Entities.ImportEntityMappingState), optionSet.Value)));
 				}
 				else
 				{
@@ -396,18 +396,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_importentitymapping
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_importentitymapping")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_importentitymapping
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_importentitymapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_importentitymapping", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_importentitymapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_importentitymapping");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_importentitymapping", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_importentitymapping", null, value);
 				this.OnPropertyChanged("userentityinstancedata_importentitymapping");
 			}
 		}
@@ -417,18 +417,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importmapid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ImportEntityMapping_ImportMap")]
-		public DLaB.Xrm.Entities.ImportMap ImportEntityMapping_ImportMap
+		public Entities.ImportMap ImportEntityMapping_ImportMap
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ImportMap>("ImportEntityMapping_ImportMap", null);
+				return this.GetRelatedEntity<Entities.ImportMap>("ImportEntityMapping_ImportMap", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ImportEntityMapping_ImportMap");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ImportMap>("ImportEntityMapping_ImportMap", null, value);
+				this.SetRelatedEntity<Entities.ImportMap>("ImportEntityMapping_ImportMap", null, value);
 				this.OnPropertyChanged("ImportEntityMapping_ImportMap");
 			}
 		}
@@ -438,18 +438,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importentitymapping_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_importentitymapping_createdby
+		public Entities.SystemUser lk_importentitymapping_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importentitymapping_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_importentitymapping_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importentitymapping_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importentitymapping_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_importentitymapping_createdby", null, value);
 				this.OnPropertyChanged("lk_importentitymapping_createdby");
 			}
 		}
@@ -459,18 +459,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importentitymapping_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_importentitymapping_createdonbehalfby
+		public Entities.SystemUser lk_importentitymapping_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importentitymapping_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_importentitymapping_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importentitymapping_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importentitymapping_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_importentitymapping_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_importentitymapping_createdonbehalfby");
 			}
 		}
@@ -480,18 +480,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importentitymapping_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_importentitymapping_modifiedby
+		public Entities.SystemUser lk_importentitymapping_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importentitymapping_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_importentitymapping_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importentitymapping_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importentitymapping_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_importentitymapping_modifiedby", null, value);
 				this.OnPropertyChanged("lk_importentitymapping_modifiedby");
 			}
 		}
@@ -501,18 +501,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importentitymapping_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_importentitymapping_modifiedonbehalfby
+		public Entities.SystemUser lk_importentitymapping_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importentitymapping_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_importentitymapping_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importentitymapping_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importentitymapping_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_importentitymapping_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_importentitymapping_modifiedonbehalfby");
 			}
 		}

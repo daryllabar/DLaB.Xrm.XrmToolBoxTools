@@ -455,7 +455,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the Knowledge Article Incident
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.KnowledgeArticleIncidentState> statecode
+		public System.Nullable<Entities.KnowledgeArticleIncidentState> statecode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -463,7 +463,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.KnowledgeArticleIncidentState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.KnowledgeArticleIncidentState), optionSet.Value)));
+					return ((Entities.KnowledgeArticleIncidentState)(System.Enum.ToObject(typeof(Entities.KnowledgeArticleIncidentState), optionSet.Value)));
 				}
 				else
 				{
@@ -576,18 +576,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N knowledgearticleincident_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticleincident_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> knowledgearticleincident_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> knowledgearticleincident_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("knowledgearticleincident_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("knowledgearticleincident_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("knowledgearticleincident_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("knowledgearticleincident_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("knowledgearticleincident_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("knowledgearticleincident_principalobjectattributeaccess");
 			}
 		}
@@ -597,18 +597,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("knowledgearticleid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_knowledgearticles")]
-		public DLaB.Xrm.Entities.KnowledgeArticle incident_knowledgearticles
+		public Entities.KnowledgeArticle incident_knowledgearticles
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("incident_knowledgearticles", null);
+				return this.GetRelatedEntity<Entities.KnowledgeArticle>("incident_knowledgearticles", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("incident_knowledgearticles");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("incident_knowledgearticles", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeArticle>("incident_knowledgearticles", null, value);
 				this.OnPropertyChanged("incident_knowledgearticles");
 			}
 		}
@@ -618,18 +618,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("incidentid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_incidents")]
-		public DLaB.Xrm.Entities.Incident knowledgearticle_incidents
+		public Entities.Incident knowledgearticle_incidents
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Incident>("knowledgearticle_incidents", null);
+				return this.GetRelatedEntity<Entities.Incident>("knowledgearticle_incidents", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("knowledgearticle_incidents");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Incident>("knowledgearticle_incidents", null, value);
+				this.SetRelatedEntity<Entities.Incident>("knowledgearticle_incidents", null, value);
 				this.OnPropertyChanged("knowledgearticle_incidents");
 			}
 		}
@@ -639,18 +639,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_knowledgearticleincident_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_knowledgearticleincident_createdby
+		public Entities.SystemUser lk_knowledgearticleincident_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgearticleincident_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_knowledgearticleincident_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_knowledgearticleincident_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgearticleincident_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_knowledgearticleincident_createdby", null, value);
 				this.OnPropertyChanged("lk_knowledgearticleincident_createdby");
 			}
 		}
@@ -660,18 +660,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_knowledgearticleincident_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_knowledgearticleincident_createdonbehalfby
+		public Entities.SystemUser lk_knowledgearticleincident_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgearticleincident_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_knowledgearticleincident_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_knowledgearticleincident_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgearticleincident_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_knowledgearticleincident_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_knowledgearticleincident_createdonbehalfby");
 			}
 		}
@@ -681,18 +681,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_knowledgearticleincident_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_knowledgearticleincident_modifiedby
+		public Entities.SystemUser lk_knowledgearticleincident_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgearticleincident_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_knowledgearticleincident_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_knowledgearticleincident_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgearticleincident_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_knowledgearticleincident_modifiedby", null, value);
 				this.OnPropertyChanged("lk_knowledgearticleincident_modifiedby");
 			}
 		}
@@ -702,18 +702,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_knowledgearticleincident_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_knowledgearticleincident_modifiedonbehalfby
+		public Entities.SystemUser lk_knowledgearticleincident_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgearticleincident_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_knowledgearticleincident_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_knowledgearticleincident_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgearticleincident_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_knowledgearticleincident_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_knowledgearticleincident_modifiedonbehalfby");
 			}
 		}
@@ -723,12 +723,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_knowledgearticleincident")]
-		public DLaB.Xrm.Entities.TransactionCurrency transactioncurrency_knowledgearticleincident
+		public Entities.TransactionCurrency transactioncurrency_knowledgearticleincident
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_knowledgearticleincident", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_knowledgearticleincident", null);
 			}
 		}
 		

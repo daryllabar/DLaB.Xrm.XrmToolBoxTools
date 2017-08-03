@@ -428,18 +428,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("knowledgesearchmodelid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgesearchmodel_textanalyticsentitymapping")]
-		public DLaB.Xrm.Entities.KnowledgeSearchModel knowledgesearchmodel_textanalyticsentitymapping
+		public Entities.KnowledgeSearchModel knowledgesearchmodel_textanalyticsentitymapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeSearchModel>("knowledgesearchmodel_textanalyticsentitymapping", null);
+				return this.GetRelatedEntity<Entities.KnowledgeSearchModel>("knowledgesearchmodel_textanalyticsentitymapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("knowledgesearchmodel_textanalyticsentitymapping");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeSearchModel>("knowledgesearchmodel_textanalyticsentitymapping", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeSearchModel>("knowledgesearchmodel_textanalyticsentitymapping", null, value);
 				this.OnPropertyChanged("knowledgesearchmodel_textanalyticsentitymapping");
 			}
 		}
@@ -449,12 +449,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_textanalyticsentitymapping")]
-		public DLaB.Xrm.Entities.Organization organization_textanalyticsentitymapping
+		public Entities.Organization organization_textanalyticsentitymapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_textanalyticsentitymapping", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_textanalyticsentitymapping", null);
 			}
 		}
 		
@@ -463,18 +463,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("similarityruleid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("similarityrule_textanalyticsentitymapping")]
-		public DLaB.Xrm.Entities.SimilarityRule similarityrule_textanalyticsentitymapping
+		public Entities.SimilarityRule similarityrule_textanalyticsentitymapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SimilarityRule>("similarityrule_textanalyticsentitymapping", null);
+				return this.GetRelatedEntity<Entities.SimilarityRule>("similarityrule_textanalyticsentitymapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("similarityrule_textanalyticsentitymapping");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SimilarityRule>("similarityrule_textanalyticsentitymapping", null, value);
+				this.SetRelatedEntity<Entities.SimilarityRule>("similarityrule_textanalyticsentitymapping", null, value);
 				this.OnPropertyChanged("similarityrule_textanalyticsentitymapping");
 			}
 		}
@@ -484,18 +484,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("topicmodelconfigurationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("topicmodelconfiguration_textanalyticsentitymapping")]
-		public DLaB.Xrm.Entities.TopicModelConfiguration topicmodelconfiguration_textanalyticsentitymapping
+		public Entities.TopicModelConfiguration topicmodelconfiguration_textanalyticsentitymapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TopicModelConfiguration>("topicmodelconfiguration_textanalyticsentitymapping", null);
+				return this.GetRelatedEntity<Entities.TopicModelConfiguration>("topicmodelconfiguration_textanalyticsentitymapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("topicmodelconfiguration_textanalyticsentitymapping");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TopicModelConfiguration>("topicmodelconfiguration_textanalyticsentitymapping", null, value);
+				this.SetRelatedEntity<Entities.TopicModelConfiguration>("topicmodelconfiguration_textanalyticsentitymapping", null, value);
 				this.OnPropertyChanged("topicmodelconfiguration_textanalyticsentitymapping");
 			}
 		}

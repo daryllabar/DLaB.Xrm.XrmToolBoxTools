@@ -522,7 +522,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows the status of the topic model build
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.TopicModelState> StateCode
+		public System.Nullable<Entities.TopicModelState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -530,7 +530,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.TopicModelState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.TopicModelState), optionSet.Value)));
+					return ((Entities.TopicModelState)(System.Enum.ToObject(typeof(Entities.TopicModelState), optionSet.Value)));
 				}
 				else
 				{
@@ -660,18 +660,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N topicmodel_topicmodelconfiguration
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("topicmodel_topicmodelconfiguration")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.TopicModelConfiguration> topicmodel_topicmodelconfiguration
+		public System.Collections.Generic.IEnumerable<Entities.TopicModelConfiguration> topicmodel_topicmodelconfiguration
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.TopicModelConfiguration>("topicmodel_topicmodelconfiguration", null);
+				return this.GetRelatedEntities<Entities.TopicModelConfiguration>("topicmodel_topicmodelconfiguration", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("topicmodel_topicmodelconfiguration");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.TopicModelConfiguration>("topicmodel_topicmodelconfiguration", null, value);
+				this.SetRelatedEntities<Entities.TopicModelConfiguration>("topicmodel_topicmodelconfiguration", null, value);
 				this.OnPropertyChanged("topicmodel_topicmodelconfiguration");
 			}
 		}
@@ -680,18 +680,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N topicmodel_topicmodelexecutionhistory
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("topicmodel_topicmodelexecutionhistory")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.TopicModelExecutionHistory> topicmodel_topicmodelexecutionhistory
+		public System.Collections.Generic.IEnumerable<Entities.TopicModelExecutionHistory> topicmodel_topicmodelexecutionhistory
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.TopicModelExecutionHistory>("topicmodel_topicmodelexecutionhistory", null);
+				return this.GetRelatedEntities<Entities.TopicModelExecutionHistory>("topicmodel_topicmodelexecutionhistory", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("topicmodel_topicmodelexecutionhistory");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.TopicModelExecutionHistory>("topicmodel_topicmodelexecutionhistory", null, value);
+				this.SetRelatedEntities<Entities.TopicModelExecutionHistory>("topicmodel_topicmodelexecutionhistory", null, value);
 				this.OnPropertyChanged("topicmodel_topicmodelexecutionhistory");
 			}
 		}
@@ -701,18 +701,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("azureserviceconnectionid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("azureserviceconnection_topicmodel")]
-		public DLaB.Xrm.Entities.AzureServiceConnection azureserviceconnection_topicmodel
+		public Entities.AzureServiceConnection azureserviceconnection_topicmodel
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.AzureServiceConnection>("azureserviceconnection_topicmodel", null);
+				return this.GetRelatedEntity<Entities.AzureServiceConnection>("azureserviceconnection_topicmodel", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("azureserviceconnection_topicmodel");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.AzureServiceConnection>("azureserviceconnection_topicmodel", null, value);
+				this.SetRelatedEntity<Entities.AzureServiceConnection>("azureserviceconnection_topicmodel", null, value);
 				this.OnPropertyChanged("azureserviceconnection_topicmodel");
 			}
 		}
@@ -722,18 +722,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_topicmodel_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_topicmodel_createdby
+		public Entities.SystemUser lk_topicmodel_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_topicmodel_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_topicmodel_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_topicmodel_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_topicmodel_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_topicmodel_createdby", null, value);
 				this.OnPropertyChanged("lk_topicmodel_createdby");
 			}
 		}
@@ -743,18 +743,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_topicmodel_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_topicmodel_createdonbehalfby
+		public Entities.SystemUser lk_topicmodel_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_topicmodel_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_topicmodel_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_topicmodel_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_topicmodel_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_topicmodel_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_topicmodel_createdonbehalfby");
 			}
 		}
@@ -764,18 +764,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_topicmodel_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_topicmodel_modifiedby
+		public Entities.SystemUser lk_topicmodel_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_topicmodel_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_topicmodel_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_topicmodel_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_topicmodel_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_topicmodel_modifiedby", null, value);
 				this.OnPropertyChanged("lk_topicmodel_modifiedby");
 			}
 		}
@@ -785,18 +785,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_topicmodel_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_topicmodel_modifiedonbehalfby
+		public Entities.SystemUser lk_topicmodel_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_topicmodel_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_topicmodel_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_topicmodel_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_topicmodel_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_topicmodel_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_topicmodel_modifiedonbehalfby");
 			}
 		}
@@ -806,12 +806,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_topicmodel")]
-		public DLaB.Xrm.Entities.Organization organization_topicmodel
+		public Entities.Organization organization_topicmodel
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_topicmodel", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_topicmodel", null);
 			}
 		}
 		
@@ -820,18 +820,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("configurationused")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("topicmodelconfiguration_topicmodel")]
-		public DLaB.Xrm.Entities.TopicModelConfiguration topicmodelconfiguration_topicmodel
+		public Entities.TopicModelConfiguration topicmodelconfiguration_topicmodel
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TopicModelConfiguration>("topicmodelconfiguration_topicmodel", null);
+				return this.GetRelatedEntity<Entities.TopicModelConfiguration>("topicmodelconfiguration_topicmodel", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("topicmodelconfiguration_topicmodel");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TopicModelConfiguration>("topicmodelconfiguration_topicmodel", null, value);
+				this.SetRelatedEntity<Entities.TopicModelConfiguration>("topicmodelconfiguration_topicmodel", null, value);
 				this.OnPropertyChanged("topicmodelconfiguration_topicmodel");
 			}
 		}

@@ -737,7 +737,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the order close activity is open, completed, or canceled. By default, order close activities are completed.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.OrderCloseState> StateCode
+		public System.Nullable<Entities.OrderCloseState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -745,7 +745,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.OrderCloseState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.OrderCloseState), optionSet.Value)));
+					return ((Entities.OrderCloseState)(System.Enum.ToObject(typeof(Entities.OrderCloseState), optionSet.Value)));
 				}
 				else
 				{
@@ -885,18 +885,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N orderclose_activity_parties
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("orderclose_activity_parties")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> orderclose_activity_parties
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> orderclose_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("orderclose_activity_parties", null);
+				return this.GetRelatedEntities<Entities.ActivityParty>("orderclose_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("orderclose_activity_parties");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("orderclose_activity_parties", null, value);
+				this.SetRelatedEntities<Entities.ActivityParty>("orderclose_activity_parties", null, value);
 				this.OnPropertyChanged("orderclose_activity_parties");
 			}
 		}
@@ -905,18 +905,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N OrderClose_Annotation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("OrderClose_Annotation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> OrderClose_Annotation
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> OrderClose_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("OrderClose_Annotation", null);
+				return this.GetRelatedEntities<Entities.Annotation>("OrderClose_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("OrderClose_Annotation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("OrderClose_Annotation", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("OrderClose_Annotation", null, value);
 				this.OnPropertyChanged("OrderClose_Annotation");
 			}
 		}
@@ -925,18 +925,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N OrderClose_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("OrderClose_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> OrderClose_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> OrderClose_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("OrderClose_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("OrderClose_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("OrderClose_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("OrderClose_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("OrderClose_AsyncOperations", null, value);
 				this.OnPropertyChanged("OrderClose_AsyncOperations");
 			}
 		}
@@ -945,18 +945,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N OrderClose_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("OrderClose_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> OrderClose_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> OrderClose_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("OrderClose_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("OrderClose_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("OrderClose_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("OrderClose_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("OrderClose_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("OrderClose_BulkDeleteFailures");
 			}
 		}
@@ -965,18 +965,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_orderclose
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_orderclose")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_orderclose
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_orderclose
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_orderclose", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_orderclose", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_orderclose");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_orderclose", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_orderclose", null, value);
 				this.OnPropertyChanged("userentityinstancedata_orderclose");
 			}
 		}
@@ -986,18 +986,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("activity_pointer_order_close")]
-		public DLaB.Xrm.Entities.ActivityPointer activity_pointer_order_close
+		public Entities.ActivityPointer activity_pointer_order_close
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_order_close", null);
+				return this.GetRelatedEntity<Entities.ActivityPointer>("activity_pointer_order_close", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("activity_pointer_order_close");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_order_close", null, value);
+				this.SetRelatedEntity<Entities.ActivityPointer>("activity_pointer_order_close", null, value);
 				this.OnPropertyChanged("activity_pointer_order_close");
 			}
 		}
@@ -1007,18 +1007,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_order_close_activities")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_order_close_activities
+		public Entities.BusinessUnit business_unit_order_close_activities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_order_close_activities", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_order_close_activities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_order_close_activities");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_order_close_activities", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_order_close_activities", null, value);
 				this.OnPropertyChanged("business_unit_order_close_activities");
 			}
 		}
@@ -1028,12 +1028,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdbyexternalparty")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_externalparty_orderclose_createdby")]
-		public DLaB.Xrm.Entities.ExternalParty lk_externalparty_orderclose_createdby
+		public Entities.ExternalParty lk_externalparty_orderclose_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ExternalParty>("lk_externalparty_orderclose_createdby", null);
+				return this.GetRelatedEntity<Entities.ExternalParty>("lk_externalparty_orderclose_createdby", null);
 			}
 		}
 		
@@ -1042,12 +1042,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedbyexternalparty")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_externalparty_orderclose_modifiedby")]
-		public DLaB.Xrm.Entities.ExternalParty lk_externalparty_orderclose_modifiedby
+		public Entities.ExternalParty lk_externalparty_orderclose_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ExternalParty>("lk_externalparty_orderclose_modifiedby", null);
+				return this.GetRelatedEntity<Entities.ExternalParty>("lk_externalparty_orderclose_modifiedby", null);
 			}
 		}
 		
@@ -1056,18 +1056,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_orderclose_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_orderclose_createdby
+		public Entities.SystemUser lk_orderclose_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_orderclose_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_orderclose_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_orderclose_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_orderclose_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_orderclose_createdby", null, value);
 				this.OnPropertyChanged("lk_orderclose_createdby");
 			}
 		}
@@ -1077,18 +1077,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_orderclose_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_orderclose_createdonbehalfby
+		public Entities.SystemUser lk_orderclose_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_orderclose_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_orderclose_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_orderclose_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_orderclose_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_orderclose_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_orderclose_createdonbehalfby");
 			}
 		}
@@ -1098,18 +1098,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_orderclose_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_orderclose_modifiedby
+		public Entities.SystemUser lk_orderclose_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_orderclose_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_orderclose_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_orderclose_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_orderclose_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_orderclose_modifiedby", null, value);
 				this.OnPropertyChanged("lk_orderclose_modifiedby");
 			}
 		}
@@ -1119,18 +1119,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_orderclose_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_orderclose_modifiedonbehalfby
+		public Entities.SystemUser lk_orderclose_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_orderclose_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_orderclose_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_orderclose_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_orderclose_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_orderclose_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_orderclose_modifiedonbehalfby");
 			}
 		}
@@ -1140,18 +1140,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("salesorderid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesOrder_OrderClose")]
-		public DLaB.Xrm.Entities.SalesOrder SalesOrder_OrderClose
+		public Entities.SalesOrder SalesOrder_OrderClose
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("SalesOrder_OrderClose", null);
+				return this.GetRelatedEntity<Entities.SalesOrder>("SalesOrder_OrderClose", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SalesOrder_OrderClose");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("SalesOrder_OrderClose", null, value);
+				this.SetRelatedEntity<Entities.SalesOrder>("SalesOrder_OrderClose", null, value);
 				this.OnPropertyChanged("SalesOrder_OrderClose");
 			}
 		}
@@ -1161,18 +1161,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("serviceid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("service_orderclose")]
-		public DLaB.Xrm.Entities.Service service_orderclose
+		public Entities.Service service_orderclose
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Service>("service_orderclose", null);
+				return this.GetRelatedEntity<Entities.Service>("service_orderclose", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("service_orderclose");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Service>("service_orderclose", null, value);
+				this.SetRelatedEntity<Entities.Service>("service_orderclose", null, value);
 				this.OnPropertyChanged("service_orderclose");
 			}
 		}
@@ -1182,18 +1182,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_orderclose")]
-		public DLaB.Xrm.Entities.Team team_orderclose
+		public Entities.Team team_orderclose
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_orderclose", null);
+				return this.GetRelatedEntity<Entities.Team>("team_orderclose", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_orderclose");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_orderclose", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_orderclose", null, value);
 				this.OnPropertyChanged("team_orderclose");
 			}
 		}
@@ -1203,18 +1203,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_orderclose")]
-		public DLaB.Xrm.Entities.SystemUser user_orderclose
+		public Entities.SystemUser user_orderclose
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_orderclose", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_orderclose", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_orderclose");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_orderclose", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_orderclose", null, value);
 				this.OnPropertyChanged("user_orderclose");
 			}
 		}

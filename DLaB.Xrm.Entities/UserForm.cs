@@ -465,18 +465,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N socialinsightsconfiguration_userform
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("socialinsightsconfiguration_userform")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SocialInsightsConfiguration> socialinsightsconfiguration_userform
+		public System.Collections.Generic.IEnumerable<Entities.SocialInsightsConfiguration> socialinsightsconfiguration_userform
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SocialInsightsConfiguration>("socialinsightsconfiguration_userform", null);
+				return this.GetRelatedEntities<Entities.SocialInsightsConfiguration>("socialinsightsconfiguration_userform", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("socialinsightsconfiguration_userform");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SocialInsightsConfiguration>("socialinsightsconfiguration_userform", null, value);
+				this.SetRelatedEntities<Entities.SocialInsightsConfiguration>("socialinsightsconfiguration_userform", null, value);
 				this.OnPropertyChanged("socialinsightsconfiguration_userform");
 			}
 		}
@@ -485,18 +485,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_userform
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_userform")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_userform
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_userform
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_userform", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_userform", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_userform");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_userform", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_userform", null, value);
 				this.OnPropertyChanged("userentityinstancedata_userform");
 			}
 		}
@@ -505,18 +505,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N UserForm_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("UserForm_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> UserForm_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> UserForm_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("UserForm_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("UserForm_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("UserForm_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("UserForm_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("UserForm_AsyncOperations", null, value);
 				this.OnPropertyChanged("UserForm_AsyncOperations");
 			}
 		}
@@ -525,18 +525,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N UserForm_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("UserForm_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> UserForm_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> UserForm_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("UserForm_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("UserForm_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("UserForm_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("UserForm_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("UserForm_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("UserForm_BulkDeleteFailures");
 			}
 		}
@@ -546,18 +546,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_userform")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_userform
+		public Entities.BusinessUnit business_unit_userform
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_userform", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_userform", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_userform");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_userform", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_userform", null, value);
 				this.OnPropertyChanged("business_unit_userform");
 			}
 		}
@@ -567,18 +567,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_userform_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_userform_createdby
+		public Entities.SystemUser lk_userform_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_userform_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_userform_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_userform_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_userform_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_userform_createdby", null, value);
 				this.OnPropertyChanged("lk_userform_createdby");
 			}
 		}
@@ -588,18 +588,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_userform_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_userform_modifiedby
+		public Entities.SystemUser lk_userform_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_userform_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_userform_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_userform_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_userform_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_userform_modifiedby", null, value);
 				this.OnPropertyChanged("lk_userform_modifiedby");
 			}
 		}
@@ -609,18 +609,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_userformbase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_userformbase_createdonbehalfby
+		public Entities.SystemUser lk_userformbase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_userformbase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_userformbase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_userformbase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_userformbase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_userformbase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_userformbase_createdonbehalfby");
 			}
 		}
@@ -630,18 +630,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_userformbase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_userformbase_modifiedonbehalfby
+		public Entities.SystemUser lk_userformbase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_userformbase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_userformbase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_userformbase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_userformbase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_userformbase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_userformbase_modifiedonbehalfby");
 			}
 		}
@@ -651,18 +651,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_userform")]
-		public DLaB.Xrm.Entities.Team team_userform
+		public Entities.Team team_userform
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_userform", null);
+				return this.GetRelatedEntity<Entities.Team>("team_userform", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_userform");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_userform", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_userform", null, value);
 				this.OnPropertyChanged("team_userform");
 			}
 		}
@@ -672,18 +672,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_userform")]
-		public DLaB.Xrm.Entities.SystemUser user_userform
+		public Entities.SystemUser user_userform
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_userform", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_userform", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_userform");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_userform", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_userform", null, value);
 				this.OnPropertyChanged("user_userform");
 			}
 		}

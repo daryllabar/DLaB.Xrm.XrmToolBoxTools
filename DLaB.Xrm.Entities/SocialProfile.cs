@@ -547,7 +547,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the Social Profile
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.SocialProfileState> StateCode
+		public System.Nullable<Entities.SocialProfileState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -555,7 +555,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.SocialProfileState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.SocialProfileState), optionSet.Value)));
+					return ((Entities.SocialProfileState)(System.Enum.ToObject(typeof(Entities.SocialProfileState), optionSet.Value)));
 				}
 				else
 				{
@@ -695,18 +695,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N SocialProfile_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SocialProfile_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> SocialProfile_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> SocialProfile_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("SocialProfile_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("SocialProfile_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SocialProfile_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("SocialProfile_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("SocialProfile_AsyncOperations", null, value);
 				this.OnPropertyChanged("SocialProfile_AsyncOperations");
 			}
 		}
@@ -715,18 +715,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N socialprofile_cases
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("socialprofile_cases")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Incident> socialprofile_cases
+		public System.Collections.Generic.IEnumerable<Entities.Incident> socialprofile_cases
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Incident>("socialprofile_cases", null);
+				return this.GetRelatedEntities<Entities.Incident>("socialprofile_cases", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("socialprofile_cases");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Incident>("socialprofile_cases", null, value);
+				this.SetRelatedEntities<Entities.Incident>("socialprofile_cases", null, value);
 				this.OnPropertyChanged("socialprofile_cases");
 			}
 		}
@@ -735,18 +735,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N socialprofile_connections1
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("socialprofile_connections1")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> socialprofile_connections1
+		public System.Collections.Generic.IEnumerable<Entities.Connection> socialprofile_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("socialprofile_connections1", null);
+				return this.GetRelatedEntities<Entities.Connection>("socialprofile_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("socialprofile_connections1");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("socialprofile_connections1", null, value);
+				this.SetRelatedEntities<Entities.Connection>("socialprofile_connections1", null, value);
 				this.OnPropertyChanged("socialprofile_connections1");
 			}
 		}
@@ -755,18 +755,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N socialprofile_connections2
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("socialprofile_connections2")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> socialprofile_connections2
+		public System.Collections.Generic.IEnumerable<Entities.Connection> socialprofile_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("socialprofile_connections2", null);
+				return this.GetRelatedEntities<Entities.Connection>("socialprofile_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("socialprofile_connections2");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("socialprofile_connections2", null, value);
+				this.SetRelatedEntities<Entities.Connection>("socialprofile_connections2", null, value);
 				this.OnPropertyChanged("socialprofile_connections2");
 			}
 		}
@@ -775,18 +775,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N SocialProfile_DuplicateBaseRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SocialProfile_DuplicateBaseRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> SocialProfile_DuplicateBaseRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> SocialProfile_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("SocialProfile_DuplicateBaseRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("SocialProfile_DuplicateBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SocialProfile_DuplicateBaseRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("SocialProfile_DuplicateBaseRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("SocialProfile_DuplicateBaseRecord", null, value);
 				this.OnPropertyChanged("SocialProfile_DuplicateBaseRecord");
 			}
 		}
@@ -795,18 +795,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N SocialProfile_DuplicateMatchingRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SocialProfile_DuplicateMatchingRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> SocialProfile_DuplicateMatchingRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> SocialProfile_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("SocialProfile_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("SocialProfile_DuplicateMatchingRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SocialProfile_DuplicateMatchingRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("SocialProfile_DuplicateMatchingRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("SocialProfile_DuplicateMatchingRecord", null, value);
 				this.OnPropertyChanged("SocialProfile_DuplicateMatchingRecord");
 			}
 		}
@@ -815,18 +815,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N socialprofile_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("socialprofile_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> socialprofile_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> socialprofile_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("socialprofile_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("socialprofile_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("socialprofile_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("socialprofile_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("socialprofile_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("socialprofile_principalobjectattributeaccess");
 			}
 		}
@@ -835,18 +835,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N SocialProfile_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SocialProfile_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> SocialProfile_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> SocialProfile_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("SocialProfile_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("SocialProfile_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SocialProfile_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("SocialProfile_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("SocialProfile_ProcessSessions", null, value);
 				this.OnPropertyChanged("SocialProfile_ProcessSessions");
 			}
 		}
@@ -855,18 +855,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Socialprofile_SocialActivities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Socialprofile_SocialActivities")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SocialActivity> Socialprofile_SocialActivities
+		public System.Collections.Generic.IEnumerable<Entities.SocialActivity> Socialprofile_SocialActivities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SocialActivity>("Socialprofile_SocialActivities", null);
+				return this.GetRelatedEntities<Entities.SocialActivity>("Socialprofile_SocialActivities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Socialprofile_SocialActivities");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SocialActivity>("Socialprofile_SocialActivities", null, value);
+				this.SetRelatedEntities<Entities.SocialActivity>("Socialprofile_SocialActivities", null, value);
 				this.OnPropertyChanged("Socialprofile_SocialActivities");
 			}
 		}
@@ -876,18 +876,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_socialprofiles")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_socialprofiles
+		public Entities.BusinessUnit business_unit_socialprofiles
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_socialprofiles", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_socialprofiles", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_socialprofiles");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_socialprofiles", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_socialprofiles", null, value);
 				this.OnPropertyChanged("business_unit_socialprofiles");
 			}
 		}
@@ -897,18 +897,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_SocialProfile_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_SocialProfile_createdonbehalfby
+		public Entities.SystemUser lk_SocialProfile_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_SocialProfile_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_SocialProfile_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_SocialProfile_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_SocialProfile_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_SocialProfile_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_SocialProfile_createdonbehalfby");
 			}
 		}
@@ -918,18 +918,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_SocialProfile_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_SocialProfile_modifiedonbehalfby
+		public Entities.SystemUser lk_SocialProfile_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_SocialProfile_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_SocialProfile_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_SocialProfile_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_SocialProfile_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_SocialProfile_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_SocialProfile_modifiedonbehalfby");
 			}
 		}
@@ -939,18 +939,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customerid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Socialprofile_customer_accounts")]
-		public DLaB.Xrm.Entities.Account Socialprofile_customer_accounts
+		public Entities.Account Socialprofile_customer_accounts
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("Socialprofile_customer_accounts", null);
+				return this.GetRelatedEntity<Entities.Account>("Socialprofile_customer_accounts", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Socialprofile_customer_accounts");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("Socialprofile_customer_accounts", null, value);
+				this.SetRelatedEntity<Entities.Account>("Socialprofile_customer_accounts", null, value);
 				this.OnPropertyChanged("Socialprofile_customer_accounts");
 			}
 		}
@@ -960,18 +960,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customerid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Socialprofile_customer_contacts")]
-		public DLaB.Xrm.Entities.Contact Socialprofile_customer_contacts
+		public Entities.Contact Socialprofile_customer_contacts
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("Socialprofile_customer_contacts", null);
+				return this.GetRelatedEntity<Entities.Contact>("Socialprofile_customer_contacts", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Socialprofile_customer_contacts");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("Socialprofile_customer_contacts", null, value);
+				this.SetRelatedEntity<Entities.Contact>("Socialprofile_customer_contacts", null, value);
 				this.OnPropertyChanged("Socialprofile_customer_contacts");
 			}
 		}
@@ -981,18 +981,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("socialProfile_owning_user")]
-		public DLaB.Xrm.Entities.SystemUser socialProfile_owning_user
+		public Entities.SystemUser socialProfile_owning_user
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("socialProfile_owning_user", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("socialProfile_owning_user", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("socialProfile_owning_user");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("socialProfile_owning_user", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("socialProfile_owning_user", null, value);
 				this.OnPropertyChanged("socialProfile_owning_user");
 			}
 		}
@@ -1002,18 +1002,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_SocialProfile")]
-		public DLaB.Xrm.Entities.TransactionCurrency transactioncurrency_SocialProfile
+		public Entities.TransactionCurrency transactioncurrency_SocialProfile
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_SocialProfile", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_SocialProfile", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_SocialProfile");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_SocialProfile", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_SocialProfile", null, value);
 				this.OnPropertyChanged("transactioncurrency_SocialProfile");
 			}
 		}

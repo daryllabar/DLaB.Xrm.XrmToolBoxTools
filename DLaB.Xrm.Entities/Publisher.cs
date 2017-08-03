@@ -1401,18 +1401,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Publisher_DuplicateBaseRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Publisher_DuplicateBaseRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> Publisher_DuplicateBaseRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> Publisher_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Publisher_DuplicateBaseRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("Publisher_DuplicateBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Publisher_DuplicateBaseRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Publisher_DuplicateBaseRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("Publisher_DuplicateBaseRecord", null, value);
 				this.OnPropertyChanged("Publisher_DuplicateBaseRecord");
 			}
 		}
@@ -1421,18 +1421,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Publisher_DuplicateMatchingRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Publisher_DuplicateMatchingRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> Publisher_DuplicateMatchingRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> Publisher_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Publisher_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("Publisher_DuplicateMatchingRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Publisher_DuplicateMatchingRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Publisher_DuplicateMatchingRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("Publisher_DuplicateMatchingRecord", null, value);
 				this.OnPropertyChanged("Publisher_DuplicateMatchingRecord");
 			}
 		}
@@ -1441,18 +1441,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Publisher_PublisherAddress
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Publisher_PublisherAddress")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PublisherAddress> Publisher_PublisherAddress
+		public System.Collections.Generic.IEnumerable<Entities.PublisherAddress> Publisher_PublisherAddress
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PublisherAddress>("Publisher_PublisherAddress", null);
+				return this.GetRelatedEntities<Entities.PublisherAddress>("Publisher_PublisherAddress", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Publisher_PublisherAddress");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PublisherAddress>("Publisher_PublisherAddress", null, value);
+				this.SetRelatedEntities<Entities.PublisherAddress>("Publisher_PublisherAddress", null, value);
 				this.OnPropertyChanged("Publisher_PublisherAddress");
 			}
 		}
@@ -1461,18 +1461,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N publisher_solution
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("publisher_solution")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Solution> publisher_solution
+		public System.Collections.Generic.IEnumerable<Entities.Solution> publisher_solution
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Solution>("publisher_solution", null);
+				return this.GetRelatedEntities<Entities.Solution>("publisher_solution", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("publisher_solution");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Solution>("publisher_solution", null, value);
+				this.SetRelatedEntities<Entities.Solution>("publisher_solution", null, value);
 				this.OnPropertyChanged("publisher_solution");
 			}
 		}
@@ -1481,18 +1481,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_publisher
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_publisher")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_publisher
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_publisher
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_publisher", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_publisher", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_publisher");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_publisher", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_publisher", null, value);
 				this.OnPropertyChanged("userentityinstancedata_publisher");
 			}
 		}
@@ -1502,18 +1502,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_publisher_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_publisher_createdby
+		public Entities.SystemUser lk_publisher_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_publisher_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_publisher_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_publisher_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_publisher_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_publisher_createdby", null, value);
 				this.OnPropertyChanged("lk_publisher_createdby");
 			}
 		}
@@ -1523,18 +1523,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_publisher_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_publisher_modifiedby
+		public Entities.SystemUser lk_publisher_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_publisher_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_publisher_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_publisher_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_publisher_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_publisher_modifiedby", null, value);
 				this.OnPropertyChanged("lk_publisher_modifiedby");
 			}
 		}
@@ -1544,18 +1544,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_publisherbase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_publisherbase_createdonbehalfby
+		public Entities.SystemUser lk_publisherbase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_publisherbase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_publisherbase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_publisherbase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_publisherbase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_publisherbase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_publisherbase_createdonbehalfby");
 			}
 		}
@@ -1565,18 +1565,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_publisherbase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_publisherbase_modifiedonbehalfby
+		public Entities.SystemUser lk_publisherbase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_publisherbase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_publisherbase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_publisherbase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_publisherbase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_publisherbase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_publisherbase_modifiedonbehalfby");
 			}
 		}
@@ -1586,12 +1586,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_publisher")]
-		public DLaB.Xrm.Entities.Organization organization_publisher
+		public Entities.Organization organization_publisher
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_publisher", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_publisher", null);
 			}
 		}
 		

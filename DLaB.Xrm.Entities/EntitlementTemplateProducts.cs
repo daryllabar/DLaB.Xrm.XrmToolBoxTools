@@ -150,18 +150,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N product_entitlementtemplate_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("product_entitlementtemplate_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Product> product_entitlementtemplate_association
+		public System.Collections.Generic.IEnumerable<Entities.Product> product_entitlementtemplate_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Product>("product_entitlementtemplate_association", null);
+				return this.GetRelatedEntities<Entities.Product>("product_entitlementtemplate_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("product_entitlementtemplate_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Product>("product_entitlementtemplate_association", null, value);
+				this.SetRelatedEntities<Entities.Product>("product_entitlementtemplate_association", null, value);
 				this.OnPropertyChanged("product_entitlementtemplate_association");
 			}
 		}

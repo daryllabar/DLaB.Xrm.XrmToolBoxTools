@@ -484,18 +484,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_reportentity
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_reportentity")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_reportentity
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_reportentity
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_reportentity", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_reportentity", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_reportentity");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_reportentity", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_reportentity", null, value);
 				this.OnPropertyChanged("userentityinstancedata_reportentity");
 			}
 		}
@@ -505,18 +505,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_reportentity_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_reportentity_createdonbehalfby
+		public Entities.SystemUser lk_reportentity_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportentity_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_reportentity_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_reportentity_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportentity_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_reportentity_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_reportentity_createdonbehalfby");
 			}
 		}
@@ -526,18 +526,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_reportentity_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_reportentity_modifiedonbehalfby
+		public Entities.SystemUser lk_reportentity_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportentity_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_reportentity_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_reportentity_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportentity_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_reportentity_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_reportentity_modifiedonbehalfby");
 			}
 		}
@@ -547,18 +547,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_reportentitybase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_reportentitybase_createdby
+		public Entities.SystemUser lk_reportentitybase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportentitybase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_reportentitybase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_reportentitybase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportentitybase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_reportentitybase_createdby", null, value);
 				this.OnPropertyChanged("lk_reportentitybase_createdby");
 			}
 		}
@@ -568,18 +568,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_reportentitybase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_reportentitybase_modifiedby
+		public Entities.SystemUser lk_reportentitybase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportentitybase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_reportentitybase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_reportentitybase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportentitybase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_reportentitybase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_reportentitybase_modifiedby");
 			}
 		}
@@ -589,18 +589,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("reportid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("report_reportentities")]
-		public DLaB.Xrm.Entities.Report report_reportentities
+		public Entities.Report report_reportentities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Report>("report_reportentities", null);
+				return this.GetRelatedEntity<Entities.Report>("report_reportentities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("report_reportentities");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Report>("report_reportentities", null, value);
+				this.SetRelatedEntity<Entities.Report>("report_reportentities", null, value);
 				this.OnPropertyChanged("report_reportentities");
 			}
 		}

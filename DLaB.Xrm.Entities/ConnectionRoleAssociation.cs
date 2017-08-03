@@ -164,18 +164,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_connectionroleassociation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_connectionroleassociation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_connectionroleassociation
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_connectionroleassociation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_connectionroleassociation", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_connectionroleassociation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_connectionroleassociation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_connectionroleassociation", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_connectionroleassociation", null, value);
 				this.OnPropertyChanged("userentityinstancedata_connectionroleassociation");
 			}
 		}
@@ -184,18 +184,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N connectionroleassociation_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("connectionroleassociation_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ConnectionRole> connectionroleassociation_association
+		public System.Collections.Generic.IEnumerable<Entities.ConnectionRole> connectionroleassociation_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ConnectionRole>("connectionroleassociation_association", null);
+				return this.GetRelatedEntities<Entities.ConnectionRole>("connectionroleassociation_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("connectionroleassociation_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ConnectionRole>("connectionroleassociation_association", null, value);
+				this.SetRelatedEntities<Entities.ConnectionRole>("connectionroleassociation_association", null, value);
 				this.OnPropertyChanged("connectionroleassociation_association");
 			}
 		}

@@ -944,7 +944,7 @@ namespace DLaB.Xrm.Entities
 		/// Enter the account, contact, lead, user, or other equipment resources that are not needed at the recurring appointment, but can optionally attend.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("optionalattendees")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> OptionalAttendees
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> OptionalAttendees
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -953,7 +953,7 @@ namespace DLaB.Xrm.Entities
 				if (((collection != null) 
 							&& (collection.Entities != null)))
 				{
-					return System.Linq.Enumerable.Cast<DLaB.Xrm.Entities.ActivityParty>(collection.Entities);
+					return System.Linq.Enumerable.Cast<Entities.ActivityParty>(collection.Entities);
 				}
 				else
 				{
@@ -980,7 +980,7 @@ namespace DLaB.Xrm.Entities
 		/// Enter the user who is in charge of coordinating or leading the recurring appointment to make sure the appointment is displayed in the user's My Activities view.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizer")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> Organizer
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> Organizer
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -989,7 +989,7 @@ namespace DLaB.Xrm.Entities
 				if (((collection != null) 
 							&& (collection.Entities != null)))
 				{
-					return System.Linq.Enumerable.Cast<DLaB.Xrm.Entities.ActivityParty>(collection.Entities);
+					return System.Linq.Enumerable.Cast<Entities.ActivityParty>(collection.Entities);
 				}
 				else
 				{
@@ -1276,7 +1276,7 @@ namespace DLaB.Xrm.Entities
 		/// Enter the account, contact, lead, user, or other equipment resources that are required to attend the recurring appointment.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("requiredattendees")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> RequiredAttendees
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> RequiredAttendees
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -1285,7 +1285,7 @@ namespace DLaB.Xrm.Entities
 				if (((collection != null) 
 							&& (collection.Entities != null)))
 				{
-					return System.Linq.Enumerable.Cast<DLaB.Xrm.Entities.ActivityParty>(collection.Entities);
+					return System.Linq.Enumerable.Cast<Entities.ActivityParty>(collection.Entities);
 				}
 				else
 				{
@@ -1431,7 +1431,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the recurring appointment is open, scheduled, completed, or canceled. Completed and canceled appointments are read-only and can't be edited.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.RecurringAppointmentMasterState> StateCode
+		public System.Nullable<Entities.RecurringAppointmentMasterState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -1439,7 +1439,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.RecurringAppointmentMasterState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.RecurringAppointmentMasterState), optionSet.Value)));
+					return ((Entities.RecurringAppointmentMasterState)(System.Enum.ToObject(typeof(Entities.RecurringAppointmentMasterState), optionSet.Value)));
 				}
 				else
 				{
@@ -1639,18 +1639,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N recurringappointmentmaster_activity_parties
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recurringappointmentmaster_activity_parties")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> recurringappointmentmaster_activity_parties
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> recurringappointmentmaster_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("recurringappointmentmaster_activity_parties", null);
+				return this.GetRelatedEntities<Entities.ActivityParty>("recurringappointmentmaster_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("recurringappointmentmaster_activity_parties");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("recurringappointmentmaster_activity_parties", null, value);
+				this.SetRelatedEntities<Entities.ActivityParty>("recurringappointmentmaster_activity_parties", null, value);
 				this.OnPropertyChanged("recurringappointmentmaster_activity_parties");
 			}
 		}
@@ -1659,18 +1659,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N RecurringAppointmentMaster_Annotation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("RecurringAppointmentMaster_Annotation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> RecurringAppointmentMaster_Annotation
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> RecurringAppointmentMaster_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("RecurringAppointmentMaster_Annotation", null);
+				return this.GetRelatedEntities<Entities.Annotation>("RecurringAppointmentMaster_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("RecurringAppointmentMaster_Annotation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("RecurringAppointmentMaster_Annotation", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("RecurringAppointmentMaster_Annotation", null, value);
 				this.OnPropertyChanged("RecurringAppointmentMaster_Annotation");
 			}
 		}
@@ -1679,18 +1679,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N recurringappointmentmaster_appointment
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recurringappointmentmaster_appointment")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Appointment> recurringappointmentmaster_appointment
+		public System.Collections.Generic.IEnumerable<Entities.Appointment> recurringappointmentmaster_appointment
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Appointment>("recurringappointmentmaster_appointment", null);
+				return this.GetRelatedEntities<Entities.Appointment>("recurringappointmentmaster_appointment", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("recurringappointmentmaster_appointment");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Appointment>("recurringappointmentmaster_appointment", null, value);
+				this.SetRelatedEntities<Entities.Appointment>("recurringappointmentmaster_appointment", null, value);
 				this.OnPropertyChanged("recurringappointmentmaster_appointment");
 			}
 		}
@@ -1699,18 +1699,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N RecurringAppointmentMaster_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("RecurringAppointmentMaster_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> RecurringAppointmentMaster_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> RecurringAppointmentMaster_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("RecurringAppointmentMaster_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("RecurringAppointmentMaster_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("RecurringAppointmentMaster_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("RecurringAppointmentMaster_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("RecurringAppointmentMaster_AsyncOperations", null, value);
 				this.OnPropertyChanged("RecurringAppointmentMaster_AsyncOperations");
 			}
 		}
@@ -1719,18 +1719,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N RecurringAppointmentMaster_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("RecurringAppointmentMaster_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> RecurringAppointmentMaster_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> RecurringAppointmentMaster_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("RecurringAppointmentMaster_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("RecurringAppointmentMaster_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("RecurringAppointmentMaster_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("RecurringAppointmentMaster_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("RecurringAppointmentMaster_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("RecurringAppointmentMaster_BulkDeleteFailures");
 			}
 		}
@@ -1739,18 +1739,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N recurringappointmentmaster_campaignresponse
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recurringappointmentmaster_campaignresponse")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.CampaignResponse> recurringappointmentmaster_campaignresponse
+		public System.Collections.Generic.IEnumerable<Entities.CampaignResponse> recurringappointmentmaster_campaignresponse
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.CampaignResponse>("recurringappointmentmaster_campaignresponse", null);
+				return this.GetRelatedEntities<Entities.CampaignResponse>("recurringappointmentmaster_campaignresponse", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("recurringappointmentmaster_campaignresponse");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.CampaignResponse>("recurringappointmentmaster_campaignresponse", null, value);
+				this.SetRelatedEntities<Entities.CampaignResponse>("recurringappointmentmaster_campaignresponse", null, value);
 				this.OnPropertyChanged("recurringappointmentmaster_campaignresponse");
 			}
 		}
@@ -1759,18 +1759,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N recurringappointmentmaster_connections1
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recurringappointmentmaster_connections1")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> recurringappointmentmaster_connections1
+		public System.Collections.Generic.IEnumerable<Entities.Connection> recurringappointmentmaster_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("recurringappointmentmaster_connections1", null);
+				return this.GetRelatedEntities<Entities.Connection>("recurringappointmentmaster_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("recurringappointmentmaster_connections1");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("recurringappointmentmaster_connections1", null, value);
+				this.SetRelatedEntities<Entities.Connection>("recurringappointmentmaster_connections1", null, value);
 				this.OnPropertyChanged("recurringappointmentmaster_connections1");
 			}
 		}
@@ -1779,18 +1779,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N recurringappointmentmaster_connections2
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recurringappointmentmaster_connections2")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> recurringappointmentmaster_connections2
+		public System.Collections.Generic.IEnumerable<Entities.Connection> recurringappointmentmaster_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("recurringappointmentmaster_connections2", null);
+				return this.GetRelatedEntities<Entities.Connection>("recurringappointmentmaster_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("recurringappointmentmaster_connections2");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("recurringappointmentmaster_connections2", null, value);
+				this.SetRelatedEntities<Entities.Connection>("recurringappointmentmaster_connections2", null, value);
 				this.OnPropertyChanged("recurringappointmentmaster_connections2");
 			}
 		}
@@ -1799,18 +1799,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N RecurringAppointmentMaster_DuplicateBaseRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("RecurringAppointmentMaster_DuplicateBaseRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> RecurringAppointmentMaster_DuplicateBaseRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> RecurringAppointmentMaster_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("RecurringAppointmentMaster_DuplicateBaseRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("RecurringAppointmentMaster_DuplicateBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("RecurringAppointmentMaster_DuplicateBaseRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("RecurringAppointmentMaster_DuplicateBaseRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("RecurringAppointmentMaster_DuplicateBaseRecord", null, value);
 				this.OnPropertyChanged("RecurringAppointmentMaster_DuplicateBaseRecord");
 			}
 		}
@@ -1819,18 +1819,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N RecurringAppointmentMaster_DuplicateMatchingRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("RecurringAppointmentMaster_DuplicateMatchingRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> RecurringAppointmentMaster_DuplicateMatchingRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> RecurringAppointmentMaster_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("RecurringAppointmentMaster_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("RecurringAppointmentMaster_DuplicateMatchingRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("RecurringAppointmentMaster_DuplicateMatchingRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("RecurringAppointmentMaster_DuplicateMatchingRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("RecurringAppointmentMaster_DuplicateMatchingRecord", null, value);
 				this.OnPropertyChanged("RecurringAppointmentMaster_DuplicateMatchingRecord");
 			}
 		}
@@ -1839,18 +1839,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N recurringappointmentmaster_PostFollows
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recurringappointmentmaster_PostFollows")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PostFollow> recurringappointmentmaster_PostFollows
+		public System.Collections.Generic.IEnumerable<Entities.PostFollow> recurringappointmentmaster_PostFollows
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PostFollow>("recurringappointmentmaster_PostFollows", null);
+				return this.GetRelatedEntities<Entities.PostFollow>("recurringappointmentmaster_PostFollows", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("recurringappointmentmaster_PostFollows");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PostFollow>("recurringappointmentmaster_PostFollows", null, value);
+				this.SetRelatedEntities<Entities.PostFollow>("recurringappointmentmaster_PostFollows", null, value);
 				this.OnPropertyChanged("recurringappointmentmaster_PostFollows");
 			}
 		}
@@ -1859,18 +1859,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N recurringappointmentmaster_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recurringappointmentmaster_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> recurringappointmentmaster_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> recurringappointmentmaster_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("recurringappointmentmaster_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("recurringappointmentmaster_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("recurringappointmentmaster_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("recurringappointmentmaster_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("recurringappointmentmaster_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("recurringappointmentmaster_principalobjectattributeaccess");
 			}
 		}
@@ -1879,18 +1879,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N RecurringAppointmentMaster_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("RecurringAppointmentMaster_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> RecurringAppointmentMaster_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> RecurringAppointmentMaster_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("RecurringAppointmentMaster_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("RecurringAppointmentMaster_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("RecurringAppointmentMaster_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("RecurringAppointmentMaster_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("RecurringAppointmentMaster_ProcessSessions", null, value);
 				this.OnPropertyChanged("RecurringAppointmentMaster_ProcessSessions");
 			}
 		}
@@ -1899,18 +1899,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N RecurringAppointmentMaster_QueueItem
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("RecurringAppointmentMaster_QueueItem")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.QueueItem> RecurringAppointmentMaster_QueueItem
+		public System.Collections.Generic.IEnumerable<Entities.QueueItem> RecurringAppointmentMaster_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.QueueItem>("RecurringAppointmentMaster_QueueItem", null);
+				return this.GetRelatedEntities<Entities.QueueItem>("RecurringAppointmentMaster_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("RecurringAppointmentMaster_QueueItem");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.QueueItem>("RecurringAppointmentMaster_QueueItem", null, value);
+				this.SetRelatedEntities<Entities.QueueItem>("RecurringAppointmentMaster_QueueItem", null, value);
 				this.OnPropertyChanged("RecurringAppointmentMaster_QueueItem");
 			}
 		}
@@ -1919,18 +1919,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_recurringappointmentmaster
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_recurringappointmentmaster")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_recurringappointmentmaster
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_recurringappointmentmaster
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_recurringappointmentmaster", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_recurringappointmentmaster", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_recurringappointmentmaster");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_recurringappointmentmaster", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_recurringappointmentmaster", null, value);
 				this.OnPropertyChanged("userentityinstancedata_recurringappointmentmaster");
 			}
 		}
@@ -1940,18 +1940,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Account_RecurringAppointmentMasters")]
-		public DLaB.Xrm.Entities.Account Account_RecurringAppointmentMasters
+		public Entities.Account Account_RecurringAppointmentMasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_RecurringAppointmentMasters", null);
+				return this.GetRelatedEntity<Entities.Account>("Account_RecurringAppointmentMasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Account_RecurringAppointmentMasters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_RecurringAppointmentMasters", null, value);
+				this.SetRelatedEntity<Entities.Account>("Account_RecurringAppointmentMasters", null, value);
 				this.OnPropertyChanged("Account_RecurringAppointmentMasters");
 			}
 		}
@@ -1961,18 +1961,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("activity_pointer_recurringappointmentmaster")]
-		public DLaB.Xrm.Entities.ActivityPointer activity_pointer_recurringappointmentmaster
+		public Entities.ActivityPointer activity_pointer_recurringappointmentmaster
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_recurringappointmentmaster", null);
+				return this.GetRelatedEntity<Entities.ActivityPointer>("activity_pointer_recurringappointmentmaster", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("activity_pointer_recurringappointmentmaster");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_recurringappointmentmaster", null, value);
+				this.SetRelatedEntity<Entities.ActivityPointer>("activity_pointer_recurringappointmentmaster", null, value);
 				this.OnPropertyChanged("activity_pointer_recurringappointmentmaster");
 			}
 		}
@@ -1982,18 +1982,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_RecurringAppointmentMaster")]
-		public DLaB.Xrm.Entities.BulkOperation BulkOperation_RecurringAppointmentMaster
+		public Entities.BulkOperation BulkOperation_RecurringAppointmentMaster
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BulkOperation>("BulkOperation_RecurringAppointmentMaster", null);
+				return this.GetRelatedEntity<Entities.BulkOperation>("BulkOperation_RecurringAppointmentMaster", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperation_RecurringAppointmentMaster");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BulkOperation>("BulkOperation_RecurringAppointmentMaster", null, value);
+				this.SetRelatedEntity<Entities.BulkOperation>("BulkOperation_RecurringAppointmentMaster", null, value);
 				this.OnPropertyChanged("BulkOperation_RecurringAppointmentMaster");
 			}
 		}
@@ -2003,18 +2003,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_recurringappointmentmaster_activities")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_recurringappointmentmaster_activities
+		public Entities.BusinessUnit business_unit_recurringappointmentmaster_activities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_recurringappointmentmaster_activities", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_recurringappointmentmaster_activities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_recurringappointmentmaster_activities");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_recurringappointmentmaster_activities", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_recurringappointmentmaster_activities", null, value);
 				this.OnPropertyChanged("business_unit_recurringappointmentmaster_activities");
 			}
 		}
@@ -2024,18 +2024,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Campaign_RecurringAppointmentMasters")]
-		public DLaB.Xrm.Entities.Campaign Campaign_RecurringAppointmentMasters
+		public Entities.Campaign Campaign_RecurringAppointmentMasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Campaign>("Campaign_RecurringAppointmentMasters", null);
+				return this.GetRelatedEntity<Entities.Campaign>("Campaign_RecurringAppointmentMasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Campaign_RecurringAppointmentMasters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Campaign>("Campaign_RecurringAppointmentMasters", null, value);
+				this.SetRelatedEntity<Entities.Campaign>("Campaign_RecurringAppointmentMasters", null, value);
 				this.OnPropertyChanged("Campaign_RecurringAppointmentMasters");
 			}
 		}
@@ -2045,18 +2045,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignActivity_RecurringAppointmentMasters")]
-		public DLaB.Xrm.Entities.CampaignActivity CampaignActivity_RecurringAppointmentMasters
+		public Entities.CampaignActivity CampaignActivity_RecurringAppointmentMasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("CampaignActivity_RecurringAppointmentMasters", null);
+				return this.GetRelatedEntity<Entities.CampaignActivity>("CampaignActivity_RecurringAppointmentMasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CampaignActivity_RecurringAppointmentMasters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("CampaignActivity_RecurringAppointmentMasters", null, value);
+				this.SetRelatedEntity<Entities.CampaignActivity>("CampaignActivity_RecurringAppointmentMasters", null, value);
 				this.OnPropertyChanged("CampaignActivity_RecurringAppointmentMasters");
 			}
 		}
@@ -2066,18 +2066,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contact_RecurringAppointmentMasters")]
-		public DLaB.Xrm.Entities.Contact Contact_RecurringAppointmentMasters
+		public Entities.Contact Contact_RecurringAppointmentMasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_RecurringAppointmentMasters", null);
+				return this.GetRelatedEntity<Entities.Contact>("Contact_RecurringAppointmentMasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Contact_RecurringAppointmentMasters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_RecurringAppointmentMasters", null, value);
+				this.SetRelatedEntity<Entities.Contact>("Contact_RecurringAppointmentMasters", null, value);
 				this.OnPropertyChanged("Contact_RecurringAppointmentMasters");
 			}
 		}
@@ -2087,18 +2087,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contract_RecurringAppointmentMasters")]
-		public DLaB.Xrm.Entities.Contract Contract_RecurringAppointmentMasters
+		public Entities.Contract Contract_RecurringAppointmentMasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contract>("Contract_RecurringAppointmentMasters", null);
+				return this.GetRelatedEntity<Entities.Contract>("Contract_RecurringAppointmentMasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Contract_RecurringAppointmentMasters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contract>("Contract_RecurringAppointmentMasters", null, value);
+				this.SetRelatedEntity<Entities.Contract>("Contract_RecurringAppointmentMasters", null, value);
 				this.OnPropertyChanged("Contract_RecurringAppointmentMasters");
 			}
 		}
@@ -2108,18 +2108,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_RecurringAppointmentMasters")]
-		public DLaB.Xrm.Entities.Entitlement entitlement_RecurringAppointmentMasters
+		public Entities.Entitlement entitlement_RecurringAppointmentMasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_RecurringAppointmentMasters", null);
+				return this.GetRelatedEntity<Entities.Entitlement>("entitlement_RecurringAppointmentMasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_RecurringAppointmentMasters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_RecurringAppointmentMasters", null, value);
+				this.SetRelatedEntity<Entities.Entitlement>("entitlement_RecurringAppointmentMasters", null, value);
 				this.OnPropertyChanged("entitlement_RecurringAppointmentMasters");
 			}
 		}
@@ -2129,18 +2129,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlementtemplate_RecurringAppointmentMasters")]
-		public DLaB.Xrm.Entities.EntitlementTemplate entitlementtemplate_RecurringAppointmentMasters
+		public Entities.EntitlementTemplate entitlementtemplate_RecurringAppointmentMasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplate_RecurringAppointmentMasters", null);
+				return this.GetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplate_RecurringAppointmentMasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlementtemplate_RecurringAppointmentMasters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplate_RecurringAppointmentMasters", null, value);
+				this.SetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplate_RecurringAppointmentMasters", null, value);
 				this.OnPropertyChanged("entitlementtemplate_RecurringAppointmentMasters");
 			}
 		}
@@ -2150,18 +2150,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Incident_RecurringAppointmentMasters")]
-		public DLaB.Xrm.Entities.Incident Incident_RecurringAppointmentMasters
+		public Entities.Incident Incident_RecurringAppointmentMasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_RecurringAppointmentMasters", null);
+				return this.GetRelatedEntity<Entities.Incident>("Incident_RecurringAppointmentMasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Incident_RecurringAppointmentMasters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_RecurringAppointmentMasters", null, value);
+				this.SetRelatedEntity<Entities.Incident>("Incident_RecurringAppointmentMasters", null, value);
 				this.OnPropertyChanged("Incident_RecurringAppointmentMasters");
 			}
 		}
@@ -2171,18 +2171,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Invoice_RecurringAppointmentMasters")]
-		public DLaB.Xrm.Entities.Invoice Invoice_RecurringAppointmentMasters
+		public Entities.Invoice Invoice_RecurringAppointmentMasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Invoice>("Invoice_RecurringAppointmentMasters", null);
+				return this.GetRelatedEntity<Entities.Invoice>("Invoice_RecurringAppointmentMasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Invoice_RecurringAppointmentMasters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Invoice>("Invoice_RecurringAppointmentMasters", null, value);
+				this.SetRelatedEntity<Entities.Invoice>("Invoice_RecurringAppointmentMasters", null, value);
 				this.OnPropertyChanged("Invoice_RecurringAppointmentMasters");
 			}
 		}
@@ -2192,18 +2192,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeArticle_RecurringAppointmentMasters")]
-		public DLaB.Xrm.Entities.KnowledgeArticle KnowledgeArticle_RecurringAppointmentMasters
+		public Entities.KnowledgeArticle KnowledgeArticle_RecurringAppointmentMasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("KnowledgeArticle_RecurringAppointmentMasters", null);
+				return this.GetRelatedEntity<Entities.KnowledgeArticle>("KnowledgeArticle_RecurringAppointmentMasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeArticle_RecurringAppointmentMasters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("KnowledgeArticle_RecurringAppointmentMasters", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeArticle>("KnowledgeArticle_RecurringAppointmentMasters", null, value);
 				this.OnPropertyChanged("KnowledgeArticle_RecurringAppointmentMasters");
 			}
 		}
@@ -2213,18 +2213,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_RecurringAppointmentMasters")]
-		public DLaB.Xrm.Entities.KnowledgeBaseRecord KnowledgeBaseRecord_RecurringAppointmentMasters
+		public Entities.KnowledgeBaseRecord KnowledgeBaseRecord_RecurringAppointmentMasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_RecurringAppointmentMasters", null);
+				return this.GetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_RecurringAppointmentMasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_RecurringAppointmentMasters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_RecurringAppointmentMasters", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_RecurringAppointmentMasters", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_RecurringAppointmentMasters");
 			}
 		}
@@ -2234,18 +2234,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_RecurringAppointmentMasters")]
-		public DLaB.Xrm.Entities.Lead Lead_RecurringAppointmentMasters
+		public Entities.Lead Lead_RecurringAppointmentMasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Lead>("Lead_RecurringAppointmentMasters", null);
+				return this.GetRelatedEntity<Entities.Lead>("Lead_RecurringAppointmentMasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_RecurringAppointmentMasters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Lead>("Lead_RecurringAppointmentMasters", null, value);
+				this.SetRelatedEntity<Entities.Lead>("Lead_RecurringAppointmentMasters", null, value);
 				this.OnPropertyChanged("Lead_RecurringAppointmentMasters");
 			}
 		}
@@ -2255,18 +2255,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_recurringappointmentmaster_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_recurringappointmentmaster_createdby
+		public Entities.SystemUser lk_recurringappointmentmaster_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recurringappointmentmaster_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_recurringappointmentmaster_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_recurringappointmentmaster_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recurringappointmentmaster_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_recurringappointmentmaster_createdby", null, value);
 				this.OnPropertyChanged("lk_recurringappointmentmaster_createdby");
 			}
 		}
@@ -2276,18 +2276,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_recurringappointmentmaster_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_recurringappointmentmaster_createdonbehalfby
+		public Entities.SystemUser lk_recurringappointmentmaster_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recurringappointmentmaster_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_recurringappointmentmaster_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_recurringappointmentmaster_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recurringappointmentmaster_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_recurringappointmentmaster_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_recurringappointmentmaster_createdonbehalfby");
 			}
 		}
@@ -2297,18 +2297,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_recurringappointmentmaster_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_recurringappointmentmaster_modifiedby
+		public Entities.SystemUser lk_recurringappointmentmaster_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recurringappointmentmaster_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_recurringappointmentmaster_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_recurringappointmentmaster_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recurringappointmentmaster_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_recurringappointmentmaster_modifiedby", null, value);
 				this.OnPropertyChanged("lk_recurringappointmentmaster_modifiedby");
 			}
 		}
@@ -2318,18 +2318,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_recurringappointmentmaster_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_recurringappointmentmaster_modifiedonbehalfby
+		public Entities.SystemUser lk_recurringappointmentmaster_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recurringappointmentmaster_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_recurringappointmentmaster_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_recurringappointmentmaster_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recurringappointmentmaster_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_recurringappointmentmaster_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_recurringappointmentmaster_modifiedonbehalfby");
 			}
 		}
@@ -2339,18 +2339,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_RecurringAppointmentMasters")]
-		public DLaB.Xrm.Entities.msdyn_PostAlbum msdyn_postalbum_RecurringAppointmentMasters
+		public Entities.msdyn_PostAlbum msdyn_postalbum_RecurringAppointmentMasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_RecurringAppointmentMasters", null);
+				return this.GetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_RecurringAppointmentMasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_RecurringAppointmentMasters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_RecurringAppointmentMasters", null, value);
+				this.SetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_RecurringAppointmentMasters", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_RecurringAppointmentMasters");
 			}
 		}
@@ -2360,18 +2360,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_RecurringAppointmentMasters")]
-		public DLaB.Xrm.Entities.Opportunity Opportunity_RecurringAppointmentMasters
+		public Entities.Opportunity Opportunity_RecurringAppointmentMasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_RecurringAppointmentMasters", null);
+				return this.GetRelatedEntity<Entities.Opportunity>("Opportunity_RecurringAppointmentMasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_RecurringAppointmentMasters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_RecurringAppointmentMasters", null, value);
+				this.SetRelatedEntity<Entities.Opportunity>("Opportunity_RecurringAppointmentMasters", null, value);
 				this.OnPropertyChanged("Opportunity_RecurringAppointmentMasters");
 			}
 		}
@@ -2381,18 +2381,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stageid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_recurringappointmentmasters")]
-		public DLaB.Xrm.Entities.ProcessStage processstage_recurringappointmentmasters
+		public Entities.ProcessStage processstage_recurringappointmentmasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProcessStage>("processstage_recurringappointmentmasters", null);
+				return this.GetRelatedEntity<Entities.ProcessStage>("processstage_recurringappointmentmasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_recurringappointmentmasters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProcessStage>("processstage_recurringappointmentmasters", null, value);
+				this.SetRelatedEntity<Entities.ProcessStage>("processstage_recurringappointmentmasters", null, value);
 				this.OnPropertyChanged("processstage_recurringappointmentmasters");
 			}
 		}
@@ -2402,18 +2402,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Quote_RecurringAppointmentMasters")]
-		public DLaB.Xrm.Entities.Quote Quote_RecurringAppointmentMasters
+		public Entities.Quote Quote_RecurringAppointmentMasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Quote>("Quote_RecurringAppointmentMasters", null);
+				return this.GetRelatedEntity<Entities.Quote>("Quote_RecurringAppointmentMasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Quote_RecurringAppointmentMasters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Quote>("Quote_RecurringAppointmentMasters", null, value);
+				this.SetRelatedEntity<Entities.Quote>("Quote_RecurringAppointmentMasters", null, value);
 				this.OnPropertyChanged("Quote_RecurringAppointmentMasters");
 			}
 		}
@@ -2423,18 +2423,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recurrencerule_recurringappointmentmaster")]
-		public DLaB.Xrm.Entities.RecurrenceRule recurrencerule_recurringappointmentmaster
+		public Entities.RecurrenceRule recurrencerule_recurringappointmentmaster
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RecurrenceRule>("recurrencerule_recurringappointmentmaster", null);
+				return this.GetRelatedEntity<Entities.RecurrenceRule>("recurrencerule_recurringappointmentmaster", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("recurrencerule_recurringappointmentmaster");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RecurrenceRule>("recurrencerule_recurringappointmentmaster", null, value);
+				this.SetRelatedEntity<Entities.RecurrenceRule>("recurrencerule_recurringappointmentmaster", null, value);
 				this.OnPropertyChanged("recurrencerule_recurringappointmentmaster");
 			}
 		}
@@ -2444,18 +2444,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesOrder_RecurringAppointmentMasters")]
-		public DLaB.Xrm.Entities.SalesOrder SalesOrder_RecurringAppointmentMasters
+		public Entities.SalesOrder SalesOrder_RecurringAppointmentMasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("SalesOrder_RecurringAppointmentMasters", null);
+				return this.GetRelatedEntity<Entities.SalesOrder>("SalesOrder_RecurringAppointmentMasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SalesOrder_RecurringAppointmentMasters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("SalesOrder_RecurringAppointmentMasters", null, value);
+				this.SetRelatedEntity<Entities.SalesOrder>("SalesOrder_RecurringAppointmentMasters", null, value);
 				this.OnPropertyChanged("SalesOrder_RecurringAppointmentMasters");
 			}
 		}
@@ -2465,18 +2465,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("serviceid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("service_recurringappointmentmasters")]
-		public DLaB.Xrm.Entities.Service service_recurringappointmentmasters
+		public Entities.Service service_recurringappointmentmasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Service>("service_recurringappointmentmasters", null);
+				return this.GetRelatedEntity<Entities.Service>("service_recurringappointmentmasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("service_recurringappointmentmasters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Service>("service_recurringappointmentmasters", null, value);
+				this.SetRelatedEntity<Entities.Service>("service_recurringappointmentmasters", null, value);
 				this.OnPropertyChanged("service_recurringappointmentmasters");
 			}
 		}
@@ -2486,18 +2486,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_recurringappointmentmaster")]
-		public DLaB.Xrm.Entities.Team team_recurringappointmentmaster
+		public Entities.Team team_recurringappointmentmaster
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_recurringappointmentmaster", null);
+				return this.GetRelatedEntity<Entities.Team>("team_recurringappointmentmaster", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_recurringappointmentmaster");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_recurringappointmentmaster", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_recurringappointmentmaster", null, value);
 				this.OnPropertyChanged("team_recurringappointmentmaster");
 			}
 		}
@@ -2507,18 +2507,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_RecurringAppointmentMaster")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_RecurringAppointmentMaster
+		public Entities.TransactionCurrency TransactionCurrency_RecurringAppointmentMaster
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_RecurringAppointmentMaster", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_RecurringAppointmentMaster", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_RecurringAppointmentMaster");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_RecurringAppointmentMaster", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_RecurringAppointmentMaster", null, value);
 				this.OnPropertyChanged("TransactionCurrency_RecurringAppointmentMaster");
 			}
 		}
@@ -2528,18 +2528,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_recurringappointmentmaster")]
-		public DLaB.Xrm.Entities.SystemUser user_recurringappointmentmaster
+		public Entities.SystemUser user_recurringappointmentmaster
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_recurringappointmentmaster", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_recurringappointmentmaster", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_recurringappointmentmaster");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_recurringappointmentmaster", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_recurringappointmentmaster", null, value);
 				this.OnPropertyChanged("user_recurringappointmentmaster");
 			}
 		}

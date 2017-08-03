@@ -336,18 +336,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N teamtemplate_Teams
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("teamtemplate_Teams")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Team> teamtemplate_Teams
+		public System.Collections.Generic.IEnumerable<Entities.Team> teamtemplate_Teams
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Team>("teamtemplate_Teams", null);
+				return this.GetRelatedEntities<Entities.Team>("teamtemplate_Teams", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("teamtemplate_Teams");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Team>("teamtemplate_Teams", null, value);
+				this.SetRelatedEntities<Entities.Team>("teamtemplate_Teams", null, value);
 				this.OnPropertyChanged("teamtemplate_Teams");
 			}
 		}
@@ -357,18 +357,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_teamtemplate_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_teamtemplate_createdby
+		public Entities.SystemUser lk_teamtemplate_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_teamtemplate_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_teamtemplate_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_teamtemplate_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_teamtemplate_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_teamtemplate_createdby", null, value);
 				this.OnPropertyChanged("lk_teamtemplate_createdby");
 			}
 		}
@@ -378,18 +378,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_teamtemplate_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_teamtemplate_createdonbehalfby
+		public Entities.SystemUser lk_teamtemplate_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_teamtemplate_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_teamtemplate_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_teamtemplate_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_teamtemplate_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_teamtemplate_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_teamtemplate_createdonbehalfby");
 			}
 		}
@@ -399,18 +399,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_teamtemplate_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_teamtemplate_modifiedby
+		public Entities.SystemUser lk_teamtemplate_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_teamtemplate_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_teamtemplate_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_teamtemplate_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_teamtemplate_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_teamtemplate_modifiedby", null, value);
 				this.OnPropertyChanged("lk_teamtemplate_modifiedby");
 			}
 		}
@@ -420,18 +420,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_teamtemplate_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_teamtemplate_modifiedonbehalfby
+		public Entities.SystemUser lk_teamtemplate_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_teamtemplate_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_teamtemplate_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_teamtemplate_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_teamtemplate_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_teamtemplate_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_teamtemplate_modifiedonbehalfby");
 			}
 		}

@@ -415,18 +415,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N sdkmessagefilterid_sdkmessageprocessingstep
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sdkmessagefilterid_sdkmessageprocessingstep")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SdkMessageProcessingStep> sdkmessagefilterid_sdkmessageprocessingstep
+		public System.Collections.Generic.IEnumerable<Entities.SdkMessageProcessingStep> sdkmessagefilterid_sdkmessageprocessingstep
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SdkMessageProcessingStep>("sdkmessagefilterid_sdkmessageprocessingstep", null);
+				return this.GetRelatedEntities<Entities.SdkMessageProcessingStep>("sdkmessagefilterid_sdkmessageprocessingstep", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("sdkmessagefilterid_sdkmessageprocessingstep");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SdkMessageProcessingStep>("sdkmessagefilterid_sdkmessageprocessingstep", null, value);
+				this.SetRelatedEntities<Entities.SdkMessageProcessingStep>("sdkmessagefilterid_sdkmessageprocessingstep", null, value);
 				this.OnPropertyChanged("sdkmessagefilterid_sdkmessageprocessingstep");
 			}
 		}
@@ -435,18 +435,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_sdkmessagefilter
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_sdkmessagefilter")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_sdkmessagefilter
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_sdkmessagefilter
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_sdkmessagefilter", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_sdkmessagefilter", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_sdkmessagefilter");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_sdkmessagefilter", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_sdkmessagefilter", null, value);
 				this.OnPropertyChanged("userentityinstancedata_sdkmessagefilter");
 			}
 		}
@@ -456,18 +456,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_sdkmessagefilter")]
-		public DLaB.Xrm.Entities.SystemUser createdby_sdkmessagefilter
+		public Entities.SystemUser createdby_sdkmessagefilter
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdby_sdkmessagefilter", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("createdby_sdkmessagefilter", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("createdby_sdkmessagefilter");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdby_sdkmessagefilter", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("createdby_sdkmessagefilter", null, value);
 				this.OnPropertyChanged("createdby_sdkmessagefilter");
 			}
 		}
@@ -477,18 +477,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sdkmessagefilter_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_sdkmessagefilter_createdonbehalfby
+		public Entities.SystemUser lk_sdkmessagefilter_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sdkmessagefilter_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_sdkmessagefilter_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_sdkmessagefilter_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sdkmessagefilter_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_sdkmessagefilter_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_sdkmessagefilter_createdonbehalfby");
 			}
 		}
@@ -498,18 +498,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sdkmessagefilter_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_sdkmessagefilter_modifiedonbehalfby
+		public Entities.SystemUser lk_sdkmessagefilter_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sdkmessagefilter_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_sdkmessagefilter_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_sdkmessagefilter_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sdkmessagefilter_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_sdkmessagefilter_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_sdkmessagefilter_modifiedonbehalfby");
 			}
 		}
@@ -519,18 +519,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_sdkmessagefilter")]
-		public DLaB.Xrm.Entities.SystemUser modifiedby_sdkmessagefilter
+		public Entities.SystemUser modifiedby_sdkmessagefilter
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("modifiedby_sdkmessagefilter", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("modifiedby_sdkmessagefilter", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("modifiedby_sdkmessagefilter");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("modifiedby_sdkmessagefilter", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("modifiedby_sdkmessagefilter", null, value);
 				this.OnPropertyChanged("modifiedby_sdkmessagefilter");
 			}
 		}
@@ -540,12 +540,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_sdkmessagefilter")]
-		public DLaB.Xrm.Entities.Organization organization_sdkmessagefilter
+		public Entities.Organization organization_sdkmessagefilter
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_sdkmessagefilter", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_sdkmessagefilter", null);
 			}
 		}
 		
@@ -554,18 +554,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sdkmessageid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sdkmessageid_sdkmessagefilter")]
-		public DLaB.Xrm.Entities.SdkMessage sdkmessageid_sdkmessagefilter
+		public Entities.SdkMessage sdkmessageid_sdkmessagefilter
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SdkMessage>("sdkmessageid_sdkmessagefilter", null);
+				return this.GetRelatedEntity<Entities.SdkMessage>("sdkmessageid_sdkmessagefilter", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("sdkmessageid_sdkmessagefilter");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SdkMessage>("sdkmessageid_sdkmessagefilter", null, value);
+				this.SetRelatedEntity<Entities.SdkMessage>("sdkmessageid_sdkmessagefilter", null, value);
 				this.OnPropertyChanged("sdkmessageid_sdkmessagefilter");
 			}
 		}

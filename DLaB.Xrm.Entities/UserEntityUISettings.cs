@@ -398,18 +398,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_userentityuisettings
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_userentityuisettings")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_userentityuisettings
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_userentityuisettings
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_userentityuisettings", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_userentityuisettings", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_userentityuisettings");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_userentityuisettings", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_userentityuisettings", null, value);
 				this.OnPropertyChanged("userentityinstancedata_userentityuisettings");
 			}
 		}
@@ -419,18 +419,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_userentityuisettings")]
-		public DLaB.Xrm.Entities.Team team_userentityuisettings
+		public Entities.Team team_userentityuisettings
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_userentityuisettings", null);
+				return this.GetRelatedEntity<Entities.Team>("team_userentityuisettings", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_userentityuisettings");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_userentityuisettings", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_userentityuisettings", null, value);
 				this.OnPropertyChanged("team_userentityuisettings");
 			}
 		}
@@ -440,18 +440,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityuisettings_businessunit")]
-		public DLaB.Xrm.Entities.BusinessUnit userentityuisettings_businessunit
+		public Entities.BusinessUnit userentityuisettings_businessunit
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("userentityuisettings_businessunit", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("userentityuisettings_businessunit", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityuisettings_businessunit");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("userentityuisettings_businessunit", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("userentityuisettings_businessunit", null, value);
 				this.OnPropertyChanged("userentityuisettings_businessunit");
 			}
 		}
@@ -461,18 +461,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityuisettings_owning_user")]
-		public DLaB.Xrm.Entities.SystemUser userentityuisettings_owning_user
+		public Entities.SystemUser userentityuisettings_owning_user
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("userentityuisettings_owning_user", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("userentityuisettings_owning_user", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityuisettings_owning_user");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("userentityuisettings_owning_user", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("userentityuisettings_owning_user", null, value);
 				this.OnPropertyChanged("userentityuisettings_owning_user");
 			}
 		}

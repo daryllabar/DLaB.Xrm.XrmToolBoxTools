@@ -425,18 +425,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N topicmodelconfiguration_textanalyticsentitymapping
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("topicmodelconfiguration_textanalyticsentitymapping")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.TextAnalyticsEntityMapping> topicmodelconfiguration_textanalyticsentitymapping
+		public System.Collections.Generic.IEnumerable<Entities.TextAnalyticsEntityMapping> topicmodelconfiguration_textanalyticsentitymapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.TextAnalyticsEntityMapping>("topicmodelconfiguration_textanalyticsentitymapping", null);
+				return this.GetRelatedEntities<Entities.TextAnalyticsEntityMapping>("topicmodelconfiguration_textanalyticsentitymapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("topicmodelconfiguration_textanalyticsentitymapping");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.TextAnalyticsEntityMapping>("topicmodelconfiguration_textanalyticsentitymapping", null, value);
+				this.SetRelatedEntities<Entities.TextAnalyticsEntityMapping>("topicmodelconfiguration_textanalyticsentitymapping", null, value);
 				this.OnPropertyChanged("topicmodelconfiguration_textanalyticsentitymapping");
 			}
 		}
@@ -445,18 +445,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N topicmodelconfiguration_topicmodel
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("topicmodelconfiguration_topicmodel")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.TopicModel> topicmodelconfiguration_topicmodel
+		public System.Collections.Generic.IEnumerable<Entities.TopicModel> topicmodelconfiguration_topicmodel
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.TopicModel>("topicmodelconfiguration_topicmodel", null);
+				return this.GetRelatedEntities<Entities.TopicModel>("topicmodelconfiguration_topicmodel", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("topicmodelconfiguration_topicmodel");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.TopicModel>("topicmodelconfiguration_topicmodel", null, value);
+				this.SetRelatedEntities<Entities.TopicModel>("topicmodelconfiguration_topicmodel", null, value);
 				this.OnPropertyChanged("topicmodelconfiguration_topicmodel");
 			}
 		}
@@ -465,18 +465,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N topicmodelconfiguration_topicmodelexecutionhistory
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("topicmodelconfiguration_topicmodelexecutionhistory")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.TopicModelExecutionHistory> topicmodelconfiguration_topicmodelexecutionhistory
+		public System.Collections.Generic.IEnumerable<Entities.TopicModelExecutionHistory> topicmodelconfiguration_topicmodelexecutionhistory
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.TopicModelExecutionHistory>("topicmodelconfiguration_topicmodelexecutionhistory", null);
+				return this.GetRelatedEntities<Entities.TopicModelExecutionHistory>("topicmodelconfiguration_topicmodelexecutionhistory", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("topicmodelconfiguration_topicmodelexecutionhistory");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.TopicModelExecutionHistory>("topicmodelconfiguration_topicmodelexecutionhistory", null, value);
+				this.SetRelatedEntities<Entities.TopicModelExecutionHistory>("topicmodelconfiguration_topicmodelexecutionhistory", null, value);
 				this.OnPropertyChanged("topicmodelconfiguration_topicmodelexecutionhistory");
 			}
 		}
@@ -486,12 +486,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_topicmodelconfiguration")]
-		public DLaB.Xrm.Entities.Organization organization_topicmodelconfiguration
+		public Entities.Organization organization_topicmodelconfiguration
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_topicmodelconfiguration", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_topicmodelconfiguration", null);
 			}
 		}
 		
@@ -500,18 +500,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("topicmodelid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("topicmodel_topicmodelconfiguration")]
-		public DLaB.Xrm.Entities.TopicModel topicmodel_topicmodelconfiguration
+		public Entities.TopicModel topicmodel_topicmodelconfiguration
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TopicModel>("topicmodel_topicmodelconfiguration", null);
+				return this.GetRelatedEntity<Entities.TopicModel>("topicmodel_topicmodelconfiguration", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("topicmodel_topicmodelconfiguration");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TopicModel>("topicmodel_topicmodelconfiguration", null, value);
+				this.SetRelatedEntity<Entities.TopicModel>("topicmodel_topicmodelconfiguration", null, value);
 				this.OnPropertyChanged("topicmodel_topicmodelconfiguration");
 			}
 		}

@@ -593,7 +593,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the SharePoint document location record.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.SharePointDocumentLocationState> StateCode
+		public System.Nullable<Entities.SharePointDocumentLocationState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -601,7 +601,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.SharePointDocumentLocationState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.SharePointDocumentLocationState), optionSet.Value)));
+					return ((Entities.SharePointDocumentLocationState)(System.Enum.ToObject(typeof(Entities.SharePointDocumentLocationState), optionSet.Value)));
 				}
 				else
 				{
@@ -734,18 +734,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N sharepointdata_sharepointdocumentlocation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sharepointdata_sharepointdocumentlocation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SharePointData> sharepointdata_sharepointdocumentlocation
+		public System.Collections.Generic.IEnumerable<Entities.SharePointData> sharepointdata_sharepointdocumentlocation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SharePointData>("sharepointdata_sharepointdocumentlocation", null);
+				return this.GetRelatedEntities<Entities.SharePointData>("sharepointdata_sharepointdocumentlocation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("sharepointdata_sharepointdocumentlocation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SharePointData>("sharepointdata_sharepointdocumentlocation", null, value);
+				this.SetRelatedEntities<Entities.SharePointData>("sharepointdata_sharepointdocumentlocation", null, value);
 				this.OnPropertyChanged("sharepointdata_sharepointdocumentlocation");
 			}
 		}
@@ -754,18 +754,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N SharePointDocumentLocation_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SharePointDocumentLocation_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> SharePointDocumentLocation_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> SharePointDocumentLocation_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("SharePointDocumentLocation_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("SharePointDocumentLocation_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SharePointDocumentLocation_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("SharePointDocumentLocation_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("SharePointDocumentLocation_AsyncOperations", null, value);
 				this.OnPropertyChanged("SharePointDocumentLocation_AsyncOperations");
 			}
 		}
@@ -774,18 +774,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N SharePointDocumentLocation_DuplicateBaseRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SharePointDocumentLocation_DuplicateBaseRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> SharePointDocumentLocation_DuplicateBaseRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> SharePointDocumentLocation_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("SharePointDocumentLocation_DuplicateBaseRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("SharePointDocumentLocation_DuplicateBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SharePointDocumentLocation_DuplicateBaseRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("SharePointDocumentLocation_DuplicateBaseRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("SharePointDocumentLocation_DuplicateBaseRecord", null, value);
 				this.OnPropertyChanged("SharePointDocumentLocation_DuplicateBaseRecord");
 			}
 		}
@@ -794,18 +794,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N SharePointDocumentLocation_DuplicateMatchingRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SharePointDocumentLocation_DuplicateMatchingRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> SharePointDocumentLocation_DuplicateMatchingRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> SharePointDocumentLocation_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("SharePointDocumentLocation_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("SharePointDocumentLocation_DuplicateMatchingRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SharePointDocumentLocation_DuplicateMatchingRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("SharePointDocumentLocation_DuplicateMatchingRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("SharePointDocumentLocation_DuplicateMatchingRecord", null, value);
 				this.OnPropertyChanged("SharePointDocumentLocation_DuplicateMatchingRecord");
 			}
 		}
@@ -814,18 +814,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N sharepointdocumentlocation_parent_sharepointdocumentlocation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sharepointdocumentlocation_parent_sharepointdocumentlocation", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SharePointDocumentLocation> Referencedsharepointdocumentlocation_parent_sharepointdocumentlocation
+		public System.Collections.Generic.IEnumerable<Entities.SharePointDocumentLocation> Referencedsharepointdocumentlocation_parent_sharepointdocumentlocation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SharePointDocumentLocation>("sharepointdocumentlocation_parent_sharepointdocumentlocation", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.SharePointDocumentLocation>("sharepointdocumentlocation_parent_sharepointdocumentlocation", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedsharepointdocumentlocation_parent_sharepointdocumentlocation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SharePointDocumentLocation>("sharepointdocumentlocation_parent_sharepointdocumentlocation", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.SharePointDocumentLocation>("sharepointdocumentlocation_parent_sharepointdocumentlocation", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedsharepointdocumentlocation_parent_sharepointdocumentlocation");
 			}
 		}
@@ -834,18 +834,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N sharepointdocumentlocation_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sharepointdocumentlocation_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> sharepointdocumentlocation_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> sharepointdocumentlocation_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("sharepointdocumentlocation_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("sharepointdocumentlocation_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("sharepointdocumentlocation_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("sharepointdocumentlocation_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("sharepointdocumentlocation_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("sharepointdocumentlocation_principalobjectattributeaccess");
 			}
 		}
@@ -854,18 +854,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N SharePointDocumentLocation_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SharePointDocumentLocation_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> SharePointDocumentLocation_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> SharePointDocumentLocation_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("SharePointDocumentLocation_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("SharePointDocumentLocation_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SharePointDocumentLocation_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("SharePointDocumentLocation_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("SharePointDocumentLocation_ProcessSessions", null, value);
 				this.OnPropertyChanged("SharePointDocumentLocation_ProcessSessions");
 			}
 		}
@@ -874,18 +874,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_sharepointdocumentlocation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_sharepointdocumentlocation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_sharepointdocumentlocation
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_sharepointdocumentlocation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_sharepointdocumentlocation", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_sharepointdocumentlocation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_sharepointdocumentlocation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_sharepointdocumentlocation", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_sharepointdocumentlocation", null, value);
 				this.OnPropertyChanged("userentityinstancedata_sharepointdocumentlocation");
 			}
 		}
@@ -895,18 +895,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Account_SharepointDocumentLocation")]
-		public DLaB.Xrm.Entities.Account Account_SharepointDocumentLocation
+		public Entities.Account Account_SharepointDocumentLocation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_SharepointDocumentLocation", null);
+				return this.GetRelatedEntity<Entities.Account>("Account_SharepointDocumentLocation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Account_SharepointDocumentLocation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_SharepointDocumentLocation", null, value);
+				this.SetRelatedEntity<Entities.Account>("Account_SharepointDocumentLocation", null, value);
 				this.OnPropertyChanged("Account_SharepointDocumentLocation");
 			}
 		}
@@ -916,18 +916,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_sharepointdocumentlocation")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_sharepointdocumentlocation
+		public Entities.BusinessUnit business_unit_sharepointdocumentlocation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_sharepointdocumentlocation", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_sharepointdocumentlocation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_sharepointdocumentlocation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_sharepointdocumentlocation", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_sharepointdocumentlocation", null, value);
 				this.OnPropertyChanged("business_unit_sharepointdocumentlocation");
 			}
 		}
@@ -937,18 +937,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KbArticle_SharepointDocumentLocation")]
-		public DLaB.Xrm.Entities.KbArticle KbArticle_SharepointDocumentLocation
+		public Entities.KbArticle KbArticle_SharepointDocumentLocation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KbArticle>("KbArticle_SharepointDocumentLocation", null);
+				return this.GetRelatedEntity<Entities.KbArticle>("KbArticle_SharepointDocumentLocation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KbArticle_SharepointDocumentLocation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KbArticle>("KbArticle_SharepointDocumentLocation", null, value);
+				this.SetRelatedEntity<Entities.KbArticle>("KbArticle_SharepointDocumentLocation", null, value);
 				this.OnPropertyChanged("KbArticle_SharepointDocumentLocation");
 			}
 		}
@@ -958,18 +958,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_SharePointDocumentLocations")]
-		public DLaB.Xrm.Entities.KnowledgeArticle knowledgearticle_SharePointDocumentLocations
+		public Entities.KnowledgeArticle knowledgearticle_SharePointDocumentLocations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_SharePointDocumentLocations", null);
+				return this.GetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_SharePointDocumentLocations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("knowledgearticle_SharePointDocumentLocations");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_SharePointDocumentLocations", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_SharePointDocumentLocations", null, value);
 				this.OnPropertyChanged("knowledgearticle_SharePointDocumentLocations");
 			}
 		}
@@ -979,18 +979,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_SharepointDocumentLocation")]
-		public DLaB.Xrm.Entities.Lead Lead_SharepointDocumentLocation
+		public Entities.Lead Lead_SharepointDocumentLocation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Lead>("Lead_SharepointDocumentLocation", null);
+				return this.GetRelatedEntity<Entities.Lead>("Lead_SharepointDocumentLocation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_SharepointDocumentLocation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Lead>("Lead_SharepointDocumentLocation", null, value);
+				this.SetRelatedEntity<Entities.Lead>("Lead_SharepointDocumentLocation", null, value);
 				this.OnPropertyChanged("Lead_SharepointDocumentLocation");
 			}
 		}
@@ -1000,18 +1000,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sharepointdocumentlocationbase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_sharepointdocumentlocationbase_createdby
+		public Entities.SystemUser lk_sharepointdocumentlocationbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sharepointdocumentlocationbase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_sharepointdocumentlocationbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_sharepointdocumentlocationbase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sharepointdocumentlocationbase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_sharepointdocumentlocationbase_createdby", null, value);
 				this.OnPropertyChanged("lk_sharepointdocumentlocationbase_createdby");
 			}
 		}
@@ -1021,18 +1021,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sharepointdocumentlocationbase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_sharepointdocumentlocationbase_createdonbehalfby
+		public Entities.SystemUser lk_sharepointdocumentlocationbase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sharepointdocumentlocationbase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_sharepointdocumentlocationbase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_sharepointdocumentlocationbase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sharepointdocumentlocationbase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_sharepointdocumentlocationbase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_sharepointdocumentlocationbase_createdonbehalfby");
 			}
 		}
@@ -1042,18 +1042,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sharepointdocumentlocationbase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_sharepointdocumentlocationbase_modifiedby
+		public Entities.SystemUser lk_sharepointdocumentlocationbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sharepointdocumentlocationbase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_sharepointdocumentlocationbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_sharepointdocumentlocationbase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sharepointdocumentlocationbase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_sharepointdocumentlocationbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_sharepointdocumentlocationbase_modifiedby");
 			}
 		}
@@ -1063,18 +1063,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sharepointdocumentlocationbase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_sharepointdocumentlocationbase_modifiedonbehalfby
+		public Entities.SystemUser lk_sharepointdocumentlocationbase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sharepointdocumentlocationbase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_sharepointdocumentlocationbase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_sharepointdocumentlocationbase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sharepointdocumentlocationbase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_sharepointdocumentlocationbase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_sharepointdocumentlocationbase_modifiedonbehalfby");
 			}
 		}
@@ -1084,18 +1084,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_SharepointDocumentLocation")]
-		public DLaB.Xrm.Entities.Opportunity Opportunity_SharepointDocumentLocation
+		public Entities.Opportunity Opportunity_SharepointDocumentLocation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_SharepointDocumentLocation", null);
+				return this.GetRelatedEntity<Entities.Opportunity>("Opportunity_SharepointDocumentLocation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_SharepointDocumentLocation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_SharepointDocumentLocation", null, value);
+				this.SetRelatedEntity<Entities.Opportunity>("Opportunity_SharepointDocumentLocation", null, value);
 				this.OnPropertyChanged("Opportunity_SharepointDocumentLocation");
 			}
 		}
@@ -1105,18 +1105,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Product_SharepointDocumentLocation")]
-		public DLaB.Xrm.Entities.Product Product_SharepointDocumentLocation
+		public Entities.Product Product_SharepointDocumentLocation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Product>("Product_SharepointDocumentLocation", null);
+				return this.GetRelatedEntity<Entities.Product>("Product_SharepointDocumentLocation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Product_SharepointDocumentLocation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Product>("Product_SharepointDocumentLocation", null, value);
+				this.SetRelatedEntity<Entities.Product>("Product_SharepointDocumentLocation", null, value);
 				this.OnPropertyChanged("Product_SharepointDocumentLocation");
 			}
 		}
@@ -1126,18 +1126,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Quote_SharepointDocumentLocation")]
-		public DLaB.Xrm.Entities.Quote Quote_SharepointDocumentLocation
+		public Entities.Quote Quote_SharepointDocumentLocation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Quote>("Quote_SharepointDocumentLocation", null);
+				return this.GetRelatedEntity<Entities.Quote>("Quote_SharepointDocumentLocation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Quote_SharepointDocumentLocation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Quote>("Quote_SharepointDocumentLocation", null, value);
+				this.SetRelatedEntity<Entities.Quote>("Quote_SharepointDocumentLocation", null, value);
 				this.OnPropertyChanged("Quote_SharepointDocumentLocation");
 			}
 		}
@@ -1147,18 +1147,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesLiterature_SharepointDocumentLocation")]
-		public DLaB.Xrm.Entities.SalesLiterature SalesLiterature_SharepointDocumentLocation
+		public Entities.SalesLiterature SalesLiterature_SharepointDocumentLocation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesLiterature>("SalesLiterature_SharepointDocumentLocation", null);
+				return this.GetRelatedEntity<Entities.SalesLiterature>("SalesLiterature_SharepointDocumentLocation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SalesLiterature_SharepointDocumentLocation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SalesLiterature>("SalesLiterature_SharepointDocumentLocation", null, value);
+				this.SetRelatedEntity<Entities.SalesLiterature>("SalesLiterature_SharepointDocumentLocation", null, value);
 				this.OnPropertyChanged("SalesLiterature_SharepointDocumentLocation");
 			}
 		}
@@ -1168,18 +1168,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentsiteorlocation")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sharepointdocumentlocation_parent_sharepointdocumentlocation", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.SharePointDocumentLocation Referencingsharepointdocumentlocation_parent_sharepointdocumentlocation
+		public Entities.SharePointDocumentLocation Referencingsharepointdocumentlocation_parent_sharepointdocumentlocation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SharePointDocumentLocation>("sharepointdocumentlocation_parent_sharepointdocumentlocation", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.SharePointDocumentLocation>("sharepointdocumentlocation_parent_sharepointdocumentlocation", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencingsharepointdocumentlocation_parent_sharepointdocumentlocation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SharePointDocumentLocation>("sharepointdocumentlocation_parent_sharepointdocumentlocation", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Entities.SharePointDocumentLocation>("sharepointdocumentlocation_parent_sharepointdocumentlocation", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencingsharepointdocumentlocation_parent_sharepointdocumentlocation");
 			}
 		}
@@ -1189,18 +1189,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentsiteorlocation")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sharepointdocumentlocation_parent_sharepointsite")]
-		public DLaB.Xrm.Entities.SharePointSite sharepointdocumentlocation_parent_sharepointsite
+		public Entities.SharePointSite sharepointdocumentlocation_parent_sharepointsite
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SharePointSite>("sharepointdocumentlocation_parent_sharepointsite", null);
+				return this.GetRelatedEntity<Entities.SharePointSite>("sharepointdocumentlocation_parent_sharepointsite", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("sharepointdocumentlocation_parent_sharepointsite");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SharePointSite>("sharepointdocumentlocation_parent_sharepointsite", null, value);
+				this.SetRelatedEntity<Entities.SharePointSite>("sharepointdocumentlocation_parent_sharepointsite", null, value);
 				this.OnPropertyChanged("sharepointdocumentlocation_parent_sharepointsite");
 			}
 		}
@@ -1210,18 +1210,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_sharepointdocumentlocation")]
-		public DLaB.Xrm.Entities.Team team_sharepointdocumentlocation
+		public Entities.Team team_sharepointdocumentlocation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_sharepointdocumentlocation", null);
+				return this.GetRelatedEntity<Entities.Team>("team_sharepointdocumentlocation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_sharepointdocumentlocation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_sharepointdocumentlocation", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_sharepointdocumentlocation", null, value);
 				this.OnPropertyChanged("team_sharepointdocumentlocation");
 			}
 		}
@@ -1231,12 +1231,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_SharePointDocumentLocation")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_SharePointDocumentLocation
+		public Entities.TransactionCurrency TransactionCurrency_SharePointDocumentLocation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_SharePointDocumentLocation", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_SharePointDocumentLocation", null);
 			}
 		}
 		
@@ -1245,18 +1245,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_sharepointdocumentlocation")]
-		public DLaB.Xrm.Entities.SystemUser user_sharepointdocumentlocation
+		public Entities.SystemUser user_sharepointdocumentlocation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_sharepointdocumentlocation", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_sharepointdocumentlocation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_sharepointdocumentlocation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_sharepointdocumentlocation", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_sharepointdocumentlocation", null, value);
 				this.OnPropertyChanged("user_sharepointdocumentlocation");
 			}
 		}

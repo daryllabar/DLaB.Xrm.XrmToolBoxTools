@@ -336,7 +336,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the column mapping.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.ColumnMappingState> StateCode
+		public System.Nullable<Entities.ColumnMappingState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -344,7 +344,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.ColumnMappingState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.ColumnMappingState), optionSet.Value)));
+					return ((Entities.ColumnMappingState)(System.Enum.ToObject(typeof(Entities.ColumnMappingState), optionSet.Value)));
 				}
 				else
 				{
@@ -417,18 +417,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N LookUpMapping_ColumnMapping
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("LookUpMapping_ColumnMapping")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.LookUpMapping> LookUpMapping_ColumnMapping
+		public System.Collections.Generic.IEnumerable<Entities.LookUpMapping> LookUpMapping_ColumnMapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.LookUpMapping>("LookUpMapping_ColumnMapping", null);
+				return this.GetRelatedEntities<Entities.LookUpMapping>("LookUpMapping_ColumnMapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("LookUpMapping_ColumnMapping");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.LookUpMapping>("LookUpMapping_ColumnMapping", null, value);
+				this.SetRelatedEntities<Entities.LookUpMapping>("LookUpMapping_ColumnMapping", null, value);
 				this.OnPropertyChanged("LookUpMapping_ColumnMapping");
 			}
 		}
@@ -437,18 +437,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N PickListMapping_ColumnMapping
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("PickListMapping_ColumnMapping")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PickListMapping> PickListMapping_ColumnMapping
+		public System.Collections.Generic.IEnumerable<Entities.PickListMapping> PickListMapping_ColumnMapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PickListMapping>("PickListMapping_ColumnMapping", null);
+				return this.GetRelatedEntities<Entities.PickListMapping>("PickListMapping_ColumnMapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("PickListMapping_ColumnMapping");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PickListMapping>("PickListMapping_ColumnMapping", null, value);
+				this.SetRelatedEntities<Entities.PickListMapping>("PickListMapping_ColumnMapping", null, value);
 				this.OnPropertyChanged("PickListMapping_ColumnMapping");
 			}
 		}
@@ -457,18 +457,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_columnmapping
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_columnmapping")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_columnmapping
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_columnmapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_columnmapping", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_columnmapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_columnmapping");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_columnmapping", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_columnmapping", null, value);
 				this.OnPropertyChanged("userentityinstancedata_columnmapping");
 			}
 		}
@@ -478,18 +478,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importmapid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ColumnMapping_ImportMap")]
-		public DLaB.Xrm.Entities.ImportMap ColumnMapping_ImportMap
+		public Entities.ImportMap ColumnMapping_ImportMap
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ImportMap>("ColumnMapping_ImportMap", null);
+				return this.GetRelatedEntity<Entities.ImportMap>("ColumnMapping_ImportMap", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ColumnMapping_ImportMap");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ImportMap>("ColumnMapping_ImportMap", null, value);
+				this.SetRelatedEntity<Entities.ImportMap>("ColumnMapping_ImportMap", null, value);
 				this.OnPropertyChanged("ColumnMapping_ImportMap");
 			}
 		}
@@ -499,18 +499,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_columnmapping_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_columnmapping_createdby
+		public Entities.SystemUser lk_columnmapping_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_columnmapping_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_columnmapping_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_columnmapping_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_columnmapping_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_columnmapping_createdby", null, value);
 				this.OnPropertyChanged("lk_columnmapping_createdby");
 			}
 		}
@@ -520,18 +520,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_columnmapping_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_columnmapping_createdonbehalfby
+		public Entities.SystemUser lk_columnmapping_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_columnmapping_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_columnmapping_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_columnmapping_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_columnmapping_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_columnmapping_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_columnmapping_createdonbehalfby");
 			}
 		}
@@ -541,18 +541,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_columnmapping_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_columnmapping_modifiedby
+		public Entities.SystemUser lk_columnmapping_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_columnmapping_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_columnmapping_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_columnmapping_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_columnmapping_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_columnmapping_modifiedby", null, value);
 				this.OnPropertyChanged("lk_columnmapping_modifiedby");
 			}
 		}
@@ -562,18 +562,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_columnmapping_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_columnmapping_modifiedonbehalfby
+		public Entities.SystemUser lk_columnmapping_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_columnmapping_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_columnmapping_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_columnmapping_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_columnmapping_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_columnmapping_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_columnmapping_modifiedonbehalfby");
 			}
 		}

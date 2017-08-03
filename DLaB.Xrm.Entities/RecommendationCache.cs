@@ -281,18 +281,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("itemid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Product_RecommendationCache_ItemId")]
-		public DLaB.Xrm.Entities.Product Product_RecommendationCache_ItemId
+		public Entities.Product Product_RecommendationCache_ItemId
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Product>("Product_RecommendationCache_ItemId", null);
+				return this.GetRelatedEntity<Entities.Product>("Product_RecommendationCache_ItemId", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Product_RecommendationCache_ItemId");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Product>("Product_RecommendationCache_ItemId", null, value);
+				this.SetRelatedEntity<Entities.Product>("Product_RecommendationCache_ItemId", null, value);
 				this.OnPropertyChanged("Product_RecommendationCache_ItemId");
 			}
 		}
@@ -302,18 +302,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("recommendeditemid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Product_RecommendationCache_RecommendedItemId")]
-		public DLaB.Xrm.Entities.Product Product_RecommendationCache_RecommendedItemId
+		public Entities.Product Product_RecommendationCache_RecommendedItemId
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Product>("Product_RecommendationCache_RecommendedItemId", null);
+				return this.GetRelatedEntity<Entities.Product>("Product_RecommendationCache_RecommendedItemId", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Product_RecommendationCache_RecommendedItemId");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Product>("Product_RecommendationCache_RecommendedItemId", null, value);
+				this.SetRelatedEntity<Entities.Product>("Product_RecommendationCache_RecommendedItemId", null, value);
 				this.OnPropertyChanged("Product_RecommendationCache_RecommendedItemId");
 			}
 		}
@@ -323,18 +323,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("additionaldatarecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductPriceLevel_RecommendationCache_AdditionalDataRecordId")]
-		public DLaB.Xrm.Entities.ProductPriceLevel ProductPriceLevel_RecommendationCache_AdditionalDataRecordId
+		public Entities.ProductPriceLevel ProductPriceLevel_RecommendationCache_AdditionalDataRecordId
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProductPriceLevel>("ProductPriceLevel_RecommendationCache_AdditionalDataRecordId", null);
+				return this.GetRelatedEntity<Entities.ProductPriceLevel>("ProductPriceLevel_RecommendationCache_AdditionalDataRecordId", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ProductPriceLevel_RecommendationCache_AdditionalDataRecordId");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProductPriceLevel>("ProductPriceLevel_RecommendationCache_AdditionalDataRecordId", null, value);
+				this.SetRelatedEntity<Entities.ProductPriceLevel>("ProductPriceLevel_RecommendationCache_AdditionalDataRecordId", null, value);
 				this.OnPropertyChanged("ProductPriceLevel_RecommendationCache_AdditionalDataRecordId");
 			}
 		}
@@ -344,18 +344,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("recommendationmodelid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("RecommendationModel_RecommendationCache")]
-		public DLaB.Xrm.Entities.RecommendationModel RecommendationModel_RecommendationCache
+		public Entities.RecommendationModel RecommendationModel_RecommendationCache
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RecommendationModel>("RecommendationModel_RecommendationCache", null);
+				return this.GetRelatedEntity<Entities.RecommendationModel>("RecommendationModel_RecommendationCache", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("RecommendationModel_RecommendationCache");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RecommendationModel>("RecommendationModel_RecommendationCache", null, value);
+				this.SetRelatedEntity<Entities.RecommendationModel>("RecommendationModel_RecommendationCache", null, value);
 				this.OnPropertyChanged("RecommendationModel_RecommendationCache");
 			}
 		}

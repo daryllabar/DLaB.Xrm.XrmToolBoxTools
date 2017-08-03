@@ -274,18 +274,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_postcomment_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_postcomment_createdby
+		public Entities.SystemUser lk_postcomment_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_postcomment_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_postcomment_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_postcomment_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_postcomment_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_postcomment_createdby", null, value);
 				this.OnPropertyChanged("lk_postcomment_createdby");
 			}
 		}
@@ -295,18 +295,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_postcomment_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_postcomment_createdonbehalfby
+		public Entities.SystemUser lk_postcomment_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_postcomment_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_postcomment_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_postcomment_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_postcomment_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_postcomment_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_postcomment_createdonbehalfby");
 			}
 		}
@@ -316,12 +316,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_PostComment")]
-		public DLaB.Xrm.Entities.Organization organization_PostComment
+		public Entities.Organization organization_PostComment
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_PostComment", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_PostComment", null);
 			}
 		}
 		
@@ -330,18 +330,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("postid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Post_Comments")]
-		public DLaB.Xrm.Entities.Post Post_Comments
+		public Entities.Post Post_Comments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Post>("Post_Comments", null);
+				return this.GetRelatedEntity<Entities.Post>("Post_Comments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Post_Comments");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Post>("Post_Comments", null, value);
+				this.SetRelatedEntity<Entities.Post>("Post_Comments", null, value);
 				this.OnPropertyChanged("Post_Comments");
 			}
 		}

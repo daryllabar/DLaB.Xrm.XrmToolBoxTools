@@ -374,18 +374,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N constraint_based_group_resource_specs
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("constraint_based_group_resource_specs")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ResourceSpec> constraint_based_group_resource_specs
+		public System.Collections.Generic.IEnumerable<Entities.ResourceSpec> constraint_based_group_resource_specs
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ResourceSpec>("constraint_based_group_resource_specs", null);
+				return this.GetRelatedEntities<Entities.ResourceSpec>("constraint_based_group_resource_specs", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("constraint_based_group_resource_specs");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ResourceSpec>("constraint_based_group_resource_specs", null, value);
+				this.SetRelatedEntities<Entities.ResourceSpec>("constraint_based_group_resource_specs", null, value);
 				this.OnPropertyChanged("constraint_based_group_resource_specs");
 			}
 		}
@@ -394,18 +394,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ConstraintBasedGroup_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ConstraintBasedGroup_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> ConstraintBasedGroup_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> ConstraintBasedGroup_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("ConstraintBasedGroup_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("ConstraintBasedGroup_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ConstraintBasedGroup_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("ConstraintBasedGroup_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("ConstraintBasedGroup_AsyncOperations", null, value);
 				this.OnPropertyChanged("ConstraintBasedGroup_AsyncOperations");
 			}
 		}
@@ -414,18 +414,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ConstraintBasedGroup_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ConstraintBasedGroup_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> ConstraintBasedGroup_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> ConstraintBasedGroup_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("ConstraintBasedGroup_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("ConstraintBasedGroup_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ConstraintBasedGroup_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("ConstraintBasedGroup_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("ConstraintBasedGroup_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("ConstraintBasedGroup_BulkDeleteFailures");
 			}
 		}
@@ -434,18 +434,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N constraintbasedgroup_connections1
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("constraintbasedgroup_connections1")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> constraintbasedgroup_connections1
+		public System.Collections.Generic.IEnumerable<Entities.Connection> constraintbasedgroup_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("constraintbasedgroup_connections1", null);
+				return this.GetRelatedEntities<Entities.Connection>("constraintbasedgroup_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("constraintbasedgroup_connections1");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("constraintbasedgroup_connections1", null, value);
+				this.SetRelatedEntities<Entities.Connection>("constraintbasedgroup_connections1", null, value);
 				this.OnPropertyChanged("constraintbasedgroup_connections1");
 			}
 		}
@@ -454,18 +454,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N constraintbasedgroup_connections2
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("constraintbasedgroup_connections2")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> constraintbasedgroup_connections2
+		public System.Collections.Generic.IEnumerable<Entities.Connection> constraintbasedgroup_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("constraintbasedgroup_connections2", null);
+				return this.GetRelatedEntities<Entities.Connection>("constraintbasedgroup_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("constraintbasedgroup_connections2");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("constraintbasedgroup_connections2", null, value);
+				this.SetRelatedEntities<Entities.Connection>("constraintbasedgroup_connections2", null, value);
 				this.OnPropertyChanged("constraintbasedgroup_connections2");
 			}
 		}
@@ -474,18 +474,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ConstraintBasedGroup_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ConstraintBasedGroup_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> ConstraintBasedGroup_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> ConstraintBasedGroup_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("ConstraintBasedGroup_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("ConstraintBasedGroup_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ConstraintBasedGroup_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("ConstraintBasedGroup_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("ConstraintBasedGroup_ProcessSessions", null, value);
 				this.OnPropertyChanged("ConstraintBasedGroup_ProcessSessions");
 			}
 		}
@@ -494,18 +494,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N constraintbasedgroup_resource_groups
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("constraintbasedgroup_resource_groups")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ResourceGroup> constraintbasedgroup_resource_groups
+		public System.Collections.Generic.IEnumerable<Entities.ResourceGroup> constraintbasedgroup_resource_groups
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ResourceGroup>("constraintbasedgroup_resource_groups", null);
+				return this.GetRelatedEntities<Entities.ResourceGroup>("constraintbasedgroup_resource_groups", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("constraintbasedgroup_resource_groups");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ResourceGroup>("constraintbasedgroup_resource_groups", null, value);
+				this.SetRelatedEntities<Entities.ResourceGroup>("constraintbasedgroup_resource_groups", null, value);
 				this.OnPropertyChanged("constraintbasedgroup_resource_groups");
 			}
 		}
@@ -514,18 +514,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_constraintbasedgroup
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_constraintbasedgroup")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_constraintbasedgroup
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_constraintbasedgroup
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_constraintbasedgroup", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_constraintbasedgroup", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_constraintbasedgroup");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_constraintbasedgroup", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_constraintbasedgroup", null, value);
 				this.OnPropertyChanged("userentityinstancedata_constraintbasedgroup");
 			}
 		}
@@ -535,18 +535,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("businessunitid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_constraint_based_groups")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_constraint_based_groups
+		public Entities.BusinessUnit business_unit_constraint_based_groups
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_constraint_based_groups", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_constraint_based_groups", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_constraint_based_groups");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_constraint_based_groups", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_constraint_based_groups", null, value);
 				this.OnPropertyChanged("business_unit_constraint_based_groups");
 			}
 		}
@@ -556,18 +556,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("businessunitid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("constraintbasedgroup_systemuser")]
-		public DLaB.Xrm.Entities.SystemUser constraintbasedgroup_systemuser
+		public Entities.SystemUser constraintbasedgroup_systemuser
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("constraintbasedgroup_systemuser", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("constraintbasedgroup_systemuser", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("constraintbasedgroup_systemuser");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("constraintbasedgroup_systemuser", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("constraintbasedgroup_systemuser", null, value);
 				this.OnPropertyChanged("constraintbasedgroup_systemuser");
 			}
 		}
@@ -577,18 +577,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_constraintbasedgroup_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_constraintbasedgroup_createdby
+		public Entities.SystemUser lk_constraintbasedgroup_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_constraintbasedgroup_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_constraintbasedgroup_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_constraintbasedgroup_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_constraintbasedgroup_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_constraintbasedgroup_createdby", null, value);
 				this.OnPropertyChanged("lk_constraintbasedgroup_createdby");
 			}
 		}
@@ -598,18 +598,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_constraintbasedgroup_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_constraintbasedgroup_createdonbehalfby
+		public Entities.SystemUser lk_constraintbasedgroup_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_constraintbasedgroup_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_constraintbasedgroup_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_constraintbasedgroup_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_constraintbasedgroup_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_constraintbasedgroup_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_constraintbasedgroup_createdonbehalfby");
 			}
 		}
@@ -619,18 +619,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_constraintbasedgroup_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_constraintbasedgroup_modifiedby
+		public Entities.SystemUser lk_constraintbasedgroup_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_constraintbasedgroup_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_constraintbasedgroup_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_constraintbasedgroup_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_constraintbasedgroup_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_constraintbasedgroup_modifiedby", null, value);
 				this.OnPropertyChanged("lk_constraintbasedgroup_modifiedby");
 			}
 		}
@@ -640,18 +640,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_constraintbasedgroup_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_constraintbasedgroup_modifiedonbehalfby
+		public Entities.SystemUser lk_constraintbasedgroup_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_constraintbasedgroup_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_constraintbasedgroup_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_constraintbasedgroup_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_constraintbasedgroup_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_constraintbasedgroup_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_constraintbasedgroup_modifiedonbehalfby");
 			}
 		}
@@ -661,12 +661,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_constraint_based_groups")]
-		public DLaB.Xrm.Entities.Organization organization_constraint_based_groups
+		public Entities.Organization organization_constraint_based_groups
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_constraint_based_groups", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_constraint_based_groups", null);
 			}
 		}
 		

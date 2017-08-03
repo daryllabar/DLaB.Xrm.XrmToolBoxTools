@@ -407,18 +407,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N post_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("post_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> post_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> post_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("post_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("post_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("post_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("post_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("post_AsyncOperations", null, value);
 				this.OnPropertyChanged("post_AsyncOperations");
 			}
 		}
@@ -427,18 +427,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N post_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("post_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> post_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> post_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("post_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("post_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("post_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("post_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("post_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("post_BulkDeleteFailures");
 			}
 		}
@@ -447,18 +447,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Post_Comments
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Post_Comments")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PostComment> Post_Comments
+		public System.Collections.Generic.IEnumerable<Entities.PostComment> Post_Comments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PostComment>("Post_Comments", null);
+				return this.GetRelatedEntities<Entities.PostComment>("Post_Comments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Post_Comments");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PostComment>("Post_Comments", null, value);
+				this.SetRelatedEntities<Entities.PostComment>("Post_Comments", null, value);
 				this.OnPropertyChanged("Post_Comments");
 			}
 		}
@@ -467,18 +467,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Post_Likes
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Post_Likes")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PostLike> Post_Likes
+		public System.Collections.Generic.IEnumerable<Entities.PostLike> Post_Likes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PostLike>("Post_Likes", null);
+				return this.GetRelatedEntities<Entities.PostLike>("Post_Likes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Post_Likes");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PostLike>("Post_Likes", null, value);
+				this.SetRelatedEntities<Entities.PostLike>("Post_Likes", null, value);
 				this.OnPropertyChanged("Post_Likes");
 			}
 		}
@@ -488,18 +488,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_post_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_post_createdby
+		public Entities.SystemUser lk_post_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_post_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_post_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_post_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_post_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_post_createdby", null, value);
 				this.OnPropertyChanged("lk_post_createdby");
 			}
 		}
@@ -509,18 +509,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_post_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_post_createdonbehalfby
+		public Entities.SystemUser lk_post_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_post_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_post_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_post_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_post_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_post_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_post_createdonbehalfby");
 			}
 		}
@@ -530,18 +530,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_post_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_post_modifiedby
+		public Entities.SystemUser lk_post_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_post_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_post_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_post_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_post_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_post_modifiedby", null, value);
 				this.OnPropertyChanged("lk_post_modifiedby");
 			}
 		}
@@ -551,18 +551,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_post_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_post_modifiedonbehalfby
+		public Entities.SystemUser lk_post_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_post_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_post_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_post_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_post_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_post_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_post_modifiedonbehalfby");
 			}
 		}
@@ -572,12 +572,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_post")]
-		public DLaB.Xrm.Entities.Organization organization_post
+		public Entities.Organization organization_post
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_post", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_post", null);
 			}
 		}
 		

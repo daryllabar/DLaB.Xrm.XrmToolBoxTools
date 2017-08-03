@@ -498,18 +498,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N BusinessUnitNewsArticle_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BusinessUnitNewsArticle_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> BusinessUnitNewsArticle_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> BusinessUnitNewsArticle_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("BusinessUnitNewsArticle_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("BusinessUnitNewsArticle_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BusinessUnitNewsArticle_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("BusinessUnitNewsArticle_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("BusinessUnitNewsArticle_AsyncOperations", null, value);
 				this.OnPropertyChanged("BusinessUnitNewsArticle_AsyncOperations");
 			}
 		}
@@ -518,18 +518,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N BusinessUnitNewsArticle_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BusinessUnitNewsArticle_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> BusinessUnitNewsArticle_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> BusinessUnitNewsArticle_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("BusinessUnitNewsArticle_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("BusinessUnitNewsArticle_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BusinessUnitNewsArticle_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("BusinessUnitNewsArticle_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("BusinessUnitNewsArticle_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("BusinessUnitNewsArticle_BulkDeleteFailures");
 			}
 		}
@@ -538,18 +538,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N BusinessUnitNewsArticle_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BusinessUnitNewsArticle_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> BusinessUnitNewsArticle_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> BusinessUnitNewsArticle_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("BusinessUnitNewsArticle_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("BusinessUnitNewsArticle_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BusinessUnitNewsArticle_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("BusinessUnitNewsArticle_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("BusinessUnitNewsArticle_ProcessSessions", null, value);
 				this.OnPropertyChanged("BusinessUnitNewsArticle_ProcessSessions");
 			}
 		}
@@ -558,18 +558,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_businessunitnewsarticle
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_businessunitnewsarticle")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_businessunitnewsarticle
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_businessunitnewsarticle
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_businessunitnewsarticle", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_businessunitnewsarticle", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_businessunitnewsarticle");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_businessunitnewsarticle", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_businessunitnewsarticle", null, value);
 				this.OnPropertyChanged("userentityinstancedata_businessunitnewsarticle");
 			}
 		}
@@ -579,18 +579,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_businessunitnewsarticle_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_businessunitnewsarticle_createdonbehalfby
+		public Entities.SystemUser lk_businessunitnewsarticle_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_businessunitnewsarticle_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_businessunitnewsarticle_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_businessunitnewsarticle_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_businessunitnewsarticle_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_businessunitnewsarticle_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_businessunitnewsarticle_createdonbehalfby");
 			}
 		}
@@ -600,18 +600,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_businessunitnewsarticle_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_businessunitnewsarticle_modifiedonbehalfby
+		public Entities.SystemUser lk_businessunitnewsarticle_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_businessunitnewsarticle_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_businessunitnewsarticle_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_businessunitnewsarticle_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_businessunitnewsarticle_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_businessunitnewsarticle_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_businessunitnewsarticle_modifiedonbehalfby");
 			}
 		}
@@ -621,18 +621,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_businessunitnewsarticlebase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_businessunitnewsarticlebase_createdby
+		public Entities.SystemUser lk_businessunitnewsarticlebase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_businessunitnewsarticlebase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_businessunitnewsarticlebase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_businessunitnewsarticlebase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_businessunitnewsarticlebase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_businessunitnewsarticlebase_createdby", null, value);
 				this.OnPropertyChanged("lk_businessunitnewsarticlebase_createdby");
 			}
 		}
@@ -642,18 +642,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_businessunitnewsarticlebase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_businessunitnewsarticlebase_modifiedby
+		public Entities.SystemUser lk_businessunitnewsarticlebase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_businessunitnewsarticlebase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_businessunitnewsarticlebase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_businessunitnewsarticlebase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_businessunitnewsarticlebase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_businessunitnewsarticlebase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_businessunitnewsarticlebase_modifiedby");
 			}
 		}
@@ -663,12 +663,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_business_unit_news_articles")]
-		public DLaB.Xrm.Entities.Organization organization_business_unit_news_articles
+		public Entities.Organization organization_business_unit_news_articles
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_business_unit_news_articles", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_business_unit_news_articles", null);
 			}
 		}
 		

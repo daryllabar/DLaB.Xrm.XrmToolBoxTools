@@ -357,7 +357,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the lookup mapping.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.LookUpMappingState> StateCode
+		public System.Nullable<Entities.LookUpMappingState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -365,7 +365,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.LookUpMappingState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.LookUpMappingState), optionSet.Value)));
+					return ((Entities.LookUpMappingState)(System.Enum.ToObject(typeof(Entities.LookUpMappingState), optionSet.Value)));
 				}
 				else
 				{
@@ -418,18 +418,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_lookupmapping
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_lookupmapping")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_lookupmapping
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_lookupmapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_lookupmapping", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_lookupmapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_lookupmapping");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_lookupmapping", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_lookupmapping", null, value);
 				this.OnPropertyChanged("userentityinstancedata_lookupmapping");
 			}
 		}
@@ -439,18 +439,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_lookupmapping_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_lookupmapping_createdby
+		public Entities.SystemUser lk_lookupmapping_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_lookupmapping_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_lookupmapping_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_lookupmapping_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_lookupmapping_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_lookupmapping_createdby", null, value);
 				this.OnPropertyChanged("lk_lookupmapping_createdby");
 			}
 		}
@@ -460,18 +460,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_lookupmapping_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_lookupmapping_createdonbehalfby
+		public Entities.SystemUser lk_lookupmapping_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_lookupmapping_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_lookupmapping_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_lookupmapping_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_lookupmapping_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_lookupmapping_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_lookupmapping_createdonbehalfby");
 			}
 		}
@@ -481,18 +481,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_lookupmapping_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_lookupmapping_modifiedby
+		public Entities.SystemUser lk_lookupmapping_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_lookupmapping_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_lookupmapping_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_lookupmapping_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_lookupmapping_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_lookupmapping_modifiedby", null, value);
 				this.OnPropertyChanged("lk_lookupmapping_modifiedby");
 			}
 		}
@@ -502,18 +502,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_lookupmapping_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_lookupmapping_modifiedonbehalfby
+		public Entities.SystemUser lk_lookupmapping_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_lookupmapping_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_lookupmapping_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_lookupmapping_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_lookupmapping_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_lookupmapping_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_lookupmapping_modifiedonbehalfby");
 			}
 		}
@@ -523,18 +523,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("columnmappingid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("LookUpMapping_ColumnMapping")]
-		public DLaB.Xrm.Entities.ColumnMapping LookUpMapping_ColumnMapping
+		public Entities.ColumnMapping LookUpMapping_ColumnMapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ColumnMapping>("LookUpMapping_ColumnMapping", null);
+				return this.GetRelatedEntity<Entities.ColumnMapping>("LookUpMapping_ColumnMapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("LookUpMapping_ColumnMapping");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ColumnMapping>("LookUpMapping_ColumnMapping", null, value);
+				this.SetRelatedEntity<Entities.ColumnMapping>("LookUpMapping_ColumnMapping", null, value);
 				this.OnPropertyChanged("LookUpMapping_ColumnMapping");
 			}
 		}
@@ -544,18 +544,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transformationparametermappingid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("LookUpMapping_TransformationParameterMapping")]
-		public DLaB.Xrm.Entities.TransformationParameterMapping LookUpMapping_TransformationParameterMapping
+		public Entities.TransformationParameterMapping LookUpMapping_TransformationParameterMapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransformationParameterMapping>("LookUpMapping_TransformationParameterMapping", null);
+				return this.GetRelatedEntity<Entities.TransformationParameterMapping>("LookUpMapping_TransformationParameterMapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("LookUpMapping_TransformationParameterMapping");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransformationParameterMapping>("LookUpMapping_TransformationParameterMapping", null, value);
+				this.SetRelatedEntity<Entities.TransformationParameterMapping>("LookUpMapping_TransformationParameterMapping", null, value);
 				this.OnPropertyChanged("LookUpMapping_TransformationParameterMapping");
 			}
 		}

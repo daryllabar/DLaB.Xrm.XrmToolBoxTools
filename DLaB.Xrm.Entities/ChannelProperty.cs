@@ -486,7 +486,7 @@ namespace DLaB.Xrm.Entities
 		/// State of the channel property
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.ChannelPropertyState> statecode
+		public System.Nullable<Entities.ChannelPropertyState> statecode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -494,7 +494,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.ChannelPropertyState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.ChannelPropertyState), optionSet.Value)));
+					return ((Entities.ChannelPropertyState)(System.Enum.ToObject(typeof(Entities.ChannelPropertyState), optionSet.Value)));
 				}
 				else
 				{
@@ -555,12 +555,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("channelproperty_organization")]
-		public DLaB.Xrm.Entities.Organization channelproperty_organization
+		public Entities.Organization channelproperty_organization
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("channelproperty_organization", null);
+				return this.GetRelatedEntity<Entities.Organization>("channelproperty_organization", null);
 			}
 		}
 		
@@ -569,18 +569,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ChannelPropertyGroup_ChannelProperty")]
-		public DLaB.Xrm.Entities.ChannelPropertyGroup ChannelPropertyGroup_ChannelProperty
+		public Entities.ChannelPropertyGroup ChannelPropertyGroup_ChannelProperty
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ChannelPropertyGroup>("ChannelPropertyGroup_ChannelProperty", null);
+				return this.GetRelatedEntity<Entities.ChannelPropertyGroup>("ChannelPropertyGroup_ChannelProperty", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ChannelPropertyGroup_ChannelProperty");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ChannelPropertyGroup>("ChannelPropertyGroup_ChannelProperty", null, value);
+				this.SetRelatedEntity<Entities.ChannelPropertyGroup>("ChannelPropertyGroup_ChannelProperty", null, value);
 				this.OnPropertyChanged("ChannelPropertyGroup_ChannelProperty");
 			}
 		}
@@ -590,18 +590,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ChannelProperty_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_ChannelProperty_createdby
+		public Entities.SystemUser lk_ChannelProperty_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ChannelProperty_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_ChannelProperty_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_ChannelProperty_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ChannelProperty_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_ChannelProperty_createdby", null, value);
 				this.OnPropertyChanged("lk_ChannelProperty_createdby");
 			}
 		}
@@ -611,18 +611,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ChannelProperty_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_ChannelProperty_createdonbehalfby
+		public Entities.SystemUser lk_ChannelProperty_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ChannelProperty_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_ChannelProperty_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_ChannelProperty_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ChannelProperty_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_ChannelProperty_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_ChannelProperty_createdonbehalfby");
 			}
 		}
@@ -632,18 +632,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ChannelProperty_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_ChannelProperty_modifiedby
+		public Entities.SystemUser lk_ChannelProperty_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ChannelProperty_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_ChannelProperty_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_ChannelProperty_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ChannelProperty_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_ChannelProperty_modifiedby", null, value);
 				this.OnPropertyChanged("lk_ChannelProperty_modifiedby");
 			}
 		}
@@ -653,18 +653,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ChannelProperty_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_ChannelProperty_modifiedonbehalfby
+		public Entities.SystemUser lk_ChannelProperty_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ChannelProperty_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_ChannelProperty_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_ChannelProperty_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ChannelProperty_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_ChannelProperty_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_ChannelProperty_modifiedonbehalfby");
 			}
 		}

@@ -473,18 +473,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entitlementtemplateid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlementtemplate_entitlementchannel_entitlementtemplateid")]
-		public DLaB.Xrm.Entities.EntitlementTemplate entitlementtemplate_entitlementchannel_entitlementtemplateid
+		public Entities.EntitlementTemplate entitlementtemplate_entitlementchannel_entitlementtemplateid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplate_entitlementchannel_entitlementtemplateid", null);
+				return this.GetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplate_entitlementchannel_entitlementtemplateid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlementtemplate_entitlementchannel_entitlementtemplateid");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplate_entitlementchannel_entitlementtemplateid", null, value);
+				this.SetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplate_entitlementchannel_entitlementtemplateid", null, value);
 				this.OnPropertyChanged("entitlementtemplate_entitlementchannel_entitlementtemplateid");
 			}
 		}
@@ -494,12 +494,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlementtemplatechannel_organization")]
-		public DLaB.Xrm.Entities.Organization entitlementtemplatechannel_organization
+		public Entities.Organization entitlementtemplatechannel_organization
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("entitlementtemplatechannel_organization", null);
+				return this.GetRelatedEntity<Entities.Organization>("entitlementtemplatechannel_organization", null);
 			}
 		}
 		
@@ -508,18 +508,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_entitlementtemplatechannel_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_entitlementtemplatechannel_createdby
+		public Entities.SystemUser lk_entitlementtemplatechannel_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_entitlementtemplatechannel_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_entitlementtemplatechannel_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_entitlementtemplatechannel_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_entitlementtemplatechannel_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_entitlementtemplatechannel_createdby", null, value);
 				this.OnPropertyChanged("lk_entitlementtemplatechannel_createdby");
 			}
 		}
@@ -529,18 +529,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_entitlementtemplatechannel_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_entitlementtemplatechannel_createdonbehalfby
+		public Entities.SystemUser lk_entitlementtemplatechannel_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_entitlementtemplatechannel_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_entitlementtemplatechannel_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_entitlementtemplatechannel_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_entitlementtemplatechannel_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_entitlementtemplatechannel_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_entitlementtemplatechannel_createdonbehalfby");
 			}
 		}
@@ -550,18 +550,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_entitlementtemplatechannel_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_entitlementtemplatechannel_modifiedby
+		public Entities.SystemUser lk_entitlementtemplatechannel_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_entitlementtemplatechannel_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_entitlementtemplatechannel_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_entitlementtemplatechannel_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_entitlementtemplatechannel_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_entitlementtemplatechannel_modifiedby", null, value);
 				this.OnPropertyChanged("lk_entitlementtemplatechannel_modifiedby");
 			}
 		}
@@ -571,18 +571,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_entitlementtemplatechannel_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_entitlementtemplatechannel_modifiedonbehalfby
+		public Entities.SystemUser lk_entitlementtemplatechannel_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_entitlementtemplatechannel_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_entitlementtemplatechannel_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_entitlementtemplatechannel_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_entitlementtemplatechannel_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_entitlementtemplatechannel_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_entitlementtemplatechannel_modifiedonbehalfby");
 			}
 		}
@@ -592,18 +592,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_entitlementtemplatechannel")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_entitlementtemplatechannel
+		public Entities.TransactionCurrency TransactionCurrency_entitlementtemplatechannel
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_entitlementtemplatechannel", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_entitlementtemplatechannel", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_entitlementtemplatechannel");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_entitlementtemplatechannel", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_entitlementtemplatechannel", null, value);
 				this.OnPropertyChanged("TransactionCurrency_entitlementtemplatechannel");
 			}
 		}

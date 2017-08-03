@@ -314,7 +314,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the picklist mapping.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.PickListMappingState> StateCode
+		public System.Nullable<Entities.PickListMappingState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -322,7 +322,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.PickListMappingState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.PickListMappingState), optionSet.Value)));
+					return ((Entities.PickListMappingState)(System.Enum.ToObject(typeof(Entities.PickListMappingState), optionSet.Value)));
 				}
 				else
 				{
@@ -375,18 +375,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_picklistmapping
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_picklistmapping")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_picklistmapping
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_picklistmapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_picklistmapping", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_picklistmapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_picklistmapping");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_picklistmapping", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_picklistmapping", null, value);
 				this.OnPropertyChanged("userentityinstancedata_picklistmapping");
 			}
 		}
@@ -396,18 +396,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_picklistmapping_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_picklistmapping_createdby
+		public Entities.SystemUser lk_picklistmapping_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_picklistmapping_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_picklistmapping_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_picklistmapping_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_picklistmapping_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_picklistmapping_createdby", null, value);
 				this.OnPropertyChanged("lk_picklistmapping_createdby");
 			}
 		}
@@ -417,18 +417,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_picklistmapping_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_picklistmapping_createdonbehalfby
+		public Entities.SystemUser lk_picklistmapping_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_picklistmapping_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_picklistmapping_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_picklistmapping_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_picklistmapping_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_picklistmapping_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_picklistmapping_createdonbehalfby");
 			}
 		}
@@ -438,18 +438,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_picklistmapping_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_picklistmapping_modifiedby
+		public Entities.SystemUser lk_picklistmapping_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_picklistmapping_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_picklistmapping_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_picklistmapping_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_picklistmapping_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_picklistmapping_modifiedby", null, value);
 				this.OnPropertyChanged("lk_picklistmapping_modifiedby");
 			}
 		}
@@ -459,18 +459,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_picklistmapping_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_picklistmapping_modifiedonbehalfby
+		public Entities.SystemUser lk_picklistmapping_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_picklistmapping_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_picklistmapping_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_picklistmapping_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_picklistmapping_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_picklistmapping_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_picklistmapping_modifiedonbehalfby");
 			}
 		}
@@ -480,18 +480,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("columnmappingid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("PickListMapping_ColumnMapping")]
-		public DLaB.Xrm.Entities.ColumnMapping PickListMapping_ColumnMapping
+		public Entities.ColumnMapping PickListMapping_ColumnMapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ColumnMapping>("PickListMapping_ColumnMapping", null);
+				return this.GetRelatedEntity<Entities.ColumnMapping>("PickListMapping_ColumnMapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("PickListMapping_ColumnMapping");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ColumnMapping>("PickListMapping_ColumnMapping", null, value);
+				this.SetRelatedEntity<Entities.ColumnMapping>("PickListMapping_ColumnMapping", null, value);
 				this.OnPropertyChanged("PickListMapping_ColumnMapping");
 			}
 		}

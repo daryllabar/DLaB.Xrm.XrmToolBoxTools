@@ -30,3386 +30,3386 @@ namespace DLaB.Xrm.Entities
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Account"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Account"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Account> AccountSet
+//		public System.Linq.IQueryable<Entities.Account> AccountSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Account>();
+//				return this.CreateQuery<Entities.Account>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.AccountLeads"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.AccountLeads"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.AccountLeads> AccountLeadsSet
+//		public System.Linq.IQueryable<Entities.AccountLeads> AccountLeadsSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.AccountLeads>();
+//				return this.CreateQuery<Entities.AccountLeads>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ActivityMimeAttachment"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ActivityMimeAttachment"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ActivityMimeAttachment> ActivityMimeAttachmentSet
+//		public System.Linq.IQueryable<Entities.ActivityMimeAttachment> ActivityMimeAttachmentSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ActivityMimeAttachment>();
+//				return this.CreateQuery<Entities.ActivityMimeAttachment>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ActivityParty"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ActivityParty"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ActivityParty> ActivityPartySet
+//		public System.Linq.IQueryable<Entities.ActivityParty> ActivityPartySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ActivityParty>();
+//				return this.CreateQuery<Entities.ActivityParty>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ActivityPointer"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ActivityPointer"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ActivityPointer> ActivityPointerSet
+//		public System.Linq.IQueryable<Entities.ActivityPointer> ActivityPointerSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ActivityPointer>();
+//				return this.CreateQuery<Entities.ActivityPointer>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Annotation"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Annotation"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Annotation> AnnotationSet
+//		public System.Linq.IQueryable<Entities.Annotation> AnnotationSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Annotation>();
+//				return this.CreateQuery<Entities.Annotation>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.AnnualFiscalCalendar"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.AnnualFiscalCalendar"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.AnnualFiscalCalendar> AnnualFiscalCalendarSet
+//		public System.Linq.IQueryable<Entities.AnnualFiscalCalendar> AnnualFiscalCalendarSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.AnnualFiscalCalendar>();
+//				return this.CreateQuery<Entities.AnnualFiscalCalendar>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Appointment"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Appointment"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Appointment> AppointmentSet
+//		public System.Linq.IQueryable<Entities.Appointment> AppointmentSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Appointment>();
+//				return this.CreateQuery<Entities.Appointment>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.AsyncOperation"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.AsyncOperation"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.AsyncOperation> AsyncOperationSet
+//		public System.Linq.IQueryable<Entities.AsyncOperation> AsyncOperationSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.AsyncOperation>();
+//				return this.CreateQuery<Entities.AsyncOperation>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.AttributeMap"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.AttributeMap"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.AttributeMap> AttributeMapSet
+//		public System.Linq.IQueryable<Entities.AttributeMap> AttributeMapSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.AttributeMap>();
+//				return this.CreateQuery<Entities.AttributeMap>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Audit"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Audit"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Audit> AuditSet
+//		public System.Linq.IQueryable<Entities.Audit> AuditSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Audit>();
+//				return this.CreateQuery<Entities.Audit>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.AzureServiceConnection"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.AzureServiceConnection"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.AzureServiceConnection> AzureServiceConnectionSet
+//		public System.Linq.IQueryable<Entities.AzureServiceConnection> AzureServiceConnectionSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.AzureServiceConnection>();
+//				return this.CreateQuery<Entities.AzureServiceConnection>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.BulkDeleteFailure"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.BulkDeleteFailure"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.BulkDeleteFailure> BulkDeleteFailureSet
+//		public System.Linq.IQueryable<Entities.BulkDeleteFailure> BulkDeleteFailureSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.BulkDeleteFailure>();
+//				return this.CreateQuery<Entities.BulkDeleteFailure>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.BulkDeleteOperation"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.BulkDeleteOperation"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.BulkDeleteOperation> BulkDeleteOperationSet
+//		public System.Linq.IQueryable<Entities.BulkDeleteOperation> BulkDeleteOperationSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.BulkDeleteOperation>();
+//				return this.CreateQuery<Entities.BulkDeleteOperation>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.BulkOperation"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.BulkOperation"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.BulkOperation> BulkOperationSet
+//		public System.Linq.IQueryable<Entities.BulkOperation> BulkOperationSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.BulkOperation>();
+//				return this.CreateQuery<Entities.BulkOperation>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.BulkOperationLog"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.BulkOperationLog"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.BulkOperationLog> BulkOperationLogSet
+//		public System.Linq.IQueryable<Entities.BulkOperationLog> BulkOperationLogSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.BulkOperationLog>();
+//				return this.CreateQuery<Entities.BulkOperationLog>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.BusinessUnit"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.BusinessUnit"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.BusinessUnit> BusinessUnitSet
+//		public System.Linq.IQueryable<Entities.BusinessUnit> BusinessUnitSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.BusinessUnit>();
+//				return this.CreateQuery<Entities.BusinessUnit>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.BusinessUnitNewsArticle"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.BusinessUnitNewsArticle"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.BusinessUnitNewsArticle> BusinessUnitNewsArticleSet
+//		public System.Linq.IQueryable<Entities.BusinessUnitNewsArticle> BusinessUnitNewsArticleSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.BusinessUnitNewsArticle>();
+//				return this.CreateQuery<Entities.BusinessUnitNewsArticle>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Calendar"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Calendar"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Calendar> CalendarSet
+//		public System.Linq.IQueryable<Entities.Calendar> CalendarSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Calendar>();
+//				return this.CreateQuery<Entities.Calendar>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Campaign"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Campaign"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Campaign> CampaignSet
+//		public System.Linq.IQueryable<Entities.Campaign> CampaignSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Campaign>();
+//				return this.CreateQuery<Entities.Campaign>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.CampaignActivity"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.CampaignActivity"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.CampaignActivity> CampaignActivitySet
+//		public System.Linq.IQueryable<Entities.CampaignActivity> CampaignActivitySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.CampaignActivity>();
+//				return this.CreateQuery<Entities.CampaignActivity>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.CampaignActivityItem"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.CampaignActivityItem"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.CampaignActivityItem> CampaignActivityItemSet
+//		public System.Linq.IQueryable<Entities.CampaignActivityItem> CampaignActivityItemSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.CampaignActivityItem>();
+//				return this.CreateQuery<Entities.CampaignActivityItem>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.CampaignItem"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.CampaignItem"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.CampaignItem> CampaignItemSet
+//		public System.Linq.IQueryable<Entities.CampaignItem> CampaignItemSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.CampaignItem>();
+//				return this.CreateQuery<Entities.CampaignItem>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.CampaignResponse"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.CampaignResponse"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.CampaignResponse> CampaignResponseSet
+//		public System.Linq.IQueryable<Entities.CampaignResponse> CampaignResponseSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.CampaignResponse>();
+//				return this.CreateQuery<Entities.CampaignResponse>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ChannelAccessProfile"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ChannelAccessProfile"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ChannelAccessProfile> ChannelAccessProfileSet
+//		public System.Linq.IQueryable<Entities.ChannelAccessProfile> ChannelAccessProfileSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ChannelAccessProfile>();
+//				return this.CreateQuery<Entities.ChannelAccessProfile>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ChannelAccessProfileEntityAccessLevel"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ChannelAccessProfileEntityAccessLevel"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ChannelAccessProfileEntityAccessLevel> ChannelAccessProfileEntityAccessLevelSet
+//		public System.Linq.IQueryable<Entities.ChannelAccessProfileEntityAccessLevel> ChannelAccessProfileEntityAccessLevelSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ChannelAccessProfileEntityAccessLevel>();
+//				return this.CreateQuery<Entities.ChannelAccessProfileEntityAccessLevel>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ChannelAccessProfileRule"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ChannelAccessProfileRule"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ChannelAccessProfileRule> ChannelAccessProfileRuleSet
+//		public System.Linq.IQueryable<Entities.ChannelAccessProfileRule> ChannelAccessProfileRuleSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ChannelAccessProfileRule>();
+//				return this.CreateQuery<Entities.ChannelAccessProfileRule>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ChannelAccessProfileRuleItem"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ChannelAccessProfileRuleItem"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ChannelAccessProfileRuleItem> ChannelAccessProfileRuleItemSet
+//		public System.Linq.IQueryable<Entities.ChannelAccessProfileRuleItem> ChannelAccessProfileRuleItemSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ChannelAccessProfileRuleItem>();
+//				return this.CreateQuery<Entities.ChannelAccessProfileRuleItem>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ChannelProperty"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ChannelProperty"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ChannelProperty> ChannelPropertySet
+//		public System.Linq.IQueryable<Entities.ChannelProperty> ChannelPropertySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ChannelProperty>();
+//				return this.CreateQuery<Entities.ChannelProperty>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ChannelPropertyGroup"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ChannelPropertyGroup"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ChannelPropertyGroup> ChannelPropertyGroupSet
+//		public System.Linq.IQueryable<Entities.ChannelPropertyGroup> ChannelPropertyGroupSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ChannelPropertyGroup>();
+//				return this.CreateQuery<Entities.ChannelPropertyGroup>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ColumnMapping"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ColumnMapping"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ColumnMapping> ColumnMappingSet
+//		public System.Linq.IQueryable<Entities.ColumnMapping> ColumnMappingSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ColumnMapping>();
+//				return this.CreateQuery<Entities.ColumnMapping>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Competitor"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Competitor"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Competitor> CompetitorSet
+//		public System.Linq.IQueryable<Entities.Competitor> CompetitorSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Competitor>();
+//				return this.CreateQuery<Entities.Competitor>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.CompetitorProduct"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.CompetitorProduct"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.CompetitorProduct> CompetitorProductSet
+//		public System.Linq.IQueryable<Entities.CompetitorProduct> CompetitorProductSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.CompetitorProduct>();
+//				return this.CreateQuery<Entities.CompetitorProduct>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.CompetitorSalesLiterature"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.CompetitorSalesLiterature"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.CompetitorSalesLiterature> CompetitorSalesLiteratureSet
+//		public System.Linq.IQueryable<Entities.CompetitorSalesLiterature> CompetitorSalesLiteratureSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.CompetitorSalesLiterature>();
+//				return this.CreateQuery<Entities.CompetitorSalesLiterature>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Connection"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Connection"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Connection> ConnectionSet
+//		public System.Linq.IQueryable<Entities.Connection> ConnectionSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Connection>();
+//				return this.CreateQuery<Entities.Connection>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ConnectionRole"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ConnectionRole"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ConnectionRole> ConnectionRoleSet
+//		public System.Linq.IQueryable<Entities.ConnectionRole> ConnectionRoleSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ConnectionRole>();
+//				return this.CreateQuery<Entities.ConnectionRole>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ConnectionRoleAssociation"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ConnectionRoleAssociation"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ConnectionRoleAssociation> ConnectionRoleAssociationSet
+//		public System.Linq.IQueryable<Entities.ConnectionRoleAssociation> ConnectionRoleAssociationSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ConnectionRoleAssociation>();
+//				return this.CreateQuery<Entities.ConnectionRoleAssociation>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ConnectionRoleObjectTypeCode"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ConnectionRoleObjectTypeCode"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ConnectionRoleObjectTypeCode> ConnectionRoleObjectTypeCodeSet
+//		public System.Linq.IQueryable<Entities.ConnectionRoleObjectTypeCode> ConnectionRoleObjectTypeCodeSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ConnectionRoleObjectTypeCode>();
+//				return this.CreateQuery<Entities.ConnectionRoleObjectTypeCode>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ConstraintBasedGroup"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ConstraintBasedGroup"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ConstraintBasedGroup> ConstraintBasedGroupSet
+//		public System.Linq.IQueryable<Entities.ConstraintBasedGroup> ConstraintBasedGroupSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ConstraintBasedGroup>();
+//				return this.CreateQuery<Entities.ConstraintBasedGroup>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Contact"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Contact"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Contact> ContactSet
+//		public System.Linq.IQueryable<Entities.Contact> ContactSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Contact>();
+//				return this.CreateQuery<Entities.Contact>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ContactInvoices"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ContactInvoices"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ContactInvoices> ContactInvoicesSet
+//		public System.Linq.IQueryable<Entities.ContactInvoices> ContactInvoicesSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ContactInvoices>();
+//				return this.CreateQuery<Entities.ContactInvoices>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ContactLeads"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ContactLeads"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ContactLeads> ContactLeadsSet
+//		public System.Linq.IQueryable<Entities.ContactLeads> ContactLeadsSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ContactLeads>();
+//				return this.CreateQuery<Entities.ContactLeads>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ContactOrders"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ContactOrders"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ContactOrders> ContactOrdersSet
+//		public System.Linq.IQueryable<Entities.ContactOrders> ContactOrdersSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ContactOrders>();
+//				return this.CreateQuery<Entities.ContactOrders>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ContactQuotes"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ContactQuotes"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ContactQuotes> ContactQuotesSet
+//		public System.Linq.IQueryable<Entities.ContactQuotes> ContactQuotesSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ContactQuotes>();
+//				return this.CreateQuery<Entities.ContactQuotes>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Contract"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Contract"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Contract> ContractSet
+//		public System.Linq.IQueryable<Entities.Contract> ContractSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Contract>();
+//				return this.CreateQuery<Entities.Contract>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ContractDetail"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ContractDetail"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ContractDetail> ContractDetailSet
+//		public System.Linq.IQueryable<Entities.ContractDetail> ContractDetailSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ContractDetail>();
+//				return this.CreateQuery<Entities.ContractDetail>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ContractTemplate"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ContractTemplate"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ContractTemplate> ContractTemplateSet
+//		public System.Linq.IQueryable<Entities.ContractTemplate> ContractTemplateSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ContractTemplate>();
+//				return this.CreateQuery<Entities.ContractTemplate>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ConvertRule"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ConvertRule"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ConvertRule> ConvertRuleSet
+//		public System.Linq.IQueryable<Entities.ConvertRule> ConvertRuleSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ConvertRule>();
+//				return this.CreateQuery<Entities.ConvertRule>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ConvertRuleItem"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ConvertRuleItem"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ConvertRuleItem> ConvertRuleItemSet
+//		public System.Linq.IQueryable<Entities.ConvertRuleItem> ConvertRuleItemSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ConvertRuleItem>();
+//				return this.CreateQuery<Entities.ConvertRuleItem>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.CustomControl"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.CustomControl"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.CustomControl> CustomControlSet
+//		public System.Linq.IQueryable<Entities.CustomControl> CustomControlSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.CustomControl>();
+//				return this.CreateQuery<Entities.CustomControl>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.CustomControlDefaultConfig"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.CustomControlDefaultConfig"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.CustomControlDefaultConfig> CustomControlDefaultConfigSet
+//		public System.Linq.IQueryable<Entities.CustomControlDefaultConfig> CustomControlDefaultConfigSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.CustomControlDefaultConfig>();
+//				return this.CreateQuery<Entities.CustomControlDefaultConfig>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.CustomControlResource"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.CustomControlResource"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.CustomControlResource> CustomControlResourceSet
+//		public System.Linq.IQueryable<Entities.CustomControlResource> CustomControlResourceSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.CustomControlResource>();
+//				return this.CreateQuery<Entities.CustomControlResource>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.CustomerAddress"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.CustomerAddress"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.CustomerAddress> CustomerAddressSet
+//		public System.Linq.IQueryable<Entities.CustomerAddress> CustomerAddressSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.CustomerAddress>();
+//				return this.CreateQuery<Entities.CustomerAddress>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.CustomerOpportunityRole"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.CustomerOpportunityRole"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.CustomerOpportunityRole> CustomerOpportunityRoleSet
+//		public System.Linq.IQueryable<Entities.CustomerOpportunityRole> CustomerOpportunityRoleSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.CustomerOpportunityRole>();
+//				return this.CreateQuery<Entities.CustomerOpportunityRole>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.CustomerRelationship"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.CustomerRelationship"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.CustomerRelationship> CustomerRelationshipSet
+//		public System.Linq.IQueryable<Entities.CustomerRelationship> CustomerRelationshipSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.CustomerRelationship>();
+//				return this.CreateQuery<Entities.CustomerRelationship>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Dependency"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Dependency"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Dependency> DependencySet
+//		public System.Linq.IQueryable<Entities.Dependency> DependencySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Dependency>();
+//				return this.CreateQuery<Entities.Dependency>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Discount"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Discount"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Discount> DiscountSet
+//		public System.Linq.IQueryable<Entities.Discount> DiscountSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Discount>();
+//				return this.CreateQuery<Entities.Discount>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.DiscountType"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.DiscountType"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.DiscountType> DiscountTypeSet
+//		public System.Linq.IQueryable<Entities.DiscountType> DiscountTypeSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.DiscountType>();
+//				return this.CreateQuery<Entities.DiscountType>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.DisplayString"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.DisplayString"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.DisplayString> DisplayStringSet
+//		public System.Linq.IQueryable<Entities.DisplayString> DisplayStringSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.DisplayString>();
+//				return this.CreateQuery<Entities.DisplayString>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.DocumentTemplate"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.DocumentTemplate"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.DocumentTemplate> DocumentTemplateSet
+//		public System.Linq.IQueryable<Entities.DocumentTemplate> DocumentTemplateSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.DocumentTemplate>();
+//				return this.CreateQuery<Entities.DocumentTemplate>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.DuplicateRecord"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.DuplicateRecord"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.DuplicateRecord> DuplicateRecordSet
+//		public System.Linq.IQueryable<Entities.DuplicateRecord> DuplicateRecordSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.DuplicateRecord>();
+//				return this.CreateQuery<Entities.DuplicateRecord>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.DuplicateRule"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.DuplicateRule"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.DuplicateRule> DuplicateRuleSet
+//		public System.Linq.IQueryable<Entities.DuplicateRule> DuplicateRuleSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.DuplicateRule>();
+//				return this.CreateQuery<Entities.DuplicateRule>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.DuplicateRuleCondition"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.DuplicateRuleCondition"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.DuplicateRuleCondition> DuplicateRuleConditionSet
+//		public System.Linq.IQueryable<Entities.DuplicateRuleCondition> DuplicateRuleConditionSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.DuplicateRuleCondition>();
+//				return this.CreateQuery<Entities.DuplicateRuleCondition>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.DynamicProperty"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.DynamicProperty"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.DynamicProperty> DynamicPropertySet
+//		public System.Linq.IQueryable<Entities.DynamicProperty> DynamicPropertySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.DynamicProperty>();
+//				return this.CreateQuery<Entities.DynamicProperty>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.DynamicPropertyAssociation"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.DynamicPropertyAssociation"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.DynamicPropertyAssociation> DynamicPropertyAssociationSet
+//		public System.Linq.IQueryable<Entities.DynamicPropertyAssociation> DynamicPropertyAssociationSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.DynamicPropertyAssociation>();
+//				return this.CreateQuery<Entities.DynamicPropertyAssociation>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.DynamicPropertyInstance"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.DynamicPropertyInstance"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.DynamicPropertyInstance> DynamicPropertyInstanceSet
+//		public System.Linq.IQueryable<Entities.DynamicPropertyInstance> DynamicPropertyInstanceSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.DynamicPropertyInstance>();
+//				return this.CreateQuery<Entities.DynamicPropertyInstance>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.DynamicPropertyOptionSetItem"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.DynamicPropertyOptionSetItem"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.DynamicPropertyOptionSetItem> DynamicPropertyOptionSetItemSet
+//		public System.Linq.IQueryable<Entities.DynamicPropertyOptionSetItem> DynamicPropertyOptionSetItemSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.DynamicPropertyOptionSetItem>();
+//				return this.CreateQuery<Entities.DynamicPropertyOptionSetItem>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Email"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Email"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Email> EmailSet
+//		public System.Linq.IQueryable<Entities.Email> EmailSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Email>();
+//				return this.CreateQuery<Entities.Email>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.EmailServerProfile"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.EmailServerProfile"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.EmailServerProfile> EmailServerProfileSet
+//		public System.Linq.IQueryable<Entities.EmailServerProfile> EmailServerProfileSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.EmailServerProfile>();
+//				return this.CreateQuery<Entities.EmailServerProfile>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Entitlement"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Entitlement"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Entitlement> EntitlementSet
+//		public System.Linq.IQueryable<Entities.Entitlement> EntitlementSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Entitlement>();
+//				return this.CreateQuery<Entities.Entitlement>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.EntitlementChannel"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.EntitlementChannel"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.EntitlementChannel> EntitlementChannelSet
+//		public System.Linq.IQueryable<Entities.EntitlementChannel> EntitlementChannelSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.EntitlementChannel>();
+//				return this.CreateQuery<Entities.EntitlementChannel>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.EntitlementContacts"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.EntitlementContacts"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.EntitlementContacts> EntitlementContactsSet
+//		public System.Linq.IQueryable<Entities.EntitlementContacts> EntitlementContactsSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.EntitlementContacts>();
+//				return this.CreateQuery<Entities.EntitlementContacts>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.EntitlementProducts"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.EntitlementProducts"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.EntitlementProducts> EntitlementProductsSet
+//		public System.Linq.IQueryable<Entities.EntitlementProducts> EntitlementProductsSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.EntitlementProducts>();
+//				return this.CreateQuery<Entities.EntitlementProducts>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.EntitlementTemplate"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.EntitlementTemplate"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.EntitlementTemplate> EntitlementTemplateSet
+//		public System.Linq.IQueryable<Entities.EntitlementTemplate> EntitlementTemplateSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.EntitlementTemplate>();
+//				return this.CreateQuery<Entities.EntitlementTemplate>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.EntitlementTemplateChannel"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.EntitlementTemplateChannel"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.EntitlementTemplateChannel> EntitlementTemplateChannelSet
+//		public System.Linq.IQueryable<Entities.EntitlementTemplateChannel> EntitlementTemplateChannelSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.EntitlementTemplateChannel>();
+//				return this.CreateQuery<Entities.EntitlementTemplateChannel>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.EntitlementTemplateProducts"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.EntitlementTemplateProducts"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.EntitlementTemplateProducts> EntitlementTemplateProductsSet
+//		public System.Linq.IQueryable<Entities.EntitlementTemplateProducts> EntitlementTemplateProductsSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.EntitlementTemplateProducts>();
+//				return this.CreateQuery<Entities.EntitlementTemplateProducts>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.EntityMap"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.EntityMap"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.EntityMap> EntityMapSet
+//		public System.Linq.IQueryable<Entities.EntityMap> EntityMapSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.EntityMap>();
+//				return this.CreateQuery<Entities.EntityMap>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Equipment"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Equipment"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Equipment> EquipmentSet
+//		public System.Linq.IQueryable<Entities.Equipment> EquipmentSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Equipment>();
+//				return this.CreateQuery<Entities.Equipment>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ExchangeSyncIdMapping"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ExchangeSyncIdMapping"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ExchangeSyncIdMapping> ExchangeSyncIdMappingSet
+//		public System.Linq.IQueryable<Entities.ExchangeSyncIdMapping> ExchangeSyncIdMappingSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ExchangeSyncIdMapping>();
+//				return this.CreateQuery<Entities.ExchangeSyncIdMapping>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ExternalParty"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ExternalParty"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ExternalParty> ExternalPartySet
+//		public System.Linq.IQueryable<Entities.ExternalParty> ExternalPartySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ExternalParty>();
+//				return this.CreateQuery<Entities.ExternalParty>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ExternalPartyItem"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ExternalPartyItem"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ExternalPartyItem> ExternalPartyItemSet
+//		public System.Linq.IQueryable<Entities.ExternalPartyItem> ExternalPartyItemSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ExternalPartyItem>();
+//				return this.CreateQuery<Entities.ExternalPartyItem>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Fax"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Fax"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Fax> FaxSet
+//		public System.Linq.IQueryable<Entities.Fax> FaxSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Fax>();
+//				return this.CreateQuery<Entities.Fax>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.FieldPermission"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.FieldPermission"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.FieldPermission> FieldPermissionSet
+//		public System.Linq.IQueryable<Entities.FieldPermission> FieldPermissionSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.FieldPermission>();
+//				return this.CreateQuery<Entities.FieldPermission>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.FieldSecurityProfile"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.FieldSecurityProfile"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.FieldSecurityProfile> FieldSecurityProfileSet
+//		public System.Linq.IQueryable<Entities.FieldSecurityProfile> FieldSecurityProfileSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.FieldSecurityProfile>();
+//				return this.CreateQuery<Entities.FieldSecurityProfile>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.FixedMonthlyFiscalCalendar"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.FixedMonthlyFiscalCalendar"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.FixedMonthlyFiscalCalendar> FixedMonthlyFiscalCalendarSet
+//		public System.Linq.IQueryable<Entities.FixedMonthlyFiscalCalendar> FixedMonthlyFiscalCalendarSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.FixedMonthlyFiscalCalendar>();
+//				return this.CreateQuery<Entities.FixedMonthlyFiscalCalendar>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Goal"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Goal"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Goal> GoalSet
+//		public System.Linq.IQueryable<Entities.Goal> GoalSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Goal>();
+//				return this.CreateQuery<Entities.Goal>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.GoalRollupQuery"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.GoalRollupQuery"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.GoalRollupQuery> GoalRollupQuerySet
+//		public System.Linq.IQueryable<Entities.GoalRollupQuery> GoalRollupQuerySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.GoalRollupQuery>();
+//				return this.CreateQuery<Entities.GoalRollupQuery>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.HierarchyRule"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.HierarchyRule"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.HierarchyRule> HierarchyRuleSet
+//		public System.Linq.IQueryable<Entities.HierarchyRule> HierarchyRuleSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.HierarchyRule>();
+//				return this.CreateQuery<Entities.HierarchyRule>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.HierarchySecurityConfiguration"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.HierarchySecurityConfiguration"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.HierarchySecurityConfiguration> HierarchySecurityConfigurationSet
+//		public System.Linq.IQueryable<Entities.HierarchySecurityConfiguration> HierarchySecurityConfigurationSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.HierarchySecurityConfiguration>();
+//				return this.CreateQuery<Entities.HierarchySecurityConfiguration>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Import"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Import"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Import> ImportSet
+//		public System.Linq.IQueryable<Entities.Import> ImportSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Import>();
+//				return this.CreateQuery<Entities.Import>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ImportEntityMapping"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ImportEntityMapping"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ImportEntityMapping> ImportEntityMappingSet
+//		public System.Linq.IQueryable<Entities.ImportEntityMapping> ImportEntityMappingSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ImportEntityMapping>();
+//				return this.CreateQuery<Entities.ImportEntityMapping>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ImportFile"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ImportFile"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ImportFile> ImportFileSet
+//		public System.Linq.IQueryable<Entities.ImportFile> ImportFileSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ImportFile>();
+//				return this.CreateQuery<Entities.ImportFile>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ImportJob"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ImportJob"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ImportJob> ImportJobSet
+//		public System.Linq.IQueryable<Entities.ImportJob> ImportJobSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ImportJob>();
+//				return this.CreateQuery<Entities.ImportJob>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ImportLog"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ImportLog"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ImportLog> ImportLogSet
+//		public System.Linq.IQueryable<Entities.ImportLog> ImportLogSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ImportLog>();
+//				return this.CreateQuery<Entities.ImportLog>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ImportMap"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ImportMap"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ImportMap> ImportMapSet
+//		public System.Linq.IQueryable<Entities.ImportMap> ImportMapSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ImportMap>();
+//				return this.CreateQuery<Entities.ImportMap>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Incident"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Incident"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Incident> IncidentSet
+//		public System.Linq.IQueryable<Entities.Incident> IncidentSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Incident>();
+//				return this.CreateQuery<Entities.Incident>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.IncidentKnowledgeBaseRecord"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.IncidentKnowledgeBaseRecord"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.IncidentKnowledgeBaseRecord> IncidentKnowledgeBaseRecordSet
+//		public System.Linq.IQueryable<Entities.IncidentKnowledgeBaseRecord> IncidentKnowledgeBaseRecordSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.IncidentKnowledgeBaseRecord>();
+//				return this.CreateQuery<Entities.IncidentKnowledgeBaseRecord>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.IncidentResolution"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.IncidentResolution"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.IncidentResolution> IncidentResolutionSet
+//		public System.Linq.IQueryable<Entities.IncidentResolution> IncidentResolutionSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.IncidentResolution>();
+//				return this.CreateQuery<Entities.IncidentResolution>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.InvalidDependency"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.InvalidDependency"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.InvalidDependency> InvalidDependencySet
+//		public System.Linq.IQueryable<Entities.InvalidDependency> InvalidDependencySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.InvalidDependency>();
+//				return this.CreateQuery<Entities.InvalidDependency>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Invoice"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Invoice"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Invoice> InvoiceSet
+//		public System.Linq.IQueryable<Entities.Invoice> InvoiceSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Invoice>();
+//				return this.CreateQuery<Entities.Invoice>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.InvoiceDetail"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.InvoiceDetail"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.InvoiceDetail> InvoiceDetailSet
+//		public System.Linq.IQueryable<Entities.InvoiceDetail> InvoiceDetailSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.InvoiceDetail>();
+//				return this.CreateQuery<Entities.InvoiceDetail>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.IsvConfig"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.IsvConfig"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.IsvConfig> IsvConfigSet
+//		public System.Linq.IQueryable<Entities.IsvConfig> IsvConfigSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.IsvConfig>();
+//				return this.CreateQuery<Entities.IsvConfig>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.KbArticle"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.KbArticle"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.KbArticle> KbArticleSet
+//		public System.Linq.IQueryable<Entities.KbArticle> KbArticleSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.KbArticle>();
+//				return this.CreateQuery<Entities.KbArticle>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.KbArticleComment"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.KbArticleComment"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.KbArticleComment> KbArticleCommentSet
+//		public System.Linq.IQueryable<Entities.KbArticleComment> KbArticleCommentSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.KbArticleComment>();
+//				return this.CreateQuery<Entities.KbArticleComment>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.KbArticleTemplate"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.KbArticleTemplate"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.KbArticleTemplate> KbArticleTemplateSet
+//		public System.Linq.IQueryable<Entities.KbArticleTemplate> KbArticleTemplateSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.KbArticleTemplate>();
+//				return this.CreateQuery<Entities.KbArticleTemplate>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.KnowledgeArticle"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.KnowledgeArticle"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.KnowledgeArticle> KnowledgeArticleSet
+//		public System.Linq.IQueryable<Entities.KnowledgeArticle> KnowledgeArticleSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.KnowledgeArticle>();
+//				return this.CreateQuery<Entities.KnowledgeArticle>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.KnowledgeArticleIncident"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.KnowledgeArticleIncident"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.KnowledgeArticleIncident> KnowledgeArticleIncidentSet
+//		public System.Linq.IQueryable<Entities.KnowledgeArticleIncident> KnowledgeArticleIncidentSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.KnowledgeArticleIncident>();
+//				return this.CreateQuery<Entities.KnowledgeArticleIncident>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.KnowledgeArticleViews"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.KnowledgeArticleViews"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.KnowledgeArticleViews> KnowledgeArticleViewsSet
+//		public System.Linq.IQueryable<Entities.KnowledgeArticleViews> KnowledgeArticleViewsSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.KnowledgeArticleViews>();
+//				return this.CreateQuery<Entities.KnowledgeArticleViews>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.KnowledgeBaseRecord"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.KnowledgeBaseRecord"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.KnowledgeBaseRecord> KnowledgeBaseRecordSet
+//		public System.Linq.IQueryable<Entities.KnowledgeBaseRecord> KnowledgeBaseRecordSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.KnowledgeBaseRecord>();
+//				return this.CreateQuery<Entities.KnowledgeBaseRecord>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.KnowledgeSearchModel"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.KnowledgeSearchModel"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.KnowledgeSearchModel> KnowledgeSearchModelSet
+//		public System.Linq.IQueryable<Entities.KnowledgeSearchModel> KnowledgeSearchModelSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.KnowledgeSearchModel>();
+//				return this.CreateQuery<Entities.KnowledgeSearchModel>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.LanguageLocale"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.LanguageLocale"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.LanguageLocale> LanguageLocaleSet
+//		public System.Linq.IQueryable<Entities.LanguageLocale> LanguageLocaleSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.LanguageLocale>();
+//				return this.CreateQuery<Entities.LanguageLocale>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Lead"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Lead"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Lead> LeadSet
+//		public System.Linq.IQueryable<Entities.Lead> LeadSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Lead>();
+//				return this.CreateQuery<Entities.Lead>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.LeadAddress"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.LeadAddress"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.LeadAddress> LeadAddressSet
+//		public System.Linq.IQueryable<Entities.LeadAddress> LeadAddressSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.LeadAddress>();
+//				return this.CreateQuery<Entities.LeadAddress>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.LeadCompetitors"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.LeadCompetitors"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.LeadCompetitors> LeadCompetitorsSet
+//		public System.Linq.IQueryable<Entities.LeadCompetitors> LeadCompetitorsSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.LeadCompetitors>();
+//				return this.CreateQuery<Entities.LeadCompetitors>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.LeadProduct"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.LeadProduct"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.LeadProduct> LeadProductSet
+//		public System.Linq.IQueryable<Entities.LeadProduct> LeadProductSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.LeadProduct>();
+//				return this.CreateQuery<Entities.LeadProduct>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Letter"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Letter"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Letter> LetterSet
+//		public System.Linq.IQueryable<Entities.Letter> LetterSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Letter>();
+//				return this.CreateQuery<Entities.Letter>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.License"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.License"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.License> LicenseSet
+//		public System.Linq.IQueryable<Entities.License> LicenseSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.License>();
+//				return this.CreateQuery<Entities.License>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.List"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.List"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.List> ListSet
+//		public System.Linq.IQueryable<Entities.List> ListSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.List>();
+//				return this.CreateQuery<Entities.List>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ListMember"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ListMember"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ListMember> ListMemberSet
+//		public System.Linq.IQueryable<Entities.ListMember> ListMemberSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ListMember>();
+//				return this.CreateQuery<Entities.ListMember>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.LookUpMapping"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.LookUpMapping"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.LookUpMapping> LookUpMappingSet
+//		public System.Linq.IQueryable<Entities.LookUpMapping> LookUpMappingSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.LookUpMapping>();
+//				return this.CreateQuery<Entities.LookUpMapping>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Mailbox"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Mailbox"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Mailbox> MailboxSet
+//		public System.Linq.IQueryable<Entities.Mailbox> MailboxSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Mailbox>();
+//				return this.CreateQuery<Entities.Mailbox>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.MailboxStatistics"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.MailboxStatistics"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.MailboxStatistics> MailboxStatisticsSet
+//		public System.Linq.IQueryable<Entities.MailboxStatistics> MailboxStatisticsSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.MailboxStatistics>();
+//				return this.CreateQuery<Entities.MailboxStatistics>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.MailboxTrackingFolder"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.MailboxTrackingFolder"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.MailboxTrackingFolder> MailboxTrackingFolderSet
+//		public System.Linq.IQueryable<Entities.MailboxTrackingFolder> MailboxTrackingFolderSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.MailboxTrackingFolder>();
+//				return this.CreateQuery<Entities.MailboxTrackingFolder>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.MailMergeTemplate"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.MailMergeTemplate"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.MailMergeTemplate> MailMergeTemplateSet
+//		public System.Linq.IQueryable<Entities.MailMergeTemplate> MailMergeTemplateSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.MailMergeTemplate>();
+//				return this.CreateQuery<Entities.MailMergeTemplate>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Metric"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Metric"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Metric> MetricSet
+//		public System.Linq.IQueryable<Entities.Metric> MetricSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Metric>();
+//				return this.CreateQuery<Entities.Metric>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.MobileOfflineProfile"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.MobileOfflineProfile"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.MobileOfflineProfile> MobileOfflineProfileSet
+//		public System.Linq.IQueryable<Entities.MobileOfflineProfile> MobileOfflineProfileSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.MobileOfflineProfile>();
+//				return this.CreateQuery<Entities.MobileOfflineProfile>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.MobileOfflineProfileItem"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.MobileOfflineProfileItem"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.MobileOfflineProfileItem> MobileOfflineProfileItemSet
+//		public System.Linq.IQueryable<Entities.MobileOfflineProfileItem> MobileOfflineProfileItemSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.MobileOfflineProfileItem>();
+//				return this.CreateQuery<Entities.MobileOfflineProfileItem>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.MobileOfflineProfileItemAssociation"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.MobileOfflineProfileItemAssociation"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.MobileOfflineProfileItemAssociation> MobileOfflineProfileItemAssociationSet
+//		public System.Linq.IQueryable<Entities.MobileOfflineProfileItemAssociation> MobileOfflineProfileItemAssociationSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.MobileOfflineProfileItemAssociation>();
+//				return this.CreateQuery<Entities.MobileOfflineProfileItemAssociation>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.MonthlyFiscalCalendar"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.MonthlyFiscalCalendar"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.MonthlyFiscalCalendar> MonthlyFiscalCalendarSet
+//		public System.Linq.IQueryable<Entities.MonthlyFiscalCalendar> MonthlyFiscalCalendarSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.MonthlyFiscalCalendar>();
+//				return this.CreateQuery<Entities.MonthlyFiscalCalendar>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.msdyn_PostAlbum"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.msdyn_PostAlbum"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.msdyn_PostAlbum> msdyn_PostAlbumSet
+//		public System.Linq.IQueryable<Entities.msdyn_PostAlbum> msdyn_PostAlbumSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.msdyn_PostAlbum>();
+//				return this.CreateQuery<Entities.msdyn_PostAlbum>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.msdyn_PostConfig"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.msdyn_PostConfig"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.msdyn_PostConfig> msdyn_PostConfigSet
+//		public System.Linq.IQueryable<Entities.msdyn_PostConfig> msdyn_PostConfigSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.msdyn_PostConfig>();
+//				return this.CreateQuery<Entities.msdyn_PostConfig>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.msdyn_PostRuleConfig"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.msdyn_PostRuleConfig"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.msdyn_PostRuleConfig> msdyn_PostRuleConfigSet
+//		public System.Linq.IQueryable<Entities.msdyn_PostRuleConfig> msdyn_PostRuleConfigSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.msdyn_PostRuleConfig>();
+//				return this.CreateQuery<Entities.msdyn_PostRuleConfig>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.msdyn_wallsavedquery"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.msdyn_wallsavedquery"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.msdyn_wallsavedquery> msdyn_wallsavedquerySet
+//		public System.Linq.IQueryable<Entities.msdyn_wallsavedquery> msdyn_wallsavedquerySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.msdyn_wallsavedquery>();
+//				return this.CreateQuery<Entities.msdyn_wallsavedquery>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.msdyn_wallsavedqueryusersettings"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.msdyn_wallsavedqueryusersettings"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.msdyn_wallsavedqueryusersettings> msdyn_wallsavedqueryusersettingsSet
+//		public System.Linq.IQueryable<Entities.msdyn_wallsavedqueryusersettings> msdyn_wallsavedqueryusersettingsSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.msdyn_wallsavedqueryusersettings>();
+//				return this.CreateQuery<Entities.msdyn_wallsavedqueryusersettings>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.OfficeGraphDocument"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.OfficeGraphDocument"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.OfficeGraphDocument> OfficeGraphDocumentSet
+//		public System.Linq.IQueryable<Entities.OfficeGraphDocument> OfficeGraphDocumentSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.OfficeGraphDocument>();
+//				return this.CreateQuery<Entities.OfficeGraphDocument>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Opportunity"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Opportunity"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Opportunity> OpportunitySet
+//		public System.Linq.IQueryable<Entities.Opportunity> OpportunitySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Opportunity>();
+//				return this.CreateQuery<Entities.Opportunity>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.OpportunityClose"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.OpportunityClose"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.OpportunityClose> OpportunityCloseSet
+//		public System.Linq.IQueryable<Entities.OpportunityClose> OpportunityCloseSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.OpportunityClose>();
+//				return this.CreateQuery<Entities.OpportunityClose>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.OpportunityCompetitors"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.OpportunityCompetitors"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.OpportunityCompetitors> OpportunityCompetitorsSet
+//		public System.Linq.IQueryable<Entities.OpportunityCompetitors> OpportunityCompetitorsSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.OpportunityCompetitors>();
+//				return this.CreateQuery<Entities.OpportunityCompetitors>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.OpportunityProduct"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.OpportunityProduct"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.OpportunityProduct> OpportunityProductSet
+//		public System.Linq.IQueryable<Entities.OpportunityProduct> OpportunityProductSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.OpportunityProduct>();
+//				return this.CreateQuery<Entities.OpportunityProduct>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.OrderClose"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.OrderClose"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.OrderClose> OrderCloseSet
+//		public System.Linq.IQueryable<Entities.OrderClose> OrderCloseSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.OrderClose>();
+//				return this.CreateQuery<Entities.OrderClose>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Organization"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Organization"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Organization> OrganizationSet
+//		public System.Linq.IQueryable<Entities.Organization> OrganizationSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Organization>();
+//				return this.CreateQuery<Entities.Organization>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.OrganizationUI"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.OrganizationUI"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.OrganizationUI> OrganizationUISet
+//		public System.Linq.IQueryable<Entities.OrganizationUI> OrganizationUISet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.OrganizationUI>();
+//				return this.CreateQuery<Entities.OrganizationUI>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.OwnerMapping"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.OwnerMapping"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.OwnerMapping> OwnerMappingSet
+//		public System.Linq.IQueryable<Entities.OwnerMapping> OwnerMappingSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.OwnerMapping>();
+//				return this.CreateQuery<Entities.OwnerMapping>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.PersonalDocumentTemplate"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.PersonalDocumentTemplate"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.PersonalDocumentTemplate> PersonalDocumentTemplateSet
+//		public System.Linq.IQueryable<Entities.PersonalDocumentTemplate> PersonalDocumentTemplateSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.PersonalDocumentTemplate>();
+//				return this.CreateQuery<Entities.PersonalDocumentTemplate>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.PhoneCall"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.PhoneCall"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.PhoneCall> PhoneCallSet
+//		public System.Linq.IQueryable<Entities.PhoneCall> PhoneCallSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.PhoneCall>();
+//				return this.CreateQuery<Entities.PhoneCall>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.PickListMapping"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.PickListMapping"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.PickListMapping> PickListMappingSet
+//		public System.Linq.IQueryable<Entities.PickListMapping> PickListMappingSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.PickListMapping>();
+//				return this.CreateQuery<Entities.PickListMapping>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.PluginAssembly"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.PluginAssembly"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.PluginAssembly> PluginAssemblySet
+//		public System.Linq.IQueryable<Entities.PluginAssembly> PluginAssemblySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.PluginAssembly>();
+//				return this.CreateQuery<Entities.PluginAssembly>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.PluginTraceLog"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.PluginTraceLog"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.PluginTraceLog> PluginTraceLogSet
+//		public System.Linq.IQueryable<Entities.PluginTraceLog> PluginTraceLogSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.PluginTraceLog>();
+//				return this.CreateQuery<Entities.PluginTraceLog>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.PluginType"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.PluginType"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.PluginType> PluginTypeSet
+//		public System.Linq.IQueryable<Entities.PluginType> PluginTypeSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.PluginType>();
+//				return this.CreateQuery<Entities.PluginType>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.PluginTypeStatistic"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.PluginTypeStatistic"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.PluginTypeStatistic> PluginTypeStatisticSet
+//		public System.Linq.IQueryable<Entities.PluginTypeStatistic> PluginTypeStatisticSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.PluginTypeStatistic>();
+//				return this.CreateQuery<Entities.PluginTypeStatistic>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Position"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Position"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Position> PositionSet
+//		public System.Linq.IQueryable<Entities.Position> PositionSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Position>();
+//				return this.CreateQuery<Entities.Position>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Post"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Post"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Post> PostSet
+//		public System.Linq.IQueryable<Entities.Post> PostSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Post>();
+//				return this.CreateQuery<Entities.Post>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.PostComment"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.PostComment"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.PostComment> PostCommentSet
+//		public System.Linq.IQueryable<Entities.PostComment> PostCommentSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.PostComment>();
+//				return this.CreateQuery<Entities.PostComment>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.PostFollow"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.PostFollow"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.PostFollow> PostFollowSet
+//		public System.Linq.IQueryable<Entities.PostFollow> PostFollowSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.PostFollow>();
+//				return this.CreateQuery<Entities.PostFollow>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.PostLike"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.PostLike"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.PostLike> PostLikeSet
+//		public System.Linq.IQueryable<Entities.PostLike> PostLikeSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.PostLike>();
+//				return this.CreateQuery<Entities.PostLike>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.PriceLevel"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.PriceLevel"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.PriceLevel> PriceLevelSet
+//		public System.Linq.IQueryable<Entities.PriceLevel> PriceLevelSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.PriceLevel>();
+//				return this.CreateQuery<Entities.PriceLevel>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.PrincipalEntityMap"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.PrincipalEntityMap"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.PrincipalEntityMap> PrincipalEntityMapSet
+//		public System.Linq.IQueryable<Entities.PrincipalEntityMap> PrincipalEntityMapSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.PrincipalEntityMap>();
+//				return this.CreateQuery<Entities.PrincipalEntityMap>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.PrincipalObjectAttributeAccess"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.PrincipalObjectAttributeAccess"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> PrincipalObjectAttributeAccessSet
+//		public System.Linq.IQueryable<Entities.PrincipalObjectAttributeAccess> PrincipalObjectAttributeAccessSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>();
+//				return this.CreateQuery<Entities.PrincipalObjectAttributeAccess>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Privilege"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Privilege"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Privilege> PrivilegeSet
+//		public System.Linq.IQueryable<Entities.Privilege> PrivilegeSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Privilege>();
+//				return this.CreateQuery<Entities.Privilege>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ProcessSession"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ProcessSession"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ProcessSession> ProcessSessionSet
+//		public System.Linq.IQueryable<Entities.ProcessSession> ProcessSessionSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ProcessSession>();
+//				return this.CreateQuery<Entities.ProcessSession>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ProcessStage"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ProcessStage"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ProcessStage> ProcessStageSet
+//		public System.Linq.IQueryable<Entities.ProcessStage> ProcessStageSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ProcessStage>();
+//				return this.CreateQuery<Entities.ProcessStage>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ProcessTrigger"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ProcessTrigger"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ProcessTrigger> ProcessTriggerSet
+//		public System.Linq.IQueryable<Entities.ProcessTrigger> ProcessTriggerSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ProcessTrigger>();
+//				return this.CreateQuery<Entities.ProcessTrigger>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Product"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Product"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Product> ProductSet
+//		public System.Linq.IQueryable<Entities.Product> ProductSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Product>();
+//				return this.CreateQuery<Entities.Product>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ProductAssociation"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ProductAssociation"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ProductAssociation> ProductAssociationSet
+//		public System.Linq.IQueryable<Entities.ProductAssociation> ProductAssociationSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ProductAssociation>();
+//				return this.CreateQuery<Entities.ProductAssociation>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ProductPriceLevel"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ProductPriceLevel"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ProductPriceLevel> ProductPriceLevelSet
+//		public System.Linq.IQueryable<Entities.ProductPriceLevel> ProductPriceLevelSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ProductPriceLevel>();
+//				return this.CreateQuery<Entities.ProductPriceLevel>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ProductSalesLiterature"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ProductSalesLiterature"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ProductSalesLiterature> ProductSalesLiteratureSet
+//		public System.Linq.IQueryable<Entities.ProductSalesLiterature> ProductSalesLiteratureSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ProductSalesLiterature>();
+//				return this.CreateQuery<Entities.ProductSalesLiterature>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ProductSubstitute"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ProductSubstitute"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ProductSubstitute> ProductSubstituteSet
+//		public System.Linq.IQueryable<Entities.ProductSubstitute> ProductSubstituteSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ProductSubstitute>();
+//				return this.CreateQuery<Entities.ProductSubstitute>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Publisher"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Publisher"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Publisher> PublisherSet
+//		public System.Linq.IQueryable<Entities.Publisher> PublisherSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Publisher>();
+//				return this.CreateQuery<Entities.Publisher>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.PublisherAddress"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.PublisherAddress"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.PublisherAddress> PublisherAddressSet
+//		public System.Linq.IQueryable<Entities.PublisherAddress> PublisherAddressSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.PublisherAddress>();
+//				return this.CreateQuery<Entities.PublisherAddress>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.QuarterlyFiscalCalendar"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.QuarterlyFiscalCalendar"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.QuarterlyFiscalCalendar> QuarterlyFiscalCalendarSet
+//		public System.Linq.IQueryable<Entities.QuarterlyFiscalCalendar> QuarterlyFiscalCalendarSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.QuarterlyFiscalCalendar>();
+//				return this.CreateQuery<Entities.QuarterlyFiscalCalendar>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Queue"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Queue"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Queue> QueueSet
+//		public System.Linq.IQueryable<Entities.Queue> QueueSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Queue>();
+//				return this.CreateQuery<Entities.Queue>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.QueueItem"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.QueueItem"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.QueueItem> QueueItemSet
+//		public System.Linq.IQueryable<Entities.QueueItem> QueueItemSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.QueueItem>();
+//				return this.CreateQuery<Entities.QueueItem>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.QueueMembership"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.QueueMembership"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.QueueMembership> QueueMembershipSet
+//		public System.Linq.IQueryable<Entities.QueueMembership> QueueMembershipSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.QueueMembership>();
+//				return this.CreateQuery<Entities.QueueMembership>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Quote"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Quote"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Quote> QuoteSet
+//		public System.Linq.IQueryable<Entities.Quote> QuoteSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Quote>();
+//				return this.CreateQuery<Entities.Quote>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.QuoteClose"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.QuoteClose"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.QuoteClose> QuoteCloseSet
+//		public System.Linq.IQueryable<Entities.QuoteClose> QuoteCloseSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.QuoteClose>();
+//				return this.CreateQuery<Entities.QuoteClose>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.QuoteDetail"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.QuoteDetail"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.QuoteDetail> QuoteDetailSet
+//		public System.Linq.IQueryable<Entities.QuoteDetail> QuoteDetailSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.QuoteDetail>();
+//				return this.CreateQuery<Entities.QuoteDetail>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.RecommendationCache"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.RecommendationCache"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.RecommendationCache> RecommendationCacheSet
+//		public System.Linq.IQueryable<Entities.RecommendationCache> RecommendationCacheSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.RecommendationCache>();
+//				return this.CreateQuery<Entities.RecommendationCache>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.RecommendationModel"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.RecommendationModel"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.RecommendationModel> RecommendationModelSet
+//		public System.Linq.IQueryable<Entities.RecommendationModel> RecommendationModelSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.RecommendationModel>();
+//				return this.CreateQuery<Entities.RecommendationModel>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.RecommendationModelMapping"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.RecommendationModelMapping"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.RecommendationModelMapping> RecommendationModelMappingSet
+//		public System.Linq.IQueryable<Entities.RecommendationModelMapping> RecommendationModelMappingSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.RecommendationModelMapping>();
+//				return this.CreateQuery<Entities.RecommendationModelMapping>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.RecommendationModelVersion"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.RecommendationModelVersion"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.RecommendationModelVersion> RecommendationModelVersionSet
+//		public System.Linq.IQueryable<Entities.RecommendationModelVersion> RecommendationModelVersionSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.RecommendationModelVersion>();
+//				return this.CreateQuery<Entities.RecommendationModelVersion>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.RecommendationModelVersionHistory"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.RecommendationModelVersionHistory"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.RecommendationModelVersionHistory> RecommendationModelVersionHistorySet
+//		public System.Linq.IQueryable<Entities.RecommendationModelVersionHistory> RecommendationModelVersionHistorySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.RecommendationModelVersionHistory>();
+//				return this.CreateQuery<Entities.RecommendationModelVersionHistory>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.RecurrenceRule"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.RecurrenceRule"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.RecurrenceRule> RecurrenceRuleSet
+//		public System.Linq.IQueryable<Entities.RecurrenceRule> RecurrenceRuleSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.RecurrenceRule>();
+//				return this.CreateQuery<Entities.RecurrenceRule>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.RecurringAppointmentMaster"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.RecurringAppointmentMaster"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.RecurringAppointmentMaster> RecurringAppointmentMasterSet
+//		public System.Linq.IQueryable<Entities.RecurringAppointmentMaster> RecurringAppointmentMasterSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.RecurringAppointmentMaster>();
+//				return this.CreateQuery<Entities.RecurringAppointmentMaster>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.RelationshipRole"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.RelationshipRole"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.RelationshipRole> RelationshipRoleSet
+//		public System.Linq.IQueryable<Entities.RelationshipRole> RelationshipRoleSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.RelationshipRole>();
+//				return this.CreateQuery<Entities.RelationshipRole>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.RelationshipRoleMap"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.RelationshipRoleMap"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.RelationshipRoleMap> RelationshipRoleMapSet
+//		public System.Linq.IQueryable<Entities.RelationshipRoleMap> RelationshipRoleMapSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.RelationshipRoleMap>();
+//				return this.CreateQuery<Entities.RelationshipRoleMap>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Report"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Report"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Report> ReportSet
+//		public System.Linq.IQueryable<Entities.Report> ReportSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Report>();
+//				return this.CreateQuery<Entities.Report>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ReportCategory"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ReportCategory"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ReportCategory> ReportCategorySet
+//		public System.Linq.IQueryable<Entities.ReportCategory> ReportCategorySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ReportCategory>();
+//				return this.CreateQuery<Entities.ReportCategory>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ReportEntity"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ReportEntity"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ReportEntity> ReportEntitySet
+//		public System.Linq.IQueryable<Entities.ReportEntity> ReportEntitySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ReportEntity>();
+//				return this.CreateQuery<Entities.ReportEntity>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ReportLink"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ReportLink"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ReportLink> ReportLinkSet
+//		public System.Linq.IQueryable<Entities.ReportLink> ReportLinkSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ReportLink>();
+//				return this.CreateQuery<Entities.ReportLink>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ReportVisibility"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ReportVisibility"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ReportVisibility> ReportVisibilitySet
+//		public System.Linq.IQueryable<Entities.ReportVisibility> ReportVisibilitySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ReportVisibility>();
+//				return this.CreateQuery<Entities.ReportVisibility>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Resource"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Resource"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Resource> ResourceSet
+//		public System.Linq.IQueryable<Entities.Resource> ResourceSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Resource>();
+//				return this.CreateQuery<Entities.Resource>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ResourceGroup"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ResourceGroup"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ResourceGroup> ResourceGroupSet
+//		public System.Linq.IQueryable<Entities.ResourceGroup> ResourceGroupSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ResourceGroup>();
+//				return this.CreateQuery<Entities.ResourceGroup>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ResourceSpec"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ResourceSpec"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ResourceSpec> ResourceSpecSet
+//		public System.Linq.IQueryable<Entities.ResourceSpec> ResourceSpecSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ResourceSpec>();
+//				return this.CreateQuery<Entities.ResourceSpec>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.RibbonCustomization"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.RibbonCustomization"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.RibbonCustomization> RibbonCustomizationSet
+//		public System.Linq.IQueryable<Entities.RibbonCustomization> RibbonCustomizationSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.RibbonCustomization>();
+//				return this.CreateQuery<Entities.RibbonCustomization>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Role"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Role"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Role> RoleSet
+//		public System.Linq.IQueryable<Entities.Role> RoleSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Role>();
+//				return this.CreateQuery<Entities.Role>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.RolePrivileges"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.RolePrivileges"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.RolePrivileges> RolePrivilegesSet
+//		public System.Linq.IQueryable<Entities.RolePrivileges> RolePrivilegesSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.RolePrivileges>();
+//				return this.CreateQuery<Entities.RolePrivileges>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.RoleTemplatePrivileges"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.RoleTemplatePrivileges"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.RoleTemplatePrivileges> RoleTemplatePrivilegesSet
+//		public System.Linq.IQueryable<Entities.RoleTemplatePrivileges> RoleTemplatePrivilegesSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.RoleTemplatePrivileges>();
+//				return this.CreateQuery<Entities.RoleTemplatePrivileges>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.RollupField"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.RollupField"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.RollupField> RollupFieldSet
+//		public System.Linq.IQueryable<Entities.RollupField> RollupFieldSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.RollupField>();
+//				return this.CreateQuery<Entities.RollupField>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.RoutingRule"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.RoutingRule"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.RoutingRule> RoutingRuleSet
+//		public System.Linq.IQueryable<Entities.RoutingRule> RoutingRuleSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.RoutingRule>();
+//				return this.CreateQuery<Entities.RoutingRule>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.RoutingRuleItem"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.RoutingRuleItem"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.RoutingRuleItem> RoutingRuleItemSet
+//		public System.Linq.IQueryable<Entities.RoutingRuleItem> RoutingRuleItemSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.RoutingRuleItem>();
+//				return this.CreateQuery<Entities.RoutingRuleItem>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SalesLiterature"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SalesLiterature"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SalesLiterature> SalesLiteratureSet
+//		public System.Linq.IQueryable<Entities.SalesLiterature> SalesLiteratureSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SalesLiterature>();
+//				return this.CreateQuery<Entities.SalesLiterature>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SalesLiteratureItem"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SalesLiteratureItem"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SalesLiteratureItem> SalesLiteratureItemSet
+//		public System.Linq.IQueryable<Entities.SalesLiteratureItem> SalesLiteratureItemSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SalesLiteratureItem>();
+//				return this.CreateQuery<Entities.SalesLiteratureItem>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SalesOrder"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SalesOrder"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SalesOrder> SalesOrderSet
+//		public System.Linq.IQueryable<Entities.SalesOrder> SalesOrderSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SalesOrder>();
+//				return this.CreateQuery<Entities.SalesOrder>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SalesOrderDetail"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SalesOrderDetail"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SalesOrderDetail> SalesOrderDetailSet
+//		public System.Linq.IQueryable<Entities.SalesOrderDetail> SalesOrderDetailSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SalesOrderDetail>();
+//				return this.CreateQuery<Entities.SalesOrderDetail>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SavedQuery"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SavedQuery"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SavedQuery> SavedQuerySet
+//		public System.Linq.IQueryable<Entities.SavedQuery> SavedQuerySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SavedQuery>();
+//				return this.CreateQuery<Entities.SavedQuery>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SavedQueryVisualization"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SavedQueryVisualization"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SavedQueryVisualization> SavedQueryVisualizationSet
+//		public System.Linq.IQueryable<Entities.SavedQueryVisualization> SavedQueryVisualizationSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SavedQueryVisualization>();
+//				return this.CreateQuery<Entities.SavedQueryVisualization>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SdkMessage"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SdkMessage"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SdkMessage> SdkMessageSet
+//		public System.Linq.IQueryable<Entities.SdkMessage> SdkMessageSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SdkMessage>();
+//				return this.CreateQuery<Entities.SdkMessage>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SdkMessageFilter"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SdkMessageFilter"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SdkMessageFilter> SdkMessageFilterSet
+//		public System.Linq.IQueryable<Entities.SdkMessageFilter> SdkMessageFilterSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SdkMessageFilter>();
+//				return this.CreateQuery<Entities.SdkMessageFilter>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SdkMessagePair"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SdkMessagePair"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SdkMessagePair> SdkMessagePairSet
+//		public System.Linq.IQueryable<Entities.SdkMessagePair> SdkMessagePairSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SdkMessagePair>();
+//				return this.CreateQuery<Entities.SdkMessagePair>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SdkMessageProcessingStep"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SdkMessageProcessingStep"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SdkMessageProcessingStep> SdkMessageProcessingStepSet
+//		public System.Linq.IQueryable<Entities.SdkMessageProcessingStep> SdkMessageProcessingStepSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SdkMessageProcessingStep>();
+//				return this.CreateQuery<Entities.SdkMessageProcessingStep>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SdkMessageProcessingStepImage"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SdkMessageProcessingStepImage"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SdkMessageProcessingStepImage> SdkMessageProcessingStepImageSet
+//		public System.Linq.IQueryable<Entities.SdkMessageProcessingStepImage> SdkMessageProcessingStepImageSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SdkMessageProcessingStepImage>();
+//				return this.CreateQuery<Entities.SdkMessageProcessingStepImage>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SdkMessageProcessingStepSecureConfig"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SdkMessageProcessingStepSecureConfig"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SdkMessageProcessingStepSecureConfig> SdkMessageProcessingStepSecureConfigSet
+//		public System.Linq.IQueryable<Entities.SdkMessageProcessingStepSecureConfig> SdkMessageProcessingStepSecureConfigSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SdkMessageProcessingStepSecureConfig>();
+//				return this.CreateQuery<Entities.SdkMessageProcessingStepSecureConfig>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SdkMessageRequest"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SdkMessageRequest"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SdkMessageRequest> SdkMessageRequestSet
+//		public System.Linq.IQueryable<Entities.SdkMessageRequest> SdkMessageRequestSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SdkMessageRequest>();
+//				return this.CreateQuery<Entities.SdkMessageRequest>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SdkMessageRequestField"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SdkMessageRequestField"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SdkMessageRequestField> SdkMessageRequestFieldSet
+//		public System.Linq.IQueryable<Entities.SdkMessageRequestField> SdkMessageRequestFieldSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SdkMessageRequestField>();
+//				return this.CreateQuery<Entities.SdkMessageRequestField>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SdkMessageResponse"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SdkMessageResponse"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SdkMessageResponse> SdkMessageResponseSet
+//		public System.Linq.IQueryable<Entities.SdkMessageResponse> SdkMessageResponseSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SdkMessageResponse>();
+//				return this.CreateQuery<Entities.SdkMessageResponse>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SdkMessageResponseField"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SdkMessageResponseField"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SdkMessageResponseField> SdkMessageResponseFieldSet
+//		public System.Linq.IQueryable<Entities.SdkMessageResponseField> SdkMessageResponseFieldSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SdkMessageResponseField>();
+//				return this.CreateQuery<Entities.SdkMessageResponseField>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SemiAnnualFiscalCalendar"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SemiAnnualFiscalCalendar"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SemiAnnualFiscalCalendar> SemiAnnualFiscalCalendarSet
+//		public System.Linq.IQueryable<Entities.SemiAnnualFiscalCalendar> SemiAnnualFiscalCalendarSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SemiAnnualFiscalCalendar>();
+//				return this.CreateQuery<Entities.SemiAnnualFiscalCalendar>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Service"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Service"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Service> ServiceSet
+//		public System.Linq.IQueryable<Entities.Service> ServiceSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Service>();
+//				return this.CreateQuery<Entities.Service>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ServiceAppointment"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ServiceAppointment"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ServiceAppointment> ServiceAppointmentSet
+//		public System.Linq.IQueryable<Entities.ServiceAppointment> ServiceAppointmentSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ServiceAppointment>();
+//				return this.CreateQuery<Entities.ServiceAppointment>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ServiceContractContacts"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ServiceContractContacts"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ServiceContractContacts> ServiceContractContactsSet
+//		public System.Linq.IQueryable<Entities.ServiceContractContacts> ServiceContractContactsSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ServiceContractContacts>();
+//				return this.CreateQuery<Entities.ServiceContractContacts>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.ServiceEndpoint"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.ServiceEndpoint"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.ServiceEndpoint> ServiceEndpointSet
+//		public System.Linq.IQueryable<Entities.ServiceEndpoint> ServiceEndpointSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.ServiceEndpoint>();
+//				return this.CreateQuery<Entities.ServiceEndpoint>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SharePointData"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SharePointData"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SharePointData> SharePointDataSet
+//		public System.Linq.IQueryable<Entities.SharePointData> SharePointDataSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SharePointData>();
+//				return this.CreateQuery<Entities.SharePointData>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SharePointDocument"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SharePointDocument"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SharePointDocument> SharePointDocumentSet
+//		public System.Linq.IQueryable<Entities.SharePointDocument> SharePointDocumentSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SharePointDocument>();
+//				return this.CreateQuery<Entities.SharePointDocument>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SharePointDocumentLocation"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SharePointDocumentLocation"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SharePointDocumentLocation> SharePointDocumentLocationSet
+//		public System.Linq.IQueryable<Entities.SharePointDocumentLocation> SharePointDocumentLocationSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SharePointDocumentLocation>();
+//				return this.CreateQuery<Entities.SharePointDocumentLocation>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SharePointSite"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SharePointSite"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SharePointSite> SharePointSiteSet
+//		public System.Linq.IQueryable<Entities.SharePointSite> SharePointSiteSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SharePointSite>();
+//				return this.CreateQuery<Entities.SharePointSite>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SimilarityRule"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SimilarityRule"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SimilarityRule> SimilarityRuleSet
+//		public System.Linq.IQueryable<Entities.SimilarityRule> SimilarityRuleSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SimilarityRule>();
+//				return this.CreateQuery<Entities.SimilarityRule>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Site"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Site"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Site> SiteSet
+//		public System.Linq.IQueryable<Entities.Site> SiteSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Site>();
+//				return this.CreateQuery<Entities.Site>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SiteMap"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SiteMap"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SiteMap> SiteMapSet
+//		public System.Linq.IQueryable<Entities.SiteMap> SiteMapSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SiteMap>();
+//				return this.CreateQuery<Entities.SiteMap>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SLA"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SLA"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SLA> SLASet
+//		public System.Linq.IQueryable<Entities.SLA> SLASet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SLA>();
+//				return this.CreateQuery<Entities.SLA>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SLAItem"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SLAItem"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SLAItem> SLAItemSet
+//		public System.Linq.IQueryable<Entities.SLAItem> SLAItemSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SLAItem>();
+//				return this.CreateQuery<Entities.SLAItem>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SLAKPIInstance"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SLAKPIInstance"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SLAKPIInstance> SLAKPIInstanceSet
+//		public System.Linq.IQueryable<Entities.SLAKPIInstance> SLAKPIInstanceSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SLAKPIInstance>();
+//				return this.CreateQuery<Entities.SLAKPIInstance>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SocialActivity"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SocialActivity"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SocialActivity> SocialActivitySet
+//		public System.Linq.IQueryable<Entities.SocialActivity> SocialActivitySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SocialActivity>();
+//				return this.CreateQuery<Entities.SocialActivity>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SocialInsightsConfiguration"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SocialInsightsConfiguration"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SocialInsightsConfiguration> SocialInsightsConfigurationSet
+//		public System.Linq.IQueryable<Entities.SocialInsightsConfiguration> SocialInsightsConfigurationSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SocialInsightsConfiguration>();
+//				return this.CreateQuery<Entities.SocialInsightsConfiguration>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SocialProfile"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SocialProfile"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SocialProfile> SocialProfileSet
+//		public System.Linq.IQueryable<Entities.SocialProfile> SocialProfileSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SocialProfile>();
+//				return this.CreateQuery<Entities.SocialProfile>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Solution"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Solution"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Solution> SolutionSet
+//		public System.Linq.IQueryable<Entities.Solution> SolutionSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Solution>();
+//				return this.CreateQuery<Entities.Solution>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SolutionComponent"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SolutionComponent"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SolutionComponent> SolutionComponentSet
+//		public System.Linq.IQueryable<Entities.SolutionComponent> SolutionComponentSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SolutionComponent>();
+//				return this.CreateQuery<Entities.SolutionComponent>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Subject"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Subject"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Subject> SubjectSet
+//		public System.Linq.IQueryable<Entities.Subject> SubjectSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Subject>();
+//				return this.CreateQuery<Entities.Subject>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SubscriptionManuallyTrackedObject"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SubscriptionManuallyTrackedObject"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SubscriptionManuallyTrackedObject> SubscriptionManuallyTrackedObjectSet
+//		public System.Linq.IQueryable<Entities.SubscriptionManuallyTrackedObject> SubscriptionManuallyTrackedObjectSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SubscriptionManuallyTrackedObject>();
+//				return this.CreateQuery<Entities.SubscriptionManuallyTrackedObject>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SubscriptionTrackingDeletedObject"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SubscriptionTrackingDeletedObject"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SubscriptionTrackingDeletedObject> SubscriptionTrackingDeletedObjectSet
+//		public System.Linq.IQueryable<Entities.SubscriptionTrackingDeletedObject> SubscriptionTrackingDeletedObjectSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SubscriptionTrackingDeletedObject>();
+//				return this.CreateQuery<Entities.SubscriptionTrackingDeletedObject>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SyncError"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SyncError"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SyncError> SyncErrorSet
+//		public System.Linq.IQueryable<Entities.SyncError> SyncErrorSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SyncError>();
+//				return this.CreateQuery<Entities.SyncError>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SystemForm"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SystemForm"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SystemForm> SystemFormSet
+//		public System.Linq.IQueryable<Entities.SystemForm> SystemFormSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SystemForm>();
+//				return this.CreateQuery<Entities.SystemForm>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SystemUser"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SystemUser"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SystemUser> SystemUserSet
+//		public System.Linq.IQueryable<Entities.SystemUser> SystemUserSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SystemUser>();
+//				return this.CreateQuery<Entities.SystemUser>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SystemUserLicenses"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SystemUserLicenses"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SystemUserLicenses> SystemUserLicensesSet
+//		public System.Linq.IQueryable<Entities.SystemUserLicenses> SystemUserLicensesSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SystemUserLicenses>();
+//				return this.CreateQuery<Entities.SystemUserLicenses>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SystemUserProfiles"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SystemUserProfiles"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SystemUserProfiles> SystemUserProfilesSet
+//		public System.Linq.IQueryable<Entities.SystemUserProfiles> SystemUserProfilesSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SystemUserProfiles>();
+//				return this.CreateQuery<Entities.SystemUserProfiles>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SystemUserRoles"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SystemUserRoles"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SystemUserRoles> SystemUserRolesSet
+//		public System.Linq.IQueryable<Entities.SystemUserRoles> SystemUserRolesSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SystemUserRoles>();
+//				return this.CreateQuery<Entities.SystemUserRoles>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.SystemUserSyncMappingProfiles"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.SystemUserSyncMappingProfiles"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.SystemUserSyncMappingProfiles> SystemUserSyncMappingProfilesSet
+//		public System.Linq.IQueryable<Entities.SystemUserSyncMappingProfiles> SystemUserSyncMappingProfilesSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.SystemUserSyncMappingProfiles>();
+//				return this.CreateQuery<Entities.SystemUserSyncMappingProfiles>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Task"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Task"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Task> TaskSet
+//		public System.Linq.IQueryable<Entities.Task> TaskSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Task>();
+//				return this.CreateQuery<Entities.Task>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Team"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Team"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Team> TeamSet
+//		public System.Linq.IQueryable<Entities.Team> TeamSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Team>();
+//				return this.CreateQuery<Entities.Team>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.TeamMembership"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.TeamMembership"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.TeamMembership> TeamMembershipSet
+//		public System.Linq.IQueryable<Entities.TeamMembership> TeamMembershipSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.TeamMembership>();
+//				return this.CreateQuery<Entities.TeamMembership>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.TeamProfiles"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.TeamProfiles"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.TeamProfiles> TeamProfilesSet
+//		public System.Linq.IQueryable<Entities.TeamProfiles> TeamProfilesSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.TeamProfiles>();
+//				return this.CreateQuery<Entities.TeamProfiles>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.TeamRoles"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.TeamRoles"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.TeamRoles> TeamRolesSet
+//		public System.Linq.IQueryable<Entities.TeamRoles> TeamRolesSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.TeamRoles>();
+//				return this.CreateQuery<Entities.TeamRoles>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.TeamSyncAttributeMappingProfiles"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.TeamSyncAttributeMappingProfiles"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.TeamSyncAttributeMappingProfiles> TeamSyncAttributeMappingProfilesSet
+//		public System.Linq.IQueryable<Entities.TeamSyncAttributeMappingProfiles> TeamSyncAttributeMappingProfilesSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.TeamSyncAttributeMappingProfiles>();
+//				return this.CreateQuery<Entities.TeamSyncAttributeMappingProfiles>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.TeamTemplate"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.TeamTemplate"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.TeamTemplate> TeamTemplateSet
+//		public System.Linq.IQueryable<Entities.TeamTemplate> TeamTemplateSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.TeamTemplate>();
+//				return this.CreateQuery<Entities.TeamTemplate>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Template"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Template"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Template> TemplateSet
+//		public System.Linq.IQueryable<Entities.Template> TemplateSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Template>();
+//				return this.CreateQuery<Entities.Template>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Territory"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Territory"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Territory> TerritorySet
+//		public System.Linq.IQueryable<Entities.Territory> TerritorySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Territory>();
+//				return this.CreateQuery<Entities.Territory>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.TextAnalyticsEntityMapping"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.TextAnalyticsEntityMapping"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.TextAnalyticsEntityMapping> TextAnalyticsEntityMappingSet
+//		public System.Linq.IQueryable<Entities.TextAnalyticsEntityMapping> TextAnalyticsEntityMappingSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.TextAnalyticsEntityMapping>();
+//				return this.CreateQuery<Entities.TextAnalyticsEntityMapping>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Theme"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Theme"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Theme> ThemeSet
+//		public System.Linq.IQueryable<Entities.Theme> ThemeSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Theme>();
+//				return this.CreateQuery<Entities.Theme>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.TimeZoneDefinition"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.TimeZoneDefinition"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.TimeZoneDefinition> TimeZoneDefinitionSet
+//		public System.Linq.IQueryable<Entities.TimeZoneDefinition> TimeZoneDefinitionSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.TimeZoneDefinition>();
+//				return this.CreateQuery<Entities.TimeZoneDefinition>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.TimeZoneLocalizedName"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.TimeZoneLocalizedName"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.TimeZoneLocalizedName> TimeZoneLocalizedNameSet
+//		public System.Linq.IQueryable<Entities.TimeZoneLocalizedName> TimeZoneLocalizedNameSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.TimeZoneLocalizedName>();
+//				return this.CreateQuery<Entities.TimeZoneLocalizedName>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.TimeZoneRule"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.TimeZoneRule"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.TimeZoneRule> TimeZoneRuleSet
+//		public System.Linq.IQueryable<Entities.TimeZoneRule> TimeZoneRuleSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.TimeZoneRule>();
+//				return this.CreateQuery<Entities.TimeZoneRule>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Topic"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Topic"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Topic> TopicSet
+//		public System.Linq.IQueryable<Entities.Topic> TopicSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Topic>();
+//				return this.CreateQuery<Entities.Topic>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.TopicHistory"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.TopicHistory"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.TopicHistory> TopicHistorySet
+//		public System.Linq.IQueryable<Entities.TopicHistory> TopicHistorySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.TopicHistory>();
+//				return this.CreateQuery<Entities.TopicHistory>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.TopicModel"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.TopicModel"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.TopicModel> TopicModelSet
+//		public System.Linq.IQueryable<Entities.TopicModel> TopicModelSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.TopicModel>();
+//				return this.CreateQuery<Entities.TopicModel>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.TopicModelConfiguration"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.TopicModelConfiguration"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.TopicModelConfiguration> TopicModelConfigurationSet
+//		public System.Linq.IQueryable<Entities.TopicModelConfiguration> TopicModelConfigurationSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.TopicModelConfiguration>();
+//				return this.CreateQuery<Entities.TopicModelConfiguration>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.TopicModelExecutionHistory"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.TopicModelExecutionHistory"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.TopicModelExecutionHistory> TopicModelExecutionHistorySet
+//		public System.Linq.IQueryable<Entities.TopicModelExecutionHistory> TopicModelExecutionHistorySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.TopicModelExecutionHistory>();
+//				return this.CreateQuery<Entities.TopicModelExecutionHistory>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.TraceLog"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.TraceLog"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.TraceLog> TraceLogSet
+//		public System.Linq.IQueryable<Entities.TraceLog> TraceLogSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.TraceLog>();
+//				return this.CreateQuery<Entities.TraceLog>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.TransactionCurrency"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.TransactionCurrency"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.TransactionCurrency> TransactionCurrencySet
+//		public System.Linq.IQueryable<Entities.TransactionCurrency> TransactionCurrencySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.TransactionCurrency>();
+//				return this.CreateQuery<Entities.TransactionCurrency>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.TransformationMapping"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.TransformationMapping"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.TransformationMapping> TransformationMappingSet
+//		public System.Linq.IQueryable<Entities.TransformationMapping> TransformationMappingSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.TransformationMapping>();
+//				return this.CreateQuery<Entities.TransformationMapping>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.TransformationParameterMapping"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.TransformationParameterMapping"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.TransformationParameterMapping> TransformationParameterMappingSet
+//		public System.Linq.IQueryable<Entities.TransformationParameterMapping> TransformationParameterMappingSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.TransformationParameterMapping>();
+//				return this.CreateQuery<Entities.TransformationParameterMapping>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.UoM"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.UoM"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.UoM> UoMSet
+//		public System.Linq.IQueryable<Entities.UoM> UoMSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.UoM>();
+//				return this.CreateQuery<Entities.UoM>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.UoMSchedule"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.UoMSchedule"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.UoMSchedule> UoMScheduleSet
+//		public System.Linq.IQueryable<Entities.UoMSchedule> UoMScheduleSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.UoMSchedule>();
+//				return this.CreateQuery<Entities.UoMSchedule>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.UserEntityInstanceData"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.UserEntityInstanceData"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.UserEntityInstanceData> UserEntityInstanceDataSet
+//		public System.Linq.IQueryable<Entities.UserEntityInstanceData> UserEntityInstanceDataSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.UserEntityInstanceData>();
+//				return this.CreateQuery<Entities.UserEntityInstanceData>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.UserEntityUISettings"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.UserEntityUISettings"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.UserEntityUISettings> UserEntityUISettingsSet
+//		public System.Linq.IQueryable<Entities.UserEntityUISettings> UserEntityUISettingsSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.UserEntityUISettings>();
+//				return this.CreateQuery<Entities.UserEntityUISettings>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.UserForm"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.UserForm"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.UserForm> UserFormSet
+//		public System.Linq.IQueryable<Entities.UserForm> UserFormSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.UserForm>();
+//				return this.CreateQuery<Entities.UserForm>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.UserMapping"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.UserMapping"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.UserMapping> UserMappingSet
+//		public System.Linq.IQueryable<Entities.UserMapping> UserMappingSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.UserMapping>();
+//				return this.CreateQuery<Entities.UserMapping>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.UserQuery"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.UserQuery"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.UserQuery> UserQuerySet
+//		public System.Linq.IQueryable<Entities.UserQuery> UserQuerySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.UserQuery>();
+//				return this.CreateQuery<Entities.UserQuery>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.UserQueryVisualization"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.UserQueryVisualization"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.UserQueryVisualization> UserQueryVisualizationSet
+//		public System.Linq.IQueryable<Entities.UserQueryVisualization> UserQueryVisualizationSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.UserQueryVisualization>();
+//				return this.CreateQuery<Entities.UserQueryVisualization>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.UserSettings"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.UserSettings"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.UserSettings> UserSettingsSet
+//		public System.Linq.IQueryable<Entities.UserSettings> UserSettingsSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.UserSettings>();
+//				return this.CreateQuery<Entities.UserSettings>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.WebResource"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.WebResource"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.WebResource> WebResourceSet
+//		public System.Linq.IQueryable<Entities.WebResource> WebResourceSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.WebResource>();
+//				return this.CreateQuery<Entities.WebResource>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.Workflow"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.Workflow"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.Workflow> WorkflowSet
+//		public System.Linq.IQueryable<Entities.Workflow> WorkflowSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.Workflow>();
+//				return this.CreateQuery<Entities.Workflow>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.WorkflowDependency"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.WorkflowDependency"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.WorkflowDependency> WorkflowDependencySet
+//		public System.Linq.IQueryable<Entities.WorkflowDependency> WorkflowDependencySet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.WorkflowDependency>();
+//				return this.CreateQuery<Entities.WorkflowDependency>();
 //			}
 //		}
 		
 //		/// <summary>
-//		/// Gets a binding to the set of all <see cref="DLaB.Xrm.Entities.WorkflowLog"/> entities.
+//		/// Gets a binding to the set of all <see cref="Entities.WorkflowLog"/> entities.
 //		/// </summary>
-//		public System.Linq.IQueryable<DLaB.Xrm.Entities.WorkflowLog> WorkflowLogSet
+//		public System.Linq.IQueryable<Entities.WorkflowLog> WorkflowLogSet
 //		{
 //			[System.Diagnostics.DebuggerNonUserCode()]
 //			get
 //			{
-//				return this.CreateQuery<DLaB.Xrm.Entities.WorkflowLog>();
+//				return this.CreateQuery<Entities.WorkflowLog>();
 //			}
 //		}
 //	}

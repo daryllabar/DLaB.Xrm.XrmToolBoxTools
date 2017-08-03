@@ -607,18 +607,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("convertruleid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("convertrule_convertruleitem")]
-		public DLaB.Xrm.Entities.ConvertRule convertrule_convertruleitem
+		public Entities.ConvertRule convertrule_convertruleitem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ConvertRule>("convertrule_convertruleitem", null);
+				return this.GetRelatedEntity<Entities.ConvertRule>("convertrule_convertruleitem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("convertrule_convertruleitem");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ConvertRule>("convertrule_convertruleitem", null, value);
+				this.SetRelatedEntity<Entities.ConvertRule>("convertrule_convertruleitem", null, value);
 				this.OnPropertyChanged("convertrule_convertruleitem");
 			}
 		}
@@ -628,18 +628,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("workflowid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("convertruleitembase_workflowid")]
-		public DLaB.Xrm.Entities.Workflow convertruleitembase_workflowid
+		public Entities.Workflow convertruleitembase_workflowid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Workflow>("convertruleitembase_workflowid", null);
+				return this.GetRelatedEntity<Entities.Workflow>("convertruleitembase_workflowid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("convertruleitembase_workflowid");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Workflow>("convertruleitembase_workflowid", null, value);
+				this.SetRelatedEntity<Entities.Workflow>("convertruleitembase_workflowid", null, value);
 				this.OnPropertyChanged("convertruleitembase_workflowid");
 			}
 		}
@@ -649,18 +649,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_convertruleitembase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_convertruleitembase_createdby
+		public Entities.SystemUser lk_convertruleitembase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_convertruleitembase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_convertruleitembase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_convertruleitembase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_convertruleitembase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_convertruleitembase_createdby", null, value);
 				this.OnPropertyChanged("lk_convertruleitembase_createdby");
 			}
 		}
@@ -670,18 +670,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_convertruleitembase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_convertruleitembase_createdonbehalfby
+		public Entities.SystemUser lk_convertruleitembase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_convertruleitembase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_convertruleitembase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_convertruleitembase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_convertruleitembase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_convertruleitembase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_convertruleitembase_createdonbehalfby");
 			}
 		}
@@ -691,18 +691,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_convertruleitembase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_convertruleitembase_modifiedby
+		public Entities.SystemUser lk_convertruleitembase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_convertruleitembase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_convertruleitembase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_convertruleitembase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_convertruleitembase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_convertruleitembase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_convertruleitembase_modifiedby");
 			}
 		}
@@ -712,18 +712,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_convertruleitembase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_convertruleitembase_modifiedonbehalfby
+		public Entities.SystemUser lk_convertruleitembase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_convertruleitembase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_convertruleitembase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_convertruleitembase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_convertruleitembase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_convertruleitembase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_convertruleitembase_modifiedonbehalfby");
 			}
 		}
@@ -733,18 +733,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("queueid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("queue_convertruleitem")]
-		public DLaB.Xrm.Entities.Queue queue_convertruleitem
+		public Entities.Queue queue_convertruleitem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Queue>("queue_convertruleitem", null);
+				return this.GetRelatedEntity<Entities.Queue>("queue_convertruleitem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("queue_convertruleitem");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Queue>("queue_convertruleitem", null, value);
+				this.SetRelatedEntity<Entities.Queue>("queue_convertruleitem", null, value);
 				this.OnPropertyChanged("queue_convertruleitem");
 			}
 		}
@@ -754,12 +754,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_convertruleitem")]
-		public DLaB.Xrm.Entities.TransactionCurrency transactioncurrency_convertruleitem
+		public Entities.TransactionCurrency transactioncurrency_convertruleitem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_convertruleitem", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_convertruleitem", null);
 			}
 		}
 		

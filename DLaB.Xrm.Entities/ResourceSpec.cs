@@ -480,18 +480,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ActivityPartyResourceSpec
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ActivityPartyResourceSpec")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> ActivityPartyResourceSpec
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> ActivityPartyResourceSpec
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("ActivityPartyResourceSpec", null);
+				return this.GetRelatedEntities<Entities.ActivityParty>("ActivityPartyResourceSpec", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ActivityPartyResourceSpec");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("ActivityPartyResourceSpec", null, value);
+				this.SetRelatedEntities<Entities.ActivityParty>("ActivityPartyResourceSpec", null, value);
 				this.OnPropertyChanged("ActivityPartyResourceSpec");
 			}
 		}
@@ -500,18 +500,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N resource_spec_services
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("resource_spec_services")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Service> resource_spec_services
+		public System.Collections.Generic.IEnumerable<Entities.Service> resource_spec_services
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Service>("resource_spec_services", null);
+				return this.GetRelatedEntities<Entities.Service>("resource_spec_services", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("resource_spec_services");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Service>("resource_spec_services", null, value);
+				this.SetRelatedEntities<Entities.Service>("resource_spec_services", null, value);
 				this.OnPropertyChanged("resource_spec_services");
 			}
 		}
@@ -520,18 +520,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ResourceSpec_Annotation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ResourceSpec_Annotation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> ResourceSpec_Annotation
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> ResourceSpec_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("ResourceSpec_Annotation", null);
+				return this.GetRelatedEntities<Entities.Annotation>("ResourceSpec_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ResourceSpec_Annotation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("ResourceSpec_Annotation", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("ResourceSpec_Annotation", null, value);
 				this.OnPropertyChanged("ResourceSpec_Annotation");
 			}
 		}
@@ -540,18 +540,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ResourceSpec_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ResourceSpec_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> ResourceSpec_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> ResourceSpec_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("ResourceSpec_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("ResourceSpec_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ResourceSpec_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("ResourceSpec_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("ResourceSpec_AsyncOperations", null, value);
 				this.OnPropertyChanged("ResourceSpec_AsyncOperations");
 			}
 		}
@@ -560,18 +560,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ResourceSpec_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ResourceSpec_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> ResourceSpec_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> ResourceSpec_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("ResourceSpec_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("ResourceSpec_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ResourceSpec_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("ResourceSpec_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("ResourceSpec_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("ResourceSpec_BulkDeleteFailures");
 			}
 		}
@@ -580,18 +580,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N resourcespec_resources
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("resourcespec_resources")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Resource> resourcespec_resources
+		public System.Collections.Generic.IEnumerable<Entities.Resource> resourcespec_resources
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Resource>("resourcespec_resources", null);
+				return this.GetRelatedEntities<Entities.Resource>("resourcespec_resources", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("resourcespec_resources");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Resource>("resourcespec_resources", null, value);
+				this.SetRelatedEntities<Entities.Resource>("resourcespec_resources", null, value);
 				this.OnPropertyChanged("resourcespec_resources");
 			}
 		}
@@ -600,18 +600,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_resourcespec
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_resourcespec")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_resourcespec
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_resourcespec
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_resourcespec", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_resourcespec", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_resourcespec");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_resourcespec", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_resourcespec", null, value);
 				this.OnPropertyChanged("userentityinstancedata_resourcespec");
 			}
 		}
@@ -621,18 +621,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("businessunitid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_resource_specs")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_resource_specs
+		public Entities.BusinessUnit business_unit_resource_specs
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_resource_specs", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_resource_specs", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_resource_specs");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_resource_specs", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_resource_specs", null, value);
 				this.OnPropertyChanged("business_unit_resource_specs");
 			}
 		}
@@ -642,18 +642,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("groupobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("constraint_based_group_resource_specs")]
-		public DLaB.Xrm.Entities.ConstraintBasedGroup constraint_based_group_resource_specs
+		public Entities.ConstraintBasedGroup constraint_based_group_resource_specs
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ConstraintBasedGroup>("constraint_based_group_resource_specs", null);
+				return this.GetRelatedEntity<Entities.ConstraintBasedGroup>("constraint_based_group_resource_specs", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("constraint_based_group_resource_specs");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ConstraintBasedGroup>("constraint_based_group_resource_specs", null, value);
+				this.SetRelatedEntity<Entities.ConstraintBasedGroup>("constraint_based_group_resource_specs", null, value);
 				this.OnPropertyChanged("constraint_based_group_resource_specs");
 			}
 		}
@@ -663,18 +663,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_resourcespec_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_resourcespec_createdby
+		public Entities.SystemUser lk_resourcespec_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_resourcespec_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_resourcespec_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_resourcespec_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_resourcespec_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_resourcespec_createdby", null, value);
 				this.OnPropertyChanged("lk_resourcespec_createdby");
 			}
 		}
@@ -684,18 +684,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_resourcespec_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_resourcespec_createdonbehalfby
+		public Entities.SystemUser lk_resourcespec_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_resourcespec_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_resourcespec_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_resourcespec_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_resourcespec_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_resourcespec_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_resourcespec_createdonbehalfby");
 			}
 		}
@@ -705,18 +705,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_resourcespec_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_resourcespec_modifiedby
+		public Entities.SystemUser lk_resourcespec_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_resourcespec_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_resourcespec_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_resourcespec_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_resourcespec_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_resourcespec_modifiedby", null, value);
 				this.OnPropertyChanged("lk_resourcespec_modifiedby");
 			}
 		}
@@ -726,18 +726,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_resourcespec_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_resourcespec_modifiedonbehalfby
+		public Entities.SystemUser lk_resourcespec_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_resourcespec_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_resourcespec_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_resourcespec_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_resourcespec_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_resourcespec_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_resourcespec_modifiedonbehalfby");
 			}
 		}
@@ -747,12 +747,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_resource_specs")]
-		public DLaB.Xrm.Entities.Organization organization_resource_specs
+		public Entities.Organization organization_resource_specs
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_resource_specs", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_resource_specs", null);
 			}
 		}
 		
@@ -761,18 +761,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("groupobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_resource_specs")]
-		public DLaB.Xrm.Entities.Team team_resource_specs
+		public Entities.Team team_resource_specs
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_resource_specs", null);
+				return this.GetRelatedEntity<Entities.Team>("team_resource_specs", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_resource_specs");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_resource_specs", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_resource_specs", null, value);
 				this.OnPropertyChanged("team_resource_specs");
 			}
 		}

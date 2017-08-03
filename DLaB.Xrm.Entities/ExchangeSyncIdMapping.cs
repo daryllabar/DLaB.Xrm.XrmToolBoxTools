@@ -504,18 +504,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_exchangesyncidmapping")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_exchangesyncidmapping
+		public Entities.BusinessUnit business_unit_exchangesyncidmapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_exchangesyncidmapping", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_exchangesyncidmapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_exchangesyncidmapping");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_exchangesyncidmapping", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_exchangesyncidmapping", null, value);
 				this.OnPropertyChanged("business_unit_exchangesyncidmapping");
 			}
 		}
@@ -525,18 +525,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_exchangesyncidmapping")]
-		public DLaB.Xrm.Entities.Team team_exchangesyncidmapping
+		public Entities.Team team_exchangesyncidmapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_exchangesyncidmapping", null);
+				return this.GetRelatedEntity<Entities.Team>("team_exchangesyncidmapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_exchangesyncidmapping");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_exchangesyncidmapping", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_exchangesyncidmapping", null, value);
 				this.OnPropertyChanged("team_exchangesyncidmapping");
 			}
 		}
@@ -546,18 +546,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_exchangesyncidmapping")]
-		public DLaB.Xrm.Entities.SystemUser user_exchangesyncidmapping
+		public Entities.SystemUser user_exchangesyncidmapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_exchangesyncidmapping", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_exchangesyncidmapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_exchangesyncidmapping");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_exchangesyncidmapping", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_exchangesyncidmapping", null, value);
 				this.OnPropertyChanged("user_exchangesyncidmapping");
 			}
 		}

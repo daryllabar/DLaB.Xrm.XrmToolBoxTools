@@ -321,18 +321,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N solutioncomponent_parent_solutioncomponent
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("solutioncomponent_parent_solutioncomponent", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SolutionComponent> Referencedsolutioncomponent_parent_solutioncomponent
+		public System.Collections.Generic.IEnumerable<Entities.SolutionComponent> Referencedsolutioncomponent_parent_solutioncomponent
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SolutionComponent>("solutioncomponent_parent_solutioncomponent", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.SolutionComponent>("solutioncomponent_parent_solutioncomponent", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedsolutioncomponent_parent_solutioncomponent");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SolutionComponent>("solutioncomponent_parent_solutioncomponent", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.SolutionComponent>("solutioncomponent_parent_solutioncomponent", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedsolutioncomponent_parent_solutioncomponent");
 			}
 		}
@@ -341,18 +341,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_solutioncomponent
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_solutioncomponent")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_solutioncomponent
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_solutioncomponent
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_solutioncomponent", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_solutioncomponent", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_solutioncomponent");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_solutioncomponent", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_solutioncomponent", null, value);
 				this.OnPropertyChanged("userentityinstancedata_solutioncomponent");
 			}
 		}
@@ -362,18 +362,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_solutioncomponentbase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_solutioncomponentbase_createdonbehalfby
+		public Entities.SystemUser lk_solutioncomponentbase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_solutioncomponentbase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_solutioncomponentbase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_solutioncomponentbase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_solutioncomponentbase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_solutioncomponentbase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_solutioncomponentbase_createdonbehalfby");
 			}
 		}
@@ -383,18 +383,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_solutioncomponentbase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_solutioncomponentbase_modifiedonbehalfby
+		public Entities.SystemUser lk_solutioncomponentbase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_solutioncomponentbase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_solutioncomponentbase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_solutioncomponentbase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_solutioncomponentbase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_solutioncomponentbase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_solutioncomponentbase_modifiedonbehalfby");
 			}
 		}
@@ -404,12 +404,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutionid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("solution_solutioncomponent")]
-		public DLaB.Xrm.Entities.Solution solution_solutioncomponent
+		public Entities.Solution solution_solutioncomponent
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Solution>("solution_solutioncomponent", null);
+				return this.GetRelatedEntity<Entities.Solution>("solution_solutioncomponent", null);
 			}
 		}
 		
@@ -418,12 +418,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rootsolutioncomponentid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("solutioncomponent_parent_solutioncomponent", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.SolutionComponent Referencingsolutioncomponent_parent_solutioncomponent
+		public Entities.SolutionComponent Referencingsolutioncomponent_parent_solutioncomponent
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SolutionComponent>("solutioncomponent_parent_solutioncomponent", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.SolutionComponent>("solutioncomponent_parent_solutioncomponent", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 		}
 		

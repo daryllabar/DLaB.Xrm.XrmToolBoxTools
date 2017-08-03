@@ -676,7 +676,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the product recommendation model is active or inactive.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.RecommendationModelState> StateCode
+		public System.Nullable<Entities.RecommendationModelState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -684,7 +684,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.RecommendationModelState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.RecommendationModelState), optionSet.Value)));
+					return ((Entities.RecommendationModelState)(System.Enum.ToObject(typeof(Entities.RecommendationModelState), optionSet.Value)));
 				}
 				else
 				{
@@ -751,18 +751,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N RecommendationModel_RecommendationCache
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("RecommendationModel_RecommendationCache")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.RecommendationCache> RecommendationModel_RecommendationCache
+		public System.Collections.Generic.IEnumerable<Entities.RecommendationCache> RecommendationModel_RecommendationCache
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.RecommendationCache>("RecommendationModel_RecommendationCache", null);
+				return this.GetRelatedEntities<Entities.RecommendationCache>("RecommendationModel_RecommendationCache", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("RecommendationModel_RecommendationCache");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.RecommendationCache>("RecommendationModel_RecommendationCache", null, value);
+				this.SetRelatedEntities<Entities.RecommendationCache>("RecommendationModel_RecommendationCache", null, value);
 				this.OnPropertyChanged("RecommendationModel_RecommendationCache");
 			}
 		}
@@ -771,18 +771,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N recommendationmodel_recommendationmodelmapping
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recommendationmodel_recommendationmodelmapping")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.RecommendationModelMapping> recommendationmodel_recommendationmodelmapping
+		public System.Collections.Generic.IEnumerable<Entities.RecommendationModelMapping> recommendationmodel_recommendationmodelmapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.RecommendationModelMapping>("recommendationmodel_recommendationmodelmapping", null);
+				return this.GetRelatedEntities<Entities.RecommendationModelMapping>("recommendationmodel_recommendationmodelmapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("recommendationmodel_recommendationmodelmapping");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.RecommendationModelMapping>("recommendationmodel_recommendationmodelmapping", null, value);
+				this.SetRelatedEntities<Entities.RecommendationModelMapping>("recommendationmodel_recommendationmodelmapping", null, value);
 				this.OnPropertyChanged("recommendationmodel_recommendationmodelmapping");
 			}
 		}
@@ -791,18 +791,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N recommendationmodel_recommendationmodelversion
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recommendationmodel_recommendationmodelversion")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.RecommendationModelVersion> recommendationmodel_recommendationmodelversion
+		public System.Collections.Generic.IEnumerable<Entities.RecommendationModelVersion> recommendationmodel_recommendationmodelversion
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.RecommendationModelVersion>("recommendationmodel_recommendationmodelversion", null);
+				return this.GetRelatedEntities<Entities.RecommendationModelVersion>("recommendationmodel_recommendationmodelversion", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("recommendationmodel_recommendationmodelversion");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.RecommendationModelVersion>("recommendationmodel_recommendationmodelversion", null, value);
+				this.SetRelatedEntities<Entities.RecommendationModelVersion>("recommendationmodel_recommendationmodelversion", null, value);
 				this.OnPropertyChanged("recommendationmodel_recommendationmodelversion");
 			}
 		}
@@ -812,18 +812,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("azureserviceconnectionid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("azureserviceconnection_recommendationmodel")]
-		public DLaB.Xrm.Entities.AzureServiceConnection azureserviceconnection_recommendationmodel
+		public Entities.AzureServiceConnection azureserviceconnection_recommendationmodel
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.AzureServiceConnection>("azureserviceconnection_recommendationmodel", null);
+				return this.GetRelatedEntity<Entities.AzureServiceConnection>("azureserviceconnection_recommendationmodel", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("azureserviceconnection_recommendationmodel");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.AzureServiceConnection>("azureserviceconnection_recommendationmodel", null, value);
+				this.SetRelatedEntity<Entities.AzureServiceConnection>("azureserviceconnection_recommendationmodel", null, value);
 				this.OnPropertyChanged("azureserviceconnection_recommendationmodel");
 			}
 		}
@@ -833,18 +833,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_recommendationmodel_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_recommendationmodel_createdby
+		public Entities.SystemUser lk_recommendationmodel_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recommendationmodel_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_recommendationmodel_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_recommendationmodel_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recommendationmodel_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_recommendationmodel_createdby", null, value);
 				this.OnPropertyChanged("lk_recommendationmodel_createdby");
 			}
 		}
@@ -854,18 +854,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_recommendationmodel_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_recommendationmodel_createdonbehalfby
+		public Entities.SystemUser lk_recommendationmodel_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recommendationmodel_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_recommendationmodel_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_recommendationmodel_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recommendationmodel_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_recommendationmodel_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_recommendationmodel_createdonbehalfby");
 			}
 		}
@@ -875,18 +875,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_recommendationmodel_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_recommendationmodel_modifiedby
+		public Entities.SystemUser lk_recommendationmodel_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recommendationmodel_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_recommendationmodel_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_recommendationmodel_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recommendationmodel_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_recommendationmodel_modifiedby", null, value);
 				this.OnPropertyChanged("lk_recommendationmodel_modifiedby");
 			}
 		}
@@ -896,18 +896,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_recommendationmodel_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_recommendationmodel_modifiedonbehalfby
+		public Entities.SystemUser lk_recommendationmodel_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recommendationmodel_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_recommendationmodel_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_recommendationmodel_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recommendationmodel_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_recommendationmodel_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_recommendationmodel_modifiedonbehalfby");
 			}
 		}
@@ -917,12 +917,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_recommendationmodel")]
-		public DLaB.Xrm.Entities.Organization organization_recommendationmodel
+		public Entities.Organization organization_recommendationmodel
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_recommendationmodel", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_recommendationmodel", null);
 			}
 		}
 		
@@ -931,18 +931,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("recommendationmodelversionid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recommendationmodelversion_recommendationmodel")]
-		public DLaB.Xrm.Entities.RecommendationModelVersion recommendationmodelversion_recommendationmodel
+		public Entities.RecommendationModelVersion recommendationmodelversion_recommendationmodel
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RecommendationModelVersion>("recommendationmodelversion_recommendationmodel", null);
+				return this.GetRelatedEntity<Entities.RecommendationModelVersion>("recommendationmodelversion_recommendationmodel", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("recommendationmodelversion_recommendationmodel");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RecommendationModelVersion>("recommendationmodelversion_recommendationmodel", null, value);
+				this.SetRelatedEntity<Entities.RecommendationModelVersion>("recommendationmodelversion_recommendationmodel", null, value);
 				this.OnPropertyChanged("recommendationmodelversion_recommendationmodel");
 			}
 		}

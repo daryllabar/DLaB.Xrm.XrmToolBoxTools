@@ -414,7 +414,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the Azure service connection is active or inactive.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.AzureServiceConnectionState> StateCode
+		public System.Nullable<Entities.AzureServiceConnectionState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -422,7 +422,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.AzureServiceConnectionState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.AzureServiceConnectionState), optionSet.Value)));
+					return ((Entities.AzureServiceConnectionState)(System.Enum.ToObject(typeof(Entities.AzureServiceConnectionState), optionSet.Value)));
 				}
 				else
 				{
@@ -469,18 +469,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N azureserviceconnection_knowledgesearchmodel
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("azureserviceconnection_knowledgesearchmodel")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.KnowledgeSearchModel> azureserviceconnection_knowledgesearchmodel
+		public System.Collections.Generic.IEnumerable<Entities.KnowledgeSearchModel> azureserviceconnection_knowledgesearchmodel
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.KnowledgeSearchModel>("azureserviceconnection_knowledgesearchmodel", null);
+				return this.GetRelatedEntities<Entities.KnowledgeSearchModel>("azureserviceconnection_knowledgesearchmodel", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("azureserviceconnection_knowledgesearchmodel");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.KnowledgeSearchModel>("azureserviceconnection_knowledgesearchmodel", null, value);
+				this.SetRelatedEntities<Entities.KnowledgeSearchModel>("azureserviceconnection_knowledgesearchmodel", null, value);
 				this.OnPropertyChanged("azureserviceconnection_knowledgesearchmodel");
 			}
 		}
@@ -489,18 +489,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N azureserviceconnection_recommendationmodel
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("azureserviceconnection_recommendationmodel")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.RecommendationModel> azureserviceconnection_recommendationmodel
+		public System.Collections.Generic.IEnumerable<Entities.RecommendationModel> azureserviceconnection_recommendationmodel
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.RecommendationModel>("azureserviceconnection_recommendationmodel", null);
+				return this.GetRelatedEntities<Entities.RecommendationModel>("azureserviceconnection_recommendationmodel", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("azureserviceconnection_recommendationmodel");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.RecommendationModel>("azureserviceconnection_recommendationmodel", null, value);
+				this.SetRelatedEntities<Entities.RecommendationModel>("azureserviceconnection_recommendationmodel", null, value);
 				this.OnPropertyChanged("azureserviceconnection_recommendationmodel");
 			}
 		}
@@ -509,18 +509,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N azureserviceconnection_topicmodel
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("azureserviceconnection_topicmodel")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.TopicModel> azureserviceconnection_topicmodel
+		public System.Collections.Generic.IEnumerable<Entities.TopicModel> azureserviceconnection_topicmodel
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.TopicModel>("azureserviceconnection_topicmodel", null);
+				return this.GetRelatedEntities<Entities.TopicModel>("azureserviceconnection_topicmodel", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("azureserviceconnection_topicmodel");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.TopicModel>("azureserviceconnection_topicmodel", null, value);
+				this.SetRelatedEntities<Entities.TopicModel>("azureserviceconnection_topicmodel", null, value);
 				this.OnPropertyChanged("azureserviceconnection_topicmodel");
 			}
 		}
@@ -530,18 +530,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_azureserviceconnection_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_azureserviceconnection_createdby
+		public Entities.SystemUser lk_azureserviceconnection_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_azureserviceconnection_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_azureserviceconnection_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_azureserviceconnection_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_azureserviceconnection_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_azureserviceconnection_createdby", null, value);
 				this.OnPropertyChanged("lk_azureserviceconnection_createdby");
 			}
 		}
@@ -551,18 +551,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_azureserviceconnection_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_azureserviceconnection_createdonbehalfby
+		public Entities.SystemUser lk_azureserviceconnection_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_azureserviceconnection_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_azureserviceconnection_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_azureserviceconnection_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_azureserviceconnection_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_azureserviceconnection_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_azureserviceconnection_createdonbehalfby");
 			}
 		}
@@ -572,18 +572,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_azureserviceconnection_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_azureserviceconnection_modifiedby
+		public Entities.SystemUser lk_azureserviceconnection_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_azureserviceconnection_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_azureserviceconnection_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_azureserviceconnection_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_azureserviceconnection_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_azureserviceconnection_modifiedby", null, value);
 				this.OnPropertyChanged("lk_azureserviceconnection_modifiedby");
 			}
 		}
@@ -593,18 +593,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_azureserviceconnection_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_azureserviceconnection_modifiedonbehalfby
+		public Entities.SystemUser lk_azureserviceconnection_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_azureserviceconnection_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_azureserviceconnection_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_azureserviceconnection_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_azureserviceconnection_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_azureserviceconnection_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_azureserviceconnection_modifiedonbehalfby");
 			}
 		}
@@ -614,12 +614,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_azureserviceconnection")]
-		public DLaB.Xrm.Entities.Organization organization_azureserviceconnection
+		public Entities.Organization organization_azureserviceconnection
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_azureserviceconnection", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_azureserviceconnection", null);
 			}
 		}
 		

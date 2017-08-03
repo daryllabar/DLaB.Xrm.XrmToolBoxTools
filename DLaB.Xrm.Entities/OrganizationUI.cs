@@ -418,12 +418,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_organizationui_organizationid")]
-		public DLaB.Xrm.Entities.Organization lk_organizationui_organizationid
+		public Entities.Organization lk_organizationui_organizationid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("lk_organizationui_organizationid", null);
+				return this.GetRelatedEntity<Entities.Organization>("lk_organizationui_organizationid", null);
 			}
 		}
 		

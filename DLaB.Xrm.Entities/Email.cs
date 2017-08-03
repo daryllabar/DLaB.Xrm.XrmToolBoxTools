@@ -336,7 +336,7 @@ namespace DLaB.Xrm.Entities
 		/// Enter the recipients that are included on the email distribution, but are not displayed to other recipients.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("bcc")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> Bcc
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> Bcc
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -345,7 +345,7 @@ namespace DLaB.Xrm.Entities
 				if (((collection != null) 
 							&& (collection.Entities != null)))
 				{
-					return System.Linq.Enumerable.Cast<DLaB.Xrm.Entities.ActivityParty>(collection.Entities);
+					return System.Linq.Enumerable.Cast<Entities.ActivityParty>(collection.Entities);
 				}
 				else
 				{
@@ -392,7 +392,7 @@ namespace DLaB.Xrm.Entities
 		/// Enter the recipients that should be copied on the email.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("cc")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> Cc
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> Cc
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -401,7 +401,7 @@ namespace DLaB.Xrm.Entities
 				if (((collection != null) 
 							&& (collection.Entities != null)))
 				{
-					return System.Linq.Enumerable.Cast<DLaB.Xrm.Entities.ActivityParty>(collection.Entities);
+					return System.Linq.Enumerable.Cast<Entities.ActivityParty>(collection.Entities);
 				}
 				else
 				{
@@ -653,7 +653,7 @@ namespace DLaB.Xrm.Entities
 		/// Enter the sender of the email.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("from")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> From
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> From
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -662,7 +662,7 @@ namespace DLaB.Xrm.Entities
 				if (((collection != null) 
 							&& (collection.Entities != null)))
 				{
-					return System.Linq.Enumerable.Cast<DLaB.Xrm.Entities.ActivityParty>(collection.Entities);
+					return System.Linq.Enumerable.Cast<Entities.ActivityParty>(collection.Entities);
 				}
 				else
 				{
@@ -1294,7 +1294,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the email is open, completed, or canceled. Completed and canceled email is read-only and can't be edited.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.EmailState> StateCode
+		public System.Nullable<Entities.EmailState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -1302,7 +1302,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.EmailState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.EmailState), optionSet.Value)));
+					return ((Entities.EmailState)(System.Enum.ToObject(typeof(Entities.EmailState), optionSet.Value)));
 				}
 				else
 				{
@@ -1429,7 +1429,7 @@ namespace DLaB.Xrm.Entities
 		/// Enter the account, contact, lead, queue, or user recipients for the email.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("to")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> To
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> To
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -1438,7 +1438,7 @@ namespace DLaB.Xrm.Entities
 				if (((collection != null) 
 							&& (collection.Entities != null)))
 				{
-					return System.Linq.Enumerable.Cast<DLaB.Xrm.Entities.ActivityParty>(collection.Entities);
+					return System.Linq.Enumerable.Cast<Entities.ActivityParty>(collection.Entities);
 				}
 				else
 				{
@@ -1578,18 +1578,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N email_activity_mime_attachment
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("email_activity_mime_attachment")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityMimeAttachment> email_activity_mime_attachment
+		public System.Collections.Generic.IEnumerable<Entities.ActivityMimeAttachment> email_activity_mime_attachment
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityMimeAttachment>("email_activity_mime_attachment", null);
+				return this.GetRelatedEntities<Entities.ActivityMimeAttachment>("email_activity_mime_attachment", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("email_activity_mime_attachment");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityMimeAttachment>("email_activity_mime_attachment", null, value);
+				this.SetRelatedEntities<Entities.ActivityMimeAttachment>("email_activity_mime_attachment", null, value);
 				this.OnPropertyChanged("email_activity_mime_attachment");
 			}
 		}
@@ -1598,18 +1598,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N email_activity_parties
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("email_activity_parties")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> email_activity_parties
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> email_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("email_activity_parties", null);
+				return this.GetRelatedEntities<Entities.ActivityParty>("email_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("email_activity_parties");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("email_activity_parties", null, value);
+				this.SetRelatedEntities<Entities.ActivityParty>("email_activity_parties", null, value);
 				this.OnPropertyChanged("email_activity_parties");
 			}
 		}
@@ -1618,18 +1618,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Email_Annotation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Email_Annotation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> Email_Annotation
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> Email_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("Email_Annotation", null);
+				return this.GetRelatedEntities<Entities.Annotation>("Email_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Email_Annotation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("Email_Annotation", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("Email_Annotation", null, value);
 				this.OnPropertyChanged("Email_Annotation");
 			}
 		}
@@ -1638,18 +1638,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Email_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Email_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> Email_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> Email_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Email_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("Email_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Email_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Email_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("Email_AsyncOperations", null, value);
 				this.OnPropertyChanged("Email_AsyncOperations");
 			}
 		}
@@ -1658,18 +1658,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Email_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Email_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> Email_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> Email_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Email_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("Email_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Email_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Email_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("Email_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("Email_BulkDeleteFailures");
 			}
 		}
@@ -1678,18 +1678,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N email_campaignresponse
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("email_campaignresponse")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.CampaignResponse> email_campaignresponse
+		public System.Collections.Generic.IEnumerable<Entities.CampaignResponse> email_campaignresponse
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.CampaignResponse>("email_campaignresponse", null);
+				return this.GetRelatedEntities<Entities.CampaignResponse>("email_campaignresponse", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("email_campaignresponse");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.CampaignResponse>("email_campaignresponse", null, value);
+				this.SetRelatedEntities<Entities.CampaignResponse>("email_campaignresponse", null, value);
 				this.OnPropertyChanged("email_campaignresponse");
 			}
 		}
@@ -1698,18 +1698,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N email_connections1
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("email_connections1")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> email_connections1
+		public System.Collections.Generic.IEnumerable<Entities.Connection> email_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("email_connections1", null);
+				return this.GetRelatedEntities<Entities.Connection>("email_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("email_connections1");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("email_connections1", null, value);
+				this.SetRelatedEntities<Entities.Connection>("email_connections1", null, value);
 				this.OnPropertyChanged("email_connections1");
 			}
 		}
@@ -1718,18 +1718,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N email_connections2
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("email_connections2")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> email_connections2
+		public System.Collections.Generic.IEnumerable<Entities.Connection> email_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("email_connections2", null);
+				return this.GetRelatedEntities<Entities.Connection>("email_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("email_connections2");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("email_connections2", null, value);
+				this.SetRelatedEntities<Entities.Connection>("email_connections2", null, value);
 				this.OnPropertyChanged("email_connections2");
 			}
 		}
@@ -1738,18 +1738,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Email_DuplicateBaseRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Email_DuplicateBaseRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> Email_DuplicateBaseRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> Email_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Email_DuplicateBaseRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("Email_DuplicateBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Email_DuplicateBaseRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Email_DuplicateBaseRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("Email_DuplicateBaseRecord", null, value);
 				this.OnPropertyChanged("Email_DuplicateBaseRecord");
 			}
 		}
@@ -1758,18 +1758,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Email_DuplicateMatchingRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Email_DuplicateMatchingRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> Email_DuplicateMatchingRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> Email_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Email_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("Email_DuplicateMatchingRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Email_DuplicateMatchingRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Email_DuplicateMatchingRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("Email_DuplicateMatchingRecord", null, value);
 				this.OnPropertyChanged("Email_DuplicateMatchingRecord");
 			}
 		}
@@ -1778,18 +1778,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N email_email_parentactivityid
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("email_email_parentactivityid", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Email> Referencedemail_email_parentactivityid
+		public System.Collections.Generic.IEnumerable<Entities.Email> Referencedemail_email_parentactivityid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Email>("email_email_parentactivityid", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.Email>("email_email_parentactivityid", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedemail_email_parentactivityid");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Email>("email_email_parentactivityid", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.Email>("email_email_parentactivityid", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedemail_email_parentactivityid");
 			}
 		}
@@ -1798,18 +1798,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N email_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("email_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> email_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> email_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("email_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("email_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("email_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("email_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("email_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("email_principalobjectattributeaccess");
 			}
 		}
@@ -1818,18 +1818,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Email_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Email_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> Email_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> Email_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Email_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("Email_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Email_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Email_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("Email_ProcessSessions", null, value);
 				this.OnPropertyChanged("Email_ProcessSessions");
 			}
 		}
@@ -1838,18 +1838,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Email_QueueItem
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Email_QueueItem")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.QueueItem> Email_QueueItem
+		public System.Collections.Generic.IEnumerable<Entities.QueueItem> Email_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.QueueItem>("Email_QueueItem", null);
+				return this.GetRelatedEntities<Entities.QueueItem>("Email_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Email_QueueItem");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.QueueItem>("Email_QueueItem", null, value);
+				this.SetRelatedEntities<Entities.QueueItem>("Email_QueueItem", null, value);
 				this.OnPropertyChanged("Email_QueueItem");
 			}
 		}
@@ -1858,18 +1858,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_email
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_email")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_email
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_email
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_email", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_email", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_email");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_email", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_email", null, value);
 				this.OnPropertyChanged("userentityinstancedata_email");
 			}
 		}
@@ -1879,12 +1879,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailsender")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Account_Email_EmailSender")]
-		public DLaB.Xrm.Entities.Account Account_Email_EmailSender
+		public Entities.Account Account_Email_EmailSender
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_Email_EmailSender", null);
+				return this.GetRelatedEntity<Entities.Account>("Account_Email_EmailSender", null);
 			}
 		}
 		
@@ -1893,12 +1893,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sendersaccount")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Account_Email_SendersAccount")]
-		public DLaB.Xrm.Entities.Account Account_Email_SendersAccount
+		public Entities.Account Account_Email_SendersAccount
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_Email_SendersAccount", null);
+				return this.GetRelatedEntity<Entities.Account>("Account_Email_SendersAccount", null);
 			}
 		}
 		
@@ -1907,18 +1907,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Account_Emails")]
-		public DLaB.Xrm.Entities.Account Account_Emails
+		public Entities.Account Account_Emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_Emails", null);
+				return this.GetRelatedEntity<Entities.Account>("Account_Emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Account_Emails");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_Emails", null, value);
+				this.SetRelatedEntity<Entities.Account>("Account_Emails", null, value);
 				this.OnPropertyChanged("Account_Emails");
 			}
 		}
@@ -1928,18 +1928,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("activity_pointer_email")]
-		public DLaB.Xrm.Entities.ActivityPointer activity_pointer_email
+		public Entities.ActivityPointer activity_pointer_email
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_email", null);
+				return this.GetRelatedEntity<Entities.ActivityPointer>("activity_pointer_email", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("activity_pointer_email");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_email", null, value);
+				this.SetRelatedEntity<Entities.ActivityPointer>("activity_pointer_email", null, value);
 				this.OnPropertyChanged("activity_pointer_email");
 			}
 		}
@@ -1949,18 +1949,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("AsyncOperation_Emails")]
-		public DLaB.Xrm.Entities.AsyncOperation AsyncOperation_Emails
+		public Entities.AsyncOperation AsyncOperation_Emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.AsyncOperation>("AsyncOperation_Emails", null);
+				return this.GetRelatedEntity<Entities.AsyncOperation>("AsyncOperation_Emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("AsyncOperation_Emails");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.AsyncOperation>("AsyncOperation_Emails", null, value);
+				this.SetRelatedEntity<Entities.AsyncOperation>("AsyncOperation_Emails", null, value);
 				this.OnPropertyChanged("AsyncOperation_Emails");
 			}
 		}
@@ -1970,18 +1970,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Email")]
-		public DLaB.Xrm.Entities.BulkOperation BulkOperation_Email
+		public Entities.BulkOperation BulkOperation_Email
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BulkOperation>("BulkOperation_Email", null);
+				return this.GetRelatedEntity<Entities.BulkOperation>("BulkOperation_Email", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperation_Email");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BulkOperation>("BulkOperation_Email", null, value);
+				this.SetRelatedEntity<Entities.BulkOperation>("BulkOperation_Email", null, value);
 				this.OnPropertyChanged("BulkOperation_Email");
 			}
 		}
@@ -1991,18 +1991,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_email_activities")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_email_activities
+		public Entities.BusinessUnit business_unit_email_activities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_email_activities", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_email_activities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_email_activities");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_email_activities", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_email_activities", null, value);
 				this.OnPropertyChanged("business_unit_email_activities");
 			}
 		}
@@ -2012,18 +2012,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Campaign_Emails")]
-		public DLaB.Xrm.Entities.Campaign Campaign_Emails
+		public Entities.Campaign Campaign_Emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Campaign>("Campaign_Emails", null);
+				return this.GetRelatedEntity<Entities.Campaign>("Campaign_Emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Campaign_Emails");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Campaign>("Campaign_Emails", null, value);
+				this.SetRelatedEntity<Entities.Campaign>("Campaign_Emails", null, value);
 				this.OnPropertyChanged("Campaign_Emails");
 			}
 		}
@@ -2033,18 +2033,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignActivity_Emails")]
-		public DLaB.Xrm.Entities.CampaignActivity CampaignActivity_Emails
+		public Entities.CampaignActivity CampaignActivity_Emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("CampaignActivity_Emails", null);
+				return this.GetRelatedEntity<Entities.CampaignActivity>("CampaignActivity_Emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CampaignActivity_Emails");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("CampaignActivity_Emails", null, value);
+				this.SetRelatedEntity<Entities.CampaignActivity>("CampaignActivity_Emails", null, value);
 				this.OnPropertyChanged("CampaignActivity_Emails");
 			}
 		}
@@ -2054,12 +2054,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailsender")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contact_Email_EmailSender")]
-		public DLaB.Xrm.Entities.Contact Contact_Email_EmailSender
+		public Entities.Contact Contact_Email_EmailSender
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_Email_EmailSender", null);
+				return this.GetRelatedEntity<Entities.Contact>("Contact_Email_EmailSender", null);
 			}
 		}
 		
@@ -2068,18 +2068,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contact_Emails")]
-		public DLaB.Xrm.Entities.Contact Contact_Emails
+		public Entities.Contact Contact_Emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_Emails", null);
+				return this.GetRelatedEntity<Entities.Contact>("Contact_Emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Contact_Emails");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_Emails", null, value);
+				this.SetRelatedEntity<Entities.Contact>("Contact_Emails", null, value);
 				this.OnPropertyChanged("Contact_Emails");
 			}
 		}
@@ -2089,18 +2089,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contract_Emails")]
-		public DLaB.Xrm.Entities.Contract Contract_Emails
+		public Entities.Contract Contract_Emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contract>("Contract_Emails", null);
+				return this.GetRelatedEntity<Entities.Contract>("Contract_Emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Contract_Emails");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contract>("Contract_Emails", null, value);
+				this.SetRelatedEntity<Entities.Contract>("Contract_Emails", null, value);
 				this.OnPropertyChanged("Contract_Emails");
 			}
 		}
@@ -2110,18 +2110,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentactivityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("email_email_parentactivityid", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.Email Referencingemail_email_parentactivityid
+		public Entities.Email Referencingemail_email_parentactivityid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Email>("email_email_parentactivityid", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.Email>("email_email_parentactivityid", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencingemail_email_parentactivityid");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Email>("email_email_parentactivityid", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Entities.Email>("email_email_parentactivityid", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencingemail_email_parentactivityid");
 			}
 		}
@@ -2131,12 +2131,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sendermailboxid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("email_sendermailboxid_mailbox")]
-		public DLaB.Xrm.Entities.Mailbox email_sendermailboxid_mailbox
+		public Entities.Mailbox email_sendermailboxid_mailbox
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Mailbox>("email_sendermailboxid_mailbox", null);
+				return this.GetRelatedEntity<Entities.Mailbox>("email_sendermailboxid_mailbox", null);
 			}
 		}
 		
@@ -2145,18 +2145,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_Emails")]
-		public DLaB.Xrm.Entities.Entitlement entitlement_Emails
+		public Entities.Entitlement entitlement_Emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_Emails", null);
+				return this.GetRelatedEntity<Entities.Entitlement>("entitlement_Emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_Emails");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_Emails", null, value);
+				this.SetRelatedEntity<Entities.Entitlement>("entitlement_Emails", null, value);
 				this.OnPropertyChanged("entitlement_Emails");
 			}
 		}
@@ -2166,18 +2166,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlementtemplate_Emails")]
-		public DLaB.Xrm.Entities.EntitlementTemplate entitlementtemplate_Emails
+		public Entities.EntitlementTemplate entitlementtemplate_Emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplate_Emails", null);
+				return this.GetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplate_Emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlementtemplate_Emails");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplate_Emails", null, value);
+				this.SetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplate_Emails", null, value);
 				this.OnPropertyChanged("entitlementtemplate_Emails");
 			}
 		}
@@ -2187,12 +2187,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailsender")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Equipment_Email_EmailSender")]
-		public DLaB.Xrm.Entities.Equipment Equipment_Email_EmailSender
+		public Entities.Equipment Equipment_Email_EmailSender
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Equipment>("Equipment_Email_EmailSender", null);
+				return this.GetRelatedEntity<Entities.Equipment>("Equipment_Email_EmailSender", null);
 			}
 		}
 		
@@ -2201,18 +2201,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Incident_Emails")]
-		public DLaB.Xrm.Entities.Incident Incident_Emails
+		public Entities.Incident Incident_Emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_Emails", null);
+				return this.GetRelatedEntity<Entities.Incident>("Incident_Emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Incident_Emails");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_Emails", null, value);
+				this.SetRelatedEntity<Entities.Incident>("Incident_Emails", null, value);
 				this.OnPropertyChanged("Incident_Emails");
 			}
 		}
@@ -2222,18 +2222,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Invoice_Emails")]
-		public DLaB.Xrm.Entities.Invoice Invoice_Emails
+		public Entities.Invoice Invoice_Emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Invoice>("Invoice_Emails", null);
+				return this.GetRelatedEntity<Entities.Invoice>("Invoice_Emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Invoice_Emails");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Invoice>("Invoice_Emails", null, value);
+				this.SetRelatedEntity<Entities.Invoice>("Invoice_Emails", null, value);
 				this.OnPropertyChanged("Invoice_Emails");
 			}
 		}
@@ -2243,18 +2243,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeArticle_Emails")]
-		public DLaB.Xrm.Entities.KnowledgeArticle KnowledgeArticle_Emails
+		public Entities.KnowledgeArticle KnowledgeArticle_Emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("KnowledgeArticle_Emails", null);
+				return this.GetRelatedEntity<Entities.KnowledgeArticle>("KnowledgeArticle_Emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeArticle_Emails");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("KnowledgeArticle_Emails", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeArticle>("KnowledgeArticle_Emails", null, value);
 				this.OnPropertyChanged("KnowledgeArticle_Emails");
 			}
 		}
@@ -2264,18 +2264,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_Emails")]
-		public DLaB.Xrm.Entities.KnowledgeBaseRecord KnowledgeBaseRecord_Emails
+		public Entities.KnowledgeBaseRecord KnowledgeBaseRecord_Emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_Emails", null);
+				return this.GetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_Emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_Emails");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_Emails", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_Emails", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_Emails");
 			}
 		}
@@ -2285,12 +2285,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailsender")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_Email_EmailSender")]
-		public DLaB.Xrm.Entities.Lead Lead_Email_EmailSender
+		public Entities.Lead Lead_Email_EmailSender
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Lead>("Lead_Email_EmailSender", null);
+				return this.GetRelatedEntity<Entities.Lead>("Lead_Email_EmailSender", null);
 			}
 		}
 		
@@ -2299,18 +2299,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_Emails")]
-		public DLaB.Xrm.Entities.Lead Lead_Emails
+		public Entities.Lead Lead_Emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Lead>("Lead_Emails", null);
+				return this.GetRelatedEntity<Entities.Lead>("Lead_Emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_Emails");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Lead>("Lead_Emails", null, value);
+				this.SetRelatedEntity<Entities.Lead>("Lead_Emails", null, value);
 				this.OnPropertyChanged("Lead_Emails");
 			}
 		}
@@ -2320,18 +2320,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_email_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_email_createdby
+		public Entities.SystemUser lk_email_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_email_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_email_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_email_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_email_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_email_createdby", null, value);
 				this.OnPropertyChanged("lk_email_createdby");
 			}
 		}
@@ -2341,18 +2341,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_email_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_email_createdonbehalfby
+		public Entities.SystemUser lk_email_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_email_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_email_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_email_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_email_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_email_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_email_createdonbehalfby");
 			}
 		}
@@ -2362,18 +2362,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_email_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_email_modifiedby
+		public Entities.SystemUser lk_email_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_email_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_email_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_email_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_email_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_email_modifiedby", null, value);
 				this.OnPropertyChanged("lk_email_modifiedby");
 			}
 		}
@@ -2383,18 +2383,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_email_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_email_modifiedonbehalfby
+		public Entities.SystemUser lk_email_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_email_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_email_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_email_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_email_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_email_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_email_modifiedonbehalfby");
 			}
 		}
@@ -2404,18 +2404,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_Emails")]
-		public DLaB.Xrm.Entities.msdyn_PostAlbum msdyn_postalbum_Emails
+		public Entities.msdyn_PostAlbum msdyn_postalbum_Emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_Emails", null);
+				return this.GetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_Emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_Emails");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_Emails", null, value);
+				this.SetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_Emails", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_Emails");
 			}
 		}
@@ -2425,18 +2425,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_Emails")]
-		public DLaB.Xrm.Entities.Opportunity Opportunity_Emails
+		public Entities.Opportunity Opportunity_Emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_Emails", null);
+				return this.GetRelatedEntity<Entities.Opportunity>("Opportunity_Emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_Emails");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_Emails", null, value);
+				this.SetRelatedEntity<Entities.Opportunity>("Opportunity_Emails", null, value);
 				this.OnPropertyChanged("Opportunity_Emails");
 			}
 		}
@@ -2446,18 +2446,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stageid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_emails")]
-		public DLaB.Xrm.Entities.ProcessStage processstage_emails
+		public Entities.ProcessStage processstage_emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProcessStage>("processstage_emails", null);
+				return this.GetRelatedEntity<Entities.ProcessStage>("processstage_emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_emails");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProcessStage>("processstage_emails", null, value);
+				this.SetRelatedEntity<Entities.ProcessStage>("processstage_emails", null, value);
 				this.OnPropertyChanged("processstage_emails");
 			}
 		}
@@ -2467,12 +2467,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailsender")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Queue_Email_EmailSender")]
-		public DLaB.Xrm.Entities.Queue Queue_Email_EmailSender
+		public Entities.Queue Queue_Email_EmailSender
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Queue>("Queue_Email_EmailSender", null);
+				return this.GetRelatedEntity<Entities.Queue>("Queue_Email_EmailSender", null);
 			}
 		}
 		
@@ -2481,18 +2481,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Quote_Emails")]
-		public DLaB.Xrm.Entities.Quote Quote_Emails
+		public Entities.Quote Quote_Emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Quote>("Quote_Emails", null);
+				return this.GetRelatedEntity<Entities.Quote>("Quote_Emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Quote_Emails");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Quote>("Quote_Emails", null, value);
+				this.SetRelatedEntity<Entities.Quote>("Quote_Emails", null, value);
 				this.OnPropertyChanged("Quote_Emails");
 			}
 		}
@@ -2502,18 +2502,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesOrder_Emails")]
-		public DLaB.Xrm.Entities.SalesOrder SalesOrder_Emails
+		public Entities.SalesOrder SalesOrder_Emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("SalesOrder_Emails", null);
+				return this.GetRelatedEntity<Entities.SalesOrder>("SalesOrder_Emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SalesOrder_Emails");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("SalesOrder_Emails", null, value);
+				this.SetRelatedEntity<Entities.SalesOrder>("SalesOrder_Emails", null, value);
 				this.OnPropertyChanged("SalesOrder_Emails");
 			}
 		}
@@ -2523,18 +2523,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("serviceid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("service_emails")]
-		public DLaB.Xrm.Entities.Service service_emails
+		public Entities.Service service_emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Service>("service_emails", null);
+				return this.GetRelatedEntity<Entities.Service>("service_emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("service_emails");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Service>("service_emails", null, value);
+				this.SetRelatedEntity<Entities.Service>("service_emails", null, value);
 				this.OnPropertyChanged("service_emails");
 			}
 		}
@@ -2544,12 +2544,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailsender")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SystemUser_Email_EmailSender")]
-		public DLaB.Xrm.Entities.SystemUser SystemUser_Email_EmailSender
+		public Entities.SystemUser SystemUser_Email_EmailSender
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("SystemUser_Email_EmailSender", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("SystemUser_Email_EmailSender", null);
 			}
 		}
 		
@@ -2558,18 +2558,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_email")]
-		public DLaB.Xrm.Entities.Team team_email
+		public Entities.Team team_email
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_email", null);
+				return this.GetRelatedEntity<Entities.Team>("team_email", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_email");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_email", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_email", null, value);
 				this.OnPropertyChanged("team_email");
 			}
 		}
@@ -2579,18 +2579,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Email")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_Email
+		public Entities.TransactionCurrency TransactionCurrency_Email
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_Email", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_Email", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Email");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_Email", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_Email", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Email");
 			}
 		}
@@ -2600,18 +2600,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_email")]
-		public DLaB.Xrm.Entities.SystemUser user_email
+		public Entities.SystemUser user_email
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_email", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_email", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_email");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_email", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_email", null, value);
 				this.OnPropertyChanged("user_email");
 			}
 		}

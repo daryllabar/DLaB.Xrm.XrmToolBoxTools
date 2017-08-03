@@ -627,18 +627,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_slaitembase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_slaitembase_createdby
+		public Entities.SystemUser lk_slaitembase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_slaitembase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_slaitembase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_slaitembase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_slaitembase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_slaitembase_createdby", null, value);
 				this.OnPropertyChanged("lk_slaitembase_createdby");
 			}
 		}
@@ -648,18 +648,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_slaitembase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_slaitembase_createdonbehalfby
+		public Entities.SystemUser lk_slaitembase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_slaitembase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_slaitembase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_slaitembase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_slaitembase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_slaitembase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_slaitembase_createdonbehalfby");
 			}
 		}
@@ -669,18 +669,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_slaitembase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_slaitembase_modifiedby
+		public Entities.SystemUser lk_slaitembase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_slaitembase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_slaitembase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_slaitembase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_slaitembase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_slaitembase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_slaitembase_modifiedby");
 			}
 		}
@@ -690,18 +690,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_slaitembase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_slaitembase_modifiedonbehalfby
+		public Entities.SystemUser lk_slaitembase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_slaitembase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_slaitembase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_slaitembase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_slaitembase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_slaitembase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_slaitembase_modifiedonbehalfby");
 			}
 		}
@@ -711,18 +711,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("slaid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sla_slaitem_slaId")]
-		public DLaB.Xrm.Entities.SLA sla_slaitem_slaId
+		public Entities.SLA sla_slaitem_slaId
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SLA>("sla_slaitem_slaId", null);
+				return this.GetRelatedEntity<Entities.SLA>("sla_slaitem_slaId", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("sla_slaitem_slaId");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SLA>("sla_slaitem_slaId", null, value);
+				this.SetRelatedEntity<Entities.SLA>("sla_slaitem_slaId", null, value);
 				this.OnPropertyChanged("sla_slaitem_slaId");
 			}
 		}
@@ -732,18 +732,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("workflowid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("slaitembase_workflowid")]
-		public DLaB.Xrm.Entities.Workflow slaitembase_workflowid
+		public Entities.Workflow slaitembase_workflowid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Workflow>("slaitembase_workflowid", null);
+				return this.GetRelatedEntity<Entities.Workflow>("slaitembase_workflowid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("slaitembase_workflowid");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Workflow>("slaitembase_workflowid", null, value);
+				this.SetRelatedEntity<Entities.Workflow>("slaitembase_workflowid", null, value);
 				this.OnPropertyChanged("slaitembase_workflowid");
 			}
 		}
@@ -753,12 +753,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_SLAItem")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_SLAItem
+		public Entities.TransactionCurrency TransactionCurrency_SLAItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_SLAItem", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_SLAItem", null);
 			}
 		}
 		

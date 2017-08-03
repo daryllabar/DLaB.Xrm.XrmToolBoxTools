@@ -179,18 +179,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_connectionroleobjecttypecode
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_connectionroleobjecttypecode")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_connectionroleobjecttypecode
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_connectionroleobjecttypecode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_connectionroleobjecttypecode", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_connectionroleobjecttypecode", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_connectionroleobjecttypecode");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_connectionroleobjecttypecode", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_connectionroleobjecttypecode", null, value);
 				this.OnPropertyChanged("userentityinstancedata_connectionroleobjecttypecode");
 			}
 		}
@@ -200,18 +200,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("connectionroleid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("connection_role_connection_role_object_type_codes")]
-		public DLaB.Xrm.Entities.ConnectionRole connection_role_connection_role_object_type_codes
+		public Entities.ConnectionRole connection_role_connection_role_object_type_codes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ConnectionRole>("connection_role_connection_role_object_type_codes", null);
+				return this.GetRelatedEntity<Entities.ConnectionRole>("connection_role_connection_role_object_type_codes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("connection_role_connection_role_object_type_codes");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ConnectionRole>("connection_role_connection_role_object_type_codes", null, value);
+				this.SetRelatedEntity<Entities.ConnectionRole>("connection_role_connection_role_object_type_codes", null, value);
 				this.OnPropertyChanged("connection_role_connection_role_object_type_codes");
 			}
 		}

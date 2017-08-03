@@ -330,18 +330,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N RelationshipRoleMap_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("RelationshipRoleMap_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> RelationshipRoleMap_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> RelationshipRoleMap_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("RelationshipRoleMap_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("RelationshipRoleMap_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("RelationshipRoleMap_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("RelationshipRoleMap_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("RelationshipRoleMap_AsyncOperations", null, value);
 				this.OnPropertyChanged("RelationshipRoleMap_AsyncOperations");
 			}
 		}
@@ -350,18 +350,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N RelationshipRoleMap_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("RelationshipRoleMap_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> RelationshipRoleMap_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> RelationshipRoleMap_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("RelationshipRoleMap_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("RelationshipRoleMap_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("RelationshipRoleMap_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("RelationshipRoleMap_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("RelationshipRoleMap_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("RelationshipRoleMap_BulkDeleteFailures");
 			}
 		}
@@ -370,18 +370,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_relationshiprolemap
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_relationshiprolemap")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_relationshiprolemap
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_relationshiprolemap
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_relationshiprolemap", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_relationshiprolemap", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_relationshiprolemap");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_relationshiprolemap", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_relationshiprolemap", null, value);
 				this.OnPropertyChanged("userentityinstancedata_relationshiprolemap");
 			}
 		}
@@ -391,18 +391,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_relationship_role_map")]
-		public DLaB.Xrm.Entities.SystemUser createdby_relationship_role_map
+		public Entities.SystemUser createdby_relationship_role_map
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdby_relationship_role_map", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("createdby_relationship_role_map", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("createdby_relationship_role_map");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdby_relationship_role_map", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("createdby_relationship_role_map", null, value);
 				this.OnPropertyChanged("createdby_relationship_role_map");
 			}
 		}
@@ -412,18 +412,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_relationshiprolemap_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_relationshiprolemap_createdonbehalfby
+		public Entities.SystemUser lk_relationshiprolemap_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_relationshiprolemap_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_relationshiprolemap_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_relationshiprolemap_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_relationshiprolemap_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_relationshiprolemap_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_relationshiprolemap_createdonbehalfby");
 			}
 		}
@@ -433,18 +433,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_relationshiprolemap_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_relationshiprolemap_modifiedonbehalfby
+		public Entities.SystemUser lk_relationshiprolemap_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_relationshiprolemap_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_relationshiprolemap_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_relationshiprolemap_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_relationshiprolemap_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_relationshiprolemap_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_relationshiprolemap_modifiedonbehalfby");
 			}
 		}
@@ -454,18 +454,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_relationship_role_map")]
-		public DLaB.Xrm.Entities.SystemUser modifiedby_relationship_role_map
+		public Entities.SystemUser modifiedby_relationship_role_map
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("modifiedby_relationship_role_map", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("modifiedby_relationship_role_map", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("modifiedby_relationship_role_map");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("modifiedby_relationship_role_map", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("modifiedby_relationship_role_map", null, value);
 				this.OnPropertyChanged("modifiedby_relationship_role_map");
 			}
 		}
@@ -475,18 +475,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("relationshiproleid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("relationship_role_relationship_role_map")]
-		public DLaB.Xrm.Entities.RelationshipRole relationship_role_relationship_role_map
+		public Entities.RelationshipRole relationship_role_relationship_role_map
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RelationshipRole>("relationship_role_relationship_role_map", null);
+				return this.GetRelatedEntity<Entities.RelationshipRole>("relationship_role_relationship_role_map", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("relationship_role_relationship_role_map");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RelationshipRole>("relationship_role_relationship_role_map", null, value);
+				this.SetRelatedEntity<Entities.RelationshipRole>("relationship_role_relationship_role_map", null, value);
 				this.OnPropertyChanged("relationship_role_relationship_role_map");
 			}
 		}

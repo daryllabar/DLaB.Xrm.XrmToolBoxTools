@@ -465,7 +465,7 @@ namespace DLaB.Xrm.Entities
 		/// Enter the account, contact, lead, queue, or user who sent the fax.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("from")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> From
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> From
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -474,7 +474,7 @@ namespace DLaB.Xrm.Entities
 				if (((collection != null) 
 							&& (collection.Entities != null)))
 				{
-					return System.Linq.Enumerable.Cast<DLaB.Xrm.Entities.ActivityParty>(collection.Entities);
+					return System.Linq.Enumerable.Cast<Entities.ActivityParty>(collection.Entities);
 				}
 				else
 				{
@@ -907,7 +907,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the fax activity is open, completed, or canceled. Completed and canceled fax activities are read-only and can't be edited.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.FaxState> StateCode
+		public System.Nullable<Entities.FaxState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -915,7 +915,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.FaxState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.FaxState), optionSet.Value)));
+					return ((Entities.FaxState)(System.Enum.ToObject(typeof(Entities.FaxState), optionSet.Value)));
 				}
 				else
 				{
@@ -1042,7 +1042,7 @@ namespace DLaB.Xrm.Entities
 		/// Enter the account, contact, lead, queue, or user recipients for the fax.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("to")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> To
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> To
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -1051,7 +1051,7 @@ namespace DLaB.Xrm.Entities
 				if (((collection != null) 
 							&& (collection.Entities != null)))
 				{
-					return System.Linq.Enumerable.Cast<DLaB.Xrm.Entities.ActivityParty>(collection.Entities);
+					return System.Linq.Enumerable.Cast<Entities.ActivityParty>(collection.Entities);
 				}
 				else
 				{
@@ -1171,18 +1171,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N fax_activity_parties
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("fax_activity_parties")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> fax_activity_parties
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> fax_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("fax_activity_parties", null);
+				return this.GetRelatedEntities<Entities.ActivityParty>("fax_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("fax_activity_parties");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("fax_activity_parties", null, value);
+				this.SetRelatedEntities<Entities.ActivityParty>("fax_activity_parties", null, value);
 				this.OnPropertyChanged("fax_activity_parties");
 			}
 		}
@@ -1191,18 +1191,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Fax_Annotation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Fax_Annotation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> Fax_Annotation
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> Fax_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("Fax_Annotation", null);
+				return this.GetRelatedEntities<Entities.Annotation>("Fax_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Fax_Annotation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("Fax_Annotation", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("Fax_Annotation", null, value);
 				this.OnPropertyChanged("Fax_Annotation");
 			}
 		}
@@ -1211,18 +1211,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Fax_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Fax_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> Fax_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> Fax_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Fax_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("Fax_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Fax_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Fax_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("Fax_AsyncOperations", null, value);
 				this.OnPropertyChanged("Fax_AsyncOperations");
 			}
 		}
@@ -1231,18 +1231,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Fax_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Fax_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> Fax_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> Fax_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Fax_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("Fax_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Fax_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Fax_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("Fax_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("Fax_BulkDeleteFailures");
 			}
 		}
@@ -1251,18 +1251,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N fax_campaignresponse
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("fax_campaignresponse")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.CampaignResponse> fax_campaignresponse
+		public System.Collections.Generic.IEnumerable<Entities.CampaignResponse> fax_campaignresponse
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.CampaignResponse>("fax_campaignresponse", null);
+				return this.GetRelatedEntities<Entities.CampaignResponse>("fax_campaignresponse", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("fax_campaignresponse");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.CampaignResponse>("fax_campaignresponse", null, value);
+				this.SetRelatedEntities<Entities.CampaignResponse>("fax_campaignresponse", null, value);
 				this.OnPropertyChanged("fax_campaignresponse");
 			}
 		}
@@ -1271,18 +1271,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N fax_connections1
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("fax_connections1")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> fax_connections1
+		public System.Collections.Generic.IEnumerable<Entities.Connection> fax_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("fax_connections1", null);
+				return this.GetRelatedEntities<Entities.Connection>("fax_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("fax_connections1");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("fax_connections1", null, value);
+				this.SetRelatedEntities<Entities.Connection>("fax_connections1", null, value);
 				this.OnPropertyChanged("fax_connections1");
 			}
 		}
@@ -1291,18 +1291,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N fax_connections2
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("fax_connections2")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> fax_connections2
+		public System.Collections.Generic.IEnumerable<Entities.Connection> fax_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("fax_connections2", null);
+				return this.GetRelatedEntities<Entities.Connection>("fax_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("fax_connections2");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("fax_connections2", null, value);
+				this.SetRelatedEntities<Entities.Connection>("fax_connections2", null, value);
 				this.OnPropertyChanged("fax_connections2");
 			}
 		}
@@ -1311,18 +1311,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Fax_DuplicateBaseRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Fax_DuplicateBaseRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> Fax_DuplicateBaseRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> Fax_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Fax_DuplicateBaseRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("Fax_DuplicateBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Fax_DuplicateBaseRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Fax_DuplicateBaseRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("Fax_DuplicateBaseRecord", null, value);
 				this.OnPropertyChanged("Fax_DuplicateBaseRecord");
 			}
 		}
@@ -1331,18 +1331,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Fax_DuplicateMatchingRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Fax_DuplicateMatchingRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> Fax_DuplicateMatchingRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> Fax_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Fax_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("Fax_DuplicateMatchingRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Fax_DuplicateMatchingRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Fax_DuplicateMatchingRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("Fax_DuplicateMatchingRecord", null, value);
 				this.OnPropertyChanged("Fax_DuplicateMatchingRecord");
 			}
 		}
@@ -1351,18 +1351,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N fax_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("fax_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> fax_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> fax_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("fax_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("fax_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("fax_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("fax_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("fax_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("fax_principalobjectattributeaccess");
 			}
 		}
@@ -1371,18 +1371,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Fax_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Fax_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> Fax_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> Fax_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Fax_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("Fax_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Fax_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Fax_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("Fax_ProcessSessions", null, value);
 				this.OnPropertyChanged("Fax_ProcessSessions");
 			}
 		}
@@ -1391,18 +1391,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Fax_QueueItem
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Fax_QueueItem")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.QueueItem> Fax_QueueItem
+		public System.Collections.Generic.IEnumerable<Entities.QueueItem> Fax_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.QueueItem>("Fax_QueueItem", null);
+				return this.GetRelatedEntities<Entities.QueueItem>("Fax_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Fax_QueueItem");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.QueueItem>("Fax_QueueItem", null, value);
+				this.SetRelatedEntities<Entities.QueueItem>("Fax_QueueItem", null, value);
 				this.OnPropertyChanged("Fax_QueueItem");
 			}
 		}
@@ -1411,18 +1411,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_fax
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_fax")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_fax
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_fax
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_fax", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_fax", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_fax");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_fax", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_fax", null, value);
 				this.OnPropertyChanged("userentityinstancedata_fax");
 			}
 		}
@@ -1432,18 +1432,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Account_Faxes")]
-		public DLaB.Xrm.Entities.Account Account_Faxes
+		public Entities.Account Account_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_Faxes", null);
+				return this.GetRelatedEntity<Entities.Account>("Account_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Account_Faxes");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_Faxes", null, value);
+				this.SetRelatedEntity<Entities.Account>("Account_Faxes", null, value);
 				this.OnPropertyChanged("Account_Faxes");
 			}
 		}
@@ -1453,18 +1453,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("activity_pointer_fax")]
-		public DLaB.Xrm.Entities.ActivityPointer activity_pointer_fax
+		public Entities.ActivityPointer activity_pointer_fax
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_fax", null);
+				return this.GetRelatedEntity<Entities.ActivityPointer>("activity_pointer_fax", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("activity_pointer_fax");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_fax", null, value);
+				this.SetRelatedEntity<Entities.ActivityPointer>("activity_pointer_fax", null, value);
 				this.OnPropertyChanged("activity_pointer_fax");
 			}
 		}
@@ -1474,18 +1474,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Faxes")]
-		public DLaB.Xrm.Entities.BulkOperation BulkOperation_Faxes
+		public Entities.BulkOperation BulkOperation_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BulkOperation>("BulkOperation_Faxes", null);
+				return this.GetRelatedEntity<Entities.BulkOperation>("BulkOperation_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperation_Faxes");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BulkOperation>("BulkOperation_Faxes", null, value);
+				this.SetRelatedEntity<Entities.BulkOperation>("BulkOperation_Faxes", null, value);
 				this.OnPropertyChanged("BulkOperation_Faxes");
 			}
 		}
@@ -1495,18 +1495,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_fax_activities")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_fax_activities
+		public Entities.BusinessUnit business_unit_fax_activities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_fax_activities", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_fax_activities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_fax_activities");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_fax_activities", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_fax_activities", null, value);
 				this.OnPropertyChanged("business_unit_fax_activities");
 			}
 		}
@@ -1516,18 +1516,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Campaign_Faxes")]
-		public DLaB.Xrm.Entities.Campaign Campaign_Faxes
+		public Entities.Campaign Campaign_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Campaign>("Campaign_Faxes", null);
+				return this.GetRelatedEntity<Entities.Campaign>("Campaign_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Campaign_Faxes");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Campaign>("Campaign_Faxes", null, value);
+				this.SetRelatedEntity<Entities.Campaign>("Campaign_Faxes", null, value);
 				this.OnPropertyChanged("Campaign_Faxes");
 			}
 		}
@@ -1537,18 +1537,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignActivity_Faxes")]
-		public DLaB.Xrm.Entities.CampaignActivity CampaignActivity_Faxes
+		public Entities.CampaignActivity CampaignActivity_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("CampaignActivity_Faxes", null);
+				return this.GetRelatedEntity<Entities.CampaignActivity>("CampaignActivity_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CampaignActivity_Faxes");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("CampaignActivity_Faxes", null, value);
+				this.SetRelatedEntity<Entities.CampaignActivity>("CampaignActivity_Faxes", null, value);
 				this.OnPropertyChanged("CampaignActivity_Faxes");
 			}
 		}
@@ -1558,18 +1558,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contact_Faxes")]
-		public DLaB.Xrm.Entities.Contact Contact_Faxes
+		public Entities.Contact Contact_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_Faxes", null);
+				return this.GetRelatedEntity<Entities.Contact>("Contact_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Contact_Faxes");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_Faxes", null, value);
+				this.SetRelatedEntity<Entities.Contact>("Contact_Faxes", null, value);
 				this.OnPropertyChanged("Contact_Faxes");
 			}
 		}
@@ -1579,18 +1579,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contract_Faxes")]
-		public DLaB.Xrm.Entities.Contract Contract_Faxes
+		public Entities.Contract Contract_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contract>("Contract_Faxes", null);
+				return this.GetRelatedEntity<Entities.Contract>("Contract_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Contract_Faxes");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contract>("Contract_Faxes", null, value);
+				this.SetRelatedEntity<Entities.Contract>("Contract_Faxes", null, value);
 				this.OnPropertyChanged("Contract_Faxes");
 			}
 		}
@@ -1600,18 +1600,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_Faxes")]
-		public DLaB.Xrm.Entities.Entitlement entitlement_Faxes
+		public Entities.Entitlement entitlement_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_Faxes", null);
+				return this.GetRelatedEntity<Entities.Entitlement>("entitlement_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_Faxes");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_Faxes", null, value);
+				this.SetRelatedEntity<Entities.Entitlement>("entitlement_Faxes", null, value);
 				this.OnPropertyChanged("entitlement_Faxes");
 			}
 		}
@@ -1621,18 +1621,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlementtemplate_Faxes")]
-		public DLaB.Xrm.Entities.EntitlementTemplate entitlementtemplate_Faxes
+		public Entities.EntitlementTemplate entitlementtemplate_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplate_Faxes", null);
+				return this.GetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplate_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlementtemplate_Faxes");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplate_Faxes", null, value);
+				this.SetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplate_Faxes", null, value);
 				this.OnPropertyChanged("entitlementtemplate_Faxes");
 			}
 		}
@@ -1642,18 +1642,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Incident_Faxes")]
-		public DLaB.Xrm.Entities.Incident Incident_Faxes
+		public Entities.Incident Incident_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_Faxes", null);
+				return this.GetRelatedEntity<Entities.Incident>("Incident_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Incident_Faxes");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_Faxes", null, value);
+				this.SetRelatedEntity<Entities.Incident>("Incident_Faxes", null, value);
 				this.OnPropertyChanged("Incident_Faxes");
 			}
 		}
@@ -1663,18 +1663,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Invoice_Faxes")]
-		public DLaB.Xrm.Entities.Invoice Invoice_Faxes
+		public Entities.Invoice Invoice_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Invoice>("Invoice_Faxes", null);
+				return this.GetRelatedEntity<Entities.Invoice>("Invoice_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Invoice_Faxes");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Invoice>("Invoice_Faxes", null, value);
+				this.SetRelatedEntity<Entities.Invoice>("Invoice_Faxes", null, value);
 				this.OnPropertyChanged("Invoice_Faxes");
 			}
 		}
@@ -1684,18 +1684,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeArticle_Faxes")]
-		public DLaB.Xrm.Entities.KnowledgeArticle KnowledgeArticle_Faxes
+		public Entities.KnowledgeArticle KnowledgeArticle_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("KnowledgeArticle_Faxes", null);
+				return this.GetRelatedEntity<Entities.KnowledgeArticle>("KnowledgeArticle_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeArticle_Faxes");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("KnowledgeArticle_Faxes", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeArticle>("KnowledgeArticle_Faxes", null, value);
 				this.OnPropertyChanged("KnowledgeArticle_Faxes");
 			}
 		}
@@ -1705,18 +1705,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_Faxes")]
-		public DLaB.Xrm.Entities.KnowledgeBaseRecord KnowledgeBaseRecord_Faxes
+		public Entities.KnowledgeBaseRecord KnowledgeBaseRecord_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_Faxes", null);
+				return this.GetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_Faxes");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_Faxes", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_Faxes", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_Faxes");
 			}
 		}
@@ -1726,18 +1726,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_Faxes")]
-		public DLaB.Xrm.Entities.Lead Lead_Faxes
+		public Entities.Lead Lead_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Lead>("Lead_Faxes", null);
+				return this.GetRelatedEntity<Entities.Lead>("Lead_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_Faxes");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Lead>("Lead_Faxes", null, value);
+				this.SetRelatedEntity<Entities.Lead>("Lead_Faxes", null, value);
 				this.OnPropertyChanged("Lead_Faxes");
 			}
 		}
@@ -1747,18 +1747,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_fax_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_fax_createdby
+		public Entities.SystemUser lk_fax_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fax_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_fax_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_fax_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fax_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_fax_createdby", null, value);
 				this.OnPropertyChanged("lk_fax_createdby");
 			}
 		}
@@ -1768,18 +1768,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_fax_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_fax_createdonbehalfby
+		public Entities.SystemUser lk_fax_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fax_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_fax_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_fax_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fax_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_fax_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_fax_createdonbehalfby");
 			}
 		}
@@ -1789,18 +1789,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_fax_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_fax_modifiedby
+		public Entities.SystemUser lk_fax_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fax_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_fax_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_fax_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fax_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_fax_modifiedby", null, value);
 				this.OnPropertyChanged("lk_fax_modifiedby");
 			}
 		}
@@ -1810,18 +1810,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_fax_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_fax_modifiedonbehalfby
+		public Entities.SystemUser lk_fax_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fax_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_fax_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_fax_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fax_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_fax_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_fax_modifiedonbehalfby");
 			}
 		}
@@ -1831,18 +1831,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_Faxes")]
-		public DLaB.Xrm.Entities.msdyn_PostAlbum msdyn_postalbum_Faxes
+		public Entities.msdyn_PostAlbum msdyn_postalbum_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_Faxes", null);
+				return this.GetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_Faxes");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_Faxes", null, value);
+				this.SetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_Faxes", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_Faxes");
 			}
 		}
@@ -1852,18 +1852,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_Faxes")]
-		public DLaB.Xrm.Entities.Opportunity Opportunity_Faxes
+		public Entities.Opportunity Opportunity_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_Faxes", null);
+				return this.GetRelatedEntity<Entities.Opportunity>("Opportunity_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_Faxes");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_Faxes", null, value);
+				this.SetRelatedEntity<Entities.Opportunity>("Opportunity_Faxes", null, value);
 				this.OnPropertyChanged("Opportunity_Faxes");
 			}
 		}
@@ -1873,18 +1873,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stageid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_faxes")]
-		public DLaB.Xrm.Entities.ProcessStage processstage_faxes
+		public Entities.ProcessStage processstage_faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProcessStage>("processstage_faxes", null);
+				return this.GetRelatedEntity<Entities.ProcessStage>("processstage_faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_faxes");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProcessStage>("processstage_faxes", null, value);
+				this.SetRelatedEntity<Entities.ProcessStage>("processstage_faxes", null, value);
 				this.OnPropertyChanged("processstage_faxes");
 			}
 		}
@@ -1894,18 +1894,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Quote_Faxes")]
-		public DLaB.Xrm.Entities.Quote Quote_Faxes
+		public Entities.Quote Quote_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Quote>("Quote_Faxes", null);
+				return this.GetRelatedEntity<Entities.Quote>("Quote_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Quote_Faxes");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Quote>("Quote_Faxes", null, value);
+				this.SetRelatedEntity<Entities.Quote>("Quote_Faxes", null, value);
 				this.OnPropertyChanged("Quote_Faxes");
 			}
 		}
@@ -1915,18 +1915,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesOrder_Faxes")]
-		public DLaB.Xrm.Entities.SalesOrder SalesOrder_Faxes
+		public Entities.SalesOrder SalesOrder_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("SalesOrder_Faxes", null);
+				return this.GetRelatedEntity<Entities.SalesOrder>("SalesOrder_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SalesOrder_Faxes");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("SalesOrder_Faxes", null, value);
+				this.SetRelatedEntity<Entities.SalesOrder>("SalesOrder_Faxes", null, value);
 				this.OnPropertyChanged("SalesOrder_Faxes");
 			}
 		}
@@ -1936,18 +1936,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("serviceid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("service_faxes")]
-		public DLaB.Xrm.Entities.Service service_faxes
+		public Entities.Service service_faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Service>("service_faxes", null);
+				return this.GetRelatedEntity<Entities.Service>("service_faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("service_faxes");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Service>("service_faxes", null, value);
+				this.SetRelatedEntity<Entities.Service>("service_faxes", null, value);
 				this.OnPropertyChanged("service_faxes");
 			}
 		}
@@ -1957,18 +1957,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_fax")]
-		public DLaB.Xrm.Entities.Team team_fax
+		public Entities.Team team_fax
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_fax", null);
+				return this.GetRelatedEntity<Entities.Team>("team_fax", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_fax");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_fax", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_fax", null, value);
 				this.OnPropertyChanged("team_fax");
 			}
 		}
@@ -1978,18 +1978,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Fax")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_Fax
+		public Entities.TransactionCurrency TransactionCurrency_Fax
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_Fax", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_Fax", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Fax");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_Fax", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_Fax", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Fax");
 			}
 		}
@@ -1999,18 +1999,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_fax")]
-		public DLaB.Xrm.Entities.SystemUser user_fax
+		public Entities.SystemUser user_fax
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_fax", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_fax", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_fax");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_fax", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_fax", null, value);
 				this.OnPropertyChanged("user_fax");
 			}
 		}

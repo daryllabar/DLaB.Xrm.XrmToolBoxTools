@@ -408,18 +408,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N usermapping_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("usermapping_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> usermapping_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> usermapping_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("usermapping_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("usermapping_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("usermapping_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("usermapping_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("usermapping_AsyncOperations", null, value);
 				this.OnPropertyChanged("usermapping_AsyncOperations");
 			}
 		}
@@ -428,18 +428,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N usermapping_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("usermapping_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> usermapping_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> usermapping_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("usermapping_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("usermapping_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("usermapping_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("usermapping_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("usermapping_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("usermapping_BulkDeleteFailures");
 			}
 		}
@@ -448,18 +448,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N usermapping_ProcessSession
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("usermapping_ProcessSession")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> usermapping_ProcessSession
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> usermapping_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("usermapping_ProcessSession", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("usermapping_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("usermapping_ProcessSession");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("usermapping_ProcessSession", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("usermapping_ProcessSession", null, value);
 				this.OnPropertyChanged("usermapping_ProcessSession");
 			}
 		}
@@ -468,18 +468,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N usermapping_UserEntityInstanceDatas
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("usermapping_UserEntityInstanceDatas")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> usermapping_UserEntityInstanceDatas
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> usermapping_UserEntityInstanceDatas
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("usermapping_UserEntityInstanceDatas", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("usermapping_UserEntityInstanceDatas", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("usermapping_UserEntityInstanceDatas");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("usermapping_UserEntityInstanceDatas", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("usermapping_UserEntityInstanceDatas", null, value);
 				this.OnPropertyChanged("usermapping_UserEntityInstanceDatas");
 			}
 		}
@@ -489,18 +489,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_usermapping_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_usermapping_createdby
+		public Entities.SystemUser lk_usermapping_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_usermapping_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_usermapping_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_usermapping_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_usermapping_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_usermapping_createdby", null, value);
 				this.OnPropertyChanged("lk_usermapping_createdby");
 			}
 		}
@@ -510,18 +510,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_usermapping_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_usermapping_createdonbehalfby
+		public Entities.SystemUser lk_usermapping_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_usermapping_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_usermapping_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_usermapping_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_usermapping_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_usermapping_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_usermapping_createdonbehalfby");
 			}
 		}
@@ -531,18 +531,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_usermapping_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_usermapping_modifiedby
+		public Entities.SystemUser lk_usermapping_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_usermapping_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_usermapping_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_usermapping_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_usermapping_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_usermapping_modifiedby", null, value);
 				this.OnPropertyChanged("lk_usermapping_modifiedby");
 			}
 		}
@@ -552,18 +552,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_usermapping_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_usermapping_modifiedonbehalfby
+		public Entities.SystemUser lk_usermapping_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_usermapping_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_usermapping_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_usermapping_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_usermapping_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_usermapping_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_usermapping_modifiedonbehalfby");
 			}
 		}
@@ -573,12 +573,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_UserMapping")]
-		public DLaB.Xrm.Entities.Organization organization_UserMapping
+		public Entities.Organization organization_UserMapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_UserMapping", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_UserMapping", null);
 			}
 		}
 		
@@ -587,18 +587,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_UserMapping")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_UserMapping
+		public Entities.TransactionCurrency TransactionCurrency_UserMapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_UserMapping", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_UserMapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_UserMapping");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_UserMapping", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_UserMapping", null, value);
 				this.OnPropertyChanged("TransactionCurrency_UserMapping");
 			}
 		}

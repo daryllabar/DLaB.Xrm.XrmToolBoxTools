@@ -527,18 +527,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N QuarterlyFiscalCalendar_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("QuarterlyFiscalCalendar_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> QuarterlyFiscalCalendar_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> QuarterlyFiscalCalendar_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("QuarterlyFiscalCalendar_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("QuarterlyFiscalCalendar_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("QuarterlyFiscalCalendar_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("QuarterlyFiscalCalendar_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("QuarterlyFiscalCalendar_AsyncOperations", null, value);
 				this.OnPropertyChanged("QuarterlyFiscalCalendar_AsyncOperations");
 			}
 		}
@@ -547,18 +547,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N QuarterlyFiscalCalendar_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("QuarterlyFiscalCalendar_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> QuarterlyFiscalCalendar_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> QuarterlyFiscalCalendar_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("QuarterlyFiscalCalendar_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("QuarterlyFiscalCalendar_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("QuarterlyFiscalCalendar_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("QuarterlyFiscalCalendar_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("QuarterlyFiscalCalendar_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("QuarterlyFiscalCalendar_BulkDeleteFailures");
 			}
 		}
@@ -568,18 +568,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_quarterlyfiscalcalendar_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_quarterlyfiscalcalendar_createdby
+		public Entities.SystemUser lk_quarterlyfiscalcalendar_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_quarterlyfiscalcalendar_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_quarterlyfiscalcalendar_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_quarterlyfiscalcalendar_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_quarterlyfiscalcalendar_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_quarterlyfiscalcalendar_createdby", null, value);
 				this.OnPropertyChanged("lk_quarterlyfiscalcalendar_createdby");
 			}
 		}
@@ -589,18 +589,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_quarterlyfiscalcalendar_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_quarterlyfiscalcalendar_createdonbehalfby
+		public Entities.SystemUser lk_quarterlyfiscalcalendar_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_quarterlyfiscalcalendar_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_quarterlyfiscalcalendar_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_quarterlyfiscalcalendar_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_quarterlyfiscalcalendar_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_quarterlyfiscalcalendar_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_quarterlyfiscalcalendar_createdonbehalfby");
 			}
 		}
@@ -610,18 +610,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_quarterlyfiscalcalendar_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_quarterlyfiscalcalendar_modifiedby
+		public Entities.SystemUser lk_quarterlyfiscalcalendar_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_quarterlyfiscalcalendar_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_quarterlyfiscalcalendar_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_quarterlyfiscalcalendar_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_quarterlyfiscalcalendar_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_quarterlyfiscalcalendar_modifiedby", null, value);
 				this.OnPropertyChanged("lk_quarterlyfiscalcalendar_modifiedby");
 			}
 		}
@@ -631,18 +631,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_quarterlyfiscalcalendar_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_quarterlyfiscalcalendar_modifiedonbehalfby
+		public Entities.SystemUser lk_quarterlyfiscalcalendar_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_quarterlyfiscalcalendar_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_quarterlyfiscalcalendar_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_quarterlyfiscalcalendar_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_quarterlyfiscalcalendar_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_quarterlyfiscalcalendar_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_quarterlyfiscalcalendar_modifiedonbehalfby");
 			}
 		}
@@ -652,18 +652,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("salespersonid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_quarterlyfiscalcalendar_salespersonid")]
-		public DLaB.Xrm.Entities.SystemUser lk_quarterlyfiscalcalendar_salespersonid
+		public Entities.SystemUser lk_quarterlyfiscalcalendar_salespersonid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_quarterlyfiscalcalendar_salespersonid", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_quarterlyfiscalcalendar_salespersonid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_quarterlyfiscalcalendar_salespersonid");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_quarterlyfiscalcalendar_salespersonid", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_quarterlyfiscalcalendar_salespersonid", null, value);
 				this.OnPropertyChanged("lk_quarterlyfiscalcalendar_salespersonid");
 			}
 		}
@@ -673,18 +673,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_quarterlyfiscalcalendar")]
-		public DLaB.Xrm.Entities.TransactionCurrency transactioncurrency_quarterlyfiscalcalendar
+		public Entities.TransactionCurrency transactioncurrency_quarterlyfiscalcalendar
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_quarterlyfiscalcalendar", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_quarterlyfiscalcalendar", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_quarterlyfiscalcalendar");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_quarterlyfiscalcalendar", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_quarterlyfiscalcalendar", null, value);
 				this.OnPropertyChanged("transactioncurrency_quarterlyfiscalcalendar");
 			}
 		}

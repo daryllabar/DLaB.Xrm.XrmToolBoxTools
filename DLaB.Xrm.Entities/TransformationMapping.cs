@@ -272,7 +272,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the transformation mapping.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.TransformationMappingState> StateCode
+		public System.Nullable<Entities.TransformationMappingState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -280,7 +280,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.TransformationMappingState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.TransformationMappingState), optionSet.Value)));
+					return ((Entities.TransformationMappingState)(System.Enum.ToObject(typeof(Entities.TransformationMappingState), optionSet.Value)));
 				}
 				else
 				{
@@ -396,18 +396,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransformationParameterMapping_TransformationMapping
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransformationParameterMapping_TransformationMapping")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.TransformationParameterMapping> TransformationParameterMapping_TransformationMapping
+		public System.Collections.Generic.IEnumerable<Entities.TransformationParameterMapping> TransformationParameterMapping_TransformationMapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.TransformationParameterMapping>("TransformationParameterMapping_TransformationMapping", null);
+				return this.GetRelatedEntities<Entities.TransformationParameterMapping>("TransformationParameterMapping_TransformationMapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransformationParameterMapping_TransformationMapping");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.TransformationParameterMapping>("TransformationParameterMapping_TransformationMapping", null, value);
+				this.SetRelatedEntities<Entities.TransformationParameterMapping>("TransformationParameterMapping_TransformationMapping", null, value);
 				this.OnPropertyChanged("TransformationParameterMapping_TransformationMapping");
 			}
 		}
@@ -416,18 +416,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_transformationmapping
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_transformationmapping")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_transformationmapping
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_transformationmapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_transformationmapping", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_transformationmapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_transformationmapping");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_transformationmapping", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_transformationmapping", null, value);
 				this.OnPropertyChanged("userentityinstancedata_transformationmapping");
 			}
 		}
@@ -437,18 +437,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_transformationmapping_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_transformationmapping_createdby
+		public Entities.SystemUser lk_transformationmapping_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_transformationmapping_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_transformationmapping_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_transformationmapping_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_transformationmapping_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_transformationmapping_createdby", null, value);
 				this.OnPropertyChanged("lk_transformationmapping_createdby");
 			}
 		}
@@ -458,18 +458,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_transformationmapping_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_transformationmapping_createdonbehalfby
+		public Entities.SystemUser lk_transformationmapping_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_transformationmapping_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_transformationmapping_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_transformationmapping_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_transformationmapping_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_transformationmapping_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_transformationmapping_createdonbehalfby");
 			}
 		}
@@ -479,18 +479,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_transformationmapping_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_transformationmapping_modifiedby
+		public Entities.SystemUser lk_transformationmapping_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_transformationmapping_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_transformationmapping_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_transformationmapping_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_transformationmapping_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_transformationmapping_modifiedby", null, value);
 				this.OnPropertyChanged("lk_transformationmapping_modifiedby");
 			}
 		}
@@ -500,18 +500,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_transformationmapping_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_transformationmapping_modifiedonbehalfby
+		public Entities.SystemUser lk_transformationmapping_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_transformationmapping_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_transformationmapping_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_transformationmapping_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_transformationmapping_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_transformationmapping_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_transformationmapping_modifiedonbehalfby");
 			}
 		}
@@ -521,18 +521,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importmapid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransformationMapping_ImportMap")]
-		public DLaB.Xrm.Entities.ImportMap TransformationMapping_ImportMap
+		public Entities.ImportMap TransformationMapping_ImportMap
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ImportMap>("TransformationMapping_ImportMap", null);
+				return this.GetRelatedEntity<Entities.ImportMap>("TransformationMapping_ImportMap", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransformationMapping_ImportMap");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ImportMap>("TransformationMapping_ImportMap", null, value);
+				this.SetRelatedEntity<Entities.ImportMap>("TransformationMapping_ImportMap", null, value);
 				this.OnPropertyChanged("TransformationMapping_ImportMap");
 			}
 		}

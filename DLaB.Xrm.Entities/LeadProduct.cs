@@ -150,18 +150,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_leadproduct
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_leadproduct")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_leadproduct
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_leadproduct
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_leadproduct", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_leadproduct", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_leadproduct");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_leadproduct", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_leadproduct", null, value);
 				this.OnPropertyChanged("userentityinstancedata_leadproduct");
 			}
 		}
@@ -170,18 +170,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N leadproduct_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("leadproduct_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Lead> leadproduct_association
+		public System.Collections.Generic.IEnumerable<Entities.Lead> leadproduct_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Lead>("leadproduct_association", null);
+				return this.GetRelatedEntities<Entities.Lead>("leadproduct_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("leadproduct_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Lead>("leadproduct_association", null, value);
+				this.SetRelatedEntities<Entities.Lead>("leadproduct_association", null, value);
 				this.OnPropertyChanged("leadproduct_association");
 			}
 		}

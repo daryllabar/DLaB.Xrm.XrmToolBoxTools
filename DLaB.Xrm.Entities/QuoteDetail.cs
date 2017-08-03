@@ -1295,18 +1295,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N QuoteDetail_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("QuoteDetail_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> QuoteDetail_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> QuoteDetail_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("QuoteDetail_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("QuoteDetail_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("QuoteDetail_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("QuoteDetail_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("QuoteDetail_AsyncOperations", null, value);
 				this.OnPropertyChanged("QuoteDetail_AsyncOperations");
 			}
 		}
@@ -1315,18 +1315,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N QuoteDetail_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("QuoteDetail_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> QuoteDetail_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> QuoteDetail_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("QuoteDetail_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("QuoteDetail_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("QuoteDetail_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("QuoteDetail_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("QuoteDetail_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("QuoteDetail_BulkDeleteFailures");
 			}
 		}
@@ -1335,18 +1335,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N QuoteDetail_Dynamicpropertyinstance
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("QuoteDetail_Dynamicpropertyinstance")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DynamicPropertyInstance> QuoteDetail_Dynamicpropertyinstance
+		public System.Collections.Generic.IEnumerable<Entities.DynamicPropertyInstance> QuoteDetail_Dynamicpropertyinstance
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DynamicPropertyInstance>("QuoteDetail_Dynamicpropertyinstance", null);
+				return this.GetRelatedEntities<Entities.DynamicPropertyInstance>("QuoteDetail_Dynamicpropertyinstance", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("QuoteDetail_Dynamicpropertyinstance");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DynamicPropertyInstance>("QuoteDetail_Dynamicpropertyinstance", null, value);
+				this.SetRelatedEntities<Entities.DynamicPropertyInstance>("QuoteDetail_Dynamicpropertyinstance", null, value);
 				this.OnPropertyChanged("QuoteDetail_Dynamicpropertyinstance");
 			}
 		}
@@ -1355,18 +1355,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N quotedetail_parent_quotedetail
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("quotedetail_parent_quotedetail", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.QuoteDetail> Referencedquotedetail_parent_quotedetail
+		public System.Collections.Generic.IEnumerable<Entities.QuoteDetail> Referencedquotedetail_parent_quotedetail
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.QuoteDetail>("quotedetail_parent_quotedetail", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.QuoteDetail>("quotedetail_parent_quotedetail", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedquotedetail_parent_quotedetail");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.QuoteDetail>("quotedetail_parent_quotedetail", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.QuoteDetail>("quotedetail_parent_quotedetail", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedquotedetail_parent_quotedetail");
 			}
 		}
@@ -1375,18 +1375,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N quotedetail_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("quotedetail_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> quotedetail_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> quotedetail_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("quotedetail_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("quotedetail_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("quotedetail_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("quotedetail_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("quotedetail_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("quotedetail_principalobjectattributeaccess");
 			}
 		}
@@ -1395,18 +1395,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N QuoteDetail_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("QuoteDetail_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> QuoteDetail_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> QuoteDetail_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("QuoteDetail_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("QuoteDetail_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("QuoteDetail_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("QuoteDetail_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("QuoteDetail_ProcessSessions", null, value);
 				this.OnPropertyChanged("QuoteDetail_ProcessSessions");
 			}
 		}
@@ -1415,18 +1415,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_quotedetail
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_quotedetail")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_quotedetail
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_quotedetail
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_quotedetail", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_quotedetail", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_quotedetail");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_quotedetail", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_quotedetail", null, value);
 				this.OnPropertyChanged("userentityinstancedata_quotedetail");
 			}
 		}
@@ -1436,18 +1436,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_quotedetail_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_quotedetail_createdonbehalfby
+		public Entities.SystemUser lk_quotedetail_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_quotedetail_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_quotedetail_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_quotedetail_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_quotedetail_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_quotedetail_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_quotedetail_createdonbehalfby");
 			}
 		}
@@ -1457,18 +1457,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_quotedetail_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_quotedetail_modifiedonbehalfby
+		public Entities.SystemUser lk_quotedetail_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_quotedetail_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_quotedetail_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_quotedetail_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_quotedetail_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_quotedetail_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_quotedetail_modifiedonbehalfby");
 			}
 		}
@@ -1478,18 +1478,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_quotedetailbase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_quotedetailbase_createdby
+		public Entities.SystemUser lk_quotedetailbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_quotedetailbase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_quotedetailbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_quotedetailbase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_quotedetailbase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_quotedetailbase_createdby", null, value);
 				this.OnPropertyChanged("lk_quotedetailbase_createdby");
 			}
 		}
@@ -1499,18 +1499,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_quotedetailbase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_quotedetailbase_modifiedby
+		public Entities.SystemUser lk_quotedetailbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_quotedetailbase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_quotedetailbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_quotedetailbase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_quotedetailbase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_quotedetailbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_quotedetailbase_modifiedby");
 			}
 		}
@@ -1520,18 +1520,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("productid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("product_quote_details")]
-		public DLaB.Xrm.Entities.Product product_quote_details
+		public Entities.Product product_quote_details
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Product>("product_quote_details", null);
+				return this.GetRelatedEntity<Entities.Product>("product_quote_details", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("product_quote_details");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Product>("product_quote_details", null, value);
+				this.SetRelatedEntity<Entities.Product>("product_quote_details", null, value);
 				this.OnPropertyChanged("product_quote_details");
 			}
 		}
@@ -1541,18 +1541,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("productassociationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("productAssociation_quote_details")]
-		public DLaB.Xrm.Entities.ProductAssociation productAssociation_quote_details
+		public Entities.ProductAssociation productAssociation_quote_details
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProductAssociation>("productAssociation_quote_details", null);
+				return this.GetRelatedEntity<Entities.ProductAssociation>("productAssociation_quote_details", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("productAssociation_quote_details");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProductAssociation>("productAssociation_quote_details", null, value);
+				this.SetRelatedEntity<Entities.ProductAssociation>("productAssociation_quote_details", null, value);
 				this.OnPropertyChanged("productAssociation_quote_details");
 			}
 		}
@@ -1562,18 +1562,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("quoteid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("quote_details")]
-		public DLaB.Xrm.Entities.Quote quote_details
+		public Entities.Quote quote_details
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Quote>("quote_details", null);
+				return this.GetRelatedEntity<Entities.Quote>("quote_details", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("quote_details");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Quote>("quote_details", null, value);
+				this.SetRelatedEntity<Entities.Quote>("quote_details", null, value);
 				this.OnPropertyChanged("quote_details");
 			}
 		}
@@ -1583,18 +1583,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentbundleid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("quotedetail_parent_quotedetail", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.QuoteDetail Referencingquotedetail_parent_quotedetail
+		public Entities.QuoteDetail Referencingquotedetail_parent_quotedetail
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.QuoteDetail>("quotedetail_parent_quotedetail", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.QuoteDetail>("quotedetail_parent_quotedetail", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencingquotedetail_parent_quotedetail");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.QuoteDetail>("quotedetail_parent_quotedetail", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Entities.QuoteDetail>("quotedetail_parent_quotedetail", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencingquotedetail_parent_quotedetail");
 			}
 		}
@@ -1604,18 +1604,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("salesrepid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("system_user_quotedetail")]
-		public DLaB.Xrm.Entities.SystemUser system_user_quotedetail
+		public Entities.SystemUser system_user_quotedetail
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("system_user_quotedetail", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("system_user_quotedetail", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("system_user_quotedetail");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("system_user_quotedetail", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("system_user_quotedetail", null, value);
 				this.OnPropertyChanged("system_user_quotedetail");
 			}
 		}
@@ -1625,12 +1625,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_quotedetail")]
-		public DLaB.Xrm.Entities.TransactionCurrency transactioncurrency_quotedetail
+		public Entities.TransactionCurrency transactioncurrency_quotedetail
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_quotedetail", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_quotedetail", null);
 			}
 		}
 		
@@ -1639,18 +1639,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uomid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measurement_quote_details")]
-		public DLaB.Xrm.Entities.UoM unit_of_measurement_quote_details
+		public Entities.UoM unit_of_measurement_quote_details
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.UoM>("unit_of_measurement_quote_details", null);
+				return this.GetRelatedEntity<Entities.UoM>("unit_of_measurement_quote_details", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("unit_of_measurement_quote_details");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.UoM>("unit_of_measurement_quote_details", null, value);
+				this.SetRelatedEntity<Entities.UoM>("unit_of_measurement_quote_details", null, value);
 				this.OnPropertyChanged("unit_of_measurement_quote_details");
 			}
 		}

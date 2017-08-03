@@ -459,7 +459,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the Post Configuration
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.msdyn_PostConfigState> statecode
+		public System.Nullable<Entities.msdyn_PostConfigState> statecode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -467,7 +467,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.msdyn_PostConfigState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.msdyn_PostConfigState), optionSet.Value)));
+					return ((Entities.msdyn_PostConfigState)(System.Enum.ToObject(typeof(Entities.msdyn_PostConfigState), optionSet.Value)));
 				}
 				else
 				{
@@ -567,18 +567,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postconfig_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postconfig_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> msdyn_postconfig_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> msdyn_postconfig_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("msdyn_postconfig_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("msdyn_postconfig_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postconfig_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("msdyn_postconfig_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("msdyn_postconfig_AsyncOperations", null, value);
 				this.OnPropertyChanged("msdyn_postconfig_AsyncOperations");
 			}
 		}
@@ -587,18 +587,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postconfig_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postconfig_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> msdyn_postconfig_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> msdyn_postconfig_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("msdyn_postconfig_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("msdyn_postconfig_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postconfig_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("msdyn_postconfig_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("msdyn_postconfig_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("msdyn_postconfig_BulkDeleteFailures");
 			}
 		}
@@ -607,18 +607,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postconfig_MailboxTrackingFolders
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postconfig_MailboxTrackingFolders")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.MailboxTrackingFolder> msdyn_postconfig_MailboxTrackingFolders
+		public System.Collections.Generic.IEnumerable<Entities.MailboxTrackingFolder> msdyn_postconfig_MailboxTrackingFolders
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.MailboxTrackingFolder>("msdyn_postconfig_MailboxTrackingFolders", null);
+				return this.GetRelatedEntities<Entities.MailboxTrackingFolder>("msdyn_postconfig_MailboxTrackingFolders", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postconfig_MailboxTrackingFolders");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.MailboxTrackingFolder>("msdyn_postconfig_MailboxTrackingFolders", null, value);
+				this.SetRelatedEntities<Entities.MailboxTrackingFolder>("msdyn_postconfig_MailboxTrackingFolders", null, value);
 				this.OnPropertyChanged("msdyn_postconfig_MailboxTrackingFolders");
 			}
 		}
@@ -627,18 +627,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postconfig_msdyn_postruleconfig
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postconfig_msdyn_postruleconfig")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.msdyn_PostRuleConfig> msdyn_postconfig_msdyn_postruleconfig
+		public System.Collections.Generic.IEnumerable<Entities.msdyn_PostRuleConfig> msdyn_postconfig_msdyn_postruleconfig
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.msdyn_PostRuleConfig>("msdyn_postconfig_msdyn_postruleconfig", null);
+				return this.GetRelatedEntities<Entities.msdyn_PostRuleConfig>("msdyn_postconfig_msdyn_postruleconfig", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postconfig_msdyn_postruleconfig");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.msdyn_PostRuleConfig>("msdyn_postconfig_msdyn_postruleconfig", null, value);
+				this.SetRelatedEntities<Entities.msdyn_PostRuleConfig>("msdyn_postconfig_msdyn_postruleconfig", null, value);
 				this.OnPropertyChanged("msdyn_postconfig_msdyn_postruleconfig");
 			}
 		}
@@ -647,18 +647,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postconfig_PrincipalObjectAttributeAccesses
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postconfig_PrincipalObjectAttributeAccesses")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> msdyn_postconfig_PrincipalObjectAttributeAccesses
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> msdyn_postconfig_PrincipalObjectAttributeAccesses
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("msdyn_postconfig_PrincipalObjectAttributeAccesses", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("msdyn_postconfig_PrincipalObjectAttributeAccesses", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postconfig_PrincipalObjectAttributeAccesses");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("msdyn_postconfig_PrincipalObjectAttributeAccesses", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("msdyn_postconfig_PrincipalObjectAttributeAccesses", null, value);
 				this.OnPropertyChanged("msdyn_postconfig_PrincipalObjectAttributeAccesses");
 			}
 		}
@@ -667,18 +667,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postconfig_ProcessSession
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postconfig_ProcessSession")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> msdyn_postconfig_ProcessSession
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> msdyn_postconfig_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("msdyn_postconfig_ProcessSession", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("msdyn_postconfig_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postconfig_ProcessSession");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("msdyn_postconfig_ProcessSession", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("msdyn_postconfig_ProcessSession", null, value);
 				this.OnPropertyChanged("msdyn_postconfig_ProcessSession");
 			}
 		}
@@ -687,18 +687,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postconfig_UserEntityInstanceDatas
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postconfig_UserEntityInstanceDatas")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> msdyn_postconfig_UserEntityInstanceDatas
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> msdyn_postconfig_UserEntityInstanceDatas
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("msdyn_postconfig_UserEntityInstanceDatas", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("msdyn_postconfig_UserEntityInstanceDatas", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postconfig_UserEntityInstanceDatas");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("msdyn_postconfig_UserEntityInstanceDatas", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("msdyn_postconfig_UserEntityInstanceDatas", null, value);
 				this.OnPropertyChanged("msdyn_postconfig_UserEntityInstanceDatas");
 			}
 		}
@@ -707,18 +707,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postconfig_wallsavedquery
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postconfig_wallsavedquery")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.msdyn_wallsavedquery> msdyn_postconfig_wallsavedquery
+		public System.Collections.Generic.IEnumerable<Entities.msdyn_wallsavedquery> msdyn_postconfig_wallsavedquery
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.msdyn_wallsavedquery>("msdyn_postconfig_wallsavedquery", null);
+				return this.GetRelatedEntities<Entities.msdyn_wallsavedquery>("msdyn_postconfig_wallsavedquery", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postconfig_wallsavedquery");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.msdyn_wallsavedquery>("msdyn_postconfig_wallsavedquery", null, value);
+				this.SetRelatedEntities<Entities.msdyn_wallsavedquery>("msdyn_postconfig_wallsavedquery", null, value);
 				this.OnPropertyChanged("msdyn_postconfig_wallsavedquery");
 			}
 		}
@@ -728,18 +728,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_postconfig_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_msdyn_postconfig_createdby
+		public Entities.SystemUser lk_msdyn_postconfig_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_postconfig_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_msdyn_postconfig_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_msdyn_postconfig_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_postconfig_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_msdyn_postconfig_createdby", null, value);
 				this.OnPropertyChanged("lk_msdyn_postconfig_createdby");
 			}
 		}
@@ -749,18 +749,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_postconfig_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_msdyn_postconfig_createdonbehalfby
+		public Entities.SystemUser lk_msdyn_postconfig_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_postconfig_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_msdyn_postconfig_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_msdyn_postconfig_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_postconfig_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_msdyn_postconfig_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_msdyn_postconfig_createdonbehalfby");
 			}
 		}
@@ -770,18 +770,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_postconfig_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_msdyn_postconfig_modifiedby
+		public Entities.SystemUser lk_msdyn_postconfig_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_postconfig_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_msdyn_postconfig_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_msdyn_postconfig_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_postconfig_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_msdyn_postconfig_modifiedby", null, value);
 				this.OnPropertyChanged("lk_msdyn_postconfig_modifiedby");
 			}
 		}
@@ -791,18 +791,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_postconfig_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_msdyn_postconfig_modifiedonbehalfby
+		public Entities.SystemUser lk_msdyn_postconfig_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_postconfig_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_msdyn_postconfig_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_msdyn_postconfig_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_postconfig_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_msdyn_postconfig_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_msdyn_postconfig_modifiedonbehalfby");
 			}
 		}
@@ -812,12 +812,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_msdyn_postconfig")]
-		public DLaB.Xrm.Entities.Organization organization_msdyn_postconfig
+		public Entities.Organization organization_msdyn_postconfig
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_msdyn_postconfig", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_msdyn_postconfig", null);
 			}
 		}
 		

@@ -848,7 +848,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the contract line is existing, renewed, canceled, or expired. You can't edit a contract line after it is saved, regardless of the status.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.ContractDetailState> StateCode
+		public System.Nullable<Entities.ContractDetailState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -856,7 +856,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.ContractDetailState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.ContractDetailState), optionSet.Value)));
+					return ((Entities.ContractDetailState)(System.Enum.ToObject(typeof(Entities.ContractDetailState), optionSet.Value)));
 				}
 				else
 				{
@@ -1049,18 +1049,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N contract_detail_cases
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contract_detail_cases")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Incident> contract_detail_cases
+		public System.Collections.Generic.IEnumerable<Entities.Incident> contract_detail_cases
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Incident>("contract_detail_cases", null);
+				return this.GetRelatedEntities<Entities.Incident>("contract_detail_cases", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contract_detail_cases");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Incident>("contract_detail_cases", null, value);
+				this.SetRelatedEntities<Entities.Incident>("contract_detail_cases", null, value);
 				this.OnPropertyChanged("contract_detail_cases");
 			}
 		}
@@ -1069,18 +1069,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ContractDetail_Annotation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ContractDetail_Annotation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> ContractDetail_Annotation
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> ContractDetail_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("ContractDetail_Annotation", null);
+				return this.GetRelatedEntities<Entities.Annotation>("ContractDetail_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ContractDetail_Annotation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("ContractDetail_Annotation", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("ContractDetail_Annotation", null, value);
 				this.OnPropertyChanged("ContractDetail_Annotation");
 			}
 		}
@@ -1089,18 +1089,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ContractDetail_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ContractDetail_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> ContractDetail_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> ContractDetail_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("ContractDetail_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("ContractDetail_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ContractDetail_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("ContractDetail_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("ContractDetail_AsyncOperations", null, value);
 				this.OnPropertyChanged("ContractDetail_AsyncOperations");
 			}
 		}
@@ -1109,18 +1109,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ContractDetail_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ContractDetail_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> ContractDetail_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> ContractDetail_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("ContractDetail_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("ContractDetail_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ContractDetail_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("ContractDetail_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("ContractDetail_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("ContractDetail_BulkDeleteFailures");
 			}
 		}
@@ -1129,18 +1129,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N contractdetail_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contractdetail_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> contractdetail_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> contractdetail_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("contractdetail_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("contractdetail_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contractdetail_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("contractdetail_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("contractdetail_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("contractdetail_principalobjectattributeaccess");
 			}
 		}
@@ -1149,18 +1149,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ContractDetail_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ContractDetail_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> ContractDetail_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> ContractDetail_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("ContractDetail_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("ContractDetail_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ContractDetail_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("ContractDetail_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("ContractDetail_ProcessSessions", null, value);
 				this.OnPropertyChanged("ContractDetail_ProcessSessions");
 			}
 		}
@@ -1169,18 +1169,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_contractdetail
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_contractdetail")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_contractdetail
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_contractdetail
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_contractdetail", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_contractdetail", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_contractdetail");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_contractdetail", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_contractdetail", null, value);
 				this.OnPropertyChanged("userentityinstancedata_contractdetail");
 			}
 		}
@@ -1190,18 +1190,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uomscheduleid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contract_detail_unit_of_measure_schedule")]
-		public DLaB.Xrm.Entities.UoMSchedule contract_detail_unit_of_measure_schedule
+		public Entities.UoMSchedule contract_detail_unit_of_measure_schedule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.UoMSchedule>("contract_detail_unit_of_measure_schedule", null);
+				return this.GetRelatedEntity<Entities.UoMSchedule>("contract_detail_unit_of_measure_schedule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contract_detail_unit_of_measure_schedule");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.UoMSchedule>("contract_detail_unit_of_measure_schedule", null, value);
+				this.SetRelatedEntity<Entities.UoMSchedule>("contract_detail_unit_of_measure_schedule", null, value);
 				this.OnPropertyChanged("contract_detail_unit_of_measure_schedule");
 			}
 		}
@@ -1211,18 +1211,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contractid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contract_line_items")]
-		public DLaB.Xrm.Entities.Contract contract_line_items
+		public Entities.Contract contract_line_items
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contract>("contract_line_items", null);
+				return this.GetRelatedEntity<Entities.Contract>("contract_line_items", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contract_line_items");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contract>("contract_line_items", null, value);
+				this.SetRelatedEntity<Entities.Contract>("contract_line_items", null, value);
 				this.OnPropertyChanged("contract_line_items");
 			}
 		}
@@ -1232,18 +1232,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customerid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contractlineitem_customer_accounts")]
-		public DLaB.Xrm.Entities.Account contractlineitem_customer_accounts
+		public Entities.Account contractlineitem_customer_accounts
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("contractlineitem_customer_accounts", null);
+				return this.GetRelatedEntity<Entities.Account>("contractlineitem_customer_accounts", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contractlineitem_customer_accounts");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("contractlineitem_customer_accounts", null, value);
+				this.SetRelatedEntity<Entities.Account>("contractlineitem_customer_accounts", null, value);
 				this.OnPropertyChanged("contractlineitem_customer_accounts");
 			}
 		}
@@ -1253,18 +1253,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customerid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contractlineitem_customer_contacts")]
-		public DLaB.Xrm.Entities.Contact contractlineitem_customer_contacts
+		public Entities.Contact contractlineitem_customer_contacts
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("contractlineitem_customer_contacts", null);
+				return this.GetRelatedEntity<Entities.Contact>("contractlineitem_customer_contacts", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contractlineitem_customer_contacts");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("contractlineitem_customer_contacts", null, value);
+				this.SetRelatedEntity<Entities.Contact>("contractlineitem_customer_contacts", null, value);
 				this.OnPropertyChanged("contractlineitem_customer_contacts");
 			}
 		}
@@ -1274,18 +1274,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("serviceaddress")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("customer_address_contract_line_items")]
-		public DLaB.Xrm.Entities.CustomerAddress customer_address_contract_line_items
+		public Entities.CustomerAddress customer_address_contract_line_items
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CustomerAddress>("customer_address_contract_line_items", null);
+				return this.GetRelatedEntity<Entities.CustomerAddress>("customer_address_contract_line_items", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("customer_address_contract_line_items");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CustomerAddress>("customer_address_contract_line_items", null, value);
+				this.SetRelatedEntity<Entities.CustomerAddress>("customer_address_contract_line_items", null, value);
 				this.OnPropertyChanged("customer_address_contract_line_items");
 			}
 		}
@@ -1295,18 +1295,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_contractdetail_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_contractdetail_createdonbehalfby
+		public Entities.SystemUser lk_contractdetail_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_contractdetail_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_contractdetail_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_contractdetail_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_contractdetail_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_contractdetail_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_contractdetail_createdonbehalfby");
 			}
 		}
@@ -1316,18 +1316,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_contractdetail_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_contractdetail_modifiedonbehalfby
+		public Entities.SystemUser lk_contractdetail_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_contractdetail_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_contractdetail_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_contractdetail_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_contractdetail_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_contractdetail_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_contractdetail_modifiedonbehalfby");
 			}
 		}
@@ -1337,18 +1337,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_contractdetailbase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_contractdetailbase_createdby
+		public Entities.SystemUser lk_contractdetailbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_contractdetailbase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_contractdetailbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_contractdetailbase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_contractdetailbase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_contractdetailbase_createdby", null, value);
 				this.OnPropertyChanged("lk_contractdetailbase_createdby");
 			}
 		}
@@ -1358,18 +1358,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_contractdetailbase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_contractdetailbase_modifiedby
+		public Entities.SystemUser lk_contractdetailbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_contractdetailbase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_contractdetailbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_contractdetailbase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_contractdetailbase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_contractdetailbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_contractdetailbase_modifiedby");
 			}
 		}
@@ -1379,18 +1379,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("productid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("product_contract_line_items")]
-		public DLaB.Xrm.Entities.Product product_contract_line_items
+		public Entities.Product product_contract_line_items
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Product>("product_contract_line_items", null);
+				return this.GetRelatedEntity<Entities.Product>("product_contract_line_items", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("product_contract_line_items");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Product>("product_contract_line_items", null, value);
+				this.SetRelatedEntity<Entities.Product>("product_contract_line_items", null, value);
 				this.OnPropertyChanged("product_contract_line_items");
 			}
 		}
@@ -1400,12 +1400,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_contractdetail")]
-		public DLaB.Xrm.Entities.TransactionCurrency transactioncurrency_contractdetail
+		public Entities.TransactionCurrency transactioncurrency_contractdetail
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_contractdetail", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_contractdetail", null);
 			}
 		}
 		
@@ -1414,18 +1414,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uomid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measurement_contract_line_items")]
-		public DLaB.Xrm.Entities.UoM unit_of_measurement_contract_line_items
+		public Entities.UoM unit_of_measurement_contract_line_items
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.UoM>("unit_of_measurement_contract_line_items", null);
+				return this.GetRelatedEntity<Entities.UoM>("unit_of_measurement_contract_line_items", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("unit_of_measurement_contract_line_items");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.UoM>("unit_of_measurement_contract_line_items", null, value);
+				this.SetRelatedEntity<Entities.UoM>("unit_of_measurement_contract_line_items", null, value);
 				this.OnPropertyChanged("unit_of_measurement_contract_line_items");
 			}
 		}

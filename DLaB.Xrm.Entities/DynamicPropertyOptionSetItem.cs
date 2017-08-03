@@ -472,18 +472,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N DefaultValueOptionSet_DynamicProperty
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("DefaultValueOptionSet_DynamicProperty")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DynamicProperty> DefaultValueOptionSet_DynamicProperty
+		public System.Collections.Generic.IEnumerable<Entities.DynamicProperty> DefaultValueOptionSet_DynamicProperty
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DynamicProperty>("DefaultValueOptionSet_DynamicProperty", null);
+				return this.GetRelatedEntities<Entities.DynamicProperty>("DefaultValueOptionSet_DynamicProperty", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("DefaultValueOptionSet_DynamicProperty");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DynamicProperty>("DefaultValueOptionSet_DynamicProperty", null, value);
+				this.SetRelatedEntities<Entities.DynamicProperty>("DefaultValueOptionSet_DynamicProperty", null, value);
 				this.OnPropertyChanged("DefaultValueOptionSet_DynamicProperty");
 			}
 		}
@@ -493,18 +493,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("dynamicpropertyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("DynamicProperty_DynamicPropertyOptionSetItem")]
-		public DLaB.Xrm.Entities.DynamicProperty DynamicProperty_DynamicPropertyOptionSetItem
+		public Entities.DynamicProperty DynamicProperty_DynamicPropertyOptionSetItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.DynamicProperty>("DynamicProperty_DynamicPropertyOptionSetItem", null);
+				return this.GetRelatedEntity<Entities.DynamicProperty>("DynamicProperty_DynamicPropertyOptionSetItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("DynamicProperty_DynamicPropertyOptionSetItem");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.DynamicProperty>("DynamicProperty_DynamicPropertyOptionSetItem", null, value);
+				this.SetRelatedEntity<Entities.DynamicProperty>("DynamicProperty_DynamicPropertyOptionSetItem", null, value);
 				this.OnPropertyChanged("DynamicProperty_DynamicPropertyOptionSetItem");
 			}
 		}
@@ -514,12 +514,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("DynamicPropertyOptionSetItem_organization")]
-		public DLaB.Xrm.Entities.Organization DynamicPropertyOptionSetItem_organization
+		public Entities.Organization DynamicPropertyOptionSetItem_organization
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("DynamicPropertyOptionSetItem_organization", null);
+				return this.GetRelatedEntity<Entities.Organization>("DynamicPropertyOptionSetItem_organization", null);
 			}
 		}
 		
@@ -528,18 +528,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("DynamicPropertyOptionSetItem_TransactionCurrency")]
-		public DLaB.Xrm.Entities.TransactionCurrency DynamicPropertyOptionSetItem_TransactionCurrency
+		public Entities.TransactionCurrency DynamicPropertyOptionSetItem_TransactionCurrency
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("DynamicPropertyOptionSetItem_TransactionCurrency", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("DynamicPropertyOptionSetItem_TransactionCurrency", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("DynamicPropertyOptionSetItem_TransactionCurrency");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("DynamicPropertyOptionSetItem_TransactionCurrency", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("DynamicPropertyOptionSetItem_TransactionCurrency", null, value);
 				this.OnPropertyChanged("DynamicPropertyOptionSetItem_TransactionCurrency");
 			}
 		}
@@ -549,18 +549,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_DynamicPropertyOptionSetItem_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_DynamicPropertyOptionSetItem_createdby
+		public Entities.SystemUser lk_DynamicPropertyOptionSetItem_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicPropertyOptionSetItem_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_DynamicPropertyOptionSetItem_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_DynamicPropertyOptionSetItem_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicPropertyOptionSetItem_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_DynamicPropertyOptionSetItem_createdby", null, value);
 				this.OnPropertyChanged("lk_DynamicPropertyOptionSetItem_createdby");
 			}
 		}
@@ -570,18 +570,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_DynamicPropertyOptionSetItem_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_DynamicPropertyOptionSetItem_createdonbehalfby
+		public Entities.SystemUser lk_DynamicPropertyOptionSetItem_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicPropertyOptionSetItem_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_DynamicPropertyOptionSetItem_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_DynamicPropertyOptionSetItem_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicPropertyOptionSetItem_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_DynamicPropertyOptionSetItem_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_DynamicPropertyOptionSetItem_createdonbehalfby");
 			}
 		}
@@ -591,18 +591,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_DynamicPropertyOptionSetItem_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_DynamicPropertyOptionSetItem_modifiedby
+		public Entities.SystemUser lk_DynamicPropertyOptionSetItem_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicPropertyOptionSetItem_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_DynamicPropertyOptionSetItem_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_DynamicPropertyOptionSetItem_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicPropertyOptionSetItem_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_DynamicPropertyOptionSetItem_modifiedby", null, value);
 				this.OnPropertyChanged("lk_DynamicPropertyOptionSetItem_modifiedby");
 			}
 		}
@@ -612,18 +612,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_DynamicPropertyOptionSetItem_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_DynamicPropertyOptionSetItem_modifiedonbehalfby
+		public Entities.SystemUser lk_DynamicPropertyOptionSetItem_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicPropertyOptionSetItem_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_DynamicPropertyOptionSetItem_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_DynamicPropertyOptionSetItem_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicPropertyOptionSetItem_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_DynamicPropertyOptionSetItem_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_DynamicPropertyOptionSetItem_modifiedonbehalfby");
 			}
 		}

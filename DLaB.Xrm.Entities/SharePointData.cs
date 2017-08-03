@@ -389,18 +389,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_SharePointData_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_SharePointData_createdby
+		public Entities.SystemUser lk_SharePointData_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_SharePointData_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_SharePointData_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_SharePointData_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_SharePointData_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_SharePointData_createdby", null, value);
 				this.OnPropertyChanged("lk_SharePointData_createdby");
 			}
 		}
@@ -410,18 +410,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_SharePointData_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_SharePointData_createdonbehalfby
+		public Entities.SystemUser lk_SharePointData_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_SharePointData_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_SharePointData_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_SharePointData_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_SharePointData_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_SharePointData_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_SharePointData_createdonbehalfby");
 			}
 		}
@@ -431,18 +431,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_SharePointData_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_SharePointData_modifiedby
+		public Entities.SystemUser lk_SharePointData_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_SharePointData_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_SharePointData_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_SharePointData_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_SharePointData_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_SharePointData_modifiedby", null, value);
 				this.OnPropertyChanged("lk_SharePointData_modifiedby");
 			}
 		}
@@ -452,18 +452,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_SharePointData_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_SharePointData_modifiedonbehalfby
+		public Entities.SystemUser lk_SharePointData_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_SharePointData_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_SharePointData_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_SharePointData_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_SharePointData_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_SharePointData_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_SharePointData_modifiedonbehalfby");
 			}
 		}
@@ -473,12 +473,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("userid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sharepointdata_user")]
-		public DLaB.Xrm.Entities.SystemUser lk_sharepointdata_user
+		public Entities.SystemUser lk_sharepointdata_user
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sharepointdata_user", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_sharepointdata_user", null);
 			}
 		}
 		
@@ -487,12 +487,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_sharepointdata")]
-		public DLaB.Xrm.Entities.Organization organization_sharepointdata
+		public Entities.Organization organization_sharepointdata
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_sharepointdata", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_sharepointdata", null);
 			}
 		}
 		
@@ -501,12 +501,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("location")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sharepointdata_sharepointdocumentlocation")]
-		public DLaB.Xrm.Entities.SharePointDocumentLocation sharepointdata_sharepointdocumentlocation
+		public Entities.SharePointDocumentLocation sharepointdata_sharepointdocumentlocation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SharePointDocumentLocation>("sharepointdata_sharepointdocumentlocation", null);
+				return this.GetRelatedEntity<Entities.SharePointDocumentLocation>("sharepointdata_sharepointdocumentlocation", null);
 			}
 		}
 		
