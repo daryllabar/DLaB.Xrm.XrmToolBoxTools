@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using DLaB.Common;
-using DLaB.Common.Exceptions;
+using DLaB.AttributeManager.DLaB.Common.Exceptions;
 using DLaB.Xrm;
 using DLaB.Xrm.Entities;
 using DLaB.XrmToolboxCommon;
@@ -447,7 +447,7 @@ namespace DLaB.AttributeManager
         private StringFormatName GetStringFormat()
         {
             StringFormatName format;
-            switch (strAttCmbFormat.SelectedItem.ToString())
+            switch (strAttCmbFormat?.SelectedItem?.ToString() ?? "Text")
             {
                 case "Email":
                     format = StringFormatName.Email;
@@ -458,7 +458,6 @@ namespace DLaB.AttributeManager
                 case "PhoneticGuide":
                     format = StringFormatName.PhoneticGuide;
                     break;
-
                 case "Text":
                     format = StringFormatName.Text;
                     break;
