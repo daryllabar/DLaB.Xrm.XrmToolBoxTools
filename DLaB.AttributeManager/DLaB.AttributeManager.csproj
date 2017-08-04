@@ -227,7 +227,7 @@ REM **** Delete Previous Log ****
 del "$(TargetDir)IlMerge\Log.txt"
 
 REM **** Run IlMerge ****
-"$(SolutionDir)packages\ILMerge.2.14.1208\tools\ILMerge.exe" /log:"$(TargetDir)IlMerge\Log.txt" /targetplatform:"v4,c:\windows\Microsoft.NET\Framework\v4.0.30319" /out:"$(TargetDir)IlMerge\$(TargetFileName)" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\$(TargetFileName)" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.Common.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.Xrm.2016.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.XrmToolboxCommon.dll"
+"$(SolutionDir)packages\ILRepack.2.0.13\tools\ILMerge.exe" /log:"$(TargetDir)IlMerge\Log.txt" /targetplatform:"v4,c:\windows\Microsoft.NET\Framework\v4.0.30319" /out:"$(TargetDir)IlMerge\$(TargetFileName)" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\$(TargetFileName)" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.Common.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.Xrm.2016.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.XrmToolboxCommon.dll"
 
 DEL /Q "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.*"
 
