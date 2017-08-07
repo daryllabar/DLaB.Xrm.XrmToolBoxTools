@@ -195,7 +195,7 @@
     <None Include="bin\Release\CrmSvcUtil.exe.config" />
     <None Include="bin\Release\DLaB.CrmSvcUtilExtensions.dll.config" />
     <None Include="CrmSvcUtil.exe.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="OptionSet\Transliteration\Alphabets\1031.json" />
     <None Include="OptionSet\Transliteration\Alphabets\1036.json" />

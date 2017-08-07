@@ -666,6 +666,14 @@ namespace DLaB.EarlyBoundGenerator
             DisplayActionsIfSupported(false);
             SetConnectionSettingOnConnectionChanged();
         }
+
+        private void TxtOutput_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.A)
+            {
+                ((TextBox) sender)?.SelectAll();
+            }
+        }
     }
 
     [Export(typeof(IXrmToolBoxPlugin)),
