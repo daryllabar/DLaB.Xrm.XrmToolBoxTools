@@ -385,7 +385,7 @@ namespace DLaB.AttributeManager
                     att = NewTypeAttributeCreationLogic.CreateCurrency();
                     break;
                 case "Multiple Lines of Text":
-                    att = NewTypeAttributeCreationLogic.CreateText(2000, GetStringFormat());
+                    att = NewTypeAttributeCreationLogic.CreateMemo();
                     break;
                 case "Date and Time":
                     att = NewTypeAttributeCreationLogic.CreateDateTime();
