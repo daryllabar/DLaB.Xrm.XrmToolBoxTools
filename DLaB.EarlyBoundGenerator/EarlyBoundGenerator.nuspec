@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator</id>
-	  <version>1.2017.8.6</version>
+	  <version>1.2017.8.7</version>
 	  <title>Early Bound Generator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V1.2017.8.6
+    <releaseNotes>V1.2017.8.7
  - Added Support VS 2017 Install #116
  - Fixed Entity and OptionSet Could Have the Same Exact Name #1 also Error on generating Entities bug #119
  - Fixed Error on generating Entities bug #119
