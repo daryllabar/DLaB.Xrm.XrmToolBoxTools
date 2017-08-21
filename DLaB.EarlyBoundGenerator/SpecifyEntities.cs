@@ -86,6 +86,17 @@ namespace DLaB.EarlyBoundGenerator
             Close();
         }
 
+        private void BtnRefresh_Click(object sender, EventArgs e)
+        {
+            Enable(false);
+
+            // Clear existing entity list
+            ((XrmToolboxCommon.PropertyInterface.IEntityMetadatas)CallingControl).EntityMetadatas = null;
+
+            // Retrieve entities
+            RetrieveEntityMetadatasOnLoad(LoadEntities);
+        }
+
         private void BtnAdd_Click(object sender, EventArgs e)
         {
             var values = LstAll.SelectedItems.Cast<object>().ToArray();
