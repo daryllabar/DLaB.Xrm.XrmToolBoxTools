@@ -493,18 +493,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Discount_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Discount_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> Discount_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> Discount_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Discount_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("Discount_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Discount_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Discount_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("Discount_AsyncOperations", null, value);
 				this.OnPropertyChanged("Discount_AsyncOperations");
 			}
 		}
@@ -513,18 +513,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Discount_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Discount_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> Discount_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> Discount_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Discount_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("Discount_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Discount_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Discount_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("Discount_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("Discount_BulkDeleteFailures");
 			}
 		}
@@ -533,18 +533,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Discount_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Discount_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> Discount_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> Discount_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Discount_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("Discount_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Discount_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Discount_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("Discount_ProcessSessions", null, value);
 				this.OnPropertyChanged("Discount_ProcessSessions");
 			}
 		}
@@ -553,18 +553,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_discount
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_discount")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_discount
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_discount
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_discount", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_discount", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_discount");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_discount", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_discount", null, value);
 				this.OnPropertyChanged("userentityinstancedata_discount");
 			}
 		}
@@ -574,18 +574,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("discounttypeid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("discount_type_discounts")]
-		public DLaB.Xrm.Entities.DiscountType discount_type_discounts
+		public Entities.DiscountType discount_type_discounts
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.DiscountType>("discount_type_discounts", null);
+				return this.GetRelatedEntity<Entities.DiscountType>("discount_type_discounts", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("discount_type_discounts");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.DiscountType>("discount_type_discounts", null, value);
+				this.SetRelatedEntity<Entities.DiscountType>("discount_type_discounts", null, value);
 				this.OnPropertyChanged("discount_type_discounts");
 			}
 		}
@@ -595,18 +595,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_discount_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_discount_createdonbehalfby
+		public Entities.SystemUser lk_discount_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_discount_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_discount_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_discount_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_discount_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_discount_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_discount_createdonbehalfby");
 			}
 		}
@@ -616,18 +616,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_discount_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_discount_modifiedonbehalfby
+		public Entities.SystemUser lk_discount_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_discount_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_discount_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_discount_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_discount_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_discount_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_discount_modifiedonbehalfby");
 			}
 		}
@@ -637,18 +637,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_discountbase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_discountbase_createdby
+		public Entities.SystemUser lk_discountbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_discountbase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_discountbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_discountbase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_discountbase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_discountbase_createdby", null, value);
 				this.OnPropertyChanged("lk_discountbase_createdby");
 			}
 		}
@@ -658,18 +658,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_discountbase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_discountbase_modifiedby
+		public Entities.SystemUser lk_discountbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_discountbase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_discountbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_discountbase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_discountbase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_discountbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_discountbase_modifiedby");
 			}
 		}
@@ -679,12 +679,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_discount")]
-		public DLaB.Xrm.Entities.TransactionCurrency transactioncurrency_discount
+		public Entities.TransactionCurrency transactioncurrency_discount
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_discount", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_discount", null);
 			}
 		}
 		

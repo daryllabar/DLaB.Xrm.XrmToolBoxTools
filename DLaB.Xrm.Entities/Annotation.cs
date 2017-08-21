@@ -658,18 +658,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Annotation_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Annotation_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> Annotation_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> Annotation_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Annotation_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("Annotation_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Annotation_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Annotation_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("Annotation_AsyncOperations", null, value);
 				this.OnPropertyChanged("Annotation_AsyncOperations");
 			}
 		}
@@ -678,18 +678,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Annotation_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Annotation_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> Annotation_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> Annotation_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Annotation_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("Annotation_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Annotation_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Annotation_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("Annotation_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("Annotation_BulkDeleteFailures");
 			}
 		}
@@ -698,18 +698,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Annotation_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Annotation_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> Annotation_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> Annotation_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Annotation_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("Annotation_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Annotation_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Annotation_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("Annotation_ProcessSessions", null, value);
 				this.OnPropertyChanged("Annotation_ProcessSessions");
 			}
 		}
@@ -718,18 +718,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_annotation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_annotation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_annotation
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_annotation", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_annotation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_annotation", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_annotation", null, value);
 				this.OnPropertyChanged("userentityinstancedata_annotation");
 			}
 		}
@@ -739,18 +739,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Account_Annotation")]
-		public DLaB.Xrm.Entities.Account Account_Annotation
+		public Entities.Account Account_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_Annotation", null);
+				return this.GetRelatedEntity<Entities.Account>("Account_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Account_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_Annotation", null, value);
+				this.SetRelatedEntity<Entities.Account>("Account_Annotation", null, value);
 				this.OnPropertyChanged("Account_Annotation");
 			}
 		}
@@ -760,18 +760,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("annotation_owning_user")]
-		public DLaB.Xrm.Entities.SystemUser annotation_owning_user
+		public Entities.SystemUser annotation_owning_user
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("annotation_owning_user", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("annotation_owning_user", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("annotation_owning_user");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("annotation_owning_user", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("annotation_owning_user", null, value);
 				this.OnPropertyChanged("annotation_owning_user");
 			}
 		}
@@ -781,18 +781,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Appointment_Annotation")]
-		public DLaB.Xrm.Entities.Appointment Appointment_Annotation
+		public Entities.Appointment Appointment_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Appointment>("Appointment_Annotation", null);
+				return this.GetRelatedEntity<Entities.Appointment>("Appointment_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Appointment_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Appointment>("Appointment_Annotation", null, value);
+				this.SetRelatedEntity<Entities.Appointment>("Appointment_Annotation", null, value);
 				this.OnPropertyChanged("Appointment_Annotation");
 			}
 		}
@@ -802,18 +802,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_annotations")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_annotations
+		public Entities.BusinessUnit business_unit_annotations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_annotations", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_annotations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_annotations");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_annotations", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_annotations", null, value);
 				this.OnPropertyChanged("business_unit_annotations");
 			}
 		}
@@ -823,18 +823,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Calendar_Annotation")]
-		public DLaB.Xrm.Entities.Calendar Calendar_Annotation
+		public Entities.Calendar Calendar_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Calendar>("Calendar_Annotation", null);
+				return this.GetRelatedEntity<Entities.Calendar>("Calendar_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Calendar_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Calendar>("Calendar_Annotation", null, value);
+				this.SetRelatedEntity<Entities.Calendar>("Calendar_Annotation", null, value);
 				this.OnPropertyChanged("Calendar_Annotation");
 			}
 		}
@@ -844,18 +844,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Campaign_Annotation")]
-		public DLaB.Xrm.Entities.Campaign Campaign_Annotation
+		public Entities.Campaign Campaign_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Campaign>("Campaign_Annotation", null);
+				return this.GetRelatedEntity<Entities.Campaign>("Campaign_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Campaign_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Campaign>("Campaign_Annotation", null, value);
+				this.SetRelatedEntity<Entities.Campaign>("Campaign_Annotation", null, value);
 				this.OnPropertyChanged("Campaign_Annotation");
 			}
 		}
@@ -865,18 +865,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignActivity_Annotation")]
-		public DLaB.Xrm.Entities.CampaignActivity CampaignActivity_Annotation
+		public Entities.CampaignActivity CampaignActivity_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("CampaignActivity_Annotation", null);
+				return this.GetRelatedEntity<Entities.CampaignActivity>("CampaignActivity_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CampaignActivity_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("CampaignActivity_Annotation", null, value);
+				this.SetRelatedEntity<Entities.CampaignActivity>("CampaignActivity_Annotation", null, value);
 				this.OnPropertyChanged("CampaignActivity_Annotation");
 			}
 		}
@@ -886,18 +886,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignResponse_Annotation")]
-		public DLaB.Xrm.Entities.CampaignResponse CampaignResponse_Annotation
+		public Entities.CampaignResponse CampaignResponse_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignResponse>("CampaignResponse_Annotation", null);
+				return this.GetRelatedEntity<Entities.CampaignResponse>("CampaignResponse_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CampaignResponse_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CampaignResponse>("CampaignResponse_Annotation", null, value);
+				this.SetRelatedEntity<Entities.CampaignResponse>("CampaignResponse_Annotation", null, value);
 				this.OnPropertyChanged("CampaignResponse_Annotation");
 			}
 		}
@@ -907,18 +907,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("channelaccessprofile_Annotations")]
-		public DLaB.Xrm.Entities.ChannelAccessProfile channelaccessprofile_Annotations
+		public Entities.ChannelAccessProfile channelaccessprofile_Annotations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfile>("channelaccessprofile_Annotations", null);
+				return this.GetRelatedEntity<Entities.ChannelAccessProfile>("channelaccessprofile_Annotations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("channelaccessprofile_Annotations");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfile>("channelaccessprofile_Annotations", null, value);
+				this.SetRelatedEntity<Entities.ChannelAccessProfile>("channelaccessprofile_Annotations", null, value);
 				this.OnPropertyChanged("channelaccessprofile_Annotations");
 			}
 		}
@@ -928,18 +928,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Competitor_Annotation")]
-		public DLaB.Xrm.Entities.Competitor Competitor_Annotation
+		public Entities.Competitor Competitor_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Competitor>("Competitor_Annotation", null);
+				return this.GetRelatedEntity<Entities.Competitor>("Competitor_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Competitor_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Competitor>("Competitor_Annotation", null, value);
+				this.SetRelatedEntity<Entities.Competitor>("Competitor_Annotation", null, value);
 				this.OnPropertyChanged("Competitor_Annotation");
 			}
 		}
@@ -949,18 +949,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contact_Annotation")]
-		public DLaB.Xrm.Entities.Contact Contact_Annotation
+		public Entities.Contact Contact_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_Annotation", null);
+				return this.GetRelatedEntity<Entities.Contact>("Contact_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Contact_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_Annotation", null, value);
+				this.SetRelatedEntity<Entities.Contact>("Contact_Annotation", null, value);
 				this.OnPropertyChanged("Contact_Annotation");
 			}
 		}
@@ -970,18 +970,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contract_Annotation")]
-		public DLaB.Xrm.Entities.Contract Contract_Annotation
+		public Entities.Contract Contract_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contract>("Contract_Annotation", null);
+				return this.GetRelatedEntity<Entities.Contract>("Contract_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Contract_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contract>("Contract_Annotation", null, value);
+				this.SetRelatedEntity<Entities.Contract>("Contract_Annotation", null, value);
 				this.OnPropertyChanged("Contract_Annotation");
 			}
 		}
@@ -991,18 +991,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ContractDetail_Annotation")]
-		public DLaB.Xrm.Entities.ContractDetail ContractDetail_Annotation
+		public Entities.ContractDetail ContractDetail_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ContractDetail>("ContractDetail_Annotation", null);
+				return this.GetRelatedEntity<Entities.ContractDetail>("ContractDetail_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ContractDetail_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ContractDetail>("ContractDetail_Annotation", null, value);
+				this.SetRelatedEntity<Entities.ContractDetail>("ContractDetail_Annotation", null, value);
 				this.OnPropertyChanged("ContractDetail_Annotation");
 			}
 		}
@@ -1012,18 +1012,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ConvertRule_Annotation")]
-		public DLaB.Xrm.Entities.ConvertRule ConvertRule_Annotation
+		public Entities.ConvertRule ConvertRule_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ConvertRule>("ConvertRule_Annotation", null);
+				return this.GetRelatedEntity<Entities.ConvertRule>("ConvertRule_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ConvertRule_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ConvertRule>("ConvertRule_Annotation", null, value);
+				this.SetRelatedEntity<Entities.ConvertRule>("ConvertRule_Annotation", null, value);
 				this.OnPropertyChanged("ConvertRule_Annotation");
 			}
 		}
@@ -1033,18 +1033,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("DuplicateRule_Annotation")]
-		public DLaB.Xrm.Entities.DuplicateRule DuplicateRule_Annotation
+		public Entities.DuplicateRule DuplicateRule_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.DuplicateRule>("DuplicateRule_Annotation", null);
+				return this.GetRelatedEntity<Entities.DuplicateRule>("DuplicateRule_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("DuplicateRule_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.DuplicateRule>("DuplicateRule_Annotation", null, value);
+				this.SetRelatedEntity<Entities.DuplicateRule>("DuplicateRule_Annotation", null, value);
 				this.OnPropertyChanged("DuplicateRule_Annotation");
 			}
 		}
@@ -1054,18 +1054,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Email_Annotation")]
-		public DLaB.Xrm.Entities.Email Email_Annotation
+		public Entities.Email Email_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Email>("Email_Annotation", null);
+				return this.GetRelatedEntity<Entities.Email>("Email_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Email_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Email>("Email_Annotation", null, value);
+				this.SetRelatedEntity<Entities.Email>("Email_Annotation", null, value);
 				this.OnPropertyChanged("Email_Annotation");
 			}
 		}
@@ -1075,18 +1075,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("EmailServerProfile_Annotation")]
-		public DLaB.Xrm.Entities.EmailServerProfile EmailServerProfile_Annotation
+		public Entities.EmailServerProfile EmailServerProfile_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EmailServerProfile>("EmailServerProfile_Annotation", null);
+				return this.GetRelatedEntity<Entities.EmailServerProfile>("EmailServerProfile_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("EmailServerProfile_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.EmailServerProfile>("EmailServerProfile_Annotation", null, value);
+				this.SetRelatedEntity<Entities.EmailServerProfile>("EmailServerProfile_Annotation", null, value);
 				this.OnPropertyChanged("EmailServerProfile_Annotation");
 			}
 		}
@@ -1096,18 +1096,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_Annotations")]
-		public DLaB.Xrm.Entities.Entitlement entitlement_Annotations
+		public Entities.Entitlement entitlement_Annotations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_Annotations", null);
+				return this.GetRelatedEntity<Entities.Entitlement>("entitlement_Annotations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_Annotations");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_Annotations", null, value);
+				this.SetRelatedEntity<Entities.Entitlement>("entitlement_Annotations", null, value);
 				this.OnPropertyChanged("entitlement_Annotations");
 			}
 		}
@@ -1117,18 +1117,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlementchannel_Annotations")]
-		public DLaB.Xrm.Entities.EntitlementChannel entitlementchannel_Annotations
+		public Entities.EntitlementChannel entitlementchannel_Annotations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EntitlementChannel>("entitlementchannel_Annotations", null);
+				return this.GetRelatedEntity<Entities.EntitlementChannel>("entitlementchannel_Annotations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlementchannel_Annotations");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.EntitlementChannel>("entitlementchannel_Annotations", null, value);
+				this.SetRelatedEntity<Entities.EntitlementChannel>("entitlementchannel_Annotations", null, value);
 				this.OnPropertyChanged("entitlementchannel_Annotations");
 			}
 		}
@@ -1138,18 +1138,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlementtemplate_Annotations")]
-		public DLaB.Xrm.Entities.EntitlementTemplate entitlementtemplate_Annotations
+		public Entities.EntitlementTemplate entitlementtemplate_Annotations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplate_Annotations", null);
+				return this.GetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplate_Annotations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlementtemplate_Annotations");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplate_Annotations", null, value);
+				this.SetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplate_Annotations", null, value);
 				this.OnPropertyChanged("entitlementtemplate_Annotations");
 			}
 		}
@@ -1159,18 +1159,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Equipment_Annotation")]
-		public DLaB.Xrm.Entities.Equipment Equipment_Annotation
+		public Entities.Equipment Equipment_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Equipment>("Equipment_Annotation", null);
+				return this.GetRelatedEntity<Entities.Equipment>("Equipment_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Equipment_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Equipment>("Equipment_Annotation", null, value);
+				this.SetRelatedEntity<Entities.Equipment>("Equipment_Annotation", null, value);
 				this.OnPropertyChanged("Equipment_Annotation");
 			}
 		}
@@ -1180,18 +1180,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Fax_Annotation")]
-		public DLaB.Xrm.Entities.Fax Fax_Annotation
+		public Entities.Fax Fax_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Fax>("Fax_Annotation", null);
+				return this.GetRelatedEntity<Entities.Fax>("Fax_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Fax_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Fax>("Fax_Annotation", null, value);
+				this.SetRelatedEntity<Entities.Fax>("Fax_Annotation", null, value);
 				this.OnPropertyChanged("Fax_Annotation");
 			}
 		}
@@ -1201,18 +1201,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Goal_Annotation")]
-		public DLaB.Xrm.Entities.Goal Goal_Annotation
+		public Entities.Goal Goal_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Goal>("Goal_Annotation", null);
+				return this.GetRelatedEntity<Entities.Goal>("Goal_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Goal_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Goal>("Goal_Annotation", null, value);
+				this.SetRelatedEntity<Entities.Goal>("Goal_Annotation", null, value);
 				this.OnPropertyChanged("Goal_Annotation");
 			}
 		}
@@ -1222,18 +1222,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Incident_Annotation")]
-		public DLaB.Xrm.Entities.Incident Incident_Annotation
+		public Entities.Incident Incident_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_Annotation", null);
+				return this.GetRelatedEntity<Entities.Incident>("Incident_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Incident_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_Annotation", null, value);
+				this.SetRelatedEntity<Entities.Incident>("Incident_Annotation", null, value);
 				this.OnPropertyChanged("Incident_Annotation");
 			}
 		}
@@ -1243,18 +1243,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("IncidentResolution_Annotation")]
-		public DLaB.Xrm.Entities.IncidentResolution IncidentResolution_Annotation
+		public Entities.IncidentResolution IncidentResolution_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.IncidentResolution>("IncidentResolution_Annotation", null);
+				return this.GetRelatedEntity<Entities.IncidentResolution>("IncidentResolution_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("IncidentResolution_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.IncidentResolution>("IncidentResolution_Annotation", null, value);
+				this.SetRelatedEntity<Entities.IncidentResolution>("IncidentResolution_Annotation", null, value);
 				this.OnPropertyChanged("IncidentResolution_Annotation");
 			}
 		}
@@ -1264,18 +1264,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Invoice_Annotation")]
-		public DLaB.Xrm.Entities.Invoice Invoice_Annotation
+		public Entities.Invoice Invoice_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Invoice>("Invoice_Annotation", null);
+				return this.GetRelatedEntity<Entities.Invoice>("Invoice_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Invoice_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Invoice>("Invoice_Annotation", null, value);
+				this.SetRelatedEntity<Entities.Invoice>("Invoice_Annotation", null, value);
 				this.OnPropertyChanged("Invoice_Annotation");
 			}
 		}
@@ -1285,18 +1285,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KbArticle_Annotation")]
-		public DLaB.Xrm.Entities.KbArticle KbArticle_Annotation
+		public Entities.KbArticle KbArticle_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KbArticle>("KbArticle_Annotation", null);
+				return this.GetRelatedEntity<Entities.KbArticle>("KbArticle_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KbArticle_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KbArticle>("KbArticle_Annotation", null, value);
+				this.SetRelatedEntity<Entities.KbArticle>("KbArticle_Annotation", null, value);
 				this.OnPropertyChanged("KbArticle_Annotation");
 			}
 		}
@@ -1306,18 +1306,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_Annotations")]
-		public DLaB.Xrm.Entities.KnowledgeArticle knowledgearticle_Annotations
+		public Entities.KnowledgeArticle knowledgearticle_Annotations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_Annotations", null);
+				return this.GetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_Annotations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("knowledgearticle_Annotations");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_Annotations", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_Annotations", null, value);
 				this.OnPropertyChanged("knowledgearticle_Annotations");
 			}
 		}
@@ -1327,18 +1327,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_Annotations")]
-		public DLaB.Xrm.Entities.KnowledgeBaseRecord KnowledgeBaseRecord_Annotations
+		public Entities.KnowledgeBaseRecord KnowledgeBaseRecord_Annotations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_Annotations", null);
+				return this.GetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_Annotations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_Annotations");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_Annotations", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_Annotations", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_Annotations");
 			}
 		}
@@ -1348,18 +1348,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_Annotation")]
-		public DLaB.Xrm.Entities.Lead Lead_Annotation
+		public Entities.Lead Lead_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Lead>("Lead_Annotation", null);
+				return this.GetRelatedEntity<Entities.Lead>("Lead_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Lead>("Lead_Annotation", null, value);
+				this.SetRelatedEntity<Entities.Lead>("Lead_Annotation", null, value);
 				this.OnPropertyChanged("Lead_Annotation");
 			}
 		}
@@ -1369,18 +1369,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Letter_Annotation")]
-		public DLaB.Xrm.Entities.Letter Letter_Annotation
+		public Entities.Letter Letter_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Letter>("Letter_Annotation", null);
+				return this.GetRelatedEntity<Entities.Letter>("Letter_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Letter_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Letter>("Letter_Annotation", null, value);
+				this.SetRelatedEntity<Entities.Letter>("Letter_Annotation", null, value);
 				this.OnPropertyChanged("Letter_Annotation");
 			}
 		}
@@ -1390,18 +1390,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("List_Annotation")]
-		public DLaB.Xrm.Entities.List List_Annotation
+		public Entities.List List_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.List>("List_Annotation", null);
+				return this.GetRelatedEntity<Entities.List>("List_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("List_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.List>("List_Annotation", null, value);
+				this.SetRelatedEntity<Entities.List>("List_Annotation", null, value);
 				this.OnPropertyChanged("List_Annotation");
 			}
 		}
@@ -1411,18 +1411,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_annotationbase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_annotationbase_createdby
+		public Entities.SystemUser lk_annotationbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_annotationbase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_annotationbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_annotationbase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_annotationbase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_annotationbase_createdby", null, value);
 				this.OnPropertyChanged("lk_annotationbase_createdby");
 			}
 		}
@@ -1432,18 +1432,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_annotationbase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_annotationbase_createdonbehalfby
+		public Entities.SystemUser lk_annotationbase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_annotationbase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_annotationbase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_annotationbase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_annotationbase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_annotationbase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_annotationbase_createdonbehalfby");
 			}
 		}
@@ -1453,18 +1453,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_annotationbase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_annotationbase_modifiedby
+		public Entities.SystemUser lk_annotationbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_annotationbase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_annotationbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_annotationbase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_annotationbase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_annotationbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_annotationbase_modifiedby");
 			}
 		}
@@ -1474,18 +1474,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_annotationbase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_annotationbase_modifiedonbehalfby
+		public Entities.SystemUser lk_annotationbase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_annotationbase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_annotationbase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_annotationbase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_annotationbase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_annotationbase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_annotationbase_modifiedonbehalfby");
 			}
 		}
@@ -1495,18 +1495,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Mailbox_Annotation")]
-		public DLaB.Xrm.Entities.Mailbox Mailbox_Annotation
+		public Entities.Mailbox Mailbox_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Mailbox>("Mailbox_Annotation", null);
+				return this.GetRelatedEntity<Entities.Mailbox>("Mailbox_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Mailbox_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Mailbox>("Mailbox_Annotation", null, value);
+				this.SetRelatedEntity<Entities.Mailbox>("Mailbox_Annotation", null, value);
 				this.OnPropertyChanged("Mailbox_Annotation");
 			}
 		}
@@ -1516,18 +1516,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_Annotations")]
-		public DLaB.Xrm.Entities.msdyn_PostAlbum msdyn_postalbum_Annotations
+		public Entities.msdyn_PostAlbum msdyn_postalbum_Annotations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_Annotations", null);
+				return this.GetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_Annotations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_Annotations");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_Annotations", null, value);
+				this.SetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_Annotations", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_Annotations");
 			}
 		}
@@ -1537,18 +1537,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_Annotation")]
-		public DLaB.Xrm.Entities.Opportunity Opportunity_Annotation
+		public Entities.Opportunity Opportunity_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_Annotation", null);
+				return this.GetRelatedEntity<Entities.Opportunity>("Opportunity_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_Annotation", null, value);
+				this.SetRelatedEntity<Entities.Opportunity>("Opportunity_Annotation", null, value);
 				this.OnPropertyChanged("Opportunity_Annotation");
 			}
 		}
@@ -1558,18 +1558,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("OpportunityClose_Annotation")]
-		public DLaB.Xrm.Entities.OpportunityClose OpportunityClose_Annotation
+		public Entities.OpportunityClose OpportunityClose_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.OpportunityClose>("OpportunityClose_Annotation", null);
+				return this.GetRelatedEntity<Entities.OpportunityClose>("OpportunityClose_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("OpportunityClose_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.OpportunityClose>("OpportunityClose_Annotation", null, value);
+				this.SetRelatedEntity<Entities.OpportunityClose>("OpportunityClose_Annotation", null, value);
 				this.OnPropertyChanged("OpportunityClose_Annotation");
 			}
 		}
@@ -1579,18 +1579,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("OrderClose_Annotation")]
-		public DLaB.Xrm.Entities.OrderClose OrderClose_Annotation
+		public Entities.OrderClose OrderClose_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.OrderClose>("OrderClose_Annotation", null);
+				return this.GetRelatedEntity<Entities.OrderClose>("OrderClose_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("OrderClose_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.OrderClose>("OrderClose_Annotation", null, value);
+				this.SetRelatedEntity<Entities.OrderClose>("OrderClose_Annotation", null, value);
 				this.OnPropertyChanged("OrderClose_Annotation");
 			}
 		}
@@ -1600,18 +1600,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("PhoneCall_Annotation")]
-		public DLaB.Xrm.Entities.PhoneCall PhoneCall_Annotation
+		public Entities.PhoneCall PhoneCall_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.PhoneCall>("PhoneCall_Annotation", null);
+				return this.GetRelatedEntity<Entities.PhoneCall>("PhoneCall_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("PhoneCall_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.PhoneCall>("PhoneCall_Annotation", null, value);
+				this.SetRelatedEntity<Entities.PhoneCall>("PhoneCall_Annotation", null, value);
 				this.OnPropertyChanged("PhoneCall_Annotation");
 			}
 		}
@@ -1621,18 +1621,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Product_Annotation")]
-		public DLaB.Xrm.Entities.Product Product_Annotation
+		public Entities.Product Product_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Product>("Product_Annotation", null);
+				return this.GetRelatedEntity<Entities.Product>("Product_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Product_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Product>("Product_Annotation", null, value);
+				this.SetRelatedEntity<Entities.Product>("Product_Annotation", null, value);
 				this.OnPropertyChanged("Product_Annotation");
 			}
 		}
@@ -1642,18 +1642,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("profilerule_Annotations")]
-		public DLaB.Xrm.Entities.ChannelAccessProfileRule profilerule_Annotations
+		public Entities.ChannelAccessProfileRule profilerule_Annotations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfileRule>("profilerule_Annotations", null);
+				return this.GetRelatedEntity<Entities.ChannelAccessProfileRule>("profilerule_Annotations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("profilerule_Annotations");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfileRule>("profilerule_Annotations", null, value);
+				this.SetRelatedEntity<Entities.ChannelAccessProfileRule>("profilerule_Annotations", null, value);
 				this.OnPropertyChanged("profilerule_Annotations");
 			}
 		}
@@ -1663,18 +1663,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("profileruleitem_Annotations")]
-		public DLaB.Xrm.Entities.ChannelAccessProfileRuleItem profileruleitem_Annotations
+		public Entities.ChannelAccessProfileRuleItem profileruleitem_Annotations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfileRuleItem>("profileruleitem_Annotations", null);
+				return this.GetRelatedEntity<Entities.ChannelAccessProfileRuleItem>("profileruleitem_Annotations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("profileruleitem_Annotations");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfileRuleItem>("profileruleitem_Annotations", null, value);
+				this.SetRelatedEntity<Entities.ChannelAccessProfileRuleItem>("profileruleitem_Annotations", null, value);
 				this.OnPropertyChanged("profileruleitem_Annotations");
 			}
 		}
@@ -1684,18 +1684,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Quote_Annotation")]
-		public DLaB.Xrm.Entities.Quote Quote_Annotation
+		public Entities.Quote Quote_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Quote>("Quote_Annotation", null);
+				return this.GetRelatedEntity<Entities.Quote>("Quote_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Quote_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Quote>("Quote_Annotation", null, value);
+				this.SetRelatedEntity<Entities.Quote>("Quote_Annotation", null, value);
 				this.OnPropertyChanged("Quote_Annotation");
 			}
 		}
@@ -1705,18 +1705,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("QuoteClose_Annotation")]
-		public DLaB.Xrm.Entities.QuoteClose QuoteClose_Annotation
+		public Entities.QuoteClose QuoteClose_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.QuoteClose>("QuoteClose_Annotation", null);
+				return this.GetRelatedEntity<Entities.QuoteClose>("QuoteClose_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("QuoteClose_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.QuoteClose>("QuoteClose_Annotation", null, value);
+				this.SetRelatedEntity<Entities.QuoteClose>("QuoteClose_Annotation", null, value);
 				this.OnPropertyChanged("QuoteClose_Annotation");
 			}
 		}
@@ -1726,18 +1726,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("RecurringAppointmentMaster_Annotation")]
-		public DLaB.Xrm.Entities.RecurringAppointmentMaster RecurringAppointmentMaster_Annotation
+		public Entities.RecurringAppointmentMaster RecurringAppointmentMaster_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RecurringAppointmentMaster>("RecurringAppointmentMaster_Annotation", null);
+				return this.GetRelatedEntity<Entities.RecurringAppointmentMaster>("RecurringAppointmentMaster_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("RecurringAppointmentMaster_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RecurringAppointmentMaster>("RecurringAppointmentMaster_Annotation", null, value);
+				this.SetRelatedEntity<Entities.RecurringAppointmentMaster>("RecurringAppointmentMaster_Annotation", null, value);
 				this.OnPropertyChanged("RecurringAppointmentMaster_Annotation");
 			}
 		}
@@ -1747,18 +1747,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ResourceSpec_Annotation")]
-		public DLaB.Xrm.Entities.ResourceSpec ResourceSpec_Annotation
+		public Entities.ResourceSpec ResourceSpec_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ResourceSpec>("ResourceSpec_Annotation", null);
+				return this.GetRelatedEntity<Entities.ResourceSpec>("ResourceSpec_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ResourceSpec_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ResourceSpec>("ResourceSpec_Annotation", null, value);
+				this.SetRelatedEntity<Entities.ResourceSpec>("ResourceSpec_Annotation", null, value);
 				this.OnPropertyChanged("ResourceSpec_Annotation");
 			}
 		}
@@ -1768,18 +1768,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("routingrule_Annotation")]
-		public DLaB.Xrm.Entities.RoutingRule routingrule_Annotation
+		public Entities.RoutingRule routingrule_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RoutingRule>("routingrule_Annotation", null);
+				return this.GetRelatedEntity<Entities.RoutingRule>("routingrule_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("routingrule_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RoutingRule>("routingrule_Annotation", null, value);
+				this.SetRelatedEntity<Entities.RoutingRule>("routingrule_Annotation", null, value);
 				this.OnPropertyChanged("routingrule_Annotation");
 			}
 		}
@@ -1789,18 +1789,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("routingruleitem_Annotation")]
-		public DLaB.Xrm.Entities.RoutingRuleItem routingruleitem_Annotation
+		public Entities.RoutingRuleItem routingruleitem_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RoutingRuleItem>("routingruleitem_Annotation", null);
+				return this.GetRelatedEntity<Entities.RoutingRuleItem>("routingruleitem_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("routingruleitem_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RoutingRuleItem>("routingruleitem_Annotation", null, value);
+				this.SetRelatedEntity<Entities.RoutingRuleItem>("routingruleitem_Annotation", null, value);
 				this.OnPropertyChanged("routingruleitem_Annotation");
 			}
 		}
@@ -1810,18 +1810,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesOrder_Annotation")]
-		public DLaB.Xrm.Entities.SalesOrder SalesOrder_Annotation
+		public Entities.SalesOrder SalesOrder_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("SalesOrder_Annotation", null);
+				return this.GetRelatedEntity<Entities.SalesOrder>("SalesOrder_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SalesOrder_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("SalesOrder_Annotation", null, value);
+				this.SetRelatedEntity<Entities.SalesOrder>("SalesOrder_Annotation", null, value);
 				this.OnPropertyChanged("SalesOrder_Annotation");
 			}
 		}
@@ -1831,18 +1831,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Service_Annotation")]
-		public DLaB.Xrm.Entities.Service Service_Annotation
+		public Entities.Service Service_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Service>("Service_Annotation", null);
+				return this.GetRelatedEntity<Entities.Service>("Service_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Service_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Service>("Service_Annotation", null, value);
+				this.SetRelatedEntity<Entities.Service>("Service_Annotation", null, value);
 				this.OnPropertyChanged("Service_Annotation");
 			}
 		}
@@ -1852,18 +1852,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ServiceAppointment_Annotation")]
-		public DLaB.Xrm.Entities.ServiceAppointment ServiceAppointment_Annotation
+		public Entities.ServiceAppointment ServiceAppointment_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ServiceAppointment>("ServiceAppointment_Annotation", null);
+				return this.GetRelatedEntity<Entities.ServiceAppointment>("ServiceAppointment_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ServiceAppointment_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ServiceAppointment>("ServiceAppointment_Annotation", null, value);
+				this.SetRelatedEntity<Entities.ServiceAppointment>("ServiceAppointment_Annotation", null, value);
 				this.OnPropertyChanged("ServiceAppointment_Annotation");
 			}
 		}
@@ -1873,18 +1873,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SharePointDocument_Annotation")]
-		public DLaB.Xrm.Entities.SharePointDocument SharePointDocument_Annotation
+		public Entities.SharePointDocument SharePointDocument_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SharePointDocument>("SharePointDocument_Annotation", null);
+				return this.GetRelatedEntity<Entities.SharePointDocument>("SharePointDocument_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SharePointDocument_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SharePointDocument>("SharePointDocument_Annotation", null, value);
+				this.SetRelatedEntity<Entities.SharePointDocument>("SharePointDocument_Annotation", null, value);
 				this.OnPropertyChanged("SharePointDocument_Annotation");
 			}
 		}
@@ -1894,18 +1894,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sla_Annotation")]
-		public DLaB.Xrm.Entities.SLA sla_Annotation
+		public Entities.SLA sla_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SLA>("sla_Annotation", null);
+				return this.GetRelatedEntity<Entities.SLA>("sla_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("sla_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SLA>("sla_Annotation", null, value);
+				this.SetRelatedEntity<Entities.SLA>("sla_Annotation", null, value);
 				this.OnPropertyChanged("sla_Annotation");
 			}
 		}
@@ -1915,18 +1915,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SocialActivity_Annotation")]
-		public DLaB.Xrm.Entities.SocialActivity SocialActivity_Annotation
+		public Entities.SocialActivity SocialActivity_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SocialActivity>("SocialActivity_Annotation", null);
+				return this.GetRelatedEntity<Entities.SocialActivity>("SocialActivity_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SocialActivity_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SocialActivity>("SocialActivity_Annotation", null, value);
+				this.SetRelatedEntity<Entities.SocialActivity>("SocialActivity_Annotation", null, value);
 				this.OnPropertyChanged("SocialActivity_Annotation");
 			}
 		}
@@ -1936,18 +1936,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Task_Annotation")]
-		public DLaB.Xrm.Entities.Task Task_Annotation
+		public Entities.Task Task_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Task>("Task_Annotation", null);
+				return this.GetRelatedEntity<Entities.Task>("Task_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Task_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Task>("Task_Annotation", null, value);
+				this.SetRelatedEntity<Entities.Task>("Task_Annotation", null, value);
 				this.OnPropertyChanged("Task_Annotation");
 			}
 		}
@@ -1957,18 +1957,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_annotations")]
-		public DLaB.Xrm.Entities.Team team_annotations
+		public Entities.Team team_annotations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_annotations", null);
+				return this.GetRelatedEntity<Entities.Team>("team_annotations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_annotations");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_annotations", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_annotations", null, value);
 				this.OnPropertyChanged("team_annotations");
 			}
 		}
@@ -1978,18 +1978,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Workflow_Annotation")]
-		public DLaB.Xrm.Entities.Workflow Workflow_Annotation
+		public Entities.Workflow Workflow_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Workflow>("Workflow_Annotation", null);
+				return this.GetRelatedEntity<Entities.Workflow>("Workflow_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Workflow_Annotation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Workflow>("Workflow_Annotation", null, value);
+				this.SetRelatedEntity<Entities.Workflow>("Workflow_Annotation", null, value);
 				this.OnPropertyChanged("Workflow_Annotation");
 			}
 		}

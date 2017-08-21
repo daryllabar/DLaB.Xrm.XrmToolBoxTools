@@ -696,7 +696,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the case resolution is open, completed, or canceled. By default, all case resolutions are completed and the status value can't be changed.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.IncidentResolutionState> StateCode
+		public System.Nullable<Entities.IncidentResolutionState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -704,7 +704,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.IncidentResolutionState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.IncidentResolutionState), optionSet.Value)));
+					return ((Entities.IncidentResolutionState)(System.Enum.ToObject(typeof(Entities.IncidentResolutionState), optionSet.Value)));
 				}
 				else
 				{
@@ -864,18 +864,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N incidentresolution_activity_parties
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incidentresolution_activity_parties")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> incidentresolution_activity_parties
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> incidentresolution_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("incidentresolution_activity_parties", null);
+				return this.GetRelatedEntities<Entities.ActivityParty>("incidentresolution_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("incidentresolution_activity_parties");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("incidentresolution_activity_parties", null, value);
+				this.SetRelatedEntities<Entities.ActivityParty>("incidentresolution_activity_parties", null, value);
 				this.OnPropertyChanged("incidentresolution_activity_parties");
 			}
 		}
@@ -884,18 +884,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N IncidentResolution_Annotation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("IncidentResolution_Annotation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> IncidentResolution_Annotation
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> IncidentResolution_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("IncidentResolution_Annotation", null);
+				return this.GetRelatedEntities<Entities.Annotation>("IncidentResolution_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("IncidentResolution_Annotation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("IncidentResolution_Annotation", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("IncidentResolution_Annotation", null, value);
 				this.OnPropertyChanged("IncidentResolution_Annotation");
 			}
 		}
@@ -904,18 +904,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N IncidentResolution_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("IncidentResolution_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> IncidentResolution_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> IncidentResolution_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("IncidentResolution_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("IncidentResolution_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("IncidentResolution_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("IncidentResolution_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("IncidentResolution_AsyncOperations", null, value);
 				this.OnPropertyChanged("IncidentResolution_AsyncOperations");
 			}
 		}
@@ -924,18 +924,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N IncidentResolution_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("IncidentResolution_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> IncidentResolution_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> IncidentResolution_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("IncidentResolution_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("IncidentResolution_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("IncidentResolution_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("IncidentResolution_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("IncidentResolution_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("IncidentResolution_BulkDeleteFailures");
 			}
 		}
@@ -944,18 +944,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_incidentresolution
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_incidentresolution")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_incidentresolution
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_incidentresolution
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_incidentresolution", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_incidentresolution", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_incidentresolution");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_incidentresolution", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_incidentresolution", null, value);
 				this.OnPropertyChanged("userentityinstancedata_incidentresolution");
 			}
 		}
@@ -965,18 +965,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("activity_pointer_incident_resolution")]
-		public DLaB.Xrm.Entities.ActivityPointer activity_pointer_incident_resolution
+		public Entities.ActivityPointer activity_pointer_incident_resolution
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_incident_resolution", null);
+				return this.GetRelatedEntity<Entities.ActivityPointer>("activity_pointer_incident_resolution", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("activity_pointer_incident_resolution");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_incident_resolution", null, value);
+				this.SetRelatedEntity<Entities.ActivityPointer>("activity_pointer_incident_resolution", null, value);
 				this.OnPropertyChanged("activity_pointer_incident_resolution");
 			}
 		}
@@ -986,18 +986,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_incident_resolution_activities")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_incident_resolution_activities
+		public Entities.BusinessUnit business_unit_incident_resolution_activities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_incident_resolution_activities", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_incident_resolution_activities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_incident_resolution_activities");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_incident_resolution_activities", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_incident_resolution_activities", null, value);
 				this.OnPropertyChanged("business_unit_incident_resolution_activities");
 			}
 		}
@@ -1007,18 +1007,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("incidentid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Incident_IncidentResolutions")]
-		public DLaB.Xrm.Entities.Incident Incident_IncidentResolutions
+		public Entities.Incident Incident_IncidentResolutions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_IncidentResolutions", null);
+				return this.GetRelatedEntity<Entities.Incident>("Incident_IncidentResolutions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Incident_IncidentResolutions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_IncidentResolutions", null, value);
+				this.SetRelatedEntity<Entities.Incident>("Incident_IncidentResolutions", null, value);
 				this.OnPropertyChanged("Incident_IncidentResolutions");
 			}
 		}
@@ -1028,12 +1028,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdbyexternalparty")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_externalparty_incidentresolution_createdby")]
-		public DLaB.Xrm.Entities.ExternalParty lk_externalparty_incidentresolution_createdby
+		public Entities.ExternalParty lk_externalparty_incidentresolution_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ExternalParty>("lk_externalparty_incidentresolution_createdby", null);
+				return this.GetRelatedEntity<Entities.ExternalParty>("lk_externalparty_incidentresolution_createdby", null);
 			}
 		}
 		
@@ -1042,12 +1042,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedbyexternalparty")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_externalparty_incidentresolution_modifiedby")]
-		public DLaB.Xrm.Entities.ExternalParty lk_externalparty_incidentresolution_modifiedby
+		public Entities.ExternalParty lk_externalparty_incidentresolution_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ExternalParty>("lk_externalparty_incidentresolution_modifiedby", null);
+				return this.GetRelatedEntity<Entities.ExternalParty>("lk_externalparty_incidentresolution_modifiedby", null);
 			}
 		}
 		
@@ -1056,18 +1056,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_incidentresolution_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_incidentresolution_createdby
+		public Entities.SystemUser lk_incidentresolution_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_incidentresolution_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_incidentresolution_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_incidentresolution_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_incidentresolution_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_incidentresolution_createdby", null, value);
 				this.OnPropertyChanged("lk_incidentresolution_createdby");
 			}
 		}
@@ -1077,18 +1077,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_incidentresolution_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_incidentresolution_createdonbehalfby
+		public Entities.SystemUser lk_incidentresolution_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_incidentresolution_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_incidentresolution_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_incidentresolution_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_incidentresolution_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_incidentresolution_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_incidentresolution_createdonbehalfby");
 			}
 		}
@@ -1098,18 +1098,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_incidentresolution_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_incidentresolution_modifiedby
+		public Entities.SystemUser lk_incidentresolution_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_incidentresolution_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_incidentresolution_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_incidentresolution_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_incidentresolution_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_incidentresolution_modifiedby", null, value);
 				this.OnPropertyChanged("lk_incidentresolution_modifiedby");
 			}
 		}
@@ -1119,18 +1119,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_incidentresolution_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_incidentresolution_modifiedonbehalfby
+		public Entities.SystemUser lk_incidentresolution_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_incidentresolution_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_incidentresolution_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_incidentresolution_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_incidentresolution_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_incidentresolution_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_incidentresolution_modifiedonbehalfby");
 			}
 		}
@@ -1140,18 +1140,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("serviceid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("service_incidentresolutions")]
-		public DLaB.Xrm.Entities.Service service_incidentresolutions
+		public Entities.Service service_incidentresolutions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Service>("service_incidentresolutions", null);
+				return this.GetRelatedEntity<Entities.Service>("service_incidentresolutions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("service_incidentresolutions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Service>("service_incidentresolutions", null, value);
+				this.SetRelatedEntity<Entities.Service>("service_incidentresolutions", null, value);
 				this.OnPropertyChanged("service_incidentresolutions");
 			}
 		}
@@ -1161,18 +1161,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_incidentresolution")]
-		public DLaB.Xrm.Entities.Team team_incidentresolution
+		public Entities.Team team_incidentresolution
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_incidentresolution", null);
+				return this.GetRelatedEntity<Entities.Team>("team_incidentresolution", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_incidentresolution");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_incidentresolution", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_incidentresolution", null, value);
 				this.OnPropertyChanged("team_incidentresolution");
 			}
 		}
@@ -1182,18 +1182,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_incidentresolution")]
-		public DLaB.Xrm.Entities.SystemUser user_incidentresolution
+		public Entities.SystemUser user_incidentresolution
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_incidentresolution", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_incidentresolution", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_incidentresolution");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_incidentresolution", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_incidentresolution", null, value);
 				this.OnPropertyChanged("user_incidentresolution");
 			}
 		}

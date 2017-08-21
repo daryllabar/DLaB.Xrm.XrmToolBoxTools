@@ -623,7 +623,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the Theme
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.ThemeState> statecode
+		public System.Nullable<Entities.ThemeState> statecode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -631,7 +631,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.ThemeState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.ThemeState), optionSet.Value)));
+					return ((Entities.ThemeState)(System.Enum.ToObject(typeof(Entities.ThemeState), optionSet.Value)));
 				}
 				else
 				{
@@ -800,18 +800,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N theme_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("theme_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> theme_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> theme_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("theme_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("theme_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("theme_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("theme_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("theme_AsyncOperations", null, value);
 				this.OnPropertyChanged("theme_AsyncOperations");
 			}
 		}
@@ -820,18 +820,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N theme_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("theme_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> theme_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> theme_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("theme_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("theme_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("theme_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("theme_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("theme_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("theme_BulkDeleteFailures");
 			}
 		}
@@ -840,18 +840,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N theme_ProcessSession
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("theme_ProcessSession")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> theme_ProcessSession
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> theme_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("theme_ProcessSession", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("theme_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("theme_ProcessSession");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("theme_ProcessSession", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("theme_ProcessSession", null, value);
 				this.OnPropertyChanged("theme_ProcessSession");
 			}
 		}
@@ -860,18 +860,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N theme_UserEntityInstanceDatas
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("theme_UserEntityInstanceDatas")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> theme_UserEntityInstanceDatas
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> theme_UserEntityInstanceDatas
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("theme_UserEntityInstanceDatas", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("theme_UserEntityInstanceDatas", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("theme_UserEntityInstanceDatas");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("theme_UserEntityInstanceDatas", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("theme_UserEntityInstanceDatas", null, value);
 				this.OnPropertyChanged("theme_UserEntityInstanceDatas");
 			}
 		}
@@ -881,18 +881,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_theme_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_theme_createdby
+		public Entities.SystemUser lk_theme_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_theme_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_theme_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_theme_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_theme_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_theme_createdby", null, value);
 				this.OnPropertyChanged("lk_theme_createdby");
 			}
 		}
@@ -902,18 +902,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_theme_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_theme_createdonbehalfby
+		public Entities.SystemUser lk_theme_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_theme_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_theme_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_theme_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_theme_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_theme_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_theme_createdonbehalfby");
 			}
 		}
@@ -923,18 +923,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("logoid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_theme_logoid")]
-		public DLaB.Xrm.Entities.WebResource lk_theme_logoid
+		public Entities.WebResource lk_theme_logoid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.WebResource>("lk_theme_logoid", null);
+				return this.GetRelatedEntity<Entities.WebResource>("lk_theme_logoid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_theme_logoid");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.WebResource>("lk_theme_logoid", null, value);
+				this.SetRelatedEntity<Entities.WebResource>("lk_theme_logoid", null, value);
 				this.OnPropertyChanged("lk_theme_logoid");
 			}
 		}
@@ -944,18 +944,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_theme_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_theme_modifiedby
+		public Entities.SystemUser lk_theme_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_theme_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_theme_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_theme_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_theme_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_theme_modifiedby", null, value);
 				this.OnPropertyChanged("lk_theme_modifiedby");
 			}
 		}
@@ -965,18 +965,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_theme_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_theme_modifiedonbehalfby
+		public Entities.SystemUser lk_theme_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_theme_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_theme_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_theme_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_theme_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_theme_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_theme_modifiedonbehalfby");
 			}
 		}
@@ -986,12 +986,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_theme")]
-		public DLaB.Xrm.Entities.Organization organization_theme
+		public Entities.Organization organization_theme
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_theme", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_theme", null);
 			}
 		}
 		
@@ -1000,18 +1000,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Theme")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_Theme
+		public Entities.TransactionCurrency TransactionCurrency_Theme
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_Theme", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_Theme", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Theme");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_Theme", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_Theme", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Theme");
 			}
 		}

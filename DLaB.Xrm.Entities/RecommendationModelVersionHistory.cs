@@ -307,12 +307,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_recommendationmodelversionhistory")]
-		public DLaB.Xrm.Entities.Organization organization_recommendationmodelversionhistory
+		public Entities.Organization organization_recommendationmodelversionhistory
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_recommendationmodelversionhistory", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_recommendationmodelversionhistory", null);
 			}
 		}
 		
@@ -321,18 +321,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("recommendationmodelversionid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recommendationmodelversion_recommendationmodelversionhistory")]
-		public DLaB.Xrm.Entities.RecommendationModelVersion recommendationmodelversion_recommendationmodelversionhistory
+		public Entities.RecommendationModelVersion recommendationmodelversion_recommendationmodelversionhistory
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RecommendationModelVersion>("recommendationmodelversion_recommendationmodelversionhistory", null);
+				return this.GetRelatedEntity<Entities.RecommendationModelVersion>("recommendationmodelversion_recommendationmodelversionhistory", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("recommendationmodelversion_recommendationmodelversionhistory");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RecommendationModelVersion>("recommendationmodelversion_recommendationmodelversionhistory", null, value);
+				this.SetRelatedEntity<Entities.RecommendationModelVersion>("recommendationmodelversion_recommendationmodelversionhistory", null, value);
 				this.OnPropertyChanged("recommendationmodelversion_recommendationmodelversionhistory");
 			}
 		}

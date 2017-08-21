@@ -150,18 +150,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_competitorsalesliterature
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_competitorsalesliterature")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_competitorsalesliterature
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_competitorsalesliterature
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_competitorsalesliterature", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_competitorsalesliterature", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_competitorsalesliterature");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_competitorsalesliterature", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_competitorsalesliterature", null, value);
 				this.OnPropertyChanged("userentityinstancedata_competitorsalesliterature");
 			}
 		}
@@ -170,18 +170,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N competitorsalesliterature_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("competitorsalesliterature_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SalesLiterature> competitorsalesliterature_association
+		public System.Collections.Generic.IEnumerable<Entities.SalesLiterature> competitorsalesliterature_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SalesLiterature>("competitorsalesliterature_association", null);
+				return this.GetRelatedEntities<Entities.SalesLiterature>("competitorsalesliterature_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("competitorsalesliterature_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SalesLiterature>("competitorsalesliterature_association", null, value);
+				this.SetRelatedEntities<Entities.SalesLiterature>("competitorsalesliterature_association", null, value);
 				this.OnPropertyChanged("competitorsalesliterature_association");
 			}
 		}

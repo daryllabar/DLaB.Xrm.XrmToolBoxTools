@@ -473,18 +473,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BusinessUnit_SyncError")]
-		public DLaB.Xrm.Entities.BusinessUnit BusinessUnit_SyncError
+		public Entities.BusinessUnit BusinessUnit_SyncError
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("BusinessUnit_SyncError", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("BusinessUnit_SyncError", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BusinessUnit_SyncError");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("BusinessUnit_SyncError", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("BusinessUnit_SyncError", null, value);
 				this.OnPropertyChanged("BusinessUnit_SyncError");
 			}
 		}
@@ -494,18 +494,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_syncerrorbase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_syncerrorbase_createdby
+		public Entities.SystemUser lk_syncerrorbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_syncerrorbase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_syncerrorbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_syncerrorbase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_syncerrorbase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_syncerrorbase_createdby", null, value);
 				this.OnPropertyChanged("lk_syncerrorbase_createdby");
 			}
 		}
@@ -515,18 +515,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_syncerrorbase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_syncerrorbase_createdonbehalfby
+		public Entities.SystemUser lk_syncerrorbase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_syncerrorbase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_syncerrorbase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_syncerrorbase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_syncerrorbase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_syncerrorbase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_syncerrorbase_createdonbehalfby");
 			}
 		}
@@ -536,18 +536,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_syncerrorbase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_syncerrorbase_modifiedby
+		public Entities.SystemUser lk_syncerrorbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_syncerrorbase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_syncerrorbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_syncerrorbase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_syncerrorbase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_syncerrorbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_syncerrorbase_modifiedby");
 			}
 		}
@@ -557,18 +557,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_syncerrorbase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_syncerrorbase_modifiedonbehalfby
+		public Entities.SystemUser lk_syncerrorbase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_syncerrorbase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_syncerrorbase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_syncerrorbase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_syncerrorbase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_syncerrorbase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_syncerrorbase_modifiedonbehalfby");
 			}
 		}
@@ -578,18 +578,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SystemUser_SyncError")]
-		public DLaB.Xrm.Entities.SystemUser SystemUser_SyncError
+		public Entities.SystemUser SystemUser_SyncError
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("SystemUser_SyncError", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("SystemUser_SyncError", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SystemUser_SyncError");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("SystemUser_SyncError", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("SystemUser_SyncError", null, value);
 				this.OnPropertyChanged("SystemUser_SyncError");
 			}
 		}
@@ -599,18 +599,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_SyncError")]
-		public DLaB.Xrm.Entities.Team team_SyncError
+		public Entities.Team team_SyncError
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_SyncError", null);
+				return this.GetRelatedEntity<Entities.Team>("team_SyncError", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_SyncError");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_SyncError", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_SyncError", null, value);
 				this.OnPropertyChanged("team_SyncError");
 			}
 		}

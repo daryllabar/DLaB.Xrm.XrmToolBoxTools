@@ -402,7 +402,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the bulk deletion job.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.BulkDeleteOperationState> StateCode
+		public System.Nullable<Entities.BulkDeleteOperationState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -410,7 +410,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.BulkDeleteOperationState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.BulkDeleteOperationState), optionSet.Value)));
+					return ((Entities.BulkDeleteOperationState)(System.Enum.ToObject(typeof(Entities.BulkDeleteOperationState), optionSet.Value)));
 				}
 				else
 				{
@@ -489,18 +489,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N BulkDeleteOperation_BulkDeleteFailure
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkDeleteOperation_BulkDeleteFailure")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> BulkDeleteOperation_BulkDeleteFailure
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> BulkDeleteOperation_BulkDeleteFailure
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("BulkDeleteOperation_BulkDeleteFailure", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("BulkDeleteOperation_BulkDeleteFailure", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkDeleteOperation_BulkDeleteFailure");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("BulkDeleteOperation_BulkDeleteFailure", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("BulkDeleteOperation_BulkDeleteFailure", null, value);
 				this.OnPropertyChanged("BulkDeleteOperation_BulkDeleteFailure");
 			}
 		}
@@ -509,18 +509,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_bulkdeleteoperation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_bulkdeleteoperation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_bulkdeleteoperation
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_bulkdeleteoperation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_bulkdeleteoperation", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_bulkdeleteoperation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_bulkdeleteoperation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_bulkdeleteoperation", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_bulkdeleteoperation", null, value);
 				this.OnPropertyChanged("userentityinstancedata_bulkdeleteoperation");
 			}
 		}
@@ -530,12 +530,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("asyncoperationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("AsyncOperation_BulkDeleteOperation")]
-		public DLaB.Xrm.Entities.AsyncOperation AsyncOperation_BulkDeleteOperation
+		public Entities.AsyncOperation AsyncOperation_BulkDeleteOperation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.AsyncOperation>("AsyncOperation_BulkDeleteOperation", null);
+				return this.GetRelatedEntity<Entities.AsyncOperation>("AsyncOperation_BulkDeleteOperation", null);
 			}
 		}
 		
@@ -544,18 +544,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkDeleteOperation_BusinessUnit")]
-		public DLaB.Xrm.Entities.BusinessUnit BulkDeleteOperation_BusinessUnit
+		public Entities.BusinessUnit BulkDeleteOperation_BusinessUnit
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("BulkDeleteOperation_BusinessUnit", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("BulkDeleteOperation_BusinessUnit", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkDeleteOperation_BusinessUnit");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("BulkDeleteOperation_BusinessUnit", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("BulkDeleteOperation_BusinessUnit", null, value);
 				this.OnPropertyChanged("BulkDeleteOperation_BusinessUnit");
 			}
 		}
@@ -565,18 +565,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_bulkdeleteoperation_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_bulkdeleteoperation_createdonbehalfby
+		public Entities.SystemUser lk_bulkdeleteoperation_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_bulkdeleteoperation_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_bulkdeleteoperation_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_bulkdeleteoperation_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_bulkdeleteoperation_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_bulkdeleteoperation_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_bulkdeleteoperation_createdonbehalfby");
 			}
 		}
@@ -586,18 +586,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_bulkdeleteoperation_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_bulkdeleteoperation_modifiedonbehalfby
+		public Entities.SystemUser lk_bulkdeleteoperation_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_bulkdeleteoperation_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_bulkdeleteoperation_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_bulkdeleteoperation_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_bulkdeleteoperation_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_bulkdeleteoperation_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_bulkdeleteoperation_modifiedonbehalfby");
 			}
 		}
@@ -607,18 +607,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_bulkdeleteoperationbase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_bulkdeleteoperationbase_createdby
+		public Entities.SystemUser lk_bulkdeleteoperationbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_bulkdeleteoperationbase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_bulkdeleteoperationbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_bulkdeleteoperationbase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_bulkdeleteoperationbase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_bulkdeleteoperationbase_createdby", null, value);
 				this.OnPropertyChanged("lk_bulkdeleteoperationbase_createdby");
 			}
 		}
@@ -628,18 +628,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_bulkdeleteoperationbase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_bulkdeleteoperationbase_modifiedby
+		public Entities.SystemUser lk_bulkdeleteoperationbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_bulkdeleteoperationbase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_bulkdeleteoperationbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_bulkdeleteoperationbase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_bulkdeleteoperationbase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_bulkdeleteoperationbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_bulkdeleteoperationbase_modifiedby");
 			}
 		}

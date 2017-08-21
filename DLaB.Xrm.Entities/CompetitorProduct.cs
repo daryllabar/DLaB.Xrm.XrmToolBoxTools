@@ -150,18 +150,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_competitorproduct
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_competitorproduct")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_competitorproduct
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_competitorproduct
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_competitorproduct", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_competitorproduct", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_competitorproduct");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_competitorproduct", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_competitorproduct", null, value);
 				this.OnPropertyChanged("userentityinstancedata_competitorproduct");
 			}
 		}
@@ -170,18 +170,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N competitorproduct_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("competitorproduct_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Competitor> competitorproduct_association
+		public System.Collections.Generic.IEnumerable<Entities.Competitor> competitorproduct_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Competitor>("competitorproduct_association", null);
+				return this.GetRelatedEntities<Entities.Competitor>("competitorproduct_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("competitorproduct_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Competitor>("competitorproduct_association", null, value);
+				this.SetRelatedEntities<Entities.Competitor>("competitorproduct_association", null, value);
 				this.OnPropertyChanged("competitorproduct_association");
 			}
 		}

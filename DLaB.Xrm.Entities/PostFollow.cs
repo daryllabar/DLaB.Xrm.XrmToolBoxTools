@@ -351,18 +351,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N PostFollow_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("PostFollow_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> PostFollow_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> PostFollow_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("PostFollow_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("PostFollow_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("PostFollow_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("PostFollow_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("PostFollow_AsyncOperations", null, value);
 				this.OnPropertyChanged("PostFollow_AsyncOperations");
 			}
 		}
@@ -372,18 +372,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("account_PostFollows")]
-		public DLaB.Xrm.Entities.Account account_PostFollows
+		public Entities.Account account_PostFollows
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("account_PostFollows", null);
+				return this.GetRelatedEntity<Entities.Account>("account_PostFollows", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("account_PostFollows");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("account_PostFollows", null, value);
+				this.SetRelatedEntity<Entities.Account>("account_PostFollows", null, value);
 				this.OnPropertyChanged("account_PostFollows");
 			}
 		}
@@ -393,18 +393,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("appointment_PostFollows")]
-		public DLaB.Xrm.Entities.Appointment appointment_PostFollows
+		public Entities.Appointment appointment_PostFollows
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Appointment>("appointment_PostFollows", null);
+				return this.GetRelatedEntity<Entities.Appointment>("appointment_PostFollows", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("appointment_PostFollows");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Appointment>("appointment_PostFollows", null, value);
+				this.SetRelatedEntity<Entities.Appointment>("appointment_PostFollows", null, value);
 				this.OnPropertyChanged("appointment_PostFollows");
 			}
 		}
@@ -414,18 +414,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_postfollows")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_postfollows
+		public Entities.BusinessUnit business_unit_postfollows
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_postfollows", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_postfollows", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_postfollows");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_postfollows", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_postfollows", null, value);
 				this.OnPropertyChanged("business_unit_postfollows");
 			}
 		}
@@ -435,18 +435,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("competitor_PostFollows")]
-		public DLaB.Xrm.Entities.Competitor competitor_PostFollows
+		public Entities.Competitor competitor_PostFollows
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Competitor>("competitor_PostFollows", null);
+				return this.GetRelatedEntity<Entities.Competitor>("competitor_PostFollows", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("competitor_PostFollows");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Competitor>("competitor_PostFollows", null, value);
+				this.SetRelatedEntity<Entities.Competitor>("competitor_PostFollows", null, value);
 				this.OnPropertyChanged("competitor_PostFollows");
 			}
 		}
@@ -456,18 +456,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contact_PostFollows")]
-		public DLaB.Xrm.Entities.Contact contact_PostFollows
+		public Entities.Contact contact_PostFollows
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("contact_PostFollows", null);
+				return this.GetRelatedEntity<Entities.Contact>("contact_PostFollows", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contact_PostFollows");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("contact_PostFollows", null, value);
+				this.SetRelatedEntity<Entities.Contact>("contact_PostFollows", null, value);
 				this.OnPropertyChanged("contact_PostFollows");
 			}
 		}
@@ -477,18 +477,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_PostFollows")]
-		public DLaB.Xrm.Entities.Incident incident_PostFollows
+		public Entities.Incident incident_PostFollows
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Incident>("incident_PostFollows", null);
+				return this.GetRelatedEntity<Entities.Incident>("incident_PostFollows", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("incident_PostFollows");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Incident>("incident_PostFollows", null, value);
+				this.SetRelatedEntity<Entities.Incident>("incident_PostFollows", null, value);
 				this.OnPropertyChanged("incident_PostFollows");
 			}
 		}
@@ -498,18 +498,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_PostFollows")]
-		public DLaB.Xrm.Entities.KnowledgeArticle knowledgearticle_PostFollows
+		public Entities.KnowledgeArticle knowledgearticle_PostFollows
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_PostFollows", null);
+				return this.GetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_PostFollows", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("knowledgearticle_PostFollows");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_PostFollows", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_PostFollows", null, value);
 				this.OnPropertyChanged("knowledgearticle_PostFollows");
 			}
 		}
@@ -519,18 +519,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_PostFollows")]
-		public DLaB.Xrm.Entities.Lead lead_PostFollows
+		public Entities.Lead lead_PostFollows
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Lead>("lead_PostFollows", null);
+				return this.GetRelatedEntity<Entities.Lead>("lead_PostFollows", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lead_PostFollows");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Lead>("lead_PostFollows", null, value);
+				this.SetRelatedEntity<Entities.Lead>("lead_PostFollows", null, value);
 				this.OnPropertyChanged("lead_PostFollows");
 			}
 		}
@@ -540,18 +540,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_PostFollow_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_PostFollow_createdby
+		public Entities.SystemUser lk_PostFollow_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_PostFollow_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_PostFollow_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_PostFollow_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_PostFollow_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_PostFollow_createdby", null, value);
 				this.OnPropertyChanged("lk_PostFollow_createdby");
 			}
 		}
@@ -561,18 +561,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_postfollow_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_postfollow_createdonbehalfby
+		public Entities.SystemUser lk_postfollow_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_postfollow_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_postfollow_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_postfollow_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_postfollow_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_postfollow_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_postfollow_createdonbehalfby");
 			}
 		}
@@ -582,18 +582,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_PostFollows")]
-		public DLaB.Xrm.Entities.Opportunity opportunity_PostFollows
+		public Entities.Opportunity opportunity_PostFollows
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("opportunity_PostFollows", null);
+				return this.GetRelatedEntity<Entities.Opportunity>("opportunity_PostFollows", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_PostFollows");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("opportunity_PostFollows", null, value);
+				this.SetRelatedEntity<Entities.Opportunity>("opportunity_PostFollows", null, value);
 				this.OnPropertyChanged("opportunity_PostFollows");
 			}
 		}
@@ -603,18 +603,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("OwningTeam_postfollows")]
-		public DLaB.Xrm.Entities.Team OwningTeam_postfollows
+		public Entities.Team OwningTeam_postfollows
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("OwningTeam_postfollows", null);
+				return this.GetRelatedEntity<Entities.Team>("OwningTeam_postfollows", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("OwningTeam_postfollows");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("OwningTeam_postfollows", null, value);
+				this.SetRelatedEntity<Entities.Team>("OwningTeam_postfollows", null, value);
 				this.OnPropertyChanged("OwningTeam_postfollows");
 			}
 		}
@@ -624,18 +624,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("phonecall_PostFollows")]
-		public DLaB.Xrm.Entities.PhoneCall phonecall_PostFollows
+		public Entities.PhoneCall phonecall_PostFollows
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.PhoneCall>("phonecall_PostFollows", null);
+				return this.GetRelatedEntity<Entities.PhoneCall>("phonecall_PostFollows", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("phonecall_PostFollows");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.PhoneCall>("phonecall_PostFollows", null, value);
+				this.SetRelatedEntity<Entities.PhoneCall>("phonecall_PostFollows", null, value);
 				this.OnPropertyChanged("phonecall_PostFollows");
 			}
 		}
@@ -645,18 +645,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processsession_PostFollows")]
-		public DLaB.Xrm.Entities.ProcessSession processsession_PostFollows
+		public Entities.ProcessSession processsession_PostFollows
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProcessSession>("processsession_PostFollows", null);
+				return this.GetRelatedEntity<Entities.ProcessSession>("processsession_PostFollows", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processsession_PostFollows");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProcessSession>("processsession_PostFollows", null, value);
+				this.SetRelatedEntity<Entities.ProcessSession>("processsession_PostFollows", null, value);
 				this.OnPropertyChanged("processsession_PostFollows");
 			}
 		}
@@ -666,18 +666,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("queue_PostFollows")]
-		public DLaB.Xrm.Entities.Queue queue_PostFollows
+		public Entities.Queue queue_PostFollows
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Queue>("queue_PostFollows", null);
+				return this.GetRelatedEntity<Entities.Queue>("queue_PostFollows", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("queue_PostFollows");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Queue>("queue_PostFollows", null, value);
+				this.SetRelatedEntity<Entities.Queue>("queue_PostFollows", null, value);
 				this.OnPropertyChanged("queue_PostFollows");
 			}
 		}
@@ -687,18 +687,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recurringappointmentmaster_PostFollows")]
-		public DLaB.Xrm.Entities.RecurringAppointmentMaster recurringappointmentmaster_PostFollows
+		public Entities.RecurringAppointmentMaster recurringappointmentmaster_PostFollows
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RecurringAppointmentMaster>("recurringappointmentmaster_PostFollows", null);
+				return this.GetRelatedEntity<Entities.RecurringAppointmentMaster>("recurringappointmentmaster_PostFollows", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("recurringappointmentmaster_PostFollows");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RecurringAppointmentMaster>("recurringappointmentmaster_PostFollows", null, value);
+				this.SetRelatedEntity<Entities.RecurringAppointmentMaster>("recurringappointmentmaster_PostFollows", null, value);
 				this.OnPropertyChanged("recurringappointmentmaster_PostFollows");
 			}
 		}
@@ -708,18 +708,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("systemuser_PostFollows")]
-		public DLaB.Xrm.Entities.SystemUser systemuser_PostFollows
+		public Entities.SystemUser systemuser_PostFollows
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("systemuser_PostFollows", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("systemuser_PostFollows", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("systemuser_PostFollows");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("systemuser_PostFollows", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("systemuser_PostFollows", null, value);
 				this.OnPropertyChanged("systemuser_PostFollows");
 			}
 		}
@@ -729,18 +729,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("task_PostFollows")]
-		public DLaB.Xrm.Entities.Task task_PostFollows
+		public Entities.Task task_PostFollows
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Task>("task_PostFollows", null);
+				return this.GetRelatedEntity<Entities.Task>("task_PostFollows", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("task_PostFollows");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Task>("task_PostFollows", null, value);
+				this.SetRelatedEntity<Entities.Task>("task_PostFollows", null, value);
 				this.OnPropertyChanged("task_PostFollows");
 			}
 		}
@@ -750,18 +750,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_owner_postfollows")]
-		public DLaB.Xrm.Entities.SystemUser user_owner_postfollows
+		public Entities.SystemUser user_owner_postfollows
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_owner_postfollows", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_owner_postfollows", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_owner_postfollows");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_owner_postfollows", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_owner_postfollows", null, value);
 				this.OnPropertyChanged("user_owner_postfollows");
 			}
 		}

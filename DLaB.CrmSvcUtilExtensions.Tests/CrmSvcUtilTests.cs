@@ -8,6 +8,7 @@ using DLaB.CrmSvcUtilExtensions.Entity;
 using DLaB.CrmSvcUtilExtensions.OptionSet;
 using Microsoft.Crm.Services.Utility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using DLaB.Common;
 using CustomCodeGenerationService = DLaB.CrmSvcUtilExtensions.Action.CustomCodeGenerationService;
 
 namespace DLaB.CrmSvcUtilExtensions.Tests
@@ -63,10 +64,10 @@ namespace DLaB.CrmSvcUtilExtensions.Tests
         [TestMethod]
         public void UsingXrmClient_Should_GenerateAccountStateEnum()
         {
-            DLaB.Common.ConfigProvider.Instance["UseXrmClient"] = "true";
-            DLaB.Common.ConfigProvider.Instance["TestFileCreation"] = "true";
-            
-            
+            ConfigProvider.Instance["UseXrmClient"] = "true";
+            ConfigProvider.Instance["TestFileCreation"] = "true";
+
+
             CreateTestFile();
         }
     }

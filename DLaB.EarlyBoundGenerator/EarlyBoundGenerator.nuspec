@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator</id>
-	  <version>1.2017.7.19</version>
+	  <version>1.2017.8.7</version>
 	  <title>Early Bound Generator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,15 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes> V1.2017.7.19
+    <releaseNotes>V1.2017.8.7
+ - Added Support VS 2017 Install #116
+ - Fixed Entity and OptionSet Could Have the Same Exact Name #1 also Error on generating Entities bug #119
+ - Fixed Error on generating Entities bug #119
+
+V1.2017.7.23
+ - Fix Exception When Run #115 Null Ref Errors
+ 
+ V1.2017.7.19
  - Implmented Add Fields Class to Custom Actions #114
  
  V1.2017.7.18
@@ -44,26 +52,6 @@ V1.2017.1.30
 V1.2017.1.5
  - Fixed TFS Get/Checkout command errors if longer than 32000 #77
  - Fixed If EBG Config file is readonly it fails to read the settings #76
- 
-V1.2016.12.29
- - Split off into seperate NuGet Package
- - Removed use of Early Bounded Entities
- - Fixed configuration handling #74
-
-V1.2016.12.28
- - Added Language JSON for Italian (1040) #71
- - Added Language JSON for Norwegian (1044) #72
- - Added Language JSON for Polish (1045) #59 
- - Added Save/Load configuration #55
- - Added Using TFS Command Line, rather than C# dlls to Check out from TFS enhancement #57
- - Added Default to first Localized Value if none is found for Option Set #63
- - Fixed Error generating option sets using default settings - null argument #64
- - Fixed Option Sets not getting added to TFS #11 
- - Fixed Using Current Credentials is missing UserName bug #47
- - Fixed Error creating Entities.cs #58
-
-V1.2016.9.10
- - Fixed issue with wrong version of Active Directory Dll being referenced
     </releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>

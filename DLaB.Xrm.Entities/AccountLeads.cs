@@ -150,18 +150,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N accountleads_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("accountleads_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Account> accountleads_association
+		public System.Collections.Generic.IEnumerable<Entities.Account> accountleads_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Account>("accountleads_association", null);
+				return this.GetRelatedEntities<Entities.Account>("accountleads_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("accountleads_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Account>("accountleads_association", null, value);
+				this.SetRelatedEntities<Entities.Account>("accountleads_association", null, value);
 				this.OnPropertyChanged("accountleads_association");
 			}
 		}

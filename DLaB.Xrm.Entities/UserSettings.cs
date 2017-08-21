@@ -2004,18 +2004,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("businessunitid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_user_settings")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_user_settings
+		public Entities.BusinessUnit business_unit_user_settings
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_user_settings", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_user_settings", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_user_settings");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_user_settings", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_user_settings", null, value);
 				this.OnPropertyChanged("business_unit_user_settings");
 			}
 		}
@@ -2025,18 +2025,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_usersettings_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_usersettings_createdonbehalfby
+		public Entities.SystemUser lk_usersettings_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_usersettings_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_usersettings_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_usersettings_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_usersettings_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_usersettings_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_usersettings_createdonbehalfby");
 			}
 		}
@@ -2046,18 +2046,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_usersettings_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_usersettings_modifiedonbehalfby
+		public Entities.SystemUser lk_usersettings_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_usersettings_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_usersettings_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_usersettings_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_usersettings_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_usersettings_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_usersettings_modifiedonbehalfby");
 			}
 		}
@@ -2067,18 +2067,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_usersettingsbase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_usersettingsbase_createdby
+		public Entities.SystemUser lk_usersettingsbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_usersettingsbase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_usersettingsbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_usersettingsbase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_usersettingsbase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_usersettingsbase_createdby", null, value);
 				this.OnPropertyChanged("lk_usersettingsbase_createdby");
 			}
 		}
@@ -2088,18 +2088,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_usersettingsbase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_usersettingsbase_modifiedby
+		public Entities.SystemUser lk_usersettingsbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_usersettingsbase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_usersettingsbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_usersettingsbase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_usersettingsbase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_usersettingsbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_usersettingsbase_modifiedby");
 			}
 		}
@@ -2109,18 +2109,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_usersettings")]
-		public DLaB.Xrm.Entities.TransactionCurrency transactioncurrency_usersettings
+		public Entities.TransactionCurrency transactioncurrency_usersettings
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_usersettings", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_usersettings", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_usersettings");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_usersettings", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_usersettings", null, value);
 				this.OnPropertyChanged("transactioncurrency_usersettings");
 			}
 		}
@@ -2130,18 +2130,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("systemuserid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_settings")]
-		public DLaB.Xrm.Entities.SystemUser user_settings
+		public Entities.SystemUser user_settings
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_settings", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_settings", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_settings");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_settings", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_settings", null, value);
 				this.OnPropertyChanged("user_settings");
 			}
 		}

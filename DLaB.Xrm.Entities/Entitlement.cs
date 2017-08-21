@@ -760,7 +760,7 @@ namespace DLaB.Xrm.Entities
 		/// For internal use only.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.EntitlementState> StateCode
+		public System.Nullable<Entities.EntitlementState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -768,7 +768,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.EntitlementState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.EntitlementState), optionSet.Value)));
+					return ((Entities.EntitlementState)(System.Enum.ToObject(typeof(Entities.EntitlementState), optionSet.Value)));
 				}
 				else
 				{
@@ -928,18 +928,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N entitlement_ActivityPointers
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_ActivityPointers")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityPointer> entitlement_ActivityPointers
+		public System.Collections.Generic.IEnumerable<Entities.ActivityPointer> entitlement_ActivityPointers
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityPointer>("entitlement_ActivityPointers", null);
+				return this.GetRelatedEntities<Entities.ActivityPointer>("entitlement_ActivityPointers", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_ActivityPointers");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityPointer>("entitlement_ActivityPointers", null, value);
+				this.SetRelatedEntities<Entities.ActivityPointer>("entitlement_ActivityPointers", null, value);
 				this.OnPropertyChanged("entitlement_ActivityPointers");
 			}
 		}
@@ -948,18 +948,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N entitlement_Annotations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_Annotations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> entitlement_Annotations
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> entitlement_Annotations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("entitlement_Annotations", null);
+				return this.GetRelatedEntities<Entities.Annotation>("entitlement_Annotations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_Annotations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("entitlement_Annotations", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("entitlement_Annotations", null, value);
 				this.OnPropertyChanged("entitlement_Annotations");
 			}
 		}
@@ -968,18 +968,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N entitlement_Appointments
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_Appointments")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Appointment> entitlement_Appointments
+		public System.Collections.Generic.IEnumerable<Entities.Appointment> entitlement_Appointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Appointment>("entitlement_Appointments", null);
+				return this.GetRelatedEntities<Entities.Appointment>("entitlement_Appointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_Appointments");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Appointment>("entitlement_Appointments", null, value);
+				this.SetRelatedEntities<Entities.Appointment>("entitlement_Appointments", null, value);
 				this.OnPropertyChanged("entitlement_Appointments");
 			}
 		}
@@ -988,18 +988,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N entitlement_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> entitlement_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> entitlement_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("entitlement_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("entitlement_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("entitlement_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("entitlement_AsyncOperations", null, value);
 				this.OnPropertyChanged("entitlement_AsyncOperations");
 			}
 		}
@@ -1008,18 +1008,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N entitlement_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> entitlement_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> entitlement_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("entitlement_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("entitlement_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("entitlement_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("entitlement_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("entitlement_BulkDeleteFailures");
 			}
 		}
@@ -1028,18 +1028,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N entitlement_cases
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_cases")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Incident> entitlement_cases
+		public System.Collections.Generic.IEnumerable<Entities.Incident> entitlement_cases
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Incident>("entitlement_cases", null);
+				return this.GetRelatedEntities<Entities.Incident>("entitlement_cases", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_cases");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Incident>("entitlement_cases", null, value);
+				this.SetRelatedEntities<Entities.Incident>("entitlement_cases", null, value);
 				this.OnPropertyChanged("entitlement_cases");
 			}
 		}
@@ -1048,18 +1048,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N entitlement_connections1
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_connections1")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> entitlement_connections1
+		public System.Collections.Generic.IEnumerable<Entities.Connection> entitlement_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("entitlement_connections1", null);
+				return this.GetRelatedEntities<Entities.Connection>("entitlement_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_connections1");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("entitlement_connections1", null, value);
+				this.SetRelatedEntities<Entities.Connection>("entitlement_connections1", null, value);
 				this.OnPropertyChanged("entitlement_connections1");
 			}
 		}
@@ -1068,18 +1068,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N entitlement_connections2
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_connections2")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> entitlement_connections2
+		public System.Collections.Generic.IEnumerable<Entities.Connection> entitlement_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("entitlement_connections2", null);
+				return this.GetRelatedEntities<Entities.Connection>("entitlement_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_connections2");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("entitlement_connections2", null, value);
+				this.SetRelatedEntities<Entities.Connection>("entitlement_connections2", null, value);
 				this.OnPropertyChanged("entitlement_connections2");
 			}
 		}
@@ -1088,18 +1088,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N entitlement_DuplicateBaseRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_DuplicateBaseRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> entitlement_DuplicateBaseRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> entitlement_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("entitlement_DuplicateBaseRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("entitlement_DuplicateBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_DuplicateBaseRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("entitlement_DuplicateBaseRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("entitlement_DuplicateBaseRecord", null, value);
 				this.OnPropertyChanged("entitlement_DuplicateBaseRecord");
 			}
 		}
@@ -1108,18 +1108,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N entitlement_DuplicateMatchingRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_DuplicateMatchingRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> entitlement_DuplicateMatchingRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> entitlement_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("entitlement_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("entitlement_DuplicateMatchingRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_DuplicateMatchingRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("entitlement_DuplicateMatchingRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("entitlement_DuplicateMatchingRecord", null, value);
 				this.OnPropertyChanged("entitlement_DuplicateMatchingRecord");
 			}
 		}
@@ -1128,18 +1128,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N entitlement_Emails
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_Emails")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Email> entitlement_Emails
+		public System.Collections.Generic.IEnumerable<Entities.Email> entitlement_Emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Email>("entitlement_Emails", null);
+				return this.GetRelatedEntities<Entities.Email>("entitlement_Emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_Emails");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Email>("entitlement_Emails", null, value);
+				this.SetRelatedEntities<Entities.Email>("entitlement_Emails", null, value);
 				this.OnPropertyChanged("entitlement_Emails");
 			}
 		}
@@ -1148,18 +1148,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N entitlement_entitlementchannel_EntitlementId
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_entitlementchannel_EntitlementId")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.EntitlementChannel> entitlement_entitlementchannel_EntitlementId
+		public System.Collections.Generic.IEnumerable<Entities.EntitlementChannel> entitlement_entitlementchannel_EntitlementId
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.EntitlementChannel>("entitlement_entitlementchannel_EntitlementId", null);
+				return this.GetRelatedEntities<Entities.EntitlementChannel>("entitlement_entitlementchannel_EntitlementId", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_entitlementchannel_EntitlementId");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.EntitlementChannel>("entitlement_entitlementchannel_EntitlementId", null, value);
+				this.SetRelatedEntities<Entities.EntitlementChannel>("entitlement_entitlementchannel_EntitlementId", null, value);
 				this.OnPropertyChanged("entitlement_entitlementchannel_EntitlementId");
 			}
 		}
@@ -1168,18 +1168,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N entitlement_Faxes
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_Faxes")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Fax> entitlement_Faxes
+		public System.Collections.Generic.IEnumerable<Entities.Fax> entitlement_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Fax>("entitlement_Faxes", null);
+				return this.GetRelatedEntities<Entities.Fax>("entitlement_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_Faxes");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Fax>("entitlement_Faxes", null, value);
+				this.SetRelatedEntities<Entities.Fax>("entitlement_Faxes", null, value);
 				this.OnPropertyChanged("entitlement_Faxes");
 			}
 		}
@@ -1188,18 +1188,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N entitlement_Letters
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_Letters")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Letter> entitlement_Letters
+		public System.Collections.Generic.IEnumerable<Entities.Letter> entitlement_Letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Letter>("entitlement_Letters", null);
+				return this.GetRelatedEntities<Entities.Letter>("entitlement_Letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_Letters");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Letter>("entitlement_Letters", null, value);
+				this.SetRelatedEntities<Entities.Letter>("entitlement_Letters", null, value);
 				this.OnPropertyChanged("entitlement_Letters");
 			}
 		}
@@ -1208,18 +1208,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Entitlement_MailboxTrackingFolder
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Entitlement_MailboxTrackingFolder")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.MailboxTrackingFolder> Entitlement_MailboxTrackingFolder
+		public System.Collections.Generic.IEnumerable<Entities.MailboxTrackingFolder> Entitlement_MailboxTrackingFolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.MailboxTrackingFolder>("Entitlement_MailboxTrackingFolder", null);
+				return this.GetRelatedEntities<Entities.MailboxTrackingFolder>("Entitlement_MailboxTrackingFolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Entitlement_MailboxTrackingFolder");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.MailboxTrackingFolder>("Entitlement_MailboxTrackingFolder", null, value);
+				this.SetRelatedEntities<Entities.MailboxTrackingFolder>("Entitlement_MailboxTrackingFolder", null, value);
 				this.OnPropertyChanged("Entitlement_MailboxTrackingFolder");
 			}
 		}
@@ -1228,18 +1228,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N entitlement_PhoneCalls
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_PhoneCalls")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PhoneCall> entitlement_PhoneCalls
+		public System.Collections.Generic.IEnumerable<Entities.PhoneCall> entitlement_PhoneCalls
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PhoneCall>("entitlement_PhoneCalls", null);
+				return this.GetRelatedEntities<Entities.PhoneCall>("entitlement_PhoneCalls", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_PhoneCalls");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PhoneCall>("entitlement_PhoneCalls", null, value);
+				this.SetRelatedEntities<Entities.PhoneCall>("entitlement_PhoneCalls", null, value);
 				this.OnPropertyChanged("entitlement_PhoneCalls");
 			}
 		}
@@ -1248,18 +1248,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N entitlement_PrincipalObjectAttributeAccesses
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_PrincipalObjectAttributeAccesses")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> entitlement_PrincipalObjectAttributeAccesses
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> entitlement_PrincipalObjectAttributeAccesses
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("entitlement_PrincipalObjectAttributeAccesses", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("entitlement_PrincipalObjectAttributeAccesses", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_PrincipalObjectAttributeAccesses");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("entitlement_PrincipalObjectAttributeAccesses", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("entitlement_PrincipalObjectAttributeAccesses", null, value);
 				this.OnPropertyChanged("entitlement_PrincipalObjectAttributeAccesses");
 			}
 		}
@@ -1268,18 +1268,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N entitlement_ProcessSession
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_ProcessSession")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> entitlement_ProcessSession
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> entitlement_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("entitlement_ProcessSession", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("entitlement_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_ProcessSession");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("entitlement_ProcessSession", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("entitlement_ProcessSession", null, value);
 				this.OnPropertyChanged("entitlement_ProcessSession");
 			}
 		}
@@ -1288,18 +1288,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N entitlement_RecurringAppointmentMasters
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_RecurringAppointmentMasters")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.RecurringAppointmentMaster> entitlement_RecurringAppointmentMasters
+		public System.Collections.Generic.IEnumerable<Entities.RecurringAppointmentMaster> entitlement_RecurringAppointmentMasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.RecurringAppointmentMaster>("entitlement_RecurringAppointmentMasters", null);
+				return this.GetRelatedEntities<Entities.RecurringAppointmentMaster>("entitlement_RecurringAppointmentMasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_RecurringAppointmentMasters");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.RecurringAppointmentMaster>("entitlement_RecurringAppointmentMasters", null, value);
+				this.SetRelatedEntities<Entities.RecurringAppointmentMaster>("entitlement_RecurringAppointmentMasters", null, value);
 				this.OnPropertyChanged("entitlement_RecurringAppointmentMasters");
 			}
 		}
@@ -1308,18 +1308,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N entitlement_ServiceAppointments
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_ServiceAppointments")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ServiceAppointment> entitlement_ServiceAppointments
+		public System.Collections.Generic.IEnumerable<Entities.ServiceAppointment> entitlement_ServiceAppointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ServiceAppointment>("entitlement_ServiceAppointments", null);
+				return this.GetRelatedEntities<Entities.ServiceAppointment>("entitlement_ServiceAppointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_ServiceAppointments");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ServiceAppointment>("entitlement_ServiceAppointments", null, value);
+				this.SetRelatedEntities<Entities.ServiceAppointment>("entitlement_ServiceAppointments", null, value);
 				this.OnPropertyChanged("entitlement_ServiceAppointments");
 			}
 		}
@@ -1328,18 +1328,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N entitlement_SocialActivities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_SocialActivities")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SocialActivity> entitlement_SocialActivities
+		public System.Collections.Generic.IEnumerable<Entities.SocialActivity> entitlement_SocialActivities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SocialActivity>("entitlement_SocialActivities", null);
+				return this.GetRelatedEntities<Entities.SocialActivity>("entitlement_SocialActivities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_SocialActivities");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SocialActivity>("entitlement_SocialActivities", null, value);
+				this.SetRelatedEntities<Entities.SocialActivity>("entitlement_SocialActivities", null, value);
 				this.OnPropertyChanged("entitlement_SocialActivities");
 			}
 		}
@@ -1348,18 +1348,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N entitlement_Tasks
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_Tasks")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Task> entitlement_Tasks
+		public System.Collections.Generic.IEnumerable<Entities.Task> entitlement_Tasks
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Task>("entitlement_Tasks", null);
+				return this.GetRelatedEntities<Entities.Task>("entitlement_Tasks", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_Tasks");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Task>("entitlement_Tasks", null, value);
+				this.SetRelatedEntities<Entities.Task>("entitlement_Tasks", null, value);
 				this.OnPropertyChanged("entitlement_Tasks");
 			}
 		}
@@ -1368,18 +1368,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N entitlement_UserEntityInstanceDatas
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_UserEntityInstanceDatas")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> entitlement_UserEntityInstanceDatas
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> entitlement_UserEntityInstanceDatas
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("entitlement_UserEntityInstanceDatas", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("entitlement_UserEntityInstanceDatas", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_UserEntityInstanceDatas");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("entitlement_UserEntityInstanceDatas", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("entitlement_UserEntityInstanceDatas", null, value);
 				this.OnPropertyChanged("entitlement_UserEntityInstanceDatas");
 			}
 		}
@@ -1388,18 +1388,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N entitlementcontacts_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlementcontacts_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Contact> entitlementcontacts_association
+		public System.Collections.Generic.IEnumerable<Entities.Contact> entitlementcontacts_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Contact>("entitlementcontacts_association", null);
+				return this.GetRelatedEntities<Entities.Contact>("entitlementcontacts_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlementcontacts_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Contact>("entitlementcontacts_association", null, value);
+				this.SetRelatedEntities<Entities.Contact>("entitlementcontacts_association", null, value);
 				this.OnPropertyChanged("entitlementcontacts_association");
 			}
 		}
@@ -1408,18 +1408,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N product_entitlement_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("product_entitlement_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Product> product_entitlement_association
+		public System.Collections.Generic.IEnumerable<Entities.Product> product_entitlement_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Product>("product_entitlement_association", null);
+				return this.GetRelatedEntities<Entities.Product>("product_entitlement_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("product_entitlement_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Product>("product_entitlement_association", null, value);
+				this.SetRelatedEntities<Entities.Product>("product_entitlement_association", null, value);
 				this.OnPropertyChanged("product_entitlement_association");
 			}
 		}
@@ -1429,12 +1429,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accountid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("account_entitlement_Account")]
-		public DLaB.Xrm.Entities.Account account_entitlement_Account
+		public Entities.Account account_entitlement_Account
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("account_entitlement_Account", null);
+				return this.GetRelatedEntity<Entities.Account>("account_entitlement_Account", null);
 			}
 		}
 		
@@ -1443,18 +1443,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customerid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("account_entitlement_Customer")]
-		public DLaB.Xrm.Entities.Account account_entitlement_Customer
+		public Entities.Account account_entitlement_Customer
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("account_entitlement_Customer", null);
+				return this.GetRelatedEntity<Entities.Account>("account_entitlement_Customer", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("account_entitlement_Customer");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("account_entitlement_Customer", null, value);
+				this.SetRelatedEntity<Entities.Account>("account_entitlement_Customer", null, value);
 				this.OnPropertyChanged("account_entitlement_Customer");
 			}
 		}
@@ -1464,18 +1464,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_entitlement")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_entitlement
+		public Entities.BusinessUnit business_unit_entitlement
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_entitlement", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_entitlement", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_entitlement");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_entitlement", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_entitlement", null, value);
 				this.OnPropertyChanged("business_unit_entitlement");
 			}
 		}
@@ -1485,12 +1485,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contactid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contact_entitlement_ContactId")]
-		public DLaB.Xrm.Entities.Contact contact_entitlement_ContactId
+		public Entities.Contact contact_entitlement_ContactId
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("contact_entitlement_ContactId", null);
+				return this.GetRelatedEntity<Entities.Contact>("contact_entitlement_ContactId", null);
 			}
 		}
 		
@@ -1499,18 +1499,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customerid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contact_entitlement_Customer")]
-		public DLaB.Xrm.Entities.Contact contact_entitlement_Customer
+		public Entities.Contact contact_entitlement_Customer
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("contact_entitlement_Customer", null);
+				return this.GetRelatedEntity<Entities.Contact>("contact_entitlement_Customer", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contact_entitlement_Customer");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("contact_entitlement_Customer", null, value);
+				this.SetRelatedEntity<Entities.Contact>("contact_entitlement_Customer", null, value);
 				this.OnPropertyChanged("contact_entitlement_Customer");
 			}
 		}
@@ -1520,18 +1520,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entitlementtemplateid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlementtemplateid_RelationShip")]
-		public DLaB.Xrm.Entities.EntitlementTemplate entitlementtemplateid_RelationShip
+		public Entities.EntitlementTemplate entitlementtemplateid_RelationShip
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplateid_RelationShip", null);
+				return this.GetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplateid_RelationShip", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlementtemplateid_RelationShip");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplateid_RelationShip", null, value);
+				this.SetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplateid_RelationShip", null, value);
 				this.OnPropertyChanged("entitlementtemplateid_RelationShip");
 			}
 		}
@@ -1541,18 +1541,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_entitlement_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_entitlement_createdby
+		public Entities.SystemUser lk_entitlement_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_entitlement_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_entitlement_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_entitlement_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_entitlement_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_entitlement_createdby", null, value);
 				this.OnPropertyChanged("lk_entitlement_createdby");
 			}
 		}
@@ -1562,18 +1562,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_entitlement_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_entitlement_createdonbehalfby
+		public Entities.SystemUser lk_entitlement_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_entitlement_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_entitlement_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_entitlement_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_entitlement_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_entitlement_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_entitlement_createdonbehalfby");
 			}
 		}
@@ -1583,18 +1583,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_entitlement_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_entitlement_modifiedby
+		public Entities.SystemUser lk_entitlement_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_entitlement_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_entitlement_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_entitlement_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_entitlement_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_entitlement_modifiedby", null, value);
 				this.OnPropertyChanged("lk_entitlement_modifiedby");
 			}
 		}
@@ -1604,18 +1604,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_entitlement_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_entitlement_modifiedonbehalfby
+		public Entities.SystemUser lk_entitlement_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_entitlement_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_entitlement_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_entitlement_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_entitlement_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_entitlement_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_entitlement_modifiedonbehalfby");
 			}
 		}
@@ -1625,18 +1625,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("slaid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sla_entitlement")]
-		public DLaB.Xrm.Entities.SLA sla_entitlement
+		public Entities.SLA sla_entitlement
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SLA>("sla_entitlement", null);
+				return this.GetRelatedEntity<Entities.SLA>("sla_entitlement", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("sla_entitlement");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SLA>("sla_entitlement", null, value);
+				this.SetRelatedEntity<Entities.SLA>("sla_entitlement", null, value);
 				this.OnPropertyChanged("sla_entitlement");
 			}
 		}
@@ -1646,18 +1646,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_entitlement")]
-		public DLaB.Xrm.Entities.Team team_entitlement
+		public Entities.Team team_entitlement
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_entitlement", null);
+				return this.GetRelatedEntity<Entities.Team>("team_entitlement", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_entitlement");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_entitlement", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_entitlement", null, value);
 				this.OnPropertyChanged("team_entitlement");
 			}
 		}
@@ -1667,18 +1667,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Entitlement")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_Entitlement
+		public Entities.TransactionCurrency TransactionCurrency_Entitlement
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_Entitlement", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_Entitlement", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Entitlement");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_Entitlement", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_Entitlement", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Entitlement");
 			}
 		}
@@ -1688,18 +1688,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_entitlement")]
-		public DLaB.Xrm.Entities.SystemUser user_entitlement
+		public Entities.SystemUser user_entitlement
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_entitlement", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_entitlement", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_entitlement");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_entitlement", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_entitlement", null, value);
 				this.OnPropertyChanged("user_entitlement");
 			}
 		}

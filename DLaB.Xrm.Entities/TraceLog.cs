@@ -655,18 +655,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N tracelog_parent_tracelog
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("tracelog_parent_tracelog", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.TraceLog> Referencedtracelog_parent_tracelog
+		public System.Collections.Generic.IEnumerable<Entities.TraceLog> Referencedtracelog_parent_tracelog
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.TraceLog>("tracelog_parent_tracelog", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.TraceLog>("tracelog_parent_tracelog", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedtracelog_parent_tracelog");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.TraceLog>("tracelog_parent_tracelog", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.TraceLog>("tracelog_parent_tracelog", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedtracelog_parent_tracelog");
 			}
 		}
@@ -676,18 +676,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_tracelog_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_tracelog_createdby
+		public Entities.SystemUser lk_tracelog_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_tracelog_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_tracelog_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_tracelog_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_tracelog_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_tracelog_createdby", null, value);
 				this.OnPropertyChanged("lk_tracelog_createdby");
 			}
 		}
@@ -697,18 +697,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_tracelog_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_tracelog_createdonbehalfby
+		public Entities.SystemUser lk_tracelog_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_tracelog_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_tracelog_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_tracelog_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_tracelog_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_tracelog_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_tracelog_createdonbehalfby");
 			}
 		}
@@ -718,18 +718,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_tracelog_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_tracelog_modifiedby
+		public Entities.SystemUser lk_tracelog_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_tracelog_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_tracelog_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_tracelog_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_tracelog_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_tracelog_modifiedby", null, value);
 				this.OnPropertyChanged("lk_tracelog_modifiedby");
 			}
 		}
@@ -739,18 +739,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_tracelog_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_tracelog_modifiedonbehalfby
+		public Entities.SystemUser lk_tracelog_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_tracelog_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_tracelog_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_tracelog_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_tracelog_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_tracelog_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_tracelog_modifiedonbehalfby");
 			}
 		}
@@ -760,12 +760,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_tracelog")]
-		public DLaB.Xrm.Entities.Organization organization_tracelog
+		public Entities.Organization organization_tracelog
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_tracelog", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_tracelog", null);
 			}
 		}
 		
@@ -774,18 +774,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("tracelog_EmailServerProfile")]
-		public DLaB.Xrm.Entities.EmailServerProfile tracelog_EmailServerProfile
+		public Entities.EmailServerProfile tracelog_EmailServerProfile
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EmailServerProfile>("tracelog_EmailServerProfile", null);
+				return this.GetRelatedEntity<Entities.EmailServerProfile>("tracelog_EmailServerProfile", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("tracelog_EmailServerProfile");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.EmailServerProfile>("tracelog_EmailServerProfile", null, value);
+				this.SetRelatedEntity<Entities.EmailServerProfile>("tracelog_EmailServerProfile", null, value);
 				this.OnPropertyChanged("tracelog_EmailServerProfile");
 			}
 		}
@@ -795,18 +795,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("tracelog_Mailbox")]
-		public DLaB.Xrm.Entities.Mailbox tracelog_Mailbox
+		public Entities.Mailbox tracelog_Mailbox
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Mailbox>("tracelog_Mailbox", null);
+				return this.GetRelatedEntity<Entities.Mailbox>("tracelog_Mailbox", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("tracelog_Mailbox");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Mailbox>("tracelog_Mailbox", null, value);
+				this.SetRelatedEntity<Entities.Mailbox>("tracelog_Mailbox", null, value);
 				this.OnPropertyChanged("tracelog_Mailbox");
 			}
 		}
@@ -816,18 +816,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parenttracelogid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("tracelog_parent_tracelog", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.TraceLog Referencingtracelog_parent_tracelog
+		public Entities.TraceLog Referencingtracelog_parent_tracelog
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TraceLog>("tracelog_parent_tracelog", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.TraceLog>("tracelog_parent_tracelog", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencingtracelog_parent_tracelog");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TraceLog>("tracelog_parent_tracelog", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Entities.TraceLog>("tracelog_parent_tracelog", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencingtracelog_parent_tracelog");
 			}
 		}

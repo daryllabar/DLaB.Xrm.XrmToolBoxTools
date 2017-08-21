@@ -41,10 +41,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\CrmSvcUtil.exe</HintPath>
     </Reference>
-    <Reference Include="DLaB.Common, Version=1.0.3.14, Culture=neutral, PublicKeyToken=046d6d5d1685e1b4, processorArchitecture=MSIL">
-      <HintPath>..\packages\DLaB.Common.1.0.3.14\lib\net452\DLaB.Common.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.Crm.Sdk.Proxy, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.8.2.0.2\lib\net452\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
       <Private>True</Private>
@@ -137,6 +133,21 @@
     <Compile Include="Action\CodeWriterFilterService.cs" />
     <Compile Include="Action\CustomizeCodeDomService.cs" />
     <Compile Include="Action\CustomCodeGenerationService.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Sources.1.0.4.11\Config.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Sources.1.0.4.11\ConfigKeyValueSplitInfo.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Sources.1.0.4.11\ConfigKeyValuesSplitInfo.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Sources.1.0.4.11\ConfigProvider.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Sources.1.0.4.11\ConfigValuesSplitInfo.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Sources.1.0.4.11\Exceptions\DictionaryDuplicateKeyException.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Sources.1.0.4.11\Exceptions\EnumCaseUndefinedException.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Sources.1.0.4.11\Exceptions\TypeArgumentException.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Sources.1.0.4.11\Extensions.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Sources.1.0.4.11\ProcessExecutor.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Sources.1.0.4.11\ProcessExecutorInfo.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Sources.1.0.4.11\TypeSafeEnumBase.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Sources.1.0.4.11\VersionControl\ISourceControlProvider.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Sources.1.0.4.11\VersionControl\SourceControl.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Sources.1.0.4.11\VersionControl\VsTfsSourceControlProvider.cs" />
     <Compile Include="AttributeConstGeneratorBase.cs" />
     <Compile Include="BaseCustomCodeGenerationService.cs" />
     <Compile Include="Entity\PrimaryAttributeGenerator.cs" />
@@ -184,7 +195,7 @@
     <None Include="bin\Release\CrmSvcUtil.exe.config" />
     <None Include="bin\Release\DLaB.CrmSvcUtilExtensions.dll.config" />
     <None Include="CrmSvcUtil.exe.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="OptionSet\Transliteration\Alphabets\1031.json" />
     <None Include="OptionSet\Transliteration\Alphabets\1036.json" />

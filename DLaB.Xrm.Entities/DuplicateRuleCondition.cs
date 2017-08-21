@@ -421,18 +421,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_duplicaterulecondition
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_duplicaterulecondition")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_duplicaterulecondition
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_duplicaterulecondition
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_duplicaterulecondition", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_duplicaterulecondition", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_duplicaterulecondition");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_duplicaterulecondition", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_duplicaterulecondition", null, value);
 				this.OnPropertyChanged("userentityinstancedata_duplicaterulecondition");
 			}
 		}
@@ -442,18 +442,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("DuplicateRule_DuplicateRuleConditions")]
-		public DLaB.Xrm.Entities.DuplicateRule DuplicateRule_DuplicateRuleConditions
+		public Entities.DuplicateRule DuplicateRule_DuplicateRuleConditions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.DuplicateRule>("DuplicateRule_DuplicateRuleConditions", null);
+				return this.GetRelatedEntity<Entities.DuplicateRule>("DuplicateRule_DuplicateRuleConditions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("DuplicateRule_DuplicateRuleConditions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.DuplicateRule>("DuplicateRule_DuplicateRuleConditions", null, value);
+				this.SetRelatedEntity<Entities.DuplicateRule>("DuplicateRule_DuplicateRuleConditions", null, value);
 				this.OnPropertyChanged("DuplicateRule_DuplicateRuleConditions");
 			}
 		}
@@ -463,18 +463,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_duplicaterulecondition_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_duplicaterulecondition_createdonbehalfby
+		public Entities.SystemUser lk_duplicaterulecondition_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_duplicaterulecondition_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_duplicaterulecondition_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_duplicaterulecondition_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_duplicaterulecondition_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_duplicaterulecondition_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_duplicaterulecondition_createdonbehalfby");
 			}
 		}
@@ -484,18 +484,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_duplicaterulecondition_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_duplicaterulecondition_modifiedonbehalfby
+		public Entities.SystemUser lk_duplicaterulecondition_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_duplicaterulecondition_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_duplicaterulecondition_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_duplicaterulecondition_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_duplicaterulecondition_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_duplicaterulecondition_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_duplicaterulecondition_modifiedonbehalfby");
 			}
 		}
@@ -505,18 +505,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_duplicateruleconditionbase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_duplicateruleconditionbase_createdby
+		public Entities.SystemUser lk_duplicateruleconditionbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_duplicateruleconditionbase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_duplicateruleconditionbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_duplicateruleconditionbase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_duplicateruleconditionbase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_duplicateruleconditionbase_createdby", null, value);
 				this.OnPropertyChanged("lk_duplicateruleconditionbase_createdby");
 			}
 		}
@@ -526,18 +526,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_duplicateruleconditionbase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_duplicateruleconditionbase_modifiedby
+		public Entities.SystemUser lk_duplicateruleconditionbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_duplicateruleconditionbase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_duplicateruleconditionbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_duplicateruleconditionbase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_duplicateruleconditionbase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_duplicateruleconditionbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_duplicateruleconditionbase_modifiedby");
 			}
 		}

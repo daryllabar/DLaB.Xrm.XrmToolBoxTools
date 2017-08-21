@@ -333,18 +333,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_fieldpermission
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_fieldpermission")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_fieldpermission
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_fieldpermission
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_fieldpermission", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_fieldpermission", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_fieldpermission");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_fieldpermission", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_fieldpermission", null, value);
 				this.OnPropertyChanged("userentityinstancedata_fieldpermission");
 			}
 		}
@@ -354,18 +354,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fieldsecurityprofileid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_fieldpermission_fieldsecurityprofileid")]
-		public DLaB.Xrm.Entities.FieldSecurityProfile lk_fieldpermission_fieldsecurityprofileid
+		public Entities.FieldSecurityProfile lk_fieldpermission_fieldsecurityprofileid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.FieldSecurityProfile>("lk_fieldpermission_fieldsecurityprofileid", null);
+				return this.GetRelatedEntity<Entities.FieldSecurityProfile>("lk_fieldpermission_fieldsecurityprofileid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_fieldpermission_fieldsecurityprofileid");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.FieldSecurityProfile>("lk_fieldpermission_fieldsecurityprofileid", null, value);
+				this.SetRelatedEntity<Entities.FieldSecurityProfile>("lk_fieldpermission_fieldsecurityprofileid", null, value);
 				this.OnPropertyChanged("lk_fieldpermission_fieldsecurityprofileid");
 			}
 		}

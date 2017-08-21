@@ -519,18 +519,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N rollupfield_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("rollupfield_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> rollupfield_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> rollupfield_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("rollupfield_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("rollupfield_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("rollupfield_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("rollupfield_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("rollupfield_AsyncOperations", null, value);
 				this.OnPropertyChanged("rollupfield_AsyncOperations");
 			}
 		}
@@ -539,18 +539,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N rollupfield_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("rollupfield_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> rollupfield_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> rollupfield_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("rollupfield_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("rollupfield_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("rollupfield_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("rollupfield_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("rollupfield_ProcessSessions", null, value);
 				this.OnPropertyChanged("rollupfield_ProcessSessions");
 			}
 		}
@@ -559,18 +559,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_rollupfield
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_rollupfield")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_rollupfield
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_rollupfield
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_rollupfield", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_rollupfield", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_rollupfield");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_rollupfield", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_rollupfield", null, value);
 				this.OnPropertyChanged("userentityinstancedata_rollupfield");
 			}
 		}
@@ -580,18 +580,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_rollupfield_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_rollupfield_createdby
+		public Entities.SystemUser lk_rollupfield_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_rollupfield_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_rollupfield_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_rollupfield_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_rollupfield_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_rollupfield_createdby", null, value);
 				this.OnPropertyChanged("lk_rollupfield_createdby");
 			}
 		}
@@ -601,18 +601,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_rollupfield_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_rollupfield_createdonbehalfby
+		public Entities.SystemUser lk_rollupfield_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_rollupfield_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_rollupfield_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_rollupfield_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_rollupfield_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_rollupfield_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_rollupfield_createdonbehalfby");
 			}
 		}
@@ -622,18 +622,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_rollupfield_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_rollupfield_modifiedby
+		public Entities.SystemUser lk_rollupfield_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_rollupfield_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_rollupfield_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_rollupfield_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_rollupfield_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_rollupfield_modifiedby", null, value);
 				this.OnPropertyChanged("lk_rollupfield_modifiedby");
 			}
 		}
@@ -643,18 +643,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_rollupfield_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_rollupfield_modifiedonbehalfby
+		public Entities.SystemUser lk_rollupfield_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_rollupfield_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_rollupfield_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_rollupfield_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_rollupfield_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_rollupfield_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_rollupfield_modifiedonbehalfby");
 			}
 		}
@@ -664,18 +664,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("metricid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("metric_rollupfield")]
-		public DLaB.Xrm.Entities.Metric metric_rollupfield
+		public Entities.Metric metric_rollupfield
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Metric>("metric_rollupfield", null);
+				return this.GetRelatedEntity<Entities.Metric>("metric_rollupfield", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("metric_rollupfield");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Metric>("metric_rollupfield", null, value);
+				this.SetRelatedEntity<Entities.Metric>("metric_rollupfield", null, value);
 				this.OnPropertyChanged("metric_rollupfield");
 			}
 		}

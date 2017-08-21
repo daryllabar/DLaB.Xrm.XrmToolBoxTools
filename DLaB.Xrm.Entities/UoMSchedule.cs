@@ -360,7 +360,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the Unit Group.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.UoMScheduleState> StateCode
+		public System.Nullable<Entities.UoMScheduleState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -368,7 +368,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.UoMScheduleState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.UoMScheduleState), optionSet.Value)));
+					return ((Entities.UoMScheduleState)(System.Enum.ToObject(typeof(Entities.UoMScheduleState), optionSet.Value)));
 				}
 				else
 				{
@@ -471,18 +471,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N contract_detail_unit_of_measure_schedule
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contract_detail_unit_of_measure_schedule")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ContractDetail> contract_detail_unit_of_measure_schedule
+		public System.Collections.Generic.IEnumerable<Entities.ContractDetail> contract_detail_unit_of_measure_schedule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ContractDetail>("contract_detail_unit_of_measure_schedule", null);
+				return this.GetRelatedEntities<Entities.ContractDetail>("contract_detail_unit_of_measure_schedule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contract_detail_unit_of_measure_schedule");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ContractDetail>("contract_detail_unit_of_measure_schedule", null, value);
+				this.SetRelatedEntities<Entities.ContractDetail>("contract_detail_unit_of_measure_schedule", null, value);
 				this.OnPropertyChanged("contract_detail_unit_of_measure_schedule");
 			}
 		}
@@ -491,18 +491,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N unit_of_measure_schedule_conversions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measure_schedule_conversions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UoM> unit_of_measure_schedule_conversions
+		public System.Collections.Generic.IEnumerable<Entities.UoM> unit_of_measure_schedule_conversions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UoM>("unit_of_measure_schedule_conversions", null);
+				return this.GetRelatedEntities<Entities.UoM>("unit_of_measure_schedule_conversions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("unit_of_measure_schedule_conversions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UoM>("unit_of_measure_schedule_conversions", null, value);
+				this.SetRelatedEntities<Entities.UoM>("unit_of_measure_schedule_conversions", null, value);
 				this.OnPropertyChanged("unit_of_measure_schedule_conversions");
 			}
 		}
@@ -511,18 +511,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N unit_of_measure_schedule_product_price_level
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measure_schedule_product_price_level")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProductPriceLevel> unit_of_measure_schedule_product_price_level
+		public System.Collections.Generic.IEnumerable<Entities.ProductPriceLevel> unit_of_measure_schedule_product_price_level
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProductPriceLevel>("unit_of_measure_schedule_product_price_level", null);
+				return this.GetRelatedEntities<Entities.ProductPriceLevel>("unit_of_measure_schedule_product_price_level", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("unit_of_measure_schedule_product_price_level");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProductPriceLevel>("unit_of_measure_schedule_product_price_level", null, value);
+				this.SetRelatedEntities<Entities.ProductPriceLevel>("unit_of_measure_schedule_product_price_level", null, value);
 				this.OnPropertyChanged("unit_of_measure_schedule_product_price_level");
 			}
 		}
@@ -531,18 +531,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N unit_of_measurement_schedule_products
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measurement_schedule_products")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Product> unit_of_measurement_schedule_products
+		public System.Collections.Generic.IEnumerable<Entities.Product> unit_of_measurement_schedule_products
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Product>("unit_of_measurement_schedule_products", null);
+				return this.GetRelatedEntities<Entities.Product>("unit_of_measurement_schedule_products", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("unit_of_measurement_schedule_products");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Product>("unit_of_measurement_schedule_products", null, value);
+				this.SetRelatedEntities<Entities.Product>("unit_of_measurement_schedule_products", null, value);
 				this.OnPropertyChanged("unit_of_measurement_schedule_products");
 			}
 		}
@@ -551,18 +551,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N UoMSchedule_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("UoMSchedule_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> UoMSchedule_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> UoMSchedule_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("UoMSchedule_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("UoMSchedule_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("UoMSchedule_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("UoMSchedule_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("UoMSchedule_AsyncOperations", null, value);
 				this.OnPropertyChanged("UoMSchedule_AsyncOperations");
 			}
 		}
@@ -571,18 +571,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N UoMSchedule_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("UoMSchedule_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> UoMSchedule_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> UoMSchedule_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("UoMSchedule_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("UoMSchedule_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("UoMSchedule_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("UoMSchedule_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("UoMSchedule_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("UoMSchedule_BulkDeleteFailures");
 			}
 		}
@@ -591,18 +591,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_uomschedule
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_uomschedule")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_uomschedule
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_uomschedule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_uomschedule", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_uomschedule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_uomschedule");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_uomschedule", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_uomschedule", null, value);
 				this.OnPropertyChanged("userentityinstancedata_uomschedule");
 			}
 		}
@@ -612,12 +612,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdbyexternalparty")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_externalparty_uomschedule_createdby")]
-		public DLaB.Xrm.Entities.ExternalParty lk_externalparty_uomschedule_createdby
+		public Entities.ExternalParty lk_externalparty_uomschedule_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ExternalParty>("lk_externalparty_uomschedule_createdby", null);
+				return this.GetRelatedEntity<Entities.ExternalParty>("lk_externalparty_uomschedule_createdby", null);
 			}
 		}
 		
@@ -626,12 +626,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedbyexternalparty")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_externalparty_uomschedule_modifiedby")]
-		public DLaB.Xrm.Entities.ExternalParty lk_externalparty_uomschedule_modifiedby
+		public Entities.ExternalParty lk_externalparty_uomschedule_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ExternalParty>("lk_externalparty_uomschedule_modifiedby", null);
+				return this.GetRelatedEntity<Entities.ExternalParty>("lk_externalparty_uomschedule_modifiedby", null);
 			}
 		}
 		
@@ -640,18 +640,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_uomschedule_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_uomschedule_createdonbehalfby
+		public Entities.SystemUser lk_uomschedule_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_uomschedule_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_uomschedule_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_uomschedule_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_uomschedule_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_uomschedule_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_uomschedule_createdonbehalfby");
 			}
 		}
@@ -661,18 +661,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_uomschedule_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_uomschedule_modifiedonbehalfby
+		public Entities.SystemUser lk_uomschedule_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_uomschedule_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_uomschedule_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_uomschedule_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_uomschedule_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_uomschedule_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_uomschedule_modifiedonbehalfby");
 			}
 		}
@@ -682,18 +682,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_uomschedulebase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_uomschedulebase_createdby
+		public Entities.SystemUser lk_uomschedulebase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_uomschedulebase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_uomschedulebase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_uomschedulebase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_uomschedulebase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_uomschedulebase_createdby", null, value);
 				this.OnPropertyChanged("lk_uomschedulebase_createdby");
 			}
 		}
@@ -703,18 +703,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_uomschedulebase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_uomschedulebase_modifiedby
+		public Entities.SystemUser lk_uomschedulebase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_uomschedulebase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_uomschedulebase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_uomschedulebase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_uomschedulebase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_uomschedulebase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_uomschedulebase_modifiedby");
 			}
 		}
@@ -724,12 +724,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_uof_schedules")]
-		public DLaB.Xrm.Entities.Organization organization_uof_schedules
+		public Entities.Organization organization_uof_schedules
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_uof_schedules", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_uof_schedules", null);
 			}
 		}
 		

@@ -632,7 +632,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the quick campaign is open, closed, or canceled. Closed or canceled quick campaigns are read-only and can't be edited.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.BulkOperationState> StateCode
+		public System.Nullable<Entities.BulkOperationState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -640,7 +640,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.BulkOperationState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.BulkOperationState), optionSet.Value)));
+					return ((Entities.BulkOperationState)(System.Enum.ToObject(typeof(Entities.BulkOperationState), optionSet.Value)));
 				}
 				else
 				{
@@ -778,18 +778,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N bulkoperation_activity_parties
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_activity_parties")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> bulkoperation_activity_parties
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> bulkoperation_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("bulkoperation_activity_parties", null);
+				return this.GetRelatedEntities<Entities.ActivityParty>("bulkoperation_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("bulkoperation_activity_parties");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("bulkoperation_activity_parties", null, value);
+				this.SetRelatedEntities<Entities.ActivityParty>("bulkoperation_activity_parties", null, value);
 				this.OnPropertyChanged("bulkoperation_activity_parties");
 			}
 		}
@@ -798,18 +798,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N BulkOperation_ActivityPointers
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_ActivityPointers")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityPointer> BulkOperation_ActivityPointers
+		public System.Collections.Generic.IEnumerable<Entities.ActivityPointer> BulkOperation_ActivityPointers
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityPointer>("BulkOperation_ActivityPointers", null);
+				return this.GetRelatedEntities<Entities.ActivityPointer>("BulkOperation_ActivityPointers", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperation_ActivityPointers");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityPointer>("BulkOperation_ActivityPointers", null, value);
+				this.SetRelatedEntities<Entities.ActivityPointer>("BulkOperation_ActivityPointers", null, value);
 				this.OnPropertyChanged("BulkOperation_ActivityPointers");
 			}
 		}
@@ -818,18 +818,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N BulkOperation_Appointment
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Appointment")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Appointment> BulkOperation_Appointment
+		public System.Collections.Generic.IEnumerable<Entities.Appointment> BulkOperation_Appointment
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Appointment>("BulkOperation_Appointment", null);
+				return this.GetRelatedEntities<Entities.Appointment>("BulkOperation_Appointment", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperation_Appointment");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Appointment>("BulkOperation_Appointment", null, value);
+				this.SetRelatedEntities<Entities.Appointment>("BulkOperation_Appointment", null, value);
 				this.OnPropertyChanged("BulkOperation_Appointment");
 			}
 		}
@@ -838,18 +838,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N BulkOperation_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> BulkOperation_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> BulkOperation_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("BulkOperation_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("BulkOperation_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperation_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("BulkOperation_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("BulkOperation_AsyncOperations", null, value);
 				this.OnPropertyChanged("BulkOperation_AsyncOperations");
 			}
 		}
@@ -858,18 +858,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N BulkOperation_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> BulkOperation_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> BulkOperation_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("BulkOperation_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("BulkOperation_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperation_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("BulkOperation_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("BulkOperation_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("BulkOperation_BulkDeleteFailures");
 			}
 		}
@@ -878,18 +878,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N BulkOperation_CampaignResponse
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_CampaignResponse")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.CampaignResponse> BulkOperation_CampaignResponse
+		public System.Collections.Generic.IEnumerable<Entities.CampaignResponse> BulkOperation_CampaignResponse
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.CampaignResponse>("BulkOperation_CampaignResponse", null);
+				return this.GetRelatedEntities<Entities.CampaignResponse>("BulkOperation_CampaignResponse", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperation_CampaignResponse");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.CampaignResponse>("BulkOperation_CampaignResponse", null, value);
+				this.SetRelatedEntities<Entities.CampaignResponse>("BulkOperation_CampaignResponse", null, value);
 				this.OnPropertyChanged("BulkOperation_CampaignResponse");
 			}
 		}
@@ -898,18 +898,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N BulkOperation_Email
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Email")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Email> BulkOperation_Email
+		public System.Collections.Generic.IEnumerable<Entities.Email> BulkOperation_Email
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Email>("BulkOperation_Email", null);
+				return this.GetRelatedEntities<Entities.Email>("BulkOperation_Email", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperation_Email");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Email>("BulkOperation_Email", null, value);
+				this.SetRelatedEntities<Entities.Email>("BulkOperation_Email", null, value);
 				this.OnPropertyChanged("BulkOperation_Email");
 			}
 		}
@@ -918,18 +918,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N BulkOperation_Faxes
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Faxes")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Fax> BulkOperation_Faxes
+		public System.Collections.Generic.IEnumerable<Entities.Fax> BulkOperation_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Fax>("BulkOperation_Faxes", null);
+				return this.GetRelatedEntities<Entities.Fax>("BulkOperation_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperation_Faxes");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Fax>("BulkOperation_Faxes", null, value);
+				this.SetRelatedEntities<Entities.Fax>("BulkOperation_Faxes", null, value);
 				this.OnPropertyChanged("BulkOperation_Faxes");
 			}
 		}
@@ -938,18 +938,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N BulkOperation_Letter
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Letter")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Letter> BulkOperation_Letter
+		public System.Collections.Generic.IEnumerable<Entities.Letter> BulkOperation_Letter
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Letter>("BulkOperation_Letter", null);
+				return this.GetRelatedEntities<Entities.Letter>("BulkOperation_Letter", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperation_Letter");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Letter>("BulkOperation_Letter", null, value);
+				this.SetRelatedEntities<Entities.Letter>("BulkOperation_Letter", null, value);
 				this.OnPropertyChanged("BulkOperation_Letter");
 			}
 		}
@@ -958,18 +958,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N BulkOperation_logs
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_logs")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkOperationLog> BulkOperation_logs
+		public System.Collections.Generic.IEnumerable<Entities.BulkOperationLog> BulkOperation_logs
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkOperationLog>("BulkOperation_logs", null);
+				return this.GetRelatedEntities<Entities.BulkOperationLog>("BulkOperation_logs", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperation_logs");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkOperationLog>("BulkOperation_logs", null, value);
+				this.SetRelatedEntities<Entities.BulkOperationLog>("BulkOperation_logs", null, value);
 				this.OnPropertyChanged("BulkOperation_logs");
 			}
 		}
@@ -978,18 +978,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N BulkOperation_MailboxTrackingFolder
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_MailboxTrackingFolder")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.MailboxTrackingFolder> BulkOperation_MailboxTrackingFolder
+		public System.Collections.Generic.IEnumerable<Entities.MailboxTrackingFolder> BulkOperation_MailboxTrackingFolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.MailboxTrackingFolder>("BulkOperation_MailboxTrackingFolder", null);
+				return this.GetRelatedEntities<Entities.MailboxTrackingFolder>("BulkOperation_MailboxTrackingFolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperation_MailboxTrackingFolder");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.MailboxTrackingFolder>("BulkOperation_MailboxTrackingFolder", null, value);
+				this.SetRelatedEntities<Entities.MailboxTrackingFolder>("BulkOperation_MailboxTrackingFolder", null, value);
 				this.OnPropertyChanged("BulkOperation_MailboxTrackingFolder");
 			}
 		}
@@ -998,18 +998,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N BulkOperation_Phonecall
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Phonecall")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PhoneCall> BulkOperation_Phonecall
+		public System.Collections.Generic.IEnumerable<Entities.PhoneCall> BulkOperation_Phonecall
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PhoneCall>("BulkOperation_Phonecall", null);
+				return this.GetRelatedEntities<Entities.PhoneCall>("BulkOperation_Phonecall", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperation_Phonecall");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PhoneCall>("BulkOperation_Phonecall", null, value);
+				this.SetRelatedEntities<Entities.PhoneCall>("BulkOperation_Phonecall", null, value);
 				this.OnPropertyChanged("BulkOperation_Phonecall");
 			}
 		}
@@ -1018,18 +1018,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N BulkOperation_QueueItem
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_QueueItem")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.QueueItem> BulkOperation_QueueItem
+		public System.Collections.Generic.IEnumerable<Entities.QueueItem> BulkOperation_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.QueueItem>("BulkOperation_QueueItem", null);
+				return this.GetRelatedEntities<Entities.QueueItem>("BulkOperation_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperation_QueueItem");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.QueueItem>("BulkOperation_QueueItem", null, value);
+				this.SetRelatedEntities<Entities.QueueItem>("BulkOperation_QueueItem", null, value);
 				this.OnPropertyChanged("BulkOperation_QueueItem");
 			}
 		}
@@ -1038,18 +1038,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N BulkOperation_RecurringAppointmentMaster
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_RecurringAppointmentMaster")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.RecurringAppointmentMaster> BulkOperation_RecurringAppointmentMaster
+		public System.Collections.Generic.IEnumerable<Entities.RecurringAppointmentMaster> BulkOperation_RecurringAppointmentMaster
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.RecurringAppointmentMaster>("BulkOperation_RecurringAppointmentMaster", null);
+				return this.GetRelatedEntities<Entities.RecurringAppointmentMaster>("BulkOperation_RecurringAppointmentMaster", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperation_RecurringAppointmentMaster");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.RecurringAppointmentMaster>("BulkOperation_RecurringAppointmentMaster", null, value);
+				this.SetRelatedEntities<Entities.RecurringAppointmentMaster>("BulkOperation_RecurringAppointmentMaster", null, value);
 				this.OnPropertyChanged("BulkOperation_RecurringAppointmentMaster");
 			}
 		}
@@ -1058,18 +1058,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N BulkOperation_SocialActivity
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_SocialActivity")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SocialActivity> BulkOperation_SocialActivity
+		public System.Collections.Generic.IEnumerable<Entities.SocialActivity> BulkOperation_SocialActivity
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SocialActivity>("BulkOperation_SocialActivity", null);
+				return this.GetRelatedEntities<Entities.SocialActivity>("BulkOperation_SocialActivity", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperation_SocialActivity");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SocialActivity>("BulkOperation_SocialActivity", null, value);
+				this.SetRelatedEntities<Entities.SocialActivity>("BulkOperation_SocialActivity", null, value);
 				this.OnPropertyChanged("BulkOperation_SocialActivity");
 			}
 		}
@@ -1078,18 +1078,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_bulkoperation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_bulkoperation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_bulkoperation
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_bulkoperation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_bulkoperation", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_bulkoperation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_bulkoperation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_bulkoperation", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_bulkoperation", null, value);
 				this.OnPropertyChanged("userentityinstancedata_bulkoperation");
 			}
 		}
@@ -1099,18 +1099,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("activity_pointer_BulkOperation")]
-		public DLaB.Xrm.Entities.ActivityPointer activity_pointer_BulkOperation
+		public Entities.ActivityPointer activity_pointer_BulkOperation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_BulkOperation", null);
+				return this.GetRelatedEntity<Entities.ActivityPointer>("activity_pointer_BulkOperation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("activity_pointer_BulkOperation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_BulkOperation", null, value);
+				this.SetRelatedEntity<Entities.ActivityPointer>("activity_pointer_BulkOperation", null, value);
 				this.OnPropertyChanged("activity_pointer_BulkOperation");
 			}
 		}
@@ -1120,18 +1120,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_BulkOperation_activities")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_BulkOperation_activities
+		public Entities.BusinessUnit business_unit_BulkOperation_activities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_BulkOperation_activities", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_BulkOperation_activities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_BulkOperation_activities");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_BulkOperation_activities", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_BulkOperation_activities", null, value);
 				this.OnPropertyChanged("business_unit_BulkOperation_activities");
 			}
 		}
@@ -1141,18 +1141,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignActivity_BulkOperations")]
-		public DLaB.Xrm.Entities.CampaignActivity CampaignActivity_BulkOperations
+		public Entities.CampaignActivity CampaignActivity_BulkOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("CampaignActivity_BulkOperations", null);
+				return this.GetRelatedEntity<Entities.CampaignActivity>("CampaignActivity_BulkOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CampaignActivity_BulkOperations");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("CampaignActivity_BulkOperations", null, value);
+				this.SetRelatedEntity<Entities.CampaignActivity>("CampaignActivity_BulkOperations", null, value);
 				this.OnPropertyChanged("CampaignActivity_BulkOperations");
 			}
 		}
@@ -1162,18 +1162,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("List_BulkOperations")]
-		public DLaB.Xrm.Entities.List List_BulkOperations
+		public Entities.List List_BulkOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.List>("List_BulkOperations", null);
+				return this.GetRelatedEntity<Entities.List>("List_BulkOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("List_BulkOperations");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.List>("List_BulkOperations", null, value);
+				this.SetRelatedEntity<Entities.List>("List_BulkOperations", null, value);
 				this.OnPropertyChanged("List_BulkOperations");
 			}
 		}
@@ -1183,18 +1183,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_BulkOperation_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_BulkOperation_createdby
+		public Entities.SystemUser lk_BulkOperation_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_BulkOperation_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_BulkOperation_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_BulkOperation_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_BulkOperation_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_BulkOperation_createdby", null, value);
 				this.OnPropertyChanged("lk_BulkOperation_createdby");
 			}
 		}
@@ -1204,18 +1204,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_BulkOperation_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_BulkOperation_createdonbehalfby
+		public Entities.SystemUser lk_BulkOperation_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_BulkOperation_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_BulkOperation_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_BulkOperation_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_BulkOperation_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_BulkOperation_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_BulkOperation_createdonbehalfby");
 			}
 		}
@@ -1225,18 +1225,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_BulkOperation_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_BulkOperation_modifiedby
+		public Entities.SystemUser lk_BulkOperation_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_BulkOperation_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_BulkOperation_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_BulkOperation_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_BulkOperation_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_BulkOperation_modifiedby", null, value);
 				this.OnPropertyChanged("lk_BulkOperation_modifiedby");
 			}
 		}
@@ -1246,18 +1246,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_BulkOperation_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_BulkOperation_modifiedonbehalfby
+		public Entities.SystemUser lk_BulkOperation_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_BulkOperation_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_BulkOperation_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_BulkOperation_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_BulkOperation_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_BulkOperation_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_BulkOperation_modifiedonbehalfby");
 			}
 		}
@@ -1267,18 +1267,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_BulkOperation")]
-		public DLaB.Xrm.Entities.Team team_BulkOperation
+		public Entities.Team team_BulkOperation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_BulkOperation", null);
+				return this.GetRelatedEntity<Entities.Team>("team_BulkOperation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_BulkOperation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_BulkOperation", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_BulkOperation", null, value);
 				this.OnPropertyChanged("team_BulkOperation");
 			}
 		}
@@ -1288,18 +1288,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_BulkOperation")]
-		public DLaB.Xrm.Entities.SystemUser user_BulkOperation
+		public Entities.SystemUser user_BulkOperation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_BulkOperation", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_BulkOperation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_BulkOperation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_BulkOperation", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_BulkOperation", null, value);
 				this.OnPropertyChanged("user_BulkOperation");
 			}
 		}

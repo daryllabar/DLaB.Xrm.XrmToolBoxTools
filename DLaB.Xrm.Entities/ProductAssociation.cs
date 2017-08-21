@@ -462,7 +462,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the associated product is active or inactive.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.ProductAssociationState> statecode
+		public System.Nullable<Entities.ProductAssociationState> statecode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -470,7 +470,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.ProductAssociationState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.ProductAssociationState), optionSet.Value)));
+					return ((Entities.ProductAssociationState)(System.Enum.ToObject(typeof(Entities.ProductAssociationState), optionSet.Value)));
 				}
 				else
 				{
@@ -570,18 +570,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ProductAssociation_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductAssociation_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> ProductAssociation_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> ProductAssociation_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("ProductAssociation_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("ProductAssociation_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ProductAssociation_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("ProductAssociation_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("ProductAssociation_AsyncOperations", null, value);
 				this.OnPropertyChanged("ProductAssociation_AsyncOperations");
 			}
 		}
@@ -590,18 +590,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ProductAssociation_DynamicProperty
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductAssociation_DynamicProperty")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DynamicProperty> ProductAssociation_DynamicProperty
+		public System.Collections.Generic.IEnumerable<Entities.DynamicProperty> ProductAssociation_DynamicProperty
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DynamicProperty>("ProductAssociation_DynamicProperty", null);
+				return this.GetRelatedEntities<Entities.DynamicProperty>("ProductAssociation_DynamicProperty", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ProductAssociation_DynamicProperty");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DynamicProperty>("ProductAssociation_DynamicProperty", null, value);
+				this.SetRelatedEntities<Entities.DynamicProperty>("ProductAssociation_DynamicProperty", null, value);
 				this.OnPropertyChanged("ProductAssociation_DynamicProperty");
 			}
 		}
@@ -610,18 +610,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ProductAssociation_DynamicPropertyAssociation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductAssociation_DynamicPropertyAssociation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DynamicPropertyAssociation> ProductAssociation_DynamicPropertyAssociation
+		public System.Collections.Generic.IEnumerable<Entities.DynamicPropertyAssociation> ProductAssociation_DynamicPropertyAssociation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DynamicPropertyAssociation>("ProductAssociation_DynamicPropertyAssociation", null);
+				return this.GetRelatedEntities<Entities.DynamicPropertyAssociation>("ProductAssociation_DynamicPropertyAssociation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ProductAssociation_DynamicPropertyAssociation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DynamicPropertyAssociation>("ProductAssociation_DynamicPropertyAssociation", null, value);
+				this.SetRelatedEntities<Entities.DynamicPropertyAssociation>("ProductAssociation_DynamicPropertyAssociation", null, value);
 				this.OnPropertyChanged("ProductAssociation_DynamicPropertyAssociation");
 			}
 		}
@@ -630,18 +630,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N productAssociation_invoice_details
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("productAssociation_invoice_details")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.InvoiceDetail> productAssociation_invoice_details
+		public System.Collections.Generic.IEnumerable<Entities.InvoiceDetail> productAssociation_invoice_details
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.InvoiceDetail>("productAssociation_invoice_details", null);
+				return this.GetRelatedEntities<Entities.InvoiceDetail>("productAssociation_invoice_details", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("productAssociation_invoice_details");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.InvoiceDetail>("productAssociation_invoice_details", null, value);
+				this.SetRelatedEntities<Entities.InvoiceDetail>("productAssociation_invoice_details", null, value);
 				this.OnPropertyChanged("productAssociation_invoice_details");
 			}
 		}
@@ -650,18 +650,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N productAssociation_opportunity_product
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("productAssociation_opportunity_product")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.OpportunityProduct> productAssociation_opportunity_product
+		public System.Collections.Generic.IEnumerable<Entities.OpportunityProduct> productAssociation_opportunity_product
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.OpportunityProduct>("productAssociation_opportunity_product", null);
+				return this.GetRelatedEntities<Entities.OpportunityProduct>("productAssociation_opportunity_product", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("productAssociation_opportunity_product");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.OpportunityProduct>("productAssociation_opportunity_product", null, value);
+				this.SetRelatedEntities<Entities.OpportunityProduct>("productAssociation_opportunity_product", null, value);
 				this.OnPropertyChanged("productAssociation_opportunity_product");
 			}
 		}
@@ -670,18 +670,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ProductAssociation_PrincipalObjectAttributeAccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductAssociation_PrincipalObjectAttributeAccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> ProductAssociation_PrincipalObjectAttributeAccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> ProductAssociation_PrincipalObjectAttributeAccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("ProductAssociation_PrincipalObjectAttributeAccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("ProductAssociation_PrincipalObjectAttributeAccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ProductAssociation_PrincipalObjectAttributeAccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("ProductAssociation_PrincipalObjectAttributeAccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("ProductAssociation_PrincipalObjectAttributeAccess", null, value);
 				this.OnPropertyChanged("ProductAssociation_PrincipalObjectAttributeAccess");
 			}
 		}
@@ -690,18 +690,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ProductAssociation_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductAssociation_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> ProductAssociation_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> ProductAssociation_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("ProductAssociation_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("ProductAssociation_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ProductAssociation_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("ProductAssociation_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("ProductAssociation_ProcessSessions", null, value);
 				this.OnPropertyChanged("ProductAssociation_ProcessSessions");
 			}
 		}
@@ -710,18 +710,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N productAssociation_quote_details
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("productAssociation_quote_details")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.QuoteDetail> productAssociation_quote_details
+		public System.Collections.Generic.IEnumerable<Entities.QuoteDetail> productAssociation_quote_details
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.QuoteDetail>("productAssociation_quote_details", null);
+				return this.GetRelatedEntities<Entities.QuoteDetail>("productAssociation_quote_details", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("productAssociation_quote_details");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.QuoteDetail>("productAssociation_quote_details", null, value);
+				this.SetRelatedEntities<Entities.QuoteDetail>("productAssociation_quote_details", null, value);
 				this.OnPropertyChanged("productAssociation_quote_details");
 			}
 		}
@@ -730,18 +730,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N productAssociation_salesorder_details
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("productAssociation_salesorder_details")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SalesOrderDetail> productAssociation_salesorder_details
+		public System.Collections.Generic.IEnumerable<Entities.SalesOrderDetail> productAssociation_salesorder_details
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SalesOrderDetail>("productAssociation_salesorder_details", null);
+				return this.GetRelatedEntities<Entities.SalesOrderDetail>("productAssociation_salesorder_details", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("productAssociation_salesorder_details");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SalesOrderDetail>("productAssociation_salesorder_details", null, value);
+				this.SetRelatedEntities<Entities.SalesOrderDetail>("productAssociation_salesorder_details", null, value);
 				this.OnPropertyChanged("productAssociation_salesorder_details");
 			}
 		}
@@ -750,18 +750,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_productassociation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_productassociation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_productassociation
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_productassociation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_productassociation", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_productassociation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_productassociation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_productassociation", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_productassociation", null, value);
 				this.OnPropertyChanged("userentityinstancedata_productassociation");
 			}
 		}
@@ -771,18 +771,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ProductAssociate_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_ProductAssociate_createdby
+		public Entities.SystemUser lk_ProductAssociate_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ProductAssociate_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_ProductAssociate_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_ProductAssociate_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ProductAssociate_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_ProductAssociate_createdby", null, value);
 				this.OnPropertyChanged("lk_ProductAssociate_createdby");
 			}
 		}
@@ -792,18 +792,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ProductAssociation_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_ProductAssociation_createdonbehalfby
+		public Entities.SystemUser lk_ProductAssociation_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ProductAssociation_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_ProductAssociation_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_ProductAssociation_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ProductAssociation_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_ProductAssociation_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_ProductAssociation_createdonbehalfby");
 			}
 		}
@@ -813,18 +813,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ProductAssociation_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_ProductAssociation_modifiedby
+		public Entities.SystemUser lk_ProductAssociation_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ProductAssociation_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_ProductAssociation_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_ProductAssociation_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ProductAssociation_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_ProductAssociation_modifiedby", null, value);
 				this.OnPropertyChanged("lk_ProductAssociation_modifiedby");
 			}
 		}
@@ -834,18 +834,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ProductAssociation_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_ProductAssociation_modifiedonbehalfby
+		public Entities.SystemUser lk_ProductAssociation_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ProductAssociation_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_ProductAssociation_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_ProductAssociation_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ProductAssociation_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_ProductAssociation_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_ProductAssociation_modifiedonbehalfby");
 			}
 		}
@@ -855,12 +855,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_ProductAssociation")]
-		public DLaB.Xrm.Entities.Organization organization_ProductAssociation
+		public Entities.Organization organization_ProductAssociation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_ProductAssociation", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_ProductAssociation", null);
 			}
 		}
 		
@@ -869,18 +869,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("associatedproduct")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Product_ProductAssociation_AssocProd")]
-		public DLaB.Xrm.Entities.Product Product_ProductAssociation_AssocProd
+		public Entities.Product Product_ProductAssociation_AssocProd
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Product>("Product_ProductAssociation_AssocProd", null);
+				return this.GetRelatedEntity<Entities.Product>("Product_ProductAssociation_AssocProd", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Product_ProductAssociation_AssocProd");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Product>("Product_ProductAssociation_AssocProd", null, value);
+				this.SetRelatedEntity<Entities.Product>("Product_ProductAssociation_AssocProd", null, value);
 				this.OnPropertyChanged("Product_ProductAssociation_AssocProd");
 			}
 		}
@@ -890,18 +890,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("productid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Product_ProductAssociation_Prod")]
-		public DLaB.Xrm.Entities.Product Product_ProductAssociation_Prod
+		public Entities.Product Product_ProductAssociation_Prod
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Product>("Product_ProductAssociation_Prod", null);
+				return this.GetRelatedEntity<Entities.Product>("Product_ProductAssociation_Prod", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Product_ProductAssociation_Prod");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Product>("Product_ProductAssociation_Prod", null, value);
+				this.SetRelatedEntity<Entities.Product>("Product_ProductAssociation_Prod", null, value);
 				this.OnPropertyChanged("Product_ProductAssociation_Prod");
 			}
 		}
@@ -911,18 +911,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_ProductAssociation")]
-		public DLaB.Xrm.Entities.TransactionCurrency transactioncurrency_ProductAssociation
+		public Entities.TransactionCurrency transactioncurrency_ProductAssociation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_ProductAssociation", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_ProductAssociation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_ProductAssociation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_ProductAssociation", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_ProductAssociation", null, value);
 				this.OnPropertyChanged("transactioncurrency_ProductAssociation");
 			}
 		}
@@ -932,18 +932,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uomid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measurement_productassociation")]
-		public DLaB.Xrm.Entities.UoM unit_of_measurement_productassociation
+		public Entities.UoM unit_of_measurement_productassociation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.UoM>("unit_of_measurement_productassociation", null);
+				return this.GetRelatedEntity<Entities.UoM>("unit_of_measurement_productassociation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("unit_of_measurement_productassociation");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.UoM>("unit_of_measurement_productassociation", null, value);
+				this.SetRelatedEntity<Entities.UoM>("unit_of_measurement_productassociation", null, value);
 				this.OnPropertyChanged("unit_of_measurement_productassociation");
 			}
 		}

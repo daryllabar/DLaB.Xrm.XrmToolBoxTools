@@ -1413,7 +1413,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the goal is open, completed, or canceled. Completed and canceled goals are read-only and can't be edited.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.GoalState> StateCode
+		public System.Nullable<Entities.GoalState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -1421,7 +1421,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.GoalState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.GoalState), optionSet.Value)));
+					return ((Entities.GoalState)(System.Enum.ToObject(typeof(Entities.GoalState), optionSet.Value)));
 				}
 				else
 				{
@@ -1739,18 +1739,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Goal_Annotation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Goal_Annotation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> Goal_Annotation
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> Goal_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("Goal_Annotation", null);
+				return this.GetRelatedEntities<Entities.Annotation>("Goal_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Goal_Annotation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("Goal_Annotation", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("Goal_Annotation", null, value);
 				this.OnPropertyChanged("Goal_Annotation");
 			}
 		}
@@ -1759,18 +1759,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Goal_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Goal_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> Goal_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> Goal_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Goal_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("Goal_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Goal_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Goal_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("Goal_AsyncOperations", null, value);
 				this.OnPropertyChanged("Goal_AsyncOperations");
 			}
 		}
@@ -1779,18 +1779,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N goal_connections1
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("goal_connections1")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> goal_connections1
+		public System.Collections.Generic.IEnumerable<Entities.Connection> goal_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("goal_connections1", null);
+				return this.GetRelatedEntities<Entities.Connection>("goal_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("goal_connections1");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("goal_connections1", null, value);
+				this.SetRelatedEntities<Entities.Connection>("goal_connections1", null, value);
 				this.OnPropertyChanged("goal_connections1");
 			}
 		}
@@ -1799,18 +1799,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N goal_connections2
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("goal_connections2")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> goal_connections2
+		public System.Collections.Generic.IEnumerable<Entities.Connection> goal_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("goal_connections2", null);
+				return this.GetRelatedEntities<Entities.Connection>("goal_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("goal_connections2");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("goal_connections2", null, value);
+				this.SetRelatedEntities<Entities.Connection>("goal_connections2", null, value);
 				this.OnPropertyChanged("goal_connections2");
 			}
 		}
@@ -1819,18 +1819,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Goal_DuplicateBaseRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Goal_DuplicateBaseRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> Goal_DuplicateBaseRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> Goal_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Goal_DuplicateBaseRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("Goal_DuplicateBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Goal_DuplicateBaseRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Goal_DuplicateBaseRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("Goal_DuplicateBaseRecord", null, value);
 				this.OnPropertyChanged("Goal_DuplicateBaseRecord");
 			}
 		}
@@ -1839,18 +1839,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Goal_DuplicateMatchingRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Goal_DuplicateMatchingRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> Goal_DuplicateMatchingRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> Goal_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Goal_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("Goal_DuplicateMatchingRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Goal_DuplicateMatchingRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Goal_DuplicateMatchingRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("Goal_DuplicateMatchingRecord", null, value);
 				this.OnPropertyChanged("Goal_DuplicateMatchingRecord");
 			}
 		}
@@ -1859,18 +1859,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N goal_parent_goal
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("goal_parent_goal", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Goal> Referencedgoal_parent_goal
+		public System.Collections.Generic.IEnumerable<Entities.Goal> Referencedgoal_parent_goal
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Goal>("goal_parent_goal", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.Goal>("goal_parent_goal", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedgoal_parent_goal");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Goal>("goal_parent_goal", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.Goal>("goal_parent_goal", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedgoal_parent_goal");
 			}
 		}
@@ -1879,18 +1879,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N goal_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("goal_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> goal_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> goal_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("goal_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("goal_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("goal_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("goal_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("goal_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("goal_principalobjectattributeaccess");
 			}
 		}
@@ -1899,18 +1899,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Goal_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Goal_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> Goal_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> Goal_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Goal_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("Goal_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Goal_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Goal_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("Goal_ProcessSessions", null, value);
 				this.OnPropertyChanged("Goal_ProcessSessions");
 			}
 		}
@@ -1919,18 +1919,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Goal_RollupError_Goal
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Goal_RollupError_Goal", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Goal> ReferencedGoal_RollupError_Goal
+		public System.Collections.Generic.IEnumerable<Entities.Goal> ReferencedGoal_RollupError_Goal
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Goal>("Goal_RollupError_Goal", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.Goal>("Goal_RollupError_Goal", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ReferencedGoal_RollupError_Goal");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Goal>("Goal_RollupError_Goal", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.Goal>("Goal_RollupError_Goal", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("ReferencedGoal_RollupError_Goal");
 			}
 		}
@@ -1939,18 +1939,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_goal
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_goal")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_goal
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_goal
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_goal", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_goal", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_goal");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_goal", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_goal", null, value);
 				this.OnPropertyChanged("userentityinstancedata_goal");
 			}
 		}
@@ -1960,18 +1960,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_goal")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_goal
+		public Entities.BusinessUnit business_unit_goal
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_goal", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_goal", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_goal");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_goal", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_goal", null, value);
 				this.OnPropertyChanged("business_unit_goal");
 			}
 		}
@@ -1981,18 +1981,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentgoalid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("goal_parent_goal", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.Goal Referencinggoal_parent_goal
+		public Entities.Goal Referencinggoal_parent_goal
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Goal>("goal_parent_goal", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.Goal>("goal_parent_goal", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencinggoal_parent_goal");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Goal>("goal_parent_goal", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Entities.Goal>("goal_parent_goal", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencinggoal_parent_goal");
 			}
 		}
@@ -2002,18 +2002,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("goalwitherrorid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Goal_RollupError_Goal", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.Goal ReferencingGoal_RollupError_Goal
+		public Entities.Goal ReferencingGoal_RollupError_Goal
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Goal>("Goal_RollupError_Goal", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.Goal>("Goal_RollupError_Goal", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ReferencingGoal_RollupError_Goal");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Goal>("Goal_RollupError_Goal", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Entities.Goal>("Goal_RollupError_Goal", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("ReferencingGoal_RollupError_Goal");
 			}
 		}
@@ -2023,18 +2023,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rollupqueryactualdecimalid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("goal_rollupquery_actualdecimal")]
-		public DLaB.Xrm.Entities.GoalRollupQuery goal_rollupquery_actualdecimal
+		public Entities.GoalRollupQuery goal_rollupquery_actualdecimal
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.GoalRollupQuery>("goal_rollupquery_actualdecimal", null);
+				return this.GetRelatedEntity<Entities.GoalRollupQuery>("goal_rollupquery_actualdecimal", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("goal_rollupquery_actualdecimal");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.GoalRollupQuery>("goal_rollupquery_actualdecimal", null, value);
+				this.SetRelatedEntity<Entities.GoalRollupQuery>("goal_rollupquery_actualdecimal", null, value);
 				this.OnPropertyChanged("goal_rollupquery_actualdecimal");
 			}
 		}
@@ -2044,18 +2044,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rollupqueryactualmoneyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("goal_rollupquery_actualmoney")]
-		public DLaB.Xrm.Entities.GoalRollupQuery goal_rollupquery_actualmoney
+		public Entities.GoalRollupQuery goal_rollupquery_actualmoney
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.GoalRollupQuery>("goal_rollupquery_actualmoney", null);
+				return this.GetRelatedEntity<Entities.GoalRollupQuery>("goal_rollupquery_actualmoney", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("goal_rollupquery_actualmoney");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.GoalRollupQuery>("goal_rollupquery_actualmoney", null, value);
+				this.SetRelatedEntity<Entities.GoalRollupQuery>("goal_rollupquery_actualmoney", null, value);
 				this.OnPropertyChanged("goal_rollupquery_actualmoney");
 			}
 		}
@@ -2065,18 +2065,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rollupquerycustomdecimalid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("goal_rollupquery_customdecimal")]
-		public DLaB.Xrm.Entities.GoalRollupQuery goal_rollupquery_customdecimal
+		public Entities.GoalRollupQuery goal_rollupquery_customdecimal
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.GoalRollupQuery>("goal_rollupquery_customdecimal", null);
+				return this.GetRelatedEntity<Entities.GoalRollupQuery>("goal_rollupquery_customdecimal", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("goal_rollupquery_customdecimal");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.GoalRollupQuery>("goal_rollupquery_customdecimal", null, value);
+				this.SetRelatedEntity<Entities.GoalRollupQuery>("goal_rollupquery_customdecimal", null, value);
 				this.OnPropertyChanged("goal_rollupquery_customdecimal");
 			}
 		}
@@ -2086,18 +2086,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rollupquerycustomintegerid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("goal_rollupquery_customint")]
-		public DLaB.Xrm.Entities.GoalRollupQuery goal_rollupquery_customint
+		public Entities.GoalRollupQuery goal_rollupquery_customint
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.GoalRollupQuery>("goal_rollupquery_customint", null);
+				return this.GetRelatedEntity<Entities.GoalRollupQuery>("goal_rollupquery_customint", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("goal_rollupquery_customint");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.GoalRollupQuery>("goal_rollupquery_customint", null, value);
+				this.SetRelatedEntity<Entities.GoalRollupQuery>("goal_rollupquery_customint", null, value);
 				this.OnPropertyChanged("goal_rollupquery_customint");
 			}
 		}
@@ -2107,18 +2107,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rollupquerycustommoneyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("goal_rollupquery_custommoney")]
-		public DLaB.Xrm.Entities.GoalRollupQuery goal_rollupquery_custommoney
+		public Entities.GoalRollupQuery goal_rollupquery_custommoney
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.GoalRollupQuery>("goal_rollupquery_custommoney", null);
+				return this.GetRelatedEntity<Entities.GoalRollupQuery>("goal_rollupquery_custommoney", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("goal_rollupquery_custommoney");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.GoalRollupQuery>("goal_rollupquery_custommoney", null, value);
+				this.SetRelatedEntity<Entities.GoalRollupQuery>("goal_rollupquery_custommoney", null, value);
 				this.OnPropertyChanged("goal_rollupquery_custommoney");
 			}
 		}
@@ -2128,18 +2128,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rollupqueryinprogressdecimalid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("goal_rollupquery_inprogressdecimal")]
-		public DLaB.Xrm.Entities.GoalRollupQuery goal_rollupquery_inprogressdecimal
+		public Entities.GoalRollupQuery goal_rollupquery_inprogressdecimal
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.GoalRollupQuery>("goal_rollupquery_inprogressdecimal", null);
+				return this.GetRelatedEntity<Entities.GoalRollupQuery>("goal_rollupquery_inprogressdecimal", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("goal_rollupquery_inprogressdecimal");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.GoalRollupQuery>("goal_rollupquery_inprogressdecimal", null, value);
+				this.SetRelatedEntity<Entities.GoalRollupQuery>("goal_rollupquery_inprogressdecimal", null, value);
 				this.OnPropertyChanged("goal_rollupquery_inprogressdecimal");
 			}
 		}
@@ -2149,18 +2149,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rollupqueryinprogressintegerid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("goal_rollupquery_inprogressint")]
-		public DLaB.Xrm.Entities.GoalRollupQuery goal_rollupquery_inprogressint
+		public Entities.GoalRollupQuery goal_rollupquery_inprogressint
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.GoalRollupQuery>("goal_rollupquery_inprogressint", null);
+				return this.GetRelatedEntity<Entities.GoalRollupQuery>("goal_rollupquery_inprogressint", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("goal_rollupquery_inprogressint");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.GoalRollupQuery>("goal_rollupquery_inprogressint", null, value);
+				this.SetRelatedEntity<Entities.GoalRollupQuery>("goal_rollupquery_inprogressint", null, value);
 				this.OnPropertyChanged("goal_rollupquery_inprogressint");
 			}
 		}
@@ -2170,18 +2170,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rollupqueryinprogressmoneyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("goal_rollupquery_inprogressmoney")]
-		public DLaB.Xrm.Entities.GoalRollupQuery goal_rollupquery_inprogressmoney
+		public Entities.GoalRollupQuery goal_rollupquery_inprogressmoney
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.GoalRollupQuery>("goal_rollupquery_inprogressmoney", null);
+				return this.GetRelatedEntity<Entities.GoalRollupQuery>("goal_rollupquery_inprogressmoney", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("goal_rollupquery_inprogressmoney");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.GoalRollupQuery>("goal_rollupquery_inprogressmoney", null, value);
+				this.SetRelatedEntity<Entities.GoalRollupQuery>("goal_rollupquery_inprogressmoney", null, value);
 				this.OnPropertyChanged("goal_rollupquery_inprogressmoney");
 			}
 		}
@@ -2191,18 +2191,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rollupqueryactualintegerid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("goalrollupquery_actualint")]
-		public DLaB.Xrm.Entities.GoalRollupQuery goalrollupquery_actualint
+		public Entities.GoalRollupQuery goalrollupquery_actualint
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.GoalRollupQuery>("goalrollupquery_actualint", null);
+				return this.GetRelatedEntity<Entities.GoalRollupQuery>("goalrollupquery_actualint", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("goalrollupquery_actualint");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.GoalRollupQuery>("goalrollupquery_actualint", null, value);
+				this.SetRelatedEntity<Entities.GoalRollupQuery>("goalrollupquery_actualint", null, value);
 				this.OnPropertyChanged("goalrollupquery_actualint");
 			}
 		}
@@ -2212,18 +2212,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_goal_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_goal_createdby
+		public Entities.SystemUser lk_goal_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_goal_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_goal_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_goal_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_goal_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_goal_createdby", null, value);
 				this.OnPropertyChanged("lk_goal_createdby");
 			}
 		}
@@ -2233,18 +2233,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_goal_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_goal_createdonbehalfby
+		public Entities.SystemUser lk_goal_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_goal_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_goal_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_goal_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_goal_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_goal_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_goal_createdonbehalfby");
 			}
 		}
@@ -2254,18 +2254,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_goal_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_goal_modifiedby
+		public Entities.SystemUser lk_goal_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_goal_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_goal_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_goal_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_goal_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_goal_modifiedby", null, value);
 				this.OnPropertyChanged("lk_goal_modifiedby");
 			}
 		}
@@ -2275,18 +2275,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_goal_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_goal_modifiedonbehalfby
+		public Entities.SystemUser lk_goal_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_goal_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_goal_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_goal_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_goal_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_goal_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_goal_modifiedonbehalfby");
 			}
 		}
@@ -2296,18 +2296,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("metricid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("metric_goal")]
-		public DLaB.Xrm.Entities.Metric metric_goal
+		public Entities.Metric metric_goal
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Metric>("metric_goal", null);
+				return this.GetRelatedEntity<Entities.Metric>("metric_goal", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("metric_goal");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Metric>("metric_goal", null, value);
+				this.SetRelatedEntity<Entities.Metric>("metric_goal", null, value);
 				this.OnPropertyChanged("metric_goal");
 			}
 		}
@@ -2317,18 +2317,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_goal")]
-		public DLaB.Xrm.Entities.Team team_goal
+		public Entities.Team team_goal
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_goal", null);
+				return this.GetRelatedEntity<Entities.Team>("team_goal", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_goal");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_goal", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_goal", null, value);
 				this.OnPropertyChanged("team_goal");
 			}
 		}
@@ -2338,18 +2338,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("goalownerid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_goal_goalowner")]
-		public DLaB.Xrm.Entities.Team team_goal_goalowner
+		public Entities.Team team_goal_goalowner
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_goal_goalowner", null);
+				return this.GetRelatedEntity<Entities.Team>("team_goal_goalowner", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_goal_goalowner");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_goal_goalowner", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_goal_goalowner", null, value);
 				this.OnPropertyChanged("team_goal_goalowner");
 			}
 		}
@@ -2359,12 +2359,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Goal")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_Goal
+		public Entities.TransactionCurrency TransactionCurrency_Goal
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_Goal", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_Goal", null);
 			}
 		}
 		
@@ -2373,18 +2373,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_goal")]
-		public DLaB.Xrm.Entities.SystemUser user_goal
+		public Entities.SystemUser user_goal
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_goal", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_goal", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_goal");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_goal", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_goal", null, value);
 				this.OnPropertyChanged("user_goal");
 			}
 		}
@@ -2394,18 +2394,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("goalownerid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_goal_goalowner")]
-		public DLaB.Xrm.Entities.SystemUser user_goal_goalowner
+		public Entities.SystemUser user_goal_goalowner
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_goal_goalowner", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_goal_goalowner", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_goal_goalowner");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_goal_goalowner", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_goal_goalowner", null, value);
 				this.OnPropertyChanged("user_goal_goalowner");
 			}
 		}

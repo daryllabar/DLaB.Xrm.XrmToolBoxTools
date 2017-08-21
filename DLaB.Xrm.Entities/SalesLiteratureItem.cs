@@ -554,18 +554,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N SalesLiteratureItem_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesLiteratureItem_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> SalesLiteratureItem_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> SalesLiteratureItem_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("SalesLiteratureItem_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("SalesLiteratureItem_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SalesLiteratureItem_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("SalesLiteratureItem_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("SalesLiteratureItem_AsyncOperations", null, value);
 				this.OnPropertyChanged("SalesLiteratureItem_AsyncOperations");
 			}
 		}
@@ -574,18 +574,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N SalesLiteratureItem_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesLiteratureItem_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> SalesLiteratureItem_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> SalesLiteratureItem_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("SalesLiteratureItem_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("SalesLiteratureItem_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SalesLiteratureItem_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("SalesLiteratureItem_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("SalesLiteratureItem_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("SalesLiteratureItem_BulkDeleteFailures");
 			}
 		}
@@ -594,18 +594,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N SalesLiteratureItem_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesLiteratureItem_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> SalesLiteratureItem_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> SalesLiteratureItem_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("SalesLiteratureItem_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("SalesLiteratureItem_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SalesLiteratureItem_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("SalesLiteratureItem_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("SalesLiteratureItem_ProcessSessions", null, value);
 				this.OnPropertyChanged("SalesLiteratureItem_ProcessSessions");
 			}
 		}
@@ -614,18 +614,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_salesliteratureitem
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_salesliteratureitem")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_salesliteratureitem
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_salesliteratureitem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_salesliteratureitem", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_salesliteratureitem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_salesliteratureitem");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_salesliteratureitem", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_salesliteratureitem", null, value);
 				this.OnPropertyChanged("userentityinstancedata_salesliteratureitem");
 			}
 		}
@@ -635,18 +635,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_salesliteratureitem_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_salesliteratureitem_createdonbehalfby
+		public Entities.SystemUser lk_salesliteratureitem_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_salesliteratureitem_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_salesliteratureitem_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_salesliteratureitem_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_salesliteratureitem_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_salesliteratureitem_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_salesliteratureitem_createdonbehalfby");
 			}
 		}
@@ -656,18 +656,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_salesliteratureitem_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_salesliteratureitem_modifiedonbehalfby
+		public Entities.SystemUser lk_salesliteratureitem_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_salesliteratureitem_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_salesliteratureitem_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_salesliteratureitem_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_salesliteratureitem_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_salesliteratureitem_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_salesliteratureitem_modifiedonbehalfby");
 			}
 		}
@@ -677,18 +677,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_salesliteratureitembase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_salesliteratureitembase_createdby
+		public Entities.SystemUser lk_salesliteratureitembase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_salesliteratureitembase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_salesliteratureitembase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_salesliteratureitembase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_salesliteratureitembase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_salesliteratureitembase_createdby", null, value);
 				this.OnPropertyChanged("lk_salesliteratureitembase_createdby");
 			}
 		}
@@ -698,18 +698,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_salesliteratureitembase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_salesliteratureitembase_modifiedby
+		public Entities.SystemUser lk_salesliteratureitembase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_salesliteratureitembase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_salesliteratureitembase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_salesliteratureitembase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_salesliteratureitembase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_salesliteratureitembase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_salesliteratureitembase_modifiedby");
 			}
 		}
@@ -719,18 +719,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("salesliteratureid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sales_literature_items")]
-		public DLaB.Xrm.Entities.SalesLiterature sales_literature_items
+		public Entities.SalesLiterature sales_literature_items
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesLiterature>("sales_literature_items", null);
+				return this.GetRelatedEntity<Entities.SalesLiterature>("sales_literature_items", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("sales_literature_items");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SalesLiterature>("sales_literature_items", null, value);
+				this.SetRelatedEntity<Entities.SalesLiterature>("sales_literature_items", null, value);
 				this.OnPropertyChanged("sales_literature_items");
 			}
 		}

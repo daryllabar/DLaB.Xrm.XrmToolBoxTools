@@ -512,18 +512,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N serviceendpoint_sdkmessageprocessingstep
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("serviceendpoint_sdkmessageprocessingstep")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SdkMessageProcessingStep> serviceendpoint_sdkmessageprocessingstep
+		public System.Collections.Generic.IEnumerable<Entities.SdkMessageProcessingStep> serviceendpoint_sdkmessageprocessingstep
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SdkMessageProcessingStep>("serviceendpoint_sdkmessageprocessingstep", null);
+				return this.GetRelatedEntities<Entities.SdkMessageProcessingStep>("serviceendpoint_sdkmessageprocessingstep", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("serviceendpoint_sdkmessageprocessingstep");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SdkMessageProcessingStep>("serviceendpoint_sdkmessageprocessingstep", null, value);
+				this.SetRelatedEntities<Entities.SdkMessageProcessingStep>("serviceendpoint_sdkmessageprocessingstep", null, value);
 				this.OnPropertyChanged("serviceendpoint_sdkmessageprocessingstep");
 			}
 		}
@@ -532,18 +532,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_serviceendpoint
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_serviceendpoint")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_serviceendpoint
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_serviceendpoint
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_serviceendpoint", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_serviceendpoint", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_serviceendpoint");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_serviceendpoint", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_serviceendpoint", null, value);
 				this.OnPropertyChanged("userentityinstancedata_serviceendpoint");
 			}
 		}
@@ -553,18 +553,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_serviceendpoint")]
-		public DLaB.Xrm.Entities.SystemUser createdby_serviceendpoint
+		public Entities.SystemUser createdby_serviceendpoint
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdby_serviceendpoint", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("createdby_serviceendpoint", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("createdby_serviceendpoint");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdby_serviceendpoint", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("createdby_serviceendpoint", null, value);
 				this.OnPropertyChanged("createdby_serviceendpoint");
 			}
 		}
@@ -574,18 +574,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_serviceendpointbase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_serviceendpointbase_createdonbehalfby
+		public Entities.SystemUser lk_serviceendpointbase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_serviceendpointbase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_serviceendpointbase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_serviceendpointbase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_serviceendpointbase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_serviceendpointbase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_serviceendpointbase_createdonbehalfby");
 			}
 		}
@@ -595,18 +595,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_serviceendpointbase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_serviceendpointbase_modifiedonbehalfby
+		public Entities.SystemUser lk_serviceendpointbase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_serviceendpointbase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_serviceendpointbase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_serviceendpointbase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_serviceendpointbase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_serviceendpointbase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_serviceendpointbase_modifiedonbehalfby");
 			}
 		}
@@ -616,18 +616,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_serviceendpoint")]
-		public DLaB.Xrm.Entities.SystemUser modifiedby_serviceendpoint
+		public Entities.SystemUser modifiedby_serviceendpoint
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("modifiedby_serviceendpoint", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("modifiedby_serviceendpoint", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("modifiedby_serviceendpoint");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("modifiedby_serviceendpoint", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("modifiedby_serviceendpoint", null, value);
 				this.OnPropertyChanged("modifiedby_serviceendpoint");
 			}
 		}
@@ -637,12 +637,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_serviceendpoint")]
-		public DLaB.Xrm.Entities.Organization organization_serviceendpoint
+		public Entities.Organization organization_serviceendpoint
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_serviceendpoint", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_serviceendpoint", null);
 			}
 		}
 		

@@ -493,7 +493,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the channel access profile rule is in a draft state or an active state.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.ChannelAccessProfileRuleState> StateCode
+		public System.Nullable<Entities.ChannelAccessProfileRuleState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -501,7 +501,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.ChannelAccessProfileRuleState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.ChannelAccessProfileRuleState), optionSet.Value)));
+					return ((Entities.ChannelAccessProfileRuleState)(System.Enum.ToObject(typeof(Entities.ChannelAccessProfileRuleState), optionSet.Value)));
 				}
 				else
 				{
@@ -641,18 +641,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N profilerule_Annotations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("profilerule_Annotations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> profilerule_Annotations
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> profilerule_Annotations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("profilerule_Annotations", null);
+				return this.GetRelatedEntities<Entities.Annotation>("profilerule_Annotations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("profilerule_Annotations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("profilerule_Annotations", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("profilerule_Annotations", null, value);
 				this.OnPropertyChanged("profilerule_Annotations");
 			}
 		}
@@ -661,18 +661,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N profilerule_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("profilerule_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> profilerule_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> profilerule_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("profilerule_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("profilerule_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("profilerule_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("profilerule_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("profilerule_AsyncOperations", null, value);
 				this.OnPropertyChanged("profilerule_AsyncOperations");
 			}
 		}
@@ -681,18 +681,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N profilerule_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("profilerule_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> profilerule_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> profilerule_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("profilerule_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("profilerule_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("profilerule_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("profilerule_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("profilerule_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("profilerule_BulkDeleteFailures");
 			}
 		}
@@ -701,18 +701,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N profilerule_connections1
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("profilerule_connections1")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> profilerule_connections1
+		public System.Collections.Generic.IEnumerable<Entities.Connection> profilerule_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("profilerule_connections1", null);
+				return this.GetRelatedEntities<Entities.Connection>("profilerule_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("profilerule_connections1");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("profilerule_connections1", null, value);
+				this.SetRelatedEntities<Entities.Connection>("profilerule_connections1", null, value);
 				this.OnPropertyChanged("profilerule_connections1");
 			}
 		}
@@ -721,18 +721,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N profilerule_connections2
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("profilerule_connections2")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> profilerule_connections2
+		public System.Collections.Generic.IEnumerable<Entities.Connection> profilerule_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("profilerule_connections2", null);
+				return this.GetRelatedEntities<Entities.Connection>("profilerule_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("profilerule_connections2");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("profilerule_connections2", null, value);
+				this.SetRelatedEntities<Entities.Connection>("profilerule_connections2", null, value);
 				this.OnPropertyChanged("profilerule_connections2");
 			}
 		}
@@ -741,18 +741,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N profilerule_entries
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("profilerule_entries")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ChannelAccessProfileRuleItem> profilerule_entries
+		public System.Collections.Generic.IEnumerable<Entities.ChannelAccessProfileRuleItem> profilerule_entries
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ChannelAccessProfileRuleItem>("profilerule_entries", null);
+				return this.GetRelatedEntities<Entities.ChannelAccessProfileRuleItem>("profilerule_entries", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("profilerule_entries");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ChannelAccessProfileRuleItem>("profilerule_entries", null, value);
+				this.SetRelatedEntities<Entities.ChannelAccessProfileRuleItem>("profilerule_entries", null, value);
 				this.OnPropertyChanged("profilerule_entries");
 			}
 		}
@@ -761,18 +761,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N profilerule_ProcessSession
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("profilerule_ProcessSession")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> profilerule_ProcessSession
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> profilerule_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("profilerule_ProcessSession", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("profilerule_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("profilerule_ProcessSession");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("profilerule_ProcessSession", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("profilerule_ProcessSession", null, value);
 				this.OnPropertyChanged("profilerule_ProcessSession");
 			}
 		}
@@ -781,18 +781,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N profilerule_UserEntityInstanceDatas
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("profilerule_UserEntityInstanceDatas")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> profilerule_UserEntityInstanceDatas
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> profilerule_UserEntityInstanceDatas
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("profilerule_UserEntityInstanceDatas", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("profilerule_UserEntityInstanceDatas", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("profilerule_UserEntityInstanceDatas");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("profilerule_UserEntityInstanceDatas", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("profilerule_UserEntityInstanceDatas", null, value);
 				this.OnPropertyChanged("profilerule_UserEntityInstanceDatas");
 			}
 		}
@@ -802,18 +802,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_profilerule")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_profilerule
+		public Entities.BusinessUnit business_unit_profilerule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_profilerule", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_profilerule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_profilerule");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_profilerule", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_profilerule", null, value);
 				this.OnPropertyChanged("business_unit_profilerule");
 			}
 		}
@@ -823,18 +823,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_profilerule_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_profilerule_createdby
+		public Entities.SystemUser lk_profilerule_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_profilerule_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_profilerule_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_profilerule_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_profilerule_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_profilerule_createdby", null, value);
 				this.OnPropertyChanged("lk_profilerule_createdby");
 			}
 		}
@@ -844,18 +844,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_profilerule_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_profilerule_createdonbehalfby
+		public Entities.SystemUser lk_profilerule_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_profilerule_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_profilerule_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_profilerule_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_profilerule_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_profilerule_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_profilerule_createdonbehalfby");
 			}
 		}
@@ -865,18 +865,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_profilerule_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_profilerule_modifiedby
+		public Entities.SystemUser lk_profilerule_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_profilerule_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_profilerule_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_profilerule_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_profilerule_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_profilerule_modifiedby", null, value);
 				this.OnPropertyChanged("lk_profilerule_modifiedby");
 			}
 		}
@@ -886,18 +886,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_profilerule_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_profilerule_modifiedonbehalfby
+		public Entities.SystemUser lk_profilerule_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_profilerule_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_profilerule_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_profilerule_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_profilerule_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_profilerule_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_profilerule_modifiedonbehalfby");
 			}
 		}
@@ -907,18 +907,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_profilerule")]
-		public DLaB.Xrm.Entities.Team team_profilerule
+		public Entities.Team team_profilerule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_profilerule", null);
+				return this.GetRelatedEntity<Entities.Team>("team_profilerule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_profilerule");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_profilerule", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_profilerule", null, value);
 				this.OnPropertyChanged("team_profilerule");
 			}
 		}
@@ -928,18 +928,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_profilerule")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_profilerule
+		public Entities.TransactionCurrency TransactionCurrency_profilerule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_profilerule", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_profilerule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_profilerule");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_profilerule", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_profilerule", null, value);
 				this.OnPropertyChanged("TransactionCurrency_profilerule");
 			}
 		}
@@ -949,18 +949,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_profilerule")]
-		public DLaB.Xrm.Entities.SystemUser user_profilerule
+		public Entities.SystemUser user_profilerule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_profilerule", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_profilerule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_profilerule");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_profilerule", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_profilerule", null, value);
 				this.OnPropertyChanged("user_profilerule");
 			}
 		}
@@ -970,18 +970,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("workflowid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("workflowid_profilerule")]
-		public DLaB.Xrm.Entities.Workflow workflowid_profilerule
+		public Entities.Workflow workflowid_profilerule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Workflow>("workflowid_profilerule", null);
+				return this.GetRelatedEntity<Entities.Workflow>("workflowid_profilerule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("workflowid_profilerule");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Workflow>("workflowid_profilerule", null, value);
+				this.SetRelatedEntity<Entities.Workflow>("workflowid_profilerule", null, value);
 				this.OnPropertyChanged("workflowid_profilerule");
 			}
 		}

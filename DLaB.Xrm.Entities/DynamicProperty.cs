@@ -821,7 +821,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows the state of the property.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.DynamicPropertyState> statecode
+		public System.Nullable<Entities.DynamicPropertyState> statecode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -829,7 +829,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.DynamicPropertyState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.DynamicPropertyState), optionSet.Value)));
+					return ((Entities.DynamicPropertyState)(System.Enum.ToObject(typeof(Entities.DynamicPropertyState), optionSet.Value)));
 				}
 				else
 				{
@@ -889,18 +889,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N dynamicproperty_base_dynamicproperty
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("dynamicproperty_base_dynamicproperty", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DynamicProperty> Referenceddynamicproperty_base_dynamicproperty
+		public System.Collections.Generic.IEnumerable<Entities.DynamicProperty> Referenceddynamicproperty_base_dynamicproperty
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DynamicProperty>("dynamicproperty_base_dynamicproperty", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.DynamicProperty>("dynamicproperty_base_dynamicproperty", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referenceddynamicproperty_base_dynamicproperty");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DynamicProperty>("dynamicproperty_base_dynamicproperty", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.DynamicProperty>("dynamicproperty_base_dynamicproperty", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referenceddynamicproperty_base_dynamicproperty");
 			}
 		}
@@ -909,18 +909,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Dynamicproperty_DynamicPropertyAssociation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Dynamicproperty_DynamicPropertyAssociation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DynamicPropertyAssociation> Dynamicproperty_DynamicPropertyAssociation
+		public System.Collections.Generic.IEnumerable<Entities.DynamicPropertyAssociation> Dynamicproperty_DynamicPropertyAssociation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DynamicPropertyAssociation>("Dynamicproperty_DynamicPropertyAssociation", null);
+				return this.GetRelatedEntities<Entities.DynamicPropertyAssociation>("Dynamicproperty_DynamicPropertyAssociation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Dynamicproperty_DynamicPropertyAssociation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DynamicPropertyAssociation>("Dynamicproperty_DynamicPropertyAssociation", null, value);
+				this.SetRelatedEntities<Entities.DynamicPropertyAssociation>("Dynamicproperty_DynamicPropertyAssociation", null, value);
 				this.OnPropertyChanged("Dynamicproperty_DynamicPropertyAssociation");
 			}
 		}
@@ -929,18 +929,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N DynamicProperty_DynamicPropertyInstance
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("DynamicProperty_DynamicPropertyInstance")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DynamicPropertyInstance> DynamicProperty_DynamicPropertyInstance
+		public System.Collections.Generic.IEnumerable<Entities.DynamicPropertyInstance> DynamicProperty_DynamicPropertyInstance
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DynamicPropertyInstance>("DynamicProperty_DynamicPropertyInstance", null);
+				return this.GetRelatedEntities<Entities.DynamicPropertyInstance>("DynamicProperty_DynamicPropertyInstance", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("DynamicProperty_DynamicPropertyInstance");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DynamicPropertyInstance>("DynamicProperty_DynamicPropertyInstance", null, value);
+				this.SetRelatedEntities<Entities.DynamicPropertyInstance>("DynamicProperty_DynamicPropertyInstance", null, value);
 				this.OnPropertyChanged("DynamicProperty_DynamicPropertyInstance");
 			}
 		}
@@ -949,18 +949,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N DynamicProperty_DynamicPropertyOptionSetItem
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("DynamicProperty_DynamicPropertyOptionSetItem")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DynamicPropertyOptionSetItem> DynamicProperty_DynamicPropertyOptionSetItem
+		public System.Collections.Generic.IEnumerable<Entities.DynamicPropertyOptionSetItem> DynamicProperty_DynamicPropertyOptionSetItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DynamicPropertyOptionSetItem>("DynamicProperty_DynamicPropertyOptionSetItem", null);
+				return this.GetRelatedEntities<Entities.DynamicPropertyOptionSetItem>("DynamicProperty_DynamicPropertyOptionSetItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("DynamicProperty_DynamicPropertyOptionSetItem");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DynamicPropertyOptionSetItem>("DynamicProperty_DynamicPropertyOptionSetItem", null, value);
+				this.SetRelatedEntities<Entities.DynamicPropertyOptionSetItem>("DynamicProperty_DynamicPropertyOptionSetItem", null, value);
 				this.OnPropertyChanged("DynamicProperty_DynamicPropertyOptionSetItem");
 			}
 		}
@@ -970,18 +970,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultvalueoptionset")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("DefaultValueOptionSet_DynamicProperty")]
-		public DLaB.Xrm.Entities.DynamicPropertyOptionSetItem DefaultValueOptionSet_DynamicProperty
+		public Entities.DynamicPropertyOptionSetItem DefaultValueOptionSet_DynamicProperty
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.DynamicPropertyOptionSetItem>("DefaultValueOptionSet_DynamicProperty", null);
+				return this.GetRelatedEntity<Entities.DynamicPropertyOptionSetItem>("DefaultValueOptionSet_DynamicProperty", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("DefaultValueOptionSet_DynamicProperty");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.DynamicPropertyOptionSetItem>("DefaultValueOptionSet_DynamicProperty", null, value);
+				this.SetRelatedEntity<Entities.DynamicPropertyOptionSetItem>("DefaultValueOptionSet_DynamicProperty", null, value);
 				this.OnPropertyChanged("DefaultValueOptionSet_DynamicProperty");
 			}
 		}
@@ -991,18 +991,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("basedynamicpropertyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("dynamicproperty_base_dynamicproperty", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.DynamicProperty Referencingdynamicproperty_base_dynamicproperty
+		public Entities.DynamicProperty Referencingdynamicproperty_base_dynamicproperty
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.DynamicProperty>("dynamicproperty_base_dynamicproperty", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.DynamicProperty>("dynamicproperty_base_dynamicproperty", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencingdynamicproperty_base_dynamicproperty");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.DynamicProperty>("dynamicproperty_base_dynamicproperty", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Entities.DynamicProperty>("dynamicproperty_base_dynamicproperty", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencingdynamicproperty_base_dynamicproperty");
 			}
 		}
@@ -1012,12 +1012,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("dynamicproperty_organization")]
-		public DLaB.Xrm.Entities.Organization dynamicproperty_organization
+		public Entities.Organization dynamicproperty_organization
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("dynamicproperty_organization", null);
+				return this.GetRelatedEntity<Entities.Organization>("dynamicproperty_organization", null);
 			}
 		}
 		
@@ -1026,18 +1026,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_DynamicProperty_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_DynamicProperty_createdby
+		public Entities.SystemUser lk_DynamicProperty_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicProperty_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_DynamicProperty_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_DynamicProperty_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicProperty_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_DynamicProperty_createdby", null, value);
 				this.OnPropertyChanged("lk_DynamicProperty_createdby");
 			}
 		}
@@ -1047,18 +1047,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_DynamicProperty_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_DynamicProperty_createdonbehalfby
+		public Entities.SystemUser lk_DynamicProperty_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicProperty_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_DynamicProperty_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_DynamicProperty_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicProperty_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_DynamicProperty_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_DynamicProperty_createdonbehalfby");
 			}
 		}
@@ -1068,18 +1068,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_DynamicProperty_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_DynamicProperty_modifiedby
+		public Entities.SystemUser lk_DynamicProperty_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicProperty_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_DynamicProperty_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_DynamicProperty_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicProperty_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_DynamicProperty_modifiedby", null, value);
 				this.OnPropertyChanged("lk_DynamicProperty_modifiedby");
 			}
 		}
@@ -1089,18 +1089,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_DynamicProperty_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_DynamicProperty_modifiedonbehalfby
+		public Entities.SystemUser lk_DynamicProperty_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicProperty_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_DynamicProperty_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_DynamicProperty_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_DynamicProperty_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_DynamicProperty_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_DynamicProperty_modifiedonbehalfby");
 			}
 		}
@@ -1110,18 +1110,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Product_DynamicProperty")]
-		public DLaB.Xrm.Entities.Product Product_DynamicProperty
+		public Entities.Product Product_DynamicProperty
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Product>("Product_DynamicProperty", null);
+				return this.GetRelatedEntity<Entities.Product>("Product_DynamicProperty", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Product_DynamicProperty");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Product>("Product_DynamicProperty", null, value);
+				this.SetRelatedEntity<Entities.Product>("Product_DynamicProperty", null, value);
 				this.OnPropertyChanged("Product_DynamicProperty");
 			}
 		}
@@ -1131,18 +1131,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductAssociation_DynamicProperty")]
-		public DLaB.Xrm.Entities.ProductAssociation ProductAssociation_DynamicProperty
+		public Entities.ProductAssociation ProductAssociation_DynamicProperty
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProductAssociation>("ProductAssociation_DynamicProperty", null);
+				return this.GetRelatedEntity<Entities.ProductAssociation>("ProductAssociation_DynamicProperty", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ProductAssociation_DynamicProperty");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProductAssociation>("ProductAssociation_DynamicProperty", null, value);
+				this.SetRelatedEntity<Entities.ProductAssociation>("ProductAssociation_DynamicProperty", null, value);
 				this.OnPropertyChanged("ProductAssociation_DynamicProperty");
 			}
 		}

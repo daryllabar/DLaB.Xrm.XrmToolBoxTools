@@ -417,7 +417,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the goal metric.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.MetricState> StateCode
+		public System.Nullable<Entities.MetricState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -425,7 +425,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.MetricState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.MetricState), optionSet.Value)));
+					return ((Entities.MetricState)(System.Enum.ToObject(typeof(Entities.MetricState), optionSet.Value)));
 				}
 				else
 				{
@@ -525,18 +525,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N metric_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("metric_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> metric_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> metric_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("metric_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("metric_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("metric_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("metric_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("metric_AsyncOperations", null, value);
 				this.OnPropertyChanged("metric_AsyncOperations");
 			}
 		}
@@ -545,18 +545,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N metric_goal
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("metric_goal")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Goal> metric_goal
+		public System.Collections.Generic.IEnumerable<Entities.Goal> metric_goal
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Goal>("metric_goal", null);
+				return this.GetRelatedEntities<Entities.Goal>("metric_goal", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("metric_goal");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Goal>("metric_goal", null, value);
+				this.SetRelatedEntities<Entities.Goal>("metric_goal", null, value);
 				this.OnPropertyChanged("metric_goal");
 			}
 		}
@@ -565,18 +565,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N metric_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("metric_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> metric_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> metric_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("metric_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("metric_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("metric_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("metric_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("metric_ProcessSessions", null, value);
 				this.OnPropertyChanged("metric_ProcessSessions");
 			}
 		}
@@ -585,18 +585,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N metric_rollupfield
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("metric_rollupfield")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.RollupField> metric_rollupfield
+		public System.Collections.Generic.IEnumerable<Entities.RollupField> metric_rollupfield
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.RollupField>("metric_rollupfield", null);
+				return this.GetRelatedEntities<Entities.RollupField>("metric_rollupfield", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("metric_rollupfield");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.RollupField>("metric_rollupfield", null, value);
+				this.SetRelatedEntities<Entities.RollupField>("metric_rollupfield", null, value);
 				this.OnPropertyChanged("metric_rollupfield");
 			}
 		}
@@ -605,18 +605,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_metric
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_metric")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_metric
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_metric
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_metric", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_metric", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_metric");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_metric", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_metric", null, value);
 				this.OnPropertyChanged("userentityinstancedata_metric");
 			}
 		}
@@ -626,18 +626,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_metric_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_metric_createdby
+		public Entities.SystemUser lk_metric_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_metric_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_metric_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_metric_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_metric_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_metric_createdby", null, value);
 				this.OnPropertyChanged("lk_metric_createdby");
 			}
 		}
@@ -647,18 +647,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_metric_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_metric_createdonbehalfby
+		public Entities.SystemUser lk_metric_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_metric_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_metric_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_metric_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_metric_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_metric_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_metric_createdonbehalfby");
 			}
 		}
@@ -668,18 +668,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_metric_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_metric_modifiedby
+		public Entities.SystemUser lk_metric_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_metric_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_metric_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_metric_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_metric_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_metric_modifiedby", null, value);
 				this.OnPropertyChanged("lk_metric_modifiedby");
 			}
 		}
@@ -689,18 +689,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_metric_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_metric_modifiedonbehalfby
+		public Entities.SystemUser lk_metric_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_metric_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_metric_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_metric_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_metric_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_metric_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_metric_modifiedonbehalfby");
 			}
 		}
@@ -710,12 +710,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_metric")]
-		public DLaB.Xrm.Entities.Organization organization_metric
+		public Entities.Organization organization_metric
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_metric", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_metric", null);
 			}
 		}
 		

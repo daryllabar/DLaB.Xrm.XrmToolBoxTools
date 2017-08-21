@@ -974,7 +974,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the process.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.WorkflowState> StateCode
+		public System.Nullable<Entities.WorkflowState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -982,7 +982,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.WorkflowState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.WorkflowState), optionSet.Value)));
+					return ((Entities.WorkflowState)(System.Enum.ToObject(typeof(Entities.WorkflowState), optionSet.Value)));
 				}
 				else
 				{
@@ -1278,18 +1278,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N convertruleitembase_workflowid
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("convertruleitembase_workflowid")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ConvertRuleItem> convertruleitembase_workflowid
+		public System.Collections.Generic.IEnumerable<Entities.ConvertRuleItem> convertruleitembase_workflowid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ConvertRuleItem>("convertruleitembase_workflowid", null);
+				return this.GetRelatedEntities<Entities.ConvertRuleItem>("convertruleitembase_workflowid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("convertruleitembase_workflowid");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ConvertRuleItem>("convertruleitembase_workflowid", null, value);
+				this.SetRelatedEntities<Entities.ConvertRuleItem>("convertruleitembase_workflowid", null, value);
 				this.OnPropertyChanged("convertruleitembase_workflowid");
 			}
 		}
@@ -1298,18 +1298,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N lk_asyncoperation_workflowactivationid
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_asyncoperation_workflowactivationid")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> lk_asyncoperation_workflowactivationid
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> lk_asyncoperation_workflowactivationid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("lk_asyncoperation_workflowactivationid", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("lk_asyncoperation_workflowactivationid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_asyncoperation_workflowactivationid");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("lk_asyncoperation_workflowactivationid", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("lk_asyncoperation_workflowactivationid", null, value);
 				this.OnPropertyChanged("lk_asyncoperation_workflowactivationid");
 			}
 		}
@@ -1318,18 +1318,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N lk_processsession_processid
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_processsession_processid")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> lk_processsession_processid
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> lk_processsession_processid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("lk_processsession_processid", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("lk_processsession_processid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_processsession_processid");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("lk_processsession_processid", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("lk_processsession_processid", null, value);
 				this.OnPropertyChanged("lk_processsession_processid");
 			}
 		}
@@ -1338,18 +1338,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N process_processstage
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("process_processstage")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessStage> process_processstage
+		public System.Collections.Generic.IEnumerable<Entities.ProcessStage> process_processstage
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessStage>("process_processstage", null);
+				return this.GetRelatedEntities<Entities.ProcessStage>("process_processstage", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("process_processstage");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessStage>("process_processstage", null, value);
+				this.SetRelatedEntities<Entities.ProcessStage>("process_processstage", null, value);
 				this.OnPropertyChanged("process_processstage");
 			}
 		}
@@ -1358,18 +1358,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N process_processtrigger
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("process_processtrigger")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessTrigger> process_processtrigger
+		public System.Collections.Generic.IEnumerable<Entities.ProcessTrigger> process_processtrigger
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessTrigger>("process_processtrigger", null);
+				return this.GetRelatedEntities<Entities.ProcessTrigger>("process_processtrigger", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("process_processtrigger");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessTrigger>("process_processtrigger", null, value);
+				this.SetRelatedEntities<Entities.ProcessTrigger>("process_processtrigger", null, value);
 				this.OnPropertyChanged("process_processtrigger");
 			}
 		}
@@ -1378,18 +1378,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N slabase_workflowid
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("slabase_workflowid")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SLA> slabase_workflowid
+		public System.Collections.Generic.IEnumerable<Entities.SLA> slabase_workflowid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SLA>("slabase_workflowid", null);
+				return this.GetRelatedEntities<Entities.SLA>("slabase_workflowid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("slabase_workflowid");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SLA>("slabase_workflowid", null, value);
+				this.SetRelatedEntities<Entities.SLA>("slabase_workflowid", null, value);
 				this.OnPropertyChanged("slabase_workflowid");
 			}
 		}
@@ -1398,18 +1398,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N slaitembase_workflowid
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("slaitembase_workflowid")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SLAItem> slaitembase_workflowid
+		public System.Collections.Generic.IEnumerable<Entities.SLAItem> slaitembase_workflowid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SLAItem>("slaitembase_workflowid", null);
+				return this.GetRelatedEntities<Entities.SLAItem>("slaitembase_workflowid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("slaitembase_workflowid");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SLAItem>("slaitembase_workflowid", null, value);
+				this.SetRelatedEntities<Entities.SLAItem>("slaitembase_workflowid", null, value);
 				this.OnPropertyChanged("slaitembase_workflowid");
 			}
 		}
@@ -1418,18 +1418,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_workflow
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_workflow")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_workflow
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_workflow
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_workflow", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_workflow", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_workflow");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_workflow", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_workflow", null, value);
 				this.OnPropertyChanged("userentityinstancedata_workflow");
 			}
 		}
@@ -1438,18 +1438,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N workflow_active_workflow
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("workflow_active_workflow", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Workflow> Referencedworkflow_active_workflow
+		public System.Collections.Generic.IEnumerable<Entities.Workflow> Referencedworkflow_active_workflow
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Workflow>("workflow_active_workflow", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.Workflow>("workflow_active_workflow", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedworkflow_active_workflow");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Workflow>("workflow_active_workflow", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.Workflow>("workflow_active_workflow", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedworkflow_active_workflow");
 			}
 		}
@@ -1458,18 +1458,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Workflow_Annotation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Workflow_Annotation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> Workflow_Annotation
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> Workflow_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("Workflow_Annotation", null);
+				return this.GetRelatedEntities<Entities.Annotation>("Workflow_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Workflow_Annotation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("Workflow_Annotation", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("Workflow_Annotation", null, value);
 				this.OnPropertyChanged("Workflow_Annotation");
 			}
 		}
@@ -1478,18 +1478,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N workflow_dependencies
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("workflow_dependencies")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.WorkflowDependency> workflow_dependencies
+		public System.Collections.Generic.IEnumerable<Entities.WorkflowDependency> workflow_dependencies
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.WorkflowDependency>("workflow_dependencies", null);
+				return this.GetRelatedEntities<Entities.WorkflowDependency>("workflow_dependencies", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("workflow_dependencies");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.WorkflowDependency>("workflow_dependencies", null, value);
+				this.SetRelatedEntities<Entities.WorkflowDependency>("workflow_dependencies", null, value);
 				this.OnPropertyChanged("workflow_dependencies");
 			}
 		}
@@ -1498,18 +1498,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N workflow_parent_workflow
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("workflow_parent_workflow", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Workflow> Referencedworkflow_parent_workflow
+		public System.Collections.Generic.IEnumerable<Entities.Workflow> Referencedworkflow_parent_workflow
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Workflow>("workflow_parent_workflow", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.Workflow>("workflow_parent_workflow", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedworkflow_parent_workflow");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Workflow>("workflow_parent_workflow", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.Workflow>("workflow_parent_workflow", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedworkflow_parent_workflow");
 			}
 		}
@@ -1518,18 +1518,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Workflow_routingrule
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Workflow_routingrule")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.RoutingRule> Workflow_routingrule
+		public System.Collections.Generic.IEnumerable<Entities.RoutingRule> Workflow_routingrule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.RoutingRule>("Workflow_routingrule", null);
+				return this.GetRelatedEntities<Entities.RoutingRule>("Workflow_routingrule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Workflow_routingrule");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.RoutingRule>("Workflow_routingrule", null, value);
+				this.SetRelatedEntities<Entities.RoutingRule>("Workflow_routingrule", null, value);
 				this.OnPropertyChanged("Workflow_routingrule");
 			}
 		}
@@ -1538,18 +1538,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N workflowid_convertrule
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("workflowid_convertrule")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ConvertRule> workflowid_convertrule
+		public System.Collections.Generic.IEnumerable<Entities.ConvertRule> workflowid_convertrule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ConvertRule>("workflowid_convertrule", null);
+				return this.GetRelatedEntities<Entities.ConvertRule>("workflowid_convertrule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("workflowid_convertrule");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ConvertRule>("workflowid_convertrule", null, value);
+				this.SetRelatedEntities<Entities.ConvertRule>("workflowid_convertrule", null, value);
 				this.OnPropertyChanged("workflowid_convertrule");
 			}
 		}
@@ -1558,18 +1558,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N workflowid_profilerule
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("workflowid_profilerule")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ChannelAccessProfileRule> workflowid_profilerule
+		public System.Collections.Generic.IEnumerable<Entities.ChannelAccessProfileRule> workflowid_profilerule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ChannelAccessProfileRule>("workflowid_profilerule", null);
+				return this.GetRelatedEntities<Entities.ChannelAccessProfileRule>("workflowid_profilerule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("workflowid_profilerule");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ChannelAccessProfileRule>("workflowid_profilerule", null, value);
+				this.SetRelatedEntities<Entities.ChannelAccessProfileRule>("workflowid_profilerule", null, value);
 				this.OnPropertyChanged("workflowid_profilerule");
 			}
 		}
@@ -1579,18 +1579,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_workflow")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_workflow
+		public Entities.BusinessUnit business_unit_workflow
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_workflow", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_workflow", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_workflow");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_workflow", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_workflow", null, value);
 				this.OnPropertyChanged("business_unit_workflow");
 			}
 		}
@@ -1600,18 +1600,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("system_user_workflow")]
-		public DLaB.Xrm.Entities.SystemUser system_user_workflow
+		public Entities.SystemUser system_user_workflow
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("system_user_workflow", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("system_user_workflow", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("system_user_workflow");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("system_user_workflow", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("system_user_workflow", null, value);
 				this.OnPropertyChanged("system_user_workflow");
 			}
 		}
@@ -1621,18 +1621,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_workflow")]
-		public DLaB.Xrm.Entities.Team team_workflow
+		public Entities.Team team_workflow
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_workflow", null);
+				return this.GetRelatedEntity<Entities.Team>("team_workflow", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_workflow");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_workflow", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_workflow", null, value);
 				this.OnPropertyChanged("team_workflow");
 			}
 		}
@@ -1642,12 +1642,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activeworkflowid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("workflow_active_workflow", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.Workflow Referencingworkflow_active_workflow
+		public Entities.Workflow Referencingworkflow_active_workflow
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Workflow>("workflow_active_workflow", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.Workflow>("workflow_active_workflow", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 		}
 		
@@ -1656,18 +1656,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("workflow_createdby")]
-		public DLaB.Xrm.Entities.SystemUser workflow_createdby
+		public Entities.SystemUser workflow_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("workflow_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("workflow_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("workflow_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("workflow_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("workflow_createdby", null, value);
 				this.OnPropertyChanged("workflow_createdby");
 			}
 		}
@@ -1677,18 +1677,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("workflow_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser workflow_createdonbehalfby
+		public Entities.SystemUser workflow_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("workflow_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("workflow_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("workflow_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("workflow_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("workflow_createdonbehalfby", null, value);
 				this.OnPropertyChanged("workflow_createdonbehalfby");
 			}
 		}
@@ -1698,18 +1698,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("workflow_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser workflow_modifiedby
+		public Entities.SystemUser workflow_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("workflow_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("workflow_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("workflow_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("workflow_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("workflow_modifiedby", null, value);
 				this.OnPropertyChanged("workflow_modifiedby");
 			}
 		}
@@ -1719,18 +1719,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("workflow_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser workflow_modifiedonbehalfby
+		public Entities.SystemUser workflow_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("workflow_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("workflow_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("workflow_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("workflow_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("workflow_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("workflow_modifiedonbehalfby");
 			}
 		}
@@ -1740,12 +1740,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentworkflowid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("workflow_parent_workflow", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.Workflow Referencingworkflow_parent_workflow
+		public Entities.Workflow Referencingworkflow_parent_workflow
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Workflow>("workflow_parent_workflow", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.Workflow>("workflow_parent_workflow", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 		}
 		

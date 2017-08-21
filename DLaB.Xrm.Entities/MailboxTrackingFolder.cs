@@ -451,18 +451,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Account_MailboxTrackingFolder")]
-		public DLaB.Xrm.Entities.Account Account_MailboxTrackingFolder
+		public Entities.Account Account_MailboxTrackingFolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_MailboxTrackingFolder", null);
+				return this.GetRelatedEntity<Entities.Account>("Account_MailboxTrackingFolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Account_MailboxTrackingFolder");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_MailboxTrackingFolder", null, value);
+				this.SetRelatedEntity<Entities.Account>("Account_MailboxTrackingFolder", null, value);
 				this.OnPropertyChanged("Account_MailboxTrackingFolder");
 			}
 		}
@@ -472,18 +472,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("AsyncOperation_MailboxTrackingFolder")]
-		public DLaB.Xrm.Entities.AsyncOperation AsyncOperation_MailboxTrackingFolder
+		public Entities.AsyncOperation AsyncOperation_MailboxTrackingFolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.AsyncOperation>("AsyncOperation_MailboxTrackingFolder", null);
+				return this.GetRelatedEntity<Entities.AsyncOperation>("AsyncOperation_MailboxTrackingFolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("AsyncOperation_MailboxTrackingFolder");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.AsyncOperation>("AsyncOperation_MailboxTrackingFolder", null, value);
+				this.SetRelatedEntity<Entities.AsyncOperation>("AsyncOperation_MailboxTrackingFolder", null, value);
 				this.OnPropertyChanged("AsyncOperation_MailboxTrackingFolder");
 			}
 		}
@@ -493,18 +493,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_MailboxTrackingFolder")]
-		public DLaB.Xrm.Entities.BulkOperation BulkOperation_MailboxTrackingFolder
+		public Entities.BulkOperation BulkOperation_MailboxTrackingFolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BulkOperation>("BulkOperation_MailboxTrackingFolder", null);
+				return this.GetRelatedEntity<Entities.BulkOperation>("BulkOperation_MailboxTrackingFolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperation_MailboxTrackingFolder");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BulkOperation>("BulkOperation_MailboxTrackingFolder", null, value);
+				this.SetRelatedEntity<Entities.BulkOperation>("BulkOperation_MailboxTrackingFolder", null, value);
 				this.OnPropertyChanged("BulkOperation_MailboxTrackingFolder");
 			}
 		}
@@ -514,18 +514,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("businessunit_mailboxtrackingfolder")]
-		public DLaB.Xrm.Entities.BusinessUnit businessunit_mailboxtrackingfolder
+		public Entities.BusinessUnit businessunit_mailboxtrackingfolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("businessunit_mailboxtrackingfolder", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("businessunit_mailboxtrackingfolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("businessunit_mailboxtrackingfolder");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("businessunit_mailboxtrackingfolder", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("businessunit_mailboxtrackingfolder", null, value);
 				this.OnPropertyChanged("businessunit_mailboxtrackingfolder");
 			}
 		}
@@ -535,18 +535,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Campaign_MailboxTrackingFolder")]
-		public DLaB.Xrm.Entities.Campaign Campaign_MailboxTrackingFolder
+		public Entities.Campaign Campaign_MailboxTrackingFolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Campaign>("Campaign_MailboxTrackingFolder", null);
+				return this.GetRelatedEntity<Entities.Campaign>("Campaign_MailboxTrackingFolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Campaign_MailboxTrackingFolder");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Campaign>("Campaign_MailboxTrackingFolder", null, value);
+				this.SetRelatedEntity<Entities.Campaign>("Campaign_MailboxTrackingFolder", null, value);
 				this.OnPropertyChanged("Campaign_MailboxTrackingFolder");
 			}
 		}
@@ -556,18 +556,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignActivity_MailboxTrackingFolder")]
-		public DLaB.Xrm.Entities.CampaignActivity CampaignActivity_MailboxTrackingFolder
+		public Entities.CampaignActivity CampaignActivity_MailboxTrackingFolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("CampaignActivity_MailboxTrackingFolder", null);
+				return this.GetRelatedEntity<Entities.CampaignActivity>("CampaignActivity_MailboxTrackingFolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CampaignActivity_MailboxTrackingFolder");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("CampaignActivity_MailboxTrackingFolder", null, value);
+				this.SetRelatedEntity<Entities.CampaignActivity>("CampaignActivity_MailboxTrackingFolder", null, value);
 				this.OnPropertyChanged("CampaignActivity_MailboxTrackingFolder");
 			}
 		}
@@ -577,18 +577,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contact_MailboxTrackingFolder")]
-		public DLaB.Xrm.Entities.Contact Contact_MailboxTrackingFolder
+		public Entities.Contact Contact_MailboxTrackingFolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_MailboxTrackingFolder", null);
+				return this.GetRelatedEntity<Entities.Contact>("Contact_MailboxTrackingFolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Contact_MailboxTrackingFolder");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_MailboxTrackingFolder", null, value);
+				this.SetRelatedEntity<Entities.Contact>("Contact_MailboxTrackingFolder", null, value);
 				this.OnPropertyChanged("Contact_MailboxTrackingFolder");
 			}
 		}
@@ -598,18 +598,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contract_MailboxTrackingFolder")]
-		public DLaB.Xrm.Entities.Contract Contract_MailboxTrackingFolder
+		public Entities.Contract Contract_MailboxTrackingFolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contract>("Contract_MailboxTrackingFolder", null);
+				return this.GetRelatedEntity<Entities.Contract>("Contract_MailboxTrackingFolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Contract_MailboxTrackingFolder");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contract>("Contract_MailboxTrackingFolder", null, value);
+				this.SetRelatedEntity<Entities.Contract>("Contract_MailboxTrackingFolder", null, value);
 				this.OnPropertyChanged("Contract_MailboxTrackingFolder");
 			}
 		}
@@ -619,18 +619,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Entitlement_MailboxTrackingFolder")]
-		public DLaB.Xrm.Entities.Entitlement Entitlement_MailboxTrackingFolder
+		public Entities.Entitlement Entitlement_MailboxTrackingFolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("Entitlement_MailboxTrackingFolder", null);
+				return this.GetRelatedEntity<Entities.Entitlement>("Entitlement_MailboxTrackingFolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Entitlement_MailboxTrackingFolder");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("Entitlement_MailboxTrackingFolder", null, value);
+				this.SetRelatedEntity<Entities.Entitlement>("Entitlement_MailboxTrackingFolder", null, value);
 				this.OnPropertyChanged("Entitlement_MailboxTrackingFolder");
 			}
 		}
@@ -640,18 +640,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("EntitlementTemplate_MailboxTrackingFolder")]
-		public DLaB.Xrm.Entities.EntitlementTemplate EntitlementTemplate_MailboxTrackingFolder
+		public Entities.EntitlementTemplate EntitlementTemplate_MailboxTrackingFolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("EntitlementTemplate_MailboxTrackingFolder", null);
+				return this.GetRelatedEntity<Entities.EntitlementTemplate>("EntitlementTemplate_MailboxTrackingFolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("EntitlementTemplate_MailboxTrackingFolder");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("EntitlementTemplate_MailboxTrackingFolder", null, value);
+				this.SetRelatedEntity<Entities.EntitlementTemplate>("EntitlementTemplate_MailboxTrackingFolder", null, value);
 				this.OnPropertyChanged("EntitlementTemplate_MailboxTrackingFolder");
 			}
 		}
@@ -661,18 +661,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Incident_MailboxTrackingFolder")]
-		public DLaB.Xrm.Entities.Incident Incident_MailboxTrackingFolder
+		public Entities.Incident Incident_MailboxTrackingFolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_MailboxTrackingFolder", null);
+				return this.GetRelatedEntity<Entities.Incident>("Incident_MailboxTrackingFolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Incident_MailboxTrackingFolder");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_MailboxTrackingFolder", null, value);
+				this.SetRelatedEntity<Entities.Incident>("Incident_MailboxTrackingFolder", null, value);
 				this.OnPropertyChanged("Incident_MailboxTrackingFolder");
 			}
 		}
@@ -682,18 +682,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Invoice_MailboxTrackingFolder")]
-		public DLaB.Xrm.Entities.Invoice Invoice_MailboxTrackingFolder
+		public Entities.Invoice Invoice_MailboxTrackingFolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Invoice>("Invoice_MailboxTrackingFolder", null);
+				return this.GetRelatedEntity<Entities.Invoice>("Invoice_MailboxTrackingFolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Invoice_MailboxTrackingFolder");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Invoice>("Invoice_MailboxTrackingFolder", null, value);
+				this.SetRelatedEntity<Entities.Invoice>("Invoice_MailboxTrackingFolder", null, value);
 				this.OnPropertyChanged("Invoice_MailboxTrackingFolder");
 			}
 		}
@@ -703,18 +703,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_MailboxTrackingFolder")]
-		public DLaB.Xrm.Entities.Lead Lead_MailboxTrackingFolder
+		public Entities.Lead Lead_MailboxTrackingFolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Lead>("Lead_MailboxTrackingFolder", null);
+				return this.GetRelatedEntity<Entities.Lead>("Lead_MailboxTrackingFolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_MailboxTrackingFolder");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Lead>("Lead_MailboxTrackingFolder", null, value);
+				this.SetRelatedEntity<Entities.Lead>("Lead_MailboxTrackingFolder", null, value);
 				this.OnPropertyChanged("Lead_MailboxTrackingFolder");
 			}
 		}
@@ -724,18 +724,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_mailboxtrackingfolder_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_mailboxtrackingfolder_createdby
+		public Entities.SystemUser lk_mailboxtrackingfolder_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_mailboxtrackingfolder_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_mailboxtrackingfolder_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_mailboxtrackingfolder_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_mailboxtrackingfolder_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_mailboxtrackingfolder_createdby", null, value);
 				this.OnPropertyChanged("lk_mailboxtrackingfolder_createdby");
 			}
 		}
@@ -745,18 +745,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_mailboxtrackingfolder_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_mailboxtrackingfolder_createdonbehalfby
+		public Entities.SystemUser lk_mailboxtrackingfolder_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_mailboxtrackingfolder_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_mailboxtrackingfolder_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_mailboxtrackingfolder_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_mailboxtrackingfolder_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_mailboxtrackingfolder_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_mailboxtrackingfolder_createdonbehalfby");
 			}
 		}
@@ -766,18 +766,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_mailboxtrackingfolder_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_mailboxtrackingfolder_modifiedby
+		public Entities.SystemUser lk_mailboxtrackingfolder_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_mailboxtrackingfolder_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_mailboxtrackingfolder_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_mailboxtrackingfolder_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_mailboxtrackingfolder_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_mailboxtrackingfolder_modifiedby", null, value);
 				this.OnPropertyChanged("lk_mailboxtrackingfolder_modifiedby");
 			}
 		}
@@ -787,18 +787,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_mailboxtrackingfolder_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_mailboxtrackingfolder_modifiedonbehalfby
+		public Entities.SystemUser lk_mailboxtrackingfolder_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_mailboxtrackingfolder_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_mailboxtrackingfolder_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_mailboxtrackingfolder_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_mailboxtrackingfolder_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_mailboxtrackingfolder_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_mailboxtrackingfolder_modifiedonbehalfby");
 			}
 		}
@@ -808,18 +808,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mailboxid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Mailbox_MailboxTrackingFolder")]
-		public DLaB.Xrm.Entities.Mailbox Mailbox_MailboxTrackingFolder
+		public Entities.Mailbox Mailbox_MailboxTrackingFolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Mailbox>("Mailbox_MailboxTrackingFolder", null);
+				return this.GetRelatedEntity<Entities.Mailbox>("Mailbox_MailboxTrackingFolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Mailbox_MailboxTrackingFolder");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Mailbox>("Mailbox_MailboxTrackingFolder", null, value);
+				this.SetRelatedEntity<Entities.Mailbox>("Mailbox_MailboxTrackingFolder", null, value);
 				this.OnPropertyChanged("Mailbox_MailboxTrackingFolder");
 			}
 		}
@@ -829,18 +829,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_MailboxTrackingFolders")]
-		public DLaB.Xrm.Entities.msdyn_PostAlbum msdyn_postalbum_MailboxTrackingFolders
+		public Entities.msdyn_PostAlbum msdyn_postalbum_MailboxTrackingFolders
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_MailboxTrackingFolders", null);
+				return this.GetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_MailboxTrackingFolders", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_MailboxTrackingFolders");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_MailboxTrackingFolders", null, value);
+				this.SetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_MailboxTrackingFolders", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_MailboxTrackingFolders");
 			}
 		}
@@ -850,18 +850,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postconfig_MailboxTrackingFolders")]
-		public DLaB.Xrm.Entities.msdyn_PostConfig msdyn_postconfig_MailboxTrackingFolders
+		public Entities.msdyn_PostConfig msdyn_postconfig_MailboxTrackingFolders
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostConfig>("msdyn_postconfig_MailboxTrackingFolders", null);
+				return this.GetRelatedEntity<Entities.msdyn_PostConfig>("msdyn_postconfig_MailboxTrackingFolders", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postconfig_MailboxTrackingFolders");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostConfig>("msdyn_postconfig_MailboxTrackingFolders", null, value);
+				this.SetRelatedEntity<Entities.msdyn_PostConfig>("msdyn_postconfig_MailboxTrackingFolders", null, value);
 				this.OnPropertyChanged("msdyn_postconfig_MailboxTrackingFolders");
 			}
 		}
@@ -871,18 +871,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postruleconfig_MailboxTrackingFolders")]
-		public DLaB.Xrm.Entities.msdyn_PostRuleConfig msdyn_postruleconfig_MailboxTrackingFolders
+		public Entities.msdyn_PostRuleConfig msdyn_postruleconfig_MailboxTrackingFolders
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostRuleConfig>("msdyn_postruleconfig_MailboxTrackingFolders", null);
+				return this.GetRelatedEntity<Entities.msdyn_PostRuleConfig>("msdyn_postruleconfig_MailboxTrackingFolders", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postruleconfig_MailboxTrackingFolders");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostRuleConfig>("msdyn_postruleconfig_MailboxTrackingFolders", null, value);
+				this.SetRelatedEntity<Entities.msdyn_PostRuleConfig>("msdyn_postruleconfig_MailboxTrackingFolders", null, value);
 				this.OnPropertyChanged("msdyn_postruleconfig_MailboxTrackingFolders");
 			}
 		}
@@ -892,18 +892,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_wallsavedquery_MailboxTrackingFolders")]
-		public DLaB.Xrm.Entities.msdyn_wallsavedquery msdyn_wallsavedquery_MailboxTrackingFolders
+		public Entities.msdyn_wallsavedquery msdyn_wallsavedquery_MailboxTrackingFolders
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_wallsavedquery>("msdyn_wallsavedquery_MailboxTrackingFolders", null);
+				return this.GetRelatedEntity<Entities.msdyn_wallsavedquery>("msdyn_wallsavedquery_MailboxTrackingFolders", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_wallsavedquery_MailboxTrackingFolders");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_wallsavedquery>("msdyn_wallsavedquery_MailboxTrackingFolders", null, value);
+				this.SetRelatedEntity<Entities.msdyn_wallsavedquery>("msdyn_wallsavedquery_MailboxTrackingFolders", null, value);
 				this.OnPropertyChanged("msdyn_wallsavedquery_MailboxTrackingFolders");
 			}
 		}
@@ -913,18 +913,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_wallsavedqueryusersettings_MailboxTrackingFolders")]
-		public DLaB.Xrm.Entities.msdyn_wallsavedqueryusersettings msdyn_wallsavedqueryusersettings_MailboxTrackingFolders
+		public Entities.msdyn_wallsavedqueryusersettings msdyn_wallsavedqueryusersettings_MailboxTrackingFolders
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_wallsavedqueryusersettings>("msdyn_wallsavedqueryusersettings_MailboxTrackingFolders", null);
+				return this.GetRelatedEntity<Entities.msdyn_wallsavedqueryusersettings>("msdyn_wallsavedqueryusersettings_MailboxTrackingFolders", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_wallsavedqueryusersettings_MailboxTrackingFolders");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_wallsavedqueryusersettings>("msdyn_wallsavedqueryusersettings_MailboxTrackingFolders", null, value);
+				this.SetRelatedEntity<Entities.msdyn_wallsavedqueryusersettings>("msdyn_wallsavedqueryusersettings_MailboxTrackingFolders", null, value);
 				this.OnPropertyChanged("msdyn_wallsavedqueryusersettings_MailboxTrackingFolders");
 			}
 		}
@@ -934,18 +934,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_MailboxTrackingFolder")]
-		public DLaB.Xrm.Entities.Opportunity Opportunity_MailboxTrackingFolder
+		public Entities.Opportunity Opportunity_MailboxTrackingFolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_MailboxTrackingFolder", null);
+				return this.GetRelatedEntity<Entities.Opportunity>("Opportunity_MailboxTrackingFolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_MailboxTrackingFolder");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_MailboxTrackingFolder", null, value);
+				this.SetRelatedEntity<Entities.Opportunity>("Opportunity_MailboxTrackingFolder", null, value);
 				this.OnPropertyChanged("Opportunity_MailboxTrackingFolder");
 			}
 		}
@@ -955,12 +955,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Organization_MailboxTrackingFolder")]
-		public DLaB.Xrm.Entities.Organization Organization_MailboxTrackingFolder
+		public Entities.Organization Organization_MailboxTrackingFolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("Organization_MailboxTrackingFolder", null);
+				return this.GetRelatedEntity<Entities.Organization>("Organization_MailboxTrackingFolder", null);
 			}
 		}
 		
@@ -969,18 +969,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Quote_MailboxTrackingFolder")]
-		public DLaB.Xrm.Entities.Quote Quote_MailboxTrackingFolder
+		public Entities.Quote Quote_MailboxTrackingFolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Quote>("Quote_MailboxTrackingFolder", null);
+				return this.GetRelatedEntity<Entities.Quote>("Quote_MailboxTrackingFolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Quote_MailboxTrackingFolder");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Quote>("Quote_MailboxTrackingFolder", null, value);
+				this.SetRelatedEntity<Entities.Quote>("Quote_MailboxTrackingFolder", null, value);
 				this.OnPropertyChanged("Quote_MailboxTrackingFolder");
 			}
 		}
@@ -990,18 +990,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesOrder_MailboxTrackingFolder")]
-		public DLaB.Xrm.Entities.SalesOrder SalesOrder_MailboxTrackingFolder
+		public Entities.SalesOrder SalesOrder_MailboxTrackingFolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("SalesOrder_MailboxTrackingFolder", null);
+				return this.GetRelatedEntity<Entities.SalesOrder>("SalesOrder_MailboxTrackingFolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SalesOrder_MailboxTrackingFolder");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("SalesOrder_MailboxTrackingFolder", null, value);
+				this.SetRelatedEntity<Entities.SalesOrder>("SalesOrder_MailboxTrackingFolder", null, value);
 				this.OnPropertyChanged("SalesOrder_MailboxTrackingFolder");
 			}
 		}
@@ -1011,18 +1011,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_mailboxtrackingfolder")]
-		public DLaB.Xrm.Entities.Team team_mailboxtrackingfolder
+		public Entities.Team team_mailboxtrackingfolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_mailboxtrackingfolder", null);
+				return this.GetRelatedEntity<Entities.Team>("team_mailboxtrackingfolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_mailboxtrackingfolder");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_mailboxtrackingfolder", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_mailboxtrackingfolder", null, value);
 				this.OnPropertyChanged("team_mailboxtrackingfolder");
 			}
 		}

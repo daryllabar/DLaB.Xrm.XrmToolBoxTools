@@ -779,18 +779,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N recurrencerule_recurringappointmentmaster
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recurrencerule_recurringappointmentmaster")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.RecurringAppointmentMaster> recurrencerule_recurringappointmentmaster
+		public System.Collections.Generic.IEnumerable<Entities.RecurringAppointmentMaster> recurrencerule_recurringappointmentmaster
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.RecurringAppointmentMaster>("recurrencerule_recurringappointmentmaster", null);
+				return this.GetRelatedEntities<Entities.RecurringAppointmentMaster>("recurrencerule_recurringappointmentmaster", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("recurrencerule_recurringappointmentmaster");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.RecurringAppointmentMaster>("recurrencerule_recurringappointmentmaster", null, value);
+				this.SetRelatedEntities<Entities.RecurringAppointmentMaster>("recurrencerule_recurringappointmentmaster", null, value);
 				this.OnPropertyChanged("recurrencerule_recurringappointmentmaster");
 			}
 		}
@@ -800,18 +800,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("activity_pointer_recurrencerule")]
-		public DLaB.Xrm.Entities.ActivityPointer activity_pointer_recurrencerule
+		public Entities.ActivityPointer activity_pointer_recurrencerule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_recurrencerule", null);
+				return this.GetRelatedEntity<Entities.ActivityPointer>("activity_pointer_recurrencerule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("activity_pointer_recurrencerule");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_recurrencerule", null, value);
+				this.SetRelatedEntity<Entities.ActivityPointer>("activity_pointer_recurrencerule", null, value);
 				this.OnPropertyChanged("activity_pointer_recurrencerule");
 			}
 		}
@@ -821,18 +821,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_recurrencerule")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_recurrencerule
+		public Entities.BusinessUnit business_unit_recurrencerule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_recurrencerule", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_recurrencerule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_recurrencerule");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_recurrencerule", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_recurrencerule", null, value);
 				this.OnPropertyChanged("business_unit_recurrencerule");
 			}
 		}
@@ -842,18 +842,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_recurrencerule_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_recurrencerule_createdby
+		public Entities.SystemUser lk_recurrencerule_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recurrencerule_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_recurrencerule_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_recurrencerule_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recurrencerule_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_recurrencerule_createdby", null, value);
 				this.OnPropertyChanged("lk_recurrencerule_createdby");
 			}
 		}
@@ -863,18 +863,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_recurrencerule_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_recurrencerule_modifiedby
+		public Entities.SystemUser lk_recurrencerule_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recurrencerule_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_recurrencerule_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_recurrencerule_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recurrencerule_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_recurrencerule_modifiedby", null, value);
 				this.OnPropertyChanged("lk_recurrencerule_modifiedby");
 			}
 		}
@@ -884,18 +884,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_recurrencerulebase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_recurrencerulebase_createdonbehalfby
+		public Entities.SystemUser lk_recurrencerulebase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recurrencerulebase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_recurrencerulebase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_recurrencerulebase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recurrencerulebase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_recurrencerulebase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_recurrencerulebase_createdonbehalfby");
 			}
 		}
@@ -905,18 +905,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_recurrencerulebase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_recurrencerulebase_modifiedonbehalfby
+		public Entities.SystemUser lk_recurrencerulebase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recurrencerulebase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_recurrencerulebase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_recurrencerulebase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_recurrencerulebase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_recurrencerulebase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_recurrencerulebase_modifiedonbehalfby");
 			}
 		}

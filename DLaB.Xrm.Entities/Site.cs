@@ -1254,18 +1254,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Site_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Site_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> Site_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> Site_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Site_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("Site_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Site_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Site_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("Site_AsyncOperations", null, value);
 				this.OnPropertyChanged("Site_AsyncOperations");
 			}
 		}
@@ -1274,18 +1274,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Site_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Site_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> Site_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> Site_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Site_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("Site_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Site_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Site_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("Site_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("Site_BulkDeleteFailures");
 			}
 		}
@@ -1294,18 +1294,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N site_equipment
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("site_equipment")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Equipment> site_equipment
+		public System.Collections.Generic.IEnumerable<Entities.Equipment> site_equipment
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Equipment>("site_equipment", null);
+				return this.GetRelatedEntities<Entities.Equipment>("site_equipment", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("site_equipment");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Equipment>("site_equipment", null, value);
+				this.SetRelatedEntities<Entities.Equipment>("site_equipment", null, value);
 				this.OnPropertyChanged("site_equipment");
 			}
 		}
@@ -1314,18 +1314,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Site_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Site_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> Site_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> Site_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Site_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("Site_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Site_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Site_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("Site_ProcessSessions", null, value);
 				this.OnPropertyChanged("Site_ProcessSessions");
 			}
 		}
@@ -1334,18 +1334,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N site_resources
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("site_resources")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Resource> site_resources
+		public System.Collections.Generic.IEnumerable<Entities.Resource> site_resources
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Resource>("site_resources", null);
+				return this.GetRelatedEntities<Entities.Resource>("site_resources", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("site_resources");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Resource>("site_resources", null, value);
+				this.SetRelatedEntities<Entities.Resource>("site_resources", null, value);
 				this.OnPropertyChanged("site_resources");
 			}
 		}
@@ -1354,18 +1354,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N site_service_appointments
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("site_service_appointments")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ServiceAppointment> site_service_appointments
+		public System.Collections.Generic.IEnumerable<Entities.ServiceAppointment> site_service_appointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ServiceAppointment>("site_service_appointments", null);
+				return this.GetRelatedEntities<Entities.ServiceAppointment>("site_service_appointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("site_service_appointments");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ServiceAppointment>("site_service_appointments", null, value);
+				this.SetRelatedEntities<Entities.ServiceAppointment>("site_service_appointments", null, value);
 				this.OnPropertyChanged("site_service_appointments");
 			}
 		}
@@ -1374,18 +1374,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N site_system_users
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("site_system_users")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SystemUser> site_system_users
+		public System.Collections.Generic.IEnumerable<Entities.SystemUser> site_system_users
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SystemUser>("site_system_users", null);
+				return this.GetRelatedEntities<Entities.SystemUser>("site_system_users", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("site_system_users");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SystemUser>("site_system_users", null, value);
+				this.SetRelatedEntities<Entities.SystemUser>("site_system_users", null, value);
 				this.OnPropertyChanged("site_system_users");
 			}
 		}
@@ -1394,18 +1394,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_site
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_site")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_site
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_site
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_site", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_site", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_site");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_site", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_site", null, value);
 				this.OnPropertyChanged("userentityinstancedata_site");
 			}
 		}
@@ -1415,18 +1415,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_site_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_site_createdonbehalfby
+		public Entities.SystemUser lk_site_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_site_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_site_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_site_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_site_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_site_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_site_createdonbehalfby");
 			}
 		}
@@ -1436,18 +1436,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_site_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_site_modifiedonbehalfby
+		public Entities.SystemUser lk_site_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_site_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_site_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_site_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_site_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_site_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_site_modifiedonbehalfby");
 			}
 		}
@@ -1457,18 +1457,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sitebase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_sitebase_createdby
+		public Entities.SystemUser lk_sitebase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sitebase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_sitebase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_sitebase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sitebase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_sitebase_createdby", null, value);
 				this.OnPropertyChanged("lk_sitebase_createdby");
 			}
 		}
@@ -1478,18 +1478,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sitebase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_sitebase_modifiedby
+		public Entities.SystemUser lk_sitebase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sitebase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_sitebase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_sitebase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sitebase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_sitebase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_sitebase_modifiedby");
 			}
 		}
@@ -1499,12 +1499,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_sites")]
-		public DLaB.Xrm.Entities.Organization organization_sites
+		public Entities.Organization organization_sites
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_sites", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_sites", null);
 			}
 		}
 		

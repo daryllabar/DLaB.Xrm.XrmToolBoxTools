@@ -417,18 +417,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N BusinessUnit_Calendar
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BusinessUnit_Calendar")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BusinessUnit> BusinessUnit_Calendar
+		public System.Collections.Generic.IEnumerable<Entities.BusinessUnit> BusinessUnit_Calendar
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BusinessUnit>("BusinessUnit_Calendar", null);
+				return this.GetRelatedEntities<Entities.BusinessUnit>("BusinessUnit_Calendar", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BusinessUnit_Calendar");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BusinessUnit>("BusinessUnit_Calendar", null, value);
+				this.SetRelatedEntities<Entities.BusinessUnit>("BusinessUnit_Calendar", null, value);
 				this.OnPropertyChanged("BusinessUnit_Calendar");
 			}
 		}
@@ -437,18 +437,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Calendar_Annotation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Calendar_Annotation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> Calendar_Annotation
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> Calendar_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("Calendar_Annotation", null);
+				return this.GetRelatedEntities<Entities.Annotation>("Calendar_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Calendar_Annotation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("Calendar_Annotation", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("Calendar_Annotation", null, value);
 				this.OnPropertyChanged("Calendar_Annotation");
 			}
 		}
@@ -457,18 +457,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Calendar_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Calendar_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> Calendar_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> Calendar_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Calendar_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("Calendar_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Calendar_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Calendar_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("Calendar_AsyncOperations", null, value);
 				this.OnPropertyChanged("Calendar_AsyncOperations");
 			}
 		}
@@ -477,18 +477,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Calendar_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Calendar_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> Calendar_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> Calendar_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Calendar_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("Calendar_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Calendar_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Calendar_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("Calendar_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("Calendar_BulkDeleteFailures");
 			}
 		}
@@ -497,7 +497,7 @@ namespace DLaB.Xrm.Entities
 		/// 1:N calendar_calendar_rules
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("calendarrules")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.CalendarRule> CalendarRules
+		public System.Collections.Generic.IEnumerable<Entities.CalendarRule> CalendarRules
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -506,7 +506,7 @@ namespace DLaB.Xrm.Entities
 				if (((collection != null) 
 							&& (collection.Entities != null)))
 				{
-					return System.Linq.Enumerable.Cast<DLaB.Xrm.Entities.CalendarRule>(collection.Entities);
+					return System.Linq.Enumerable.Cast<Entities.CalendarRule>(collection.Entities);
 				}
 				else
 				{
@@ -533,18 +533,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N calendar_customercalendar_holidaycalendar
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("calendar_customercalendar_holidaycalendar", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Calendar> Referencedcalendar_customercalendar_holidaycalendar
+		public System.Collections.Generic.IEnumerable<Entities.Calendar> Referencedcalendar_customercalendar_holidaycalendar
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Calendar>("calendar_customercalendar_holidaycalendar", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.Calendar>("calendar_customercalendar_holidaycalendar", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedcalendar_customercalendar_holidaycalendar");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Calendar>("calendar_customercalendar_holidaycalendar", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.Calendar>("calendar_customercalendar_holidaycalendar", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedcalendar_customercalendar_holidaycalendar");
 			}
 		}
@@ -553,18 +553,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N calendar_equipment
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("calendar_equipment")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Equipment> calendar_equipment
+		public System.Collections.Generic.IEnumerable<Entities.Equipment> calendar_equipment
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Equipment>("calendar_equipment", null);
+				return this.GetRelatedEntities<Entities.Equipment>("calendar_equipment", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("calendar_equipment");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Equipment>("calendar_equipment", null, value);
+				this.SetRelatedEntities<Entities.Equipment>("calendar_equipment", null, value);
 				this.OnPropertyChanged("calendar_equipment");
 			}
 		}
@@ -573,18 +573,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N calendar_organization
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("calendar_organization")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Organization> calendar_organization
+		public System.Collections.Generic.IEnumerable<Entities.Organization> calendar_organization
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Organization>("calendar_organization", null);
+				return this.GetRelatedEntities<Entities.Organization>("calendar_organization", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("calendar_organization");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Organization>("calendar_organization", null, value);
+				this.SetRelatedEntities<Entities.Organization>("calendar_organization", null, value);
 				this.OnPropertyChanged("calendar_organization");
 			}
 		}
@@ -593,18 +593,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N calendar_services
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("calendar_services")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Service> calendar_services
+		public System.Collections.Generic.IEnumerable<Entities.Service> calendar_services
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Service>("calendar_services", null);
+				return this.GetRelatedEntities<Entities.Service>("calendar_services", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("calendar_services");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Service>("calendar_services", null, value);
+				this.SetRelatedEntities<Entities.Service>("calendar_services", null, value);
 				this.OnPropertyChanged("calendar_services");
 			}
 		}
@@ -613,18 +613,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N calendar_system_users
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("calendar_system_users")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SystemUser> calendar_system_users
+		public System.Collections.Generic.IEnumerable<Entities.SystemUser> calendar_system_users
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SystemUser>("calendar_system_users", null);
+				return this.GetRelatedEntities<Entities.SystemUser>("calendar_system_users", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("calendar_system_users");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SystemUser>("calendar_system_users", null, value);
+				this.SetRelatedEntities<Entities.SystemUser>("calendar_system_users", null, value);
 				this.OnPropertyChanged("calendar_system_users");
 			}
 		}
@@ -633,18 +633,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N slabase_businesshoursid
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("slabase_businesshoursid")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SLA> slabase_businesshoursid
+		public System.Collections.Generic.IEnumerable<Entities.SLA> slabase_businesshoursid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SLA>("slabase_businesshoursid", null);
+				return this.GetRelatedEntities<Entities.SLA>("slabase_businesshoursid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("slabase_businesshoursid");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SLA>("slabase_businesshoursid", null, value);
+				this.SetRelatedEntities<Entities.SLA>("slabase_businesshoursid", null, value);
 				this.OnPropertyChanged("slabase_businesshoursid");
 			}
 		}
@@ -653,18 +653,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_calendar
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_calendar")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_calendar
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_calendar
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_calendar", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_calendar", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_calendar");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_calendar", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_calendar", null, value);
 				this.OnPropertyChanged("userentityinstancedata_calendar");
 			}
 		}
@@ -674,18 +674,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("businessunitid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_calendars")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_calendars
+		public Entities.BusinessUnit business_unit_calendars
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_calendars", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_calendars", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_calendars");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_calendars", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_calendars", null, value);
 				this.OnPropertyChanged("business_unit_calendars");
 			}
 		}
@@ -695,18 +695,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("holidayschedulecalendarid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("calendar_customercalendar_holidaycalendar", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.Calendar Referencingcalendar_customercalendar_holidaycalendar
+		public Entities.Calendar Referencingcalendar_customercalendar_holidaycalendar
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Calendar>("calendar_customercalendar_holidaycalendar", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.Calendar>("calendar_customercalendar_holidaycalendar", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencingcalendar_customercalendar_holidaycalendar");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Calendar>("calendar_customercalendar_holidaycalendar", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Entities.Calendar>("calendar_customercalendar_holidaycalendar", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencingcalendar_customercalendar_holidaycalendar");
 			}
 		}
@@ -716,18 +716,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_calendar_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_calendar_createdby
+		public Entities.SystemUser lk_calendar_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_calendar_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_calendar_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_calendar_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_calendar_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_calendar_createdby", null, value);
 				this.OnPropertyChanged("lk_calendar_createdby");
 			}
 		}
@@ -737,18 +737,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_calendar_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_calendar_createdonbehalfby
+		public Entities.SystemUser lk_calendar_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_calendar_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_calendar_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_calendar_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_calendar_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_calendar_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_calendar_createdonbehalfby");
 			}
 		}
@@ -758,18 +758,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_calendar_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_calendar_modifiedby
+		public Entities.SystemUser lk_calendar_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_calendar_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_calendar_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_calendar_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_calendar_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_calendar_modifiedby", null, value);
 				this.OnPropertyChanged("lk_calendar_modifiedby");
 			}
 		}
@@ -779,18 +779,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_calendar_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_calendar_modifiedonbehalfby
+		public Entities.SystemUser lk_calendar_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_calendar_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_calendar_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_calendar_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_calendar_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_calendar_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_calendar_modifiedonbehalfby");
 			}
 		}
@@ -800,12 +800,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_calendars")]
-		public DLaB.Xrm.Entities.Organization organization_calendars
+		public Entities.Organization organization_calendars
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_calendars", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_calendars", null);
 			}
 		}
 		

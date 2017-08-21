@@ -401,12 +401,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("customcontroldefaultconfig_organization")]
-		public DLaB.Xrm.Entities.Organization customcontroldefaultconfig_organization
+		public Entities.Organization customcontroldefaultconfig_organization
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("customcontroldefaultconfig_organization", null);
+				return this.GetRelatedEntity<Entities.Organization>("customcontroldefaultconfig_organization", null);
 			}
 		}
 		
@@ -415,18 +415,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_customcontroldefaultconfig_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_customcontroldefaultconfig_createdby
+		public Entities.SystemUser lk_customcontroldefaultconfig_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customcontroldefaultconfig_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_customcontroldefaultconfig_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_customcontroldefaultconfig_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customcontroldefaultconfig_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_customcontroldefaultconfig_createdby", null, value);
 				this.OnPropertyChanged("lk_customcontroldefaultconfig_createdby");
 			}
 		}
@@ -436,18 +436,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_customcontroldefaultconfig_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_customcontroldefaultconfig_createdonbehalfby
+		public Entities.SystemUser lk_customcontroldefaultconfig_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customcontroldefaultconfig_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_customcontroldefaultconfig_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_customcontroldefaultconfig_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customcontroldefaultconfig_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_customcontroldefaultconfig_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_customcontroldefaultconfig_createdonbehalfby");
 			}
 		}
@@ -457,18 +457,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_customcontroldefaultconfig_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_customcontroldefaultconfig_modifiedby
+		public Entities.SystemUser lk_customcontroldefaultconfig_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customcontroldefaultconfig_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_customcontroldefaultconfig_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_customcontroldefaultconfig_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customcontroldefaultconfig_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_customcontroldefaultconfig_modifiedby", null, value);
 				this.OnPropertyChanged("lk_customcontroldefaultconfig_modifiedby");
 			}
 		}
@@ -478,18 +478,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_customcontroldefaultconfig_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_customcontroldefaultconfig_modifiedonbehalfby
+		public Entities.SystemUser lk_customcontroldefaultconfig_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customcontroldefaultconfig_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_customcontroldefaultconfig_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_customcontroldefaultconfig_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_customcontroldefaultconfig_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_customcontroldefaultconfig_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_customcontroldefaultconfig_modifiedonbehalfby");
 			}
 		}

@@ -687,18 +687,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_timezonerule
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_timezonerule")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_timezonerule
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_timezonerule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_timezonerule", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_timezonerule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_timezonerule");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_timezonerule", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_timezonerule", null, value);
 				this.OnPropertyChanged("userentityinstancedata_timezonerule");
 			}
 		}
@@ -708,18 +708,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_timezonerule_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_timezonerule_createdby
+		public Entities.SystemUser lk_timezonerule_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_timezonerule_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_timezonerule_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_timezonerule_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_timezonerule_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_timezonerule_createdby", null, value);
 				this.OnPropertyChanged("lk_timezonerule_createdby");
 			}
 		}
@@ -729,18 +729,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_timezonerule_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_timezonerule_createdonbehalfby
+		public Entities.SystemUser lk_timezonerule_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_timezonerule_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_timezonerule_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_timezonerule_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_timezonerule_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_timezonerule_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_timezonerule_createdonbehalfby");
 			}
 		}
@@ -750,18 +750,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_timezonerule_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_timezonerule_modifiedby
+		public Entities.SystemUser lk_timezonerule_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_timezonerule_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_timezonerule_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_timezonerule_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_timezonerule_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_timezonerule_modifiedby", null, value);
 				this.OnPropertyChanged("lk_timezonerule_modifiedby");
 			}
 		}
@@ -771,18 +771,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_timezonerule_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_timezonerule_modifiedonbehalfby
+		public Entities.SystemUser lk_timezonerule_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_timezonerule_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_timezonerule_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_timezonerule_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_timezonerule_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_timezonerule_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_timezonerule_modifiedonbehalfby");
 			}
 		}
@@ -792,18 +792,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezonedefinitionid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_timezonerule_timezonedefinitionid")]
-		public DLaB.Xrm.Entities.TimeZoneDefinition lk_timezonerule_timezonedefinitionid
+		public Entities.TimeZoneDefinition lk_timezonerule_timezonedefinitionid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TimeZoneDefinition>("lk_timezonerule_timezonedefinitionid", null);
+				return this.GetRelatedEntity<Entities.TimeZoneDefinition>("lk_timezonerule_timezonedefinitionid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_timezonerule_timezonedefinitionid");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TimeZoneDefinition>("lk_timezonerule_timezonedefinitionid", null, value);
+				this.SetRelatedEntity<Entities.TimeZoneDefinition>("lk_timezonerule_timezonedefinitionid", null, value);
 				this.OnPropertyChanged("lk_timezonerule_timezonedefinitionid");
 			}
 		}

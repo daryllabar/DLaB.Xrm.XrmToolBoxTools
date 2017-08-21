@@ -759,7 +759,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the connection is active or inactive. Inactive connections are read-only and can't be edited unless they are reactivated.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.ConnectionState> StateCode
+		public System.Nullable<Entities.ConnectionState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -767,7 +767,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.ConnectionState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.ConnectionState), optionSet.Value)));
+					return ((Entities.ConnectionState)(System.Enum.ToObject(typeof(Entities.ConnectionState), optionSet.Value)));
 				}
 				else
 				{
@@ -847,18 +847,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Connection_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Connection_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> Connection_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> Connection_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Connection_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("Connection_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Connection_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Connection_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("Connection_AsyncOperations", null, value);
 				this.OnPropertyChanged("Connection_AsyncOperations");
 			}
 		}
@@ -867,18 +867,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N connection_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("connection_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> connection_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> connection_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("connection_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("connection_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("connection_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("connection_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("connection_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("connection_principalobjectattributeaccess");
 			}
 		}
@@ -887,18 +887,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Connection_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Connection_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> Connection_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> Connection_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Connection_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("Connection_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Connection_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Connection_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("Connection_ProcessSessions", null, value);
 				this.OnPropertyChanged("Connection_ProcessSessions");
 			}
 		}
@@ -907,18 +907,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N connection_related_connection
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("connection_related_connection", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> Referencedconnection_related_connection
+		public System.Collections.Generic.IEnumerable<Entities.Connection> Referencedconnection_related_connection
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("connection_related_connection", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.Connection>("connection_related_connection", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedconnection_related_connection");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("connection_related_connection", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.Connection>("connection_related_connection", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedconnection_related_connection");
 			}
 		}
@@ -927,18 +927,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_connection
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_connection")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_connection
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_connection
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_connection", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_connection", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_connection");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_connection", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_connection", null, value);
 				this.OnPropertyChanged("userentityinstancedata_connection");
 			}
 		}
@@ -948,18 +948,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("account_connections1")]
-		public DLaB.Xrm.Entities.Account account_connections1
+		public Entities.Account account_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("account_connections1", null);
+				return this.GetRelatedEntity<Entities.Account>("account_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("account_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("account_connections1", null, value);
+				this.SetRelatedEntity<Entities.Account>("account_connections1", null, value);
 				this.OnPropertyChanged("account_connections1");
 			}
 		}
@@ -969,18 +969,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("account_connections2")]
-		public DLaB.Xrm.Entities.Account account_connections2
+		public Entities.Account account_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("account_connections2", null);
+				return this.GetRelatedEntity<Entities.Account>("account_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("account_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("account_connections2", null, value);
+				this.SetRelatedEntity<Entities.Account>("account_connections2", null, value);
 				this.OnPropertyChanged("account_connections2");
 			}
 		}
@@ -990,18 +990,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("activitypointer_connections1")]
-		public DLaB.Xrm.Entities.ActivityPointer activitypointer_connections1
+		public Entities.ActivityPointer activitypointer_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activitypointer_connections1", null);
+				return this.GetRelatedEntity<Entities.ActivityPointer>("activitypointer_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("activitypointer_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activitypointer_connections1", null, value);
+				this.SetRelatedEntity<Entities.ActivityPointer>("activitypointer_connections1", null, value);
 				this.OnPropertyChanged("activitypointer_connections1");
 			}
 		}
@@ -1011,18 +1011,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("activitypointer_connections2")]
-		public DLaB.Xrm.Entities.ActivityPointer activitypointer_connections2
+		public Entities.ActivityPointer activitypointer_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activitypointer_connections2", null);
+				return this.GetRelatedEntity<Entities.ActivityPointer>("activitypointer_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("activitypointer_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activitypointer_connections2", null, value);
+				this.SetRelatedEntity<Entities.ActivityPointer>("activitypointer_connections2", null, value);
 				this.OnPropertyChanged("activitypointer_connections2");
 			}
 		}
@@ -1032,18 +1032,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("appointment_connections1")]
-		public DLaB.Xrm.Entities.Appointment appointment_connections1
+		public Entities.Appointment appointment_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Appointment>("appointment_connections1", null);
+				return this.GetRelatedEntity<Entities.Appointment>("appointment_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("appointment_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Appointment>("appointment_connections1", null, value);
+				this.SetRelatedEntity<Entities.Appointment>("appointment_connections1", null, value);
 				this.OnPropertyChanged("appointment_connections1");
 			}
 		}
@@ -1053,18 +1053,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("appointment_connections2")]
-		public DLaB.Xrm.Entities.Appointment appointment_connections2
+		public Entities.Appointment appointment_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Appointment>("appointment_connections2", null);
+				return this.GetRelatedEntity<Entities.Appointment>("appointment_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("appointment_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Appointment>("appointment_connections2", null, value);
+				this.SetRelatedEntity<Entities.Appointment>("appointment_connections2", null, value);
 				this.OnPropertyChanged("appointment_connections2");
 			}
 		}
@@ -1074,18 +1074,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_connections")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_connections
+		public Entities.BusinessUnit business_unit_connections
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_connections", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_connections", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_connections");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_connections", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_connections", null, value);
 				this.OnPropertyChanged("business_unit_connections");
 			}
 		}
@@ -1095,18 +1095,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("campaign_connections1")]
-		public DLaB.Xrm.Entities.Campaign campaign_connections1
+		public Entities.Campaign campaign_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Campaign>("campaign_connections1", null);
+				return this.GetRelatedEntity<Entities.Campaign>("campaign_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("campaign_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Campaign>("campaign_connections1", null, value);
+				this.SetRelatedEntity<Entities.Campaign>("campaign_connections1", null, value);
 				this.OnPropertyChanged("campaign_connections1");
 			}
 		}
@@ -1116,18 +1116,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("campaign_connections2")]
-		public DLaB.Xrm.Entities.Campaign campaign_connections2
+		public Entities.Campaign campaign_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Campaign>("campaign_connections2", null);
+				return this.GetRelatedEntity<Entities.Campaign>("campaign_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("campaign_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Campaign>("campaign_connections2", null, value);
+				this.SetRelatedEntity<Entities.Campaign>("campaign_connections2", null, value);
 				this.OnPropertyChanged("campaign_connections2");
 			}
 		}
@@ -1137,18 +1137,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("campaignactivity_connections1")]
-		public DLaB.Xrm.Entities.CampaignActivity campaignactivity_connections1
+		public Entities.CampaignActivity campaignactivity_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("campaignactivity_connections1", null);
+				return this.GetRelatedEntity<Entities.CampaignActivity>("campaignactivity_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("campaignactivity_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("campaignactivity_connections1", null, value);
+				this.SetRelatedEntity<Entities.CampaignActivity>("campaignactivity_connections1", null, value);
 				this.OnPropertyChanged("campaignactivity_connections1");
 			}
 		}
@@ -1158,18 +1158,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("campaignactivity_connections2")]
-		public DLaB.Xrm.Entities.CampaignActivity campaignactivity_connections2
+		public Entities.CampaignActivity campaignactivity_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("campaignactivity_connections2", null);
+				return this.GetRelatedEntity<Entities.CampaignActivity>("campaignactivity_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("campaignactivity_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("campaignactivity_connections2", null, value);
+				this.SetRelatedEntity<Entities.CampaignActivity>("campaignactivity_connections2", null, value);
 				this.OnPropertyChanged("campaignactivity_connections2");
 			}
 		}
@@ -1179,18 +1179,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("competitor_connections1")]
-		public DLaB.Xrm.Entities.Competitor competitor_connections1
+		public Entities.Competitor competitor_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Competitor>("competitor_connections1", null);
+				return this.GetRelatedEntity<Entities.Competitor>("competitor_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("competitor_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Competitor>("competitor_connections1", null, value);
+				this.SetRelatedEntity<Entities.Competitor>("competitor_connections1", null, value);
 				this.OnPropertyChanged("competitor_connections1");
 			}
 		}
@@ -1200,18 +1200,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("competitor_connections2")]
-		public DLaB.Xrm.Entities.Competitor competitor_connections2
+		public Entities.Competitor competitor_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Competitor>("competitor_connections2", null);
+				return this.GetRelatedEntity<Entities.Competitor>("competitor_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("competitor_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Competitor>("competitor_connections2", null, value);
+				this.SetRelatedEntity<Entities.Competitor>("competitor_connections2", null, value);
 				this.OnPropertyChanged("competitor_connections2");
 			}
 		}
@@ -1221,12 +1221,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("relatedconnectionid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("connection_related_connection", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.Connection Referencingconnection_related_connection
+		public Entities.Connection Referencingconnection_related_connection
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Connection>("connection_related_connection", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.Connection>("connection_related_connection", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 		}
 		
@@ -1235,18 +1235,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1roleid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("connection_role_connections1")]
-		public DLaB.Xrm.Entities.ConnectionRole connection_role_connections1
+		public Entities.ConnectionRole connection_role_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ConnectionRole>("connection_role_connections1", null);
+				return this.GetRelatedEntity<Entities.ConnectionRole>("connection_role_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("connection_role_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ConnectionRole>("connection_role_connections1", null, value);
+				this.SetRelatedEntity<Entities.ConnectionRole>("connection_role_connections1", null, value);
 				this.OnPropertyChanged("connection_role_connections1");
 			}
 		}
@@ -1256,18 +1256,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2roleid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("connection_role_connections2")]
-		public DLaB.Xrm.Entities.ConnectionRole connection_role_connections2
+		public Entities.ConnectionRole connection_role_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ConnectionRole>("connection_role_connections2", null);
+				return this.GetRelatedEntity<Entities.ConnectionRole>("connection_role_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("connection_role_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ConnectionRole>("connection_role_connections2", null, value);
+				this.SetRelatedEntity<Entities.ConnectionRole>("connection_role_connections2", null, value);
 				this.OnPropertyChanged("connection_role_connections2");
 			}
 		}
@@ -1277,18 +1277,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("constraintbasedgroup_connections1")]
-		public DLaB.Xrm.Entities.ConstraintBasedGroup constraintbasedgroup_connections1
+		public Entities.ConstraintBasedGroup constraintbasedgroup_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ConstraintBasedGroup>("constraintbasedgroup_connections1", null);
+				return this.GetRelatedEntity<Entities.ConstraintBasedGroup>("constraintbasedgroup_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("constraintbasedgroup_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ConstraintBasedGroup>("constraintbasedgroup_connections1", null, value);
+				this.SetRelatedEntity<Entities.ConstraintBasedGroup>("constraintbasedgroup_connections1", null, value);
 				this.OnPropertyChanged("constraintbasedgroup_connections1");
 			}
 		}
@@ -1298,18 +1298,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("constraintbasedgroup_connections2")]
-		public DLaB.Xrm.Entities.ConstraintBasedGroup constraintbasedgroup_connections2
+		public Entities.ConstraintBasedGroup constraintbasedgroup_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ConstraintBasedGroup>("constraintbasedgroup_connections2", null);
+				return this.GetRelatedEntity<Entities.ConstraintBasedGroup>("constraintbasedgroup_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("constraintbasedgroup_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ConstraintBasedGroup>("constraintbasedgroup_connections2", null, value);
+				this.SetRelatedEntity<Entities.ConstraintBasedGroup>("constraintbasedgroup_connections2", null, value);
 				this.OnPropertyChanged("constraintbasedgroup_connections2");
 			}
 		}
@@ -1319,18 +1319,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contact_connections1")]
-		public DLaB.Xrm.Entities.Contact contact_connections1
+		public Entities.Contact contact_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("contact_connections1", null);
+				return this.GetRelatedEntity<Entities.Contact>("contact_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contact_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("contact_connections1", null, value);
+				this.SetRelatedEntity<Entities.Contact>("contact_connections1", null, value);
 				this.OnPropertyChanged("contact_connections1");
 			}
 		}
@@ -1340,18 +1340,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contact_connections2")]
-		public DLaB.Xrm.Entities.Contact contact_connections2
+		public Entities.Contact contact_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("contact_connections2", null);
+				return this.GetRelatedEntity<Entities.Contact>("contact_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contact_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("contact_connections2", null, value);
+				this.SetRelatedEntity<Entities.Contact>("contact_connections2", null, value);
 				this.OnPropertyChanged("contact_connections2");
 			}
 		}
@@ -1361,18 +1361,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contract_connections1")]
-		public DLaB.Xrm.Entities.Contract contract_connections1
+		public Entities.Contract contract_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contract>("contract_connections1", null);
+				return this.GetRelatedEntity<Entities.Contract>("contract_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contract_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contract>("contract_connections1", null, value);
+				this.SetRelatedEntity<Entities.Contract>("contract_connections1", null, value);
 				this.OnPropertyChanged("contract_connections1");
 			}
 		}
@@ -1382,18 +1382,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contract_connections2")]
-		public DLaB.Xrm.Entities.Contract contract_connections2
+		public Entities.Contract contract_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contract>("contract_connections2", null);
+				return this.GetRelatedEntity<Entities.Contract>("contract_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contract_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contract>("contract_connections2", null, value);
+				this.SetRelatedEntity<Entities.Contract>("contract_connections2", null, value);
 				this.OnPropertyChanged("contract_connections2");
 			}
 		}
@@ -1403,18 +1403,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_connection")]
-		public DLaB.Xrm.Entities.SystemUser createdby_connection
+		public Entities.SystemUser createdby_connection
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdby_connection", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("createdby_connection", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("createdby_connection");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdby_connection", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("createdby_connection", null, value);
 				this.OnPropertyChanged("createdby_connection");
 			}
 		}
@@ -1424,18 +1424,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("email_connections1")]
-		public DLaB.Xrm.Entities.Email email_connections1
+		public Entities.Email email_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Email>("email_connections1", null);
+				return this.GetRelatedEntity<Entities.Email>("email_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("email_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Email>("email_connections1", null, value);
+				this.SetRelatedEntity<Entities.Email>("email_connections1", null, value);
 				this.OnPropertyChanged("email_connections1");
 			}
 		}
@@ -1445,18 +1445,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("email_connections2")]
-		public DLaB.Xrm.Entities.Email email_connections2
+		public Entities.Email email_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Email>("email_connections2", null);
+				return this.GetRelatedEntity<Entities.Email>("email_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("email_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Email>("email_connections2", null, value);
+				this.SetRelatedEntity<Entities.Email>("email_connections2", null, value);
 				this.OnPropertyChanged("email_connections2");
 			}
 		}
@@ -1466,18 +1466,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_connections1")]
-		public DLaB.Xrm.Entities.Entitlement entitlement_connections1
+		public Entities.Entitlement entitlement_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_connections1", null);
+				return this.GetRelatedEntity<Entities.Entitlement>("entitlement_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_connections1", null, value);
+				this.SetRelatedEntity<Entities.Entitlement>("entitlement_connections1", null, value);
 				this.OnPropertyChanged("entitlement_connections1");
 			}
 		}
@@ -1487,18 +1487,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_connections2")]
-		public DLaB.Xrm.Entities.Entitlement entitlement_connections2
+		public Entities.Entitlement entitlement_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_connections2", null);
+				return this.GetRelatedEntity<Entities.Entitlement>("entitlement_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_connections2", null, value);
+				this.SetRelatedEntity<Entities.Entitlement>("entitlement_connections2", null, value);
 				this.OnPropertyChanged("entitlement_connections2");
 			}
 		}
@@ -1508,18 +1508,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("equipment_connections1")]
-		public DLaB.Xrm.Entities.Equipment equipment_connections1
+		public Entities.Equipment equipment_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Equipment>("equipment_connections1", null);
+				return this.GetRelatedEntity<Entities.Equipment>("equipment_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("equipment_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Equipment>("equipment_connections1", null, value);
+				this.SetRelatedEntity<Entities.Equipment>("equipment_connections1", null, value);
 				this.OnPropertyChanged("equipment_connections1");
 			}
 		}
@@ -1529,18 +1529,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("equipment_connections2")]
-		public DLaB.Xrm.Entities.Equipment equipment_connections2
+		public Entities.Equipment equipment_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Equipment>("equipment_connections2", null);
+				return this.GetRelatedEntity<Entities.Equipment>("equipment_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("equipment_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Equipment>("equipment_connections2", null, value);
+				this.SetRelatedEntity<Entities.Equipment>("equipment_connections2", null, value);
 				this.OnPropertyChanged("equipment_connections2");
 			}
 		}
@@ -1550,18 +1550,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("fax_connections1")]
-		public DLaB.Xrm.Entities.Fax fax_connections1
+		public Entities.Fax fax_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Fax>("fax_connections1", null);
+				return this.GetRelatedEntity<Entities.Fax>("fax_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("fax_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Fax>("fax_connections1", null, value);
+				this.SetRelatedEntity<Entities.Fax>("fax_connections1", null, value);
 				this.OnPropertyChanged("fax_connections1");
 			}
 		}
@@ -1571,18 +1571,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("fax_connections2")]
-		public DLaB.Xrm.Entities.Fax fax_connections2
+		public Entities.Fax fax_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Fax>("fax_connections2", null);
+				return this.GetRelatedEntity<Entities.Fax>("fax_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("fax_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Fax>("fax_connections2", null, value);
+				this.SetRelatedEntity<Entities.Fax>("fax_connections2", null, value);
 				this.OnPropertyChanged("fax_connections2");
 			}
 		}
@@ -1592,18 +1592,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("goal_connections1")]
-		public DLaB.Xrm.Entities.Goal goal_connections1
+		public Entities.Goal goal_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Goal>("goal_connections1", null);
+				return this.GetRelatedEntity<Entities.Goal>("goal_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("goal_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Goal>("goal_connections1", null, value);
+				this.SetRelatedEntity<Entities.Goal>("goal_connections1", null, value);
 				this.OnPropertyChanged("goal_connections1");
 			}
 		}
@@ -1613,18 +1613,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("goal_connections2")]
-		public DLaB.Xrm.Entities.Goal goal_connections2
+		public Entities.Goal goal_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Goal>("goal_connections2", null);
+				return this.GetRelatedEntity<Entities.Goal>("goal_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("goal_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Goal>("goal_connections2", null, value);
+				this.SetRelatedEntity<Entities.Goal>("goal_connections2", null, value);
 				this.OnPropertyChanged("goal_connections2");
 			}
 		}
@@ -1634,18 +1634,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_connections1")]
-		public DLaB.Xrm.Entities.Incident incident_connections1
+		public Entities.Incident incident_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Incident>("incident_connections1", null);
+				return this.GetRelatedEntity<Entities.Incident>("incident_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("incident_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Incident>("incident_connections1", null, value);
+				this.SetRelatedEntity<Entities.Incident>("incident_connections1", null, value);
 				this.OnPropertyChanged("incident_connections1");
 			}
 		}
@@ -1655,18 +1655,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_connections2")]
-		public DLaB.Xrm.Entities.Incident incident_connections2
+		public Entities.Incident incident_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Incident>("incident_connections2", null);
+				return this.GetRelatedEntity<Entities.Incident>("incident_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("incident_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Incident>("incident_connections2", null, value);
+				this.SetRelatedEntity<Entities.Incident>("incident_connections2", null, value);
 				this.OnPropertyChanged("incident_connections2");
 			}
 		}
@@ -1676,18 +1676,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("invoice_connections1")]
-		public DLaB.Xrm.Entities.Invoice invoice_connections1
+		public Entities.Invoice invoice_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Invoice>("invoice_connections1", null);
+				return this.GetRelatedEntity<Entities.Invoice>("invoice_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("invoice_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Invoice>("invoice_connections1", null, value);
+				this.SetRelatedEntity<Entities.Invoice>("invoice_connections1", null, value);
 				this.OnPropertyChanged("invoice_connections1");
 			}
 		}
@@ -1697,18 +1697,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("invoice_connections2")]
-		public DLaB.Xrm.Entities.Invoice invoice_connections2
+		public Entities.Invoice invoice_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Invoice>("invoice_connections2", null);
+				return this.GetRelatedEntity<Entities.Invoice>("invoice_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("invoice_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Invoice>("invoice_connections2", null, value);
+				this.SetRelatedEntity<Entities.Invoice>("invoice_connections2", null, value);
 				this.OnPropertyChanged("invoice_connections2");
 			}
 		}
@@ -1718,18 +1718,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_connections1")]
-		public DLaB.Xrm.Entities.KnowledgeArticle knowledgearticle_connections1
+		public Entities.KnowledgeArticle knowledgearticle_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_connections1", null);
+				return this.GetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("knowledgearticle_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_connections1", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_connections1", null, value);
 				this.OnPropertyChanged("knowledgearticle_connections1");
 			}
 		}
@@ -1739,18 +1739,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_connections2")]
-		public DLaB.Xrm.Entities.KnowledgeArticle knowledgearticle_connections2
+		public Entities.KnowledgeArticle knowledgearticle_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_connections2", null);
+				return this.GetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("knowledgearticle_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_connections2", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_connections2", null, value);
 				this.OnPropertyChanged("knowledgearticle_connections2");
 			}
 		}
@@ -1760,18 +1760,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_connections1")]
-		public DLaB.Xrm.Entities.KnowledgeBaseRecord KnowledgeBaseRecord_connections1
+		public Entities.KnowledgeBaseRecord KnowledgeBaseRecord_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_connections1", null);
+				return this.GetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_connections1", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_connections1", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_connections1");
 			}
 		}
@@ -1781,18 +1781,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_connections2")]
-		public DLaB.Xrm.Entities.KnowledgeBaseRecord KnowledgeBaseRecord_connections2
+		public Entities.KnowledgeBaseRecord KnowledgeBaseRecord_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_connections2", null);
+				return this.GetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_connections2", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_connections2", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_connections2");
 			}
 		}
@@ -1802,18 +1802,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_connections1")]
-		public DLaB.Xrm.Entities.Lead lead_connections1
+		public Entities.Lead lead_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Lead>("lead_connections1", null);
+				return this.GetRelatedEntity<Entities.Lead>("lead_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lead_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Lead>("lead_connections1", null, value);
+				this.SetRelatedEntity<Entities.Lead>("lead_connections1", null, value);
 				this.OnPropertyChanged("lead_connections1");
 			}
 		}
@@ -1823,18 +1823,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_connections2")]
-		public DLaB.Xrm.Entities.Lead lead_connections2
+		public Entities.Lead lead_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Lead>("lead_connections2", null);
+				return this.GetRelatedEntity<Entities.Lead>("lead_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lead_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Lead>("lead_connections2", null, value);
+				this.SetRelatedEntity<Entities.Lead>("lead_connections2", null, value);
 				this.OnPropertyChanged("lead_connections2");
 			}
 		}
@@ -1844,18 +1844,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("letter_connections1")]
-		public DLaB.Xrm.Entities.Letter letter_connections1
+		public Entities.Letter letter_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Letter>("letter_connections1", null);
+				return this.GetRelatedEntity<Entities.Letter>("letter_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("letter_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Letter>("letter_connections1", null, value);
+				this.SetRelatedEntity<Entities.Letter>("letter_connections1", null, value);
 				this.OnPropertyChanged("letter_connections1");
 			}
 		}
@@ -1865,18 +1865,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("letter_connections2")]
-		public DLaB.Xrm.Entities.Letter letter_connections2
+		public Entities.Letter letter_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Letter>("letter_connections2", null);
+				return this.GetRelatedEntity<Entities.Letter>("letter_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("letter_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Letter>("letter_connections2", null, value);
+				this.SetRelatedEntity<Entities.Letter>("letter_connections2", null, value);
 				this.OnPropertyChanged("letter_connections2");
 			}
 		}
@@ -1886,18 +1886,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("list_connections1")]
-		public DLaB.Xrm.Entities.List list_connections1
+		public Entities.List list_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.List>("list_connections1", null);
+				return this.GetRelatedEntity<Entities.List>("list_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("list_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.List>("list_connections1", null, value);
+				this.SetRelatedEntity<Entities.List>("list_connections1", null, value);
 				this.OnPropertyChanged("list_connections1");
 			}
 		}
@@ -1907,18 +1907,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("list_connections2")]
-		public DLaB.Xrm.Entities.List list_connections2
+		public Entities.List list_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.List>("list_connections2", null);
+				return this.GetRelatedEntity<Entities.List>("list_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("list_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.List>("list_connections2", null, value);
+				this.SetRelatedEntity<Entities.List>("list_connections2", null, value);
 				this.OnPropertyChanged("list_connections2");
 			}
 		}
@@ -1928,18 +1928,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_connectionbase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_connectionbase_createdonbehalfby
+		public Entities.SystemUser lk_connectionbase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_connectionbase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_connectionbase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_connectionbase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_connectionbase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_connectionbase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_connectionbase_createdonbehalfby");
 			}
 		}
@@ -1949,18 +1949,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_connectionbase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_connectionbase_modifiedonbehalfby
+		public Entities.SystemUser lk_connectionbase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_connectionbase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_connectionbase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_connectionbase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_connectionbase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_connectionbase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_connectionbase_modifiedonbehalfby");
 			}
 		}
@@ -1970,18 +1970,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_connection")]
-		public DLaB.Xrm.Entities.SystemUser modifiedby_connection
+		public Entities.SystemUser modifiedby_connection
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("modifiedby_connection", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("modifiedby_connection", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("modifiedby_connection");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("modifiedby_connection", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("modifiedby_connection", null, value);
 				this.OnPropertyChanged("modifiedby_connection");
 			}
 		}
@@ -1991,18 +1991,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_connections1")]
-		public DLaB.Xrm.Entities.msdyn_PostAlbum msdyn_postalbum_connections1
+		public Entities.msdyn_PostAlbum msdyn_postalbum_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_connections1", null);
+				return this.GetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_connections1", null, value);
+				this.SetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_connections1", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_connections1");
 			}
 		}
@@ -2012,18 +2012,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_connections2")]
-		public DLaB.Xrm.Entities.msdyn_PostAlbum msdyn_postalbum_connections2
+		public Entities.msdyn_PostAlbum msdyn_postalbum_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_connections2", null);
+				return this.GetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_connections2", null, value);
+				this.SetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_connections2", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_connections2");
 			}
 		}
@@ -2033,18 +2033,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_connections1")]
-		public DLaB.Xrm.Entities.Opportunity opportunity_connections1
+		public Entities.Opportunity opportunity_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("opportunity_connections1", null);
+				return this.GetRelatedEntity<Entities.Opportunity>("opportunity_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("opportunity_connections1", null, value);
+				this.SetRelatedEntity<Entities.Opportunity>("opportunity_connections1", null, value);
 				this.OnPropertyChanged("opportunity_connections1");
 			}
 		}
@@ -2054,18 +2054,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_connections2")]
-		public DLaB.Xrm.Entities.Opportunity opportunity_connections2
+		public Entities.Opportunity opportunity_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("opportunity_connections2", null);
+				return this.GetRelatedEntity<Entities.Opportunity>("opportunity_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("opportunity_connections2", null, value);
+				this.SetRelatedEntity<Entities.Opportunity>("opportunity_connections2", null, value);
 				this.OnPropertyChanged("opportunity_connections2");
 			}
 		}
@@ -2075,18 +2075,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("phonecall_connections1")]
-		public DLaB.Xrm.Entities.PhoneCall phonecall_connections1
+		public Entities.PhoneCall phonecall_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.PhoneCall>("phonecall_connections1", null);
+				return this.GetRelatedEntity<Entities.PhoneCall>("phonecall_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("phonecall_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.PhoneCall>("phonecall_connections1", null, value);
+				this.SetRelatedEntity<Entities.PhoneCall>("phonecall_connections1", null, value);
 				this.OnPropertyChanged("phonecall_connections1");
 			}
 		}
@@ -2096,18 +2096,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("phonecall_connections2")]
-		public DLaB.Xrm.Entities.PhoneCall phonecall_connections2
+		public Entities.PhoneCall phonecall_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.PhoneCall>("phonecall_connections2", null);
+				return this.GetRelatedEntity<Entities.PhoneCall>("phonecall_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("phonecall_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.PhoneCall>("phonecall_connections2", null, value);
+				this.SetRelatedEntity<Entities.PhoneCall>("phonecall_connections2", null, value);
 				this.OnPropertyChanged("phonecall_connections2");
 			}
 		}
@@ -2117,18 +2117,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("position_connection1")]
-		public DLaB.Xrm.Entities.Position position_connection1
+		public Entities.Position position_connection1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Position>("position_connection1", null);
+				return this.GetRelatedEntity<Entities.Position>("position_connection1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("position_connection1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Position>("position_connection1", null, value);
+				this.SetRelatedEntity<Entities.Position>("position_connection1", null, value);
 				this.OnPropertyChanged("position_connection1");
 			}
 		}
@@ -2138,18 +2138,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("position_connection2")]
-		public DLaB.Xrm.Entities.Position position_connection2
+		public Entities.Position position_connection2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Position>("position_connection2", null);
+				return this.GetRelatedEntity<Entities.Position>("position_connection2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("position_connection2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Position>("position_connection2", null, value);
+				this.SetRelatedEntity<Entities.Position>("position_connection2", null, value);
 				this.OnPropertyChanged("position_connection2");
 			}
 		}
@@ -2159,18 +2159,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("pricelevel_connections1")]
-		public DLaB.Xrm.Entities.PriceLevel pricelevel_connections1
+		public Entities.PriceLevel pricelevel_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.PriceLevel>("pricelevel_connections1", null);
+				return this.GetRelatedEntity<Entities.PriceLevel>("pricelevel_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("pricelevel_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.PriceLevel>("pricelevel_connections1", null, value);
+				this.SetRelatedEntity<Entities.PriceLevel>("pricelevel_connections1", null, value);
 				this.OnPropertyChanged("pricelevel_connections1");
 			}
 		}
@@ -2180,18 +2180,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("pricelevel_connections2")]
-		public DLaB.Xrm.Entities.PriceLevel pricelevel_connections2
+		public Entities.PriceLevel pricelevel_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.PriceLevel>("pricelevel_connections2", null);
+				return this.GetRelatedEntity<Entities.PriceLevel>("pricelevel_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("pricelevel_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.PriceLevel>("pricelevel_connections2", null, value);
+				this.SetRelatedEntity<Entities.PriceLevel>("pricelevel_connections2", null, value);
 				this.OnPropertyChanged("pricelevel_connections2");
 			}
 		}
@@ -2201,18 +2201,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processsession_connections1")]
-		public DLaB.Xrm.Entities.ProcessSession processsession_connections1
+		public Entities.ProcessSession processsession_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProcessSession>("processsession_connections1", null);
+				return this.GetRelatedEntity<Entities.ProcessSession>("processsession_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processsession_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProcessSession>("processsession_connections1", null, value);
+				this.SetRelatedEntity<Entities.ProcessSession>("processsession_connections1", null, value);
 				this.OnPropertyChanged("processsession_connections1");
 			}
 		}
@@ -2222,18 +2222,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processsession_connections2")]
-		public DLaB.Xrm.Entities.ProcessSession processsession_connections2
+		public Entities.ProcessSession processsession_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProcessSession>("processsession_connections2", null);
+				return this.GetRelatedEntity<Entities.ProcessSession>("processsession_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processsession_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProcessSession>("processsession_connections2", null, value);
+				this.SetRelatedEntity<Entities.ProcessSession>("processsession_connections2", null, value);
 				this.OnPropertyChanged("processsession_connections2");
 			}
 		}
@@ -2243,18 +2243,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("product_connections1")]
-		public DLaB.Xrm.Entities.Product product_connections1
+		public Entities.Product product_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Product>("product_connections1", null);
+				return this.GetRelatedEntity<Entities.Product>("product_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("product_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Product>("product_connections1", null, value);
+				this.SetRelatedEntity<Entities.Product>("product_connections1", null, value);
 				this.OnPropertyChanged("product_connections1");
 			}
 		}
@@ -2264,18 +2264,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("product_connections2")]
-		public DLaB.Xrm.Entities.Product product_connections2
+		public Entities.Product product_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Product>("product_connections2", null);
+				return this.GetRelatedEntity<Entities.Product>("product_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("product_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Product>("product_connections2", null, value);
+				this.SetRelatedEntity<Entities.Product>("product_connections2", null, value);
 				this.OnPropertyChanged("product_connections2");
 			}
 		}
@@ -2285,18 +2285,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("profilerule_connections1")]
-		public DLaB.Xrm.Entities.ChannelAccessProfileRule profilerule_connections1
+		public Entities.ChannelAccessProfileRule profilerule_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfileRule>("profilerule_connections1", null);
+				return this.GetRelatedEntity<Entities.ChannelAccessProfileRule>("profilerule_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("profilerule_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfileRule>("profilerule_connections1", null, value);
+				this.SetRelatedEntity<Entities.ChannelAccessProfileRule>("profilerule_connections1", null, value);
 				this.OnPropertyChanged("profilerule_connections1");
 			}
 		}
@@ -2306,18 +2306,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("profilerule_connections2")]
-		public DLaB.Xrm.Entities.ChannelAccessProfileRule profilerule_connections2
+		public Entities.ChannelAccessProfileRule profilerule_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfileRule>("profilerule_connections2", null);
+				return this.GetRelatedEntity<Entities.ChannelAccessProfileRule>("profilerule_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("profilerule_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfileRule>("profilerule_connections2", null, value);
+				this.SetRelatedEntity<Entities.ChannelAccessProfileRule>("profilerule_connections2", null, value);
 				this.OnPropertyChanged("profilerule_connections2");
 			}
 		}
@@ -2327,18 +2327,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("quote_connections1")]
-		public DLaB.Xrm.Entities.Quote quote_connections1
+		public Entities.Quote quote_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Quote>("quote_connections1", null);
+				return this.GetRelatedEntity<Entities.Quote>("quote_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("quote_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Quote>("quote_connections1", null, value);
+				this.SetRelatedEntity<Entities.Quote>("quote_connections1", null, value);
 				this.OnPropertyChanged("quote_connections1");
 			}
 		}
@@ -2348,18 +2348,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("quote_connections2")]
-		public DLaB.Xrm.Entities.Quote quote_connections2
+		public Entities.Quote quote_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Quote>("quote_connections2", null);
+				return this.GetRelatedEntity<Entities.Quote>("quote_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("quote_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Quote>("quote_connections2", null, value);
+				this.SetRelatedEntity<Entities.Quote>("quote_connections2", null, value);
 				this.OnPropertyChanged("quote_connections2");
 			}
 		}
@@ -2369,18 +2369,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recurringappointmentmaster_connections1")]
-		public DLaB.Xrm.Entities.RecurringAppointmentMaster recurringappointmentmaster_connections1
+		public Entities.RecurringAppointmentMaster recurringappointmentmaster_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RecurringAppointmentMaster>("recurringappointmentmaster_connections1", null);
+				return this.GetRelatedEntity<Entities.RecurringAppointmentMaster>("recurringappointmentmaster_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("recurringappointmentmaster_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RecurringAppointmentMaster>("recurringappointmentmaster_connections1", null, value);
+				this.SetRelatedEntity<Entities.RecurringAppointmentMaster>("recurringappointmentmaster_connections1", null, value);
 				this.OnPropertyChanged("recurringappointmentmaster_connections1");
 			}
 		}
@@ -2390,18 +2390,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recurringappointmentmaster_connections2")]
-		public DLaB.Xrm.Entities.RecurringAppointmentMaster recurringappointmentmaster_connections2
+		public Entities.RecurringAppointmentMaster recurringappointmentmaster_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RecurringAppointmentMaster>("recurringappointmentmaster_connections2", null);
+				return this.GetRelatedEntity<Entities.RecurringAppointmentMaster>("recurringappointmentmaster_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("recurringappointmentmaster_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RecurringAppointmentMaster>("recurringappointmentmaster_connections2", null, value);
+				this.SetRelatedEntity<Entities.RecurringAppointmentMaster>("recurringappointmentmaster_connections2", null, value);
 				this.OnPropertyChanged("recurringappointmentmaster_connections2");
 			}
 		}
@@ -2411,18 +2411,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("resourcegroup_connections1")]
-		public DLaB.Xrm.Entities.ResourceGroup resourcegroup_connections1
+		public Entities.ResourceGroup resourcegroup_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ResourceGroup>("resourcegroup_connections1", null);
+				return this.GetRelatedEntity<Entities.ResourceGroup>("resourcegroup_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("resourcegroup_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ResourceGroup>("resourcegroup_connections1", null, value);
+				this.SetRelatedEntity<Entities.ResourceGroup>("resourcegroup_connections1", null, value);
 				this.OnPropertyChanged("resourcegroup_connections1");
 			}
 		}
@@ -2432,18 +2432,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("resourcegroup_connections2")]
-		public DLaB.Xrm.Entities.ResourceGroup resourcegroup_connections2
+		public Entities.ResourceGroup resourcegroup_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ResourceGroup>("resourcegroup_connections2", null);
+				return this.GetRelatedEntity<Entities.ResourceGroup>("resourcegroup_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("resourcegroup_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ResourceGroup>("resourcegroup_connections2", null, value);
+				this.SetRelatedEntity<Entities.ResourceGroup>("resourcegroup_connections2", null, value);
 				this.OnPropertyChanged("resourcegroup_connections2");
 			}
 		}
@@ -2453,18 +2453,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("salesorder_connections1")]
-		public DLaB.Xrm.Entities.SalesOrder salesorder_connections1
+		public Entities.SalesOrder salesorder_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("salesorder_connections1", null);
+				return this.GetRelatedEntity<Entities.SalesOrder>("salesorder_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("salesorder_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("salesorder_connections1", null, value);
+				this.SetRelatedEntity<Entities.SalesOrder>("salesorder_connections1", null, value);
 				this.OnPropertyChanged("salesorder_connections1");
 			}
 		}
@@ -2474,18 +2474,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("salesorder_connections2")]
-		public DLaB.Xrm.Entities.SalesOrder salesorder_connections2
+		public Entities.SalesOrder salesorder_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("salesorder_connections2", null);
+				return this.GetRelatedEntity<Entities.SalesOrder>("salesorder_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("salesorder_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("salesorder_connections2", null, value);
+				this.SetRelatedEntity<Entities.SalesOrder>("salesorder_connections2", null, value);
 				this.OnPropertyChanged("salesorder_connections2");
 			}
 		}
@@ -2495,18 +2495,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("serviceappointment_connections1")]
-		public DLaB.Xrm.Entities.ServiceAppointment serviceappointment_connections1
+		public Entities.ServiceAppointment serviceappointment_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ServiceAppointment>("serviceappointment_connections1", null);
+				return this.GetRelatedEntity<Entities.ServiceAppointment>("serviceappointment_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("serviceappointment_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ServiceAppointment>("serviceappointment_connections1", null, value);
+				this.SetRelatedEntity<Entities.ServiceAppointment>("serviceappointment_connections1", null, value);
 				this.OnPropertyChanged("serviceappointment_connections1");
 			}
 		}
@@ -2516,18 +2516,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("serviceappointment_connections2")]
-		public DLaB.Xrm.Entities.ServiceAppointment serviceappointment_connections2
+		public Entities.ServiceAppointment serviceappointment_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ServiceAppointment>("serviceappointment_connections2", null);
+				return this.GetRelatedEntity<Entities.ServiceAppointment>("serviceappointment_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("serviceappointment_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ServiceAppointment>("serviceappointment_connections2", null, value);
+				this.SetRelatedEntity<Entities.ServiceAppointment>("serviceappointment_connections2", null, value);
 				this.OnPropertyChanged("serviceappointment_connections2");
 			}
 		}
@@ -2537,18 +2537,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("socialactivity_connections1")]
-		public DLaB.Xrm.Entities.SocialActivity socialactivity_connections1
+		public Entities.SocialActivity socialactivity_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SocialActivity>("socialactivity_connections1", null);
+				return this.GetRelatedEntity<Entities.SocialActivity>("socialactivity_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("socialactivity_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SocialActivity>("socialactivity_connections1", null, value);
+				this.SetRelatedEntity<Entities.SocialActivity>("socialactivity_connections1", null, value);
 				this.OnPropertyChanged("socialactivity_connections1");
 			}
 		}
@@ -2558,18 +2558,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("socialactivity_connections2")]
-		public DLaB.Xrm.Entities.SocialActivity socialactivity_connections2
+		public Entities.SocialActivity socialactivity_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SocialActivity>("socialactivity_connections2", null);
+				return this.GetRelatedEntity<Entities.SocialActivity>("socialactivity_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("socialactivity_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SocialActivity>("socialactivity_connections2", null, value);
+				this.SetRelatedEntity<Entities.SocialActivity>("socialactivity_connections2", null, value);
 				this.OnPropertyChanged("socialactivity_connections2");
 			}
 		}
@@ -2579,18 +2579,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("socialprofile_connections1")]
-		public DLaB.Xrm.Entities.SocialProfile socialprofile_connections1
+		public Entities.SocialProfile socialprofile_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SocialProfile>("socialprofile_connections1", null);
+				return this.GetRelatedEntity<Entities.SocialProfile>("socialprofile_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("socialprofile_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SocialProfile>("socialprofile_connections1", null, value);
+				this.SetRelatedEntity<Entities.SocialProfile>("socialprofile_connections1", null, value);
 				this.OnPropertyChanged("socialprofile_connections1");
 			}
 		}
@@ -2600,18 +2600,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("socialprofile_connections2")]
-		public DLaB.Xrm.Entities.SocialProfile socialprofile_connections2
+		public Entities.SocialProfile socialprofile_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SocialProfile>("socialprofile_connections2", null);
+				return this.GetRelatedEntity<Entities.SocialProfile>("socialprofile_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("socialprofile_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SocialProfile>("socialprofile_connections2", null, value);
+				this.SetRelatedEntity<Entities.SocialProfile>("socialprofile_connections2", null, value);
 				this.OnPropertyChanged("socialprofile_connections2");
 			}
 		}
@@ -2621,18 +2621,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("systemuser_connections1")]
-		public DLaB.Xrm.Entities.SystemUser systemuser_connections1
+		public Entities.SystemUser systemuser_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("systemuser_connections1", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("systemuser_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("systemuser_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("systemuser_connections1", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("systemuser_connections1", null, value);
 				this.OnPropertyChanged("systemuser_connections1");
 			}
 		}
@@ -2642,18 +2642,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("systemuser_connections2")]
-		public DLaB.Xrm.Entities.SystemUser systemuser_connections2
+		public Entities.SystemUser systemuser_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("systemuser_connections2", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("systemuser_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("systemuser_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("systemuser_connections2", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("systemuser_connections2", null, value);
 				this.OnPropertyChanged("systemuser_connections2");
 			}
 		}
@@ -2663,18 +2663,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("task_connections1")]
-		public DLaB.Xrm.Entities.Task task_connections1
+		public Entities.Task task_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Task>("task_connections1", null);
+				return this.GetRelatedEntity<Entities.Task>("task_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("task_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Task>("task_connections1", null, value);
+				this.SetRelatedEntity<Entities.Task>("task_connections1", null, value);
 				this.OnPropertyChanged("task_connections1");
 			}
 		}
@@ -2684,18 +2684,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("task_connections2")]
-		public DLaB.Xrm.Entities.Task task_connections2
+		public Entities.Task task_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Task>("task_connections2", null);
+				return this.GetRelatedEntity<Entities.Task>("task_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("task_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Task>("task_connections2", null, value);
+				this.SetRelatedEntity<Entities.Task>("task_connections2", null, value);
 				this.OnPropertyChanged("task_connections2");
 			}
 		}
@@ -2705,18 +2705,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_connections1")]
-		public DLaB.Xrm.Entities.Team team_connections1
+		public Entities.Team team_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_connections1", null);
+				return this.GetRelatedEntity<Entities.Team>("team_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_connections1", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_connections1", null, value);
 				this.OnPropertyChanged("team_connections1");
 			}
 		}
@@ -2726,18 +2726,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_connections2")]
-		public DLaB.Xrm.Entities.Team team_connections2
+		public Entities.Team team_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_connections2", null);
+				return this.GetRelatedEntity<Entities.Team>("team_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_connections2", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_connections2", null, value);
 				this.OnPropertyChanged("team_connections2");
 			}
 		}
@@ -2747,18 +2747,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record1id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("territory_connections1")]
-		public DLaB.Xrm.Entities.Territory territory_connections1
+		public Entities.Territory territory_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Territory>("territory_connections1", null);
+				return this.GetRelatedEntity<Entities.Territory>("territory_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("territory_connections1");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Territory>("territory_connections1", null, value);
+				this.SetRelatedEntity<Entities.Territory>("territory_connections1", null, value);
 				this.OnPropertyChanged("territory_connections1");
 			}
 		}
@@ -2768,18 +2768,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("record2id")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("territory_connections2")]
-		public DLaB.Xrm.Entities.Territory territory_connections2
+		public Entities.Territory territory_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Territory>("territory_connections2", null);
+				return this.GetRelatedEntity<Entities.Territory>("territory_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("territory_connections2");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Territory>("territory_connections2", null, value);
+				this.SetRelatedEntity<Entities.Territory>("territory_connections2", null, value);
 				this.OnPropertyChanged("territory_connections2");
 			}
 		}
@@ -2789,18 +2789,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Connection")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_Connection
+		public Entities.TransactionCurrency TransactionCurrency_Connection
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_Connection", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_Connection", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Connection");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_Connection", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_Connection", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Connection");
 			}
 		}

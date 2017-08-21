@@ -463,18 +463,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_reportvisibility
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_reportvisibility")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_reportvisibility
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_reportvisibility
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_reportvisibility", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_reportvisibility", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_reportvisibility");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_reportvisibility", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_reportvisibility", null, value);
 				this.OnPropertyChanged("userentityinstancedata_reportvisibility");
 			}
 		}
@@ -484,18 +484,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_reportvisibility_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_reportvisibility_createdonbehalfby
+		public Entities.SystemUser lk_reportvisibility_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportvisibility_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_reportvisibility_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_reportvisibility_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportvisibility_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_reportvisibility_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_reportvisibility_createdonbehalfby");
 			}
 		}
@@ -505,18 +505,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_reportvisibility_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_reportvisibility_modifiedonbehalfby
+		public Entities.SystemUser lk_reportvisibility_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportvisibility_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_reportvisibility_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_reportvisibility_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportvisibility_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_reportvisibility_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_reportvisibility_modifiedonbehalfby");
 			}
 		}
@@ -526,18 +526,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_reportvisibilitybase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_reportvisibilitybase_createdby
+		public Entities.SystemUser lk_reportvisibilitybase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportvisibilitybase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_reportvisibilitybase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_reportvisibilitybase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportvisibilitybase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_reportvisibilitybase_createdby", null, value);
 				this.OnPropertyChanged("lk_reportvisibilitybase_createdby");
 			}
 		}
@@ -547,18 +547,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_reportvisibilitybase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_reportvisibilitybase_modifiedby
+		public Entities.SystemUser lk_reportvisibilitybase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportvisibilitybase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_reportvisibilitybase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_reportvisibilitybase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportvisibilitybase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_reportvisibilitybase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_reportvisibilitybase_modifiedby");
 			}
 		}
@@ -568,18 +568,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("reportid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("report_reportvisibility")]
-		public DLaB.Xrm.Entities.Report report_reportvisibility
+		public Entities.Report report_reportvisibility
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Report>("report_reportvisibility", null);
+				return this.GetRelatedEntity<Entities.Report>("report_reportvisibility", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("report_reportvisibility");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Report>("report_reportvisibility", null, value);
+				this.SetRelatedEntity<Entities.Report>("report_reportvisibility", null, value);
 				this.OnPropertyChanged("report_reportvisibility");
 			}
 		}

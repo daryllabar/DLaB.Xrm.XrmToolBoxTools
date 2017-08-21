@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using DLaB.Common.Exceptions;
+using DLaB.AttributeManager.DLaB.Common.Exceptions;
 using DLaB.Xrm;
 using DLaB.Xrm.Entities;
 using McTools.Xrm.Connection;

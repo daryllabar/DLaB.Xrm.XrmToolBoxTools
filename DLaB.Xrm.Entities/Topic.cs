@@ -173,18 +173,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("incidentid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_topic")]
-		public DLaB.Xrm.Entities.Incident incident_topic
+		public Entities.Incident incident_topic
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Incident>("incident_topic", null);
+				return this.GetRelatedEntity<Entities.Incident>("incident_topic", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("incident_topic");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Incident>("incident_topic", null, value);
+				this.SetRelatedEntity<Entities.Incident>("incident_topic", null, value);
 				this.OnPropertyChanged("incident_topic");
 			}
 		}

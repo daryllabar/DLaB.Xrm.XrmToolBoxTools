@@ -589,18 +589,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N lk_theme_logoid
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_theme_logoid")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Theme> lk_theme_logoid
+		public System.Collections.Generic.IEnumerable<Entities.Theme> lk_theme_logoid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Theme>("lk_theme_logoid", null);
+				return this.GetRelatedEntities<Entities.Theme>("lk_theme_logoid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_theme_logoid");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Theme>("lk_theme_logoid", null, value);
+				this.SetRelatedEntities<Entities.Theme>("lk_theme_logoid", null, value);
 				this.OnPropertyChanged("lk_theme_logoid");
 			}
 		}
@@ -609,18 +609,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N solution_configuration_webresource
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("solution_configuration_webresource")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Solution> solution_configuration_webresource
+		public System.Collections.Generic.IEnumerable<Entities.Solution> solution_configuration_webresource
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Solution>("solution_configuration_webresource", null);
+				return this.GetRelatedEntities<Entities.Solution>("solution_configuration_webresource", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("solution_configuration_webresource");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Solution>("solution_configuration_webresource", null, value);
+				this.SetRelatedEntities<Entities.Solution>("solution_configuration_webresource", null, value);
 				this.OnPropertyChanged("solution_configuration_webresource");
 			}
 		}
@@ -629,18 +629,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_webresource
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_webresource")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_webresource
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_webresource
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_webresource", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_webresource", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_webresource");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_webresource", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_webresource", null, value);
 				this.OnPropertyChanged("userentityinstancedata_webresource");
 			}
 		}
@@ -649,18 +649,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N webresource_savedqueryvisualizations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("webresource_savedqueryvisualizations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SavedQueryVisualization> webresource_savedqueryvisualizations
+		public System.Collections.Generic.IEnumerable<Entities.SavedQueryVisualization> webresource_savedqueryvisualizations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SavedQueryVisualization>("webresource_savedqueryvisualizations", null);
+				return this.GetRelatedEntities<Entities.SavedQueryVisualization>("webresource_savedqueryvisualizations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("webresource_savedqueryvisualizations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SavedQueryVisualization>("webresource_savedqueryvisualizations", null, value);
+				this.SetRelatedEntities<Entities.SavedQueryVisualization>("webresource_savedqueryvisualizations", null, value);
 				this.OnPropertyChanged("webresource_savedqueryvisualizations");
 			}
 		}
@@ -669,18 +669,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N webresource_userqueryvisualizations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("webresource_userqueryvisualizations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserQueryVisualization> webresource_userqueryvisualizations
+		public System.Collections.Generic.IEnumerable<Entities.UserQueryVisualization> webresource_userqueryvisualizations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserQueryVisualization>("webresource_userqueryvisualizations", null);
+				return this.GetRelatedEntities<Entities.UserQueryVisualization>("webresource_userqueryvisualizations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("webresource_userqueryvisualizations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserQueryVisualization>("webresource_userqueryvisualizations", null, value);
+				this.SetRelatedEntities<Entities.UserQueryVisualization>("webresource_userqueryvisualizations", null, value);
 				this.OnPropertyChanged("webresource_userqueryvisualizations");
 			}
 		}
@@ -690,18 +690,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_webresourcebase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_webresourcebase_createdonbehalfby
+		public Entities.SystemUser lk_webresourcebase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_webresourcebase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_webresourcebase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_webresourcebase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_webresourcebase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_webresourcebase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_webresourcebase_createdonbehalfby");
 			}
 		}
@@ -711,18 +711,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_webresourcebase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_webresourcebase_modifiedonbehalfby
+		public Entities.SystemUser lk_webresourcebase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_webresourcebase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_webresourcebase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_webresourcebase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_webresourcebase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_webresourcebase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_webresourcebase_modifiedonbehalfby");
 			}
 		}
@@ -732,18 +732,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("webresource_createdby")]
-		public DLaB.Xrm.Entities.SystemUser webresource_createdby
+		public Entities.SystemUser webresource_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("webresource_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("webresource_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("webresource_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("webresource_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("webresource_createdby", null, value);
 				this.OnPropertyChanged("webresource_createdby");
 			}
 		}
@@ -753,18 +753,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("webresource_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser webresource_modifiedby
+		public Entities.SystemUser webresource_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("webresource_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("webresource_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("webresource_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("webresource_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("webresource_modifiedby", null, value);
 				this.OnPropertyChanged("webresource_modifiedby");
 			}
 		}
@@ -774,12 +774,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("webresource_organization")]
-		public DLaB.Xrm.Entities.Organization webresource_organization
+		public Entities.Organization webresource_organization
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("webresource_organization", null);
+				return this.GetRelatedEntity<Entities.Organization>("webresource_organization", null);
 			}
 		}
 		

@@ -484,18 +484,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ActivityMimeAttachment_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ActivityMimeAttachment_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> ActivityMimeAttachment_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> ActivityMimeAttachment_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("ActivityMimeAttachment_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("ActivityMimeAttachment_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ActivityMimeAttachment_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("ActivityMimeAttachment_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("ActivityMimeAttachment_AsyncOperations", null, value);
 				this.OnPropertyChanged("ActivityMimeAttachment_AsyncOperations");
 			}
 		}
@@ -504,18 +504,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ActivityMimeAttachment_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ActivityMimeAttachment_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> ActivityMimeAttachment_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> ActivityMimeAttachment_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("ActivityMimeAttachment_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("ActivityMimeAttachment_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ActivityMimeAttachment_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("ActivityMimeAttachment_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("ActivityMimeAttachment_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("ActivityMimeAttachment_BulkDeleteFailures");
 			}
 		}
@@ -524,18 +524,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_activitymimeattachment
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_activitymimeattachment")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_activitymimeattachment
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_activitymimeattachment
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_activitymimeattachment", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_activitymimeattachment", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_activitymimeattachment");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_activitymimeattachment", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_activitymimeattachment", null, value);
 				this.OnPropertyChanged("userentityinstancedata_activitymimeattachment");
 			}
 		}
@@ -545,18 +545,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("activity_pointer_activity_mime_attachment")]
-		public DLaB.Xrm.Entities.ActivityPointer activity_pointer_activity_mime_attachment
+		public Entities.ActivityPointer activity_pointer_activity_mime_attachment
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_activity_mime_attachment", null);
+				return this.GetRelatedEntity<Entities.ActivityPointer>("activity_pointer_activity_mime_attachment", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("activity_pointer_activity_mime_attachment");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_activity_mime_attachment", null, value);
+				this.SetRelatedEntity<Entities.ActivityPointer>("activity_pointer_activity_mime_attachment", null, value);
 				this.OnPropertyChanged("activity_pointer_activity_mime_attachment");
 			}
 		}
@@ -566,18 +566,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("appointment_activity_mime_attachment")]
-		public DLaB.Xrm.Entities.Appointment appointment_activity_mime_attachment
+		public Entities.Appointment appointment_activity_mime_attachment
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Appointment>("appointment_activity_mime_attachment", null);
+				return this.GetRelatedEntity<Entities.Appointment>("appointment_activity_mime_attachment", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("appointment_activity_mime_attachment");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Appointment>("appointment_activity_mime_attachment", null, value);
+				this.SetRelatedEntity<Entities.Appointment>("appointment_activity_mime_attachment", null, value);
 				this.OnPropertyChanged("appointment_activity_mime_attachment");
 			}
 		}
@@ -587,18 +587,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("email_activity_mime_attachment")]
-		public DLaB.Xrm.Entities.Email email_activity_mime_attachment
+		public Entities.Email email_activity_mime_attachment
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Email>("email_activity_mime_attachment", null);
+				return this.GetRelatedEntity<Entities.Email>("email_activity_mime_attachment", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("email_activity_mime_attachment");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Email>("email_activity_mime_attachment", null, value);
+				this.SetRelatedEntity<Entities.Email>("email_activity_mime_attachment", null, value);
 				this.OnPropertyChanged("email_activity_mime_attachment");
 			}
 		}
@@ -608,18 +608,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("template_activity_mime_attachments")]
-		public DLaB.Xrm.Entities.Template template_activity_mime_attachments
+		public Entities.Template template_activity_mime_attachments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Template>("template_activity_mime_attachments", null);
+				return this.GetRelatedEntity<Entities.Template>("template_activity_mime_attachments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("template_activity_mime_attachments");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Template>("template_activity_mime_attachments", null, value);
+				this.SetRelatedEntity<Entities.Template>("template_activity_mime_attachments", null, value);
 				this.OnPropertyChanged("template_activity_mime_attachments");
 			}
 		}

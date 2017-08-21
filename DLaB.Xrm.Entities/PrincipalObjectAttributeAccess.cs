@@ -306,18 +306,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("userentityinstancedata_principalobjectattributeaccess");
 			}
 		}
@@ -327,18 +327,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("account_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Account account_principalobjectattributeaccess
+		public Entities.Account account_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("account_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Account>("account_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("account_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("account_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Account>("account_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("account_principalobjectattributeaccess");
 			}
 		}
@@ -348,18 +348,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("appointment_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Appointment appointment_principalobjectattributeaccess
+		public Entities.Appointment appointment_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Appointment>("appointment_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Appointment>("appointment_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("appointment_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Appointment>("appointment_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Appointment>("appointment_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("appointment_principalobjectattributeaccess");
 			}
 		}
@@ -369,18 +369,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("businessunit_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.BusinessUnit businessunit_principalobjectattributeaccess
+		public Entities.BusinessUnit businessunit_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("businessunit_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("businessunit_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("businessunit_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("businessunit_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("businessunit_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("businessunit_principalobjectattributeaccess");
 			}
 		}
@@ -390,18 +390,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("campaign_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Campaign campaign_principalobjectattributeaccess
+		public Entities.Campaign campaign_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Campaign>("campaign_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Campaign>("campaign_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("campaign_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Campaign>("campaign_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Campaign>("campaign_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("campaign_principalobjectattributeaccess");
 			}
 		}
@@ -411,18 +411,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("campaignactivity_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.CampaignActivity campaignactivity_principalobjectattributeaccess
+		public Entities.CampaignActivity campaignactivity_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("campaignactivity_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.CampaignActivity>("campaignactivity_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("campaignactivity_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("campaignactivity_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.CampaignActivity>("campaignactivity_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("campaignactivity_principalobjectattributeaccess");
 			}
 		}
@@ -432,18 +432,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("campaignresponse_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.CampaignResponse campaignresponse_principalobjectattributeaccess
+		public Entities.CampaignResponse campaignresponse_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignResponse>("campaignresponse_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.CampaignResponse>("campaignresponse_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("campaignresponse_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CampaignResponse>("campaignresponse_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.CampaignResponse>("campaignresponse_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("campaignresponse_principalobjectattributeaccess");
 			}
 		}
@@ -453,18 +453,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("channelaccessprofile_PrincipalObjectAttributeAccess")]
-		public DLaB.Xrm.Entities.ChannelAccessProfile channelaccessprofile_PrincipalObjectAttributeAccess
+		public Entities.ChannelAccessProfile channelaccessprofile_PrincipalObjectAttributeAccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfile>("channelaccessprofile_PrincipalObjectAttributeAccess", null);
+				return this.GetRelatedEntity<Entities.ChannelAccessProfile>("channelaccessprofile_PrincipalObjectAttributeAccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("channelaccessprofile_PrincipalObjectAttributeAccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfile>("channelaccessprofile_PrincipalObjectAttributeAccess", null, value);
+				this.SetRelatedEntity<Entities.ChannelAccessProfile>("channelaccessprofile_PrincipalObjectAttributeAccess", null, value);
 				this.OnPropertyChanged("channelaccessprofile_PrincipalObjectAttributeAccess");
 			}
 		}
@@ -474,18 +474,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("competitor_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Competitor competitor_principalobjectattributeaccess
+		public Entities.Competitor competitor_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Competitor>("competitor_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Competitor>("competitor_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("competitor_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Competitor>("competitor_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Competitor>("competitor_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("competitor_principalobjectattributeaccess");
 			}
 		}
@@ -495,18 +495,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("connection_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Connection connection_principalobjectattributeaccess
+		public Entities.Connection connection_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Connection>("connection_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Connection>("connection_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("connection_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Connection>("connection_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Connection>("connection_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("connection_principalobjectattributeaccess");
 			}
 		}
@@ -516,18 +516,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contact_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Contact contact_principalobjectattributeaccess
+		public Entities.Contact contact_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("contact_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Contact>("contact_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contact_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("contact_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Contact>("contact_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("contact_principalobjectattributeaccess");
 			}
 		}
@@ -537,18 +537,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contract_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Contract contract_principalobjectattributeaccess
+		public Entities.Contract contract_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contract>("contract_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Contract>("contract_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contract_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contract>("contract_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Contract>("contract_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("contract_principalobjectattributeaccess");
 			}
 		}
@@ -558,18 +558,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contractdetail_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.ContractDetail contractdetail_principalobjectattributeaccess
+		public Entities.ContractDetail contractdetail_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ContractDetail>("contractdetail_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.ContractDetail>("contractdetail_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contractdetail_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ContractDetail>("contractdetail_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.ContractDetail>("contractdetail_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("contractdetail_principalobjectattributeaccess");
 			}
 		}
@@ -579,18 +579,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("customeraddress_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.CustomerAddress customeraddress_principalobjectattributeaccess
+		public Entities.CustomerAddress customeraddress_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CustomerAddress>("customeraddress_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.CustomerAddress>("customeraddress_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("customeraddress_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CustomerAddress>("customeraddress_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.CustomerAddress>("customeraddress_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("customeraddress_principalobjectattributeaccess");
 			}
 		}
@@ -600,18 +600,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("email_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Email email_principalobjectattributeaccess
+		public Entities.Email email_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Email>("email_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Email>("email_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("email_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Email>("email_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Email>("email_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("email_principalobjectattributeaccess");
 			}
 		}
@@ -621,18 +621,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_PrincipalObjectAttributeAccesses")]
-		public DLaB.Xrm.Entities.Entitlement entitlement_PrincipalObjectAttributeAccesses
+		public Entities.Entitlement entitlement_PrincipalObjectAttributeAccesses
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_PrincipalObjectAttributeAccesses", null);
+				return this.GetRelatedEntity<Entities.Entitlement>("entitlement_PrincipalObjectAttributeAccesses", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_PrincipalObjectAttributeAccesses");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_PrincipalObjectAttributeAccesses", null, value);
+				this.SetRelatedEntity<Entities.Entitlement>("entitlement_PrincipalObjectAttributeAccesses", null, value);
 				this.OnPropertyChanged("entitlement_PrincipalObjectAttributeAccesses");
 			}
 		}
@@ -642,18 +642,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlementtemplate_PrincipalObjectAttributeAccesses")]
-		public DLaB.Xrm.Entities.EntitlementTemplate entitlementtemplate_PrincipalObjectAttributeAccesses
+		public Entities.EntitlementTemplate entitlementtemplate_PrincipalObjectAttributeAccesses
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplate_PrincipalObjectAttributeAccesses", null);
+				return this.GetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplate_PrincipalObjectAttributeAccesses", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlementtemplate_PrincipalObjectAttributeAccesses");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplate_PrincipalObjectAttributeAccesses", null, value);
+				this.SetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplate_PrincipalObjectAttributeAccesses", null, value);
 				this.OnPropertyChanged("entitlementtemplate_PrincipalObjectAttributeAccesses");
 			}
 		}
@@ -663,18 +663,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("equipment_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Equipment equipment_principalobjectattributeaccess
+		public Entities.Equipment equipment_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Equipment>("equipment_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Equipment>("equipment_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("equipment_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Equipment>("equipment_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Equipment>("equipment_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("equipment_principalobjectattributeaccess");
 			}
 		}
@@ -684,18 +684,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("fax_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Fax fax_principalobjectattributeaccess
+		public Entities.Fax fax_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Fax>("fax_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Fax>("fax_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("fax_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Fax>("fax_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Fax>("fax_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("fax_principalobjectattributeaccess");
 			}
 		}
@@ -705,18 +705,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("goal_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Goal goal_principalobjectattributeaccess
+		public Entities.Goal goal_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Goal>("goal_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Goal>("goal_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("goal_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Goal>("goal_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Goal>("goal_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("goal_principalobjectattributeaccess");
 			}
 		}
@@ -726,18 +726,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Incident incident_principalobjectattributeaccess
+		public Entities.Incident incident_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Incident>("incident_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Incident>("incident_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("incident_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Incident>("incident_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Incident>("incident_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("incident_principalobjectattributeaccess");
 			}
 		}
@@ -747,18 +747,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("invoice_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Invoice invoice_principalobjectattributeaccess
+		public Entities.Invoice invoice_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Invoice>("invoice_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Invoice>("invoice_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("invoice_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Invoice>("invoice_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Invoice>("invoice_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("invoice_principalobjectattributeaccess");
 			}
 		}
@@ -768,18 +768,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("invoicedetail_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.InvoiceDetail invoicedetail_principalobjectattributeaccess
+		public Entities.InvoiceDetail invoicedetail_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.InvoiceDetail>("invoicedetail_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.InvoiceDetail>("invoicedetail_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("invoicedetail_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.InvoiceDetail>("invoicedetail_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.InvoiceDetail>("invoicedetail_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("invoicedetail_principalobjectattributeaccess");
 			}
 		}
@@ -789,18 +789,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("kbarticle_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.KbArticle kbarticle_principalobjectattributeaccess
+		public Entities.KbArticle kbarticle_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KbArticle>("kbarticle_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.KbArticle>("kbarticle_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("kbarticle_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KbArticle>("kbarticle_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.KbArticle>("kbarticle_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("kbarticle_principalobjectattributeaccess");
 			}
 		}
@@ -810,18 +810,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_PrincipalObjectAttributeAccess")]
-		public DLaB.Xrm.Entities.KnowledgeArticle knowledgearticle_PrincipalObjectAttributeAccess
+		public Entities.KnowledgeArticle knowledgearticle_PrincipalObjectAttributeAccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_PrincipalObjectAttributeAccess", null);
+				return this.GetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_PrincipalObjectAttributeAccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("knowledgearticle_PrincipalObjectAttributeAccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_PrincipalObjectAttributeAccess", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_PrincipalObjectAttributeAccess", null, value);
 				this.OnPropertyChanged("knowledgearticle_PrincipalObjectAttributeAccess");
 			}
 		}
@@ -831,18 +831,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticleincident_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.KnowledgeArticleIncident knowledgearticleincident_principalobjectattributeaccess
+		public Entities.KnowledgeArticleIncident knowledgearticleincident_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticleIncident>("knowledgearticleincident_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.KnowledgeArticleIncident>("knowledgearticleincident_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("knowledgearticleincident_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticleIncident>("knowledgearticleincident_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeArticleIncident>("knowledgearticleincident_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("knowledgearticleincident_principalobjectattributeaccess");
 			}
 		}
@@ -852,18 +852,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticleview_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.KnowledgeArticleViews knowledgearticleview_principalobjectattributeaccess
+		public Entities.KnowledgeArticleViews knowledgearticleview_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticleViews>("knowledgearticleview_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.KnowledgeArticleViews>("knowledgearticleview_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("knowledgearticleview_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticleViews>("knowledgearticleview_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeArticleViews>("knowledgearticleview_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("knowledgearticleview_principalobjectattributeaccess");
 			}
 		}
@@ -873,18 +873,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_PrincipalObjectAttributeAccess")]
-		public DLaB.Xrm.Entities.KnowledgeBaseRecord KnowledgeBaseRecord_PrincipalObjectAttributeAccess
+		public Entities.KnowledgeBaseRecord KnowledgeBaseRecord_PrincipalObjectAttributeAccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_PrincipalObjectAttributeAccess", null);
+				return this.GetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_PrincipalObjectAttributeAccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_PrincipalObjectAttributeAccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_PrincipalObjectAttributeAccess", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_PrincipalObjectAttributeAccess", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_PrincipalObjectAttributeAccess");
 			}
 		}
@@ -894,18 +894,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Lead lead_principalobjectattributeaccess
+		public Entities.Lead lead_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Lead>("lead_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Lead>("lead_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lead_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Lead>("lead_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Lead>("lead_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("lead_principalobjectattributeaccess");
 			}
 		}
@@ -915,18 +915,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("letter_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Letter letter_principalobjectattributeaccess
+		public Entities.Letter letter_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Letter>("letter_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Letter>("letter_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("letter_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Letter>("letter_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Letter>("letter_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("letter_principalobjectattributeaccess");
 			}
 		}
@@ -936,18 +936,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("list_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.List list_principalobjectattributeaccess
+		public Entities.List list_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.List>("list_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.List>("list_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("list_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.List>("list_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.List>("list_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("list_principalobjectattributeaccess");
 			}
 		}
@@ -957,12 +957,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_principalobjectattributeaccess_organizationid")]
-		public DLaB.Xrm.Entities.Organization lk_principalobjectattributeaccess_organizationid
+		public Entities.Organization lk_principalobjectattributeaccess_organizationid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("lk_principalobjectattributeaccess_organizationid", null);
+				return this.GetRelatedEntity<Entities.Organization>("lk_principalobjectattributeaccess_organizationid", null);
 			}
 		}
 		
@@ -971,18 +971,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("mailmergetemplate_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.MailMergeTemplate mailmergetemplate_principalobjectattributeaccess
+		public Entities.MailMergeTemplate mailmergetemplate_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.MailMergeTemplate>("mailmergetemplate_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.MailMergeTemplate>("mailmergetemplate_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("mailmergetemplate_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.MailMergeTemplate>("mailmergetemplate_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.MailMergeTemplate>("mailmergetemplate_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("mailmergetemplate_principalobjectattributeaccess");
 			}
 		}
@@ -992,18 +992,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_PrincipalObjectAttributeAccesses")]
-		public DLaB.Xrm.Entities.msdyn_PostAlbum msdyn_postalbum_PrincipalObjectAttributeAccesses
+		public Entities.msdyn_PostAlbum msdyn_postalbum_PrincipalObjectAttributeAccesses
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_PrincipalObjectAttributeAccesses", null);
+				return this.GetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_PrincipalObjectAttributeAccesses", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_PrincipalObjectAttributeAccesses");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_PrincipalObjectAttributeAccesses", null, value);
+				this.SetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_PrincipalObjectAttributeAccesses", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_PrincipalObjectAttributeAccesses");
 			}
 		}
@@ -1013,18 +1013,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postconfig_PrincipalObjectAttributeAccesses")]
-		public DLaB.Xrm.Entities.msdyn_PostConfig msdyn_postconfig_PrincipalObjectAttributeAccesses
+		public Entities.msdyn_PostConfig msdyn_postconfig_PrincipalObjectAttributeAccesses
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostConfig>("msdyn_postconfig_PrincipalObjectAttributeAccesses", null);
+				return this.GetRelatedEntity<Entities.msdyn_PostConfig>("msdyn_postconfig_PrincipalObjectAttributeAccesses", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postconfig_PrincipalObjectAttributeAccesses");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostConfig>("msdyn_postconfig_PrincipalObjectAttributeAccesses", null, value);
+				this.SetRelatedEntity<Entities.msdyn_PostConfig>("msdyn_postconfig_PrincipalObjectAttributeAccesses", null, value);
 				this.OnPropertyChanged("msdyn_postconfig_PrincipalObjectAttributeAccesses");
 			}
 		}
@@ -1034,18 +1034,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postruleconfig_PrincipalObjectAttributeAccesses")]
-		public DLaB.Xrm.Entities.msdyn_PostRuleConfig msdyn_postruleconfig_PrincipalObjectAttributeAccesses
+		public Entities.msdyn_PostRuleConfig msdyn_postruleconfig_PrincipalObjectAttributeAccesses
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostRuleConfig>("msdyn_postruleconfig_PrincipalObjectAttributeAccesses", null);
+				return this.GetRelatedEntity<Entities.msdyn_PostRuleConfig>("msdyn_postruleconfig_PrincipalObjectAttributeAccesses", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postruleconfig_PrincipalObjectAttributeAccesses");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostRuleConfig>("msdyn_postruleconfig_PrincipalObjectAttributeAccesses", null, value);
+				this.SetRelatedEntity<Entities.msdyn_PostRuleConfig>("msdyn_postruleconfig_PrincipalObjectAttributeAccesses", null, value);
 				this.OnPropertyChanged("msdyn_postruleconfig_PrincipalObjectAttributeAccesses");
 			}
 		}
@@ -1055,18 +1055,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_wallsavedquery_PrincipalObjectAttributeAccesses")]
-		public DLaB.Xrm.Entities.msdyn_wallsavedquery msdyn_wallsavedquery_PrincipalObjectAttributeAccesses
+		public Entities.msdyn_wallsavedquery msdyn_wallsavedquery_PrincipalObjectAttributeAccesses
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_wallsavedquery>("msdyn_wallsavedquery_PrincipalObjectAttributeAccesses", null);
+				return this.GetRelatedEntity<Entities.msdyn_wallsavedquery>("msdyn_wallsavedquery_PrincipalObjectAttributeAccesses", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_wallsavedquery_PrincipalObjectAttributeAccesses");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_wallsavedquery>("msdyn_wallsavedquery_PrincipalObjectAttributeAccesses", null, value);
+				this.SetRelatedEntity<Entities.msdyn_wallsavedquery>("msdyn_wallsavedquery_PrincipalObjectAttributeAccesses", null, value);
 				this.OnPropertyChanged("msdyn_wallsavedquery_PrincipalObjectAttributeAccesses");
 			}
 		}
@@ -1076,18 +1076,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_wallsavedqueryusersettings_PrincipalObjectAttributeAccesses")]
-		public DLaB.Xrm.Entities.msdyn_wallsavedqueryusersettings msdyn_wallsavedqueryusersettings_PrincipalObjectAttributeAccesses
+		public Entities.msdyn_wallsavedqueryusersettings msdyn_wallsavedqueryusersettings_PrincipalObjectAttributeAccesses
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_wallsavedqueryusersettings>("msdyn_wallsavedqueryusersettings_PrincipalObjectAttributeAccesses", null);
+				return this.GetRelatedEntity<Entities.msdyn_wallsavedqueryusersettings>("msdyn_wallsavedqueryusersettings_PrincipalObjectAttributeAccesses", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_wallsavedqueryusersettings_PrincipalObjectAttributeAccesses");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_wallsavedqueryusersettings>("msdyn_wallsavedqueryusersettings_PrincipalObjectAttributeAccesses", null, value);
+				this.SetRelatedEntity<Entities.msdyn_wallsavedqueryusersettings>("msdyn_wallsavedqueryusersettings_PrincipalObjectAttributeAccesses", null, value);
 				this.OnPropertyChanged("msdyn_wallsavedqueryusersettings_PrincipalObjectAttributeAccesses");
 			}
 		}
@@ -1097,18 +1097,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Opportunity opportunity_principalobjectattributeaccess
+		public Entities.Opportunity opportunity_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("opportunity_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Opportunity>("opportunity_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("opportunity_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Opportunity>("opportunity_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("opportunity_principalobjectattributeaccess");
 			}
 		}
@@ -1118,18 +1118,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunityproduct_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.OpportunityProduct opportunityproduct_principalobjectattributeaccess
+		public Entities.OpportunityProduct opportunityproduct_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.OpportunityProduct>("opportunityproduct_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.OpportunityProduct>("opportunityproduct_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunityproduct_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.OpportunityProduct>("opportunityproduct_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.OpportunityProduct>("opportunityproduct_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("opportunityproduct_principalobjectattributeaccess");
 			}
 		}
@@ -1139,18 +1139,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("phonecall_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.PhoneCall phonecall_principalobjectattributeaccess
+		public Entities.PhoneCall phonecall_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.PhoneCall>("phonecall_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.PhoneCall>("phonecall_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("phonecall_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.PhoneCall>("phonecall_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.PhoneCall>("phonecall_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("phonecall_principalobjectattributeaccess");
 			}
 		}
@@ -1160,18 +1160,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("position_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Position position_principalobjectattributeaccess
+		public Entities.Position position_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Position>("position_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Position>("position_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("position_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Position>("position_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Position>("position_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("position_principalobjectattributeaccess");
 			}
 		}
@@ -1181,18 +1181,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("pricelevel_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.PriceLevel pricelevel_principalobjectattributeaccess
+		public Entities.PriceLevel pricelevel_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.PriceLevel>("pricelevel_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.PriceLevel>("pricelevel_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("pricelevel_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.PriceLevel>("pricelevel_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.PriceLevel>("pricelevel_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("pricelevel_principalobjectattributeaccess");
 			}
 		}
@@ -1202,18 +1202,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("product_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Product product_principalobjectattributeaccess
+		public Entities.Product product_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Product>("product_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Product>("product_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("product_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Product>("product_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Product>("product_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("product_principalobjectattributeaccess");
 			}
 		}
@@ -1223,18 +1223,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductAssociation_PrincipalObjectAttributeAccess")]
-		public DLaB.Xrm.Entities.ProductAssociation ProductAssociation_PrincipalObjectAttributeAccess
+		public Entities.ProductAssociation ProductAssociation_PrincipalObjectAttributeAccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProductAssociation>("ProductAssociation_PrincipalObjectAttributeAccess", null);
+				return this.GetRelatedEntity<Entities.ProductAssociation>("ProductAssociation_PrincipalObjectAttributeAccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ProductAssociation_PrincipalObjectAttributeAccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProductAssociation>("ProductAssociation_PrincipalObjectAttributeAccess", null, value);
+				this.SetRelatedEntity<Entities.ProductAssociation>("ProductAssociation_PrincipalObjectAttributeAccess", null, value);
 				this.OnPropertyChanged("ProductAssociation_PrincipalObjectAttributeAccess");
 			}
 		}
@@ -1244,18 +1244,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductSubstitute_PrincipalObjectAttributeAccess")]
-		public DLaB.Xrm.Entities.ProductSubstitute ProductSubstitute_PrincipalObjectAttributeAccess
+		public Entities.ProductSubstitute ProductSubstitute_PrincipalObjectAttributeAccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProductSubstitute>("ProductSubstitute_PrincipalObjectAttributeAccess", null);
+				return this.GetRelatedEntity<Entities.ProductSubstitute>("ProductSubstitute_PrincipalObjectAttributeAccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ProductSubstitute_PrincipalObjectAttributeAccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProductSubstitute>("ProductSubstitute_PrincipalObjectAttributeAccess", null, value);
+				this.SetRelatedEntity<Entities.ProductSubstitute>("ProductSubstitute_PrincipalObjectAttributeAccess", null, value);
 				this.OnPropertyChanged("ProductSubstitute_PrincipalObjectAttributeAccess");
 			}
 		}
@@ -1265,18 +1265,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("queue_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Queue queue_principalobjectattributeaccess
+		public Entities.Queue queue_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Queue>("queue_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Queue>("queue_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("queue_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Queue>("queue_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Queue>("queue_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("queue_principalobjectattributeaccess");
 			}
 		}
@@ -1286,18 +1286,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("queueitem_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.QueueItem queueitem_principalobjectattributeaccess
+		public Entities.QueueItem queueitem_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.QueueItem>("queueitem_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.QueueItem>("queueitem_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("queueitem_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.QueueItem>("queueitem_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.QueueItem>("queueitem_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("queueitem_principalobjectattributeaccess");
 			}
 		}
@@ -1307,18 +1307,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("quote_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Quote quote_principalobjectattributeaccess
+		public Entities.Quote quote_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Quote>("quote_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Quote>("quote_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("quote_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Quote>("quote_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Quote>("quote_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("quote_principalobjectattributeaccess");
 			}
 		}
@@ -1328,18 +1328,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("quotedetail_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.QuoteDetail quotedetail_principalobjectattributeaccess
+		public Entities.QuoteDetail quotedetail_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.QuoteDetail>("quotedetail_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.QuoteDetail>("quotedetail_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("quotedetail_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.QuoteDetail>("quotedetail_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.QuoteDetail>("quotedetail_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("quotedetail_principalobjectattributeaccess");
 			}
 		}
@@ -1349,18 +1349,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recurringappointmentmaster_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.RecurringAppointmentMaster recurringappointmentmaster_principalobjectattributeaccess
+		public Entities.RecurringAppointmentMaster recurringappointmentmaster_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RecurringAppointmentMaster>("recurringappointmentmaster_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.RecurringAppointmentMaster>("recurringappointmentmaster_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("recurringappointmentmaster_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RecurringAppointmentMaster>("recurringappointmentmaster_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.RecurringAppointmentMaster>("recurringappointmentmaster_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("recurringappointmentmaster_principalobjectattributeaccess");
 			}
 		}
@@ -1370,18 +1370,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("reportcategory_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.ReportCategory reportcategory_principalobjectattributeaccess
+		public Entities.ReportCategory reportcategory_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ReportCategory>("reportcategory_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.ReportCategory>("reportcategory_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("reportcategory_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ReportCategory>("reportcategory_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.ReportCategory>("reportcategory_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("reportcategory_principalobjectattributeaccess");
 			}
 		}
@@ -1391,18 +1391,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("salesliterature_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.SalesLiterature salesliterature_principalobjectattributeaccess
+		public Entities.SalesLiterature salesliterature_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesLiterature>("salesliterature_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.SalesLiterature>("salesliterature_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("salesliterature_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SalesLiterature>("salesliterature_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.SalesLiterature>("salesliterature_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("salesliterature_principalobjectattributeaccess");
 			}
 		}
@@ -1412,18 +1412,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("salesorder_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.SalesOrder salesorder_principalobjectattributeaccess
+		public Entities.SalesOrder salesorder_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("salesorder_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.SalesOrder>("salesorder_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("salesorder_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("salesorder_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.SalesOrder>("salesorder_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("salesorder_principalobjectattributeaccess");
 			}
 		}
@@ -1433,18 +1433,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("salesorderdetail_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.SalesOrderDetail salesorderdetail_principalobjectattributeaccess
+		public Entities.SalesOrderDetail salesorderdetail_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesOrderDetail>("salesorderdetail_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.SalesOrderDetail>("salesorderdetail_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("salesorderdetail_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SalesOrderDetail>("salesorderdetail_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.SalesOrderDetail>("salesorderdetail_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("salesorderdetail_principalobjectattributeaccess");
 			}
 		}
@@ -1454,18 +1454,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("serviceappointment_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.ServiceAppointment serviceappointment_principalobjectattributeaccess
+		public Entities.ServiceAppointment serviceappointment_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ServiceAppointment>("serviceappointment_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.ServiceAppointment>("serviceappointment_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("serviceappointment_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ServiceAppointment>("serviceappointment_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.ServiceAppointment>("serviceappointment_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("serviceappointment_principalobjectattributeaccess");
 			}
 		}
@@ -1475,18 +1475,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sharepointdocumentlocation_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.SharePointDocumentLocation sharepointdocumentlocation_principalobjectattributeaccess
+		public Entities.SharePointDocumentLocation sharepointdocumentlocation_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SharePointDocumentLocation>("sharepointdocumentlocation_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.SharePointDocumentLocation>("sharepointdocumentlocation_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("sharepointdocumentlocation_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SharePointDocumentLocation>("sharepointdocumentlocation_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.SharePointDocumentLocation>("sharepointdocumentlocation_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("sharepointdocumentlocation_principalobjectattributeaccess");
 			}
 		}
@@ -1496,18 +1496,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sharepointsite_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.SharePointSite sharepointsite_principalobjectattributeaccess
+		public Entities.SharePointSite sharepointsite_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SharePointSite>("sharepointsite_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.SharePointSite>("sharepointsite_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("sharepointsite_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SharePointSite>("sharepointsite_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.SharePointSite>("sharepointsite_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("sharepointsite_principalobjectattributeaccess");
 			}
 		}
@@ -1517,18 +1517,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("socialactivity_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.SocialActivity socialactivity_principalobjectattributeaccess
+		public Entities.SocialActivity socialactivity_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SocialActivity>("socialactivity_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.SocialActivity>("socialactivity_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("socialactivity_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SocialActivity>("socialactivity_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.SocialActivity>("socialactivity_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("socialactivity_principalobjectattributeaccess");
 			}
 		}
@@ -1538,18 +1538,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("socialprofile_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.SocialProfile socialprofile_principalobjectattributeaccess
+		public Entities.SocialProfile socialprofile_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SocialProfile>("socialprofile_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.SocialProfile>("socialprofile_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("socialprofile_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SocialProfile>("socialprofile_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.SocialProfile>("socialprofile_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("socialprofile_principalobjectattributeaccess");
 			}
 		}
@@ -1559,18 +1559,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("systemuser_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.SystemUser systemuser_principalobjectattributeaccess
+		public Entities.SystemUser systemuser_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("systemuser_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("systemuser_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("systemuser_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("systemuser_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("systemuser_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("systemuser_principalobjectattributeaccess");
 			}
 		}
@@ -1580,18 +1580,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("principalid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("systemuser_principalobjectattributeaccess_principalid")]
-		public DLaB.Xrm.Entities.SystemUser systemuser_principalobjectattributeaccess_principalid
+		public Entities.SystemUser systemuser_principalobjectattributeaccess_principalid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("systemuser_principalobjectattributeaccess_principalid", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("systemuser_principalobjectattributeaccess_principalid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("systemuser_principalobjectattributeaccess_principalid");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("systemuser_principalobjectattributeaccess_principalid", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("systemuser_principalobjectattributeaccess_principalid", null, value);
 				this.OnPropertyChanged("systemuser_principalobjectattributeaccess_principalid");
 			}
 		}
@@ -1601,18 +1601,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("task_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Task task_principalobjectattributeaccess
+		public Entities.Task task_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Task>("task_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Task>("task_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("task_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Task>("task_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Task>("task_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("task_principalobjectattributeaccess");
 			}
 		}
@@ -1622,18 +1622,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Team team_principalobjectattributeaccess
+		public Entities.Team team_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Team>("team_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("team_principalobjectattributeaccess");
 			}
 		}
@@ -1643,18 +1643,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("principalid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_principalobjectattributeaccess_principalid")]
-		public DLaB.Xrm.Entities.Team team_principalobjectattributeaccess_principalid
+		public Entities.Team team_principalobjectattributeaccess_principalid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_principalobjectattributeaccess_principalid", null);
+				return this.GetRelatedEntity<Entities.Team>("team_principalobjectattributeaccess_principalid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_principalobjectattributeaccess_principalid");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_principalobjectattributeaccess_principalid", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_principalobjectattributeaccess_principalid", null, value);
 				this.OnPropertyChanged("team_principalobjectattributeaccess_principalid");
 			}
 		}
@@ -1664,18 +1664,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("territory_principalobjectattributeaccess")]
-		public DLaB.Xrm.Entities.Territory territory_principalobjectattributeaccess
+		public Entities.Territory territory_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Territory>("territory_principalobjectattributeaccess", null);
+				return this.GetRelatedEntity<Entities.Territory>("territory_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("territory_principalobjectattributeaccess");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Territory>("territory_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntity<Entities.Territory>("territory_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("territory_principalobjectattributeaccess");
 			}
 		}

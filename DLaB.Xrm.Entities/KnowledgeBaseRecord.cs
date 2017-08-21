@@ -408,18 +408,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KnowledgeBaseRecord_ActivityPointers
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_ActivityPointers")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityPointer> KnowledgeBaseRecord_ActivityPointers
+		public System.Collections.Generic.IEnumerable<Entities.ActivityPointer> KnowledgeBaseRecord_ActivityPointers
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityPointer>("KnowledgeBaseRecord_ActivityPointers", null);
+				return this.GetRelatedEntities<Entities.ActivityPointer>("KnowledgeBaseRecord_ActivityPointers", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_ActivityPointers");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityPointer>("KnowledgeBaseRecord_ActivityPointers", null, value);
+				this.SetRelatedEntities<Entities.ActivityPointer>("KnowledgeBaseRecord_ActivityPointers", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_ActivityPointers");
 			}
 		}
@@ -428,18 +428,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KnowledgeBaseRecord_Annotations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_Annotations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> KnowledgeBaseRecord_Annotations
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> KnowledgeBaseRecord_Annotations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("KnowledgeBaseRecord_Annotations", null);
+				return this.GetRelatedEntities<Entities.Annotation>("KnowledgeBaseRecord_Annotations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_Annotations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("KnowledgeBaseRecord_Annotations", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("KnowledgeBaseRecord_Annotations", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_Annotations");
 			}
 		}
@@ -448,18 +448,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KnowledgeBaseRecord_Appointments
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_Appointments")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Appointment> KnowledgeBaseRecord_Appointments
+		public System.Collections.Generic.IEnumerable<Entities.Appointment> KnowledgeBaseRecord_Appointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Appointment>("KnowledgeBaseRecord_Appointments", null);
+				return this.GetRelatedEntities<Entities.Appointment>("KnowledgeBaseRecord_Appointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_Appointments");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Appointment>("KnowledgeBaseRecord_Appointments", null, value);
+				this.SetRelatedEntities<Entities.Appointment>("KnowledgeBaseRecord_Appointments", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_Appointments");
 			}
 		}
@@ -468,18 +468,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KnowledgeBaseRecord_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> KnowledgeBaseRecord_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> KnowledgeBaseRecord_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("KnowledgeBaseRecord_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("KnowledgeBaseRecord_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("KnowledgeBaseRecord_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("KnowledgeBaseRecord_AsyncOperations", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_AsyncOperations");
 			}
 		}
@@ -488,18 +488,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KnowledgeBaseRecord_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> KnowledgeBaseRecord_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> KnowledgeBaseRecord_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("KnowledgeBaseRecord_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("KnowledgeBaseRecord_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("KnowledgeBaseRecord_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("KnowledgeBaseRecord_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_BulkDeleteFailures");
 			}
 		}
@@ -508,18 +508,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KnowledgeBaseRecord_connections1
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_connections1")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> KnowledgeBaseRecord_connections1
+		public System.Collections.Generic.IEnumerable<Entities.Connection> KnowledgeBaseRecord_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("KnowledgeBaseRecord_connections1", null);
+				return this.GetRelatedEntities<Entities.Connection>("KnowledgeBaseRecord_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_connections1");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("KnowledgeBaseRecord_connections1", null, value);
+				this.SetRelatedEntities<Entities.Connection>("KnowledgeBaseRecord_connections1", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_connections1");
 			}
 		}
@@ -528,18 +528,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KnowledgeBaseRecord_connections2
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_connections2")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> KnowledgeBaseRecord_connections2
+		public System.Collections.Generic.IEnumerable<Entities.Connection> KnowledgeBaseRecord_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("KnowledgeBaseRecord_connections2", null);
+				return this.GetRelatedEntities<Entities.Connection>("KnowledgeBaseRecord_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_connections2");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("KnowledgeBaseRecord_connections2", null, value);
+				this.SetRelatedEntities<Entities.Connection>("KnowledgeBaseRecord_connections2", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_connections2");
 			}
 		}
@@ -548,18 +548,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KnowledgeBaseRecord_DuplicateBaseRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_DuplicateBaseRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> KnowledgeBaseRecord_DuplicateBaseRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> KnowledgeBaseRecord_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("KnowledgeBaseRecord_DuplicateBaseRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("KnowledgeBaseRecord_DuplicateBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_DuplicateBaseRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("KnowledgeBaseRecord_DuplicateBaseRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("KnowledgeBaseRecord_DuplicateBaseRecord", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_DuplicateBaseRecord");
 			}
 		}
@@ -568,18 +568,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KnowledgeBaseRecord_DuplicateMatchingRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_DuplicateMatchingRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> KnowledgeBaseRecord_DuplicateMatchingRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> KnowledgeBaseRecord_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("KnowledgeBaseRecord_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("KnowledgeBaseRecord_DuplicateMatchingRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_DuplicateMatchingRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("KnowledgeBaseRecord_DuplicateMatchingRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("KnowledgeBaseRecord_DuplicateMatchingRecord", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_DuplicateMatchingRecord");
 			}
 		}
@@ -588,18 +588,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KnowledgeBaseRecord_Emails
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_Emails")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Email> KnowledgeBaseRecord_Emails
+		public System.Collections.Generic.IEnumerable<Entities.Email> KnowledgeBaseRecord_Emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Email>("KnowledgeBaseRecord_Emails", null);
+				return this.GetRelatedEntities<Entities.Email>("KnowledgeBaseRecord_Emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_Emails");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Email>("KnowledgeBaseRecord_Emails", null, value);
+				this.SetRelatedEntities<Entities.Email>("KnowledgeBaseRecord_Emails", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_Emails");
 			}
 		}
@@ -608,18 +608,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KnowledgeBaseRecord_Faxes
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_Faxes")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Fax> KnowledgeBaseRecord_Faxes
+		public System.Collections.Generic.IEnumerable<Entities.Fax> KnowledgeBaseRecord_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Fax>("KnowledgeBaseRecord_Faxes", null);
+				return this.GetRelatedEntities<Entities.Fax>("KnowledgeBaseRecord_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_Faxes");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Fax>("KnowledgeBaseRecord_Faxes", null, value);
+				this.SetRelatedEntities<Entities.Fax>("KnowledgeBaseRecord_Faxes", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_Faxes");
 			}
 		}
@@ -628,18 +628,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KnowledgeBaseRecord_Letters
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_Letters")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Letter> KnowledgeBaseRecord_Letters
+		public System.Collections.Generic.IEnumerable<Entities.Letter> KnowledgeBaseRecord_Letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Letter>("KnowledgeBaseRecord_Letters", null);
+				return this.GetRelatedEntities<Entities.Letter>("KnowledgeBaseRecord_Letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_Letters");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Letter>("KnowledgeBaseRecord_Letters", null, value);
+				this.SetRelatedEntities<Entities.Letter>("KnowledgeBaseRecord_Letters", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_Letters");
 			}
 		}
@@ -648,18 +648,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KnowledgeBaseRecord_PhoneCalls
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_PhoneCalls")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PhoneCall> KnowledgeBaseRecord_PhoneCalls
+		public System.Collections.Generic.IEnumerable<Entities.PhoneCall> KnowledgeBaseRecord_PhoneCalls
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PhoneCall>("KnowledgeBaseRecord_PhoneCalls", null);
+				return this.GetRelatedEntities<Entities.PhoneCall>("KnowledgeBaseRecord_PhoneCalls", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_PhoneCalls");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PhoneCall>("KnowledgeBaseRecord_PhoneCalls", null, value);
+				this.SetRelatedEntities<Entities.PhoneCall>("KnowledgeBaseRecord_PhoneCalls", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_PhoneCalls");
 			}
 		}
@@ -668,18 +668,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KnowledgeBaseRecord_PrincipalObjectAttributeAccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_PrincipalObjectAttributeAccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> KnowledgeBaseRecord_PrincipalObjectAttributeAccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> KnowledgeBaseRecord_PrincipalObjectAttributeAccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("KnowledgeBaseRecord_PrincipalObjectAttributeAccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("KnowledgeBaseRecord_PrincipalObjectAttributeAccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_PrincipalObjectAttributeAccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("KnowledgeBaseRecord_PrincipalObjectAttributeAccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("KnowledgeBaseRecord_PrincipalObjectAttributeAccess", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_PrincipalObjectAttributeAccess");
 			}
 		}
@@ -688,18 +688,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KnowledgeBaseRecord_ProcessSession
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_ProcessSession")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> KnowledgeBaseRecord_ProcessSession
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> KnowledgeBaseRecord_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("KnowledgeBaseRecord_ProcessSession", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("KnowledgeBaseRecord_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_ProcessSession");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("KnowledgeBaseRecord_ProcessSession", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("KnowledgeBaseRecord_ProcessSession", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_ProcessSession");
 			}
 		}
@@ -708,18 +708,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KnowledgeBaseRecord_RecurringAppointmentMasters
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_RecurringAppointmentMasters")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.RecurringAppointmentMaster> KnowledgeBaseRecord_RecurringAppointmentMasters
+		public System.Collections.Generic.IEnumerable<Entities.RecurringAppointmentMaster> KnowledgeBaseRecord_RecurringAppointmentMasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.RecurringAppointmentMaster>("KnowledgeBaseRecord_RecurringAppointmentMasters", null);
+				return this.GetRelatedEntities<Entities.RecurringAppointmentMaster>("KnowledgeBaseRecord_RecurringAppointmentMasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_RecurringAppointmentMasters");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.RecurringAppointmentMaster>("KnowledgeBaseRecord_RecurringAppointmentMasters", null, value);
+				this.SetRelatedEntities<Entities.RecurringAppointmentMaster>("KnowledgeBaseRecord_RecurringAppointmentMasters", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_RecurringAppointmentMasters");
 			}
 		}
@@ -728,18 +728,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KnowledgeBaseRecord_ServiceAppointments
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_ServiceAppointments")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ServiceAppointment> KnowledgeBaseRecord_ServiceAppointments
+		public System.Collections.Generic.IEnumerable<Entities.ServiceAppointment> KnowledgeBaseRecord_ServiceAppointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ServiceAppointment>("KnowledgeBaseRecord_ServiceAppointments", null);
+				return this.GetRelatedEntities<Entities.ServiceAppointment>("KnowledgeBaseRecord_ServiceAppointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_ServiceAppointments");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ServiceAppointment>("KnowledgeBaseRecord_ServiceAppointments", null, value);
+				this.SetRelatedEntities<Entities.ServiceAppointment>("KnowledgeBaseRecord_ServiceAppointments", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_ServiceAppointments");
 			}
 		}
@@ -748,18 +748,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KnowledgeBaseRecord_SocialActivities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_SocialActivities")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SocialActivity> KnowledgeBaseRecord_SocialActivities
+		public System.Collections.Generic.IEnumerable<Entities.SocialActivity> KnowledgeBaseRecord_SocialActivities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SocialActivity>("KnowledgeBaseRecord_SocialActivities", null);
+				return this.GetRelatedEntities<Entities.SocialActivity>("KnowledgeBaseRecord_SocialActivities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_SocialActivities");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SocialActivity>("KnowledgeBaseRecord_SocialActivities", null, value);
+				this.SetRelatedEntities<Entities.SocialActivity>("KnowledgeBaseRecord_SocialActivities", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_SocialActivities");
 			}
 		}
@@ -768,18 +768,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KnowledgeBaseRecord_Tasks
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_Tasks")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Task> KnowledgeBaseRecord_Tasks
+		public System.Collections.Generic.IEnumerable<Entities.Task> KnowledgeBaseRecord_Tasks
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Task>("KnowledgeBaseRecord_Tasks", null);
+				return this.GetRelatedEntities<Entities.Task>("KnowledgeBaseRecord_Tasks", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_Tasks");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Task>("KnowledgeBaseRecord_Tasks", null, value);
+				this.SetRelatedEntities<Entities.Task>("KnowledgeBaseRecord_Tasks", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_Tasks");
 			}
 		}
@@ -788,18 +788,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KnowledgeBaseRecord_UserEntityInstanceDatas
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_UserEntityInstanceDatas")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> KnowledgeBaseRecord_UserEntityInstanceDatas
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> KnowledgeBaseRecord_UserEntityInstanceDatas
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("KnowledgeBaseRecord_UserEntityInstanceDatas", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("KnowledgeBaseRecord_UserEntityInstanceDatas", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_UserEntityInstanceDatas");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("KnowledgeBaseRecord_UserEntityInstanceDatas", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("KnowledgeBaseRecord_UserEntityInstanceDatas", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_UserEntityInstanceDatas");
 			}
 		}
@@ -808,18 +808,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N KnowledgeBaseRecord_Incident
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_Incident")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Incident> KnowledgeBaseRecord_Incident
+		public System.Collections.Generic.IEnumerable<Entities.Incident> KnowledgeBaseRecord_Incident
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Incident>("KnowledgeBaseRecord_Incident", null);
+				return this.GetRelatedEntities<Entities.Incident>("KnowledgeBaseRecord_Incident", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_Incident");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Incident>("KnowledgeBaseRecord_Incident", null, value);
+				this.SetRelatedEntities<Entities.Incident>("KnowledgeBaseRecord_Incident", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_Incident");
 			}
 		}
@@ -829,18 +829,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_KnowledgeBaseRecord_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_KnowledgeBaseRecord_createdby
+		public Entities.SystemUser lk_KnowledgeBaseRecord_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_KnowledgeBaseRecord_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_KnowledgeBaseRecord_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_KnowledgeBaseRecord_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_KnowledgeBaseRecord_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_KnowledgeBaseRecord_createdby", null, value);
 				this.OnPropertyChanged("lk_KnowledgeBaseRecord_createdby");
 			}
 		}
@@ -850,18 +850,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_KnowledgeBaseRecord_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_KnowledgeBaseRecord_createdonbehalfby
+		public Entities.SystemUser lk_KnowledgeBaseRecord_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_KnowledgeBaseRecord_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_KnowledgeBaseRecord_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_KnowledgeBaseRecord_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_KnowledgeBaseRecord_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_KnowledgeBaseRecord_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_KnowledgeBaseRecord_createdonbehalfby");
 			}
 		}
@@ -871,18 +871,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_KnowledgeBaseRecord_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_KnowledgeBaseRecord_modifiedby
+		public Entities.SystemUser lk_KnowledgeBaseRecord_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_KnowledgeBaseRecord_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_KnowledgeBaseRecord_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_KnowledgeBaseRecord_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_KnowledgeBaseRecord_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_KnowledgeBaseRecord_modifiedby", null, value);
 				this.OnPropertyChanged("lk_KnowledgeBaseRecord_modifiedby");
 			}
 		}
@@ -892,18 +892,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_KnowledgeBaseRecord_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_KnowledgeBaseRecord_modifiedonbehalfby
+		public Entities.SystemUser lk_KnowledgeBaseRecord_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_KnowledgeBaseRecord_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_KnowledgeBaseRecord_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_KnowledgeBaseRecord_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_KnowledgeBaseRecord_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_KnowledgeBaseRecord_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_KnowledgeBaseRecord_modifiedonbehalfby");
 			}
 		}
@@ -913,12 +913,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_KnowledgeBaseRecord")]
-		public DLaB.Xrm.Entities.Organization organization_KnowledgeBaseRecord
+		public Entities.Organization organization_KnowledgeBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_KnowledgeBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_KnowledgeBaseRecord", null);
 			}
 		}
 		
@@ -927,18 +927,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_KnowledgeBaseRecord")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_KnowledgeBaseRecord
+		public Entities.TransactionCurrency TransactionCurrency_KnowledgeBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_KnowledgeBaseRecord", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_KnowledgeBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_KnowledgeBaseRecord");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_KnowledgeBaseRecord", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_KnowledgeBaseRecord", null, value);
 				this.OnPropertyChanged("TransactionCurrency_KnowledgeBaseRecord");
 			}
 		}

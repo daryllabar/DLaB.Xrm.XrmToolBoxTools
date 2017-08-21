@@ -217,18 +217,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ResourceGroup_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ResourceGroup_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> ResourceGroup_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> ResourceGroup_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("ResourceGroup_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("ResourceGroup_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ResourceGroup_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("ResourceGroup_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("ResourceGroup_AsyncOperations", null, value);
 				this.OnPropertyChanged("ResourceGroup_AsyncOperations");
 			}
 		}
@@ -237,18 +237,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ResourceGroup_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ResourceGroup_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> ResourceGroup_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> ResourceGroup_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("ResourceGroup_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("ResourceGroup_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ResourceGroup_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("ResourceGroup_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("ResourceGroup_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("ResourceGroup_BulkDeleteFailures");
 			}
 		}
@@ -257,18 +257,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N resourcegroup_connections1
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("resourcegroup_connections1")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> resourcegroup_connections1
+		public System.Collections.Generic.IEnumerable<Entities.Connection> resourcegroup_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("resourcegroup_connections1", null);
+				return this.GetRelatedEntities<Entities.Connection>("resourcegroup_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("resourcegroup_connections1");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("resourcegroup_connections1", null, value);
+				this.SetRelatedEntities<Entities.Connection>("resourcegroup_connections1", null, value);
 				this.OnPropertyChanged("resourcegroup_connections1");
 			}
 		}
@@ -277,18 +277,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N resourcegroup_connections2
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("resourcegroup_connections2")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> resourcegroup_connections2
+		public System.Collections.Generic.IEnumerable<Entities.Connection> resourcegroup_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("resourcegroup_connections2", null);
+				return this.GetRelatedEntities<Entities.Connection>("resourcegroup_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("resourcegroup_connections2");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("resourcegroup_connections2", null, value);
+				this.SetRelatedEntities<Entities.Connection>("resourcegroup_connections2", null, value);
 				this.OnPropertyChanged("resourcegroup_connections2");
 			}
 		}
@@ -297,18 +297,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ResourceGroup_DuplicateBaseRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ResourceGroup_DuplicateBaseRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> ResourceGroup_DuplicateBaseRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> ResourceGroup_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("ResourceGroup_DuplicateBaseRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("ResourceGroup_DuplicateBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ResourceGroup_DuplicateBaseRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("ResourceGroup_DuplicateBaseRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("ResourceGroup_DuplicateBaseRecord", null, value);
 				this.OnPropertyChanged("ResourceGroup_DuplicateBaseRecord");
 			}
 		}
@@ -317,18 +317,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ResourceGroup_DuplicateMatchingRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ResourceGroup_DuplicateMatchingRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> ResourceGroup_DuplicateMatchingRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> ResourceGroup_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("ResourceGroup_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("ResourceGroup_DuplicateMatchingRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ResourceGroup_DuplicateMatchingRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("ResourceGroup_DuplicateMatchingRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("ResourceGroup_DuplicateMatchingRecord", null, value);
 				this.OnPropertyChanged("ResourceGroup_DuplicateMatchingRecord");
 			}
 		}
@@ -337,18 +337,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_resourcegroup
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_resourcegroup")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_resourcegroup
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_resourcegroup
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_resourcegroup", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_resourcegroup", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_resourcegroup");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_resourcegroup", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_resourcegroup", null, value);
 				this.OnPropertyChanged("userentityinstancedata_resourcegroup");
 			}
 		}
@@ -358,18 +358,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("businessunitid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_resource_groups")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_resource_groups
+		public Entities.BusinessUnit business_unit_resource_groups
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_resource_groups", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_resource_groups", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_resource_groups");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_resource_groups", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_resource_groups", null, value);
 				this.OnPropertyChanged("business_unit_resource_groups");
 			}
 		}
@@ -379,18 +379,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("resourcegroupid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("constraintbasedgroup_resource_groups")]
-		public DLaB.Xrm.Entities.ConstraintBasedGroup constraintbasedgroup_resource_groups
+		public Entities.ConstraintBasedGroup constraintbasedgroup_resource_groups
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ConstraintBasedGroup>("constraintbasedgroup_resource_groups", null);
+				return this.GetRelatedEntity<Entities.ConstraintBasedGroup>("constraintbasedgroup_resource_groups", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("constraintbasedgroup_resource_groups");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ConstraintBasedGroup>("constraintbasedgroup_resource_groups", null, value);
+				this.SetRelatedEntity<Entities.ConstraintBasedGroup>("constraintbasedgroup_resource_groups", null, value);
 				this.OnPropertyChanged("constraintbasedgroup_resource_groups");
 			}
 		}
@@ -400,12 +400,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_resource_groups")]
-		public DLaB.Xrm.Entities.Organization organization_resource_groups
+		public Entities.Organization organization_resource_groups
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_resource_groups", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_resource_groups", null);
 			}
 		}
 		
@@ -414,18 +414,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("resourcegroupid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_resource_groups")]
-		public DLaB.Xrm.Entities.Team team_resource_groups
+		public Entities.Team team_resource_groups
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_resource_groups", null);
+				return this.GetRelatedEntity<Entities.Team>("team_resource_groups", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_resource_groups");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_resource_groups", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_resource_groups", null, value);
 				this.OnPropertyChanged("team_resource_groups");
 			}
 		}

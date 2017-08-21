@@ -1372,18 +1372,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N InvoiceDetail_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("InvoiceDetail_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> InvoiceDetail_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> InvoiceDetail_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("InvoiceDetail_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("InvoiceDetail_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("InvoiceDetail_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("InvoiceDetail_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("InvoiceDetail_AsyncOperations", null, value);
 				this.OnPropertyChanged("InvoiceDetail_AsyncOperations");
 			}
 		}
@@ -1392,18 +1392,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N InvoiceDetail_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("InvoiceDetail_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> InvoiceDetail_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> InvoiceDetail_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("InvoiceDetail_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("InvoiceDetail_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("InvoiceDetail_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("InvoiceDetail_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("InvoiceDetail_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("InvoiceDetail_BulkDeleteFailures");
 			}
 		}
@@ -1412,18 +1412,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N InvoiceDetail_Dynamicpropertyinstance
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("InvoiceDetail_Dynamicpropertyinstance")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DynamicPropertyInstance> InvoiceDetail_Dynamicpropertyinstance
+		public System.Collections.Generic.IEnumerable<Entities.DynamicPropertyInstance> InvoiceDetail_Dynamicpropertyinstance
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DynamicPropertyInstance>("InvoiceDetail_Dynamicpropertyinstance", null);
+				return this.GetRelatedEntities<Entities.DynamicPropertyInstance>("InvoiceDetail_Dynamicpropertyinstance", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("InvoiceDetail_Dynamicpropertyinstance");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DynamicPropertyInstance>("InvoiceDetail_Dynamicpropertyinstance", null, value);
+				this.SetRelatedEntities<Entities.DynamicPropertyInstance>("InvoiceDetail_Dynamicpropertyinstance", null, value);
 				this.OnPropertyChanged("InvoiceDetail_Dynamicpropertyinstance");
 			}
 		}
@@ -1432,18 +1432,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N invoicedetail_parent_invoicedetail
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("invoicedetail_parent_invoicedetail", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.InvoiceDetail> Referencedinvoicedetail_parent_invoicedetail
+		public System.Collections.Generic.IEnumerable<Entities.InvoiceDetail> Referencedinvoicedetail_parent_invoicedetail
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.InvoiceDetail>("invoicedetail_parent_invoicedetail", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.InvoiceDetail>("invoicedetail_parent_invoicedetail", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedinvoicedetail_parent_invoicedetail");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.InvoiceDetail>("invoicedetail_parent_invoicedetail", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.InvoiceDetail>("invoicedetail_parent_invoicedetail", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedinvoicedetail_parent_invoicedetail");
 			}
 		}
@@ -1452,18 +1452,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N invoicedetail_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("invoicedetail_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> invoicedetail_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> invoicedetail_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("invoicedetail_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("invoicedetail_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("invoicedetail_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("invoicedetail_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("invoicedetail_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("invoicedetail_principalobjectattributeaccess");
 			}
 		}
@@ -1472,18 +1472,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N InvoiceDetail_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("InvoiceDetail_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> InvoiceDetail_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> InvoiceDetail_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("InvoiceDetail_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("InvoiceDetail_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("InvoiceDetail_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("InvoiceDetail_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("InvoiceDetail_ProcessSessions", null, value);
 				this.OnPropertyChanged("InvoiceDetail_ProcessSessions");
 			}
 		}
@@ -1492,18 +1492,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_invoicedetail
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_invoicedetail")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_invoicedetail
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_invoicedetail
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_invoicedetail", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_invoicedetail", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_invoicedetail");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_invoicedetail", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_invoicedetail", null, value);
 				this.OnPropertyChanged("userentityinstancedata_invoicedetail");
 			}
 		}
@@ -1513,18 +1513,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("invoiceid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("invoice_details")]
-		public DLaB.Xrm.Entities.Invoice invoice_details
+		public Entities.Invoice invoice_details
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Invoice>("invoice_details", null);
+				return this.GetRelatedEntity<Entities.Invoice>("invoice_details", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("invoice_details");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Invoice>("invoice_details", null, value);
+				this.SetRelatedEntity<Entities.Invoice>("invoice_details", null, value);
 				this.OnPropertyChanged("invoice_details");
 			}
 		}
@@ -1534,18 +1534,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentbundleid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("invoicedetail_parent_invoicedetail", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.InvoiceDetail Referencinginvoicedetail_parent_invoicedetail
+		public Entities.InvoiceDetail Referencinginvoicedetail_parent_invoicedetail
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.InvoiceDetail>("invoicedetail_parent_invoicedetail", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.InvoiceDetail>("invoicedetail_parent_invoicedetail", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencinginvoicedetail_parent_invoicedetail");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.InvoiceDetail>("invoicedetail_parent_invoicedetail", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Entities.InvoiceDetail>("invoicedetail_parent_invoicedetail", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencinginvoicedetail_parent_invoicedetail");
 			}
 		}
@@ -1555,18 +1555,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_invoicedetail_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_invoicedetail_createdonbehalfby
+		public Entities.SystemUser lk_invoicedetail_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_invoicedetail_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_invoicedetail_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_invoicedetail_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_invoicedetail_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_invoicedetail_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_invoicedetail_createdonbehalfby");
 			}
 		}
@@ -1576,18 +1576,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_invoicedetail_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_invoicedetail_modifiedonbehalfby
+		public Entities.SystemUser lk_invoicedetail_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_invoicedetail_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_invoicedetail_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_invoicedetail_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_invoicedetail_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_invoicedetail_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_invoicedetail_modifiedonbehalfby");
 			}
 		}
@@ -1597,18 +1597,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_invoicedetailbase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_invoicedetailbase_createdby
+		public Entities.SystemUser lk_invoicedetailbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_invoicedetailbase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_invoicedetailbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_invoicedetailbase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_invoicedetailbase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_invoicedetailbase_createdby", null, value);
 				this.OnPropertyChanged("lk_invoicedetailbase_createdby");
 			}
 		}
@@ -1618,18 +1618,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_invoicedetailbase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_invoicedetailbase_modifiedby
+		public Entities.SystemUser lk_invoicedetailbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_invoicedetailbase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_invoicedetailbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_invoicedetailbase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_invoicedetailbase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_invoicedetailbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_invoicedetailbase_modifiedby");
 			}
 		}
@@ -1639,18 +1639,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("productid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("product_invoice_details")]
-		public DLaB.Xrm.Entities.Product product_invoice_details
+		public Entities.Product product_invoice_details
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Product>("product_invoice_details", null);
+				return this.GetRelatedEntity<Entities.Product>("product_invoice_details", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("product_invoice_details");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Product>("product_invoice_details", null, value);
+				this.SetRelatedEntity<Entities.Product>("product_invoice_details", null, value);
 				this.OnPropertyChanged("product_invoice_details");
 			}
 		}
@@ -1660,18 +1660,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("productassociationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("productAssociation_invoice_details")]
-		public DLaB.Xrm.Entities.ProductAssociation productAssociation_invoice_details
+		public Entities.ProductAssociation productAssociation_invoice_details
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProductAssociation>("productAssociation_invoice_details", null);
+				return this.GetRelatedEntity<Entities.ProductAssociation>("productAssociation_invoice_details", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("productAssociation_invoice_details");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProductAssociation>("productAssociation_invoice_details", null, value);
+				this.SetRelatedEntity<Entities.ProductAssociation>("productAssociation_invoice_details", null, value);
 				this.OnPropertyChanged("productAssociation_invoice_details");
 			}
 		}
@@ -1681,18 +1681,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("salesrepid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("system_user_invoicedetail")]
-		public DLaB.Xrm.Entities.SystemUser system_user_invoicedetail
+		public Entities.SystemUser system_user_invoicedetail
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("system_user_invoicedetail", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("system_user_invoicedetail", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("system_user_invoicedetail");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("system_user_invoicedetail", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("system_user_invoicedetail", null, value);
 				this.OnPropertyChanged("system_user_invoicedetail");
 			}
 		}
@@ -1702,12 +1702,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_invoicedetail")]
-		public DLaB.Xrm.Entities.TransactionCurrency transactioncurrency_invoicedetail
+		public Entities.TransactionCurrency transactioncurrency_invoicedetail
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_invoicedetail", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_invoicedetail", null);
 			}
 		}
 		
@@ -1716,18 +1716,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uomid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measurement_invoice_details")]
-		public DLaB.Xrm.Entities.UoM unit_of_measurement_invoice_details
+		public Entities.UoM unit_of_measurement_invoice_details
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.UoM>("unit_of_measurement_invoice_details", null);
+				return this.GetRelatedEntity<Entities.UoM>("unit_of_measurement_invoice_details", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("unit_of_measurement_invoice_details");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.UoM>("unit_of_measurement_invoice_details", null, value);
+				this.SetRelatedEntity<Entities.UoM>("unit_of_measurement_invoice_details", null, value);
 				this.OnPropertyChanged("unit_of_measurement_invoice_details");
 			}
 		}

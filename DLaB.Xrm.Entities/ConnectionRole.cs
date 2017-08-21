@@ -464,7 +464,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the connection role.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.ConnectionRoleState> StateCode
+		public System.Nullable<Entities.ConnectionRoleState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -472,7 +472,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.ConnectionRoleState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.ConnectionRoleState), optionSet.Value)));
+					return ((Entities.ConnectionRoleState)(System.Enum.ToObject(typeof(Entities.ConnectionRoleState), optionSet.Value)));
 				}
 				else
 				{
@@ -532,18 +532,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Connection_Role_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Connection_Role_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> Connection_Role_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> Connection_Role_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Connection_Role_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("Connection_Role_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Connection_Role_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Connection_Role_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("Connection_Role_AsyncOperations", null, value);
 				this.OnPropertyChanged("Connection_Role_AsyncOperations");
 			}
 		}
@@ -552,18 +552,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N connection_role_connection_role_object_type_codes
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("connection_role_connection_role_object_type_codes")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ConnectionRoleObjectTypeCode> connection_role_connection_role_object_type_codes
+		public System.Collections.Generic.IEnumerable<Entities.ConnectionRoleObjectTypeCode> connection_role_connection_role_object_type_codes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ConnectionRoleObjectTypeCode>("connection_role_connection_role_object_type_codes", null);
+				return this.GetRelatedEntities<Entities.ConnectionRoleObjectTypeCode>("connection_role_connection_role_object_type_codes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("connection_role_connection_role_object_type_codes");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ConnectionRoleObjectTypeCode>("connection_role_connection_role_object_type_codes", null, value);
+				this.SetRelatedEntities<Entities.ConnectionRoleObjectTypeCode>("connection_role_connection_role_object_type_codes", null, value);
 				this.OnPropertyChanged("connection_role_connection_role_object_type_codes");
 			}
 		}
@@ -572,18 +572,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N connection_role_connections1
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("connection_role_connections1")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> connection_role_connections1
+		public System.Collections.Generic.IEnumerable<Entities.Connection> connection_role_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("connection_role_connections1", null);
+				return this.GetRelatedEntities<Entities.Connection>("connection_role_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("connection_role_connections1");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("connection_role_connections1", null, value);
+				this.SetRelatedEntities<Entities.Connection>("connection_role_connections1", null, value);
 				this.OnPropertyChanged("connection_role_connections1");
 			}
 		}
@@ -592,18 +592,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N connection_role_connections2
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("connection_role_connections2")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> connection_role_connections2
+		public System.Collections.Generic.IEnumerable<Entities.Connection> connection_role_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("connection_role_connections2", null);
+				return this.GetRelatedEntities<Entities.Connection>("connection_role_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("connection_role_connections2");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("connection_role_connections2", null, value);
+				this.SetRelatedEntities<Entities.Connection>("connection_role_connections2", null, value);
 				this.OnPropertyChanged("connection_role_connections2");
 			}
 		}
@@ -612,18 +612,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ConnectionRole_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ConnectionRole_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> ConnectionRole_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> ConnectionRole_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("ConnectionRole_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("ConnectionRole_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ConnectionRole_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("ConnectionRole_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("ConnectionRole_ProcessSessions", null, value);
 				this.OnPropertyChanged("ConnectionRole_ProcessSessions");
 			}
 		}
@@ -632,18 +632,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_connectionrole
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_connectionrole")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_connectionrole
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_connectionrole
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_connectionrole", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_connectionrole", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_connectionrole");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_connectionrole", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_connectionrole", null, value);
 				this.OnPropertyChanged("userentityinstancedata_connectionrole");
 			}
 		}
@@ -652,18 +652,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N connectionroleassociation_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("connectionroleassociation_association", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ConnectionRole> Referencingconnectionroleassociation_association
+		public System.Collections.Generic.IEnumerable<Entities.ConnectionRole> Referencingconnectionroleassociation_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ConnectionRole>("connectionroleassociation_association", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntities<Entities.ConnectionRole>("connectionroleassociation_association", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencingconnectionroleassociation_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ConnectionRole>("connectionroleassociation_association", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntities<Entities.ConnectionRole>("connectionroleassociation_association", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencingconnectionroleassociation_association");
 			}
 		}
@@ -672,18 +672,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N connectionroleassociation_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("connectionroleassociation_association", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ConnectionRole> Referencedconnectionroleassociation_association
+		public System.Collections.Generic.IEnumerable<Entities.ConnectionRole> Referencedconnectionroleassociation_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ConnectionRole>("connectionroleassociation_association", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.ConnectionRole>("connectionroleassociation_association", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedconnectionroleassociation_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ConnectionRole>("connectionroleassociation_association", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.ConnectionRole>("connectionroleassociation_association", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedconnectionroleassociation_association");
 			}
 		}
@@ -693,18 +693,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_connection_role")]
-		public DLaB.Xrm.Entities.SystemUser createdby_connection_role
+		public Entities.SystemUser createdby_connection_role
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdby_connection_role", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("createdby_connection_role", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("createdby_connection_role");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdby_connection_role", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("createdby_connection_role", null, value);
 				this.OnPropertyChanged("createdby_connection_role");
 			}
 		}
@@ -714,18 +714,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_connectionrolebase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_connectionrolebase_createdonbehalfby
+		public Entities.SystemUser lk_connectionrolebase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_connectionrolebase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_connectionrolebase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_connectionrolebase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_connectionrolebase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_connectionrolebase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_connectionrolebase_createdonbehalfby");
 			}
 		}
@@ -735,18 +735,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_connectionrolebase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_connectionrolebase_modifiedonbehalfby
+		public Entities.SystemUser lk_connectionrolebase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_connectionrolebase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_connectionrolebase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_connectionrolebase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_connectionrolebase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_connectionrolebase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_connectionrolebase_modifiedonbehalfby");
 			}
 		}
@@ -756,18 +756,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_connection_role")]
-		public DLaB.Xrm.Entities.SystemUser modifiedby_connection_role
+		public Entities.SystemUser modifiedby_connection_role
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("modifiedby_connection_role", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("modifiedby_connection_role", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("modifiedby_connection_role");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("modifiedby_connection_role", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("modifiedby_connection_role", null, value);
 				this.OnPropertyChanged("modifiedby_connection_role");
 			}
 		}
@@ -777,12 +777,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_connection_roles")]
-		public DLaB.Xrm.Entities.Organization organization_connection_roles
+		public Entities.Organization organization_connection_roles
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_connection_roles", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_connection_roles", null);
 			}
 		}
 		

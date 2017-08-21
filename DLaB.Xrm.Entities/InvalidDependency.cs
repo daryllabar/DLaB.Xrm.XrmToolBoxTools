@@ -212,18 +212,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_invaliddependency
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_invaliddependency")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_invaliddependency
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_invaliddependency
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_invaliddependency", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_invaliddependency", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_invaliddependency");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_invaliddependency", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_invaliddependency", null, value);
 				this.OnPropertyChanged("userentityinstancedata_invaliddependency");
 			}
 		}

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Microsoft.Crm.Services.Utility;
@@ -19,6 +18,9 @@ namespace DLaB.CrmSvcUtilExtensions
         private string InvalidCSharpNamePrefix { get; }
         private string LocalOptionSetFormat { get; }
         private bool UseDeprecatedOptionSetNaming { get; }
+        private static HashSet<string> _entityNames;
+
+        public HashSet<string> EntityNames => _entityNames ?? (_entityNames = GenerateEntityNames());
 
         /// <summary>
         /// This field keeps track of options with the same name and the values that have been defined.  Internal Dictionary Key is Name + "_" + Value
@@ -36,6 +38,16 @@ namespace DLaB.CrmSvcUtilExtensions
             ValidCSharpNameRegEx = ConfigHelper.GetAppSettingOrDefault("ValidCSharpNameRegEx", @"[^a-zA-Z0-9_]");
         }
 
+        private HashSet<string> GenerateEntityNames()
+        {
+            var metadata = BaseCustomCodeGenerationService.Metadata;
+            if (metadata == null)
+            {
+                throw new Exception("DLaB.CrmSvcUtilExtensions.BaseCustomCodeGenerationService hasn't been called!");
+            }
+            return new HashSet<string>(metadata.Entities.Select(e => GetNameForEntity(e, BaseCustomCodeGenerationService.ServiceProvider)).ToArray());
+        }
+
         /// <summary>
         /// Provide a new implementation for finding a name for an OptionSet. If the
         /// OptionSet is not global, we want the name to be the concatenation of the Entity's
@@ -43,9 +55,15 @@ namespace DLaB.CrmSvcUtilExtensions
         /// </summary>
         public string GetNameForOptionSet(EntityMetadata entityMetadata, OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
         {
+            var defaultName = DefaultService.GetNameForOptionSet(entityMetadata, optionSetMetadata, services);
+            if (EntityNames.Contains(defaultName))
+            {
+                throw new Exception($"{defaultName} already exists as an entity.  This will cause a naming collision.");
+            }
+
             if (UseDeprecatedOptionSetNaming)
             {
-                return DefaultService.GetNameForOptionSet(entityMetadata, optionSetMetadata, services);
+                return defaultName;
             }
             // Ensure that the OptionSet is not global before using the custom implementation.
             if (optionSetMetadata.IsGlobal.HasValue && !optionSetMetadata.IsGlobal.Value)
@@ -61,7 +79,7 @@ namespace DLaB.CrmSvcUtilExtensions
                 // but their optionsets are not included in the attribute metadata of the entity, either.
                 if (attribute == null)
                 {
-                    if (optionSetMetadata.OptionSetType.GetValueOrDefault() == OptionSetType.Status && DefaultService.GetNameForOptionSet(entityMetadata, optionSetMetadata, services).EndsWith("statuscode"))
+                    if (optionSetMetadata.OptionSetType.GetValueOrDefault() == OptionSetType.Status && defaultName.EndsWith("statuscode"))
                     {
                         return string.Format(LocalOptionSetFormat, GetNameForEntity(entityMetadata, services), "StatusCode");
                     }
@@ -74,9 +92,7 @@ namespace DLaB.CrmSvcUtilExtensions
                            GetNameForAttribute(entityMetadata, attribute, services));
                 }
             }
-            var name = DefaultService.GetNameForOptionSet(entityMetadata, optionSetMetadata, services);
-            name = UpdateCasingForGlobalOptionSets(name, optionSetMetadata);
-            return name;
+            return UpdateCasingForGlobalOptionSets(defaultName, optionSetMetadata);
         }
 
         private string UpdateCasingForGlobalOptionSets(string name, OptionSetMetadataBase optionSetMetadata)

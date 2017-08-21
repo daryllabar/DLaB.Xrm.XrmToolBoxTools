@@ -658,18 +658,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N recommendationmodelmapping_recommendationmodelmapping_supportedmapid
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recommendationmodelmapping_recommendationmodelmapping_supportedmapid", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.RecommendationModelMapping> Referencedrecommendationmodelmapping_recommendationmodelmapping_supportedmapid
+		public System.Collections.Generic.IEnumerable<Entities.RecommendationModelMapping> Referencedrecommendationmodelmapping_recommendationmodelmapping_supportedmapid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.RecommendationModelMapping>("recommendationmodelmapping_recommendationmodelmapping_supportedmapid", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.RecommendationModelMapping>("recommendationmodelmapping_recommendationmodelmapping_supportedmapid", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedrecommendationmodelmapping_recommendationmodelmapping_supportedmapid");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.RecommendationModelMapping>("recommendationmodelmapping_recommendationmodelmapping_supportedmapid", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.RecommendationModelMapping>("recommendationmodelmapping_recommendationmodelmapping_supportedmapid", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedrecommendationmodelmapping_recommendationmodelmapping_supportedmapid");
 			}
 		}
@@ -679,12 +679,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_recommendationmodelmapping")]
-		public DLaB.Xrm.Entities.Organization organization_recommendationmodelmapping
+		public Entities.Organization organization_recommendationmodelmapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_recommendationmodelmapping", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_recommendationmodelmapping", null);
 			}
 		}
 		
@@ -693,18 +693,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("recommendationmodelid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recommendationmodel_recommendationmodelmapping")]
-		public DLaB.Xrm.Entities.RecommendationModel recommendationmodel_recommendationmodelmapping
+		public Entities.RecommendationModel recommendationmodel_recommendationmodelmapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RecommendationModel>("recommendationmodel_recommendationmodelmapping", null);
+				return this.GetRelatedEntity<Entities.RecommendationModel>("recommendationmodel_recommendationmodelmapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("recommendationmodel_recommendationmodelmapping");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RecommendationModel>("recommendationmodel_recommendationmodelmapping", null, value);
+				this.SetRelatedEntity<Entities.RecommendationModel>("recommendationmodel_recommendationmodelmapping", null, value);
 				this.OnPropertyChanged("recommendationmodel_recommendationmodelmapping");
 			}
 		}
@@ -714,18 +714,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("supportedmapid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recommendationmodelmapping_recommendationmodelmapping_supportedmapid", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.RecommendationModelMapping Referencingrecommendationmodelmapping_recommendationmodelmapping_supportedmapid
+		public Entities.RecommendationModelMapping Referencingrecommendationmodelmapping_recommendationmodelmapping_supportedmapid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RecommendationModelMapping>("recommendationmodelmapping_recommendationmodelmapping_supportedmapid", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.RecommendationModelMapping>("recommendationmodelmapping_recommendationmodelmapping_supportedmapid", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencingrecommendationmodelmapping_recommendationmodelmapping_supportedmapid");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RecommendationModelMapping>("recommendationmodelmapping_recommendationmodelmapping_supportedmapid", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Entities.RecommendationModelMapping>("recommendationmodelmapping_recommendationmodelmapping_supportedmapid", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencingrecommendationmodelmapping_recommendationmodelmapping_supportedmapid");
 			}
 		}
@@ -735,18 +735,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("recommendationmodelversionid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("recommendationmodelversion_recommendationmodelmapping")]
-		public DLaB.Xrm.Entities.RecommendationModelVersion recommendationmodelversion_recommendationmodelmapping
+		public Entities.RecommendationModelVersion recommendationmodelversion_recommendationmodelmapping
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RecommendationModelVersion>("recommendationmodelversion_recommendationmodelmapping", null);
+				return this.GetRelatedEntity<Entities.RecommendationModelVersion>("recommendationmodelversion_recommendationmodelmapping", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("recommendationmodelversion_recommendationmodelmapping");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RecommendationModelVersion>("recommendationmodelversion_recommendationmodelmapping", null, value);
+				this.SetRelatedEntity<Entities.RecommendationModelVersion>("recommendationmodelversion_recommendationmodelmapping", null, value);
 				this.OnPropertyChanged("recommendationmodelversion_recommendationmodelmapping");
 			}
 		}

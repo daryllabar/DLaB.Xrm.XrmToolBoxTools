@@ -703,18 +703,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N emailtemplate_convertrule
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("emailtemplate_convertrule")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ConvertRule> emailtemplate_convertrule
+		public System.Collections.Generic.IEnumerable<Entities.ConvertRule> emailtemplate_convertrule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ConvertRule>("emailtemplate_convertrule", null);
+				return this.GetRelatedEntities<Entities.ConvertRule>("emailtemplate_convertrule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("emailtemplate_convertrule");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ConvertRule>("emailtemplate_convertrule", null, value);
+				this.SetRelatedEntities<Entities.ConvertRule>("emailtemplate_convertrule", null, value);
 				this.OnPropertyChanged("emailtemplate_convertrule");
 			}
 		}
@@ -723,18 +723,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N template_activity_mime_attachments
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("template_activity_mime_attachments")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityMimeAttachment> template_activity_mime_attachments
+		public System.Collections.Generic.IEnumerable<Entities.ActivityMimeAttachment> template_activity_mime_attachments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityMimeAttachment>("template_activity_mime_attachments", null);
+				return this.GetRelatedEntities<Entities.ActivityMimeAttachment>("template_activity_mime_attachments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("template_activity_mime_attachments");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityMimeAttachment>("template_activity_mime_attachments", null, value);
+				this.SetRelatedEntities<Entities.ActivityMimeAttachment>("template_activity_mime_attachments", null, value);
 				this.OnPropertyChanged("template_activity_mime_attachments");
 			}
 		}
@@ -743,18 +743,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Template_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Template_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> Template_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> Template_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Template_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("Template_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Template_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Template_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("Template_AsyncOperations", null, value);
 				this.OnPropertyChanged("Template_AsyncOperations");
 			}
 		}
@@ -763,18 +763,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Template_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Template_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> Template_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> Template_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Template_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("Template_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Template_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Template_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("Template_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("Template_BulkDeleteFailures");
 			}
 		}
@@ -783,18 +783,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Template_Organization
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Template_Organization")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Organization> Template_Organization
+		public System.Collections.Generic.IEnumerable<Entities.Organization> Template_Organization
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Organization>("Template_Organization", null);
+				return this.GetRelatedEntities<Entities.Organization>("Template_Organization", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Template_Organization");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Organization>("Template_Organization", null, value);
+				this.SetRelatedEntities<Entities.Organization>("Template_Organization", null, value);
 				this.OnPropertyChanged("Template_Organization");
 			}
 		}
@@ -803,18 +803,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Template_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Template_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> Template_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> Template_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Template_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("Template_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Template_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Template_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("Template_ProcessSessions", null, value);
 				this.OnPropertyChanged("Template_ProcessSessions");
 			}
 		}
@@ -823,18 +823,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_template
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_template")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_template
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_template
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_template", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_template", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_template");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_template", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_template", null, value);
 				this.OnPropertyChanged("userentityinstancedata_template");
 			}
 		}
@@ -844,18 +844,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_templates")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_templates
+		public Entities.BusinessUnit business_unit_templates
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_templates", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_templates", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_templates");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_templates", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_templates", null, value);
 				this.OnPropertyChanged("business_unit_templates");
 			}
 		}
@@ -865,18 +865,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_templatebase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_templatebase_createdby
+		public Entities.SystemUser lk_templatebase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_templatebase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_templatebase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_templatebase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_templatebase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_templatebase_createdby", null, value);
 				this.OnPropertyChanged("lk_templatebase_createdby");
 			}
 		}
@@ -886,18 +886,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_templatebase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_templatebase_createdonbehalfby
+		public Entities.SystemUser lk_templatebase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_templatebase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_templatebase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_templatebase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_templatebase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_templatebase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_templatebase_createdonbehalfby");
 			}
 		}
@@ -907,18 +907,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_templatebase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_templatebase_modifiedby
+		public Entities.SystemUser lk_templatebase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_templatebase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_templatebase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_templatebase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_templatebase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_templatebase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_templatebase_modifiedby");
 			}
 		}
@@ -928,18 +928,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_templatebase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_templatebase_modifiedonbehalfby
+		public Entities.SystemUser lk_templatebase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_templatebase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_templatebase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_templatebase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_templatebase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_templatebase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_templatebase_modifiedonbehalfby");
 			}
 		}
@@ -949,18 +949,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("system_user_email_templates")]
-		public DLaB.Xrm.Entities.SystemUser system_user_email_templates
+		public Entities.SystemUser system_user_email_templates
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("system_user_email_templates", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("system_user_email_templates", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("system_user_email_templates");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("system_user_email_templates", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("system_user_email_templates", null, value);
 				this.OnPropertyChanged("system_user_email_templates");
 			}
 		}
@@ -970,18 +970,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_email_templates")]
-		public DLaB.Xrm.Entities.Team team_email_templates
+		public Entities.Team team_email_templates
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_email_templates", null);
+				return this.GetRelatedEntity<Entities.Team>("team_email_templates", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_email_templates");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_email_templates", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_email_templates", null, value);
 				this.OnPropertyChanged("team_email_templates");
 			}
 		}

@@ -601,18 +601,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N equipment_accounts
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("equipment_accounts")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Account> equipment_accounts
+		public System.Collections.Generic.IEnumerable<Entities.Account> equipment_accounts
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Account>("equipment_accounts", null);
+				return this.GetRelatedEntities<Entities.Account>("equipment_accounts", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("equipment_accounts");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Account>("equipment_accounts", null, value);
+				this.SetRelatedEntities<Entities.Account>("equipment_accounts", null, value);
 				this.OnPropertyChanged("equipment_accounts");
 			}
 		}
@@ -621,18 +621,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N equipment_activity_parties
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("equipment_activity_parties")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> equipment_activity_parties
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> equipment_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("equipment_activity_parties", null);
+				return this.GetRelatedEntities<Entities.ActivityParty>("equipment_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("equipment_activity_parties");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("equipment_activity_parties", null, value);
+				this.SetRelatedEntities<Entities.ActivityParty>("equipment_activity_parties", null, value);
 				this.OnPropertyChanged("equipment_activity_parties");
 			}
 		}
@@ -641,18 +641,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Equipment_Annotation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Equipment_Annotation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> Equipment_Annotation
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> Equipment_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("Equipment_Annotation", null);
+				return this.GetRelatedEntities<Entities.Annotation>("Equipment_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Equipment_Annotation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("Equipment_Annotation", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("Equipment_Annotation", null, value);
 				this.OnPropertyChanged("Equipment_Annotation");
 			}
 		}
@@ -661,18 +661,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Equipment_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Equipment_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> Equipment_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> Equipment_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Equipment_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("Equipment_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Equipment_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Equipment_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("Equipment_AsyncOperations", null, value);
 				this.OnPropertyChanged("Equipment_AsyncOperations");
 			}
 		}
@@ -681,18 +681,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Equipment_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Equipment_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> Equipment_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> Equipment_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Equipment_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("Equipment_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Equipment_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Equipment_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("Equipment_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("Equipment_BulkDeleteFailures");
 			}
 		}
@@ -701,18 +701,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N equipment_connections1
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("equipment_connections1")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> equipment_connections1
+		public System.Collections.Generic.IEnumerable<Entities.Connection> equipment_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("equipment_connections1", null);
+				return this.GetRelatedEntities<Entities.Connection>("equipment_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("equipment_connections1");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("equipment_connections1", null, value);
+				this.SetRelatedEntities<Entities.Connection>("equipment_connections1", null, value);
 				this.OnPropertyChanged("equipment_connections1");
 			}
 		}
@@ -721,18 +721,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N equipment_connections2
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("equipment_connections2")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> equipment_connections2
+		public System.Collections.Generic.IEnumerable<Entities.Connection> equipment_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("equipment_connections2", null);
+				return this.GetRelatedEntities<Entities.Connection>("equipment_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("equipment_connections2");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("equipment_connections2", null, value);
+				this.SetRelatedEntities<Entities.Connection>("equipment_connections2", null, value);
 				this.OnPropertyChanged("equipment_connections2");
 			}
 		}
@@ -741,18 +741,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N equipment_contacts
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("equipment_contacts")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Contact> equipment_contacts
+		public System.Collections.Generic.IEnumerable<Entities.Contact> equipment_contacts
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Contact>("equipment_contacts", null);
+				return this.GetRelatedEntities<Entities.Contact>("equipment_contacts", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("equipment_contacts");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Contact>("equipment_contacts", null, value);
+				this.SetRelatedEntities<Entities.Contact>("equipment_contacts", null, value);
 				this.OnPropertyChanged("equipment_contacts");
 			}
 		}
@@ -761,18 +761,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Equipment_DuplicateBaseRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Equipment_DuplicateBaseRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> Equipment_DuplicateBaseRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> Equipment_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Equipment_DuplicateBaseRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("Equipment_DuplicateBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Equipment_DuplicateBaseRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Equipment_DuplicateBaseRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("Equipment_DuplicateBaseRecord", null, value);
 				this.OnPropertyChanged("Equipment_DuplicateBaseRecord");
 			}
 		}
@@ -781,18 +781,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Equipment_DuplicateMatchingRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Equipment_DuplicateMatchingRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> Equipment_DuplicateMatchingRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> Equipment_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Equipment_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("Equipment_DuplicateMatchingRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Equipment_DuplicateMatchingRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Equipment_DuplicateMatchingRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("Equipment_DuplicateMatchingRecord", null, value);
 				this.OnPropertyChanged("Equipment_DuplicateMatchingRecord");
 			}
 		}
@@ -801,18 +801,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Equipment_Email_EmailSender
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Equipment_Email_EmailSender")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Email> Equipment_Email_EmailSender
+		public System.Collections.Generic.IEnumerable<Entities.Email> Equipment_Email_EmailSender
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Email>("Equipment_Email_EmailSender", null);
+				return this.GetRelatedEntities<Entities.Email>("Equipment_Email_EmailSender", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Equipment_Email_EmailSender");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Email>("Equipment_Email_EmailSender", null, value);
+				this.SetRelatedEntities<Entities.Email>("Equipment_Email_EmailSender", null, value);
 				this.OnPropertyChanged("Equipment_Email_EmailSender");
 			}
 		}
@@ -821,18 +821,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N equipment_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("equipment_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> equipment_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> equipment_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("equipment_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("equipment_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("equipment_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("equipment_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("equipment_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("equipment_principalobjectattributeaccess");
 			}
 		}
@@ -841,18 +841,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Equipment_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Equipment_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> Equipment_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> Equipment_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Equipment_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("Equipment_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Equipment_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Equipment_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("Equipment_ProcessSessions", null, value);
 				this.OnPropertyChanged("Equipment_ProcessSessions");
 			}
 		}
@@ -861,18 +861,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N equipment_resources
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("equipment_resources")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Resource> equipment_resources
+		public System.Collections.Generic.IEnumerable<Entities.Resource> equipment_resources
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Resource>("equipment_resources", null);
+				return this.GetRelatedEntities<Entities.Resource>("equipment_resources", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("equipment_resources");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Resource>("equipment_resources", null, value);
+				this.SetRelatedEntities<Entities.Resource>("equipment_resources", null, value);
 				this.OnPropertyChanged("equipment_resources");
 			}
 		}
@@ -881,18 +881,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_equipment
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_equipment")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_equipment
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_equipment
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_equipment", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_equipment", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_equipment");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_equipment", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_equipment", null, value);
 				this.OnPropertyChanged("userentityinstancedata_equipment");
 			}
 		}
@@ -902,18 +902,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("businessunitid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_equipment")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_equipment
+		public Entities.BusinessUnit business_unit_equipment
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_equipment", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_equipment", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_equipment");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_equipment", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_equipment", null, value);
 				this.OnPropertyChanged("business_unit_equipment");
 			}
 		}
@@ -923,18 +923,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("calendarid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("calendar_equipment")]
-		public DLaB.Xrm.Entities.Calendar calendar_equipment
+		public Entities.Calendar calendar_equipment
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Calendar>("calendar_equipment", null);
+				return this.GetRelatedEntity<Entities.Calendar>("calendar_equipment", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("calendar_equipment");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Calendar>("calendar_equipment", null, value);
+				this.SetRelatedEntity<Entities.Calendar>("calendar_equipment", null, value);
 				this.OnPropertyChanged("calendar_equipment");
 			}
 		}
@@ -944,18 +944,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("businessunitid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("equipment_systemuser")]
-		public DLaB.Xrm.Entities.SystemUser equipment_systemuser
+		public Entities.SystemUser equipment_systemuser
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("equipment_systemuser", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("equipment_systemuser", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("equipment_systemuser");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("equipment_systemuser", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("equipment_systemuser", null, value);
 				this.OnPropertyChanged("equipment_systemuser");
 			}
 		}
@@ -965,18 +965,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_equipment_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_equipment_createdby
+		public Entities.SystemUser lk_equipment_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_equipment_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_equipment_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_equipment_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_equipment_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_equipment_createdby", null, value);
 				this.OnPropertyChanged("lk_equipment_createdby");
 			}
 		}
@@ -986,18 +986,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_equipment_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_equipment_createdonbehalfby
+		public Entities.SystemUser lk_equipment_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_equipment_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_equipment_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_equipment_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_equipment_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_equipment_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_equipment_createdonbehalfby");
 			}
 		}
@@ -1007,18 +1007,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_equipment_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_equipment_modifiedby
+		public Entities.SystemUser lk_equipment_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_equipment_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_equipment_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_equipment_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_equipment_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_equipment_modifiedby", null, value);
 				this.OnPropertyChanged("lk_equipment_modifiedby");
 			}
 		}
@@ -1028,18 +1028,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_equipment_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_equipment_modifiedonbehalfby
+		public Entities.SystemUser lk_equipment_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_equipment_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_equipment_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_equipment_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_equipment_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_equipment_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_equipment_modifiedonbehalfby");
 			}
 		}
@@ -1049,12 +1049,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_equipment")]
-		public DLaB.Xrm.Entities.Organization organization_equipment
+		public Entities.Organization organization_equipment
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_equipment", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_equipment", null);
 			}
 		}
 		
@@ -1063,18 +1063,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("siteid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("site_equipment")]
-		public DLaB.Xrm.Entities.Site site_equipment
+		public Entities.Site site_equipment
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Site>("site_equipment", null);
+				return this.GetRelatedEntity<Entities.Site>("site_equipment", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("site_equipment");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Site>("site_equipment", null, value);
+				this.SetRelatedEntity<Entities.Site>("site_equipment", null, value);
 				this.OnPropertyChanged("site_equipment");
 			}
 		}
@@ -1084,18 +1084,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Equipment")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_Equipment
+		public Entities.TransactionCurrency TransactionCurrency_Equipment
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_Equipment", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_Equipment", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Equipment");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_Equipment", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_Equipment", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Equipment");
 			}
 		}

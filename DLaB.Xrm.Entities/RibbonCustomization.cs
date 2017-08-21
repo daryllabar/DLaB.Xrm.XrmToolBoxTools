@@ -242,18 +242,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_ribboncustomization
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_ribboncustomization")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_ribboncustomization
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_ribboncustomization
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_ribboncustomization", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_ribboncustomization", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_ribboncustomization");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_ribboncustomization", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_ribboncustomization", null, value);
 				this.OnPropertyChanged("userentityinstancedata_ribboncustomization");
 			}
 		}
@@ -263,12 +263,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_ribbon_customization")]
-		public DLaB.Xrm.Entities.Organization organization_ribbon_customization
+		public Entities.Organization organization_ribbon_customization
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_ribbon_customization", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_ribbon_customization", null);
 			}
 		}
 		

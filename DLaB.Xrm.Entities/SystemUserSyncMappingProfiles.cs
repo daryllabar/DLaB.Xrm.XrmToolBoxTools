@@ -150,18 +150,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N systemusersyncmappingprofiles_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("systemusersyncmappingprofiles_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SystemUser> systemusersyncmappingprofiles_association
+		public System.Collections.Generic.IEnumerable<Entities.SystemUser> systemusersyncmappingprofiles_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SystemUser>("systemusersyncmappingprofiles_association", null);
+				return this.GetRelatedEntities<Entities.SystemUser>("systemusersyncmappingprofiles_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("systemusersyncmappingprofiles_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SystemUser>("systemusersyncmappingprofiles_association", null, value);
+				this.SetRelatedEntities<Entities.SystemUser>("systemusersyncmappingprofiles_association", null, value);
 				this.OnPropertyChanged("systemusersyncmappingprofiles_association");
 			}
 		}

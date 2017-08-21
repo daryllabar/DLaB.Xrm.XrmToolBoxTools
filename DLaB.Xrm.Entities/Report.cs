@@ -982,18 +982,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Report_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Report_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> Report_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> Report_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Report_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("Report_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Report_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Report_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("Report_AsyncOperations", null, value);
 				this.OnPropertyChanged("Report_AsyncOperations");
 			}
 		}
@@ -1002,18 +1002,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N report_parent_report
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("report_parent_report", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Report> Referencedreport_parent_report
+		public System.Collections.Generic.IEnumerable<Entities.Report> Referencedreport_parent_report
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Report>("report_parent_report", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.Report>("report_parent_report", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedreport_parent_report");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Report>("report_parent_report", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.Report>("report_parent_report", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedreport_parent_report");
 			}
 		}
@@ -1022,18 +1022,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Report_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Report_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> Report_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> Report_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Report_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("Report_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Report_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Report_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("Report_ProcessSessions", null, value);
 				this.OnPropertyChanged("Report_ProcessSessions");
 			}
 		}
@@ -1042,18 +1042,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N report_reportcategories
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("report_reportcategories")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ReportCategory> report_reportcategories
+		public System.Collections.Generic.IEnumerable<Entities.ReportCategory> report_reportcategories
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ReportCategory>("report_reportcategories", null);
+				return this.GetRelatedEntities<Entities.ReportCategory>("report_reportcategories", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("report_reportcategories");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ReportCategory>("report_reportcategories", null, value);
+				this.SetRelatedEntities<Entities.ReportCategory>("report_reportcategories", null, value);
 				this.OnPropertyChanged("report_reportcategories");
 			}
 		}
@@ -1062,18 +1062,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N report_reportentities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("report_reportentities")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ReportEntity> report_reportentities
+		public System.Collections.Generic.IEnumerable<Entities.ReportEntity> report_reportentities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ReportEntity>("report_reportentities", null);
+				return this.GetRelatedEntities<Entities.ReportEntity>("report_reportentities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("report_reportentities");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ReportEntity>("report_reportentities", null, value);
+				this.SetRelatedEntities<Entities.ReportEntity>("report_reportentities", null, value);
 				this.OnPropertyChanged("report_reportentities");
 			}
 		}
@@ -1082,18 +1082,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N report_reportlink
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("report_reportlink")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ReportLink> report_reportlink
+		public System.Collections.Generic.IEnumerable<Entities.ReportLink> report_reportlink
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ReportLink>("report_reportlink", null);
+				return this.GetRelatedEntities<Entities.ReportLink>("report_reportlink", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("report_reportlink");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ReportLink>("report_reportlink", null, value);
+				this.SetRelatedEntities<Entities.ReportLink>("report_reportlink", null, value);
 				this.OnPropertyChanged("report_reportlink");
 			}
 		}
@@ -1102,18 +1102,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N report_reportlink_sub
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("report_reportlink_sub")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ReportLink> report_reportlink_sub
+		public System.Collections.Generic.IEnumerable<Entities.ReportLink> report_reportlink_sub
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ReportLink>("report_reportlink_sub", null);
+				return this.GetRelatedEntities<Entities.ReportLink>("report_reportlink_sub", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("report_reportlink_sub");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ReportLink>("report_reportlink_sub", null, value);
+				this.SetRelatedEntities<Entities.ReportLink>("report_reportlink_sub", null, value);
 				this.OnPropertyChanged("report_reportlink_sub");
 			}
 		}
@@ -1122,18 +1122,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N report_reportvisibility
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("report_reportvisibility")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ReportVisibility> report_reportvisibility
+		public System.Collections.Generic.IEnumerable<Entities.ReportVisibility> report_reportvisibility
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ReportVisibility>("report_reportvisibility", null);
+				return this.GetRelatedEntities<Entities.ReportVisibility>("report_reportvisibility", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("report_reportvisibility");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ReportVisibility>("report_reportvisibility", null, value);
+				this.SetRelatedEntities<Entities.ReportVisibility>("report_reportvisibility", null, value);
 				this.OnPropertyChanged("report_reportvisibility");
 			}
 		}
@@ -1142,18 +1142,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_report
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_report")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_report
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_report
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_report", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_report", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_report");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_report", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_report", null, value);
 				this.OnPropertyChanged("userentityinstancedata_report");
 			}
 		}
@@ -1163,18 +1163,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_reports")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_reports
+		public Entities.BusinessUnit business_unit_reports
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_reports", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_reports", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_reports");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_reports", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_reports", null, value);
 				this.OnPropertyChanged("business_unit_reports");
 			}
 		}
@@ -1184,18 +1184,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_report_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_report_createdonbehalfby
+		public Entities.SystemUser lk_report_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_report_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_report_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_report_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_report_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_report_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_report_createdonbehalfby");
 			}
 		}
@@ -1205,18 +1205,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_report_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_report_modifiedonbehalfby
+		public Entities.SystemUser lk_report_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_report_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_report_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_report_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_report_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_report_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_report_modifiedonbehalfby");
 			}
 		}
@@ -1226,18 +1226,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_reportbase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_reportbase_createdby
+		public Entities.SystemUser lk_reportbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportbase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_reportbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_reportbase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportbase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_reportbase_createdby", null, value);
 				this.OnPropertyChanged("lk_reportbase_createdby");
 			}
 		}
@@ -1247,18 +1247,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_reportbase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_reportbase_modifiedby
+		public Entities.SystemUser lk_reportbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportbase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_reportbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_reportbase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportbase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_reportbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_reportbase_modifiedby");
 			}
 		}
@@ -1268,18 +1268,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentreportid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("report_parent_report", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.Report Referencingreport_parent_report
+		public Entities.Report Referencingreport_parent_report
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Report>("report_parent_report", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.Report>("report_parent_report", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencingreport_parent_report");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Report>("report_parent_report", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Entities.Report>("report_parent_report", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencingreport_parent_report");
 			}
 		}

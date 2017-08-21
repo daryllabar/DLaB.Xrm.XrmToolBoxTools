@@ -1206,7 +1206,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the email server profile is active or inactive.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.EmailServerProfileState> StateCode
+		public System.Nullable<Entities.EmailServerProfileState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -1214,7 +1214,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.EmailServerProfileState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.EmailServerProfileState), optionSet.Value)));
+					return ((Entities.EmailServerProfileState)(System.Enum.ToObject(typeof(Entities.EmailServerProfileState), optionSet.Value)));
 				}
 				else
 				{
@@ -1381,18 +1381,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N EmailServerProfile_Annotation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("EmailServerProfile_Annotation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> EmailServerProfile_Annotation
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> EmailServerProfile_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("EmailServerProfile_Annotation", null);
+				return this.GetRelatedEntities<Entities.Annotation>("EmailServerProfile_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("EmailServerProfile_Annotation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("EmailServerProfile_Annotation", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("EmailServerProfile_Annotation", null, value);
 				this.OnPropertyChanged("EmailServerProfile_Annotation");
 			}
 		}
@@ -1401,18 +1401,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N emailserverprofile_asyncoperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("emailserverprofile_asyncoperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> emailserverprofile_asyncoperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> emailserverprofile_asyncoperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("emailserverprofile_asyncoperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("emailserverprofile_asyncoperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("emailserverprofile_asyncoperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("emailserverprofile_asyncoperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("emailserverprofile_asyncoperations", null, value);
 				this.OnPropertyChanged("emailserverprofile_asyncoperations");
 			}
 		}
@@ -1421,18 +1421,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N emailserverprofile_bulkdeletefailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("emailserverprofile_bulkdeletefailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> emailserverprofile_bulkdeletefailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> emailserverprofile_bulkdeletefailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("emailserverprofile_bulkdeletefailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("emailserverprofile_bulkdeletefailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("emailserverprofile_bulkdeletefailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("emailserverprofile_bulkdeletefailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("emailserverprofile_bulkdeletefailures", null, value);
 				this.OnPropertyChanged("emailserverprofile_bulkdeletefailures");
 			}
 		}
@@ -1441,18 +1441,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N emailserverprofile_duplicatebaserecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("emailserverprofile_duplicatebaserecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> emailserverprofile_duplicatebaserecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> emailserverprofile_duplicatebaserecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("emailserverprofile_duplicatebaserecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("emailserverprofile_duplicatebaserecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("emailserverprofile_duplicatebaserecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("emailserverprofile_duplicatebaserecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("emailserverprofile_duplicatebaserecord", null, value);
 				this.OnPropertyChanged("emailserverprofile_duplicatebaserecord");
 			}
 		}
@@ -1461,18 +1461,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N emailserverprofile_duplicatematchingrecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("emailserverprofile_duplicatematchingrecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> emailserverprofile_duplicatematchingrecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> emailserverprofile_duplicatematchingrecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("emailserverprofile_duplicatematchingrecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("emailserverprofile_duplicatematchingrecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("emailserverprofile_duplicatematchingrecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("emailserverprofile_duplicatematchingrecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("emailserverprofile_duplicatematchingrecord", null, value);
 				this.OnPropertyChanged("emailserverprofile_duplicatematchingrecord");
 			}
 		}
@@ -1481,18 +1481,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N emailserverprofile_mailbox
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("emailserverprofile_mailbox")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Mailbox> emailserverprofile_mailbox
+		public System.Collections.Generic.IEnumerable<Entities.Mailbox> emailserverprofile_mailbox
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Mailbox>("emailserverprofile_mailbox", null);
+				return this.GetRelatedEntities<Entities.Mailbox>("emailserverprofile_mailbox", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("emailserverprofile_mailbox");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Mailbox>("emailserverprofile_mailbox", null, value);
+				this.SetRelatedEntities<Entities.Mailbox>("emailserverprofile_mailbox", null, value);
 				this.OnPropertyChanged("emailserverprofile_mailbox");
 			}
 		}
@@ -1501,18 +1501,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N EmailServerProfile_Organization
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("EmailServerProfile_Organization")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Organization> EmailServerProfile_Organization
+		public System.Collections.Generic.IEnumerable<Entities.Organization> EmailServerProfile_Organization
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Organization>("EmailServerProfile_Organization", null);
+				return this.GetRelatedEntities<Entities.Organization>("EmailServerProfile_Organization", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("EmailServerProfile_Organization");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Organization>("EmailServerProfile_Organization", null, value);
+				this.SetRelatedEntities<Entities.Organization>("EmailServerProfile_Organization", null, value);
 				this.OnPropertyChanged("EmailServerProfile_Organization");
 			}
 		}
@@ -1521,18 +1521,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N tracelog_EmailServerProfile
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("tracelog_EmailServerProfile")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.TraceLog> tracelog_EmailServerProfile
+		public System.Collections.Generic.IEnumerable<Entities.TraceLog> tracelog_EmailServerProfile
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.TraceLog>("tracelog_EmailServerProfile", null);
+				return this.GetRelatedEntities<Entities.TraceLog>("tracelog_EmailServerProfile", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("tracelog_EmailServerProfile");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.TraceLog>("tracelog_EmailServerProfile", null, value);
+				this.SetRelatedEntities<Entities.TraceLog>("tracelog_EmailServerProfile", null, value);
 				this.OnPropertyChanged("tracelog_EmailServerProfile");
 			}
 		}
@@ -1542,18 +1542,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_emailserverprofile")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_emailserverprofile
+		public Entities.BusinessUnit business_unit_emailserverprofile
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_emailserverprofile", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_emailserverprofile", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_emailserverprofile");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_emailserverprofile", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_emailserverprofile", null, value);
 				this.OnPropertyChanged("business_unit_emailserverprofile");
 			}
 		}
@@ -1563,18 +1563,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_emailserverprofile_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_emailserverprofile_createdby
+		public Entities.SystemUser lk_emailserverprofile_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_emailserverprofile_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_emailserverprofile_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_emailserverprofile_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_emailserverprofile_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_emailserverprofile_createdby", null, value);
 				this.OnPropertyChanged("lk_emailserverprofile_createdby");
 			}
 		}
@@ -1584,18 +1584,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_emailserverprofile_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_emailserverprofile_createdonbehalfby
+		public Entities.SystemUser lk_emailserverprofile_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_emailserverprofile_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_emailserverprofile_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_emailserverprofile_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_emailserverprofile_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_emailserverprofile_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_emailserverprofile_createdonbehalfby");
 			}
 		}
@@ -1605,18 +1605,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_emailserverprofile_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_emailserverprofile_modifiedby
+		public Entities.SystemUser lk_emailserverprofile_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_emailserverprofile_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_emailserverprofile_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_emailserverprofile_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_emailserverprofile_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_emailserverprofile_modifiedby", null, value);
 				this.OnPropertyChanged("lk_emailserverprofile_modifiedby");
 			}
 		}
@@ -1626,18 +1626,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_emailserverprofile_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_emailserverprofile_modifiedonbehalfby
+		public Entities.SystemUser lk_emailserverprofile_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_emailserverprofile_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_emailserverprofile_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_emailserverprofile_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_emailserverprofile_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_emailserverprofile_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_emailserverprofile_modifiedonbehalfby");
 			}
 		}
@@ -1647,12 +1647,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_emailserverprofile")]
-		public DLaB.Xrm.Entities.Organization organization_emailserverprofile
+		public Entities.Organization organization_emailserverprofile
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_emailserverprofile", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_emailserverprofile", null);
 			}
 		}
 		
@@ -1661,18 +1661,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_emailserverprofile")]
-		public DLaB.Xrm.Entities.Team team_emailserverprofile
+		public Entities.Team team_emailserverprofile
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_emailserverprofile", null);
+				return this.GetRelatedEntity<Entities.Team>("team_emailserverprofile", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_emailserverprofile");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_emailserverprofile", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_emailserverprofile", null, value);
 				this.OnPropertyChanged("team_emailserverprofile");
 			}
 		}

@@ -475,7 +475,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the price list.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.PriceLevelState> StateCode
+		public System.Nullable<Entities.PriceLevelState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -483,7 +483,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.PriceLevelState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.PriceLevelState), optionSet.Value)));
+					return ((Entities.PriceLevelState)(System.Enum.ToObject(typeof(Entities.PriceLevelState), optionSet.Value)));
 				}
 				else
 				{
@@ -603,18 +603,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N price_level_accounts
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("price_level_accounts")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Account> price_level_accounts
+		public System.Collections.Generic.IEnumerable<Entities.Account> price_level_accounts
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Account>("price_level_accounts", null);
+				return this.GetRelatedEntities<Entities.Account>("price_level_accounts", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("price_level_accounts");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Account>("price_level_accounts", null, value);
+				this.SetRelatedEntities<Entities.Account>("price_level_accounts", null, value);
 				this.OnPropertyChanged("price_level_accounts");
 			}
 		}
@@ -623,18 +623,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N price_level_contacts
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("price_level_contacts")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Contact> price_level_contacts
+		public System.Collections.Generic.IEnumerable<Entities.Contact> price_level_contacts
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Contact>("price_level_contacts", null);
+				return this.GetRelatedEntities<Entities.Contact>("price_level_contacts", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("price_level_contacts");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Contact>("price_level_contacts", null, value);
+				this.SetRelatedEntities<Entities.Contact>("price_level_contacts", null, value);
 				this.OnPropertyChanged("price_level_contacts");
 			}
 		}
@@ -643,18 +643,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N price_level_invoices
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("price_level_invoices")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Invoice> price_level_invoices
+		public System.Collections.Generic.IEnumerable<Entities.Invoice> price_level_invoices
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Invoice>("price_level_invoices", null);
+				return this.GetRelatedEntities<Entities.Invoice>("price_level_invoices", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("price_level_invoices");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Invoice>("price_level_invoices", null, value);
+				this.SetRelatedEntities<Entities.Invoice>("price_level_invoices", null, value);
 				this.OnPropertyChanged("price_level_invoices");
 			}
 		}
@@ -663,18 +663,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N price_level_opportunties
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("price_level_opportunties")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Opportunity> price_level_opportunties
+		public System.Collections.Generic.IEnumerable<Entities.Opportunity> price_level_opportunties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Opportunity>("price_level_opportunties", null);
+				return this.GetRelatedEntities<Entities.Opportunity>("price_level_opportunties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("price_level_opportunties");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Opportunity>("price_level_opportunties", null, value);
+				this.SetRelatedEntities<Entities.Opportunity>("price_level_opportunties", null, value);
 				this.OnPropertyChanged("price_level_opportunties");
 			}
 		}
@@ -683,18 +683,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N price_level_orders
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("price_level_orders")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SalesOrder> price_level_orders
+		public System.Collections.Generic.IEnumerable<Entities.SalesOrder> price_level_orders
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SalesOrder>("price_level_orders", null);
+				return this.GetRelatedEntities<Entities.SalesOrder>("price_level_orders", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("price_level_orders");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SalesOrder>("price_level_orders", null, value);
+				this.SetRelatedEntities<Entities.SalesOrder>("price_level_orders", null, value);
 				this.OnPropertyChanged("price_level_orders");
 			}
 		}
@@ -703,18 +703,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N price_level_product_price_levels
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("price_level_product_price_levels")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProductPriceLevel> price_level_product_price_levels
+		public System.Collections.Generic.IEnumerable<Entities.ProductPriceLevel> price_level_product_price_levels
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProductPriceLevel>("price_level_product_price_levels", null);
+				return this.GetRelatedEntities<Entities.ProductPriceLevel>("price_level_product_price_levels", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("price_level_product_price_levels");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProductPriceLevel>("price_level_product_price_levels", null, value);
+				this.SetRelatedEntities<Entities.ProductPriceLevel>("price_level_product_price_levels", null, value);
 				this.OnPropertyChanged("price_level_product_price_levels");
 			}
 		}
@@ -723,18 +723,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N price_level_products
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("price_level_products")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Product> price_level_products
+		public System.Collections.Generic.IEnumerable<Entities.Product> price_level_products
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Product>("price_level_products", null);
+				return this.GetRelatedEntities<Entities.Product>("price_level_products", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("price_level_products");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Product>("price_level_products", null, value);
+				this.SetRelatedEntities<Entities.Product>("price_level_products", null, value);
 				this.OnPropertyChanged("price_level_products");
 			}
 		}
@@ -743,18 +743,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N price_level_quotes
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("price_level_quotes")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Quote> price_level_quotes
+		public System.Collections.Generic.IEnumerable<Entities.Quote> price_level_quotes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Quote>("price_level_quotes", null);
+				return this.GetRelatedEntities<Entities.Quote>("price_level_quotes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("price_level_quotes");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Quote>("price_level_quotes", null, value);
+				this.SetRelatedEntities<Entities.Quote>("price_level_quotes", null, value);
 				this.OnPropertyChanged("price_level_quotes");
 			}
 		}
@@ -763,18 +763,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N PriceLevel_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("PriceLevel_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> PriceLevel_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> PriceLevel_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("PriceLevel_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("PriceLevel_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("PriceLevel_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("PriceLevel_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("PriceLevel_AsyncOperations", null, value);
 				this.OnPropertyChanged("PriceLevel_AsyncOperations");
 			}
 		}
@@ -783,18 +783,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N PriceLevel_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("PriceLevel_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> PriceLevel_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> PriceLevel_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("PriceLevel_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("PriceLevel_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("PriceLevel_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("PriceLevel_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("PriceLevel_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("PriceLevel_BulkDeleteFailures");
 			}
 		}
@@ -803,18 +803,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N pricelevel_connections1
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("pricelevel_connections1")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> pricelevel_connections1
+		public System.Collections.Generic.IEnumerable<Entities.Connection> pricelevel_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("pricelevel_connections1", null);
+				return this.GetRelatedEntities<Entities.Connection>("pricelevel_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("pricelevel_connections1");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("pricelevel_connections1", null, value);
+				this.SetRelatedEntities<Entities.Connection>("pricelevel_connections1", null, value);
 				this.OnPropertyChanged("pricelevel_connections1");
 			}
 		}
@@ -823,18 +823,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N pricelevel_connections2
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("pricelevel_connections2")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> pricelevel_connections2
+		public System.Collections.Generic.IEnumerable<Entities.Connection> pricelevel_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("pricelevel_connections2", null);
+				return this.GetRelatedEntities<Entities.Connection>("pricelevel_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("pricelevel_connections2");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("pricelevel_connections2", null, value);
+				this.SetRelatedEntities<Entities.Connection>("pricelevel_connections2", null, value);
 				this.OnPropertyChanged("pricelevel_connections2");
 			}
 		}
@@ -843,18 +843,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N pricelevel_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("pricelevel_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> pricelevel_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> pricelevel_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("pricelevel_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("pricelevel_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("pricelevel_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("pricelevel_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("pricelevel_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("pricelevel_principalobjectattributeaccess");
 			}
 		}
@@ -863,18 +863,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N PriceLevel_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("PriceLevel_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> PriceLevel_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> PriceLevel_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("PriceLevel_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("PriceLevel_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("PriceLevel_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("PriceLevel_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("PriceLevel_ProcessSessions", null, value);
 				this.OnPropertyChanged("PriceLevel_ProcessSessions");
 			}
 		}
@@ -883,18 +883,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N PriceList_Campaigns
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("PriceList_Campaigns")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Campaign> PriceList_Campaigns
+		public System.Collections.Generic.IEnumerable<Entities.Campaign> PriceList_Campaigns
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Campaign>("PriceList_Campaigns", null);
+				return this.GetRelatedEntities<Entities.Campaign>("PriceList_Campaigns", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("PriceList_Campaigns");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Campaign>("PriceList_Campaigns", null, value);
+				this.SetRelatedEntities<Entities.Campaign>("PriceList_Campaigns", null, value);
 				this.OnPropertyChanged("PriceList_Campaigns");
 			}
 		}
@@ -903,18 +903,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_pricelevel
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_pricelevel")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_pricelevel
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_pricelevel
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_pricelevel", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_pricelevel", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_pricelevel");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_pricelevel", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_pricelevel", null, value);
 				this.OnPropertyChanged("userentityinstancedata_pricelevel");
 			}
 		}
@@ -924,18 +924,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_pricelevel_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_pricelevel_createdonbehalfby
+		public Entities.SystemUser lk_pricelevel_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_pricelevel_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_pricelevel_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_pricelevel_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_pricelevel_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_pricelevel_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_pricelevel_createdonbehalfby");
 			}
 		}
@@ -945,18 +945,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_pricelevel_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_pricelevel_modifiedonbehalfby
+		public Entities.SystemUser lk_pricelevel_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_pricelevel_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_pricelevel_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_pricelevel_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_pricelevel_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_pricelevel_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_pricelevel_modifiedonbehalfby");
 			}
 		}
@@ -966,18 +966,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_pricelevelbase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_pricelevelbase_createdby
+		public Entities.SystemUser lk_pricelevelbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_pricelevelbase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_pricelevelbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_pricelevelbase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_pricelevelbase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_pricelevelbase_createdby", null, value);
 				this.OnPropertyChanged("lk_pricelevelbase_createdby");
 			}
 		}
@@ -987,18 +987,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_pricelevelbase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_pricelevelbase_modifiedby
+		public Entities.SystemUser lk_pricelevelbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_pricelevelbase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_pricelevelbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_pricelevelbase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_pricelevelbase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_pricelevelbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_pricelevelbase_modifiedby");
 			}
 		}
@@ -1008,12 +1008,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_price_levels")]
-		public DLaB.Xrm.Entities.Organization organization_price_levels
+		public Entities.Organization organization_price_levels
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_price_levels", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_price_levels", null);
 			}
 		}
 		
@@ -1022,18 +1022,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_pricelevel")]
-		public DLaB.Xrm.Entities.TransactionCurrency transactioncurrency_pricelevel
+		public Entities.TransactionCurrency transactioncurrency_pricelevel
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_pricelevel", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_pricelevel", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_pricelevel");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_pricelevel", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_pricelevel", null, value);
 				this.OnPropertyChanged("transactioncurrency_pricelevel");
 			}
 		}

@@ -16,6 +16,8 @@ namespace DLaB.CrmSvcUtilExtensions
         public static bool AddNewFilesToProject => ConfigHelper.GetAppSettingOrDefault("AddNewFilesToProject", false);
         public static bool RemoveRuntimeVersionComment => ConfigHelper.GetAppSettingOrDefault("RemoveRuntimeVersionComment", true);
         private static bool LoggingEnabled => ConfigHelper.GetAppSettingOrDefault("LoggingEnabled", false);
+        public static IOrganizationMetadata Metadata { get; set; }
+        public static IServiceProvider ServiceProvider { get; set; }
 
         protected virtual string CommandLineText => ConfigHelper.GetAppSettingOrDefault("EntityCommandLineText", string.Empty);
         protected virtual CodeUnit SplitByCodeUnit => CodeUnit.Class;
@@ -119,6 +121,8 @@ namespace DLaB.CrmSvcUtilExtensions
 
         protected virtual void WriteInternal(IOrganizationMetadata organizationMetadata, string language, string outputFile, string targetNamespace, IServiceProvider services)
         {
+            Metadata = organizationMetadata;
+            ServiceProvider = services;
             if (UseTfsToCheckoutFiles)
             {
                 Action<string> write = s => { if (LoggingEnabled) { Log(s); } };

@@ -541,18 +541,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N reportcategory_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("reportcategory_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> reportcategory_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> reportcategory_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("reportcategory_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("reportcategory_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("reportcategory_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("reportcategory_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("reportcategory_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("reportcategory_principalobjectattributeaccess");
 			}
 		}
@@ -561,18 +561,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_reportcategory
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_reportcategory")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_reportcategory
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_reportcategory
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_reportcategory", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_reportcategory", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_reportcategory");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_reportcategory", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_reportcategory", null, value);
 				this.OnPropertyChanged("userentityinstancedata_reportcategory");
 			}
 		}
@@ -582,18 +582,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_reportcategory_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_reportcategory_createdonbehalfby
+		public Entities.SystemUser lk_reportcategory_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportcategory_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_reportcategory_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_reportcategory_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportcategory_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_reportcategory_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_reportcategory_createdonbehalfby");
 			}
 		}
@@ -603,18 +603,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_reportcategory_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_reportcategory_modifiedonbehalfby
+		public Entities.SystemUser lk_reportcategory_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportcategory_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_reportcategory_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_reportcategory_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportcategory_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_reportcategory_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_reportcategory_modifiedonbehalfby");
 			}
 		}
@@ -624,18 +624,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_reportcategorybase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_reportcategorybase_createdby
+		public Entities.SystemUser lk_reportcategorybase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportcategorybase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_reportcategorybase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_reportcategorybase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportcategorybase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_reportcategorybase_createdby", null, value);
 				this.OnPropertyChanged("lk_reportcategorybase_createdby");
 			}
 		}
@@ -645,18 +645,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_reportcategorybase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_reportcategorybase_modifiedby
+		public Entities.SystemUser lk_reportcategorybase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportcategorybase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_reportcategorybase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_reportcategorybase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_reportcategorybase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_reportcategorybase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_reportcategorybase_modifiedby");
 			}
 		}
@@ -666,18 +666,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("reportid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("report_reportcategories")]
-		public DLaB.Xrm.Entities.Report report_reportcategories
+		public Entities.Report report_reportcategories
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Report>("report_reportcategories", null);
+				return this.GetRelatedEntity<Entities.Report>("report_reportcategories", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("report_reportcategories");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Report>("report_reportcategories", null, value);
+				this.SetRelatedEntity<Entities.Report>("report_reportcategories", null, value);
 				this.OnPropertyChanged("report_reportcategories");
 			}
 		}
@@ -687,18 +687,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_ReportCategory")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_ReportCategory
+		public Entities.TransactionCurrency TransactionCurrency_ReportCategory
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_ReportCategory", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_ReportCategory", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_ReportCategory");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_ReportCategory", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_ReportCategory", null, value);
 				this.OnPropertyChanged("TransactionCurrency_ReportCategory");
 			}
 		}

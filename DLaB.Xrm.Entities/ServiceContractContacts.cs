@@ -171,18 +171,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N servicecontractcontacts_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("servicecontractcontacts_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Contact> servicecontractcontacts_association
+		public System.Collections.Generic.IEnumerable<Entities.Contact> servicecontractcontacts_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Contact>("servicecontractcontacts_association", null);
+				return this.GetRelatedEntities<Entities.Contact>("servicecontractcontacts_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("servicecontractcontacts_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Contact>("servicecontractcontacts_association", null, value);
+				this.SetRelatedEntities<Entities.Contact>("servicecontractcontacts_association", null, value);
 				this.OnPropertyChanged("servicecontractcontacts_association");
 			}
 		}

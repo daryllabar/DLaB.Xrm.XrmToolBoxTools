@@ -394,7 +394,7 @@ namespace DLaB.Xrm.Entities
 		/// Select the product relationship's status.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.ProductSubstituteState> statecode
+		public System.Nullable<Entities.ProductSubstituteState> statecode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -402,7 +402,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.ProductSubstituteState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.ProductSubstituteState), optionSet.Value)));
+					return ((Entities.ProductSubstituteState)(System.Enum.ToObject(typeof(Entities.ProductSubstituteState), optionSet.Value)));
 				}
 				else
 				{
@@ -528,18 +528,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ProductSubstitute_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductSubstitute_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> ProductSubstitute_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> ProductSubstitute_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("ProductSubstitute_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("ProductSubstitute_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ProductSubstitute_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("ProductSubstitute_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("ProductSubstitute_AsyncOperations", null, value);
 				this.OnPropertyChanged("ProductSubstitute_AsyncOperations");
 			}
 		}
@@ -548,18 +548,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ProductSubstitute_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductSubstitute_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> ProductSubstitute_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> ProductSubstitute_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("ProductSubstitute_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("ProductSubstitute_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ProductSubstitute_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("ProductSubstitute_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("ProductSubstitute_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("ProductSubstitute_BulkDeleteFailures");
 			}
 		}
@@ -568,18 +568,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ProductSubstitute_PrincipalObjectAttributeAccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductSubstitute_PrincipalObjectAttributeAccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> ProductSubstitute_PrincipalObjectAttributeAccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> ProductSubstitute_PrincipalObjectAttributeAccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("ProductSubstitute_PrincipalObjectAttributeAccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("ProductSubstitute_PrincipalObjectAttributeAccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ProductSubstitute_PrincipalObjectAttributeAccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("ProductSubstitute_PrincipalObjectAttributeAccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("ProductSubstitute_PrincipalObjectAttributeAccess", null, value);
 				this.OnPropertyChanged("ProductSubstitute_PrincipalObjectAttributeAccess");
 			}
 		}
@@ -588,18 +588,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ProductSubstitute_ProcessSession
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductSubstitute_ProcessSession")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> ProductSubstitute_ProcessSession
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> ProductSubstitute_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("ProductSubstitute_ProcessSession", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("ProductSubstitute_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ProductSubstitute_ProcessSession");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("ProductSubstitute_ProcessSession", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("ProductSubstitute_ProcessSession", null, value);
 				this.OnPropertyChanged("ProductSubstitute_ProcessSession");
 			}
 		}
@@ -609,18 +609,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ProductSubstitute_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_ProductSubstitute_createdby
+		public Entities.SystemUser lk_ProductSubstitute_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ProductSubstitute_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_ProductSubstitute_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_ProductSubstitute_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ProductSubstitute_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_ProductSubstitute_createdby", null, value);
 				this.OnPropertyChanged("lk_ProductSubstitute_createdby");
 			}
 		}
@@ -630,18 +630,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ProductSubstitute_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_ProductSubstitute_createdonbehalfby
+		public Entities.SystemUser lk_ProductSubstitute_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ProductSubstitute_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_ProductSubstitute_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_ProductSubstitute_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ProductSubstitute_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_ProductSubstitute_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_ProductSubstitute_createdonbehalfby");
 			}
 		}
@@ -651,18 +651,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ProductSubstitute_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_ProductSubstitute_modifiedby
+		public Entities.SystemUser lk_ProductSubstitute_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ProductSubstitute_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_ProductSubstitute_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_ProductSubstitute_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ProductSubstitute_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_ProductSubstitute_modifiedby", null, value);
 				this.OnPropertyChanged("lk_ProductSubstitute_modifiedby");
 			}
 		}
@@ -672,18 +672,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ProductSubstitute_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_ProductSubstitute_modifiedonbehalfby
+		public Entities.SystemUser lk_ProductSubstitute_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ProductSubstitute_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_ProductSubstitute_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_ProductSubstitute_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_ProductSubstitute_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_ProductSubstitute_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_ProductSubstitute_modifiedonbehalfby");
 			}
 		}
@@ -693,12 +693,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_ProductSubstitute")]
-		public DLaB.Xrm.Entities.Organization organization_ProductSubstitute
+		public Entities.Organization organization_ProductSubstitute
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_ProductSubstitute", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_ProductSubstitute", null);
 			}
 		}
 		
@@ -707,18 +707,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("productid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("product_ProductSubstitute_productid")]
-		public DLaB.Xrm.Entities.Product product_ProductSubstitute_productid
+		public Entities.Product product_ProductSubstitute_productid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Product>("product_ProductSubstitute_productid", null);
+				return this.GetRelatedEntity<Entities.Product>("product_ProductSubstitute_productid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("product_ProductSubstitute_productid");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Product>("product_ProductSubstitute_productid", null, value);
+				this.SetRelatedEntity<Entities.Product>("product_ProductSubstitute_productid", null, value);
 				this.OnPropertyChanged("product_ProductSubstitute_productid");
 			}
 		}
@@ -728,18 +728,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("substitutedproductid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("product_ProductSubstitute_substitutedproductid")]
-		public DLaB.Xrm.Entities.Product product_ProductSubstitute_substitutedproductid
+		public Entities.Product product_ProductSubstitute_substitutedproductid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Product>("product_ProductSubstitute_substitutedproductid", null);
+				return this.GetRelatedEntity<Entities.Product>("product_ProductSubstitute_substitutedproductid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("product_ProductSubstitute_substitutedproductid");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Product>("product_ProductSubstitute_substitutedproductid", null, value);
+				this.SetRelatedEntity<Entities.Product>("product_ProductSubstitute_substitutedproductid", null, value);
 				this.OnPropertyChanged("product_ProductSubstitute_substitutedproductid");
 			}
 		}
@@ -749,18 +749,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_ProductSubstitute")]
-		public DLaB.Xrm.Entities.TransactionCurrency transactioncurrency_ProductSubstitute
+		public Entities.TransactionCurrency transactioncurrency_ProductSubstitute
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_ProductSubstitute", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_ProductSubstitute", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_ProductSubstitute");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_ProductSubstitute", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_ProductSubstitute", null, value);
 				this.OnPropertyChanged("transactioncurrency_ProductSubstitute");
 			}
 		}

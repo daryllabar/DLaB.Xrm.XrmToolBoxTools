@@ -242,18 +242,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_account
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_account")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Account> processstage_account
+		public System.Collections.Generic.IEnumerable<Entities.Account> processstage_account
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Account>("processstage_account", null);
+				return this.GetRelatedEntities<Entities.Account>("processstage_account", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_account");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Account>("processstage_account", null, value);
+				this.SetRelatedEntities<Entities.Account>("processstage_account", null, value);
 				this.OnPropertyChanged("processstage_account");
 			}
 		}
@@ -262,18 +262,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_appointments
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_appointments")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Appointment> processstage_appointments
+		public System.Collections.Generic.IEnumerable<Entities.Appointment> processstage_appointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Appointment>("processstage_appointments", null);
+				return this.GetRelatedEntities<Entities.Appointment>("processstage_appointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_appointments");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Appointment>("processstage_appointments", null, value);
+				this.SetRelatedEntities<Entities.Appointment>("processstage_appointments", null, value);
 				this.OnPropertyChanged("processstage_appointments");
 			}
 		}
@@ -282,18 +282,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_campaignactivities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_campaignactivities")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.CampaignActivity> processstage_campaignactivities
+		public System.Collections.Generic.IEnumerable<Entities.CampaignActivity> processstage_campaignactivities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.CampaignActivity>("processstage_campaignactivities", null);
+				return this.GetRelatedEntities<Entities.CampaignActivity>("processstage_campaignactivities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_campaignactivities");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.CampaignActivity>("processstage_campaignactivities", null, value);
+				this.SetRelatedEntities<Entities.CampaignActivity>("processstage_campaignactivities", null, value);
 				this.OnPropertyChanged("processstage_campaignactivities");
 			}
 		}
@@ -302,18 +302,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_campaignresponses
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_campaignresponses")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.CampaignResponse> processstage_campaignresponses
+		public System.Collections.Generic.IEnumerable<Entities.CampaignResponse> processstage_campaignresponses
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.CampaignResponse>("processstage_campaignresponses", null);
+				return this.GetRelatedEntities<Entities.CampaignResponse>("processstage_campaignresponses", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_campaignresponses");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.CampaignResponse>("processstage_campaignresponses", null, value);
+				this.SetRelatedEntities<Entities.CampaignResponse>("processstage_campaignresponses", null, value);
 				this.OnPropertyChanged("processstage_campaignresponses");
 			}
 		}
@@ -322,18 +322,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_campaigns
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_campaigns")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Campaign> processstage_campaigns
+		public System.Collections.Generic.IEnumerable<Entities.Campaign> processstage_campaigns
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Campaign>("processstage_campaigns", null);
+				return this.GetRelatedEntities<Entities.Campaign>("processstage_campaigns", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_campaigns");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Campaign>("processstage_campaigns", null, value);
+				this.SetRelatedEntities<Entities.Campaign>("processstage_campaigns", null, value);
 				this.OnPropertyChanged("processstage_campaigns");
 			}
 		}
@@ -342,18 +342,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_competitors
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_competitors")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Competitor> processstage_competitors
+		public System.Collections.Generic.IEnumerable<Entities.Competitor> processstage_competitors
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Competitor>("processstage_competitors", null);
+				return this.GetRelatedEntities<Entities.Competitor>("processstage_competitors", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_competitors");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Competitor>("processstage_competitors", null, value);
+				this.SetRelatedEntities<Entities.Competitor>("processstage_competitors", null, value);
 				this.OnPropertyChanged("processstage_competitors");
 			}
 		}
@@ -362,18 +362,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_contact
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_contact")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Contact> processstage_contact
+		public System.Collections.Generic.IEnumerable<Entities.Contact> processstage_contact
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Contact>("processstage_contact", null);
+				return this.GetRelatedEntities<Entities.Contact>("processstage_contact", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_contact");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Contact>("processstage_contact", null, value);
+				this.SetRelatedEntities<Entities.Contact>("processstage_contact", null, value);
 				this.OnPropertyChanged("processstage_contact");
 			}
 		}
@@ -382,18 +382,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_emails
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_emails")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Email> processstage_emails
+		public System.Collections.Generic.IEnumerable<Entities.Email> processstage_emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Email>("processstage_emails", null);
+				return this.GetRelatedEntities<Entities.Email>("processstage_emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_emails");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Email>("processstage_emails", null, value);
+				this.SetRelatedEntities<Entities.Email>("processstage_emails", null, value);
 				this.OnPropertyChanged("processstage_emails");
 			}
 		}
@@ -402,18 +402,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_faxes
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_faxes")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Fax> processstage_faxes
+		public System.Collections.Generic.IEnumerable<Entities.Fax> processstage_faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Fax>("processstage_faxes", null);
+				return this.GetRelatedEntities<Entities.Fax>("processstage_faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_faxes");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Fax>("processstage_faxes", null, value);
+				this.SetRelatedEntities<Entities.Fax>("processstage_faxes", null, value);
 				this.OnPropertyChanged("processstage_faxes");
 			}
 		}
@@ -422,18 +422,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_incident
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_incident")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Incident> processstage_incident
+		public System.Collections.Generic.IEnumerable<Entities.Incident> processstage_incident
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Incident>("processstage_incident", null);
+				return this.GetRelatedEntities<Entities.Incident>("processstage_incident", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_incident");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Incident>("processstage_incident", null, value);
+				this.SetRelatedEntities<Entities.Incident>("processstage_incident", null, value);
 				this.OnPropertyChanged("processstage_incident");
 			}
 		}
@@ -442,18 +442,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_invoices
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_invoices")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Invoice> processstage_invoices
+		public System.Collections.Generic.IEnumerable<Entities.Invoice> processstage_invoices
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Invoice>("processstage_invoices", null);
+				return this.GetRelatedEntities<Entities.Invoice>("processstage_invoices", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_invoices");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Invoice>("processstage_invoices", null, value);
+				this.SetRelatedEntities<Entities.Invoice>("processstage_invoices", null, value);
 				this.OnPropertyChanged("processstage_invoices");
 			}
 		}
@@ -462,18 +462,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_knowledgearticle
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_knowledgearticle")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.KnowledgeArticle> processstage_knowledgearticle
+		public System.Collections.Generic.IEnumerable<Entities.KnowledgeArticle> processstage_knowledgearticle
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.KnowledgeArticle>("processstage_knowledgearticle", null);
+				return this.GetRelatedEntities<Entities.KnowledgeArticle>("processstage_knowledgearticle", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_knowledgearticle");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.KnowledgeArticle>("processstage_knowledgearticle", null, value);
+				this.SetRelatedEntities<Entities.KnowledgeArticle>("processstage_knowledgearticle", null, value);
 				this.OnPropertyChanged("processstage_knowledgearticle");
 			}
 		}
@@ -482,18 +482,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_lead
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_lead")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Lead> processstage_lead
+		public System.Collections.Generic.IEnumerable<Entities.Lead> processstage_lead
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Lead>("processstage_lead", null);
+				return this.GetRelatedEntities<Entities.Lead>("processstage_lead", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_lead");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Lead>("processstage_lead", null, value);
+				this.SetRelatedEntities<Entities.Lead>("processstage_lead", null, value);
 				this.OnPropertyChanged("processstage_lead");
 			}
 		}
@@ -502,18 +502,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_letters
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_letters")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Letter> processstage_letters
+		public System.Collections.Generic.IEnumerable<Entities.Letter> processstage_letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Letter>("processstage_letters", null);
+				return this.GetRelatedEntities<Entities.Letter>("processstage_letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_letters");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Letter>("processstage_letters", null, value);
+				this.SetRelatedEntities<Entities.Letter>("processstage_letters", null, value);
 				this.OnPropertyChanged("processstage_letters");
 			}
 		}
@@ -522,18 +522,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_lists
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_lists")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.List> processstage_lists
+		public System.Collections.Generic.IEnumerable<Entities.List> processstage_lists
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.List>("processstage_lists", null);
+				return this.GetRelatedEntities<Entities.List>("processstage_lists", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_lists");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.List>("processstage_lists", null, value);
+				this.SetRelatedEntities<Entities.List>("processstage_lists", null, value);
 				this.OnPropertyChanged("processstage_lists");
 			}
 		}
@@ -542,18 +542,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_opportunity
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_opportunity")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Opportunity> processstage_opportunity
+		public System.Collections.Generic.IEnumerable<Entities.Opportunity> processstage_opportunity
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Opportunity>("processstage_opportunity", null);
+				return this.GetRelatedEntities<Entities.Opportunity>("processstage_opportunity", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_opportunity");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Opportunity>("processstage_opportunity", null, value);
+				this.SetRelatedEntities<Entities.Opportunity>("processstage_opportunity", null, value);
 				this.OnPropertyChanged("processstage_opportunity");
 			}
 		}
@@ -562,18 +562,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_phonecalls
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_phonecalls")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PhoneCall> processstage_phonecalls
+		public System.Collections.Generic.IEnumerable<Entities.PhoneCall> processstage_phonecalls
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PhoneCall>("processstage_phonecalls", null);
+				return this.GetRelatedEntities<Entities.PhoneCall>("processstage_phonecalls", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_phonecalls");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PhoneCall>("processstage_phonecalls", null, value);
+				this.SetRelatedEntities<Entities.PhoneCall>("processstage_phonecalls", null, value);
 				this.OnPropertyChanged("processstage_phonecalls");
 			}
 		}
@@ -582,18 +582,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_productpricelevels
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_productpricelevels")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProductPriceLevel> processstage_productpricelevels
+		public System.Collections.Generic.IEnumerable<Entities.ProductPriceLevel> processstage_productpricelevels
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProductPriceLevel>("processstage_productpricelevels", null);
+				return this.GetRelatedEntities<Entities.ProductPriceLevel>("processstage_productpricelevels", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_productpricelevels");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProductPriceLevel>("processstage_productpricelevels", null, value);
+				this.SetRelatedEntities<Entities.ProductPriceLevel>("processstage_productpricelevels", null, value);
 				this.OnPropertyChanged("processstage_productpricelevels");
 			}
 		}
@@ -602,18 +602,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_products
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_products")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Product> processstage_products
+		public System.Collections.Generic.IEnumerable<Entities.Product> processstage_products
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Product>("processstage_products", null);
+				return this.GetRelatedEntities<Entities.Product>("processstage_products", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_products");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Product>("processstage_products", null, value);
+				this.SetRelatedEntities<Entities.Product>("processstage_products", null, value);
 				this.OnPropertyChanged("processstage_products");
 			}
 		}
@@ -622,18 +622,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_quotes
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_quotes")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Quote> processstage_quotes
+		public System.Collections.Generic.IEnumerable<Entities.Quote> processstage_quotes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Quote>("processstage_quotes", null);
+				return this.GetRelatedEntities<Entities.Quote>("processstage_quotes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_quotes");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Quote>("processstage_quotes", null, value);
+				this.SetRelatedEntities<Entities.Quote>("processstage_quotes", null, value);
 				this.OnPropertyChanged("processstage_quotes");
 			}
 		}
@@ -642,18 +642,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_recurringappointmentmasters
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_recurringappointmentmasters")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.RecurringAppointmentMaster> processstage_recurringappointmentmasters
+		public System.Collections.Generic.IEnumerable<Entities.RecurringAppointmentMaster> processstage_recurringappointmentmasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.RecurringAppointmentMaster>("processstage_recurringappointmentmasters", null);
+				return this.GetRelatedEntities<Entities.RecurringAppointmentMaster>("processstage_recurringappointmentmasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_recurringappointmentmasters");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.RecurringAppointmentMaster>("processstage_recurringappointmentmasters", null, value);
+				this.SetRelatedEntities<Entities.RecurringAppointmentMaster>("processstage_recurringappointmentmasters", null, value);
 				this.OnPropertyChanged("processstage_recurringappointmentmasters");
 			}
 		}
@@ -662,18 +662,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_salesliteratures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_salesliteratures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SalesLiterature> processstage_salesliteratures
+		public System.Collections.Generic.IEnumerable<Entities.SalesLiterature> processstage_salesliteratures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SalesLiterature>("processstage_salesliteratures", null);
+				return this.GetRelatedEntities<Entities.SalesLiterature>("processstage_salesliteratures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_salesliteratures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SalesLiterature>("processstage_salesliteratures", null, value);
+				this.SetRelatedEntities<Entities.SalesLiterature>("processstage_salesliteratures", null, value);
 				this.OnPropertyChanged("processstage_salesliteratures");
 			}
 		}
@@ -682,18 +682,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_salesorders
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_salesorders")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SalesOrder> processstage_salesorders
+		public System.Collections.Generic.IEnumerable<Entities.SalesOrder> processstage_salesorders
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SalesOrder>("processstage_salesorders", null);
+				return this.GetRelatedEntities<Entities.SalesOrder>("processstage_salesorders", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_salesorders");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SalesOrder>("processstage_salesorders", null, value);
+				this.SetRelatedEntities<Entities.SalesOrder>("processstage_salesorders", null, value);
 				this.OnPropertyChanged("processstage_salesorders");
 			}
 		}
@@ -702,18 +702,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_systemusers
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_systemusers")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SystemUser> processstage_systemusers
+		public System.Collections.Generic.IEnumerable<Entities.SystemUser> processstage_systemusers
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SystemUser>("processstage_systemusers", null);
+				return this.GetRelatedEntities<Entities.SystemUser>("processstage_systemusers", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_systemusers");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SystemUser>("processstage_systemusers", null, value);
+				this.SetRelatedEntities<Entities.SystemUser>("processstage_systemusers", null, value);
 				this.OnPropertyChanged("processstage_systemusers");
 			}
 		}
@@ -722,18 +722,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_tasks
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_tasks")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Task> processstage_tasks
+		public System.Collections.Generic.IEnumerable<Entities.Task> processstage_tasks
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Task>("processstage_tasks", null);
+				return this.GetRelatedEntities<Entities.Task>("processstage_tasks", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_tasks");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Task>("processstage_tasks", null, value);
+				this.SetRelatedEntities<Entities.Task>("processstage_tasks", null, value);
 				this.OnPropertyChanged("processstage_tasks");
 			}
 		}
@@ -742,18 +742,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processstage_teams
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_teams")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Team> processstage_teams
+		public System.Collections.Generic.IEnumerable<Entities.Team> processstage_teams
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Team>("processstage_teams", null);
+				return this.GetRelatedEntities<Entities.Team>("processstage_teams", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_teams");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Team>("processstage_teams", null, value);
+				this.SetRelatedEntities<Entities.Team>("processstage_teams", null, value);
 				this.OnPropertyChanged("processstage_teams");
 			}
 		}
@@ -763,18 +763,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("process_processstage")]
-		public DLaB.Xrm.Entities.Workflow process_processstage
+		public Entities.Workflow process_processstage
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Workflow>("process_processstage", null);
+				return this.GetRelatedEntity<Entities.Workflow>("process_processstage", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("process_processstage");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Workflow>("process_processstage", null, value);
+				this.SetRelatedEntity<Entities.Workflow>("process_processstage", null, value);
 				this.OnPropertyChanged("process_processstage");
 			}
 		}

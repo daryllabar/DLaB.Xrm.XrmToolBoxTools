@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.AttributeManager</id>
-	  <version>1.2017.3.23</version>
+	  <version>1.2017.8.8</version>
 	  <title>Attribute Manager</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,13 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>BETA! - Used to rename/delete/or change the type of an attribute.</description>
-    <releaseNotes>V1.2017.3.23
+    <releaseNotes>V1.2017.8.8
+ - Fixed Multi-line Text Issue #122
+
+V1.2017.8.3
+ - Fixed NullReferenceException when trying to convert Single line of text to Multi Line of Text #109    
+ 
+V1.2017.3.23
  - Allow for Converting from Option sets to Two Option Attributes #95
       
 V1.2017.3.21
@@ -31,14 +37,6 @@ V1.2017.1.17
       
 V1.2017.1.5
  - Removed Readonly Flag on Settings
-      
-V1.2016.12.29
- - Split off into seperate NuGet Package
- - Removed use of Early Bounded Entities
-
-V1.2016.12.28
- - Only Change Plugin Step Filters and Images that are for the current entity bug #60
- - Ability to change the name/convert to a calculated or rollup field #67
     </releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>

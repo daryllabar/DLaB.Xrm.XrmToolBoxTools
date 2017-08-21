@@ -241,18 +241,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N roleprivileges_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("roleprivileges_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Privilege> roleprivileges_association
+		public System.Collections.Generic.IEnumerable<Entities.Privilege> roleprivileges_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Privilege>("roleprivileges_association", null);
+				return this.GetRelatedEntities<Entities.Privilege>("roleprivileges_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("roleprivileges_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Privilege>("roleprivileges_association", null, value);
+				this.SetRelatedEntities<Entities.Privilege>("roleprivileges_association", null, value);
 				this.OnPropertyChanged("roleprivileges_association");
 			}
 		}

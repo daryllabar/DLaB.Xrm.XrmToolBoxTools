@@ -582,18 +582,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_officegraphdocument_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_officegraphdocument_createdonbehalfby
+		public Entities.SystemUser lk_officegraphdocument_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_officegraphdocument_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_officegraphdocument_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_officegraphdocument_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_officegraphdocument_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_officegraphdocument_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_officegraphdocument_createdonbehalfby");
 			}
 		}
@@ -603,18 +603,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_officegraphdocument_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_officegraphdocument_modifiedonbehalfby
+		public Entities.SystemUser lk_officegraphdocument_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_officegraphdocument_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_officegraphdocument_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_officegraphdocument_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_officegraphdocument_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_officegraphdocument_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_officegraphdocument_modifiedonbehalfby");
 			}
 		}
@@ -624,12 +624,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_officegraphdocument")]
-		public DLaB.Xrm.Entities.Organization organization_officegraphdocument
+		public Entities.Organization organization_officegraphdocument
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_officegraphdocument", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_officegraphdocument", null);
 			}
 		}
 		
@@ -638,18 +638,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_officegraphdocument")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_officegraphdocument
+		public Entities.TransactionCurrency TransactionCurrency_officegraphdocument
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_officegraphdocument", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_officegraphdocument", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_officegraphdocument");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_officegraphdocument", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_officegraphdocument", null, value);
 				this.OnPropertyChanged("TransactionCurrency_officegraphdocument");
 			}
 		}

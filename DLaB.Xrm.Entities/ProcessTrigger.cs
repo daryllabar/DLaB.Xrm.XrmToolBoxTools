@@ -570,18 +570,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_processtriggerbase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_processtriggerbase_createdby
+		public Entities.SystemUser lk_processtriggerbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_processtriggerbase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_processtriggerbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_processtriggerbase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_processtriggerbase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_processtriggerbase_createdby", null, value);
 				this.OnPropertyChanged("lk_processtriggerbase_createdby");
 			}
 		}
@@ -591,18 +591,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_processtriggerbase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_processtriggerbase_createdonbehalfby
+		public Entities.SystemUser lk_processtriggerbase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_processtriggerbase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_processtriggerbase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_processtriggerbase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_processtriggerbase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_processtriggerbase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_processtriggerbase_createdonbehalfby");
 			}
 		}
@@ -612,18 +612,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_processtriggerbase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_processtriggerbase_modifiedby
+		public Entities.SystemUser lk_processtriggerbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_processtriggerbase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_processtriggerbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_processtriggerbase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_processtriggerbase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_processtriggerbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_processtriggerbase_modifiedby");
 			}
 		}
@@ -633,18 +633,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_processtriggerbase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_processtriggerbase_modifiedonbehalfby
+		public Entities.SystemUser lk_processtriggerbase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_processtriggerbase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_processtriggerbase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_processtriggerbase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_processtriggerbase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_processtriggerbase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_processtriggerbase_modifiedonbehalfby");
 			}
 		}
@@ -654,18 +654,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("process_processtrigger")]
-		public DLaB.Xrm.Entities.Workflow process_processtrigger
+		public Entities.Workflow process_processtrigger
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Workflow>("process_processtrigger", null);
+				return this.GetRelatedEntity<Entities.Workflow>("process_processtrigger", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("process_processtrigger");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Workflow>("process_processtrigger", null, value);
+				this.SetRelatedEntity<Entities.Workflow>("process_processtrigger", null, value);
 				this.OnPropertyChanged("process_processtrigger");
 			}
 		}
@@ -675,18 +675,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("formid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processtrigger_systemform")]
-		public DLaB.Xrm.Entities.SystemForm processtrigger_systemform
+		public Entities.SystemForm processtrigger_systemform
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemForm>("processtrigger_systemform", null);
+				return this.GetRelatedEntity<Entities.SystemForm>("processtrigger_systemform", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processtrigger_systemform");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemForm>("processtrigger_systemform", null, value);
+				this.SetRelatedEntity<Entities.SystemForm>("processtrigger_systemform", null, value);
 				this.OnPropertyChanged("processtrigger_systemform");
 			}
 		}

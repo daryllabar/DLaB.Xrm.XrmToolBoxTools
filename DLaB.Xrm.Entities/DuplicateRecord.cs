@@ -327,18 +327,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_duplicaterecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_duplicaterecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_duplicaterecord
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_duplicaterecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_duplicaterecord", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_duplicaterecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_duplicaterecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_duplicaterecord", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_duplicaterecord", null, value);
 				this.OnPropertyChanged("userentityinstancedata_duplicaterecord");
 			}
 		}
@@ -348,12 +348,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Account_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.Account Account_DuplicateBaseRecord
+		public Entities.Account Account_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Account>("Account_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -362,12 +362,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Account_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.Account Account_DuplicateMatchingRecord
+		public Entities.Account Account_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.Account>("Account_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -376,12 +376,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Appointment_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.Appointment Appointment_DuplicateBaseRecord
+		public Entities.Appointment Appointment_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Appointment>("Appointment_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Appointment>("Appointment_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -390,12 +390,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Appointment_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.Appointment Appointment_DuplicateMatchingRecord
+		public Entities.Appointment Appointment_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Appointment>("Appointment_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.Appointment>("Appointment_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -404,12 +404,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("asyncoperationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("AsyncOperation_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.AsyncOperation AsyncOperation_DuplicateBaseRecord
+		public Entities.AsyncOperation AsyncOperation_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.AsyncOperation>("AsyncOperation_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.AsyncOperation>("AsyncOperation_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -418,12 +418,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Campaign_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.Campaign Campaign_DuplicateBaseRecord
+		public Entities.Campaign Campaign_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Campaign>("Campaign_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Campaign>("Campaign_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -432,12 +432,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Campaign_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.Campaign Campaign_DuplicateMatchingRecord
+		public Entities.Campaign Campaign_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Campaign>("Campaign_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.Campaign>("Campaign_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -446,12 +446,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignResponse_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.CampaignResponse CampaignResponse_DuplicateBaseRecord
+		public Entities.CampaignResponse CampaignResponse_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignResponse>("CampaignResponse_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.CampaignResponse>("CampaignResponse_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -460,12 +460,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignResponse_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.CampaignResponse CampaignResponse_DuplicateMatchingRecord
+		public Entities.CampaignResponse CampaignResponse_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignResponse>("CampaignResponse_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.CampaignResponse>("CampaignResponse_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -474,12 +474,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("channelaccessprofile_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.ChannelAccessProfile channelaccessprofile_DuplicateBaseRecord
+		public Entities.ChannelAccessProfile channelaccessprofile_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfile>("channelaccessprofile_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.ChannelAccessProfile>("channelaccessprofile_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -488,12 +488,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("channelaccessprofile_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.ChannelAccessProfile channelaccessprofile_DuplicateMatchingRecord
+		public Entities.ChannelAccessProfile channelaccessprofile_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfile>("channelaccessprofile_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.ChannelAccessProfile>("channelaccessprofile_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -502,12 +502,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Competitor_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.Competitor Competitor_DuplicateBaseRecord
+		public Entities.Competitor Competitor_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Competitor>("Competitor_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Competitor>("Competitor_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -516,12 +516,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Competitor_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.Competitor Competitor_DuplicateMatchingRecord
+		public Entities.Competitor Competitor_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Competitor>("Competitor_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.Competitor>("Competitor_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -530,12 +530,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contact_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.Contact Contact_DuplicateBaseRecord
+		public Entities.Contact Contact_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Contact>("Contact_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -544,12 +544,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contact_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.Contact Contact_DuplicateMatchingRecord
+		public Entities.Contact Contact_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.Contact>("Contact_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -558,12 +558,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contract_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.Contract Contract_DuplicateBaseRecord
+		public Entities.Contract Contract_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contract>("Contract_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Contract>("Contract_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -572,12 +572,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contract_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.Contract Contract_DuplicateMatchingRecord
+		public Entities.Contract Contract_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contract>("Contract_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.Contract>("Contract_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -586,12 +586,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicateruleid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("DuplicateRule_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.DuplicateRule DuplicateRule_DuplicateBaseRecord
+		public Entities.DuplicateRule DuplicateRule_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.DuplicateRule>("DuplicateRule_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.DuplicateRule>("DuplicateRule_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -600,12 +600,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Email_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.Email Email_DuplicateBaseRecord
+		public Entities.Email Email_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Email>("Email_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Email>("Email_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -614,12 +614,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Email_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.Email Email_DuplicateMatchingRecord
+		public Entities.Email Email_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Email>("Email_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.Email>("Email_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -628,12 +628,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("emailserverprofile_duplicatebaserecord")]
-		public DLaB.Xrm.Entities.EmailServerProfile emailserverprofile_duplicatebaserecord
+		public Entities.EmailServerProfile emailserverprofile_duplicatebaserecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EmailServerProfile>("emailserverprofile_duplicatebaserecord", null);
+				return this.GetRelatedEntity<Entities.EmailServerProfile>("emailserverprofile_duplicatebaserecord", null);
 			}
 		}
 		
@@ -642,12 +642,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("emailserverprofile_duplicatematchingrecord")]
-		public DLaB.Xrm.Entities.EmailServerProfile emailserverprofile_duplicatematchingrecord
+		public Entities.EmailServerProfile emailserverprofile_duplicatematchingrecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EmailServerProfile>("emailserverprofile_duplicatematchingrecord", null);
+				return this.GetRelatedEntity<Entities.EmailServerProfile>("emailserverprofile_duplicatematchingrecord", null);
 			}
 		}
 		
@@ -656,12 +656,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.Entitlement entitlement_DuplicateBaseRecord
+		public Entities.Entitlement entitlement_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Entitlement>("entitlement_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -670,12 +670,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.Entitlement entitlement_DuplicateMatchingRecord
+		public Entities.Entitlement entitlement_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.Entitlement>("entitlement_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -684,12 +684,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlementchannel_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.EntitlementChannel entitlementchannel_DuplicateBaseRecord
+		public Entities.EntitlementChannel entitlementchannel_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EntitlementChannel>("entitlementchannel_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.EntitlementChannel>("entitlementchannel_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -698,12 +698,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlementchannel_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.EntitlementChannel entitlementchannel_DuplicateMatchingRecord
+		public Entities.EntitlementChannel entitlementchannel_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EntitlementChannel>("entitlementchannel_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.EntitlementChannel>("entitlementchannel_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -712,12 +712,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlementtemplate_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.EntitlementTemplate entitlementtemplate_DuplicateBaseRecord
+		public Entities.EntitlementTemplate entitlementtemplate_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplate_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplate_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -726,12 +726,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlementtemplate_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.EntitlementTemplate entitlementtemplate_DuplicateMatchingRecord
+		public Entities.EntitlementTemplate entitlementtemplate_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplate_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplate_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -740,12 +740,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Equipment_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.Equipment Equipment_DuplicateBaseRecord
+		public Entities.Equipment Equipment_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Equipment>("Equipment_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Equipment>("Equipment_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -754,12 +754,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Equipment_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.Equipment Equipment_DuplicateMatchingRecord
+		public Entities.Equipment Equipment_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Equipment>("Equipment_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.Equipment>("Equipment_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -768,12 +768,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Fax_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.Fax Fax_DuplicateBaseRecord
+		public Entities.Fax Fax_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Fax>("Fax_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Fax>("Fax_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -782,12 +782,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Fax_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.Fax Fax_DuplicateMatchingRecord
+		public Entities.Fax Fax_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Fax>("Fax_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.Fax>("Fax_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -796,12 +796,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Goal_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.Goal Goal_DuplicateBaseRecord
+		public Entities.Goal Goal_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Goal>("Goal_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Goal>("Goal_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -810,12 +810,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Goal_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.Goal Goal_DuplicateMatchingRecord
+		public Entities.Goal Goal_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Goal>("Goal_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.Goal>("Goal_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -824,12 +824,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("GoalRollupQuery_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.GoalRollupQuery GoalRollupQuery_DuplicateBaseRecord
+		public Entities.GoalRollupQuery GoalRollupQuery_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.GoalRollupQuery>("GoalRollupQuery_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.GoalRollupQuery>("GoalRollupQuery_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -838,12 +838,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("GoalRollupQuery_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.GoalRollupQuery GoalRollupQuery_DuplicateMatchingRecord
+		public Entities.GoalRollupQuery GoalRollupQuery_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.GoalRollupQuery>("GoalRollupQuery_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.GoalRollupQuery>("GoalRollupQuery_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -852,12 +852,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Incident_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.Incident Incident_DuplicateBaseRecord
+		public Entities.Incident Incident_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Incident>("Incident_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -866,12 +866,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Incident_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.Incident Incident_DuplicateMatchingRecord
+		public Entities.Incident Incident_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.Incident>("Incident_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -880,12 +880,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KbArticle_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.KbArticle KbArticle_DuplicateBaseRecord
+		public Entities.KbArticle KbArticle_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KbArticle>("KbArticle_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.KbArticle>("KbArticle_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -894,12 +894,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KbArticle_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.KbArticle KbArticle_DuplicateMatchingRecord
+		public Entities.KbArticle KbArticle_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KbArticle>("KbArticle_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.KbArticle>("KbArticle_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -908,12 +908,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.KnowledgeArticle knowledgearticle_DuplicateBaseRecord
+		public Entities.KnowledgeArticle knowledgearticle_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -922,12 +922,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.KnowledgeArticle knowledgearticle_DuplicateMatchingRecord
+		public Entities.KnowledgeArticle knowledgearticle_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -936,12 +936,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.KnowledgeBaseRecord KnowledgeBaseRecord_DuplicateBaseRecord
+		public Entities.KnowledgeBaseRecord KnowledgeBaseRecord_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -950,12 +950,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.KnowledgeBaseRecord KnowledgeBaseRecord_DuplicateMatchingRecord
+		public Entities.KnowledgeBaseRecord KnowledgeBaseRecord_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -964,12 +964,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.Lead Lead_DuplicateBaseRecord
+		public Entities.Lead Lead_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Lead>("Lead_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Lead>("Lead_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -978,12 +978,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.Lead Lead_DuplicateMatchingRecord
+		public Entities.Lead Lead_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Lead>("Lead_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.Lead>("Lead_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -992,12 +992,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Letter_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.Letter Letter_DuplicateBaseRecord
+		public Entities.Letter Letter_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Letter>("Letter_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Letter>("Letter_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -1006,12 +1006,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Letter_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.Letter Letter_DuplicateMatchingRecord
+		public Entities.Letter Letter_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Letter>("Letter_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.Letter>("Letter_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -1020,12 +1020,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("List_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.List List_DuplicateBaseRecord
+		public Entities.List List_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.List>("List_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.List>("List_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -1034,12 +1034,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("List_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.List List_DuplicateMatchingRecord
+		public Entities.List List_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.List>("List_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.List>("List_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -1048,12 +1048,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.msdyn_PostAlbum msdyn_postalbum_DuplicateBaseRecord
+		public Entities.msdyn_PostAlbum msdyn_postalbum_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -1062,12 +1062,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.msdyn_PostAlbum msdyn_postalbum_DuplicateMatchingRecord
+		public Entities.msdyn_PostAlbum msdyn_postalbum_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -1076,12 +1076,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.Opportunity Opportunity_DuplicateBaseRecord
+		public Entities.Opportunity Opportunity_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Opportunity>("Opportunity_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -1090,12 +1090,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.Opportunity Opportunity_DuplicateMatchingRecord
+		public Entities.Opportunity Opportunity_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.Opportunity>("Opportunity_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -1104,12 +1104,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("PhoneCall_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.PhoneCall PhoneCall_DuplicateBaseRecord
+		public Entities.PhoneCall PhoneCall_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.PhoneCall>("PhoneCall_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.PhoneCall>("PhoneCall_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -1118,12 +1118,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("PhoneCall_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.PhoneCall PhoneCall_DuplicateMatchingRecord
+		public Entities.PhoneCall PhoneCall_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.PhoneCall>("PhoneCall_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.PhoneCall>("PhoneCall_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -1132,12 +1132,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Publisher_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.Publisher Publisher_DuplicateBaseRecord
+		public Entities.Publisher Publisher_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Publisher>("Publisher_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Publisher>("Publisher_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -1146,12 +1146,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Publisher_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.Publisher Publisher_DuplicateMatchingRecord
+		public Entities.Publisher Publisher_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Publisher>("Publisher_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.Publisher>("Publisher_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -1160,12 +1160,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Queue_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.Queue Queue_DuplicateBaseRecord
+		public Entities.Queue Queue_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Queue>("Queue_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Queue>("Queue_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -1174,12 +1174,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Queue_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.Queue Queue_DuplicateMatchingRecord
+		public Entities.Queue Queue_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Queue>("Queue_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.Queue>("Queue_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -1188,12 +1188,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Quote_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.Quote Quote_DuplicateBaseRecord
+		public Entities.Quote Quote_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Quote>("Quote_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Quote>("Quote_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -1202,12 +1202,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Quote_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.Quote Quote_DuplicateMatchingRecord
+		public Entities.Quote Quote_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Quote>("Quote_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.Quote>("Quote_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -1216,12 +1216,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("RecurringAppointmentMaster_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.RecurringAppointmentMaster RecurringAppointmentMaster_DuplicateBaseRecord
+		public Entities.RecurringAppointmentMaster RecurringAppointmentMaster_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RecurringAppointmentMaster>("RecurringAppointmentMaster_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.RecurringAppointmentMaster>("RecurringAppointmentMaster_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -1230,12 +1230,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("RecurringAppointmentMaster_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.RecurringAppointmentMaster RecurringAppointmentMaster_DuplicateMatchingRecord
+		public Entities.RecurringAppointmentMaster RecurringAppointmentMaster_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RecurringAppointmentMaster>("RecurringAppointmentMaster_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.RecurringAppointmentMaster>("RecurringAppointmentMaster_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -1244,12 +1244,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ResourceGroup_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.ResourceGroup ResourceGroup_DuplicateBaseRecord
+		public Entities.ResourceGroup ResourceGroup_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ResourceGroup>("ResourceGroup_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.ResourceGroup>("ResourceGroup_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -1258,12 +1258,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ResourceGroup_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.ResourceGroup ResourceGroup_DuplicateMatchingRecord
+		public Entities.ResourceGroup ResourceGroup_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ResourceGroup>("ResourceGroup_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.ResourceGroup>("ResourceGroup_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -1272,12 +1272,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Service_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.Service Service_DuplicateBaseRecord
+		public Entities.Service Service_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Service>("Service_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Service>("Service_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -1286,12 +1286,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Service_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.Service Service_DuplicateMatchingRecord
+		public Entities.Service Service_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Service>("Service_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.Service>("Service_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -1300,12 +1300,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SharePointDocumentLocation_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.SharePointDocumentLocation SharePointDocumentLocation_DuplicateBaseRecord
+		public Entities.SharePointDocumentLocation SharePointDocumentLocation_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SharePointDocumentLocation>("SharePointDocumentLocation_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.SharePointDocumentLocation>("SharePointDocumentLocation_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -1314,12 +1314,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SharePointDocumentLocation_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.SharePointDocumentLocation SharePointDocumentLocation_DuplicateMatchingRecord
+		public Entities.SharePointDocumentLocation SharePointDocumentLocation_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SharePointDocumentLocation>("SharePointDocumentLocation_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.SharePointDocumentLocation>("SharePointDocumentLocation_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -1328,12 +1328,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SharePointSite_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.SharePointSite SharePointSite_DuplicateBaseRecord
+		public Entities.SharePointSite SharePointSite_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SharePointSite>("SharePointSite_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.SharePointSite>("SharePointSite_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -1342,12 +1342,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SharePointSite_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.SharePointSite SharePointSite_DuplicateMatchingRecord
+		public Entities.SharePointSite SharePointSite_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SharePointSite>("SharePointSite_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.SharePointSite>("SharePointSite_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -1356,12 +1356,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SocialActivity_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.SocialActivity SocialActivity_DuplicateBaseRecord
+		public Entities.SocialActivity SocialActivity_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SocialActivity>("SocialActivity_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.SocialActivity>("SocialActivity_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -1370,12 +1370,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SocialActivity_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.SocialActivity SocialActivity_DuplicateMatchingRecord
+		public Entities.SocialActivity SocialActivity_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SocialActivity>("SocialActivity_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.SocialActivity>("SocialActivity_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -1384,12 +1384,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SocialProfile_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.SocialProfile SocialProfile_DuplicateBaseRecord
+		public Entities.SocialProfile SocialProfile_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SocialProfile>("SocialProfile_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.SocialProfile>("SocialProfile_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -1398,12 +1398,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SocialProfile_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.SocialProfile SocialProfile_DuplicateMatchingRecord
+		public Entities.SocialProfile SocialProfile_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SocialProfile>("SocialProfile_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.SocialProfile>("SocialProfile_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -1412,12 +1412,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SystemUser_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.SystemUser SystemUser_DuplicateBaseRecord
+		public Entities.SystemUser SystemUser_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("SystemUser_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("SystemUser_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -1426,12 +1426,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SystemUser_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.SystemUser SystemUser_DuplicateMatchingRecord
+		public Entities.SystemUser SystemUser_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("SystemUser_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("SystemUser_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -1440,12 +1440,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Task_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.Task Task_DuplicateBaseRecord
+		public Entities.Task Task_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Task>("Task_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Task>("Task_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -1454,12 +1454,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Task_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.Task Task_DuplicateMatchingRecord
+		public Entities.Task Task_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Task>("Task_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.Task>("Task_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -1468,12 +1468,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Team_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.Team Team_DuplicateBaseRecord
+		public Entities.Team Team_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("Team_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Team>("Team_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -1482,12 +1482,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Team_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.Team Team_DuplicateMatchingRecord
+		public Entities.Team Team_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("Team_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.Team>("Team_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -1496,12 +1496,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Territory_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.Territory Territory_DuplicateBaseRecord
+		public Entities.Territory Territory_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Territory>("Territory_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.Territory>("Territory_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -1510,12 +1510,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Territory_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.Territory Territory_DuplicateMatchingRecord
+		public Entities.Territory Territory_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Territory>("Territory_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.Territory>("Territory_DuplicateMatchingRecord", null);
 			}
 		}
 		
@@ -1524,12 +1524,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baserecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_DuplicateBaseRecord")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_DuplicateBaseRecord
+		public Entities.TransactionCurrency TransactionCurrency_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_DuplicateBaseRecord", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_DuplicateBaseRecord", null);
 			}
 		}
 		
@@ -1538,12 +1538,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duplicaterecordid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_DuplicateMatchingRecord")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_DuplicateMatchingRecord
+		public Entities.TransactionCurrency TransactionCurrency_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_DuplicateMatchingRecord", null);
 			}
 		}
 		

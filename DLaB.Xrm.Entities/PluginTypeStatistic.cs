@@ -407,18 +407,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_plugintypestatistic
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_plugintypestatistic")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_plugintypestatistic
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_plugintypestatistic
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_plugintypestatistic", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_plugintypestatistic", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_plugintypestatistic");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_plugintypestatistic", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_plugintypestatistic", null, value);
 				this.OnPropertyChanged("userentityinstancedata_plugintypestatistic");
 			}
 		}
@@ -428,18 +428,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_plugintypestatistic")]
-		public DLaB.Xrm.Entities.SystemUser createdby_plugintypestatistic
+		public Entities.SystemUser createdby_plugintypestatistic
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdby_plugintypestatistic", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("createdby_plugintypestatistic", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("createdby_plugintypestatistic");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdby_plugintypestatistic", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("createdby_plugintypestatistic", null, value);
 				this.OnPropertyChanged("createdby_plugintypestatistic");
 			}
 		}
@@ -449,18 +449,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_plugintypestatisticbase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_plugintypestatisticbase_createdonbehalfby
+		public Entities.SystemUser lk_plugintypestatisticbase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_plugintypestatisticbase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_plugintypestatisticbase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_plugintypestatisticbase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_plugintypestatisticbase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_plugintypestatisticbase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_plugintypestatisticbase_createdonbehalfby");
 			}
 		}
@@ -470,18 +470,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_plugintypestatisticbase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_plugintypestatisticbase_modifiedonbehalfby
+		public Entities.SystemUser lk_plugintypestatisticbase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_plugintypestatisticbase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_plugintypestatisticbase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_plugintypestatisticbase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_plugintypestatisticbase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_plugintypestatisticbase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_plugintypestatisticbase_modifiedonbehalfby");
 			}
 		}
@@ -491,18 +491,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_plugintypestatistic")]
-		public DLaB.Xrm.Entities.SystemUser modifiedby_plugintypestatistic
+		public Entities.SystemUser modifiedby_plugintypestatistic
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("modifiedby_plugintypestatistic", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("modifiedby_plugintypestatistic", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("modifiedby_plugintypestatistic");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("modifiedby_plugintypestatistic", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("modifiedby_plugintypestatistic", null, value);
 				this.OnPropertyChanged("modifiedby_plugintypestatistic");
 			}
 		}
@@ -512,12 +512,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_plugintypestatistic")]
-		public DLaB.Xrm.Entities.Organization organization_plugintypestatistic
+		public Entities.Organization organization_plugintypestatistic
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_plugintypestatistic", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_plugintypestatistic", null);
 			}
 		}
 		
@@ -526,12 +526,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("plugintypeid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("plugintype_plugintypestatistic")]
-		public DLaB.Xrm.Entities.PluginType plugintype_plugintypestatistic
+		public Entities.PluginType plugintype_plugintypestatistic
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.PluginType>("plugintype_plugintypestatistic", null);
+				return this.GetRelatedEntity<Entities.PluginType>("plugintype_plugintypestatistic", null);
 			}
 		}
 		

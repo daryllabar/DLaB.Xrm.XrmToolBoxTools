@@ -579,18 +579,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N form_ancestor_form
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("form_ancestor_form", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SystemForm> Referencedform_ancestor_form
+		public System.Collections.Generic.IEnumerable<Entities.SystemForm> Referencedform_ancestor_form
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SystemForm>("form_ancestor_form", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.SystemForm>("form_ancestor_form", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedform_ancestor_form");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SystemForm>("form_ancestor_form", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.SystemForm>("form_ancestor_form", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedform_ancestor_form");
 			}
 		}
@@ -599,18 +599,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processtrigger_systemform
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processtrigger_systemform")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessTrigger> processtrigger_systemform
+		public System.Collections.Generic.IEnumerable<Entities.ProcessTrigger> processtrigger_systemform
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessTrigger>("processtrigger_systemform", null);
+				return this.GetRelatedEntities<Entities.ProcessTrigger>("processtrigger_systemform", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processtrigger_systemform");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessTrigger>("processtrigger_systemform", null, value);
+				this.SetRelatedEntities<Entities.ProcessTrigger>("processtrigger_systemform", null, value);
 				this.OnPropertyChanged("processtrigger_systemform");
 			}
 		}
@@ -619,18 +619,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N socialinsightsconfiguration_systemform
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("socialinsightsconfiguration_systemform")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SocialInsightsConfiguration> socialinsightsconfiguration_systemform
+		public System.Collections.Generic.IEnumerable<Entities.SocialInsightsConfiguration> socialinsightsconfiguration_systemform
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SocialInsightsConfiguration>("socialinsightsconfiguration_systemform", null);
+				return this.GetRelatedEntities<Entities.SocialInsightsConfiguration>("socialinsightsconfiguration_systemform", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("socialinsightsconfiguration_systemform");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SocialInsightsConfiguration>("socialinsightsconfiguration_systemform", null, value);
+				this.SetRelatedEntities<Entities.SocialInsightsConfiguration>("socialinsightsconfiguration_systemform", null, value);
 				this.OnPropertyChanged("socialinsightsconfiguration_systemform");
 			}
 		}
@@ -639,18 +639,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N SystemForm_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SystemForm_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> SystemForm_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> SystemForm_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("SystemForm_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("SystemForm_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SystemForm_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("SystemForm_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("SystemForm_AsyncOperations", null, value);
 				this.OnPropertyChanged("SystemForm_AsyncOperations");
 			}
 		}
@@ -659,18 +659,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N SystemForm_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SystemForm_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> SystemForm_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> SystemForm_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("SystemForm_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("SystemForm_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SystemForm_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("SystemForm_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("SystemForm_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("SystemForm_BulkDeleteFailures");
 			}
 		}
@@ -680,18 +680,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ancestorformid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("form_ancestor_form", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.SystemForm Referencingform_ancestor_form
+		public Entities.SystemForm Referencingform_ancestor_form
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemForm>("form_ancestor_form", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.SystemForm>("form_ancestor_form", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencingform_ancestor_form");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemForm>("form_ancestor_form", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Entities.SystemForm>("form_ancestor_form", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencingform_ancestor_form");
 			}
 		}
@@ -701,12 +701,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_systemforms")]
-		public DLaB.Xrm.Entities.Organization organization_systemforms
+		public Entities.Organization organization_systemforms
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_systemforms", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_systemforms", null);
 			}
 		}
 		

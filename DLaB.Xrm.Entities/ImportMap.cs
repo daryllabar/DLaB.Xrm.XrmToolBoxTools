@@ -565,7 +565,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the data map is active or inactive. Inactive data maps are read-only and can't be edited.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.ImportMapState> StateCode
+		public System.Nullable<Entities.ImportMapState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -573,7 +573,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.ImportMapState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.ImportMapState), optionSet.Value)));
+					return ((Entities.ImportMapState)(System.Enum.ToObject(typeof(Entities.ImportMapState), optionSet.Value)));
 				}
 				else
 				{
@@ -653,18 +653,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ColumnMapping_ImportMap
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ColumnMapping_ImportMap")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ColumnMapping> ColumnMapping_ImportMap
+		public System.Collections.Generic.IEnumerable<Entities.ColumnMapping> ColumnMapping_ImportMap
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ColumnMapping>("ColumnMapping_ImportMap", null);
+				return this.GetRelatedEntities<Entities.ColumnMapping>("ColumnMapping_ImportMap", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ColumnMapping_ImportMap");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ColumnMapping>("ColumnMapping_ImportMap", null, value);
+				this.SetRelatedEntities<Entities.ColumnMapping>("ColumnMapping_ImportMap", null, value);
 				this.OnPropertyChanged("ColumnMapping_ImportMap");
 			}
 		}
@@ -673,18 +673,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ImportEntityMapping_ImportMap
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ImportEntityMapping_ImportMap")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ImportEntityMapping> ImportEntityMapping_ImportMap
+		public System.Collections.Generic.IEnumerable<Entities.ImportEntityMapping> ImportEntityMapping_ImportMap
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ImportEntityMapping>("ImportEntityMapping_ImportMap", null);
+				return this.GetRelatedEntities<Entities.ImportEntityMapping>("ImportEntityMapping_ImportMap", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ImportEntityMapping_ImportMap");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ImportEntityMapping>("ImportEntityMapping_ImportMap", null, value);
+				this.SetRelatedEntities<Entities.ImportEntityMapping>("ImportEntityMapping_ImportMap", null, value);
 				this.OnPropertyChanged("ImportEntityMapping_ImportMap");
 			}
 		}
@@ -693,18 +693,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ImportMap_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ImportMap_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> ImportMap_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> ImportMap_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("ImportMap_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("ImportMap_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ImportMap_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("ImportMap_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("ImportMap_AsyncOperations", null, value);
 				this.OnPropertyChanged("ImportMap_AsyncOperations");
 			}
 		}
@@ -713,18 +713,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ImportMap_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ImportMap_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> ImportMap_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> ImportMap_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("ImportMap_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("ImportMap_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ImportMap_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("ImportMap_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("ImportMap_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("ImportMap_BulkDeleteFailures");
 			}
 		}
@@ -733,18 +733,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ImportMap_ImportFile
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ImportMap_ImportFile")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ImportFile> ImportMap_ImportFile
+		public System.Collections.Generic.IEnumerable<Entities.ImportFile> ImportMap_ImportFile
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ImportFile>("ImportMap_ImportFile", null);
+				return this.GetRelatedEntities<Entities.ImportFile>("ImportMap_ImportFile", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ImportMap_ImportFile");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ImportFile>("ImportMap_ImportFile", null, value);
+				this.SetRelatedEntities<Entities.ImportFile>("ImportMap_ImportFile", null, value);
 				this.OnPropertyChanged("ImportMap_ImportFile");
 			}
 		}
@@ -753,18 +753,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N OwnerMapping_ImportMap
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("OwnerMapping_ImportMap")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.OwnerMapping> OwnerMapping_ImportMap
+		public System.Collections.Generic.IEnumerable<Entities.OwnerMapping> OwnerMapping_ImportMap
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.OwnerMapping>("OwnerMapping_ImportMap", null);
+				return this.GetRelatedEntities<Entities.OwnerMapping>("OwnerMapping_ImportMap", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("OwnerMapping_ImportMap");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.OwnerMapping>("OwnerMapping_ImportMap", null, value);
+				this.SetRelatedEntities<Entities.OwnerMapping>("OwnerMapping_ImportMap", null, value);
 				this.OnPropertyChanged("OwnerMapping_ImportMap");
 			}
 		}
@@ -773,18 +773,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N TransformationMapping_ImportMap
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransformationMapping_ImportMap")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.TransformationMapping> TransformationMapping_ImportMap
+		public System.Collections.Generic.IEnumerable<Entities.TransformationMapping> TransformationMapping_ImportMap
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.TransformationMapping>("TransformationMapping_ImportMap", null);
+				return this.GetRelatedEntities<Entities.TransformationMapping>("TransformationMapping_ImportMap", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransformationMapping_ImportMap");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.TransformationMapping>("TransformationMapping_ImportMap", null, value);
+				this.SetRelatedEntities<Entities.TransformationMapping>("TransformationMapping_ImportMap", null, value);
 				this.OnPropertyChanged("TransformationMapping_ImportMap");
 			}
 		}
@@ -793,18 +793,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_importmap
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_importmap")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_importmap
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_importmap
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_importmap", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_importmap", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_importmap");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_importmap", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_importmap", null, value);
 				this.OnPropertyChanged("userentityinstancedata_importmap");
 			}
 		}
@@ -814,18 +814,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BusinessUnit_ImportMaps")]
-		public DLaB.Xrm.Entities.BusinessUnit BusinessUnit_ImportMaps
+		public Entities.BusinessUnit BusinessUnit_ImportMaps
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("BusinessUnit_ImportMaps", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("BusinessUnit_ImportMaps", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BusinessUnit_ImportMaps");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("BusinessUnit_ImportMaps", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("BusinessUnit_ImportMaps", null, value);
 				this.OnPropertyChanged("BusinessUnit_ImportMaps");
 			}
 		}
@@ -835,18 +835,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importmap_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_importmap_createdonbehalfby
+		public Entities.SystemUser lk_importmap_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importmap_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_importmap_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importmap_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importmap_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_importmap_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_importmap_createdonbehalfby");
 			}
 		}
@@ -856,18 +856,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importmap_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_importmap_modifiedonbehalfby
+		public Entities.SystemUser lk_importmap_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importmap_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_importmap_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importmap_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importmap_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_importmap_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_importmap_modifiedonbehalfby");
 			}
 		}
@@ -877,18 +877,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importmapbase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_importmapbase_createdby
+		public Entities.SystemUser lk_importmapbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importmapbase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_importmapbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importmapbase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importmapbase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_importmapbase_createdby", null, value);
 				this.OnPropertyChanged("lk_importmapbase_createdby");
 			}
 		}
@@ -898,18 +898,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importmapbase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_importmapbase_modifiedby
+		public Entities.SystemUser lk_importmapbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importmapbase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_importmapbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importmapbase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_importmapbase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_importmapbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_importmapbase_modifiedby");
 			}
 		}
@@ -919,18 +919,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SystemUser_ImportMaps")]
-		public DLaB.Xrm.Entities.SystemUser SystemUser_ImportMaps
+		public Entities.SystemUser SystemUser_ImportMaps
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("SystemUser_ImportMaps", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("SystemUser_ImportMaps", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SystemUser_ImportMaps");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("SystemUser_ImportMaps", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("SystemUser_ImportMaps", null, value);
 				this.OnPropertyChanged("SystemUser_ImportMaps");
 			}
 		}
@@ -940,18 +940,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_ImportMaps")]
-		public DLaB.Xrm.Entities.Team team_ImportMaps
+		public Entities.Team team_ImportMaps
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_ImportMaps", null);
+				return this.GetRelatedEntity<Entities.Team>("team_ImportMaps", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_ImportMaps");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_ImportMaps", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_ImportMaps", null, value);
 				this.OnPropertyChanged("team_ImportMaps");
 			}
 		}

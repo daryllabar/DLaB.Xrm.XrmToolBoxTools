@@ -768,7 +768,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the opportunity close activity is open, completed, or canceled. By default, opportunity close activities are completed unless the opportunity is reactivated, which updates them to canceled.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.OpportunityCloseState> StateCode
+		public System.Nullable<Entities.OpportunityCloseState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -776,7 +776,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.OpportunityCloseState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.OpportunityCloseState), optionSet.Value)));
+					return ((Entities.OpportunityCloseState)(System.Enum.ToObject(typeof(Entities.OpportunityCloseState), optionSet.Value)));
 				}
 				else
 				{
@@ -936,18 +936,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N opportunityclose_activity_parties
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunityclose_activity_parties")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> opportunityclose_activity_parties
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> opportunityclose_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("opportunityclose_activity_parties", null);
+				return this.GetRelatedEntities<Entities.ActivityParty>("opportunityclose_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunityclose_activity_parties");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("opportunityclose_activity_parties", null, value);
+				this.SetRelatedEntities<Entities.ActivityParty>("opportunityclose_activity_parties", null, value);
 				this.OnPropertyChanged("opportunityclose_activity_parties");
 			}
 		}
@@ -956,18 +956,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N OpportunityClose_Annotation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("OpportunityClose_Annotation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> OpportunityClose_Annotation
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> OpportunityClose_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("OpportunityClose_Annotation", null);
+				return this.GetRelatedEntities<Entities.Annotation>("OpportunityClose_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("OpportunityClose_Annotation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("OpportunityClose_Annotation", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("OpportunityClose_Annotation", null, value);
 				this.OnPropertyChanged("OpportunityClose_Annotation");
 			}
 		}
@@ -976,18 +976,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N OpportunityClose_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("OpportunityClose_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> OpportunityClose_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> OpportunityClose_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("OpportunityClose_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("OpportunityClose_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("OpportunityClose_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("OpportunityClose_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("OpportunityClose_AsyncOperations", null, value);
 				this.OnPropertyChanged("OpportunityClose_AsyncOperations");
 			}
 		}
@@ -996,18 +996,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N OpportunityClose_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("OpportunityClose_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> OpportunityClose_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> OpportunityClose_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("OpportunityClose_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("OpportunityClose_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("OpportunityClose_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("OpportunityClose_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("OpportunityClose_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("OpportunityClose_BulkDeleteFailures");
 			}
 		}
@@ -1016,18 +1016,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_opportunityclose
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_opportunityclose")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_opportunityclose
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_opportunityclose
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_opportunityclose", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_opportunityclose", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_opportunityclose");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_opportunityclose", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_opportunityclose", null, value);
 				this.OnPropertyChanged("userentityinstancedata_opportunityclose");
 			}
 		}
@@ -1037,18 +1037,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("activity_pointer_opportunity_close")]
-		public DLaB.Xrm.Entities.ActivityPointer activity_pointer_opportunity_close
+		public Entities.ActivityPointer activity_pointer_opportunity_close
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_opportunity_close", null);
+				return this.GetRelatedEntity<Entities.ActivityPointer>("activity_pointer_opportunity_close", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("activity_pointer_opportunity_close");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_opportunity_close", null, value);
+				this.SetRelatedEntity<Entities.ActivityPointer>("activity_pointer_opportunity_close", null, value);
 				this.OnPropertyChanged("activity_pointer_opportunity_close");
 			}
 		}
@@ -1058,18 +1058,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_opportunity_close_activities")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_opportunity_close_activities
+		public Entities.BusinessUnit business_unit_opportunity_close_activities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_opportunity_close_activities", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_opportunity_close_activities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_opportunity_close_activities");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_opportunity_close_activities", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_opportunity_close_activities", null, value);
 				this.OnPropertyChanged("business_unit_opportunity_close_activities");
 			}
 		}
@@ -1079,18 +1079,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("competitorid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("competitor_opportunity_activities")]
-		public DLaB.Xrm.Entities.Competitor competitor_opportunity_activities
+		public Entities.Competitor competitor_opportunity_activities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Competitor>("competitor_opportunity_activities", null);
+				return this.GetRelatedEntity<Entities.Competitor>("competitor_opportunity_activities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("competitor_opportunity_activities");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Competitor>("competitor_opportunity_activities", null, value);
+				this.SetRelatedEntity<Entities.Competitor>("competitor_opportunity_activities", null, value);
 				this.OnPropertyChanged("competitor_opportunity_activities");
 			}
 		}
@@ -1100,12 +1100,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdbyexternalparty")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_externalparty_opportunityclose_createdby")]
-		public DLaB.Xrm.Entities.ExternalParty lk_externalparty_opportunityclose_createdby
+		public Entities.ExternalParty lk_externalparty_opportunityclose_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ExternalParty>("lk_externalparty_opportunityclose_createdby", null);
+				return this.GetRelatedEntity<Entities.ExternalParty>("lk_externalparty_opportunityclose_createdby", null);
 			}
 		}
 		
@@ -1114,12 +1114,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedbyexternalparty")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_externalparty_opportunityclose_modifiedby")]
-		public DLaB.Xrm.Entities.ExternalParty lk_externalparty_opportunityclose_modifiedby
+		public Entities.ExternalParty lk_externalparty_opportunityclose_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ExternalParty>("lk_externalparty_opportunityclose_modifiedby", null);
+				return this.GetRelatedEntity<Entities.ExternalParty>("lk_externalparty_opportunityclose_modifiedby", null);
 			}
 		}
 		
@@ -1128,18 +1128,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_opportunityclose_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_opportunityclose_createdby
+		public Entities.SystemUser lk_opportunityclose_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_opportunityclose_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_opportunityclose_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_opportunityclose_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_opportunityclose_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_opportunityclose_createdby", null, value);
 				this.OnPropertyChanged("lk_opportunityclose_createdby");
 			}
 		}
@@ -1149,18 +1149,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_opportunityclose_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_opportunityclose_createdonbehalfby
+		public Entities.SystemUser lk_opportunityclose_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_opportunityclose_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_opportunityclose_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_opportunityclose_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_opportunityclose_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_opportunityclose_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_opportunityclose_createdonbehalfby");
 			}
 		}
@@ -1170,18 +1170,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_opportunityclose_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_opportunityclose_modifiedby
+		public Entities.SystemUser lk_opportunityclose_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_opportunityclose_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_opportunityclose_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_opportunityclose_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_opportunityclose_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_opportunityclose_modifiedby", null, value);
 				this.OnPropertyChanged("lk_opportunityclose_modifiedby");
 			}
 		}
@@ -1191,18 +1191,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_opportunityclose_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_opportunityclose_modifiedonbehalfby
+		public Entities.SystemUser lk_opportunityclose_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_opportunityclose_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_opportunityclose_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_opportunityclose_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_opportunityclose_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_opportunityclose_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_opportunityclose_modifiedonbehalfby");
 			}
 		}
@@ -1212,18 +1212,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("opportunityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_OpportunityClose")]
-		public DLaB.Xrm.Entities.Opportunity Opportunity_OpportunityClose
+		public Entities.Opportunity Opportunity_OpportunityClose
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_OpportunityClose", null);
+				return this.GetRelatedEntity<Entities.Opportunity>("Opportunity_OpportunityClose", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_OpportunityClose");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_OpportunityClose", null, value);
+				this.SetRelatedEntity<Entities.Opportunity>("Opportunity_OpportunityClose", null, value);
 				this.OnPropertyChanged("Opportunity_OpportunityClose");
 			}
 		}
@@ -1233,18 +1233,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("serviceid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("service_opportunityclose")]
-		public DLaB.Xrm.Entities.Service service_opportunityclose
+		public Entities.Service service_opportunityclose
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Service>("service_opportunityclose", null);
+				return this.GetRelatedEntity<Entities.Service>("service_opportunityclose", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("service_opportunityclose");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Service>("service_opportunityclose", null, value);
+				this.SetRelatedEntity<Entities.Service>("service_opportunityclose", null, value);
 				this.OnPropertyChanged("service_opportunityclose");
 			}
 		}
@@ -1254,18 +1254,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_opportunityclose")]
-		public DLaB.Xrm.Entities.Team team_opportunityclose
+		public Entities.Team team_opportunityclose
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_opportunityclose", null);
+				return this.GetRelatedEntity<Entities.Team>("team_opportunityclose", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_opportunityclose");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_opportunityclose", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_opportunityclose", null, value);
 				this.OnPropertyChanged("team_opportunityclose");
 			}
 		}
@@ -1275,18 +1275,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_opportunityclose")]
-		public DLaB.Xrm.Entities.TransactionCurrency transactioncurrency_opportunityclose
+		public Entities.TransactionCurrency transactioncurrency_opportunityclose
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_opportunityclose", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_opportunityclose", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_opportunityclose");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_opportunityclose", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_opportunityclose", null, value);
 				this.OnPropertyChanged("transactioncurrency_opportunityclose");
 			}
 		}
@@ -1296,18 +1296,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_opportunityclose")]
-		public DLaB.Xrm.Entities.SystemUser user_opportunityclose
+		public Entities.SystemUser user_opportunityclose
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_opportunityclose", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_opportunityclose", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_opportunityclose");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_opportunityclose", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_opportunityclose", null, value);
 				this.OnPropertyChanged("user_opportunityclose");
 			}
 		}

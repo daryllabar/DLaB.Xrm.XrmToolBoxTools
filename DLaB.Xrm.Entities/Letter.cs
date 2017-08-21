@@ -290,7 +290,7 @@ namespace DLaB.Xrm.Entities
 		/// Enter the recipients that are included in the letter distribution, but are not displayed to other recipients.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("bcc")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> Bcc
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> Bcc
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -299,7 +299,7 @@ namespace DLaB.Xrm.Entities
 				if (((collection != null) 
 							&& (collection.Entities != null)))
 				{
-					return System.Linq.Enumerable.Cast<DLaB.Xrm.Entities.ActivityParty>(collection.Entities);
+					return System.Linq.Enumerable.Cast<Entities.ActivityParty>(collection.Entities);
 				}
 				else
 				{
@@ -346,7 +346,7 @@ namespace DLaB.Xrm.Entities
 		/// Enter the recipients that should be copied on the letter.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("cc")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> Cc
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> Cc
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -355,7 +355,7 @@ namespace DLaB.Xrm.Entities
 				if (((collection != null) 
 							&& (collection.Entities != null)))
 				{
-					return System.Linq.Enumerable.Cast<DLaB.Xrm.Entities.ActivityParty>(collection.Entities);
+					return System.Linq.Enumerable.Cast<Entities.ActivityParty>(collection.Entities);
 				}
 				else
 				{
@@ -495,7 +495,7 @@ namespace DLaB.Xrm.Entities
 		/// Enter the account, contact, lead, or user who sent the letter.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("from")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> From
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> From
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -504,7 +504,7 @@ namespace DLaB.Xrm.Entities
 				if (((collection != null) 
 							&& (collection.Entities != null)))
 				{
-					return System.Linq.Enumerable.Cast<DLaB.Xrm.Entities.ActivityParty>(collection.Entities);
+					return System.Linq.Enumerable.Cast<Entities.ActivityParty>(collection.Entities);
 				}
 				else
 				{
@@ -917,7 +917,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the letter is open, completed, or canceled. Completed and canceled letters are read-only and can't be edited.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.LetterState> StateCode
+		public System.Nullable<Entities.LetterState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -925,7 +925,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.LetterState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.LetterState), optionSet.Value)));
+					return ((Entities.LetterState)(System.Enum.ToObject(typeof(Entities.LetterState), optionSet.Value)));
 				}
 				else
 				{
@@ -1052,7 +1052,7 @@ namespace DLaB.Xrm.Entities
 		/// Enter the account, contact, lead, or user recipients for the letter.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("to")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> To
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> To
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -1061,7 +1061,7 @@ namespace DLaB.Xrm.Entities
 				if (((collection != null) 
 							&& (collection.Entities != null)))
 				{
-					return System.Linq.Enumerable.Cast<DLaB.Xrm.Entities.ActivityParty>(collection.Entities);
+					return System.Linq.Enumerable.Cast<Entities.ActivityParty>(collection.Entities);
 				}
 				else
 				{
@@ -1161,18 +1161,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N letter_activity_parties
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("letter_activity_parties")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> letter_activity_parties
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> letter_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("letter_activity_parties", null);
+				return this.GetRelatedEntities<Entities.ActivityParty>("letter_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("letter_activity_parties");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("letter_activity_parties", null, value);
+				this.SetRelatedEntities<Entities.ActivityParty>("letter_activity_parties", null, value);
 				this.OnPropertyChanged("letter_activity_parties");
 			}
 		}
@@ -1181,18 +1181,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Letter_Annotation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Letter_Annotation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> Letter_Annotation
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> Letter_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("Letter_Annotation", null);
+				return this.GetRelatedEntities<Entities.Annotation>("Letter_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Letter_Annotation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("Letter_Annotation", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("Letter_Annotation", null, value);
 				this.OnPropertyChanged("Letter_Annotation");
 			}
 		}
@@ -1201,18 +1201,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Letter_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Letter_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> Letter_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> Letter_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Letter_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("Letter_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Letter_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Letter_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("Letter_AsyncOperations", null, value);
 				this.OnPropertyChanged("Letter_AsyncOperations");
 			}
 		}
@@ -1221,18 +1221,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Letter_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Letter_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> Letter_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> Letter_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Letter_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("Letter_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Letter_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Letter_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("Letter_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("Letter_BulkDeleteFailures");
 			}
 		}
@@ -1241,18 +1241,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N letter_campaignresponse
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("letter_campaignresponse")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.CampaignResponse> letter_campaignresponse
+		public System.Collections.Generic.IEnumerable<Entities.CampaignResponse> letter_campaignresponse
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.CampaignResponse>("letter_campaignresponse", null);
+				return this.GetRelatedEntities<Entities.CampaignResponse>("letter_campaignresponse", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("letter_campaignresponse");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.CampaignResponse>("letter_campaignresponse", null, value);
+				this.SetRelatedEntities<Entities.CampaignResponse>("letter_campaignresponse", null, value);
 				this.OnPropertyChanged("letter_campaignresponse");
 			}
 		}
@@ -1261,18 +1261,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N letter_connections1
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("letter_connections1")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> letter_connections1
+		public System.Collections.Generic.IEnumerable<Entities.Connection> letter_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("letter_connections1", null);
+				return this.GetRelatedEntities<Entities.Connection>("letter_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("letter_connections1");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("letter_connections1", null, value);
+				this.SetRelatedEntities<Entities.Connection>("letter_connections1", null, value);
 				this.OnPropertyChanged("letter_connections1");
 			}
 		}
@@ -1281,18 +1281,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N letter_connections2
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("letter_connections2")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> letter_connections2
+		public System.Collections.Generic.IEnumerable<Entities.Connection> letter_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("letter_connections2", null);
+				return this.GetRelatedEntities<Entities.Connection>("letter_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("letter_connections2");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("letter_connections2", null, value);
+				this.SetRelatedEntities<Entities.Connection>("letter_connections2", null, value);
 				this.OnPropertyChanged("letter_connections2");
 			}
 		}
@@ -1301,18 +1301,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Letter_DuplicateBaseRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Letter_DuplicateBaseRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> Letter_DuplicateBaseRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> Letter_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Letter_DuplicateBaseRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("Letter_DuplicateBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Letter_DuplicateBaseRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Letter_DuplicateBaseRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("Letter_DuplicateBaseRecord", null, value);
 				this.OnPropertyChanged("Letter_DuplicateBaseRecord");
 			}
 		}
@@ -1321,18 +1321,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Letter_DuplicateMatchingRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Letter_DuplicateMatchingRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> Letter_DuplicateMatchingRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> Letter_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Letter_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("Letter_DuplicateMatchingRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Letter_DuplicateMatchingRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Letter_DuplicateMatchingRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("Letter_DuplicateMatchingRecord", null, value);
 				this.OnPropertyChanged("Letter_DuplicateMatchingRecord");
 			}
 		}
@@ -1341,18 +1341,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N letter_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("letter_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> letter_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> letter_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("letter_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("letter_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("letter_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("letter_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("letter_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("letter_principalobjectattributeaccess");
 			}
 		}
@@ -1361,18 +1361,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Letter_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Letter_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> Letter_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> Letter_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Letter_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("Letter_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Letter_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Letter_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("Letter_ProcessSessions", null, value);
 				this.OnPropertyChanged("Letter_ProcessSessions");
 			}
 		}
@@ -1381,18 +1381,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Letter_QueueItem
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Letter_QueueItem")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.QueueItem> Letter_QueueItem
+		public System.Collections.Generic.IEnumerable<Entities.QueueItem> Letter_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.QueueItem>("Letter_QueueItem", null);
+				return this.GetRelatedEntities<Entities.QueueItem>("Letter_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Letter_QueueItem");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.QueueItem>("Letter_QueueItem", null, value);
+				this.SetRelatedEntities<Entities.QueueItem>("Letter_QueueItem", null, value);
 				this.OnPropertyChanged("Letter_QueueItem");
 			}
 		}
@@ -1401,18 +1401,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_letter
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_letter")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_letter
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_letter
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_letter", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_letter", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_letter");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_letter", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_letter", null, value);
 				this.OnPropertyChanged("userentityinstancedata_letter");
 			}
 		}
@@ -1422,18 +1422,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Account_Letters")]
-		public DLaB.Xrm.Entities.Account Account_Letters
+		public Entities.Account Account_Letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_Letters", null);
+				return this.GetRelatedEntity<Entities.Account>("Account_Letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Account_Letters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_Letters", null, value);
+				this.SetRelatedEntity<Entities.Account>("Account_Letters", null, value);
 				this.OnPropertyChanged("Account_Letters");
 			}
 		}
@@ -1443,18 +1443,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("activity_pointer_letter")]
-		public DLaB.Xrm.Entities.ActivityPointer activity_pointer_letter
+		public Entities.ActivityPointer activity_pointer_letter
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_letter", null);
+				return this.GetRelatedEntity<Entities.ActivityPointer>("activity_pointer_letter", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("activity_pointer_letter");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_letter", null, value);
+				this.SetRelatedEntity<Entities.ActivityPointer>("activity_pointer_letter", null, value);
 				this.OnPropertyChanged("activity_pointer_letter");
 			}
 		}
@@ -1464,18 +1464,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Letter")]
-		public DLaB.Xrm.Entities.BulkOperation BulkOperation_Letter
+		public Entities.BulkOperation BulkOperation_Letter
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BulkOperation>("BulkOperation_Letter", null);
+				return this.GetRelatedEntity<Entities.BulkOperation>("BulkOperation_Letter", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperation_Letter");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BulkOperation>("BulkOperation_Letter", null, value);
+				this.SetRelatedEntity<Entities.BulkOperation>("BulkOperation_Letter", null, value);
 				this.OnPropertyChanged("BulkOperation_Letter");
 			}
 		}
@@ -1485,18 +1485,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_letter_activities")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_letter_activities
+		public Entities.BusinessUnit business_unit_letter_activities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_letter_activities", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_letter_activities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_letter_activities");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_letter_activities", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_letter_activities", null, value);
 				this.OnPropertyChanged("business_unit_letter_activities");
 			}
 		}
@@ -1506,18 +1506,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Campaign_Letters")]
-		public DLaB.Xrm.Entities.Campaign Campaign_Letters
+		public Entities.Campaign Campaign_Letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Campaign>("Campaign_Letters", null);
+				return this.GetRelatedEntity<Entities.Campaign>("Campaign_Letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Campaign_Letters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Campaign>("Campaign_Letters", null, value);
+				this.SetRelatedEntity<Entities.Campaign>("Campaign_Letters", null, value);
 				this.OnPropertyChanged("Campaign_Letters");
 			}
 		}
@@ -1527,18 +1527,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignActivity_Letters")]
-		public DLaB.Xrm.Entities.CampaignActivity CampaignActivity_Letters
+		public Entities.CampaignActivity CampaignActivity_Letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("CampaignActivity_Letters", null);
+				return this.GetRelatedEntity<Entities.CampaignActivity>("CampaignActivity_Letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CampaignActivity_Letters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("CampaignActivity_Letters", null, value);
+				this.SetRelatedEntity<Entities.CampaignActivity>("CampaignActivity_Letters", null, value);
 				this.OnPropertyChanged("CampaignActivity_Letters");
 			}
 		}
@@ -1548,18 +1548,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contact_Letters")]
-		public DLaB.Xrm.Entities.Contact Contact_Letters
+		public Entities.Contact Contact_Letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_Letters", null);
+				return this.GetRelatedEntity<Entities.Contact>("Contact_Letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Contact_Letters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_Letters", null, value);
+				this.SetRelatedEntity<Entities.Contact>("Contact_Letters", null, value);
 				this.OnPropertyChanged("Contact_Letters");
 			}
 		}
@@ -1569,18 +1569,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contract_Letters")]
-		public DLaB.Xrm.Entities.Contract Contract_Letters
+		public Entities.Contract Contract_Letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contract>("Contract_Letters", null);
+				return this.GetRelatedEntity<Entities.Contract>("Contract_Letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Contract_Letters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contract>("Contract_Letters", null, value);
+				this.SetRelatedEntity<Entities.Contract>("Contract_Letters", null, value);
 				this.OnPropertyChanged("Contract_Letters");
 			}
 		}
@@ -1590,18 +1590,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_Letters")]
-		public DLaB.Xrm.Entities.Entitlement entitlement_Letters
+		public Entities.Entitlement entitlement_Letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_Letters", null);
+				return this.GetRelatedEntity<Entities.Entitlement>("entitlement_Letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_Letters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_Letters", null, value);
+				this.SetRelatedEntity<Entities.Entitlement>("entitlement_Letters", null, value);
 				this.OnPropertyChanged("entitlement_Letters");
 			}
 		}
@@ -1611,18 +1611,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlementtemplate_Letters")]
-		public DLaB.Xrm.Entities.EntitlementTemplate entitlementtemplate_Letters
+		public Entities.EntitlementTemplate entitlementtemplate_Letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplate_Letters", null);
+				return this.GetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplate_Letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlementtemplate_Letters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplate_Letters", null, value);
+				this.SetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplate_Letters", null, value);
 				this.OnPropertyChanged("entitlementtemplate_Letters");
 			}
 		}
@@ -1632,18 +1632,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Incident_Letters")]
-		public DLaB.Xrm.Entities.Incident Incident_Letters
+		public Entities.Incident Incident_Letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_Letters", null);
+				return this.GetRelatedEntity<Entities.Incident>("Incident_Letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Incident_Letters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_Letters", null, value);
+				this.SetRelatedEntity<Entities.Incident>("Incident_Letters", null, value);
 				this.OnPropertyChanged("Incident_Letters");
 			}
 		}
@@ -1653,18 +1653,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Invoice_Letters")]
-		public DLaB.Xrm.Entities.Invoice Invoice_Letters
+		public Entities.Invoice Invoice_Letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Invoice>("Invoice_Letters", null);
+				return this.GetRelatedEntity<Entities.Invoice>("Invoice_Letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Invoice_Letters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Invoice>("Invoice_Letters", null, value);
+				this.SetRelatedEntity<Entities.Invoice>("Invoice_Letters", null, value);
 				this.OnPropertyChanged("Invoice_Letters");
 			}
 		}
@@ -1674,18 +1674,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeArticle_Letters")]
-		public DLaB.Xrm.Entities.KnowledgeArticle KnowledgeArticle_Letters
+		public Entities.KnowledgeArticle KnowledgeArticle_Letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("KnowledgeArticle_Letters", null);
+				return this.GetRelatedEntity<Entities.KnowledgeArticle>("KnowledgeArticle_Letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeArticle_Letters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("KnowledgeArticle_Letters", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeArticle>("KnowledgeArticle_Letters", null, value);
 				this.OnPropertyChanged("KnowledgeArticle_Letters");
 			}
 		}
@@ -1695,18 +1695,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_Letters")]
-		public DLaB.Xrm.Entities.KnowledgeBaseRecord KnowledgeBaseRecord_Letters
+		public Entities.KnowledgeBaseRecord KnowledgeBaseRecord_Letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_Letters", null);
+				return this.GetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_Letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_Letters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_Letters", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_Letters", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_Letters");
 			}
 		}
@@ -1716,18 +1716,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_Letters")]
-		public DLaB.Xrm.Entities.Lead Lead_Letters
+		public Entities.Lead Lead_Letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Lead>("Lead_Letters", null);
+				return this.GetRelatedEntity<Entities.Lead>("Lead_Letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_Letters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Lead>("Lead_Letters", null, value);
+				this.SetRelatedEntity<Entities.Lead>("Lead_Letters", null, value);
 				this.OnPropertyChanged("Lead_Letters");
 			}
 		}
@@ -1737,18 +1737,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_letter_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_letter_createdby
+		public Entities.SystemUser lk_letter_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_letter_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_letter_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_letter_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_letter_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_letter_createdby", null, value);
 				this.OnPropertyChanged("lk_letter_createdby");
 			}
 		}
@@ -1758,18 +1758,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_letter_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_letter_createdonbehalfby
+		public Entities.SystemUser lk_letter_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_letter_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_letter_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_letter_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_letter_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_letter_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_letter_createdonbehalfby");
 			}
 		}
@@ -1779,18 +1779,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_letter_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_letter_modifiedby
+		public Entities.SystemUser lk_letter_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_letter_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_letter_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_letter_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_letter_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_letter_modifiedby", null, value);
 				this.OnPropertyChanged("lk_letter_modifiedby");
 			}
 		}
@@ -1800,18 +1800,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_letter_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_letter_modifiedonbehalfby
+		public Entities.SystemUser lk_letter_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_letter_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_letter_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_letter_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_letter_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_letter_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_letter_modifiedonbehalfby");
 			}
 		}
@@ -1821,18 +1821,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_Letters")]
-		public DLaB.Xrm.Entities.msdyn_PostAlbum msdyn_postalbum_Letters
+		public Entities.msdyn_PostAlbum msdyn_postalbum_Letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_Letters", null);
+				return this.GetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_Letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_Letters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_Letters", null, value);
+				this.SetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_Letters", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_Letters");
 			}
 		}
@@ -1842,18 +1842,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_Letters")]
-		public DLaB.Xrm.Entities.Opportunity Opportunity_Letters
+		public Entities.Opportunity Opportunity_Letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_Letters", null);
+				return this.GetRelatedEntity<Entities.Opportunity>("Opportunity_Letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_Letters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_Letters", null, value);
+				this.SetRelatedEntity<Entities.Opportunity>("Opportunity_Letters", null, value);
 				this.OnPropertyChanged("Opportunity_Letters");
 			}
 		}
@@ -1863,18 +1863,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stageid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_letters")]
-		public DLaB.Xrm.Entities.ProcessStage processstage_letters
+		public Entities.ProcessStage processstage_letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProcessStage>("processstage_letters", null);
+				return this.GetRelatedEntity<Entities.ProcessStage>("processstage_letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_letters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProcessStage>("processstage_letters", null, value);
+				this.SetRelatedEntity<Entities.ProcessStage>("processstage_letters", null, value);
 				this.OnPropertyChanged("processstage_letters");
 			}
 		}
@@ -1884,18 +1884,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Quote_Letters")]
-		public DLaB.Xrm.Entities.Quote Quote_Letters
+		public Entities.Quote Quote_Letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Quote>("Quote_Letters", null);
+				return this.GetRelatedEntity<Entities.Quote>("Quote_Letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Quote_Letters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Quote>("Quote_Letters", null, value);
+				this.SetRelatedEntity<Entities.Quote>("Quote_Letters", null, value);
 				this.OnPropertyChanged("Quote_Letters");
 			}
 		}
@@ -1905,18 +1905,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesOrder_Letters")]
-		public DLaB.Xrm.Entities.SalesOrder SalesOrder_Letters
+		public Entities.SalesOrder SalesOrder_Letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("SalesOrder_Letters", null);
+				return this.GetRelatedEntity<Entities.SalesOrder>("SalesOrder_Letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SalesOrder_Letters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("SalesOrder_Letters", null, value);
+				this.SetRelatedEntity<Entities.SalesOrder>("SalesOrder_Letters", null, value);
 				this.OnPropertyChanged("SalesOrder_Letters");
 			}
 		}
@@ -1926,18 +1926,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("serviceid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("service_letters")]
-		public DLaB.Xrm.Entities.Service service_letters
+		public Entities.Service service_letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Service>("service_letters", null);
+				return this.GetRelatedEntity<Entities.Service>("service_letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("service_letters");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Service>("service_letters", null, value);
+				this.SetRelatedEntity<Entities.Service>("service_letters", null, value);
 				this.OnPropertyChanged("service_letters");
 			}
 		}
@@ -1947,18 +1947,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_letter")]
-		public DLaB.Xrm.Entities.Team team_letter
+		public Entities.Team team_letter
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_letter", null);
+				return this.GetRelatedEntity<Entities.Team>("team_letter", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_letter");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_letter", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_letter", null, value);
 				this.OnPropertyChanged("team_letter");
 			}
 		}
@@ -1968,18 +1968,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_Letter")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_Letter
+		public Entities.TransactionCurrency TransactionCurrency_Letter
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_Letter", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_Letter", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_Letter");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_Letter", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_Letter", null, value);
 				this.OnPropertyChanged("TransactionCurrency_Letter");
 			}
 		}
@@ -1989,18 +1989,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_letter")]
-		public DLaB.Xrm.Entities.SystemUser user_letter
+		public Entities.SystemUser user_letter
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_letter", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_letter", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_letter");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_letter", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_letter", null, value);
 				this.OnPropertyChanged("user_letter");
 			}
 		}

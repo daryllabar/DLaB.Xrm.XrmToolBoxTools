@@ -150,18 +150,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N leadcompetitors_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("leadcompetitors_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Lead> leadcompetitors_association
+		public System.Collections.Generic.IEnumerable<Entities.Lead> leadcompetitors_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Lead>("leadcompetitors_association", null);
+				return this.GetRelatedEntities<Entities.Lead>("leadcompetitors_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("leadcompetitors_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Lead>("leadcompetitors_association", null, value);
+				this.SetRelatedEntities<Entities.Lead>("leadcompetitors_association", null, value);
 				this.OnPropertyChanged("leadcompetitors_association");
 			}
 		}

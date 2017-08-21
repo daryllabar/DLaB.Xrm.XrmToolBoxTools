@@ -150,18 +150,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N teamprofiles_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("teamprofiles_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Team> teamprofiles_association
+		public System.Collections.Generic.IEnumerable<Entities.Team> teamprofiles_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Team>("teamprofiles_association", null);
+				return this.GetRelatedEntities<Entities.Team>("teamprofiles_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("teamprofiles_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Team>("teamprofiles_association", null, value);
+				this.SetRelatedEntities<Entities.Team>("teamprofiles_association", null, value);
 				this.OnPropertyChanged("teamprofiles_association");
 			}
 		}

@@ -405,7 +405,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the Profile Album
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.msdyn_PostAlbumState> statecode
+		public System.Nullable<Entities.msdyn_PostAlbumState> statecode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -413,7 +413,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.msdyn_PostAlbumState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.msdyn_PostAlbumState), optionSet.Value)));
+					return ((Entities.msdyn_PostAlbumState)(System.Enum.ToObject(typeof(Entities.msdyn_PostAlbumState), optionSet.Value)));
 				}
 				else
 				{
@@ -513,18 +513,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postalbum_ActivityPointers
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_ActivityPointers")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityPointer> msdyn_postalbum_ActivityPointers
+		public System.Collections.Generic.IEnumerable<Entities.ActivityPointer> msdyn_postalbum_ActivityPointers
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityPointer>("msdyn_postalbum_ActivityPointers", null);
+				return this.GetRelatedEntities<Entities.ActivityPointer>("msdyn_postalbum_ActivityPointers", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_ActivityPointers");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityPointer>("msdyn_postalbum_ActivityPointers", null, value);
+				this.SetRelatedEntities<Entities.ActivityPointer>("msdyn_postalbum_ActivityPointers", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_ActivityPointers");
 			}
 		}
@@ -533,18 +533,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postalbum_Annotations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_Annotations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> msdyn_postalbum_Annotations
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> msdyn_postalbum_Annotations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("msdyn_postalbum_Annotations", null);
+				return this.GetRelatedEntities<Entities.Annotation>("msdyn_postalbum_Annotations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_Annotations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("msdyn_postalbum_Annotations", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("msdyn_postalbum_Annotations", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_Annotations");
 			}
 		}
@@ -553,18 +553,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postalbum_Appointments
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_Appointments")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Appointment> msdyn_postalbum_Appointments
+		public System.Collections.Generic.IEnumerable<Entities.Appointment> msdyn_postalbum_Appointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Appointment>("msdyn_postalbum_Appointments", null);
+				return this.GetRelatedEntities<Entities.Appointment>("msdyn_postalbum_Appointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_Appointments");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Appointment>("msdyn_postalbum_Appointments", null, value);
+				this.SetRelatedEntities<Entities.Appointment>("msdyn_postalbum_Appointments", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_Appointments");
 			}
 		}
@@ -573,18 +573,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postalbum_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> msdyn_postalbum_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> msdyn_postalbum_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("msdyn_postalbum_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("msdyn_postalbum_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("msdyn_postalbum_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("msdyn_postalbum_AsyncOperations", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_AsyncOperations");
 			}
 		}
@@ -593,18 +593,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postalbum_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> msdyn_postalbum_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> msdyn_postalbum_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("msdyn_postalbum_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("msdyn_postalbum_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("msdyn_postalbum_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("msdyn_postalbum_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_BulkDeleteFailures");
 			}
 		}
@@ -613,18 +613,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postalbum_connections1
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_connections1")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> msdyn_postalbum_connections1
+		public System.Collections.Generic.IEnumerable<Entities.Connection> msdyn_postalbum_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("msdyn_postalbum_connections1", null);
+				return this.GetRelatedEntities<Entities.Connection>("msdyn_postalbum_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_connections1");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("msdyn_postalbum_connections1", null, value);
+				this.SetRelatedEntities<Entities.Connection>("msdyn_postalbum_connections1", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_connections1");
 			}
 		}
@@ -633,18 +633,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postalbum_connections2
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_connections2")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> msdyn_postalbum_connections2
+		public System.Collections.Generic.IEnumerable<Entities.Connection> msdyn_postalbum_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("msdyn_postalbum_connections2", null);
+				return this.GetRelatedEntities<Entities.Connection>("msdyn_postalbum_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_connections2");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("msdyn_postalbum_connections2", null, value);
+				this.SetRelatedEntities<Entities.Connection>("msdyn_postalbum_connections2", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_connections2");
 			}
 		}
@@ -653,18 +653,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postalbum_DuplicateBaseRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_DuplicateBaseRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> msdyn_postalbum_DuplicateBaseRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> msdyn_postalbum_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("msdyn_postalbum_DuplicateBaseRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("msdyn_postalbum_DuplicateBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_DuplicateBaseRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("msdyn_postalbum_DuplicateBaseRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("msdyn_postalbum_DuplicateBaseRecord", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_DuplicateBaseRecord");
 			}
 		}
@@ -673,18 +673,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postalbum_DuplicateMatchingRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_DuplicateMatchingRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> msdyn_postalbum_DuplicateMatchingRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> msdyn_postalbum_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("msdyn_postalbum_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("msdyn_postalbum_DuplicateMatchingRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_DuplicateMatchingRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("msdyn_postalbum_DuplicateMatchingRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("msdyn_postalbum_DuplicateMatchingRecord", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_DuplicateMatchingRecord");
 			}
 		}
@@ -693,18 +693,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postalbum_Emails
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_Emails")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Email> msdyn_postalbum_Emails
+		public System.Collections.Generic.IEnumerable<Entities.Email> msdyn_postalbum_Emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Email>("msdyn_postalbum_Emails", null);
+				return this.GetRelatedEntities<Entities.Email>("msdyn_postalbum_Emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_Emails");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Email>("msdyn_postalbum_Emails", null, value);
+				this.SetRelatedEntities<Entities.Email>("msdyn_postalbum_Emails", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_Emails");
 			}
 		}
@@ -713,18 +713,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postalbum_Faxes
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_Faxes")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Fax> msdyn_postalbum_Faxes
+		public System.Collections.Generic.IEnumerable<Entities.Fax> msdyn_postalbum_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Fax>("msdyn_postalbum_Faxes", null);
+				return this.GetRelatedEntities<Entities.Fax>("msdyn_postalbum_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_Faxes");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Fax>("msdyn_postalbum_Faxes", null, value);
+				this.SetRelatedEntities<Entities.Fax>("msdyn_postalbum_Faxes", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_Faxes");
 			}
 		}
@@ -733,18 +733,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postalbum_Letters
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_Letters")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Letter> msdyn_postalbum_Letters
+		public System.Collections.Generic.IEnumerable<Entities.Letter> msdyn_postalbum_Letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Letter>("msdyn_postalbum_Letters", null);
+				return this.GetRelatedEntities<Entities.Letter>("msdyn_postalbum_Letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_Letters");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Letter>("msdyn_postalbum_Letters", null, value);
+				this.SetRelatedEntities<Entities.Letter>("msdyn_postalbum_Letters", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_Letters");
 			}
 		}
@@ -753,18 +753,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postalbum_MailboxTrackingFolders
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_MailboxTrackingFolders")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.MailboxTrackingFolder> msdyn_postalbum_MailboxTrackingFolders
+		public System.Collections.Generic.IEnumerable<Entities.MailboxTrackingFolder> msdyn_postalbum_MailboxTrackingFolders
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.MailboxTrackingFolder>("msdyn_postalbum_MailboxTrackingFolders", null);
+				return this.GetRelatedEntities<Entities.MailboxTrackingFolder>("msdyn_postalbum_MailboxTrackingFolders", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_MailboxTrackingFolders");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.MailboxTrackingFolder>("msdyn_postalbum_MailboxTrackingFolders", null, value);
+				this.SetRelatedEntities<Entities.MailboxTrackingFolder>("msdyn_postalbum_MailboxTrackingFolders", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_MailboxTrackingFolders");
 			}
 		}
@@ -773,18 +773,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postalbum_PhoneCalls
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_PhoneCalls")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PhoneCall> msdyn_postalbum_PhoneCalls
+		public System.Collections.Generic.IEnumerable<Entities.PhoneCall> msdyn_postalbum_PhoneCalls
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PhoneCall>("msdyn_postalbum_PhoneCalls", null);
+				return this.GetRelatedEntities<Entities.PhoneCall>("msdyn_postalbum_PhoneCalls", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_PhoneCalls");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PhoneCall>("msdyn_postalbum_PhoneCalls", null, value);
+				this.SetRelatedEntities<Entities.PhoneCall>("msdyn_postalbum_PhoneCalls", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_PhoneCalls");
 			}
 		}
@@ -793,18 +793,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postalbum_PrincipalObjectAttributeAccesses
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_PrincipalObjectAttributeAccesses")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> msdyn_postalbum_PrincipalObjectAttributeAccesses
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> msdyn_postalbum_PrincipalObjectAttributeAccesses
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("msdyn_postalbum_PrincipalObjectAttributeAccesses", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("msdyn_postalbum_PrincipalObjectAttributeAccesses", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_PrincipalObjectAttributeAccesses");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("msdyn_postalbum_PrincipalObjectAttributeAccesses", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("msdyn_postalbum_PrincipalObjectAttributeAccesses", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_PrincipalObjectAttributeAccesses");
 			}
 		}
@@ -813,18 +813,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postalbum_ProcessSession
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_ProcessSession")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> msdyn_postalbum_ProcessSession
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> msdyn_postalbum_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("msdyn_postalbum_ProcessSession", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("msdyn_postalbum_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_ProcessSession");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("msdyn_postalbum_ProcessSession", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("msdyn_postalbum_ProcessSession", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_ProcessSession");
 			}
 		}
@@ -833,18 +833,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postalbum_RecurringAppointmentMasters
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_RecurringAppointmentMasters")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.RecurringAppointmentMaster> msdyn_postalbum_RecurringAppointmentMasters
+		public System.Collections.Generic.IEnumerable<Entities.RecurringAppointmentMaster> msdyn_postalbum_RecurringAppointmentMasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.RecurringAppointmentMaster>("msdyn_postalbum_RecurringAppointmentMasters", null);
+				return this.GetRelatedEntities<Entities.RecurringAppointmentMaster>("msdyn_postalbum_RecurringAppointmentMasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_RecurringAppointmentMasters");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.RecurringAppointmentMaster>("msdyn_postalbum_RecurringAppointmentMasters", null, value);
+				this.SetRelatedEntities<Entities.RecurringAppointmentMaster>("msdyn_postalbum_RecurringAppointmentMasters", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_RecurringAppointmentMasters");
 			}
 		}
@@ -853,18 +853,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postalbum_ServiceAppointments
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_ServiceAppointments")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ServiceAppointment> msdyn_postalbum_ServiceAppointments
+		public System.Collections.Generic.IEnumerable<Entities.ServiceAppointment> msdyn_postalbum_ServiceAppointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ServiceAppointment>("msdyn_postalbum_ServiceAppointments", null);
+				return this.GetRelatedEntities<Entities.ServiceAppointment>("msdyn_postalbum_ServiceAppointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_ServiceAppointments");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ServiceAppointment>("msdyn_postalbum_ServiceAppointments", null, value);
+				this.SetRelatedEntities<Entities.ServiceAppointment>("msdyn_postalbum_ServiceAppointments", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_ServiceAppointments");
 			}
 		}
@@ -873,18 +873,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postalbum_SocialActivities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_SocialActivities")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SocialActivity> msdyn_postalbum_SocialActivities
+		public System.Collections.Generic.IEnumerable<Entities.SocialActivity> msdyn_postalbum_SocialActivities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SocialActivity>("msdyn_postalbum_SocialActivities", null);
+				return this.GetRelatedEntities<Entities.SocialActivity>("msdyn_postalbum_SocialActivities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_SocialActivities");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SocialActivity>("msdyn_postalbum_SocialActivities", null, value);
+				this.SetRelatedEntities<Entities.SocialActivity>("msdyn_postalbum_SocialActivities", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_SocialActivities");
 			}
 		}
@@ -893,18 +893,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postalbum_Tasks
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_Tasks")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Task> msdyn_postalbum_Tasks
+		public System.Collections.Generic.IEnumerable<Entities.Task> msdyn_postalbum_Tasks
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Task>("msdyn_postalbum_Tasks", null);
+				return this.GetRelatedEntities<Entities.Task>("msdyn_postalbum_Tasks", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_Tasks");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Task>("msdyn_postalbum_Tasks", null, value);
+				this.SetRelatedEntities<Entities.Task>("msdyn_postalbum_Tasks", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_Tasks");
 			}
 		}
@@ -913,18 +913,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N msdyn_postalbum_UserEntityInstanceDatas
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_UserEntityInstanceDatas")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> msdyn_postalbum_UserEntityInstanceDatas
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> msdyn_postalbum_UserEntityInstanceDatas
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("msdyn_postalbum_UserEntityInstanceDatas", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("msdyn_postalbum_UserEntityInstanceDatas", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_UserEntityInstanceDatas");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("msdyn_postalbum_UserEntityInstanceDatas", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("msdyn_postalbum_UserEntityInstanceDatas", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_UserEntityInstanceDatas");
 			}
 		}
@@ -934,18 +934,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_msdyn_postalbum")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_msdyn_postalbum
+		public Entities.BusinessUnit business_unit_msdyn_postalbum
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_msdyn_postalbum", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_msdyn_postalbum", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_msdyn_postalbum");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_msdyn_postalbum", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_msdyn_postalbum", null, value);
 				this.OnPropertyChanged("business_unit_msdyn_postalbum");
 			}
 		}
@@ -955,18 +955,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_postalbum_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_msdyn_postalbum_createdby
+		public Entities.SystemUser lk_msdyn_postalbum_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_postalbum_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_msdyn_postalbum_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_msdyn_postalbum_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_postalbum_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_msdyn_postalbum_createdby", null, value);
 				this.OnPropertyChanged("lk_msdyn_postalbum_createdby");
 			}
 		}
@@ -976,18 +976,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_postalbum_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_msdyn_postalbum_createdonbehalfby
+		public Entities.SystemUser lk_msdyn_postalbum_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_postalbum_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_msdyn_postalbum_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_msdyn_postalbum_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_postalbum_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_msdyn_postalbum_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_msdyn_postalbum_createdonbehalfby");
 			}
 		}
@@ -997,18 +997,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_postalbum_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_msdyn_postalbum_modifiedby
+		public Entities.SystemUser lk_msdyn_postalbum_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_postalbum_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_msdyn_postalbum_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_msdyn_postalbum_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_postalbum_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_msdyn_postalbum_modifiedby", null, value);
 				this.OnPropertyChanged("lk_msdyn_postalbum_modifiedby");
 			}
 		}
@@ -1018,18 +1018,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_postalbum_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_msdyn_postalbum_modifiedonbehalfby
+		public Entities.SystemUser lk_msdyn_postalbum_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_postalbum_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_msdyn_postalbum_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_msdyn_postalbum_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_msdyn_postalbum_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_msdyn_postalbum_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_msdyn_postalbum_modifiedonbehalfby");
 			}
 		}
@@ -1039,18 +1039,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_msdyn_postalbum")]
-		public DLaB.Xrm.Entities.Team team_msdyn_postalbum
+		public Entities.Team team_msdyn_postalbum
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_msdyn_postalbum", null);
+				return this.GetRelatedEntity<Entities.Team>("team_msdyn_postalbum", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_msdyn_postalbum");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_msdyn_postalbum", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_msdyn_postalbum", null, value);
 				this.OnPropertyChanged("team_msdyn_postalbum");
 			}
 		}
@@ -1060,18 +1060,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_msdyn_postalbum")]
-		public DLaB.Xrm.Entities.SystemUser user_msdyn_postalbum
+		public Entities.SystemUser user_msdyn_postalbum
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_msdyn_postalbum", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_msdyn_postalbum", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_msdyn_postalbum");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_msdyn_postalbum", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_msdyn_postalbum", null, value);
 				this.OnPropertyChanged("user_msdyn_postalbum");
 			}
 		}

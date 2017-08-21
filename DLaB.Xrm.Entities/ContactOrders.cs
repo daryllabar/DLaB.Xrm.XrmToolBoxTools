@@ -150,18 +150,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N contactorders_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contactorders_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SalesOrder> contactorders_association
+		public System.Collections.Generic.IEnumerable<Entities.SalesOrder> contactorders_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SalesOrder>("contactorders_association", null);
+				return this.GetRelatedEntities<Entities.SalesOrder>("contactorders_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("contactorders_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SalesOrder>("contactorders_association", null, value);
+				this.SetRelatedEntities<Entities.SalesOrder>("contactorders_association", null, value);
 				this.OnPropertyChanged("contactorders_association");
 			}
 		}

@@ -392,7 +392,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the Position
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.PositionState> statecode
+		public System.Nullable<Entities.PositionState> statecode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -400,7 +400,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.PositionState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.PositionState), optionSet.Value)));
+					return ((Entities.PositionState)(System.Enum.ToObject(typeof(Entities.PositionState), optionSet.Value)));
 				}
 				else
 				{
@@ -520,18 +520,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N position_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("position_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> position_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> position_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("position_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("position_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("position_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("position_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("position_AsyncOperations", null, value);
 				this.OnPropertyChanged("position_AsyncOperations");
 			}
 		}
@@ -540,18 +540,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N position_connection1
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("position_connection1")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> position_connection1
+		public System.Collections.Generic.IEnumerable<Entities.Connection> position_connection1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("position_connection1", null);
+				return this.GetRelatedEntities<Entities.Connection>("position_connection1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("position_connection1");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("position_connection1", null, value);
+				this.SetRelatedEntities<Entities.Connection>("position_connection1", null, value);
 				this.OnPropertyChanged("position_connection1");
 			}
 		}
@@ -560,18 +560,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N position_connection2
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("position_connection2")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> position_connection2
+		public System.Collections.Generic.IEnumerable<Entities.Connection> position_connection2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("position_connection2", null);
+				return this.GetRelatedEntities<Entities.Connection>("position_connection2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("position_connection2");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("position_connection2", null, value);
+				this.SetRelatedEntities<Entities.Connection>("position_connection2", null, value);
 				this.OnPropertyChanged("position_connection2");
 			}
 		}
@@ -580,18 +580,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N position_parent_position
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("position_parent_position", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Position> Referencedposition_parent_position
+		public System.Collections.Generic.IEnumerable<Entities.Position> Referencedposition_parent_position
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Position>("position_parent_position", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.Position>("position_parent_position", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedposition_parent_position");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Position>("position_parent_position", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.Position>("position_parent_position", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedposition_parent_position");
 			}
 		}
@@ -600,18 +600,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N position_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("position_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> position_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> position_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("position_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("position_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("position_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("position_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("position_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("position_principalobjectattributeaccess");
 			}
 		}
@@ -620,18 +620,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N position_ProcessSession
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("position_ProcessSession")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> position_ProcessSession
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> position_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("position_ProcessSession", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("position_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("position_ProcessSession");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("position_ProcessSession", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("position_ProcessSession", null, value);
 				this.OnPropertyChanged("position_ProcessSession");
 			}
 		}
@@ -640,18 +640,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N position_users
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("position_users")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SystemUser> position_users
+		public System.Collections.Generic.IEnumerable<Entities.SystemUser> position_users
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SystemUser>("position_users", null);
+				return this.GetRelatedEntities<Entities.SystemUser>("position_users", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("position_users");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SystemUser>("position_users", null, value);
+				this.SetRelatedEntities<Entities.SystemUser>("position_users", null, value);
 				this.OnPropertyChanged("position_users");
 			}
 		}
@@ -661,18 +661,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_position_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_position_createdby
+		public Entities.SystemUser lk_position_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_position_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_position_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_position_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_position_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_position_createdby", null, value);
 				this.OnPropertyChanged("lk_position_createdby");
 			}
 		}
@@ -682,18 +682,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_position_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_position_createdonbehalfby
+		public Entities.SystemUser lk_position_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_position_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_position_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_position_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_position_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_position_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_position_createdonbehalfby");
 			}
 		}
@@ -703,18 +703,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_position_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_position_modifiedby
+		public Entities.SystemUser lk_position_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_position_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_position_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_position_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_position_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_position_modifiedby", null, value);
 				this.OnPropertyChanged("lk_position_modifiedby");
 			}
 		}
@@ -724,18 +724,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_position_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_position_modifiedonbehalfby
+		public Entities.SystemUser lk_position_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_position_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_position_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_position_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_position_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_position_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_position_modifiedonbehalfby");
 			}
 		}
@@ -745,12 +745,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_position")]
-		public DLaB.Xrm.Entities.Organization organization_position
+		public Entities.Organization organization_position
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_position", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_position", null);
 			}
 		}
 		
@@ -759,18 +759,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentpositionid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("position_parent_position", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.Position Referencingposition_parent_position
+		public Entities.Position Referencingposition_parent_position
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Position>("position_parent_position", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.Position>("position_parent_position", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencingposition_parent_position");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Position>("position_parent_position", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Entities.Position>("position_parent_position", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencingposition_parent_position");
 			}
 		}
@@ -780,18 +780,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_position")]
-		public DLaB.Xrm.Entities.TransactionCurrency transactioncurrency_position
+		public Entities.TransactionCurrency transactioncurrency_position
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_position", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_position", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_position");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_position", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_position", null, value);
 				this.OnPropertyChanged("transactioncurrency_position");
 			}
 		}

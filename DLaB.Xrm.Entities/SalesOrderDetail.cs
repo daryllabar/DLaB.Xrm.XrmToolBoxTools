@@ -1393,18 +1393,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N SalesOrderDetail_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesOrderDetail_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> SalesOrderDetail_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> SalesOrderDetail_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("SalesOrderDetail_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("SalesOrderDetail_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SalesOrderDetail_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("SalesOrderDetail_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("SalesOrderDetail_AsyncOperations", null, value);
 				this.OnPropertyChanged("SalesOrderDetail_AsyncOperations");
 			}
 		}
@@ -1413,18 +1413,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N SalesOrderDetail_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesOrderDetail_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> SalesOrderDetail_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> SalesOrderDetail_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("SalesOrderDetail_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("SalesOrderDetail_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SalesOrderDetail_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("SalesOrderDetail_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("SalesOrderDetail_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("SalesOrderDetail_BulkDeleteFailures");
 			}
 		}
@@ -1433,18 +1433,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N SalesOrderDetail_Dynamicpropertyinstance
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesOrderDetail_Dynamicpropertyinstance")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DynamicPropertyInstance> SalesOrderDetail_Dynamicpropertyinstance
+		public System.Collections.Generic.IEnumerable<Entities.DynamicPropertyInstance> SalesOrderDetail_Dynamicpropertyinstance
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DynamicPropertyInstance>("SalesOrderDetail_Dynamicpropertyinstance", null);
+				return this.GetRelatedEntities<Entities.DynamicPropertyInstance>("SalesOrderDetail_Dynamicpropertyinstance", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SalesOrderDetail_Dynamicpropertyinstance");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DynamicPropertyInstance>("SalesOrderDetail_Dynamicpropertyinstance", null, value);
+				this.SetRelatedEntities<Entities.DynamicPropertyInstance>("SalesOrderDetail_Dynamicpropertyinstance", null, value);
 				this.OnPropertyChanged("SalesOrderDetail_Dynamicpropertyinstance");
 			}
 		}
@@ -1453,18 +1453,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N salesorderdetail_parent_salesorderdetail
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("salesorderdetail_parent_salesorderdetail", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SalesOrderDetail> Referencedsalesorderdetail_parent_salesorderdetail
+		public System.Collections.Generic.IEnumerable<Entities.SalesOrderDetail> Referencedsalesorderdetail_parent_salesorderdetail
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SalesOrderDetail>("salesorderdetail_parent_salesorderdetail", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.SalesOrderDetail>("salesorderdetail_parent_salesorderdetail", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedsalesorderdetail_parent_salesorderdetail");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SalesOrderDetail>("salesorderdetail_parent_salesorderdetail", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.SalesOrderDetail>("salesorderdetail_parent_salesorderdetail", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedsalesorderdetail_parent_salesorderdetail");
 			}
 		}
@@ -1473,18 +1473,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N salesorderdetail_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("salesorderdetail_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> salesorderdetail_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> salesorderdetail_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("salesorderdetail_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("salesorderdetail_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("salesorderdetail_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("salesorderdetail_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("salesorderdetail_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("salesorderdetail_principalobjectattributeaccess");
 			}
 		}
@@ -1493,18 +1493,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N SalesOrderDetail_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesOrderDetail_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> SalesOrderDetail_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> SalesOrderDetail_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("SalesOrderDetail_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("SalesOrderDetail_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SalesOrderDetail_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("SalesOrderDetail_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("SalesOrderDetail_ProcessSessions", null, value);
 				this.OnPropertyChanged("SalesOrderDetail_ProcessSessions");
 			}
 		}
@@ -1513,18 +1513,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_salesorderdetail
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_salesorderdetail")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_salesorderdetail
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_salesorderdetail
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_salesorderdetail", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_salesorderdetail", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_salesorderdetail");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_salesorderdetail", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_salesorderdetail", null, value);
 				this.OnPropertyChanged("userentityinstancedata_salesorderdetail");
 			}
 		}
@@ -1534,18 +1534,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_salesorderdetail_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_salesorderdetail_createdonbehalfby
+		public Entities.SystemUser lk_salesorderdetail_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_salesorderdetail_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_salesorderdetail_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_salesorderdetail_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_salesorderdetail_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_salesorderdetail_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_salesorderdetail_createdonbehalfby");
 			}
 		}
@@ -1555,18 +1555,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_salesorderdetail_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_salesorderdetail_modifiedonbehalfby
+		public Entities.SystemUser lk_salesorderdetail_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_salesorderdetail_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_salesorderdetail_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_salesorderdetail_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_salesorderdetail_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_salesorderdetail_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_salesorderdetail_modifiedonbehalfby");
 			}
 		}
@@ -1576,18 +1576,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_salesorderdetailbase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_salesorderdetailbase_createdby
+		public Entities.SystemUser lk_salesorderdetailbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_salesorderdetailbase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_salesorderdetailbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_salesorderdetailbase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_salesorderdetailbase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_salesorderdetailbase_createdby", null, value);
 				this.OnPropertyChanged("lk_salesorderdetailbase_createdby");
 			}
 		}
@@ -1597,18 +1597,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_salesorderdetailbase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_salesorderdetailbase_modifiedby
+		public Entities.SystemUser lk_salesorderdetailbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_salesorderdetailbase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_salesorderdetailbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_salesorderdetailbase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_salesorderdetailbase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_salesorderdetailbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_salesorderdetailbase_modifiedby");
 			}
 		}
@@ -1618,18 +1618,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("salesorderid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("order_details")]
-		public DLaB.Xrm.Entities.SalesOrder order_details
+		public Entities.SalesOrder order_details
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("order_details", null);
+				return this.GetRelatedEntity<Entities.SalesOrder>("order_details", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("order_details");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("order_details", null, value);
+				this.SetRelatedEntity<Entities.SalesOrder>("order_details", null, value);
 				this.OnPropertyChanged("order_details");
 			}
 		}
@@ -1639,18 +1639,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("productid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("product_order_details")]
-		public DLaB.Xrm.Entities.Product product_order_details
+		public Entities.Product product_order_details
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Product>("product_order_details", null);
+				return this.GetRelatedEntity<Entities.Product>("product_order_details", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("product_order_details");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Product>("product_order_details", null, value);
+				this.SetRelatedEntity<Entities.Product>("product_order_details", null, value);
 				this.OnPropertyChanged("product_order_details");
 			}
 		}
@@ -1660,18 +1660,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("productassociationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("productAssociation_salesorder_details")]
-		public DLaB.Xrm.Entities.ProductAssociation productAssociation_salesorder_details
+		public Entities.ProductAssociation productAssociation_salesorder_details
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProductAssociation>("productAssociation_salesorder_details", null);
+				return this.GetRelatedEntity<Entities.ProductAssociation>("productAssociation_salesorder_details", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("productAssociation_salesorder_details");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProductAssociation>("productAssociation_salesorder_details", null, value);
+				this.SetRelatedEntity<Entities.ProductAssociation>("productAssociation_salesorder_details", null, value);
 				this.OnPropertyChanged("productAssociation_salesorder_details");
 			}
 		}
@@ -1681,18 +1681,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentbundleid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("salesorderdetail_parent_salesorderdetail", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.SalesOrderDetail Referencingsalesorderdetail_parent_salesorderdetail
+		public Entities.SalesOrderDetail Referencingsalesorderdetail_parent_salesorderdetail
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesOrderDetail>("salesorderdetail_parent_salesorderdetail", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.SalesOrderDetail>("salesorderdetail_parent_salesorderdetail", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencingsalesorderdetail_parent_salesorderdetail");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SalesOrderDetail>("salesorderdetail_parent_salesorderdetail", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Entities.SalesOrderDetail>("salesorderdetail_parent_salesorderdetail", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencingsalesorderdetail_parent_salesorderdetail");
 			}
 		}
@@ -1702,18 +1702,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("salesrepid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("system_user_salesorderdetail")]
-		public DLaB.Xrm.Entities.SystemUser system_user_salesorderdetail
+		public Entities.SystemUser system_user_salesorderdetail
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("system_user_salesorderdetail", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("system_user_salesorderdetail", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("system_user_salesorderdetail");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("system_user_salesorderdetail", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("system_user_salesorderdetail", null, value);
 				this.OnPropertyChanged("system_user_salesorderdetail");
 			}
 		}
@@ -1723,12 +1723,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_salesorderdetail")]
-		public DLaB.Xrm.Entities.TransactionCurrency transactioncurrency_salesorderdetail
+		public Entities.TransactionCurrency transactioncurrency_salesorderdetail
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_salesorderdetail", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_salesorderdetail", null);
 			}
 		}
 		
@@ -1737,18 +1737,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uomid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measurement_order_details")]
-		public DLaB.Xrm.Entities.UoM unit_of_measurement_order_details
+		public Entities.UoM unit_of_measurement_order_details
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.UoM>("unit_of_measurement_order_details", null);
+				return this.GetRelatedEntity<Entities.UoM>("unit_of_measurement_order_details", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("unit_of_measurement_order_details");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.UoM>("unit_of_measurement_order_details", null, value);
+				this.SetRelatedEntity<Entities.UoM>("unit_of_measurement_order_details", null, value);
 				this.OnPropertyChanged("unit_of_measurement_order_details");
 			}
 		}

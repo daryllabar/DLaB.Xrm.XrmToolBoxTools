@@ -19,6 +19,15 @@ namespace DLaB.AttributeManager
             };
         }
 
+        public static AttributeMetadata CreateMemo(int? maxLength = null, ImeMode? imeMode = ImeMode.Auto)
+        {
+            return new MemoAttributeMetadata
+            {
+                ImeMode = imeMode,
+                MaxLength = maxLength ?? 2000
+            };
+        }
+
         public static AttributeMetadata CreateOptionSet(OptionSetMetadata optionSet, int? defaultFormValue = null, string formulaDefinition = null)
         {
             if (optionSet.IsGlobal.GetValueOrDefault())

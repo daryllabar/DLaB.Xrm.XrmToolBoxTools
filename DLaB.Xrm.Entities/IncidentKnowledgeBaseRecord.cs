@@ -150,18 +150,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N KnowledgeBaseRecord_Incident
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_Incident")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.KnowledgeBaseRecord> KnowledgeBaseRecord_Incident
+		public System.Collections.Generic.IEnumerable<Entities.KnowledgeBaseRecord> KnowledgeBaseRecord_Incident
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_Incident", null);
+				return this.GetRelatedEntities<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_Incident", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_Incident");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_Incident", null, value);
+				this.SetRelatedEntities<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_Incident", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_Incident");
 			}
 		}

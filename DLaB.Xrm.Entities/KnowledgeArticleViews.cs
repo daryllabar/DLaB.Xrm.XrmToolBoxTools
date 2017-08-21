@@ -434,7 +434,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the Knowledge Article Views
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.KnowledgeArticleViewsState> statecode
+		public System.Nullable<Entities.KnowledgeArticleViewsState> statecode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -442,7 +442,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.KnowledgeArticleViewsState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.KnowledgeArticleViewsState), optionSet.Value)));
+					return ((Entities.KnowledgeArticleViewsState)(System.Enum.ToObject(typeof(Entities.KnowledgeArticleViewsState), optionSet.Value)));
 				}
 				else
 				{
@@ -575,18 +575,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N knowledgearticleview_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticleview_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> knowledgearticleview_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> knowledgearticleview_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("knowledgearticleview_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("knowledgearticleview_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("knowledgearticleview_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("knowledgearticleview_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("knowledgearticleview_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("knowledgearticleview_principalobjectattributeaccess");
 			}
 		}
@@ -596,18 +596,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("knowledgearticleid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_views")]
-		public DLaB.Xrm.Entities.KnowledgeArticle knowledgearticle_views
+		public Entities.KnowledgeArticle knowledgearticle_views
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_views", null);
+				return this.GetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_views", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("knowledgearticle_views");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_views", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_views", null, value);
 				this.OnPropertyChanged("knowledgearticle_views");
 			}
 		}
@@ -617,18 +617,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_knowledgearticleviews_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_knowledgearticleviews_createdby
+		public Entities.SystemUser lk_knowledgearticleviews_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgearticleviews_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_knowledgearticleviews_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_knowledgearticleviews_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgearticleviews_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_knowledgearticleviews_createdby", null, value);
 				this.OnPropertyChanged("lk_knowledgearticleviews_createdby");
 			}
 		}
@@ -638,18 +638,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_knowledgearticleviews_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_knowledgearticleviews_createdonbehalfby
+		public Entities.SystemUser lk_knowledgearticleviews_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgearticleviews_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_knowledgearticleviews_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_knowledgearticleviews_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgearticleviews_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_knowledgearticleviews_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_knowledgearticleviews_createdonbehalfby");
 			}
 		}
@@ -659,18 +659,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_knowledgearticleviews_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_knowledgearticleviews_modifiedby
+		public Entities.SystemUser lk_knowledgearticleviews_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgearticleviews_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_knowledgearticleviews_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_knowledgearticleviews_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgearticleviews_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_knowledgearticleviews_modifiedby", null, value);
 				this.OnPropertyChanged("lk_knowledgearticleviews_modifiedby");
 			}
 		}
@@ -680,18 +680,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_knowledgearticleviews_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_knowledgearticleviews_modifiedonbehalfby
+		public Entities.SystemUser lk_knowledgearticleviews_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgearticleviews_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_knowledgearticleviews_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_knowledgearticleviews_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_knowledgearticleviews_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_knowledgearticleviews_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_knowledgearticleviews_modifiedonbehalfby");
 			}
 		}
@@ -701,12 +701,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_knowledgearticleviews")]
-		public DLaB.Xrm.Entities.TransactionCurrency transactioncurrency_knowledgearticleviews
+		public Entities.TransactionCurrency transactioncurrency_knowledgearticleviews
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_knowledgearticleviews", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_knowledgearticleviews", null);
 			}
 		}
 		

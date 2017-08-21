@@ -636,7 +636,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the channel access profile is active or inactive.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.ChannelAccessProfileState> StateCode
+		public System.Nullable<Entities.ChannelAccessProfileState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -644,7 +644,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.ChannelAccessProfileState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.ChannelAccessProfileState), optionSet.Value)));
+					return ((Entities.ChannelAccessProfileState)(System.Enum.ToObject(typeof(Entities.ChannelAccessProfileState), optionSet.Value)));
 				}
 				else
 				{
@@ -864,18 +864,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N channelaccessprofile_Annotations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("channelaccessprofile_Annotations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> channelaccessprofile_Annotations
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> channelaccessprofile_Annotations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("channelaccessprofile_Annotations", null);
+				return this.GetRelatedEntities<Entities.Annotation>("channelaccessprofile_Annotations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("channelaccessprofile_Annotations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("channelaccessprofile_Annotations", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("channelaccessprofile_Annotations", null, value);
 				this.OnPropertyChanged("channelaccessprofile_Annotations");
 			}
 		}
@@ -884,18 +884,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N channelaccessprofile_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("channelaccessprofile_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> channelaccessprofile_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> channelaccessprofile_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("channelaccessprofile_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("channelaccessprofile_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("channelaccessprofile_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("channelaccessprofile_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("channelaccessprofile_AsyncOperations", null, value);
 				this.OnPropertyChanged("channelaccessprofile_AsyncOperations");
 			}
 		}
@@ -904,18 +904,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N channelaccessprofile_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("channelaccessprofile_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> channelaccessprofile_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> channelaccessprofile_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("channelaccessprofile_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("channelaccessprofile_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("channelaccessprofile_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("channelaccessprofile_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("channelaccessprofile_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("channelaccessprofile_BulkDeleteFailures");
 			}
 		}
@@ -924,18 +924,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N channelaccessprofile_DuplicateBaseRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("channelaccessprofile_DuplicateBaseRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> channelaccessprofile_DuplicateBaseRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> channelaccessprofile_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("channelaccessprofile_DuplicateBaseRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("channelaccessprofile_DuplicateBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("channelaccessprofile_DuplicateBaseRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("channelaccessprofile_DuplicateBaseRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("channelaccessprofile_DuplicateBaseRecord", null, value);
 				this.OnPropertyChanged("channelaccessprofile_DuplicateBaseRecord");
 			}
 		}
@@ -944,18 +944,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N channelaccessprofile_DuplicateMatchingRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("channelaccessprofile_DuplicateMatchingRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> channelaccessprofile_DuplicateMatchingRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> channelaccessprofile_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("channelaccessprofile_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("channelaccessprofile_DuplicateMatchingRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("channelaccessprofile_DuplicateMatchingRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("channelaccessprofile_DuplicateMatchingRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("channelaccessprofile_DuplicateMatchingRecord", null, value);
 				this.OnPropertyChanged("channelaccessprofile_DuplicateMatchingRecord");
 			}
 		}
@@ -964,18 +964,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N channelaccessprofile_PrincipalObjectAttributeAccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("channelaccessprofile_PrincipalObjectAttributeAccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> channelaccessprofile_PrincipalObjectAttributeAccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> channelaccessprofile_PrincipalObjectAttributeAccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("channelaccessprofile_PrincipalObjectAttributeAccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("channelaccessprofile_PrincipalObjectAttributeAccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("channelaccessprofile_PrincipalObjectAttributeAccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("channelaccessprofile_PrincipalObjectAttributeAccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("channelaccessprofile_PrincipalObjectAttributeAccess", null, value);
 				this.OnPropertyChanged("channelaccessprofile_PrincipalObjectAttributeAccess");
 			}
 		}
@@ -984,18 +984,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N channelaccessprofile_ProcessSession
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("channelaccessprofile_ProcessSession")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> channelaccessprofile_ProcessSession
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> channelaccessprofile_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("channelaccessprofile_ProcessSession", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("channelaccessprofile_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("channelaccessprofile_ProcessSession");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("channelaccessprofile_ProcessSession", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("channelaccessprofile_ProcessSession", null, value);
 				this.OnPropertyChanged("channelaccessprofile_ProcessSession");
 			}
 		}
@@ -1004,18 +1004,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N channelaccessprofile_UserEntityInstanceDatas
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("channelaccessprofile_UserEntityInstanceDatas")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> channelaccessprofile_UserEntityInstanceDatas
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> channelaccessprofile_UserEntityInstanceDatas
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("channelaccessprofile_UserEntityInstanceDatas", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("channelaccessprofile_UserEntityInstanceDatas", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("channelaccessprofile_UserEntityInstanceDatas");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("channelaccessprofile_UserEntityInstanceDatas", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("channelaccessprofile_UserEntityInstanceDatas", null, value);
 				this.OnPropertyChanged("channelaccessprofile_UserEntityInstanceDatas");
 			}
 		}
@@ -1024,18 +1024,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N lk_externalpartyitem_channelaccessprofileid
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_externalpartyitem_channelaccessprofileid")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ExternalPartyItem> lk_externalpartyitem_channelaccessprofileid
+		public System.Collections.Generic.IEnumerable<Entities.ExternalPartyItem> lk_externalpartyitem_channelaccessprofileid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ExternalPartyItem>("lk_externalpartyitem_channelaccessprofileid", null);
+				return this.GetRelatedEntities<Entities.ExternalPartyItem>("lk_externalpartyitem_channelaccessprofileid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_externalpartyitem_channelaccessprofileid");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ExternalPartyItem>("lk_externalpartyitem_channelaccessprofileid", null, value);
+				this.SetRelatedEntities<Entities.ExternalPartyItem>("lk_externalpartyitem_channelaccessprofileid", null, value);
 				this.OnPropertyChanged("lk_externalpartyitem_channelaccessprofileid");
 			}
 		}
@@ -1044,18 +1044,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N profileruleitem_associated_channelaccessprofile
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("profileruleitem_associated_channelaccessprofile")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ChannelAccessProfileRuleItem> profileruleitem_associated_channelaccessprofile
+		public System.Collections.Generic.IEnumerable<Entities.ChannelAccessProfileRuleItem> profileruleitem_associated_channelaccessprofile
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ChannelAccessProfileRuleItem>("profileruleitem_associated_channelaccessprofile", null);
+				return this.GetRelatedEntities<Entities.ChannelAccessProfileRuleItem>("profileruleitem_associated_channelaccessprofile", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("profileruleitem_associated_channelaccessprofile");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ChannelAccessProfileRuleItem>("profileruleitem_associated_channelaccessprofile", null, value);
+				this.SetRelatedEntities<Entities.ChannelAccessProfileRuleItem>("profileruleitem_associated_channelaccessprofile", null, value);
 				this.OnPropertyChanged("profileruleitem_associated_channelaccessprofile");
 			}
 		}
@@ -1064,18 +1064,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N ChannelAccessProfile_Privilege
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ChannelAccessProfile_Privilege")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Privilege> ChannelAccessProfile_Privilege
+		public System.Collections.Generic.IEnumerable<Entities.Privilege> ChannelAccessProfile_Privilege
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Privilege>("ChannelAccessProfile_Privilege", null);
+				return this.GetRelatedEntities<Entities.Privilege>("ChannelAccessProfile_Privilege", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ChannelAccessProfile_Privilege");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Privilege>("ChannelAccessProfile_Privilege", null, value);
+				this.SetRelatedEntities<Entities.Privilege>("ChannelAccessProfile_Privilege", null, value);
 				this.OnPropertyChanged("ChannelAccessProfile_Privilege");
 			}
 		}
@@ -1085,18 +1085,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_channelaccessprofile")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_channelaccessprofile
+		public Entities.BusinessUnit business_unit_channelaccessprofile
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_channelaccessprofile", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_channelaccessprofile", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_channelaccessprofile");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_channelaccessprofile", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_channelaccessprofile", null, value);
 				this.OnPropertyChanged("business_unit_channelaccessprofile");
 			}
 		}
@@ -1106,18 +1106,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_channelaccessprofile_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_channelaccessprofile_createdby
+		public Entities.SystemUser lk_channelaccessprofile_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_channelaccessprofile_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_channelaccessprofile_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_channelaccessprofile_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_channelaccessprofile_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_channelaccessprofile_createdby", null, value);
 				this.OnPropertyChanged("lk_channelaccessprofile_createdby");
 			}
 		}
@@ -1127,18 +1127,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_channelaccessprofile_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_channelaccessprofile_createdonbehalfby
+		public Entities.SystemUser lk_channelaccessprofile_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_channelaccessprofile_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_channelaccessprofile_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_channelaccessprofile_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_channelaccessprofile_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_channelaccessprofile_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_channelaccessprofile_createdonbehalfby");
 			}
 		}
@@ -1148,18 +1148,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_channelaccessprofile_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_channelaccessprofile_modifiedby
+		public Entities.SystemUser lk_channelaccessprofile_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_channelaccessprofile_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_channelaccessprofile_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_channelaccessprofile_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_channelaccessprofile_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_channelaccessprofile_modifiedby", null, value);
 				this.OnPropertyChanged("lk_channelaccessprofile_modifiedby");
 			}
 		}
@@ -1169,18 +1169,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_channelaccessprofile_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_channelaccessprofile_modifiedonbehalfby
+		public Entities.SystemUser lk_channelaccessprofile_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_channelaccessprofile_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_channelaccessprofile_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_channelaccessprofile_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_channelaccessprofile_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_channelaccessprofile_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_channelaccessprofile_modifiedonbehalfby");
 			}
 		}
@@ -1190,18 +1190,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_channelaccessprofile")]
-		public DLaB.Xrm.Entities.Team team_channelaccessprofile
+		public Entities.Team team_channelaccessprofile
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_channelaccessprofile", null);
+				return this.GetRelatedEntity<Entities.Team>("team_channelaccessprofile", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_channelaccessprofile");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_channelaccessprofile", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_channelaccessprofile", null, value);
 				this.OnPropertyChanged("team_channelaccessprofile");
 			}
 		}
@@ -1211,18 +1211,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_ChannelAccessProfile")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_ChannelAccessProfile
+		public Entities.TransactionCurrency TransactionCurrency_ChannelAccessProfile
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_ChannelAccessProfile", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_ChannelAccessProfile", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_ChannelAccessProfile");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_ChannelAccessProfile", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_ChannelAccessProfile", null, value);
 				this.OnPropertyChanged("TransactionCurrency_ChannelAccessProfile");
 			}
 		}
@@ -1232,18 +1232,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_channelaccessprofile")]
-		public DLaB.Xrm.Entities.SystemUser user_channelaccessprofile
+		public Entities.SystemUser user_channelaccessprofile
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_channelaccessprofile", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_channelaccessprofile", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_channelaccessprofile");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_channelaccessprofile", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_channelaccessprofile", null, value);
 				this.OnPropertyChanged("user_channelaccessprofile");
 			}
 		}

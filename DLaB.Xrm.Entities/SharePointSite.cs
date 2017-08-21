@@ -649,7 +649,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the SharePoint site record.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.SharePointSiteState> StateCode
+		public System.Nullable<Entities.SharePointSiteState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -657,7 +657,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.SharePointSiteState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.SharePointSiteState), optionSet.Value)));
+					return ((Entities.SharePointSiteState)(System.Enum.ToObject(typeof(Entities.SharePointSiteState), optionSet.Value)));
 				}
 				else
 				{
@@ -830,18 +830,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N sharepointdocumentlocation_parent_sharepointsite
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sharepointdocumentlocation_parent_sharepointsite")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SharePointDocumentLocation> sharepointdocumentlocation_parent_sharepointsite
+		public System.Collections.Generic.IEnumerable<Entities.SharePointDocumentLocation> sharepointdocumentlocation_parent_sharepointsite
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SharePointDocumentLocation>("sharepointdocumentlocation_parent_sharepointsite", null);
+				return this.GetRelatedEntities<Entities.SharePointDocumentLocation>("sharepointdocumentlocation_parent_sharepointsite", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("sharepointdocumentlocation_parent_sharepointsite");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SharePointDocumentLocation>("sharepointdocumentlocation_parent_sharepointsite", null, value);
+				this.SetRelatedEntities<Entities.SharePointDocumentLocation>("sharepointdocumentlocation_parent_sharepointsite", null, value);
 				this.OnPropertyChanged("sharepointdocumentlocation_parent_sharepointsite");
 			}
 		}
@@ -850,18 +850,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N SharePointSite_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SharePointSite_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> SharePointSite_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> SharePointSite_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("SharePointSite_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("SharePointSite_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SharePointSite_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("SharePointSite_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("SharePointSite_AsyncOperations", null, value);
 				this.OnPropertyChanged("SharePointSite_AsyncOperations");
 			}
 		}
@@ -870,18 +870,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N SharePointSite_DuplicateBaseRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SharePointSite_DuplicateBaseRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> SharePointSite_DuplicateBaseRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> SharePointSite_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("SharePointSite_DuplicateBaseRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("SharePointSite_DuplicateBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SharePointSite_DuplicateBaseRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("SharePointSite_DuplicateBaseRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("SharePointSite_DuplicateBaseRecord", null, value);
 				this.OnPropertyChanged("SharePointSite_DuplicateBaseRecord");
 			}
 		}
@@ -890,18 +890,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N SharePointSite_DuplicateMatchingRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SharePointSite_DuplicateMatchingRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> SharePointSite_DuplicateMatchingRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> SharePointSite_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("SharePointSite_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("SharePointSite_DuplicateMatchingRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SharePointSite_DuplicateMatchingRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("SharePointSite_DuplicateMatchingRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("SharePointSite_DuplicateMatchingRecord", null, value);
 				this.OnPropertyChanged("SharePointSite_DuplicateMatchingRecord");
 			}
 		}
@@ -910,18 +910,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N sharepointsite_parentsite_sharepointsite
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sharepointsite_parentsite_sharepointsite", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SharePointSite> Referencedsharepointsite_parentsite_sharepointsite
+		public System.Collections.Generic.IEnumerable<Entities.SharePointSite> Referencedsharepointsite_parentsite_sharepointsite
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SharePointSite>("sharepointsite_parentsite_sharepointsite", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.SharePointSite>("sharepointsite_parentsite_sharepointsite", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedsharepointsite_parentsite_sharepointsite");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SharePointSite>("sharepointsite_parentsite_sharepointsite", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.SharePointSite>("sharepointsite_parentsite_sharepointsite", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedsharepointsite_parentsite_sharepointsite");
 			}
 		}
@@ -930,18 +930,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N sharepointsite_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sharepointsite_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> sharepointsite_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> sharepointsite_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("sharepointsite_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("sharepointsite_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("sharepointsite_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("sharepointsite_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("sharepointsite_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("sharepointsite_principalobjectattributeaccess");
 			}
 		}
@@ -950,18 +950,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N SharePointSite_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SharePointSite_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> SharePointSite_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> SharePointSite_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("SharePointSite_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("SharePointSite_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SharePointSite_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("SharePointSite_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("SharePointSite_ProcessSessions", null, value);
 				this.OnPropertyChanged("SharePointSite_ProcessSessions");
 			}
 		}
@@ -970,18 +970,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_sharepointsite
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_sharepointsite")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_sharepointsite
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_sharepointsite
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_sharepointsite", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_sharepointsite", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_sharepointsite");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_sharepointsite", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_sharepointsite", null, value);
 				this.OnPropertyChanged("userentityinstancedata_sharepointsite");
 			}
 		}
@@ -991,18 +991,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_sharepointsites")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_sharepointsites
+		public Entities.BusinessUnit business_unit_sharepointsites
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_sharepointsites", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_sharepointsites", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_sharepointsites");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_sharepointsites", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_sharepointsites", null, value);
 				this.OnPropertyChanged("business_unit_sharepointsites");
 			}
 		}
@@ -1012,18 +1012,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sharepointsitebase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_sharepointsitebase_createdby
+		public Entities.SystemUser lk_sharepointsitebase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sharepointsitebase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_sharepointsitebase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_sharepointsitebase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sharepointsitebase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_sharepointsitebase_createdby", null, value);
 				this.OnPropertyChanged("lk_sharepointsitebase_createdby");
 			}
 		}
@@ -1033,18 +1033,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sharepointsitebase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_sharepointsitebase_createdonbehalfby
+		public Entities.SystemUser lk_sharepointsitebase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sharepointsitebase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_sharepointsitebase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_sharepointsitebase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sharepointsitebase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_sharepointsitebase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_sharepointsitebase_createdonbehalfby");
 			}
 		}
@@ -1054,18 +1054,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sharepointsitebase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_sharepointsitebase_modifiedby
+		public Entities.SystemUser lk_sharepointsitebase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sharepointsitebase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_sharepointsitebase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_sharepointsitebase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sharepointsitebase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_sharepointsitebase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_sharepointsitebase_modifiedby");
 			}
 		}
@@ -1075,18 +1075,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sharepointsitebase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_sharepointsitebase_modifiedonbehalfby
+		public Entities.SystemUser lk_sharepointsitebase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sharepointsitebase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_sharepointsitebase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_sharepointsitebase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_sharepointsitebase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_sharepointsitebase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_sharepointsitebase_modifiedonbehalfby");
 			}
 		}
@@ -1096,18 +1096,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentsite")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sharepointsite_parentsite_sharepointsite", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.SharePointSite Referencingsharepointsite_parentsite_sharepointsite
+		public Entities.SharePointSite Referencingsharepointsite_parentsite_sharepointsite
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SharePointSite>("sharepointsite_parentsite_sharepointsite", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.SharePointSite>("sharepointsite_parentsite_sharepointsite", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencingsharepointsite_parentsite_sharepointsite");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SharePointSite>("sharepointsite_parentsite_sharepointsite", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Entities.SharePointSite>("sharepointsite_parentsite_sharepointsite", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencingsharepointsite_parentsite_sharepointsite");
 			}
 		}
@@ -1117,18 +1117,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_sharepointsite")]
-		public DLaB.Xrm.Entities.Team team_sharepointsite
+		public Entities.Team team_sharepointsite
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_sharepointsite", null);
+				return this.GetRelatedEntity<Entities.Team>("team_sharepointsite", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_sharepointsite");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_sharepointsite", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_sharepointsite", null, value);
 				this.OnPropertyChanged("team_sharepointsite");
 			}
 		}
@@ -1138,12 +1138,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_SharePointSite")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_SharePointSite
+		public Entities.TransactionCurrency TransactionCurrency_SharePointSite
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_SharePointSite", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_SharePointSite", null);
 			}
 		}
 		
@@ -1152,18 +1152,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_sharepointsite")]
-		public DLaB.Xrm.Entities.SystemUser user_sharepointsite
+		public Entities.SystemUser user_sharepointsite
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_sharepointsite", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("user_sharepointsite", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("user_sharepointsite");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("user_sharepointsite", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("user_sharepointsite", null, value);
 				this.OnPropertyChanged("user_sharepointsite");
 			}
 		}

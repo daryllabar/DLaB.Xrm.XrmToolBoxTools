@@ -832,7 +832,7 @@ namespace DLaB.Xrm.Entities
 		/// Status of the dialog session.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.ProcessSessionState> StateCode
+		public System.Nullable<Entities.ProcessSessionState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -840,7 +840,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.ProcessSessionState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.ProcessSessionState), optionSet.Value)));
+					return ((Entities.ProcessSessionState)(System.Enum.ToObject(typeof(Entities.ProcessSessionState), optionSet.Value)));
 				}
 				else
 				{
@@ -907,18 +907,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N lk_processsession_nextlinkedsessionid
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_processsession_nextlinkedsessionid", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> Referencedlk_processsession_nextlinkedsessionid
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> Referencedlk_processsession_nextlinkedsessionid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("lk_processsession_nextlinkedsessionid", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.ProcessSession>("lk_processsession_nextlinkedsessionid", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedlk_processsession_nextlinkedsessionid");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("lk_processsession_nextlinkedsessionid", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("lk_processsession_nextlinkedsessionid", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedlk_processsession_nextlinkedsessionid");
 			}
 		}
@@ -927,18 +927,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N lk_processsession_originatingsessionid
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_processsession_originatingsessionid", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> Referencedlk_processsession_originatingsessionid
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> Referencedlk_processsession_originatingsessionid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("lk_processsession_originatingsessionid", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.ProcessSession>("lk_processsession_originatingsessionid", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedlk_processsession_originatingsessionid");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("lk_processsession_originatingsessionid", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("lk_processsession_originatingsessionid", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedlk_processsession_originatingsessionid");
 			}
 		}
@@ -947,18 +947,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N lk_processsession_previouslinkedsessionid
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_processsession_previouslinkedsessionid", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> Referencedlk_processsession_previouslinkedsessionid
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> Referencedlk_processsession_previouslinkedsessionid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("lk_processsession_previouslinkedsessionid", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.ProcessSession>("lk_processsession_previouslinkedsessionid", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedlk_processsession_previouslinkedsessionid");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("lk_processsession_previouslinkedsessionid", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("lk_processsession_previouslinkedsessionid", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedlk_processsession_previouslinkedsessionid");
 			}
 		}
@@ -967,18 +967,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N lk_workflowlog_processsession
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_workflowlog_processsession")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.WorkflowLog> lk_workflowlog_processsession
+		public System.Collections.Generic.IEnumerable<Entities.WorkflowLog> lk_workflowlog_processsession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.WorkflowLog>("lk_workflowlog_processsession", null);
+				return this.GetRelatedEntities<Entities.WorkflowLog>("lk_workflowlog_processsession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_workflowlog_processsession");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.WorkflowLog>("lk_workflowlog_processsession", null, value);
+				this.SetRelatedEntities<Entities.WorkflowLog>("lk_workflowlog_processsession", null, value);
 				this.OnPropertyChanged("lk_workflowlog_processsession");
 			}
 		}
@@ -987,18 +987,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N lk_workflowlog_processsession_childworkflow
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_workflowlog_processsession_childworkflow")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.WorkflowLog> lk_workflowlog_processsession_childworkflow
+		public System.Collections.Generic.IEnumerable<Entities.WorkflowLog> lk_workflowlog_processsession_childworkflow
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.WorkflowLog>("lk_workflowlog_processsession_childworkflow", null);
+				return this.GetRelatedEntities<Entities.WorkflowLog>("lk_workflowlog_processsession_childworkflow", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_workflowlog_processsession_childworkflow");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.WorkflowLog>("lk_workflowlog_processsession_childworkflow", null, value);
+				this.SetRelatedEntities<Entities.WorkflowLog>("lk_workflowlog_processsession_childworkflow", null, value);
 				this.OnPropertyChanged("lk_workflowlog_processsession_childworkflow");
 			}
 		}
@@ -1007,18 +1007,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processsession_connections1
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processsession_connections1")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> processsession_connections1
+		public System.Collections.Generic.IEnumerable<Entities.Connection> processsession_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("processsession_connections1", null);
+				return this.GetRelatedEntities<Entities.Connection>("processsession_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processsession_connections1");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("processsession_connections1", null, value);
+				this.SetRelatedEntities<Entities.Connection>("processsession_connections1", null, value);
 				this.OnPropertyChanged("processsession_connections1");
 			}
 		}
@@ -1027,18 +1027,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processsession_connections2
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processsession_connections2")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> processsession_connections2
+		public System.Collections.Generic.IEnumerable<Entities.Connection> processsession_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("processsession_connections2", null);
+				return this.GetRelatedEntities<Entities.Connection>("processsession_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processsession_connections2");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("processsession_connections2", null, value);
+				this.SetRelatedEntities<Entities.Connection>("processsession_connections2", null, value);
 				this.OnPropertyChanged("processsession_connections2");
 			}
 		}
@@ -1047,18 +1047,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N processsession_PostFollows
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processsession_PostFollows")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PostFollow> processsession_PostFollows
+		public System.Collections.Generic.IEnumerable<Entities.PostFollow> processsession_PostFollows
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PostFollow>("processsession_PostFollows", null);
+				return this.GetRelatedEntities<Entities.PostFollow>("processsession_PostFollows", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processsession_PostFollows");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PostFollow>("processsession_PostFollows", null, value);
+				this.SetRelatedEntities<Entities.PostFollow>("processsession_PostFollows", null, value);
 				this.OnPropertyChanged("processsession_PostFollows");
 			}
 		}
@@ -1067,18 +1067,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_processsession
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_processsession")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_processsession
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_processsession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_processsession", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_processsession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_processsession");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_processsession", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_processsession", null, value);
 				this.OnPropertyChanged("userentityinstancedata_processsession");
 			}
 		}
@@ -1088,18 +1088,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Account_ProcessSessions")]
-		public DLaB.Xrm.Entities.Account Account_ProcessSessions
+		public Entities.Account Account_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Account>("Account_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Account_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Account>("Account_ProcessSessions", null, value);
 				this.OnPropertyChanged("Account_ProcessSessions");
 			}
 		}
@@ -1109,18 +1109,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Annotation_ProcessSessions")]
-		public DLaB.Xrm.Entities.Annotation Annotation_ProcessSessions
+		public Entities.Annotation Annotation_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Annotation>("Annotation_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Annotation>("Annotation_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Annotation_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Annotation>("Annotation_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Annotation>("Annotation_ProcessSessions", null, value);
 				this.OnPropertyChanged("Annotation_ProcessSessions");
 			}
 		}
@@ -1130,18 +1130,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Appointment_ProcessSessions")]
-		public DLaB.Xrm.Entities.Appointment Appointment_ProcessSessions
+		public Entities.Appointment Appointment_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Appointment>("Appointment_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Appointment>("Appointment_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Appointment_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Appointment>("Appointment_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Appointment>("Appointment_ProcessSessions", null, value);
 				this.OnPropertyChanged("Appointment_ProcessSessions");
 			}
 		}
@@ -1151,18 +1151,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BusinessUnit_ProcessSessions")]
-		public DLaB.Xrm.Entities.BusinessUnit BusinessUnit_ProcessSessions
+		public Entities.BusinessUnit BusinessUnit_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("BusinessUnit_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("BusinessUnit_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BusinessUnit_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("BusinessUnit_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("BusinessUnit_ProcessSessions", null, value);
 				this.OnPropertyChanged("BusinessUnit_ProcessSessions");
 			}
 		}
@@ -1172,18 +1172,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BusinessUnitNewsArticle_ProcessSessions")]
-		public DLaB.Xrm.Entities.BusinessUnitNewsArticle BusinessUnitNewsArticle_ProcessSessions
+		public Entities.BusinessUnitNewsArticle BusinessUnitNewsArticle_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnitNewsArticle>("BusinessUnitNewsArticle_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.BusinessUnitNewsArticle>("BusinessUnitNewsArticle_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BusinessUnitNewsArticle_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnitNewsArticle>("BusinessUnitNewsArticle_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnitNewsArticle>("BusinessUnitNewsArticle_ProcessSessions", null, value);
 				this.OnPropertyChanged("BusinessUnitNewsArticle_ProcessSessions");
 			}
 		}
@@ -1193,18 +1193,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Campaign_ProcessSessions")]
-		public DLaB.Xrm.Entities.Campaign Campaign_ProcessSessions
+		public Entities.Campaign Campaign_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Campaign>("Campaign_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Campaign>("Campaign_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Campaign_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Campaign>("Campaign_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Campaign>("Campaign_ProcessSessions", null, value);
 				this.OnPropertyChanged("Campaign_ProcessSessions");
 			}
 		}
@@ -1214,18 +1214,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignActivity_ProcessSessions")]
-		public DLaB.Xrm.Entities.CampaignActivity CampaignActivity_ProcessSessions
+		public Entities.CampaignActivity CampaignActivity_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("CampaignActivity_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.CampaignActivity>("CampaignActivity_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CampaignActivity_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("CampaignActivity_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.CampaignActivity>("CampaignActivity_ProcessSessions", null, value);
 				this.OnPropertyChanged("CampaignActivity_ProcessSessions");
 			}
 		}
@@ -1235,18 +1235,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignResponse_ProcessSessions")]
-		public DLaB.Xrm.Entities.CampaignResponse CampaignResponse_ProcessSessions
+		public Entities.CampaignResponse CampaignResponse_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignResponse>("CampaignResponse_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.CampaignResponse>("CampaignResponse_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CampaignResponse_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CampaignResponse>("CampaignResponse_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.CampaignResponse>("CampaignResponse_ProcessSessions", null, value);
 				this.OnPropertyChanged("CampaignResponse_ProcessSessions");
 			}
 		}
@@ -1256,18 +1256,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("channelaccessprofile_ProcessSession")]
-		public DLaB.Xrm.Entities.ChannelAccessProfile channelaccessprofile_ProcessSession
+		public Entities.ChannelAccessProfile channelaccessprofile_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfile>("channelaccessprofile_ProcessSession", null);
+				return this.GetRelatedEntity<Entities.ChannelAccessProfile>("channelaccessprofile_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("channelaccessprofile_ProcessSession");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfile>("channelaccessprofile_ProcessSession", null, value);
+				this.SetRelatedEntity<Entities.ChannelAccessProfile>("channelaccessprofile_ProcessSession", null, value);
 				this.OnPropertyChanged("channelaccessprofile_ProcessSession");
 			}
 		}
@@ -1277,18 +1277,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Competitor_ProcessSessions")]
-		public DLaB.Xrm.Entities.Competitor Competitor_ProcessSessions
+		public Entities.Competitor Competitor_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Competitor>("Competitor_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Competitor>("Competitor_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Competitor_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Competitor>("Competitor_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Competitor>("Competitor_ProcessSessions", null, value);
 				this.OnPropertyChanged("Competitor_ProcessSessions");
 			}
 		}
@@ -1298,18 +1298,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Connection_ProcessSessions")]
-		public DLaB.Xrm.Entities.Connection Connection_ProcessSessions
+		public Entities.Connection Connection_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Connection>("Connection_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Connection>("Connection_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Connection_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Connection>("Connection_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Connection>("Connection_ProcessSessions", null, value);
 				this.OnPropertyChanged("Connection_ProcessSessions");
 			}
 		}
@@ -1319,18 +1319,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ConnectionRole_ProcessSessions")]
-		public DLaB.Xrm.Entities.ConnectionRole ConnectionRole_ProcessSessions
+		public Entities.ConnectionRole ConnectionRole_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ConnectionRole>("ConnectionRole_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.ConnectionRole>("ConnectionRole_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ConnectionRole_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ConnectionRole>("ConnectionRole_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.ConnectionRole>("ConnectionRole_ProcessSessions", null, value);
 				this.OnPropertyChanged("ConnectionRole_ProcessSessions");
 			}
 		}
@@ -1340,18 +1340,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ConstraintBasedGroup_ProcessSessions")]
-		public DLaB.Xrm.Entities.ConstraintBasedGroup ConstraintBasedGroup_ProcessSessions
+		public Entities.ConstraintBasedGroup ConstraintBasedGroup_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ConstraintBasedGroup>("ConstraintBasedGroup_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.ConstraintBasedGroup>("ConstraintBasedGroup_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ConstraintBasedGroup_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ConstraintBasedGroup>("ConstraintBasedGroup_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.ConstraintBasedGroup>("ConstraintBasedGroup_ProcessSessions", null, value);
 				this.OnPropertyChanged("ConstraintBasedGroup_ProcessSessions");
 			}
 		}
@@ -1361,18 +1361,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contact_ProcessSessions")]
-		public DLaB.Xrm.Entities.Contact Contact_ProcessSessions
+		public Entities.Contact Contact_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Contact>("Contact_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Contact_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Contact>("Contact_ProcessSessions", null, value);
 				this.OnPropertyChanged("Contact_ProcessSessions");
 			}
 		}
@@ -1382,18 +1382,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contract_ProcessSessions")]
-		public DLaB.Xrm.Entities.Contract Contract_ProcessSessions
+		public Entities.Contract Contract_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contract>("Contract_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Contract>("Contract_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Contract_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contract>("Contract_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Contract>("Contract_ProcessSessions", null, value);
 				this.OnPropertyChanged("Contract_ProcessSessions");
 			}
 		}
@@ -1403,18 +1403,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ContractDetail_ProcessSessions")]
-		public DLaB.Xrm.Entities.ContractDetail ContractDetail_ProcessSessions
+		public Entities.ContractDetail ContractDetail_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ContractDetail>("ContractDetail_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.ContractDetail>("ContractDetail_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ContractDetail_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ContractDetail>("ContractDetail_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.ContractDetail>("ContractDetail_ProcessSessions", null, value);
 				this.OnPropertyChanged("ContractDetail_ProcessSessions");
 			}
 		}
@@ -1424,18 +1424,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ContractTemplate_ProcessSessions")]
-		public DLaB.Xrm.Entities.ContractTemplate ContractTemplate_ProcessSessions
+		public Entities.ContractTemplate ContractTemplate_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ContractTemplate>("ContractTemplate_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.ContractTemplate>("ContractTemplate_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ContractTemplate_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ContractTemplate>("ContractTemplate_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.ContractTemplate>("ContractTemplate_ProcessSessions", null, value);
 				this.OnPropertyChanged("ContractTemplate_ProcessSessions");
 			}
 		}
@@ -1445,18 +1445,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ConvertRule_ProcessSessions")]
-		public DLaB.Xrm.Entities.ConvertRule ConvertRule_ProcessSessions
+		public Entities.ConvertRule ConvertRule_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ConvertRule>("ConvertRule_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.ConvertRule>("ConvertRule_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ConvertRule_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ConvertRule>("ConvertRule_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.ConvertRule>("ConvertRule_ProcessSessions", null, value);
 				this.OnPropertyChanged("ConvertRule_ProcessSessions");
 			}
 		}
@@ -1466,18 +1466,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CustomerAddress_ProcessSessions")]
-		public DLaB.Xrm.Entities.CustomerAddress CustomerAddress_ProcessSessions
+		public Entities.CustomerAddress CustomerAddress_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CustomerAddress>("CustomerAddress_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.CustomerAddress>("CustomerAddress_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CustomerAddress_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CustomerAddress>("CustomerAddress_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.CustomerAddress>("CustomerAddress_ProcessSessions", null, value);
 				this.OnPropertyChanged("CustomerAddress_ProcessSessions");
 			}
 		}
@@ -1487,18 +1487,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CustomerOpportunityRole_ProcessSessions")]
-		public DLaB.Xrm.Entities.CustomerOpportunityRole CustomerOpportunityRole_ProcessSessions
+		public Entities.CustomerOpportunityRole CustomerOpportunityRole_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CustomerOpportunityRole>("CustomerOpportunityRole_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.CustomerOpportunityRole>("CustomerOpportunityRole_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CustomerOpportunityRole_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CustomerOpportunityRole>("CustomerOpportunityRole_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.CustomerOpportunityRole>("CustomerOpportunityRole_ProcessSessions", null, value);
 				this.OnPropertyChanged("CustomerOpportunityRole_ProcessSessions");
 			}
 		}
@@ -1508,18 +1508,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CustomerRelationship_ProcessSessions")]
-		public DLaB.Xrm.Entities.CustomerRelationship CustomerRelationship_ProcessSessions
+		public Entities.CustomerRelationship CustomerRelationship_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CustomerRelationship>("CustomerRelationship_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.CustomerRelationship>("CustomerRelationship_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CustomerRelationship_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CustomerRelationship>("CustomerRelationship_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.CustomerRelationship>("CustomerRelationship_ProcessSessions", null, value);
 				this.OnPropertyChanged("CustomerRelationship_ProcessSessions");
 			}
 		}
@@ -1529,18 +1529,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Discount_ProcessSessions")]
-		public DLaB.Xrm.Entities.Discount Discount_ProcessSessions
+		public Entities.Discount Discount_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Discount>("Discount_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Discount>("Discount_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Discount_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Discount>("Discount_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Discount>("Discount_ProcessSessions", null, value);
 				this.OnPropertyChanged("Discount_ProcessSessions");
 			}
 		}
@@ -1550,18 +1550,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("DiscountType_ProcessSessions")]
-		public DLaB.Xrm.Entities.DiscountType DiscountType_ProcessSessions
+		public Entities.DiscountType DiscountType_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.DiscountType>("DiscountType_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.DiscountType>("DiscountType_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("DiscountType_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.DiscountType>("DiscountType_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.DiscountType>("DiscountType_ProcessSessions", null, value);
 				this.OnPropertyChanged("DiscountType_ProcessSessions");
 			}
 		}
@@ -1571,18 +1571,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Email_ProcessSessions")]
-		public DLaB.Xrm.Entities.Email Email_ProcessSessions
+		public Entities.Email Email_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Email>("Email_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Email>("Email_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Email_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Email>("Email_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Email>("Email_ProcessSessions", null, value);
 				this.OnPropertyChanged("Email_ProcessSessions");
 			}
 		}
@@ -1592,18 +1592,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_ProcessSession")]
-		public DLaB.Xrm.Entities.Entitlement entitlement_ProcessSession
+		public Entities.Entitlement entitlement_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_ProcessSession", null);
+				return this.GetRelatedEntity<Entities.Entitlement>("entitlement_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_ProcessSession");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_ProcessSession", null, value);
+				this.SetRelatedEntity<Entities.Entitlement>("entitlement_ProcessSession", null, value);
 				this.OnPropertyChanged("entitlement_ProcessSession");
 			}
 		}
@@ -1613,18 +1613,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlementchannel_ProcessSession")]
-		public DLaB.Xrm.Entities.EntitlementChannel entitlementchannel_ProcessSession
+		public Entities.EntitlementChannel entitlementchannel_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EntitlementChannel>("entitlementchannel_ProcessSession", null);
+				return this.GetRelatedEntity<Entities.EntitlementChannel>("entitlementchannel_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlementchannel_ProcessSession");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.EntitlementChannel>("entitlementchannel_ProcessSession", null, value);
+				this.SetRelatedEntity<Entities.EntitlementChannel>("entitlementchannel_ProcessSession", null, value);
 				this.OnPropertyChanged("entitlementchannel_ProcessSession");
 			}
 		}
@@ -1634,18 +1634,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlementtemplate_ProcessSession")]
-		public DLaB.Xrm.Entities.EntitlementTemplate entitlementtemplate_ProcessSession
+		public Entities.EntitlementTemplate entitlementtemplate_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplate_ProcessSession", null);
+				return this.GetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplate_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlementtemplate_ProcessSession");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplate_ProcessSession", null, value);
+				this.SetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplate_ProcessSession", null, value);
 				this.OnPropertyChanged("entitlementtemplate_ProcessSession");
 			}
 		}
@@ -1655,18 +1655,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Equipment_ProcessSessions")]
-		public DLaB.Xrm.Entities.Equipment Equipment_ProcessSessions
+		public Entities.Equipment Equipment_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Equipment>("Equipment_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Equipment>("Equipment_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Equipment_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Equipment>("Equipment_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Equipment>("Equipment_ProcessSessions", null, value);
 				this.OnPropertyChanged("Equipment_ProcessSessions");
 			}
 		}
@@ -1676,18 +1676,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("externalparty_ProcessSession")]
-		public DLaB.Xrm.Entities.ExternalParty externalparty_ProcessSession
+		public Entities.ExternalParty externalparty_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ExternalParty>("externalparty_ProcessSession", null);
+				return this.GetRelatedEntity<Entities.ExternalParty>("externalparty_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("externalparty_ProcessSession");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ExternalParty>("externalparty_ProcessSession", null, value);
+				this.SetRelatedEntity<Entities.ExternalParty>("externalparty_ProcessSession", null, value);
 				this.OnPropertyChanged("externalparty_ProcessSession");
 			}
 		}
@@ -1697,18 +1697,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("externalpartyitem_ProcessSession")]
-		public DLaB.Xrm.Entities.ExternalPartyItem externalpartyitem_ProcessSession
+		public Entities.ExternalPartyItem externalpartyitem_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ExternalPartyItem>("externalpartyitem_ProcessSession", null);
+				return this.GetRelatedEntity<Entities.ExternalPartyItem>("externalpartyitem_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("externalpartyitem_ProcessSession");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ExternalPartyItem>("externalpartyitem_ProcessSession", null, value);
+				this.SetRelatedEntity<Entities.ExternalPartyItem>("externalpartyitem_ProcessSession", null, value);
 				this.OnPropertyChanged("externalpartyitem_ProcessSession");
 			}
 		}
@@ -1718,18 +1718,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Fax_ProcessSessions")]
-		public DLaB.Xrm.Entities.Fax Fax_ProcessSessions
+		public Entities.Fax Fax_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Fax>("Fax_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Fax>("Fax_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Fax_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Fax>("Fax_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Fax>("Fax_ProcessSessions", null, value);
 				this.OnPropertyChanged("Fax_ProcessSessions");
 			}
 		}
@@ -1739,18 +1739,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Goal_ProcessSessions")]
-		public DLaB.Xrm.Entities.Goal Goal_ProcessSessions
+		public Entities.Goal Goal_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Goal>("Goal_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Goal>("Goal_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Goal_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Goal>("Goal_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Goal>("Goal_ProcessSessions", null, value);
 				this.OnPropertyChanged("Goal_ProcessSessions");
 			}
 		}
@@ -1760,18 +1760,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("goalrollupquery_ProcessSessions")]
-		public DLaB.Xrm.Entities.GoalRollupQuery goalrollupquery_ProcessSessions
+		public Entities.GoalRollupQuery goalrollupquery_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.GoalRollupQuery>("goalrollupquery_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.GoalRollupQuery>("goalrollupquery_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("goalrollupquery_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.GoalRollupQuery>("goalrollupquery_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.GoalRollupQuery>("goalrollupquery_ProcessSessions", null, value);
 				this.OnPropertyChanged("goalrollupquery_ProcessSessions");
 			}
 		}
@@ -1781,18 +1781,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Incident_ProcessSessions")]
-		public DLaB.Xrm.Entities.Incident Incident_ProcessSessions
+		public Entities.Incident Incident_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Incident>("Incident_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Incident_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Incident>("Incident_ProcessSessions", null, value);
 				this.OnPropertyChanged("Incident_ProcessSessions");
 			}
 		}
@@ -1802,18 +1802,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Invoice_ProcessSessions")]
-		public DLaB.Xrm.Entities.Invoice Invoice_ProcessSessions
+		public Entities.Invoice Invoice_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Invoice>("Invoice_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Invoice>("Invoice_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Invoice_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Invoice>("Invoice_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Invoice>("Invoice_ProcessSessions", null, value);
 				this.OnPropertyChanged("Invoice_ProcessSessions");
 			}
 		}
@@ -1823,18 +1823,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("InvoiceDetail_ProcessSessions")]
-		public DLaB.Xrm.Entities.InvoiceDetail InvoiceDetail_ProcessSessions
+		public Entities.InvoiceDetail InvoiceDetail_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.InvoiceDetail>("InvoiceDetail_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.InvoiceDetail>("InvoiceDetail_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("InvoiceDetail_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.InvoiceDetail>("InvoiceDetail_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.InvoiceDetail>("InvoiceDetail_ProcessSessions", null, value);
 				this.OnPropertyChanged("InvoiceDetail_ProcessSessions");
 			}
 		}
@@ -1844,18 +1844,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KbArticle_ProcessSessions")]
-		public DLaB.Xrm.Entities.KbArticle KbArticle_ProcessSessions
+		public Entities.KbArticle KbArticle_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KbArticle>("KbArticle_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.KbArticle>("KbArticle_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KbArticle_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KbArticle>("KbArticle_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.KbArticle>("KbArticle_ProcessSessions", null, value);
 				this.OnPropertyChanged("KbArticle_ProcessSessions");
 			}
 		}
@@ -1865,18 +1865,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KbArticleComment_ProcessSessions")]
-		public DLaB.Xrm.Entities.KbArticleComment KbArticleComment_ProcessSessions
+		public Entities.KbArticleComment KbArticleComment_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KbArticleComment>("KbArticleComment_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.KbArticleComment>("KbArticleComment_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KbArticleComment_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KbArticleComment>("KbArticleComment_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.KbArticleComment>("KbArticleComment_ProcessSessions", null, value);
 				this.OnPropertyChanged("KbArticleComment_ProcessSessions");
 			}
 		}
@@ -1886,18 +1886,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KbArticleTemplate_ProcessSessions")]
-		public DLaB.Xrm.Entities.KbArticleTemplate KbArticleTemplate_ProcessSessions
+		public Entities.KbArticleTemplate KbArticleTemplate_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KbArticleTemplate>("KbArticleTemplate_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.KbArticleTemplate>("KbArticleTemplate_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KbArticleTemplate_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KbArticleTemplate>("KbArticleTemplate_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.KbArticleTemplate>("KbArticleTemplate_ProcessSessions", null, value);
 				this.OnPropertyChanged("KbArticleTemplate_ProcessSessions");
 			}
 		}
@@ -1907,18 +1907,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_ProcessSession")]
-		public DLaB.Xrm.Entities.KnowledgeArticle knowledgearticle_ProcessSession
+		public Entities.KnowledgeArticle knowledgearticle_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_ProcessSession", null);
+				return this.GetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("knowledgearticle_ProcessSession");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_ProcessSession", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_ProcessSession", null, value);
 				this.OnPropertyChanged("knowledgearticle_ProcessSession");
 			}
 		}
@@ -1928,18 +1928,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_ProcessSession")]
-		public DLaB.Xrm.Entities.KnowledgeBaseRecord KnowledgeBaseRecord_ProcessSession
+		public Entities.KnowledgeBaseRecord KnowledgeBaseRecord_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_ProcessSession", null);
+				return this.GetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_ProcessSession");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_ProcessSession", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_ProcessSession", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_ProcessSession");
 			}
 		}
@@ -1949,18 +1949,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_ProcessSessions")]
-		public DLaB.Xrm.Entities.Lead Lead_ProcessSessions
+		public Entities.Lead Lead_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Lead>("Lead_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Lead>("Lead_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Lead>("Lead_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Lead>("Lead_ProcessSessions", null, value);
 				this.OnPropertyChanged("Lead_ProcessSessions");
 			}
 		}
@@ -1970,18 +1970,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Letter_ProcessSessions")]
-		public DLaB.Xrm.Entities.Letter Letter_ProcessSessions
+		public Entities.Letter Letter_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Letter>("Letter_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Letter>("Letter_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Letter_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Letter>("Letter_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Letter>("Letter_ProcessSessions", null, value);
 				this.OnPropertyChanged("Letter_ProcessSessions");
 			}
 		}
@@ -1991,18 +1991,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("List_ProcessSessions")]
-		public DLaB.Xrm.Entities.List List_ProcessSessions
+		public Entities.List List_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.List>("List_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.List>("List_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("List_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.List>("List_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.List>("List_ProcessSessions", null, value);
 				this.OnPropertyChanged("List_ProcessSessions");
 			}
 		}
@@ -2012,12 +2012,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("canceledby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_processsession_canceledby")]
-		public DLaB.Xrm.Entities.SystemUser lk_processsession_canceledby
+		public Entities.SystemUser lk_processsession_canceledby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_processsession_canceledby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_processsession_canceledby", null);
 			}
 		}
 		
@@ -2026,12 +2026,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("completedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_processsession_completedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_processsession_completedby
+		public Entities.SystemUser lk_processsession_completedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_processsession_completedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_processsession_completedby", null);
 			}
 		}
 		
@@ -2040,18 +2040,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_processsession_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_processsession_createdby
+		public Entities.SystemUser lk_processsession_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_processsession_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_processsession_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_processsession_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_processsession_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_processsession_createdby", null, value);
 				this.OnPropertyChanged("lk_processsession_createdby");
 			}
 		}
@@ -2061,18 +2061,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("executedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_processsession_executedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_processsession_executedby
+		public Entities.SystemUser lk_processsession_executedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_processsession_executedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_processsession_executedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_processsession_executedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_processsession_executedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_processsession_executedby", null, value);
 				this.OnPropertyChanged("lk_processsession_executedby");
 			}
 		}
@@ -2082,18 +2082,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_processsession_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_processsession_modifiedby
+		public Entities.SystemUser lk_processsession_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_processsession_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_processsession_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_processsession_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_processsession_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_processsession_modifiedby", null, value);
 				this.OnPropertyChanged("lk_processsession_modifiedby");
 			}
 		}
@@ -2103,18 +2103,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("nextlinkedsessionid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_processsession_nextlinkedsessionid", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.ProcessSession Referencinglk_processsession_nextlinkedsessionid
+		public Entities.ProcessSession Referencinglk_processsession_nextlinkedsessionid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProcessSession>("lk_processsession_nextlinkedsessionid", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.ProcessSession>("lk_processsession_nextlinkedsessionid", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencinglk_processsession_nextlinkedsessionid");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProcessSession>("lk_processsession_nextlinkedsessionid", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Entities.ProcessSession>("lk_processsession_nextlinkedsessionid", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencinglk_processsession_nextlinkedsessionid");
 			}
 		}
@@ -2124,18 +2124,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("originatingsessionid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_processsession_originatingsessionid", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.ProcessSession Referencinglk_processsession_originatingsessionid
+		public Entities.ProcessSession Referencinglk_processsession_originatingsessionid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProcessSession>("lk_processsession_originatingsessionid", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.ProcessSession>("lk_processsession_originatingsessionid", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencinglk_processsession_originatingsessionid");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProcessSession>("lk_processsession_originatingsessionid", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Entities.ProcessSession>("lk_processsession_originatingsessionid", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencinglk_processsession_originatingsessionid");
 			}
 		}
@@ -2145,18 +2145,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("previouslinkedsessionid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_processsession_previouslinkedsessionid", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.ProcessSession Referencinglk_processsession_previouslinkedsessionid
+		public Entities.ProcessSession Referencinglk_processsession_previouslinkedsessionid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProcessSession>("lk_processsession_previouslinkedsessionid", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.ProcessSession>("lk_processsession_previouslinkedsessionid", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencinglk_processsession_previouslinkedsessionid");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProcessSession>("lk_processsession_previouslinkedsessionid", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Entities.ProcessSession>("lk_processsession_previouslinkedsessionid", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencinglk_processsession_previouslinkedsessionid");
 			}
 		}
@@ -2166,18 +2166,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_processsession_processid")]
-		public DLaB.Xrm.Entities.Workflow lk_processsession_processid
+		public Entities.Workflow lk_processsession_processid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Workflow>("lk_processsession_processid", null);
+				return this.GetRelatedEntity<Entities.Workflow>("lk_processsession_processid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_processsession_processid");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Workflow>("lk_processsession_processid", null, value);
+				this.SetRelatedEntity<Entities.Workflow>("lk_processsession_processid", null, value);
 				this.OnPropertyChanged("lk_processsession_processid");
 			}
 		}
@@ -2187,12 +2187,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("startedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_processsession_startedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_processsession_startedby
+		public Entities.SystemUser lk_processsession_startedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_processsession_startedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_processsession_startedby", null);
 			}
 		}
 		
@@ -2201,18 +2201,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_processsessionbase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_processsessionbase_createdonbehalfby
+		public Entities.SystemUser lk_processsessionbase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_processsessionbase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_processsessionbase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_processsessionbase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_processsessionbase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_processsessionbase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_processsessionbase_createdonbehalfby");
 			}
 		}
@@ -2222,18 +2222,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_processsessionbase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_processsessionbase_modifiedonbehalfby
+		public Entities.SystemUser lk_processsessionbase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_processsessionbase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_processsessionbase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_processsessionbase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_processsessionbase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_processsessionbase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_processsessionbase_modifiedonbehalfby");
 			}
 		}
@@ -2243,18 +2243,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("mailbox_processsessions")]
-		public DLaB.Xrm.Entities.Mailbox mailbox_processsessions
+		public Entities.Mailbox mailbox_processsessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Mailbox>("mailbox_processsessions", null);
+				return this.GetRelatedEntity<Entities.Mailbox>("mailbox_processsessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("mailbox_processsessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Mailbox>("mailbox_processsessions", null, value);
+				this.SetRelatedEntity<Entities.Mailbox>("mailbox_processsessions", null, value);
 				this.OnPropertyChanged("mailbox_processsessions");
 			}
 		}
@@ -2264,18 +2264,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("MailMergeTemplate_ProcessSessions")]
-		public DLaB.Xrm.Entities.MailMergeTemplate MailMergeTemplate_ProcessSessions
+		public Entities.MailMergeTemplate MailMergeTemplate_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.MailMergeTemplate>("MailMergeTemplate_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.MailMergeTemplate>("MailMergeTemplate_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("MailMergeTemplate_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.MailMergeTemplate>("MailMergeTemplate_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.MailMergeTemplate>("MailMergeTemplate_ProcessSessions", null, value);
 				this.OnPropertyChanged("MailMergeTemplate_ProcessSessions");
 			}
 		}
@@ -2285,18 +2285,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("metric_ProcessSessions")]
-		public DLaB.Xrm.Entities.Metric metric_ProcessSessions
+		public Entities.Metric metric_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Metric>("metric_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Metric>("metric_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("metric_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Metric>("metric_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Metric>("metric_ProcessSessions", null, value);
 				this.OnPropertyChanged("metric_ProcessSessions");
 			}
 		}
@@ -2306,18 +2306,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_ProcessSession")]
-		public DLaB.Xrm.Entities.msdyn_PostAlbum msdyn_postalbum_ProcessSession
+		public Entities.msdyn_PostAlbum msdyn_postalbum_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_ProcessSession", null);
+				return this.GetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_ProcessSession");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_ProcessSession", null, value);
+				this.SetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_ProcessSession", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_ProcessSession");
 			}
 		}
@@ -2327,18 +2327,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postconfig_ProcessSession")]
-		public DLaB.Xrm.Entities.msdyn_PostConfig msdyn_postconfig_ProcessSession
+		public Entities.msdyn_PostConfig msdyn_postconfig_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostConfig>("msdyn_postconfig_ProcessSession", null);
+				return this.GetRelatedEntity<Entities.msdyn_PostConfig>("msdyn_postconfig_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postconfig_ProcessSession");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostConfig>("msdyn_postconfig_ProcessSession", null, value);
+				this.SetRelatedEntity<Entities.msdyn_PostConfig>("msdyn_postconfig_ProcessSession", null, value);
 				this.OnPropertyChanged("msdyn_postconfig_ProcessSession");
 			}
 		}
@@ -2348,18 +2348,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postruleconfig_ProcessSession")]
-		public DLaB.Xrm.Entities.msdyn_PostRuleConfig msdyn_postruleconfig_ProcessSession
+		public Entities.msdyn_PostRuleConfig msdyn_postruleconfig_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostRuleConfig>("msdyn_postruleconfig_ProcessSession", null);
+				return this.GetRelatedEntity<Entities.msdyn_PostRuleConfig>("msdyn_postruleconfig_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postruleconfig_ProcessSession");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostRuleConfig>("msdyn_postruleconfig_ProcessSession", null, value);
+				this.SetRelatedEntity<Entities.msdyn_PostRuleConfig>("msdyn_postruleconfig_ProcessSession", null, value);
 				this.OnPropertyChanged("msdyn_postruleconfig_ProcessSession");
 			}
 		}
@@ -2369,18 +2369,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_wallsavedquery_ProcessSession")]
-		public DLaB.Xrm.Entities.msdyn_wallsavedquery msdyn_wallsavedquery_ProcessSession
+		public Entities.msdyn_wallsavedquery msdyn_wallsavedquery_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_wallsavedquery>("msdyn_wallsavedquery_ProcessSession", null);
+				return this.GetRelatedEntity<Entities.msdyn_wallsavedquery>("msdyn_wallsavedquery_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_wallsavedquery_ProcessSession");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_wallsavedquery>("msdyn_wallsavedquery_ProcessSession", null, value);
+				this.SetRelatedEntity<Entities.msdyn_wallsavedquery>("msdyn_wallsavedquery_ProcessSession", null, value);
 				this.OnPropertyChanged("msdyn_wallsavedquery_ProcessSession");
 			}
 		}
@@ -2390,18 +2390,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_wallsavedqueryusersettings_ProcessSession")]
-		public DLaB.Xrm.Entities.msdyn_wallsavedqueryusersettings msdyn_wallsavedqueryusersettings_ProcessSession
+		public Entities.msdyn_wallsavedqueryusersettings msdyn_wallsavedqueryusersettings_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_wallsavedqueryusersettings>("msdyn_wallsavedqueryusersettings_ProcessSession", null);
+				return this.GetRelatedEntity<Entities.msdyn_wallsavedqueryusersettings>("msdyn_wallsavedqueryusersettings_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_wallsavedqueryusersettings_ProcessSession");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_wallsavedqueryusersettings>("msdyn_wallsavedqueryusersettings_ProcessSession", null, value);
+				this.SetRelatedEntity<Entities.msdyn_wallsavedqueryusersettings>("msdyn_wallsavedqueryusersettings_ProcessSession", null, value);
 				this.OnPropertyChanged("msdyn_wallsavedqueryusersettings_ProcessSession");
 			}
 		}
@@ -2411,18 +2411,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_ProcessSessions")]
-		public DLaB.Xrm.Entities.Opportunity Opportunity_ProcessSessions
+		public Entities.Opportunity Opportunity_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Opportunity>("Opportunity_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Opportunity>("Opportunity_ProcessSessions", null, value);
 				this.OnPropertyChanged("Opportunity_ProcessSessions");
 			}
 		}
@@ -2432,18 +2432,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("OpportunityProduct_ProcessSessions")]
-		public DLaB.Xrm.Entities.OpportunityProduct OpportunityProduct_ProcessSessions
+		public Entities.OpportunityProduct OpportunityProduct_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.OpportunityProduct>("OpportunityProduct_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.OpportunityProduct>("OpportunityProduct_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("OpportunityProduct_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.OpportunityProduct>("OpportunityProduct_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.OpportunityProduct>("OpportunityProduct_ProcessSessions", null, value);
 				this.OnPropertyChanged("OpportunityProduct_ProcessSessions");
 			}
 		}
@@ -2453,18 +2453,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Owning_businessunit_processsessions")]
-		public DLaB.Xrm.Entities.BusinessUnit Owning_businessunit_processsessions
+		public Entities.BusinessUnit Owning_businessunit_processsessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("Owning_businessunit_processsessions", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("Owning_businessunit_processsessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Owning_businessunit_processsessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("Owning_businessunit_processsessions", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("Owning_businessunit_processsessions", null, value);
 				this.OnPropertyChanged("Owning_businessunit_processsessions");
 			}
 		}
@@ -2474,18 +2474,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("PhoneCall_ProcessSessions")]
-		public DLaB.Xrm.Entities.PhoneCall PhoneCall_ProcessSessions
+		public Entities.PhoneCall PhoneCall_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.PhoneCall>("PhoneCall_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.PhoneCall>("PhoneCall_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("PhoneCall_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.PhoneCall>("PhoneCall_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.PhoneCall>("PhoneCall_ProcessSessions", null, value);
 				this.OnPropertyChanged("PhoneCall_ProcessSessions");
 			}
 		}
@@ -2495,18 +2495,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("position_ProcessSession")]
-		public DLaB.Xrm.Entities.Position position_ProcessSession
+		public Entities.Position position_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Position>("position_ProcessSession", null);
+				return this.GetRelatedEntity<Entities.Position>("position_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("position_ProcessSession");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Position>("position_ProcessSession", null, value);
+				this.SetRelatedEntity<Entities.Position>("position_ProcessSession", null, value);
 				this.OnPropertyChanged("position_ProcessSession");
 			}
 		}
@@ -2516,18 +2516,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("PriceLevel_ProcessSessions")]
-		public DLaB.Xrm.Entities.PriceLevel PriceLevel_ProcessSessions
+		public Entities.PriceLevel PriceLevel_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.PriceLevel>("PriceLevel_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.PriceLevel>("PriceLevel_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("PriceLevel_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.PriceLevel>("PriceLevel_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.PriceLevel>("PriceLevel_ProcessSessions", null, value);
 				this.OnPropertyChanged("PriceLevel_ProcessSessions");
 			}
 		}
@@ -2537,18 +2537,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Product_ProcessSessions")]
-		public DLaB.Xrm.Entities.Product Product_ProcessSessions
+		public Entities.Product Product_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Product>("Product_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Product>("Product_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Product_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Product>("Product_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Product>("Product_ProcessSessions", null, value);
 				this.OnPropertyChanged("Product_ProcessSessions");
 			}
 		}
@@ -2558,18 +2558,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductAssociation_ProcessSessions")]
-		public DLaB.Xrm.Entities.ProductAssociation ProductAssociation_ProcessSessions
+		public Entities.ProductAssociation ProductAssociation_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProductAssociation>("ProductAssociation_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.ProductAssociation>("ProductAssociation_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ProductAssociation_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProductAssociation>("ProductAssociation_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.ProductAssociation>("ProductAssociation_ProcessSessions", null, value);
 				this.OnPropertyChanged("ProductAssociation_ProcessSessions");
 			}
 		}
@@ -2579,18 +2579,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductPriceLevel_ProcessSessions")]
-		public DLaB.Xrm.Entities.ProductPriceLevel ProductPriceLevel_ProcessSessions
+		public Entities.ProductPriceLevel ProductPriceLevel_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProductPriceLevel>("ProductPriceLevel_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.ProductPriceLevel>("ProductPriceLevel_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ProductPriceLevel_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProductPriceLevel>("ProductPriceLevel_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.ProductPriceLevel>("ProductPriceLevel_ProcessSessions", null, value);
 				this.OnPropertyChanged("ProductPriceLevel_ProcessSessions");
 			}
 		}
@@ -2600,18 +2600,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ProductSubstitute_ProcessSession")]
-		public DLaB.Xrm.Entities.ProductSubstitute ProductSubstitute_ProcessSession
+		public Entities.ProductSubstitute ProductSubstitute_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProductSubstitute>("ProductSubstitute_ProcessSession", null);
+				return this.GetRelatedEntity<Entities.ProductSubstitute>("ProductSubstitute_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ProductSubstitute_ProcessSession");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProductSubstitute>("ProductSubstitute_ProcessSession", null, value);
+				this.SetRelatedEntity<Entities.ProductSubstitute>("ProductSubstitute_ProcessSession", null, value);
 				this.OnPropertyChanged("ProductSubstitute_ProcessSession");
 			}
 		}
@@ -2621,18 +2621,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("profilerule_ProcessSession")]
-		public DLaB.Xrm.Entities.ChannelAccessProfileRule profilerule_ProcessSession
+		public Entities.ChannelAccessProfileRule profilerule_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfileRule>("profilerule_ProcessSession", null);
+				return this.GetRelatedEntity<Entities.ChannelAccessProfileRule>("profilerule_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("profilerule_ProcessSession");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ChannelAccessProfileRule>("profilerule_ProcessSession", null, value);
+				this.SetRelatedEntity<Entities.ChannelAccessProfileRule>("profilerule_ProcessSession", null, value);
 				this.OnPropertyChanged("profilerule_ProcessSession");
 			}
 		}
@@ -2642,18 +2642,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Queue_ProcessSessions")]
-		public DLaB.Xrm.Entities.Queue Queue_ProcessSessions
+		public Entities.Queue Queue_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Queue>("Queue_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Queue>("Queue_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Queue_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Queue>("Queue_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Queue>("Queue_ProcessSessions", null, value);
 				this.OnPropertyChanged("Queue_ProcessSessions");
 			}
 		}
@@ -2663,18 +2663,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("QueueItem_ProcessSessions")]
-		public DLaB.Xrm.Entities.QueueItem QueueItem_ProcessSessions
+		public Entities.QueueItem QueueItem_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.QueueItem>("QueueItem_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.QueueItem>("QueueItem_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("QueueItem_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.QueueItem>("QueueItem_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.QueueItem>("QueueItem_ProcessSessions", null, value);
 				this.OnPropertyChanged("QueueItem_ProcessSessions");
 			}
 		}
@@ -2684,18 +2684,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Quote_ProcessSessions")]
-		public DLaB.Xrm.Entities.Quote Quote_ProcessSessions
+		public Entities.Quote Quote_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Quote>("Quote_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Quote>("Quote_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Quote_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Quote>("Quote_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Quote>("Quote_ProcessSessions", null, value);
 				this.OnPropertyChanged("Quote_ProcessSessions");
 			}
 		}
@@ -2705,18 +2705,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("QuoteDetail_ProcessSessions")]
-		public DLaB.Xrm.Entities.QuoteDetail QuoteDetail_ProcessSessions
+		public Entities.QuoteDetail QuoteDetail_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.QuoteDetail>("QuoteDetail_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.QuoteDetail>("QuoteDetail_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("QuoteDetail_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.QuoteDetail>("QuoteDetail_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.QuoteDetail>("QuoteDetail_ProcessSessions", null, value);
 				this.OnPropertyChanged("QuoteDetail_ProcessSessions");
 			}
 		}
@@ -2726,18 +2726,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("RecurringAppointmentMaster_ProcessSessions")]
-		public DLaB.Xrm.Entities.RecurringAppointmentMaster RecurringAppointmentMaster_ProcessSessions
+		public Entities.RecurringAppointmentMaster RecurringAppointmentMaster_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RecurringAppointmentMaster>("RecurringAppointmentMaster_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.RecurringAppointmentMaster>("RecurringAppointmentMaster_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("RecurringAppointmentMaster_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RecurringAppointmentMaster>("RecurringAppointmentMaster_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.RecurringAppointmentMaster>("RecurringAppointmentMaster_ProcessSessions", null, value);
 				this.OnPropertyChanged("RecurringAppointmentMaster_ProcessSessions");
 			}
 		}
@@ -2747,18 +2747,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("RelationshipRole_ProcessSessions")]
-		public DLaB.Xrm.Entities.RelationshipRole RelationshipRole_ProcessSessions
+		public Entities.RelationshipRole RelationshipRole_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RelationshipRole>("RelationshipRole_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.RelationshipRole>("RelationshipRole_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("RelationshipRole_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RelationshipRole>("RelationshipRole_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.RelationshipRole>("RelationshipRole_ProcessSessions", null, value);
 				this.OnPropertyChanged("RelationshipRole_ProcessSessions");
 			}
 		}
@@ -2768,18 +2768,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Report_ProcessSessions")]
-		public DLaB.Xrm.Entities.Report Report_ProcessSessions
+		public Entities.Report Report_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Report>("Report_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Report>("Report_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Report_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Report>("Report_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Report>("Report_ProcessSessions", null, value);
 				this.OnPropertyChanged("Report_ProcessSessions");
 			}
 		}
@@ -2789,18 +2789,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("rollupfield_ProcessSessions")]
-		public DLaB.Xrm.Entities.RollupField rollupfield_ProcessSessions
+		public Entities.RollupField rollupfield_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RollupField>("rollupfield_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.RollupField>("rollupfield_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("rollupfield_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RollupField>("rollupfield_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.RollupField>("rollupfield_ProcessSessions", null, value);
 				this.OnPropertyChanged("rollupfield_ProcessSessions");
 			}
 		}
@@ -2810,18 +2810,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("routingrule_ProcessSessions")]
-		public DLaB.Xrm.Entities.RoutingRule routingrule_ProcessSessions
+		public Entities.RoutingRule routingrule_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RoutingRule>("routingrule_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.RoutingRule>("routingrule_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("routingrule_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RoutingRule>("routingrule_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.RoutingRule>("routingrule_ProcessSessions", null, value);
 				this.OnPropertyChanged("routingrule_ProcessSessions");
 			}
 		}
@@ -2831,18 +2831,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("routingruleitem_ProcessSessions")]
-		public DLaB.Xrm.Entities.RoutingRuleItem routingruleitem_ProcessSessions
+		public Entities.RoutingRuleItem routingruleitem_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RoutingRuleItem>("routingruleitem_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.RoutingRuleItem>("routingruleitem_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("routingruleitem_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RoutingRuleItem>("routingruleitem_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.RoutingRuleItem>("routingruleitem_ProcessSessions", null, value);
 				this.OnPropertyChanged("routingruleitem_ProcessSessions");
 			}
 		}
@@ -2852,18 +2852,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesLiterature_ProcessSessions")]
-		public DLaB.Xrm.Entities.SalesLiterature SalesLiterature_ProcessSessions
+		public Entities.SalesLiterature SalesLiterature_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesLiterature>("SalesLiterature_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.SalesLiterature>("SalesLiterature_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SalesLiterature_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SalesLiterature>("SalesLiterature_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.SalesLiterature>("SalesLiterature_ProcessSessions", null, value);
 				this.OnPropertyChanged("SalesLiterature_ProcessSessions");
 			}
 		}
@@ -2873,18 +2873,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesLiteratureItem_ProcessSessions")]
-		public DLaB.Xrm.Entities.SalesLiteratureItem SalesLiteratureItem_ProcessSessions
+		public Entities.SalesLiteratureItem SalesLiteratureItem_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesLiteratureItem>("SalesLiteratureItem_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.SalesLiteratureItem>("SalesLiteratureItem_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SalesLiteratureItem_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SalesLiteratureItem>("SalesLiteratureItem_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.SalesLiteratureItem>("SalesLiteratureItem_ProcessSessions", null, value);
 				this.OnPropertyChanged("SalesLiteratureItem_ProcessSessions");
 			}
 		}
@@ -2894,18 +2894,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesOrder_ProcessSessions")]
-		public DLaB.Xrm.Entities.SalesOrder SalesOrder_ProcessSessions
+		public Entities.SalesOrder SalesOrder_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("SalesOrder_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.SalesOrder>("SalesOrder_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SalesOrder_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("SalesOrder_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.SalesOrder>("SalesOrder_ProcessSessions", null, value);
 				this.OnPropertyChanged("SalesOrder_ProcessSessions");
 			}
 		}
@@ -2915,18 +2915,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesOrderDetail_ProcessSessions")]
-		public DLaB.Xrm.Entities.SalesOrderDetail SalesOrderDetail_ProcessSessions
+		public Entities.SalesOrderDetail SalesOrderDetail_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesOrderDetail>("SalesOrderDetail_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.SalesOrderDetail>("SalesOrderDetail_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SalesOrderDetail_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SalesOrderDetail>("SalesOrderDetail_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.SalesOrderDetail>("SalesOrderDetail_ProcessSessions", null, value);
 				this.OnPropertyChanged("SalesOrderDetail_ProcessSessions");
 			}
 		}
@@ -2936,18 +2936,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Service_ProcessSessions")]
-		public DLaB.Xrm.Entities.Service Service_ProcessSessions
+		public Entities.Service Service_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Service>("Service_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Service>("Service_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Service_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Service>("Service_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Service>("Service_ProcessSessions", null, value);
 				this.OnPropertyChanged("Service_ProcessSessions");
 			}
 		}
@@ -2957,18 +2957,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ServiceAppointment_ProcessSessions")]
-		public DLaB.Xrm.Entities.ServiceAppointment ServiceAppointment_ProcessSessions
+		public Entities.ServiceAppointment ServiceAppointment_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ServiceAppointment>("ServiceAppointment_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.ServiceAppointment>("ServiceAppointment_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ServiceAppointment_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ServiceAppointment>("ServiceAppointment_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.ServiceAppointment>("ServiceAppointment_ProcessSessions", null, value);
 				this.OnPropertyChanged("ServiceAppointment_ProcessSessions");
 			}
 		}
@@ -2978,18 +2978,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SharePointDocumentLocation_ProcessSessions")]
-		public DLaB.Xrm.Entities.SharePointDocumentLocation SharePointDocumentLocation_ProcessSessions
+		public Entities.SharePointDocumentLocation SharePointDocumentLocation_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SharePointDocumentLocation>("SharePointDocumentLocation_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.SharePointDocumentLocation>("SharePointDocumentLocation_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SharePointDocumentLocation_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SharePointDocumentLocation>("SharePointDocumentLocation_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.SharePointDocumentLocation>("SharePointDocumentLocation_ProcessSessions", null, value);
 				this.OnPropertyChanged("SharePointDocumentLocation_ProcessSessions");
 			}
 		}
@@ -2999,18 +2999,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SharePointSite_ProcessSessions")]
-		public DLaB.Xrm.Entities.SharePointSite SharePointSite_ProcessSessions
+		public Entities.SharePointSite SharePointSite_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SharePointSite>("SharePointSite_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.SharePointSite>("SharePointSite_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SharePointSite_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SharePointSite>("SharePointSite_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.SharePointSite>("SharePointSite_ProcessSessions", null, value);
 				this.OnPropertyChanged("SharePointSite_ProcessSessions");
 			}
 		}
@@ -3020,18 +3020,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Site_ProcessSessions")]
-		public DLaB.Xrm.Entities.Site Site_ProcessSessions
+		public Entities.Site Site_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Site>("Site_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Site>("Site_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Site_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Site>("Site_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Site>("Site_ProcessSessions", null, value);
 				this.OnPropertyChanged("Site_ProcessSessions");
 			}
 		}
@@ -3041,18 +3041,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("slabase_ProcessSessions")]
-		public DLaB.Xrm.Entities.SLA slabase_ProcessSessions
+		public Entities.SLA slabase_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SLA>("slabase_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.SLA>("slabase_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("slabase_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SLA>("slabase_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.SLA>("slabase_ProcessSessions", null, value);
 				this.OnPropertyChanged("slabase_ProcessSessions");
 			}
 		}
@@ -3062,18 +3062,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SocialActivity_ProcessSessions")]
-		public DLaB.Xrm.Entities.SocialActivity SocialActivity_ProcessSessions
+		public Entities.SocialActivity SocialActivity_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SocialActivity>("SocialActivity_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.SocialActivity>("SocialActivity_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SocialActivity_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SocialActivity>("SocialActivity_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.SocialActivity>("SocialActivity_ProcessSessions", null, value);
 				this.OnPropertyChanged("SocialActivity_ProcessSessions");
 			}
 		}
@@ -3083,18 +3083,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SocialProfile_ProcessSessions")]
-		public DLaB.Xrm.Entities.SocialProfile SocialProfile_ProcessSessions
+		public Entities.SocialProfile SocialProfile_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SocialProfile>("SocialProfile_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.SocialProfile>("SocialProfile_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SocialProfile_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SocialProfile>("SocialProfile_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.SocialProfile>("SocialProfile_ProcessSessions", null, value);
 				this.OnPropertyChanged("SocialProfile_ProcessSessions");
 			}
 		}
@@ -3104,18 +3104,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Subject_ProcessSessions")]
-		public DLaB.Xrm.Entities.Subject Subject_ProcessSessions
+		public Entities.Subject Subject_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Subject>("Subject_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Subject>("Subject_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Subject_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Subject>("Subject_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Subject>("Subject_ProcessSessions", null, value);
 				this.OnPropertyChanged("Subject_ProcessSessions");
 			}
 		}
@@ -3125,18 +3125,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SystemUser_ProcessSessions")]
-		public DLaB.Xrm.Entities.SystemUser SystemUser_ProcessSessions
+		public Entities.SystemUser SystemUser_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("SystemUser_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("SystemUser_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SystemUser_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("SystemUser_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("SystemUser_ProcessSessions", null, value);
 				this.OnPropertyChanged("SystemUser_ProcessSessions");
 			}
 		}
@@ -3146,18 +3146,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Task_ProcessSessions")]
-		public DLaB.Xrm.Entities.Task Task_ProcessSessions
+		public Entities.Task Task_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Task>("Task_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Task>("Task_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Task_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Task>("Task_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Task>("Task_ProcessSessions", null, value);
 				this.OnPropertyChanged("Task_ProcessSessions");
 			}
 		}
@@ -3167,18 +3167,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_processsession")]
-		public DLaB.Xrm.Entities.Team team_processsession
+		public Entities.Team team_processsession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_processsession", null);
+				return this.GetRelatedEntity<Entities.Team>("team_processsession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_processsession");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_processsession", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_processsession", null, value);
 				this.OnPropertyChanged("team_processsession");
 			}
 		}
@@ -3188,18 +3188,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Team_ProcessSessions")]
-		public DLaB.Xrm.Entities.Team Team_ProcessSessions
+		public Entities.Team Team_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("Team_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Team>("Team_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Team_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("Team_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Team>("Team_ProcessSessions", null, value);
 				this.OnPropertyChanged("Team_ProcessSessions");
 			}
 		}
@@ -3209,18 +3209,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Template_ProcessSessions")]
-		public DLaB.Xrm.Entities.Template Template_ProcessSessions
+		public Entities.Template Template_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Template>("Template_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Template>("Template_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Template_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Template>("Template_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Template>("Template_ProcessSessions", null, value);
 				this.OnPropertyChanged("Template_ProcessSessions");
 			}
 		}
@@ -3230,18 +3230,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Territory_ProcessSessions")]
-		public DLaB.Xrm.Entities.Territory Territory_ProcessSessions
+		public Entities.Territory Territory_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Territory>("Territory_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.Territory>("Territory_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Territory_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Territory>("Territory_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.Territory>("Territory_ProcessSessions", null, value);
 				this.OnPropertyChanged("Territory_ProcessSessions");
 			}
 		}
@@ -3251,18 +3251,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("theme_ProcessSession")]
-		public DLaB.Xrm.Entities.Theme theme_ProcessSession
+		public Entities.Theme theme_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Theme>("theme_ProcessSession", null);
+				return this.GetRelatedEntity<Entities.Theme>("theme_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("theme_ProcessSession");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Theme>("theme_ProcessSession", null, value);
+				this.SetRelatedEntity<Entities.Theme>("theme_ProcessSession", null, value);
 				this.OnPropertyChanged("theme_ProcessSession");
 			}
 		}
@@ -3272,18 +3272,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_ProcessSessions")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_ProcessSessions
+		public Entities.TransactionCurrency TransactionCurrency_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_ProcessSessions", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_ProcessSessions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_ProcessSessions", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_ProcessSessions", null, value);
 				this.OnPropertyChanged("TransactionCurrency_ProcessSessions");
 			}
 		}
@@ -3293,18 +3293,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("usermapping_ProcessSession")]
-		public DLaB.Xrm.Entities.UserMapping usermapping_ProcessSession
+		public Entities.UserMapping usermapping_ProcessSession
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.UserMapping>("usermapping_ProcessSession", null);
+				return this.GetRelatedEntity<Entities.UserMapping>("usermapping_ProcessSession", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("usermapping_ProcessSession");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.UserMapping>("usermapping_ProcessSession", null, value);
+				this.SetRelatedEntity<Entities.UserMapping>("usermapping_ProcessSession", null, value);
 				this.OnPropertyChanged("usermapping_ProcessSession");
 			}
 		}

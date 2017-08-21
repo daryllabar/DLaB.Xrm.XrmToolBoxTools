@@ -369,7 +369,7 @@ namespace DLaB.Xrm.Entities
 		/// Enter the accounts and contacts for whom the service activity is being performed.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customers")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> Customers
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> Customers
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -378,7 +378,7 @@ namespace DLaB.Xrm.Entities
 				if (((collection != null) 
 							&& (collection.Entities != null)))
 				{
-					return System.Linq.Enumerable.Cast<DLaB.Xrm.Entities.ActivityParty>(collection.Entities);
+					return System.Linq.Enumerable.Cast<Entities.ActivityParty>(collection.Entities);
 				}
 				else
 				{
@@ -771,7 +771,7 @@ namespace DLaB.Xrm.Entities
 		/// Enter the user, facility, or equipment required to complete the service activity.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("resources")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> Resources
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> Resources
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -780,7 +780,7 @@ namespace DLaB.Xrm.Entities
 				if (((collection != null) 
 							&& (collection.Entities != null)))
 				{
-					return System.Linq.Enumerable.Cast<DLaB.Xrm.Entities.ActivityParty>(collection.Entities);
+					return System.Linq.Enumerable.Cast<Entities.ActivityParty>(collection.Entities);
 				}
 				else
 				{
@@ -907,7 +907,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the service activity is open, completed, or canceled. Completed and canceled service activities are read-only and can't be edited.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.ServiceAppointmentState> StateCode
+		public System.Nullable<Entities.ServiceAppointmentState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -915,7 +915,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.ServiceAppointmentState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.ServiceAppointmentState), optionSet.Value)));
+					return ((Entities.ServiceAppointmentState)(System.Enum.ToObject(typeof(Entities.ServiceAppointmentState), optionSet.Value)));
 				}
 				else
 				{
@@ -1095,18 +1095,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N serviceappointment_activity_parties
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("serviceappointment_activity_parties")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> serviceappointment_activity_parties
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> serviceappointment_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("serviceappointment_activity_parties", null);
+				return this.GetRelatedEntities<Entities.ActivityParty>("serviceappointment_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("serviceappointment_activity_parties");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("serviceappointment_activity_parties", null, value);
+				this.SetRelatedEntities<Entities.ActivityParty>("serviceappointment_activity_parties", null, value);
 				this.OnPropertyChanged("serviceappointment_activity_parties");
 			}
 		}
@@ -1115,18 +1115,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ServiceAppointment_Annotation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ServiceAppointment_Annotation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> ServiceAppointment_Annotation
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> ServiceAppointment_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("ServiceAppointment_Annotation", null);
+				return this.GetRelatedEntities<Entities.Annotation>("ServiceAppointment_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ServiceAppointment_Annotation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("ServiceAppointment_Annotation", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("ServiceAppointment_Annotation", null, value);
 				this.OnPropertyChanged("ServiceAppointment_Annotation");
 			}
 		}
@@ -1135,18 +1135,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ServiceAppointment_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ServiceAppointment_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> ServiceAppointment_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> ServiceAppointment_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("ServiceAppointment_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("ServiceAppointment_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ServiceAppointment_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("ServiceAppointment_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("ServiceAppointment_AsyncOperations", null, value);
 				this.OnPropertyChanged("ServiceAppointment_AsyncOperations");
 			}
 		}
@@ -1155,18 +1155,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ServiceAppointment_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ServiceAppointment_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> ServiceAppointment_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> ServiceAppointment_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("ServiceAppointment_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("ServiceAppointment_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ServiceAppointment_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("ServiceAppointment_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("ServiceAppointment_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("ServiceAppointment_BulkDeleteFailures");
 			}
 		}
@@ -1175,18 +1175,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N serviceappointment_connections1
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("serviceappointment_connections1")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> serviceappointment_connections1
+		public System.Collections.Generic.IEnumerable<Entities.Connection> serviceappointment_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("serviceappointment_connections1", null);
+				return this.GetRelatedEntities<Entities.Connection>("serviceappointment_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("serviceappointment_connections1");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("serviceappointment_connections1", null, value);
+				this.SetRelatedEntities<Entities.Connection>("serviceappointment_connections1", null, value);
 				this.OnPropertyChanged("serviceappointment_connections1");
 			}
 		}
@@ -1195,18 +1195,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N serviceappointment_connections2
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("serviceappointment_connections2")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> serviceappointment_connections2
+		public System.Collections.Generic.IEnumerable<Entities.Connection> serviceappointment_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("serviceappointment_connections2", null);
+				return this.GetRelatedEntities<Entities.Connection>("serviceappointment_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("serviceappointment_connections2");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("serviceappointment_connections2", null, value);
+				this.SetRelatedEntities<Entities.Connection>("serviceappointment_connections2", null, value);
 				this.OnPropertyChanged("serviceappointment_connections2");
 			}
 		}
@@ -1215,18 +1215,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N serviceappointment_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("serviceappointment_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> serviceappointment_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> serviceappointment_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("serviceappointment_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("serviceappointment_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("serviceappointment_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("serviceappointment_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("serviceappointment_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("serviceappointment_principalobjectattributeaccess");
 			}
 		}
@@ -1235,18 +1235,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ServiceAppointment_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ServiceAppointment_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> ServiceAppointment_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> ServiceAppointment_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("ServiceAppointment_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("ServiceAppointment_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ServiceAppointment_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("ServiceAppointment_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("ServiceAppointment_ProcessSessions", null, value);
 				this.OnPropertyChanged("ServiceAppointment_ProcessSessions");
 			}
 		}
@@ -1255,18 +1255,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N ServiceAppointment_QueueItem
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ServiceAppointment_QueueItem")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.QueueItem> ServiceAppointment_QueueItem
+		public System.Collections.Generic.IEnumerable<Entities.QueueItem> ServiceAppointment_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.QueueItem>("ServiceAppointment_QueueItem", null);
+				return this.GetRelatedEntities<Entities.QueueItem>("ServiceAppointment_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ServiceAppointment_QueueItem");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.QueueItem>("ServiceAppointment_QueueItem", null, value);
+				this.SetRelatedEntities<Entities.QueueItem>("ServiceAppointment_QueueItem", null, value);
 				this.OnPropertyChanged("ServiceAppointment_QueueItem");
 			}
 		}
@@ -1275,18 +1275,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_serviceappointment
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_serviceappointment")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_serviceappointment
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_serviceappointment
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_serviceappointment", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_serviceappointment", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_serviceappointment");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_serviceappointment", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_serviceappointment", null, value);
 				this.OnPropertyChanged("userentityinstancedata_serviceappointment");
 			}
 		}
@@ -1296,18 +1296,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Account_ServiceAppointments")]
-		public DLaB.Xrm.Entities.Account Account_ServiceAppointments
+		public Entities.Account Account_ServiceAppointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_ServiceAppointments", null);
+				return this.GetRelatedEntity<Entities.Account>("Account_ServiceAppointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Account_ServiceAppointments");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("Account_ServiceAppointments", null, value);
+				this.SetRelatedEntity<Entities.Account>("Account_ServiceAppointments", null, value);
 				this.OnPropertyChanged("Account_ServiceAppointments");
 			}
 		}
@@ -1317,18 +1317,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("activity_pointer_service_appointment")]
-		public DLaB.Xrm.Entities.ActivityPointer activity_pointer_service_appointment
+		public Entities.ActivityPointer activity_pointer_service_appointment
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_service_appointment", null);
+				return this.GetRelatedEntity<Entities.ActivityPointer>("activity_pointer_service_appointment", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("activity_pointer_service_appointment");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("activity_pointer_service_appointment", null, value);
+				this.SetRelatedEntity<Entities.ActivityPointer>("activity_pointer_service_appointment", null, value);
 				this.OnPropertyChanged("activity_pointer_service_appointment");
 			}
 		}
@@ -1338,18 +1338,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_service_appointments")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_service_appointments
+		public Entities.BusinessUnit business_unit_service_appointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_service_appointments", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_service_appointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_service_appointments");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_service_appointments", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_service_appointments", null, value);
 				this.OnPropertyChanged("business_unit_service_appointments");
 			}
 		}
@@ -1359,18 +1359,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Campaign_ServiceAppointments")]
-		public DLaB.Xrm.Entities.Campaign Campaign_ServiceAppointments
+		public Entities.Campaign Campaign_ServiceAppointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Campaign>("Campaign_ServiceAppointments", null);
+				return this.GetRelatedEntity<Entities.Campaign>("Campaign_ServiceAppointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Campaign_ServiceAppointments");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Campaign>("Campaign_ServiceAppointments", null, value);
+				this.SetRelatedEntity<Entities.Campaign>("Campaign_ServiceAppointments", null, value);
 				this.OnPropertyChanged("Campaign_ServiceAppointments");
 			}
 		}
@@ -1380,18 +1380,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contact_ServiceAppointments")]
-		public DLaB.Xrm.Entities.Contact Contact_ServiceAppointments
+		public Entities.Contact Contact_ServiceAppointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_ServiceAppointments", null);
+				return this.GetRelatedEntity<Entities.Contact>("Contact_ServiceAppointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Contact_ServiceAppointments");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("Contact_ServiceAppointments", null, value);
+				this.SetRelatedEntity<Entities.Contact>("Contact_ServiceAppointments", null, value);
 				this.OnPropertyChanged("Contact_ServiceAppointments");
 			}
 		}
@@ -1401,18 +1401,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Contract_ServiceAppointments")]
-		public DLaB.Xrm.Entities.Contract Contract_ServiceAppointments
+		public Entities.Contract Contract_ServiceAppointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contract>("Contract_ServiceAppointments", null);
+				return this.GetRelatedEntity<Entities.Contract>("Contract_ServiceAppointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Contract_ServiceAppointments");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contract>("Contract_ServiceAppointments", null, value);
+				this.SetRelatedEntity<Entities.Contract>("Contract_ServiceAppointments", null, value);
 				this.OnPropertyChanged("Contract_ServiceAppointments");
 			}
 		}
@@ -1422,18 +1422,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlement_ServiceAppointments")]
-		public DLaB.Xrm.Entities.Entitlement entitlement_ServiceAppointments
+		public Entities.Entitlement entitlement_ServiceAppointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_ServiceAppointments", null);
+				return this.GetRelatedEntity<Entities.Entitlement>("entitlement_ServiceAppointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlement_ServiceAppointments");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Entitlement>("entitlement_ServiceAppointments", null, value);
+				this.SetRelatedEntity<Entities.Entitlement>("entitlement_ServiceAppointments", null, value);
 				this.OnPropertyChanged("entitlement_ServiceAppointments");
 			}
 		}
@@ -1443,18 +1443,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitlementtemplate_ServiceAppointments")]
-		public DLaB.Xrm.Entities.EntitlementTemplate entitlementtemplate_ServiceAppointments
+		public Entities.EntitlementTemplate entitlementtemplate_ServiceAppointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplate_ServiceAppointments", null);
+				return this.GetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplate_ServiceAppointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("entitlementtemplate_ServiceAppointments");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.EntitlementTemplate>("entitlementtemplate_ServiceAppointments", null, value);
+				this.SetRelatedEntity<Entities.EntitlementTemplate>("entitlementtemplate_ServiceAppointments", null, value);
 				this.OnPropertyChanged("entitlementtemplate_ServiceAppointments");
 			}
 		}
@@ -1464,18 +1464,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Incident_ServiceAppointments")]
-		public DLaB.Xrm.Entities.Incident Incident_ServiceAppointments
+		public Entities.Incident Incident_ServiceAppointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_ServiceAppointments", null);
+				return this.GetRelatedEntity<Entities.Incident>("Incident_ServiceAppointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Incident_ServiceAppointments");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_ServiceAppointments", null, value);
+				this.SetRelatedEntity<Entities.Incident>("Incident_ServiceAppointments", null, value);
 				this.OnPropertyChanged("Incident_ServiceAppointments");
 			}
 		}
@@ -1485,18 +1485,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Invoice_ServiceAppointments")]
-		public DLaB.Xrm.Entities.Invoice Invoice_ServiceAppointments
+		public Entities.Invoice Invoice_ServiceAppointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Invoice>("Invoice_ServiceAppointments", null);
+				return this.GetRelatedEntity<Entities.Invoice>("Invoice_ServiceAppointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Invoice_ServiceAppointments");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Invoice>("Invoice_ServiceAppointments", null, value);
+				this.SetRelatedEntity<Entities.Invoice>("Invoice_ServiceAppointments", null, value);
 				this.OnPropertyChanged("Invoice_ServiceAppointments");
 			}
 		}
@@ -1506,18 +1506,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeArticle_ServiceAppointments")]
-		public DLaB.Xrm.Entities.KnowledgeArticle KnowledgeArticle_ServiceAppointments
+		public Entities.KnowledgeArticle KnowledgeArticle_ServiceAppointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("KnowledgeArticle_ServiceAppointments", null);
+				return this.GetRelatedEntity<Entities.KnowledgeArticle>("KnowledgeArticle_ServiceAppointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeArticle_ServiceAppointments");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("KnowledgeArticle_ServiceAppointments", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeArticle>("KnowledgeArticle_ServiceAppointments", null, value);
 				this.OnPropertyChanged("KnowledgeArticle_ServiceAppointments");
 			}
 		}
@@ -1527,18 +1527,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KnowledgeBaseRecord_ServiceAppointments")]
-		public DLaB.Xrm.Entities.KnowledgeBaseRecord KnowledgeBaseRecord_ServiceAppointments
+		public Entities.KnowledgeBaseRecord KnowledgeBaseRecord_ServiceAppointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_ServiceAppointments", null);
+				return this.GetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_ServiceAppointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KnowledgeBaseRecord_ServiceAppointments");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_ServiceAppointments", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeBaseRecord>("KnowledgeBaseRecord_ServiceAppointments", null, value);
 				this.OnPropertyChanged("KnowledgeBaseRecord_ServiceAppointments");
 			}
 		}
@@ -1548,18 +1548,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Lead_ServiceAppointments")]
-		public DLaB.Xrm.Entities.Lead Lead_ServiceAppointments
+		public Entities.Lead Lead_ServiceAppointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Lead>("Lead_ServiceAppointments", null);
+				return this.GetRelatedEntity<Entities.Lead>("Lead_ServiceAppointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Lead_ServiceAppointments");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Lead>("Lead_ServiceAppointments", null, value);
+				this.SetRelatedEntity<Entities.Lead>("Lead_ServiceAppointments", null, value);
 				this.OnPropertyChanged("Lead_ServiceAppointments");
 			}
 		}
@@ -1569,18 +1569,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_serviceappointment_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_serviceappointment_createdby
+		public Entities.SystemUser lk_serviceappointment_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_serviceappointment_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_serviceappointment_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_serviceappointment_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_serviceappointment_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_serviceappointment_createdby", null, value);
 				this.OnPropertyChanged("lk_serviceappointment_createdby");
 			}
 		}
@@ -1590,18 +1590,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_serviceappointment_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_serviceappointment_createdonbehalfby
+		public Entities.SystemUser lk_serviceappointment_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_serviceappointment_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_serviceappointment_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_serviceappointment_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_serviceappointment_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_serviceappointment_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_serviceappointment_createdonbehalfby");
 			}
 		}
@@ -1611,18 +1611,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_serviceappointment_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_serviceappointment_modifiedby
+		public Entities.SystemUser lk_serviceappointment_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_serviceappointment_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_serviceappointment_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_serviceappointment_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_serviceappointment_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_serviceappointment_modifiedby", null, value);
 				this.OnPropertyChanged("lk_serviceappointment_modifiedby");
 			}
 		}
@@ -1632,18 +1632,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_serviceappointment_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_serviceappointment_modifiedonbehalfby
+		public Entities.SystemUser lk_serviceappointment_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_serviceappointment_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_serviceappointment_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_serviceappointment_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_serviceappointment_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_serviceappointment_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_serviceappointment_modifiedonbehalfby");
 			}
 		}
@@ -1653,18 +1653,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_postalbum_ServiceAppointments")]
-		public DLaB.Xrm.Entities.msdyn_PostAlbum msdyn_postalbum_ServiceAppointments
+		public Entities.msdyn_PostAlbum msdyn_postalbum_ServiceAppointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_ServiceAppointments", null);
+				return this.GetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_ServiceAppointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("msdyn_postalbum_ServiceAppointments");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.msdyn_PostAlbum>("msdyn_postalbum_ServiceAppointments", null, value);
+				this.SetRelatedEntity<Entities.msdyn_PostAlbum>("msdyn_postalbum_ServiceAppointments", null, value);
 				this.OnPropertyChanged("msdyn_postalbum_ServiceAppointments");
 			}
 		}
@@ -1674,18 +1674,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_ServiceAppointments")]
-		public DLaB.Xrm.Entities.Opportunity Opportunity_ServiceAppointments
+		public Entities.Opportunity Opportunity_ServiceAppointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_ServiceAppointments", null);
+				return this.GetRelatedEntity<Entities.Opportunity>("Opportunity_ServiceAppointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_ServiceAppointments");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Opportunity>("Opportunity_ServiceAppointments", null, value);
+				this.SetRelatedEntity<Entities.Opportunity>("Opportunity_ServiceAppointments", null, value);
 				this.OnPropertyChanged("Opportunity_ServiceAppointments");
 			}
 		}
@@ -1695,18 +1695,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Quote_ServiceAppointments")]
-		public DLaB.Xrm.Entities.Quote Quote_ServiceAppointments
+		public Entities.Quote Quote_ServiceAppointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Quote>("Quote_ServiceAppointments", null);
+				return this.GetRelatedEntity<Entities.Quote>("Quote_ServiceAppointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Quote_ServiceAppointments");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Quote>("Quote_ServiceAppointments", null, value);
+				this.SetRelatedEntity<Entities.Quote>("Quote_ServiceAppointments", null, value);
 				this.OnPropertyChanged("Quote_ServiceAppointments");
 			}
 		}
@@ -1716,18 +1716,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SalesOrder_ServiceAppointments")]
-		public DLaB.Xrm.Entities.SalesOrder SalesOrder_ServiceAppointments
+		public Entities.SalesOrder SalesOrder_ServiceAppointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("SalesOrder_ServiceAppointments", null);
+				return this.GetRelatedEntity<Entities.SalesOrder>("SalesOrder_ServiceAppointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SalesOrder_ServiceAppointments");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SalesOrder>("SalesOrder_ServiceAppointments", null, value);
+				this.SetRelatedEntity<Entities.SalesOrder>("SalesOrder_ServiceAppointments", null, value);
 				this.OnPropertyChanged("SalesOrder_ServiceAppointments");
 			}
 		}
@@ -1737,18 +1737,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("serviceid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("service_service_appointments")]
-		public DLaB.Xrm.Entities.Service service_service_appointments
+		public Entities.Service service_service_appointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Service>("service_service_appointments", null);
+				return this.GetRelatedEntity<Entities.Service>("service_service_appointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("service_service_appointments");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Service>("service_service_appointments", null, value);
+				this.SetRelatedEntity<Entities.Service>("service_service_appointments", null, value);
 				this.OnPropertyChanged("service_service_appointments");
 			}
 		}
@@ -1758,18 +1758,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("siteid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("site_service_appointments")]
-		public DLaB.Xrm.Entities.Site site_service_appointments
+		public Entities.Site site_service_appointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Site>("site_service_appointments", null);
+				return this.GetRelatedEntity<Entities.Site>("site_service_appointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("site_service_appointments");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Site>("site_service_appointments", null, value);
+				this.SetRelatedEntity<Entities.Site>("site_service_appointments", null, value);
 				this.OnPropertyChanged("site_service_appointments");
 			}
 		}
@@ -1779,18 +1779,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("system_user_service_appointments")]
-		public DLaB.Xrm.Entities.SystemUser system_user_service_appointments
+		public Entities.SystemUser system_user_service_appointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("system_user_service_appointments", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("system_user_service_appointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("system_user_service_appointments");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("system_user_service_appointments", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("system_user_service_appointments", null, value);
 				this.OnPropertyChanged("system_user_service_appointments");
 			}
 		}
@@ -1800,18 +1800,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_service_appointments")]
-		public DLaB.Xrm.Entities.Team team_service_appointments
+		public Entities.Team team_service_appointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_service_appointments", null);
+				return this.GetRelatedEntity<Entities.Team>("team_service_appointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_service_appointments");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_service_appointments", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_service_appointments", null, value);
 				this.OnPropertyChanged("team_service_appointments");
 			}
 		}
@@ -1821,18 +1821,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_ServiceAppointment")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_ServiceAppointment
+		public Entities.TransactionCurrency TransactionCurrency_ServiceAppointment
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_ServiceAppointment", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_ServiceAppointment", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_ServiceAppointment");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_ServiceAppointment", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_ServiceAppointment", null, value);
 				this.OnPropertyChanged("TransactionCurrency_ServiceAppointment");
 			}
 		}

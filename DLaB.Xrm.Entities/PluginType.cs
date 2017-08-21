@@ -590,18 +590,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N plugin_type_service
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("plugin_type_service")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Service> plugin_type_service
+		public System.Collections.Generic.IEnumerable<Entities.Service> plugin_type_service
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Service>("plugin_type_service", null);
+				return this.GetRelatedEntities<Entities.Service>("plugin_type_service", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("plugin_type_service");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Service>("plugin_type_service", null, value);
+				this.SetRelatedEntities<Entities.Service>("plugin_type_service", null, value);
 				this.OnPropertyChanged("plugin_type_service");
 			}
 		}
@@ -610,18 +610,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N plugintype_plugintypestatistic
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("plugintype_plugintypestatistic")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PluginTypeStatistic> plugintype_plugintypestatistic
+		public System.Collections.Generic.IEnumerable<Entities.PluginTypeStatistic> plugintype_plugintypestatistic
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PluginTypeStatistic>("plugintype_plugintypestatistic", null);
+				return this.GetRelatedEntities<Entities.PluginTypeStatistic>("plugintype_plugintypestatistic", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("plugintype_plugintypestatistic");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PluginTypeStatistic>("plugintype_plugintypestatistic", null, value);
+				this.SetRelatedEntities<Entities.PluginTypeStatistic>("plugintype_plugintypestatistic", null, value);
 				this.OnPropertyChanged("plugintype_plugintypestatistic");
 			}
 		}
@@ -630,18 +630,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N plugintype_sdkmessageprocessingstep
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("plugintype_sdkmessageprocessingstep")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SdkMessageProcessingStep> plugintype_sdkmessageprocessingstep
+		public System.Collections.Generic.IEnumerable<Entities.SdkMessageProcessingStep> plugintype_sdkmessageprocessingstep
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SdkMessageProcessingStep>("plugintype_sdkmessageprocessingstep", null);
+				return this.GetRelatedEntities<Entities.SdkMessageProcessingStep>("plugintype_sdkmessageprocessingstep", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("plugintype_sdkmessageprocessingstep");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SdkMessageProcessingStep>("plugintype_sdkmessageprocessingstep", null, value);
+				this.SetRelatedEntities<Entities.SdkMessageProcessingStep>("plugintype_sdkmessageprocessingstep", null, value);
 				this.OnPropertyChanged("plugintype_sdkmessageprocessingstep");
 			}
 		}
@@ -650,18 +650,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N plugintypeid_sdkmessageprocessingstep
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("plugintypeid_sdkmessageprocessingstep")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SdkMessageProcessingStep> plugintypeid_sdkmessageprocessingstep
+		public System.Collections.Generic.IEnumerable<Entities.SdkMessageProcessingStep> plugintypeid_sdkmessageprocessingstep
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SdkMessageProcessingStep>("plugintypeid_sdkmessageprocessingstep", null);
+				return this.GetRelatedEntities<Entities.SdkMessageProcessingStep>("plugintypeid_sdkmessageprocessingstep", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("plugintypeid_sdkmessageprocessingstep");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SdkMessageProcessingStep>("plugintypeid_sdkmessageprocessingstep", null, value);
+				this.SetRelatedEntities<Entities.SdkMessageProcessingStep>("plugintypeid_sdkmessageprocessingstep", null, value);
 				this.OnPropertyChanged("plugintypeid_sdkmessageprocessingstep");
 			}
 		}
@@ -670,18 +670,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_plugintype
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_plugintype")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_plugintype
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_plugintype
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_plugintype", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_plugintype", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_plugintype");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_plugintype", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_plugintype", null, value);
 				this.OnPropertyChanged("userentityinstancedata_plugintype");
 			}
 		}
@@ -691,18 +691,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_plugintype")]
-		public DLaB.Xrm.Entities.SystemUser createdby_plugintype
+		public Entities.SystemUser createdby_plugintype
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdby_plugintype", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("createdby_plugintype", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("createdby_plugintype");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("createdby_plugintype", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("createdby_plugintype", null, value);
 				this.OnPropertyChanged("createdby_plugintype");
 			}
 		}
@@ -712,18 +712,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_plugintype_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_plugintype_createdonbehalfby
+		public Entities.SystemUser lk_plugintype_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_plugintype_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_plugintype_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_plugintype_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_plugintype_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_plugintype_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_plugintype_createdonbehalfby");
 			}
 		}
@@ -733,18 +733,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_plugintype_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_plugintype_modifiedonbehalfby
+		public Entities.SystemUser lk_plugintype_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_plugintype_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_plugintype_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_plugintype_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_plugintype_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_plugintype_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_plugintype_modifiedonbehalfby");
 			}
 		}
@@ -754,18 +754,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_plugintype")]
-		public DLaB.Xrm.Entities.SystemUser modifiedby_plugintype
+		public Entities.SystemUser modifiedby_plugintype
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("modifiedby_plugintype", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("modifiedby_plugintype", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("modifiedby_plugintype");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("modifiedby_plugintype", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("modifiedby_plugintype", null, value);
 				this.OnPropertyChanged("modifiedby_plugintype");
 			}
 		}
@@ -775,12 +775,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_plugintype")]
-		public DLaB.Xrm.Entities.Organization organization_plugintype
+		public Entities.Organization organization_plugintype
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_plugintype", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_plugintype", null);
 			}
 		}
 		
@@ -789,18 +789,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pluginassemblyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("pluginassembly_plugintype")]
-		public DLaB.Xrm.Entities.PluginAssembly pluginassembly_plugintype
+		public Entities.PluginAssembly pluginassembly_plugintype
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.PluginAssembly>("pluginassembly_plugintype", null);
+				return this.GetRelatedEntity<Entities.PluginAssembly>("pluginassembly_plugintype", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("pluginassembly_plugintype");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.PluginAssembly>("pluginassembly_plugintype", null, value);
+				this.SetRelatedEntity<Entities.PluginAssembly>("pluginassembly_plugintype", null, value);
 				this.OnPropertyChanged("pluginassembly_plugintype");
 			}
 		}

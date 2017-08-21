@@ -150,18 +150,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N teamsyncattributemappingprofiles_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("teamsyncattributemappingprofiles_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Team> teamsyncattributemappingprofiles_association
+		public System.Collections.Generic.IEnumerable<Entities.Team> teamsyncattributemappingprofiles_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Team>("teamsyncattributemappingprofiles_association", null);
+				return this.GetRelatedEntities<Entities.Team>("teamsyncattributemappingprofiles_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("teamsyncattributemappingprofiles_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Team>("teamsyncattributemappingprofiles_association", null, value);
+				this.SetRelatedEntities<Entities.Team>("teamsyncattributemappingprofiles_association", null, value);
 				this.OnPropertyChanged("teamsyncattributemappingprofiles_association");
 			}
 		}

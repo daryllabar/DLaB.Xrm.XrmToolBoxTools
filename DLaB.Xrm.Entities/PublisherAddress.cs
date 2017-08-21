@@ -820,18 +820,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_publisheraddress
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_publisheraddress")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_publisheraddress
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_publisheraddress
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_publisheraddress", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_publisheraddress", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_publisheraddress");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_publisheraddress", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_publisheraddress", null, value);
 				this.OnPropertyChanged("userentityinstancedata_publisheraddress");
 			}
 		}
@@ -841,18 +841,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_publisheraddressbase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_publisheraddressbase_createdby
+		public Entities.SystemUser lk_publisheraddressbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_publisheraddressbase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_publisheraddressbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_publisheraddressbase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_publisheraddressbase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_publisheraddressbase_createdby", null, value);
 				this.OnPropertyChanged("lk_publisheraddressbase_createdby");
 			}
 		}
@@ -862,18 +862,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_publisheraddressbase_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_publisheraddressbase_createdonbehalfby
+		public Entities.SystemUser lk_publisheraddressbase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_publisheraddressbase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_publisheraddressbase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_publisheraddressbase_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_publisheraddressbase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_publisheraddressbase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_publisheraddressbase_createdonbehalfby");
 			}
 		}
@@ -883,18 +883,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_publisheraddressbase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_publisheraddressbase_modifiedby
+		public Entities.SystemUser lk_publisheraddressbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_publisheraddressbase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_publisheraddressbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_publisheraddressbase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_publisheraddressbase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_publisheraddressbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_publisheraddressbase_modifiedby");
 			}
 		}
@@ -904,18 +904,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_publisheraddressbase_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_publisheraddressbase_modifiedonbehalfby
+		public Entities.SystemUser lk_publisheraddressbase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_publisheraddressbase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_publisheraddressbase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_publisheraddressbase_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_publisheraddressbase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_publisheraddressbase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_publisheraddressbase_modifiedonbehalfby");
 			}
 		}
@@ -925,18 +925,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Publisher_PublisherAddress")]
-		public DLaB.Xrm.Entities.Publisher Publisher_PublisherAddress
+		public Entities.Publisher Publisher_PublisherAddress
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Publisher>("Publisher_PublisherAddress", null);
+				return this.GetRelatedEntity<Entities.Publisher>("Publisher_PublisherAddress", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Publisher_PublisherAddress");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Publisher>("Publisher_PublisherAddress", null, value);
+				this.SetRelatedEntity<Entities.Publisher>("Publisher_PublisherAddress", null, value);
 				this.OnPropertyChanged("Publisher_PublisherAddress");
 			}
 		}

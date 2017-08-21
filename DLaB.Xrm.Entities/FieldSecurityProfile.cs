@@ -379,18 +379,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N lk_fieldpermission_fieldsecurityprofileid
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_fieldpermission_fieldsecurityprofileid")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.FieldPermission> lk_fieldpermission_fieldsecurityprofileid
+		public System.Collections.Generic.IEnumerable<Entities.FieldPermission> lk_fieldpermission_fieldsecurityprofileid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.FieldPermission>("lk_fieldpermission_fieldsecurityprofileid", null);
+				return this.GetRelatedEntities<Entities.FieldPermission>("lk_fieldpermission_fieldsecurityprofileid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_fieldpermission_fieldsecurityprofileid");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.FieldPermission>("lk_fieldpermission_fieldsecurityprofileid", null, value);
+				this.SetRelatedEntities<Entities.FieldPermission>("lk_fieldpermission_fieldsecurityprofileid", null, value);
 				this.OnPropertyChanged("lk_fieldpermission_fieldsecurityprofileid");
 			}
 		}
@@ -399,18 +399,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_fieldsecurityprofile
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_fieldsecurityprofile")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_fieldsecurityprofile
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_fieldsecurityprofile
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_fieldsecurityprofile", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_fieldsecurityprofile", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_fieldsecurityprofile");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_fieldsecurityprofile", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_fieldsecurityprofile", null, value);
 				this.OnPropertyChanged("userentityinstancedata_fieldsecurityprofile");
 			}
 		}
@@ -419,18 +419,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N systemuserprofiles_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("systemuserprofiles_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SystemUser> systemuserprofiles_association
+		public System.Collections.Generic.IEnumerable<Entities.SystemUser> systemuserprofiles_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SystemUser>("systemuserprofiles_association", null);
+				return this.GetRelatedEntities<Entities.SystemUser>("systemuserprofiles_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("systemuserprofiles_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SystemUser>("systemuserprofiles_association", null, value);
+				this.SetRelatedEntities<Entities.SystemUser>("systemuserprofiles_association", null, value);
 				this.OnPropertyChanged("systemuserprofiles_association");
 			}
 		}
@@ -439,18 +439,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N teamprofiles_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("teamprofiles_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Team> teamprofiles_association
+		public System.Collections.Generic.IEnumerable<Entities.Team> teamprofiles_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Team>("teamprofiles_association", null);
+				return this.GetRelatedEntities<Entities.Team>("teamprofiles_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("teamprofiles_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Team>("teamprofiles_association", null, value);
+				this.SetRelatedEntities<Entities.Team>("teamprofiles_association", null, value);
 				this.OnPropertyChanged("teamprofiles_association");
 			}
 		}
@@ -460,18 +460,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_fieldsecurityprofile_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_fieldsecurityprofile_createdby
+		public Entities.SystemUser lk_fieldsecurityprofile_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fieldsecurityprofile_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_fieldsecurityprofile_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_fieldsecurityprofile_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fieldsecurityprofile_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_fieldsecurityprofile_createdby", null, value);
 				this.OnPropertyChanged("lk_fieldsecurityprofile_createdby");
 			}
 		}
@@ -481,18 +481,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_fieldsecurityprofile_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_fieldsecurityprofile_createdonbehalfby
+		public Entities.SystemUser lk_fieldsecurityprofile_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fieldsecurityprofile_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_fieldsecurityprofile_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_fieldsecurityprofile_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fieldsecurityprofile_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_fieldsecurityprofile_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_fieldsecurityprofile_createdonbehalfby");
 			}
 		}
@@ -502,18 +502,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_fieldsecurityprofile_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_fieldsecurityprofile_modifiedby
+		public Entities.SystemUser lk_fieldsecurityprofile_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fieldsecurityprofile_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_fieldsecurityprofile_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_fieldsecurityprofile_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fieldsecurityprofile_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_fieldsecurityprofile_modifiedby", null, value);
 				this.OnPropertyChanged("lk_fieldsecurityprofile_modifiedby");
 			}
 		}
@@ -523,18 +523,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_fieldsecurityprofile_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_fieldsecurityprofile_modifiedonbehalfby
+		public Entities.SystemUser lk_fieldsecurityprofile_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fieldsecurityprofile_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_fieldsecurityprofile_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_fieldsecurityprofile_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_fieldsecurityprofile_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_fieldsecurityprofile_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_fieldsecurityprofile_modifiedonbehalfby");
 			}
 		}
@@ -544,12 +544,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_fieldsecurityprofile_organizationid")]
-		public DLaB.Xrm.Entities.Organization lk_fieldsecurityprofile_organizationid
+		public Entities.Organization lk_fieldsecurityprofile_organizationid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("lk_fieldsecurityprofile_organizationid", null);
+				return this.GetRelatedEntity<Entities.Organization>("lk_fieldsecurityprofile_organizationid", null);
 			}
 		}
 		

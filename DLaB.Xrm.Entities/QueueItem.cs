@@ -543,7 +543,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the queue record is active or inactive. Inactive queue records are read-only and can't be edited unless they are reactivated.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.QueueItemState> StateCode
+		public System.Nullable<Entities.QueueItemState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -551,7 +551,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.QueueItemState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.QueueItemState), optionSet.Value)));
+					return ((Entities.QueueItemState)(System.Enum.ToObject(typeof(Entities.QueueItemState), optionSet.Value)));
 				}
 				else
 				{
@@ -759,18 +759,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N QueueItem_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("QueueItem_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> QueueItem_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> QueueItem_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("QueueItem_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("QueueItem_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("QueueItem_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("QueueItem_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("QueueItem_AsyncOperations", null, value);
 				this.OnPropertyChanged("QueueItem_AsyncOperations");
 			}
 		}
@@ -779,18 +779,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N QueueItem_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("QueueItem_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> QueueItem_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> QueueItem_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("QueueItem_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("QueueItem_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("QueueItem_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("QueueItem_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("QueueItem_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("QueueItem_BulkDeleteFailures");
 			}
 		}
@@ -799,18 +799,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N queueitem_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("queueitem_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> queueitem_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> queueitem_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("queueitem_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("queueitem_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("queueitem_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("queueitem_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("queueitem_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("queueitem_principalobjectattributeaccess");
 			}
 		}
@@ -819,18 +819,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N QueueItem_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("QueueItem_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> QueueItem_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> QueueItem_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("QueueItem_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("QueueItem_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("QueueItem_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("QueueItem_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("QueueItem_ProcessSessions", null, value);
 				this.OnPropertyChanged("QueueItem_ProcessSessions");
 			}
 		}
@@ -839,18 +839,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_queueitem
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_queueitem")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_queueitem
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_queueitem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_queueitem", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_queueitem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_queueitem");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_queueitem", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_queueitem", null, value);
 				this.OnPropertyChanged("userentityinstancedata_queueitem");
 			}
 		}
@@ -860,18 +860,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ActivityPointer_QueueItem")]
-		public DLaB.Xrm.Entities.ActivityPointer ActivityPointer_QueueItem
+		public Entities.ActivityPointer ActivityPointer_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("ActivityPointer_QueueItem", null);
+				return this.GetRelatedEntity<Entities.ActivityPointer>("ActivityPointer_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ActivityPointer_QueueItem");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ActivityPointer>("ActivityPointer_QueueItem", null, value);
+				this.SetRelatedEntity<Entities.ActivityPointer>("ActivityPointer_QueueItem", null, value);
 				this.OnPropertyChanged("ActivityPointer_QueueItem");
 			}
 		}
@@ -881,18 +881,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Appointment_QueueItem")]
-		public DLaB.Xrm.Entities.Appointment Appointment_QueueItem
+		public Entities.Appointment Appointment_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Appointment>("Appointment_QueueItem", null);
+				return this.GetRelatedEntity<Entities.Appointment>("Appointment_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Appointment_QueueItem");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Appointment>("Appointment_QueueItem", null, value);
+				this.SetRelatedEntity<Entities.Appointment>("Appointment_QueueItem", null, value);
 				this.OnPropertyChanged("Appointment_QueueItem");
 			}
 		}
@@ -902,18 +902,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_QueueItem")]
-		public DLaB.Xrm.Entities.BulkOperation BulkOperation_QueueItem
+		public Entities.BulkOperation BulkOperation_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BulkOperation>("BulkOperation_QueueItem", null);
+				return this.GetRelatedEntity<Entities.BulkOperation>("BulkOperation_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperation_QueueItem");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BulkOperation>("BulkOperation_QueueItem", null, value);
+				this.SetRelatedEntity<Entities.BulkOperation>("BulkOperation_QueueItem", null, value);
 				this.OnPropertyChanged("BulkOperation_QueueItem");
 			}
 		}
@@ -923,18 +923,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignActivity_QueueItem")]
-		public DLaB.Xrm.Entities.CampaignActivity CampaignActivity_QueueItem
+		public Entities.CampaignActivity CampaignActivity_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("CampaignActivity_QueueItem", null);
+				return this.GetRelatedEntity<Entities.CampaignActivity>("CampaignActivity_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CampaignActivity_QueueItem");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CampaignActivity>("CampaignActivity_QueueItem", null, value);
+				this.SetRelatedEntity<Entities.CampaignActivity>("CampaignActivity_QueueItem", null, value);
 				this.OnPropertyChanged("CampaignActivity_QueueItem");
 			}
 		}
@@ -944,18 +944,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CampaignResponse_QueueItem")]
-		public DLaB.Xrm.Entities.CampaignResponse CampaignResponse_QueueItem
+		public Entities.CampaignResponse CampaignResponse_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.CampaignResponse>("CampaignResponse_QueueItem", null);
+				return this.GetRelatedEntity<Entities.CampaignResponse>("CampaignResponse_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CampaignResponse_QueueItem");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.CampaignResponse>("CampaignResponse_QueueItem", null, value);
+				this.SetRelatedEntity<Entities.CampaignResponse>("CampaignResponse_QueueItem", null, value);
 				this.OnPropertyChanged("CampaignResponse_QueueItem");
 			}
 		}
@@ -965,18 +965,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Email_QueueItem")]
-		public DLaB.Xrm.Entities.Email Email_QueueItem
+		public Entities.Email Email_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Email>("Email_QueueItem", null);
+				return this.GetRelatedEntity<Entities.Email>("Email_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Email_QueueItem");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Email>("Email_QueueItem", null, value);
+				this.SetRelatedEntity<Entities.Email>("Email_QueueItem", null, value);
 				this.OnPropertyChanged("Email_QueueItem");
 			}
 		}
@@ -986,18 +986,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Fax_QueueItem")]
-		public DLaB.Xrm.Entities.Fax Fax_QueueItem
+		public Entities.Fax Fax_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Fax>("Fax_QueueItem", null);
+				return this.GetRelatedEntity<Entities.Fax>("Fax_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Fax_QueueItem");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Fax>("Fax_QueueItem", null, value);
+				this.SetRelatedEntity<Entities.Fax>("Fax_QueueItem", null, value);
 				this.OnPropertyChanged("Fax_QueueItem");
 			}
 		}
@@ -1007,18 +1007,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Incident_QueueItem")]
-		public DLaB.Xrm.Entities.Incident Incident_QueueItem
+		public Entities.Incident Incident_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_QueueItem", null);
+				return this.GetRelatedEntity<Entities.Incident>("Incident_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Incident_QueueItem");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Incident>("Incident_QueueItem", null, value);
+				this.SetRelatedEntity<Entities.Incident>("Incident_QueueItem", null, value);
 				this.OnPropertyChanged("Incident_QueueItem");
 			}
 		}
@@ -1028,18 +1028,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_QueueItems")]
-		public DLaB.Xrm.Entities.KnowledgeArticle knowledgearticle_QueueItems
+		public Entities.KnowledgeArticle knowledgearticle_QueueItems
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_QueueItems", null);
+				return this.GetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_QueueItems", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("knowledgearticle_QueueItems");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.KnowledgeArticle>("knowledgearticle_QueueItems", null, value);
+				this.SetRelatedEntity<Entities.KnowledgeArticle>("knowledgearticle_QueueItems", null, value);
 				this.OnPropertyChanged("knowledgearticle_QueueItems");
 			}
 		}
@@ -1049,18 +1049,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Letter_QueueItem")]
-		public DLaB.Xrm.Entities.Letter Letter_QueueItem
+		public Entities.Letter Letter_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Letter>("Letter_QueueItem", null);
+				return this.GetRelatedEntity<Entities.Letter>("Letter_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Letter_QueueItem");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Letter>("Letter_QueueItem", null, value);
+				this.SetRelatedEntity<Entities.Letter>("Letter_QueueItem", null, value);
 				this.OnPropertyChanged("Letter_QueueItem");
 			}
 		}
@@ -1070,18 +1070,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_queueitem_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_queueitem_createdonbehalfby
+		public Entities.SystemUser lk_queueitem_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_queueitem_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_queueitem_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_queueitem_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_queueitem_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_queueitem_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_queueitem_createdonbehalfby");
 			}
 		}
@@ -1091,18 +1091,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_queueitem_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_queueitem_modifiedonbehalfby
+		public Entities.SystemUser lk_queueitem_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_queueitem_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_queueitem_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_queueitem_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_queueitem_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_queueitem_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_queueitem_modifiedonbehalfby");
 			}
 		}
@@ -1112,18 +1112,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_queueitembase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_queueitembase_createdby
+		public Entities.SystemUser lk_queueitembase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_queueitembase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_queueitembase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_queueitembase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_queueitembase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_queueitembase_createdby", null, value);
 				this.OnPropertyChanged("lk_queueitembase_createdby");
 			}
 		}
@@ -1133,18 +1133,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_queueitembase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_queueitembase_modifiedby
+		public Entities.SystemUser lk_queueitembase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_queueitembase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_queueitembase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_queueitembase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_queueitembase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_queueitembase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_queueitembase_modifiedby");
 			}
 		}
@@ -1154,18 +1154,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("workerid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_queueitembase_workerid")]
-		public DLaB.Xrm.Entities.SystemUser lk_queueitembase_workerid
+		public Entities.SystemUser lk_queueitembase_workerid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_queueitembase_workerid", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_queueitembase_workerid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_queueitembase_workerid");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_queueitembase_workerid", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_queueitembase_workerid", null, value);
 				this.OnPropertyChanged("lk_queueitembase_workerid");
 			}
 		}
@@ -1175,12 +1175,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_queueitems")]
-		public DLaB.Xrm.Entities.Organization organization_queueitems
+		public Entities.Organization organization_queueitems
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_queueitems", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_queueitems", null);
 			}
 		}
 		
@@ -1189,18 +1189,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("PhoneCall_QueueItem")]
-		public DLaB.Xrm.Entities.PhoneCall PhoneCall_QueueItem
+		public Entities.PhoneCall PhoneCall_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.PhoneCall>("PhoneCall_QueueItem", null);
+				return this.GetRelatedEntity<Entities.PhoneCall>("PhoneCall_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("PhoneCall_QueueItem");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.PhoneCall>("PhoneCall_QueueItem", null, value);
+				this.SetRelatedEntity<Entities.PhoneCall>("PhoneCall_QueueItem", null, value);
 				this.OnPropertyChanged("PhoneCall_QueueItem");
 			}
 		}
@@ -1210,18 +1210,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("queueid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("queue_entries")]
-		public DLaB.Xrm.Entities.Queue queue_entries
+		public Entities.Queue queue_entries
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Queue>("queue_entries", null);
+				return this.GetRelatedEntity<Entities.Queue>("queue_entries", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("queue_entries");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Queue>("queue_entries", null, value);
+				this.SetRelatedEntity<Entities.Queue>("queue_entries", null, value);
 				this.OnPropertyChanged("queue_entries");
 			}
 		}
@@ -1231,18 +1231,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("RecurringAppointmentMaster_QueueItem")]
-		public DLaB.Xrm.Entities.RecurringAppointmentMaster RecurringAppointmentMaster_QueueItem
+		public Entities.RecurringAppointmentMaster RecurringAppointmentMaster_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.RecurringAppointmentMaster>("RecurringAppointmentMaster_QueueItem", null);
+				return this.GetRelatedEntity<Entities.RecurringAppointmentMaster>("RecurringAppointmentMaster_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("RecurringAppointmentMaster_QueueItem");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.RecurringAppointmentMaster>("RecurringAppointmentMaster_QueueItem", null, value);
+				this.SetRelatedEntity<Entities.RecurringAppointmentMaster>("RecurringAppointmentMaster_QueueItem", null, value);
 				this.OnPropertyChanged("RecurringAppointmentMaster_QueueItem");
 			}
 		}
@@ -1252,18 +1252,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ServiceAppointment_QueueItem")]
-		public DLaB.Xrm.Entities.ServiceAppointment ServiceAppointment_QueueItem
+		public Entities.ServiceAppointment ServiceAppointment_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ServiceAppointment>("ServiceAppointment_QueueItem", null);
+				return this.GetRelatedEntity<Entities.ServiceAppointment>("ServiceAppointment_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ServiceAppointment_QueueItem");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ServiceAppointment>("ServiceAppointment_QueueItem", null, value);
+				this.SetRelatedEntity<Entities.ServiceAppointment>("ServiceAppointment_QueueItem", null, value);
 				this.OnPropertyChanged("ServiceAppointment_QueueItem");
 			}
 		}
@@ -1273,18 +1273,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SocialActivity_QueueItem")]
-		public DLaB.Xrm.Entities.SocialActivity SocialActivity_QueueItem
+		public Entities.SocialActivity SocialActivity_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SocialActivity>("SocialActivity_QueueItem", null);
+				return this.GetRelatedEntity<Entities.SocialActivity>("SocialActivity_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SocialActivity_QueueItem");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SocialActivity>("SocialActivity_QueueItem", null, value);
+				this.SetRelatedEntity<Entities.SocialActivity>("SocialActivity_QueueItem", null, value);
 				this.OnPropertyChanged("SocialActivity_QueueItem");
 			}
 		}
@@ -1294,18 +1294,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Task_QueueItem")]
-		public DLaB.Xrm.Entities.Task Task_QueueItem
+		public Entities.Task Task_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Task>("Task_QueueItem", null);
+				return this.GetRelatedEntity<Entities.Task>("Task_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Task_QueueItem");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Task>("Task_QueueItem", null, value);
+				this.SetRelatedEntity<Entities.Task>("Task_QueueItem", null, value);
 				this.OnPropertyChanged("Task_QueueItem");
 			}
 		}
@@ -1315,18 +1315,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("workerid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_queueitembase_workerid")]
-		public DLaB.Xrm.Entities.Team team_queueitembase_workerid
+		public Entities.Team team_queueitembase_workerid
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_queueitembase_workerid", null);
+				return this.GetRelatedEntity<Entities.Team>("team_queueitembase_workerid", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_queueitembase_workerid");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_queueitembase_workerid", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_queueitembase_workerid", null, value);
 				this.OnPropertyChanged("team_queueitembase_workerid");
 			}
 		}
@@ -1336,18 +1336,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("TransactionCurrency_QueueItem")]
-		public DLaB.Xrm.Entities.TransactionCurrency TransactionCurrency_QueueItem
+		public Entities.TransactionCurrency TransactionCurrency_QueueItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_QueueItem", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_QueueItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("TransactionCurrency_QueueItem");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("TransactionCurrency_QueueItem", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("TransactionCurrency_QueueItem", null, value);
 				this.OnPropertyChanged("TransactionCurrency_QueueItem");
 			}
 		}

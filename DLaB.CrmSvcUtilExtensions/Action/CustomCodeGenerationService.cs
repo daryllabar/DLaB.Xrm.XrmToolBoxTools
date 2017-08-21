@@ -8,15 +8,9 @@ namespace DLaB.CrmSvcUtilExtensions.Action
     {
         public CustomCodeGenerationService(ICodeGenerationService service) : base(service) {}
 
-        protected override string CommandLineText
-        {
-            get { return ConfigHelper.GetAppSettingOrDefault("ActionCommandLineText", string.Empty); }
-        }
+        protected override string CommandLineText => ConfigHelper.GetAppSettingOrDefault("ActionCommandLineText", string.Empty);
 
-        protected override bool CreateOneFilePerCodeUnit
-        {
-            get { return ConfigHelper.GetAppSettingOrDefault("CreateOneFilePerAction", false); }
-        }
+        protected override bool CreateOneFilePerCodeUnit => ConfigHelper.GetAppSettingOrDefault("CreateOneFilePerAction", false);
 
         protected override void WriteInternal(IOrganizationMetadata organizationMetadata, string language, string outputFile, string targetNamespace, IServiceProvider services)
         {

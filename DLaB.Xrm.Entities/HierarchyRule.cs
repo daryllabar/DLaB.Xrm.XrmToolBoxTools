@@ -411,12 +411,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_hierarchyrules")]
-		public DLaB.Xrm.Entities.Organization organization_hierarchyrules
+		public Entities.Organization organization_hierarchyrules
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_hierarchyrules", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_hierarchyrules", null);
 			}
 		}
 		

@@ -438,18 +438,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N unit_of_measurement_base_unit
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measurement_base_unit", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UoM> Referencedunit_of_measurement_base_unit
+		public System.Collections.Generic.IEnumerable<Entities.UoM> Referencedunit_of_measurement_base_unit
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UoM>("unit_of_measurement_base_unit", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Entities.UoM>("unit_of_measurement_base_unit", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedunit_of_measurement_base_unit");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UoM>("unit_of_measurement_base_unit", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Entities.UoM>("unit_of_measurement_base_unit", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedunit_of_measurement_base_unit");
 			}
 		}
@@ -458,18 +458,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N unit_of_measurement_contract_line_items
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measurement_contract_line_items")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ContractDetail> unit_of_measurement_contract_line_items
+		public System.Collections.Generic.IEnumerable<Entities.ContractDetail> unit_of_measurement_contract_line_items
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ContractDetail>("unit_of_measurement_contract_line_items", null);
+				return this.GetRelatedEntities<Entities.ContractDetail>("unit_of_measurement_contract_line_items", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("unit_of_measurement_contract_line_items");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ContractDetail>("unit_of_measurement_contract_line_items", null, value);
+				this.SetRelatedEntities<Entities.ContractDetail>("unit_of_measurement_contract_line_items", null, value);
 				this.OnPropertyChanged("unit_of_measurement_contract_line_items");
 			}
 		}
@@ -478,18 +478,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N unit_of_measurement_invoice_details
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measurement_invoice_details")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.InvoiceDetail> unit_of_measurement_invoice_details
+		public System.Collections.Generic.IEnumerable<Entities.InvoiceDetail> unit_of_measurement_invoice_details
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.InvoiceDetail>("unit_of_measurement_invoice_details", null);
+				return this.GetRelatedEntities<Entities.InvoiceDetail>("unit_of_measurement_invoice_details", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("unit_of_measurement_invoice_details");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.InvoiceDetail>("unit_of_measurement_invoice_details", null, value);
+				this.SetRelatedEntities<Entities.InvoiceDetail>("unit_of_measurement_invoice_details", null, value);
 				this.OnPropertyChanged("unit_of_measurement_invoice_details");
 			}
 		}
@@ -498,18 +498,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N unit_of_measurement_opportunity_products
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measurement_opportunity_products")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.OpportunityProduct> unit_of_measurement_opportunity_products
+		public System.Collections.Generic.IEnumerable<Entities.OpportunityProduct> unit_of_measurement_opportunity_products
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.OpportunityProduct>("unit_of_measurement_opportunity_products", null);
+				return this.GetRelatedEntities<Entities.OpportunityProduct>("unit_of_measurement_opportunity_products", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("unit_of_measurement_opportunity_products");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.OpportunityProduct>("unit_of_measurement_opportunity_products", null, value);
+				this.SetRelatedEntities<Entities.OpportunityProduct>("unit_of_measurement_opportunity_products", null, value);
 				this.OnPropertyChanged("unit_of_measurement_opportunity_products");
 			}
 		}
@@ -518,18 +518,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N unit_of_measurement_order_details
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measurement_order_details")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SalesOrderDetail> unit_of_measurement_order_details
+		public System.Collections.Generic.IEnumerable<Entities.SalesOrderDetail> unit_of_measurement_order_details
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SalesOrderDetail>("unit_of_measurement_order_details", null);
+				return this.GetRelatedEntities<Entities.SalesOrderDetail>("unit_of_measurement_order_details", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("unit_of_measurement_order_details");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SalesOrderDetail>("unit_of_measurement_order_details", null, value);
+				this.SetRelatedEntities<Entities.SalesOrderDetail>("unit_of_measurement_order_details", null, value);
 				this.OnPropertyChanged("unit_of_measurement_order_details");
 			}
 		}
@@ -538,18 +538,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N unit_of_measurement_product_price_levels
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measurement_product_price_levels")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProductPriceLevel> unit_of_measurement_product_price_levels
+		public System.Collections.Generic.IEnumerable<Entities.ProductPriceLevel> unit_of_measurement_product_price_levels
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProductPriceLevel>("unit_of_measurement_product_price_levels", null);
+				return this.GetRelatedEntities<Entities.ProductPriceLevel>("unit_of_measurement_product_price_levels", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("unit_of_measurement_product_price_levels");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProductPriceLevel>("unit_of_measurement_product_price_levels", null, value);
+				this.SetRelatedEntities<Entities.ProductPriceLevel>("unit_of_measurement_product_price_levels", null, value);
 				this.OnPropertyChanged("unit_of_measurement_product_price_levels");
 			}
 		}
@@ -558,18 +558,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N unit_of_measurement_productassociation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measurement_productassociation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProductAssociation> unit_of_measurement_productassociation
+		public System.Collections.Generic.IEnumerable<Entities.ProductAssociation> unit_of_measurement_productassociation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProductAssociation>("unit_of_measurement_productassociation", null);
+				return this.GetRelatedEntities<Entities.ProductAssociation>("unit_of_measurement_productassociation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("unit_of_measurement_productassociation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProductAssociation>("unit_of_measurement_productassociation", null, value);
+				this.SetRelatedEntities<Entities.ProductAssociation>("unit_of_measurement_productassociation", null, value);
 				this.OnPropertyChanged("unit_of_measurement_productassociation");
 			}
 		}
@@ -578,18 +578,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N unit_of_measurement_products
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measurement_products")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Product> unit_of_measurement_products
+		public System.Collections.Generic.IEnumerable<Entities.Product> unit_of_measurement_products
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Product>("unit_of_measurement_products", null);
+				return this.GetRelatedEntities<Entities.Product>("unit_of_measurement_products", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("unit_of_measurement_products");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Product>("unit_of_measurement_products", null, value);
+				this.SetRelatedEntities<Entities.Product>("unit_of_measurement_products", null, value);
 				this.OnPropertyChanged("unit_of_measurement_products");
 			}
 		}
@@ -598,18 +598,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N unit_of_measurement_quote_details
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measurement_quote_details")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.QuoteDetail> unit_of_measurement_quote_details
+		public System.Collections.Generic.IEnumerable<Entities.QuoteDetail> unit_of_measurement_quote_details
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.QuoteDetail>("unit_of_measurement_quote_details", null);
+				return this.GetRelatedEntities<Entities.QuoteDetail>("unit_of_measurement_quote_details", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("unit_of_measurement_quote_details");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.QuoteDetail>("unit_of_measurement_quote_details", null, value);
+				this.SetRelatedEntities<Entities.QuoteDetail>("unit_of_measurement_quote_details", null, value);
 				this.OnPropertyChanged("unit_of_measurement_quote_details");
 			}
 		}
@@ -618,18 +618,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N UoM_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("UoM_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> UoM_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> UoM_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("UoM_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("UoM_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("UoM_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("UoM_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("UoM_AsyncOperations", null, value);
 				this.OnPropertyChanged("UoM_AsyncOperations");
 			}
 		}
@@ -638,18 +638,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N UoM_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("UoM_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> UoM_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> UoM_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("UoM_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("UoM_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("UoM_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("UoM_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("UoM_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("UoM_BulkDeleteFailures");
 			}
 		}
@@ -658,18 +658,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_uom
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_uom")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_uom
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_uom
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_uom", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_uom", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_uom");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_uom", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_uom", null, value);
 				this.OnPropertyChanged("userentityinstancedata_uom");
 			}
 		}
@@ -679,12 +679,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdbyexternalparty")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_externalparty_uom_createdby")]
-		public DLaB.Xrm.Entities.ExternalParty lk_externalparty_uom_createdby
+		public Entities.ExternalParty lk_externalparty_uom_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ExternalParty>("lk_externalparty_uom_createdby", null);
+				return this.GetRelatedEntity<Entities.ExternalParty>("lk_externalparty_uom_createdby", null);
 			}
 		}
 		
@@ -693,12 +693,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedbyexternalparty")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_externalparty_uom_modifiedby")]
-		public DLaB.Xrm.Entities.ExternalParty lk_externalparty_uom_modifiedby
+		public Entities.ExternalParty lk_externalparty_uom_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ExternalParty>("lk_externalparty_uom_modifiedby", null);
+				return this.GetRelatedEntity<Entities.ExternalParty>("lk_externalparty_uom_modifiedby", null);
 			}
 		}
 		
@@ -707,18 +707,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_uom_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_uom_createdonbehalfby
+		public Entities.SystemUser lk_uom_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_uom_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_uom_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_uom_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_uom_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_uom_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_uom_createdonbehalfby");
 			}
 		}
@@ -728,18 +728,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_uom_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_uom_modifiedonbehalfby
+		public Entities.SystemUser lk_uom_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_uom_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_uom_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_uom_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_uom_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_uom_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_uom_modifiedonbehalfby");
 			}
 		}
@@ -749,18 +749,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_uombase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_uombase_createdby
+		public Entities.SystemUser lk_uombase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_uombase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_uombase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_uombase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_uombase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_uombase_createdby", null, value);
 				this.OnPropertyChanged("lk_uombase_createdby");
 			}
 		}
@@ -770,18 +770,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_uombase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_uombase_modifiedby
+		public Entities.SystemUser lk_uombase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_uombase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_uombase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_uombase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_uombase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_uombase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_uombase_modifiedby");
 			}
 		}
@@ -791,18 +791,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uomscheduleid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measure_schedule_conversions")]
-		public DLaB.Xrm.Entities.UoMSchedule unit_of_measure_schedule_conversions
+		public Entities.UoMSchedule unit_of_measure_schedule_conversions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.UoMSchedule>("unit_of_measure_schedule_conversions", null);
+				return this.GetRelatedEntity<Entities.UoMSchedule>("unit_of_measure_schedule_conversions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("unit_of_measure_schedule_conversions");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.UoMSchedule>("unit_of_measure_schedule_conversions", null, value);
+				this.SetRelatedEntity<Entities.UoMSchedule>("unit_of_measure_schedule_conversions", null, value);
 				this.OnPropertyChanged("unit_of_measure_schedule_conversions");
 			}
 		}
@@ -812,18 +812,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("baseuom")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("unit_of_measurement_base_unit", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DLaB.Xrm.Entities.UoM Referencingunit_of_measurement_base_unit
+		public Entities.UoM Referencingunit_of_measurement_base_unit
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.UoM>("unit_of_measurement_base_unit", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Entities.UoM>("unit_of_measurement_base_unit", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencingunit_of_measurement_base_unit");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.UoM>("unit_of_measurement_base_unit", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Entities.UoM>("unit_of_measurement_base_unit", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencingunit_of_measurement_base_unit");
 			}
 		}

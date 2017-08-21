@@ -1722,7 +1722,7 @@ namespace DLaB.Xrm.Entities
 		/// Shows whether the opportunity is open, won, or lost. Won and lost opportunities are read-only and can't be edited until they are reactivated.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<DLaB.Xrm.Entities.OpportunityState> StateCode
+		public System.Nullable<Entities.OpportunityState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -1730,7 +1730,7 @@ namespace DLaB.Xrm.Entities
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((DLaB.Xrm.Entities.OpportunityState)(System.Enum.ToObject(typeof(DLaB.Xrm.Entities.OpportunityState), optionSet.Value)));
+					return ((Entities.OpportunityState)(System.Enum.ToObject(typeof(Entities.OpportunityState), optionSet.Value)));
 				}
 				else
 				{
@@ -2128,18 +2128,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N CreatedOpportunity_BulkOperationLogs
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("CreatedOpportunity_BulkOperationLogs")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkOperationLog> CreatedOpportunity_BulkOperationLogs
+		public System.Collections.Generic.IEnumerable<Entities.BulkOperationLog> CreatedOpportunity_BulkOperationLogs
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkOperationLog>("CreatedOpportunity_BulkOperationLogs", null);
+				return this.GetRelatedEntities<Entities.BulkOperationLog>("CreatedOpportunity_BulkOperationLogs", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("CreatedOpportunity_BulkOperationLogs");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkOperationLog>("CreatedOpportunity_BulkOperationLogs", null, value);
+				this.SetRelatedEntities<Entities.BulkOperationLog>("CreatedOpportunity_BulkOperationLogs", null, value);
 				this.OnPropertyChanged("CreatedOpportunity_BulkOperationLogs");
 			}
 		}
@@ -2148,18 +2148,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N lead_qualifying_opportunity
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_qualifying_opportunity")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Lead> lead_qualifying_opportunity
+		public System.Collections.Generic.IEnumerable<Entities.Lead> lead_qualifying_opportunity
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Lead>("lead_qualifying_opportunity", null);
+				return this.GetRelatedEntities<Entities.Lead>("lead_qualifying_opportunity", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lead_qualifying_opportunity");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Lead>("lead_qualifying_opportunity", null, value);
+				this.SetRelatedEntities<Entities.Lead>("lead_qualifying_opportunity", null, value);
 				this.OnPropertyChanged("lead_qualifying_opportunity");
 			}
 		}
@@ -2168,18 +2168,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N opportunity_activity_parties
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_activity_parties")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityParty> opportunity_activity_parties
+		public System.Collections.Generic.IEnumerable<Entities.ActivityParty> opportunity_activity_parties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("opportunity_activity_parties", null);
+				return this.GetRelatedEntities<Entities.ActivityParty>("opportunity_activity_parties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_activity_parties");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityParty>("opportunity_activity_parties", null, value);
+				this.SetRelatedEntities<Entities.ActivityParty>("opportunity_activity_parties", null, value);
 				this.OnPropertyChanged("opportunity_activity_parties");
 			}
 		}
@@ -2188,18 +2188,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Opportunity_ActivityPointers
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_ActivityPointers")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ActivityPointer> Opportunity_ActivityPointers
+		public System.Collections.Generic.IEnumerable<Entities.ActivityPointer> Opportunity_ActivityPointers
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ActivityPointer>("Opportunity_ActivityPointers", null);
+				return this.GetRelatedEntities<Entities.ActivityPointer>("Opportunity_ActivityPointers", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_ActivityPointers");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ActivityPointer>("Opportunity_ActivityPointers", null, value);
+				this.SetRelatedEntities<Entities.ActivityPointer>("Opportunity_ActivityPointers", null, value);
 				this.OnPropertyChanged("Opportunity_ActivityPointers");
 			}
 		}
@@ -2208,18 +2208,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Opportunity_Annotation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_Annotation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Annotation> Opportunity_Annotation
+		public System.Collections.Generic.IEnumerable<Entities.Annotation> Opportunity_Annotation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Annotation>("Opportunity_Annotation", null);
+				return this.GetRelatedEntities<Entities.Annotation>("Opportunity_Annotation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_Annotation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Annotation>("Opportunity_Annotation", null, value);
+				this.SetRelatedEntities<Entities.Annotation>("Opportunity_Annotation", null, value);
 				this.OnPropertyChanged("Opportunity_Annotation");
 			}
 		}
@@ -2228,18 +2228,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Opportunity_Appointments
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_Appointments")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Appointment> Opportunity_Appointments
+		public System.Collections.Generic.IEnumerable<Entities.Appointment> Opportunity_Appointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Appointment>("Opportunity_Appointments", null);
+				return this.GetRelatedEntities<Entities.Appointment>("Opportunity_Appointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_Appointments");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Appointment>("Opportunity_Appointments", null, value);
+				this.SetRelatedEntities<Entities.Appointment>("Opportunity_Appointments", null, value);
 				this.OnPropertyChanged("Opportunity_Appointments");
 			}
 		}
@@ -2248,18 +2248,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Opportunity_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> Opportunity_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> Opportunity_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Opportunity_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("Opportunity_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("Opportunity_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("Opportunity_AsyncOperations", null, value);
 				this.OnPropertyChanged("Opportunity_AsyncOperations");
 			}
 		}
@@ -2268,18 +2268,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Opportunity_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> Opportunity_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> Opportunity_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Opportunity_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("Opportunity_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("Opportunity_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("Opportunity_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("Opportunity_BulkDeleteFailures");
 			}
 		}
@@ -2288,18 +2288,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N opportunity_connections1
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_connections1")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> opportunity_connections1
+		public System.Collections.Generic.IEnumerable<Entities.Connection> opportunity_connections1
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("opportunity_connections1", null);
+				return this.GetRelatedEntities<Entities.Connection>("opportunity_connections1", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_connections1");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("opportunity_connections1", null, value);
+				this.SetRelatedEntities<Entities.Connection>("opportunity_connections1", null, value);
 				this.OnPropertyChanged("opportunity_connections1");
 			}
 		}
@@ -2308,18 +2308,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N opportunity_connections2
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_connections2")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Connection> opportunity_connections2
+		public System.Collections.Generic.IEnumerable<Entities.Connection> opportunity_connections2
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Connection>("opportunity_connections2", null);
+				return this.GetRelatedEntities<Entities.Connection>("opportunity_connections2", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_connections2");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Connection>("opportunity_connections2", null, value);
+				this.SetRelatedEntities<Entities.Connection>("opportunity_connections2", null, value);
 				this.OnPropertyChanged("opportunity_connections2");
 			}
 		}
@@ -2328,18 +2328,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N opportunity_customer_opportunity_roles
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_customer_opportunity_roles")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.CustomerOpportunityRole> opportunity_customer_opportunity_roles
+		public System.Collections.Generic.IEnumerable<Entities.CustomerOpportunityRole> opportunity_customer_opportunity_roles
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.CustomerOpportunityRole>("opportunity_customer_opportunity_roles", null);
+				return this.GetRelatedEntities<Entities.CustomerOpportunityRole>("opportunity_customer_opportunity_roles", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_customer_opportunity_roles");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.CustomerOpportunityRole>("opportunity_customer_opportunity_roles", null, value);
+				this.SetRelatedEntities<Entities.CustomerOpportunityRole>("opportunity_customer_opportunity_roles", null, value);
 				this.OnPropertyChanged("opportunity_customer_opportunity_roles");
 			}
 		}
@@ -2348,18 +2348,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Opportunity_DuplicateBaseRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_DuplicateBaseRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> Opportunity_DuplicateBaseRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> Opportunity_DuplicateBaseRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Opportunity_DuplicateBaseRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("Opportunity_DuplicateBaseRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_DuplicateBaseRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Opportunity_DuplicateBaseRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("Opportunity_DuplicateBaseRecord", null, value);
 				this.OnPropertyChanged("Opportunity_DuplicateBaseRecord");
 			}
 		}
@@ -2368,18 +2368,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Opportunity_DuplicateMatchingRecord
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_DuplicateMatchingRecord")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.DuplicateRecord> Opportunity_DuplicateMatchingRecord
+		public System.Collections.Generic.IEnumerable<Entities.DuplicateRecord> Opportunity_DuplicateMatchingRecord
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Opportunity_DuplicateMatchingRecord", null);
+				return this.GetRelatedEntities<Entities.DuplicateRecord>("Opportunity_DuplicateMatchingRecord", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_DuplicateMatchingRecord");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.DuplicateRecord>("Opportunity_DuplicateMatchingRecord", null, value);
+				this.SetRelatedEntities<Entities.DuplicateRecord>("Opportunity_DuplicateMatchingRecord", null, value);
 				this.OnPropertyChanged("Opportunity_DuplicateMatchingRecord");
 			}
 		}
@@ -2388,18 +2388,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Opportunity_Emails
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_Emails")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Email> Opportunity_Emails
+		public System.Collections.Generic.IEnumerable<Entities.Email> Opportunity_Emails
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Email>("Opportunity_Emails", null);
+				return this.GetRelatedEntities<Entities.Email>("Opportunity_Emails", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_Emails");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Email>("Opportunity_Emails", null, value);
+				this.SetRelatedEntities<Entities.Email>("Opportunity_Emails", null, value);
 				this.OnPropertyChanged("Opportunity_Emails");
 			}
 		}
@@ -2408,18 +2408,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Opportunity_Faxes
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_Faxes")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Fax> Opportunity_Faxes
+		public System.Collections.Generic.IEnumerable<Entities.Fax> Opportunity_Faxes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Fax>("Opportunity_Faxes", null);
+				return this.GetRelatedEntities<Entities.Fax>("Opportunity_Faxes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_Faxes");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Fax>("Opportunity_Faxes", null, value);
+				this.SetRelatedEntities<Entities.Fax>("Opportunity_Faxes", null, value);
 				this.OnPropertyChanged("Opportunity_Faxes");
 			}
 		}
@@ -2428,18 +2428,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N opportunity_invoices
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_invoices")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Invoice> opportunity_invoices
+		public System.Collections.Generic.IEnumerable<Entities.Invoice> opportunity_invoices
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Invoice>("opportunity_invoices", null);
+				return this.GetRelatedEntities<Entities.Invoice>("opportunity_invoices", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_invoices");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Invoice>("opportunity_invoices", null, value);
+				this.SetRelatedEntities<Entities.Invoice>("opportunity_invoices", null, value);
 				this.OnPropertyChanged("opportunity_invoices");
 			}
 		}
@@ -2448,18 +2448,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Opportunity_Letters
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_Letters")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Letter> Opportunity_Letters
+		public System.Collections.Generic.IEnumerable<Entities.Letter> Opportunity_Letters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Letter>("Opportunity_Letters", null);
+				return this.GetRelatedEntities<Entities.Letter>("Opportunity_Letters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_Letters");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Letter>("Opportunity_Letters", null, value);
+				this.SetRelatedEntities<Entities.Letter>("Opportunity_Letters", null, value);
 				this.OnPropertyChanged("Opportunity_Letters");
 			}
 		}
@@ -2468,18 +2468,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Opportunity_MailboxTrackingFolder
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_MailboxTrackingFolder")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.MailboxTrackingFolder> Opportunity_MailboxTrackingFolder
+		public System.Collections.Generic.IEnumerable<Entities.MailboxTrackingFolder> Opportunity_MailboxTrackingFolder
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.MailboxTrackingFolder>("Opportunity_MailboxTrackingFolder", null);
+				return this.GetRelatedEntities<Entities.MailboxTrackingFolder>("Opportunity_MailboxTrackingFolder", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_MailboxTrackingFolder");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.MailboxTrackingFolder>("Opportunity_MailboxTrackingFolder", null, value);
+				this.SetRelatedEntities<Entities.MailboxTrackingFolder>("Opportunity_MailboxTrackingFolder", null, value);
 				this.OnPropertyChanged("Opportunity_MailboxTrackingFolder");
 			}
 		}
@@ -2488,18 +2488,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Opportunity_OpportunityClose
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_OpportunityClose")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.OpportunityClose> Opportunity_OpportunityClose
+		public System.Collections.Generic.IEnumerable<Entities.OpportunityClose> Opportunity_OpportunityClose
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.OpportunityClose>("Opportunity_OpportunityClose", null);
+				return this.GetRelatedEntities<Entities.OpportunityClose>("Opportunity_OpportunityClose", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_OpportunityClose");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.OpportunityClose>("Opportunity_OpportunityClose", null, value);
+				this.SetRelatedEntities<Entities.OpportunityClose>("Opportunity_OpportunityClose", null, value);
 				this.OnPropertyChanged("Opportunity_OpportunityClose");
 			}
 		}
@@ -2508,18 +2508,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Opportunity_Phonecalls
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_Phonecalls")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PhoneCall> Opportunity_Phonecalls
+		public System.Collections.Generic.IEnumerable<Entities.PhoneCall> Opportunity_Phonecalls
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PhoneCall>("Opportunity_Phonecalls", null);
+				return this.GetRelatedEntities<Entities.PhoneCall>("Opportunity_Phonecalls", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_Phonecalls");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PhoneCall>("Opportunity_Phonecalls", null, value);
+				this.SetRelatedEntities<Entities.PhoneCall>("Opportunity_Phonecalls", null, value);
 				this.OnPropertyChanged("Opportunity_Phonecalls");
 			}
 		}
@@ -2528,18 +2528,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N opportunity_PostFollows
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_PostFollows")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PostFollow> opportunity_PostFollows
+		public System.Collections.Generic.IEnumerable<Entities.PostFollow> opportunity_PostFollows
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PostFollow>("opportunity_PostFollows", null);
+				return this.GetRelatedEntities<Entities.PostFollow>("opportunity_PostFollows", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_PostFollows");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PostFollow>("opportunity_PostFollows", null, value);
+				this.SetRelatedEntities<Entities.PostFollow>("opportunity_PostFollows", null, value);
 				this.OnPropertyChanged("opportunity_PostFollows");
 			}
 		}
@@ -2548,18 +2548,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N opportunity_principalobjectattributeaccess
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_principalobjectattributeaccess")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess> opportunity_principalobjectattributeaccess
+		public System.Collections.Generic.IEnumerable<Entities.PrincipalObjectAttributeAccess> opportunity_principalobjectattributeaccess
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("opportunity_principalobjectattributeaccess", null);
+				return this.GetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("opportunity_principalobjectattributeaccess", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_principalobjectattributeaccess");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.PrincipalObjectAttributeAccess>("opportunity_principalobjectattributeaccess", null, value);
+				this.SetRelatedEntities<Entities.PrincipalObjectAttributeAccess>("opportunity_principalobjectattributeaccess", null, value);
 				this.OnPropertyChanged("opportunity_principalobjectattributeaccess");
 			}
 		}
@@ -2568,18 +2568,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Opportunity_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> Opportunity_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> Opportunity_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Opportunity_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("Opportunity_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("Opportunity_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("Opportunity_ProcessSessions", null, value);
 				this.OnPropertyChanged("Opportunity_ProcessSessions");
 			}
 		}
@@ -2588,18 +2588,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N opportunity_quotes
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_quotes")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Quote> opportunity_quotes
+		public System.Collections.Generic.IEnumerable<Entities.Quote> opportunity_quotes
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Quote>("opportunity_quotes", null);
+				return this.GetRelatedEntities<Entities.Quote>("opportunity_quotes", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_quotes");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Quote>("opportunity_quotes", null, value);
+				this.SetRelatedEntities<Entities.Quote>("opportunity_quotes", null, value);
 				this.OnPropertyChanged("opportunity_quotes");
 			}
 		}
@@ -2608,18 +2608,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Opportunity_RecurringAppointmentMasters
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_RecurringAppointmentMasters")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.RecurringAppointmentMaster> Opportunity_RecurringAppointmentMasters
+		public System.Collections.Generic.IEnumerable<Entities.RecurringAppointmentMaster> Opportunity_RecurringAppointmentMasters
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.RecurringAppointmentMaster>("Opportunity_RecurringAppointmentMasters", null);
+				return this.GetRelatedEntities<Entities.RecurringAppointmentMaster>("Opportunity_RecurringAppointmentMasters", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_RecurringAppointmentMasters");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.RecurringAppointmentMaster>("Opportunity_RecurringAppointmentMasters", null, value);
+				this.SetRelatedEntities<Entities.RecurringAppointmentMaster>("Opportunity_RecurringAppointmentMasters", null, value);
 				this.OnPropertyChanged("Opportunity_RecurringAppointmentMasters");
 			}
 		}
@@ -2628,18 +2628,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N opportunity_sales_orders
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_sales_orders")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SalesOrder> opportunity_sales_orders
+		public System.Collections.Generic.IEnumerable<Entities.SalesOrder> opportunity_sales_orders
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SalesOrder>("opportunity_sales_orders", null);
+				return this.GetRelatedEntities<Entities.SalesOrder>("opportunity_sales_orders", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_sales_orders");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SalesOrder>("opportunity_sales_orders", null, value);
+				this.SetRelatedEntities<Entities.SalesOrder>("opportunity_sales_orders", null, value);
 				this.OnPropertyChanged("opportunity_sales_orders");
 			}
 		}
@@ -2648,18 +2648,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Opportunity_ServiceAppointments
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_ServiceAppointments")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ServiceAppointment> Opportunity_ServiceAppointments
+		public System.Collections.Generic.IEnumerable<Entities.ServiceAppointment> Opportunity_ServiceAppointments
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ServiceAppointment>("Opportunity_ServiceAppointments", null);
+				return this.GetRelatedEntities<Entities.ServiceAppointment>("Opportunity_ServiceAppointments", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_ServiceAppointments");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ServiceAppointment>("Opportunity_ServiceAppointments", null, value);
+				this.SetRelatedEntities<Entities.ServiceAppointment>("Opportunity_ServiceAppointments", null, value);
 				this.OnPropertyChanged("Opportunity_ServiceAppointments");
 			}
 		}
@@ -2668,18 +2668,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Opportunity_SharepointDocument
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_SharepointDocument")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SharePointDocument> Opportunity_SharepointDocument
+		public System.Collections.Generic.IEnumerable<Entities.SharePointDocument> Opportunity_SharepointDocument
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SharePointDocument>("Opportunity_SharepointDocument", null);
+				return this.GetRelatedEntities<Entities.SharePointDocument>("Opportunity_SharepointDocument", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_SharepointDocument");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SharePointDocument>("Opportunity_SharepointDocument", null, value);
+				this.SetRelatedEntities<Entities.SharePointDocument>("Opportunity_SharepointDocument", null, value);
 				this.OnPropertyChanged("Opportunity_SharepointDocument");
 			}
 		}
@@ -2688,18 +2688,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Opportunity_SharepointDocumentLocation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_SharepointDocumentLocation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SharePointDocumentLocation> Opportunity_SharepointDocumentLocation
+		public System.Collections.Generic.IEnumerable<Entities.SharePointDocumentLocation> Opportunity_SharepointDocumentLocation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SharePointDocumentLocation>("Opportunity_SharepointDocumentLocation", null);
+				return this.GetRelatedEntities<Entities.SharePointDocumentLocation>("Opportunity_SharepointDocumentLocation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_SharepointDocumentLocation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SharePointDocumentLocation>("Opportunity_SharepointDocumentLocation", null, value);
+				this.SetRelatedEntities<Entities.SharePointDocumentLocation>("Opportunity_SharepointDocumentLocation", null, value);
 				this.OnPropertyChanged("Opportunity_SharepointDocumentLocation");
 			}
 		}
@@ -2708,18 +2708,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Opportunity_SocialActivities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_SocialActivities")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.SocialActivity> Opportunity_SocialActivities
+		public System.Collections.Generic.IEnumerable<Entities.SocialActivity> Opportunity_SocialActivities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.SocialActivity>("Opportunity_SocialActivities", null);
+				return this.GetRelatedEntities<Entities.SocialActivity>("Opportunity_SocialActivities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_SocialActivities");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.SocialActivity>("Opportunity_SocialActivities", null, value);
+				this.SetRelatedEntities<Entities.SocialActivity>("Opportunity_SocialActivities", null, value);
 				this.OnPropertyChanged("Opportunity_SocialActivities");
 			}
 		}
@@ -2728,18 +2728,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N Opportunity_Tasks
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Opportunity_Tasks")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Task> Opportunity_Tasks
+		public System.Collections.Generic.IEnumerable<Entities.Task> Opportunity_Tasks
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Task>("Opportunity_Tasks", null);
+				return this.GetRelatedEntities<Entities.Task>("Opportunity_Tasks", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Opportunity_Tasks");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Task>("Opportunity_Tasks", null, value);
+				this.SetRelatedEntities<Entities.Task>("Opportunity_Tasks", null, value);
 				this.OnPropertyChanged("Opportunity_Tasks");
 			}
 		}
@@ -2748,18 +2748,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N opportunity_Teams
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_Teams")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Team> opportunity_Teams
+		public System.Collections.Generic.IEnumerable<Entities.Team> opportunity_Teams
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Team>("opportunity_Teams", null);
+				return this.GetRelatedEntities<Entities.Team>("opportunity_Teams", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_Teams");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Team>("opportunity_Teams", null, value);
+				this.SetRelatedEntities<Entities.Team>("opportunity_Teams", null, value);
 				this.OnPropertyChanged("opportunity_Teams");
 			}
 		}
@@ -2768,18 +2768,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N product_opportunities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("product_opportunities")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.OpportunityProduct> product_opportunities
+		public System.Collections.Generic.IEnumerable<Entities.OpportunityProduct> product_opportunities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.OpportunityProduct>("product_opportunities", null);
+				return this.GetRelatedEntities<Entities.OpportunityProduct>("product_opportunities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("product_opportunities");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.OpportunityProduct>("product_opportunities", null, value);
+				this.SetRelatedEntities<Entities.OpportunityProduct>("product_opportunities", null, value);
 				this.OnPropertyChanged("product_opportunities");
 			}
 		}
@@ -2788,18 +2788,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_opportunity
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_opportunity")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_opportunity
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_opportunity
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_opportunity", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_opportunity", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_opportunity");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_opportunity", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_opportunity", null, value);
 				this.OnPropertyChanged("userentityinstancedata_opportunity");
 			}
 		}
@@ -2808,18 +2808,18 @@ namespace DLaB.Xrm.Entities
 		/// N:N opportunitycompetitors_association
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunitycompetitors_association")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.Competitor> opportunitycompetitors_association
+		public System.Collections.Generic.IEnumerable<Entities.Competitor> opportunitycompetitors_association
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.Competitor>("opportunitycompetitors_association", null);
+				return this.GetRelatedEntities<Entities.Competitor>("opportunitycompetitors_association", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunitycompetitors_association");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.Competitor>("opportunitycompetitors_association", null, value);
+				this.SetRelatedEntities<Entities.Competitor>("opportunitycompetitors_association", null, value);
 				this.OnPropertyChanged("opportunitycompetitors_association");
 			}
 		}
@@ -2829,18 +2829,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_opportunities")]
-		public DLaB.Xrm.Entities.BusinessUnit business_unit_opportunities
+		public Entities.BusinessUnit business_unit_opportunities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_opportunities", null);
+				return this.GetRelatedEntity<Entities.BusinessUnit>("business_unit_opportunities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("business_unit_opportunities");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.BusinessUnit>("business_unit_opportunities", null, value);
+				this.SetRelatedEntity<Entities.BusinessUnit>("business_unit_opportunities", null, value);
 				this.OnPropertyChanged("business_unit_opportunities");
 			}
 		}
@@ -2850,18 +2850,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("campaignid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("campaign_opportunities")]
-		public DLaB.Xrm.Entities.Campaign campaign_opportunities
+		public Entities.Campaign campaign_opportunities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Campaign>("campaign_opportunities", null);
+				return this.GetRelatedEntity<Entities.Campaign>("campaign_opportunities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("campaign_opportunities");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Campaign>("campaign_opportunities", null, value);
+				this.SetRelatedEntity<Entities.Campaign>("campaign_opportunities", null, value);
 				this.OnPropertyChanged("campaign_opportunities");
 			}
 		}
@@ -2871,18 +2871,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_opportunity_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_opportunity_createdonbehalfby
+		public Entities.SystemUser lk_opportunity_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_opportunity_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_opportunity_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_opportunity_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_opportunity_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_opportunity_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_opportunity_createdonbehalfby");
 			}
 		}
@@ -2892,18 +2892,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_opportunity_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_opportunity_modifiedonbehalfby
+		public Entities.SystemUser lk_opportunity_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_opportunity_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_opportunity_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_opportunity_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_opportunity_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_opportunity_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_opportunity_modifiedonbehalfby");
 			}
 		}
@@ -2913,18 +2913,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_opportunitybase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_opportunitybase_createdby
+		public Entities.SystemUser lk_opportunitybase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_opportunitybase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_opportunitybase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_opportunitybase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_opportunitybase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_opportunitybase_createdby", null, value);
 				this.OnPropertyChanged("lk_opportunitybase_createdby");
 			}
 		}
@@ -2934,18 +2934,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_opportunitybase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_opportunitybase_modifiedby
+		public Entities.SystemUser lk_opportunitybase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_opportunitybase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_opportunitybase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_opportunitybase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_opportunitybase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_opportunitybase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_opportunitybase_modifiedby");
 			}
 		}
@@ -2955,18 +2955,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customerid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_customer_accounts")]
-		public DLaB.Xrm.Entities.Account opportunity_customer_accounts
+		public Entities.Account opportunity_customer_accounts
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("opportunity_customer_accounts", null);
+				return this.GetRelatedEntity<Entities.Account>("opportunity_customer_accounts", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_customer_accounts");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("opportunity_customer_accounts", null, value);
+				this.SetRelatedEntity<Entities.Account>("opportunity_customer_accounts", null, value);
 				this.OnPropertyChanged("opportunity_customer_accounts");
 			}
 		}
@@ -2976,18 +2976,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customerid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_customer_contacts")]
-		public DLaB.Xrm.Entities.Contact opportunity_customer_contacts
+		public Entities.Contact opportunity_customer_contacts
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("opportunity_customer_contacts", null);
+				return this.GetRelatedEntity<Entities.Contact>("opportunity_customer_contacts", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_customer_contacts");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("opportunity_customer_contacts", null, value);
+				this.SetRelatedEntity<Entities.Contact>("opportunity_customer_contacts", null, value);
 				this.OnPropertyChanged("opportunity_customer_contacts");
 			}
 		}
@@ -2997,18 +2997,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("originatingleadid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_originating_lead")]
-		public DLaB.Xrm.Entities.Lead opportunity_originating_lead
+		public Entities.Lead opportunity_originating_lead
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Lead>("opportunity_originating_lead", null);
+				return this.GetRelatedEntity<Entities.Lead>("opportunity_originating_lead", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_originating_lead");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Lead>("opportunity_originating_lead", null, value);
+				this.SetRelatedEntity<Entities.Lead>("opportunity_originating_lead", null, value);
 				this.OnPropertyChanged("opportunity_originating_lead");
 			}
 		}
@@ -3018,18 +3018,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_owning_user")]
-		public DLaB.Xrm.Entities.SystemUser opportunity_owning_user
+		public Entities.SystemUser opportunity_owning_user
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("opportunity_owning_user", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("opportunity_owning_user", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_owning_user");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("opportunity_owning_user", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("opportunity_owning_user", null, value);
 				this.OnPropertyChanged("opportunity_owning_user");
 			}
 		}
@@ -3039,18 +3039,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentaccountid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_parent_account")]
-		public DLaB.Xrm.Entities.Account opportunity_parent_account
+		public Entities.Account opportunity_parent_account
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Account>("opportunity_parent_account", null);
+				return this.GetRelatedEntity<Entities.Account>("opportunity_parent_account", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_parent_account");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Account>("opportunity_parent_account", null, value);
+				this.SetRelatedEntity<Entities.Account>("opportunity_parent_account", null, value);
 				this.OnPropertyChanged("opportunity_parent_account");
 			}
 		}
@@ -3060,18 +3060,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentcontactid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunity_parent_contact")]
-		public DLaB.Xrm.Entities.Contact opportunity_parent_contact
+		public Entities.Contact opportunity_parent_contact
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Contact>("opportunity_parent_contact", null);
+				return this.GetRelatedEntity<Entities.Contact>("opportunity_parent_contact", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("opportunity_parent_contact");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Contact>("opportunity_parent_contact", null, value);
+				this.SetRelatedEntity<Entities.Contact>("opportunity_parent_contact", null, value);
 				this.OnPropertyChanged("opportunity_parent_contact");
 			}
 		}
@@ -3081,18 +3081,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pricelevelid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("price_level_opportunties")]
-		public DLaB.Xrm.Entities.PriceLevel price_level_opportunties
+		public Entities.PriceLevel price_level_opportunties
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.PriceLevel>("price_level_opportunties", null);
+				return this.GetRelatedEntity<Entities.PriceLevel>("price_level_opportunties", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("price_level_opportunties");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.PriceLevel>("price_level_opportunties", null, value);
+				this.SetRelatedEntity<Entities.PriceLevel>("price_level_opportunties", null, value);
 				this.OnPropertyChanged("price_level_opportunties");
 			}
 		}
@@ -3102,18 +3102,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stageid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("processstage_opportunity")]
-		public DLaB.Xrm.Entities.ProcessStage processstage_opportunity
+		public Entities.ProcessStage processstage_opportunity
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.ProcessStage>("processstage_opportunity", null);
+				return this.GetRelatedEntity<Entities.ProcessStage>("processstage_opportunity", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("processstage_opportunity");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.ProcessStage>("processstage_opportunity", null, value);
+				this.SetRelatedEntity<Entities.ProcessStage>("processstage_opportunity", null, value);
 				this.OnPropertyChanged("processstage_opportunity");
 			}
 		}
@@ -3123,18 +3123,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_opportunities")]
-		public DLaB.Xrm.Entities.Team team_opportunities
+		public Entities.Team team_opportunities
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Team>("team_opportunities", null);
+				return this.GetRelatedEntity<Entities.Team>("team_opportunities", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("team_opportunities");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Team>("team_opportunities", null, value);
+				this.SetRelatedEntity<Entities.Team>("team_opportunities", null, value);
 				this.OnPropertyChanged("team_opportunities");
 			}
 		}
@@ -3144,18 +3144,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("transactioncurrency_opportunity")]
-		public DLaB.Xrm.Entities.TransactionCurrency transactioncurrency_opportunity
+		public Entities.TransactionCurrency transactioncurrency_opportunity
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_opportunity", null);
+				return this.GetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_opportunity", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("transactioncurrency_opportunity");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.TransactionCurrency>("transactioncurrency_opportunity", null, value);
+				this.SetRelatedEntity<Entities.TransactionCurrency>("transactioncurrency_opportunity", null, value);
 				this.OnPropertyChanged("transactioncurrency_opportunity");
 			}
 		}

@@ -547,18 +547,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N kb_article_template_kb_articles
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("kb_article_template_kb_articles")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.KbArticle> kb_article_template_kb_articles
+		public System.Collections.Generic.IEnumerable<Entities.KbArticle> kb_article_template_kb_articles
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.KbArticle>("kb_article_template_kb_articles", null);
+				return this.GetRelatedEntities<Entities.KbArticle>("kb_article_template_kb_articles", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("kb_article_template_kb_articles");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.KbArticle>("kb_article_template_kb_articles", null, value);
+				this.SetRelatedEntities<Entities.KbArticle>("kb_article_template_kb_articles", null, value);
 				this.OnPropertyChanged("kb_article_template_kb_articles");
 			}
 		}
@@ -567,18 +567,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KbArticleTemplate_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KbArticleTemplate_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.AsyncOperation> KbArticleTemplate_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Entities.AsyncOperation> KbArticleTemplate_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("KbArticleTemplate_AsyncOperations", null);
+				return this.GetRelatedEntities<Entities.AsyncOperation>("KbArticleTemplate_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KbArticleTemplate_AsyncOperations");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.AsyncOperation>("KbArticleTemplate_AsyncOperations", null, value);
+				this.SetRelatedEntities<Entities.AsyncOperation>("KbArticleTemplate_AsyncOperations", null, value);
 				this.OnPropertyChanged("KbArticleTemplate_AsyncOperations");
 			}
 		}
@@ -587,18 +587,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KbArticleTemplate_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KbArticleTemplate_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.BulkDeleteFailure> KbArticleTemplate_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Entities.BulkDeleteFailure> KbArticleTemplate_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("KbArticleTemplate_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Entities.BulkDeleteFailure>("KbArticleTemplate_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KbArticleTemplate_BulkDeleteFailures");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.BulkDeleteFailure>("KbArticleTemplate_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Entities.BulkDeleteFailure>("KbArticleTemplate_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("KbArticleTemplate_BulkDeleteFailures");
 			}
 		}
@@ -607,18 +607,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N KbArticleTemplate_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("KbArticleTemplate_ProcessSessions")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.ProcessSession> KbArticleTemplate_ProcessSessions
+		public System.Collections.Generic.IEnumerable<Entities.ProcessSession> KbArticleTemplate_ProcessSessions
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("KbArticleTemplate_ProcessSessions", null);
+				return this.GetRelatedEntities<Entities.ProcessSession>("KbArticleTemplate_ProcessSessions", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("KbArticleTemplate_ProcessSessions");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.ProcessSession>("KbArticleTemplate_ProcessSessions", null, value);
+				this.SetRelatedEntities<Entities.ProcessSession>("KbArticleTemplate_ProcessSessions", null, value);
 				this.OnPropertyChanged("KbArticleTemplate_ProcessSessions");
 			}
 		}
@@ -627,18 +627,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_kbarticletemplate
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_kbarticletemplate")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_kbarticletemplate
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_kbarticletemplate
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_kbarticletemplate", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_kbarticletemplate", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_kbarticletemplate");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_kbarticletemplate", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_kbarticletemplate", null, value);
 				this.OnPropertyChanged("userentityinstancedata_kbarticletemplate");
 			}
 		}
@@ -648,18 +648,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_kbarticletemplate_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_kbarticletemplate_createdonbehalfby
+		public Entities.SystemUser lk_kbarticletemplate_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_kbarticletemplate_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_kbarticletemplate_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_kbarticletemplate_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_kbarticletemplate_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_kbarticletemplate_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_kbarticletemplate_createdonbehalfby");
 			}
 		}
@@ -669,18 +669,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_kbarticletemplate_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_kbarticletemplate_modifiedonbehalfby
+		public Entities.SystemUser lk_kbarticletemplate_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_kbarticletemplate_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_kbarticletemplate_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_kbarticletemplate_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_kbarticletemplate_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_kbarticletemplate_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_kbarticletemplate_modifiedonbehalfby");
 			}
 		}
@@ -690,18 +690,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_kbarticletemplatebase_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_kbarticletemplatebase_createdby
+		public Entities.SystemUser lk_kbarticletemplatebase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_kbarticletemplatebase_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_kbarticletemplatebase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_kbarticletemplatebase_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_kbarticletemplatebase_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_kbarticletemplatebase_createdby", null, value);
 				this.OnPropertyChanged("lk_kbarticletemplatebase_createdby");
 			}
 		}
@@ -711,18 +711,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_kbarticletemplatebase_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_kbarticletemplatebase_modifiedby
+		public Entities.SystemUser lk_kbarticletemplatebase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_kbarticletemplatebase_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_kbarticletemplatebase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_kbarticletemplatebase_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_kbarticletemplatebase_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_kbarticletemplatebase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_kbarticletemplatebase_modifiedby");
 			}
 		}
@@ -732,12 +732,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_kb_article_templates")]
-		public DLaB.Xrm.Entities.Organization organization_kb_article_templates
+		public Entities.Organization organization_kb_article_templates
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("organization_kb_article_templates", null);
+				return this.GetRelatedEntity<Entities.Organization>("organization_kb_article_templates", null);
 			}
 		}
 		

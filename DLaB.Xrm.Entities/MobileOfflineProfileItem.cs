@@ -756,18 +756,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N MobileOfflineProfileItem_MobileOfflineProfileItemAssociation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("MobileOfflineProfileItem_MobileOfflineProfileItemAssociation")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.MobileOfflineProfileItemAssociation> MobileOfflineProfileItem_MobileOfflineProfileItemAssociation
+		public System.Collections.Generic.IEnumerable<Entities.MobileOfflineProfileItemAssociation> MobileOfflineProfileItem_MobileOfflineProfileItemAssociation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.MobileOfflineProfileItemAssociation>("MobileOfflineProfileItem_MobileOfflineProfileItemAssociation", null);
+				return this.GetRelatedEntities<Entities.MobileOfflineProfileItemAssociation>("MobileOfflineProfileItem_MobileOfflineProfileItemAssociation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("MobileOfflineProfileItem_MobileOfflineProfileItemAssociation");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.MobileOfflineProfileItemAssociation>("MobileOfflineProfileItem_MobileOfflineProfileItemAssociation", null, value);
+				this.SetRelatedEntities<Entities.MobileOfflineProfileItemAssociation>("MobileOfflineProfileItem_MobileOfflineProfileItemAssociation", null, value);
 				this.OnPropertyChanged("MobileOfflineProfileItem_MobileOfflineProfileItemAssociation");
 			}
 		}
@@ -777,18 +777,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_MobileOfflineProfileItem_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_MobileOfflineProfileItem_createdby
+		public Entities.SystemUser lk_MobileOfflineProfileItem_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_MobileOfflineProfileItem_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_MobileOfflineProfileItem_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_MobileOfflineProfileItem_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_MobileOfflineProfileItem_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_MobileOfflineProfileItem_createdby", null, value);
 				this.OnPropertyChanged("lk_MobileOfflineProfileItem_createdby");
 			}
 		}
@@ -798,18 +798,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_mobileofflineprofileitem_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_mobileofflineprofileitem_createdonbehalfby
+		public Entities.SystemUser lk_mobileofflineprofileitem_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_mobileofflineprofileitem_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_mobileofflineprofileitem_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_mobileofflineprofileitem_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_mobileofflineprofileitem_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_mobileofflineprofileitem_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_mobileofflineprofileitem_createdonbehalfby");
 			}
 		}
@@ -819,18 +819,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_mobileofflineprofileitem_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_mobileofflineprofileitem_modifiedby
+		public Entities.SystemUser lk_mobileofflineprofileitem_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_mobileofflineprofileitem_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_mobileofflineprofileitem_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_mobileofflineprofileitem_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_mobileofflineprofileitem_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_mobileofflineprofileitem_modifiedby", null, value);
 				this.OnPropertyChanged("lk_mobileofflineprofileitem_modifiedby");
 			}
 		}
@@ -840,18 +840,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_mobileofflineprofileitem_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_mobileofflineprofileitem_modifiedonbehalfby
+		public Entities.SystemUser lk_mobileofflineprofileitem_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_mobileofflineprofileitem_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_mobileofflineprofileitem_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_mobileofflineprofileitem_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_mobileofflineprofileitem_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_mobileofflineprofileitem_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_mobileofflineprofileitem_modifiedonbehalfby");
 			}
 		}
@@ -861,18 +861,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("profileitemrule")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_mobileofflineprofileitem_savedquery")]
-		public DLaB.Xrm.Entities.SavedQuery lk_mobileofflineprofileitem_savedquery
+		public Entities.SavedQuery lk_mobileofflineprofileitem_savedquery
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SavedQuery>("lk_mobileofflineprofileitem_savedquery", null);
+				return this.GetRelatedEntity<Entities.SavedQuery>("lk_mobileofflineprofileitem_savedquery", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_mobileofflineprofileitem_savedquery");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SavedQuery>("lk_mobileofflineprofileitem_savedquery", null, value);
+				this.SetRelatedEntity<Entities.SavedQuery>("lk_mobileofflineprofileitem_savedquery", null, value);
 				this.OnPropertyChanged("lk_mobileofflineprofileitem_savedquery");
 			}
 		}
@@ -882,18 +882,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("MobileOfflineProfile_MobileOfflineProfileItem")]
-		public DLaB.Xrm.Entities.MobileOfflineProfile MobileOfflineProfile_MobileOfflineProfileItem
+		public Entities.MobileOfflineProfile MobileOfflineProfile_MobileOfflineProfileItem
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.MobileOfflineProfile>("MobileOfflineProfile_MobileOfflineProfileItem", null);
+				return this.GetRelatedEntity<Entities.MobileOfflineProfile>("MobileOfflineProfile_MobileOfflineProfileItem", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("MobileOfflineProfile_MobileOfflineProfileItem");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.MobileOfflineProfile>("MobileOfflineProfile_MobileOfflineProfileItem", null, value);
+				this.SetRelatedEntity<Entities.MobileOfflineProfile>("MobileOfflineProfile_MobileOfflineProfileItem", null, value);
 				this.OnPropertyChanged("MobileOfflineProfile_MobileOfflineProfileItem");
 			}
 		}
@@ -903,12 +903,12 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("MobileOfflineProfileItem_organization")]
-		public DLaB.Xrm.Entities.Organization MobileOfflineProfileItem_organization
+		public Entities.Organization MobileOfflineProfileItem_organization
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Organization>("MobileOfflineProfileItem_organization", null);
+				return this.GetRelatedEntity<Entities.Organization>("MobileOfflineProfileItem_organization", null);
 			}
 		}
 		

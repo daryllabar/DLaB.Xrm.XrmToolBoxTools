@@ -766,18 +766,18 @@ namespace DLaB.Xrm.Entities
 		/// 1:N userentityinstancedata_calendarrule
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("userentityinstancedata_calendarrule")]
-		public System.Collections.Generic.IEnumerable<DLaB.Xrm.Entities.UserEntityInstanceData> userentityinstancedata_calendarrule
+		public System.Collections.Generic.IEnumerable<Entities.UserEntityInstanceData> userentityinstancedata_calendarrule
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_calendarrule", null);
+				return this.GetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_calendarrule", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("userentityinstancedata_calendarrule");
-				this.SetRelatedEntities<DLaB.Xrm.Entities.UserEntityInstanceData>("userentityinstancedata_calendarrule", null, value);
+				this.SetRelatedEntities<Entities.UserEntityInstanceData>("userentityinstancedata_calendarrule", null, value);
 				this.OnPropertyChanged("userentityinstancedata_calendarrule");
 			}
 		}
@@ -787,18 +787,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("calendarid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("calendar_calendar_rules")]
-		public DLaB.Xrm.Entities.Calendar calendar_calendar_rules
+		public Entities.Calendar calendar_calendar_rules
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Calendar>("calendar_calendar_rules", null);
+				return this.GetRelatedEntity<Entities.Calendar>("calendar_calendar_rules", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("calendar_calendar_rules");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Calendar>("calendar_calendar_rules", null, value);
+				this.SetRelatedEntity<Entities.Calendar>("calendar_calendar_rules", null, value);
 				this.OnPropertyChanged("calendar_calendar_rules");
 			}
 		}
@@ -808,18 +808,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("innercalendarid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("inner_calendar_calendar_rules")]
-		public DLaB.Xrm.Entities.Calendar inner_calendar_calendar_rules
+		public Entities.Calendar inner_calendar_calendar_rules
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Calendar>("inner_calendar_calendar_rules", null);
+				return this.GetRelatedEntity<Entities.Calendar>("inner_calendar_calendar_rules", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("inner_calendar_calendar_rules");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Calendar>("inner_calendar_calendar_rules", null, value);
+				this.SetRelatedEntity<Entities.Calendar>("inner_calendar_calendar_rules", null, value);
 				this.OnPropertyChanged("inner_calendar_calendar_rules");
 			}
 		}
@@ -829,18 +829,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_calendarrule_createdby")]
-		public DLaB.Xrm.Entities.SystemUser lk_calendarrule_createdby
+		public Entities.SystemUser lk_calendarrule_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_calendarrule_createdby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_calendarrule_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_calendarrule_createdby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_calendarrule_createdby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_calendarrule_createdby", null, value);
 				this.OnPropertyChanged("lk_calendarrule_createdby");
 			}
 		}
@@ -850,18 +850,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_calendarrule_createdonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_calendarrule_createdonbehalfby
+		public Entities.SystemUser lk_calendarrule_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_calendarrule_createdonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_calendarrule_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_calendarrule_createdonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_calendarrule_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_calendarrule_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_calendarrule_createdonbehalfby");
 			}
 		}
@@ -871,18 +871,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_calendarrule_modifiedby")]
-		public DLaB.Xrm.Entities.SystemUser lk_calendarrule_modifiedby
+		public Entities.SystemUser lk_calendarrule_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_calendarrule_modifiedby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_calendarrule_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_calendarrule_modifiedby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_calendarrule_modifiedby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_calendarrule_modifiedby", null, value);
 				this.OnPropertyChanged("lk_calendarrule_modifiedby");
 			}
 		}
@@ -892,18 +892,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_calendarrule_modifiedonbehalfby")]
-		public DLaB.Xrm.Entities.SystemUser lk_calendarrule_modifiedonbehalfby
+		public Entities.SystemUser lk_calendarrule_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_calendarrule_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Entities.SystemUser>("lk_calendarrule_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_calendarrule_modifiedonbehalfby");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.SystemUser>("lk_calendarrule_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Entities.SystemUser>("lk_calendarrule_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_calendarrule_modifiedonbehalfby");
 			}
 		}
@@ -913,18 +913,18 @@ namespace DLaB.Xrm.Entities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("serviceid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("service_calendar_rules")]
-		public DLaB.Xrm.Entities.Service service_calendar_rules
+		public Entities.Service service_calendar_rules
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DLaB.Xrm.Entities.Service>("service_calendar_rules", null);
+				return this.GetRelatedEntity<Entities.Service>("service_calendar_rules", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("service_calendar_rules");
-				this.SetRelatedEntity<DLaB.Xrm.Entities.Service>("service_calendar_rules", null, value);
+				this.SetRelatedEntity<Entities.Service>("service_calendar_rules", null, value);
 				this.OnPropertyChanged("service_calendar_rules");
 			}
 		}
