@@ -37,7 +37,6 @@ namespace DLaB.EarlyBoundGenerator
             }
             else
             {
-
                 SpecifiedEntities = SpecifiedEntities.Replace(" ", string.Empty);
                 SpecifiedEntities = SpecifiedEntities.Replace("\n", string.Empty);
             }
@@ -88,13 +87,20 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnRefresh_Click(object sender, EventArgs e)
         {
-            Enable(false);
+            try
+            {
+                Enable(false);
 
-            // Clear existing entity list
-            ((XrmToolboxCommon.PropertyInterface.IEntityMetadatas)CallingControl).EntityMetadatas = null;
+                // Clear existing entity list
+                ((XrmToolboxCommon.PropertyInterface.IEntityMetadatas) CallingControl).EntityMetadatas = null;
 
-            // Retrieve entities
-            RetrieveEntityMetadatasOnLoad(LoadEntities);
+                // Retrieve entities
+                RetrieveEntityMetadatasOnLoad(LoadEntities);
+            }
+            finally
+            {
+                Enable(true);
+            }
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
