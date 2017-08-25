@@ -37,7 +37,6 @@ namespace DLaB.EarlyBoundGenerator
             }
             else
             {
-
                 SpecifiedEntities = SpecifiedEntities.Replace(" ", string.Empty);
                 SpecifiedEntities = SpecifiedEntities.Replace("\n", string.Empty);
             }
@@ -84,6 +83,24 @@ namespace DLaB.EarlyBoundGenerator
             SpecifiedEntities = Config.ToString(LstSpecified.Items.Cast<ObjectCollectionItem<EntityMetadata>>().Select(i => i.Value.LogicalName));
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+        private void BtnRefresh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Enable(false);
+
+                // Clear existing entity list
+                ((XrmToolboxCommon.PropertyInterface.IEntityMetadatas) CallingControl).EntityMetadatas = null;
+
+                // Retrieve entities
+                RetrieveEntityMetadatasOnLoad(LoadEntities);
+            }
+            finally
+            {
+                Enable(true);
+            }
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
