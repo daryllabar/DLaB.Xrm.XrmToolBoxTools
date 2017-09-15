@@ -4,7 +4,6 @@ using System.Linq;
 using System.Windows.Forms;
 using DLaB.Common;
 using DLaB.XrmToolboxCommon;
-using DLaB.Xrm;
 using Microsoft.Xrm.Sdk.Metadata;
 using XrmToolBox.Extensibility;
 

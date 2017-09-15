@@ -13,7 +13,7 @@ namespace DLaB.AttributeManager
             return value == null ? null : CopyValueInternal(oldAttribute, newAttribute, value, migrationMapping);
         }
 
-        private void CopyValueInternal(object oldAttribute, object newAttribute, object value, Dictionary<string, string> migrationMapping)
+        private object CopyValueInternal(object oldAttribute, object newAttribute, object value, Dictionary<string, string> migrationMapping)
         {
             throw new NotImplementedException("Not Implemented Value Copy From type: " + oldAttribute.GetType().FullName + " to type: " + newAttribute.GetType().FullName);
         }
@@ -175,6 +175,14 @@ namespace DLaB.AttributeManager
         }
 
         private object CopyValueInternal(AttributeMetadata oldAttribute, StringAttributeMetadata newAttribute, object value, Dictionary<string, string> migrationMapping)
+        {
+            var copy = value.ToString();
+            string mappedValue;
+            return migrationMapping.TryGetValue(copy, out mappedValue) ? mappedValue : copy;
+        }
+
+
+        private object CopyValueInternal(AttributeMetadata oldAttribute, MemoAttributeMetadata newAttribute, object value, Dictionary<string, string> migrationMapping)
         {
             var copy = value.ToString();
             string mappedValue;

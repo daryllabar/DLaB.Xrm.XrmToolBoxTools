@@ -344,7 +344,7 @@ namespace DLaB.AttributeManager
             switch (cmbNewAttributeType.Text)
             {
                 case "Single Line of Text":
-                    att = NewTypeAttributeCreationLogic.CreateText(formatName: GetStringFormat());
+                    att = NewTypeAttributeCreationLogic.CreateText(int.Parse(strAttTxtMaximumLength.Text), GetStringFormat(), GetStringImeMode());
                     break;
                 case "Global Option Set":
                     var optionSet = (ObjectCollectionItem<OptionSetMetadata>) optAttGlobalOptionSetCmb.SelectedItem;
@@ -385,7 +385,7 @@ namespace DLaB.AttributeManager
                     att = NewTypeAttributeCreationLogic.CreateCurrency();
                     break;
                 case "Multiple Lines of Text":
-                    att = NewTypeAttributeCreationLogic.CreateMemo();
+                    att = NewTypeAttributeCreationLogic.CreateMemo(int.Parse(strAttTxtMaximumLength.Text), GetStringImeMode());
                     break;
                 case "Date and Time":
                     att = NewTypeAttributeCreationLogic.CreateDateTime();
@@ -397,7 +397,7 @@ namespace DLaB.AttributeManager
                     att = null;
                     break;
                 default:
-                    throw new Exception("Unepxected Type: " + cmbNewAttributeType.Text);
+                    throw new Exception("Unexpected Type: " + cmbNewAttributeType.Text);
             
             }
 
@@ -477,6 +477,18 @@ namespace DLaB.AttributeManager
                     throw new Exception("Unable to determine String Format for " + strAttCmbFormat.SelectedText);
             }
             return format;
+        }
+
+        private Microsoft.Xrm.Sdk.Metadata.ImeMode GetStringImeMode()
+        {
+            var stringMode = strAttCmbImeMode?.SelectedItem?.ToString();
+            Microsoft.Xrm.Sdk.Metadata.ImeMode mode;
+            if (!Enum.TryParse(stringMode, out mode))
+            {
+                LogError("Unable to determine Ime Mode for " + stringMode);
+                mode = Microsoft.Xrm.Sdk.Metadata.ImeMode.Auto;
+            }
+            return mode;
         }
 
         #region Event Handlers
