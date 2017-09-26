@@ -1,12 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", "{07E3CEC6-C64C-4967-9C8C-634FF91E7C05}"
 	ProjectSection(SolutionItems) = preProject
 		References\Microsoft.Xrm.Client.CodeGeneration.dll = References\Microsoft.Xrm.Client.CodeGeneration.dll
 		References\Microsoft.Xrm.Client.dll = References\Microsoft.Xrm.Client.dll
+		References\nuget.exe = References\nuget.exe
+		References\NuGetContentInstaller.exe = References\NuGetContentInstaller.exe
 		References\SetAssemblyVersion.exe = References\SetAssemblyVersion.exe
 		References\SetAssemblyVersion.exe.config = References\SetAssemblyVersion.exe.config
 	EndProjectSection
@@ -66,5 +68,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {097D800D-2F9C-4108-88C8-B236EAA12F1F}
 	EndGlobalSection
 EndGlobal
