@@ -352,7 +352,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         public static EarlyBoundGeneratorConfig GetDefault()
         {
-            return new EarlyBoundGeneratorConfig
+            var @default = new EarlyBoundGeneratorConfig
             {
                 AudibleCompletionNotification = true,
                 IncludeCommandLine = true,
@@ -382,10 +382,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     new Argument(CreationType.Entities, "out", @"CrmSvcUtil Ref\Entities.cs"),
                     new Argument(CreationType.Entities, "servicecontextname", "CrmServiceContext"),
                     new Argument(CreationType.OptionSets, "out",  @"CrmSvcUtil Ref\OptionSets.cs")
-                }),            
+                }), 
             };
+            @default.SettingsVersion = @default.Version;
+            return @default;
         }
-
 
         #endregion // Add Missing Default settings
 
@@ -453,7 +454,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             }
 
             attributes = attributes & ~FileAttributes.ReadOnly;
-            if (this.ExtensionConfig.UseTfsToCheckoutFiles)
+            if (ExtensionConfig.UseTfsToCheckoutFiles)
             {
                 try
                 {
