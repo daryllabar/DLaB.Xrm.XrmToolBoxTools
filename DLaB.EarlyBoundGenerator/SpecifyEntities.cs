@@ -75,6 +75,7 @@ namespace DLaB.EarlyBoundGenerator
             BtnAdd.Enabled = enable;
             BtnRemove.Enabled = enable;
             BtnSave.Enabled = enable;
+            BtnRefresh.Enabled = enable;
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
@@ -86,20 +87,13 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnRefresh_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Enable(false);
+            Enable(false);
 
-                // Clear existing entity list
-                ((XrmToolboxCommon.PropertyInterface.IEntityMetadatas) CallingControl).EntityMetadatas = null;
+            // Clear existing entity list
+            ((XrmToolboxCommon.PropertyInterface.IEntityMetadatas) CallingControl).EntityMetadatas = null;
 
-                // Retrieve entities
-                RetrieveEntityMetadatasOnLoad(LoadEntities);
-            }
-            finally
-            {
-                Enable(true);
-            }
+            // Retrieve entities
+            RetrieveEntityMetadatasOnLoad(LoadEntities);
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
