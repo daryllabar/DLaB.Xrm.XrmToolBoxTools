@@ -49,10 +49,10 @@
             // BtnSave
             // 
             this.BtnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSave.Location = new System.Drawing.Point(953, 901);
-            this.BtnSave.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.BtnSave.Location = new System.Drawing.Point(476, 465);
+            this.BtnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnSave.Name = "BtnSave";
-            this.BtnSave.Size = new System.Drawing.Size(200, 55);
+            this.BtnSave.Size = new System.Drawing.Size(100, 28);
             this.BtnSave.TabIndex = 0;
             this.BtnSave.Text = "Save";
             this.BtnSave.UseVisualStyleBackColor = true;
@@ -66,12 +66,12 @@
             this.LstAll.DisplayMember = "DisplayName";
             this.LstAll.FormattingEnabled = true;
             this.LstAll.HorizontalScrollbar = true;
-            this.LstAll.ItemHeight = 31;
-            this.LstAll.Location = new System.Drawing.Point(16, 38);
-            this.LstAll.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.LstAll.ItemHeight = 16;
+            this.LstAll.Location = new System.Drawing.Point(8, 20);
+            this.LstAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.LstAll.Name = "LstAll";
             this.LstAll.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.LstAll.Size = new System.Drawing.Size(586, 779);
+            this.LstAll.Size = new System.Drawing.Size(296, 388);
             this.LstAll.Sorted = true;
             this.LstAll.TabIndex = 1;
             this.LstAll.ValueMember = "Value";
@@ -79,29 +79,29 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label1.Location = new System.Drawing.Point(4, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(150, 32);
+            this.label1.Size = new System.Drawing.Size(73, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "All Entities";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(-8, 0);
-            this.label2.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label2.Location = new System.Drawing.Point(-4, 0);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(222, 32);
+            this.label2.Size = new System.Drawing.Size(110, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "Selected Entites";
             // 
             // BtnAdd
             // 
-            this.BtnAdd.Location = new System.Drawing.Point(8, 43);
-            this.BtnAdd.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.BtnAdd.Location = new System.Drawing.Point(4, 22);
+            this.BtnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnAdd.Name = "BtnAdd";
-            this.BtnAdd.Size = new System.Drawing.Size(61, 60);
+            this.BtnAdd.Size = new System.Drawing.Size(30, 31);
             this.BtnAdd.TabIndex = 4;
             this.BtnAdd.Text = ">";
             this.BtnAdd.UseVisualStyleBackColor = true;
@@ -109,10 +109,10 @@
             // 
             // BtnRemove
             // 
-            this.BtnRemove.Location = new System.Drawing.Point(8, 117);
-            this.BtnRemove.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.BtnRemove.Location = new System.Drawing.Point(4, 60);
+            this.BtnRemove.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnRemove.Name = "BtnRemove";
-            this.BtnRemove.Size = new System.Drawing.Size(61, 60);
+            this.BtnRemove.Size = new System.Drawing.Size(30, 31);
             this.BtnRemove.TabIndex = 5;
             this.BtnRemove.Text = "<";
             this.BtnRemove.UseVisualStyleBackColor = true;
@@ -126,36 +126,35 @@
             this.LstSpecified.DisplayMember = "DisplayName";
             this.LstSpecified.FormattingEnabled = true;
             this.LstSpecified.HorizontalScrollbar = true;
-            this.LstSpecified.ItemHeight = 31;
-            this.LstSpecified.Location = new System.Drawing.Point(8, 38);
-            this.LstSpecified.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.LstSpecified.ItemHeight = 16;
+            this.LstSpecified.Location = new System.Drawing.Point(4, 20);
+            this.LstSpecified.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.LstSpecified.Name = "LstSpecified";
             this.LstSpecified.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.LstSpecified.Size = new System.Drawing.Size(595, 779);
+            this.LstSpecified.Size = new System.Drawing.Size(300, 388);
             this.LstSpecified.Sorted = true;
             this.LstSpecified.TabIndex = 6;
             this.LstSpecified.ValueMember = "Value";
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 2, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(32, 29);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(16, 15);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 238F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 123F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1360, 858);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(680, 443);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
             // panel1
@@ -163,10 +162,10 @@
             this.panel1.Controls.Add(this.BtnAdd);
             this.panel1.Controls.Add(this.BtnRemove);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(641, 317);
-            this.panel1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.panel1.Location = new System.Drawing.Point(321, 164);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(77, 224);
+            this.panel1.Size = new System.Drawing.Size(38, 115);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -174,11 +173,11 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.LstAll);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(8, 7);
-            this.panel2.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.panel2.Location = new System.Drawing.Point(4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
             this.tableLayoutPanel1.SetRowSpan(this.panel2, 3);
-            this.panel2.Size = new System.Drawing.Size(617, 844);
+            this.panel2.Size = new System.Drawing.Size(309, 435);
             this.panel2.TabIndex = 1;
             // 
             // panel3
@@ -186,20 +185,20 @@
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.LstSpecified);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(734, 7);
-            this.panel3.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.panel3.Location = new System.Drawing.Point(367, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
             this.tableLayoutPanel1.SetRowSpan(this.panel3, 3);
-            this.panel3.Size = new System.Drawing.Size(618, 844);
+            this.panel3.Size = new System.Drawing.Size(309, 435);
             this.panel3.TabIndex = 2;
             // 
             // BtnRefresh
             // 
             this.BtnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnRefresh.Location = new System.Drawing.Point(1192, 901);
-            this.BtnRefresh.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.BtnRefresh.Location = new System.Drawing.Point(596, 465);
+            this.BtnRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnRefresh.Name = "BtnRefresh";
-            this.BtnRefresh.Size = new System.Drawing.Size(200, 55);
+            this.BtnRefresh.Size = new System.Drawing.Size(100, 28);
             this.BtnRefresh.TabIndex = 8;
             this.BtnRefresh.Text = "Refresh";
             this.BtnRefresh.UseVisualStyleBackColor = true;
@@ -207,14 +206,14 @@
             // 
             // SpecifyEntitiesDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1424, 980);
+            this.ClientSize = new System.Drawing.Size(712, 506);
             this.Controls.Add(this.BtnRefresh);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.BtnSave);
-            this.Margin = new System.Windows.Forms.Padding(21, 17, 21, 17);
-            this.MinimumSize = new System.Drawing.Size(1413, 951);
+            this.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.MinimumSize = new System.Drawing.Size(716, 514);
             this.Name = "SpecifyEntitiesDialog";
             this.Text = "Specify Entities";
             this.Load += new System.EventHandler(this.SpecifyEntitiesDialog_Load);
