@@ -11,6 +11,7 @@ namespace DLaB.EarlyBoundGenerator
 {
     public partial class SpecifyEntitiesDialog : DialogBase
     {
+        private int columnSortedIndex = 0;
         public string SpecifiedEntities { get; set; }
 
         #region Constructor / Load
@@ -43,35 +44,36 @@ namespace DLaB.EarlyBoundGenerator
             RetrieveEntityMetadatasOnLoad(LoadEntities);
         }
 
-        #endregion // Constructor / Load
+        #endregion Constructor / Load
 
         private void LoadEntities(IEnumerable<EntityMetadata> entities)
         {
             try
             {
-                LstAll.BeginUpdate();
-                LstSpecified.BeginUpdate();
+                lvKeptEntities.BeginUpdate();
+                lvExcludedEntities.BeginUpdate();
                 Enable(false);
-                LstAll.Items.Clear();
-                LstSpecified.Items.Clear();
+                lvKeptEntities.Items.Clear();
+                lvExcludedEntities.Items.Clear();
                 var localEntites = entities.ToList(); // Keep from mulitiple Enumerations
 
-                var specified = new HashSet<string>(SpecifiedEntities.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries));
-                LstSpecified.Items.AddRange(localEntites.Where(e => specified.Contains(e.LogicalName)).ToObjectCollectionArray());
-                LstAll.Items.AddRange(localEntites.Where(e => !specified.Contains(e.LogicalName)).ToObjectCollectionArray());
+                var specified = new HashSet<string>(SpecifiedEntities.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries));
+
+                lvExcludedEntities.Items.AddRange(localEntites.Where(e => specified.Contains(e.LogicalName)).Select(e => new ListViewItem(e.DisplayName.UserLocalizedLabel?.Label ?? "N/A") { SubItems = { e.LogicalName } }).ToArray());
+                lvKeptEntities.Items.AddRange(localEntites.Where(e => !specified.Contains(e.LogicalName)).Select(e => new ListViewItem(e.DisplayName.UserLocalizedLabel?.Label ?? "N/A") { SubItems = { e.LogicalName } }).ToArray());
             }
             finally
             {
-                LstAll.EndUpdate();
-                LstSpecified.EndUpdate();
+                lvKeptEntities.EndUpdate();
+                lvExcludedEntities.EndUpdate();
                 Enable(true);
             }
         }
 
         private void Enable(bool enable)
         {
-            LstAll.Enabled = enable;
-            LstSpecified.Enabled = enable;
+            lvKeptEntities.Enabled = enable;
+            lvExcludedEntities.Enabled = enable;
             BtnAdd.Enabled = enable;
             BtnRemove.Enabled = enable;
             BtnSave.Enabled = enable;
@@ -80,7 +82,7 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            SpecifiedEntities = Config.ToString(LstSpecified.Items.Cast<ObjectCollectionItem<EntityMetadata>>().Select(i => i.Value.LogicalName));
+            SpecifiedEntities = Config.ToString(lvExcludedEntities.Items.Cast<ListViewItem>().Select(i => ((ObjectCollectionItem<EntityMetadata>)i.Tag).Value.LogicalName));
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -90,7 +92,7 @@ namespace DLaB.EarlyBoundGenerator
             Enable(false);
 
             // Clear existing entity list
-            ((XrmToolboxCommon.PropertyInterface.IEntityMetadatas) CallingControl).EntityMetadatas = null;
+            ((XrmToolboxCommon.PropertyInterface.IEntityMetadatas)CallingControl).EntityMetadatas = null;
 
             // Retrieve entities
             RetrieveEntityMetadatasOnLoad(LoadEntities);
@@ -98,21 +100,37 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            var values = LstAll.SelectedItems.Cast<object>().ToArray();
-            LstSpecified.Items.AddRange(values);
-            foreach (var value in values)
+            var values = lvKeptEntities.SelectedItems.Cast<ListViewItem>().ToArray();
+            foreach (ListViewItem value in values)
             {
-                LstAll.Items.Remove(value);
+                lvKeptEntities.Items.Remove(value);
             }
+            lvExcludedEntities.Items.AddRange(values);
         }
 
         private void BtnRemove_Click(object sender, EventArgs e)
         {
-            var values = LstSpecified.SelectedItems.Cast<object>().ToArray();
-            LstAll.Items.AddRange(values);
-            foreach (var value in values)
+            var values = lvExcludedEntities.SelectedItems.Cast<ListViewItem>().ToArray();
+            foreach (ListViewItem value in values)
             {
-                LstSpecified.Items.Remove(value);
+                lvExcludedEntities.Items.Remove(value);
+            }
+            lvKeptEntities.Items.AddRange(values);
+        }
+
+        private void listview_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            var lv = (ListView)sender;
+            if (e.Column == columnSortedIndex)
+            {
+                lv.Sorting = lv.Sorting == SortOrder.Ascending ? SortOrder.Descending : SortOrder.Ascending;
+
+                lv.ListViewItemSorter = new ListViewItemComparer(e.Column, lv.Sorting);
+            }
+            else
+            {
+                columnSortedIndex = e.Column;
+                lv.ListViewItemSorter = new ListViewItemComparer(e.Column, SortOrder.Ascending);
             }
         }
     }
