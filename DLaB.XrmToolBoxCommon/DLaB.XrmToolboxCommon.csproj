@@ -132,6 +132,7 @@
       <DependentUpon>DialogBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions.cs" />
+    <Compile Include="ListViewItemComparer.cs" />
     <Compile Include="ObjectCollectionItem.cs" />
     <Compile Include="PluginControlBase.cs">
       <SubType>UserControl</SubType>
