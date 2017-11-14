@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator</id>
-	  <version>1.2017.10.10</version>
+	  <version>1.2017.11.13</version>
 	  <title>Early Bound Generator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,13 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V1.2017.10.10
+    <releaseNotes>V1.2017.11.13
+ - Fixed Organization cannot be null or empty. #132
+ - Fix enabling/disabling of controls when Refreshing entities (#131)
+ - Enhanced Entities selection dialog (#133)
+ - Implemented Allow for adding files to Shared Project #134
+
+V1.2017.10.10
  - Fixed Cannot save Entities to skip #130
       
  V1.2017.10.2
@@ -59,7 +65,7 @@ V1.2017.1.5
  - Fixed TFS Get/Checkout command errors if longer than 32000 #77
  - Fixed If EBG Config file is readonly it fails to read the settings #76
     </releaseNotes>
-    <copyright>Copyright 2016</copyright>
+    <copyright>Copyright 2017</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>
     <dependencies>
       <dependency id="XrmToolBox" version="1.2017.2.13" />

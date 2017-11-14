@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using DLaB.EarlyBoundGenerator.Settings;
 using DLaB.XrmToolboxCommon;
@@ -299,7 +300,7 @@ namespace DLaB.EarlyBoundGenerator
             {   
                 TxtOutput.AppendText("CRM Authentication Type Detected: " + ConnectionDetail.AuthType + Environment.NewLine);
                 Settings.AuthType = ConnectionDetail.AuthType;
-                Settings.Domain = ConnectionDetail.UserDomain;
+                Settings.Domain = GetUserDomain();
                 Settings.Password = ConnectionDetail.GetUserPassword();
                 Settings.SupportsActions = ConnectionDetail.OrganizationMajorVersion >= Crm2013;
                 Settings.UseConnectionString = Settings.UseConnectionString || Settings.AuthType == AuthenticationProviderType.ActiveDirectory;
@@ -363,9 +364,24 @@ namespace DLaB.EarlyBoundGenerator
             Settings.ServiceContextName = string.IsNullOrWhiteSpace(TxtServiceContextName.Text) ? null : TxtServiceContextName.Text;
         }
 
+        private string GetUserDomain()
+        {
+            if (string.IsNullOrWhiteSpace(ConnectionDetail.UserDomain))
+            {
+                return ConnectionDetail.UseOnline
+                    ? ConnectionDetail.UserDomain
+                    : ConnectionDetail.UserName.Split('\\').FirstOrDefault(); // Domain\UserName
+            }
+            else
+            {
+                return ConnectionDetail.UserDomain;
+            }
+        }
         private string GetUrlString()
         {
-            var url = ConnectionDetail.OrganizationServiceUrl;
+            var url = ConnectionDetail.UseOnline 
+                ? ConnectionDetail.OrganizationServiceUrl
+                : ConnectionDetail.WebApplicationUrl + ConnectionDetail.OrganizationUrlName;
             return Settings.UseConnectionString
                 ? url.Replace(@"/XRMServices/2011/Organization.svc", string.Empty)
                 :  url;

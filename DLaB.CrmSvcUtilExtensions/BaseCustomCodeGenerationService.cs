@@ -125,11 +125,10 @@ namespace DLaB.CrmSvcUtilExtensions
             ServiceProvider = services;
             if (UseTfsToCheckoutFiles)
             {
-                Action<string> write = s => { if (LoggingEnabled) { Log(s); } };
                 Tfs = new VsTfsSourceControlProvider(null, new ProcessExecutorInfo
                 {
-                    OnOutputReceived = write,
-                    OnErrorReceived = write
+                    OnOutputReceived = Log,
+                    OnErrorReceived = DisplayMessage
                 });
             }
             DisplayMessage("Ensuring Context File is Accessible");
@@ -384,7 +383,7 @@ namespace DLaB.CrmSvcUtilExtensions
                     Tfs.Get(true, batch.ToArray());
                 }
 
-                if (!Debugger.IsAttached)
+                if (Debugger.IsAttached)
                 {
                     DisplayMessage("Creating Temporary Files");
                     foreach (var file in files)
@@ -409,7 +408,7 @@ namespace DLaB.CrmSvcUtilExtensions
             }
             else
             {
-                if (!Debugger.IsAttached)
+                if (Debugger.IsAttached)
                 {
                     foreach (var file in files)
                     {
@@ -446,6 +445,8 @@ namespace DLaB.CrmSvcUtilExtensions
                 var tfsFile = File.ReadAllText(file.Path);
                 if (tfsFile.Equals(file.Contents))
                 {
+                    Log(tfsFile);
+                    Log(file.Contents);
                     Log(file.Path + " was unchanged.");
                     return;
                 }
@@ -644,7 +645,11 @@ namespace DLaB.CrmSvcUtilExtensions
 
                     // Determine Line Format, defaulting if none currently exist
                     var first = ProjectFiles.Keys.FirstOrDefault() ?? "    <Compile Include=\"\" />";
-                    LineFormat = first.Substring(0, first.IndexOf("\"", StringComparison.Ordinal) + 1) + "{0}" + first.Substring(first.LastIndexOf("\"", StringComparison.Ordinal), first.Length - first.LastIndexOf("\"", StringComparison.Ordinal));
+
+                    var startEndIndex = first.Contains("$(") 
+                        ? first.IndexOf(")", first.IndexOf("$(", StringComparison.Ordinal), StringComparison.Ordinal) + 1 // Path contains Ms Build Variable
+                        : first.IndexOf("\"", StringComparison.Ordinal) + 1;
+                    LineFormat = first.Substring(0, startEndIndex) + "{0}" + first.Substring(first.LastIndexOf("\"", StringComparison.Ordinal), first.Length - first.LastIndexOf("\"", StringComparison.Ordinal));
                 }
 
                 UpdateProjectFile = updateProjectFile;
@@ -661,8 +666,11 @@ namespace DLaB.CrmSvcUtilExtensions
                         return null;
                     }
 
-                    var firstOrDefault = directory.GetFiles("*.csproj").FirstOrDefault();
-                    if (firstOrDefault != null) return firstOrDefault;
+                    var firstOrDefault = directory.GetFiles("*.csproj").FirstOrDefault() ?? directory.GetFiles("*.projitems").FirstOrDefault();
+                    if (firstOrDefault != null)
+                    {
+                        return firstOrDefault;
+                    }
                     directory = directory.Parent;
                 }
             }
@@ -694,7 +702,7 @@ namespace DLaB.CrmSvcUtilExtensions
                 {
                     Tfs.Add(path);
                 }
-
+                
                 Console.WriteLine(path + " added to project.");
                 ProjectUpdated = true;
             }
