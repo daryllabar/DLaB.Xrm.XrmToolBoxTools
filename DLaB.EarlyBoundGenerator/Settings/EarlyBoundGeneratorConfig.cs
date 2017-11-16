@@ -5,8 +5,8 @@ using System.Linq;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
-using DLaB.Common;
-using DLaB.Common.VersionControl;
+using Source.DLaB.Common;
+using Source.DLaB.Common.VersionControl;
 using Microsoft.Xrm.Sdk.Client;
 using XrmToolBox.Extensibility;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using DLaB.Common;
+using Source.DLaB.Common;
 using DLaB.XrmToolboxCommon;
 using Microsoft.Xrm.Sdk.Metadata;
 using XrmToolBox.Extensibility;
@@ -11,7 +11,7 @@ namespace DLaB.EarlyBoundGenerator
 {
     public partial class SpecifyEntitiesDialog : DialogBase
     {
-        private int columnSortedIndex = 0;
+        private int _columnSortedIndex;
         public string SpecifiedEntities { get; set; }
 
         #region Constructor / Load
@@ -82,7 +82,7 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            SpecifiedEntities = Config.ToString(lvExcludedEntities.Items.Cast<ListViewItem>().Select(i => ((ObjectCollectionItem<EntityMetadata>)i.Tag).Value.LogicalName));
+            SpecifiedEntities = Config.ToString(lvExcludedEntities.Items.Cast<ListViewItem>().Select(i => i.SubItems[1].Text));
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -121,7 +121,7 @@ namespace DLaB.EarlyBoundGenerator
         private void listview_ColumnClick(object sender, ColumnClickEventArgs e)
         {
             var lv = (ListView)sender;
-            if (e.Column == columnSortedIndex)
+            if (e.Column == _columnSortedIndex)
             {
                 lv.Sorting = lv.Sorting == SortOrder.Ascending ? SortOrder.Descending : SortOrder.Ascending;
 
@@ -129,7 +129,7 @@ namespace DLaB.EarlyBoundGenerator
             }
             else
             {
-                columnSortedIndex = e.Column;
+                _columnSortedIndex = e.Column;
                 lv.ListViewItemSorter = new ListViewItemComparer(e.Column, SortOrder.Ascending);
             }
         }

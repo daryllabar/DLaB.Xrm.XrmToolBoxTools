@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DLaB.EarlyBoundGenerator.Settings;
 using System.Speech.Synthesis;
-using DLaB.Common;
+using Source.DLaB.Common;
 
 namespace DLaB.EarlyBoundGenerator
 {

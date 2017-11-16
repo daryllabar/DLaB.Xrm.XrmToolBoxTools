@@ -217,3 +217,5 @@ ModelManifest.xml
 /DLaB.CrmSvcUtilExtensions/App_Packages/DLaB.Common.Sources.1.0.4.11
 /DLaB.EarlyBoundGenerator/App_Packages/DLaB.Common.Sources.1.0.4.11
 /DLaB.CrmSvcUtilExtensions.Tests/App_Packages/DLaB.Common.Sources.1.0.4.11
+/DLaB.AttributeManager/App_Packages
+/DLaB.EarlyBoundGenerator/App_Packages

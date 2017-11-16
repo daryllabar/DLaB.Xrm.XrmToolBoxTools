@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
-using DLaB.Common;
-using DLaB.Xrm;
+using Source.DLaB.Common;
+using Source.DLaB.Xrm;
 using DLaB.Xrm.Entities;
 using Microsoft.Crm.Sdk.Messages;
 using Microsoft.Xrm.Sdk;

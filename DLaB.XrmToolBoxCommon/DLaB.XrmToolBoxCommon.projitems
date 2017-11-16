@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>9d4a0246-7f6d-459b-988c-26a47f6dbb6e</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>DLaB.XrmToolBoxCommon</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)DialogBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DialogBase.Designer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ListViewItemComparer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObjectCollectionItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PluginControlBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PluginUserControlBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Prompt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Properties\CommonResources.Designer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyInterface\IActions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyInterface\IEntityMetadatas.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyInterface\IGlobalOptionSets.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)DialogBase.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Properties\CommonResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Images\DLaB_Dynamics_Logo.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\DLaB_Dynamics_Logo_Square.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\DLaB_Dynamics_Logo_Square_120x120.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\DLaB_Dynamics_Logo_Square_32x32.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\tsbClose.Image.png" />
+  </ItemGroup>
+</Project>

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using DLaB.AttributeManager.DLaB.Common.Exceptions;
-using DLaB.Xrm;
+using Source.DLaB.Common.Exceptions;
+using Source.DLaB.Xrm;
 using DLaB.Xrm.Entities;
 using McTools.Xrm.Connection;
 using Microsoft.Crm.Sdk.Messages;

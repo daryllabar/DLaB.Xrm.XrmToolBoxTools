@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", "{07E3CEC6-C64C-4967-9C8C-634FF91E7C05}"
 	ProjectSection(SolutionItems) = preProject
@@ -30,15 +30,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{4209BA61
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.CrmSvcUtilExtensions.Tests", "DLaB.CrmSvcUtilExtensions.Tests\DLaB.CrmSvcUtilExtensions.Tests.csproj", "{9E7917B8-42E9-44CA-993A-15D7E60363EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.XrmToolboxCommon", "DLaB.XrmToolBoxCommon\DLaB.XrmToolboxCommon.csproj", "{B024C05F-39E5-4670-A6AE-BC1A96B6FF29}"
-EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DLaB.Xrm.Entities", "DLaB.Xrm.Entities\DLaB.Xrm.Entities.shproj", "{555B6BB7-C5B3-426A-9E23-A9C09AA7715C}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DLaB.XrmToolBoxCommon", "DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.shproj", "{9D4A0246-7F6D-459B-988C-26A47F6DBB6E}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		DLaB.Xrm.Entities\DLaB.Xrm.Entities.projitems*{555b6bb7-c5b3-426a-9e23-a9c09aa7715c}*SharedItemsImports = 13
 		DLaB.Xrm.Entities\DLaB.Xrm.Entities.projitems*{7de85f1a-794c-4e95-9e23-fa29dc110aba}*SharedItemsImports = 4
+		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{7de85f1a-794c-4e95-9e23-fa29dc110aba}*SharedItemsImports = 4
+		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{9d4a0246-7f6d-459b-988c-26a47f6dbb6e}*SharedItemsImports = 13
 		DLaB.Xrm.Entities\DLaB.Xrm.Entities.projitems*{fcb8a4e4-622b-413a-a531-b612e5f1436c}*SharedItemsImports = 4
+		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{fcb8a4e4-622b-413a-a531-b612e5f1436c}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,10 +64,6 @@ Global
 		{9E7917B8-42E9-44CA-993A-15D7E60363EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E7917B8-42E9-44CA-993A-15D7E60363EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E7917B8-42E9-44CA-993A-15D7E60363EF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B024C05F-39E5-4670-A6AE-BC1A96B6FF29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B024C05F-39E5-4670-A6AE-BC1A96B6FF29}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B024C05F-39E5-4670-A6AE-BC1A96B6FF29}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B024C05F-39E5-4670-A6AE-BC1A96B6FF29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

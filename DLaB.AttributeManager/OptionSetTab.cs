@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using DLaB.Xrm;
+using Source.DLaB.Xrm;
 using DLaB.Xrm.Entities;
 using DLaB.XrmToolboxCommon;
 using XrmLabel = Microsoft.Xrm.Sdk.Label;

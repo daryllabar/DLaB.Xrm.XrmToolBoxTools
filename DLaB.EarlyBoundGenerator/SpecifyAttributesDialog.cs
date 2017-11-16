@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using DLaB.Common;
 using DLaB.XrmToolboxCommon;
+using Source.DLaB.Common;
 using XrmToolBox.Extensibility;
 
 namespace DLaB.EarlyBoundGenerator

@@ -9,7 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using McTools.Xrm.Connection;
 using Microsoft.Xrm.Sdk.Metadata;
-using DLaB.Xrm;
+using Source.DLaB.Xrm;
 
 namespace DLaB.XrmToolboxCommon
 {
