@@ -271,27 +271,7 @@ if $(ConfigurationName) == Debug (
   xcopy "$(TargetDir)DLaB.*.dll" "$(TargetDir)Plugins\" /I /Y
 )
 
-DEL /Q "$(TargetDir)DLaB.*"
-
-if "$(ConfigurationName)" == "Release" goto RunILMerge
-
-goto exit
-
-:RunILMerge
-
-REM **** Create ILMerge Directory ****
-md "$(TargetDir)IlMerge"
-
-REM **** Delete Previous Log and Files ****
-del /Q "$(TargetDir)IlMerge\*.*"
-
-REM **** Run IlMerge ****
-"$(SolutionDir)packages\ILRepack.2.0.13\tools\ILRepack.exe" /log:"$(TargetDir)IlMerge\Log.txt" /targetplatform:"v4,c:\windows\Microsoft.NET\Framework\v4.0.30319" /out:"$(TargetDir)IlMerge\$(TargetFileName)" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\$(TargetFileName)" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.Xrm.2016.dll" 
-
-DEL /Q "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.*"
-
- xcopy /I /Y "$(TargetDir)IlMerge\*.*" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\"
-:exit</PostBuildEvent>
+DEL /Q "$(TargetDir)DLaB.*"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
