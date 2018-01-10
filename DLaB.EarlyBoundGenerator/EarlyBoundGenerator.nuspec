@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator</id>
-	  <version>1.2017.11.14</version>
+	  <version>1.2018.1.9</version>
 	  <title>Early Bound Generator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,10 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V1.2017.11.14
+    <releaseNotes>V1.2018.1.9
+ - Fixed Unable to login. Attempting to login using interactive mode. #127
+
+V1.2017.11.14
  - Fixed Unable to skip entities #135
  
 V1.2017.11.13
@@ -75,8 +78,8 @@ V1.2017.1.5
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator.dll" target="lib\net452\plugins" />
-    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\*.*" target="lib\net452\plugins\CrmSvcUtil Ref" />
-	  <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\alphabets\*.*" target="lib\net452\plugins\CrmSvcUtil Ref\alphabets" />
+    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator.dll" target="lib\net462\plugins" />
+    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\*.*" target="lib\net462\plugins\CrmSvcUtil Ref" />
+	  <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\alphabets\*.*" target="lib\net462\plugins\CrmSvcUtil Ref\alphabets" />
   </files>
 </package>

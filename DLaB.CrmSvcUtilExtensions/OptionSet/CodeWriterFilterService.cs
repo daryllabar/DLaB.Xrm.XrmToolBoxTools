@@ -21,7 +21,7 @@ using System.Collections.Generic;
 using Microsoft.Crm.Services.Utility;
 using Microsoft.Xrm.Sdk.Metadata;
 using System.Linq;
-using DLaB.Common;
+using Source.DLaB.Common;
 using DLaB.CrmSvcUtilExtensions.Entity;
 
 namespace DLaB.CrmSvcUtilExtensions.OptionSet

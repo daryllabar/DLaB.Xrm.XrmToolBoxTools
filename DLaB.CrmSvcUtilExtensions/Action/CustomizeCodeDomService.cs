@@ -27,7 +27,7 @@ using System.Diagnostics;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
-using DLaB.Common;
+using Source.DLaB.Common;
 
 namespace DLaB.CrmSvcUtilExtensions.Action
 {

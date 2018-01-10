@@ -38,13 +38,13 @@ V1.2017.1.17
 V1.2017.1.5
  - Removed Readonly Flag on Settings
     </releaseNotes>
-    <copyright>Copyright 2016</copyright>
+    <copyright>Copyright 2018</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>
     <dependencies>
       <dependency id="XrmToolBox" version="1.2017.2.13" />
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.AttributeManager.dll" target="lib\net452\plugins" />
+    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.AttributeManager.dll" target="lib\net462\plugins" />
   </files>
 </package>

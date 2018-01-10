@@ -3,7 +3,7 @@ using Microsoft.Xrm.Sdk.Metadata;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DLaB.Common;
+using Source.DLaB.Common;
 
 namespace DLaB.CrmSvcUtilExtensions.Entity
 {

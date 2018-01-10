@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using DLaB.Common;
-using DLaB.Common.VersionControl;
 using Microsoft.Crm.Services.Utility;
+using Source.DLaB.Common;
+using Source.DLaB.Common.VersionControl;
 
 namespace DLaB.CrmSvcUtilExtensions
 {

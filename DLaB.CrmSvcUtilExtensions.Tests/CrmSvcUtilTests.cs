@@ -8,7 +8,7 @@ using DLaB.CrmSvcUtilExtensions.Entity;
 using DLaB.CrmSvcUtilExtensions.OptionSet;
 using Microsoft.Crm.Services.Utility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DLaB.Common;
+using Source.DLaB.Common;
 using CustomCodeGenerationService = DLaB.CrmSvcUtilExtensions.Action.CustomCodeGenerationService;
 
 namespace DLaB.CrmSvcUtilExtensions.Tests

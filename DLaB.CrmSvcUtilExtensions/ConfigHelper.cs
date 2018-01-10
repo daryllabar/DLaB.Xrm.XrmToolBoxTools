@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using DLaB.Common;
+using Source.DLaB.Common;
 
 namespace DLaB.CrmSvcUtilExtensions
 {
