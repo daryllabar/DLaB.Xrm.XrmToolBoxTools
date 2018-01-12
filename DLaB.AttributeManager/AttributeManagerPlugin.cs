@@ -63,6 +63,7 @@ namespace DLaB.AttributeManager
             SetTabVisible(tabStringAttribute, false);
             SetTabVisible(tabNumberAttribute, false);
             SetTabVisible(tabOptionSetAttribute, false);
+            SetTabVisible(tabDelete, false);
             SetMappingFileVisible();
 
             SetCurrencyNumberVisible(false);
@@ -244,7 +245,7 @@ namespace DLaB.AttributeManager
                 e.Result = result;
                 try
                 {
-                    info.Migrator.Run(info.CurrentAttribute, info.NewAttributeName, info.Steps, info.Action, info.NewAttribute, GetMigrationMapping());
+                    info.Migrator.Run(info);
                     w.ReportProgress(99, "Steps Completed!");
                     result.Successful = true;
                 }
@@ -283,55 +284,15 @@ namespace DLaB.AttributeManager
                 AsyncArgument = new ExecuteStepsInfo
                 {
                     Action = GetCurrentAction(),
+                    AutoRemovePluginRegistrationAssociations = delUpdatePlugins.Checked,
                     CurrentAttribute = attribute.Value,
                     NewAttribute = GetNewAttributeType(),
                     NewAttributeName = txtNewAttributeName.Text,
+                    MappingFilePath = txtMappingFile.Text,
                     Migrator = new Logic(Service, ConnectionDetail, Metadata, Settings.TempSchemaPostfix, chkMigrate.Checked),
                     Steps = steps
                 }
             });
-        }
-
-        private Dictionary<string,string> GetMigrationMapping()
-        {
-            var path = txtMappingFile.Text;
-            if(string.IsNullOrWhiteSpace(path))
-            {
-                return null;
-            }
-            if (!File.Exists(path))
-            {
-                MessageBox.Show(@"Mapping file: ""{path}"" was not found!  No Mapping will be performed!", 
-                                @"No Mapping File", 
-                                MessageBoxButtons.OK, 
-                                MessageBoxIcon.Warning);
-                return null;
-            }
-
-            var mapping = new Dictionary<string, string>();
-            using (var parser = new TextFieldParser(path))
-            {
-                parser.TextFieldType = FieldType.Delimited;
-                parser.SetDelimiters(",");
-                var line = 0;
-                while (!parser.EndOfData)
-                {
-                    line++;
-                    //Processing row
-                    var fields = parser.ReadFields();
-                    if (fields == null || fields.Length == 0)
-                    {
-                        continue;
-                    }
-                    if (fields.Length != 2)
-                    {
-                        throw new Exception(@"Error parsing file: ""{path}"" on line {line}.  Expected 2 values per line, found {fields.Length}." );
-                    }
-
-                    mapping.Add(fields[0], fields[1]);
-                }
-            }
-            return mapping;
         }
 
         private AttributeMetadata GetNewAttributeType()
@@ -615,6 +576,7 @@ namespace DLaB.AttributeManager
                 txtOldSchema.Text = txtNewAttributeName.Text;
                 txtOldDisplay.Text = txtDisplayName.Text;
                 txtOldAttributType.Text = GetAttributeTypeDisplayValue(item.Value);
+                SetTabVisible(tabDelete, chkDelete.Checked);
             }
 
             btnExecuteSteps.Enabled = cmbAttributes.SelectedText == string.Empty;
@@ -686,12 +648,17 @@ namespace DLaB.AttributeManager
             }
             else
             {
-                // Hide all Tabs
-                SetTabVisible(tabStringAttribute, false);
-                SetTabVisible(tabNumberAttribute, false);
-                SetTabVisible(tabOptionSetAttribute, false);
+                HideAllTabs();
             }
             UpdateDisplayedSteps();
+        }
+
+        private void HideAllTabs()
+        {
+            SetTabVisible(tabStringAttribute, false);
+            SetTabVisible(tabNumberAttribute, false);
+            SetTabVisible(tabOptionSetAttribute, false);
+            SetTabVisible(tabDelete, false);
         }
 
         private void chkDelete_CheckedChanged(object sender, EventArgs e)
@@ -700,7 +667,10 @@ namespace DLaB.AttributeManager
             {
                 chkConvertAttributeType.Checked = false;
                 chkMigrate.Checked = false;
+                HideAllTabs();
             }
+
+            SetTabVisible(tabDelete, chkDelete.Checked);
 
             chkConvertAttributeType.Visible = !chkDelete.Checked;
             chkMigrate.Visible              = !chkDelete.Checked;
@@ -993,12 +963,14 @@ namespace DLaB.AttributeManager
 
         #endregion // Event Handlers
 
-        private class ExecuteStepsInfo
+        public class ExecuteStepsInfo
         {
-            public AttributeMetadata NewAttribute { get; set; }
+            public bool AutoRemovePluginRegistrationAssociations { get; set; }
             public Logic.Action Action { get; set; }
             public AttributeMetadata CurrentAttribute { get; set; }
+            public AttributeMetadata NewAttribute { get; set; }
             public string NewAttributeName { get; set; }
+            public string MappingFilePath { get; set; }
             public Logic Migrator { get; set; }
             public Logic.Steps Steps { get; internal set; }
         }

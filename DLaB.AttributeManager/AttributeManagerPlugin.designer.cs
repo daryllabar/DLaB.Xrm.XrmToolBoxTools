@@ -118,6 +118,10 @@ namespace DLaB.AttributeManager
             this.optAttGlobalOptionSetLbl = new System.Windows.Forms.Label();
             this.optAttGlobalOptionSetCmb = new System.Windows.Forms.ComboBox();
             this.tabLog = new System.Windows.Forms.TabPage();
+            this.tabDelete = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.pDelete = new System.Windows.Forms.Panel();
+            this.delUpdatePlugins = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -157,6 +161,9 @@ namespace DLaB.AttributeManager
             ((System.ComponentModel.ISupportInitialize)(this.PicAttLocalOptionAdd)).BeginInit();
             this.pOptionType.SuspendLayout();
             this.tabLog.SuspendLayout();
+            this.tabDelete.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.pDelete.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -724,6 +731,7 @@ namespace DLaB.AttributeManager
             this.tabControl.Controls.Add(this.tabNumberAttribute);
             this.tabControl.Controls.Add(this.tabOptionSetAttribute);
             this.tabControl.Controls.Add(this.tabLog);
+            this.tabControl.Controls.Add(this.tabDelete);
             this.tabControl.Location = new System.Drawing.Point(13, 316);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -1172,6 +1180,53 @@ namespace DLaB.AttributeManager
             this.tabLog.Text = "Log";
             this.tabLog.UseVisualStyleBackColor = true;
             // 
+            // tabDelete
+            // 
+            this.tabDelete.Controls.Add(this.tableLayoutPanel5);
+            this.tabDelete.Location = new System.Drawing.Point(4, 22);
+            this.tabDelete.Name = "tabDelete";
+            this.tabDelete.Padding = new System.Windows.Forms.Padding(3);
+            this.tabDelete.Size = new System.Drawing.Size(669, 275);
+            this.tabDelete.TabIndex = 4;
+            this.tabDelete.Text = "Delete Settings";
+            this.tabDelete.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 3;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 538F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Controls.Add(this.pDelete, 1, 1);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 3;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(663, 269);
+            this.tableLayoutPanel5.TabIndex = 0;
+            // 
+            // pDelete
+            // 
+            this.pDelete.Controls.Add(this.delUpdatePlugins);
+            this.pDelete.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pDelete.Location = new System.Drawing.Point(65, 37);
+            this.pDelete.Name = "pDelete";
+            this.pDelete.Size = new System.Drawing.Size(532, 194);
+            this.pDelete.TabIndex = 0;
+            // 
+            // delUpdatePlugins
+            // 
+            this.delUpdatePlugins.AutoSize = true;
+            this.delUpdatePlugins.Location = new System.Drawing.Point(4, 4);
+            this.delUpdatePlugins.Name = "delUpdatePlugins";
+            this.delUpdatePlugins.Size = new System.Drawing.Size(210, 17);
+            this.delUpdatePlugins.TabIndex = 0;
+            this.delUpdatePlugins.Text = "Delete Plugin Registration Associations";
+            this.delUpdatePlugins.UseVisualStyleBackColor = true;
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
@@ -1240,6 +1295,10 @@ namespace DLaB.AttributeManager
             this.pOptionType.PerformLayout();
             this.tabLog.ResumeLayout(false);
             this.tabLog.PerformLayout();
+            this.tabDelete.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.pDelete.ResumeLayout(false);
+            this.pDelete.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1329,5 +1388,9 @@ namespace DLaB.AttributeManager
         private ColorDialog colorDialog1;
         private TextBox TxtOptionSetColor;
         private Label LblOptionSetDescription;
+        private TabPage tabDelete;
+        private TableLayoutPanel tableLayoutPanel5;
+        private Panel pDelete;
+        private CheckBox delUpdatePlugins;
     }
 }

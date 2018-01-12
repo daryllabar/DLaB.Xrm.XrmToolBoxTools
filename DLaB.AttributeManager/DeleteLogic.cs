@@ -77,6 +77,35 @@ namespace DLaB.AttributeManager
             }
         }
 
+        private void UpdatePluginSteps(IOrganizationService service, AttributeMetadata att)
+        {
+            foreach (var step in GetPluginStepsContainingAtt(service, att))
+            {
+                var filter = RemoveValueFromCsvValues(step.FilteringAttributes, att.LogicalName);
+                Trace("Updating {0} - \"{1}\" to \"{2}\"", step.Name, step.FilteringAttributes, filter);
+                service.Update(new SdkMessageProcessingStep
+                {
+                    Id = step.Id,
+                    FilteringAttributes = filter
+                });
+            }
+        }
+
+        private void UpdatePluginImages(IOrganizationService service, AttributeMetadata att)
+        {
+            Trace("Looking up Plugin Images");
+            foreach (var image in GetPluginImagesContainingAtt(service, att))
+            {
+                var attributes = RemoveValueFromCsvValues(image.Attributes1, att.LogicalName);
+                Trace("Updating {0} - \"{1}\" to \"{2}\"", image.Name, image.Attributes1, attributes);
+                service.Update(new SdkMessageProcessingStepImage
+                {
+                    Id = image.Id,
+                    Attributes1 = attributes
+                });
+            }
+        }
+
         private void UpdateRelationships(IOrganizationService service, AttributeMetadata att)
         {
             var noneFound = true;

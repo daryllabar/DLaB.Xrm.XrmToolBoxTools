@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Windows.Forms;
 using Source.DLaB.Common.Exceptions;
 using Source.DLaB.Xrm;
 using DLaB.Xrm.Entities;
 using McTools.Xrm.Connection;
 using Microsoft.Crm.Sdk.Messages;
+using Microsoft.VisualBasic.FileIO;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Metadata;
 using Microsoft.Xrm.Sdk.Query;
+using Label = Microsoft.Xrm.Sdk.Label;
 
 namespace DLaB.AttributeManager
 {
@@ -69,9 +72,15 @@ namespace DLaB.AttributeManager
             return new HashSet<int>(resp.LocaleIds);
         }
 
-        public void Run(AttributeMetadata att, string newAttributeSchemaName, Steps stepsToPerform, Action actions, AttributeMetadata newAttributeType = null, Dictionary<string,string> migrationMapping = null)
+        //public void Run(AttributeMetadata att, string newAttributeSchemaName, Steps stepsToPerform, Action actions, AttributeMetadata newAttributeType = null, Dictionary<string,string> migrationMapping = null)
+        public void Run(AttributeManagerPlugin.ExecuteStepsInfo info)
         {
-            migrationMapping = migrationMapping ?? new Dictionary<string, string>();
+            var att = info.CurrentAttribute;
+            var newAttributeSchemaName = info.NewAttributeName;
+            var stepsToPerform = info.Steps;
+            var actions = info.Action;
+            var newAttributeType = info.NewAttribute;
+            var migrationMapping = GetMigrationMapping(info.MappingFilePath) ?? new Dictionary<string, string>();
             var state = GetApplicationMigrationState(Service, att, newAttributeSchemaName);
             AssertValidStepsForState(att.SchemaName, newAttributeSchemaName, stepsToPerform, state, actions);
             var oldAtt = state.Old;
@@ -81,7 +90,7 @@ namespace DLaB.AttributeManager
             switch (actions)
             {
                 case Action.Delete:
-                    ClearFieldDependencies(oldAtt);
+                    ClearFieldDependencies(oldAtt, info.AutoRemovePluginRegistrationAssociations);
                     RemoveExisting(stepsToPerform, oldAtt);
                     break;
 
@@ -109,12 +118,58 @@ namespace DLaB.AttributeManager
             }
         }
 
-        private void ClearFieldDependencies(AttributeMetadata att)
+        private Dictionary<string, string> GetMigrationMapping(string path)
+        {
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                return null;
+            }
+            if (!System.IO.File.Exists(path))
+            {
+                MessageBox.Show(@"Mapping file: ""{path}"" was not found!  No Mapping will be performed!",
+                    @"No Mapping File",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return null;
+            }
+
+            var mapping = new Dictionary<string, string>();
+            using (var parser = new TextFieldParser(path))
+            {
+                parser.TextFieldType = FieldType.Delimited;
+                parser.SetDelimiters(",");
+                var line = 0;
+                while (!parser.EndOfData)
+                {
+                    line++;
+                    //Processing row
+                    var fields = parser.ReadFields();
+                    if (fields == null || fields.Length == 0)
+                    {
+                        continue;
+                    }
+                    if (fields.Length != 2)
+                    {
+                        throw new Exception(@"Error parsing file: ""{path}"" on line {line}.  Expected 2 values per line, found {fields.Length}.");
+                    }
+
+                    mapping.Add(fields[0], fields[1]);
+                }
+            }
+            return mapping;
+        }
+
+        private void ClearFieldDependencies(AttributeMetadata att, bool removePluginRegistrationAssociations)
         {
             Trace("Beginning Step: Clearing Field Dependencies");
             UpdateCharts(Service, att);
             UpdateViews(Service, att);
             UpdateForms(Service, att);
+            if (removePluginRegistrationAssociations)
+            {
+                UpdatePluginSteps(Service, att);
+                UpdatePluginImages(Service, att);
+            }
             UpdateRelationships(Service, att);
             UpdateMappings(Service, att);
             UpdateWorkflows(Service, att);
@@ -420,7 +475,17 @@ namespace DLaB.AttributeManager
                         var response =
                             (RetrieveRelationshipResponse)service.Execute(new RetrieveRelationshipRequest { MetadataId = dependentId });
                         Trace("Entity Relationship / Mapping {0} must be manually removed/added", response.RelationshipMetadata.SchemaName);
+                        break;
 
+                    case ComponentType.SDKMessageProcessingStep:
+                        var step = service.GetEntity<SdkMessageProcessingStep>(dependentId);
+                        err = $"{type} {step.Name}({dependentId}) - {step.Description}";
+                        break;
+
+                    case ComponentType.SDKMessageProcessingStepImage:
+                        var image = service.GetEntity<SdkMessageProcessingStepImage>(dependentId);
+                        var imageStep = service.GetEntity<SdkMessageProcessingStep>(image.SdkMessageProcessingStepId.Id);
+                        err = $"{type} {imageStep.Name}.{image.Name}({dependentId}) - {image.ImageTypeEnum}";
                         break;
 
                     case ComponentType.SavedQueryVisualization:
@@ -669,18 +734,8 @@ namespace DLaB.AttributeManager
 
         private void UpdatePluginStepFilters(IOrganizationService service, AttributeMetadata att, AttributeMetadata to)
         {
-            var qe = QueryExpressionFactory.Create<SdkMessageProcessingStep>();
-            qe.AddLink<SdkMessageFilter>(SdkMessageFilter.Fields.SdkMessageFilterId)
-                .WhereEqual(SdkMessageFilter.Fields.PrimaryObjectTypeCode, att.EntityLogicalName);
-            AddConditionsForValueInCsv(qe.Criteria, SdkMessageProcessingStep.Fields.FilteringAttributes, att.LogicalName);
-            qe.WhereIn(SdkMessageProcessingStep.Fields.Stage,
-                (int)SdkMessageProcessingStep_Stage.Postoperation,
-                (int)SdkMessageProcessingStep_Stage.Preoperation,
-                (int)SdkMessageProcessingStep_Stage.Prevalidation);
-
-            Trace("Checking for Plugin Registration Step Filtering Attribute Dependencies with Query: " + qe.GetSqlStatement());
-
-            foreach (var step in service.GetEntities(qe))
+            var steps = GetPluginStepsContainingAtt(service, att);
+            foreach (var step in steps)
             {
                 var filter = ReplaceCsvValues(step.FilteringAttributes, att.LogicalName, to.LogicalName);
                 Trace("Updating {0} - \"{1}\" to \"{2}\"", step.Name, step.FilteringAttributes, filter);
@@ -692,6 +747,23 @@ namespace DLaB.AttributeManager
             }
         }
 
+        private List<SdkMessageProcessingStep> GetPluginStepsContainingAtt(IOrganizationService service, AttributeMetadata att)
+        {
+            var qe = QueryExpressionFactory.Create<SdkMessageProcessingStep>();
+            qe.AddLink<SdkMessageFilter>(SdkMessageFilter.Fields.SdkMessageFilterId)
+                .WhereEqual(SdkMessageFilter.Fields.PrimaryObjectTypeCode, att.EntityLogicalName);
+            AddConditionsForValueInCsv(qe.Criteria, SdkMessageProcessingStep.Fields.FilteringAttributes, att.LogicalName);
+            qe.WhereIn(
+                SdkMessageProcessingStep.Fields.Stage,
+                (int) SdkMessageProcessingStep_Stage.Postoperation,
+                (int) SdkMessageProcessingStep_Stage.Preoperation,
+                (int) SdkMessageProcessingStep_Stage.Prevalidation);
+
+            Trace("Checking for Plugin Registration Step Filtering Attribute Dependencies with Query: " + qe.GetSqlStatement());
+
+            return service.GetEntities(qe);
+        }
+
         private static void AddConditionsForValueInCsv(FilterExpression filter, string fieldName, string value)
         {
             filter.WhereEqual(
@@ -701,7 +773,7 @@ namespace DLaB.AttributeManager
                 LogicalOperator.Or,
                 new ConditionExpression(fieldName, ConditionOperator.Like, $"%,{value}"),
                 LogicalOperator.Or,
-                fieldName, "{0}"
+                fieldName, value
                 );
         }
 
@@ -725,15 +797,8 @@ namespace DLaB.AttributeManager
 
         private void UpdatePluginStepImages(IOrganizationService service, AttributeMetadata att, AttributeMetadata to)
         {
-            var qe = QueryExpressionFactory.Create<SdkMessageProcessingStepImage>();
-            qe.AddLink<SdkMessageProcessingStep>(SdkMessageProcessingStepImage.Fields.SdkMessageProcessingStepId)
-                .AddLink<SdkMessageFilter>(SdkMessageProcessingStep.Fields.SdkMessageFilterId)
-                .WhereEqual(SdkMessageFilter.Fields.PrimaryObjectTypeCode, att.EntityLogicalName);
-            AddConditionsForValueInCsv(qe.Criteria, SdkMessageProcessingStepImage.Fields.Attributes1, att.LogicalName);
-
-            Trace("Checking for Plugin Registration Step Images Attribute Dependencies with Query: " + qe.GetSqlStatement());
-
-            foreach (var step in service.GetEntities(qe))
+            var steps = GetPluginImagesContainingAtt(service, att);
+            foreach (var step in steps)
             {
                 var filter = ReplaceCsvValues(step.Attributes1, att.LogicalName, to.LogicalName);
                 Trace("Updating {0} - \"{1}\" to \"{2}\"", step.Name, step.Attributes1, filter);
@@ -743,6 +808,18 @@ namespace DLaB.AttributeManager
                     Attributes1 = filter
                 });
             }
+        }
+
+        private List<SdkMessageProcessingStepImage> GetPluginImagesContainingAtt(IOrganizationService service, AttributeMetadata att)
+        {
+            var qe = QueryExpressionFactory.Create<SdkMessageProcessingStepImage>();
+            qe.AddLink<SdkMessageProcessingStep>(SdkMessageProcessingStepImage.Fields.SdkMessageProcessingStepId)
+                .AddLink<SdkMessageFilter>(SdkMessageProcessingStep.Fields.SdkMessageFilterId)
+                .WhereEqual(SdkMessageFilter.Fields.PrimaryObjectTypeCode, att.EntityLogicalName);
+            AddConditionsForValueInCsv(qe.Criteria, SdkMessageProcessingStepImage.Fields.Attributes1, att.LogicalName);
+
+            Trace("Checking for Plugin Registration Step Images Attribute Dependencies with Query: " + qe.GetSqlStatement());
+            return service.GetEntities(qe);
         }
 
         private void UpdateWorkflows(IOrganizationService service, AttributeMetadata att, AttributeMetadata to)
@@ -1112,7 +1189,7 @@ namespace DLaB.AttributeManager
         private void SetEntityLogicalName(AttributeMetadata att, string entityLogicalName)
         {
             var prop = att.GetType().GetProperty("EntityLogicalName");
-            prop.SetValue(att, entityLogicalName);
+            prop?.SetValue(att, entityLogicalName);
         }
 
         private void PublishEntity(IOrganizationService service, string logicalName)
@@ -1127,13 +1204,13 @@ namespace DLaB.AttributeManager
         private void Trace(string message)
         {
             Debug.Assert(OnLog != null, "OnLog != null");
-            OnLog(message);
+            OnLog?.Invoke(message);
         }
 
         private void Trace(string messageFormat, params object[] args)
         {
             Debug.Assert(OnLog != null, "OnLog != null");
-            OnLog(string.Format(messageFormat, args));
+            OnLog?.Invoke(string.Format(messageFormat, args));
         }
 
         private class AttributeMigrationState

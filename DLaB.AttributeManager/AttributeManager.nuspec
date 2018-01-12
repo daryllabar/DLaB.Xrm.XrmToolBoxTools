@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.AttributeManager</id>
-	  <version>1.2017.8.8</version>
+	  <version>1.2018.1.11</version>
 	  <title>Attribute Manager</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,10 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>BETA! - Used to rename/delete/or change the type of an attribute.</description>
-    <releaseNotes>V1.2017.8.8
+    <releaseNotes>V1.2018.1.11
+ - Added Ability To Conditionally Remove Plugin Step Images and Filters On Delete of Attribute #140
+ 
+V1.2017.8.8
  - Fixed Multi-line Text Issue #122
 
 V1.2017.8.3
@@ -25,18 +28,6 @@ V1.2017.3.21
 
 V1.2017.3.18
  - Allow for a CSV mapping file when changing Attribute Types #93
-
-V1.2017.3.16
- - Fixed Attribute Manager Errors when attempting to remove a Workflow Trigger on Update Filter #91
- - Updated NuGet Package to use the actual XrmToolBoxPackage, rather than XrmToolBox which doesn't exist
-      
-V1.2017.1.17
- - Fixed MessageProccessingStepImage not getting removed #81
- - Fixed 1.000 not converted to integer #80
- - Added Timing of Data Migration
-      
-V1.2017.1.5
- - Removed Readonly Flag on Settings
     </releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>
