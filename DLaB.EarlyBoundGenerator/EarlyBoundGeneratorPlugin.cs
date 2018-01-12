@@ -379,11 +379,16 @@ namespace DLaB.EarlyBoundGenerator
         }
         private string GetUrlString()
         {
+            var orgName = ConnectionDetail.OrganizationUrlName;
+            var onPremUrl = ConnectionDetail.WebApplicationUrl;
+            onPremUrl = onPremUrl != null && !onPremUrl.ToLower().EndsWith(orgName.ToLower())
+                ? onPremUrl + orgName
+                : onPremUrl;
             var url = ConnectionDetail.UseOnline 
                 ? ConnectionDetail.OrganizationServiceUrl
-                : ConnectionDetail.WebApplicationUrl + ConnectionDetail.OrganizationUrlName;
+                : onPremUrl;
             return Settings.UseConnectionString
-                ? url.Replace(@"/XRMServices/2011/Organization.svc", string.Empty)
+                ? url?.Replace(@"/XRMServices/2011/Organization.svc", string.Empty)
                 :  url;
 
             //if (auth == AuthenticationProviderType.ActiveDirectory)

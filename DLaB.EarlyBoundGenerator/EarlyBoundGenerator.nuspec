@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator</id>
-	  <version>1.2018.1.9</version>
+	  <version>1.2018.1.11</version>
 	  <title>Early Bound Generator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,8 +11,12 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V1.2018.1.9
+    <releaseNotes>V1.2018.1.11
+ - Url includes duplicate Org Name #139
+ 
+V1.2018.1.9
  - Fixed Unable to login. Attempting to login using interactive mode. #127
+ - Used 9.0 Dlls
 
 V1.2017.11.14
  - Fixed Unable to skip entities #135
@@ -28,48 +32,6 @@ V1.2017.10.10
       
 V1.2017.10.2
  - Fixed Null Ref Error is thrown on Generate #129
- 
-V1.2017.8.7
- - Added Support VS 2017 Install #116
- - Fixed Entity and OptionSet Could Have the Same Exact Name #1 also Error on generating Entities bug #119
- - Fixed Error on generating Entities bug #119
-
-V1.2017.7.23
- - Fix Exception When Run #115 Null Ref Errors
- 
-V1.2017.7.19
- - Implmented Add Fields Class to Custom Actions #114
- 
-V1.2017.7.18
- - Fix for Enum method being generated for skipped OptionSet #110
- - Implmented Custom Action Responses Editable #111
- - Implmented Add primary name attribute to early bound entity class #96
- 
-V1.2017.6.14
- - Fix for Error in format of Transliteration file #105
- - Fix for Generated Account.cs Entity cannot find AccountState (StateCodeEnum) #48
- - Fix for Reading from Cached Metadata causing Null Ref
- 
-V1.2017.4.9
- - Implmented Change Field Type to Static Class #82
-
-V1.2017.3.23
- - Fix for OptionSet Attributes Are Getting Generated as Objects Not OptionSetValues #87
- - Fix for Missing References to Xrm.Tooling.Ui #92
-
-V1.2017.3.3
- - Worked with Microsoft to get the correct version of the CrmSvcUtil from Nuget.  Should fix #84.
-      
-V1.2017.1.31
- - Fixed new similar bug created in 1.30 to address DLaB.EarlyBoundGenerator.Settings.xml isn't generated #83
- - Updated Default Location for Settings Path to be in the Settings Directory
- 
-V1.2017.1.30
- - Fixed DLaB.EarlyBoundGenerator.Settings.xml isn't generated #83
-
-V1.2017.1.5
- - Fixed TFS Get/Checkout command errors if longer than 32000 #77
- - Fixed If EBG Config file is readonly it fails to read the settings #76
     </releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>
