@@ -1203,7 +1203,7 @@ namespace DLaB.AttributeManager
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 3;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(663, 269);
             this.tableLayoutPanel5.TabIndex = 0;
@@ -1212,15 +1212,15 @@ namespace DLaB.AttributeManager
             // 
             this.pDelete.Controls.Add(this.delUpdatePlugins);
             this.pDelete.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pDelete.Location = new System.Drawing.Point(65, 37);
+            this.pDelete.Location = new System.Drawing.Point(65, 87);
             this.pDelete.Name = "pDelete";
-            this.pDelete.Size = new System.Drawing.Size(532, 194);
+            this.pDelete.Size = new System.Drawing.Size(532, 94);
             this.pDelete.TabIndex = 0;
             // 
             // delUpdatePlugins
             // 
             this.delUpdatePlugins.AutoSize = true;
-            this.delUpdatePlugins.Location = new System.Drawing.Point(4, 4);
+            this.delUpdatePlugins.Location = new System.Drawing.Point(3, 38);
             this.delUpdatePlugins.Name = "delUpdatePlugins";
             this.delUpdatePlugins.Size = new System.Drawing.Size(210, 17);
             this.delUpdatePlugins.TabIndex = 0;

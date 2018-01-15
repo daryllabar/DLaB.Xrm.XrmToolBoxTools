@@ -372,7 +372,7 @@ namespace DLaB.AttributeManager
             lblNewAttribute.Visible = isVisible;
             cmbNewAttribute.Visible = isVisible;
             lblSchemaName.Visible = !isVisible;
-            txtNewAttributeName.Visible = !isVisible;
+            txtNewAttributeName.Visible = !isVisible && !chkDelete.Checked;
         }
 
         private Logic.Action GetCurrentAction()
