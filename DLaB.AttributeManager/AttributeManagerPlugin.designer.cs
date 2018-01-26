@@ -650,7 +650,7 @@ namespace DLaB.AttributeManager
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtLog.Size = new System.Drawing.Size(663, 269);
+            this.txtLog.Size = new System.Drawing.Size(663, 249);
             this.txtLog.TabIndex = 0;
             this.txtLog.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SelectAllKeyDownHandler);
             // 
@@ -848,7 +848,7 @@ namespace DLaB.AttributeManager
             this.tabNumberAttribute.Controls.Add(this.tableLayoutPanel3);
             this.tabNumberAttribute.Location = new System.Drawing.Point(4, 22);
             this.tabNumberAttribute.Name = "tabNumberAttribute";
-            this.tabNumberAttribute.Size = new System.Drawing.Size(669, 275);
+            this.tabNumberAttribute.Size = new System.Drawing.Size(669, 255);
             this.tabNumberAttribute.TabIndex = 2;
             this.tabNumberAttribute.Text = "Number Type Settings";
             this.tabNumberAttribute.UseVisualStyleBackColor = true;
@@ -945,7 +945,7 @@ namespace DLaB.AttributeManager
             this.tabOptionSetAttribute.Controls.Add(this.tableLayoutPanel4);
             this.tabOptionSetAttribute.Location = new System.Drawing.Point(4, 22);
             this.tabOptionSetAttribute.Name = "tabOptionSetAttribute";
-            this.tabOptionSetAttribute.Size = new System.Drawing.Size(669, 275);
+            this.tabOptionSetAttribute.Size = new System.Drawing.Size(669, 255);
             this.tabOptionSetAttribute.TabIndex = 3;
             this.tabOptionSetAttribute.Text = "Option Type Settings";
             this.tabOptionSetAttribute.UseVisualStyleBackColor = true;
@@ -1175,7 +1175,7 @@ namespace DLaB.AttributeManager
             this.tabLog.Location = new System.Drawing.Point(4, 22);
             this.tabLog.Name = "tabLog";
             this.tabLog.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLog.Size = new System.Drawing.Size(669, 275);
+            this.tabLog.Size = new System.Drawing.Size(669, 255);
             this.tabLog.TabIndex = 0;
             this.tabLog.Text = "Log";
             this.tabLog.UseVisualStyleBackColor = true;
@@ -1186,7 +1186,7 @@ namespace DLaB.AttributeManager
             this.tabDelete.Location = new System.Drawing.Point(4, 22);
             this.tabDelete.Name = "tabDelete";
             this.tabDelete.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDelete.Size = new System.Drawing.Size(669, 275);
+            this.tabDelete.Size = new System.Drawing.Size(669, 255);
             this.tabDelete.TabIndex = 4;
             this.tabDelete.Text = "Delete Settings";
             this.tabDelete.UseVisualStyleBackColor = true;
@@ -1205,14 +1205,14 @@ namespace DLaB.AttributeManager
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(663, 269);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(663, 249);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // pDelete
             // 
             this.pDelete.Controls.Add(this.delUpdatePlugins);
             this.pDelete.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pDelete.Location = new System.Drawing.Point(65, 87);
+            this.pDelete.Location = new System.Drawing.Point(65, 77);
             this.pDelete.Name = "pDelete";
             this.pDelete.Size = new System.Drawing.Size(532, 94);
             this.pDelete.TabIndex = 0;

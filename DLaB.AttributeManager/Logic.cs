@@ -298,7 +298,19 @@ namespace DLaB.AttributeManager
             state.New = metadata.Attributes.FirstOrDefault(a => a.SchemaName == newSchemaName);
             Trace("New Attribute {0}.{1} {2}found", entityName, newSchemaName, state.New == null ? "not " : string.Empty);
 
+            SetDisplayName(state.Old, att.DisplayName);
+            SetDisplayName(state.Temp, att.DisplayName);
+            SetDisplayName(state.New, att.DisplayName);
+
             return state;
+        }
+
+        private void SetDisplayName(AttributeMetadata att, Label displayName)
+        {
+            if (att != null)
+            {
+                att.DisplayName = displayName;
+            }
         }
 
         private void AssertValidStepsForState(string existingSchemaName, string newSchemaName, Steps stepsToPerform, AttributeMigrationState state, Action actions)
