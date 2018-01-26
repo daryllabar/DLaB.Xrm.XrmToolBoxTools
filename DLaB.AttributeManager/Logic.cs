@@ -37,12 +37,14 @@ namespace DLaB.AttributeManager
         public enum Steps
         {
             CreateTemp = 1,
-            MigrateToTemp = 2,
-            RemoveExistingAttribute = 4,
-            CreateNewAttribute = 8,
-            MigrateToNewAttribute = 16,
-            RemoveTemp = 32,
-            MigrationToTempRequired = 64
+            MigrateDataToTemp = 2,
+            MigrateToTemp = 4,
+            RemoveExistingAttribute = 8,
+            CreateNewAttribute = 16,
+            MigrateDataToNewAttribute = 32,
+            MigrateToNewAttribute = 64,
+            RemoveTemp = 128,
+            MigrationToTempRequired = 256
         }
 
         [Flags]
@@ -101,7 +103,8 @@ namespace DLaB.AttributeManager
                 case Action.Rename:
                 case Action.Rename | Action.ChangeType:
                     CreateNew(newAttributeSchemaName, stepsToPerform, oldAtt, ref newAtt, newAttributeType); // Create or Retrieve the New Attribute
-                    MigrateToNew(stepsToPerform, oldAtt, newAtt, actions, migrationMapping);
+                    MigrateDataToNew(stepsToPerform, oldAtt, newAtt, actions, migrationMapping);
+                    MigrateToNew(stepsToPerform, oldAtt, newAtt);
                     RemoveExisting(stepsToPerform, oldAtt);
                     break;
 
@@ -109,10 +112,12 @@ namespace DLaB.AttributeManager
                 case Action.ChangeCase | Action.ChangeType:
                 case Action.ChangeType:
                     CreateTemp(stepsToPerform, oldAtt, ref tmpAtt, newAttributeType); // Either Create or Retrieve the Temp
-                    MigrateToTemp(stepsToPerform, oldAtt, tmpAtt, actions, migrationMapping);
+                    MigrateDataToTemp(stepsToPerform, oldAtt, tmpAtt, actions, migrationMapping);
+                    MigrateToTemp(stepsToPerform, oldAtt, tmpAtt);
                     RemoveExisting(stepsToPerform, oldAtt);
                     CreateNew(newAttributeSchemaName, stepsToPerform, tmpAtt, ref newAtt, newAttributeType);
-                    MigrateToNew(stepsToPerform, tmpAtt, newAtt, actions, migrationMapping);
+                    MigrateDataToNew(stepsToPerform, tmpAtt, newAtt, actions, migrationMapping);
+                    MigrateToNew(stepsToPerform, tmpAtt, newAtt);
                     RemoveTemp(stepsToPerform, tmpAtt);
                     break;
             }
@@ -198,12 +203,22 @@ namespace DLaB.AttributeManager
             }
         }
 
-        private void MigrateToNew(Steps stepsToPerform, AttributeMetadata tmpAtt, AttributeMetadata newAtt, Action actions, Dictionary<string, string> migrationMapping)
+        private void MigrateDataToNew(Steps stepsToPerform, AttributeMetadata tmpAtt, AttributeMetadata newAtt, Action actions, Dictionary<string, string> migrationMapping)
+        {
+            if (stepsToPerform.HasFlag(Steps.MigrateDataToNewAttribute))
+            {
+                Trace("Beginning Step: Migrate Data To New Attribute");
+                CopyData(Service, tmpAtt, newAtt, actions, migrationMapping);
+                Trace("Completed Step: Migrate Data To New Attribute" + Environment.NewLine);
+            }
+        }
+
+        private void MigrateToNew(Steps stepsToPerform, AttributeMetadata tmpAtt, AttributeMetadata newAtt)
         {
             if (stepsToPerform.HasFlag(Steps.MigrateToNewAttribute))
             {
                 Trace("Beginning Step: Migrate To New Attribute");
-                MigrateAttribute(tmpAtt, newAtt, actions, migrationMapping);
+                MigrateAttribute(tmpAtt, newAtt);
                 Trace("Completed Step: Migrate To New Attribute" + Environment.NewLine);
             }
         }
@@ -228,20 +243,29 @@ namespace DLaB.AttributeManager
             }
         }
 
-        private void MigrateToTemp(Steps stepsToPerform, AttributeMetadata oldAtt, AttributeMetadata tmpAtt, Action actions, Dictionary<string, string> migrationMapping)
+        private void MigrateDataToTemp(Steps stepsToPerform, AttributeMetadata oldAtt, AttributeMetadata tmpAtt, Action actions, Dictionary<string, string> migrationMapping)
+        {
+            if (stepsToPerform.HasFlag(Steps.MigrateDataToTemp))
+            {
+                Trace("Beginning Step: Migrate Data To Temp");
+                CopyData(Service, oldAtt, tmpAtt, actions, migrationMapping);
+                Trace("Completed Step: Migrate Data To Temp" + Environment.NewLine);
+            }
+        }
+
+        private void MigrateToTemp(Steps stepsToPerform, AttributeMetadata oldAtt, AttributeMetadata tmpAtt)
         {
             if (stepsToPerform.HasFlag(Steps.MigrateToTemp))
             {
                 Trace("Beginning Step: Migrate To Temp");
-                MigrateAttribute(oldAtt, tmpAtt, actions, migrationMapping);
+                MigrateAttribute(oldAtt, tmpAtt);
                 Trace("Completed Step: Migrate To Temp" + Environment.NewLine);
             }
         }
 
-        private void MigrateAttribute(AttributeMetadata fromAtt, AttributeMetadata toAtt, Action actions, Dictionary<string,string> migrationMapping)
+        private void MigrateAttribute(AttributeMetadata fromAtt, AttributeMetadata toAtt)
         {
             // Replace Old Attribute with Tmp Attribute
-            CopyData(Service, fromAtt, toAtt, actions, migrationMapping);
             UpdateCalculatedFields(Service, fromAtt, toAtt);
             UpdateCharts(Service, fromAtt, toAtt);
             UpdateViews(Service, fromAtt, toAtt);
@@ -291,7 +315,10 @@ namespace DLaB.AttributeManager
                 }
                 else if (state.Old.GetType() == state.Temp.GetType())
                 {
-                    if (stepsToPerform.HasFlag(Steps.RemoveExistingAttribute) || stepsToPerform.HasFlag(Steps.CreateNewAttribute) || stepsToPerform.HasFlag(Steps.MigrateToTemp))
+                    if (stepsToPerform.HasFlag(Steps.RemoveExistingAttribute) 
+                        || stepsToPerform.HasFlag(Steps.CreateNewAttribute)
+                        || stepsToPerform.HasFlag(Steps.MigrateDataToTemp)
+                        || stepsToPerform.HasFlag(Steps.MigrateToTemp))
                     {
                         Trace("A Temporary Attribute was found and a request has been made to either remove the existing attribute, create a new attribute, or migrate to temp.  Treating New as not yet created.");
                         state.New = null;
@@ -316,7 +343,7 @@ namespace DLaB.AttributeManager
                 throw new InvalidOperationException("Unable to Create Temp!  Temp " + state.Temp.EntityLogicalName + "." + state.Temp.LogicalName + " already exists!");
             }
 
-            if (stepsToPerform.HasFlag(Steps.MigrateToTemp))
+            if (stepsToPerform.HasFlag(Steps.MigrateDataToTemp) || stepsToPerform.HasFlag(Steps.MigrateToTemp))
             {
                 // Can only Migrate if old already exists
                 if (state.Old == null)
@@ -386,7 +413,7 @@ namespace DLaB.AttributeManager
                 }
             }
 
-            if (stepsToPerform.HasFlag(Steps.MigrateToNewAttribute))
+            if (stepsToPerform.HasFlag(Steps.MigrateDataToNewAttribute) || stepsToPerform.HasFlag(Steps.MigrateToNewAttribute))
             {
                 // Can only Migrate To New if Temp Exists, or Creating a Temp, or There is a Rename and the Old Already Exists
                 if (!(state.Temp != null || stepsToPerform.HasFlag(Steps.CreateTemp) || (actions.HasFlag(Action.Rename) && state.Old != null)))

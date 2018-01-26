@@ -10,7 +10,6 @@ using Source.DLaB.Common.Exceptions;
 using Source.DLaB.Xrm;
 using DLaB.Xrm.Entities;
 using DLaB.XrmToolboxCommon;
-using Microsoft.VisualBasic.FileIO;
 using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Metadata;
 using XrmToolBox.Extensibility;
@@ -21,9 +20,27 @@ namespace DLaB.AttributeManager
     public partial class AttributeManagerPlugin : DLaBPluginControlBase
     {
         private bool AttributesNeedLoaded { get; set; }
-        private object[] DefaultSteps { get; }
         private object[] DeleteSteps { get; }
-        private object[] RenameSteps { get; }
+
+        private object[] RenameSteps
+        {
+            get
+            {
+                return chkMigrate.Checked
+                    ? new object[]  {
+                            StepMapper.First(p => p.Value == Logic.Steps.CreateNewAttribute).Key,
+                            StepMapper.First(p => p.Value == Logic.Steps.MigrateDataToNewAttribute).Key,
+                            StepMapper.First(p => p.Value == Logic.Steps.MigrateToNewAttribute).Key,
+                            StepMapper.First(p => p.Value == Logic.Steps.RemoveExistingAttribute).Key
+                    }
+                    : new object[] {
+                        StepMapper.First(p => p.Value == Logic.Steps.CreateNewAttribute).Key,
+                        StepMapper.First(p => p.Value == Logic.Steps.MigrateToNewAttribute).Key,
+                        StepMapper.First(p => p.Value == Logic.Steps.RemoveExistingAttribute).Key
+                    };
+            }
+        }
+
         private Dictionary<string, Logic.Steps> StepMapper { get; }
         public Config Settings { get; set; }
         private EntityMetadata Metadata { get; set; }
@@ -38,20 +55,13 @@ namespace DLaB.AttributeManager
             StepMapper = new Dictionary<string, Logic.Steps>
             {
                 {"Create Temporary Attribute", Logic.Steps.CreateTemp},
+                {"Migrate Data to Temporary Attribute", Logic.Steps.MigrateDataToTemp},
                 {"Migrate to Temporary Attribute", Logic.Steps.MigrateToTemp},
                 {"Remove Existing Attribute", Logic.Steps.RemoveExistingAttribute},
                 {"Create New Attribute", Logic.Steps.CreateNewAttribute},
+                {"Migrate Data to New Attribute", Logic.Steps.MigrateDataToNewAttribute},
                 {"Migrate to New Attribute", Logic.Steps.MigrateToNewAttribute},
                 {"Remove Temporary Attribute", Logic.Steps.RemoveTemp}
-            };
-
-            DefaultSteps = StepMapper.Keys.Cast<object>().ToArray();
-
-            RenameSteps = new object[]
-            {
-                StepMapper.First(p => p.Value == Logic.Steps.CreateNewAttribute).Key,
-                StepMapper.First(p => p.Value == Logic.Steps.MigrateToNewAttribute).Key,
-                StepMapper.First(p => p.Value == Logic.Steps.RemoveExistingAttribute).Key
             };
 
             DeleteSteps = new object[]
@@ -435,7 +445,7 @@ namespace DLaB.AttributeManager
                     format = StringFormatName.VersionNumber;
                     break;
                 default:
-                    throw new Exception("Unable to determine String Format for " + strAttCmbFormat.SelectedText);
+                    throw new Exception("Unable to determine String Format for " + strAttCmbFormat?.SelectedText);
             }
             return format;
         }
@@ -943,13 +953,19 @@ namespace DLaB.AttributeManager
             }
             else if (action.HasFlag(Logic.Action.ChangeCase))
             {
+                var steps = chkMigrate.Checked
+                    ? StepMapper.Select(v => v.Key)
+                    : StepMapper.Where(p => p.Value != Logic.Steps.MigrateDataToTemp && p.Value != Logic.Steps.MigrateDataToNewAttribute).Select(v => v.Key);
+
                 // Change Case
-                clbSteps.LoadItems(DefaultSteps);
+                clbSteps.LoadItems(steps.ToObjectArray());
             }
             else if (action.HasFlag(Logic.Action.RemoveTemp))
             {
                 // Partial Completion.  Need to allow for Migrate to Temp and Remove
-                var steps = StepMapper.Where(p => p.Value == Logic.Steps.MigrateToNewAttribute || p.Value == Logic.Steps.RemoveTemp).Select(v => v.Key);
+                var steps = StepMapper.Where(p => (p.Value == Logic.Steps.MigrateDataToTemp && chkMigrate.Checked)
+                                                  || p.Value == Logic.Steps.MigrateToNewAttribute 
+                                                  || p.Value == Logic.Steps.RemoveTemp).Select(v => v.Key);
                 clbSteps.LoadItems(steps.ToObjectArray());
             }
             else if (clbSteps.Items.Count != RenameSteps.Length)
