@@ -205,8 +205,7 @@ namespace DLaB.AttributeManager
         public void ExecuteSteps()
         {
             Enabled = false;
-            var attribute = cmbAttributes.SelectedItem as ObjectCollectionItem<AttributeMetadata>;
-            if (attribute == null)
+            if (!(cmbAttributes.SelectedItem is ObjectCollectionItem<AttributeMetadata> attribute))
             {
                 MessageBox.Show(@"No Attribute Selected!", @"Unable To Execute", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Enabled = true;
@@ -236,6 +235,15 @@ namespace DLaB.AttributeManager
                 steps |= Logic.Steps.MigrationToTempRequired;
             }
 
+            if ((steps.HasFlag(Logic.Steps.CreateNewAttribute)
+                    || steps.HasFlag(Logic.Steps.CreateTemp)) 
+                && cmbNewAttributeType.Text == @"Global Option Set"
+                && optAttGlobalOptionSetCmb.SelectedItem == null)
+            {
+                MessageBox.Show(@"You must select an existing Global Option Set Type in the Option Set Settings Tab!", @"Unable To Execute", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Enabled = true;
+                return;
+            }
 
             // Update Display Name
             var langCode = attribute.Value.DisplayName.UserLocalizedLabel.LanguageCode;
