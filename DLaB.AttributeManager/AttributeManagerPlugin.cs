@@ -248,6 +248,7 @@ namespace DLaB.AttributeManager
             // Update Display Name
             var langCode = attribute.Value.DisplayName.UserLocalizedLabel.LanguageCode;
             attribute.Value.DisplayName.LocalizedLabels.First(l => l.LanguageCode == langCode).Label = txtDisplayName.Text;
+            var displayName = attribute.Value.DisplayName;
             tabControl.SelectedTab = tabLog;
 
             WorkAsync(new WorkAsyncInfo("Performing Steps...", (w, e) =>
@@ -304,7 +305,7 @@ namespace DLaB.AttributeManager
                     Action = GetCurrentAction(),
                     AutoRemovePluginRegistrationAssociations = delUpdatePlugins.Checked,
                     CurrentAttribute = attribute.Value,
-                    NewAttribute = GetNewAttributeType(),
+                    NewAttribute = GetNewAttributeType(displayName),
                     NewAttributeName = txtNewAttributeName.Text,
                     MappingFilePath = txtMappingFile.Text,
                     Migrator = new Logic(Service, ConnectionDetail, Metadata, Settings.TempSchemaPostfix, chkMigrate.Checked),
@@ -313,7 +314,7 @@ namespace DLaB.AttributeManager
             });
         }
 
-        private AttributeMetadata GetNewAttributeType()
+        private AttributeMetadata GetNewAttributeType(Microsoft.Xrm.Sdk.Label displayName)
         {
             if (!chkConvertAttributeType.Checked)
             {
@@ -378,6 +379,11 @@ namespace DLaB.AttributeManager
                 default:
                     throw new Exception("Unexpected Type: " + cmbNewAttributeType.Text);
             
+            }
+
+            if (att != null)
+            {
+                att.DisplayName = displayName;
             }
 
             return att;
@@ -923,6 +929,7 @@ namespace DLaB.AttributeManager
         private void chkMigrate_CheckedChanged(object sender, EventArgs e)
         {
             SetMappingFileVisible();
+            UpdateDisplayedSteps();
         }
         private void btnMappingFile_Click(object sender, EventArgs e)
         {

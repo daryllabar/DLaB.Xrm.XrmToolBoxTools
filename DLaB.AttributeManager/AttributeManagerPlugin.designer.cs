@@ -329,7 +329,7 @@ namespace DLaB.AttributeManager
             "Remove Temporary Attribute"});
             this.clbSteps.Location = new System.Drawing.Point(8, 19);
             this.clbSteps.Name = "clbSteps";
-            this.clbSteps.Size = new System.Drawing.Size(205, 124);
+            this.clbSteps.Size = new System.Drawing.Size(205, 154);
             this.clbSteps.TabIndex = 6;
             this.Tip.SetToolTip(this.clbSteps, "Allows stopping and the migation process at any point");
             this.clbSteps.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbSteps_ItemCheck);
@@ -342,7 +342,7 @@ namespace DLaB.AttributeManager
             this.panel1.Controls.Add(this.grpSteps);
             this.panel1.Location = new System.Drawing.Point(16, 111);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(677, 199);
+            this.panel1.Size = new System.Drawing.Size(677, 219);
             this.panel1.TabIndex = 9;
             // 
             // grpSettings
@@ -359,7 +359,7 @@ namespace DLaB.AttributeManager
             this.grpSettings.Controls.Add(this.chkMigrate);
             this.grpSettings.Location = new System.Drawing.Point(3, 3);
             this.grpSettings.Name = "grpSettings";
-            this.grpSettings.Size = new System.Drawing.Size(446, 188);
+            this.grpSettings.Size = new System.Drawing.Size(446, 208);
             this.grpSettings.TabIndex = 8;
             this.grpSettings.TabStop = false;
             this.grpSettings.Text = "Settings";
@@ -427,7 +427,7 @@ namespace DLaB.AttributeManager
             this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel5, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel6, 0, 3);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 61);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 81);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -625,7 +625,7 @@ namespace DLaB.AttributeManager
             this.grpSteps.Controls.Add(this.btnExecuteSteps);
             this.grpSteps.Location = new System.Drawing.Point(455, 3);
             this.grpSteps.Name = "grpSteps";
-            this.grpSteps.Size = new System.Drawing.Size(219, 188);
+            this.grpSteps.Size = new System.Drawing.Size(219, 208);
             this.grpSteps.TabIndex = 7;
             this.grpSteps.TabStop = false;
             this.grpSteps.Text = "Steps";
@@ -634,7 +634,7 @@ namespace DLaB.AttributeManager
             // 
             this.btnExecuteSteps.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExecuteSteps.Location = new System.Drawing.Point(8, 159);
+            this.btnExecuteSteps.Location = new System.Drawing.Point(8, 179);
             this.btnExecuteSteps.Name = "btnExecuteSteps";
             this.btnExecuteSteps.Size = new System.Drawing.Size(205, 23);
             this.btnExecuteSteps.TabIndex = 8;
@@ -732,10 +732,10 @@ namespace DLaB.AttributeManager
             this.tabControl.Controls.Add(this.tabOptionSetAttribute);
             this.tabControl.Controls.Add(this.tabLog);
             this.tabControl.Controls.Add(this.tabDelete);
-            this.tabControl.Location = new System.Drawing.Point(13, 316);
+            this.tabControl.Location = new System.Drawing.Point(13, 336);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(677, 301);
+            this.tabControl.Size = new System.Drawing.Size(677, 281);
             this.tabControl.TabIndex = 11;
             // 
             // tabStringAttribute
@@ -744,7 +744,7 @@ namespace DLaB.AttributeManager
             this.tabStringAttribute.Location = new System.Drawing.Point(4, 22);
             this.tabStringAttribute.Name = "tabStringAttribute";
             this.tabStringAttribute.Padding = new System.Windows.Forms.Padding(3);
-            this.tabStringAttribute.Size = new System.Drawing.Size(669, 275);
+            this.tabStringAttribute.Size = new System.Drawing.Size(669, 255);
             this.tabStringAttribute.TabIndex = 1;
             this.tabStringAttribute.Text = "String Type Settings";
             this.tabStringAttribute.UseVisualStyleBackColor = true;
