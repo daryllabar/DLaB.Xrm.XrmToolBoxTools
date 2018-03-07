@@ -54,11 +54,11 @@ namespace DLaB.EarlyBoundGenerator
                 Enable(false);
                 LstAll.Items.Clear();
                 LstSpecified.Items.Clear();
-                var localActions = actions.Select(e => e.ToEntity<Workflow>()).OrderBy(a => a.Name + a.Id).ToList(); // Keep from mulitiple Enumerations
+                var localActions = actions.Select(e => e.ToEntity<Workflow>()).OrderBy(a => a.Name + a.Id).ToList(); // Keep from multiple Enumerations
                 var specified = new HashSet<string>(SpecifiedActions.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries));
 
-                LstSpecified.Items.AddRange(GetObjectCollection(localActions.Where((a, i) => specified.Contains(a.Name))));
-                LstAll.Items.AddRange(GetObjectCollection(localActions.Where((a, i) => !specified.Contains(a.Name))));
+                LstSpecified.Items.AddRange(GetObjectCollection(localActions.Where((a, i) => specified.Contains(a.UniqueName))));
+                LstAll.Items.AddRange(GetObjectCollection(localActions.Where((a, i) => !specified.Contains(a.UniqueName))));
             }
             finally
             {
@@ -87,7 +87,7 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            SpecifiedActions = Config.ToString(LstSpecified.Items.Cast<ObjectCollectionItem<Workflow>>().Select(i => i.DisplayName));
+            SpecifiedActions = Config.ToString(LstSpecified.Items.Cast<ObjectCollectionItem<Workflow>>().Select(i => i.Value.UniqueName));
             DialogResult = DialogResult.OK;
             Close();
         }
