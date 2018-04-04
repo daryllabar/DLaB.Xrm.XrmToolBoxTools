@@ -486,6 +486,7 @@ namespace DLaB.AttributeManager
             // cmbNewAttributeType
             // 
             this.cmbNewAttributeType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbNewAttributeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNewAttributeType.FormattingEnabled = true;
             this.cmbNewAttributeType.Items.AddRange(new object[] {
             "Single Line of Text",
@@ -916,6 +917,7 @@ namespace DLaB.AttributeManager
             // 
             // numAttCurrencyPrecisionCmb
             // 
+            this.numAttCurrencyPrecisionCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.numAttCurrencyPrecisionCmb.FormattingEnabled = true;
             this.numAttCurrencyPrecisionCmb.Items.AddRange(new object[] {
             "0",
@@ -923,7 +925,7 @@ namespace DLaB.AttributeManager
             "2",
             "3",
             "4"});
-            this.numAttCurrencyPrecisionCmb.Location = new System.Drawing.Point(102, 102);
+            this.numAttCurrencyPrecisionCmb.Location = new System.Drawing.Point(109, 102);
             this.numAttCurrencyPrecisionCmb.Name = "numAttCurrencyPrecisionCmb";
             this.numAttCurrencyPrecisionCmb.Size = new System.Drawing.Size(171, 21);
             this.numAttCurrencyPrecisionCmb.TabIndex = 14;
@@ -939,7 +941,7 @@ namespace DLaB.AttributeManager
             // 
             // numAttPrecisionTxt
             // 
-            this.numAttPrecisionTxt.Location = new System.Drawing.Point(102, 77);
+            this.numAttPrecisionTxt.Location = new System.Drawing.Point(109, 77);
             this.numAttPrecisionTxt.Name = "numAttPrecisionTxt";
             this.numAttPrecisionTxt.Size = new System.Drawing.Size(171, 20);
             this.numAttPrecisionTxt.TabIndex = 12;
@@ -955,7 +957,7 @@ namespace DLaB.AttributeManager
             // 
             // numAttMaxTxt
             // 
-            this.numAttMaxTxt.Location = new System.Drawing.Point(102, 52);
+            this.numAttMaxTxt.Location = new System.Drawing.Point(109, 52);
             this.numAttMaxTxt.Name = "numAttMaxTxt";
             this.numAttMaxTxt.Size = new System.Drawing.Size(171, 20);
             this.numAttMaxTxt.TabIndex = 10;
@@ -972,7 +974,7 @@ namespace DLaB.AttributeManager
             // 
             // numAttMinTxt
             // 
-            this.numAttMinTxt.Location = new System.Drawing.Point(102, 26);
+            this.numAttMinTxt.Location = new System.Drawing.Point(109, 26);
             this.numAttMinTxt.Name = "numAttMinTxt";
             this.numAttMinTxt.Size = new System.Drawing.Size(171, 20);
             this.numAttMinTxt.TabIndex = 8;
@@ -996,7 +998,7 @@ namespace DLaB.AttributeManager
             "TimeZone",
             "Language",
             "Locale"});
-            this.numAttFormatCmb.Location = new System.Drawing.Point(102, 3);
+            this.numAttFormatCmb.Location = new System.Drawing.Point(109, 3);
             this.numAttFormatCmb.Name = "numAttFormatCmb";
             this.numAttFormatCmb.Size = new System.Drawing.Size(171, 21);
             this.numAttFormatCmb.TabIndex = 6;

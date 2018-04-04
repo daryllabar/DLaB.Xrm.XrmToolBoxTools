@@ -174,6 +174,16 @@ namespace DLaB.AttributeManager
                     cmbAttributes.Text = string.Empty;
                     cmbNewAttribute.LoadItems(attributes);
                     cmbNewAttribute.Text = string.Empty;
+                    txtOldSchema.Text = string.Empty;
+                    txtOldDisplay.Text = string.Empty;
+                    txtOldAttributType.Text = string.Empty;
+                    txtNewAttributeName.Text = string.Empty;
+                    txtDisplayName.Text = string.Empty;
+                    chkDelete.Checked = false;
+                    chkMigrate.Checked = true;
+                    chkConvertAttributeType.Checked = false;
+                    chkIgnoreUpdateErrors.Checked = false;
+                    cmbNewAttributeType.SelectedIndex = -1;
                     Enabled = true;
                 }
             });
@@ -554,6 +564,7 @@ namespace DLaB.AttributeManager
 
         private void SetFloatNumberVisible()
         {
+            hideNumberAttributes();
             numAttMaxLbl.Visible = true;
             numAttMaxTxt.Visible = true;
             numAttMinLbl.Visible = true;
@@ -568,6 +579,7 @@ namespace DLaB.AttributeManager
 
         private void SetWholeNumberVisible()
         {
+            hideNumberAttributes();
             numAttFormatLbl.Visible = true;
             numAttFormatCmb.Visible = true;
             numAttMaxLbl.Visible = true;
@@ -812,6 +824,10 @@ namespace DLaB.AttributeManager
             var stringTabVisible = false;
             var optionTabVisible = false;
             var numberTabVisible = false;
+            if (cmbNewAttributeType.SelectedIndex == -1)
+            {
+                return;
+            }
             switch (cmbNewAttributeType.Text)
             {
                 case "Single Line of Text":
