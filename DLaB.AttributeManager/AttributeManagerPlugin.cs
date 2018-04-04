@@ -75,12 +75,6 @@ namespace DLaB.AttributeManager
             SetTabVisible(tabOptionSetAttribute, false);
             SetTabVisible(tabDelete, false);
             SetMappingFileVisible();
-
-            SetCurrencyNumberVisible(false);
-            SetDecimalNumberVisible(false);
-            SetWholeNumberVisible(false);
-            SetFloatNumberVisible(false);
-            numAttFormatCmb.SelectedIndex = 0;
         }
 
         #region XrmToolBox Menu Interfaces
@@ -307,7 +301,7 @@ namespace DLaB.AttributeManager
                     NewAttribute = GetNewAttributeType(),
                     NewAttributeName = txtNewAttributeName.Text,
                     MappingFilePath = txtMappingFile.Text,
-                    Migrator = new Logic(Service, ConnectionDetail, Metadata, Settings.TempSchemaPostfix, chkMigrate.Checked),
+                    Migrator = new Logic(Service, ConnectionDetail, Metadata, Settings.TempSchemaPostfix, chkMigrate.Checked, chkIgnoreUpdateErrors.Checked),
                     Steps = steps
                 }
             });
@@ -319,6 +313,9 @@ namespace DLaB.AttributeManager
             {
                 return null;
             }
+
+            int? precision = getPrecisionSetting();
+
             AttributeMetadata att;
             switch (cmbNewAttributeType.Text)
             {
@@ -341,27 +338,61 @@ namespace DLaB.AttributeManager
                     att = NewTypeAttributeCreationLogic.CreateImage(null);
                     break;
                 case "Whole Number":
-                    int tmp;
-                    int? min = null;
-                    int? max = null;
-                    if (int.TryParse(numAttMinTxt.Text, out tmp))
+                    int inttmp;
+                    int? intmin = null;
+                    int? intmax = null;
+                    if (int.TryParse(numAttMinTxt.Text, out inttmp))
                     {
-                        min = tmp;
+                        intmin = inttmp;
                     }
-                    if (int.TryParse(numAttMaxTxt.Text, out tmp))
+                    if (int.TryParse(numAttMaxTxt.Text, out inttmp))
                     {
-                        max = tmp;
+                        intmax = inttmp;
                     }
-                    att = NewTypeAttributeCreationLogic.CreateWholeNumber(GetIntergerFormat(), min, max);
+                    att = NewTypeAttributeCreationLogic.CreateWholeNumber(GetIntergerFormat(), intmin, intmax);
                     break;
                 case "Floating Point Number":
-                    att = NewTypeAttributeCreationLogic.CreateFloatingPoint();
+                    double dbltmp;
+                    double? dblmin = null;
+                    double? dblmax = null;
+                    if (double.TryParse(numAttMinTxt.Text, out dbltmp))
+                    {
+                        dblmin = dbltmp;
+                    }
+                    if (double.TryParse(numAttMaxTxt.Text, out dbltmp))
+                    {
+                        dblmax = dbltmp;
+                    }
+                    att = NewTypeAttributeCreationLogic.CreateFloatingPoint(dblmin, dblmax, precision);
                     break;
                 case "Decimal Number":
-                    att = NewTypeAttributeCreationLogic.CreateDecimal();
+                    decimal dectmp;
+                    decimal? decmin = null;
+                    decimal? decmax = null;
+                    if (decimal.TryParse(numAttMinTxt.Text, out dectmp))
+                    {
+                        decmin = dectmp;
+                    }
+                    if (decimal.TryParse(numAttMaxTxt.Text, out dectmp))
+                    {
+                        decmax = dectmp;
+                    }
+                    att = NewTypeAttributeCreationLogic.CreateDecimal(decmin, decmax, precision);
                     break;
                 case "Currency":
-                    att = NewTypeAttributeCreationLogic.CreateCurrency();
+                    double curtmp;
+                    double? curmin = null;
+                    double? curmax = null;
+                    if (double.TryParse(numAttMinTxt.Text, out curtmp))
+                    {
+                        curmin = curtmp;
+                    }
+                    if (double.TryParse(numAttMaxTxt.Text, out curtmp))
+                    {
+                        curmax = curtmp;
+                    }
+                    int? currencyPrecision = GetCurrencyPrecision();
+                    att = NewTypeAttributeCreationLogic.CreateCurrency(curmin, curmax, currencyPrecision);
                     break;
                 case "Multiple Lines of Text":
                     att = NewTypeAttributeCreationLogic.CreateMemo(int.Parse(strAttTxtMaximumLength.Text), GetStringImeMode());
@@ -473,39 +504,79 @@ namespace DLaB.AttributeManager
 
         #region Number Type Settings Tab
 
-        // TODO: Implement Number Type Settings
-
         // ReSharper disable UnusedParameter.Local
-        private void SetDecimalNumberVisible(bool visible)
+        private void hideNumberAttributes()
         {
-
+            numAttFormatLbl.Visible = false;
+            numAttFormatCmb.Visible = false;
+            numAttMaxLbl.Visible = false;
+            numAttMaxTxt.Visible = false;
+            numAttMinLbl.Visible = false;
+            numAttMinTxt.Visible = false;
+            numAttPrecisionLbl.Visible = false;
+            numAttPrecisionTxt.Visible = false;
+            numAttCurrencyPrecisionLbl.Visible = false;
+            numAttCurrencyPrecisionCmb.Visible = false;
+            numAttFormatCmb.SelectedIndex = -1;
+            numAttMaxTxt.Text = "";
+            numAttMinTxt.Text = "";
+            numAttPrecisionTxt.Text = "";
+            numAttCurrencyPrecisionCmb.SelectedIndex = -1;
+        }
+        
+        private void SetDecimalNumberVisible()
+        {
+            hideNumberAttributes();
+            numAttMaxLbl.Visible = true;
+            numAttMaxTxt.Visible = true;
+            numAttMinLbl.Visible = true;
+            numAttMinTxt.Visible = true;
+            numAttPrecisionLbl.Visible = true;
+            numAttPrecisionTxt.Visible = true;
+            numAttMinTxt.Text = DecimalAttributeMetadata.MinSupportedValue.ToString();
+            numAttMaxTxt.Text = DecimalAttributeMetadata.MaxSupportedValue.ToString();
+            numAttPrecisionTxt.Text = "2";
         }
 
-        private void SetCurrencyNumberVisible(bool visible)
+        private void SetCurrencyNumberVisible()
         {
+            hideNumberAttributes();
+            numAttMaxLbl.Visible = true;
+            numAttMaxTxt.Visible = true;
+            numAttMinLbl.Visible = true;
+            numAttMinTxt.Visible = true;
+            numAttCurrencyPrecisionLbl.Visible = true;
+            numAttCurrencyPrecisionCmb.Visible = true;
+            numAttMinTxt.Text = MoneyAttributeMetadata.MinSupportedValue.ToString();
+            numAttMaxTxt.Text = MoneyAttributeMetadata.MaxSupportedValue.ToString();
+            numAttCurrencyPrecisionCmb.SelectedIndex = 0;
         }
 
-        private void SetFloatNumberVisible(bool visible)
+        private void SetFloatNumberVisible()
         {
-
+            numAttMaxLbl.Visible = true;
+            numAttMaxTxt.Visible = true;
+            numAttMinLbl.Visible = true;
+            numAttMinTxt.Visible = true;
+            numAttPrecisionLbl.Visible = true;
+            numAttPrecisionTxt.Visible = true;
+            numAttMinTxt.Text = DoubleAttributeMetadata.MinSupportedValue.ToString();
+            numAttMaxTxt.Text = DoubleAttributeMetadata.MaxSupportedValue.ToString();
+            numAttPrecisionTxt.Text = "2";
         }
         // ReSharper restore UnusedParameter.Local
 
-        private void SetWholeNumberVisible(bool visible)
+        private void SetWholeNumberVisible()
         {
-            numAttFormatLbl.Visible = visible;
-            numAttFormatCmb.Visible = visible;
-            numAttMaxLbl.Visible = visible;
-            numAttMaxTxt.Visible = visible;
-            numAttMinLbl.Visible = visible;
-            numAttMinTxt.Visible = visible;
-
-            if (visible)
-            {
-                numAttFormatCmb.SelectedIndex = 0;
-                numAttMinTxt.Text = IntegerAttributeMetadata.MinSupportedValue.ToString();
-                numAttMaxTxt.Text = IntegerAttributeMetadata.MaxSupportedValue.ToString();
-            }
+            numAttFormatLbl.Visible = true;
+            numAttFormatCmb.Visible = true;
+            numAttMaxLbl.Visible = true;
+            numAttMaxTxt.Visible = true;
+            numAttMinLbl.Visible = true;
+            numAttMinTxt.Visible = true;
+            numAttFormatCmb.SelectedIndex = 0;
+            numAttMinTxt.Text = IntegerAttributeMetadata.MinSupportedValue.ToString();
+            numAttMaxTxt.Text = IntegerAttributeMetadata.MaxSupportedValue.ToString();
         }
 
         private IntegerFormat GetIntergerFormat()
@@ -533,6 +604,24 @@ namespace DLaB.AttributeManager
                     throw new Exception("Unable to determine Integer Format for " + numAttFormatCmb.SelectedItem);
             }
             return format;
+        }
+
+        private int? GetCurrencyPrecision()
+        {
+            if (numAttCurrencyPrecisionCmb.SelectedIndex == -1)
+            {
+                return null;
+            }
+            else
+            {
+                int tmp;
+                int? precision = null;
+                if (int.TryParse((numAttCurrencyPrecisionCmb.SelectedItem.ToString()), out tmp))
+                {
+                    precision = tmp;
+                }
+                return precision;
+            }
         }
 
         #endregion Number Type Settings Tab
@@ -759,19 +848,19 @@ namespace DLaB.AttributeManager
                 case "Whole Number":
                     numberTabVisible = true;
                     pNumberType.Visible = true;
-                    SetCurrencyNumberVisible(false);
-                    SetDecimalNumberVisible(false);
-                    SetFloatNumberVisible(false);
-                    SetWholeNumberVisible(true);
+                    SetWholeNumberVisible();
                     break;
                 case "Floating Point Number":
                     numberTabVisible = true;
+                    SetFloatNumberVisible();
                     break;
                 case "Decimal Number":
                     numberTabVisible = true;
+                    SetDecimalNumberVisible();
                     break;
                 case "Currency":
                     numberTabVisible = true;
+                    SetCurrencyNumberVisible();
                     break;
                 case "Multiple Lines of Text":
                     stringTabVisible = true;
@@ -844,6 +933,19 @@ namespace DLaB.AttributeManager
             else
             {
                 tabControl.TabPages.Remove(tab);
+            }
+        }
+
+        private void SetReadOnlyOptionVisible()
+        {
+            if (chkMigrate.Checked)
+            {
+                chkIgnoreUpdateErrors.Visible = true;
+            }
+            else
+            {
+                chkIgnoreUpdateErrors.Visible = false;
+                chkIgnoreUpdateErrors.Checked = false;
             }
         }
 
@@ -921,6 +1023,7 @@ namespace DLaB.AttributeManager
 
         private void chkMigrate_CheckedChanged(object sender, EventArgs e)
         {
+            SetReadOnlyOptionVisible();
             SetMappingFileVisible();
             UpdateDisplayedSteps();
         }
@@ -1041,6 +1144,35 @@ namespace DLaB.AttributeManager
             {
                 (sender as TextBox)?.SelectAll();
                 e.Handled = true;
+            }
+        }
+
+        private void grpSteps_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private int? getPrecisionSetting()
+        {
+            int tmp;
+            int? number = null;
+            if (int.TryParse(numAttPrecisionTxt.Text, out tmp))
+            {
+                number = tmp;
+            }
+            return number;
+        }
+
+        private void chkIgnoreUpdateErrors_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkIgnoreUpdateErrors.Checked)
+            {
+                //warn about possible data loss
+                DialogResult result = MessageBox.Show("Selecting this option may result in significant data loss if there are read-only records or invalid data", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (result == DialogResult.Cancel)
+                {
+                    chkIgnoreUpdateErrors.Checked = false;
+                }
             }
         }
     }

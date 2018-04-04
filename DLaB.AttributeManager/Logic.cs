@@ -24,6 +24,7 @@ namespace DLaB.AttributeManager
 
         public EntityMetadata Metadata { get; set; }
         public bool MigrateData { get; set; }
+        public bool IgnoreUpdateErrors { get; set; }
         public bool SupportsExecuteMultipleRequest { get; set; }
         public string TempPostfix { get; private set; }
         public IOrganizationService Service { get; private set; }
@@ -66,6 +67,12 @@ namespace DLaB.AttributeManager
             MigrateData = migrateData;
             ValidLanguageCodes = GetValidLanguageCodes();
             Metadata = metadata;
+        }
+
+        public Logic(IOrganizationService service, ConnectionDetail connectionDetail, EntityMetadata metadata, string tempPostFix, bool migrateData, bool ignoreUpdateErrors):
+            this(service, connectionDetail, metadata, tempPostFix, migrateData)
+        {
+            IgnoreUpdateErrors = ignoreUpdateErrors;
         }
 
         private HashSet<int> GetValidLanguageCodes()
@@ -1041,7 +1048,8 @@ namespace DLaB.AttributeManager
                 LogicalOperator.Or,
                 new ConditionExpression(from.LogicalName, ConditionOperator.Null),
                 new ConditionExpression(to.LogicalName, ConditionOperator.NotNull));
-            
+
+            int updatesSuccess = 0;
             // Grab from and to, and only update if not equal.  This is to speed things up if it has failed part way through
             foreach (var entity in service.GetAllEntities<Entity>(qe))
             {
@@ -1049,7 +1057,7 @@ namespace DLaB.AttributeManager
                 {
                     if (requests.Any())
                     {
-                        PerformUpdates(service, requests);
+                        updatesSuccess = updatesSuccess + PerformUpdates(service, requests);
                     }
 
                     Trace("Copying {0} / {1}", count, total);
@@ -1095,28 +1103,33 @@ namespace DLaB.AttributeManager
 
             if (requests.Any())
             {
-                PerformUpdates(service, requests);
+                updatesSuccess = updatesSuccess + PerformUpdates(service, requests);
             }
 
             watch.Stop();
-            Trace("Data Migration Complete.  Total {0} records in {1} seconds.", total, watch.ElapsedMilliseconds / 1000);
+            Trace("Data Migration Complete. Total {0} records processed in {1} seconds.", total, watch.ElapsedMilliseconds / 1000);
+            if (IgnoreUpdateErrors)
+            {
+                Trace("{0} updated sucessfully", updatesSuccess);
+            }
         }
 
-        private void PerformUpdates(IOrganizationService service, OrganizationRequestCollection requests)
+        private int PerformUpdates(IOrganizationService service, OrganizationRequestCollection requests)
         {
+            int countFaults = 0;
             if (SupportsExecuteMultipleRequest)
             {
                 var response = (ExecuteMultipleResponse) service.Execute(new ExecuteMultipleRequest
                 {
                     Settings = new ExecuteMultipleSettings
                     {
-                        ContinueOnError = false,
-                        ReturnResponses = false
+                        ContinueOnError = IgnoreUpdateErrors,
+                        ReturnResponses = IgnoreUpdateErrors
                     },
                     Requests = requests
                 });
 
-                if (response.IsFaulted)
+                if (response.IsFaulted && !IgnoreUpdateErrors)
                 {
                     var fault = response.Responses.First().Fault;
                     while (fault.InnerFault != null)
@@ -1134,14 +1147,33 @@ namespace DLaB.AttributeManager
 
                     throw new Exception(fault.Message + errorDetails);
                 }
+                else
+                {
+                    var faultResponses = response.Responses.Where(r => r.Fault != null);
+                    countFaults = faultResponses.Count();
+                }
             }
             else
             {
                 foreach (var request in requests)
                 {
-                    service.Update(((UpdateRequest) request).Target);
+                    try
+                    {
+                        service.Update(((UpdateRequest)request).Target);
+                    } catch (Exception e)
+                    {
+                        if (IgnoreUpdateErrors)
+                        {
+                            countFaults = countFaults + 1;
+                        }
+                        else
+                        {
+                            throw new Exception(e.Message);
+                        }
+                    }
                 }
             }
+            return requests.Count() - countFaults;
         }
 
         private int GetRecordCount(IOrganizationService service, AttributeMetadata from)
