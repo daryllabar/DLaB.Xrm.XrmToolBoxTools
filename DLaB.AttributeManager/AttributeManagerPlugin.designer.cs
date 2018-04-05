@@ -647,7 +647,6 @@ namespace DLaB.AttributeManager
             this.grpSteps.TabIndex = 7;
             this.grpSteps.TabStop = false;
             this.grpSteps.Text = "Steps";
-            this.grpSteps.Enter += new System.EventHandler(this.grpSteps_Enter);
             // 
             // btnExecuteSteps
             // 

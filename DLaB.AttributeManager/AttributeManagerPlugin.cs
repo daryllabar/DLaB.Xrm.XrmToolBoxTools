@@ -1163,11 +1163,6 @@ namespace DLaB.AttributeManager
             }
         }
 
-        private void grpSteps_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private int? getPrecisionSetting()
         {
             int tmp;
