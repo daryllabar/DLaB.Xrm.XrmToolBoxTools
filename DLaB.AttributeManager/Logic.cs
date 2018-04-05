@@ -1168,7 +1168,7 @@ namespace DLaB.AttributeManager
                         }
                         else
                         {
-                            throw new Exception(e.Message);
+                            throw e;
                         }
                     }
                 }
