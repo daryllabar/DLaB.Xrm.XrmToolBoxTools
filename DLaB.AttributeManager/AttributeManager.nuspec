@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.AttributeManager</id>
-	  <version>1.2018.1.25</version>
+	  <version>1.2018.4.5</version>
 	  <title>Attribute Manager</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,11 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>BETA! - Used to rename/delete/or change the type of an attribute.</description>
-    <releaseNotes>V1.2018.1.25
+    <releaseNotes>V1.2018.4.5
+ - Added support for skipping migration errors
+ - Added support for number formatting
+ 
+V1.2018.1.25
  - Fixed Null Ref Error when not Selecting a Global Option Set #142
  - Allow for Migrating Data Only #141
  - Fixed Display Name not updating #126
@@ -24,15 +28,6 @@ V1.2017.8.8
 
 V1.2017.8.3
  - Fixed NullReferenceException when trying to convert Single line of text to Multi Line of Text #109    
- 
-V1.2017.3.23
- - Allow for Converting from Option sets to Two Option Attributes #95
-      
-V1.2017.3.21
- - Fixed Mapping from Option Set to OptionSet When Migrating Data #94
-
-V1.2017.3.18
- - Allow for a CSV mapping file when changing Attribute Types #93
     </releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>
