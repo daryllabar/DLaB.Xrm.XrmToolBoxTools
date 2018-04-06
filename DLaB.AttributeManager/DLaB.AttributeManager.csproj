@@ -253,8 +253,8 @@ if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.
 </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>DEL /Q "$(TargetDir)XrmToolBox\Plugins\*.*"
-xcopy "$(TargetDir)DLaB.*.dll" "$(TargetDir)XrmToolBox\Plugins\" /I /Y
+    <PostBuildEvent>DEL /Q "$(TargetDir)MscrmTools\XrmToolBox\Plugins\*.*"
+xcopy "$(TargetDir)DLaB.*.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\" /I /Y
 
 if $(ConfigurationName) == Debug (
   IF NOT EXIST Plugins mkdir Plugins
