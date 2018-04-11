@@ -77,6 +77,8 @@ namespace DLaB.EarlyBoundGenerator
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ChkAddDebuggerNonUserCode = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.TxtLanguageCodeOverride = new System.Windows.Forms.TextBox();
             this.LblOptionSetFormat = new System.Windows.Forms.Label();
             this.TxtOptionSetFormat = new System.Windows.Forms.TextBox();
             this.ChkUseDeprecatedOptionSetNaming = new System.Windows.Forms.CheckBox();
@@ -656,6 +658,8 @@ namespace DLaB.EarlyBoundGenerator
             // tabPage2
             // 
             this.tabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.tabPage2.Controls.Add(this.label5);
+            this.tabPage2.Controls.Add(this.TxtLanguageCodeOverride);
             this.tabPage2.Controls.Add(this.LblOptionSetFormat);
             this.tabPage2.Controls.Add(this.TxtOptionSetFormat);
             this.tabPage2.Controls.Add(this.ChkUseDeprecatedOptionSetNaming);
@@ -676,6 +680,25 @@ namespace DLaB.EarlyBoundGenerator
             this.tabPage2.Text = "Option Sets";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(422, 37);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(86, 13);
+            this.label5.TabIndex = 34;
+            this.label5.Text = "Language Code:";
+            // 
+            // TxtLanguageCodeOverride
+            // 
+            this.TxtLanguageCodeOverride.Location = new System.Drawing.Point(525, 34);
+            this.TxtLanguageCodeOverride.Name = "TxtLanguageCodeOverride";
+            this.TxtLanguageCodeOverride.Size = new System.Drawing.Size(85, 20);
+            this.TxtLanguageCodeOverride.TabIndex = 33;
+            this.TxtLanguageCodeOverride.TextChanged += new System.EventHandler(this.TxtLanguageCodeOverride_TextChanged);
+            this.TxtLanguageCodeOverride.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtLanguageCodeOverride_KeyPress);
+            this.TxtLanguageCodeOverride.MouseEnter += new System.EventHandler(this.TxtLanguageCodeOverride_MouseEnter);
+            // 
             // LblOptionSetFormat
             // 
             this.LblOptionSetFormat.AutoSize = true;
@@ -687,8 +710,6 @@ namespace DLaB.EarlyBoundGenerator
             // 
             // TxtOptionSetFormat
             // 
-            this.TxtOptionSetFormat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtOptionSetFormat.Location = new System.Drawing.Point(282, 53);
             this.TxtOptionSetFormat.Name = "TxtOptionSetFormat";
             this.TxtOptionSetFormat.Size = new System.Drawing.Size(85, 20);
@@ -969,5 +990,7 @@ namespace DLaB.EarlyBoundGenerator
         private System.Windows.Forms.TextBox TxtSettingsPath;
         private System.Windows.Forms.CheckBox ChkEditableResponseActions;
         private System.Windows.Forms.CheckBox ChkGenerateActionAttributeNameConsts;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox TxtLanguageCodeOverride;
     }
 }

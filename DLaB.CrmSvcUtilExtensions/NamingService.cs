@@ -12,6 +12,8 @@ namespace DLaB.CrmSvcUtilExtensions
     
     public class NamingService : INamingService
     {
+        public static int LanguageCodeOverride => ConfigHelper.GetAppSettingOrDefault("OptionSetLanguageCodeOverride", -1);
+        private const int English = 1033;  
         private string ValidCSharpNameRegEx { get; set; }
         private INamingService DefaultService { get; set; }
         private Dictionary<string, HashSet<string>> EntityAttributeSpecifiedNames { get; set; }
@@ -206,20 +208,32 @@ namespace DLaB.CrmSvcUtilExtensions
             return AppendValueForDuplicateOptionSetValueNames(optionSetMetadata, possiblyDuplicateName, optionMetadata.Value.GetValueOrDefault(), services);
         }
 
-        private static string Transliterate(OptionMetadata optionMetadata, string defaultName)
+        private static string Transliterate(OptionMetadata optionMetadata, string englishName)
         {
-            var defaultNameIsInEnglish = IsLabelPopulated(defaultName);
-            if (defaultNameIsInEnglish)
-            {
-                return defaultName;
-            }
             var localizedLabels = optionMetadata.Label.LocalizedLabels;
+            if (LanguageCodeOverride < 0 || LanguageCodeOverride == English)
+            {
+                if (IsLabelPopulated(englishName))
+                {
+                    return englishName.RemoveDiacritics();
+                }
+            }
+            else
+            {
+                var overrideLabel = localizedLabels.FirstOrDefault(l => l.LanguageCode == LanguageCodeOverride && IsLabelPopulated(l.Label));
+                if (overrideLabel != null)
+                {
+                    return TransliterationService.HasCode(LanguageCodeOverride)
+                        ? TransliterationService.Transliterate(overrideLabel)
+                        : overrideLabel.Label.RemoveDiacritics();
+                }
+            }
 
             var localizedLabel = localizedLabels.FirstOrDefault(x => TransliterationService.HasCode(x.LanguageCode) && IsLabelPopulated(x.Label));
 
             return localizedLabel == null ?
                 localizedLabels.FirstOrDefault(x => IsLabelPopulated(x.Label))?.Label?.RemoveDiacritics() ?? string.Empty : 
-                TransliterationService.Transliterate(localizedLabel.LanguageCode, localizedLabel.Label);
+                TransliterationService.Transliterate(localizedLabel);
         }
 
         /// <summary>

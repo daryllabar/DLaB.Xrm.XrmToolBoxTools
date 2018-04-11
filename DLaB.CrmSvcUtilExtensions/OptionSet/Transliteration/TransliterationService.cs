@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Json;
+using Microsoft.Xrm.Sdk;
 
 namespace DLaB.CrmSvcUtilExtensions.OptionSet.Transliteration
 {
@@ -20,6 +21,8 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet.Transliteration
             .Select(int.Parse)));
 
         public static HashSet<int> AvailableCodes { get; } = LazyAvailableCodes.Value;
+
+        public static string Transliterate(LocalizedLabel label) { return Transliterate(label.LanguageCode, label.Label); }
 
         public static string Transliterate(int languageCode, string label)
         {

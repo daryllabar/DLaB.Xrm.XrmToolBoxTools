@@ -111,6 +111,7 @@ namespace DLaB.EarlyBoundGenerator
             TxtEntityPath.Text = Settings.EntityOutPath;
             TxtInvalidCSharpNamePrefix.Text = Settings.ExtensionConfig.InvalidCSharpNamePrefix;
             TxtOptionSetFormat.Text = Settings.ExtensionConfig.LocalOptionSetFormat;
+            TxtLanguageCodeOverride.Text = Settings.ExtensionConfig.OptionSetLanguageCodeOverride + "";
             TxtNamespace.Text = Settings.Namespace;
             TxtOptionSetPath.Text = Settings.OptionSetOutPath;
             TxtServiceContextName.Text = Settings.ServiceContextName;
@@ -337,6 +338,8 @@ namespace DLaB.EarlyBoundGenerator
                 Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService, defaultConfig.GetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService).Value);
             }
 
+            var validLanguageCode = int.TryParse(TxtLanguageCodeOverride.Text, out var languageCode);
+
             var extensions = Settings.ExtensionConfig;
             extensions.AddDebuggerNonUserCode = ChkAddDebuggerNonUserCode.Checked;
             extensions.AddNewFilesToProject = ChkAddFilesToProject.Checked;
@@ -352,6 +355,7 @@ namespace DLaB.EarlyBoundGenerator
             extensions.MakeReadonlyFieldsEditable = ChkMakeReadonlyFieldsEditable.Checked;
             extensions.MakeResponseActionsEditable = ChkEditableResponseActions.Checked;
             extensions.LocalOptionSetFormat = TxtOptionSetFormat.Text;
+            extensions.OptionSetLanguageCodeOverride = validLanguageCode ? languageCode : (int?)null;
             extensions.RemoveRuntimeVersionComment = ChkRemoveRuntimeComment.Checked;
             extensions.UseXrmClient = ChkUseXrmClient.Checked;
             extensions.UseDeprecatedOptionSetNaming = ChkUseDeprecatedOptionSetNaming.Checked;
@@ -693,6 +697,24 @@ namespace DLaB.EarlyBoundGenerator
             if (e.Control && e.KeyCode == Keys.A)
             {
                 ((TextBox) sender)?.SelectAll();
+            }
+        }
+
+        private void TxtLanguageCodeOverride_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TxtLanguageCodeOverride_TextChanged(object sender, EventArgs e)
+        {
+            var value = TxtLanguageCodeOverride.Text;
+            if (!string.IsNullOrWhiteSpace(value)
+                && !int.TryParse(value, out var _))
+            {
+                TxtLanguageCodeOverride.Text = "";
             }
         }
     }

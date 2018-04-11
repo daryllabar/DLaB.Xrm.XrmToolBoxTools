@@ -151,6 +151,11 @@ namespace DLaB.EarlyBoundGenerator
                 @"http://develop1.net/public/post/MicrosoftXrmClient-Part-1.aspx .";
         }
 
+        private void TxtLanguageCodeOverride_MouseEnter(object sender, EventArgs e)
+        {
+            TxtHelp.Text = @"Overrides the default (English:1033) language code used for generating Option Set Value names (the value, not the option set).";
+        }
+
         private void TxtOptionSetFormat_MouseEnter(object sender, EventArgs e)
         {
             TxtHelp.Text = @"The Format of Local Option Sets where {0} is the Entity Schema Name, and {1} is the Attribute Schema Name.  The format Specified in the SDK is {0}{1}, but the default is {0}_{1}, but used to be prefix_{0}_{1}(all lower case)";

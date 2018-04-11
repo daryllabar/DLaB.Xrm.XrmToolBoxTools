@@ -86,6 +86,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public string OptionSetsToSkip { get; set; }
         /// <summary>
+        /// Overrides the default (English:1033) language code used for generating Option Set Value names (the value, not the option set)
+        /// </summary>
+        public int? OptionSetLanguageCodeOverride { get; set; }
+        /// <summary>
         /// Remove the Runtime Version in the header comment
         /// </summary>
         public bool RemoveRuntimeVersionComment { get; set; }
@@ -159,6 +163,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 MakeResponseActionsEditable = false,
                 LocalOptionSetFormat = "{0}_{1}",
                 OptionSetsToSkip = "organization_currencyformatcode|quote_statuscode",
+                OptionSetLanguageCodeOverride = null,
                 PropertyEnumMappings = string.Empty,
                 RemoveRuntimeVersionComment = true,
                 UnmappedProperties =
@@ -201,6 +206,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? MakeResponseActionsEditable { get; set; }
         public string LocalOptionSetFormat { get; set; }
         public string OptionSetsToSkip { get; set; }
+        public int? OptionSetLanguageCodeOverride { get; set; }
         public string PropertyEnumMappings { get; set; }
         public string UnmappedProperties { get; set; }
         public bool? AddNewFilesToProject { get; set; }
