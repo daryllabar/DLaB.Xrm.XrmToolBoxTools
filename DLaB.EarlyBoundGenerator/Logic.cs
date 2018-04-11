@@ -301,7 +301,7 @@ namespace DLaB.EarlyBoundGenerator
 
             if (!string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.Password))
             {
-                if (EarlyBoundGeneratorConfig.UseConnectionString)
+                if (earlyBoundGeneratorConfig.UseConnectionString)
                 {
                     // Fix for https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/issues/14 - Problem with CRM 2016 on premises with ADFS
                     // CrmSvcUtil.exe /out:entities.cs / connectionstring:"Url=https://serverName.domain.com:444/orgName;Domain=myDomain;UserName=username;Password=*****"
@@ -313,7 +313,11 @@ namespace DLaB.EarlyBoundGenerator
                     {
                         domain = "Domain=" +earlyBoundGeneratorConfig.Domain + ";";
                     }
-                    var password = earlyBoundGeneratorConfig.Password.Replace("\"", "^\"").Replace("&", "^&");  // Handle Double Quotes and &s???
+
+                    //To handle special characters, enclose in single quotes. If password contains single quotes, they must be doubled.
+                    //https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlconnection.connectionstring.aspx
+                    var password = $"'{earlyBoundGeneratorConfig.Password.Replace("'", "''")}'";
+
                     var builder = new System.Data.Common.DbConnectionStringBuilder
                     {
                         {"A", $"Url={earlyBoundGeneratorConfig.Url};{domain}UserName={earlyBoundGeneratorConfig.UserName};Password={password}"}
