@@ -304,7 +304,7 @@ namespace DLaB.EarlyBoundGenerator
                 Settings.Domain = GetUserDomain();
                 Settings.Password = ConnectionDetail.GetUserPassword();
                 Settings.SupportsActions = ConnectionDetail.OrganizationMajorVersion >= Crm2013;
-                Settings.UseConnectionString = Settings.UseConnectionString || Settings.AuthType == AuthenticationProviderType.ActiveDirectory;
+                Settings.UseConnectionString = Settings.UseConnectionString; // #151 || Settings.AuthType == AuthenticationProviderType.ActiveDirectory;
                 Settings.UseCrmOnline = ConnectionDetail.UseOnline;
                 Settings.UserName = ConnectionDetail.UserName;
                 Settings.Url = GetUrlString();

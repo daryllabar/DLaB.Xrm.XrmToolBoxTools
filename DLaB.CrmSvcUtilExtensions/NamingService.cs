@@ -12,7 +12,7 @@ namespace DLaB.CrmSvcUtilExtensions
     
     public class NamingService : INamingService
     {
-        public static int LanguageCodeOverride => ConfigHelper.GetAppSettingOrDefault("OptionSetLanguageCodeOverride", -1);
+        public static int LanguageCodeOverride => ConfigHelper.GetNonNullableAppSettingOrDefault("OptionSetLanguageCodeOverride", -1);
         private const int English = 1033;  
         private string ValidCSharpNameRegEx { get; set; }
         private INamingService DefaultService { get; set; }
