@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -138,8 +139,7 @@ namespace DLaB.AttributeManager
 
             AttributesNeedLoaded = false;
 
-            var entity = cmbEntities.SelectedItem as ObjectCollectionItem<EntityMetadata>;
-            if (entity == null)
+            if (!(cmbEntities.SelectedItem is ObjectCollectionItem<EntityMetadata> entity))
             {
                 return;
             }
@@ -324,7 +324,7 @@ namespace DLaB.AttributeManager
                 return null;
             }
 
-            int? precision = getPrecisionSetting();
+            int? precision = GetPrecisionSetting();
 
             AttributeMetadata att;
             switch (cmbNewAttributeType.Text)
@@ -515,7 +515,7 @@ namespace DLaB.AttributeManager
         #region Number Type Settings Tab
 
         // ReSharper disable UnusedParameter.Local
-        private void hideNumberAttributes()
+        private void HideNumberAttributes()
         {
             numAttFormatLbl.Visible = false;
             numAttFormatCmb.Visible = false;
@@ -536,50 +536,50 @@ namespace DLaB.AttributeManager
         
         private void SetDecimalNumberVisible()
         {
-            hideNumberAttributes();
+            HideNumberAttributes();
             numAttMaxLbl.Visible = true;
             numAttMaxTxt.Visible = true;
             numAttMinLbl.Visible = true;
             numAttMinTxt.Visible = true;
             numAttPrecisionLbl.Visible = true;
             numAttPrecisionTxt.Visible = true;
-            numAttMinTxt.Text = DecimalAttributeMetadata.MinSupportedValue.ToString();
-            numAttMaxTxt.Text = DecimalAttributeMetadata.MaxSupportedValue.ToString();
-            numAttPrecisionTxt.Text = "2";
+            numAttMinTxt.Text = DecimalAttributeMetadata.MinSupportedValue.ToString(CultureInfo.InvariantCulture);
+            numAttMaxTxt.Text = DecimalAttributeMetadata.MaxSupportedValue.ToString(CultureInfo.InvariantCulture);
+            numAttPrecisionTxt.Text = @"2";
         }
 
         private void SetCurrencyNumberVisible()
         {
-            hideNumberAttributes();
+            HideNumberAttributes();
             numAttMaxLbl.Visible = true;
             numAttMaxTxt.Visible = true;
             numAttMinLbl.Visible = true;
             numAttMinTxt.Visible = true;
             numAttCurrencyPrecisionLbl.Visible = true;
             numAttCurrencyPrecisionCmb.Visible = true;
-            numAttMinTxt.Text = MoneyAttributeMetadata.MinSupportedValue.ToString();
-            numAttMaxTxt.Text = MoneyAttributeMetadata.MaxSupportedValue.ToString();
+            numAttMinTxt.Text = MoneyAttributeMetadata.MinSupportedValue.ToString(CultureInfo.InvariantCulture);
+            numAttMaxTxt.Text = MoneyAttributeMetadata.MaxSupportedValue.ToString(CultureInfo.InvariantCulture);
             numAttCurrencyPrecisionCmb.SelectedIndex = 0;
         }
 
         private void SetFloatNumberVisible()
         {
-            hideNumberAttributes();
+            HideNumberAttributes();
             numAttMaxLbl.Visible = true;
             numAttMaxTxt.Visible = true;
             numAttMinLbl.Visible = true;
             numAttMinTxt.Visible = true;
             numAttPrecisionLbl.Visible = true;
             numAttPrecisionTxt.Visible = true;
-            numAttMinTxt.Text = DoubleAttributeMetadata.MinSupportedValue.ToString();
-            numAttMaxTxt.Text = DoubleAttributeMetadata.MaxSupportedValue.ToString();
-            numAttPrecisionTxt.Text = "2";
+            numAttMinTxt.Text = DoubleAttributeMetadata.MinSupportedValue.ToString(CultureInfo.InvariantCulture);
+            numAttMaxTxt.Text = DoubleAttributeMetadata.MaxSupportedValue.ToString(CultureInfo.InvariantCulture);
+            numAttPrecisionTxt.Text = @"2";
         }
         // ReSharper restore UnusedParameter.Local
 
         private void SetWholeNumberVisible()
         {
-            hideNumberAttributes();
+            HideNumberAttributes();
             numAttFormatLbl.Visible = true;
             numAttFormatCmb.Visible = true;
             numAttMaxLbl.Visible = true;
@@ -587,8 +587,8 @@ namespace DLaB.AttributeManager
             numAttMinLbl.Visible = true;
             numAttMinTxt.Visible = true;
             numAttFormatCmb.SelectedIndex = 0;
-            numAttMinTxt.Text = IntegerAttributeMetadata.MinSupportedValue.ToString();
-            numAttMaxTxt.Text = IntegerAttributeMetadata.MaxSupportedValue.ToString();
+            numAttMinTxt.Text = IntegerAttributeMetadata.MinSupportedValue.ToString(CultureInfo.InvariantCulture);
+            numAttMaxTxt.Text = IntegerAttributeMetadata.MaxSupportedValue.ToString(CultureInfo.InvariantCulture);
         }
 
         private IntegerFormat GetIntergerFormat()
@@ -1163,7 +1163,7 @@ namespace DLaB.AttributeManager
             }
         }
 
-        private int? getPrecisionSetting()
+        private int? GetPrecisionSetting()
         {
             int tmp;
             int? number = null;
@@ -1179,7 +1179,7 @@ namespace DLaB.AttributeManager
             if (chkIgnoreUpdateErrors.Checked)
             {
                 //warn about possible data loss
-                DialogResult result = MessageBox.Show("Selecting this option may result in significant data loss if there are read-only records or invalid data", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                var result = MessageBox.Show(@"Selecting this option may result in significant data loss if there are read-only records or invalid data", @"Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 if (result == DialogResult.Cancel)
                 {
                     chkIgnoreUpdateErrors.Checked = false;
