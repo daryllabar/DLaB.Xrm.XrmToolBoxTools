@@ -636,7 +636,17 @@ namespace DLaB.CrmSvcUtilExtensions
                     ProjectPath = file.FullName;
                     Lines = File.ReadAllLines(ProjectPath).ToList();
                     ProjectDir = Path.GetDirectoryName(ProjectPath);
-                    ProjectFileIndexStart = Lines.FindIndex(l => l.Contains("<Compile Include="));
+                    if (!Lines.Any(l => l.Contains("<Compile Include=")))
+                    {
+                        ProjectFileIndexStart = Lines.FindLastIndex(l => l.Contains("</PropertyGroup>"))+1;
+                        Lines.Insert(ProjectFileIndexStart, "</ItemGroup>");
+                        Lines.Insert(ProjectFileIndexStart, "<ItemGroup>");
+                        ProjectFileIndexStart++;
+                    }
+                    else
+                    {
+                        ProjectFileIndexStart = Lines.FindIndex(l => l.Contains("<Compile Include="));
+                    }
                     foreach (var line in Lines.Skip(ProjectFileIndexStart).TakeWhile(l => l.Contains("<Compile Include=")))
                     {
                         ProjectFiles.Add(line, line);
@@ -644,7 +654,9 @@ namespace DLaB.CrmSvcUtilExtensions
                     ProjectFileIndexEnd = ProjectFileIndexStart + ProjectFiles.Count;
 
                     // Determine Line Format, defaulting if none currently exist
-                    var first = ProjectFiles.Keys.FirstOrDefault() ?? "    <Compile Include=\"\" />";
+                    var first = ProjectFiles.Keys.FirstOrDefault() ?? (ProjectPath.EndsWith("projitems") 
+                                    ? "    <Compile Include=\"$(MSBuildThisFileDirectory)\" />"
+                                    : "    <Compile Include=\"\" />");
 
                     var startEndIndex = first.Contains("$(") 
                         ? first.IndexOf(")", first.IndexOf("$(", StringComparison.Ordinal), StringComparison.Ordinal) + 1 // Path contains Ms Build Variable
