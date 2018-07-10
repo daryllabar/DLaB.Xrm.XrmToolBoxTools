@@ -90,6 +90,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)EntityMap.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Equipment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExchangeSyncIdMapping.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\IQuery.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExternalParty.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExternalPartyItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Fax.cs" />

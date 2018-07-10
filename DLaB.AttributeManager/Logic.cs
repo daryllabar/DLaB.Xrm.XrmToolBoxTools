@@ -977,20 +977,22 @@ namespace DLaB.AttributeManager
 
         private void UpdateViews(IOrganizationService service, AttributeMetadata from, AttributeMetadata to)
         {
-            foreach (var query in GetViewsWithAttribute(service, from))
+            foreach (var query in GetViewsWithAttribute(service, from)
+                .Union(GetUserViewsWithAttribute(service, from)))
             {
-                Trace("Updating View " + query.Name);
-                query.FetchXml = ReplaceFetchXmlAttribute(query.FetchXml, from.LogicalName, to.LogicalName);
+                Trace($"Updating {query.LogicalName} {query.Name}");
+                var toUpdate = query.CreateForUpdate();
+                toUpdate.FetchXml = ReplaceFetchXmlAttribute(query.FetchXml, from.LogicalName, to.LogicalName);
 
                 if (query.LayoutXml != null)
                 {
-                    query.LayoutXml = ReplaceFetchXmlAttribute(query.LayoutXml, from.LogicalName, to.LogicalName, true);
+                    toUpdate.LayoutXml = ReplaceFetchXmlAttribute(query.LayoutXml, from.LogicalName, to.LogicalName, true);
                 }
-                service.Update(query);
+                service.Update((Entity)toUpdate);
             }
         }
 
-        private List<SavedQuery> GetViewsWithAttribute(IOrganizationService service, AttributeMetadata @from)
+        private IEnumerable<IQuery> GetViewsWithAttribute(IOrganizationService service, AttributeMetadata @from)
         {
             var qe = QueryExpressionFactory.Create<SavedQuery>(q => new
             {
@@ -1004,8 +1006,24 @@ namespace DLaB.AttributeManager
             AddFetchXmlCriteria(qe, SavedQuery.Fields.FetchXml, @from.EntityLogicalName, @from.LogicalName);
 
             Trace("Retrieving Views with Query: " + qe.GetSqlStatement());
-            var views = service.GetEntities(qe);
-            return views;
+            return service.GetEntities(qe);
+        }
+
+        private IEnumerable<IQuery> GetUserViewsWithAttribute(IOrganizationService service, AttributeMetadata @from)
+        {
+            var qe = QueryExpressionFactory.Create<UserQuery>(q => new
+            {
+                q.Id,
+                q.Name,
+                q.QueryType,
+                q.FetchXml,
+                q.LayoutXml
+            });
+
+            AddFetchXmlCriteria(qe, UserQuery.Fields.FetchXml, @from.EntityLogicalName, @from.LogicalName);
+
+            Trace("Retrieving User Views with Query: " + qe.GetSqlStatement());
+            return service.GetEntities(qe);
         }
 
         private string ReplaceFetchXmlAttribute(string xml, string from, string to, bool nameOnly = false)
