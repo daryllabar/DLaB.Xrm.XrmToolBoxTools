@@ -215,7 +215,6 @@
     <Compile Include="AttributeCaseSpecifierDialog.Designer.cs">
       <DependentUpon>AttributeCaseSpecifierDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Logic.cs" />
     <Compile Include="AttributesToEnumMapperDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,10 +265,6 @@
     <Compile Include="EarlyBoundGeneratorPlugin.Designer.cs">
       <DependentUpon>EarlyBoundGeneratorPlugin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Settings\EarlyBoundGeneratorConfig.cs" />
-    <Compile Include="Settings\CreationType.cs" />
-    <Compile Include="Settings\ExtensionConfig.cs" />
-    <Compile Include="Settings\Argument.cs" />
     <Compile Include="SpecifyAttributeNamesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -330,6 +325,7 @@
   <ItemGroup />
   <Import Project="..\DLaB.Xrm.Entities\DLaB.Xrm.Entities.projitems" Label="Shared" />
   <Import Project="..\DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems" Label="Shared" />
+  <Import Project="..\DLaB.EarlyBoundGenerator.Logic\DLaB.EarlyBoundGenerator.Logic.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>REM Copy New Content Files

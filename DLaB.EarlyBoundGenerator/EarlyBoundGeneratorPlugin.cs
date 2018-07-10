@@ -71,6 +71,7 @@ namespace DLaB.EarlyBoundGenerator
             try
             {
                 Settings = EarlyBoundGeneratorConfig.Load(settingsPath);
+                Settings.CrmSvcUtilRealtiveRootPath = Paths.PluginsPath;
                 SkipSaveSettings = false;
             }
             catch (Exception ex)
@@ -80,7 +81,7 @@ namespace DLaB.EarlyBoundGenerator
                 if (result == DialogResult.Yes)
                 {
                     Settings = EarlyBoundGeneratorConfig.GetDefault();
-
+                    Settings.CrmSvcUtilRealtiveRootPath = Paths.PluginsPath;
                 }
                 else
                 {
@@ -300,7 +301,6 @@ namespace DLaB.EarlyBoundGenerator
             if (ConnectionDetail != null)
             {   
                 TxtOutput.AppendText("CRM Authentication Type Detected: " + ConnectionDetail.AuthType + Environment.NewLine);
-                Settings.AuthType = ConnectionDetail.AuthType;
                 Settings.Domain = GetUserDomain();
                 Settings.Password = ConnectionDetail.GetUserPassword();
                 Settings.SupportsActions = ConnectionDetail.OrganizationMajorVersion >= Crm2013;
@@ -334,6 +334,7 @@ namespace DLaB.EarlyBoundGenerator
             else
             {
                 var defaultConfig = EarlyBoundGeneratorConfig.GetDefault();
+                defaultConfig.CrmSvcUtilRealtiveRootPath = Paths.PluginsPath;
                 Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, defaultConfig.GetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter).Value);
                 Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService, defaultConfig.GetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService).Value);
             }

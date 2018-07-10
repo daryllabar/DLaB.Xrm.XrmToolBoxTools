@@ -7,8 +7,6 @@ using System.Xml;
 using System.Xml.Serialization;
 using Source.DLaB.Common;
 using Source.DLaB.Common.VersionControl;
-using Microsoft.Xrm.Sdk.Client;
-using XrmToolBox.Extensibility;
 
 namespace DLaB.EarlyBoundGenerator.Settings
 {
@@ -82,9 +80,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         #region NonSerialized Properties
         [XmlIgnore]
-        public AuthenticationProviderType AuthType { get; set; }
-
-        [XmlIgnore]
         public bool UseCrmOnline { get; set; }
 
         [XmlIgnore]
@@ -118,7 +113,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         public string CrmSvcUtilPath => 
             Directory.Exists(CrmSvcUtilRelativePath)
                 ? CrmSvcUtilRelativePath
-                : Path.Combine(Paths.PluginsPath, CrmSvcUtilRelativePath);
+                : Path.Combine(CrmSvcUtilRealtiveRootPath ?? Directory.GetCurrentDirectory(), CrmSvcUtilRelativePath);
+
+        [XmlIgnore]
+        public string CrmSvcUtilRealtiveRootPath { get; set; }
 
         #region UserArguments Helpers
 
@@ -353,6 +351,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         public static EarlyBoundGeneratorConfig GetDefault()
         {
+
             var @default = new EarlyBoundGeneratorConfig
             {
                 AudibleCompletionNotification = true,
