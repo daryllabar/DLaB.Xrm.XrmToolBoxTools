@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Microsoft.Xrm.Sdk;
 
 namespace DLaB.Xrm.Entities
 {
@@ -25,5 +24,11 @@ namespace DLaB.Xrm.Entities
     public partial class SavedQuery : IQuery
     {
         public IQuery CreateForUpdate() { return new SavedQuery(Id); }
+    }
+
+    // ReSharper disable once InconsistentNaming
+    public static class IQueryExtensions{
+        public static Guid Create(this IOrganizationService service, IQuery entity) { return service.Create((Entity) entity); }
+        public static void Update(this IOrganizationService service, IQuery entity) { service.Update((Entity) entity); }
     }
 }
