@@ -39,7 +39,14 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                         continue;
                     }
                     
+                    // Update Property Type
                     property.Type = new CodeTypeReference(typeof(OptionSetValueCollection));
+
+                    // Update Generic Type Argument For GetAttributeValue
+                    var returnStatement = (CodeMethodReturnStatement) property.GetStatements[0];
+                    var invoke = (CodeMethodInvokeExpression) returnStatement.Expression;
+                    invoke.Method.TypeArguments.Clear();
+                    invoke.Method.TypeArguments.Add(property.Type);
                 }
             }
         }

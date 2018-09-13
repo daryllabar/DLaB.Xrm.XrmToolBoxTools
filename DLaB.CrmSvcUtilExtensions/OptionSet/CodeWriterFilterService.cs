@@ -22,7 +22,6 @@ using Microsoft.Crm.Services.Utility;
 using Microsoft.Xrm.Sdk.Metadata;
 using System.Linq;
 using Source.DLaB.Common;
-using DLaB.CrmSvcUtilExtensions.Entity;
 
 namespace DLaB.CrmSvcUtilExtensions.OptionSet
 {
@@ -52,9 +51,8 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
         /// </summary>
         public bool GenerateOptionSet(OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
         {
-
             // Skip the state optionsets unless the XrmClient is used 
-            if (!CustomizeCodeDomService.UseXrmClient && optionSetMetadata.OptionSetType == OptionSetType.State)
+            if (!Entity.CustomizeCodeDomService.UseXrmClient && optionSetMetadata.OptionSetType == OptionSetType.State)
             {
                 return false;
             }
@@ -112,9 +110,9 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
         /// </summary>
         public bool GenerateAttribute(AttributeMetadata attributeMetadata, IServiceProvider services)
         {
-            return (attributeMetadata.AttributeType == AttributeTypeCode.Picklist
+            return attributeMetadata.AttributeType == AttributeTypeCode.Picklist
                     || attributeMetadata.AttributeType == AttributeTypeCode.State
-                    || attributeMetadata.AttributeType == AttributeTypeCode.Status);
+                    || attributeMetadata.AttributeType == AttributeTypeCode.Status;
         }
 
         /// <summary>

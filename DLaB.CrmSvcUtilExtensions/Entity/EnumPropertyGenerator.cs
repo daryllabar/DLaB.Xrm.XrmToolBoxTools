@@ -361,13 +361,14 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                 new CodeObjectCreateExpression(listType)
                 ));
 
-            //list.AddRange(value.Select(v => (T)(object)v.Value));
+            //list.AddRange(Enumerable.Select(value, v => (T)(object)v.Value));
             get.Statements.Add(new CodeMethodInvokeExpression(
                 new CodeArgumentReferenceExpression("list"),
                 "AddRange",
                 new CodeMethodInvokeExpression(
-                    new CodeArgumentReferenceExpression("value"), 
+                    new CodeTypeReferenceExpression(typeof(Enumerable)), 
                     "Select", 
+                    new CodeArgumentReferenceExpression("value"), 
                     new CodeSnippetExpression("v => (T)(object)v.Value")
                 )));
 
@@ -404,13 +405,14 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                 new CodeObjectCreateExpression(optionSetValueCollection)
             ));
 
-            //collection.AddRange(values.Select(v => new Microsoft.Xrm.Sdk.OptionSetValue((int)(object)v)));
+            //collection.AddRange(System.Enumerable.Linq.Select(values, v => new Microsoft.Xrm.Sdk.OptionSetValue((int)(object)v));
             get.Statements.Add(new CodeMethodInvokeExpression(
                 new CodeArgumentReferenceExpression("collection"),
                 "AddRange",
                 new CodeMethodInvokeExpression(
-                    new CodeArgumentReferenceExpression("values"), 
+                    new CodeTypeReferenceExpression(typeof(Enumerable)), 
                     "Select", 
+                    new CodeArgumentReferenceExpression("values"), 
                     new CodeSnippetExpression("v => new Microsoft.Xrm.Sdk.OptionSetValue((int)(object)v)")
                 )));
 

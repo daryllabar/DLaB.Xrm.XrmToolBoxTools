@@ -174,9 +174,11 @@
     <Compile Include="Entity\CustomizeCodeDomService.cs" />
     <Compile Include="Entity\EnumPropertyGenerator.cs" />
     <Compile Include="OptionSet\CustomCodeGenerationService.cs" />
+    <Compile Include="OptionSet\CustomizeCodeDomService.cs" />
     <Compile Include="OptionSet\FilterOptionSetEnums.cs" />
     <Compile Include="Entity\CodeWriterFilterService.cs" />
     <Compile Include="OptionSet\CodeWriterFilterService.cs" />
+    <Compile Include="OptionSet\LocalMultiOptionSetGenerator.cs" />
     <Compile Include="OptionSet\Transliteration\AlphabetPoco.cs" />
     <Compile Include="OptionSet\Transliteration\TransliterationAlphabet.cs" />
     <Compile Include="OptionSet\Transliteration\TransliterationService.cs" />

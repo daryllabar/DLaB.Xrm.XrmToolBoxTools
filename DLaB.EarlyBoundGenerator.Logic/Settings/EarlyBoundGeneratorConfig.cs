@@ -189,18 +189,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             MaskPassword = poco.MaskPassword.GetValueOrDefault(@default.MaskPassword);
 
 
-            if (new Version(poco.Version) < new Version("1.2016.6.1"))
-            {
-                // Storing of UnmappedProperties and EntityAttributeSpecified Names switched from Key,Value1,Value2|Key,Value1,Value2 to Key:Value1,Value2|Key:Value1,Value2
-                // Also convert from a List to a HashSet
-                pocoConfig.EntityAttributeSpecifiedNames = ConvertNonColonDelimitedDictionaryListToDictionaryHash(pocoConfig.EntityAttributeSpecifiedNames);
-                pocoConfig.UnmappedProperties = ConvertNonColonDelimitedDictionaryListToDictionaryHash(pocoConfig.UnmappedProperties);
-            }
-
-            if (new Version(poco.Version) > Assembly.GetExecutingAssembly().GetName().Version)
-            {
-                
-            }
+            UpdateObsoleteSettings(poco, pocoConfig, @default);
 
             ExtensionConfig = new ExtensionConfig
             {
@@ -235,6 +224,34 @@ namespace DLaB.EarlyBoundGenerator.Settings
             UserArguments = AddMissingArguments(poco.UserArguments, @default.UserArguments);
             SettingsVersion = string.IsNullOrWhiteSpace(poco.Version) ? "0.0.0.0" : poco.Version;
             Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        }
+
+        private static void UpdateObsoleteSettings(POCO.Config poco, POCO.ExtensionConfig pocoConfig, EarlyBoundGeneratorConfig @default)
+        {
+            if (new Version(poco.Version) < new Version("1.2016.6.1"))
+            {
+                // Storing of UnmappedProperties and EntityAttributeSpecified Names switched from Key,Value1,Value2|Key,Value1,Value2 to Key:Value1,Value2|Key:Value1,Value2
+                // Also convert from a List to a HashSet
+                pocoConfig.EntityAttributeSpecifiedNames = ConvertNonColonDelimitedDictionaryListToDictionaryHash(pocoConfig.EntityAttributeSpecifiedNames);
+                pocoConfig.UnmappedProperties = ConvertNonColonDelimitedDictionaryListToDictionaryHash(pocoConfig.UnmappedProperties);
+            }
+
+            if (new Version(poco.Version) < new Version("1.2018.9.12"))
+            {
+                // Update the OptionSet codecustomization Argument Setting to use the new Generic Code Customziation Service
+                var oldValue = poco.ExtensionArguments.FirstOrDefault(
+                    a => a.SettingType == CreationType.OptionSets
+                         && a.Name == "codecustomization");
+                var newValue = @default.ExtensionArguments.FirstOrDefault(
+                    a => a.SettingType == CreationType.OptionSets
+                         && a.Name == "codecustomization");
+                if (oldValue != null
+                    && newValue != null)
+                {
+                    poco.ExtensionArguments.Remove(oldValue);
+                    poco.ExtensionArguments.Add(newValue);
+                }
+            }
         }
 
         private static string ConvertNonColonDelimitedDictionaryListToDictionaryHash(string oldValue)
@@ -368,7 +385,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     new Argument(CreationType.Entities, CrmSrvUtilService.CodeWriterFilter, "DLaB.CrmSvcUtilExtensions.Entity.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.Entities, CrmSrvUtilService.NamingService, "DLaB.CrmSvcUtilExtensions.NamingService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.Entities, CrmSrvUtilService.MetadataProviderService, "DLaB.CrmSvcUtilExtensions.Entity.MetadataProviderService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeCustomization, "DLaB.CrmSvcUtilExtensions.OptionSet.CreateOptionSetEnums,DLaB.CrmSvcUtilExtensions"),
+                    new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeCustomization, "DLaB.CrmSvcUtilExtensions.OptionSet.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeGenerationService, "DLaB.CrmSvcUtilExtensions.OptionSet.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, "DLaB.CrmSvcUtilExtensions.OptionSet.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.OptionSets, CrmSrvUtilService.NamingService, "DLaB.CrmSvcUtilExtensions.NamingService,DLaB.CrmSvcUtilExtensions"),
