@@ -17,9 +17,9 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                     {
                         FieldName = ((CodePrimitiveExpression)att.Arguments[0].Value).Value.ToString(),
                         Order = att.AttributeType.BaseType == XrmRelationshipSchemaName ? 0 : 1
-                    }).
-                                        OrderBy(a => a.Order).
-                                        FirstOrDefault()?.FieldName;
+                    })
+                .OrderBy(a => a.Order)
+                .FirstOrDefault()?.FieldName;
         }
 
         protected override void AddNonPropertyValues(CodeTypeDeclaration constantsClass, CodeTypeDeclaration type, HashSet<string> attributes)

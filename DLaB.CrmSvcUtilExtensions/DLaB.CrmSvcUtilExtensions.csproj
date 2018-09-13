@@ -157,6 +157,7 @@
     <Compile Include="App_Packages\DLaB.Common.Sources.1.1.0-alpha01\VersionControl\VsTfsSourceControlProvider.cs" />
     <Compile Include="AttributeConstGeneratorBase.cs" />
     <Compile Include="BaseCustomCodeGenerationService.cs" />
+    <Compile Include="Entity\MultiOptionSetAttributeUpdater.cs" />
     <Compile Include="Entity\PrimaryAttributeGenerator.cs" />
     <Compile Include="Entity\AttributeConstGenerator.cs" />
     <Compile Include="Entity\CustomCodeGenerationService.cs" />
@@ -1045,8 +1046,8 @@ echo %25myCmd%25
 
 if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.exe" "$(ProjectDir)Properties\AssemblyInfo.cs"
 
-xcopy /I /Y "$(SolutionDir)packages\Microsoft.CrmSdk.CoreTools.9.0.0.7\content\bin\coretools\*.dll" "$(TargetDir)"
-xcopy /I /Y "$(SolutionDir)packages\Microsoft.CrmSdk.CoreTools.9.0.0.7\content\bin\coretools\CrmSvcUtil.exe" "$(TargetDir)"</PreBuildEvent>
+xcopy /I /Y "$(SolutionDir)packages\Microsoft.CrmSdk.CoreTools.9.0.2.4\content\bin\coretools\*.dll" "$(TargetDir)"
+xcopy /I /Y "$(SolutionDir)packages\Microsoft.CrmSdk.CoreTools.9.0.2.4\content\bin\coretools\CrmSvcUtil.exe" "$(TargetDir)"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
+using System.Threading;
 using System.Xml;
 using Microsoft.Crm.Services.Utility;
 
@@ -20,6 +22,14 @@ namespace DLaB.CrmSvcUtilExtensions
         // ReSharper disable once UnusedParameter.Local
         public BaseMetadataProviderService(IMetadataProviderService defaultService, IDictionary<string, string> parameters)
         {
+            if (ConfigHelper.GetAppSettingOrDefault("WaitForAttachedDebugger", false))
+            {
+                while (!Debugger.IsAttached)
+                {
+                    Console.WriteLine("[**** Waiting For Debugger ****]");
+                    Thread.Sleep(3000);
+                }
+            }
             DefaultService = defaultService;
             FilePath = ConfigHelper.GetAppSettingOrDefault("SerializedMetadataFilePath", "metadata.xml");
         }

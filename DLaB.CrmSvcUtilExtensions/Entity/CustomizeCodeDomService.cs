@@ -26,6 +26,8 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
 
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
+
+            new MultiOptionSetAttributeUpdater().CustomizeCodeDom(codeUnit, services);
             if (UseXrmClient)
             {
                 new CodeCustomization(Parameters).CustomizeCodeDom(codeUnit, services);
@@ -38,17 +40,21 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             {
                 new AttributeConstGenerator().CustomizeCodeDom(codeUnit, services);
             }
-            if (CreateBaseClasses)
-            {
-                new EntityBaseClassGenerator().CustomizeCodeDom(codeUnit, services);
-            }
             if (GenerateAnonymousTypeConstructor)
             {
                 new AnonymousTypeConstructorGenerator().CustomizeCodeDom(codeUnit, services);
             }
+
+            var multiSelectCreated = false;
             if (GenerateEnumProperties)
             {
-                new EnumPropertyGenerator(CreateBaseClasses).CustomizeCodeDom(codeUnit, services);
+                var generator = new EnumPropertyGenerator(CreateBaseClasses);
+                generator.CustomizeCodeDom(codeUnit, services);
+                multiSelectCreated = generator.MultiSelectEnumCreated;
+            }
+            if (CreateBaseClasses)
+            {
+                new EntityBaseClassGenerator(multiSelectCreated).CustomizeCodeDom(codeUnit, services);
             }
             if (AddDebuggerNonUserCode)
             {

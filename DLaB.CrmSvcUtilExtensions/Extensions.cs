@@ -12,6 +12,29 @@ namespace DLaB.CrmSvcUtilExtensions
 {
     public static class Extensions
     {
+        private const string XrmAttributeLogicalName = "Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute";
+        private const string XrmRelationshipSchemaName = "Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute";
+
+        #region CodeMemberProperty
+
+        public static string GetLogicalName(this CodeMemberProperty property)
+        {
+            return 
+                (from CodeAttributeDeclaration att in property.CustomAttributes
+                where att.AttributeType.BaseType == XrmAttributeLogicalName
+                select ((CodePrimitiveExpression) att.Arguments[0].Value).Value.ToString()).FirstOrDefault();
+        }
+
+        public static string GetRelationshipLogicalName(this CodeMemberProperty property)
+        {
+            return 
+                (from CodeAttributeDeclaration att in property.CustomAttributes
+                    where att.AttributeType.BaseType == XrmRelationshipSchemaName
+                    select ((CodePrimitiveExpression) att.Arguments[0].Value).Value.ToString()).FirstOrDefault();
+        }
+
+        #endregion CodeMemberProperty
+
         #region CodeTypeDeclaration
 
         public static string GetFieldInitalizedValue(this CodeTypeDeclaration type, string fieldName)

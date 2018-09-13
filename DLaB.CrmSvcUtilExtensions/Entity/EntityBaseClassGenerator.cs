@@ -46,6 +46,13 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         public static string OrgEntityName => ConfigHelper.GetAppSettingOrDefault("OrgEntityClassName", "OrganizationOwnedEntity");
         public static string UserEntityName => ConfigHelper.GetAppSettingOrDefault("UserEntityClassName", "UserOwnedEntity");
 
+        private bool MultiSelectCreated { get; }
+
+        public EntityBaseClassGenerator(bool multiSelectCreated)
+        {
+            MultiSelectCreated = multiSelectCreated;
+        }
+
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
             var typesCollection = codeUnit.Namespaces[0].Types;
@@ -75,7 +82,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             });
         }
 
-        public static CodeTypeDeclaration GetEarlyBoundEntityClassDeclaration(CodeTypeDeclaration type)
+        public CodeTypeDeclaration GetEarlyBoundEntityClassDeclaration(CodeTypeDeclaration type)
         {
             var entityClass = new CodeTypeDeclaration(BaseEntityName)
             {
@@ -94,7 +101,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
 
             if (CustomizeCodeDomService.GenerateEnumProperties)
             {
-                entityClass.Members.Add(EnumPropertyGenerator.CreateGetEnumMethod());
+                entityClass.Members.AddRange(EnumPropertyGenerator.CreateGetEnumMethods(MultiSelectCreated));
             }
             return entityClass;
         }

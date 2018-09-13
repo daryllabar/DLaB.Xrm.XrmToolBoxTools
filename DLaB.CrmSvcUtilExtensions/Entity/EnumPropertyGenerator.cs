@@ -12,6 +12,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
     class EnumPropertyGenerator : ICustomizeCodeDomService
     {
         public bool CreateBaseClasses { get; }
+        public bool MultiSelectEnumCreated { get; private set; }
         public Dictionary<string, string> SpecifiedMappings { get; private set; }
         public Dictionary<string, HashSet<string>> UnmappedProperties { get; private set; }
 
@@ -21,6 +22,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         public EnumPropertyGenerator(bool createBaseClasses)
         {
             CreateBaseClasses = createBaseClasses;
+            MultiSelectEnumCreated = false;
         }
 
         #region ICustomizeCodeDomService Members
@@ -73,13 +75,15 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         private static bool IsOptionSetProperty(CodeMemberProperty property)
         {
             // By default this check will work
-            return property.Type.BaseType == "Microsoft.Xrm.Sdk.OptionSetValue" || IsNullableIntPropery(property);
+            return property.Type.BaseType == "Microsoft.Xrm.Sdk.OptionSetValue" 
+                   || property.Type.BaseType == "Microsoft.Xrm.Sdk.OptionSetValueCollection"
+                   || IsNullableIntPropery(property);
         }
 
         private bool OptionSetIsSkipped(CodeMemberProperty property, string entityLogicalName)
         {
             var info = GetOptionSetEnumInfo(property, entityLogicalName);
-            return info != null && !OptionSet.CodeWriterFilterService.IsOptionSetGenerated(info.EnumTypeName);
+            return info != null && !OptionSet.CodeWriterFilterService.IsOptionSetGenerated(info.OptionSetType);
         }
 
         // If using the Xrm Client, OptionSets are converted to nullable Ints
@@ -110,22 +114,15 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             }
         }
 
-        //private IEnumerable<CodeMemberProperty> GetProperties(CodeTypeDeclaration type){
-        //    foreach(var member in type.Members){
-        //        var property = member as CodeMemberProperty;
-        //        if(property != null){
-        //            yield return property;
-        //        }
-        //    }
-        //    yield break;
-        //}
-
         private class EnumPropertyInfo
         {
-            public string EnumTypeName { get; set; }
-            public string NullableEnumTypeName => EnumTypeName + "?";
+            public string OptionSetType { get; set; }
+            public string EnumType => IsMultSelect
+                ? "System.Collections.IEnumerable<" + OptionSetType + ">"
+                : OptionSetType + "?";   
             public string PropertyName { get; set; }
             public string LogicalName { get; set; }
+            public bool IsMultSelect { get; set; }
         }
 
         private CodeMemberProperty GetOptionSetEnumType(CodeMemberProperty prop, string entityLogicalName)
@@ -139,51 +136,97 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             var property = new CodeMemberProperty
             {
                 Name = info.PropertyName,
-                Type = new CodeTypeReference(info.NullableEnumTypeName),
+                Type = new CodeTypeReference(info.EnumType),
                 Attributes = System.CodeDom.MemberAttributes.Public
             };
 
             // [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("AttributeLogicalName")]
             property.CustomAttributes.Add(new CodeAttributeDeclaration("Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute", new CodeAttributeArgument(new CodePrimitiveExpression(info.LogicalName))));
+            AddEnumGet(info, property);
+            AddEnumSet(prop, info, property);
+            return property;
+        }
 
-            property.GetStatements.Add(
-                new CodeMethodReturnStatement(
+        private void AddEnumGet(EnumPropertyInfo info, CodeMemberProperty property)
+        {
+            CodeExpression returnExpression;
+            if (info.IsMultSelect)
+            {
+                MultiSelectEnumCreated = true;
+                // return EntityOptionSetEnum.GetMultiEnum<info.OptionSetType>(this, info.LogicalName);
+                returnExpression =
+                    new CodeMethodInvokeExpression(
+                        new CodeMethodReferenceExpression(
+                            CreateBaseClasses
+                                ? new CodeTypeReferenceExpression(EntityBaseClassGenerator.BaseEntityName)
+                                : new CodeTypeReferenceExpression("EntityOptionSetEnum"),
+                            "GetMultiEnum",
+                            new CodeTypeReference(info.OptionSetType)),
+                        new CodeThisReferenceExpression(),
+                        new CodePrimitiveExpression(info.LogicalName));
+            }
+            else
+            {
+                returnExpression =
                     new CodeCastExpression(
-                        info.NullableEnumTypeName,
+                        info.EnumType,
                         new CodeMethodInvokeExpression(
-                            CreateBaseClasses ? new CodeTypeReferenceExpression(EntityBaseClassGenerator.BaseEntityName) : new CodeTypeReferenceExpression("EntityOptionSetEnum"),
+                            CreateBaseClasses
+                                ? new CodeTypeReferenceExpression(EntityBaseClassGenerator.BaseEntityName)
+                                : new CodeTypeReferenceExpression("EntityOptionSetEnum"),
                             "GetEnum",
                             new CodeThisReferenceExpression(),
-                            new CodePrimitiveExpression(info.LogicalName)))));
+                            new CodePrimitiveExpression(info.LogicalName)));
+            }
 
+            property.GetStatements.Add(new CodeMethodReturnStatement(returnExpression));
+        }
+
+        private void AddEnumSet(CodeMemberProperty prop, EnumPropertyInfo info, CodeMemberProperty property)
+        {
             if (prop.HasSet)
             {
-                var setSnippet = IsNullableIntPropery(prop) ? "(int?)value" : "value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null";
+                CodeExpression setExpression;
+                if (info.IsMultSelect)
+                {
+                    //EntityOptionSetEnum.GetMultiEnum(this, info.LogicalName, value)
+                    setExpression =
+                        new CodeMethodInvokeExpression(
+                            CreateBaseClasses
+                                ? new CodeTypeReferenceExpression(EntityBaseClassGenerator.BaseEntityName)
+                                : new CodeTypeReferenceExpression("EntityOptionSetEnum"),
+                            "GetMultiEnum",
+                            new CodeThisReferenceExpression(),
+                            new CodePrimitiveExpression(info.LogicalName),
+                            new CodePropertySetValueReferenceExpression());
+                }
+                else
+                {
+                    setExpression = new CodeSnippetExpression(
+                        IsNullableIntPropery(prop)
+                            ? "(int?)value"
+                            : "value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null");
+                }
 
                 property.SetStatements.Add(
                     new CodeAssignStatement(
                         new CodeVariableReferenceExpression(prop.Name),
-                        new CodeSnippetExpression(setSnippet)));
+                        setExpression));
             }
-            return property;
         }
 
         private EnumPropertyInfo GetOptionSetEnumInfo(CodeMemberProperty prop, string entityLogicalName)
         {
-            var data = CodeWriterFilterService.EntityMetadata[entityLogicalName];
-            var propertyLogicalName = (from CodeAttributeDeclaration att in prop.CustomAttributes
-                                       where att.AttributeType.BaseType == "Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute"
-                                       select ((CodePrimitiveExpression) att.Arguments[0].Value).Value.ToString()).FirstOrDefault();
-
+            var propertyLogicalName = prop.GetLogicalName();
             if (propertyLogicalName == null) { throw new Exception("Unable to determine property Logical Name"); }
 
+            var data = CodeWriterFilterService.EntityMetadata[entityLogicalName];
             var attribute = data.Attributes.FirstOrDefault(a => a.LogicalName == propertyLogicalName);
             var picklist = attribute as EnumAttributeMetadata;
-            string specifiedEnum;
             if (picklist == null) { return null; }
 
             var enumName = NamingService.GetNameForOptionSet(data, picklist.OptionSet, Services);
-            if (SpecifiedMappings.TryGetValue(entityLogicalName.ToLower() + "." + prop.Name.ToLower(), out specifiedEnum))
+            if (SpecifiedMappings.TryGetValue(entityLogicalName.ToLower() + "." + prop.Name.ToLower(), out var specifiedEnum))
             {
                 enumName = specifiedEnum;
             }
@@ -194,13 +237,14 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
 
             return new EnumPropertyInfo
             {
-                EnumTypeName = enumName,
+                OptionSetType = enumName,
+                IsMultSelect = picklist is MultiSelectPicklistAttributeMetadata,
                 PropertyName = prop.Name + "Enum",
                 LogicalName = propertyLogicalName
             };
         }
 
-        private static CodeTypeDeclaration GetEntityOptionSetEnumDeclaration()
+        private CodeTypeDeclaration GetEntityOptionSetEnumDeclaration()
         {
             var enumClass = new CodeTypeDeclaration("EntityOptionSetEnum")
             {
@@ -208,12 +252,27 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                 TypeAttributes = TypeAttributes.Sealed | TypeAttributes.NotPublic,
             };
 
-            enumClass.Members.Add(CreateGetEnumMethod());
+            enumClass.Members.AddRange(CreateGetEnumMethods(MultiSelectEnumCreated));
 
             return enumClass;
         }
 
-        public static CodeMemberMethod CreateGetEnumMethod()
+        public static CodeTypeMember[] CreateGetEnumMethods(bool multiSelectCreated)
+        {
+            var members = new List<CodeTypeMember>
+            {
+                CreateGetEnumMethod()
+            };
+            if (multiSelectCreated)
+            {
+                members.Add(CreateGetMultiEnum());
+                members.Add(CreateGetMultiEnumSet());
+            }
+
+            return members.ToArray();
+        }
+
+        private static CodeMemberMethod CreateGetEnumMethod()
         {
             // public static int? GetEnum(Microsoft.Xrm.Sdk.Entity entity, string attributeLogicalName)
             var get = new CodeMemberMethod
@@ -262,6 +321,102 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
 
             // return null;
             get.Statements.Add(new CodeMethodReturnStatement(new CodePrimitiveExpression(null)));
+            return get;
+        }
+
+        private static CodeMemberMethod CreateGetMultiEnum()
+        {
+            var returnType = new CodeTypeReference(typeof(IEnumerable<>));
+            returnType.TypeArguments.Add(new CodeTypeReference("T"));
+            // public static IEnumerable<T> GetMultiEnum<T>(Entity entity, string attributeLogicalName)
+            var get = new CodeMemberMethod
+            {
+                Name = "GetMultiEnum",
+                ReturnType = returnType,
+                // ReSharper disable once BitwiseOperatorOnEnumWithoutFlags
+                Attributes = System.CodeDom.MemberAttributes.Static | System.CodeDom.MemberAttributes.Public,
+            };
+            get.TypeParameters.Add(new CodeTypeParameter("T"));
+            get.Parameters.Add(new CodeParameterDeclarationExpression(typeof(Microsoft.Xrm.Sdk.Entity), "entity"));
+            get.Parameters.Add(new CodeParameterDeclarationExpression(typeof(string), "attributeLogicalName"));
+
+            // OptionSetValueCollection value = entity.GetAttributeValue<OptionSetValueCollection>(attributeLogicalName)
+            get.Statements.Add(new CodeVariableDeclarationStatement(
+                typeof(OptionSetValueCollection),
+                "value",
+                new CodeMethodInvokeExpression(
+                    new CodeMethodReferenceExpression(
+                        new CodeArgumentReferenceExpression("entity"),
+                        "GetAttributeValue",
+                        new CodeTypeReference(typeof(OptionSetValueCollection))),
+                    new CodeArgumentReferenceExpression("attributeLogicalName")
+                )));
+
+            // var list = new System.Collections.Generic.List<T>();
+            var listType = new CodeTypeReference(typeof(List<>));
+            listType.TypeArguments.Add(new CodeTypeReference("T"));
+            get.Statements.Add(new CodeVariableDeclarationStatement(
+                listType,
+                "list",
+                new CodeObjectCreateExpression(listType)
+                ));
+
+            //list.AddRange(value.Select(v => (T)(object)v.Value));
+            get.Statements.Add(new CodeMethodInvokeExpression(
+                new CodeArgumentReferenceExpression("list"),
+                "AddRange",
+                new CodeMethodInvokeExpression(
+                    new CodeArgumentReferenceExpression("value"), 
+                    "Select", 
+                    new CodeSnippetExpression("v => (T)(object)v.Value")
+                )));
+
+            //return list;
+            get.Statements.Add(new CodeMethodReturnStatement(new CodeArgumentReferenceExpression("list")));
+
+            return get;
+        }
+
+        private static CodeMemberMethod CreateGetMultiEnumSet()
+        {
+            var optionSetValueCollection = typeof(OptionSetValueCollection);
+
+            // public static Microsoft.Xrm.Sdk.OptionSetValueCollection GetMultiEnum<T>(Microsoft.Xrm.Sdk.Entity entity, string attributeLogicalName, System.Collections.Generic.IEnumerable<T> values)
+            var get = new CodeMemberMethod
+            {
+                Name = "GetMultiEnum",
+                ReturnType = new CodeTypeReference(optionSetValueCollection),
+                // ReSharper disable once BitwiseOperatorOnEnumWithoutFlags
+                Attributes = System.CodeDom.MemberAttributes.Static | System.CodeDom.MemberAttributes.Public,
+            };
+            get.TypeParameters.Add(new CodeTypeParameter("T"));
+            get.Parameters.Add(new CodeParameterDeclarationExpression(typeof(Microsoft.Xrm.Sdk.Entity), "entity"));
+            get.Parameters.Add(new CodeParameterDeclarationExpression(typeof(string), "attributeLogicalName"));
+
+            var valuesType = new CodeTypeReference(typeof(IEnumerable<>));
+            valuesType.TypeArguments.Add(new CodeTypeReference("T"));
+            get.Parameters.Add(new CodeParameterDeclarationExpression(valuesType, "values"));
+
+            //Microsoft.Xrm.Sdk.OptionSetValueCollection collection = new Microsoft.Xrm.Sdk.OptionSetValueCollection();
+            get.Statements.Add(new CodeVariableDeclarationStatement(
+                optionSetValueCollection,
+                "collection",
+                new CodeObjectCreateExpression(optionSetValueCollection)
+            ));
+
+            //collection.AddRange(values.Select(v => new Microsoft.Xrm.Sdk.OptionSetValue((int)(object)v)));
+            get.Statements.Add(new CodeMethodInvokeExpression(
+                new CodeArgumentReferenceExpression("collection"),
+                "AddRange",
+                new CodeMethodInvokeExpression(
+                    new CodeArgumentReferenceExpression("values"), 
+                    "Select", 
+                    new CodeSnippetExpression("v => new Microsoft.Xrm.Sdk.OptionSetValue((int)(object)v)")
+                )));
+
+            //return collection;
+            get.Statements.Add(new CodeMethodReturnStatement(new CodeArgumentReferenceExpression("collection")));
+
             return get;
         }
     }

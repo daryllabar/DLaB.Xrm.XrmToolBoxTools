@@ -68,11 +68,11 @@ namespace DLaB.CrmSvcUtilExtensions
             return GetTypeForResponseFieldInternal(response, responseField, services);
         }
 
-        public void Write(IOrganizationMetadata organizationMetadata, string language, string outputFile, string targetNamespace, IServiceProvider services)
+        public void Write(IOrganizationMetadata organizationMetadata, string language, string outputFile, string outputNamespace, IServiceProvider services)
         {
             try
             {
-                WriteInternal(organizationMetadata, language, Path.GetFullPath(outputFile), targetNamespace, services);
+                WriteInternal(organizationMetadata, language, Path.GetFullPath(outputFile), outputNamespace, services);
             }
             catch (Exception ex)
             {
