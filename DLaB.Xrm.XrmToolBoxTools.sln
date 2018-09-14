@@ -25,6 +25,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{4209BA61-6ECE-4CD2-9E4E-56701E72C88C}"
 	ProjectSection(SolutionItems) = preProject
 		DLaB.AttributeManager\AttributeManager.nuspec = DLaB.AttributeManager\AttributeManager.nuspec
+		DLaB.EarlyBoundGenerator.Api\EarlyBoundGenerator.Api.nuspec = DLaB.EarlyBoundGenerator.Api\EarlyBoundGenerator.Api.nuspec
 		DLaB.EarlyBoundGenerator\EarlyBoundGenerator.nuspec = DLaB.EarlyBoundGenerator\EarlyBoundGenerator.nuspec
 	EndProjectSection
 EndProject
