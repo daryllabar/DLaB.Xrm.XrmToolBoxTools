@@ -118,7 +118,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         {
             public string OptionSetType { get; set; }
             public string EnumType => IsMultSelect
-                ? "System.Collections.IEnumerable<" + OptionSetType + ">"
+                ? "System.Collections.Generic.IEnumerable<" + OptionSetType + ">"
                 : OptionSetType + "?";   
             public string PropertyName { get; set; }
             public string LogicalName { get; set; }
