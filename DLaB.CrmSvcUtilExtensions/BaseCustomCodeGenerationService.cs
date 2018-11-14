@@ -190,7 +190,10 @@ namespace DLaB.CrmSvcUtilExtensions
         protected IEnumerable<string> GetFileTextWithUpdatedClassComment(string filePath, string commandLineText, bool removeRuntimeVersionComment)
         {
             var skipLine = removeRuntimeVersionComment ? 3 : -1;
-            return GetNewLines(File.ReadAllLines(filePath), 8, "// Created via this command line: " + commandLineText, skipLine);
+            commandLineText = string.IsNullOrWhiteSpace(commandLineText)
+                ? ""
+                : "// Created via this command line: " + commandLineText;
+            return GetNewLines(File.ReadAllLines(filePath), 8, commandLineText, skipLine);
         }
 
         private IEnumerable<string> GetNewLines(string[] lines, int insertAtLine, string text, int skipLine)
