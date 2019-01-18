@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DLaB.EarlyBoundGenerator.Settings;
 using DLaB.XrmToolboxCommon;
+using DLaB.XrmToolBoxCommon.Forms;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Client;
 using Microsoft.Xrm.Sdk.Metadata;
@@ -24,6 +25,7 @@ namespace DLaB.EarlyBoundGenerator
         public ConnectionSettings ConnectionSettings { get; set; }
         private bool SkipSaveSettings { get; set; }
         private bool FormLoaded { get; set; }
+        private SettingsMap SettingsMap { get; set; }
 
         #region XrmToolBox Menu Interfaces
 
@@ -72,6 +74,8 @@ namespace DLaB.EarlyBoundGenerator
             {
                 Settings = EarlyBoundGeneratorConfig.Load(settingsPath);
                 Settings.CrmSvcUtilRealtiveRootPath = Paths.PluginsPath;
+                SettingsMap = new SettingsMap(this, Settings);
+                PropertiesGrid.SelectedObject = SettingsMap;
                 SkipSaveSettings = false;
             }
             catch (Exception ex)
@@ -129,6 +133,7 @@ namespace DLaB.EarlyBoundGenerator
 
         private void SaveSettings()
         {
+            SettingsMap.PushChanges();
             Settings.Save(ConnectionSettings.SettingsPath);
         }
 
@@ -471,20 +476,20 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnActionsToSkip_Click(object sender, EventArgs e)
         {
-            var dialog = new SpecifyActionsDialog(this) { SpecifiedActions = Settings.ExtensionConfig.ActionsToSkip };
-            if (dialog.ShowDialog() != DialogResult.OK) return;
-            Settings.ExtensionConfig.ActionsToSkip = dialog.SpecifiedActions;
-            SaveSettings();
+            //var dialog = new SpecifyActionsDialog(this) { SpecifiedActions = Settings.ExtensionConfig.ActionsToSkip };
+            //if (dialog.ShowDialog() != DialogResult.OK) return;
+            //Settings.ExtensionConfig.ActionsToSkip = dialog.SpecifiedActions;
+            //SaveSettings();
         }
 
         private void BtnEntitesToSkip_Click(object sender, EventArgs e)
         {
-            var dialog = new SpecifyEntitiesDialog(this) { SpecifiedEntities = Settings.ExtensionConfig.EntitiesToSkip };
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                Settings.ExtensionConfig.EntitiesToSkip = dialog.SpecifiedEntities;
-                SaveSettings();
-            }
+            //var dialog = new SpecifyEntitiesDialog(this) { SpecifiedEntities = Settings.ExtensionConfig.EntitiesToSkip };
+            //if (dialog.ShowDialog() == DialogResult.OK)
+            //{
+            //    Settings.ExtensionConfig.EntitiesToSkip = dialog.SpecifiedEntities;
+            //    SaveSettings();
+            //}
         }
 
         private void BtnOptionSetsToSkip_Click(object sender, EventArgs e)
@@ -621,11 +626,11 @@ namespace DLaB.EarlyBoundGenerator
                 {
                     MessageBox.Show(@"Your version of CRM doesn't support Actions!");
                 }
-                tabControl1.TabPages.Remove(actionsTab);
+                tabControl1.TabPages.Remove(ActionTab);
             }
-            else if(!tabControl1.TabPages.Contains(actionsTab))
+            else if(!tabControl1.TabPages.Contains(ActionTab))
             {
-                tabControl1.TabPages.Add(actionsTab);
+                tabControl1.TabPages.Add(ActionTab);
             }
         }
 

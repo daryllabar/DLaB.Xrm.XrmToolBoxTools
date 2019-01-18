@@ -36,8 +36,6 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnCreateEntities = new System.Windows.Forms.Button();
             this.TxtOutput = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.BtnOpenSettingsPathDialog = new System.Windows.Forms.Button();
-            this.TxtSettingsPath = new System.Windows.Forms.TextBox();
             this.ChkAudibleCompletion = new System.Windows.Forms.CheckBox();
             this.ChkAddFilesToProject = new System.Windows.Forms.CheckBox();
             this.ChkRemoveRuntimeComment = new System.Windows.Forms.CheckBox();
@@ -47,6 +45,8 @@ namespace DLaB.EarlyBoundGenerator
             this.ChkUseTFS = new System.Windows.Forms.CheckBox();
             this.ChkMaskPassword = new System.Windows.Forms.CheckBox();
             this.ChkIncludeCommandLine = new System.Windows.Forms.CheckBox();
+            this.BtnOpenSettingsPathDialog = new System.Windows.Forms.Button();
+            this.TxtSettingsPath = new System.Windows.Forms.TextBox();
             this.ChkUseXrmClient = new System.Windows.Forms.CheckBox();
             this.BtnEntitesToSkip = new System.Windows.Forms.Button();
             this.ChkCreateOneEntityFile = new System.Windows.Forms.CheckBox();
@@ -68,7 +68,8 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnOpenActionPathDialog = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.GlobalTab = new System.Windows.Forms.TabPage();
+            this.EntityTab = new System.Windows.Forms.TabPage();
             this.ChkGenerateEntityRelationships = new System.Windows.Forms.CheckBox();
             this.ChkMakeReadonlyFieldsEditable = new System.Windows.Forms.CheckBox();
             this.ChkGenerateAttributeNameConsts = new System.Windows.Forms.CheckBox();
@@ -76,7 +77,7 @@ namespace DLaB.EarlyBoundGenerator
             this.LblEntitiesDirectory = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ChkAddDebuggerNonUserCode = new System.Windows.Forms.CheckBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.OptionSetTab = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
             this.TxtLanguageCodeOverride = new System.Windows.Forms.TextBox();
             this.LblOptionSetFormat = new System.Windows.Forms.Label();
@@ -87,7 +88,7 @@ namespace DLaB.EarlyBoundGenerator
             this.LblOptionSetPath = new System.Windows.Forms.Label();
             this.ChkCreateOneOptionSetFile = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.actionsTab = new System.Windows.Forms.TabPage();
+            this.ActionTab = new System.Windows.Forms.TabPage();
             this.ChkGenerateActionAttributeNameConsts = new System.Windows.Forms.CheckBox();
             this.ChkEditableResponseActions = new System.Windows.Forms.CheckBox();
             this.LblActionsDirectory = new System.Windows.Forms.Label();
@@ -96,21 +97,28 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnCreateActions = new System.Windows.Forms.Button();
             this.TxtActionPath = new System.Windows.Forms.TextBox();
             this.LblActionPath = new System.Windows.Forms.Label();
+            this.PropertiesGrid = new System.Windows.Forms.PropertyGrid();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.GlobalTab.SuspendLayout();
+            this.EntityTab.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.OptionSetTab.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.actionsTab.SuspendLayout();
+            this.ActionTab.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(222, 18);
+            label4.Location = new System.Drawing.Point(3, 8);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(73, 13);
             label4.TabIndex = 14;
@@ -119,7 +127,7 @@ namespace DLaB.EarlyBoundGenerator
             // BtnCreateOptionSets
             // 
             this.BtnCreateOptionSets.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnCreateOptionSets.Location = new System.Drawing.Point(327, 0);
+            this.BtnCreateOptionSets.Location = new System.Drawing.Point(152, 0);
             this.BtnCreateOptionSets.Margin = new System.Windows.Forms.Padding(0);
             this.BtnCreateOptionSets.Name = "BtnCreateOptionSets";
             this.BtnCreateOptionSets.Size = new System.Drawing.Size(204, 23);
@@ -127,7 +135,6 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnCreateOptionSets.Text = "Create OptionSets";
             this.BtnCreateOptionSets.UseVisualStyleBackColor = true;
             this.BtnCreateOptionSets.Click += new System.EventHandler(this.BtnCreateOptionSets_Click);
-            this.BtnCreateOptionSets.MouseEnter += new System.EventHandler(this.BtnCreateOptionSets_MouseEnter);
             // 
             // BtnCreateAll
             // 
@@ -139,12 +146,11 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnCreateAll.Text = "Create All";
             this.BtnCreateAll.UseVisualStyleBackColor = true;
             this.BtnCreateAll.Click += new System.EventHandler(this.BtnCreateBoth_Click);
-            this.BtnCreateAll.MouseEnter += new System.EventHandler(this.BtnCreateAll_MouseEnter);
             // 
             // BtnCreateEntities
             // 
             this.BtnCreateEntities.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnCreateEntities.Location = new System.Drawing.Point(327, 0);
+            this.BtnCreateEntities.Location = new System.Drawing.Point(215, 0);
             this.BtnCreateEntities.Margin = new System.Windows.Forms.Padding(0);
             this.BtnCreateEntities.Name = "BtnCreateEntities";
             this.BtnCreateEntities.Size = new System.Drawing.Size(204, 23);
@@ -152,28 +158,22 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnCreateEntities.Text = "Create Entities";
             this.BtnCreateEntities.UseVisualStyleBackColor = true;
             this.BtnCreateEntities.Click += new System.EventHandler(this.BtnCreateEntities_Click);
-            this.BtnCreateEntities.MouseEnter += new System.EventHandler(this.BtnCreateEntities_MouseEnter);
             // 
             // TxtOutput
             // 
             this.TxtOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtOutput.Location = new System.Drawing.Point(0, 391);
+            this.TxtOutput.Location = new System.Drawing.Point(2, 354);
             this.TxtOutput.Multiline = true;
             this.TxtOutput.Name = "TxtOutput";
             this.TxtOutput.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.TxtOutput.Size = new System.Drawing.Size(890, 153);
+            this.TxtOutput.Size = new System.Drawing.Size(392, 178);
             this.TxtOutput.TabIndex = 1;
             this.TxtOutput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtOutput_KeyDown);
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.BtnOpenSettingsPathDialog);
-            this.groupBox1.Controls.Add(label4);
-            this.groupBox1.Controls.Add(this.TxtSettingsPath);
             this.groupBox1.Controls.Add(this.ChkAudibleCompletion);
             this.groupBox1.Controls.Add(this.ChkAddFilesToProject);
             this.groupBox1.Controls.Add(this.ChkRemoveRuntimeComment);
@@ -184,37 +184,12 @@ namespace DLaB.EarlyBoundGenerator
             this.groupBox1.Controls.Add(this.ChkUseTFS);
             this.groupBox1.Controls.Add(this.ChkMaskPassword);
             this.groupBox1.Controls.Add(this.ChkIncludeCommandLine);
-            this.groupBox1.Location = new System.Drawing.Point(3, 4);
+            this.groupBox1.Location = new System.Drawing.Point(10, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(884, 181);
+            this.groupBox1.Size = new System.Drawing.Size(481, 181);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Settings";
-            // 
-            // BtnOpenSettingsPathDialog
-            // 
-            this.BtnOpenSettingsPathDialog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.helpProvider1.SetHelpString(this.BtnOpenSettingsPathDialog, "Overrides Capitalization of Entity Attributes");
-            this.BtnOpenSettingsPathDialog.Location = new System.Drawing.Point(851, 13);
-            this.BtnOpenSettingsPathDialog.Name = "BtnOpenSettingsPathDialog";
-            this.helpProvider1.SetShowHelp(this.BtnOpenSettingsPathDialog, true);
-            this.BtnOpenSettingsPathDialog.Size = new System.Drawing.Size(27, 23);
-            this.BtnOpenSettingsPathDialog.TabIndex = 15;
-            this.BtnOpenSettingsPathDialog.Text = "...";
-            this.BtnOpenSettingsPathDialog.UseVisualStyleBackColor = true;
-            this.BtnOpenSettingsPathDialog.Click += new System.EventHandler(this.BtnOpenSettingsPathDialog_Click);
-            this.BtnOpenSettingsPathDialog.MouseEnter += new System.EventHandler(this.ShowSettingsPathText);
-            // 
-            // TxtSettingsPath
-            // 
-            this.TxtSettingsPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtSettingsPath.Location = new System.Drawing.Point(301, 15);
-            this.TxtSettingsPath.Name = "TxtSettingsPath";
-            this.TxtSettingsPath.Size = new System.Drawing.Size(544, 20);
-            this.TxtSettingsPath.TabIndex = 13;
-            this.TxtSettingsPath.TextChanged += new System.EventHandler(this.TxtSettingsPath_TextChanged);
-            this.TxtSettingsPath.MouseEnter += new System.EventHandler(this.ShowSettingsPathText);
             // 
             // ChkAudibleCompletion
             // 
@@ -225,7 +200,6 @@ namespace DLaB.EarlyBoundGenerator
             this.ChkAudibleCompletion.TabIndex = 12;
             this.ChkAudibleCompletion.Text = "Use Audible Completion Notification";
             this.ChkAudibleCompletion.UseVisualStyleBackColor = true;
-            this.ChkAudibleCompletion.MouseEnter += new System.EventHandler(this.ChkAudibleCompletion_MouseEnter);
             // 
             // ChkAddFilesToProject
             // 
@@ -236,7 +210,6 @@ namespace DLaB.EarlyBoundGenerator
             this.ChkAddFilesToProject.TabIndex = 11;
             this.ChkAddFilesToProject.Text = "Add New Files To Project";
             this.ChkAddFilesToProject.UseVisualStyleBackColor = true;
-            this.ChkAddFilesToProject.MouseEnter += new System.EventHandler(this.ChkAddFilesToProject_MouseEnter);
             // 
             // ChkRemoveRuntimeComment
             // 
@@ -247,7 +220,6 @@ namespace DLaB.EarlyBoundGenerator
             this.ChkRemoveRuntimeComment.TabIndex = 10;
             this.ChkRemoveRuntimeComment.Text = "Remove Runtime Header Comment";
             this.ChkRemoveRuntimeComment.UseVisualStyleBackColor = true;
-            this.ChkRemoveRuntimeComment.MouseEnter += new System.EventHandler(this.ChkRemoveRuntimeComment_MouseEnter);
             // 
             // label1
             // 
@@ -264,7 +236,7 @@ namespace DLaB.EarlyBoundGenerator
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtNamespace.Location = new System.Drawing.Point(301, 41);
             this.TxtNamespace.Name = "TxtNamespace";
-            this.TxtNamespace.Size = new System.Drawing.Size(577, 20);
+            this.TxtNamespace.Size = new System.Drawing.Size(174, 20);
             this.TxtNamespace.TabIndex = 8;
             // 
             // TxtHelp
@@ -276,7 +248,7 @@ namespace DLaB.EarlyBoundGenerator
             this.TxtHelp.Location = new System.Drawing.Point(231, 67);
             this.TxtHelp.Multiline = true;
             this.TxtHelp.Name = "TxtHelp";
-            this.TxtHelp.Size = new System.Drawing.Size(647, 109);
+            this.TxtHelp.Size = new System.Drawing.Size(244, 109);
             this.TxtHelp.TabIndex = 7;
             // 
             // ChkUseTFS
@@ -288,7 +260,6 @@ namespace DLaB.EarlyBoundGenerator
             this.ChkUseTFS.TabIndex = 2;
             this.ChkUseTFS.Text = "Use TFS to Check Out Files";
             this.ChkUseTFS.UseVisualStyleBackColor = true;
-            this.ChkUseTFS.MouseEnter += new System.EventHandler(this.ChkUseTFS_MouseEnter);
             // 
             // ChkMaskPassword
             // 
@@ -299,7 +270,6 @@ namespace DLaB.EarlyBoundGenerator
             this.ChkMaskPassword.TabIndex = 1;
             this.ChkMaskPassword.Text = "Mask Password";
             this.ChkMaskPassword.UseVisualStyleBackColor = true;
-            this.ChkMaskPassword.MouseEnter += new System.EventHandler(this.ChkMaskPassword_MouseEnter);
             // 
             // ChkIncludeCommandLine
             // 
@@ -311,23 +281,44 @@ namespace DLaB.EarlyBoundGenerator
             this.ChkIncludeCommandLine.Text = "Include Command Line In Output";
             this.ChkIncludeCommandLine.UseVisualStyleBackColor = true;
             this.ChkIncludeCommandLine.CheckedChanged += new System.EventHandler(this.ChkIncludeCommandLine_CheckedChanged);
-            this.ChkIncludeCommandLine.MouseEnter += new System.EventHandler(this.ChkIncludeCommandLine_MouseEnter);
+            // 
+            // BtnOpenSettingsPathDialog
+            // 
+            this.BtnOpenSettingsPathDialog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.helpProvider1.SetHelpString(this.BtnOpenSettingsPathDialog, "Overrides Capitalization of Entity Attributes");
+            this.BtnOpenSettingsPathDialog.Location = new System.Drawing.Point(459, 3);
+            this.BtnOpenSettingsPathDialog.Name = "BtnOpenSettingsPathDialog";
+            this.helpProvider1.SetShowHelp(this.BtnOpenSettingsPathDialog, true);
+            this.BtnOpenSettingsPathDialog.Size = new System.Drawing.Size(27, 23);
+            this.BtnOpenSettingsPathDialog.TabIndex = 15;
+            this.BtnOpenSettingsPathDialog.Text = "...";
+            this.BtnOpenSettingsPathDialog.UseVisualStyleBackColor = true;
+            this.BtnOpenSettingsPathDialog.Click += new System.EventHandler(this.BtnOpenSettingsPathDialog_Click);
+            // 
+            // TxtSettingsPath
+            // 
+            this.TxtSettingsPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtSettingsPath.Location = new System.Drawing.Point(82, 5);
+            this.TxtSettingsPath.Name = "TxtSettingsPath";
+            this.TxtSettingsPath.Size = new System.Drawing.Size(371, 20);
+            this.TxtSettingsPath.TabIndex = 13;
+            this.TxtSettingsPath.TextChanged += new System.EventHandler(this.TxtSettingsPath_TextChanged);
             // 
             // ChkUseXrmClient
             // 
             this.ChkUseXrmClient.AutoSize = true;
-            this.ChkUseXrmClient.Location = new System.Drawing.Point(483, 97);
+            this.ChkUseXrmClient.Location = new System.Drawing.Point(164, 102);
             this.ChkUseXrmClient.Name = "ChkUseXrmClient";
             this.ChkUseXrmClient.Size = new System.Drawing.Size(95, 17);
             this.ChkUseXrmClient.TabIndex = 23;
             this.ChkUseXrmClient.Text = "Use Xrm Client";
             this.ChkUseXrmClient.UseVisualStyleBackColor = true;
-            this.ChkUseXrmClient.MouseEnter += new System.EventHandler(this.ChkUseXrmClient_MouseEnter);
             // 
             // BtnEntitesToSkip
             // 
             this.helpProvider1.SetHelpString(this.BtnEntitesToSkip, "Overrides Capitalization of Entity Attributes");
-            this.BtnEntitesToSkip.Location = new System.Drawing.Point(6, 35);
+            this.BtnEntitesToSkip.Location = new System.Drawing.Point(58, 167);
             this.BtnEntitesToSkip.Name = "BtnEntitesToSkip";
             this.helpProvider1.SetShowHelp(this.BtnEntitesToSkip, true);
             this.BtnEntitesToSkip.Size = new System.Drawing.Size(152, 23);
@@ -335,37 +326,34 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnEntitesToSkip.Text = "Entities To Skip";
             this.BtnEntitesToSkip.UseVisualStyleBackColor = true;
             this.BtnEntitesToSkip.Click += new System.EventHandler(this.BtnEntitesToSkip_Click);
-            this.BtnEntitesToSkip.MouseEnter += new System.EventHandler(this.BtnEntitesToSkip_MouseEnter);
             // 
             // ChkCreateOneEntityFile
             // 
             this.ChkCreateOneEntityFile.AutoSize = true;
-            this.ChkCreateOneEntityFile.Location = new System.Drawing.Point(164, 29);
+            this.ChkCreateOneEntityFile.Location = new System.Drawing.Point(216, 161);
             this.ChkCreateOneEntityFile.Name = "ChkCreateOneEntityFile";
             this.ChkCreateOneEntityFile.Size = new System.Drawing.Size(147, 17);
             this.ChkCreateOneEntityFile.TabIndex = 20;
             this.ChkCreateOneEntityFile.Text = "Create One File Per Entity";
             this.ChkCreateOneEntityFile.UseVisualStyleBackColor = true;
             this.ChkCreateOneEntityFile.CheckedChanged += new System.EventHandler(this.ChkCreateOneEntityFile_CheckedChanged);
-            this.ChkCreateOneEntityFile.MouseEnter += new System.EventHandler(this.ChkCreateOneEntityFile_MouseEnter);
             // 
             // ChkGenerateOptionSetEnums
             // 
             this.ChkGenerateOptionSetEnums.AutoSize = true;
-            this.ChkGenerateOptionSetEnums.Location = new System.Drawing.Point(164, 121);
+            this.ChkGenerateOptionSetEnums.Location = new System.Drawing.Point(216, 253);
             this.ChkGenerateOptionSetEnums.Name = "ChkGenerateOptionSetEnums";
             this.ChkGenerateOptionSetEnums.Size = new System.Drawing.Size(200, 17);
             this.ChkGenerateOptionSetEnums.TabIndex = 18;
             this.ChkGenerateOptionSetEnums.Text = "Generate OptionSet Enum Properties";
             this.ChkGenerateOptionSetEnums.UseVisualStyleBackColor = true;
             this.ChkGenerateOptionSetEnums.CheckedChanged += new System.EventHandler(this.ChkGenerateOptionSetEnums_CheckedChanged);
-            this.ChkGenerateOptionSetEnums.MouseEnter += new System.EventHandler(this.ChkGenerateOptionSetEnums_MouseEnter);
             // 
             // BtnOpenOptionSetPathDialog
             // 
             this.BtnOpenOptionSetPathDialog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.helpProvider1.SetHelpString(this.BtnOpenOptionSetPathDialog, "Overrides Capitalization of Entity Attributes");
-            this.BtnOpenOptionSetPathDialog.Location = new System.Drawing.Point(837, 6);
+            this.BtnOpenOptionSetPathDialog.Location = new System.Drawing.Point(527, 9);
             this.BtnOpenOptionSetPathDialog.Name = "BtnOpenOptionSetPathDialog";
             this.helpProvider1.SetShowHelp(this.BtnOpenOptionSetPathDialog, true);
             this.BtnOpenOptionSetPathDialog.Size = new System.Drawing.Size(27, 23);
@@ -373,12 +361,11 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnOpenOptionSetPathDialog.Text = "...";
             this.BtnOpenOptionSetPathDialog.UseVisualStyleBackColor = true;
             this.BtnOpenOptionSetPathDialog.Click += new System.EventHandler(this.BtnOpenOptionSetPathDialog_Click);
-            this.BtnOpenOptionSetPathDialog.MouseEnter += new System.EventHandler(this.ShowOptionSetPathText);
             // 
             // LblOptionSetsDirectory
             // 
             this.LblOptionSetsDirectory.AutoSize = true;
-            this.LblOptionSetsDirectory.Location = new System.Drawing.Point(379, 11);
+            this.LblOptionSetsDirectory.Location = new System.Drawing.Point(6, 14);
             this.LblOptionSetsDirectory.Name = "LblOptionSetsDirectory";
             this.LblOptionSetsDirectory.Size = new System.Drawing.Size(129, 13);
             this.LblOptionSetsDirectory.TabIndex = 16;
@@ -388,17 +375,16 @@ namespace DLaB.EarlyBoundGenerator
             // 
             this.TxtOptionSetPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtOptionSetPath.Location = new System.Drawing.Point(525, 8);
+            this.TxtOptionSetPath.Location = new System.Drawing.Point(152, 11);
             this.TxtOptionSetPath.Name = "TxtOptionSetPath";
-            this.TxtOptionSetPath.Size = new System.Drawing.Size(306, 20);
+            this.TxtOptionSetPath.Size = new System.Drawing.Size(369, 20);
             this.TxtOptionSetPath.TabIndex = 15;
-            this.TxtOptionSetPath.MouseEnter += new System.EventHandler(this.ShowOptionSetPathText);
             // 
             // BtnOpenEntityPathDialog
             // 
             this.BtnOpenEntityPathDialog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.helpProvider1.SetHelpString(this.BtnOpenEntityPathDialog, "Overrides Capitalization of Entity Attributes");
-            this.BtnOpenEntityPathDialog.Location = new System.Drawing.Point(837, 6);
+            this.BtnOpenEntityPathDialog.Location = new System.Drawing.Point(504, 11);
             this.BtnOpenEntityPathDialog.Name = "BtnOpenEntityPathDialog";
             this.helpProvider1.SetShowHelp(this.BtnOpenEntityPathDialog, true);
             this.BtnOpenEntityPathDialog.Size = new System.Drawing.Size(27, 23);
@@ -406,12 +392,11 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnOpenEntityPathDialog.Text = "...";
             this.BtnOpenEntityPathDialog.UseVisualStyleBackColor = true;
             this.BtnOpenEntityPathDialog.Click += new System.EventHandler(this.BtnOpenEntityPathDialog_Click);
-            this.BtnOpenEntityPathDialog.MouseEnter += new System.EventHandler(this.ShowEntityPathText);
             // 
             // LblEntityPath
             // 
             this.LblEntityPath.AutoSize = true;
-            this.LblEntityPath.Location = new System.Drawing.Point(374, 11);
+            this.LblEntityPath.Location = new System.Drawing.Point(55, 16);
             this.LblEntityPath.Name = "LblEntityPath";
             this.LblEntityPath.Size = new System.Drawing.Size(103, 13);
             this.LblEntityPath.TabIndex = 13;
@@ -421,16 +406,15 @@ namespace DLaB.EarlyBoundGenerator
             // 
             this.TxtEntityPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtEntityPath.Location = new System.Drawing.Point(483, 8);
+            this.TxtEntityPath.Location = new System.Drawing.Point(164, 13);
             this.TxtEntityPath.Name = "TxtEntityPath";
-            this.TxtEntityPath.Size = new System.Drawing.Size(348, 20);
+            this.TxtEntityPath.Size = new System.Drawing.Size(334, 20);
             this.TxtEntityPath.TabIndex = 12;
-            this.TxtEntityPath.MouseEnter += new System.EventHandler(this.ShowEntityPathText);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(361, 38);
+            this.label2.Location = new System.Drawing.Point(42, 43);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(116, 13);
             this.label2.TabIndex = 11;
@@ -440,16 +424,15 @@ namespace DLaB.EarlyBoundGenerator
             // 
             this.TxtServiceContextName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtServiceContextName.Location = new System.Drawing.Point(483, 35);
+            this.TxtServiceContextName.Location = new System.Drawing.Point(164, 40);
             this.TxtServiceContextName.Name = "TxtServiceContextName";
-            this.TxtServiceContextName.Size = new System.Drawing.Size(381, 20);
+            this.TxtServiceContextName.Size = new System.Drawing.Size(334, 20);
             this.TxtServiceContextName.TabIndex = 10;
-            this.TxtServiceContextName.MouseEnter += new System.EventHandler(this.TxtServiceContextName_MouseEnter);
             // 
             // BtnUnmappedProperties
             // 
             this.helpProvider1.SetHelpString(this.BtnUnmappedProperties, "Overrides Capitalization of Entity Attributes");
-            this.BtnUnmappedProperties.Location = new System.Drawing.Point(6, 93);
+            this.BtnUnmappedProperties.Location = new System.Drawing.Point(58, 225);
             this.BtnUnmappedProperties.Name = "BtnUnmappedProperties";
             this.helpProvider1.SetShowHelp(this.BtnUnmappedProperties, true);
             this.BtnUnmappedProperties.Size = new System.Drawing.Size(152, 23);
@@ -457,12 +440,11 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnUnmappedProperties.Text = "Unmapped Properties";
             this.BtnUnmappedProperties.UseVisualStyleBackColor = true;
             this.BtnUnmappedProperties.Click += new System.EventHandler(this.BtnUnmappedProperties_Click);
-            this.BtnUnmappedProperties.MouseEnter += new System.EventHandler(this.BtnUnmappedProperties_MouseEnter);
             // 
             // BtnEnumMappings
             // 
             this.helpProvider1.SetHelpString(this.BtnEnumMappings, "Overrides Capitalization of Entity Attributes");
-            this.BtnEnumMappings.Location = new System.Drawing.Point(6, 6);
+            this.BtnEnumMappings.Location = new System.Drawing.Point(58, 138);
             this.BtnEnumMappings.Name = "BtnEnumMappings";
             this.helpProvider1.SetShowHelp(this.BtnEnumMappings, true);
             this.BtnEnumMappings.Size = new System.Drawing.Size(152, 23);
@@ -470,12 +452,11 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnEnumMappings.Text = "Enum Mappings ";
             this.BtnEnumMappings.UseVisualStyleBackColor = true;
             this.BtnEnumMappings.Click += new System.EventHandler(this.BtnEnumMappings_Click);
-            this.BtnEnumMappings.MouseEnter += new System.EventHandler(this.BtnEnumMappings_MouseEnter);
             // 
             // BtnOptionSetsToSkip
             // 
             this.helpProvider1.SetHelpString(this.BtnOptionSetsToSkip, "Overrides Capitalization of Entity Attributes");
-            this.BtnOptionSetsToSkip.Location = new System.Drawing.Point(6, 6);
+            this.BtnOptionSetsToSkip.Location = new System.Drawing.Point(68, 106);
             this.BtnOptionSetsToSkip.Name = "BtnOptionSetsToSkip";
             this.helpProvider1.SetShowHelp(this.BtnOptionSetsToSkip, true);
             this.BtnOptionSetsToSkip.Size = new System.Drawing.Size(152, 23);
@@ -483,12 +464,11 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnOptionSetsToSkip.Text = "OptionSets To Skip";
             this.BtnOptionSetsToSkip.UseVisualStyleBackColor = true;
             this.BtnOptionSetsToSkip.Click += new System.EventHandler(this.BtnOptionSetsToSkip_Click);
-            this.BtnOptionSetsToSkip.MouseEnter += new System.EventHandler(this.BtnOptionSetsToSkip_MouseEnter);
             // 
             // BtnSpecifyAttributeNames
             // 
             this.helpProvider1.SetHelpString(this.BtnSpecifyAttributeNames, "Overrides Capitalization of Entity Attributes");
-            this.BtnSpecifyAttributeNames.Location = new System.Drawing.Point(6, 64);
+            this.BtnSpecifyAttributeNames.Location = new System.Drawing.Point(58, 196);
             this.BtnSpecifyAttributeNames.Name = "BtnSpecifyAttributeNames";
             this.helpProvider1.SetShowHelp(this.BtnSpecifyAttributeNames, true);
             this.BtnSpecifyAttributeNames.Size = new System.Drawing.Size(152, 23);
@@ -496,12 +476,11 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnSpecifyAttributeNames.Text = "Specify Attribute Names";
             this.BtnSpecifyAttributeNames.UseVisualStyleBackColor = true;
             this.BtnSpecifyAttributeNames.Click += new System.EventHandler(this.BtnSpecifyAttributeNames_Click);
-            this.BtnSpecifyAttributeNames.MouseEnter += new System.EventHandler(this.BtnSpecifyAttributeNames_MouseEnter);
             // 
             // BtnActionsToSkip
             // 
             this.helpProvider1.SetHelpString(this.BtnActionsToSkip, "Overrides Capitalization of Entity Attributes");
-            this.BtnActionsToSkip.Location = new System.Drawing.Point(6, 6);
+            this.BtnActionsToSkip.Location = new System.Drawing.Point(146, 53);
             this.BtnActionsToSkip.Name = "BtnActionsToSkip";
             this.helpProvider1.SetShowHelp(this.BtnActionsToSkip, true);
             this.BtnActionsToSkip.Size = new System.Drawing.Size(152, 23);
@@ -509,13 +488,12 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnActionsToSkip.Text = "Actions To Skip";
             this.BtnActionsToSkip.UseVisualStyleBackColor = true;
             this.BtnActionsToSkip.Click += new System.EventHandler(this.BtnActionsToSkip_Click);
-            this.BtnActionsToSkip.MouseEnter += new System.EventHandler(this.BtnActionsToSkip_MouseEnter);
             // 
             // BtnOpenActionPathDialog
             // 
             this.BtnOpenActionPathDialog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.helpProvider1.SetHelpString(this.BtnOpenActionPathDialog, "Overrides Capitalization of Entity Attributes");
-            this.BtnOpenActionPathDialog.Location = new System.Drawing.Point(837, 6);
+            this.BtnOpenActionPathDialog.Location = new System.Drawing.Point(531, 16);
             this.BtnOpenActionPathDialog.Name = "BtnOpenActionPathDialog";
             this.helpProvider1.SetShowHelp(this.BtnOpenActionPathDialog, true);
             this.BtnOpenActionPathDialog.Size = new System.Drawing.Size(27, 23);
@@ -523,7 +501,6 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnOpenActionPathDialog.Text = "...";
             this.BtnOpenActionPathDialog.UseVisualStyleBackColor = true;
             this.BtnOpenActionPathDialog.Click += new System.EventHandler(this.BtnOpenActionPathDialog_Click);
-            this.BtnOpenActionPathDialog.MouseEnter += new System.EventHandler(this.ShowActionPathText);
             // 
             // openFileDialog1
             // 
@@ -535,92 +512,100 @@ namespace DLaB.EarlyBoundGenerator
             // 
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.actionsTab);
-            this.tabControl1.Location = new System.Drawing.Point(3, 191);
+            this.tabControl1.Controls.Add(this.GlobalTab);
+            this.tabControl1.Controls.Add(this.EntityTab);
+            this.tabControl1.Controls.Add(this.OptionSetTab);
+            this.tabControl1.Controls.Add(this.ActionTab);
+            this.tabControl1.Location = new System.Drawing.Point(2, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(878, 194);
+            this.tabControl1.Size = new System.Drawing.Size(389, 352);
             this.tabControl1.TabIndex = 3;
             // 
-            // tabPage1
+            // GlobalTab
             // 
-            this.tabPage1.Controls.Add(this.ChkGenerateEntityRelationships);
-            this.tabPage1.Controls.Add(this.ChkMakeReadonlyFieldsEditable);
-            this.tabPage1.Controls.Add(this.ChkGenerateAttributeNameConsts);
-            this.tabPage1.Controls.Add(this.ChkGenerateAnonymousTypeConstructor);
-            this.tabPage1.Controls.Add(this.LblEntitiesDirectory);
-            this.tabPage1.Controls.Add(this.tableLayoutPanel1);
-            this.tabPage1.Controls.Add(this.BtnEntitesToSkip);
-            this.tabPage1.Controls.Add(this.ChkUseXrmClient);
-            this.tabPage1.Controls.Add(this.BtnOpenEntityPathDialog);
-            this.tabPage1.Controls.Add(this.BtnEnumMappings);
-            this.tabPage1.Controls.Add(this.BtnSpecifyAttributeNames);
-            this.tabPage1.Controls.Add(this.BtnUnmappedProperties);
-            this.tabPage1.Controls.Add(this.ChkGenerateOptionSetEnums);
-            this.tabPage1.Controls.Add(this.ChkAddDebuggerNonUserCode);
-            this.tabPage1.Controls.Add(this.TxtServiceContextName);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.ChkCreateOneEntityFile);
-            this.tabPage1.Controls.Add(this.TxtEntityPath);
-            this.tabPage1.Controls.Add(this.LblEntityPath);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(870, 168);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Entities";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.GlobalTab.Controls.Add(this.groupBox1);
+            this.GlobalTab.Location = new System.Drawing.Point(4, 22);
+            this.GlobalTab.Name = "GlobalTab";
+            this.GlobalTab.Padding = new System.Windows.Forms.Padding(3);
+            this.GlobalTab.Size = new System.Drawing.Size(381, 326);
+            this.GlobalTab.TabIndex = 3;
+            this.GlobalTab.Text = "Global";
+            this.GlobalTab.UseVisualStyleBackColor = true;
+            // 
+            // EntityTab
+            // 
+            this.EntityTab.Controls.Add(this.ChkGenerateEntityRelationships);
+            this.EntityTab.Controls.Add(this.ChkMakeReadonlyFieldsEditable);
+            this.EntityTab.Controls.Add(this.ChkGenerateAttributeNameConsts);
+            this.EntityTab.Controls.Add(this.ChkGenerateAnonymousTypeConstructor);
+            this.EntityTab.Controls.Add(this.LblEntitiesDirectory);
+            this.EntityTab.Controls.Add(this.tableLayoutPanel1);
+            this.EntityTab.Controls.Add(this.BtnEntitesToSkip);
+            this.EntityTab.Controls.Add(this.ChkUseXrmClient);
+            this.EntityTab.Controls.Add(this.BtnOpenEntityPathDialog);
+            this.EntityTab.Controls.Add(this.BtnEnumMappings);
+            this.EntityTab.Controls.Add(this.BtnSpecifyAttributeNames);
+            this.EntityTab.Controls.Add(this.BtnUnmappedProperties);
+            this.EntityTab.Controls.Add(this.ChkGenerateOptionSetEnums);
+            this.EntityTab.Controls.Add(this.ChkAddDebuggerNonUserCode);
+            this.EntityTab.Controls.Add(this.TxtServiceContextName);
+            this.EntityTab.Controls.Add(this.label2);
+            this.EntityTab.Controls.Add(this.ChkCreateOneEntityFile);
+            this.EntityTab.Controls.Add(this.TxtEntityPath);
+            this.EntityTab.Controls.Add(this.LblEntityPath);
+            this.EntityTab.Location = new System.Drawing.Point(4, 22);
+            this.EntityTab.Name = "EntityTab";
+            this.EntityTab.Padding = new System.Windows.Forms.Padding(3);
+            this.EntityTab.Size = new System.Drawing.Size(381, 326);
+            this.EntityTab.TabIndex = 0;
+            this.EntityTab.Text = "Entities";
+            this.EntityTab.UseVisualStyleBackColor = true;
             // 
             // ChkGenerateEntityRelationships
             // 
             this.ChkGenerateEntityRelationships.AutoSize = true;
-            this.ChkGenerateEntityRelationships.Location = new System.Drawing.Point(164, 98);
+            this.ChkGenerateEntityRelationships.Location = new System.Drawing.Point(216, 230);
             this.ChkGenerateEntityRelationships.Name = "ChkGenerateEntityRelationships";
             this.ChkGenerateEntityRelationships.Size = new System.Drawing.Size(165, 17);
             this.ChkGenerateEntityRelationships.TabIndex = 29;
             this.ChkGenerateEntityRelationships.Text = "Generate Entity Relationships";
             this.ChkGenerateEntityRelationships.UseVisualStyleBackColor = true;
-            this.ChkGenerateEntityRelationships.MouseEnter += new System.EventHandler(this.ChkGenerateEntityRelationships_MouseEnter);
             // 
             // ChkMakeReadonlyFieldsEditable
             // 
             this.ChkMakeReadonlyFieldsEditable.AutoSize = true;
-            this.ChkMakeReadonlyFieldsEditable.Location = new System.Drawing.Point(483, 70);
+            this.ChkMakeReadonlyFieldsEditable.Location = new System.Drawing.Point(164, 75);
             this.ChkMakeReadonlyFieldsEditable.Name = "ChkMakeReadonlyFieldsEditable";
             this.ChkMakeReadonlyFieldsEditable.Size = new System.Drawing.Size(172, 17);
             this.ChkMakeReadonlyFieldsEditable.TabIndex = 28;
             this.ChkMakeReadonlyFieldsEditable.Text = "Make Readonly Fields Editable";
             this.ChkMakeReadonlyFieldsEditable.UseVisualStyleBackColor = true;
-            this.ChkMakeReadonlyFieldsEditable.MouseEnter += new System.EventHandler(this.ChkMakeReadonlyFieldsEditable_MouseEnter);
             // 
             // ChkGenerateAttributeNameConsts
             // 
             this.ChkGenerateAttributeNameConsts.AutoSize = true;
-            this.ChkGenerateAttributeNameConsts.Location = new System.Drawing.Point(164, 52);
+            this.ChkGenerateAttributeNameConsts.Location = new System.Drawing.Point(216, 184);
             this.ChkGenerateAttributeNameConsts.Name = "ChkGenerateAttributeNameConsts";
             this.ChkGenerateAttributeNameConsts.Size = new System.Drawing.Size(178, 17);
             this.ChkGenerateAttributeNameConsts.TabIndex = 27;
             this.ChkGenerateAttributeNameConsts.Text = "Generate Attribute Name Consts";
             this.ChkGenerateAttributeNameConsts.UseVisualStyleBackColor = true;
-            this.ChkGenerateAttributeNameConsts.MouseEnter += new System.EventHandler(this.ChkGenerateAttributeNameConsts_MouseEnter);
             // 
             // ChkGenerateAnonymousTypeConstructor
             // 
             this.ChkGenerateAnonymousTypeConstructor.AutoSize = true;
-            this.ChkGenerateAnonymousTypeConstructor.Location = new System.Drawing.Point(164, 75);
+            this.ChkGenerateAnonymousTypeConstructor.Location = new System.Drawing.Point(216, 207);
             this.ChkGenerateAnonymousTypeConstructor.Name = "ChkGenerateAnonymousTypeConstructor";
             this.ChkGenerateAnonymousTypeConstructor.Size = new System.Drawing.Size(214, 17);
             this.ChkGenerateAnonymousTypeConstructor.TabIndex = 26;
             this.ChkGenerateAnonymousTypeConstructor.Text = "Generate AnonymousType Constructors";
             this.ChkGenerateAnonymousTypeConstructor.UseVisualStyleBackColor = true;
-            this.ChkGenerateAnonymousTypeConstructor.MouseEnter += new System.EventHandler(this.ChkGenerateAnonymousTypeConstructor_MouseEnter);
             // 
             // LblEntitiesDirectory
             // 
             this.LblEntitiesDirectory.AutoSize = true;
-            this.LblEntitiesDirectory.Location = new System.Drawing.Point(361, 11);
+            this.LblEntitiesDirectory.Location = new System.Drawing.Point(42, 16);
             this.LblEntitiesDirectory.Name = "LblEntitiesDirectory";
             this.LblEntitiesDirectory.Size = new System.Drawing.Size(111, 13);
             this.LblEntitiesDirectory.TabIndex = 25;
@@ -635,55 +620,54 @@ namespace DLaB.EarlyBoundGenerator
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 204F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.BtnCreateEntities, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 145);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 288);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(858, 23);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(634, 23);
             this.tableLayoutPanel1.TabIndex = 24;
             // 
             // ChkAddDebuggerNonUserCode
             // 
             this.ChkAddDebuggerNonUserCode.AutoSize = true;
-            this.ChkAddDebuggerNonUserCode.Location = new System.Drawing.Point(164, 6);
+            this.ChkAddDebuggerNonUserCode.Location = new System.Drawing.Point(216, 138);
             this.ChkAddDebuggerNonUserCode.Name = "ChkAddDebuggerNonUserCode";
             this.ChkAddDebuggerNonUserCode.Size = new System.Drawing.Size(156, 17);
             this.ChkAddDebuggerNonUserCode.TabIndex = 19;
             this.ChkAddDebuggerNonUserCode.Text = "Add Debug Non User Code";
             this.ChkAddDebuggerNonUserCode.UseVisualStyleBackColor = true;
-            this.ChkAddDebuggerNonUserCode.MouseEnter += new System.EventHandler(this.ChkAddDebuggerNonUserCode_MouseEnter);
             // 
-            // tabPage2
+            // OptionSetTab
             // 
-            this.tabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.TxtLanguageCodeOverride);
-            this.tabPage2.Controls.Add(this.LblOptionSetFormat);
-            this.tabPage2.Controls.Add(this.TxtOptionSetFormat);
-            this.tabPage2.Controls.Add(this.ChkUseDeprecatedOptionSetNaming);
-            this.tabPage2.Controls.Add(this.TxtInvalidCSharpNamePrefix);
-            this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.LblOptionSetsDirectory);
-            this.tabPage2.Controls.Add(this.LblOptionSetPath);
-            this.tabPage2.Controls.Add(this.ChkCreateOneOptionSetFile);
-            this.tabPage2.Controls.Add(this.tableLayoutPanel2);
-            this.tabPage2.Controls.Add(this.TxtOptionSetPath);
-            this.tabPage2.Controls.Add(this.BtnOpenOptionSetPathDialog);
-            this.tabPage2.Controls.Add(this.BtnOptionSetsToSkip);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(870, 168);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Option Sets";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.OptionSetTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.OptionSetTab.Controls.Add(this.label5);
+            this.OptionSetTab.Controls.Add(this.TxtLanguageCodeOverride);
+            this.OptionSetTab.Controls.Add(this.LblOptionSetFormat);
+            this.OptionSetTab.Controls.Add(this.TxtOptionSetFormat);
+            this.OptionSetTab.Controls.Add(this.ChkUseDeprecatedOptionSetNaming);
+            this.OptionSetTab.Controls.Add(this.TxtInvalidCSharpNamePrefix);
+            this.OptionSetTab.Controls.Add(this.label3);
+            this.OptionSetTab.Controls.Add(this.LblOptionSetsDirectory);
+            this.OptionSetTab.Controls.Add(this.LblOptionSetPath);
+            this.OptionSetTab.Controls.Add(this.ChkCreateOneOptionSetFile);
+            this.OptionSetTab.Controls.Add(this.tableLayoutPanel2);
+            this.OptionSetTab.Controls.Add(this.TxtOptionSetPath);
+            this.OptionSetTab.Controls.Add(this.BtnOpenOptionSetPathDialog);
+            this.OptionSetTab.Controls.Add(this.BtnOptionSetsToSkip);
+            this.OptionSetTab.Location = new System.Drawing.Point(4, 22);
+            this.OptionSetTab.Name = "OptionSetTab";
+            this.OptionSetTab.Padding = new System.Windows.Forms.Padding(3);
+            this.OptionSetTab.Size = new System.Drawing.Size(381, 326);
+            this.OptionSetTab.TabIndex = 1;
+            this.OptionSetTab.Text = "Option Sets";
+            this.OptionSetTab.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(422, 37);
+            this.label5.Location = new System.Drawing.Point(49, 40);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(86, 13);
             this.label5.TabIndex = 34;
@@ -691,18 +675,17 @@ namespace DLaB.EarlyBoundGenerator
             // 
             // TxtLanguageCodeOverride
             // 
-            this.TxtLanguageCodeOverride.Location = new System.Drawing.Point(525, 34);
+            this.TxtLanguageCodeOverride.Location = new System.Drawing.Point(152, 37);
             this.TxtLanguageCodeOverride.Name = "TxtLanguageCodeOverride";
             this.TxtLanguageCodeOverride.Size = new System.Drawing.Size(85, 20);
             this.TxtLanguageCodeOverride.TabIndex = 33;
             this.TxtLanguageCodeOverride.TextChanged += new System.EventHandler(this.TxtLanguageCodeOverride_TextChanged);
             this.TxtLanguageCodeOverride.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtLanguageCodeOverride_KeyPress);
-            this.TxtLanguageCodeOverride.MouseEnter += new System.EventHandler(this.TxtLanguageCodeOverride_MouseEnter);
             // 
             // LblOptionSetFormat
             // 
             this.LblOptionSetFormat.AutoSize = true;
-            this.LblOptionSetFormat.Location = new System.Drawing.Point(174, 55);
+            this.LblOptionSetFormat.Location = new System.Drawing.Point(236, 155);
             this.LblOptionSetFormat.Name = "LblOptionSetFormat";
             this.LblOptionSetFormat.Size = new System.Drawing.Size(102, 13);
             this.LblOptionSetFormat.TabIndex = 32;
@@ -710,27 +693,25 @@ namespace DLaB.EarlyBoundGenerator
             // 
             // TxtOptionSetFormat
             // 
-            this.TxtOptionSetFormat.Location = new System.Drawing.Point(282, 53);
+            this.TxtOptionSetFormat.Location = new System.Drawing.Point(344, 153);
             this.TxtOptionSetFormat.Name = "TxtOptionSetFormat";
             this.TxtOptionSetFormat.Size = new System.Drawing.Size(85, 20);
             this.TxtOptionSetFormat.TabIndex = 31;
-            this.TxtOptionSetFormat.MouseEnter += new System.EventHandler(this.TxtOptionSetFormat_MouseEnter);
             // 
             // ChkUseDeprecatedOptionSetNaming
             // 
             this.ChkUseDeprecatedOptionSetNaming.AutoSize = true;
-            this.ChkUseDeprecatedOptionSetNaming.Location = new System.Drawing.Point(164, 29);
+            this.ChkUseDeprecatedOptionSetNaming.Location = new System.Drawing.Point(226, 129);
             this.ChkUseDeprecatedOptionSetNaming.Name = "ChkUseDeprecatedOptionSetNaming";
             this.ChkUseDeprecatedOptionSetNaming.Size = new System.Drawing.Size(190, 17);
             this.ChkUseDeprecatedOptionSetNaming.TabIndex = 30;
             this.ChkUseDeprecatedOptionSetNaming.Text = "Use Deprecated OptionSet Names";
             this.ChkUseDeprecatedOptionSetNaming.UseVisualStyleBackColor = true;
             this.ChkUseDeprecatedOptionSetNaming.CheckedChanged += new System.EventHandler(this.ChkUseDeprecatedOptionSetNaming_CheckedChanged);
-            this.ChkUseDeprecatedOptionSetNaming.MouseEnter += new System.EventHandler(this.ChkUseDeprecatedOptionSetNaming_MouseEnter);
             // 
             // TxtInvalidCSharpNamePrefix
             // 
-            this.TxtInvalidCSharpNamePrefix.Location = new System.Drawing.Point(282, 79);
+            this.TxtInvalidCSharpNamePrefix.Location = new System.Drawing.Point(344, 179);
             this.TxtInvalidCSharpNamePrefix.Name = "TxtInvalidCSharpNamePrefix";
             this.TxtInvalidCSharpNamePrefix.Size = new System.Drawing.Size(45, 20);
             this.TxtInvalidCSharpNamePrefix.TabIndex = 29;
@@ -738,7 +719,7 @@ namespace DLaB.EarlyBoundGenerator
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(155, 82);
+            this.label3.Location = new System.Drawing.Point(217, 182);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(121, 13);
             this.label3.TabIndex = 28;
@@ -747,7 +728,7 @@ namespace DLaB.EarlyBoundGenerator
             // LblOptionSetPath
             // 
             this.LblOptionSetPath.AutoSize = true;
-            this.LblOptionSetPath.Location = new System.Drawing.Point(379, 11);
+            this.LblOptionSetPath.Location = new System.Drawing.Point(6, 14);
             this.LblOptionSetPath.Name = "LblOptionSetPath";
             this.LblOptionSetPath.Size = new System.Drawing.Size(124, 13);
             this.LblOptionSetPath.TabIndex = 27;
@@ -756,14 +737,13 @@ namespace DLaB.EarlyBoundGenerator
             // ChkCreateOneOptionSetFile
             // 
             this.ChkCreateOneOptionSetFile.AutoSize = true;
-            this.ChkCreateOneOptionSetFile.Location = new System.Drawing.Point(164, 6);
+            this.ChkCreateOneOptionSetFile.Location = new System.Drawing.Point(226, 106);
             this.ChkCreateOneOptionSetFile.Name = "ChkCreateOneOptionSetFile";
             this.ChkCreateOneOptionSetFile.Size = new System.Drawing.Size(171, 17);
             this.ChkCreateOneOptionSetFile.TabIndex = 26;
             this.ChkCreateOneOptionSetFile.Text = "Create One File Per Option Set";
             this.ChkCreateOneOptionSetFile.UseVisualStyleBackColor = true;
             this.ChkCreateOneOptionSetFile.CheckedChanged += new System.EventHandler(this.ChkCreateOneOptionSetFile_CheckedChanged);
-            this.ChkCreateOneOptionSetFile.MouseEnter += new System.EventHandler(this.ChkCreateOneOptionSetFile_MouseEnter);
             // 
             // tableLayoutPanel2
             // 
@@ -774,61 +754,59 @@ namespace DLaB.EarlyBoundGenerator
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 204F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.BtnCreateOptionSets, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(6, 124);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(70, 268);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(858, 23);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(509, 23);
             this.tableLayoutPanel2.TabIndex = 25;
             // 
-            // actionsTab
+            // ActionTab
             // 
-            this.actionsTab.Controls.Add(this.ChkGenerateActionAttributeNameConsts);
-            this.actionsTab.Controls.Add(this.ChkEditableResponseActions);
-            this.actionsTab.Controls.Add(this.LblActionsDirectory);
-            this.actionsTab.Controls.Add(this.ChkCreateOneActionFile);
-            this.actionsTab.Controls.Add(this.tableLayoutPanel3);
-            this.actionsTab.Controls.Add(this.TxtActionPath);
-            this.actionsTab.Controls.Add(this.BtnOpenActionPathDialog);
-            this.actionsTab.Controls.Add(this.LblActionPath);
-            this.actionsTab.Controls.Add(this.BtnActionsToSkip);
-            this.actionsTab.Location = new System.Drawing.Point(4, 22);
-            this.actionsTab.Name = "actionsTab";
-            this.actionsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.actionsTab.Size = new System.Drawing.Size(870, 168);
-            this.actionsTab.TabIndex = 2;
-            this.actionsTab.Text = "Actions";
-            this.actionsTab.UseVisualStyleBackColor = true;
-            this.actionsTab.Enter += new System.EventHandler(this.actionsTab_Enter);
+            this.ActionTab.Controls.Add(this.ChkGenerateActionAttributeNameConsts);
+            this.ActionTab.Controls.Add(this.ChkEditableResponseActions);
+            this.ActionTab.Controls.Add(this.LblActionsDirectory);
+            this.ActionTab.Controls.Add(this.ChkCreateOneActionFile);
+            this.ActionTab.Controls.Add(this.tableLayoutPanel3);
+            this.ActionTab.Controls.Add(this.TxtActionPath);
+            this.ActionTab.Controls.Add(this.BtnOpenActionPathDialog);
+            this.ActionTab.Controls.Add(this.LblActionPath);
+            this.ActionTab.Controls.Add(this.BtnActionsToSkip);
+            this.ActionTab.Location = new System.Drawing.Point(4, 22);
+            this.ActionTab.Name = "ActionTab";
+            this.ActionTab.Padding = new System.Windows.Forms.Padding(3);
+            this.ActionTab.Size = new System.Drawing.Size(381, 326);
+            this.ActionTab.TabIndex = 2;
+            this.ActionTab.Text = "Actions";
+            this.ActionTab.UseVisualStyleBackColor = true;
+            this.ActionTab.Enter += new System.EventHandler(this.actionsTab_Enter);
             // 
             // ChkGenerateActionAttributeNameConsts
             // 
             this.ChkGenerateActionAttributeNameConsts.AutoSize = true;
-            this.ChkGenerateActionAttributeNameConsts.Location = new System.Drawing.Point(164, 29);
+            this.ChkGenerateActionAttributeNameConsts.Location = new System.Drawing.Point(304, 76);
             this.ChkGenerateActionAttributeNameConsts.Name = "ChkGenerateActionAttributeNameConsts";
             this.ChkGenerateActionAttributeNameConsts.Size = new System.Drawing.Size(178, 17);
             this.ChkGenerateActionAttributeNameConsts.TabIndex = 31;
             this.ChkGenerateActionAttributeNameConsts.Text = "Generate Attribute Name Consts";
             this.ChkGenerateActionAttributeNameConsts.UseVisualStyleBackColor = true;
-            this.ChkGenerateActionAttributeNameConsts.MouseEnter += new System.EventHandler(this.ChkGenerateActionAttributeNameConsts_MouseEnter);
             // 
             // ChkEditableResponseActions
             // 
             this.ChkEditableResponseActions.AutoSize = true;
-            this.ChkEditableResponseActions.Location = new System.Drawing.Point(164, 52);
+            this.ChkEditableResponseActions.Location = new System.Drawing.Point(304, 99);
             this.ChkEditableResponseActions.Name = "ChkEditableResponseActions";
             this.ChkEditableResponseActions.Size = new System.Drawing.Size(150, 17);
             this.ChkEditableResponseActions.TabIndex = 30;
             this.ChkEditableResponseActions.Text = "Make Responses Editable";
             this.ChkEditableResponseActions.UseVisualStyleBackColor = true;
-            this.ChkEditableResponseActions.MouseEnter += new System.EventHandler(this.ChkEditableResponseActions_MouseEnter);
             // 
             // LblActionsDirectory
             // 
             this.LblActionsDirectory.AutoSize = true;
-            this.LblActionsDirectory.Location = new System.Drawing.Point(353, 11);
+            this.LblActionsDirectory.Location = new System.Drawing.Point(6, 21);
             this.LblActionsDirectory.Name = "LblActionsDirectory";
             this.LblActionsDirectory.Size = new System.Drawing.Size(112, 13);
             this.LblActionsDirectory.TabIndex = 29;
@@ -837,14 +815,13 @@ namespace DLaB.EarlyBoundGenerator
             // ChkCreateOneActionFile
             // 
             this.ChkCreateOneActionFile.AutoSize = true;
-            this.ChkCreateOneActionFile.Location = new System.Drawing.Point(164, 6);
+            this.ChkCreateOneActionFile.Location = new System.Drawing.Point(304, 53);
             this.ChkCreateOneActionFile.Name = "ChkCreateOneActionFile";
             this.ChkCreateOneActionFile.Size = new System.Drawing.Size(151, 17);
             this.ChkCreateOneActionFile.TabIndex = 28;
             this.ChkCreateOneActionFile.Text = "Create One File Per Action";
             this.ChkCreateOneActionFile.UseVisualStyleBackColor = true;
             this.ChkCreateOneActionFile.CheckedChanged += new System.EventHandler(this.ChkCreateOneActionFile_CheckedChanged);
-            this.ChkCreateOneActionFile.MouseEnter += new System.EventHandler(this.ChkCreateOneActionFile_MouseEnter);
             // 
             // tableLayoutPanel3
             // 
@@ -855,19 +832,19 @@ namespace DLaB.EarlyBoundGenerator
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 204F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.BtnCreateActions, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(6, 124);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(9, 186);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(858, 23);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(536, 23);
             this.tableLayoutPanel3.TabIndex = 27;
             // 
             // BtnCreateActions
             // 
             this.BtnCreateActions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnCreateActions.Location = new System.Drawing.Point(327, 0);
+            this.BtnCreateActions.Location = new System.Drawing.Point(166, 0);
             this.BtnCreateActions.Margin = new System.Windows.Forms.Padding(0);
             this.BtnCreateActions.Name = "BtnCreateActions";
             this.BtnCreateActions.Size = new System.Drawing.Size(204, 23);
@@ -875,34 +852,63 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnCreateActions.Text = "Create Actions";
             this.BtnCreateActions.UseVisualStyleBackColor = true;
             this.BtnCreateActions.Click += new System.EventHandler(this.BtnCreateActions_Click);
-            this.BtnCreateActions.MouseEnter += new System.EventHandler(this.BtnCreateActions_MouseEnter);
             // 
             // TxtActionPath
             // 
             this.TxtActionPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtActionPath.Location = new System.Drawing.Point(483, 8);
+            this.TxtActionPath.Location = new System.Drawing.Point(136, 18);
             this.TxtActionPath.Name = "TxtActionPath";
-            this.TxtActionPath.Size = new System.Drawing.Size(348, 20);
+            this.TxtActionPath.Size = new System.Drawing.Size(389, 20);
             this.TxtActionPath.TabIndex = 24;
-            this.TxtActionPath.MouseEnter += new System.EventHandler(this.ShowActionPathText);
             // 
             // LblActionPath
             // 
             this.LblActionPath.AutoSize = true;
-            this.LblActionPath.Location = new System.Drawing.Point(353, 11);
+            this.LblActionPath.Location = new System.Drawing.Point(6, 21);
             this.LblActionPath.Name = "LblActionPath";
             this.LblActionPath.Size = new System.Drawing.Size(107, 13);
             this.LblActionPath.TabIndex = 25;
             this.LblActionPath.Text = "Action Relative Path:";
             // 
+            // PropertiesGrid
+            // 
+            this.PropertiesGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PropertiesGrid.Location = new System.Drawing.Point(0, 32);
+            this.PropertiesGrid.Name = "PropertiesGrid";
+            this.PropertiesGrid.Size = new System.Drawing.Size(489, 503);
+            this.PropertiesGrid.TabIndex = 36;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.BtnOpenSettingsPathDialog);
+            this.splitContainer1.Panel1.Controls.Add(label4);
+            this.splitContainer1.Panel1.Controls.Add(this.PropertiesGrid);
+            this.splitContainer1.Panel1.Controls.Add(this.TxtSettingsPath);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
+            this.splitContainer1.Panel2.Controls.Add(this.TxtOutput);
+            this.splitContainer1.Size = new System.Drawing.Size(887, 535);
+            this.splitContainer1.SplitterDistance = 489;
+            this.splitContainer1.TabIndex = 37;
+            // 
             // EarlyBoundGeneratorPlugin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.TxtOutput);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.splitContainer1);
             this.Name = "EarlyBoundGeneratorPlugin";
             this.helpProvider1.SetShowHelp(this, true);
             this.Size = new System.Drawing.Size(890, 541);
@@ -911,17 +917,23 @@ namespace DLaB.EarlyBoundGenerator
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.GlobalTab.ResumeLayout(false);
+            this.EntityTab.ResumeLayout(false);
+            this.EntityTab.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.OptionSetTab.ResumeLayout(false);
+            this.OptionSetTab.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.actionsTab.ResumeLayout(false);
-            this.actionsTab.PerformLayout();
+            this.ActionTab.ResumeLayout(false);
+            this.ActionTab.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -957,9 +969,9 @@ namespace DLaB.EarlyBoundGenerator
         private System.Windows.Forms.Button BtnEntitesToSkip;
         private System.Windows.Forms.CheckBox ChkUseXrmClient;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage actionsTab;
+        private System.Windows.Forms.TabPage EntityTab;
+        private System.Windows.Forms.TabPage OptionSetTab;
+        private System.Windows.Forms.TabPage ActionTab;
         private System.Windows.Forms.CheckBox ChkAddDebuggerNonUserCode;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -992,5 +1004,8 @@ namespace DLaB.EarlyBoundGenerator
         private System.Windows.Forms.CheckBox ChkGenerateActionAttributeNameConsts;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox TxtLanguageCodeOverride;
+        private System.Windows.Forms.TabPage GlobalTab;
+        private System.Windows.Forms.PropertyGrid PropertiesGrid;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }

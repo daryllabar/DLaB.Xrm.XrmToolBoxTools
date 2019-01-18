@@ -6,7 +6,7 @@
     <title>Early Bound Generator Api</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
-    <licenseUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/blob/master/LICENSE</licenseUrl>
+    <license>MIT</license>
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -60,6 +60,11 @@ V1.2017.10.2
     </releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>CrmSvcUtil Xrm EarlyBound Generator</tags>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Configuration" />
+      <frameworkAssembly assemblyName="System.Runtime.Serialization" />
+      <frameworkAssembly assemblyName="Microsoft.VisualBasic" />
+    </frameworkAssemblies>
   </metadata>
   <files>
     <file src="bin\Release\DLaB.EarlyBoundGenerator.Api.dll" target="lib\net462" />

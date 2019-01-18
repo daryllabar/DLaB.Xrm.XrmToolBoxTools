@@ -9,9 +9,25 @@
     <Import_RootNamespace>DLaB.XrmToolBoxCommon</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Editors\CollectionCountConvertor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DialogBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DialogBase.Designer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Editors\ActionsHashEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Editors\EntitiesHashEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Editors\IGetPlugin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Forms\SpecifyActionsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Forms\SpecifyActionsDialog.Designer.cs">
+      <DependentUpon>SpecifyActionsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Forms\SpecifyEntitiesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Forms\SpecifyEntitiesDialog.Designer.cs">
+      <DependentUpon>SpecifyEntitiesDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ListViewItemComparer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectCollectionItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PluginControlBase.cs" />
@@ -25,6 +41,12 @@
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)DialogBase.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Forms\SpecifyActionsDialog.resx">
+      <DependentUpon>SpecifyActionsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Forms\SpecifyEntitiesDialog.resx">
+      <DependentUpon>SpecifyEntitiesDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Properties\CommonResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -20,34 +21,54 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// <summary>
         /// Use speech synthesizer to notify of code generation completion.
         /// </summary>
+        [Category("Global")]
+        [DisplayName("Audible Completion Notification")]
+        [Description("Use speech synthesizer to notify of code generation completion.")]
         public bool AudibleCompletionNotification { get; set; }
+
         /// <summary>
-        /// The CRM Service utility relative path.
+        /// The CrmSvcUtil relative path.
         /// </summary>
         /// <value>
-        /// The CRM SVC utility relative path.
+        /// The CrmSvcUtil relative path.
         /// </value>
+        [Category("Global")]
+        [DisplayName("CrmSvcUtil Relative Path")]
+        [Description("The Path to the CrmSvcUtil.exe, relative to the CrmSvcUtil Realtive Root Path.  Defaults to using the CrmSvcUtil that comes by default.")]
         public string CrmSvcUtilRelativePath { get; set; }
+
         /// <summary>
-        /// Specifies whether to include the command line in the early bound class used to generate it
+        /// Specifies whether to include in the early bound class, the command line used to generate it.
         /// </summary>
         /// <value>
         ///   <c>true</c> if [include command line]; otherwise, <c>false</c>.
         /// </value>
+        [Category("Global")]
+        [DisplayName("Include Command Line")]
+        [Description("Specifies whether to include in the early bound class, the command line used to generate it.")]
         public bool IncludeCommandLine { get; set; }
+
         /// <summary>
         /// Masks the password in the command line
         /// </summary>
         /// <value>
         ///   <c>true</c> if [mask password]; otherwise, <c>false</c>.
         /// </value>
+        [Category("Global")]
+        [DisplayName("Mask Password")]
+        [Description("Masks the password in the outputted command line.")]
         public bool MaskPassword { get; set; }
+
         /// <summary>
         /// Gets or sets the last ran version.
         /// </summary>
         /// <value>
         /// The last ran version.
         /// </value>
+        [Category("Meta")]
+        [DisplayName("Settings Version")]
+        [Description("The Settings File Version.")]
+        [ReadOnly(true)]
         public string SettingsVersion{ get; set; }
         /// <summary>
         /// The version of the EarlyBoundGeneratorPlugin
@@ -55,6 +76,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// <value>
         /// The version.
         /// </value>
+        [Category("Meta")]
+        [DisplayName("Version")]
+        [Description("Version of the Early Bound Generator.")]
+        [ReadOnly(true)]
         public string Version { get; set; }
         /// <summary>
         /// Settings that will get written to the CrmSrvUtil.exe.config
@@ -62,6 +87,9 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// <value>
         /// The extension configuration.
         /// </value>
+        [Category("CrmSvcUtil")]
+        [DisplayName("Settings")]
+        [Description("Settings that will get written to the CrmSrvUtil.exe.config.")]
         public ExtensionConfig ExtensionConfig { get; set; }
         /// <summary>
         /// These are the required commandline arguments that are passed to the CrmSrvUtil to correctly wire up the extensions in DLaB.CrmSvcUtilExtensions.
@@ -69,6 +97,9 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// <value>
         /// The extension arguments.
         /// </value>
+        [Category("CrmSvcUtil")]
+        [DisplayName("Extension Arguments")]
+        [Description("These are the required commandline arguments that are passed to the CrmSrvUtil to correctly wire up the extensions in DLaB.CrmSvcUtilExtensions.")]
         public List<Argument> ExtensionArguments { get; set; }
         /// <summary>
         /// These are the commandline arguments that are passed to the CrmSrvUtil that can have varying values, depending on the user's preference.
@@ -76,51 +107,67 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// <value>
         /// The user arguments.
         /// </value>
+        [Category("CrmSvcUtil")]
+        [DisplayName("User Arguments")]
+        [Description("Commandline arguments that are passed to the CrmSrvUtil that can have varying values, depending on the user's preference.")]
         public List<Argument> UserArguments { get; set; }
 
         #region NonSerialized Properties
         [XmlIgnore]
+        [Browsable(false)]
         public bool UseCrmOnline { get; set; }
 
         [XmlIgnore]
+        [Browsable(false)]
         public bool UseConnectionString { get; set; }
 
         [XmlIgnore]
+        [Browsable(false)]
         public string ConnectionString { get; set; }
 
         [XmlIgnore]
+        [Browsable(false)]
         public string Domain { get; set; }
 
         [XmlIgnore]
+        [Browsable(false)]
         public string UserName { get; set; }
 
         [XmlIgnore]
+        [Browsable(false)]
         public string Password { get; set; }
 
         [XmlIgnore]
+        [Browsable(false)]
         public string RootPath { get; set; }
 
         [XmlIgnore]
+        [Browsable(false)]
         public bool SupportsActions { get; set; }
 
         [XmlIgnore]
+        [Browsable(false)]
         public string Url { get; set; }
 
         [XmlIgnore]
+        [Browsable(false)]
         public IEnumerable<Argument> CommandLineArguments => UserArguments.Union(ExtensionArguments);
 
         [XmlIgnore]
+        [Browsable(false)]
         public string CrmSvcUtilPath => 
             Directory.Exists(CrmSvcUtilRelativePath)
                 ? CrmSvcUtilRelativePath
                 : Path.Combine(CrmSvcUtilRealtiveRootPath ?? Directory.GetCurrentDirectory(), CrmSvcUtilRelativePath);
 
         [XmlIgnore]
+        [Browsable(false)]
         public string CrmSvcUtilRealtiveRootPath { get; set; }
 
         #region UserArguments Helpers
 
         [XmlIgnore]
+        [Browsable(false)]
         public string ActionOutPath
         {
             get { return GetUserArgument(CreationType.Actions, UserArgumentNames.Out).Value; }
@@ -128,6 +175,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         }
 
         [XmlIgnore]
+        [Browsable(false)]
         public string EntityOutPath
         {
             get { return GetUserArgument(CreationType.Entities, UserArgumentNames.Out).Value; }
@@ -135,6 +183,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         }
 
         [XmlIgnore]
+        [Browsable(false)]
         public string Namespace
         {
             get { return GetUserArgument(CreationType.All, UserArgumentNames.Namespace).Value; }
@@ -142,6 +191,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         }
 
         [XmlIgnore]
+        [Browsable(false)]
         public string OptionSetOutPath
         {
             get { return GetUserArgument(CreationType.OptionSets, UserArgumentNames.Out).Value; }
@@ -149,6 +199,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         }
 
         [XmlIgnore]
+        [Browsable(false)]
         public string ServiceContextName
         {
             get { return GetUserArgument(CreationType.Entities, UserArgumentNames.ServiceContextName).Value; }
@@ -260,7 +311,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             {
                 return null;
             }
-            var oldValues = Config.GetList<string>(Guid.NewGuid().ToString(), oldValue, new ConfigKeyValueSplitInfo { EntrySeperators = new [] {'|'}});
+            var oldValues = Config.GetList<string>(Guid.NewGuid().ToString(), oldValue);
             var newValues = new Dictionary<string, HashSet<string>>();
             foreach (var entry in oldValues)
             {
