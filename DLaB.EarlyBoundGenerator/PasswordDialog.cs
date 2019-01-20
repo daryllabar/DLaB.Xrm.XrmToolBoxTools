@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DLaB.XrmToolboxCommon;
+using DLaB.XrmToolBoxCommon;
 using XrmToolBox.Extensibility;
 
 namespace DLaB.EarlyBoundGenerator

@@ -1,18 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using Source.DLaB.Common;
-using DLaB.XrmToolboxCommon;
 using XrmToolBox.Extensibility;
 
-namespace DLaB.EarlyBoundGenerator
+namespace DLaB.XrmToolBoxCommon.Forms
 {
     public partial class SpecifyOptionSetsDialog : DialogBase
     {
         /// <summary>
         /// Pipe Delimited List of OptionSet Logical Names
         /// </summary>
-        public string OptionSets { get; set; }
+        public HashSet<string> OptionSets { get; set; }
 
         #region Constructor / Load
 
@@ -34,7 +33,7 @@ namespace DLaB.EarlyBoundGenerator
 
             if (OptionSets == null)
             {
-                OptionSets = "organization_currencyformatcode|quote_statuscode";
+                OptionSets = new HashSet<string> {"organization_currencyformatcode", "quote_statuscode"};
             }
 
             Enable(false);
@@ -42,14 +41,7 @@ namespace DLaB.EarlyBoundGenerator
             ChkListBoxOptionSets.Items.Clear();
             try
             {
-                if (string.IsNullOrWhiteSpace(OptionSets)) { return; }
-
-                OptionSets = OptionSets.Replace(" ", string.Empty);
-
-                foreach (var optionSet in OptionSets.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries))
-                {
-                    ChkListBoxOptionSets.Items.Add(optionSet, false);
-                }
+                ChkListBoxOptionSets.Items.AddRange(OptionSets.Cast<object>().ToArray());
             }
             finally
             {
@@ -71,7 +63,7 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            var dialog = new OptionSetSpecifierDialog(CallingControl, false);
+            var dialog = new SpecifyOptionSetDialog(CallingControl, false);
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
@@ -89,7 +81,7 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            OptionSets = Config.ToString(ChkListBoxOptionSets.Items.Cast<object>().Select(o => o.ToString()));
+            OptionSets = new HashSet<string>(ChkListBoxOptionSets.Items.Cast<object>().Select(o => o.ToString()));
             DialogResult = DialogResult.OK;
             Close();
         }

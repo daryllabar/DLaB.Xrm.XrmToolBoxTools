@@ -9,13 +9,19 @@
     <Import_RootNamespace>DLaB.XrmToolBoxCommon</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)DialogBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)DialogBase.Designer.cs">
+      <DependentUpon>DialogBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Editors\CollectionCountConvertor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DialogBase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DialogBase.Designer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Editors\ActionsHashEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Editors\OptionSetsHashEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Editors\EntitiesHashEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Editors\IGetPlugin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Forms\Helper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Forms\SpecifyActionsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -27,6 +33,18 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Forms\SpecifyEntitiesDialog.Designer.cs">
       <DependentUpon>SpecifyEntitiesDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Forms\SpecifyOptionSetDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Forms\SpecifyOptionSetDialog.Designer.cs">
+      <DependentUpon>SpecifyOptionSetDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Forms\SpecifyOptionSetsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Forms\SpecifyOptionSetsDialog.Designer.cs">
+      <DependentUpon>SpecifyOptionSetsDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ListViewItemComparer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectCollectionItem.cs" />
@@ -40,13 +58,19 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)DialogBase.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <DependentUpon>DialogBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Forms\SpecifyActionsDialog.resx">
       <DependentUpon>SpecifyActionsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Forms\SpecifyEntitiesDialog.resx">
       <DependentUpon>SpecifyEntitiesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Forms\SpecifyOptionSetDialog.resx">
+      <DependentUpon>SpecifyOptionSetDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Forms\SpecifyOptionSetsDialog.resx">
+      <DependentUpon>SpecifyOptionSetsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Properties\CommonResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

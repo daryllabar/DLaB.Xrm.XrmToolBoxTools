@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using DLaB.Xrm.Entities;
-using DLaB.XrmToolboxCommon;
 using Microsoft.Xrm.Sdk;
 using XrmToolBox.Extensibility;
 
@@ -44,10 +43,10 @@ namespace DLaB.XrmToolBoxCommon.Forms
                 Enable(false);
                 LstAll.Items.Clear();
                 LstSpecified.Items.Clear();
-                var localActions = actions.Select(e => e.ToEntity<Workflow>()).OrderBy(a => a.Name + a.Id).ToList(); // Keep from multiple Enumerations
+                var localActions = actions.Select(e => e.ToEntity<Workflow>()).ToList(); // Keep from multiple Enumerations
 
-                LstSpecified.Items.AddRange(GetObjectCollection(localActions.Where((a, i) => SpecifiedActions.Contains(a.UniqueName))));
-                LstAll.Items.AddRange(GetObjectCollection(localActions.Where((a, i) => !SpecifiedActions.Contains(a.UniqueName))));
+                LstSpecified.Items.AddRange(localActions.Where(e => SpecifiedActions.Contains(e.UniqueName)).Select(e => new ListViewItem(e.Name ?? "N/A") { SubItems = { e.UniqueName } }).ToArray());
+                LstAll.Items.AddRange(localActions.Where(e => !SpecifiedActions.Contains(e.UniqueName)).Select(e => new ListViewItem(e.Name ?? "N/A") { SubItems = { e.UniqueName } }).ToArray());
             }
             finally
             {
@@ -57,14 +56,6 @@ namespace DLaB.XrmToolBoxCommon.Forms
             }
         }
 
-        private static object[] GetObjectCollection(IEnumerable<Workflow> localActions)
-        {
-            return localActions.
-                Select(e => new ObjectCollectionItem<Workflow>(e.Name, e)).
-                Cast<object>().
-                ToArray();
-        }
-
         private void Enable(bool enable)
         {
             LstAll.Enabled = enable;
@@ -72,33 +63,45 @@ namespace DLaB.XrmToolBoxCommon.Forms
             BtnAdd.Enabled = enable;
             BtnRemove.Enabled = enable;
             BtnSave.Enabled = enable;
+            BtnRefresh.Enabled = enable;
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            SpecifiedActions = new HashSet<string>(LstSpecified.Items.Cast<ObjectCollectionItem<Workflow>>().Select(i => i.Value.UniqueName));
+            SpecifiedActions = new HashSet<string>(LstSpecified.Items.Cast<ListViewItem>().Select(i => i.SubItems[1].Text));
             DialogResult = DialogResult.OK;
             Close();
         }
 
+        private void BtnRefresh_Click(object sender, EventArgs e)
+        {
+            Enable(false);
+
+            // Clear existing entity list
+            ((PropertyInterface.IActions)CallingControl).Actions = null;
+
+            // Retrieve entities
+            RetrieveActionsOnLoad(LoadActions);
+        }
+
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            var values = LstAll.SelectedItems.Cast<object>().ToArray();
-            LstSpecified.Items.AddRange(values);
+            var values = LstAll.SelectedItems.Cast<ListViewItem>().ToArray();
             foreach (var value in values)
             {
                 LstAll.Items.Remove(value);
             }
+            LstSpecified.Items.AddRange(values);
         }
 
         private void BtnRemove_Click(object sender, EventArgs e)
         {
-            var values = LstSpecified.SelectedItems.Cast<object>().ToArray();
-            LstAll.Items.AddRange(values);
+            var values = LstSpecified.SelectedItems.Cast<ListViewItem>().ToArray();
             foreach (var value in values)
             {
                 LstSpecified.Items.Remove(value);
             }
+            LstAll.Items.AddRange(values);
         }
     }
 }

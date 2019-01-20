@@ -1,15 +1,6 @@
-﻿using DLaB.XrmToolboxCommon.Properties;
-using Microsoft.Xrm.Sdk;
-using System;
-using System.Drawing;
-using System.Reflection;
-using System.Windows.Forms;
-using XrmToolBox;
-using System.ComponentModel;
-using McTools.Xrm.Connection;
-using XrmToolBox.Extensibility;
+﻿using XrmToolBox.Extensibility;
 
-namespace DLaB.XrmToolboxCommon
+namespace DLaB.XrmToolBoxCommon
 {
     /// <summary>
     /// This class adds the following three major features:

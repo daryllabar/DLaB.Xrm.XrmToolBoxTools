@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 
-namespace DLaB.XrmToolboxCommon
+namespace DLaB.XrmToolBoxCommon
 {
     /// <summary>
-    /// Useful for puting in winform ObjectCollections
+    /// Useful for putting in winform ObjectCollections
     /// </summary>
     /// <typeparam name="T"></typeparam>
     [DebuggerDisplay("Name: {DisplayName}, Value: {Value}")]

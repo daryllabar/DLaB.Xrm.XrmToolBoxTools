@@ -11,7 +11,7 @@ using McTools.Xrm.Connection;
 using Microsoft.Xrm.Sdk.Metadata;
 using Source.DLaB.Xrm;
 
-namespace DLaB.XrmToolboxCommon
+namespace DLaB.XrmToolBoxCommon
 {
     public static class Extensions
     {

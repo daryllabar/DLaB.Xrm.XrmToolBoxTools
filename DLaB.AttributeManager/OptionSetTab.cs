@@ -5,7 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Source.DLaB.Xrm;
 using DLaB.Xrm.Entities;
-using DLaB.XrmToolboxCommon;
+using DLaB.XrmToolBoxCommon;
 using XrmLabel = Microsoft.Xrm.Sdk.Label;
 using Microsoft.Xrm.Sdk.Metadata;
 using XrmToolBox.Extensibility;

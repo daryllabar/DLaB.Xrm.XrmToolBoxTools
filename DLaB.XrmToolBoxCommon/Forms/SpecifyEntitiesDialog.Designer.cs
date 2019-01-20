@@ -137,7 +137,7 @@
             this.lvKeptEntities.TabIndex = 2;
             this.lvKeptEntities.UseCompatibleStateImageBehavior = false;
             this.lvKeptEntities.View = System.Windows.Forms.View.Details;
-            this.lvKeptEntities.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listview_ColumnClick);
+            this.lvKeptEntities.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(Helper.SortListView_OnColumnClick);
             // 
             // chDisplayName
             // 
@@ -174,7 +174,7 @@
             this.lvExcludedEntities.TabIndex = 7;
             this.lvExcludedEntities.UseCompatibleStateImageBehavior = false;
             this.lvExcludedEntities.View = System.Windows.Forms.View.Details;
-            this.lvExcludedEntities.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listview_ColumnClick);
+            this.lvExcludedEntities.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(Helper.SortListView_OnColumnClick);
             // 
             // columnHeader1
             // 

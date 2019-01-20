@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace DLaB.XrmToolboxCommon
+namespace DLaB.XrmToolBoxCommon
 {
     public static class Prompt
     {

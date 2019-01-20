@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing.Design;
-using DLaB.XrmToolBoxCommon;
 using DLaB.XrmToolBoxCommon.Editors;
 using CommonConfig = Source.DLaB.Common.Config;
 using Source.DLaB.Common;
@@ -18,96 +16,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         // "The path to the settings file associated with this connection.  Changing it while connected, updates the path for the connection.  Changing the connection will cause the settings to reload for that connection"
 
         #region Properties
-
-        #region Global
-
-        [Category("Global")]
-        [DisplayName("Add New Files To Project")]
-        [Description("Allows adding any newly generated files that don't already exist, to the first project file found in the hierarchy of the output path.")]
-        public bool AddNewFilesToProject
-        {
-            get => Config.ExtensionConfig.AddNewFilesToProject;
-            set => Config.ExtensionConfig.AddNewFilesToProject = value;
-        }
-
-        [Category("Global")]
-        [DisplayName("Audible Completion Notification")]
-        [Description("Use speech synthesizer to notify of code generation completion.  May not work on VMs or machines without sound cards.")]
-        public bool AudibleCompletionNotification
-        {
-            get => Config.AudibleCompletionNotification;
-            set => Config.AudibleCompletionNotification = value;
-        }
-
-        [Category("Global")]
-        [DisplayName("CrmSvcUtil Relative Path")]
-        [Description("The Path to the CrmSvcUtil.exe, relative to the CrmSvcUtil Realtive Root Path.  Defaults to using the CrmSvcUtil that comes by default.")]
-        public string CrmSvcUtilRelativePath
-        {
-            get => Config.CrmSvcUtilRelativePath;
-            set => Config.CrmSvcUtilRelativePath = value;
-        }
-
-        [Category("Global")]
-        [DisplayName("Include Command Line")]
-        [Description("Specifies whether to include in the early bound class the command line used to generate it.")]
-        public bool IncludeCommandLine
-        {
-            get => Config.IncludeCommandLine;
-            set => Config.IncludeCommandLine = value;
-        }
-
-        [Category("Global")]
-        [DisplayName("Mask Password")]
-        [Description("Masks the password in the outputted command line.")]
-        public bool MaskPassword
-        {
-            get => Config.MaskPassword;
-            set => Config.MaskPassword = value;
-        }
-
-        [Category("Global")]
-        [DisplayName("Namespace")]
-        [Description("The Namespace generated code will be placed in.")]
-        public string Namespace
-        {
-            get => Config.Namespace;
-            set => Config.Namespace = value;
-        }
-
-        [Category("Global")]
-        [DisplayName("Remove Runtime Version Comment")]
-        [Description(@"Removes the ""//   Runtime Version:X.X.X.X"" comment from the header of generated files.\r\nThis helps to alleviate unnecessary differences that pop up when the classes are generated from machines with different .Net Framework updates installed.")]
-        public bool RemoveRuntimeVersionComment
-        {
-            get => Config.ExtensionConfig.RemoveRuntimeVersionComment;
-            set => Config.ExtensionConfig.RemoveRuntimeVersionComment = value;
-        }
-
-        [Category("Global")]
-        [DisplayName("Use Tfs")]
-        [Description("Will use TFS to attempt to check out the early bound classes.  Not needed for Git based repositories.")]
-        public bool UseTfsToCheckoutFiles
-        {
-            get => Config.ExtensionConfig.UseTfsToCheckoutFiles;
-            set => Config.ExtensionConfig.UseTfsToCheckoutFiles = value;
-        }
-
-        #endregion Global Properties
-
-        #region Meta
-
-        [Category("Meta")]
-        [DisplayName("Settings Version")]
-        [Description("The Settings File Version.")]
-        public string SettingsVersion => Config.SettingsVersion;
-
-        [Category("Meta")]
-        [DisplayName("Early Bound Generator Version")]
-        [Description("Version of the Early Bound Generator.")]
-        public string Version => Config.Version;
-
-        #endregion Meta
 
         #region Actions
 
@@ -274,6 +182,96 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         #endregion Entities
 
+        #region Global
+
+        [Category("Global")]
+        [DisplayName("Add New Files To Project")]
+        [Description("Allows adding any newly generated files that don't already exist, to the first project file found in the hierarchy of the output path.")]
+        public bool AddNewFilesToProject
+        {
+            get => Config.ExtensionConfig.AddNewFilesToProject;
+            set => Config.ExtensionConfig.AddNewFilesToProject = value;
+        }
+
+        [Category("Global")]
+        [DisplayName("Audible Completion Notification")]
+        [Description("Use speech synthesizer to notify of code generation completion.  May not work on VMs or machines without sound cards.")]
+        public bool AudibleCompletionNotification
+        {
+            get => Config.AudibleCompletionNotification;
+            set => Config.AudibleCompletionNotification = value;
+        }
+
+        [Category("Global")]
+        [DisplayName("CrmSvcUtil Relative Path")]
+        [Description("The Path to the CrmSvcUtil.exe, relative to the CrmSvcUtil Realtive Root Path.  Defaults to using the CrmSvcUtil that comes by default.")]
+        public string CrmSvcUtilRelativePath
+        {
+            get => Config.CrmSvcUtilRelativePath;
+            set => Config.CrmSvcUtilRelativePath = value;
+        }
+
+        [Category("Global")]
+        [DisplayName("Include Command Line")]
+        [Description("Specifies whether to include in the early bound class the command line used to generate it.")]
+        public bool IncludeCommandLine
+        {
+            get => Config.IncludeCommandLine;
+            set => Config.IncludeCommandLine = value;
+        }
+
+        [Category("Global")]
+        [DisplayName("Mask Password")]
+        [Description("Masks the password in the outputted command line.")]
+        public bool MaskPassword
+        {
+            get => Config.MaskPassword;
+            set => Config.MaskPassword = value;
+        }
+
+        [Category("Global")]
+        [DisplayName("Namespace")]
+        [Description("The Namespace generated code will be placed in.")]
+        public string Namespace
+        {
+            get => Config.Namespace;
+            set => Config.Namespace = value;
+        }
+
+        [Category("Global")]
+        [DisplayName("Remove Runtime Version Comment")]
+        [Description(@"Removes the ""//   Runtime Version:X.X.X.X"" comment from the header of generated files.\r\nThis helps to alleviate unnecessary differences that pop up when the classes are generated from machines with different .Net Framework updates installed.")]
+        public bool RemoveRuntimeVersionComment
+        {
+            get => Config.ExtensionConfig.RemoveRuntimeVersionComment;
+            set => Config.ExtensionConfig.RemoveRuntimeVersionComment = value;
+        }
+
+        [Category("Global")]
+        [DisplayName("Use Tfs")]
+        [Description("Will use TFS to attempt to check out the early bound classes.  Not needed for Git based repositories.")]
+        public bool UseTfsToCheckoutFiles
+        {
+            get => Config.ExtensionConfig.UseTfsToCheckoutFiles;
+            set => Config.ExtensionConfig.UseTfsToCheckoutFiles = value;
+        }
+
+        #endregion Global Properties
+
+        #region Meta
+
+        [Category("Meta")]
+        [DisplayName("Settings Version")]
+        [Description("The Settings File Version.")]
+        public string SettingsVersion => Config.SettingsVersion;
+
+        [Category("Meta")]
+        [DisplayName("Early Bound Generator Version")]
+        [Description("Version of the Early Bound Generator.")]
+        public string Version => Config.Version;
+
+        #endregion Meta
+
         #region Option Sets
 
         [Category("Option Sets")]
@@ -354,7 +352,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
             Plugin = plugin;
             Config = config;
-            ActionsToSkip = RemoveWhiteSpace(config.ExtensionConfig.ActionsToSkip).GetHashSet<string>();
+            var info = new ConfigKeyValueSplitInfo { ConvertKeysToLower = false };
+            ActionsToSkip = RemoveWhiteSpace(config.ExtensionConfig.ActionsToSkip).GetHashSet<string>(info);
             EntitiesToSkip = RemoveWhiteSpace(config.ExtensionConfig.EntitiesToSkip).GetHashSet<string>();
             EntityAttributeSpecifiedNames = RemoveWhiteSpace(config.ExtensionConfig.EntityAttributeSpecifiedNames).GetDictionaryHash<string, string>();
             PropertyEnumMappings = RemoveWhiteSpace(config.ExtensionConfig.PropertyEnumMappings).GetList<string>();
@@ -367,7 +366,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public void PushChanges()
         {
-            Config.ExtensionConfig.ActionsToSkip = CommonConfig.ToString(ActionsToSkip);
+            var info = new ConfigKeyValueSplitInfo{ ConvertKeysToLower = false};
+            Config.ExtensionConfig.ActionsToSkip = CommonConfig.ToString(ActionsToSkip, info);
             Config.ExtensionConfig.EntitiesToSkip = CommonConfig.ToString(EntitiesToSkip);
             Config.ExtensionConfig.EntityAttributeSpecifiedNames = CommonConfig.ToString(EntityAttributeSpecifiedNames);
             Config.ExtensionConfig.PropertyEnumMappings = CommonConfig.ToString(PropertyEnumMappings);

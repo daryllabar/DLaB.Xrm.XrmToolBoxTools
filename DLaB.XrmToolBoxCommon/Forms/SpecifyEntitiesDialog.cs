@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using DLaB.XrmToolboxCommon;
 using Microsoft.Xrm.Sdk.Metadata;
 using XrmToolBox.Extensibility;
 
@@ -11,7 +10,6 @@ namespace DLaB.XrmToolBoxCommon.Forms
 {
     public partial class SpecifyEntitiesDialog : DialogBase
     {
-        private int _columnSortedIndex;
         public HashSet<string> SpecifiedEntities { get; set; }
 
         #region Constructor / Load
@@ -79,7 +77,7 @@ namespace DLaB.XrmToolBoxCommon.Forms
             Enable(false);
 
             // Clear existing entity list
-            ((XrmToolboxCommon.PropertyInterface.IEntityMetadatas)CallingControl).EntityMetadatas = null;
+            ((PropertyInterface.IEntityMetadatas)CallingControl).EntityMetadatas = null;
 
             // Retrieve entities
             RetrieveEntityMetadatasOnLoad(LoadEntities);
@@ -88,7 +86,7 @@ namespace DLaB.XrmToolBoxCommon.Forms
         private void BtnAdd_Click(object sender, EventArgs e)
         {
             var values = lvKeptEntities.SelectedItems.Cast<ListViewItem>().ToArray();
-            foreach (ListViewItem value in values)
+            foreach (var value in values)
             {
                 lvKeptEntities.Items.Remove(value);
             }
@@ -98,27 +96,11 @@ namespace DLaB.XrmToolBoxCommon.Forms
         private void BtnRemove_Click(object sender, EventArgs e)
         {
             var values = lvExcludedEntities.SelectedItems.Cast<ListViewItem>().ToArray();
-            foreach (ListViewItem value in values)
+            foreach (var value in values)
             {
                 lvExcludedEntities.Items.Remove(value);
             }
             lvKeptEntities.Items.AddRange(values);
-        }
-
-        private void listview_ColumnClick(object sender, ColumnClickEventArgs e)
-        {
-            var lv = (ListView)sender;
-            if (e.Column == _columnSortedIndex)
-            {
-                lv.Sorting = lv.Sorting == SortOrder.Ascending ? SortOrder.Descending : SortOrder.Ascending;
-
-                lv.ListViewItemSorter = new ListViewItemComparer(e.Column, lv.Sorting);
-            }
-            else
-            {
-                _columnSortedIndex = e.Column;
-                lv.ListViewItemSorter = new ListViewItemComparer(e.Column, SortOrder.Ascending);
-            }
         }
     }
 }

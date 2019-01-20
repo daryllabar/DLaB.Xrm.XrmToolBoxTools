@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Source.DLaB.Common;
-using DLaB.XrmToolboxCommon;
+using DLaB.XrmToolBoxCommon;
 using XrmToolBox.Extensibility;
 
 namespace DLaB.EarlyBoundGenerator

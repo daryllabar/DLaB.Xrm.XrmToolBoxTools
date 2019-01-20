@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using XrmToolBox.Extensibility.Interfaces;
+﻿using XrmToolBox.Extensibility.Interfaces;
 
-namespace DLaB.XrmToolboxCommon
+namespace DLaB.XrmToolBoxCommon
 {
     public class DLaBPluginControlBase : XrmToolBox.Extensibility.PluginControlBase, IGitHubPlugin, IPayPalPlugin, IHelpPlugin
     {

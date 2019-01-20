@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xrm.Sdk.Metadata;
 
-namespace DLaB.XrmToolboxCommon.PropertyInterface
+namespace DLaB.XrmToolBoxCommon.PropertyInterface
 {
     public interface IEntityMetadatas
     {

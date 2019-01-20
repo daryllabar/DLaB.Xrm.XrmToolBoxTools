@@ -1,6 +1,6 @@
-﻿namespace DLaB.EarlyBoundGenerator
+﻿namespace DLaB.XrmToolBoxCommon.Forms
 {
-    partial class OptionSetSpecifierDialog
+    partial class SpecifyOptionSetDialog
     {
         /// <summary>
         /// Required designer variable.

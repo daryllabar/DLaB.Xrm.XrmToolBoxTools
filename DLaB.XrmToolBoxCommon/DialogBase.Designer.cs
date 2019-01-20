@@ -1,6 +1,6 @@
-﻿using DLaB.XrmToolboxCommon.Properties;
+﻿using DLaB.XrmToolBoxCommon.Properties;
 
-namespace DLaB.XrmToolboxCommon
+namespace DLaB.XrmToolBoxCommon
 {
     partial class DialogBase
     {

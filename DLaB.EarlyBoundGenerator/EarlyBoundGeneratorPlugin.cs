@@ -5,14 +5,14 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using DLaB.EarlyBoundGenerator.Settings;
-using DLaB.XrmToolboxCommon;
+using DLaB.XrmToolBoxCommon;
 using DLaB.XrmToolBoxCommon.Forms;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Client;
 using Microsoft.Xrm.Sdk.Metadata;
 using XrmToolBox.Extensibility;
 using XrmToolBox.Extensibility.Interfaces;
-using PropertyInterface = DLaB.XrmToolboxCommon.PropertyInterface;
+using PropertyInterface = DLaB.XrmToolBoxCommon.PropertyInterface;
 
 namespace DLaB.EarlyBoundGenerator
 {
@@ -494,12 +494,12 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnOptionSetsToSkip_Click(object sender, EventArgs e)
         {
-            var dialog = new SpecifyOptionSetsDialog(this) { OptionSets = Settings.ExtensionConfig.OptionSetsToSkip };
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                Settings.ExtensionConfig.OptionSetsToSkip = dialog.OptionSets;
-                SaveSettings();
-            }
+            //var dialog = new SpecifyOptionSetsDialog(this) { OptionSets = Settings.ExtensionConfig.OptionSetsToSkip };
+            //if (dialog.ShowDialog() == DialogResult.OK)
+            //{
+            //    Settings.ExtensionConfig.OptionSetsToSkip = dialog.OptionSets;
+            //    SaveSettings();
+            //}
         }
 
         private void BtnEnumMappings_Click(object sender, EventArgs e)

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xrm.Sdk.Metadata;
 
-namespace DLaB.XrmToolboxCommon.PropertyInterface
+namespace DLaB.XrmToolBoxCommon.PropertyInterface
 {
     public interface IGlobalOptionSets
     {

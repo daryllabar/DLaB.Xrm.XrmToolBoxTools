@@ -6,11 +6,10 @@ using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 using DLaB.XrmToolBoxCommon.Forms;
-using NuGet;
 
 namespace DLaB.XrmToolBoxCommon.Editors
 {
-    internal class EntitiesHashEditor : UITypeEditor
+    internal class OptionSetsHashEditor : UITypeEditor
     {
         public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context)
         {
@@ -24,11 +23,11 @@ namespace DLaB.XrmToolBoxCommon.Editors
             {
                 throw new InvalidOperationException("Context Instance did not implement IGetPluginControl.  Unable to determine plugin to connect with.");
             }
-            using (var dialog = new SpecifyEntitiesDialog(getter.GetPluginControl()) { SpecifiedEntities = set})
+            using (var dialog = new SpecifyOptionSetsDialog(getter.GetPluginControl()) { OptionSets = set})
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    set = dialog.SpecifiedEntities;
+                    set = dialog.OptionSets;
                 }
 
             }

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using DLaB.XrmToolboxCommon;
+using DLaB.XrmToolBoxCommon;
+using DLaB.XrmToolBoxCommon.Forms;
 using Source.DLaB.Common;
 using XrmToolBox.Extensibility;
 
@@ -66,7 +67,7 @@ namespace DLaB.EarlyBoundGenerator
 
         protected virtual void OpenAddDialog()
         {
-            var dialog = new OptionSetSpecifierDialog(CallingControl, true, "Specify Attribute");
+            var dialog = new SpecifyOptionSetDialog(CallingControl, true, "Specify Attribute");
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {

@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Source.DLaB.Xrm;
-using DLaB.XrmToolboxCommon;
-using PropertyInterface = DLaB.XrmToolboxCommon.PropertyInterface;
+using DLaB.XrmToolBoxCommon;
+using PropertyInterface = DLaB.XrmToolBoxCommon.PropertyInterface;
 using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Metadata;
 using XrmToolBox.Extensibility;
 
-namespace DLaB.EarlyBoundGenerator
+namespace DLaB.XrmToolBoxCommon.Forms
 {
-    public partial class OptionSetSpecifierDialog : DialogBase
+    public partial class SpecifyOptionSetDialog : DialogBase
     {
         #region Properties
 
@@ -23,12 +23,12 @@ namespace DLaB.EarlyBoundGenerator
 
         #region Constructor / Load
 
-        public OptionSetSpecifierDialog()
+        public SpecifyOptionSetDialog()
         {
             InitializeComponent();
         }
 
-        public OptionSetSpecifierDialog(PluginControlBase callingControl, bool selectOptionSetsForEntity, string title = null)
+        public SpecifyOptionSetDialog(PluginControlBase callingControl, bool selectOptionSetsForEntity, string title = null)
             : base(callingControl)
         {
             InitializeComponent();
