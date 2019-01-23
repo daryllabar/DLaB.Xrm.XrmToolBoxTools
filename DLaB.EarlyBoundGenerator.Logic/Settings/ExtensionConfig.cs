@@ -244,7 +244,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 MakeReadonlyFieldsEditable = false,
                 MakeResponseActionsEditable = false,
                 LocalOptionSetFormat = "{0}_{1}",
-                OptionSetsToSkip = "organization_currencyformatcode|quote_statuscode",
+                OptionSetsToSkip = null,
                 OptionSetLanguageCodeOverride = null,
                 PropertyEnumMappings = string.Empty,
                 RemoveRuntimeVersionComment = true,

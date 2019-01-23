@@ -10,8 +10,87 @@ using XrmToolBox.Extensibility;
 
 namespace DLaB.EarlyBoundGenerator.Settings
 {
+    /*
+    private void SetAddFilesToProjectVisibility()
+    {
+        ChkAddFilesToProject.Visible = ChkCreateOneActionFile.Checked || ChkCreateOneEntityFile.Checked || ChkCreateOneOptionSetFile.Checked;
+    }
+
+        private void ChkIncludeCommandLine_CheckedChanged(object sender, EventArgs e)
+        {
+            ChkMaskPassword.Visible = ChkIncludeCommandLine.Checked;
+        }
+
+        private void ChkGenerateOptionSetEnums_CheckedChanged(object sender, EventArgs e)
+        {
+            BtnEnumMappings.Visible = ChkGenerateOptionSetEnums.Checked;
+            BtnUnmappedProperties.Visible = ChkGenerateOptionSetEnums.Checked;
+        }
+
+        private void BtnOpenActionPathDialog_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.SetCsFilePath(TxtActionPath, ConnectionSettings.SettingsDirectoryName);
+        }
+
+        private void BtnOpenEntityPathDialog_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.SetCsFilePath(TxtEntityPath, ConnectionSettings.SettingsDirectoryName);
+        }
+
+        private void BtnOpenOptionSetPathDialog_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.SetCsFilePath(TxtOptionSetPath, ConnectionSettings.SettingsDirectoryName);
+        }
+
+        private void ChkCreateOneActionFile_CheckedChanged(object sender, EventArgs e)
+        {
+            LblActionsDirectory.Visible = ChkCreateOneActionFile.Checked;
+            LblActionPath.Visible = !ChkCreateOneActionFile.Checked;
+            SetAddFilesToProjectVisibility();
+
+            ConditionallyAddRemoveExtension(TxtActionPath, "Actions.cs", ChkCreateOneActionFile.Checked);
+        }
+
+        private void ChkCreateOneOptionSetFile_CheckedChanged(object sender, EventArgs e)
+        {
+            LblOptionSetsDirectory.Visible = ChkCreateOneOptionSetFile.Checked;
+            LblOptionSetPath.Visible = !ChkCreateOneOptionSetFile.Checked;
+            SetAddFilesToProjectVisibility();
+
+            ChkAddFilesToProject.Visible = !ChkCreateOneEntityFile.Checked;
+
+            ConditionallyAddRemoveExtension(TxtOptionSetPath, "OptionSets.cs", ChkCreateOneOptionSetFile.Checked);
+        }
+
+        private void ChkUseDeprecatedOptionSetNaming_CheckedChanged(object sender, EventArgs e)
+        {
+            LblOptionSetFormat.Visible = !ChkUseDeprecatedOptionSetNaming.Checked;
+            TxtOptionSetFormat.Visible = !ChkUseDeprecatedOptionSetNaming.Checked;
+        }
+
+                private void ChkCreateOneEntityFile_CheckedChanged(object sender, EventArgs e)
+        {
+            LblEntitiesDirectory.Visible = ChkCreateOneEntityFile.Checked;
+            LblEntityPath.Visible = !ChkCreateOneEntityFile.Checked;
+            SetAddFilesToProjectVisibility();
+
+            ConditionallyAddRemoveExtension(TxtEntityPath, "Entities.cs", ChkCreateOneEntityFile.Checked);
+        }
+
+        private void TxtLanguageCodeOverride_TextChanged(object sender, EventArgs e)
+        {
+            var value = TxtLanguageCodeOverride.Text;
+            if (!string.IsNullOrWhiteSpace(value)
+                && !int.TryParse(value, out var _))
+            {
+                TxtLanguageCodeOverride.Text = "";
+            }
+        }
+
+    */
+
     //[TypeConverter(typeof(Display.ExtensionConfigConverter))]
-    public class SettingsMap: IGetPluginControl<EarlyBoundGeneratorPlugin>
+    public partial class SettingsMap: IGetPluginControl<EarlyBoundGeneratorPlugin>
     {
         // "The path to the settings file associated with this connection.  Changing it while connected, updates the path for the connection.  Changing the connection will cause the settings to reload for that connection"
 
@@ -22,6 +101,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [Category("Actions")]
         [DisplayName("Action Relative Output Path")]
         [Description("This is realtive to the Path of the Settings File.  If \"Create One File Per Action\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
+        [Editor(typeof(PathEditor), typeof(UITypeEditor))]
+        [DynamicRelativePathEditor("SettingsPath", "C# files|*.cs", "cs", false)]
         public string ActionOutPath
         {
             get => Config.ActionOutPath;
@@ -313,7 +394,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [Category("Option Sets")]
         [DisplayName("Option Sets Blacklist")]
         [Description("Allows for the ability to specify OptionSets to not generate.")]
-        [Editor(@"System.Windows.Forms.Design.StringCollectionEditor,System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
+        [Editor(typeof(OptionSetsHashEditor), typeof(UITypeEditor))]
         [TypeConverter(CollectionCountConverter.Name)]
         public HashSet<string> OptionSetsToSkip { get; set; }
 
@@ -336,6 +417,9 @@ namespace DLaB.EarlyBoundGenerator.Settings
         }
 
         #endregion Option Sets
+
+        [Browsable(false)]
+        public string SettingsPath { get; set; }
 
         private EarlyBoundGeneratorPlugin Plugin { get; }
 

@@ -51,11 +51,6 @@ namespace DLaB.EarlyBoundGenerator
             InitializeComponent();
         }
 
-        private void SetAddFilesToProjectVisibility()
-        {
-            ChkAddFilesToProject.Visible = ChkCreateOneActionFile.Checked || ChkCreateOneEntityFile.Checked || ChkCreateOneOptionSetFile.Checked;
-        }
-
         private void EarlyBoundGenerator_Load(object sender, EventArgs e)
         {
             if (ConnectionDetail != null)
@@ -74,7 +69,7 @@ namespace DLaB.EarlyBoundGenerator
             {
                 Settings = EarlyBoundGeneratorConfig.Load(settingsPath);
                 Settings.CrmSvcUtilRealtiveRootPath = Paths.PluginsPath;
-                SettingsMap = new SettingsMap(this, Settings);
+                SettingsMap = new SettingsMap(this, Settings){SettingsPath = settingsPath};
                 PropertiesGrid.SelectedObject = SettingsMap;
                 SkipSaveSettings = false;
             }
@@ -92,43 +87,6 @@ namespace DLaB.EarlyBoundGenerator
                     SkipSaveSettings = true;
                 }
             }
-
-            ChkAddDebuggerNonUserCode.Checked = Settings.ExtensionConfig.AddDebuggerNonUserCode;
-            ChkAddFilesToProject.Checked = Settings.ExtensionConfig.AddNewFilesToProject;
-            ChkAudibleCompletion.Checked = Settings.AudibleCompletionNotification;
-            ChkCreateOneActionFile.Checked = Settings.ExtensionConfig.CreateOneFilePerAction;
-            ChkCreateOneEntityFile.Checked = Settings.ExtensionConfig.CreateOneFilePerEntity;
-            ChkCreateOneOptionSetFile.Checked = Settings.ExtensionConfig.CreateOneFilePerOptionSet;
-            ChkEditableResponseActions.Checked = Settings.ExtensionConfig.MakeResponseActionsEditable;
-            ChkIncludeCommandLine.Checked = Settings.IncludeCommandLine;
-            ChkMakeReadonlyFieldsEditable.Checked = Settings.ExtensionConfig.MakeReadonlyFieldsEditable;
-            ChkMaskPassword.Checked = Settings.MaskPassword;
-            ChkGenerateActionAttributeNameConsts.Checked = Settings.ExtensionConfig.GenerateActionAttributeNameConsts;
-            ChkGenerateAttributeNameConsts.Checked = Settings.ExtensionConfig.GenerateAttributeNameConsts;
-            ChkGenerateAnonymousTypeConstructor.Checked = Settings.ExtensionConfig.GenerateAnonymousTypeConstructor;
-            ChkGenerateEntityRelationships.Checked = Settings.ExtensionConfig.GenerateEntityRelationships;
-            ChkGenerateOptionSetEnums.Checked = Settings.ExtensionConfig.GenerateEnumProperties;
-            ChkRemoveRuntimeComment.Checked = Settings.ExtensionConfig.RemoveRuntimeVersionComment;
-            ChkUseDeprecatedOptionSetNaming.Checked = Settings.ExtensionConfig.UseDeprecatedOptionSetNaming;
-            ChkUseTFS.Checked = Settings.ExtensionConfig.UseTfsToCheckoutFiles;
-            ChkUseXrmClient.Checked = Settings.ExtensionConfig.UseXrmClient;
-            TxtActionPath.Text = Settings.ActionOutPath;
-            TxtEntityPath.Text = Settings.EntityOutPath;
-            TxtInvalidCSharpNamePrefix.Text = Settings.ExtensionConfig.InvalidCSharpNamePrefix;
-            TxtOptionSetFormat.Text = Settings.ExtensionConfig.LocalOptionSetFormat;
-            TxtLanguageCodeOverride.Text = Settings.ExtensionConfig.OptionSetLanguageCodeOverride + "";
-            TxtNamespace.Text = Settings.Namespace;
-            TxtOptionSetPath.Text = Settings.OptionSetOutPath;
-            TxtServiceContextName.Text = Settings.ServiceContextName;
-
-            // Hide or show labels based on checked preferences
-            LblActionsDirectory.Visible = ChkCreateOneActionFile.Checked;
-            LblActionPath.Visible = !LblActionsDirectory.Visible;
-            LblEntitiesDirectory.Visible = ChkCreateOneEntityFile.Checked;
-            LblEntityPath.Visible = !LblEntitiesDirectory.Visible;
-            LblOptionSetsDirectory.Visible = ChkCreateOneOptionSetFile.Checked;
-            LblOptionSetPath.Visible = !LblOptionSetsDirectory.Visible;
-            SetAddFilesToProjectVisibility();
         }
 
         private void SaveSettings()
@@ -157,24 +115,25 @@ namespace DLaB.EarlyBoundGenerator
 
         private bool IsFormValid(CreationType creationType)
         {
+            SettingsMap.PushChanges();
             var isValid =
-                IsValidPath(creationType, CreationType.Entities, TxtEntityPath, ChkCreateOneEntityFile, "Entities") &&
-                IsValidPath(creationType, CreationType.Entities, TxtOptionSetPath, ChkCreateOneOptionSetFile, "OptionSets") &&
-                IsValidPath(creationType, CreationType.Entities, TxtActionPath, ChkCreateOneActionFile, "Actions");
+                IsValidPath(creationType, CreationType.Entities, SettingsMap.EntityOutPath, SettingsMap.CreateOneFilePerEntity, "Entities") &&
+                IsValidPath(creationType, CreationType.Entities, SettingsMap.OptionSetOutPath, SettingsMap.CreateOneFilePerOptionSet, "OptionSets") &&
+                IsValidPath(creationType, CreationType.Entities, SettingsMap.ActionOutPath, SettingsMap.CreateOneFilePerAction, "Actions");
 
             return isValid;
         }
 
-        private static bool IsValidPath(CreationType creationType, CreationType creationTypeToCheck, TextBox textPath, CheckBox chk, string name)
+        private static bool IsValidPath(CreationType creationType, CreationType creationTypeToCheck, string path, bool pathIsDirectory, string name)
         {
             if (creationType != creationTypeToCheck && creationType != CreationType.All)
             {
                 return true;
             }
             var isValid = true;
-            var containsExtension = !string.IsNullOrWhiteSpace(Path.GetExtension(textPath.Text));
+            var containsExtension = !string.IsNullOrWhiteSpace(Path.GetExtension(path));
             // Validate Path
-            if (chk.Checked)
+            if (pathIsDirectory)
             {
                 if (containsExtension)
                 {
@@ -319,8 +278,8 @@ namespace DLaB.EarlyBoundGenerator
                     // Fix for https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/issues/43
                     // Difficulties with Early Bound Generator #43
 
-                    var askForPassowrd = new PasswordDialog(this);
-                    Settings.Password = askForPassowrd.ShowDialog(this) == DialogResult.OK ? askForPassowrd.Password : "UNKNOWN";
+                    var askForPassword = new PasswordDialog(this);
+                    Settings.Password = askForPassword.ShowDialog(this) == DialogResult.OK ? askForPassword.Password : "UNKNOWN";
                 }
                 if (ConnectionDetail.AuthType == AuthenticationProviderType.ActiveDirectory && string.IsNullOrWhiteSpace(Settings.UserName))
                 {
@@ -328,10 +287,9 @@ namespace DLaB.EarlyBoundGenerator
                 }
             }
 
-            Settings.ActionOutPath = TxtActionPath.Text;
-            Settings.EntityOutPath = TxtEntityPath.Text;
+            SettingsMap.PushChanges();
             Settings.RootPath = Path.GetDirectoryName(Path.GetFullPath(TxtSettingsPath.Text));
-            if (ChkUseDeprecatedOptionSetNaming.Checked)
+            if (SettingsMap.UseDeprecatedOptionSetNaming)
             {
                 Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, @"DLaB.CrmSvcUtilExtensions.OptionSet.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions");
                 Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService, string.Empty);
@@ -343,35 +301,6 @@ namespace DLaB.EarlyBoundGenerator
                 Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, defaultConfig.GetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter).Value);
                 Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService, defaultConfig.GetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService).Value);
             }
-
-            var validLanguageCode = int.TryParse(TxtLanguageCodeOverride.Text, out var languageCode);
-
-            var extensions = Settings.ExtensionConfig;
-            extensions.AddDebuggerNonUserCode = ChkAddDebuggerNonUserCode.Checked;
-            extensions.AddNewFilesToProject = ChkAddFilesToProject.Checked;
-            extensions.CreateOneFilePerAction = ChkCreateOneActionFile.Checked;
-            extensions.CreateOneFilePerEntity = ChkCreateOneEntityFile.Checked;
-            extensions.CreateOneFilePerOptionSet = ChkCreateOneOptionSetFile.Checked;
-            extensions.GenerateActionAttributeNameConsts = ChkGenerateActionAttributeNameConsts.Checked;
-            extensions.GenerateAttributeNameConsts = ChkGenerateAttributeNameConsts.Checked;
-            extensions.GenerateAnonymousTypeConstructor = ChkGenerateAnonymousTypeConstructor.Checked;
-            extensions.GenerateEntityRelationships = ChkGenerateEntityRelationships.Checked;
-            extensions.GenerateEnumProperties = ChkGenerateOptionSetEnums.Checked;
-            extensions.InvalidCSharpNamePrefix = TxtInvalidCSharpNamePrefix.Text;
-            extensions.MakeReadonlyFieldsEditable = ChkMakeReadonlyFieldsEditable.Checked;
-            extensions.MakeResponseActionsEditable = ChkEditableResponseActions.Checked;
-            extensions.LocalOptionSetFormat = TxtOptionSetFormat.Text;
-            extensions.OptionSetLanguageCodeOverride = validLanguageCode ? languageCode : (int?)null;
-            extensions.RemoveRuntimeVersionComment = ChkRemoveRuntimeComment.Checked;
-            extensions.UseXrmClient = ChkUseXrmClient.Checked;
-            extensions.UseDeprecatedOptionSetNaming = ChkUseDeprecatedOptionSetNaming.Checked;
-            extensions.UseTfsToCheckoutFiles = ChkUseTFS.Checked;
-            Settings.AudibleCompletionNotification = ChkAudibleCompletion.Checked;
-            Settings.IncludeCommandLine = ChkIncludeCommandLine.Checked;
-            Settings.MaskPassword = ChkMaskPassword.Checked;
-            Settings.Namespace = TxtNamespace.Text;
-            Settings.OptionSetOutPath = TxtOptionSetPath.Text;
-            Settings.ServiceContextName = string.IsNullOrWhiteSpace(TxtServiceContextName.Text) ? null : TxtServiceContextName.Text;
         }
 
         private string GetUserDomain()
@@ -426,17 +355,6 @@ namespace DLaB.EarlyBoundGenerator
             BtnCreateAll.Enabled = enable;
             groupBox1.Enabled = enable;
             tabControl1.Enabled = enable;
-        }
-
-        private void ChkIncludeCommandLine_CheckedChanged(object sender, EventArgs e)
-        {
-            ChkMaskPassword.Visible = ChkIncludeCommandLine.Checked;
-        }
-
-        private void ChkGenerateOptionSetEnums_CheckedChanged(object sender, EventArgs e)
-        {
-            BtnEnumMappings.Visible = ChkGenerateOptionSetEnums.Checked;
-            BtnUnmappedProperties.Visible = ChkGenerateOptionSetEnums.Checked;
         }
 
         #region Create Button Click Events
@@ -524,49 +442,9 @@ namespace DLaB.EarlyBoundGenerator
             }
         }
 
-        private void BtnOpenActionPathDialog_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.SetCsFilePath(TxtActionPath, ConnectionSettings.SettingsDirectoryName);
-        }
-
-        private void BtnOpenEntityPathDialog_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.SetCsFilePath(TxtEntityPath, ConnectionSettings.SettingsDirectoryName);
-        }
-
-        private void BtnOpenOptionSetPathDialog_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.SetCsFilePath(TxtOptionSetPath, ConnectionSettings.SettingsDirectoryName);
-        }
         private void BtnOpenSettingsPathDialog_Click(object sender, EventArgs e)
         {
             openFileDialog1.SetXmlFilePath(TxtSettingsPath);
-        }
-
-        private void ChkCreateOneActionFile_CheckedChanged(object sender, EventArgs e)
-        {
-            LblActionsDirectory.Visible = ChkCreateOneActionFile.Checked;
-            LblActionPath.Visible = !ChkCreateOneActionFile.Checked;
-            SetAddFilesToProjectVisibility();
-
-            ConditionallyAddRemoveExtension(TxtActionPath, "Actions.cs", ChkCreateOneActionFile.Checked);
-        }
-
-        private void ChkCreateOneOptionSetFile_CheckedChanged(object sender, EventArgs e)
-        {
-            LblOptionSetsDirectory.Visible = ChkCreateOneOptionSetFile.Checked;
-            LblOptionSetPath.Visible = !ChkCreateOneOptionSetFile.Checked;
-            SetAddFilesToProjectVisibility();
-
-            ChkAddFilesToProject.Visible = !ChkCreateOneEntityFile.Checked;
-
-            ConditionallyAddRemoveExtension(TxtOptionSetPath, "OptionSets.cs", ChkCreateOneOptionSetFile.Checked);
-        }
-
-        private void ChkUseDeprecatedOptionSetNaming_CheckedChanged(object sender, EventArgs e)
-        {
-            LblOptionSetFormat.Visible = !ChkUseDeprecatedOptionSetNaming.Checked;
-            TxtOptionSetFormat.Visible = !ChkUseDeprecatedOptionSetNaming.Checked;
         }
 
         private static void ConditionallyAddRemoveExtension(TextBox textBox, string singleClassFileName, bool @checked)
@@ -584,15 +462,6 @@ namespace DLaB.EarlyBoundGenerator
                 // Add Actions.cs
                 textBox.Text = Path.Combine(fileName, singleClassFileName);
             }
-        }
-
-        private void ChkCreateOneEntityFile_CheckedChanged(object sender, EventArgs e)
-        {
-            LblEntitiesDirectory.Visible = ChkCreateOneEntityFile.Checked;
-            LblEntityPath.Visible = !ChkCreateOneEntityFile.Checked;
-            SetAddFilesToProjectVisibility();
-
-            ConditionallyAddRemoveExtension(TxtEntityPath, "Entities.cs", ChkCreateOneEntityFile.Checked);
         }
 
         private void actionsTab_Enter(object sender, EventArgs e)
@@ -711,16 +580,6 @@ namespace DLaB.EarlyBoundGenerator
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
-            }
-        }
-
-        private void TxtLanguageCodeOverride_TextChanged(object sender, EventArgs e)
-        {
-            var value = TxtLanguageCodeOverride.Text;
-            if (!string.IsNullOrWhiteSpace(value)
-                && !int.TryParse(value, out var _))
-            {
-                TxtLanguageCodeOverride.Text = "";
             }
         }
     }

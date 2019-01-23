@@ -88,6 +88,7 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Drawing" />
@@ -234,6 +235,7 @@
     <Compile Include="Settings\ConnectionSettings.cs" />
     <Compile Include="Settings\ExtensionConfigConverter.cs" />
     <Compile Include="Settings\SettingsMap.cs" />
+    <Compile Include="Settings\SettingsMapDescriptor.cs" />
     <Compile Include="SpecifyStringValuesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
