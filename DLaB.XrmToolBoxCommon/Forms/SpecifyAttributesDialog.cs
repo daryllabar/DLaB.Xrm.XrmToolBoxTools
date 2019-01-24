@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using DLaB.XrmToolBoxCommon;
-using DLaB.XrmToolBoxCommon.Forms;
-using Source.DLaB.Common;
 using XrmToolBox.Extensibility;
 
-namespace DLaB.EarlyBoundGenerator
+namespace DLaB.XrmToolBoxCommon.Forms
 {
     public partial class SpecifyAttributesDialog : DialogBase
     {
-        public string ConfigValue { get; set; }
+        public Dictionary<string,HashSet<string>> AttributesByEntity { get; set; }
 
         #region Constructor / Load
 
@@ -29,18 +26,18 @@ namespace DLaB.EarlyBoundGenerator
         private void SpecifyAttributesDialog_Load(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
-            if (string.IsNullOrWhiteSpace(ConfigValue)) { return; }
-
-            ConfigValue = ConfigValue.Replace(" ", string.Empty);
-            ConfigValue = ConfigValue.Replace("\n", string.Empty);
-
-            var setting = Config.GetDictionaryHash<string, string>(Guid.NewGuid().ToString(), ConfigValue);
-
-            foreach (var kvp in setting)
+            if (AttributesByEntity == null)
             {
-                foreach (var attribute in kvp.Value.OrderBy(v => v))
+                AttributesByEntity = new Dictionary<string, HashSet<string>>();
+                return;
+            }
+
+
+            foreach (var attributes in AttributesByEntity)
+            {
+                foreach (var attribute in attributes.Value.OrderBy(v => v))
                 {
-                    AddRow(kvp.Key.ToLower(), attribute);
+                    AddRow(attributes.Key.ToLower(), attribute);
                 }
             }
         }
@@ -79,7 +76,6 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            ConfigValue = string.Empty;
             var rows = dataGridView1.Rows.Cast<DataGridViewRow>().
                 Select(row => new Tuple<string, string>(row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString())).ToList();
 
@@ -94,7 +90,7 @@ namespace DLaB.EarlyBoundGenerator
                 }
             }
 
-            ConfigValue = Config.ToString(values);
+            AttributesByEntity = values;
             DialogResult = DialogResult.OK;
             Close();
         }

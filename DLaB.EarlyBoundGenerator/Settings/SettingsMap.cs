@@ -5,10 +5,7 @@ using DLaB.XrmToolBoxCommon.Editors;
 using CommonConfig = Source.DLaB.Common.Config;
 using Source.DLaB.Common;
 using XrmToolBox.Extensibility;
-using System;
-using System.Net;
-using System.Windows.Forms;
-using System.Windows.Shapes;
+using DLaB.XrmToolBoxCommon.Forms;
 
 // ReSharper disable UnusedMember.Global
 
@@ -111,6 +108,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [Category("Entities")]
         [DisplayName("Attribute Capitalization Override")]
         [Description("Allows for the ability to specify the capitalization of an attribute on an entity.")]
+        [Editor(typeof(SpecifyAttributesCaseEditor), typeof(UITypeEditor))]
         [TypeConverter(CollectionCountConverter.Name)]
         public Dictionary<string, HashSet<string>> EntityAttributeSpecifiedNames { get; set; }
 
@@ -162,6 +160,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [Category("Entities")]
         [DisplayName("Property Enum Mapping")]
         [Description("Manually specifies an enum mapping for an OptionSetValue Property on an entity.\n\rThis is useful if you have multiple local options that really are the same value.  This then allows easier comparision since the enums don't have to be converted.")]
+        [Editor(typeof(AttributesToEnumMapperEditor), typeof(UITypeEditor))]
+        [TypeConverter(CollectionCountConverter.Name)]
         public List<string> PropertyEnumMappings { get; set; }
 
         [Category("Entities")]
@@ -176,12 +176,13 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [Category("Entities")]
         [DisplayName("Unmapped Properties")]
         [Description("Allows for the ability to specify an OptionSetValue Property of an entity that doesn't have an enum mapping.")]
+        [Editor(typeof(SpecifyAttributesEditor), typeof(UITypeEditor))]
         [TypeConverter(CollectionCountConverter.Name)]
         public Dictionary<string, HashSet<string>> UnmappedProperties { get; set; }
 
         [Category("Entities")]
         [DisplayName("Use Xrm Client")]
-        [Description(@"(Not Recommended) Specifies the Service Context should inherit from CrmOrganizationServiceContext, and conversly, Entities from Xrm.Client.Entity.\r\nThis results in a dependence on Microsoft.Xrm.Client.dll that must be accounted for during plugins and workflows since it has been deprecated and isn't included with CRM by default:\r\nhttps://community.dynamics.com/crm/b/develop1/archive/2013/08/12/microsoft-xrm-client-part-1-crmorganizationservicecontext-and-when-should-i-use-it.")]
+        [Description("(Not Recommended) Specifies the Service Context should inherit from CrmOrganizationServiceContext, and conversly, Entities from Xrm.Client.Entity.\r\nThis results in a dependence on Microsoft.Xrm.Client.dll that must be accounted for during plugins and workflows since it has been deprecated and isn't included with CRM by default:\r\nhttps://community.dynamics.com/crm/b/develop1/archive/2013/08/12/microsoft-xrm-client-part-1-crmorganizationservicecontext-and-when-should-i-use-it.")]
         public bool UseXrmClient
         {
             get => Config.ExtensionConfig.UseXrmClient;
@@ -248,7 +249,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         [Category("Global")]
         [DisplayName("Remove Runtime Version Comment")]
-        [Description(@"Removes the ""//   Runtime Version:X.X.X.X"" comment from the header of generated files.\r\nThis helps to alleviate unnecessary differences that pop up when the classes are generated from machines with different .Net Framework updates installed.")]
+        [Description(@"Removes the ""//   Runtime Version:X.X.X.X"" comment from the header of generated files.
+This helps to alleviate unnecessary differences that pop up when the classes are generated from machines with different .Net Framework updates installed.")]
         public bool RemoveRuntimeVersionComment
         {
             get => Config.ExtensionConfig.RemoveRuntimeVersionComment;

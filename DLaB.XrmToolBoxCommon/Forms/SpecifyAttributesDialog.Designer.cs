@@ -1,4 +1,4 @@
-﻿namespace DLaB.EarlyBoundGenerator
+﻿namespace DLaB.XrmToolBoxCommon.Forms
 {
     partial class SpecifyAttributesDialog
     {

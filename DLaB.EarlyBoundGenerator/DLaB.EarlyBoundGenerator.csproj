@@ -226,6 +226,8 @@
     <Compile Include="AttributesToEnumMapperDialog.Designer.cs">
       <DependentUpon>AttributesToEnumMapperDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="AttributesToEnumMapperEditor.cs" />
+    <Compile Include="SpecifyAttributesCaseEditor.cs" />
     <Compile Include="PasswordDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,12 +243,6 @@
     </Compile>
     <Compile Include="SpecifyStringValuesDialog.Designer.cs">
       <DependentUpon>SpecifyStringValuesDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SpecifyAttributesDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SpecifyAttributesDialog.Designer.cs">
-      <DependentUpon>SpecifyAttributesDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EarlyBoundGeneratorPlugin.cs">
@@ -280,9 +276,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SpecifyStringValuesDialog.resx">
       <DependentUpon>SpecifyStringValuesDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SpecifyAttributesDialog.resx">
-      <DependentUpon>SpecifyAttributesDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SpecifyAttributeNamesDialog.resx">
       <DependentUpon>SpecifyAttributeNamesDialog.cs</DependentUpon>

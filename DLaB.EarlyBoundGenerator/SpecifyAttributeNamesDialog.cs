@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DLaB.XrmToolBoxCommon;
-using Source.DLaB.Xrm;
+using DLaB.XrmToolBoxCommon.Forms;
 using XrmToolBox.Extensibility;
 
 namespace DLaB.EarlyBoundGenerator
@@ -29,7 +21,7 @@ namespace DLaB.EarlyBoundGenerator
 
         private void SpecifyAttributeNamesDialog_Load(object sender, EventArgs e)
         {
-            Text = "Specify Attribute Names";
+            Text = @"Specify Attribute Names";
         } 
 
         #endregion // Constructor / Load
@@ -43,6 +35,5 @@ namespace DLaB.EarlyBoundGenerator
                 AddRow(dialog.EntityName, dialog.AttributeName);
             }
         }
-
     }
 }

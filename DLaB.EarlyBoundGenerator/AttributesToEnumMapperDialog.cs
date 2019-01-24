@@ -1,22 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DLaB.XrmToolBoxCommon;
-using Source.DLaB.Common;
-using Source.DLaB.Xrm;
 using XrmToolBox.Extensibility;
 
 namespace DLaB.EarlyBoundGenerator
 {
     public partial class AttributesToEnumMapperDialog : DialogBase
     {
-        public string ConfigValue { get; set; }
+        public List<string> CsvLines { get; set; }
 
         #region Constructor / Load
 
@@ -34,11 +27,9 @@ namespace DLaB.EarlyBoundGenerator
         private void AttributesToEnumMapperDialog_Load(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
-            if (string.IsNullOrWhiteSpace(ConfigValue)) { return; }
+            if (CsvLines == null || CsvLines.Count == 0) { return; }
 
-            ConfigValue = ConfigValue.Replace(" ", string.Empty);
-
-            foreach (var entity in ConfigValue.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries))
+            foreach (var entity in CsvLines)
             {
                 var splitAttributes = entity.Split(new []{',', '.'}, StringSplitOptions.RemoveEmptyEntries);
                 if(splitAttributes.Length == 3)
@@ -73,11 +64,8 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            ConfigValue = string.Empty;
-            var mappings = dataGridView1.Rows.Cast<DataGridViewRow>().
-                Select(row => string.Format("{0}.{1},{2}", row.Cells[0].Value, row.Cells[1].Value, row.Cells[2].Value)).ToList();
-
-            ConfigValue = Config.ToString(mappings);
+            CsvLines = dataGridView1.Rows.Cast<DataGridViewRow>().
+                Select(row => $"{row.Cells[0].Value}.{row.Cells[1].Value},{row.Cells[2].Value}").ToList();
             DialogResult = DialogResult.OK;
             Close();
         }

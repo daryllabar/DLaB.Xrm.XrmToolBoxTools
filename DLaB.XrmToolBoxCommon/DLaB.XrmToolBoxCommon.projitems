@@ -22,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Editors\EntitiesHashEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Editors\IGetPlugin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Editors\PathEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Editors\SpecifyAttributesEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Forms\Helper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Forms\SpecifyActionsDialog.cs">
@@ -29,6 +30,12 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Forms\SpecifyActionsDialog.Designer.cs">
       <DependentUpon>SpecifyActionsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Forms\SpecifyAttributesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Forms\SpecifyAttributesDialog.Designer.cs">
+      <DependentUpon>SpecifyAttributesDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Forms\SpecifyEntitiesDialog.cs">
       <SubType>Form</SubType>
@@ -64,6 +71,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Forms\SpecifyActionsDialog.resx">
       <DependentUpon>SpecifyActionsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Forms\SpecifyAttributesDialog.resx">
+      <DependentUpon>SpecifyAttributesDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Forms\SpecifyEntitiesDialog.resx">
       <DependentUpon>SpecifyEntitiesDialog.cs</DependentUpon>

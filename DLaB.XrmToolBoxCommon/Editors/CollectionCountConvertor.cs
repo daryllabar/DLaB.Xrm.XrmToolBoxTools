@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 
 namespace DLaB.XrmToolBoxCommon.Editors
@@ -10,7 +11,7 @@ namespace DLaB.XrmToolBoxCommon.Editors
     {
         public const string Name = "DLaB.XrmToolBoxCommon.Editors.CollectionCountConverter";
 
-        public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
             if (destinationType != typeof(string))
             {
@@ -19,20 +20,60 @@ namespace DLaB.XrmToolBoxCommon.Editors
 
             var type = value.GetType();
 
-            if (type.IsGenericType 
-                && type.GenericTypeArguments.Length >= 1
-                && type.GenericTypeArguments[0] == typeof(string)
-                && value is ICollection<string> genericCollection)
+            if (type.IsGenericType)
             {
-                return DisplayCount(value, genericCollection.Count);
+                return ConvertGenericTypeToString(context, culture, value, destinationType);
             }
 
-            return value is ICollection collection 
-                ? DisplayCount(value, collection.Count) 
-                : base.ConvertTo(context, culture, value, destinationType);
+            return ConvertCollectionToString(context, culture, value, destinationType);
         }
 
-        private static object DisplayCount(object value, int count)
+        private string ConvertCollectionToString(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+        {
+            return value is ICollection collection 
+                ? GetDisplayCount(value, collection.Count) 
+                : (string)base.ConvertTo(context, culture, value, destinationType);
+        }
+
+        private string ConvertGenericTypeToString(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+        {
+            var type = value.GetType();
+            var collectionType = type.GetInterfaces().FirstOrDefault(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(ICollection<>));
+            if(collectionType == null)
+            {
+                return ConvertCollectionToString(context, culture, value, destinationType);
+            }
+
+            // Handle Collection<KeyValuePair<KeyType,ValueType>>
+            var firstGenericType = collectionType.GenericTypeArguments[0];
+            if (firstGenericType.IsGenericType
+                && firstGenericType.GetGenericTypeDefinition() == typeof(KeyValuePair<,>))
+            {
+                // Check if ValueType is ICollection
+                var kvpValueType = firstGenericType.GenericTypeArguments[1];
+                if (kvpValueType.IsGenericType
+                    && kvpValueType.GetInterfaces().Any(i => 
+                        i.IsGenericType 
+                        && (i.GetGenericTypeDefinition() == typeof(ICollection<>) 
+                            || i.GetGenericTypeDefinition() == typeof(ICollection))))
+                {
+                    return GetDisplayCountForCollectionOfKvp(value);
+                }
+            }
+
+            return GetDisplayCount(value, ((dynamic) value).Count);
+
+        }
+
+        private static string GetDisplayCountForCollectionOfKvp(object value)
+        {
+            var count = (from object pairs in (IEnumerable) value
+                    select ((dynamic) pairs)?.Value?.Count)
+                .Aggregate(0, (current, c) => current + (c == 0 ? 1 : c));
+            return GetDisplayCount(value, count);
+        }
+
+        private static string GetDisplayCount(object value, int count)
         {
             string text;
             switch (count)

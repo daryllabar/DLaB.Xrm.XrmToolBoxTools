@@ -39,6 +39,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 { nameof(CreateOneFilePerOptionSet), OnCreateOneFilePerOptionSetChange },
                 { nameof(GenerateEnumProperties), OnGenerateEnumPropertiesChange },
                 { nameof(IncludeCommandLine), OnIncludeCommandLineChange },
+                { nameof(UseDeprecatedOptionSetNaming), OnUseDeprecatedOptionSetNamingChange },
             };
         }
 
@@ -71,8 +72,12 @@ namespace DLaB.EarlyBoundGenerator.Settings
             SetMaskPasswordVisibility();
         }
 
-        #endregion OnChange Handlers
+        private void OnUseDeprecatedOptionSetNamingChange(PropertyValueChangedEventArgs args)
+        {
+            SetLocalOptionSetFormatVisibility();
+        }
 
+        #endregion OnChange Handlers
 
         private void ProcessDynamicallyVisibleProperties()
         {
@@ -80,6 +85,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             SetMaskPasswordVisibility();
             SetPropertyEnumMappingVisibility();
             SetUnmappedPropertiesVisibility();
+            SetLocalOptionSetFormatVisibility();
             ActionOutPath = ActionOutPath;
             EntityOutPath = EntityOutPath;
             OptionSetOutPath = OptionSetOutPath;
@@ -100,6 +106,12 @@ namespace DLaB.EarlyBoundGenerator.Settings
             prop.SetIsBrowsable(IncludeCommandLine);
         }
 
+        private void SetLocalOptionSetFormatVisibility()
+        {
+            var prop = Descriptor.GetProperty(nameof(LocalOptionSetFormat));
+            prop.SetIsBrowsable(!UseDeprecatedOptionSetNaming);
+        }
+
         private void SetPropertyEnumMappingVisibility()
         {
             var prop = Descriptor.GetProperty(nameof(PropertyEnumMappings));
@@ -111,51 +123,5 @@ namespace DLaB.EarlyBoundGenerator.Settings
             var prop = Descriptor.GetProperty(nameof(UnmappedProperties));
             prop.SetIsBrowsable(GenerateEnumProperties);
         }
-
-        /*
-
-    private void ChkCreateOneActionFile_CheckedChanged(object sender, EventArgs e)
-    {
-        LblActionsDirectory.Visible = ChkCreateOneActionFile.Checked;
-        LblActionPath.Visible = !ChkCreateOneActionFile.Checked;
-
-        ConditionallyAddRemoveExtension(TxtActionPath, "Actions.cs", ChkCreateOneActionFile.Checked);
-    }
-
-    private void ChkCreateOneOptionSetFile_CheckedChanged(object sender, EventArgs e)
-    {
-        LblOptionSetsDirectory.Visible = ChkCreateOneOptionSetFile.Checked;
-        LblOptionSetPath.Visible = !ChkCreateOneOptionSetFile.Checked;
-
-        ChkAddFilesToProject.Visible = !ChkCreateOneEntityFile.Checked;
-
-        ConditionallyAddRemoveExtension(TxtOptionSetPath, "OptionSets.cs", ChkCreateOneOptionSetFile.Checked);
-    }
-
-    private void ChkUseDeprecatedOptionSetNaming_CheckedChanged(object sender, EventArgs e)
-    {
-        LblOptionSetFormat.Visible = !ChkUseDeprecatedOptionSetNaming.Checked;
-        TxtOptionSetFormat.Visible = !ChkUseDeprecatedOptionSetNaming.Checked;
-    }
-
-            private void ChkCreateOneEntityFile_CheckedChanged(object sender, EventArgs e)
-    {
-        LblEntitiesDirectory.Visible = ChkCreateOneEntityFile.Checked;
-        LblEntityPath.Visible = !ChkCreateOneEntityFile.Checked;
-
-        ConditionallyAddRemoveExtension(TxtEntityPath, "Entities.cs", ChkCreateOneEntityFile.Checked);
-    }
-
-    private void TxtLanguageCodeOverride_TextChanged(object sender, EventArgs e)
-    {
-        var value = TxtLanguageCodeOverride.Text;
-        if (!string.IsNullOrWhiteSpace(value)
-            && !int.TryParse(value, out var _))
-        {
-            TxtLanguageCodeOverride.Text = "";
-        }
-    }
-
-*/
     }
 }

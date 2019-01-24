@@ -6,7 +6,6 @@ using System.Linq;
 using System.Windows.Forms;
 using DLaB.EarlyBoundGenerator.Settings;
 using DLaB.XrmToolBoxCommon;
-using DLaB.XrmToolBoxCommon.Forms;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Client;
 using Microsoft.Xrm.Sdk.Metadata;
@@ -20,6 +19,7 @@ namespace DLaB.EarlyBoundGenerator
     {
         public EarlyBoundGeneratorConfig Settings { get; set; }
         public IEnumerable<Entity> Actions { get; set; }
+        // ReSharper disable once IdentifierTypo
         public IEnumerable<EntityMetadata> EntityMetadatas { get; set; }
         public IEnumerable<OptionSetMetadataBase> GlobalOptionSets { get; set; }
         public ConnectionSettings ConnectionSettings { get; set; }
@@ -55,7 +55,7 @@ namespace DLaB.EarlyBoundGenerator
         {
             if (ConnectionDetail != null)
             {
-                DisplayActionsIfSupported(false);
+                DisplayActionsIfSupported();
             }
 
             SetConnectionSettingOnLoad();
@@ -159,7 +159,7 @@ namespace DLaB.EarlyBoundGenerator
             HydrateSettingsFromUI();
             if (new Version(Settings.Version) < new Version(Settings.SettingsVersion))
             {
-                if(MessageBox.Show($@"This version of the Early Bound Generator ({Settings.Version}) is older than the previous ran version from the settings ({Settings.SettingsVersion}).  You should probably update the plugin before running.  Are you sure you want to countinue?", "Older Version detected", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation) != DialogResult.Yes)
+                if(MessageBox.Show($@"This version of the Early Bound Generator ({Settings.Version}) is older than the previous ran version from the settings ({Settings.SettingsVersion}).  You should probably update the plugin before running.  Are you sure you want to continue?", @"Older Version detected", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation) != DialogResult.Yes)
                 {
                     EnableForm(true);
                     return;
@@ -176,8 +176,8 @@ namespace DLaB.EarlyBoundGenerator
                     var settings = (EarlyBoundGeneratorConfig) e.Argument;
 
                     var generator = new Logic(settings);
-                    Logic.LogHandler onLog = m => w.ReportProgress(0, m);
-                    generator.OnLog += onLog;
+                    void OnLog(Logic.LogMessageInfo m) => w.ReportProgress(0, m);
+                    generator.OnLog += OnLog;
                     try
                     {
                         switch (creationType)
@@ -213,15 +213,14 @@ namespace DLaB.EarlyBoundGenerator
                     }
                     finally
                     {
-                        generator.OnLog -= onLog;
+                        generator.OnLog -= OnLog;
                     }
                 })
             {
                 AsyncArgument = Settings,
                 PostWorkCallBack = e => // Creation has finished.  Cleanup
                 {
-                    var result = e.Result as Logic.LogMessageInfo;
-                    if (result != null)
+                    if (e.Result is Logic.LogMessageInfo result)
                     {
                         TxtOutput.AppendText(result.Detail + Environment.NewLine);
                     }
@@ -230,8 +229,7 @@ namespace DLaB.EarlyBoundGenerator
                 ProgressChanged = e => // Logic wants to display an update
                 {
                     string summary;
-                    var result = e.UserState as Logic.LogMessageInfo;
-                    if (result == null)
+                    if (!(e.UserState is Logic.LogMessageInfo result))
                     {
                         summary = e.UserState.ToString();
                     }
@@ -350,11 +348,13 @@ namespace DLaB.EarlyBoundGenerator
 
         private void EnableForm(bool enable)
         {
+            BtnCreateActions.Enabled = enable;
             BtnCreateEntities.Enabled = enable;
             BtnCreateOptionSets.Enabled = enable;
             BtnCreateAll.Enabled = enable;
-            groupBox1.Enabled = enable;
-            tabControl1.Enabled = enable;
+            TxtSettingsPath.Enabled = enable;
+            TxtOutput.Enabled = enable;
+            PropertiesGrid.Enabled = enable;
         }
 
         #region Create Button Click Events
@@ -381,75 +381,9 @@ namespace DLaB.EarlyBoundGenerator
 
         #endregion // Create Button Click Events
 
-        private void BtnSpecifyAttributeNames_Click(object sender, EventArgs e)
-        {
-            var dialog = new SpecifyAttributeNamesDialog(this) {
-                ConfigValue = Settings.ExtensionConfig.EntityAttributeSpecifiedNames
-            };
-            var result = dialog.ShowDialog();
-            if (result != DialogResult.OK) return;
-            Settings.ExtensionConfig.EntityAttributeSpecifiedNames = dialog.ConfigValue;
-            SaveSettings();
-        }
-
-        private void BtnActionsToSkip_Click(object sender, EventArgs e)
-        {
-            //var dialog = new SpecifyActionsDialog(this) { SpecifiedActions = Settings.ExtensionConfig.ActionsToSkip };
-            //if (dialog.ShowDialog() != DialogResult.OK) return;
-            //Settings.ExtensionConfig.ActionsToSkip = dialog.SpecifiedActions;
-            //SaveSettings();
-        }
-
-        private void BtnEntitesToSkip_Click(object sender, EventArgs e)
-        {
-            //var dialog = new SpecifyEntitiesDialog(this) { SpecifiedEntities = Settings.ExtensionConfig.EntitiesToSkip };
-            //if (dialog.ShowDialog() == DialogResult.OK)
-            //{
-            //    Settings.ExtensionConfig.EntitiesToSkip = dialog.SpecifiedEntities;
-            //    SaveSettings();
-            //}
-        }
-
-        private void BtnOptionSetsToSkip_Click(object sender, EventArgs e)
-        {
-            //var dialog = new SpecifyOptionSetsDialog(this) { OptionSets = Settings.ExtensionConfig.OptionSetsToSkip };
-            //if (dialog.ShowDialog() == DialogResult.OK)
-            //{
-            //    Settings.ExtensionConfig.OptionSetsToSkip = dialog.OptionSets;
-            //    SaveSettings();
-            //}
-        }
-
-        private void BtnEnumMappings_Click(object sender, EventArgs e)
-        {
-            var dialog = new AttributesToEnumMapperDialog(this) { ConfigValue = Settings.ExtensionConfig.PropertyEnumMappings };
-            var result = dialog.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                Settings.ExtensionConfig.PropertyEnumMappings = dialog.ConfigValue;
-                SaveSettings();
-            }
-        }
-
-        private void BtnUnmappedProperties_Click(object sender, EventArgs e)
-        {
-            var dialog = new SpecifyAttributesDialog (this) { ConfigValue = Settings.ExtensionConfig.UnmappedProperties };
-            var result = dialog.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                Settings.ExtensionConfig.UnmappedProperties = dialog.ConfigValue;
-                SaveSettings();
-            }
-        }
-
         private void BtnOpenSettingsPathDialog_Click(object sender, EventArgs e)
         {
             openFileDialog1.SetXmlFilePath(TxtSettingsPath);
-        }
-
-        private void actionsTab_Enter(object sender, EventArgs e)
-        {
-            ExecuteMethod(DisplayActionsIfSupported, true);
         }
 
         private void TxtSettingsPath_TextChanged(object sender, EventArgs e)
@@ -470,20 +404,9 @@ namespace DLaB.EarlyBoundGenerator
 
         }
 
-        public void DisplayActionsIfSupported(bool displayErrorIfUnsupported)
+        public void DisplayActionsIfSupported()
         {
-            if (ConnectionDetail.OrganizationMajorVersion < Crm2013)
-            {
-                if (displayErrorIfUnsupported)
-                {
-                    MessageBox.Show(@"Your version of CRM doesn't support Actions!");
-                }
-                tabControl1.TabPages.Remove(ActionTab);
-            }
-            else if(!tabControl1.TabPages.Contains(ActionTab))
-            {
-                tabControl1.TabPages.Add(ActionTab);
-            }
+            BtnCreateActions.Enabled = ConnectionDetail.OrganizationMajorVersion >= Crm2013;
         }
 
         private void SetConnectionSettingOnLoad()
@@ -546,7 +469,7 @@ namespace DLaB.EarlyBoundGenerator
             EntityMetadatas = null;
             GlobalOptionSets = null;
             Actions = null;
-            DisplayActionsIfSupported(false);
+            DisplayActionsIfSupported();
             SetConnectionSettingOnConnectionChanged();
         }
 
@@ -555,14 +478,6 @@ namespace DLaB.EarlyBoundGenerator
             if (e.Control && e.KeyCode == Keys.A)
             {
                 ((TextBox) sender)?.SelectAll();
-            }
-        }
-
-        private void TxtLanguageCodeOverride_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
             }
         }
 
