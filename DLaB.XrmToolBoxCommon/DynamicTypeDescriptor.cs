@@ -36,7 +36,7 @@ namespace DLaB.XrmToolBoxCommon
         /// <summary>
         /// sort descending using property id or categor id
         /// </summary>
-        DescendingById,
+        DescendingById
     }
 
     [Flags]
@@ -58,7 +58,7 @@ namespace DLaB.XrmToolBoxCommon
         [StandardValue("Use resource for all string", "Use resource for all string for this property.")]
         LocalizeAllString = LocalizeDisplayName | LocalizeDescription | LocalizeCategoryName | LocalizeEnumerations,
 
-        [StandardValue("Expandable", "Make property expandlabe if property type is IEnemerable")]
+        [StandardValue("Expandable", "Make property expandable if property type is IEnumerable")]
         ExpandIEnumerable = 32,
 
         [StandardValue("Supports standard values", "Property supports standard values.")]
@@ -67,15 +67,16 @@ namespace DLaB.XrmToolBoxCommon
         [StandardValue("All flags", "All of the flags should be applied to this property.")]
         All = LocalizeAllString | ExclusiveStandardValues | ExpandIEnumerable | SupportStandardValues,
 
-        Default = LocalizeAllString | SupportStandardValues,
+        Default = LocalizeAllString | SupportStandardValues
     }
 
-    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
+    [AttributeUsage(AttributeTargets.Property)]
     public class PropertyStateFlagsAttribute : Attribute
     {
-        public PropertyStateFlagsAttribute() : base() { }
+        public PropertyStateFlagsAttribute()
+        { }
 
-        public PropertyStateFlagsAttribute(PropertyFlags flags) : base()
+        public PropertyStateFlagsAttribute(PropertyFlags flags)
         {
             Flags = flags;
         }
@@ -85,34 +86,34 @@ namespace DLaB.XrmToolBoxCommon
 
     public interface IResourceAttribute
     {
-        string BaseName { get; set; }
+        string BaseName { get; }
 
-        string KeyPrefix { get; set; }
+        string KeyPrefix { get; }
 
-        string AssemblyFullName { get; set; }
+        string AssemblyFullName { get; }
     }
 
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property)]
     public class ClassResourceAttribute : Attribute, IResourceAttribute
     {
-        public ClassResourceAttribute() : base() { }
+        public ClassResourceAttribute()
+        { }
 
-        public ClassResourceAttribute(string baseString) : base()
+        public ClassResourceAttribute(string baseString)
         {
             BaseName = baseString;
         }
 
         public ClassResourceAttribute(string baseString, string keyPrefix)
-          : base()
         {
             BaseName = baseString;
             KeyPrefix = keyPrefix;
         }
 
-        public string BaseName { get; set; } = String.Empty;
+        public string BaseName { get; } = string.Empty;
 
-        public string KeyPrefix { get; set; } = String.Empty;
-        public string AssemblyFullName { get; set; } = String.Empty;
+        public string KeyPrefix { get; } = string.Empty;
+        public string AssemblyFullName { get; } = string.Empty;
 
         // Use the hash code of the string objects and xor them together.
         public override int GetHashCode()
@@ -127,10 +128,10 @@ namespace DLaB.XrmToolBoxCommon
             {
                 return false;
             }
-            ClassResourceAttribute other = obj as ClassResourceAttribute;
+            var other = (ClassResourceAttribute) obj;
 
-            if (String.Compare(BaseName, other.BaseName, true) == 0 &&
-                String.Compare(AssemblyFullName, other.AssemblyFullName, true) == 0)
+            if (string.Compare(BaseName, other.BaseName, StringComparison.OrdinalIgnoreCase) == 0 &&
+                string.Compare(AssemblyFullName, other.AssemblyFullName, StringComparison.OrdinalIgnoreCase) == 0)
             {
                 return true;
             }
@@ -148,51 +149,36 @@ namespace DLaB.XrmToolBoxCommon
             if (obj == null)
                 return false;
 
-            if (obj is ClassResourceAttribute)
+            if (obj is ClassResourceAttribute attribute)
                 // Combine the hash codes and see if they're unchanged.
-                return (((ClassResourceAttribute)obj).GetHashCode() & GetHashCode())
+                return (attribute.GetHashCode() & GetHashCode())
                   == GetHashCode();
-            else
-                return false;
+            return false;
         }
 
     }
 
-    [AttributeUsage(AttributeTargets.Enum, AllowMultiple = false, Inherited = true)]
+    [AttributeUsage(AttributeTargets.Enum)]
     public class EnumResourceAttribute : Attribute, IResourceAttribute
     {
         public EnumResourceAttribute()
-          : base()
         {
 
         }
         public EnumResourceAttribute(string baseString)
-          : base()
         {
             BaseName = baseString;
         }
         public EnumResourceAttribute(string baseString, string keyPrefix)
-          : base()
         {
             BaseName = baseString;
-            m_KeyPrefix = keyPrefix;
+            KeyPrefix = keyPrefix;
         }
 
-        public string BaseName { get; set; } = String.Empty;
-        private string m_KeyPrefix = String.Empty;
+        public string BaseName { get; } = string.Empty;
 
-        public string KeyPrefix
-        {
-            get
-            {
-                return m_KeyPrefix;
-            }
-            set
-            {
-                m_KeyPrefix = value;
-            }
-        }
-        public string AssemblyFullName { get; set; } = String.Empty;
+        public string KeyPrefix { get; } = string.Empty;
+        public string AssemblyFullName { get; } = string.Empty;
 
 
         // Use the hash code of the string objects and xor them together.
@@ -209,15 +195,10 @@ namespace DLaB.XrmToolBoxCommon
             {
                 return false;
             }
-            ClassResourceAttribute other = obj as ClassResourceAttribute;
+            var other = (ClassResourceAttribute) obj;
 
-            if (String.Compare(BaseName, other.BaseName, true) == 0 &&
-                String.Compare(AssemblyFullName, other.AssemblyFullName, true) == 0)
-            {
-                return true;
-            }
-
-            return false;
+            return string.Compare(BaseName, other.BaseName, StringComparison.OrdinalIgnoreCase) == 0 &&
+                   string.Compare(AssemblyFullName, other.AssemblyFullName, StringComparison.OrdinalIgnoreCase) == 0;
         }
 
         public override bool Match(object obj)
@@ -230,51 +211,36 @@ namespace DLaB.XrmToolBoxCommon
             if (obj == null)
                 return false;
 
-            if (obj is ClassResourceAttribute)
+            if (obj is ClassResourceAttribute attribute)
                 // Combine the hash codes and see if they're unchanged.
-                return (((ClassResourceAttribute)obj).GetHashCode() & GetHashCode())
+                return (attribute.GetHashCode() & GetHashCode())
                   == GetHashCode();
-            else
-                return false;
+            return false;
         }
 
     }
 
-    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
+    [AttributeUsage(AttributeTargets.Property)]
     public class PropertyResourceAttribute : Attribute, IResourceAttribute
     {
         public PropertyResourceAttribute()
-          : base()
         {
 
         }
         public PropertyResourceAttribute(string baseString)
-          : base()
         {
             BaseName = baseString;
         }
         public PropertyResourceAttribute(string baseString, string keyPrefix)
-          : base()
         {
             BaseName = baseString;
-            m_KeyPrefix = keyPrefix;
+            KeyPrefix = keyPrefix;
         }
 
-        public string BaseName { get; set; } = String.Empty;
-        private string m_KeyPrefix = String.Empty;
+        public string BaseName { get; set; } = string.Empty;
 
-        public string KeyPrefix
-        {
-            get
-            {
-                return m_KeyPrefix;
-            }
-            set
-            {
-                m_KeyPrefix = value;
-            }
-        }
-        public string AssemblyFullName { get; set; } = String.Empty;
+        public string KeyPrefix { get; set; } = string.Empty;
+        public string AssemblyFullName { get; set; } = string.Empty;
 
         // Use the hash code of the string objects and xor them together.
         public override int GetHashCode()
@@ -290,15 +256,10 @@ namespace DLaB.XrmToolBoxCommon
             {
                 return false;
             }
-            ClassResourceAttribute other = obj as ClassResourceAttribute;
+            var other = (ClassResourceAttribute) obj;
 
-            if (String.Compare(BaseName, other.BaseName, true) == 0 &&
-                String.Compare(AssemblyFullName, other.AssemblyFullName, true) == 0)
-            {
-                return true;
-            }
-
-            return false;
+            return string.Compare(BaseName, other.BaseName, StringComparison.OrdinalIgnoreCase) == 0 &&
+                   string.Compare(AssemblyFullName, other.AssemblyFullName, StringComparison.OrdinalIgnoreCase) == 0;
         }
 
         public override bool Match(object obj)
@@ -311,48 +272,34 @@ namespace DLaB.XrmToolBoxCommon
             if (obj == null)
                 return false;
 
-            if (obj is ClassResourceAttribute)
+            if (obj is ClassResourceAttribute attribute)
                 // Combine the hash codes and see if they're unchanged.
-                return (((ClassResourceAttribute)obj).GetHashCode() & GetHashCode())
+                return (attribute.GetHashCode() & GetHashCode())
                   == GetHashCode();
-            else
-                return false;
+            return false;
         }
     }
 
 
-    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
+    [AttributeUsage(AttributeTargets.Property)]
     public class IdAttribute : Attribute
     {
         public IdAttribute()
-          : base()
         {
         }
 
         public IdAttribute(int propertyId, int categoryId)
-          : base()
         {
             PropertyId = propertyId;
             CategoryId = categoryId;
         }
 
-        public int PropertyId { get; set; } = 0;
-        private int m_CategoryId = 0;
+        public int PropertyId { get; set; }
 
-        public int CategoryId
-        {
-            get
-            {
-                return m_CategoryId;
-            }
-            set
-            {
-                m_CategoryId = value;
-            }
-        }
+        public int CategoryId { get; set; }
     }
 
-    [AttributeUsage(AttributeTargets.Field, AllowMultiple = false, Inherited = true)]
+    [AttributeUsage(AttributeTargets.Field)]
     public class StandardValueAttribute : Attribute
     {
         //public StandardValueAttribute()
@@ -362,24 +309,24 @@ namespace DLaB.XrmToolBoxCommon
 
         public StandardValueAttribute(object value)
         {
-            m_Value = value;
+            Value = value;
         }
         public StandardValueAttribute(object value, string displayName)
         {
             m_DisplayName = displayName;
-            m_Value = value;
+            Value = value;
         }
         public StandardValueAttribute(string displayName, string description)
         {
             m_DisplayName = displayName;
             Description = description;
         }
-        private string m_DisplayName = String.Empty;
+        private string m_DisplayName = string.Empty;
         public string DisplayName
         {
             get
             {
-                if (String.IsNullOrEmpty(m_DisplayName))
+                if (string.IsNullOrEmpty(m_DisplayName))
                 {
                     if (Value != null)
                     {
@@ -395,17 +342,10 @@ namespace DLaB.XrmToolBoxCommon
         }
         public bool Visible { get; set; } = true;
         public bool Enabled { get; set; } = true;
-        public string Description { get; set; } = String.Empty;
+        public string Description { get; set; } = string.Empty;
 
-        internal object m_Value = null;
+        public object Value { get; internal set; }
 
-        public object Value
-        {
-            get
-            {
-                return m_Value;
-            }
-        }
         public override string ToString()
         {
             return DisplayName;
@@ -414,7 +354,7 @@ namespace DLaB.XrmToolBoxCommon
         {
             if (enumType == null)
             {
-                throw new ArgumentNullException("'enumInstance' is null.");
+                throw new ArgumentNullException("enumType");
             }
 
             if (!enumType.IsEnum)
@@ -428,7 +368,7 @@ namespace DLaB.XrmToolBoxCommon
             {
                 if (fi.GetCustomAttributes(typeof(StandardValueAttribute), false) is StandardValueAttribute[] attr && attr.Length > 0)
                 {
-                    attr[0].m_Value = fi.GetValue(null);
+                    attr[0].Value = fi.GetValue(null);
                     arrAttr.Add(attr[0]);
                 }
                 else
@@ -538,15 +478,11 @@ namespace DLaB.XrmToolBoxCommon
 
     internal class StandardValuesConverter : TypeConverter
     {
-        static int _COUNT = 0;
-        public StandardValuesConverter()
-          : base()
-        {
+        private static int Count { get; set; }
 
-        }
         public override bool GetPropertiesSupported(ITypeDescriptorContext context)
         {
-            if (context != null && context.PropertyDescriptor is CustomPropertyDescriptor)
+            if (context?.PropertyDescriptor is CustomPropertyDescriptor)
             {
                 CustomPropertyDescriptor cpd = context.PropertyDescriptor as CustomPropertyDescriptor;
                 if (cpd.GetValue(context.Instance) is IEnumerable enu && cpd.PropertyFlags != PropertyFlags.None && (cpd.PropertyFlags & PropertyFlags.ExpandIEnumerable) > 0)
@@ -564,22 +500,22 @@ namespace DLaB.XrmToolBoxCommon
                 return base.GetProperties(context, value, attributes);
             }
 
-            ICollection<StandardValueAttribute> col = null;
-            Type propType = Type.Missing.GetType();
-            if (context != null && context.PropertyDescriptor is CustomPropertyDescriptor)
+            //ICollection<StandardValueAttribute> col = null;
+            var propType = Type.Missing.GetType();
+            if (context?.PropertyDescriptor is CustomPropertyDescriptor)
             {
                 CustomPropertyDescriptor cpd = context.PropertyDescriptor as CustomPropertyDescriptor;
                 UpdateEnumDisplayText(cpd);
-                col = cpd.StandardValues;
+                //col = cpd.StandardValues;
                 propType = cpd.PropertyType;
             }
-            List<CustomPropertyDescriptor> pdl = new List<CustomPropertyDescriptor>();
-            int nIndex = -1;
+            var pdl = new List<CustomPropertyDescriptor>();
+            var nIndex = -1;
             if (pdl.Count == 0)
             {
                 if (value is IEnumerable en)
                 {
-                    IEnumerator enu = en.GetEnumerator();
+                    var enu = en.GetEnumerator();
                     enu.Reset();
                     while (enu.MoveNext())
                     {
@@ -592,17 +528,15 @@ namespace DLaB.XrmToolBoxCommon
                         }
                         else if (propType.IsArray)
                         {
-                            sPropName = "[" + nIndex.ToString() + "]";
+                            sPropName = "[" + nIndex + "]";
                         }
                         pdl.Add(new CustomPropertyDescriptor(null, sPropName, enu.Current.GetType(), enu.Current));
                     }
                 }
             }
-            if (pdl.Count > 0)
-            {
-                return new PropertyDescriptorCollection(pdl.ToArray());
-            }
-            return base.GetProperties(context, value, attributes);
+            return pdl.Count > 0 
+                ? new PropertyDescriptorCollection(pdl.Cast<PropertyDescriptor>().ToArray()) 
+                : base.GetProperties(context, value, attributes);
         }
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
         {
@@ -614,10 +548,8 @@ namespace DLaB.XrmToolBoxCommon
         }
         public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
         {
-            if (context != null && context.PropertyDescriptor is CustomPropertyDescriptor)
+            if (context?.PropertyDescriptor is CustomPropertyDescriptor cpd)
             {
-                CustomPropertyDescriptor cpd = context.PropertyDescriptor as CustomPropertyDescriptor;
-
                 if (cpd.PropertyFlags != PropertyFlags.None && (cpd.PropertyFlags & PropertyFlags.SupportStandardValues) > 0)
                 {
                     return true;
@@ -628,9 +560,9 @@ namespace DLaB.XrmToolBoxCommon
 
         public override bool GetStandardValuesExclusive(ITypeDescriptorContext context)
         {
-            if (context != null && context.PropertyDescriptor is CustomPropertyDescriptor)
+            if (context?.PropertyDescriptor is CustomPropertyDescriptor)
             {
-                CustomPropertyDescriptor cpd = context.PropertyDescriptor as CustomPropertyDescriptor;
+                var cpd = context.PropertyDescriptor as CustomPropertyDescriptor;
                 if (cpd.PropertyType == typeof(bool) || cpd.PropertyType.IsEnum)
                 {
                     return true;
@@ -649,10 +581,9 @@ namespace DLaB.XrmToolBoxCommon
             //WriteContext("ConvertFrom", context, value, Type.Missing.GetType( ));
 
             ICollection<StandardValueAttribute> col = null;
-            Type propType = Type.Missing.GetType();
-            if (context != null && context.PropertyDescriptor is CustomPropertyDescriptor)
+            var propType = Type.Missing.GetType();
+            if (context?.PropertyDescriptor is CustomPropertyDescriptor cpd)
             {
-                CustomPropertyDescriptor cpd = context.PropertyDescriptor as CustomPropertyDescriptor;
                 UpdateEnumDisplayText(cpd);
                 col = cpd.StandardValues;
                 propType = cpd.PropertyType;
@@ -661,18 +592,18 @@ namespace DLaB.XrmToolBoxCommon
             {
                 return null;
             }
-            else if (value is string)
+
+            if (value is string inputValue)
             {
                 if (propType.IsEnum)
                 {
-                    string sInpuValue = value as string;
-                    string[] arrDispName = sInpuValue.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    var displayNames = inputValue.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
-                    StringBuilder sb = new StringBuilder(1000);
-                    foreach (string sDispName in arrDispName)
+                    var sb = new StringBuilder(1000);
+                    foreach (string displayName in displayNames)
                     {
-                        string sTrimValue = sDispName.Trim();
-                        foreach (StandardValueAttribute sva in col)
+                        string sTrimValue = displayName.Trim();
+                        foreach (var sva in col)
                         {
                             if (String.Compare(sva.Value.ToString(), sTrimValue, true) == 0 ||
                                 String.Compare(sva.DisplayName, sTrimValue, true) == 0)
@@ -681,7 +612,7 @@ namespace DLaB.XrmToolBoxCommon
                                 {
                                     sb.Append(",");
                                 }
-                                sb.Append(sva.Value.ToString());
+                                sb.Append(sva.Value);
                             }
                         }
 
@@ -690,8 +621,8 @@ namespace DLaB.XrmToolBoxCommon
                 }
                 foreach (StandardValueAttribute sva in col)
                 {
-                    if (String.Compare(value.ToString(), sva.DisplayName, true, culture) == 0 ||
-                        String.Compare(value.ToString(), sva.Value.ToString(), true, culture) == 0)
+                    if (String.Compare(inputValue.ToString(), sva.DisplayName, true, culture) == 0 ||
+                        String.Compare(inputValue.ToString(), sva.Value.ToString(), true, culture) == 0)
                     {
                         return sva.Value;
 
@@ -703,7 +634,7 @@ namespace DLaB.XrmToolBoxCommon
                     object convertedValue = null;
                     try
                     {
-                        convertedValue = tc.ConvertFrom(context, culture, value);
+                        convertedValue = tc.ConvertFrom(context, culture, inputValue);
                     }
                     catch (Exception ex)
                     {
@@ -732,7 +663,7 @@ namespace DLaB.XrmToolBoxCommon
 
             ICollection<StandardValueAttribute> col = null;
             Type propType = Type.Missing.GetType();
-            if (context != null && context.PropertyDescriptor is CustomPropertyDescriptor)
+            if (context?.PropertyDescriptor is CustomPropertyDescriptor)
             {
                 CustomPropertyDescriptor cpd = context.PropertyDescriptor as CustomPropertyDescriptor;
                 UpdateEnumDisplayText(cpd);
@@ -743,17 +674,20 @@ namespace DLaB.XrmToolBoxCommon
             {
                 return null;
             }
-            else if (value is string)
+
+            if (value is string)
             {
                 if (destinationType == typeof(string))
                 {
                     return value;
                 }
-                else if (destinationType == propType)
+
+                if (destinationType == propType)
                 {
                     return ConvertFrom(context, culture, value);
                 }
-                else if (destinationType == typeof(StandardValueAttribute))
+
+                if (destinationType == typeof(StandardValueAttribute))
                 {
                     foreach (StandardValueAttribute sva in col)
                     {
@@ -772,7 +706,7 @@ namespace DLaB.XrmToolBoxCommon
                     if (propType.IsEnum)
                     {
                         string sDelimitedValues = Enum.Format(propType, value, "G");
-                        string[] arrValue = sDelimitedValues.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        string[] arrValue = sDelimitedValues.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
                         StringBuilder sb = new StringBuilder(1000);
                         foreach (string sDispName in arrValue)
@@ -841,11 +775,13 @@ namespace DLaB.XrmToolBoxCommon
                 {
                     return (value as StandardValueAttribute).DisplayName;
                 }
-                else if (destinationType == typeof(StandardValueAttribute))
+
+                if (destinationType == typeof(StandardValueAttribute))
                 {
                     return value;
                 }
-                else if (destinationType == propType)
+
+                if (destinationType == propType)
                 {
                     return (value as StandardValueAttribute).Value;
                 }
@@ -856,7 +792,7 @@ namespace DLaB.XrmToolBoxCommon
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             ICollection<StandardValueAttribute> col = null;
-            if (context != null && context.PropertyDescriptor is CustomPropertyDescriptor)
+            if (context?.PropertyDescriptor is CustomPropertyDescriptor)
             {
                 CustomPropertyDescriptor cpd = context.PropertyDescriptor as CustomPropertyDescriptor;
                 UpdateEnumDisplayText(cpd);
@@ -889,16 +825,16 @@ namespace DLaB.XrmToolBoxCommon
             {
                 return;
             }
-            string prefix = String.Empty;
+            string prefix = string.Empty;
             ResourceManager rm = null;
             StandardValueAttribute sva = null;
 
-            sva = cpd.StandardValues.FirstOrDefault() as StandardValueAttribute;
+            sva = cpd.StandardValues.FirstOrDefault();
 
             // first try property itself
             if (cpd.ResourceManager != null)
             {
-                string keyName = cpd.KeyPrefix + cpd.Name + "_" + sva.Value.ToString() + "_Name";
+                string keyName = cpd.KeyPrefix + cpd.Name + "_" + sva.Value + "_Name";
                 string valueName = cpd.ResourceManager.GetString(keyName);
                 if (!String.IsNullOrEmpty(valueName))
                 {
@@ -910,7 +846,7 @@ namespace DLaB.XrmToolBoxCommon
             // now try class level
             if (rm == null && cpd.ResourceManager != null)
             {
-                string keyName = cpd.KeyPrefix + cpd.PropertyType.Name + "_" + sva.Value.ToString() + "_Name";
+                string keyName = cpd.KeyPrefix + cpd.PropertyType.Name + "_" + sva.Value + "_Name";
                 string valueName = cpd.ResourceManager.GetString(keyName);
                 if (!string.IsNullOrEmpty(valueName))
                 {
@@ -948,10 +884,10 @@ namespace DLaB.XrmToolBoxCommon
             {
                 foreach (StandardValueAttribute sv in cpd.StandardValues)
                 {
-                    string keyName = prefix + "_" + sv.Value.ToString() + "_Name";  // display name
-                    string keyDesc = prefix + "_" + sv.Value.ToString() + "_Desc"; // description
-                    string dispName = String.Empty;
-                    string description = String.Empty;
+                    string keyName = prefix + "_" + sv.Value + "_Name";  // display name
+                    string keyDesc = prefix + "_" + sv.Value + "_Desc"; // description
+                    string dispName = string.Empty;
+                    string description = string.Empty;
 
                     try
                     {
@@ -986,19 +922,19 @@ namespace DLaB.XrmToolBoxCommon
 
         private void WriteContext(string prefix, ITypeDescriptorContext ctx, object value, Type destinationType)
         {
-            _COUNT++;
+            Count++;
             StringBuilder sb = new StringBuilder(1024);
 
             if (ctx != null)
             {
                 if (ctx.Instance != null)
                 {
-                    sb.Append("ctx.Instance is " + ctx.Instance.ToString() + ". ");
+                    sb.Append("ctx.Instance is " + ctx.Instance + ". ");
                 }
 
                 if (ctx.PropertyDescriptor != null)
                 {
-                    sb.Append("ctx.PropertyDescriptor is " + ctx.PropertyDescriptor.ToString() + ". ");
+                    sb.Append("ctx.PropertyDescriptor is " + ctx.PropertyDescriptor + ". ");
                 }
             }
             else
@@ -1012,20 +948,16 @@ namespace DLaB.XrmToolBoxCommon
             }
             else
             {
-                sb.AppendLine("Value is " + value.ToString() + ", " + value.GetType().ToString() + ". ");
+                sb.AppendLine("Value is " + value + ", " + value.GetType() + ". ");
             }
             sb.AppendLine(destinationType.ToString());
-            Console.WriteLine(_COUNT.ToString() + " " + prefix + ": " + sb.ToString());
+            Console.WriteLine(Count + " " + prefix + ": " + sb);
         }
 
     }
 
     internal class PropertyDescriptorList : List<CustomPropertyDescriptor>
     {
-        public PropertyDescriptorList()
-        {
-
-        }
     }
 
     internal class AttributeList : List<Attribute>
@@ -1137,7 +1069,7 @@ namespace DLaB.XrmToolBoxCommon
     public class DynamicCustomTypeDescriptor : CustomTypeDescriptor
     {
         private PropertyDescriptorList m_pdl = new PropertyDescriptorList();
-        private object m_instance = null;
+        private object m_instance;
         private Hashtable m_hashRM = new Hashtable();
         public DynamicCustomTypeDescriptor(ICustomTypeDescriptor ctd, object instance)
           : base(ctd)
@@ -1193,19 +1125,9 @@ namespace DLaB.XrmToolBoxCommon
         }
 
         public CustomSortOrder PropertySortOrder { get; set; } = CustomSortOrder.AscendingById;
-        private CustomSortOrder m_CategorySortOrder = CustomSortOrder.AscendingById;
 
-        public CustomSortOrder CategorySortOrder
-        {
-            get
-            {
-                return m_CategorySortOrder;
-            }
-            set
-            {
-                m_CategorySortOrder = value;
-            }
-        }
+        public CustomSortOrder CategorySortOrder { get; set; } = CustomSortOrder.AscendingById;
+
         private void UpdateResourceManager()
         {
             foreach (CustomPropertyDescriptor cpd in m_pdl)
@@ -1260,7 +1182,7 @@ namespace DLaB.XrmToolBoxCommon
 
             int nTabCount = 0;
 
-            switch (m_CategorySortOrder)
+            switch (CategorySortOrder)
             {
                 case CustomSortOrder.AscendingById:
                     propSorter.SortOrder = CustomSortOrder.DescendingById;
@@ -1388,11 +1310,10 @@ namespace DLaB.XrmToolBoxCommon
 
     internal class CustomTypeDescriptionProvider : TypeDescriptionProvider
     {
-        private TypeDescriptionProvider m_parent = null;
-        private ICustomTypeDescriptor m_ctd = null;
+        private TypeDescriptionProvider m_parent;
+        private ICustomTypeDescriptor m_ctd;
 
         public CustomTypeDescriptionProvider()
-          : base()
         {
 
         }
@@ -1623,7 +1544,7 @@ namespace DLaB.XrmToolBoxCommon
             _attributes.Add(attr);
         }
 
-        internal string KeyPrefix { get; set; } = String.Empty;
+        internal string KeyPrefix { get; set; } = string.Empty;
 
         public override string DisplayName
         {
@@ -1665,7 +1586,7 @@ namespace DLaB.XrmToolBoxCommon
                 string sResult = string.Empty;
                 if (ResourceManager != null && CategoryId != 0 && (PropertyFlags & PropertyFlags.LocalizeCategoryName) > 0)
                 {
-                    string sKey = KeyPrefix + "Cat" + CategoryId.ToString();
+                    string sKey = KeyPrefix + "Cat" + CategoryId;
                     sResult = ResourceManager.GetString(sKey, CultureInfo.CurrentUICulture);
                     if (!String.IsNullOrEmpty(sResult))
                     {
@@ -1790,11 +1711,11 @@ namespace DLaB.XrmToolBoxCommon
             }
         }
 
-        internal int TabAppendCount { get; set; } = 0;
+        internal int TabAppendCount { get; set; }
 
-        internal ResourceManager ResourceManager { get; set; } = null;
+        internal ResourceManager ResourceManager { get; set; }
 
-        private object _value = null;
+        private object _value;
         public override object GetValue(object component)
         {
             if (_pd != null)
@@ -1806,7 +1727,7 @@ namespace DLaB.XrmToolBoxCommon
 
         public override void SetValue(object component, object value)
         {
-            if (value != null && value is StandardValueAttribute)
+            if (value is StandardValueAttribute)
             {
                 _value = (value as StandardValueAttribute).Value;
             }
@@ -1876,10 +1797,7 @@ namespace DLaB.XrmToolBoxCommon
             {
                 pdc = base.GetChildProperties(instance, filter);
             }
-            else
-            {
 
-            }
             if (_pd != null)
             {
                 tc = _pd.Converter;
