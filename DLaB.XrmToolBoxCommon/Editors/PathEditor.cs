@@ -92,6 +92,10 @@ namespace DLaB.XrmToolBoxCommon.Editors
 
         public override string GetDefaultFileName(ITypeDescriptorContext context, string currentPath)
         {
+            if (File.Exists(BasePath))
+            {
+                BasePath = Path.GetDirectoryName(BasePath);
+            }
             var absolutePath = Path.Combine(BasePath, currentPath);
             return base.GetDefaultFileName(context, absolutePath);
         }
@@ -106,7 +110,7 @@ namespace DLaB.XrmToolBoxCommon.Editors
             return GetPath(absolutePath, relativeDirectory);
         }
 
-        public string GetPath(string absolutePath, string relativeDirectory)
+        private string GetPath(string absolutePath, string relativeDirectory)
         {
             if (absolutePath == null)
             {
@@ -115,6 +119,11 @@ namespace DLaB.XrmToolBoxCommon.Editors
             if (string.IsNullOrWhiteSpace(relativeDirectory))
             {
                 return absolutePath;
+            }
+
+            if (!relativeDirectory.EndsWith("\\"))
+            {
+                relativeDirectory += "\\";
             }
 
             var relativePath = new Uri(relativeDirectory).MakeRelativeUri(new Uri(absolutePath));

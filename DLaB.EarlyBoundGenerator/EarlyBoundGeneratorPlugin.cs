@@ -447,23 +447,6 @@ namespace DLaB.EarlyBoundGenerator
             openFileDialog1.SetXmlFilePath(TxtSettingsPath);
         }
 
-        private static void ConditionallyAddRemoveExtension(TextBox textBox, string singleClassFileName, bool @checked)
-        {
-            var fileName = textBox.Text;
-            bool hasExtension = Path.GetExtension(fileName) != string.Empty;
-
-            if (@checked && hasExtension)
-            {
-                // Remove Extension
-                textBox.Text = Path.GetDirectoryName(fileName);
-            }
-            else if (!@checked && !hasExtension)
-            {
-                // Add Actions.cs
-                textBox.Text = Path.Combine(fileName, singleClassFileName);
-            }
-        }
-
         private void actionsTab_Enter(object sender, EventArgs e)
         {
             ExecuteMethod(DisplayActionsIfSupported, true);
@@ -581,6 +564,11 @@ namespace DLaB.EarlyBoundGenerator
             {
                 e.Handled = true;
             }
+        }
+
+        private void PropertiesGrid_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
+        {
+            SettingsMap.OnPropertyValueChanged(s, e);
         }
     }
 

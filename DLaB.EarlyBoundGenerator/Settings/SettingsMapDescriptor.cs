@@ -1,72 +1,161 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
+using DLaB.XrmToolBoxCommon;
 
 namespace DLaB.EarlyBoundGenerator.Settings
 {
-    public partial class SettingsMap : ICustomTypeDescriptor
+    public partial class SettingsMap 
     {
-        public AttributeCollection GetAttributes()
+        [Browsable(false)]
+        public DynamicCustomTypeDescriptor Descriptor { get; set; }
+        private void SetupCustomTypeDescriptor()
         {
-            return TypeDescriptor.GetAttributes(this, true);
+            Descriptor = ProviderInstaller.Install(this);
         }
 
-        public string GetClassName()
+
+        #region OnChange Handlers
+
+        private Dictionary<string, Action<PropertyValueChangedEventArgs>> OnChangeMap { get; }
+
+        public void OnPropertyValueChanged(object o, PropertyValueChangedEventArgs args)
         {
-            return TypeDescriptor.GetClassName(this, true);
+            if (!string.IsNullOrWhiteSpace(args.ChangedItem.PropertyDescriptor?.Name)
+                && OnChangeMap.TryGetValue(args.ChangedItem.PropertyDescriptor.Name, out var action))
+            {
+                action(args);
+                TypeDescriptor.Refresh(this);
+            }
         }
 
-        public string GetComponentName()
+        private Dictionary<string, Action<PropertyValueChangedEventArgs>> GetOnChangeHandlers()
         {
-            return TypeDescriptor.GetComponentName(this, true);
+            return new Dictionary<string, Action<PropertyValueChangedEventArgs>>
+            {
+                { nameof(CreateOneFilePerAction), OnCreateOneFilePerActionChange },
+                { nameof(CreateOneFilePerEntity), OnCreateOneFilePerEntityChange },
+                { nameof(CreateOneFilePerOptionSet), OnCreateOneFilePerOptionSetChange },
+                { nameof(GenerateEnumProperties), OnGenerateEnumPropertiesChange },
+                { nameof(IncludeCommandLine), OnIncludeCommandLineChange },
+            };
         }
 
-        public TypeConverter GetConverter()
+        private void OnCreateOneFilePerActionChange(PropertyValueChangedEventArgs args)
         {
-            return TypeDescriptor.GetConverter(this, true);
+            SetAddFilesToProjectVisibility();
+            ActionOutPath = ActionOutPath;
         }
 
-        public EventDescriptor GetDefaultEvent()
+        private void OnCreateOneFilePerEntityChange(PropertyValueChangedEventArgs args)
         {
-            return TypeDescriptor.GetDefaultEvent(this, true);
+            SetAddFilesToProjectVisibility();
+            EntityOutPath = EntityOutPath;
         }
 
-        public PropertyDescriptor GetDefaultProperty()
+        private void OnCreateOneFilePerOptionSetChange(PropertyValueChangedEventArgs args)
         {
-            return TypeDescriptor.GetDefaultProperty(this, true);
+            SetAddFilesToProjectVisibility();
+            OptionSetOutPath = OptionSetOutPath;
         }
 
-        public object GetEditor(Type editorBaseType)
+        private void OnGenerateEnumPropertiesChange(PropertyValueChangedEventArgs args)
         {
-            return TypeDescriptor.GetEditor(this, editorBaseType, true);
+            SetPropertyEnumMappingVisibility();
+            SetUnmappedPropertiesVisibility();
         }
 
-        public EventDescriptorCollection GetEvents()
+        private void OnIncludeCommandLineChange(PropertyValueChangedEventArgs args)
         {
-            return TypeDescriptor.GetEvents(this, true);
+            SetMaskPasswordVisibility();
         }
 
-        public EventDescriptorCollection GetEvents(Attribute[] attributes)
+        #endregion OnChange Handlers
+
+
+        private void ProcessDynamicallyVisibleProperties()
         {
-            return TypeDescriptor.GetEvents(this, attributes, true);
+            SetAddFilesToProjectVisibility();
+            SetMaskPasswordVisibility();
+            SetPropertyEnumMappingVisibility();
+            SetUnmappedPropertiesVisibility();
+            ActionOutPath = ActionOutPath;
+            EntityOutPath = EntityOutPath;
+            OptionSetOutPath = OptionSetOutPath;
+            TypeDescriptor.Refresh(this);
         }
 
-        public PropertyDescriptorCollection GetProperties()
+        private void SetAddFilesToProjectVisibility()
         {
-            return ((ICustomTypeDescriptor)this).GetProperties(new Attribute[0]);
+            var prop = Descriptor.GetProperty(nameof(AddNewFilesToProject));
+            prop.SetIsBrowsable(CreateOneFilePerAction 
+                                || CreateOneFilePerEntity
+                                || CreateOneFilePerOptionSet);
         }
 
-        public PropertyDescriptorCollection GetProperties(Attribute[] attributes)
+        private void SetMaskPasswordVisibility()
         {
-            throw new NotImplementedException();
+            var prop = Descriptor.GetProperty(nameof(MaskPassword));
+            prop.SetIsBrowsable(IncludeCommandLine);
         }
 
-        public object GetPropertyOwner(PropertyDescriptor pd)
+        private void SetPropertyEnumMappingVisibility()
         {
-            throw new NotImplementedException();
+            var prop = Descriptor.GetProperty(nameof(PropertyEnumMappings));
+            prop.SetIsBrowsable(GenerateEnumProperties);
         }
+
+        private void SetUnmappedPropertiesVisibility()
+        {
+            var prop = Descriptor.GetProperty(nameof(UnmappedProperties));
+            prop.SetIsBrowsable(GenerateEnumProperties);
+        }
+
+        /*
+
+    private void ChkCreateOneActionFile_CheckedChanged(object sender, EventArgs e)
+    {
+        LblActionsDirectory.Visible = ChkCreateOneActionFile.Checked;
+        LblActionPath.Visible = !ChkCreateOneActionFile.Checked;
+
+        ConditionallyAddRemoveExtension(TxtActionPath, "Actions.cs", ChkCreateOneActionFile.Checked);
+    }
+
+    private void ChkCreateOneOptionSetFile_CheckedChanged(object sender, EventArgs e)
+    {
+        LblOptionSetsDirectory.Visible = ChkCreateOneOptionSetFile.Checked;
+        LblOptionSetPath.Visible = !ChkCreateOneOptionSetFile.Checked;
+
+        ChkAddFilesToProject.Visible = !ChkCreateOneEntityFile.Checked;
+
+        ConditionallyAddRemoveExtension(TxtOptionSetPath, "OptionSets.cs", ChkCreateOneOptionSetFile.Checked);
+    }
+
+    private void ChkUseDeprecatedOptionSetNaming_CheckedChanged(object sender, EventArgs e)
+    {
+        LblOptionSetFormat.Visible = !ChkUseDeprecatedOptionSetNaming.Checked;
+        TxtOptionSetFormat.Visible = !ChkUseDeprecatedOptionSetNaming.Checked;
+    }
+
+            private void ChkCreateOneEntityFile_CheckedChanged(object sender, EventArgs e)
+    {
+        LblEntitiesDirectory.Visible = ChkCreateOneEntityFile.Checked;
+        LblEntityPath.Visible = !ChkCreateOneEntityFile.Checked;
+
+        ConditionallyAddRemoveExtension(TxtEntityPath, "Entities.cs", ChkCreateOneEntityFile.Checked);
+    }
+
+    private void TxtLanguageCodeOverride_TextChanged(object sender, EventArgs e)
+    {
+        var value = TxtLanguageCodeOverride.Text;
+        if (!string.IsNullOrWhiteSpace(value)
+            && !int.TryParse(value, out var _))
+        {
+            TxtLanguageCodeOverride.Text = "";
+        }
+    }
+
+*/
     }
 }

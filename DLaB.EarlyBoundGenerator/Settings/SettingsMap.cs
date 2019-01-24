@@ -5,90 +5,15 @@ using DLaB.XrmToolBoxCommon.Editors;
 using CommonConfig = Source.DLaB.Common.Config;
 using Source.DLaB.Common;
 using XrmToolBox.Extensibility;
+using System;
+using System.Net;
+using System.Windows.Forms;
+using System.Windows.Shapes;
 
 // ReSharper disable UnusedMember.Global
 
 namespace DLaB.EarlyBoundGenerator.Settings
 {
-    /*
-    private void SetAddFilesToProjectVisibility()
-    {
-        ChkAddFilesToProject.Visible = ChkCreateOneActionFile.Checked || ChkCreateOneEntityFile.Checked || ChkCreateOneOptionSetFile.Checked;
-    }
-
-        private void ChkIncludeCommandLine_CheckedChanged(object sender, EventArgs e)
-        {
-            ChkMaskPassword.Visible = ChkIncludeCommandLine.Checked;
-        }
-
-        private void ChkGenerateOptionSetEnums_CheckedChanged(object sender, EventArgs e)
-        {
-            BtnEnumMappings.Visible = ChkGenerateOptionSetEnums.Checked;
-            BtnUnmappedProperties.Visible = ChkGenerateOptionSetEnums.Checked;
-        }
-
-        private void BtnOpenActionPathDialog_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.SetCsFilePath(TxtActionPath, ConnectionSettings.SettingsDirectoryName);
-        }
-
-        private void BtnOpenEntityPathDialog_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.SetCsFilePath(TxtEntityPath, ConnectionSettings.SettingsDirectoryName);
-        }
-
-        private void BtnOpenOptionSetPathDialog_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.SetCsFilePath(TxtOptionSetPath, ConnectionSettings.SettingsDirectoryName);
-        }
-
-        private void ChkCreateOneActionFile_CheckedChanged(object sender, EventArgs e)
-        {
-            LblActionsDirectory.Visible = ChkCreateOneActionFile.Checked;
-            LblActionPath.Visible = !ChkCreateOneActionFile.Checked;
-            SetAddFilesToProjectVisibility();
-
-            ConditionallyAddRemoveExtension(TxtActionPath, "Actions.cs", ChkCreateOneActionFile.Checked);
-        }
-
-        private void ChkCreateOneOptionSetFile_CheckedChanged(object sender, EventArgs e)
-        {
-            LblOptionSetsDirectory.Visible = ChkCreateOneOptionSetFile.Checked;
-            LblOptionSetPath.Visible = !ChkCreateOneOptionSetFile.Checked;
-            SetAddFilesToProjectVisibility();
-
-            ChkAddFilesToProject.Visible = !ChkCreateOneEntityFile.Checked;
-
-            ConditionallyAddRemoveExtension(TxtOptionSetPath, "OptionSets.cs", ChkCreateOneOptionSetFile.Checked);
-        }
-
-        private void ChkUseDeprecatedOptionSetNaming_CheckedChanged(object sender, EventArgs e)
-        {
-            LblOptionSetFormat.Visible = !ChkUseDeprecatedOptionSetNaming.Checked;
-            TxtOptionSetFormat.Visible = !ChkUseDeprecatedOptionSetNaming.Checked;
-        }
-
-                private void ChkCreateOneEntityFile_CheckedChanged(object sender, EventArgs e)
-        {
-            LblEntitiesDirectory.Visible = ChkCreateOneEntityFile.Checked;
-            LblEntityPath.Visible = !ChkCreateOneEntityFile.Checked;
-            SetAddFilesToProjectVisibility();
-
-            ConditionallyAddRemoveExtension(TxtEntityPath, "Entities.cs", ChkCreateOneEntityFile.Checked);
-        }
-
-        private void TxtLanguageCodeOverride_TextChanged(object sender, EventArgs e)
-        {
-            var value = TxtLanguageCodeOverride.Text;
-            if (!string.IsNullOrWhiteSpace(value)
-                && !int.TryParse(value, out var _))
-            {
-                TxtLanguageCodeOverride.Text = "";
-            }
-        }
-
-    */
-
     //[TypeConverter(typeof(Display.ExtensionConfigConverter))]
     public partial class SettingsMap: IGetPluginControl<EarlyBoundGeneratorPlugin>
     {
@@ -102,11 +27,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [DisplayName("Action Relative Output Path")]
         [Description("This is realtive to the Path of the Settings File.  If \"Create One File Per Action\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
         [Editor(typeof(PathEditor), typeof(UITypeEditor))]
-        [DynamicRelativePathEditor("SettingsPath", "C# files|*.cs", "cs", false)]
+        [DynamicRelativePathEditor(nameof(SettingsPath), "C# files|*.cs", "cs", false)]
         public string ActionOutPath
         {
             get => Config.ActionOutPath;
-            set => Config.ActionOutPath = value;
+            set => Config.ActionOutPath = GetRelativePathToFileOrDirectory(value, CreateOneFilePerAction, "Actions.cs");
         }
 
         [Category("Actions")]
@@ -168,10 +93,12 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [Category("Entities")]
         [DisplayName("Entity Relative Output Path")]
         [Description("This is realtive to the Path of the Settings File.  If \"Create One File Per Entity\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
+        [Editor(typeof(PathEditor), typeof(UITypeEditor))]
+        [DynamicRelativePathEditor(nameof(SettingsPath), "C# files|*.cs", "cs", false)]
         public string EntityOutPath
         {
             get => Config.EntityOutPath;
-            set => Config.EntityOutPath = value;
+            set => Config.EntityOutPath = GetRelativePathToFileOrDirectory(value, CreateOneFilePerEntity, "Entities.cs");
         }
 
         [Category("Entities")]
@@ -385,10 +312,12 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [Category("Option Sets")]
         [DisplayName("Option Set Output Relative Path")]
         [Description("This is realtive to the Path of the Settings File.  If \"Create One File Per Option Set\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
+        [Editor(typeof(PathEditor), typeof(UITypeEditor))]
+        [DynamicRelativePathEditor(nameof(SettingsPath), "C# files|*.cs", "cs", false)]
         public string OptionSetOutPath
         {
             get => Config.OptionSetOutPath;
-            set => Config.OptionSetOutPath = value;
+            set => Config.OptionSetOutPath = GetRelativePathToFileOrDirectory(value, CreateOneFilePerOptionSet, "OptionSets.cs");
         }
 
         [Category("Option Sets")]
@@ -429,13 +358,14 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         public SettingsMap(EarlyBoundGeneratorPlugin plugin, EarlyBoundGeneratorConfig config)
         {
+            Plugin = plugin;
+            Config = config;
+
             string RemoveWhiteSpace(string value)
             {
                 return value.Replace(" ", string.Empty).Replace("\n", string.Empty).Replace("\r", string.Empty);
             }
 
-            Plugin = plugin;
-            Config = config;
             var info = new ConfigKeyValueSplitInfo { ConvertKeysToLower = false };
             ActionsToSkip = RemoveWhiteSpace(config.ExtensionConfig.ActionsToSkip).GetHashSet<string>(info);
             EntitiesToSkip = RemoveWhiteSpace(config.ExtensionConfig.EntitiesToSkip).GetHashSet<string>();
@@ -443,6 +373,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
             PropertyEnumMappings = RemoveWhiteSpace(config.ExtensionConfig.PropertyEnumMappings).GetList<string>();
             OptionSetsToSkip = RemoveWhiteSpace(config.ExtensionConfig.OptionSetsToSkip).GetHashSet<string>();
             UnmappedProperties = RemoveWhiteSpace(Config.ExtensionConfig.UnmappedProperties).GetDictionaryHash<string, string>();
+
+            SetupCustomTypeDescriptor();
+            OnChangeMap = GetOnChangeHandlers();
+            ProcessDynamicallyVisibleProperties();
         }
 
         /// <summary>
@@ -467,6 +401,24 @@ namespace DLaB.EarlyBoundGenerator.Settings
         PluginControlBase IGetPluginControl.GetPluginControl()
         {
             return GetPluginControl();
+        }
+
+        private string GetRelativePathToFileOrDirectory(string value, bool requireFile, string defaultFileName)
+        {
+            var isCsFile = value.ToLower().EndsWith(".cs");
+            if (requireFile)
+            {
+                if (isCsFile)
+                {
+                    value = System.IO.Path.GetDirectoryName(value);
+                }
+            }
+            else if (!isCsFile)
+            {
+                value = System.IO.Path.Combine(value, defaultFileName);
+            }
+
+            return value;
         }
     }
 }

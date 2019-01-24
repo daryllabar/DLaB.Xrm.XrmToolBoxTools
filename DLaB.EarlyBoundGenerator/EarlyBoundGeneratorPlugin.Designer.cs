@@ -336,10 +336,12 @@ namespace DLaB.EarlyBoundGenerator
             this.PropertiesGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PropertiesGrid.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PropertiesGrid.Location = new System.Drawing.Point(0, 32);
             this.PropertiesGrid.Name = "PropertiesGrid";
             this.PropertiesGrid.Size = new System.Drawing.Size(489, 503);
             this.PropertiesGrid.TabIndex = 36;
+            this.PropertiesGrid.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.PropertiesGrid_PropertyValueChanged);
             // 
             // splitContainer1
             // 
