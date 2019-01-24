@@ -100,10 +100,18 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         [Category("Entities")]
         [DisplayName("Entities Blacklist")]
-        [Description("Pipe Delimited String containing the logical names of Entities to not generate")]
+        [Description("Contains Entities to not generate.")]
         [Editor(typeof(EntitiesHashEditor), typeof(UITypeEditor))]
         [TypeConverter(CollectionCountConverter.Name)]
         public HashSet<string> EntitiesToSkip { get; set; }
+
+        [Category("Entities")]
+        [DisplayName("Entities Whitelist")]
+        [Description("Contains only the Entities to generate.  If empty, all Entities will be included.")]
+        [Editor(typeof(EntitiesHashEditor), typeof(UITypeEditor))]
+        [TypeConverter(CollectionCountConverter.Name)]
+        [CollectionCount("All Entities")]
+        public HashSet<string> EntitiesWhitelist { get; set; }
 
         [Category("Entities")]
         [DisplayName("Attribute Capitalization Override")]
@@ -371,6 +379,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             var info = new ConfigKeyValueSplitInfo { ConvertKeysToLower = false };
             ActionsToSkip = RemoveWhiteSpace(config.ExtensionConfig.ActionsToSkip).GetHashSet<string>(info);
             EntitiesToSkip = RemoveWhiteSpace(config.ExtensionConfig.EntitiesToSkip).GetHashSet<string>();
+            EntitiesWhitelist = RemoveWhiteSpace(config.ExtensionConfig.EntitiesWhitelist).GetHashSet<string>();
             EntityAttributeSpecifiedNames = RemoveWhiteSpace(config.ExtensionConfig.EntityAttributeSpecifiedNames).GetDictionaryHash<string, string>();
             PropertyEnumMappings = RemoveWhiteSpace(config.ExtensionConfig.PropertyEnumMappings).GetList<string>();
             OptionSetsToSkip = RemoveWhiteSpace(config.ExtensionConfig.OptionSetsToSkip).GetHashSet<string>();
@@ -389,6 +398,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             var info = new ConfigKeyValueSplitInfo{ ConvertKeysToLower = false};
             Config.ExtensionConfig.ActionsToSkip = CommonConfig.ToString(ActionsToSkip, info);
             Config.ExtensionConfig.EntitiesToSkip = CommonConfig.ToString(EntitiesToSkip);
+            Config.ExtensionConfig.EntitiesWhitelist = CommonConfig.ToString(EntitiesWhitelist);
             Config.ExtensionConfig.EntityAttributeSpecifiedNames = CommonConfig.ToString(EntityAttributeSpecifiedNames);
             Config.ExtensionConfig.PropertyEnumMappings = CommonConfig.ToString(PropertyEnumMappings);
             Config.ExtensionConfig.OptionSetsToSkip = CommonConfig.ToString(OptionSetsToSkip);

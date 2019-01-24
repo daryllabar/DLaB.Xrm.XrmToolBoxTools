@@ -15,6 +15,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         /// </summary>
         public static Dictionary<string, EntityMetadata> EntityMetadata { get; set; }
         public HashSet<string> EntitiesToSkip { get; set; }
+        public HashSet<string> EntitiesWhitelist { get; set; }
         public List<string> EntityPrefixesToSkip { get; set; } 
 
         public bool GenerateEntityRelationships { get; set; }
@@ -28,6 +29,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         {
             DefaultService = defaultService;
             EntitiesToSkip = Config.GetHashSet("EntitiesToSkip", new HashSet<string>());
+            EntitiesWhitelist = Config.GetHashSet("EntitiesWhitelist", new HashSet<string>());
             EntityPrefixesToSkip = Config.GetList("EntityPrefixesToSkip", new List<string>());
             GenerateEntityRelationships = ConfigHelper.GetAppSettingOrDefault("GenerateEntityRelationships", true);
         }
@@ -61,6 +63,13 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             {
                 EntityMetadata.Add(entityMetadata.LogicalName, entityMetadata);
             }
+
+            // If Whitelist is populated, Skip if not in Whitelist.
+            if (EntitiesWhitelist.Count > 0 && !EntitiesWhitelist.Contains(entityMetadata.LogicalName))
+            {
+                return false;
+            }
+
             return !EntitiesToSkip.Contains(entityMetadata.LogicalName) && !EntityPrefixesToSkip.Any(p => entityMetadata.LogicalName.StartsWith(p));
         }
 

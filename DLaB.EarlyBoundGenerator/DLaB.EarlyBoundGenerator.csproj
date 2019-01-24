@@ -235,7 +235,6 @@
       <DependentUpon>PasswordDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings\ConnectionSettings.cs" />
-    <Compile Include="Settings\ExtensionConfigConverter.cs" />
     <Compile Include="Settings\SettingsMap.cs" />
     <Compile Include="Settings\SettingsMapDescriptor.cs" />
     <Compile Include="SpecifyStringValuesDialog.cs">

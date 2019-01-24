@@ -41,6 +41,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public string EntitiesToSkip { get; set; }
         /// <summary>
+        /// Pipe Delimited String containing the logical names of Entities to generate.  If empty, all Entities will be included.
+        /// </summary>
+        public string EntitiesWhitelist { get; set; }
+        /// <summary>
         /// Formatted as a single string in the format of "EntityName1:firstAttributeName, ... ,lastAttributeName|EntityName2:firstAttributeName, ... ,lastAttributeName|..."
         /// Basically split each entity by pipe, use then split by colon, then comma, with the first value being the entityName
         /// Allows for the ability to specify the capitalization of an attribute on an entity
@@ -146,71 +150,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         public ExtensionConfig() { }
 
-        public ExtensionConfig(string[] values)
-        {
-            var i = 0;
-            ActionsToSkip = values[i++];
-            AddDebuggerNonUserCode = ParseBool(values[i++]);
-            AddNewFilesToProject = ParseBool(values[i++]);
-            CreateOneFilePerAction = ParseBool(values[i++]);
-            CreateOneFilePerEntity = ParseBool(values[i++]);
-            CreateOneFilePerOptionSet = ParseBool(values[i++]);
-            EntitiesToSkip = values[i++];
-            EntityAttributeSpecifiedNames = values[i++];
-            GenerateActionAttributeNameConsts = ParseBool(values[i++]);
-            GenerateAnonymousTypeConstructor = ParseBool(values[i++]);
-            GenerateAttributeNameConsts = ParseBool(values[i++]);
-            GenerateEntityRelationships = ParseBool(values[i++]);
-            GenerateEnumProperties = ParseBool(values[i++]);
-            InvalidCSharpNamePrefix = values[i++];
-            LocalOptionSetFormat = values[i++];
-            MakeReadonlyFieldsEditable = ParseBool(values[i++]);
-            MakeResponseActionsEditable = ParseBool(values[i++]);
-            OptionSetLanguageCodeOverride = ParseInt(values[i++]);
-            OptionSetsToSkip = values[i++];
-            PropertyEnumMappings = values[i++];
-            RemoveRuntimeVersionComment = ParseBool(values[i++]);
-            UnmappedProperties = values[i++];
-            UseDeprecatedOptionSetNaming = ParseBool(values[i++]);
-            UseTfsToCheckoutFiles = ParseBool(values[i++]);
-            UseXrmClient = ParseBool(values[i]);
-        }
-
-        public override string ToString()
-        {
-            var values = new List<string>
-            {
-                ActionsToSkip,
-                AddDebuggerNonUserCode.ToString(),
-                AddNewFilesToProject.ToString(),
-                CreateOneFilePerAction.ToString(),
-                CreateOneFilePerEntity.ToString(),
-                CreateOneFilePerOptionSet.ToString(),
-                EntitiesToSkip,
-                EntityAttributeSpecifiedNames,
-                GenerateActionAttributeNameConsts.ToString(),
-                GenerateAnonymousTypeConstructor.ToString(),
-                GenerateAttributeNameConsts.ToString(),
-                GenerateEntityRelationships.ToString(),
-                GenerateEnumProperties.ToString(),
-                InvalidCSharpNamePrefix,
-                LocalOptionSetFormat,
-                MakeReadonlyFieldsEditable.ToString(),
-                MakeResponseActionsEditable.ToString(),
-                OptionSetLanguageCodeOverride.ToString(),
-                OptionSetsToSkip,
-                PropertyEnumMappings,
-                RemoveRuntimeVersionComment.ToString(),
-                UnmappedProperties,
-                UseDeprecatedOptionSetNaming.ToString(),
-                UseTfsToCheckoutFiles.ToString(),
-                UseXrmClient.ToString()
-            };
-
-            const string quote = "\"";
-            return string.Join(",", values.Select(v => quote + v.Replace(quote, quote+quote) + quote));
-        }
-
         private static bool ParseBool(string value)
         {
             return !string.IsNullOrWhiteSpace(value) && bool.Parse(value);
@@ -239,6 +178,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 GenerateEnumProperties = true,
                 ActionsToSkip = null,
                 EntitiesToSkip = null,
+                EntitiesWhitelist = null,
                 EntityAttributeSpecifiedNames = null,
                 InvalidCSharpNamePrefix = "_",
                 MakeReadonlyFieldsEditable = false,
@@ -282,6 +222,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? CreateOneFilePerAction { get; set; }
         public string ActionsToSkip { get; set; }
         public string EntitiesToSkip { get; set; }
+        public string EntitiesWhitelist { get; set; }
         public string EntityAttributeSpecifiedNames { get; set; }
         public string InvalidCSharpNamePrefix { get; set; }
         public bool? MakeReadonlyFieldsEditable { get; set; }
