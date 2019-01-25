@@ -132,7 +132,7 @@ namespace DLaB.EarlyBoundGenerator
             this.TxtSettingsPath.Name = "TxtSettingsPath";
             this.TxtSettingsPath.Size = new System.Drawing.Size(382, 20);
             this.TxtSettingsPath.TabIndex = 13;
-            this.TxtSettingsPath.TextChanged += new System.EventHandler(this.TxtSettingsPath_TextChanged);
+            this.TxtSettingsPath.Leave += new System.EventHandler(this.TxtSettingsPath_Leave);
             // 
             // openFileDialog1
             // 

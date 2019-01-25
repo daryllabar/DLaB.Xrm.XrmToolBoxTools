@@ -253,6 +253,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 EntitiesToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.EntitiesToSkip, defaultConfig.EntitiesToSkip),
                 EntitiesWhitelist = AddPipeDelimitedMissingDefaultValues(pocoConfig.EntitiesWhitelist, defaultConfig.EntitiesWhitelist),
                 EntityAttributeSpecifiedNames = AddMissingDictionaryHashDefaultValues(pocoConfig.EntityAttributeSpecifiedNames, defaultConfig.EntityAttributeSpecifiedNames),
+                EntityPrefixesToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.EntityPrefixesToSkip, defaultConfig.EntityPrefixesToSkip),
                 GenerateActionAttributeNameConsts = pocoConfig.GenerateActionAttributeNameConsts.GetValueOrDefault(defaultConfig.GenerateActionAttributeNameConsts),
                 GenerateAttributeNameConsts = pocoConfig.GenerateAttributeNameConsts.GetValueOrDefault(defaultConfig.GenerateAttributeNameConsts),
                 GenerateAnonymousTypeConstructor = pocoConfig.GenerateAnonymousTypeConstructor.GetValueOrDefault(defaultConfig.GenerateAnonymousTypeConstructor),

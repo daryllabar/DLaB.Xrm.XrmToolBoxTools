@@ -130,7 +130,7 @@ namespace DLaB.XrmToolBoxCommon
             }
         }
 
-        public static void SetXmlFilePath(this OpenFileDialog dialog, TextBox textBox, string rootPath = null)
+        public static bool SetXmlFilePath(this OpenFileDialog dialog, TextBox textBox, string rootPath = null)
         {
             dialog.DefaultExt = "xml";
             dialog.Filter = @"Xml files|*.xml";
@@ -138,7 +138,10 @@ namespace DLaB.XrmToolBoxCommon
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 textBox.Text = dialog.FileName;
+                return true;
             }
+
+            return false;
         }
 
         #endregion OpenFileDialog

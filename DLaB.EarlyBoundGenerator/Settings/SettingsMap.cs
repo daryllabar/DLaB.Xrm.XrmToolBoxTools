@@ -11,10 +11,9 @@ using DLaB.XrmToolBoxCommon.Forms;
 
 namespace DLaB.EarlyBoundGenerator.Settings
 {
-    //[TypeConverter(typeof(Display.ExtensionConfigConverter))]
     public partial class SettingsMap: IGetPluginControl<EarlyBoundGeneratorPlugin>
     {
-        // "The path to the settings file associated with this connection.  Changing it while connected, updates the path for the connection.  Changing the connection will cause the settings to reload for that connection"
+        private const string StringEditorName = @"System.Windows.Forms.Design.StringCollectionEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a";
 
         #region Properties
 
@@ -119,6 +118,13 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [Editor(typeof(SpecifyAttributesCaseEditor), typeof(UITypeEditor))]
         [TypeConverter(CollectionCountConverter.Name)]
         public Dictionary<string, HashSet<string>> EntityAttributeSpecifiedNames { get; set; }
+
+        [Category("Entities")]
+        [DisplayName("Entities Prefix Blacklist")]
+        [Description("Contains list of prefixes to not generate.  If the Entity starts with the given prefix, it will not be generated.")]
+        [Editor(StringEditorName, typeof(UITypeEditor))]
+        [TypeConverter(CollectionCountConverter.Name)]
+        public List<string> EntityPrefixesToSkip { get; set; }
 
         [Category("Entities")]
         [DisplayName("Generate Entity Attribute Name Constants")]
@@ -373,7 +379,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
 
             string RemoveWhiteSpace(string value)
             {
-                return value.Replace(" ", string.Empty).Replace("\n", string.Empty).Replace("\r", string.Empty);
+                return value?.Replace(" ", string.Empty).Replace("\n", string.Empty).Replace("\r", string.Empty);
             }
 
             var info = new ConfigKeyValueSplitInfo { ConvertKeysToLower = false };
@@ -381,6 +387,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             EntitiesToSkip = RemoveWhiteSpace(config.ExtensionConfig.EntitiesToSkip).GetHashSet<string>();
             EntitiesWhitelist = RemoveWhiteSpace(config.ExtensionConfig.EntitiesWhitelist).GetHashSet<string>();
             EntityAttributeSpecifiedNames = RemoveWhiteSpace(config.ExtensionConfig.EntityAttributeSpecifiedNames).GetDictionaryHash<string, string>();
+            EntityPrefixesToSkip = RemoveWhiteSpace(config.ExtensionConfig.EntityPrefixesToSkip).GetList<string>();
             PropertyEnumMappings = RemoveWhiteSpace(config.ExtensionConfig.PropertyEnumMappings).GetList<string>();
             OptionSetsToSkip = RemoveWhiteSpace(config.ExtensionConfig.OptionSetsToSkip).GetHashSet<string>();
             UnmappedProperties = RemoveWhiteSpace(Config.ExtensionConfig.UnmappedProperties).GetDictionaryHash<string, string>();
@@ -400,6 +407,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             Config.ExtensionConfig.EntitiesToSkip = CommonConfig.ToString(EntitiesToSkip);
             Config.ExtensionConfig.EntitiesWhitelist = CommonConfig.ToString(EntitiesWhitelist);
             Config.ExtensionConfig.EntityAttributeSpecifiedNames = CommonConfig.ToString(EntityAttributeSpecifiedNames);
+            Config.ExtensionConfig.EntityPrefixesToSkip = CommonConfig.ToString(EntityPrefixesToSkip);
             Config.ExtensionConfig.PropertyEnumMappings = CommonConfig.ToString(PropertyEnumMappings);
             Config.ExtensionConfig.OptionSetsToSkip = CommonConfig.ToString(OptionSetsToSkip);
             Config.ExtensionConfig.UnmappedProperties = CommonConfig.ToString(UnmappedProperties);

@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using Microsoft.Crm.Services.Utility;
 using Microsoft.Xrm.Sdk.Metadata;
 using System.Linq;
+using System.Reflection;
 using Source.DLaB.Common;
 
 namespace DLaB.CrmSvcUtilExtensions.OptionSet
@@ -35,27 +36,53 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
         private HashSet<string> GeneratedOptionSets { get; }
 
         private ICodeWriterFilterService DefaultService { get; }
+        private ICodeWriterFilterService EntityFilterService { get; }
+
+        private static HashSet<string> UsedEntityGlobalOptionSets { get; set; }
 
         public CodeWriterFilterService(ICodeWriterFilterService defaultService)
         {
             DefaultService = defaultService;
+            if (string.IsNullOrWhiteSpace(OptionSetEntityFilter)
+                || !GenerateOnlyReferencedOptionSets)
+            {
+                EntityFilterService = DefaultService;
+            }
+            else
+            {
+                var t = Type.GetType(OptionSetEntityFilter);
+                EntityFilterService = (ICodeWriterFilterService)Activator.CreateInstance(t, DefaultService);
+            }
             GeneratedOptionSets = new HashSet<string>();
         }
 
         private static readonly HashSet<string> OptionSetsToSkip = Config.GetHashSet("OptionSetsToSkip", new HashSet<string>());
         private static readonly List<string> OptionSetPrefixesToSkip = Config.GetList("OptionSetPrefixesToSkip", new List<string>());
+        private static readonly string OptionSetEntityFilter = Config.GetAppSettingOrDefault("OptionSetEntityFilter", "DLaB.CrmSvcUtilExtensions.Entity.CodeWriterFilterService");
+        private static readonly bool GenerateOnlyReferencedOptionSets = Config.GetAppSettingOrDefault("GenerateOnlyReferencedOptionSets", false);
 
         /// <summary>
         /// Does not mark the OptionSet for generation if it has already been generated.  
-        /// This could get called for the same Global Option Set multiple times because it's on multiple Entites
+        /// This could get called for the same Global Option Set multiple times because it's on multiple Entities
         /// </summary>
         public bool GenerateOptionSet(OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
         {
+            PopulateUsedEntityGlobalOptionSetOnInitialCall(services);
+
             // Skip the state optionsets unless the XrmClient is used 
             if (!Entity.CustomizeCodeDomService.UseXrmClient && optionSetMetadata.OptionSetType == OptionSetType.State)
             {
                 return false;
             }
+
+            if (optionSetMetadata.IsGlobal.GetValueOrDefault()
+                && GenerateOnlyReferencedOptionSets
+                && !UsedEntityGlobalOptionSets.Contains(optionSetMetadata.Name.ToLower()))
+            {
+                return false;
+            }
+            
+
             if (!IsOptionSetGenerated(optionSetMetadata.Name))
             {
                 return false;
@@ -96,10 +123,35 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
             return generate;
         }
 
+        private void PopulateUsedEntityGlobalOptionSetOnInitialCall(IServiceProvider services)
+        {
+            if (UsedEntityGlobalOptionSets != null) { return; }
+            UsedEntityGlobalOptionSets = new HashSet<string>();
+
+            if (!GenerateOnlyReferencedOptionSets) { return; }
+
+            var metadataService = (IMetadataProviderService) services.GetService(typeof(IMetadataProviderService));
+            var metadata = metadataService.LoadMetadata();
+            foreach (var entity in metadata.Entities.Where(m => GenerateEntity(m, services)))
+            {
+                foreach (var name in entity.Attributes.Where(a => a.AttributeType == AttributeTypeCode.Picklist)
+                    .Cast<PicklistAttributeMetadata>()
+                    .Where(a => a.OptionSet.IsGlobal.GetValueOrDefault())
+                    .Select(a => a.OptionSet.Name.ToLower()))
+                {
+                    if (!UsedEntityGlobalOptionSets.Contains(name))
+                    {
+                        UsedEntityGlobalOptionSets.Add(name);
+                    }
+                }
+            }
+        }
+
         public static bool IsOptionSetGenerated(string name)
         {
             name = name.ToLower();
-            return !OptionSetsToSkip.Contains(name) && !OptionSetPrefixesToSkip.Any(p => name.StartsWith(p));
+            return !OptionSetsToSkip.Contains(name) 
+                && !OptionSetPrefixesToSkip.Any(p => name.StartsWith(p));
         }
 
         /// <summary>
@@ -123,7 +175,7 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
         /// </summary>
         public bool GenerateEntity(EntityMetadata entityMetadata, IServiceProvider services)
         {
-            return DefaultService.GenerateEntity(entityMetadata, services);
+            return EntityFilterService.GenerateEntity(entityMetadata, services);
         }
 
         /// <summary>

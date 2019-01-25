@@ -51,6 +51,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public string EntityAttributeSpecifiedNames { get; set; }
         /// <summary>
+        /// Pipe delimited string containing prefixes of entities to not generate.
+        /// </summary>
+        public string EntityPrefixesToSkip { get; set; }
+        /// <summary>
         /// Specifies the generation of an Attributes Struct containing logical names for all attributes for the Action
         /// </summary>
         public bool GenerateActionAttributeNameConsts { get; set; }        
@@ -148,20 +152,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         #endregion // NonSerialized Properties
 
-        public ExtensionConfig() { }
-
-        private static bool ParseBool(string value)
-        {
-            return !string.IsNullOrWhiteSpace(value) && bool.Parse(value);
-        }
-
-        private static int ParseInt(string value)
-        {
-            return string.IsNullOrWhiteSpace(value)
-                ? 0
-                : int.Parse(value);
-        }
-
         public static ExtensionConfig GetDefault()
         {
             return new ExtensionConfig
@@ -180,6 +170,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 EntitiesToSkip = null,
                 EntitiesWhitelist = null,
                 EntityAttributeSpecifiedNames = null,
+                EntityPrefixesToSkip = null,
                 InvalidCSharpNamePrefix = "_",
                 MakeReadonlyFieldsEditable = false,
                 MakeResponseActionsEditable = false,
@@ -224,6 +215,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public string EntitiesToSkip { get; set; }
         public string EntitiesWhitelist { get; set; }
         public string EntityAttributeSpecifiedNames { get; set; }
+        public string EntityPrefixesToSkip { get; set; }
         public string InvalidCSharpNamePrefix { get; set; }
         public bool? MakeReadonlyFieldsEditable { get; set; }
         public bool? MakeResponseActionsEditable { get; set; }

@@ -383,16 +383,29 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnOpenSettingsPathDialog_Click(object sender, EventArgs e)
         {
-            openFileDialog1.SetXmlFilePath(TxtSettingsPath);
+            if (openFileDialog1.SetXmlFilePath(TxtSettingsPath))
+            {
+                ValidatedSettingsPath();
+            }
         }
 
-        private void TxtSettingsPath_TextChanged(object sender, EventArgs e)
+        private void TxtSettingsPath_Leave(object sender, EventArgs e)
+        {
+            ValidatedSettingsPath();
+        }
+
+        private void ValidatedSettingsPath()
         {
             if (!FormLoaded)
             {
                 return;
             }
             var file = Path.GetFullPath(TxtSettingsPath.Text);
+            if (ConnectionSettings.FullSettingsPath == file)
+            {
+                // No Change.  Exit
+                return;
+            }
             if (File.Exists(file))
             {
                 SetConnectionSettingOnSettingsFileChanged();
@@ -401,7 +414,6 @@ namespace DLaB.EarlyBoundGenerator
             {
                 MessageBox.Show($@"File ""{file}"" Not Found!  Unable to Update the Settings");
             }
-
         }
 
         public void DisplayActionsIfSupported()
@@ -436,9 +448,7 @@ namespace DLaB.EarlyBoundGenerator
             {
                 // New Connection Did Have a Connection Settings, load settings
                 ConnectionSettings = localSettings;
-                TxtSettingsPath.TextChanged -= TxtSettingsPath_TextChanged;
                 TxtSettingsPath.Text = ConnectionSettings.SettingsPath;
-                TxtSettingsPath.TextChanged += TxtSettingsPath_TextChanged;
                 HydrateUiFromSettings(ConnectionSettings.FullSettingsPath);
             }
         }
