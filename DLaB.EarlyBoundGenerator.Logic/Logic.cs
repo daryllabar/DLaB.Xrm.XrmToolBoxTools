@@ -232,6 +232,7 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "GenerateAnonymousTypeConstructor", extensions.GenerateAnonymousTypeConstructor.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateEntityRelationships", extensions.GenerateEntityRelationships.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateEnumProperties", extensions.GenerateEnumProperties.ToString()) |
+                    UpdateConfigAppSetting(file, "GenerateOnlyReferencedOptionSets", extensions.GenerateOnlyReferencedOptionSets.ToString()) |
                     UpdateConfigAppSetting(file, "InvalidCSharpNamePrefix", extensions.InvalidCSharpNamePrefix) |
                     UpdateConfigAppSetting(file, "MakeReadonlyFieldsEditable", extensions.MakeReadonlyFieldsEditable.ToString()) |
                     UpdateConfigAppSetting(file, "MakeResponseActionsEditable", extensions.MakeResponseActionsEditable.ToString()) |

@@ -308,6 +308,15 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         }
 
         [Category("Option Sets")]
+        [DisplayName("Generate Only Referenced Option Sets")]
+        [Description("Uses the defined entity filtering to only generate Option Set Enums that are actually referenced in the entities.  This include both Global and Local Option Sets. ")]
+        public bool GenerateOnlyReferencedOptionSets
+        {
+            get => Config.ExtensionConfig.GenerateOnlyReferencedOptionSets;
+            set => Config.ExtensionConfig.GenerateOnlyReferencedOptionSets = value;
+        }
+
+        [Category("Option Sets")]
         [DisplayName("Invalid C# Name Prefix")]
         [Description("Specifies the Prefix to be used for OptionSets that would normally start with an invalid first character ie \"1st\"")]
         public string InvalidCSharpNamePrefix

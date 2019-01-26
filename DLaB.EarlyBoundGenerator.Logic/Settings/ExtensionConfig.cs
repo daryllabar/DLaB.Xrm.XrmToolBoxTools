@@ -75,6 +75,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>                                          
         public bool GenerateEnumProperties { get; set; }
         /// <summary>
+        /// Specifies that only option sets that are referenced by Entities that are generated.
+        /// </summary>                                          
+        public bool GenerateOnlyReferencedOptionSets { get; set; }
+        /// <summary>
         /// Specifies the Prefix to be used for OptionSets that would normally start with an invalid first character ie "1st"
         /// </summary>
         public string InvalidCSharpNamePrefix { get; set; }
@@ -170,6 +174,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 GenerateAnonymousTypeConstructor = true,
                 GenerateEntityRelationships = true,
                 GenerateEnumProperties = true,
+                GenerateOnlyReferencedOptionSets = true,
                 ActionsToSkip = null,
                 EntitiesToSkip = null,
                 EntitiesWhitelist = null,
@@ -221,6 +226,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public string EntitiesWhitelist { get; set; }
         public string EntityAttributeSpecifiedNames { get; set; }
         public string EntityPrefixesToSkip { get; set; }
+        public bool? GenerateOnlyReferencedOptionSets { get; set; }
         public string InvalidCSharpNamePrefix { get; set; }
         public bool? MakeReadonlyFieldsEditable { get; set; }
         public bool? MakeResponseActionsEditable { get; set; }
