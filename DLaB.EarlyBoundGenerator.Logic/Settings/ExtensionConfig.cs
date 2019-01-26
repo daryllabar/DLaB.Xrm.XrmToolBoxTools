@@ -93,6 +93,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public string LocalOptionSetFormat { get; set; }
         /// <summary>
+        /// Pipe delimited string containing prefixes of entities to not generate.
+        /// </summary>
+        public string OptionSetPrefixesToSkip { get; set; }
+        /// <summary>
         /// Pipe Delimited String containing the logical names of Option Set Names to not generate
         /// </summary>
         public string OptionSetsToSkip { get; set; }
@@ -175,6 +179,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 MakeReadonlyFieldsEditable = false,
                 MakeResponseActionsEditable = false,
                 LocalOptionSetFormat = "{0}_{1}",
+                OptionSetPrefixesToSkip = null,
                 OptionSetsToSkip = null,
                 OptionSetLanguageCodeOverride = null,
                 PropertyEnumMappings = string.Empty,
@@ -220,6 +225,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? MakeReadonlyFieldsEditable { get; set; }
         public bool? MakeResponseActionsEditable { get; set; }
         public string LocalOptionSetFormat { get; set; }
+        public string OptionSetPrefixesToSkip { get; set; }
         public string OptionSetsToSkip { get; set; }
         public int? OptionSetLanguageCodeOverride { get; set; }
         public string PropertyEnumMappings { get; set; }

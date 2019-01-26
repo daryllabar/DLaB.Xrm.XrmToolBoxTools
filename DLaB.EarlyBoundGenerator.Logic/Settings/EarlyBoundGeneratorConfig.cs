@@ -264,6 +264,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 MakeResponseActionsEditable = pocoConfig.MakeResponseActionsEditable ?? defaultConfig.MakeResponseActionsEditable,
                 LocalOptionSetFormat = pocoConfig.LocalOptionSetFormat ?? defaultConfig.LocalOptionSetFormat,
                 OptionSetLanguageCodeOverride = pocoConfig.OptionSetLanguageCodeOverride ?? defaultConfig.OptionSetLanguageCodeOverride,
+                OptionSetPrefixesToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.OptionSetPrefixesToSkip, defaultConfig.OptionSetPrefixesToSkip),
                 OptionSetsToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.OptionSetsToSkip, defaultConfig.OptionSetsToSkip),
                 PropertyEnumMappings = AddPipeDelimitedMissingDefaultValues(pocoConfig.PropertyEnumMappings, defaultConfig.PropertyEnumMappings),
                 RemoveRuntimeVersionComment = pocoConfig.RemoveRuntimeVersionComment.GetValueOrDefault(defaultConfig.RemoveRuntimeVersionComment),

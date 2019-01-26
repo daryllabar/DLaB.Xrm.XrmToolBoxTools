@@ -337,6 +337,13 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         }
 
         [Category("Option Sets")]
+        [DisplayName("Option Set Prefix Blacklist")]
+        [Description("Contains list of prefixes to not generate.  If the Option Set starts with the given prefix, it will not be generated.")]
+        [Editor(StringEditorName, typeof(UITypeEditor))]
+        [TypeConverter(CollectionCountConverter.Name)]
+        public List<string> OptionSetPrefixesToSkip { get; set; }
+
+        [Category("Option Sets")]
         [DisplayName("Option Sets Blacklist")]
         [Description("Allows for the ability to specify OptionSets to not generate.")]
         [Editor(typeof(OptionSetsHashEditor), typeof(UITypeEditor))]
@@ -389,6 +396,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             EntityAttributeSpecifiedNames = RemoveWhiteSpace(config.ExtensionConfig.EntityAttributeSpecifiedNames).GetDictionaryHash<string, string>();
             EntityPrefixesToSkip = RemoveWhiteSpace(config.ExtensionConfig.EntityPrefixesToSkip).GetList<string>();
             PropertyEnumMappings = RemoveWhiteSpace(config.ExtensionConfig.PropertyEnumMappings).GetList<string>();
+            OptionSetPrefixesToSkip = RemoveWhiteSpace(config.ExtensionConfig.OptionSetPrefixesToSkip).GetList<string>();
             OptionSetsToSkip = RemoveWhiteSpace(config.ExtensionConfig.OptionSetsToSkip).GetHashSet<string>();
             UnmappedProperties = RemoveWhiteSpace(Config.ExtensionConfig.UnmappedProperties).GetDictionaryHash<string, string>();
 
@@ -409,6 +417,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             Config.ExtensionConfig.EntityAttributeSpecifiedNames = CommonConfig.ToString(EntityAttributeSpecifiedNames);
             Config.ExtensionConfig.EntityPrefixesToSkip = CommonConfig.ToString(EntityPrefixesToSkip);
             Config.ExtensionConfig.PropertyEnumMappings = CommonConfig.ToString(PropertyEnumMappings);
+            Config.ExtensionConfig.OptionSetPrefixesToSkip = CommonConfig.ToString(OptionSetPrefixesToSkip);
             Config.ExtensionConfig.OptionSetsToSkip = CommonConfig.ToString(OptionSetsToSkip);
             Config.ExtensionConfig.UnmappedProperties = CommonConfig.ToString(UnmappedProperties);
         }

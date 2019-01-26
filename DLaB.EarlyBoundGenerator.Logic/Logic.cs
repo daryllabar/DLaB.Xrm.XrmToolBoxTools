@@ -236,6 +236,7 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "MakeReadonlyFieldsEditable", extensions.MakeReadonlyFieldsEditable.ToString()) |
                     UpdateConfigAppSetting(file, "MakeResponseActionsEditable", extensions.MakeResponseActionsEditable.ToString()) |
                     UpdateConfigAppSetting(file, "LocalOptionSetFormat", extensions.LocalOptionSetFormat) |
+                    UpdateConfigAppSetting(file, "OptionSetPrefixesToSkip", extensions.OptionSetPrefixesToSkip) |
                     UpdateConfigAppSetting(file, "OptionSetsToSkip", extensions.OptionSetsToSkip) |
                     UpdateConfigAppSetting(file, "OptionSetCommandLineText", extensions.OptionSetCommandLineText, true) |
                     UpdateConfigAppSetting(file, "OptionSetLanguageCodeOverride", extensions.OptionSetLanguageCodeOverride?.ToString()) |
