@@ -449,11 +449,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 ExtensionConfig = ExtensionConfig.GetDefault(),
                 UserArguments = new List<Argument>(new [] {
                     new Argument(CreationType.Actions, "generateActions", null), 
-                    new Argument(CreationType.Actions, "out",  @"CrmSvcUtil Ref\Actions.cs"),
+                    new Argument(CreationType.Actions, "out",  @"EBG\Actions.cs"),
                     new Argument(CreationType.All, "namespace", "CrmEarlyBound"),
-                    new Argument(CreationType.Entities, "out", @"CrmSvcUtil Ref\Entities.cs"),
+                    new Argument(CreationType.Entities, "out", @"EBG\Entities.cs"),
                     new Argument(CreationType.Entities, "servicecontextname", "CrmServiceContext"),
-                    new Argument(CreationType.OptionSets, "out",  @"CrmSvcUtil Ref\OptionSets.cs")
+                    new Argument(CreationType.OptionSets, "out",  @"EBG\OptionSets.cs")
                 }), 
             };
             @default.SettingsVersion = @default.Version;
