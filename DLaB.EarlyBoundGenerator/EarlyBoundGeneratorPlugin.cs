@@ -119,7 +119,8 @@ namespace DLaB.EarlyBoundGenerator
             var isValid =
                 IsValidPath(creationType, CreationType.Entities, SettingsMap.EntityOutPath, SettingsMap.CreateOneFilePerEntity, "Entities") &&
                 IsValidPath(creationType, CreationType.Entities, SettingsMap.OptionSetOutPath, SettingsMap.CreateOneFilePerOptionSet, "OptionSets") &&
-                IsValidPath(creationType, CreationType.Entities, SettingsMap.ActionOutPath, SettingsMap.CreateOneFilePerAction, "Actions");
+                IsValidPath(creationType, CreationType.Entities, SettingsMap.ActionOutPath, SettingsMap.CreateOneFilePerAction, "Actions") &&
+                IsNamespaceDifferentThanContext();
 
             return isValid;
         }
@@ -149,6 +150,18 @@ namespace DLaB.EarlyBoundGenerator
                     isValid = false;
                 }
             }
+            return isValid;
+        }
+
+        private bool IsNamespaceDifferentThanContext()
+        {
+            var isValid = true;
+            if (Settings.ServiceContextName == Settings.Namespace)
+            {
+                MessageBox.Show("The Service Context can not be the same name as the Namespace!", @"Service Context / Namespace Conflict!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                isValid = false;
+            }
+
             return isValid;
         }
 
