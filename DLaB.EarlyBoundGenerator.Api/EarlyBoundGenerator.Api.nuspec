@@ -2,16 +2,23 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator.Api</id>
-    <version>1.2018.10.15</version>
+    <version>1.2019.1.25</version>
     <title>Early Bound Generator Api</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
-    <license>MIT</license>
+    <license type="expression">MIT</license>
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses CrmSvcUtil from the SDK.</description>
-    <releaseNotes>V1.2018.10.15
+    <releaseNotes>V1.2019.1.25
+Replace UI with PropertyGrid #173
+Added ability to select publisher prefix to skip #38
+Added WhiteList for Entities #172
+Added logic to only generate OptionSets if referenced by Entities #36
+Prevent specifying the namespace and xrmContext from being the same value. #157
+
+V1.2018.10.15
 Upgrade to 9.0.2.5 SDK
 
 V1.2018.9.12
@@ -35,28 +42,6 @@ V1.2018.4.10
 
 V1.2018.3.6
  - Url includes duplicate Org Name #139
-
-V1.2018.1.11
- - Url includes duplicate Org Name #139
-
-V1.2018.1.9
- - Fixed Unable to login. Attempting to login using interactive mode. #127
- - Used 9.0 Dlls
-
-V1.2017.11.14
- - Fixed Unable to skip entities #135
-
-V1.2017.11.13
- - Fixed Organization cannot be null or empty. #132
- - Fix enabling/disabling of controls when Refreshing entities (#131)
- - Enhanced Entities selection dialog (#133)
- - Implemented Allow for adding files to Shared Project #134
-
-V1.2017.10.10
- - Fixed Cannot save Entities to skip #130
-
-V1.2017.10.2
- - Fixed Null Ref Error is thrown on Generate #129
     </releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>CrmSvcUtil Xrm EarlyBound Generator</tags>
