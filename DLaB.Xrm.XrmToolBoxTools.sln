@@ -39,6 +39,8 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DLaB.EarlyBoundGenerator.Lo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.EarlyBoundGenerator.Api", "DLaB.EarlyBoundGenerator.Api\DLaB.EarlyBoundGenerator.Api.csproj", "{0A143E92-0EDE-4630-9BFE-C670BF4C310A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.VSSolutionAccelerator", "DLaB.VSSolutionAccelerator\DLaB.VSSolutionAccelerator.csproj", "{8EE4091F-3D10-433D-A59A-EE2F070FA22F}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		DLaB.EarlyBoundGenerator.Logic\DLaB.EarlyBoundGenerator.Logic.projitems*{0a143e92-0ede-4630-9bfe-c670bf4c310a}*SharedItemsImports = 4
@@ -46,6 +48,8 @@ Global
 		DLaB.EarlyBoundGenerator.Logic\DLaB.EarlyBoundGenerator.Logic.projitems*{7de85f1a-794c-4e95-9e23-fa29dc110aba}*SharedItemsImports = 4
 		DLaB.Xrm.Entities\DLaB.Xrm.Entities.projitems*{7de85f1a-794c-4e95-9e23-fa29dc110aba}*SharedItemsImports = 4
 		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{7de85f1a-794c-4e95-9e23-fa29dc110aba}*SharedItemsImports = 4
+		DLaB.Xrm.Entities\DLaB.Xrm.Entities.projitems*{8ee4091f-3d10-433d-a59a-ee2f070fa22f}*SharedItemsImports = 4
+		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{8ee4091f-3d10-433d-a59a-ee2f070fa22f}*SharedItemsImports = 4
 		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{9d4a0246-7f6d-459b-988c-26a47f6dbb6e}*SharedItemsImports = 13
 		DLaB.Xrm.Entities\DLaB.Xrm.Entities.projitems*{fcb8a4e4-622b-413a-a531-b612e5f1436c}*SharedItemsImports = 4
 		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{fcb8a4e4-622b-413a-a531-b612e5f1436c}*SharedItemsImports = 4
@@ -76,6 +80,10 @@ Global
 		{0A143E92-0EDE-4630-9BFE-C670BF4C310A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A143E92-0EDE-4630-9BFE-C670BF4C310A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A143E92-0EDE-4630-9BFE-C670BF4C310A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EE4091F-3D10-433D-A59A-EE2F070FA22F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EE4091F-3D10-433D-A59A-EE2F070FA22F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EE4091F-3D10-433D-A59A-EE2F070FA22F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EE4091F-3D10-433D-A59A-EE2F070FA22F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
