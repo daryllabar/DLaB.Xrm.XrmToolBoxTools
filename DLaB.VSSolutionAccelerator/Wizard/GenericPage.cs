@@ -43,32 +43,35 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             }));
         }
 
-        private static GenericPage CreatePageFromInfo(TextQuestionInfo info)
+        private void SetValues(TextQuestionInfo info)
         {
-            var page = new GenericPage
-            {
-                QuestionLabel = {Text = info.Question},
-                ResponseText = {Text = info.DefaultResponse},
-                DescriptionText = {Text = info.Description}
-            };
-            return page;
+            QuestionLabel.Text = info.Question;
+            ResponseText.Text = info.DefaultResponse;
+            DescriptionText.Text = info.Description;
         }
 
         public static GenericPage CreateTextQuestion(TextQuestionInfo info)
         {
-            var page = CreatePageFromInfo(info);
+            var page = new GenericPage();
+            page.SetValues(info);
 
             page.HideAllExceptRows(Rows.Question, Rows.Text, Rows.Description);
             return page;
         }
 
 
+        private void SetValues(PathQuestionInfo info)
+        {
+            SetValues((TextQuestionInfo)info);
+            PathInfo = info;
+            Path.Text = info.DefaultResponse;
+        }
+
         public static GenericPage CreatePathQuestion(PathQuestionInfo info)
         {
-            var page = CreatePageFromInfo(info);
-
+            var page = new GenericPage();
+            page.SetValues(info);
             page.HideAllExceptRows(Rows.Question, Rows.PathText, Rows.Description);
-            page.PathInfo = info;
             return page;
         }
 
@@ -113,23 +116,32 @@ namespace DLaB.VSSolutionAccelerator.Wizard
         {
             if (sender == YesRadio && YesRadio.Checked)
             {
-                DisplayRowsForYesNoValue(YesNoInfo.YesQuestion, YesNoInfo.YesQuestionDescription, YesNoInfo.YesRow);
+                DisplayRowsForYesNoValue(YesNoInfo.Yes);
             }
             else if (sender == NoRadio && NoRadio.Checked)
             {
-                DisplayRowsForYesNoValue(YesNoInfo.NoQuestion, YesNoInfo.NoQuestionDescription, YesNoInfo.NoRow);
+                DisplayRowsForYesNoValue(YesNoInfo.No);
             }
         }
 
-        private void DisplayRowsForYesNoValue(string question, string description, int row)
+        private void DisplayRowsForYesNoValue(TextQuestionInfo info)
         {
-            var rows = new List<int> { Rows.YesNoQuestion, Rows.Question, Rows.Description };
-            QuestionLabel.Text = question;
-            DescriptionText.Text = description;
-
-            if (row >= 0)
+            var rows = new List<int> { Rows.YesNoQuestion, Rows.Description };
+            switch (info)
             {
-                rows.Add(row);
+                case null:
+                    DescriptionText.Text = string.Empty;
+                    break;
+                case PathQuestionInfo pathInfo:
+                    SetValues(pathInfo);
+                    rows.Add(Rows.Question);
+                    rows.Add(Rows.PathText);
+                    break;
+                default:
+                    SetValues(info);
+                    rows.Add(Rows.Question);
+                    rows.Add(Rows.Text);
+                    break;
             }
 
             HideAllExceptRows(rows.ToArray());

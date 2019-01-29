@@ -100,7 +100,20 @@ namespace DLaB.VSSolutionAccelerator
                     "What version of the SDK?",
                     PackageLister.CoreXrmAssemblies,
                     "This will determine the NuGet packages referenced and the version of the .Net Framework to use."));
-                
+                host.WizardPages.Add(GenericPage.CreateConditionalYesNoQuestion(new ConditionalYesNoQuestionInfo("Do you want to use the Early Bound Generator To Create Early Bound Entities?")
+                {
+                    Yes = new PathQuestionInfo("What is the path to the Early Bound Generator Settings.xml file?")
+                    {
+                        Filter = "EBG Setting File (*.xml)|*.xml",
+                        DefaultResponse = System.IO.Path.Combine(Paths.SettingsPath, "DLaB.EarlyBoundGenerator.DefaultSettings.xml"),
+                        Description = "The selected settings file will be moved to the folder of the solution, and configured to place the output of the files in the appropriate folders." 
+                                      + Environment.NewLine
+                                      + "The Early Bound Generator will also be triggered upon completion to generated the Early Bound classes."
+                    },
+                    Description = "Configures the output paths of the Early Bound Generator to generate files in the appropriate shared project within the solution."
+                        + Environment.NewLine
+                        + "This requires the XrmToolBox Early Bound Generator to be installed."
+                }));
                 host.LoadWizard();
                 if (host.ShowDialog() == DialogResult.OK)
                 {

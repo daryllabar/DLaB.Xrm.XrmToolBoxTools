@@ -92,7 +92,7 @@
             // NoRadio
             // 
             this.NoRadio.AutoSize = true;
-            this.NoRadio.Location = new System.Drawing.Point(194, 50);
+            this.NoRadio.Location = new System.Drawing.Point(256, 43);
             this.NoRadio.Name = "NoRadio";
             this.NoRadio.Size = new System.Drawing.Size(39, 17);
             this.NoRadio.TabIndex = 1;
@@ -104,7 +104,7 @@
             // YesRadio
             // 
             this.YesRadio.AutoSize = true;
-            this.YesRadio.Location = new System.Drawing.Point(145, 50);
+            this.YesRadio.Location = new System.Drawing.Point(207, 43);
             this.YesRadio.Name = "YesRadio";
             this.YesRadio.Size = new System.Drawing.Size(43, 17);
             this.YesRadio.TabIndex = 0;

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace DLaB.VSSolutionAccelerator.Wizard
 {
@@ -17,19 +16,15 @@ namespace DLaB.VSSolutionAccelerator.Wizard
                     return !string.IsNullOrWhiteSpace(ResponseText.Text + Path.Text);
                 }
 
-                if (YesRadio.Checked)
-                {
-                    return YesNoInfo.YesRow < 0
-                           || !string.IsNullOrWhiteSpace(ResponseText.Text + Path.Text);
-                }
+                var selectedInfo = YesRadio.Checked
+                    ? YesNoInfo.Yes
+                    : YesNoInfo.No;
 
-                if (NoRadio.Checked)
+                if (selectedInfo is PathQuestionInfo)
                 {
-                    return YesNoInfo.NoRow < 0
-                           || !string.IsNullOrWhiteSpace(ResponseText.Text + Path.Text);
+                    return !string.IsNullOrWhiteSpace(Path.Text);
                 }
-
-                return false;
+                return !string.IsNullOrWhiteSpace(ResponseText.Text);
             }
         }
 
