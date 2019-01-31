@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Microsoft.Web.XmlTransform;
+using Source.DLaB.Common;
 
 namespace DLaB.VSSolutionAccelerator.Wizard
 {
@@ -13,10 +15,14 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             public const int Question = 2;
             public const int Text = 3;
             public const int PathText = 4;
-            public const int Description = 5;
-            public static readonly int[] All = {1, 2, 3, 4, 5};
+            public const int Question2 = 5;
+            public const int Text2 = 6;
+            public const int Path2Text = 7;
+            public const int Description = 8;
+            public static readonly int[] All = {1, 2, 3, 4, 5, 6, 7, 8};
         }
 
+        public const string SaveResultsPrefix = "SaveResults[";
         public class Row
         {
             public Control Control { get; set; }
@@ -24,11 +30,17 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             public float Height { get; set; }
             public RowStyle Parent { get; set; }
         }
-        public Action<GenericPage> OnLoadAction{ get; set; }
-
+        /// <summary>
+        /// The Page itself, and the SaveResults array
+        /// </summary>
+        public Action<GenericPage, object[]> OnLoadAction{ get; set; }
         private ConditionalYesNoQuestionInfo YesNoInfo { get; set; }
         private PathQuestionInfo PathInfo { get; set; }
+        private PathQuestionInfo Path2Info { get; set; }
         private List<Row> Heights { get; }
+        private bool CheckFileExists { get; set; }
+        private bool CheckFile2Exists { get; set; }
+        private string[] DefaultYesNoText { get; set; }
 
         public GenericPage()
         {
@@ -41,41 +53,117 @@ namespace DLaB.VSSolutionAccelerator.Wizard
                 SizeType = r.SizeType,
                 Parent = r
             }));
+            DefaultYesNoText = new string[4];
         }
 
-        private void SetValues(TextQuestionInfo info)
+        private int SetValues(TextQuestionInfo info)
         {
             QuestionLabel.Text = info.Question;
-            ResponseText.Text = info.DefaultResponse;
             DescriptionText.Text = info.Description;
+            SetDefaultOnLoad(ResponseText, info.DefaultResponse);
+            return Rows.Text;
         }
 
-        public static GenericPage CreateTextQuestion(TextQuestionInfo info)
+        private int SetValues2(TextQuestionInfo info)
+        {
+            var separateText = string.IsNullOrWhiteSpace(DescriptionText.Text)
+                ? string.Empty
+                : Environment.NewLine + Environment.NewLine;
+            Question2Label.Text = info.Question;
+            SetDefaultOnLoad(Response2Text, info.DefaultResponse);
+            DescriptionText.Text += separateText + info.Description;
+            return Rows.Text2;
+        }
+
+        private void SetDefaultOnLoad(TextBox box, string defaultText)
+        {
+            if (defaultText == null 
+                || !defaultText.Contains(SaveResultsPrefix))
+            {
+                box.Text = defaultText + string.Empty;
+                return;
+            }
+
+            void Action(GenericPage page, object[] saveResults)
+            {
+                box.Text = GetDefaultValue(defaultText, saveResults);
+            }
+
+            if (OnLoadAction == null)
+            {
+                OnLoadAction = Action;
+            }
+            else
+            {
+                var oldAction = OnLoadAction;
+                OnLoadAction = delegate(GenericPage page, object[] saveResults)
+                {
+                    oldAction(page, saveResults);
+                    Action(page, saveResults);
+                };
+            }
+        }
+
+        private static string GetDefaultValue(string defaultText, object[] saveResults)
+        {
+            var format = defaultText;
+            var previousLength = format.Length + 1;
+            while (format.Contains(SaveResultsPrefix) && previousLength > format.Length)
+            {
+                previousLength = format.Length;
+                var index = format.SubstringByString(SaveResultsPrefix, "]");
+                format = format.Replace($"{SaveResultsPrefix}{index}]", saveResults[int.Parse(index)].ToString());
+            }
+
+            return format;
+        }
+
+        public static GenericPage Create(TextQuestionInfo info, TextQuestionInfo info2 = null)
         {
             var page = new GenericPage();
-            page.SetValues(info);
+            var rows = new List<int> {Rows.Question, Rows.Description};
+            rows.Add(page.SetValues((dynamic) info));
+            if (info2 != null)
+            {
+                rows.Add(Rows.Question2);
+                rows.Add(page.SetValues2((dynamic) info2));
+            }
 
-            page.HideAllExceptRows(Rows.Question, Rows.Text, Rows.Description);
+            page.HideAllExceptRows(rows.ToArray());
             return page;
         }
 
+        public static GenericPage Create(TextQuestionInfo info, Action<GenericPage, object[]> onLoadAction)
+        {
+            return Create(info, null, onLoadAction);
+        }
 
-        private void SetValues(PathQuestionInfo info)
+        public static GenericPage Create(TextQuestionInfo info, TextQuestionInfo info2, Action<GenericPage, object[]> onLoadAction)
+        {
+            var page = Create(info, info2);
+            page.OnLoadAction = onLoadAction;
+            return page;
+        }
+
+        private int SetValues(PathQuestionInfo info)
         {
             SetValues((TextQuestionInfo)info);
             PathInfo = info;
-            Path.Text = info.DefaultResponse;
+            SetDefaultOnLoad(Path, info.DefaultResponse);
+            CheckFileExists = info.RequireFileExists;
+            return Rows.PathText;
         }
 
-        public static GenericPage CreatePathQuestion(PathQuestionInfo info)
+        private int SetValues2(PathQuestionInfo info)
         {
-            var page = new GenericPage();
-            page.SetValues(info);
-            page.HideAllExceptRows(Rows.Question, Rows.PathText, Rows.Description);
-            return page;
+            SetValues2((TextQuestionInfo)info);
+            Path2Info = info;
+            SetDefaultOnLoad(Path2, info.DefaultResponse);
+            CheckFile2Exists = info.RequireFileExists;
+            return Rows.Path2Text;
         }
 
-        public static GenericPage CreateConditionalYesNoQuestion(ConditionalYesNoQuestionInfo info)
+        public static GenericPage Create(ConditionalYesNoQuestionInfo info)
         {
             var page = new GenericPage
             {
@@ -83,9 +171,50 @@ namespace DLaB.VSSolutionAccelerator.Wizard
                 YesNoGroup = { Text = info.Question }
             };
 
+            page.SetYesNoDefaultOnLoad(info.Yes?.DefaultResponse, 0);
+            page.SetYesNoDefaultOnLoad(info.Yes2?.DefaultResponse, 1);
+            page.SetYesNoDefaultOnLoad(info.No?.DefaultResponse, 2);
+            page.SetYesNoDefaultOnLoad(info.No2?.DefaultResponse, 3);
+
             page.HideAllExceptRows(Rows.YesNoQuestion, Rows.Description);
 
             return page;
+        }
+
+        public static GenericPage Create(ConditionalYesNoQuestionInfo info, Action<GenericPage, object[]> onLoadAction)
+        {
+            var page = Create(info);
+            page.OnLoadAction = onLoadAction;
+            return page;
+        }
+
+        private void SetYesNoDefaultOnLoad(string defaultText, int index)
+        {
+            if (defaultText == null
+                || !defaultText.Contains(SaveResultsPrefix))
+            {
+                DefaultYesNoText[index] = defaultText + string.Empty;
+                return;
+            }
+
+            void Action(GenericPage page, object[] saveResults)
+            {
+                DefaultYesNoText[index] = GetDefaultValue(defaultText, saveResults);
+            }
+
+            if (OnLoadAction == null)
+            {
+                OnLoadAction = Action;
+            }
+            else
+            {
+                var oldAction = OnLoadAction;
+                OnLoadAction = delegate (GenericPage page, object[] saveResults)
+                {
+                    oldAction(page, saveResults);
+                    Action(page, saveResults);
+                };
+            }
         }
 
         private void HideAllExceptRows(params int[] rows)
@@ -116,32 +245,36 @@ namespace DLaB.VSSolutionAccelerator.Wizard
         {
             if (sender == YesRadio && YesRadio.Checked)
             {
-                DisplayRowsForYesNoValue(YesNoInfo.Yes);
+                DisplayRowsForYesNoValue(YesNoInfo.Yes, YesNoInfo.Yes2, 0);
             }
             else if (sender == NoRadio && NoRadio.Checked)
             {
-                DisplayRowsForYesNoValue(YesNoInfo.No);
+                DisplayRowsForYesNoValue(YesNoInfo.No, YesNoInfo.No2, 2);
             }
         }
 
-        private void DisplayRowsForYesNoValue(TextQuestionInfo info)
+        private void DisplayRowsForYesNoValue(TextQuestionInfo info, TextQuestionInfo info2, int defaultTextIndex)
         {
             var rows = new List<int> { Rows.YesNoQuestion, Rows.Description };
-            switch (info)
+            if (info == null)
             {
-                case null:
-                    DescriptionText.Text = string.Empty;
-                    break;
-                case PathQuestionInfo pathInfo:
-                    SetValues(pathInfo);
-                    rows.Add(Rows.Question);
-                    rows.Add(Rows.PathText);
-                    break;
-                default:
-                    SetValues(info);
-                    rows.Add(Rows.Question);
-                    rows.Add(Rows.Text);
-                    break;
+                DescriptionText.Text = string.Empty;
+            }
+            else
+            {
+                rows.Add(Rows.Question);
+                rows.Add(SetValues((dynamic)info));
+                ResponseText.Text = DefaultYesNoText[defaultTextIndex];
+                Path.Text = DefaultYesNoText[defaultTextIndex];
+
+            }
+
+            if (info2 != null)
+            {
+                rows.Add(Rows.Question2);
+                rows.Add(SetValues2((dynamic)info2));
+                Response2Text.Text = DefaultYesNoText[defaultTextIndex+1];
+                Path2.Text = DefaultYesNoText[defaultTextIndex];
             }
 
             HideAllExceptRows(rows.ToArray());
@@ -149,17 +282,29 @@ namespace DLaB.VSSolutionAccelerator.Wizard
 
         private void OpenFileBtn_Click(object sender, EventArgs e)
         {
-            OpenFileDialog.CheckFileExists = true;
-            OpenFileDialog.Multiselect = false;
-            OpenFileDialog.Filter = PathInfo.Filter;
-            if (!string.IsNullOrWhiteSpace(Path.Text))
+            string filter;
+            TextBox path;
+            if (sender == OpenFileBtn)
             {
-                OpenFileDialog.FileName = Path.Text;
+                filter = PathInfo.Filter;
+                path = Path;
+            }
+            else
+            {
+                filter = Path2Info.Filter;
+                path = Path2;
+            }
+
+            OpenFileDialog.Multiselect = false;
+            OpenFileDialog.Filter = filter;
+            if (!string.IsNullOrWhiteSpace(path.Text))
+            {
+                OpenFileDialog.FileName = path.Text;
             }
 
             if (OpenFileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                Path.Text = OpenFileDialog.FileName;
+                path.Text = OpenFileDialog.FileName;
             }
         }
     }

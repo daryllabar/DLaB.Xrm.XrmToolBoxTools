@@ -45,7 +45,7 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             }
         }
 
-        public object[] Results { get; private set; }
+        public object[] SaveResults { get; private set; }
 
         #endregion
 
@@ -77,7 +77,7 @@ namespace DLaB.VSSolutionAccelerator.Wizard
         }
         private void OnWizardCompleted()
         {
-            Results[Results.Length-1] = WizardPages.LastPage.Save();
+            SaveResults[SaveResults.Length-1] = WizardPages.LastPage.Save();
             WizardPages.Reset();
             DialogResult = DialogResult.OK;
         }
@@ -152,7 +152,7 @@ namespace DLaB.VSSolutionAccelerator.Wizard
 
         public void LoadWizard()
         {
-            Results = new object[WizardPages.Count];
+            SaveResults = new object[WizardPages.Count];
             WizardPages.MovePageFirst();
         }
         public void LoadNextPage(int pageIndex, int previousPageIndex, bool savePreviousPage)
@@ -163,9 +163,9 @@ namespace DLaB.VSSolutionAccelerator.Wizard
                 contentPanel.Controls.Add(WizardPages[pageIndex].Content);
                 if (savePreviousPage && previousPageIndex != -1)
                 {
-                    Results[previousPageIndex] = WizardPages[previousPageIndex].Save();
+                    SaveResults[previousPageIndex] = WizardPages[previousPageIndex].Save();
                 }
-                WizardPages[pageIndex].Load();
+                WizardPages[pageIndex].Load(SaveResults);
                 UpdateNavigation();
             }
         }

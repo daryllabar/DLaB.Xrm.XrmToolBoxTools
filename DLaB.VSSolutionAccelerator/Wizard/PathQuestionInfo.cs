@@ -9,6 +9,11 @@ namespace DLaB.VSSolutionAccelerator.Wizard
     public class PathQuestionInfo : TextQuestionInfo
     {
         public string Filter { get; internal set; }
-        public PathQuestionInfo(string question): base(question) { }
+        public bool RequireFileExists { get; set; }
+
+        public PathQuestionInfo(string question) : base(question)
+        {
+            RequireFileExists = true;
+        }
     }
 }

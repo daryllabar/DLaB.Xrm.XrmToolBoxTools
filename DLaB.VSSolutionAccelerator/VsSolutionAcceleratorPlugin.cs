@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.IO;
 using System.Windows.Forms;
 using DLaB.VSSolutionAccelerator.Wizard;
 using DLaB.XrmToolBoxCommon;
@@ -86,12 +88,12 @@ namespace DLaB.VSSolutionAccelerator
             })
             {
                 //host.WizardCompleted += new WizardHost.WizardCompletedEventHandler(host_WizardCompleted);
-                host.WizardPages.Add(GenericPage.CreatePathQuestion(new PathQuestionInfo("What Solution?")
+                host.WizardPages.Add(GenericPage.Create(new PathQuestionInfo("What Solution?")
                 {
                     Filter = "Solution Files (*.sln)|*.sln",
                     Description = "This Wizard will walk through the process of adding isolation/plugin/workflow/testing projects based on the DLaB/XrmUnitTest framework, adding the projects to the solution defined here."
                 }));
-                host.WizardPages.Add(GenericPage.CreateTextQuestion(new TextQuestionInfo("What is the root NameSpace?")
+                host.WizardPages.Add(GenericPage.Create(new TextQuestionInfo("What is the root NameSpace?")
                 {
                     DefaultResponse = "YourCompanyNameOrAbbreviation.Xrm",
                     Description = "This is the root namespace that will the Plugin and (if desired) Early Bound Entities will be appended to."
@@ -100,12 +102,12 @@ namespace DLaB.VSSolutionAccelerator
                     "What version of the SDK?",
                     PackageLister.CoreXrmAssemblies,
                     "This will determine the NuGet packages referenced and the version of the .Net Framework to use."));
-                host.WizardPages.Add(GenericPage.CreateConditionalYesNoQuestion(new ConditionalYesNoQuestionInfo("Do you want to use the Early Bound Generator To Create Early Bound Entities?")
+                host.WizardPages.Add(GenericPage.Create(new ConditionalYesNoQuestionInfo("Do you want to use the Early Bound Generator To Create Early Bound Entities?")
                 {
                     Yes = new PathQuestionInfo("What is the path to the Early Bound Generator Settings.xml file?")
                     {
                         Filter = "EBG Setting File (*.xml)|*.xml",
-                        DefaultResponse = System.IO.Path.Combine(Paths.SettingsPath, "DLaB.EarlyBoundGenerator.DefaultSettings.xml"),
+                        DefaultResponse = Path.GetFullPath(Path.Combine(Paths.SettingsPath, "DLaB.EarlyBoundGenerator.DefaultSettings.xml")),
                         Description = "The selected settings file will be moved to the folder of the solution, and configured to place the output of the files in the appropriate folders." 
                                       + Environment.NewLine
                                       + "The Early Bound Generator will also be triggered upon completion to generated the Early Bound classes."
@@ -114,10 +116,53 @@ namespace DLaB.VSSolutionAccelerator
                         + Environment.NewLine
                         + "This requires the XrmToolBox Early Bound Generator to be installed."
                 }));
+                host.WizardPages.Add(GenericPage.Create(new TextQuestionInfo("What do you want the name of the shared common assembly to be?")
+                {
+                    DefaultResponse = "SaveResults[1]",
+                    Description = "This will be the name of a shared C# project that will be used to store common code including plugin logic and early bound entities if applicable"
+                }));
+
+                host.WizardPages.Add(GenericPage.Create(new TextQuestionInfo("What do you want the name of the shared common workflow assembly to be?")
+                {
+                    DefaultResponse = "SaveResults[1].Workflow",
+                    Description = "This will be the name of a shared C# project that contains references to the workflow code.  It would only be required by assemblies containing a workflow."
+                }));
+                host.WizardPages.Add(GenericPage.Create(new ConditionalYesNoQuestionInfo("Do you want to use XrmUnitTest for unit testing?")
+                {
+                    Yes = new TextQuestionInfo("What do you want the Test Settings project to be called?")
+                    {
+                        DefaultResponse = "SaveResults[1].Test",
+                        Description = "The Test Settings project will contain the single test settings config file and assumption xml files."
+                    },
+                    Yes2 = new TextQuestionInfo("What do you want the shared core test project to be called?")
+                    {
+                        DefaultResponse = "SaveResults[1].TestCore",
+                        Description = "The shared Test Project will contain all other shared test code (Assumption Definitions, Builders, Test Base Class, etc)"
+                    },
+                    Description = "This will add the appropriate NuGet References and create the appropriate isolation projects."
+                }));
+                host.WizardPages.Add(GenericPage.Create(new ConditionalYesNoQuestionInfo("Do you want to create a Plugin Project?")
+                {
+                    Yes = new TextQuestionInfo("What should the plugin project be called?")
+                    {
+                        DefaultResponse = "SaveResults[1].Plugin",
+                        Description = "The name and default namespace for the plugin project."
+                    },
+                    Description = "This will add a new plugin project to the solution and wire up the appropriate references."
+                }));
+                host.WizardPages.Add(GenericPage.Create(new ConditionalYesNoQuestionInfo("Do you want to create a Workflow Project?")
+                {
+                    Yes = new TextQuestionInfo("What should the workflow project be called??")
+                    {
+                        DefaultResponse = "SaveResults[1].Workflow",
+                        Description = "The name and default namespace for the workflow project."
+                    },
+                    Description = "This will add a new workflow project to the solution and wire up the appropriate references."
+                }));
                 host.LoadWizard();
                 if (host.ShowDialog() == DialogResult.OK)
                 {
-                    var results = host.Results;
+                    var results = host.SaveResults;
 
                 }
 
@@ -133,6 +178,29 @@ namespace DLaB.VSSolutionAccelerator
                     ShowAddAcceleratorsWizard();
                     break;
                 case 1:
+                    var results = new object[]
+                    {
+                        "C:\\Temp\\AdvXTB\\Abc.Xrm\\Abc.Xrm.sln",
+                        "Abc.Xrm",
+                        new NuGetPackage
+                        {
+                            Id = "Microsoft.CrmSdk.CoreAssemblies",
+                            LicenseUrl = "http://download.microsoft.com/download/E/1/8/E18C0FAD-FEC8-44CD-9A16-98EDC4DAC7A2/LicenseTerms.docx",
+                            Name = "Microsoft Dynamics 365 SDK core assemblies",
+                            Version = new Version("9.0.2.5"),
+                            VersionText = "9.0.2.5",
+                            XrmToolingClient = false
+                        },
+                        new List<string> {"Y", "C:\\Users\\daryl.labar\\Documents\\GitHub\\DLaB.Xrm.XrmToolBoxTools\\DLaB.VSSolutionAccelerator\\bin\\Debug\\Settings\\DLaB.EarlyBoundGenerator.DefaultSettings.xmlC:\\Users\\daryl.labar\\Documents\\GitHub\\DLaB.Xrm.XrmToolBoxTools\\DLaB.VSSolutionAccelerator\\bin\\Debug\\Settings\\DLaB.EarlyBoundGenerator.DefaultSettings.xml"},
+                        "Abc.Xrm",
+                        "Abc.Xrm.Workflow",
+                        new List<string> {"Y", "Abc.Xrm.Test", "Abc.Xrm.TestCore" },
+                        new List<string> {"Y", "Abc.Xrm.Plugin"},
+                        new List<string> {"Y", "Abc.Xrm.Workflow"}
+                    };
+
+                    Logic.Execute(InitializeSolutionInfo.InitializeSolution(results));
+
                     break;
                 default:
                     throw new NotImplementedException();

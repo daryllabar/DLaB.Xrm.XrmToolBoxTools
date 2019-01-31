@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace DLaB.VSSolutionAccelerator.Wizard
 {
@@ -11,24 +13,35 @@ namespace DLaB.VSSolutionAccelerator.Wizard
         {
             get
             {
-                if (YesNoInfo == null)
+                if (YesNoInfo != null
+                    && !YesRadio.Checked
+                    && !NoRadio.Checked)
                 {
-                    return !string.IsNullOrWhiteSpace(ResponseText.Text + Path.Text);
+                    return false;
                 }
 
-                var selectedInfo = YesRadio.Checked
-                    ? YesNoInfo.Yes
-                    : YesNoInfo.No;
-
-                if (selectedInfo is PathQuestionInfo)
-                {
-                    return !string.IsNullOrWhiteSpace(Path.Text);
-                }
-                return !string.IsNullOrWhiteSpace(ResponseText.Text);
+                return ResponseTextIsValid(ResponseText)
+                    && ResponseTextIsValid(Response2Text)
+                    && PathTextIsValid(Path, CheckFileExists)
+                    && PathTextIsValid(Path2, CheckFile2Exists);
             }
         }
 
-        public string ValidationMessage => "Please enter or select a value!";
+        private static bool ResponseTextIsValid(Control box)
+        {
+            return !box.Visible 
+                   || !string.IsNullOrWhiteSpace(box.Text);
+        }
+
+        private static bool PathTextIsValid(Control box, bool checkFileExists)
+        {
+            return !box.Visible 
+                   || checkFileExists && System.IO.File.Exists(box.Text)
+                   || !checkFileExists && !string.IsNullOrWhiteSpace(box.Text);
+        }
+
+
+        public string ValidationMessage => "Please enter or select a valid value!";
 
         public void Cancel()
         {
@@ -36,17 +49,33 @@ namespace DLaB.VSSolutionAccelerator.Wizard
 
         public object Save()
         {
-            var response = string.Empty;
+            var response = new List<string>();
             if (YesNoInfo != null)
             {
-                response += YesRadio.Checked ? "Y" : "N";
+                response.Add(YesRadio.Checked ? "Y" : "N");
             }
-            return response + ResponseText.Text + Path.Text;
+
+            AddValue(response, ResponseText);
+            AddValue(response, Path);
+            AddValue(response, Response2Text);
+            AddValue(response, Path2);
+            return response.Count == 1 
+                ? (object)response.First()
+                : response;
         }
 
-        void IWizardPage.Load()
+
+        private static void AddValue(List<string> values, Control box)
         {
-            OnLoadAction?.Invoke(this);
+            if (box.Visible)
+            {
+                values.Add(box.Text);
+            }
+        }
+
+        void IWizardPage.Load(object[] saveResults)
+        {
+            OnLoadAction?.Invoke(this, saveResults);
         }
     }
 }

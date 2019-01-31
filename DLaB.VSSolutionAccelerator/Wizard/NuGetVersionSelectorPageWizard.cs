@@ -20,7 +20,7 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             return (NuGetPackage) PackageSelector.SelectedItem;
         }
 
-        void IWizardPage.Load()
+        void IWizardPage.Load(object[] saveResults)
         {
             // Called when the Page is loaded in the wizard.
             // Helpful if additional logic is required before loading

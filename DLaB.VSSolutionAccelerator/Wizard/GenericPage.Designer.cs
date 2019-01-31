@@ -39,9 +39,15 @@
             this.Path = new System.Windows.Forms.TextBox();
             this.DescriptionText = new System.Windows.Forms.TextBox();
             this.OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.OpenFileBtn2 = new System.Windows.Forms.Button();
+            this.Path2 = new System.Windows.Forms.TextBox();
+            this.Question2Label = new System.Windows.Forms.Label();
+            this.Response2Text = new System.Windows.Forms.TextBox();
             this.Table.SuspendLayout();
             this.YesNoGroup.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // QuestionLabel
@@ -62,14 +68,20 @@
             this.Table.Controls.Add(this.YesNoGroup, 1, 1);
             this.Table.Controls.Add(this.QuestionLabel, 1, 2);
             this.Table.Controls.Add(this.ResponseText, 1, 3);
+            this.Table.Controls.Add(this.DescriptionText, 1, 8);
+            this.Table.Controls.Add(this.Question2Label, 1, 5);
+            this.Table.Controls.Add(this.panel2, 1, 7);
             this.Table.Controls.Add(this.panel1, 1, 4);
-            this.Table.Controls.Add(this.DescriptionText, 1, 5);
+            this.Table.Controls.Add(this.Response2Text, 1, 6);
             this.Table.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Table.Location = new System.Drawing.Point(0, 0);
             this.Table.Name = "Table";
-            this.Table.RowCount = 6;
+            this.Table.RowCount = 9;
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -158,13 +170,61 @@
             this.DescriptionText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DescriptionText.Location = new System.Drawing.Point(53, 192);
+            this.DescriptionText.Location = new System.Drawing.Point(53, 261);
             this.DescriptionText.Multiline = true;
             this.DescriptionText.Name = "DescriptionText";
             this.DescriptionText.ReadOnly = true;
             this.DescriptionText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.DescriptionText.Size = new System.Drawing.Size(488, 217);
+            this.DescriptionText.Size = new System.Drawing.Size(488, 148);
             this.DescriptionText.TabIndex = 4;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.OpenFileBtn2);
+            this.panel2.Controls.Add(this.Path2);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(50, 228);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(494, 30);
+            this.panel2.TabIndex = 5;
+            // 
+            // OpenFileBtn2
+            // 
+            this.OpenFileBtn2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.OpenFileBtn2.Location = new System.Drawing.Point(465, 4);
+            this.OpenFileBtn2.Name = "OpenFileBtn2";
+            this.OpenFileBtn2.Size = new System.Drawing.Size(26, 23);
+            this.OpenFileBtn2.TabIndex = 1;
+            this.OpenFileBtn2.Text = "...";
+            this.OpenFileBtn2.UseVisualStyleBackColor = true;
+            // 
+            // Path2
+            // 
+            this.Path2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Path2.Location = new System.Drawing.Point(4, 4);
+            this.Path2.Name = "Path2";
+            this.Path2.Size = new System.Drawing.Size(455, 20);
+            this.Path2.TabIndex = 0;
+            // 
+            // Question2Label
+            // 
+            this.Question2Label.AutoSize = true;
+            this.Question2Label.Location = new System.Drawing.Point(53, 189);
+            this.Question2Label.Name = "Question2Label";
+            this.Question2Label.Size = new System.Drawing.Size(58, 13);
+            this.Question2Label.TabIndex = 6;
+            this.Question2Label.Text = "Question 2";
+            // 
+            // Response2Text
+            // 
+            this.Response2Text.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Response2Text.Location = new System.Drawing.Point(53, 205);
+            this.Response2Text.Name = "Response2Text";
+            this.Response2Text.Size = new System.Drawing.Size(488, 20);
+            this.Response2Text.TabIndex = 7;
             // 
             // GenericPage
             // 
@@ -179,6 +239,8 @@
             this.YesNoGroup.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -196,5 +258,10 @@
         private System.Windows.Forms.TextBox Path;
         private System.Windows.Forms.TextBox DescriptionText;
         private System.Windows.Forms.OpenFileDialog OpenFileDialog;
+        private System.Windows.Forms.Label Question2Label;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button OpenFileBtn2;
+        private System.Windows.Forms.TextBox Path2;
+        private System.Windows.Forms.TextBox Response2Text;
     }
 }

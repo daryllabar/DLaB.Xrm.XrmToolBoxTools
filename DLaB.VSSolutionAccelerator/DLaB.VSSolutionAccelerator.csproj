@@ -203,6 +203,8 @@
     <Compile Include="App_Packages\DLaB.Xrm.Source.2.3.0.3\Serialization\SerializableKeyAttributeCollection.cs" />
     <Compile Include="App_Packages\DLaB.Xrm.Source.2.3.0.3\Serialization\SerializableRelatedEntityCollection.cs" />
     <Compile Include="App_Packages\DLaB.Xrm.Source.2.3.0.3\TypedQueryExpression.cs" />
+    <Compile Include="InitializeSolutionInfo.cs" />
+    <Compile Include="Logic.cs" />
     <Compile Include="PackageLister.cs" />
     <Compile Include="VsSolutionAccelerator.cs" />
     <Compile Include="VsSolutionAcceleratorPlugin.cs">
@@ -271,7 +273,12 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>IF NOT EXIST Plugins mkdir Plugins
-move /Y $(TargetFileName) Plugins</PostBuildEvent>
+move /Y $(TargetFileName) Plugins
+</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
