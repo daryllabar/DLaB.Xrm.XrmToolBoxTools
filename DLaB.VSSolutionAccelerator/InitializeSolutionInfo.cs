@@ -19,23 +19,17 @@ namespace DLaB.VSSolutionAccelerator
         public bool CreateWorkflow { get; set; }
         public string WorkflowName { get; set; }
 
-        public InitializeSolutionInfo()
-        {
-
-        }
-
         public static InitializeSolutionInfo InitializeSolution(object[] values)
         {
             var queue = new Queue<object>(values);
-            var info = new InitializeSolutionInfo
-            {
-                SolutionPath = (string) queue.Dequeue(),
-                RootNamespace = (string) queue.Dequeue(),
-                XrmPackage = (NuGetPackage) queue.Dequeue(),
-                SharedCommonProject = (string) queue.Dequeue(),
-                SharedCommonWorkflowProject = (string) queue.Dequeue()
-            };
+            // ReSharper disable once UseObjectOrCollectionInitializer
+            var info = new InitializeSolutionInfo();
+            info.SolutionPath = (string)queue.Dequeue();
+            info.RootNamespace = (string)queue.Dequeue();
+            info.XrmPackage = (NuGetPackage)queue.Dequeue();
             info.InitializeEarlyBound(queue.Dequeue());
+            info.SharedCommonProject = (string)queue.Dequeue();
+            info.SharedCommonWorkflowProject = (string)queue.Dequeue();
             info.InitializeXrmUnitTest(queue.Dequeue());
             info.InitializePlugin(queue.Dequeue());
             info.InitializeWorkflow(queue.Dequeue());

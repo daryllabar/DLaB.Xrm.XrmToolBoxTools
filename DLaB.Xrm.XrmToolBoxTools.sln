@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.EarlyBoundGenerator.Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.VSSolutionAccelerator", "DLaB.VSSolutionAccelerator\DLaB.VSSolutionAccelerator.csproj", "{8EE4091F-3D10-433D-A59A-EE2F070FA22F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.VSSolutionAccelerator.Tests", "DLaB.VSSolutionAccelerator.Tests\DLaB.VSSolutionAccelerator.Tests.csproj", "{9FC14F50-B2B6-4327-96E6-CE66C42B6236}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		DLaB.EarlyBoundGenerator.Logic\DLaB.EarlyBoundGenerator.Logic.projitems*{0a143e92-0ede-4630-9bfe-c670bf4c310a}*SharedItemsImports = 4
@@ -84,6 +86,10 @@ Global
 		{8EE4091F-3D10-433D-A59A-EE2F070FA22F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EE4091F-3D10-433D-A59A-EE2F070FA22F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EE4091F-3D10-433D-A59A-EE2F070FA22F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FC14F50-B2B6-4327-96E6-CE66C42B6236}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FC14F50-B2B6-4327-96E6-CE66C42B6236}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FC14F50-B2B6-4327-96E6-CE66C42B6236}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FC14F50-B2B6-4327-96E6-CE66C42B6236}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

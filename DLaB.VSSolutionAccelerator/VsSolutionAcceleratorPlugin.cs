@@ -199,7 +199,8 @@ namespace DLaB.VSSolutionAccelerator
                         new List<string> {"Y", "Abc.Xrm.Workflow"}
                     };
 
-                    Logic.Execute(InitializeSolutionInfo.InitializeSolution(results));
+                    Logic.Logic.Execute(InitializeSolutionInfo.InitializeSolution(results), 
+                        Path.GetFullPath(Path.Combine(Paths.PluginsPath, "DLaB.VSSolutionAccelerator")));
 
                     break;
                 default:

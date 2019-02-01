@@ -52,6 +52,7 @@
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.0.2.5\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.Web.XmlTransform, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
     </Reference>
@@ -204,8 +205,12 @@
     <Compile Include="App_Packages\DLaB.Xrm.Source.2.3.0.3\Serialization\SerializableRelatedEntityCollection.cs" />
     <Compile Include="App_Packages\DLaB.Xrm.Source.2.3.0.3\TypedQueryExpression.cs" />
     <Compile Include="InitializeSolutionInfo.cs" />
-    <Compile Include="Logic.cs" />
+    <Compile Include="Logic\Logic.cs" />
+    <Compile Include="Logic\SolutionFileEditor.cs" />
+    <Compile Include="Logic\SolutionFileParser.cs" />
     <Compile Include="PackageLister.cs" />
+    <Compile Include="Logic\ProjectFile.cs" />
+    <Compile Include="Logic\ProjectInfo.cs" />
     <Compile Include="VsSolutionAccelerator.cs" />
     <Compile Include="VsSolutionAcceleratorPlugin.cs">
       <SubType>UserControl</SubType>
@@ -268,17 +273,44 @@
   <ItemGroup>
     <Content Include="Reference\Wizard.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="..\DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems" Label="Shared" />
   <Import Project="..\DLaB.Xrm.Entities\DLaB.Xrm.Entities.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>IF NOT EXIST Plugins mkdir Plugins
 move /Y $(TargetFileName) Plugins
-</PostBuildEvent>
+
+if NOT EXIST "$(SolutionDir)..\XrmUnitTest.Example" goto :error
+
+ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Code Generation" "$(TargetDir)Plugins\$(ProjectName)\CodeGeneration" /S /MIR /NJS /NJH
+if %25errorlevel%25 GTR 4 exit %25errorlevel%25
+COPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.ruleset" "$(TargetDir)Plugins\$(ProjectName)\Xyz.ruleset"
+ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Walkthrough" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Walkthrough" /MIR /NJS /NJH /XD "bin" "obj"
+if %25errorlevel%25 GTR 4 exit %25errorlevel%25
+ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm" /MIR /NJS /NJH /XD Entities
+if %25errorlevel%25 GTR 4 exit %25errorlevel%25
+ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Plugin" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm.Plugin" /MIR /NJS /NJH /XD bin obj App_Packages
+if %25errorlevel%25 GTR 4 exit %25errorlevel%25
+ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Plugin.Tests" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm.Plugin.Tests" /MIR /NJS /NJH /XD bin obj
+if %25errorlevel%25 GTR 4 exit %25errorlevel%25
+ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Test" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm.Test" /MIR /NJS /NJH /XD bin obj
+if %25errorlevel%25 GTR 4 exit %25errorlevel%25
+ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.TestCore" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm.TestCore" /MIR /NJS /NJH
+if %25errorlevel%25 GTR 4 exit %25errorlevel%25
+
+if %25errorlevel%25 LEQ 4 exit 0
+goto :exit
+
+:error
+ECHO I appologize for this hack, but to not have to maintain duplicate code, the XrmUnitTest.Example Project is used as templates
+ECHO The Example project was not found at "$(SolutionDir)..\XrmUnitTest.Example"
+if $(ConfigurationName) == Release ROBOCOPY MISSING_XRMUNITTEST.EXAMPLE THROW_ERROR
+
+:exit</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
+    <PreBuildEvent>if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.exe" "$(ProjectDir)Properties\AssemblyInfo.cs"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
