@@ -15,6 +15,9 @@ namespace DLaB.VSSolutionAccelerator.Logic
         public struct Keys
         {
             public const string Common = "Xyz.Xrm";
+            public const string WorkflowCommon = "Xyz.Xrm.Workflow";
+            public const string TestCore = "Xyz.Xrm.TestCore";
+            public const string Test = "Xyz.Xrm.Test";
         }
 
         public Guid Id { get; set; }
@@ -25,7 +28,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
         public List<ProjectFile> Files { get; set; }
         public List<ProjectInfo> SharedProjectsReferences { get; set; }
         public string NewDirectory { get; set; }
-        public string SolutionHeader => string.Format("Project(\"{0}\") = \"{1}\", \"{1}\\{1}.{2}\", \"{{{3}}}\"{4}EndProject", GetTypeId(), Name, GetProjectPostfix(), Id.ToString().ToUpper(), Environment.NewLine );
+        public string SolutionProjectHeader => string.Format("Project(\"{0}\") = \"{1}\", \"{1}\\{1}.{2}\", \"{{{3}}}\"{4}EndProject", GetTypeId(), Name, GetProjectPostfix(), Id.ToString().ToUpper(), Environment.NewLine );
 
         public ProjectInfo()
         {

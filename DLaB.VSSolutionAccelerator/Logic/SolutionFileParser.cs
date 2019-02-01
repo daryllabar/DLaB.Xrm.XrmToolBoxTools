@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DLaB.VSSolutionAccelerator.Logic
 {
@@ -54,6 +55,22 @@ namespace DLaB.VSSolutionAccelerator.Logic
             {
                 StateProcessor[State](line);
             }
+
+            PreProjects = PreProjects ?? new List<string>();
+            Projects = Projects ?? new List<string>();
+            GlobalSharedProjects = GlobalSharedProjects ?? new List<string>();
+            GlobalSolutionConfigs = GlobalSolutionConfigs ?? new List<string>();
+            GlobalProjectConfigs = GlobalProjectConfigs ?? new List<string>();
+            PostGlobalProjectConfigs = PostGlobalProjectConfigs ?? new List<string>();
+
+            if (GlobalSolutionConfigs.Count == 0)
+            {
+                GlobalSolutionConfigs = new List<string>
+                {
+                    "\t\tDebug|Any CPU = Debug|Any CPU",
+                    "\t\tRelease|Any CPU = Release|Any CPU"
+                };
+            }
         }
 
         private void ParsePreProject(string line)
@@ -70,7 +87,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
             }
             else
             {
-                Projects.Add(line);
+                PreProjects.Add(line);
             }
         }
 
@@ -192,6 +209,74 @@ Global
 	EndGlobalSection
 EndGlobal
 ".Split(new[] {Environment.NewLine}, StringSplitOptions.None);
+        }
+
+        internal IEnumerable<string> GetSolution()
+        {
+            IEnumerable<string> SplitByNewLine(IEnumerable<string> lines)
+            {
+                foreach (var line in lines)
+                {
+                    var parts = line.Split(new[] {Environment.NewLine}, StringSplitOptions.None);
+                    if (parts.Length > 1)
+                    {
+                        foreach (var part in parts)
+                        {
+                            yield return part;
+                        }
+                    }
+                    else
+                    {
+                        yield return line;
+                    }
+                }
+            }
+
+            foreach (var line in PreProjects)
+            {
+                yield return line;
+            }
+
+            foreach (var line in SplitByNewLine(Projects))
+            {
+                yield return line;
+            }
+
+            yield return LineMarkers.GlobalStart;
+            if (GlobalSharedProjects.Any())
+            {
+                yield return "\t" + LineMarkers.GlobalSharedProjectStart;
+                foreach (var line in SplitByNewLine(GlobalSharedProjects))
+                {
+                    yield return line;
+                }
+                yield return "\t" + LineMarkers.GlobalSectionEnd;
+            }
+
+            if (GlobalSolutionConfigs.Any())
+            {
+                yield return "\t" + LineMarkers.GlobalSolutionConfigsStart;
+                foreach (var line in SplitByNewLine(GlobalSolutionConfigs))
+                {
+                    yield return line;
+                }
+                yield return "\t" + LineMarkers.GlobalSectionEnd;
+            }
+
+            if (GlobalProjectConfigs.Any())
+            {
+                yield return "\t" + LineMarkers.GlobalProjectConfigsStart;
+                foreach (var line in SplitByNewLine(GlobalProjectConfigs))
+                {
+                    yield return line;
+                }
+                yield return "\t" + LineMarkers.GlobalSectionEnd;
+            }
+
+            foreach (var line in SplitByNewLine(PostGlobalProjectConfigs))
+            {
+                yield return line;
+            }
         }
     }
 }

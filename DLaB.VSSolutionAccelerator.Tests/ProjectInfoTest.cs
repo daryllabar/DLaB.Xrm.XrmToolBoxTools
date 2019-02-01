@@ -24,7 +24,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
                 Name = "CsProjTest",
                 Id = Guid.NewGuid()
             };
-            Assert.AreEqual("Project(\"{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}\") = \"CsProjTest\", \"CsProjTest\\CsProjTest.csproj\", \"{" + sut.Id.ToString().ToUpper() + "}\"" + Environment.NewLine + "EndProject", sut.SolutionHeader);
+            Assert.AreEqual("Project(\"{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}\") = \"CsProjTest\", \"CsProjTest\\CsProjTest.csproj\", \"{" + sut.Id.ToString().ToUpper() + "}\"" + Environment.NewLine + "EndProject", sut.SolutionProjectHeader);
         }
 
         [TestMethod]
@@ -41,7 +41,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
                 Name = "ShProjTest",
                 Id = Guid.NewGuid()
             };
-            Assert.AreEqual("Project(\"{D954291E-2A0B-460D-934E-DC6B0785DB48}\") = \"ShProjTest\", \"ShProjTest\\ShProjTest.shproj\", \"{" + sut.Id.ToString().ToUpper() + "}\"" + Environment.NewLine + "EndProject", sut.SolutionHeader);
+            Assert.AreEqual("Project(\"{D954291E-2A0B-460D-934E-DC6B0785DB48}\") = \"ShProjTest\", \"ShProjTest\\ShProjTest.shproj\", \"{" + sut.Id.ToString().ToUpper() + "}\"" + Environment.NewLine + "EndProject", sut.SolutionProjectHeader);
         }
     }
 }

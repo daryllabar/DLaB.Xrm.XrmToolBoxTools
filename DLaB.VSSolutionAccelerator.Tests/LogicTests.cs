@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using DLaB.VSSolutionAccelerator.Logic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DLaB.VSSolutionAccelerator.Tests
@@ -19,7 +20,15 @@ namespace DLaB.VSSolutionAccelerator.Tests
             }
             foreach (DirectoryInfo dir in di.EnumerateDirectories())
             {
-                dir.Delete(true);
+                try
+                {
+                    dir.Delete(true);
+                }
+                catch
+                {
+                    System.Threading.Thread.Sleep(2000);
+                    dir.Delete(true);
+                }
             }
         }
 
@@ -74,17 +83,17 @@ namespace DLaB.VSSolutionAccelerator.Tests
         }
 
         [TestMethod]
-        public void CreateSharedCommonProject_Should_Work()
+        public void CreateProject_WithCommon_Should_CreateCommonProject()
         {
             using (var context = InitializeTest())
             {
-                context.Logic.CreateSharedCommonProject(context.Info);
+                context.Logic.CreateProject(ProjectInfo.Keys.Common, context.Info);
                 
                 //Xyz.Xrm.shproj
                 var filePath = Path.Combine(context.SolutionDirectory, context.Info.SharedCommonProject, context.Info.SharedCommonProject + ".shproj");
                 Assert.IsTrue(File.Exists(filePath), filePath + " was not created!");
                 var lines = File.ReadAllLines(filePath);
-                // Line 2
+                // Line 4
                 lines.IsMissingLineContaining("<ProjectGuid>b22b3bc6-0ac6-4cdd-a118-16e318818ad7</ProjectGuid>", "The Project Guid should have been replaced!");
                 // Line 11
                 lines.HasLineContaining("<Import Project=\"Abc.Xrm.projitems\" Label=\"Shared\" />", "The Project items file should have been added!");
@@ -106,6 +115,60 @@ namespace DLaB.VSSolutionAccelerator.Tests
                 lines = File.ReadAllLines(filePath);
                 lines.HasLineContaining("namespace Abc.Xrm.Plugin", "The Plugin Namespace should have been updated!");
             }
+        }
+
+        [TestMethod]
+        public void CreateProject_WithWorkflowCommon_Should_CreateWorkflowCommonProject()
+        {
+            using (var context = InitializeTest())
+            {
+                TextSharedProjectCreation(context,
+                    ProjectInfo.Keys.WorkflowCommon,
+                    context.Info.SharedCommonWorkflowProject,
+                    "CodeActivityBase.cs");
+            }
+        }
+
+        [TestMethod]
+        public void CreateProject_WithSharedTest_Should_CreateTestSharedProject()
+        {
+            using (var context = InitializeTest())
+            {
+                TextSharedProjectCreation(context,
+                    ProjectInfo.Keys.TestCore,
+                    context.Info.SharedTestCoreProject,
+                    "TestMethodClassBase.cs", "Abc.Xrm.Test");
+            }
+        }
+
+        private static void TextSharedProjectCreation(InitializeSolutionTestInfo context, string key, string newName, string arbitraryFile, string newNameSpace = null)
+        {
+            newNameSpace = newNameSpace ?? newName;
+            context.Logic.CreateProject(key, context.Info);
+            var id = context.Logic.Projects[key].Id;
+            // .shproj
+            var filePath = Path.Combine(context.SolutionDirectory, newName, newName + ".shproj");
+            Assert.IsTrue(File.Exists(filePath), filePath + " was not created!");
+            var lines = File.ReadAllLines(filePath);
+            // Line 4
+            lines.HasLineContaining($"<ProjectGuid>{id}</ProjectGuid>", "The Project Guid should have been replaced!");
+            // Line 11
+            lines.HasLineContaining($"<Import Project=\"{newName}.projitems\" Label=\"Shared\" />", "The Project items file should have been added!");
+
+            // .projitems
+            filePath = Path.Combine(context.SolutionDirectory, newName, newName + ".projitems");
+            Assert.IsTrue(File.Exists(filePath), filePath + " was not created!");
+            lines = File.ReadAllLines(filePath);
+            // Line 6
+            lines.HasLineContaining($"<SharedGUID>{id}</SharedGUID>", "The Shared Guid should have been replaced!");
+            // Line 9
+            lines.HasLineContaining(($"<Import_RootNamespace>{newNameSpace}</Import_RootNamespace>"), "The Root Namespace should have been updated!");
+
+            //Check for Namespace Update
+            filePath = Path.Combine(context.SolutionDirectory, newName, arbitraryFile);
+            Assert.IsTrue(File.Exists(filePath), filePath + " was not created!");
+            lines = File.ReadAllLines(filePath);
+            lines.HasLineContaining($"namespace {newNameSpace}", "The namespace should have been updated!");
         }
     }
 }

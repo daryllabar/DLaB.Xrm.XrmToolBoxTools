@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Source.DLaB.Common;
 
 namespace DLaB.VSSolutionAccelerator.Logic
 {
@@ -23,60 +22,89 @@ namespace DLaB.VSSolutionAccelerator.Logic
         public Dictionary<string, ProjectInfo> GetProjectInfos(InitializeSolutionInfo info)
         {
             var projects = new Dictionary<string, ProjectInfo>();
-            var id = Guid.NewGuid();
-            AddSharedCommonProject(projects, info, id);
+            AddSharedCommonProject(projects, info);
+            AddSharedWorkflowProject(projects, info);
+            if (info.ConfigureXrmUnitTest)
+            {
+                AddSharedTestCoreProject(projects, info);
+            }
             return projects;
         }
 
-        private void AddSharedCommonProject(Dictionary<string, ProjectInfo> projects, InitializeSolutionInfo info, Guid id)
+        private void AddSharedCommonProject(Dictionary<string, ProjectInfo> projects, InitializeSolutionInfo info)
         {
+            var project = CreateDefaultSharedProjectInfo(
+                ProjectInfo.Keys.Common,
+                info.SharedCommonProject,
+                "b22b3bc6-0ac6-4cdd-a118-16e318818ad7");
+
+            project.Files.First(f => f.Name.EndsWith(".projitems")).Removals.Add("$(MSBuildThisFileDirectory)Entities");
+            projects.Add(project.Key, project);
+        }
+
+        private void AddSharedWorkflowProject(Dictionary<string, ProjectInfo> projects, InitializeSolutionInfo info)
+        {
+            var project = CreateDefaultSharedProjectInfo(
+                ProjectInfo.Keys.WorkflowCommon,
+                info.SharedCommonWorkflowProject,
+                "dd5aa002-c1ff-4c0e-b9a5-3d63c7809b07");
+            projects.Add(project.Key, project);
+        }
+
+        private void AddSharedTestCoreProject(Dictionary<string, ProjectInfo> projects, InitializeSolutionInfo info)
+        {
+            var project = CreateDefaultSharedProjectInfo(
+                ProjectInfo.Keys.TestCore,
+                info.SharedTestCoreProject,
+                "8f91efc7-351b-4802-99aa-6c6f16110505", ProjectInfo.Keys.Test);
+            projects.Add(project.Key, project);
+        }
+
+        private ProjectInfo CreateDefaultSharedProjectInfo(string key, string name, string originalId, string originalNamespace = null)
+        {
+            originalNamespace = originalNamespace ?? key;
+            var id = new Guid();
             var project = new ProjectInfo
             {
-                Key = ProjectInfo.Keys.Common,
+                Key = key,
                 Id = id,
                 Type = ProjectInfo.ProjectType.SharedProj,
-                NewDirectory = Path.Combine(OutputBaseDirectory, info.SharedCommonProject),
-                Name = info.SharedCommonProject,
+                NewDirectory = Path.Combine(OutputBaseDirectory, name),
+                Name = name,
                 Files = new List<ProjectFile>
                 {
                     new ProjectFile
                     {
-                        Name = info.SharedCommonProject + ".projitems",
+                        Name = name + ".projitems",
                         Replacements = new Dictionary<string, string>
                         {
-                            { "b22b3bc6-0ac6-4cdd-a118-16e318818ad7", id.ToString()},
-                            { "<Import_RootNamespace>Xyz.Xrm</Import_RootNamespace>", $"<Import_RootNamespace>{info.RootNamespace}</Import_RootNamespace>" }
+                            {originalId, id.ToString()},
+                            {$"<Import_RootNamespace>{originalNamespace}</Import_RootNamespace>", $"<Import_RootNamespace>{name}</Import_RootNamespace>"}
                         },
-                        Removals = new List<string>
-                        {
-                            "$(MSBuildThisFileDirectory)Entities"
-                        }
                     },
                     new ProjectFile
                     {
-                        Name = info.SharedCommonProject + ".shproj",
+                        Name = name + ".shproj",
                         Replacements = new Dictionary<string, string>
                         {
-                            { "b22b3bc6-0ac6-4cdd-a118-16e318818ad7", id.ToString()},
-                            { "Xyz.Xrm.projitems", $"{info.SharedCommonProject}.projitems" }
+                            {originalId, id.ToString()},
+                            { key +".projitems", name + ".projitems"}
                         }
                     },
                 }
             };
-            projects.Add(project.Key, project);
+            return project;
         }
 
         public static void Execute(InitializeSolutionInfo info, string templateDirectory)
         {
             var logic = new Logic(info.SolutionPath, templateDirectory);
             logic.Projects = logic.GetProjectInfos(info);
-            logic.CreateSharedCommonProject(info);
-            // Create Shared Project with the SharedCommonProject name/path
-            // - Replace namespace
-            // - Add project to ToBeAddedToSolution
-            // Create Shared Workflow Project with the SharedCommonWorkflowProject name/path
-            // - Replace namespace
-            // - Add project to ToBeAddedToSolution
+            foreach (var project in logic.Projects)
+            {
+                logic.CreateProject(project.Key, info);
+            }
+
             // Add the Code Generation Files and projects to the solution, and VS install folder
             // If ConfigureXrmUnitTest
             // - Create SharedTestProject and SharedTestCoreProject
@@ -106,18 +134,14 @@ namespace DLaB.VSSolutionAccelerator.Logic
             // If EarlyBound
             // - Move the Settings File to the Code Generation Folder add to clipboard, and Update Paths and Open EBG
 
-            logic.AddProjectsToSolution();
+            IEnumerable<string> solution = File.ReadAllLines(logic.SolutionPath);
+            solution = SolutionFileEditor.AddMissingProjects(solution, logic.Projects.Values);
+            File.WriteAllLines(logic.SolutionPath, solution);
         }
 
-        public void CreateSharedCommonProject(InitializeSolutionInfo info)
+        public void CreateProject(string projectKey, InitializeSolutionInfo info)
         {
-            Projects[ProjectInfo.Keys.Common].CopyFromAndUpdate(TemplateDirectory, info.RootNamespace);
-        }
-
-        public void AddProjectsToSolution()
-        {
-            var solution = File.ReadAllLines(SolutionPath);
-            File.WriteAllLines(SolutionPath, SolutionFileEditor.AddMissingProjects(solution, Projects.Values));
+            Projects[projectKey].CopyFromAndUpdate(TemplateDirectory, info.RootNamespace);
         }
     }
 }
