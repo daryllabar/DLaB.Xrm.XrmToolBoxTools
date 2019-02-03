@@ -87,33 +87,14 @@ namespace DLaB.VSSolutionAccelerator.Tests
         {
             using (var context = InitializeTest())
             {
-                context.Logic.CreateProject(ProjectInfo.Keys.Common, context.Info);
-                
-                //Xyz.Xrm.shproj
-                var filePath = Path.Combine(context.SolutionDirectory, context.Info.SharedCommonProject, context.Info.SharedCommonProject + ".shproj");
-                Assert.IsTrue(File.Exists(filePath), filePath + " was not created!");
-                var lines = File.ReadAllLines(filePath);
-                // Line 4
-                lines.IsMissingLineContaining("<ProjectGuid>b22b3bc6-0ac6-4cdd-a118-16e318818ad7</ProjectGuid>", "The Project Guid should have been replaced!");
-                // Line 11
-                lines.HasLineContaining("<Import Project=\"Abc.Xrm.projitems\" Label=\"Shared\" />", "The Project items file should have been added!");
 
-                //Xyz.Xrm.projitems
-                filePath = Path.Combine(context.SolutionDirectory, context.Info.SharedCommonProject, context.Info.SharedCommonProject + ".projitems");
-                Assert.IsTrue(File.Exists(filePath), filePath + " was not created!");
-                lines = File.ReadAllLines(filePath);
-                // Line 6
-                lines.IsMissingLineContaining("<SharedGUID>b22b3bc6-0ac6-4cdd-a118-16e318818ad7</SharedGUID>", "The Shared Guid should have been replaced!");
-                // Line 9
-                lines.HasLineContaining(("<Import_RootNamespace>Abc.Xrm</Import_RootNamespace>"), "The Root Namespace should have been updated!");
+                var lines = TestSharedProjectCreation(context,
+                    ProjectInfo.Keys.Common,
+                    context.Info.SharedCommonProject,
+                    "Plugin\\PluginBase.cs");
+
                 // Line 12
                 lines.IsMissingLineContaining(")Entities\\", "The Entities should have been removed.");
-
-                //Check for Namespace Update
-                filePath = Path.Combine(context.SolutionDirectory, context.Info.SharedCommonProject, "Plugin", "PluginBase.cs");
-                Assert.IsTrue(File.Exists(filePath), filePath + " was not created!");
-                lines = File.ReadAllLines(filePath);
-                lines.HasLineContaining("namespace Abc.Xrm.Plugin", "The Plugin Namespace should have been updated!");
             }
         }
 
@@ -122,7 +103,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
         {
             using (var context = InitializeTest())
             {
-                TextSharedProjectCreation(context,
+                TestSharedProjectCreation(context,
                     ProjectInfo.Keys.WorkflowCommon,
                     context.Info.SharedCommonWorkflowProject,
                     "CodeActivityBase.cs");
@@ -134,14 +115,14 @@ namespace DLaB.VSSolutionAccelerator.Tests
         {
             using (var context = InitializeTest())
             {
-                TextSharedProjectCreation(context,
+                TestSharedProjectCreation(context,
                     ProjectInfo.Keys.TestCore,
                     context.Info.SharedTestCoreProject,
                     "TestMethodClassBase.cs", "Abc.Xrm.Test");
             }
         }
 
-        private static void TextSharedProjectCreation(InitializeSolutionTestInfo context, string key, string newName, string arbitraryFile, string newNameSpace = null)
+        private static string[] TestSharedProjectCreation(InitializeSolutionTestInfo context, string key, string newName, string arbitraryFile, string newNameSpace = null)
         {
             newNameSpace = newNameSpace ?? newName;
             context.Logic.CreateProject(key, context.Info);
@@ -155,6 +136,12 @@ namespace DLaB.VSSolutionAccelerator.Tests
             // Line 11
             lines.HasLineContaining($"<Import Project=\"{newName}.projitems\" Label=\"Shared\" />", "The Project items file should have been added!");
 
+            //Check for Namespace Update
+            filePath = Path.Combine(context.SolutionDirectory, newName, arbitraryFile);
+            Assert.IsTrue(File.Exists(filePath), filePath + " was not created!");
+            lines = File.ReadAllLines(filePath);
+            lines.HasLineContaining($"namespace {newNameSpace}", "The namespace should have been updated!");
+
             // .projitems
             filePath = Path.Combine(context.SolutionDirectory, newName, newName + ".projitems");
             Assert.IsTrue(File.Exists(filePath), filePath + " was not created!");
@@ -164,11 +151,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
             // Line 9
             lines.HasLineContaining(($"<Import_RootNamespace>{newNameSpace}</Import_RootNamespace>"), "The Root Namespace should have been updated!");
 
-            //Check for Namespace Update
-            filePath = Path.Combine(context.SolutionDirectory, newName, arbitraryFile);
-            Assert.IsTrue(File.Exists(filePath), filePath + " was not created!");
-            lines = File.ReadAllLines(filePath);
-            lines.HasLineContaining($"namespace {newNameSpace}", "The namespace should have been updated!");
+            return lines;
         }
     }
 }

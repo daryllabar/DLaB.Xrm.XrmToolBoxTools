@@ -77,26 +77,7 @@ Global
 		SolutionGuid = {A603CAAE-8991-405D-906A-4D5ABE1E9314}
 	EndGlobalSection
 EndGlobal";
-            AssertLinesAreEqual(expected, result);
-        }
-
-        private void AssertLinesAreEqual(string expected, IEnumerable<string> actual)
-        {
-            var splitExpected = expected.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
-            var splitActual = string.Join(Environment.NewLine, actual).Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
-
-            for (var i = 0; i < splitExpected.Length; i++)
-            {
-                Assert.IsTrue(i<splitActual.Length, "Actual is missing lines!");
-                if (splitExpected[i].Contains("SolutionGuid = "))
-                {
-                    Assert.IsTrue(splitActual[i].Contains("SolutionGuid = "), "Expected the Solution Guid, instead found " + splitActual);
-                }
-                else
-                {
-                    Assert.AreEqual(splitExpected[i], splitActual[i]);
-                }
-            }
-        }
+            Helper.AssertLinesAreEqual(expected, result);
+        }   
     }
 }

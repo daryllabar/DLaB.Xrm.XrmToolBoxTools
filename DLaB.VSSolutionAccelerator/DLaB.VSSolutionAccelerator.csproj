@@ -206,6 +206,8 @@
     <Compile Include="App_Packages\DLaB.Xrm.Source.2.3.0.3\TypedQueryExpression.cs" />
     <Compile Include="InitializeSolutionInfo.cs" />
     <Compile Include="Logic\Logic.cs" />
+    <Compile Include="Logic\ProjectFileParser.cs" />
+    <Compile Include="Logic\PropertyGroup.cs" />
     <Compile Include="Logic\SolutionFileEditor.cs" />
     <Compile Include="Logic\SolutionFileParser.cs" />
     <Compile Include="PackageLister.cs" />

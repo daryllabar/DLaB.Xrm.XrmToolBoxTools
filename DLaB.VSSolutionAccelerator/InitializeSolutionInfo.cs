@@ -12,7 +12,7 @@ namespace DLaB.VSSolutionAccelerator
         public string SharedCommonProject { get; set; }
         public string SharedCommonWorkflowProject { get; set; }
         public bool ConfigureXrmUnitTest { get; set; }
-        public string SharedTestProject { get; set; }
+        public string TestBaseProject { get; set; }
         public string SharedTestCoreProject { get; set; }
         public bool CreatePlugin { get; set; }
         public string PluginName { get; set; }
@@ -52,7 +52,7 @@ namespace DLaB.VSSolutionAccelerator
             ConfigureXrmUnitTest = list[0] == "Y";
             if (ConfigureXrmUnitTest)
             {
-                SharedTestProject = list[1];
+                TestBaseProject = list[1];
                 SharedTestCoreProject = list[1];
             }
         }

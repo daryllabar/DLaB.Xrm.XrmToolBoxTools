@@ -27,6 +27,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
             if (info.ConfigureXrmUnitTest)
             {
                 AddSharedTestCoreProject(projects, info);
+                AddBaseTestProject(projects, info);
             }
             return projects;
         }
@@ -58,6 +59,49 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 info.SharedTestCoreProject,
                 "8f91efc7-351b-4802-99aa-6c6f16110505", ProjectInfo.Keys.Test);
             projects.Add(project.Key, project);
+        }
+
+        private void AddBaseTestProject(Dictionary<string, ProjectInfo> projects, InitializeSolutionInfo info)
+        {
+            var key = ProjectInfo.Keys.Test;
+            var name = info.TestBaseProject;
+            var originalId = "F62103E9-D25D-4F99-AABE-ECF348424366";
+            var id = new Guid();
+            var project = new ProjectInfo
+            {
+                Key = key,
+                Id = id,
+                Type = ProjectInfo.ProjectType.SharedProj,
+                NewDirectory = Path.Combine(OutputBaseDirectory, name),
+                Name = name,
+                Files = new List<ProjectFile>
+                {
+                    new ProjectFile
+                    {
+                        Name = name + ".csproj",
+                        Replacements = new Dictionary<string, string>
+                        {
+                            {originalId, id.ToString().ToUpper()},
+                            {$"<Import_RootNamespace>{key}</Import_RootNamespace>", $"<Import_RootNamespace>{name}</Import_RootNamespace>"}
+                        },
+                        Removals = new List<string>
+                        {
+                            "<CodeAnalysisRuleSet>"
+                        }
+                    },
+                    new ProjectFile
+                    {
+                        Name = name + ".shproj",
+                        Replacements = new Dictionary<string, string>
+                        {
+                            {originalId, id.ToString()},
+                            { key +".projitems", name + ".projitems"}
+                        }
+                    },
+                }
+            };
+
+            projects.Add(key, project);
         }
 
         private ProjectInfo CreateDefaultSharedProjectInfo(string key, string name, string originalId, string originalNamespace = null)
