@@ -21,5 +21,28 @@ namespace DLaB.VSSolutionAccelerator.Tests
         {
             Assert.IsFalse(lines.Any(l => l.Contains(value)), message);
         }
+
+        public static void LinesAreEqual(this Assert assert, string[] expected, IEnumerable<string> actual)
+        {
+            var splitActual = string.Join(Environment.NewLine, actual).Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+
+            for (var i = 0; i < expected.Length; i++)
+            {
+                Assert.IsTrue(i < splitActual.Length, "Actual is missing lines!");
+                if (expected[i].Contains("SolutionGuid = "))
+                {
+                    Assert.IsTrue(splitActual[i].Contains("SolutionGuid = "), "Expected the Solution Guid, instead found " + splitActual);
+                }
+                else
+                {
+                    Assert.AreEqual(expected[i], splitActual[i]);
+                }
+            }
+        }
+
+        public static void LinesAreEqual(this Assert assert, string expected, IEnumerable<string> actual)
+        {
+            assert.LinesAreEqual(expected.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries), actual);
+        }
     }
 }

@@ -8,10 +8,9 @@ namespace DLaB.VSSolutionAccelerator.Tests
     [TestClass]
     public class ProjectFileParserTests
     {
-        private IEnumerable<string> GetExampleProject()
+        private string[] GetExampleProject()
         {
-            return @"
-<?xml version=""1.0"" encoding=""utf-8""?>
+            return @"<?xml version=""1.0"" encoding=""utf-8""?>
 <Project ToolsVersion=""15.0"" xmlns=""http://schemas.microsoft.com/developer/msbuild/2003"">
   <Import Project=""$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"" Condition=""Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"" />
   <PropertyGroup>
@@ -83,18 +82,21 @@ namespace DLaB.VSSolutionAccelerator.Tests
         [TestMethod]
         public void Parse()
         {
-            var parser = new ProjectFileParser(GetExampleProject());
+            var project = GetExampleProject();
+            var parser = new ProjectFileParser(project);
+            Assert.AreEqual(3, parser.PrePropertyGroups.Count);
+            Assert.AreEqual(5, parser.PropertyGroups.Count);
+            Assert.AreEqual("Xyz.Xrm.PluginAssembly",parser.AssemblyName);
+            Assert.AreEqual("Xyz.Xrm.Plugin", parser.Namespace);
+            Assert.AreEqual(new Guid("2B294DBF-8730-436E-B401-8745FEA632FE"), parser.Id);
             Assert.AreEqual(3, parser.ItemGroups.Count);
             Assert.AreEqual(4, parser.ItemGroups[ProjectFileParser.ItemGroupTypes.Reference].Count);
             Assert.AreEqual(1, parser.ItemGroups[ProjectFileParser.ItemGroupTypes.Compile].Count);
             Assert.AreEqual(1, parser.ItemGroups[ProjectFileParser.ItemGroupTypes.None].Count);
-            Assert.AreEqual("Xyz.Xrm.PluginAssembly",parser.AssemblyName);
-            Assert.AreEqual("Xyz.Xrm.Plugin", parser.Namespace);
-            Assert.AreEqual(new Guid("2B294DBF-8730-436E-B401-8745FEA632FE"), parser.Id);
             Assert.AreEqual(3, parser.Imports.Count);
             Assert.AreEqual(11, parser.PostImports.Count);
-            Assert.AreEqual(5, parser.PropertyGroups.Count);
-            Assert.AreEqual(4, parser.PrePropertyGroups.Count);
+
+            Assert.That.LinesAreEqual(project, parser.GetProject());
         }
     }
 }

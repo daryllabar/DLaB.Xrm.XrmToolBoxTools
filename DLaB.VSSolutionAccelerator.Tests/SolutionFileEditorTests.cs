@@ -77,7 +77,7 @@ Global
 		SolutionGuid = {A603CAAE-8991-405D-906A-4D5ABE1E9314}
 	EndGlobalSection
 EndGlobal";
-            Helper.AssertLinesAreEqual(expected, result);
+            Assert.That.LinesAreEqual(expected, result);
         }   
     }
 }

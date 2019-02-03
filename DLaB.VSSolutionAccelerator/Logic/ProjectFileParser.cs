@@ -245,7 +245,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
 ".Split(new[] {Environment.NewLine}, StringSplitOptions.None);
         }
 
-        internal IEnumerable<string> GetProject()
+        public IEnumerable<string> GetProject()
         {
             IEnumerable<string> SplitByNewLine(IEnumerable<string> lines)
             {
@@ -278,12 +278,12 @@ namespace DLaB.VSSolutionAccelerator.Logic
 
             foreach (var itemGroup in ItemGroups)
             {
-                yield return LineMarkers.ItemGroupStart;
+                yield return "  " + LineMarkers.ItemGroupStart;
                 foreach (var line in SplitByNewLine(itemGroup.Value))
                 {
                     yield return line;
                 }
-                yield return LineMarkers.ItemGroupEnd;
+                yield return "  " + LineMarkers.ItemGroupEnd;
             }
 
             foreach (var line in SplitByNewLine(Imports))
