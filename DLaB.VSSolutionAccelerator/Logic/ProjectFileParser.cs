@@ -7,9 +7,9 @@ namespace DLaB.VSSolutionAccelerator.Logic
 {
     public class ProjectFileParser
     {
-        public Guid Id { get; set; }
-        public string Namespace { get; set; }
-        public string AssemblyName { get; set; }
+        public Guid Id { get; private set; }
+        public string Namespace { get; private set; }
+        public string AssemblyName { get; private set; }
         private string CurrentOpenItemGroup { get; set; }
         public List<string> PrePropertyGroups { get; set; }
         public List<PropertyGroup> PropertyGroups { get; set; }
@@ -296,5 +296,29 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 yield return line;
             }
         }
-    }
+
+        public void UpdateCompileConfiguration(Guid id, string @namespace,  string assembylyName, string targetFramework)
+        {
+            bool Update(List<string> lines, int index, string tag, string value)
+            {
+                if (lines[index].TrimStart().StartsWith(tag))
+                {
+                    lines[index] = $"    {tag}{value}{tag.Replace("<", "</")}";
+                    return true;
+                }
+
+                return false;
+            }
+
+            var propertiesGroup = PropertyGroups.FirstOrDefault(g => g.Type == PropertyGroupType.ProjectProperties);
+            for (var i = 0; i < propertiesGroup?.Lines.Count; i++)
+            {
+                // ReSharper disable once UnusedVariable
+                var notUsed = Update(propertiesGroup.Lines, i, PropertyGroup.ConfigTags.ProjectGuid, id.ToString().ToUpper())
+                    || Update(propertiesGroup.Lines, i, PropertyGroup.ConfigTags.RootNamespace, @namespace)
+                    || Update(propertiesGroup.Lines, i, PropertyGroup.ConfigTags.AssemblyName, assembylyName)
+                    || Update(propertiesGroup.Lines, i, PropertyGroup.ConfigTags.TargetFrameworkVersion, targetFramework);
+            }
+        }
+    }  
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DLaB.VSSolutionAccelerator.Logic
 {
@@ -20,6 +16,14 @@ namespace DLaB.VSSolutionAccelerator.Logic
         public string OpenTag { get; set; }
         public PropertyGroupType Type { get; set; }
         public List<string> Lines { get; set; }
+
+        public struct ConfigTags
+        {
+            public const string ProjectGuid = "<ProjectGuid>";
+            public const string RootNamespace = "<RootNamespace>";
+            public const string AssemblyName = "<AssemblyName>";
+            public const string TargetFrameworkVersion = "<TargetFrameworkVersion>";
+        }
 
         public PropertyGroup(string openTag)
         {

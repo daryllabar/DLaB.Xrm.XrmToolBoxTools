@@ -185,7 +185,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
 
         public void CreateProject(string projectKey, InitializeSolutionInfo info)
         {
-            Projects[projectKey].CopyFromAndUpdate(TemplateDirectory, info.RootNamespace);
+            Projects[projectKey].CopyFromAndUpdate(TemplateDirectory, info.RootNamespace, info.XrmPackage.Version);
         }
     }
 }

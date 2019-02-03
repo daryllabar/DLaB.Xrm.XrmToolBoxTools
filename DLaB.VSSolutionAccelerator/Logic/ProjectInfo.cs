@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters;
 
 namespace DLaB.VSSolutionAccelerator.Logic
 {
@@ -105,10 +106,15 @@ namespace DLaB.VSSolutionAccelerator.Logic
             return string.Join(Environment.NewLine, lines);
         }
 
-        public void CopyFromAndUpdate(string templateDirectory, string rootNamespace)
+        public void CopyFromAndUpdate(string templateDirectory, string rootNamespace, Version xrmVersion)
         {
+
             Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory(Path.Combine(templateDirectory, Key), NewDirectory);
             RenameFiles();
+            if (Type == ProjectType.CsProj)
+            {
+                UpdateProject(rootNamespace, xrmVersion.Major);
+            }
             foreach (var file in Files)
             {
                 file.Update(NewDirectory);
@@ -138,6 +144,37 @@ namespace DLaB.VSSolutionAccelerator.Logic
                     break;
                 default:
                     break;
+            }
+        }
+
+        public void UpdateProject(string rootNamespace, int majorXrmVersion)
+        {
+            //Perform updates
+            var parser = new ProjectFileParser(File.ReadAllLines(Path.Combine(NewDirectory, $"{Name}.csproj")));
+            parser.UpdateCompileConfiguration(Id, parser.Namespace.Replace("Xyz.Xrm", rootNamespace), Name, majorXrmVersion >= 9 ? "4.6.2" : "4.5.2");
+            var localNugetBuild = parser.PropertyGroups.FirstOrDefault(g => g.OpenTag.Contains("'LocalNuget|AnyCPU'"));
+            parser.PropertyGroups.Remove(localNugetBuild);
+            foreach (var group in parser.PropertyGroups.Where(g => g.Type == PropertyGroupType.CompileConfiguration))
+            {
+                group.Lines.RemoveAll(l => l.Contains("<CodeAnalysisRuleSet>"));
+            }
+            var keyGroup = parser.PropertyGroups.FirstOrDefault(g => g.Type == PropertyGroupType.KeyFile);
+            if (keyGroup != null)
+            {
+                keyGroup.Lines.Clear();
+                keyGroup.Lines.Add($"<AssemblyOriginatorKeyFile>{Name}.Key.snk</AssemblyOriginatorKeyFile>");
+            }
+            // ItemGroup references to the SDK might need to be updated...
+            //   <Reference Include="Microsoft.Crm.Sdk.Proxy, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+            //     <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.4\lib\net452\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
+            //   </Reference>
+            if (parser.ItemGroups.ContainsKey(ProjectFileParser.ItemGroupTypes.Analyzer))
+            {
+                parser.ItemGroups.Remove(ProjectFileParser.ItemGroupTypes.Analyzer);
+            }
+            if (parser.ItemGroups.ContainsKey(ProjectFileParser.ItemGroupTypes.Content))
+            {
+                parser.ItemGroups.Remove(ProjectFileParser.ItemGroupTypes.Content);
             }
         }
 
