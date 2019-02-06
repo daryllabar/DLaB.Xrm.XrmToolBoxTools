@@ -188,6 +188,19 @@ namespace DLaB.VSSolutionAccelerator.Tests
         }
 
         [TestMethod]
+        public void CreateProject_WithWorkflowTest_Should_CreateTestWorkflowProject()
+        {
+            using (var context = InitializeTest())
+            {
+                TestTestProjectCreation(context,
+                    ProjectInfo.Keys.WorkflowTests,
+                    context.Info.WorkflowTestName,
+                    "WorkflowActivityExampleTests.cs",
+                    "Abc.Xrm.Workflow.Tests");
+            }
+        }
+
+        [TestMethod]
         public void CreateProject_WithWorkflowWithoutExampleFiles_Should_CreateWorkflowProjectSansExamples()
         {
             using (var context = InitializeTest(i => { i.IncludeExampleWorkflow = false; }))

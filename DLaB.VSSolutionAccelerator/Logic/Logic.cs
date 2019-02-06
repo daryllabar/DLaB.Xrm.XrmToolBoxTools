@@ -43,6 +43,10 @@ namespace DLaB.VSSolutionAccelerator.Logic
             if (info.CreateWorkflow)
             {
                 AddWorkflow(projects, info);
+                if (info.ConfigureXrmUnitTest)
+                {
+                    AddWorkflowTest(projects, info);
+                }
             }
             return projects;
         }
@@ -133,7 +137,6 @@ namespace DLaB.VSSolutionAccelerator.Logic
                         "RemovePhoneNumberFormattingTests.cs",
                         "MsFakesVsXrmUnitTestExampleTests.cs",
                         "LocalOrServerPluginTest.cs",
-                        @"Properties\AssemblyInfo.cs"
                     });
             }
             projects.Add(project.Key, project);
@@ -154,6 +157,25 @@ namespace DLaB.VSSolutionAccelerator.Logic
             if (!info.IncludeExampleWorkflow)
             {
                 project.FilesToRemove.Add("CreateGuidActivity.cs");
+            }
+            projects.Add(project.Key, project);
+        }
+
+        private void AddWorkflowTest(Dictionary<string, ProjectInfo> projects, InitializeSolutionInfo info)
+        {
+            var project = CreateDefaultProjectInfo(
+                ProjectInfo.Keys.WorkflowTests,
+                info.WorkflowTestName,
+                "7056423A-373E-463D-B552-D2F305F5C041",
+                GetPluginAssemblyVersionForSdk(info),
+                info.SharedTestCoreProject);
+
+            if (!info.IncludeExampleWorkflow)
+            {
+                project.FilesToRemove.AddRange(
+                    new[]{
+                        "WorkflowActivityExampleTests.cs"
+                    });
             }
             projects.Add(project.Key, project);
         }
