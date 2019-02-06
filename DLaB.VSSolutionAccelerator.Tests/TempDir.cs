@@ -35,7 +35,12 @@ namespace DLaB.VSSolutionAccelerator.Tests
                 var method = sf.GetMethod();
                 if (method.GetCustomAttributes(typeof(TestMethodAttribute), false).Length > 0)
                 {
-                    return new TempDir(sf.GetMethod().Name);
+                    var name = sf.GetMethod().Name;
+                    if (name.Length > 50)
+                    {
+                        name = name.Substring(0, 50) + name.GetHashCode();
+                    }
+                    return new TempDir(name);
                 }
             }
             throw new InvalidOperationException("Unable to find a containing TestMethodAttribute in the stack");

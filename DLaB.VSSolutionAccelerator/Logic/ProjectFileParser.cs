@@ -296,29 +296,5 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 yield return line;
             }
         }
-
-        public void UpdateCompileConfiguration(Guid id, string @namespace,  string assembylyName, string targetFramework)
-        {
-            bool Update(List<string> lines, int index, string tag, string value)
-            {
-                if (lines[index].TrimStart().StartsWith(tag))
-                {
-                    lines[index] = $"    {tag}{value}{tag.Replace("<", "</")}";
-                    return true;
-                }
-
-                return false;
-            }
-
-            var propertiesGroup = PropertyGroups.FirstOrDefault(g => g.Type == PropertyGroupType.ProjectProperties);
-            for (var i = 0; i < propertiesGroup?.Lines.Count; i++)
-            {
-                // ReSharper disable once UnusedVariable
-                var notUsed = Update(propertiesGroup.Lines, i, PropertyGroup.ConfigTags.ProjectGuid, id.ToString().ToUpper())
-                    || Update(propertiesGroup.Lines, i, PropertyGroup.ConfigTags.RootNamespace, @namespace)
-                    || Update(propertiesGroup.Lines, i, PropertyGroup.ConfigTags.AssemblyName, assembylyName)
-                    || Update(propertiesGroup.Lines, i, PropertyGroup.ConfigTags.TargetFrameworkVersion, targetFramework);
-            }
-        }
     }  
 }

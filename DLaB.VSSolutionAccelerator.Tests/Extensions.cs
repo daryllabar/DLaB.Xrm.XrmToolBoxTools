@@ -2,26 +2,25 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DLaB.VSSolutionAccelerator.Tests
 {
     public static class Extensions
     {
-        [DebuggerStepThrough]
-        public static void HasLineContaining(this string[] lines, string value, string message = null)
+        [DebuggerHidden]
+        public static void ExistsLineContaining(this Assert assert, string[] lines, string value, string message = null)
         {
             Assert.IsTrue(lines.Count(l => l.Contains(value)) == 1, message);
         }
 
-        [DebuggerStepThrough]
-        public static void IsMissingLineContaining(this string[] lines, string value, string message = null)
+        [DebuggerHidden]
+        public static void NotExistsLineContaining(this Assert assert, string[] lines, string value, string message = null)
         {
             Assert.IsFalse(lines.Any(l => l.Contains(value)), message);
         }
 
+        [DebuggerHidden]
         public static void LinesAreEqual(this Assert assert, string[] expected, IEnumerable<string> actual)
         {
             var splitActual = string.Join(Environment.NewLine, actual).Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
@@ -40,6 +39,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
             }
         }
 
+        [DebuggerHidden]
         public static void LinesAreEqual(this Assert assert, string expected, IEnumerable<string> actual)
         {
             assert.LinesAreEqual(expected.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries), actual);

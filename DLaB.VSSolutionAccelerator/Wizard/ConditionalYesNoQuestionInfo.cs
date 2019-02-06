@@ -9,10 +9,10 @@ namespace DLaB.VSSolutionAccelerator.Wizard
     public class ConditionalYesNoQuestionInfo
     {
         public string Question { get; set; }
-        public TextQuestionInfo Yes { get; set; }
-        public TextQuestionInfo Yes2 { get; set; }
-        public TextQuestionInfo No { get; set; }
-        public TextQuestionInfo No2 { get; set; }
+        public QuestionInfo Yes { get; set; }
+        public QuestionInfo Yes2 { get; set; }
+        public QuestionInfo No { get; set; }
+        public QuestionInfo No2 { get; set; }
         public string Description { get; set; }
 
         public ConditionalYesNoQuestionInfo(string question)

@@ -15,8 +15,10 @@ namespace DLaB.VSSolutionAccelerator
         public string TestBaseProject { get; set; }
         public string SharedTestCoreProject { get; set; }
         public bool CreatePlugin { get; set; }
+        public bool IncludeExamplePlugins { get; set; }
         public string PluginName { get; set; }
         public bool CreateWorkflow { get; set; }
+        public bool IncludeExampleWorkflow { get; set; }
         public string WorkflowName { get; set; }
 
         public static InitializeSolutionInfo InitializeSolution(object[] values)
@@ -64,6 +66,7 @@ namespace DLaB.VSSolutionAccelerator
             if (CreatePlugin)
             {
                 PluginName = list[1];
+                IncludeExamplePlugins = list[2] == "0";
             }
         }
 
@@ -74,6 +77,7 @@ namespace DLaB.VSSolutionAccelerator
             if (CreateWorkflow)
             {
                 WorkflowName = list[1];
+                IncludeExampleWorkflow = list[2] == "0";
             }
         }
     }

@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", 
 		References\NuGetContentInstaller.exe = References\NuGetContentInstaller.exe
 		References\SetAssemblyVersion.exe = References\SetAssemblyVersion.exe
 		References\SetAssemblyVersion.exe.config = References\SetAssemblyVersion.exe.config
+		References\sn.exe = References\sn.exe
+		References\sn.exe.config = References\sn.exe.config
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.EarlyBoundGenerator", "DLaB.EarlyBoundGenerator\DLaB.EarlyBoundGenerator.csproj", "{7DE85F1A-794C-4E95-9E23-FA29DC110ABA}"

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Source.DLaB.Common;
 
 namespace DLaB.VSSolutionAccelerator.Logic
 {
@@ -10,13 +11,15 @@ namespace DLaB.VSSolutionAccelerator.Logic
         public string OutputBaseDirectory { get; }
         public string SolutionPath { get; }
         public string TemplateDirectory { get; }
+        public string StrongNamePath { get; }
         public Dictionary<string, ProjectInfo> Projects { get; set; }
 
-        public Logic(string solutionPath, string templateDirectory)
+        public Logic(string solutionPath, string templateDirectory, string strongNamePath = null)
         {
             SolutionPath = solutionPath;
             OutputBaseDirectory = Path.GetDirectoryName(solutionPath);
             TemplateDirectory = templateDirectory;
+            StrongNamePath = strongNamePath ?? Path.Combine(templateDirectory, "StrongName\\sn.exe"); ;
         }
 
         public Dictionary<string, ProjectInfo> GetProjectInfos(InitializeSolutionInfo info)
@@ -28,6 +31,14 @@ namespace DLaB.VSSolutionAccelerator.Logic
             {
                 AddSharedTestCoreProject(projects, info);
                 AddBaseTestProject(projects, info);
+            }
+            if (info.CreatePlugin)
+            {
+                AddPlugin(projects, info);
+            }
+            if (info.CreateWorkflow)
+            {
+                AddWorkflow(projects, info);
             }
             return projects;
         }
@@ -48,7 +59,9 @@ namespace DLaB.VSSolutionAccelerator.Logic
             var project = CreateDefaultSharedProjectInfo(
                 ProjectInfo.Keys.WorkflowCommon,
                 info.SharedCommonWorkflowProject,
-                "dd5aa002-c1ff-4c0e-b9a5-3d63c7809b07");
+                "dd5aa002-c1ff-4c0e-b9a5-3d63c7809b07",
+                "Xyz.Xrm.Workflow",
+                info.RootNamespace + ".Workflow");
             projects.Add(project.Key, project);
         }
 
@@ -63,15 +76,72 @@ namespace DLaB.VSSolutionAccelerator.Logic
 
         private void AddBaseTestProject(Dictionary<string, ProjectInfo> projects, InitializeSolutionInfo info)
         {
-            var key = ProjectInfo.Keys.Test;
-            var name = info.TestBaseProject;
-            var originalId = "F62103E9-D25D-4F99-AABE-ECF348424366";
-            var id = new Guid();
+            var project = CreateDefaultProjectInfo(
+                ProjectInfo.Keys.Test,
+                info.TestBaseProject,
+                "F62103E9-D25D-4F99-AABE-ECF348424366",
+                "v.4.6.2",
+                info.SharedCommonProject);
+            //info.XrmPackage.Version.Major >= 9 ? "v.4.6.2" : "v.4.5.2"
+            projects.Add(project.Key, project);
+        }
+
+        private void AddPlugin(Dictionary<string, ProjectInfo> projects, InitializeSolutionInfo info)
+        {
+            var project = CreateDefaultProjectInfo(
+                ProjectInfo.Keys.Plugin,
+                info.PluginName,
+                "2B294DBF-8730-436E-B401-8745FEA632FE",
+                GetPluginAssemblyVersionForSdk(info),
+                info.SharedCommonProject);
+            project.PostUpdateCommands.Add(new ProcessExecutorInfo(StrongNamePath, $"-k {project.Name}.Key.snk"));
+            if (!info.IncludeExamplePlugins)
+            {
+                project.FilesToRemove.AddRange(
+                    new []{@"PluginBaseExamples\EntityAccess.cs",
+                    @"PluginBaseExamples\ContextExample.cs",
+                    @"PluginBaseExamples\VoidPayment.cs",
+                    @"Properties\AssemblyInfo.cs",
+                    @"RemovePhoneNumberFormatting.cs",
+                    @"RenameLogic.cs",
+                    @"SyncContactToAccount.cs"
+                    });
+            }
+            projects.Add(project.Key, project);
+        }
+
+        private void AddWorkflow(Dictionary<string, ProjectInfo> projects, InitializeSolutionInfo info)
+        {
+            var project = CreateDefaultProjectInfo(
+                ProjectInfo.Keys.Workflow,
+                info.WorkflowName,
+                "5BD39AC9-97F3-47C8-8E1F-6A58A24AFB9E",
+                GetPluginAssemblyVersionForSdk(info),
+                info.SharedCommonProject);
+            project.PostUpdateCommands.Add(new ProcessExecutorInfo(StrongNamePath, $"-k {project.Name}.Key.snk"));
+            project.Files.First().Replacements.Add(
+                @"<Import Project=""..\Xyz.Xrm.WorkflowCore\Xyz.Xrm.WorkflowCore.projitems"" Label=""Shared"" />", 
+                $@"<Import Project=""..\{info.SharedCommonWorkflowProject}\{info.SharedCommonWorkflowProject}.projitems"" Label=""Shared"" />");
+            if (!info.IncludeExampleWorkflow)
+            {
+                project.FilesToRemove.Add("CreateGuidActivity.cs");
+            }
+            projects.Add(project.Key, project);
+        }
+
+        private string GetPluginAssemblyVersionForSdk(InitializeSolutionInfo info)
+        {
+            return info.XrmPackage.Version.Major >= 9 ? "v4.6.2" : "v4.5.2";
+        }
+
+        private ProjectInfo CreateDefaultProjectInfo(string key, string name, string originalId, string dotNetFramework, string sharedCommonProject)
+        {
+            var id = Guid.NewGuid();
             var project = new ProjectInfo
             {
                 Key = key,
                 Id = id,
-                Type = ProjectInfo.ProjectType.SharedProj,
+                Type = ProjectInfo.ProjectType.CsProj,
                 NewDirectory = Path.Combine(OutputBaseDirectory, name),
                 Name = name,
                 Files = new List<ProjectFile>
@@ -82,32 +152,29 @@ namespace DLaB.VSSolutionAccelerator.Logic
                         Replacements = new Dictionary<string, string>
                         {
                             {originalId, id.ToString().ToUpper()},
-                            {$"<Import_RootNamespace>{key}</Import_RootNamespace>", $"<Import_RootNamespace>{name}</Import_RootNamespace>"}
+                            {$"<RootNamespace>{key}</RootNamespace>", $"<RootNamespace>{name}</RootNamespace>"},
+                            {$"<AssemblyName>{key}</AssemblyName>", $"<AssemblyName>{name}</AssemblyName>"},
+                            {"<TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>", $"<TargetFrameworkVersion>{dotNetFramework}</TargetFrameworkVersion>"},
+                            {"<TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>", $"<TargetFrameworkVersion>{dotNetFramework}</TargetFrameworkVersion>"},
+                            {$"<AssemblyOriginatorKeyFile>{key}.Key.snk</AssemblyOriginatorKeyFile>", $"<AssemblyOriginatorKeyFile>{name}.Key.snk</AssemblyOriginatorKeyFile>"},
+                            {$"<None Include=\"{key}.Key.snk\" />", $"<None Include=\"{name}.Key.snk\" />"},
+                            {@"<Import Project=""..\Xyz.Xrm\Xyz.Xrm.projitems"" Label=""Shared"" />", $@"<Import Project=""..\{sharedCommonProject}\{sharedCommonProject}.projitems"" Label=""Shared"" />"},
                         },
                         Removals = new List<string>
                         {
                             "<CodeAnalysisRuleSet>"
                         }
-                    },
-                    new ProjectFile
-                    {
-                        Name = name + ".shproj",
-                        Replacements = new Dictionary<string, string>
-                        {
-                            {originalId, id.ToString()},
-                            { key +".projitems", name + ".projitems"}
-                        }
-                    },
-                }
+                    }
+                },
             };
-
-            projects.Add(key, project);
+            return project;
         }
 
-        private ProjectInfo CreateDefaultSharedProjectInfo(string key, string name, string originalId, string originalNamespace = null)
+        private ProjectInfo CreateDefaultSharedProjectInfo(string key, string name, string originalId, string originalNamespace = null, string newNamespace = null)
         {
             originalNamespace = originalNamespace ?? key;
-            var id = new Guid();
+            newNamespace = newNamespace ?? name;
+            var id = Guid.NewGuid();
             var project = new ProjectInfo
             {
                 Key = key,
@@ -123,7 +190,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
                         Replacements = new Dictionary<string, string>
                         {
                             {originalId, id.ToString()},
-                            {$"<Import_RootNamespace>{originalNamespace}</Import_RootNamespace>", $"<Import_RootNamespace>{name}</Import_RootNamespace>"}
+                            {$"<Import_RootNamespace>{originalNamespace}</Import_RootNamespace>", $"<Import_RootNamespace>{newNamespace}</Import_RootNamespace>"}
                         },
                     },
                     new ProjectFile
@@ -140,9 +207,9 @@ namespace DLaB.VSSolutionAccelerator.Logic
             return project;
         }
 
-        public static void Execute(InitializeSolutionInfo info, string templateDirectory)
+        public static void Execute(InitializeSolutionInfo info, string templateDirectory, string strongNamePath = null)
         {
-            var logic = new Logic(info.SolutionPath, templateDirectory);
+            var logic = new Logic(info.SolutionPath, templateDirectory, strongNamePath);
             logic.Projects = logic.GetProjectInfos(info);
             foreach (var project in logic.Projects)
             {

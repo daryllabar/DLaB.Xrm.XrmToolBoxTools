@@ -57,8 +57,10 @@ namespace DLaB.VSSolutionAccelerator.Wizard
 
             AddValue(response, ResponseText);
             AddValue(response, Path);
+            AddValue(response, Combo);
             AddValue(response, Response2Text);
             AddValue(response, Path2);
+            AddValue(response, Combo2);
             return response.Count == 1 
                 ? (object)response.First()
                 : response;
@@ -70,6 +72,14 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             if (box.Visible)
             {
                 values.Add(box.Text);
+            }
+        }
+
+        private static void AddValue(List<string> values, ComboBox box)
+        {
+            if (box.Visible)
+            {
+                values.Add(box.SelectedValue.ToString());
             }
         }
 

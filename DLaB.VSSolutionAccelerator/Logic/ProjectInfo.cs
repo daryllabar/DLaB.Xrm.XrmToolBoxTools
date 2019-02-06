@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters;
+using Source.DLaB.Common;
 
 namespace DLaB.VSSolutionAccelerator.Logic
 {
@@ -13,12 +14,17 @@ namespace DLaB.VSSolutionAccelerator.Logic
             CsProj,
             SharedProj
         }
+
         public struct Keys
         {
             public const string Common = "Xyz.Xrm";
-            public const string WorkflowCommon = "Xyz.Xrm.Workflow";
+            public const string Plugin = "Xyz.Xrm.Plugin";
+            public const string PluginTests = "Xyz.Xrm.Plugin.Tests";
             public const string TestCore = "Xyz.Xrm.TestCore";
             public const string Test = "Xyz.Xrm.Test";
+            public const string Workflow = "Xyz.Xrm.Workflow";
+            public const string WorkflowCommon = "Xyz.Xrm.WorkflowCore";
+            public const string WorkflowTests = "Xyz.Xrm.Workflow.Tests";
         }
 
         public Guid Id { get; set; }
@@ -30,13 +36,17 @@ namespace DLaB.VSSolutionAccelerator.Logic
         public List<ProjectInfo> SharedProjectsReferences { get; set; }
         public string NewDirectory { get; set; }
         public string SolutionProjectHeader => string.Format("Project(\"{0}\") = \"{1}\", \"{1}\\{1}.{2}\", \"{{{3}}}\"{4}EndProject", GetTypeId(), Name, GetProjectPostfix(), Id.ToString().ToUpper(), Environment.NewLine );
+        public List<ProcessExecutorInfo> PostUpdateCommands { get; set; }
+        public List<string> FilesToRemove { get; internal set; }
 
         public ProjectInfo()
         {
             Type = ProjectType.CsProj;
             AddToSolution = true;
             Files = new List<ProjectFile>();
+            FilesToRemove = new List<string>();
             SharedProjectsReferences = new List<ProjectInfo>();
+            PostUpdateCommands = new List<ProcessExecutorInfo>();
         }
 
         private string GetTypeId()
@@ -108,12 +118,19 @@ namespace DLaB.VSSolutionAccelerator.Logic
 
         public void CopyFromAndUpdate(string templateDirectory, string rootNamespace, Version xrmVersion)
         {
-
-            Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory(Path.Combine(templateDirectory, Key), NewDirectory);
+            Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory(Path.Combine(templateDirectory, Key), NewDirectory, true);
+            foreach (var file in FilesToRemove)
+            {
+                var path = Path.Combine(NewDirectory, file);
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
             RenameFiles();
             if (Type == ProjectType.CsProj)
             {
-                UpdateProject(rootNamespace, xrmVersion.Major);
+                UpdateProject(rootNamespace);
             }
             foreach (var file in Files)
             {
@@ -127,6 +144,11 @@ namespace DLaB.VSSolutionAccelerator.Logic
                         ? line.Replace("namespace Xyz.Xrm", "namespace " + rootNamespace)
                         : line).ToList();
                 File.WriteAllLines(file, newLines);
+            }
+
+            foreach (var cmd in PostUpdateCommands)
+            {
+                ProcessExecutor.ExecuteCmd(cmd);
             }
         }
 
@@ -147,11 +169,11 @@ namespace DLaB.VSSolutionAccelerator.Logic
             }
         }
 
-        public void UpdateProject(string rootNamespace, int majorXrmVersion)
+        public void UpdateProject(string rootNamespace)
         {
             //Perform updates
-            var parser = new ProjectFileParser(File.ReadAllLines(Path.Combine(NewDirectory, $"{Name}.csproj")));
-            parser.UpdateCompileConfiguration(Id, parser.Namespace.Replace("Xyz.Xrm", rootNamespace), Name, majorXrmVersion >= 9 ? "4.6.2" : "4.5.2");
+            var projectFilePath = Path.Combine(NewDirectory, $"{Name}.csproj");
+            var parser = new ProjectFileParser(File.ReadAllLines(projectFilePath));
             var localNugetBuild = parser.PropertyGroups.FirstOrDefault(g => g.OpenTag.Contains("'LocalNuget|AnyCPU'"));
             parser.PropertyGroups.Remove(localNugetBuild);
             foreach (var group in parser.PropertyGroups.Where(g => g.Type == PropertyGroupType.CompileConfiguration))
@@ -176,11 +198,21 @@ namespace DLaB.VSSolutionAccelerator.Logic
             {
                 parser.ItemGroups.Remove(ProjectFileParser.ItemGroupTypes.Content);
             }
+            if (parser.ItemGroups.TryGetValue(ProjectFileParser.ItemGroupTypes.Compile, out var compileGroup))
+            {
+                compileGroup.RemoveAll(l => FilesToRemove.Any(f => l.Contains($@"<Compile Include=""{f}"" />")));
+            }
+            File.WriteAllLines(projectFilePath, parser.GetProject());
         }
 
         private void RenameRootProjectFile(string oldName, string newName)
         {
-            File.Move(Path.Combine(NewDirectory, oldName), Path.Combine(NewDirectory, newName));
+            var newPath = Path.Combine(NewDirectory, newName);
+            if (File.Exists(newPath))
+            {
+                File.Delete(newPath);
+            }
+            File.Move(Path.Combine(NewDirectory, oldName), newPath);
         }
     }
 }

@@ -1,14 +1,9 @@
 ﻿
 namespace DLaB.VSSolutionAccelerator.Wizard
 {
-    public class TextQuestionInfo
+    public class TextQuestionInfo : QuestionInfo
     {
-        public TextQuestionInfo(string question)
-        {
-            Question = question;
-        }
+        public TextQuestionInfo(string question) : base(question) { }
         public string DefaultResponse { get; set; }
-        public string Description { get; set; }
-        public string Question { get; set; }
     }
 }

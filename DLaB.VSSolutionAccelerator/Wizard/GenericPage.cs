@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using Microsoft.Web.XmlTransform;
 using Source.DLaB.Common;
 
 namespace DLaB.VSSolutionAccelerator.Wizard
@@ -15,11 +14,13 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             public const int Question = 2;
             public const int Text = 3;
             public const int PathText = 4;
-            public const int Question2 = 5;
-            public const int Text2 = 6;
-            public const int Path2Text = 7;
-            public const int Description = 8;
-            public static readonly int[] All = {1, 2, 3, 4, 5, 6, 7, 8};
+            public const int Combo = 5;
+            public const int Question2 = 6;
+            public const int Text2 = 7;
+            public const int Path2Text = 8;
+            public const int Combo2 = 9;
+            public const int Description = 10;
+            public static readonly int[] All = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         }
 
         public const string SaveResultsPrefix = "SaveResults[";
@@ -56,21 +57,69 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             DefaultYesNoText = new string[4];
         }
 
+        private int SetValues(ComboQuestionInfo info)
+        {
+            SetValues((QuestionInfo)info);
+            Combo.DataSource = info.Options;
+            Combo.ValueMember = "Key";
+            Combo.DisplayMember = "Value";
+            SetDefaultOnLoad(Combo, info.DefaultResponse, info.DefaultSaveResultIndex);
+            return Rows.Combo;
+        }
+
         private int SetValues(TextQuestionInfo info)
+        {
+            SetDefaultOnLoad(ResponseText, info.DefaultResponse);
+            return SetValues((QuestionInfo)info);
+        }
+
+        private int SetValues(PathQuestionInfo info)
+        {
+            SetValues((QuestionInfo)info);
+            PathInfo = info;
+            SetDefaultOnLoad(Path, info.DefaultResponse);
+            CheckFileExists = info.RequireFileExists;
+            return Rows.PathText;
+        }
+
+        private int SetValues(QuestionInfo info)
         {
             QuestionLabel.Text = info.Question;
             DescriptionText.Text = info.Description;
-            SetDefaultOnLoad(ResponseText, info.DefaultResponse);
             return Rows.Text;
         }
 
+        private int SetValues2(ComboQuestionInfo info)
+        {
+            SetValues2((QuestionInfo)info);
+            Combo2.DataSource = info.Options;
+            Combo2.ValueMember = "Key";
+            Combo2.DisplayMember = "Value";
+            SetDefaultOnLoad(Combo2, info.DefaultResponse, info.DefaultSaveResultIndex);
+            return Rows.Combo2;
+        }
+
+        private int SetValues2(PathQuestionInfo info)
+        {
+            SetValues2((QuestionInfo)info);
+            Path2Info = info;
+            SetDefaultOnLoad(Path2, info.DefaultResponse);
+            CheckFile2Exists = info.RequireFileExists;
+            return Rows.Path2Text;
+        }
+
         private int SetValues2(TextQuestionInfo info)
+        {
+            SetDefaultOnLoad(Response2Text, info.DefaultResponse);
+            return SetValues2((QuestionInfo)info);
+        }
+
+        private int SetValues2(QuestionInfo info)
         {
             var separateText = string.IsNullOrWhiteSpace(DescriptionText.Text)
                 ? string.Empty
                 : Environment.NewLine + Environment.NewLine;
             Question2Label.Text = info.Question;
-            SetDefaultOnLoad(Response2Text, info.DefaultResponse);
             DescriptionText.Text += separateText + info.Description;
             return Rows.Text2;
         }
@@ -89,19 +138,49 @@ namespace DLaB.VSSolutionAccelerator.Wizard
                 box.Text = GetDefaultValue(defaultText, saveResults);
             }
 
+            AddOnLoadAction(Action);
+        }
+
+        private void SetDefaultOnLoad(ComboBox box, int? defaultValue, int? defaultResultIndex)
+        {
+            if (defaultValue == null
+                && defaultResultIndex == null)
+            {
+                return;
+            }
+
+            void Action(GenericPage page, object[] saveResults)
+            {
+                var defaultText = defaultValue == null
+                    ? GetSaveResultsFormat(defaultResultIndex.GetValueOrDefault())
+                    : defaultValue.ToString();
+                var value = GetDefaultValue(defaultText, saveResults);
+                box.SelectedValue = int.Parse(value);
+            }
+
+            AddOnLoadAction(Action);
+        }
+
+        private void AddOnLoadAction(Action<GenericPage, object[]> action)
+        {
             if (OnLoadAction == null)
             {
-                OnLoadAction = Action;
+                OnLoadAction = action;
             }
             else
             {
                 var oldAction = OnLoadAction;
-                OnLoadAction = delegate(GenericPage page, object[] saveResults)
+                OnLoadAction = delegate (GenericPage page, object[] saveResults)
                 {
                     oldAction(page, saveResults);
-                    Action(page, saveResults);
+                    action(page, saveResults);
                 };
             }
+        }
+
+        public static string GetSaveResultsFormat(int saveResultIndex)
+        {
+            return SaveResultsPrefix + saveResultIndex + "]";
         }
 
         private static string GetDefaultValue(string defaultText, object[] saveResults)
@@ -118,7 +197,7 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             return format;
         }
 
-        public static GenericPage Create(TextQuestionInfo info, TextQuestionInfo info2 = null)
+        public static GenericPage Create(QuestionInfo info, QuestionInfo info2 = null)
         {
             var page = new GenericPage();
             var rows = new List<int> {Rows.Question, Rows.Description};
@@ -133,34 +212,16 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             return page;
         }
 
-        public static GenericPage Create(TextQuestionInfo info, Action<GenericPage, object[]> onLoadAction)
+        public static GenericPage Create(QuestionInfo info, Action<GenericPage, object[]> onLoadAction)
         {
             return Create(info, null, onLoadAction);
         }
 
-        public static GenericPage Create(TextQuestionInfo info, TextQuestionInfo info2, Action<GenericPage, object[]> onLoadAction)
+        public static GenericPage Create(QuestionInfo info, QuestionInfo info2, Action<GenericPage, object[]> onLoadAction)
         {
             var page = Create(info, info2);
             page.OnLoadAction = onLoadAction;
             return page;
-        }
-
-        private int SetValues(PathQuestionInfo info)
-        {
-            SetValues((TextQuestionInfo)info);
-            PathInfo = info;
-            SetDefaultOnLoad(Path, info.DefaultResponse);
-            CheckFileExists = info.RequireFileExists;
-            return Rows.PathText;
-        }
-
-        private int SetValues2(PathQuestionInfo info)
-        {
-            SetValues2((TextQuestionInfo)info);
-            Path2Info = info;
-            SetDefaultOnLoad(Path2, info.DefaultResponse);
-            CheckFile2Exists = info.RequireFileExists;
-            return Rows.Path2Text;
         }
 
         public static GenericPage Create(ConditionalYesNoQuestionInfo info)
@@ -171,10 +232,24 @@ namespace DLaB.VSSolutionAccelerator.Wizard
                 YesNoGroup = { Text = info.Question }
             };
 
-            page.SetYesNoDefaultOnLoad(info.Yes?.DefaultResponse, 0);
-            page.SetYesNoDefaultOnLoad(info.Yes2?.DefaultResponse, 1);
-            page.SetYesNoDefaultOnLoad(info.No?.DefaultResponse, 2);
-            page.SetYesNoDefaultOnLoad(info.No2?.DefaultResponse, 3);
+            if (info.Yes != null)
+            {
+                page.SetYesNoDefaultOnLoad((dynamic)info.Yes, 0);
+                if (info.Yes2 != null)
+                {
+                    page.SetYesNoDefaultOnLoad((dynamic)info.Yes2, 1);
+                }
+            }
+
+
+            if (info.No != null)
+            {
+                page.SetYesNoDefaultOnLoad((dynamic)info.No, 2);
+                if (info.No2 != null)
+                {
+                    page.SetYesNoDefaultOnLoad((dynamic)info.No2, 3);
+                }
+            }
 
             page.HideAllExceptRows(Rows.YesNoQuestion, Rows.Description);
 
@@ -188,8 +263,9 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             return page;
         }
 
-        private void SetYesNoDefaultOnLoad(string defaultText, int index)
+        private void SetYesNoDefaultOnLoad(TextQuestionInfo info, int index)
         {
+            var defaultText = info?.DefaultResponse;
             if (defaultText == null
                 || !defaultText.Contains(SaveResultsPrefix))
             {
@@ -201,20 +277,29 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             {
                 DefaultYesNoText[index] = GetDefaultValue(defaultText, saveResults);
             }
+            AddOnLoadAction(Action);
+        }
 
-            if (OnLoadAction == null)
+        private void SetYesNoDefaultOnLoad(ComboQuestionInfo info, int index)
+        {
+            var defaultResponse = info?.DefaultResponse;
+            var defaultResultIndex = info?.DefaultSaveResultIndex;
+
+            if (defaultResponse == null
+                && defaultResultIndex == null)
             {
-                OnLoadAction = Action;
+                DefaultYesNoText[index] = string.Empty;
+                return;
             }
-            else
+
+            void Action(GenericPage page, object[] saveResults)
             {
-                var oldAction = OnLoadAction;
-                OnLoadAction = delegate (GenericPage page, object[] saveResults)
-                {
-                    oldAction(page, saveResults);
-                    Action(page, saveResults);
-                };
+                var defaultText = defaultResponse == null
+                    ? GetSaveResultsFormat(defaultResultIndex.GetValueOrDefault())
+                    : defaultResponse.ToString();
+                DefaultYesNoText[index] = GetDefaultValue(defaultText, saveResults);
             }
+            AddOnLoadAction(Action);
         }
 
         private void HideAllExceptRows(params int[] rows)
@@ -253,7 +338,7 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             }
         }
 
-        private void DisplayRowsForYesNoValue(TextQuestionInfo info, TextQuestionInfo info2, int defaultTextIndex)
+        private void DisplayRowsForYesNoValue(QuestionInfo info, QuestionInfo info2, int defaultTextIndex)
         {
             var rows = new List<int> { Rows.YesNoQuestion, Rows.Description };
             if (info == null)
@@ -262,19 +347,29 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             }
             else
             {
+                var text = DefaultYesNoText[defaultTextIndex];
                 rows.Add(Rows.Question);
                 rows.Add(SetValues((dynamic)info));
-                ResponseText.Text = DefaultYesNoText[defaultTextIndex];
-                Path.Text = DefaultYesNoText[defaultTextIndex];
+                ResponseText.Text = text;
+                Path.Text = text;
+                if (int.TryParse(text, out var value))
+                {
+                    Combo.SelectedValue = value;
+                }
 
             }
 
             if (info2 != null)
             {
+                var text = DefaultYesNoText[defaultTextIndex+1];
                 rows.Add(Rows.Question2);
                 rows.Add(SetValues2((dynamic)info2));
-                Response2Text.Text = DefaultYesNoText[defaultTextIndex+1];
-                Path2.Text = DefaultYesNoText[defaultTextIndex];
+                Response2Text.Text = text;
+                Path2.Text = text;
+                if (int.TryParse(text, out var value))
+                {
+                    Combo2.SelectedValue = value;
+                }
             }
 
             HideAllExceptRows(rows.ToArray());
