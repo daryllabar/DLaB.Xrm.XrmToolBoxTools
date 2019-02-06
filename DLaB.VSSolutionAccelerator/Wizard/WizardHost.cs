@@ -134,7 +134,8 @@ namespace DLaB.VSSolutionAccelerator.Wizard
 
         private bool CheckPageIsValid()
         {
-            if (!WizardPages.CurrentPage.PageValid)
+            if (WizardPages.CurrentPage.IsRequired(SaveResults) 
+                && !WizardPages.CurrentPage.PageValid)
             {
                 MessageBox.Show(
                     string.Concat(VALIDATION_MESSAGE, Environment.NewLine, Environment.NewLine, WizardPages.CurrentPage.ValidationMessage),
@@ -167,6 +168,17 @@ namespace DLaB.VSSolutionAccelerator.Wizard
                 }
                 WizardPages[pageIndex].Load(SaveResults);
                 UpdateNavigation();
+                if (!WizardPages[pageIndex].IsRequired(SaveResults))
+                {
+                    if (previousPageIndex < pageIndex)
+                    {
+                        MoveNext();
+                    }
+                    else
+                    {
+                        WizardPages.MovePagePrevious();
+                    }
+                }
             }
         }
 
@@ -190,8 +202,15 @@ namespace DLaB.VSSolutionAccelerator.Wizard
         }
         private void btnNext_Click(object sender, EventArgs e)
         {
+            MoveNext();
+        }
+
+        private void MoveNext()
+        {
             if (!CheckPageIsValid())
-            { return; }
+            {
+                return;
+            }
 
             if (WizardPages.CanMoveNext)
             {
@@ -203,6 +222,7 @@ namespace DLaB.VSSolutionAccelerator.Wizard
                 NotifyWizardCompleted();
             }
         }
+
         private void btnLast_Click(object sender, EventArgs e)
         {
             if (!CheckPageIsValid())

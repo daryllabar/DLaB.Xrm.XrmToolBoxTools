@@ -19,7 +19,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
             SolutionPath = solutionPath;
             OutputBaseDirectory = Path.GetDirectoryName(solutionPath);
             TemplateDirectory = templateDirectory;
-            StrongNamePath = strongNamePath ?? Path.Combine(templateDirectory, "StrongName\\sn.exe"); ;
+            StrongNamePath = strongNamePath ?? Path.Combine(templateDirectory, "StrongName\\sn.exe");
         }
 
         public Dictionary<string, ProjectInfo> GetProjectInfos(InitializeSolutionInfo info)
@@ -35,6 +35,10 @@ namespace DLaB.VSSolutionAccelerator.Logic
             if (info.CreatePlugin)
             {
                 AddPlugin(projects, info);
+                if (info.ConfigureXrmUnitTest)
+                {
+                    AddPluginTest(projects, info);
+                }
             }
             if (info.CreateWorkflow)
             {
@@ -110,6 +114,31 @@ namespace DLaB.VSSolutionAccelerator.Logic
             projects.Add(project.Key, project);
         }
 
+        private void AddPluginTest(Dictionary<string, ProjectInfo> projects, InitializeSolutionInfo info)
+        {
+            var project = CreateDefaultProjectInfo(
+                ProjectInfo.Keys.PluginTests,
+                info.PluginTestName,
+                "3016D729-1A3B-43C0-AC2F-D4EF6A305FA6",
+                GetPluginAssemblyVersionForSdk(info),
+                info.SharedTestCoreProject);
+            
+            if (!info.IncludeExamplePlugins)
+            {
+                project.FilesToRemove.AddRange(
+                    new[]{
+                        "AssumptionExampleTests.cs",
+                        "TestMethodClassExampleTests.cs",
+                        "EntityBuilderExampleTests.cs",
+                        "RemovePhoneNumberFormattingTests.cs",
+                        "MsFakesVsXrmUnitTestExampleTests.cs",
+                        "LocalOrServerPluginTest.cs",
+                        @"Properties\AssemblyInfo.cs"
+                    });
+            }
+            projects.Add(project.Key, project);
+        }
+
         private void AddWorkflow(Dictionary<string, ProjectInfo> projects, InitializeSolutionInfo info)
         {
             var project = CreateDefaultProjectInfo(
@@ -159,6 +188,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
                             {$"<AssemblyOriginatorKeyFile>{key}.Key.snk</AssemblyOriginatorKeyFile>", $"<AssemblyOriginatorKeyFile>{name}.Key.snk</AssemblyOriginatorKeyFile>"},
                             {$"<None Include=\"{key}.Key.snk\" />", $"<None Include=\"{name}.Key.snk\" />"},
                             {@"<Import Project=""..\Xyz.Xrm\Xyz.Xrm.projitems"" Label=""Shared"" />", $@"<Import Project=""..\{sharedCommonProject}\{sharedCommonProject}.projitems"" Label=""Shared"" />"},
+                            {@"<Import Project=""..\Xyz.Xrm.TestCore\Xyz.Xrm.TestCore.projitems"" Label=""Shared"" />", $@"<Import Project=""..\{sharedCommonProject}\{sharedCommonProject}.projitems"" Label=""Shared"" />"},
                         },
                         Removals = new List<string>
                         {

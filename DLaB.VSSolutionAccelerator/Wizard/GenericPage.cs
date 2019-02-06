@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -54,6 +55,7 @@ namespace DLaB.VSSolutionAccelerator.Wizard
                 SizeType = r.SizeType,
                 Parent = r
             }));
+            SavedValueRequiredValue = new List<KeyValuePair<int, string>>();
             DefaultYesNoText = new string[4];
         }
 
@@ -183,6 +185,15 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             return SaveResultsPrefix + saveResultIndex + "]";
         }
 
+        /// <summary>
+        /// Used to lookup the indexed value of the result index
+        /// </summary>
+        /// <returns></returns>
+        public static string GetSaveResultsFormat(int saveResultIndex, int enumerableIndex)
+        {
+            return $"{SaveResultsPrefix}{saveResultIndex}|{enumerableIndex}]";
+        }
+
         private static string GetDefaultValue(string defaultText, object[] saveResults)
         {
             var format = defaultText;
@@ -191,7 +202,25 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             {
                 previousLength = format.Length;
                 var index = format.SubstringByString(SaveResultsPrefix, "]");
-                format = format.Replace($"{SaveResultsPrefix}{index}]", saveResults[int.Parse(index)].ToString());
+                if (index.Contains('|'))
+                {
+                    var parts = index.Split('|');
+                    var value = saveResults[int.Parse(parts[0])];
+                    var listIndex = int.Parse(parts[1]);
+                    if (value is List<string> list
+                        && list.Count > listIndex)
+                    {
+                        format = format.Replace($"{SaveResultsPrefix}{index}]", list[listIndex]);
+                    }
+                    else
+                    {
+                        format = string.Empty; 
+                    }
+                }
+                else
+                {
+                    format = format.Replace($"{SaveResultsPrefix}{index}]", saveResults[int.Parse(index)].ToString());
+                }
             }
 
             return format;

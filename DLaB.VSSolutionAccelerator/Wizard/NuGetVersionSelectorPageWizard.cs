@@ -5,7 +5,6 @@ namespace DLaB.VSSolutionAccelerator.Wizard
     public partial class NuGetVersionSelectorPage : IWizardPage
     {
         public UserControl Content => this;
-        public bool IsBusy => false;
 
         public bool PageValid => PackageSelector.SelectedIndex > -1;
 
@@ -24,6 +23,11 @@ namespace DLaB.VSSolutionAccelerator.Wizard
         {
             // Called when the Page is loaded in the wizard.
             // Helpful if additional logic is required before loading
+        }
+
+        bool IWizardPage.IsRequired(object[] saveResults)
+        {
+            return true;
         }
     }
 }

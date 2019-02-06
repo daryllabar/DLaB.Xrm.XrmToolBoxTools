@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -7,7 +8,11 @@ namespace DLaB.VSSolutionAccelerator.Wizard
     public partial class GenericPage : IWizardPage
     {
         public UserControl Content => this;
-        public bool IsBusy => false;
+
+        /// <summary>
+        /// Contains index of the saved value and the string value that that if the saved value is equal to, triggers the page as required.
+        /// </summary>
+        public List<KeyValuePair<int,string>> SavedValueRequiredValue;
 
         public bool PageValid
         {
@@ -86,6 +91,37 @@ namespace DLaB.VSSolutionAccelerator.Wizard
         void IWizardPage.Load(object[] saveResults)
         {
             OnLoadAction?.Invoke(this, saveResults);
+        }
+
+        public void AddSavedValuedRequiredCondition(int savedValueIndex, string equalToValue)
+        {
+            SavedValueRequiredValue.Add(new KeyValuePair<int, string>(savedValueIndex, equalToValue));
+        }
+
+        bool IWizardPage.IsRequired(object[] saveResults)
+        {
+            if (SavedValueRequiredValue == null)
+            {
+                return true;
+            }
+
+            var isRequired = true;
+            foreach (var condition in SavedValueRequiredValue)
+            {
+                var value = saveResults[condition.Key];
+                if (value is List<string> list)
+                {
+                    value = list.FirstOrDefault();
+                }
+
+                if (!string.Equals(value?.ToString(), condition.Value))
+                {
+                    isRequired = false;
+                    break;
+                }
+            }
+
+            return isRequired;
         }
     }
 }

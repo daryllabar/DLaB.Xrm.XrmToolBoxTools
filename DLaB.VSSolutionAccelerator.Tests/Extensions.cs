@@ -11,7 +11,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
         [DebuggerHidden]
         public static void ExistsLineContaining(this Assert assert, string[] lines, string value, string message = null)
         {
-            Assert.IsTrue(lines.Count(l => l.Contains(value)) == 1, message);
+            Assert.IsTrue(lines.Count(l => l.Contains(value)) >= 1, message);
         }
 
         [DebuggerHidden]

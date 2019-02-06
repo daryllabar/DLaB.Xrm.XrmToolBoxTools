@@ -8,6 +8,7 @@ using DLaB.XrmToolBoxCommon;
 using XrmToolBox.Extensibility;
 using Microsoft.Xrm.Sdk.Query;
 using Microsoft.Xrm.Sdk;
+using NuGet;
 using XrmToolBox.Extensibility.Interfaces;
 
 namespace DLaB.VSSolutionAccelerator
@@ -87,97 +88,10 @@ namespace DLaB.VSSolutionAccelerator
                 ShowLastButton = false
             })
             {
-                //host.WizardCompleted += new WizardHost.WizardCompletedEventHandler(host_WizardCompleted);
-                host.WizardPages.Add(GenericPage.Create(new PathQuestionInfo("What Solution?")
+                foreach (var page in InitializeSolutionInfo.InitializePages(Paths.SettingsPath))
                 {
-                    Filter = "Solution Files (*.sln)|*.sln",
-                    Description = "This Wizard will walk through the process of adding isolation/plugin/workflow/testing projects based on the DLaB/XrmUnitTest framework, adding the projects to the solution defined here."
-                }));
-                host.WizardPages.Add(GenericPage.Create(new TextQuestionInfo("What is the root NameSpace?")
-                {
-                    DefaultResponse = "YourCompanyNameOrAbbreviation.Xrm",
-                    Description = "This is the root namespace that will the Plugin and (if desired) Early Bound Entities will be appended to."
-                }));
-                host.WizardPages.Add(NuGetVersionSelectorPage.Create(
-                    "What version of the SDK?",
-                    PackageLister.CoreXrmAssemblies,
-                    "This will determine the NuGet packages referenced and the version of the .Net Framework to use."));
-                host.WizardPages.Add(GenericPage.Create(new ConditionalYesNoQuestionInfo("Do you want to use the Early Bound Generator To Create Early Bound Entities?")
-                {
-                    Yes = new PathQuestionInfo("What is the path to the Early Bound Generator Settings.xml file?")
-                    {
-                        Filter = "EBG Setting File (*.xml)|*.xml",
-                        DefaultResponse = Path.GetFullPath(Path.Combine(Paths.SettingsPath, "DLaB.EarlyBoundGenerator.DefaultSettings.xml")),
-                        Description = "The selected settings file will be moved to the folder of the solution, and configured to place the output of the files in the appropriate folders." 
-                                      + Environment.NewLine
-                                      + "The Early Bound Generator will also be triggered upon completion to generated the Early Bound classes."
-                    },
-                    Description = "Configures the output paths of the Early Bound Generator to generate files in the appropriate shared project within the solution."
-                        + Environment.NewLine
-                        + "This requires the XrmToolBox Early Bound Generator to be installed."
-                }));
-                host.WizardPages.Add(GenericPage.Create(new TextQuestionInfo("What do you want the name of the shared common assembly to be?")
-                {
-                    DefaultResponse = GenericPage.GetSaveResultsFormat(1),
-                    Description = "This will be the name of a shared C# project that will be used to store common code including plugin logic and early bound entities if applicable"
-                }));
-
-                host.WizardPages.Add(GenericPage.Create(new TextQuestionInfo("What do you want the name of the shared common workflow assembly to be?")
-                {
-                    DefaultResponse = GenericPage.GetSaveResultsFormat(1) + ".WorkflowCore",
-                    Description = "This will be the name of a shared C# project that contains references to the workflow code.  It would only be required by assemblies containing a workflow."
-                }));
-                host.WizardPages.Add(GenericPage.Create(new ConditionalYesNoQuestionInfo("Do you want to use XrmUnitTest for unit testing?")
-                {
-                    Yes = new TextQuestionInfo("What do you want the Test Settings project to be called?")
-                    {
-                        DefaultResponse = GenericPage.GetSaveResultsFormat(1) + ".Test",
-                        Description = "The Test Settings project will contain the single test settings config file and assumption xml files."
-                    },
-                    Yes2 = new TextQuestionInfo("What do you want the shared core test project to be called?")
-                    {
-                        DefaultResponse = GenericPage.GetSaveResultsFormat(1) + ".TestCore",
-                        Description = "The shared Test Project will contain all other shared test code (Assumption Definitions, Builders, Test Base Class, etc)"
-                    },
-                    Description = "This will add the appropriate NuGet References and create the appropriate isolation projects."
-                }));
-                host.WizardPages.Add(GenericPage.Create(new ConditionalYesNoQuestionInfo("Do you want to create a Plugin Project?")
-                {
-                    Yes = new TextQuestionInfo("What should the plugin project be called?")
-                    {
-                        DefaultResponse = GenericPage.GetSaveResultsFormat(1) + ".Plugin",
-                        Description = "The name and default namespace for the plugin project."
-                    },
-                    Yes2 = new ComboQuestionInfo("Include example plugin classes?")
-                    {
-                        DefaultResponse = 0,
-                        Description = "If example plugin classes are included, it may contain compiler errors if the Early Bound Entities used in the files are not generated.",
-                        Options = new List<KeyValuePair<int, string>>
-                        {
-                            new KeyValuePair<int,string>( 0, "Yes" ),
-                            new KeyValuePair<int,string>( 1, "No" ),
-                        }
-                    },
-                    Description = "This will add a new plugin project to the solution and wire up the appropriate references."
-                }));
-                host.WizardPages.Add(GenericPage.Create(new ConditionalYesNoQuestionInfo("Do you want to create a Workflow Project?")
-                {
-                    Yes = new TextQuestionInfo("What should the workflow project be called??")
-                    {
-                        DefaultResponse = GenericPage.GetSaveResultsFormat(1) + ".Workflow",
-                        Description = "The name and default namespace for the workflow project."
-                    },
-                    Yes2 = new ComboQuestionInfo("Include example custom workflow activity?")
-                    {
-                        DefaultResponse = 0,
-                        Options = new List<KeyValuePair<int, string>>
-                        {
-                            new KeyValuePair<int,string>( 0, "Yes" ),
-                            new KeyValuePair<int,string>( 1, "No" ),
-                        }
-                    },
-                    Description = "This will add a new workflow project to the solution and wire up the appropriate references."
-                }));
+                    host.WizardPages.Add(page);
+                }
                 host.LoadWizard();
                 if (host.ShowDialog() == DialogResult.OK)
                 {
@@ -215,7 +129,9 @@ namespace DLaB.VSSolutionAccelerator
                         "Abc.Xrm.WorkflowCore",
                         new List<string> {"Y", "Abc.Xrm.Test", "Abc.Xrm.TestCore" },
                         new List<string> {"Y", "Abc.Xrm.Plugin", "0"},
-                        new List<string> {"Y", "Abc.Xrm.Workflow", "1"}
+                        "Abc.Xrm.Plugin.Tests",
+                        new List<string> {"Y", "Abc.Xrm.Workflow", "1"},
+                        "Abc.Xrm.Workflow.Tests"
                     };
 
                     Logic.Logic.Execute(InitializeSolutionInfo.InitializeSolution(results), 

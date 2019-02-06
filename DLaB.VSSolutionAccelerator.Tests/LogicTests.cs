@@ -63,7 +63,9 @@ namespace DLaB.VSSolutionAccelerator.Tests
                 "Abc.Xrm.WorkflowCore",
                 new List<string> {"Y", "Abc.Xrm.Test", "Abc.Xrm.TestCore" },
                 new List<string> {"Y", "Abc.Xrm.Plugin", "0"},
-                new List<string> {"Y", "Abc.Xrm.Workflow", "0"}
+                "Abc.Xrm.Plugin.Tests",
+                new List<string> {"Y", "Abc.Xrm.Workflow", "0"},
+                "Abc.Xrm.Workflow.Tests"
             };
             var info = InitializeSolutionInfo.InitializeSolution(results);
             setCustomSettings?.Invoke(info);
@@ -109,6 +111,19 @@ namespace DLaB.VSSolutionAccelerator.Tests
                     context.Info.PluginName,
                     "RenameLogic.cs", 
                     "Abc.Xrm.Plugin");
+            }
+        }
+
+        [TestMethod]
+        public void CreateProject_WithPluginTest_Should_CreateTestPluginProject()
+        {
+            using (var context = InitializeTest())
+            {
+                TestTestProjectCreation(context,
+                    ProjectInfo.Keys.PluginTests,
+                    context.Info.PluginTestName,
+                    "AssumptionExampleTests.cs",
+                    "Abc.Xrm.Plugin.Tests");
             }
         }
 
@@ -236,6 +251,32 @@ namespace DLaB.VSSolutionAccelerator.Tests
 
         private static string[] TestPluginProjectCreation(InitializeSolutionTestInfo context, string key, string newName, string arbitraryFile, string newNameSpace = null)
         {
+            var lines = TestProjectCreation(context, key, newName, arbitraryFile, newNameSpace);
+
+            // PropertyGroup
+            Assert.That.ExistsLineContaining(lines, $"<AssemblyOriginatorKeyFile>{newName}.Key.snk</AssemblyOriginatorKeyFile>", $"The Assembly Key File should have been updated to {newName}.Key.snk!");
+
+            // ItemGroup
+            Assert.That.ExistsLineContaining(lines, $"<None Include=\"{newName}.Key.snk\" />", $"The Assembly Key File Item Group Value should have been updated to {newName}.Key.snk!");
+
+            // Imports
+            Assert.That.ExistsLineContaining(lines, @"Project=""..\Abc.Xrm\Abc.Xrm.projitems"" Label=""Shared"" />", $"The shared Common Project should have been updated!");
+
+            return lines;
+        }
+
+        private static string[] TestTestProjectCreation(InitializeSolutionTestInfo context, string key, string newName, string arbitraryFile, string newNameSpace = null)
+        {
+            var lines = TestProjectCreation(context, key, newName, arbitraryFile, newNameSpace);
+
+            // Imports
+            Assert.That.ExistsLineContaining(lines, @"Project=""..\Abc.Xrm.TestCore\Abc.Xrm.TestCore.projitems"" Label=""Shared"" />", $"The shared test Project should have been updated!");
+
+            return lines;
+        }
+
+        private static string[] TestProjectCreation(InitializeSolutionTestInfo context, string key, string newName, string arbitraryFile, string newNameSpace = null)
+        {
             newNameSpace = newNameSpace ?? newName;
             context.Logic.CreateProject(key, context.Info);
             var id = context.Logic.Projects[key].Id;
@@ -248,14 +289,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
             Assert.That.ExistsLineContaining(lines, $"<AssemblyName>{newName}</AssemblyName>", $"The Assembly Name should have been updated to {newName}!");
             Assert.That.ExistsLineContaining(lines, "<TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>", $"The Target Framework should have been updated to v4.6.2!");
             Assert.That.NotExistsLineContaining(lines, "CodeAnalysisRuleSet", "The CodeAnalysisRuleSet should have been removed");
-            Assert.That.ExistsLineContaining(lines, $"<AssemblyOriginatorKeyFile>{newName}.Key.snk</AssemblyOriginatorKeyFile>", $"The Assembly Key File should have been updated to {newName}.Key.snk!");
             Assert.That.NotExistsLineContaining(lines, "LocalNuget", "LocalNuget should have been removed");
-
-            // ItemGroup
-            Assert.That.ExistsLineContaining(lines, $"<None Include=\"{newName}.Key.snk\" />", $"The Assembly Key File Item Group Value should have been updated to {newName}.Key.snk!");
-
-            // Imports
-            Assert.That.ExistsLineContaining(lines, @"Project=""..\Abc.Xrm\Abc.Xrm.projitems"" Label=""Shared"" />", $"The shared Common Project should have been updated!");
 
             AssertCsFileNamespaceUpdated(context, newName, arbitraryFile, newNameSpace);
 

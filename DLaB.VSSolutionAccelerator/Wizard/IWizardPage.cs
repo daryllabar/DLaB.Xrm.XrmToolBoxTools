@@ -9,9 +9,9 @@ namespace DLaB.VSSolutionAccelerator.Wizard
         void Load(object[] saveResults);
         object Save();
         void Cancel();
-        bool IsBusy { get; }
 
         bool PageValid { get; }
         string ValidationMessage { get; }
+        bool IsRequired(object[] saveResults);
     }
 }
