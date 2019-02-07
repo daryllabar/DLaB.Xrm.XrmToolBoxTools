@@ -74,7 +74,7 @@ namespace DLaB.VSSolutionAccelerator
         {
             pages.Add(NuGetVersionSelectorPage.Create(
                 "What version of the SDK?",
-                PackageLister.CoreXrmAssemblies,
+                PackageLister.Ids.CoreXrmAssemblies,
                 "This will determine the NuGet packages referenced and the version of the .Net Framework to use."));
         }
 

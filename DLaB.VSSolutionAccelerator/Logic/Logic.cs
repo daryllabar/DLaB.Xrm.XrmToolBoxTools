@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Source.DLaB.Common;
 
 namespace DLaB.VSSolutionAccelerator.Logic
 {
@@ -12,14 +11,16 @@ namespace DLaB.VSSolutionAccelerator.Logic
         public string SolutionPath { get; }
         public string TemplateDirectory { get; }
         public string StrongNamePath { get; }
+        public string NuGetPath { get; }
         public Dictionary<string, ProjectInfo> Projects { get; set; }
 
-        public Logic(string solutionPath, string templateDirectory, string strongNamePath = null)
+        public Logic(string solutionPath, string templateDirectory, string strongNamePath = null, string nugetPath = null)
         {
             SolutionPath = solutionPath;
             OutputBaseDirectory = Path.GetDirectoryName(solutionPath);
             TemplateDirectory = templateDirectory;
-            StrongNamePath = strongNamePath ?? Path.Combine(templateDirectory, "StrongName\\sn.exe");
+            StrongNamePath = strongNamePath ?? Path.Combine(templateDirectory, "bin\\sn.exe");
+            NuGetPath = nugetPath ?? Path.Combine(templateDirectory, "bin\\nuget.exe");
         }
 
         public Dictionary<string, ProjectInfo> GetProjectInfos(InitializeSolutionInfo info)
@@ -47,6 +48,12 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 {
                     AddWorkflowTest(projects, info);
                 }
+            }
+
+            var mapper = new NuGetMapper(NuGetPath, info.XrmPackage.Version);
+            foreach (var project in projects.Values.Where(p => p.Type != ProjectInfo.ProjectType.SharedProj))
+            {
+                project.AddNugetPostUpdateCommands(mapper, Path.Combine(TemplateDirectory, project.Key, "packages.config"), Path.Combine(OutputBaseDirectory, project.Name, "packages.config"));
             }
             return projects;
         }
@@ -78,7 +85,9 @@ namespace DLaB.VSSolutionAccelerator.Logic
             var project = CreateDefaultSharedProjectInfo(
                 ProjectInfo.Keys.TestCore,
                 info.SharedTestCoreProject,
-                "8f91efc7-351b-4802-99aa-6c6f16110505", ProjectInfo.Keys.Test);
+                "8f91efc7-351b-4802-99aa-6c6f16110505", 
+                ProjectInfo.Keys.Test,
+                info.TestBaseProject);
             projects.Add(project.Key, project);
         }
 
@@ -90,7 +99,6 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 "F62103E9-D25D-4F99-AABE-ECF348424366",
                 "v.4.6.2",
                 info.SharedCommonProject);
-            //info.XrmPackage.Version.Major >= 9 ? "v.4.6.2" : "v.4.5.2"
             projects.Add(project.Key, project);
         }
 
@@ -102,7 +110,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 "2B294DBF-8730-436E-B401-8745FEA632FE",
                 GetPluginAssemblyVersionForSdk(info),
                 info.SharedCommonProject);
-            project.PostUpdateCommands.Add(new ProcessExecutorInfo(StrongNamePath, $"-k {project.Name}.Key.snk"));
+            project.AddRegenKeyPostUpdateCommand(StrongNamePath);
             if (!info.IncludeExamplePlugins)
             {
                 project.FilesToRemove.AddRange(
@@ -150,7 +158,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 "5BD39AC9-97F3-47C8-8E1F-6A58A24AFB9E",
                 GetPluginAssemblyVersionForSdk(info),
                 info.SharedCommonProject);
-            project.PostUpdateCommands.Add(new ProcessExecutorInfo(StrongNamePath, $"-k {project.Name}.Key.snk"));
+            project.AddRegenKeyPostUpdateCommand(StrongNamePath);
             project.Files.First().Replacements.Add(
                 @"<Import Project=""..\Xyz.Xrm.WorkflowCore\Xyz.Xrm.WorkflowCore.projitems"" Label=""Shared"" />", 
                 $@"<Import Project=""..\{info.SharedCommonWorkflowProject}\{info.SharedCommonWorkflowProject}.projitems"" Label=""Shared"" />");
@@ -304,7 +312,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
 
         public void CreateProject(string projectKey, InitializeSolutionInfo info)
         {
-            Projects[projectKey].CopyFromAndUpdate(TemplateDirectory, info.RootNamespace, info.XrmPackage.Version);
+            Projects[projectKey].CopyFromAndUpdate(TemplateDirectory, info.RootNamespace);
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using DLaB.VSSolutionAccelerator.Logic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

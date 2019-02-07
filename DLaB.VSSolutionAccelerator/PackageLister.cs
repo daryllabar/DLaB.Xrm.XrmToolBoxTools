@@ -11,8 +11,12 @@ namespace DLaB.VSSolutionAccelerator
     /// </summary>
     public static class PackageLister
     {
-        public static string CoreXrmAssemblies = "Microsoft.CrmSdk.CoreAssemblies";
-        public static string MicrosoftCrmSdkXrmToolingCoreAssembly = "Microsoft.CrmSdk.XrmTooling.CoreAssembly";
+        public struct Ids
+        {
+            public static string CoreXrmAssemblies = "Microsoft.CrmSdk.CoreAssemblies";
+            public static string MicrosoftCrmSdkXrmToolingCoreAssembly = "Microsoft.CrmSdk.XrmTooling.CoreAssembly";
+            public static string MicrosoftCrmSdkWorkflow = "Microsoft.CrmSdk.Workflow";
+        }
 
         public static List<NuGetPackage> GetPackagesbyId(string packageId)
         {
@@ -59,10 +63,20 @@ namespace DLaB.VSSolutionAccelerator
                 return false;
 
             foreach (PackageDependency dependency in package.DependencySets.First().Dependencies)
-                if (dependency.Id == MicrosoftCrmSdkXrmToolingCoreAssembly)
+                if (dependency.Id == Ids.MicrosoftCrmSdkXrmToolingCoreAssembly)
                     return true;
 
             return false;
+        }
+
+        public static NuGetPackage GetNewest(this List<NuGetPackage> packages)
+        {
+            return packages.OrderByDescending(p => p.Version).FirstOrDefault();
+        }
+
+        public static NuGetPackage GetNewestForMajorVersion(this List<NuGetPackage> packages, int majorVersion)
+        {
+            return packages.OrderByDescending(p => p.Version).FirstOrDefault(p => p.Version.Major == majorVersion);
         }
     }
 

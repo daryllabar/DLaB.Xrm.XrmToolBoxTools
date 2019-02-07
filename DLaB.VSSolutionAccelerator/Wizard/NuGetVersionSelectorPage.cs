@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace DLaB.VSSolutionAccelerator.Wizard
@@ -10,7 +11,7 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             InitializeComponent();
         }
 
-        public static NuGetVersionSelectorPage Create(string question, string packageId, string description = null)
+        public static NuGetVersionSelectorPage Create(string question, string packageId, string description = null, bool onlyDisplayLatestMajorVersion = true)
         {
             var page = new NuGetVersionSelectorPage
             {
@@ -18,7 +19,22 @@ namespace DLaB.VSSolutionAccelerator.Wizard
                 DescriptionText = {Text = description}
             };
 
-            page.PackageSelector.Items.AddRange(PackageLister.GetPackagesbyId(packageId).OrderByDescending(p => p.Version).Cast<object>().ToArray());
+
+            var packages = PackageLister.GetPackagesbyId(packageId).OrderByDescending(p => p.Version).ToList();
+            var validPackages = packages;
+            if (onlyDisplayLatestMajorVersion)
+            {
+                validPackages = new List<NuGetPackage>();
+                var majorVersions = new HashSet<int>(packages.Select(p => p.Version.Major).Distinct());
+                foreach (var package in packages)
+                {
+                    if (majorVersions.Remove(package.Version.Major))
+                    {
+                        validPackages.Add(package);
+                    }
+                }
+            }
+            page.PackageSelector.Items.AddRange(validPackages.Cast<object>().ToArray());
             return page;
         }
     }

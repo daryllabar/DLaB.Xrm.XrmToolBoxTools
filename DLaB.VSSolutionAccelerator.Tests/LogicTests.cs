@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
 using DLaB.VSSolutionAccelerator.Logic;
@@ -8,6 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace DLaB.VSSolutionAccelerator.Tests
 {
     [TestClass]
+    [SuppressMessage("ReSharper", "UnusedMethodReturnValue.Local")]
     public class LogicTests
     {
         private void ClearDirectory(string directory)
@@ -31,9 +33,11 @@ namespace DLaB.VSSolutionAccelerator.Tests
             }
         }
 
-        private InitializeSolutionTestInfo InitializeTest(Action<InitializeSolutionInfo> setCustomSettings = null)
+        private InitializeSolutionTestInfo InitializeTest(Action<InitializeSolutionInfo> setCustomSettings = null, string tempDirectoryName = null)
         {
-            var tempDir = TempDir.Create();
+            var tempDir = tempDirectoryName == null 
+                ? TempDir.Create()
+                : new TempDir(tempDirectoryName);
             ClearDirectory(tempDir.Name);
             var output = Path.GetFileName(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
             var solutionPath = Path.Combine(tempDir.Name, @"Abc.Xrm\Abc.Xrm.sln");
@@ -111,6 +115,29 @@ namespace DLaB.VSSolutionAccelerator.Tests
                     context.Info.PluginName,
                     "RenameLogic.cs", 
                     "Abc.Xrm.Plugin");
+            }
+        }
+
+        [TestMethod]
+        public void CreateProject_WithPluginWithOldNuget_Should_UpdateVersion()
+        {
+            using (var context = InitializeTest(c =>
+            {
+                c.XrmPackage.Version = new Version(8, 2, 0, 2);
+                c.XrmPackage.VersionText = c.XrmPackage.Version.ToString();
+            }, "NuGet"))
+            {
+                // Plugin requires Shared Project to be created first
+                context.Logic.CreateProject(ProjectInfo.Keys.Common, context.Info);
+                TestPluginProjectCreation(context,
+                    ProjectInfo.Keys.Plugin,
+                    context.Info.PluginName,
+                    "RenameLogic.cs",
+                    "Abc.Xrm.Plugin");
+                var packagesPath = Path.Combine(context.SolutionDirectory, context.Info.PluginName, "packages.config");
+                var packages = File.ReadAllLines(packagesPath);
+                Assert.That.ExistsLineContaining(packages, "\"Microsoft.CrmSdk.CoreAssemblies\" version=\"8", "Microsoft.CrmSdk.CoreAssemblies should have been updated to v8.");
+
             }
         }
 
@@ -292,6 +319,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
         {
             newNameSpace = newNameSpace ?? newName;
             context.Logic.CreateProject(key, context.Info);
+            var framework = context.Info.XrmPackage.Version.Major >= 9 ? "v4.6.2" : "v4.5.2";
             var id = context.Logic.Projects[key].Id;
             var filePath = Path.Combine(context.SolutionDirectory, newName, newName + ".csproj");
             Assert.IsTrue(File.Exists(filePath), filePath + " was not created!");
@@ -300,7 +328,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
             Assert.That.ExistsLineContaining(lines, $"<ProjectGuid>{{{id.ToString().ToUpper()}}}</ProjectGuid>", "The Project Guid should have been replaced!");
             Assert.That.ExistsLineContaining(lines, $"<RootNamespace>{newNameSpace}</RootNamespace>", $"The Root Namespace should have been updated to {newNameSpace}!");
             Assert.That.ExistsLineContaining(lines, $"<AssemblyName>{newName}</AssemblyName>", $"The Assembly Name should have been updated to {newName}!");
-            Assert.That.ExistsLineContaining(lines, "<TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>", $"The Target Framework should have been updated to v4.6.2!");
+            Assert.That.ExistsLineContaining(lines, $"<TargetFrameworkVersion>{framework}</TargetFrameworkVersion>", $"The Target Framework should have been updated to {framework}!");
             Assert.That.NotExistsLineContaining(lines, "CodeAnalysisRuleSet", "The CodeAnalysisRuleSet should have been removed");
             Assert.That.NotExistsLineContaining(lines, "LocalNuget", "LocalNuget should have been removed");
 

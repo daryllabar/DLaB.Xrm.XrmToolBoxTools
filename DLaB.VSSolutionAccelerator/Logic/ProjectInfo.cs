@@ -37,6 +37,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
         public string NewDirectory { get; set; }
         public string SolutionProjectHeader => string.Format("Project(\"{0}\") = \"{1}\", \"{1}\\{1}.{2}\", \"{{{3}}}\"{4}EndProject", GetTypeId(), Name, GetProjectPostfix(), Id.ToString().ToUpper(), Environment.NewLine );
         public List<ProcessExecutorInfo> PostUpdateCommands { get; set; }
+        public List<string> PostUpdateCommandResults { get; private set; }
         public List<string> FilesToRemove { get; internal set; }
 
         public ProjectInfo()
@@ -47,6 +48,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
             FilesToRemove = new List<string>();
             SharedProjectsReferences = new List<ProjectInfo>();
             PostUpdateCommands = new List<ProcessExecutorInfo>();
+            PostUpdateCommandResults = new List<string>();
         }
 
         private string GetTypeId()
@@ -116,9 +118,19 @@ namespace DLaB.VSSolutionAccelerator.Logic
             return string.Join(Environment.NewLine, lines);
         }
 
-        public void CopyFromAndUpdate(string templateDirectory, string rootNamespace, Version xrmVersion)
+        public void CopyFromAndUpdate(string templateDirectory, string rootNamespace)
         {
             Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory(Path.Combine(templateDirectory, Key), NewDirectory, true);
+            DeleteFiles();
+            RenameFiles();
+            UpdateProject(rootNamespace);
+            UpdateProjectFiles();
+            UpdateCsNamespaces(rootNamespace);
+            ExecutePostUpdateCommands();
+        }
+
+        private void DeleteFiles()
+        {
             foreach (var file in FilesToRemove)
             {
                 var path = Path.Combine(NewDirectory, file);
@@ -127,16 +139,18 @@ namespace DLaB.VSSolutionAccelerator.Logic
                     File.Delete(path);
                 }
             }
-            RenameFiles();
-            if (Type == ProjectType.CsProj)
-            {
-                UpdateProject(rootNamespace);
-            }
+        }
+
+        private void UpdateProjectFiles()
+        {
             foreach (var file in Files)
             {
                 file.Update(NewDirectory);
             }
+        }
 
+        private void UpdateCsNamespaces(string rootNamespace)
+        {
             foreach (var file in Directory.EnumerateFiles(NewDirectory, "*.cs", SearchOption.AllDirectories))
             {
                 var newLines = File.ReadAllLines(file)
@@ -145,11 +159,25 @@ namespace DLaB.VSSolutionAccelerator.Logic
                         : line).ToList();
                 File.WriteAllLines(file, newLines);
             }
+        }
+
+        private void ExecutePostUpdateCommands()
+        {
 
             foreach (var cmd in PostUpdateCommands)
             {
-                ProcessExecutor.ExecuteCmd(cmd);
+                PostUpdateCommandResults.Add(ProcessExecutor.ExecuteCmd(cmd));
             }
+        }
+
+        public void AddNugetPostUpdateCommands(NuGetMapper nuGetMapper, string templatePackagesPath, string packagesPath)
+        {
+            if (!File.Exists(templatePackagesPath))
+            {
+                return;
+            }
+
+            nuGetMapper.AddUpdateCommands(PostUpdateCommands, templatePackagesPath, packagesPath);
         }
 
         public void RenameFiles()
@@ -171,6 +199,11 @@ namespace DLaB.VSSolutionAccelerator.Logic
 
         public void UpdateProject(string rootNamespace)
         {
+            if (Type != ProjectType.CsProj)
+            {
+                return;
+            }
+
             //Perform updates
             var projectFilePath = Path.Combine(NewDirectory, $"{Name}.csproj");
             var parser = new ProjectFileParser(File.ReadAllLines(projectFilePath));
@@ -183,8 +216,12 @@ namespace DLaB.VSSolutionAccelerator.Logic
             var keyGroup = parser.PropertyGroups.FirstOrDefault(g => g.Type == PropertyGroupType.KeyFile);
             if (keyGroup != null)
             {
+                var openTag = keyGroup.Lines.First();
+                var closeTag = keyGroup.Lines.Last();
                 keyGroup.Lines.Clear();
-                keyGroup.Lines.Add($"<AssemblyOriginatorKeyFile>{Name}.Key.snk</AssemblyOriginatorKeyFile>");
+                keyGroup.Lines.Add(openTag);
+                keyGroup.Lines.Add($"    <AssemblyOriginatorKeyFile>{Name}.Key.snk</AssemblyOriginatorKeyFile>");
+                keyGroup.Lines.Add(closeTag);
             }
             // ItemGroup references to the SDK might need to be updated...
             //   <Reference Include="Microsoft.Crm.Sdk.Proxy, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -213,6 +250,11 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 File.Delete(newPath);
             }
             File.Move(Path.Combine(NewDirectory, oldName), newPath);
+        }
+
+        public void AddRegenKeyPostUpdateCommand(string strongNamePath)
+        {
+            PostUpdateCommands.Add(new ProcessExecutorInfo(strongNamePath, $"-k {Name}.Key.snk"));
         }
     }
 }

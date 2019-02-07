@@ -210,6 +210,7 @@
     <Compile Include="Logic\PropertyGroup.cs" />
     <Compile Include="Logic\SolutionFileEditor.cs" />
     <Compile Include="Logic\SolutionFileParser.cs" />
+    <Compile Include="Logic\NuGetMapper.cs" />
     <Compile Include="PackageLister.cs" />
     <Compile Include="Logic\ProjectFile.cs" />
     <Compile Include="Logic\ProjectInfo.cs" />
@@ -289,7 +290,7 @@ if NOT EXIST "$(SolutionDir)..\XrmUnitTest.Example" goto :error
 
 ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Code Generation" "$(TargetDir)Plugins\$(ProjectName)\CodeGeneration" /S /MIR /NJS /NJH
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)References" "$(TargetDir)Plugins\$(ProjectName)\StrongName" sn.exe.* /MIR /NJS /NJH
+ROBOCOPY "$(SolutionDir)References" "$(TargetDir)Plugins\$(ProjectName)\bin" /MIR /NJS /NJH /XF NuGetC* Microsoft* Set*
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
 COPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.ruleset" "$(TargetDir)Plugins\$(ProjectName)\Xyz.ruleset"
 ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.WorkflowCore" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm.WorkflowCore" /MIR /NJS /NJH

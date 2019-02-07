@@ -33,7 +33,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 {
                     if (newLine.Contains(replacement.Key))
                     {
-                        newLine = line.Replace(replacement.Key, replacement.Value);
+                        newLine = newLine.Replace(replacement.Key, replacement.Value);
                     }
                 }
 
