@@ -11,6 +11,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
         public string Namespace { get; private set; }
         public string AssemblyName { get; private set; }
         private string CurrentOpenItemGroup { get; set; }
+        public List<List<string>> Chooses { get; set; }
         public List<string> PrePropertyGroups { get; set; }
         public List<PropertyGroup> PropertyGroups { get; set; }
         public Dictionary<string, List<string>> ItemGroups { get; set; }
@@ -23,6 +24,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
             PrePropertyGroup,
             PropertyGroup,
             ItemGroup,
+            Choose,
             Imports,
             PostItemGroup,
         }
@@ -32,16 +34,19 @@ namespace DLaB.VSSolutionAccelerator.Logic
             {States.PrePropertyGroup, ParsePrePropertyGroup},
             {States.PropertyGroup, ParsePropertyGroup},
             {States.ItemGroup, ParseItemGroup},
+            {States.Choose, ParseChoose},
             {States.PostItemGroup, ParsePostItemGroup},
         };
 
         public struct LineMarkers
         {
-            public const string ImportStart = "<Import Project";
-            public const string PropertyGroupStart = "<PropertyGroup";
-            public const string PropertyGroupEnd = "</PropertyGroup>";
-            public const string ItemGroupStart = "<ItemGroup>";
+            public const string ChooseEnd = "</Choose>";
+            public const string ChooseStart = "<Choose>";
             public const string ItemGroupEnd = "</ItemGroup>";
+            public const string ItemGroupStart = "<ItemGroup>";
+            public const string ImportStart = "<Import Project";
+            public const string PropertyGroupEnd = "</PropertyGroup>";
+            public const string PropertyGroupStart = "<PropertyGroup";
         }
 
         public struct ItemGroupTypes
@@ -68,6 +73,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
             PropertyGroups = new List<PropertyGroup>();
             ItemGroups = new Dictionary<string, List<string>>();
             PostImports = new List<string>();
+            Chooses = new List<List<string>>();
 
             foreach (var line in project)
             {
@@ -114,9 +120,20 @@ namespace DLaB.VSSolutionAccelerator.Logic
             {
                 lines = new List<string>();
                 ItemGroups[itemGroupType] = lines;
+                
             }
 
             lines.Add(line);
+        }
+
+        private void ParseChoose(string line)
+        {
+            if (line.TrimStart().StartsWith(LineMarkers.ChooseEnd))
+            {
+                State = States.ItemGroup;
+            }
+
+            Chooses.Last().Add(line);
         }
 
         private string GetCurrentOrNewItemGroup(string line)
@@ -154,6 +171,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
         {
             return IsPropertyGroupStart(line)
                 || IsItemGroupStart(line)
+                || IsChooseStart(line)
                 || IsImportPostItemGroupStart(line);
         }
 
@@ -177,6 +195,21 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 State = States.ItemGroup;
             }
             
+            return isStart;
+        }
+
+        private bool IsChooseStart(string line)
+        {
+            var isStart = line.TrimStart().StartsWith(LineMarkers.ChooseStart);
+            if (isStart)
+            {
+                State = States.Choose;
+                if (!(Chooses.LastOrDefault()?.Count > 0))
+                {
+                    Chooses.Add(new List<string> { line });
+                }
+            }
+
             return isStart;
         }
 
@@ -284,6 +317,14 @@ namespace DLaB.VSSolutionAccelerator.Logic
                     yield return line;
                 }
                 yield return "  " + LineMarkers.ItemGroupEnd;
+            }
+
+            foreach (var choose in Chooses)
+            {
+                foreach (var line in choose)
+                {
+                    yield return line;
+                }
             }
 
             foreach (var line in SplitByNewLine(Imports))

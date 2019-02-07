@@ -63,6 +63,24 @@ namespace DLaB.VSSolutionAccelerator.Tests
   <ItemGroup>
     <None Include=""packages.config"" />
   </ItemGroup>
+  <Choose>
+    <When Condition=""'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'"">
+      <ItemGroup>
+        <Reference Include=""Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include=""Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include=""Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include=""Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
   <Import Project=""..\Xyz.Xrm\Xyz.Xrm.projitems"" Label=""Shared"" />
   <Import Project=""..\Xyz.Xrm.Workflow\Xyz.Xrm.Workflow.projitems"" Label=""Shared"" />
   <Import Project=""$(MSBuildToolsPath)\Microsoft.CSharp.targets"" />

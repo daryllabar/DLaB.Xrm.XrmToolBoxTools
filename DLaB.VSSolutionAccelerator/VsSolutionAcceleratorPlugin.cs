@@ -6,9 +6,6 @@ using System.Windows.Forms;
 using DLaB.VSSolutionAccelerator.Wizard;
 using DLaB.XrmToolBoxCommon;
 using XrmToolBox.Extensibility;
-using Microsoft.Xrm.Sdk.Query;
-using Microsoft.Xrm.Sdk;
-using NuGet;
 using XrmToolBox.Extensibility.Interfaces;
 
 namespace DLaB.VSSolutionAccelerator
@@ -38,40 +35,6 @@ namespace DLaB.VSSolutionAccelerator
                 Settings = settings;
                 LogInfo("Settings found and loaded");
             }
-        }
-
-        private void tsbSample_Click(object sender, EventArgs e)
-        {
-            // The ExecuteMethod method handles connecting to an
-            // organization if XrmToolBox is not yet connected
-            ExecuteMethod(GetAccounts);
-        }
-
-        private void GetAccounts()
-        {
-            WorkAsync(new WorkAsyncInfo
-            {
-                Message = "Getting accounts",
-                Work = (worker, args) =>
-                {
-                    args.Result = Service.RetrieveMultiple(new QueryExpression("account")
-                    {
-                        TopCount = 50
-                    });
-                },
-                PostWorkCallBack = (args) =>
-                {
-                    if (args.Error != null)
-                    {
-                        MessageBox.Show(args.Error.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    var result = args.Result as EntityCollection;
-                    if (result != null)
-                    {
-                        MessageBox.Show($"Found {result.Entities.Count} accounts");
-                    }
-                }
-            });
         }
 
         private void VsSolutionAcceleratorPlugin_OnCloseTool(object sender, EventArgs e)
@@ -134,7 +97,16 @@ namespace DLaB.VSSolutionAccelerator
                         "Abc.Xrm.Workflow.Tests"
                     };
 
-                    Logic.Logic.Execute(InitializeSolutionInfo.InitializeSolution(results), 
+                    var info = InitializeSolutionInfo.InitializeSolution(results);
+                    var solutionDir = Path.GetDirectoryName(info.SolutionPath) ?? Guid.NewGuid().ToString();
+                    foreach (var file in Directory.EnumerateFiles(solutionDir, "*", SearchOption.AllDirectories))
+                    {
+                        File.Delete(file);
+                    }
+                    Directory.Delete(solutionDir, true);
+                    Directory.CreateDirectory(solutionDir);
+                    File.Copy("C:\\Temp\\AdvXTB\\Abc.Xrm.sln", info.SolutionPath);
+                    Logic.Logic.Execute(info, 
                         Path.GetFullPath(Path.Combine(Paths.PluginsPath, "DLaB.VSSolutionAccelerator")));
 
                     break;
