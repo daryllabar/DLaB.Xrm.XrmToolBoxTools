@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.IO;
 using System.Windows.Forms;
+using DLaB.Log;
 using DLaB.VSSolutionAccelerator.Wizard;
 using DLaB.XrmToolBoxCommon;
 using XrmToolBox.Extensibility;
@@ -99,20 +100,63 @@ namespace DLaB.VSSolutionAccelerator
 
                     var info = InitializeSolutionInfo.InitializeSolution(results);
                     var solutionDir = Path.GetDirectoryName(info.SolutionPath) ?? Guid.NewGuid().ToString();
-                    foreach (var file in Directory.EnumerateFiles(solutionDir, "*", SearchOption.AllDirectories))
+                    if (Directory.Exists(solutionDir))
                     {
-                        File.Delete(file);
+                        foreach (var file in Directory.EnumerateFiles(solutionDir, "*", SearchOption.AllDirectories))
+                        {
+                            File.Delete(file);
+                        }
+                        Directory.Delete(solutionDir, true);
                     }
-                    Directory.Delete(solutionDir, true);
-                    Directory.CreateDirectory(solutionDir);
-                    File.Copy("C:\\Temp\\AdvXTB\\Abc.Xrm.sln", info.SolutionPath);
-                    Logic.Logic.Execute(info, 
-                        Path.GetFullPath(Path.Combine(Paths.PluginsPath, "DLaB.VSSolutionAccelerator")));
+                    do
+                    {
+                        TxtOutput.AppendText("Creating Directory." + Environment.NewLine);
+                        Directory.CreateDirectory(solutionDir);
+                    }
+                    while (!Directory.Exists(solutionDir));
 
+                    File.Copy("C:\\Temp\\AdvXTB\\Abc.Xrm.sln", info.SolutionPath);
+                    Execute(info);
                     break;
                 default:
                     throw new NotImplementedException();
             }
+        }
+
+        private void Execute(InitializeSolutionInfo info)
+        {
+            Enabled = false;
+            WorkAsync(new WorkAsyncInfo("Adding Accelerator Libraries...", (w, e) => // Work To Do Asynchronously
+            {
+                var arg = (InitializeSolutionInfo)e.Argument;
+
+                Logger.WireUpToReportProgress(w);
+                try
+                {
+                    Logic.Logic.Execute(arg, Path.GetFullPath(Path.Combine(Paths.PluginsPath, "DLaB.VSSolutionAccelerator")));
+                    w.ReportProgress(99, "Finished Successfully!");
+                }
+                catch (Exception ex)
+                {
+                    w.ReportProgress(int.MinValue, ex.ToString());
+                }
+                finally
+                {
+                    Logger.UnwireFromReportProgress(w);
+                }
+            })
+            {
+                AsyncArgument = info,
+                PostWorkCallBack = e => // Creation has finished.  Cleanup
+                {
+                    Logger.DisplayLog(e, TxtOutput);
+                    Enabled = true;
+                },
+                ProgressChanged = e => // Logic wants to display an update
+                {
+                    Logger.DisplayLog(e, SetWorkingMessage, TxtOutput);
+                }
+            });
         }
 
         private void ActionCmb_SelectedIndexChanged(object sender, EventArgs e)
@@ -129,7 +173,7 @@ namespace DLaB.VSSolutionAccelerator
      ExportMetadata("BackgroundColor", "White"), // Use a HTML color name
      ExportMetadata("PrimaryFontColor", "#000000"), // Or an hexadecimal code
      ExportMetadata("SecondaryFontColor", "DarkGray")]
-    public class VsSolutionAccelerator : PluginFactory
+    public class VsSolutionAccelerator : PluginFactory, INoConnectionRequired
     {
         public override IXrmToolBoxPluginControl GetControl()
         {

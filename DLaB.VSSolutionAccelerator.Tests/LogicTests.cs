@@ -146,11 +146,13 @@ namespace DLaB.VSSolutionAccelerator.Tests
         {
             using (var context = InitializeTest())
             {
-                TestTestProjectCreation(context,
+                var lines = TestTestProjectCreation(context,
                     ProjectInfo.Keys.PluginTests,
                     context.Info.PluginTestName,
                     "AssumptionExampleTests.cs",
                     "Abc.Xrm.Plugin.Tests");
+
+                Assert.That.NotExistsLineContaining(lines, ProjectInfo.Keys.Plugin + ".csproj", "Project reference should have been updated.");
             }
         }
 

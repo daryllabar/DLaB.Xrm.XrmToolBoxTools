@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using DLaB.Log;
 
 namespace DLaB.VSSolutionAccelerator.Logic
 {
@@ -97,7 +98,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 ProjectInfo.Keys.Test,
                 info.TestBaseProject,
                 "F62103E9-D25D-4F99-AABE-ECF348424366",
-                "v.4.6.2",
+                "v4.6.2",
                 info.SharedCommonProject);
             projects.Add(project.Key, project);
         }
@@ -111,6 +112,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 GetPluginAssemblyVersionForSdk(info),
                 info.SharedCommonProject);
             project.AddRegenKeyPostUpdateCommand(StrongNamePath);
+            project.SharedProjectsReferences.Add(projects[ProjectInfo.Keys.Common]);
             if (!info.IncludeExamplePlugins)
             {
                 project.FilesToRemove.AddRange(
@@ -134,7 +136,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 "3016D729-1A3B-43C0-AC2F-D4EF6A305FA6",
                 GetPluginAssemblyVersionForSdk(info),
                 info.SharedTestCoreProject);
-            
+
             if (!info.IncludeExamplePlugins)
             {
                 project.FilesToRemove.AddRange(
@@ -147,6 +149,9 @@ namespace DLaB.VSSolutionAccelerator.Logic
                         "LocalOrServerPluginTest.cs",
                     });
             }
+            project.ProjectsReferences.Add(projects[ProjectInfo.Keys.Plugin]);
+            project.ProjectsReferences.Add(projects[ProjectInfo.Keys.Test]);
+            project.SharedProjectsReferences.Add(projects[ProjectInfo.Keys.TestCore]);
             projects.Add(project.Key, project);
         }
 
@@ -159,6 +164,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 GetPluginAssemblyVersionForSdk(info),
                 info.SharedCommonProject);
             project.AddRegenKeyPostUpdateCommand(StrongNamePath);
+            project.SharedProjectsReferences.Add(projects[ProjectInfo.Keys.Common]);
             project.Files.First().Replacements.Add(
                 @"<Import Project=""..\Xyz.Xrm.WorkflowCore\Xyz.Xrm.WorkflowCore.projitems"" Label=""Shared"" />", 
                 $@"<Import Project=""..\{info.SharedCommonWorkflowProject}\{info.SharedCommonWorkflowProject}.projitems"" Label=""Shared"" />");
@@ -185,6 +191,9 @@ namespace DLaB.VSSolutionAccelerator.Logic
                         "WorkflowActivityExampleTests.cs"
                     });
             }
+            project.ProjectsReferences.Add(projects[ProjectInfo.Keys.Workflow]);
+            project.ProjectsReferences.Add(projects[ProjectInfo.Keys.Test]);
+            project.SharedProjectsReferences.Add(projects[ProjectInfo.Keys.TestCore]);
             projects.Add(project.Key, project);
         }
 
@@ -195,6 +204,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
 
         private ProjectInfo CreateDefaultProjectInfo(string key, string name, string originalId, string dotNetFramework, string sharedCommonProject)
         {
+            Logger.AddDetail($"Configuring Project {name} based on {key}.");
             var id = Guid.NewGuid();
             var project = new ProjectInfo
             {
@@ -232,6 +242,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
 
         private ProjectInfo CreateDefaultSharedProjectInfo(string key, string name, string originalId, string originalNamespace = null, string newNamespace = null)
         {
+            Logger.AddDetail($"Configuring Project {name} based on {key}.");
             originalNamespace = originalNamespace ?? key;
             newNamespace = newNamespace ?? name;
             var id = Guid.NewGuid();
@@ -269,6 +280,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
 
         public static void Execute(InitializeSolutionInfo info, string templateDirectory, string strongNamePath = null)
         {
+            Logger.AddDetail($"Starting to process solution '{info.SolutionPath}' using templates from '{templateDirectory}'");
             var logic = new Logic(info.SolutionPath, templateDirectory, strongNamePath);
             logic.Projects = logic.GetProjectInfos(info);
             foreach (var project in logic.Projects)

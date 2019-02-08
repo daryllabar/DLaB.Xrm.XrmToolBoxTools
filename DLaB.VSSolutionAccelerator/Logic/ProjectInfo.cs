@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters;
+using DLaB.Log;
 using Source.DLaB.Common;
 
 namespace DLaB.VSSolutionAccelerator.Logic
@@ -34,6 +35,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
         public ProjectType Type { get; set; }
         public List<ProjectFile> Files { get; set; }
         public List<ProjectInfo> SharedProjectsReferences { get; set; }
+        public List<ProjectInfo> ProjectsReferences { get; set; }
         public string NewDirectory { get; set; }
         public string SolutionProjectHeader => string.Format("Project(\"{0}\") = \"{1}\", \"{1}\\{1}.{2}\", \"{{{3}}}\"{4}EndProject", GetTypeId(), Name, GetProjectPostfix(), Id.ToString().ToUpper(), Environment.NewLine );
         public List<ProcessExecutorInfo> PostUpdateCommands { get; set; }
@@ -47,6 +49,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
             Files = new List<ProjectFile>();
             FilesToRemove = new List<string>();
             SharedProjectsReferences = new List<ProjectInfo>();
+            ProjectsReferences = new List<ProjectInfo>();
             PostUpdateCommands = new List<ProcessExecutorInfo>();
             PostUpdateCommandResults = new List<string>();
         }
@@ -120,6 +123,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
 
         public void CopyFromAndUpdate(string templateDirectory, string rootNamespace)
         {
+            Logger.AddDetail($"Creating project '{Path.Combine(NewDirectory, Name)}'.");
             Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory(Path.Combine(templateDirectory, Key), NewDirectory, true);
             DeleteFiles();
             RenameFiles();
@@ -136,6 +140,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 var path = Path.Combine(NewDirectory, file);
                 if (File.Exists(path))
                 {
+                    Logger.AddDetail($"Deleting unused file '{path}'.");
                     File.Delete(path);
                 }
             }
@@ -166,7 +171,10 @@ namespace DLaB.VSSolutionAccelerator.Logic
 
             foreach (var cmd in PostUpdateCommands)
             {
-                PostUpdateCommandResults.Add(ProcessExecutor.ExecuteCmd(cmd));
+                Logger.AddDetail($"Executing Command: \"{cmd.FileName}\" {cmd.Arguments}");
+                var result = ProcessExecutor.ExecuteCmd(cmd);
+                Logger.AddDetail(result);
+                PostUpdateCommandResults.Add(result);
             }
         }
 
@@ -222,6 +230,24 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 keyGroup.Lines.Add(openTag);
                 keyGroup.Lines.Add($"    <AssemblyOriginatorKeyFile>{Name}.Key.snk</AssemblyOriginatorKeyFile>");
                 keyGroup.Lines.Add(closeTag);
+            }
+            if (parser.ItemGroups.TryGetValue(ProjectFileParser.ItemGroupTypes.ProjectReference, out var references))
+            {
+                var newReferences = new List<string>();
+                foreach (var reference in references)
+                {
+                    var local = reference;
+                    foreach (var project in ProjectsReferences)
+                    {
+                        while (local.Contains(project.Key))
+                        {
+                            local = local.Replace(project.Key, project.Name);
+                        }
+                    }
+                    newReferences.Add(local);
+                }
+
+                parser.ItemGroups[ProjectFileParser.ItemGroupTypes.ProjectReference] = newReferences;
             }
             // ItemGroup references to the SDK might need to be updated...
             //   <Reference Include="Microsoft.Crm.Sdk.Proxy, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">

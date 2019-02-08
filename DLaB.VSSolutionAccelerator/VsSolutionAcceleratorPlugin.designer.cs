@@ -33,8 +33,11 @@
             this.ActionCmb = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ExecuteBttn = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.TxtOutput = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -43,14 +46,15 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.42857F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 600);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -60,10 +64,10 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.ExecuteBttn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(114, 200);
+            this.panel1.Location = new System.Drawing.Point(114, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(571, 200);
+            this.panel1.Size = new System.Drawing.Size(571, 100);
             this.panel1.TabIndex = 0;
             // 
             // ActionCmb
@@ -72,9 +76,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ActionCmb.FormattingEnabled = true;
             this.ActionCmb.Items.AddRange(new object[] {
-            "Add Accelerator Isoloation Libraries to my Solution",
+            "Add Accelerator Isolation Libraries to my Solution",
             "Add Plugin/Workflow Project to an Accelerated Solution"});
-            this.ActionCmb.Location = new System.Drawing.Point(67, 87);
+            this.ActionCmb.Location = new System.Drawing.Point(69, 36);
             this.ActionCmb.Name = "ActionCmb";
             this.ActionCmb.Size = new System.Drawing.Size(405, 21);
             this.ActionCmb.TabIndex = 2;
@@ -83,7 +87,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 90);
+            this.label1.Location = new System.Drawing.Point(5, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 1;
@@ -92,13 +96,36 @@
             // ExecuteBttn
             // 
             this.ExecuteBttn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExecuteBttn.Location = new System.Drawing.Point(478, 85);
+            this.ExecuteBttn.Location = new System.Drawing.Point(480, 34);
             this.ExecuteBttn.Name = "ExecuteBttn";
             this.ExecuteBttn.Size = new System.Drawing.Size(90, 23);
             this.ExecuteBttn.TabIndex = 0;
             this.ExecuteBttn.Text = "Execute";
             this.ExecuteBttn.UseVisualStyleBackColor = true;
             this.ExecuteBttn.Click += new System.EventHandler(this.ExecuteBttn_Click);
+            // 
+            // panel2
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.panel2, 3);
+            this.panel2.Controls.Add(this.TxtOutput);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 103);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(794, 494);
+            this.panel2.TabIndex = 1;
+            // 
+            // TxtOutput
+            // 
+            this.TxtOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtOutput.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtOutput.Location = new System.Drawing.Point(19, 4);
+            this.TxtOutput.Multiline = true;
+            this.TxtOutput.Name = "TxtOutput";
+            this.TxtOutput.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.TxtOutput.Size = new System.Drawing.Size(758, 490);
+            this.TxtOutput.TabIndex = 0;
             // 
             // VsSolutionAcceleratorPlugin
             // 
@@ -112,6 +139,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -123,5 +152,7 @@
         private System.Windows.Forms.ComboBox ActionCmb;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button ExecuteBttn;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox TxtOutput;
     }
 }

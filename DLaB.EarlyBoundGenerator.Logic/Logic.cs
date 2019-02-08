@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DLaB.EarlyBoundGenerator.Settings;
 using System.Speech.Synthesis;
+using DLaB.Log;
 using Source.DLaB.Common;
 
 namespace DLaB.EarlyBoundGenerator
@@ -99,7 +100,7 @@ namespace DLaB.EarlyBoundGenerator
                 }
             }
             UpdateCrmSvcUtilConfig(EarlyBoundGeneratorConfig);
-            UpdateStatus("Shelling out to CrmSrvUtil for creating " + creationType, "Executing \"" + p.StartInfo.FileName + "\" " + args);
+            Logger.Show("Shelling out to CrmSrvUtil for creating " + creationType, "Executing \"" + p.StartInfo.FileName + "\" " + args);
             p.Start();
             var consoleOutput = new StringBuilder();
             while (!p.StandardOutput.EndOfStream)
@@ -108,11 +109,11 @@ namespace DLaB.EarlyBoundGenerator
                 if (!string.IsNullOrWhiteSpace(line) && line.Contains("[****") && line.Contains("****]"))
                 {
                     line = line.SubstringByString("[****", "****]");
-                    UpdateStatus(line);
+                    Logger.Show(line);
                 }
                 else
                 {
-                    UpdateDetail(line);
+                    Logger.AddDetail(line);
                 }
                 consoleOutput.AppendLine(line);
             }
@@ -141,13 +142,13 @@ namespace DLaB.EarlyBoundGenerator
             }
             catch (Exception ex)
             {
-                UpdateDetail("Unable to set IsReadOnly Flag to false " + filePath + Environment.NewLine + ex);
+                Logger.AddDetail("Unable to set IsReadOnly Flag to false " + filePath + Environment.NewLine + ex);
                 return false;
             }
 
             if (!File.GetAttributes(filePath).HasFlag(FileAttributes.ReadOnly)) { return true; }
 
-            UpdateDetail("File \"" + filePath + "\" is read only, please checkout the file before running");
+            Logger.AddDetail("File \"" + filePath + "\" is read only, please checkout the file before running");
             return false;
         }
 
@@ -360,7 +361,7 @@ namespace DLaB.EarlyBoundGenerator
             {
                 if (consoleOutput.Contains("Unable to Login to Dynamics CRM"))
                 {
-                    UpdateStatus("Unable to login.  Attempting to login using interactive mode.");
+                    Logger.Show("Unable to login.  Attempting to login using interactive mode.");
                     _useInteractiveMode = true;
                     Create(creationType);
                     return;
@@ -400,11 +401,11 @@ namespace DLaB.EarlyBoundGenerator
             }
             catch(Exception ex)
             {
-                UpdateStatus("Error", ex.ToString());
+                Logger.Show("Error", ex.ToString());
                 Speak(creationType + " Errored", speakResult);
             }
 
-            UpdateStatus("Error", "Output file was not updated or not found!  " + filePath);
+            Logger.Show("Error", "Output file was not updated or not found!  " + filePath);
 
         }
 
@@ -420,60 +421,62 @@ namespace DLaB.EarlyBoundGenerator
 
         #region UpdateStatus
 
-        public delegate void LogHandler(LogMessageInfo info);
-        public event LogHandler OnLog;
+        //public delegate void LogHandler(LogMessageInfo info);
+        //public event LogHandler OnLog;
 
-        private void UpdateDetail(string message)
-        {
-            UpdateStatus(new LogMessageInfo(message));
-        }
+        //private void UpdateDetail(string message)
+        //{
+        //    Update(new LogMessageInfo(null, message));
+        //}
 
-        private void UpdateStatus(string status)
-        {
-            UpdateStatus(new LogMessageInfo(status, status));
-        }
+        //private void Update(string summary)
+        //{
+        //    Update(new LogMessageInfo(summary, summary));
+        //}
 
-        private void UpdateStatus(string summary, string detail)
-        {
-            UpdateStatus(new LogMessageInfo(summary, detail));
-        }
+        //private void Update(string summary, string detail)
+        //{
+        //    Update(new LogMessageInfo(summary, detail));
+        //}
 
-        private void UpdateStatus(LogMessageInfo info)
-        {
-            OnLog?.Invoke(info);
-        }
+        //private void Update(LogMessageInfo info)
+        //{
+        //    OnLog?.Invoke(info);
+        //}
 
-        public class LogMessageInfo
-        {
-            public string Summary { get; set; }
-            public string Detail { get; set; }
+        //public class LogMessageInfo
+        //{
+        //    public string ModalMessage { get; set; }
+        //    public string Detail { get; set; }
 
-            public LogMessageInfo(string message) : this(null, message) { }
-            public LogMessageInfo(string messageFormat, params object[] args) : this(string.Format(messageFormat, args)) { }
+        //    public LogMessageInfo(string modalMessage, string detail)
+        //    {
+        //        // Since the format and the string, string constructors have identical looking signatures, check to ensure that an "object[] args" wasn't intended
+        //        var conditionalFormat = ConditionallyFormat(modalMessage, detail);
+        //        if (conditionalFormat != null)
+        //        {
+        //            modalMessage = null;
+        //            detail = conditionalFormat;
+        //        }
+        //        ModalMessage = modalMessage;
+        //        Detail = detail;
+        //    }
 
-            public LogMessageInfo(string summary, string detail)
-            {
-                // Since the format and the string, string constructors have identical looking signatures, check to ensure that an "object[] args" wasn't intended
-                var conditionalFormat = ConditionallyFormat(summary, detail);
-                if (conditionalFormat != null)
-                {
-                    summary = null;
-                    detail = conditionalFormat;
-                }
-                Summary = summary;
-                Detail = detail;
-            }
+        //    private string ConditionallyFormat(string format, string value)
+        //    {
+        //        if (!string.IsNullOrWhiteSpace(format) && format.Contains("{0}"))
+        //        {
+        //            return string.Format(format, value);
+        //        }
 
-            private string ConditionallyFormat(string format, string value)
-            {
-                if (!string.IsNullOrWhiteSpace(format) && format.Contains("{0}"))
-                {
-                    return string.Format(format, value);
-                }
+        //        return null;
+        //    }
+        //}
 
-                return null;
-            }
-        }
+        //public class LogMessageInfoFormat : LogMessageInfo
+        //{
+        //    public LogMessageInfoFormat(string messageFormat, params object[] args) : base(null, string.Format(messageFormat, args)) { }
+        //}
 
         #endregion // UpdateStatus
     }

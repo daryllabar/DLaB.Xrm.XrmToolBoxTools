@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using DLaB.EarlyBoundGenerator.Settings;
+using DLaB.Log;
 using DLaB.XrmToolBoxCommon;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Client;
@@ -158,7 +159,7 @@ namespace DLaB.EarlyBoundGenerator
             var isValid = true;
             if (Settings.ServiceContextName == Settings.Namespace)
             {
-                MessageBox.Show("The Service Context can not be the same name as the Namespace!", @"Service Context / Namespace Conflict!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"The Service Context can not be the same name as the Namespace!", @"Service Context / Namespace Conflict!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 isValid = false;
             }
 
@@ -189,8 +190,7 @@ namespace DLaB.EarlyBoundGenerator
                     var settings = (EarlyBoundGeneratorConfig) e.Argument;
 
                     var generator = new Logic(settings);
-                    void OnLog(Logic.LogMessageInfo m) => w.ReportProgress(0, m);
-                    generator.OnLog += OnLog;
+                    Logger.WireUpToReportProgress(w);
                     try
                     {
                         switch (creationType)
@@ -226,46 +226,19 @@ namespace DLaB.EarlyBoundGenerator
                     }
                     finally
                     {
-                        generator.OnLog -= OnLog;
+                        Logger.UnwireFromReportProgress(w);
                     }
                 })
             {
                 AsyncArgument = Settings,
                 PostWorkCallBack = e => // Creation has finished.  Cleanup
                 {
-                    if (e.Result is Logic.LogMessageInfo result)
-                    {
-                        TxtOutput.AppendText(result.Detail + Environment.NewLine);
-                    }
+                    Logger.DisplayLog(e, TxtOutput);
                     EnableForm(true);
                 },
                 ProgressChanged = e => // Logic wants to display an update
                 {
-                    string summary;
-                    if (!(e.UserState is Logic.LogMessageInfo result))
-                    {
-                        summary = e.UserState.ToString();
-                    }
-                    else
-                    {
-                        if (result.Detail != null)
-                        {
-                            TxtOutput.AppendText(result.Detail + Environment.NewLine);
-                        }
-                        summary = result.Summary;
-                    }
-                    // Status Update
-                    if (e.ProgressPercentage == int.MinValue)
-                    {
-                        TxtOutput.AppendText(e.UserState + Environment.NewLine);
-                    }
-                    else
-                    {
-                        if (summary != null)
-                        {
-                            SetWorkingMessage(summary);
-                        }
-                    }
+                    Logger.DisplayLog(e, SetWorkingMessage, TxtOutput);
                 }
             });
         }

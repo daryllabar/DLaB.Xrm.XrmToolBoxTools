@@ -54,8 +54,9 @@ namespace DLaB.VSSolutionAccelerator.Logic
             public const string Analyzer = "Analyzer";
             public const string Compile = "Compile";
             public const string Content = "Content";
-            public const string Reference = "Reference";
+            public const string ProjectReference = "ProjectReference";
             public const string None = "None";
+            public const string Reference = "Reference";
         }
 
         public States State { get; set; }
