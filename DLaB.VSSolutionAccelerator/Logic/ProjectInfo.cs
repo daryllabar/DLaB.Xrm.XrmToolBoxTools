@@ -194,6 +194,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
             {
                 case ProjectType.CsProj:
                     RenameRootProjectFile($"{Key}.csproj", $"{Name}.csproj");
+                    RenameRootProjectFile($"{Key}.Key.snk", $"{Name}.Key.snk");
 
                     break;
                 case ProjectType.SharedProj:
@@ -271,11 +272,15 @@ namespace DLaB.VSSolutionAccelerator.Logic
         private void RenameRootProjectFile(string oldName, string newName)
         {
             var newPath = Path.Combine(NewDirectory, newName);
+            var oldPath = Path.Combine(NewDirectory, oldName);
             if (File.Exists(newPath))
             {
                 File.Delete(newPath);
             }
-            File.Move(Path.Combine(NewDirectory, oldName), newPath);
+            if (File.Exists(oldPath))
+            {
+                File.Move(oldPath, newPath);
+            }
         }
 
         public void AddRegenKeyPostUpdateCommand(string strongNamePath)

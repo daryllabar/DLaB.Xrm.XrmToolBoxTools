@@ -302,7 +302,7 @@ ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Workflow" "$(TargetDir)Pl
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
 ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Workflow.Tests" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm.Workflow.Tests" /MIR /NJS /NJH /XD bin obj
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Plugin" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm.Plugin" /MIR /NJS /NJH /XD bin obj App_Packages
+ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Plugin" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm.Plugin" /MIR /NJS /NJH /XD bin obj
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
 ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Plugin.Tests" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm.Plugin.Tests" /MIR /NJS /NJH /XD bin obj
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25

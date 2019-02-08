@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using DLaB.Log;
+using Source.DLaB.Common;
 
 namespace DLaB.VSSolutionAccelerator.Logic
 {
@@ -288,38 +289,23 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 logic.CreateProject(project.Key, info);
             }
 
-            // Add the Code Generation Files and projects to the solution, and VS install folder
-            // If ConfigureXrmUnitTest
-            // - Create SharedTestProject and SharedTestCoreProject
-            // - Replace namespace
-            // - Add project to ToBeAddedToSolution
-            // If CreatePlugin
-            // - Create Project
-            // - Replace Namespace
-            // - Add references to shared Common Project
-            // - Add project to ToBeAddedToSolution
-            // - If ConfigureXrmUnitTest
-            // - - Create Test Project
-            // - - Replace namespace
-            // - - Add project to ToBeAddedToSolution
-            // - - Update Reference to Test plugin
-            // If CreateWorkflow
-            // - Create Project
-            // - Replace Namespace
-            // - Add references to shared Common Project and Workflow Project
-            // - Add project to ToBeAddedToSolution
-            // - If ConfigureXrmUnitTest
-            // - - Create Test Project
-            // - - Replace namespace
-            // - - Add project to ToBeAddedToSolution
-            // - - Update Reference to Test plugin
-            // Update the solution with the ToBeAddedToSolution Projects
+            // If EarlyBound and keep examples, potentially Update CrmContext Name
             // If EarlyBound
             // - Move the Settings File to the Code Generation Folder add to clipboard, and Update Paths and Open EBG
 
             IEnumerable<string> solution = File.ReadAllLines(logic.SolutionPath);
             solution = SolutionFileEditor.AddMissingProjects(solution, logic.Projects.Values);
             File.WriteAllLines(logic.SolutionPath, solution);
+            logic.ExecuteNuGetRestoreForSolution();
+        }
+
+        private void ExecuteNuGetRestoreForSolution()
+        {
+            var cmd = new ProcessExecutorInfo(NuGetPath, $"restore \"{SolutionPath}\" -NonInteractive");
+            Logger.Show("Restoring Nuget for the solution.");
+            Logger.AddDetail(cmd.FileName + " " + cmd.Arguments);
+            var results = ProcessExecutor.ExecuteCmd(cmd);
+            Logger.Show(results);
         }
 
         public void CreateProject(string projectKey, InitializeSolutionInfo info)
