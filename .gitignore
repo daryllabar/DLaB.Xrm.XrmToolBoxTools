@@ -63,6 +63,8 @@ artifacts/
 *.tmp
 *.tmp_proj
 *.log
+!DLaB.Log/DLaB.Log.projitems
+!DLaB.Log/DLaB.Log.shproj
 *.vspscc
 *.vssscc
 .builds
@@ -213,6 +215,7 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+
 /DLaB.AttributeManager/App_Packages/DLaB.Common.Sources.1.0.4.11
 /DLaB.CrmSvcUtilExtensions/App_Packages/DLaB.Common.Sources.1.0.4.11
 /DLaB.EarlyBoundGenerator/App_Packages/DLaB.Common.Sources.1.0.4.11
