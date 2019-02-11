@@ -56,6 +56,7 @@ Global
 		DLaB.Log\DLaB.Log.projitems*{7de85f1a-794c-4e95-9e23-fa29dc110aba}*SharedItemsImports = 4
 		DLaB.Xrm.Entities\DLaB.Xrm.Entities.projitems*{7de85f1a-794c-4e95-9e23-fa29dc110aba}*SharedItemsImports = 4
 		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{7de85f1a-794c-4e95-9e23-fa29dc110aba}*SharedItemsImports = 4
+		DLaB.EarlyBoundGenerator.Logic\DLaB.EarlyBoundGenerator.Logic.projitems*{8ee4091f-3d10-433d-a59a-ee2f070fa22f}*SharedItemsImports = 4
 		DLaB.Log\DLaB.Log.projitems*{8ee4091f-3d10-433d-a59a-ee2f070fa22f}*SharedItemsImports = 4
 		DLaB.Xrm.Entities\DLaB.Xrm.Entities.projitems*{8ee4091f-3d10-433d-a59a-ee2f070fa22f}*SharedItemsImports = 4
 		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{8ee4091f-3d10-433d-a59a-ee2f070fa22f}*SharedItemsImports = 4

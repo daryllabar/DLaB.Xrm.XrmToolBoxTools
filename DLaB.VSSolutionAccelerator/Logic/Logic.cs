@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 using DLaB.Log;
 using Source.DLaB.Common;
 
@@ -288,15 +289,31 @@ namespace DLaB.VSSolutionAccelerator.Logic
             {
                 logic.CreateProject(project.Key, info);
             }
-
-            // If EarlyBound and keep examples, potentially Update CrmContext Name
-            // If EarlyBound
-            // - Move the Settings File to the Code Generation Folder add to clipboard, and Update Paths and Open EBG
-
             IEnumerable<string> solution = File.ReadAllLines(logic.SolutionPath);
             solution = SolutionFileEditor.AddMissingProjects(solution, logic.Projects.Values);
             File.WriteAllLines(logic.SolutionPath, solution);
             logic.ExecuteNuGetRestoreForSolution();
+            UpdateEarlyBoundConfigOutputPaths(info);
+        }
+
+        private static void UpdateEarlyBoundConfigOutputPaths(InitializeSolutionInfo info)
+        {
+            if (!info.ConfigureEarlyBound)
+            {
+                return;
+            }
+            var settings = EarlyBoundGenerator.Settings.EarlyBoundGeneratorConfig.Load(info.EarlyBoundSettingsPath);
+            var settingsDirectory = Path.Combine(info.SolutionPath, info.SharedCommonProject);
+            settings.ActionOutPath = Path.Combine(settingsDirectory, settings.ExtensionConfig.CreateOneFilePerAction ? @"Actions" : @"Actions.cs");
+            settings.EntityOutPath = Path.Combine(settingsDirectory, settings.ExtensionConfig.CreateOneFilePerEntity ? @"Entities" : @"Entities.cs");
+            settings.OptionSetOutPath = Path.Combine(settingsDirectory, settings.ExtensionConfig.CreateOneFilePerOptionSet ? @"OptionSets" : @"OptionSets.cs");
+            var settingsPath = Path.Combine(settingsDirectory, "DLaB.EBG." + info.RootNamespace + ".Settings");
+            settings.Save(Path.Combine(settingsDirectory, settingsPath));
+            Clipboard.SetText(settingsPath);
+            Logger.AddDetail(@"Now you should generate your Early Bound Entities for your Org!");
+            Logger.AddDetail($@"Open the Early Bound Generator XrmToolBox plugin, connect to your org, and then set the Settings Path to ""{settingsPath}"" (which has been already been copied to your clipboard for your convenience) and generate your entities." + Environment.NewLine);
+            Logger.AddDetail($@"These settings should be checked into TFS and should be the settings used by all individuals on your project plugin for generating entities!");
+            MessageBox.Show(@"Please refer to the instructions in the text box for generating your early bound entities.", @"Generate Early Bound Entities!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
         }
 
         private void ExecuteNuGetRestoreForSolution()
