@@ -101,7 +101,6 @@ namespace DLaB.VSSolutionAccelerator.Tests
         {
             var project = GetExampleProject();
             var parser = new ProjectFileParser(project);
-            Assert.AreEqual("", parser.PrePropertyGroups[0]);
             Assert.AreEqual(3, parser.PrePropertyGroups.Count);
             Assert.AreEqual(5, parser.PropertyGroups.Count);
             Assert.AreEqual("Xyz.Xrm.PluginAssembly",parser.AssemblyName);
