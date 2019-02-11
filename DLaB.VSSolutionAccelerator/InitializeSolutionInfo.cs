@@ -11,7 +11,6 @@ namespace DLaB.VSSolutionAccelerator
         public string RootNamespace { get; set; }
         public NuGetPackage XrmPackage { get; set; }
         public bool ConfigureEarlyBound { get; set; }
-        public string EarlyBoundSettingsPath { get; set; }
         public string SharedCommonProject { get; set; }
         public string SharedCommonWorkflowProject { get; set; }
         public bool ConfigureXrmUnitTest { get; set; }
@@ -82,17 +81,11 @@ namespace DLaB.VSSolutionAccelerator
         {
             pages.Add(GenericPage.Create(new ConditionalYesNoQuestionInfo("Do you want to use the Early Bound Generator To Create Early Bound Entities?")
             {
-                Yes = new PathQuestionInfo("What is the path to the Early Bound Generator Settings.xml file?")
-                {
-                    Filter = "EBG Setting File (*.xml)|*.xml",
-                    DefaultResponse = Path.GetFullPath(Path.Combine(settingsPath, "DLaB.EarlyBoundGenerator.DefaultSettings.xml")),
-                    Description = "The selected settings file will be moved to the folder of the solution, and configured to place the output of the files in the appropriate folders."
-                                  + Environment.NewLine
-                                  + "The Early Bound Generator will also be triggered upon completion to generated the Early Bound classes."
-                },
-                Description = "Configures the output paths of the Early Bound Generator to generate files in the appropriate shared project within the solution."
+                Description = "If yes, generates the default Early Bound Generator Settings, but Configures the output paths of the entities/option sets/actions to generate files in the appropriate shared project within the solution."
                               + Environment.NewLine
-                              + "This requires the XrmToolBox Early Bound Generator to be installed."
+                              + "The Early Bound Generator XrmToolBox plugin must be installed to generate the entities." 
+                              + Environment.NewLine
+                              + "The Early Bound Generator will also be triggered upon completion to generate the Early Bound classes."
             }));
         }
 
@@ -224,10 +217,6 @@ namespace DLaB.VSSolutionAccelerator
         {
             var list = (List<string>) yesNoList;
             ConfigureEarlyBound = list[0] == "Y";
-            if (ConfigureEarlyBound)
-            {
-                EarlyBoundSettingsPath = list[1];
-            }
         }
 
         private void InitializeXrmUnitTest(object yesNoList)

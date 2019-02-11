@@ -289,6 +289,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
             Assert.IsTrue(File.Exists(filePath), filePath + " was not created!");
             var lines = File.ReadAllLines(filePath);
             Assert.That.ExistsLineContaining(lines, $"namespace {newNameSpace}", $"The namespace should have been updated to {newNameSpace}!");
+            Assert.That.NotExistsLineContaining(lines, "using Xyz.Xrm", "Using Namespaces should have been updated!");
         }
 
         private static string[] TestPluginProjectCreation(InitializeSolutionTestInfo context, string key, string newName, string arbitraryFile, string newNameSpace = null)
@@ -313,7 +314,6 @@ namespace DLaB.VSSolutionAccelerator.Tests
 
             // Imports
             Assert.That.ExistsLineContaining(lines, @"Project=""..\Abc.Xrm.TestCore\Abc.Xrm.TestCore.projitems"" Label=""Shared"" />", $"The shared test Project should have been updated!");
-
             return lines;
         }
 

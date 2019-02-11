@@ -86,7 +86,7 @@ namespace DLaB.VSSolutionAccelerator
                             VersionText = "9.0.2.5",
                             XrmToolingClient = false
                         },
-                        new List<string> {"Y", "C:\\Users\\daryl.labar\\Documents\\GitHub\\DLaB.Xrm.XrmToolBoxTools\\DLaB.VSSolutionAccelerator\\bin\\Debug\\Settings\\DLaB.EarlyBoundGenerator.DefaultSettings.xmlC:\\Users\\daryl.labar\\Documents\\GitHub\\DLaB.Xrm.XrmToolBoxTools\\DLaB.VSSolutionAccelerator\\bin\\Debug\\Settings\\DLaB.EarlyBoundGenerator.DefaultSettings.xml"},
+                        new List<string> {"Y"},
                         "Abc.Xrm",
                         "Abc.Xrm.WorkflowCore",
                         new List<string> {"Y", "Abc.Xrm.Test", "Abc.Xrm.TestCore" },

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Source.DLaB.Common;
 
 namespace DLaB.VSSolutionAccelerator.Logic
 {
@@ -10,11 +9,13 @@ namespace DLaB.VSSolutionAccelerator.Logic
         public string Name { get; set; }
         public Dictionary<string, string> Replacements { get; set; }
         public List<string> Removals { get; set; }
+        public List<string> RemovalsToSkip { get; set; }
 
         public ProjectFile()
         {
             Replacements = new Dictionary<string, string>();
             Removals = new List<string>();
+            RemovalsToSkip = new List<string>();
         }
 
         public void Update(string newDirectory)
@@ -24,7 +25,8 @@ namespace DLaB.VSSolutionAccelerator.Logic
             foreach (var line in File.ReadLines(filePath))
             {
                 var newLine = line;
-                if (Removals.Any(r => newLine.Contains(r)))
+                if (Removals.Any(r => newLine.Contains(r)) 
+                    && !RemovalsToSkip.Any(s => newLine.Contains(s)))
                 {
                     continue;
                 }

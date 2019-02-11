@@ -159,8 +159,8 @@ namespace DLaB.VSSolutionAccelerator.Logic
             foreach (var file in Directory.EnumerateFiles(NewDirectory, "*.cs", SearchOption.AllDirectories))
             {
                 var newLines = File.ReadAllLines(file)
-                    .Select(line => line.Contains("namespace Xyz.Xrm")
-                        ? line.Replace("namespace Xyz.Xrm", "namespace " + rootNamespace)
+                    .Select(line => line.Contains("namespace Xyz.Xrm") || line.Contains("using Xyz.Xrm")
+                        ? line.Replace("namespace Xyz.Xrm", "namespace " + rootNamespace).Replace("using Xyz.Xrm", "using " + rootNamespace)
                         : line).ToList();
                 File.WriteAllLines(file, newLines);
             }
@@ -258,10 +258,10 @@ namespace DLaB.VSSolutionAccelerator.Logic
             {
                 parser.ItemGroups.Remove(ProjectFileParser.ItemGroupTypes.Analyzer);
             }
-            if (parser.ItemGroups.ContainsKey(ProjectFileParser.ItemGroupTypes.Content))
-            {
-                parser.ItemGroups.Remove(ProjectFileParser.ItemGroupTypes.Content);
-            }
+            //if (parser.ItemGroups.ContainsKey(ProjectFileParser.ItemGroupTypes.Content))
+            //{
+            //    parser.ItemGroups.Remove(ProjectFileParser.ItemGroupTypes.Content);
+            //}
             if (parser.ItemGroups.TryGetValue(ProjectFileParser.ItemGroupTypes.Compile, out var compileGroup))
             {
                 compileGroup.RemoveAll(l => FilesToRemove.Any(f => l.Contains($@"<Compile Include=""{f}"" />")));

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using DLaB.Log;
 using Source.DLaB.Common;
@@ -68,7 +69,9 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 info.SharedCommonProject,
                 "b22b3bc6-0ac6-4cdd-a118-16e318818ad7");
 
-            project.Files.First(f => f.Name.EndsWith(".projitems")).Removals.Add("$(MSBuildThisFileDirectory)Entities");
+            var projItems = project.Files.First(f => f.Name.EndsWith(".projitems"));
+            projItems.Removals.Add("$(MSBuildThisFileDirectory)Entities");
+            projItems.RemovalsToSkip.Add(@"$(MSBuildThisFileDirectory)Entities\Actions\xyz");
             projects.Add(project.Key, project);
         }
 
@@ -91,6 +94,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 "8f91efc7-351b-4802-99aa-6c6f16110505", 
                 ProjectInfo.Keys.Test,
                 info.TestBaseProject);
+
             projects.Add(project.Key, project);
         }
 
@@ -102,6 +106,14 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 "F62103E9-D25D-4F99-AABE-ECF348424366",
                 "v4.6.2",
                 info.SharedCommonProject);
+            project.Files.Add(new ProjectFile
+            {
+                Name = @"Assumptions\Entity Xml\Product_Install.xml",
+                Replacements = new Dictionary<string, string>
+                {
+                    {"Xyz.Xrm", info.RootNamespace}
+                }
+            });
             projects.Add(project.Key, project);
         }
 
@@ -302,18 +314,47 @@ namespace DLaB.VSSolutionAccelerator.Logic
             {
                 return;
             }
-            var settings = EarlyBoundGenerator.Settings.EarlyBoundGeneratorConfig.Load(info.EarlyBoundSettingsPath);
-            var settingsDirectory = Path.Combine(info.SolutionPath, info.SharedCommonProject);
-            settings.ActionOutPath = Path.Combine(settingsDirectory, settings.ExtensionConfig.CreateOneFilePerAction ? @"Actions" : @"Actions.cs");
-            settings.EntityOutPath = Path.Combine(settingsDirectory, settings.ExtensionConfig.CreateOneFilePerEntity ? @"Entities" : @"Entities.cs");
-            settings.OptionSetOutPath = Path.Combine(settingsDirectory, settings.ExtensionConfig.CreateOneFilePerOptionSet ? @"OptionSets" : @"OptionSets.cs");
-            var settingsPath = Path.Combine(settingsDirectory, "DLaB.EBG." + info.RootNamespace + ".Settings");
+            var settings = EarlyBoundGenerator.Settings.EarlyBoundGeneratorConfig.GetDefault();
+            var settingsDirectory = Path.Combine(Path.GetDirectoryName(info.SolutionPath)?? "", info.SharedCommonProject, "Entities");
+            // ReSharper disable StringLiteralTypo
+            settings.ExtensionConfig.ActionsToSkip = "AcceptProposedBooking|AcceptTeamRecommendation|AddInvoiceLineDetails|applyworktemplate|applyworktemplateforresources|ApprovalStatusApprove|ApprovalStatusReject|AssignGenericResource|AutoGenerateProjectTeam|batchentityCUD|BookingResource|BookingResourceRequirement|BulkCreatePredecessorsForTask|BulkDeletePredecessorsForTask|CancelBookings|CloseAllOpportunityQuotes|CloseQuoteAsLost|CloseQuoteAsWon|CompleteResourceRequest|CopyProject|CopyRelatedProjectEntitiesFromTemplate|CopyWbsToProject|CorrectInvoice|CreateContractLineDetailsFromEstimate|CreateContractSpecificPriceList|createinvoicefrominvoiceschedule|CreateQuoteFromOpportunity|CreateQuoteLineDetailsFromEstimate|CreateQuoteSpecificPriceList|createrequestfromrequirement|CreateSharepointDocumentLocation|CreateTaskBasedEstimatesForProject|CreateTemplateFromProject|CreateEstimateLines|CreateEstimatesForProjectTask|CreateExtensionRequirement|DeleteEstimateLines|DeleteEstimatesForProjectTask|EnableSharePoint|EnableLinkedInDataValidation|ExpenseApproveAction|ExpenseEntriesApprove|ExpenseEntriesPendingApproval|ExpenseEntriesRecall|ExpenseEntriesReject|ExpenseEntriesSubmit|ExpenseRejectAction|ExpenseSubmitAction|ExportActual|FetchProjectCalendarWorkHours|FieldServiceSystemAction|FulfillResourceDemand|GDPROptoutContact|GDPROptoutLead|GDPROptoutUser|GenerateContractLineInvoiceSchedule|GenerateContractLineScheduleOfValues|GenerateQuoteLineScheduleOfValues|GenerateQuoteLineInvoiceSchedule|GetACIMarsConnectorStatus|GetDocumentManagementSettings|GetDocumentStorePath|GetOfficeGroupForEntity|GetProjectMapForContractLine|GetProjectMapForQuoteLine|GetProjectTaskCategories|GetResourceAvailability|GetResourceDemandTimeLine|GetRIProvisioningStatus|GetRITenantEndpoint|GetBookingDetailsByResource|GetCollectionData|GetContractLineChargeability|GetDataForContractPerformance|GetDataForRadialGauge|GetGenericResourceDetails|GetLegalAcceptanceStatus|GetMyChangedSkills|GetNotesAnalysis|GetPrice|GetProcessNotes|GetProductLine|GetProductLines|GetProjectCoparticipation|GetProjectCurrencies|GetProjectDetails|GetProjects|GetProjectsForContract|GetProjectsForQuote|GetQuoteLineChargeability|GetRecordUsers|GetResourceAvailabilitySummary|GetResourceBookingByProject|GetResourceBookingDetails|GetResourceBookingFormParameters|GetResourcePopupDetails|GetResources|GetSIPackageStatus|GetSummaryBookings|GetTalkingPoints|GetTimelineData|GetTransactionUnitPrices|GetUserTimeZoneName|IndentWBSTask|InvoicePaid|InvoiceRecalculate|InvokeServiceStoredProc|IsLinkedInDataValidationEnabled|IsProjectTemplatesView|JoinProjectTeam|LoadFactTableEstimate|LogFindWorkEvent|MarketingListMetadataUpdate|MarketingMetadataUpdate|MarkIntegrationJobAsFailedAsync|MoveProject|MoveDownWBSTask|MoveUpWBSTask|MSProject_ExportToProject|MSProject_LinkToProject|MSProject_PublishToExistingProject|MSProject_ReadFromExistingProject|MSProject_ReadProjectTeamMembers|MSProject_UnlinkFromProject|NewInvoiceContract|OutdentWBSTask|PerformNotesAnalysisAction|PostInvoice|PostJournal|ProjectTeamMemberSignupprocessaccept|ProjectTeamMemberSignUpProcess|ProjectTeamUpdateMembershipStatus|ProvisionSharePointDocumentLibraries|QueryExchange|ReadEstimateLines|RecommendWork|RefreshBusinessProcessStage|RejectProposedBooking|RemoveMarketingListMembersByIds|ResAssignResourcesForTask|ResGetResourceDetail|ResourceAssignmentDetailUpdate|FpsAction|GeocodeAddress|RetrieveDistanceMatrix|RetrieveResourceAvailability|ResourceReservationCancel|ResourceSubstitution|ResourceUtilization|ResourceUtilizationChart|RetrieveKPIvaluesfromDCI|RetrieveTypeValuesFromDCI|SaveProjectLineTasks|SetFeatureStatus|SetSharePointDocumentStatus|SetTeamsDocumentStatus|SetDefaultRole|SetLegalAcceptanceStatus|SetTalkingPointLikedStatus|StartRIProvisioning|SubmitCategoriesAndPriceLists|SubmitRolesAndPriceLists|TimeEntriesApprove|TimeEntriesCopyPaste|TimeEntriesPaste|TimeEntriesPendingApproval|TimeEntriesRecall|TimeEntriesReject|TimeEntriesSubmit|TrackExchangeActivity|Updatefeatureconfig|updateprojecttask|updateremainingresourcerequirement|UpdateRITenantInfo|UpdateAllEstimatesForProject|UpdateChangedSkills|UpdateEstimateLineDetails|UpdateEstimateLines|UpgradeTelemetry|ValidateFixedPriceLineTotals|IsSharePointEnabled";
+            // ReSharper restore StringLiteralTypo
+            settings.ExtensionConfig.CreateOneFilePerAction = true;
+            settings.ExtensionConfig.GenerateActionAttributeNameConsts = true;
+            settings.ActionOutPath = settings.ExtensionConfig.CreateOneFilePerAction ? @"Actions" : @"Actions.cs";
+            settings.ExtensionConfig.CreateOneFilePerEntity = true;
+            settings.ExtensionConfig.GenerateEnumProperties = true;
+            settings.ExtensionConfig.GenerateAttributeNameConsts = true;
+            settings.ExtensionConfig.EntitiesWhitelist = "account|businessunit|competitor|contact|lead|product|site|systemuser";
+            settings.EntityOutPath = settings.ExtensionConfig.CreateOneFilePerEntity ? @"Entities" : @"Entities.cs";
+            settings.ExtensionConfig.CreateOneFilePerOptionSet = true;
+            settings.OptionSetOutPath = settings.ExtensionConfig.CreateOneFilePerOptionSet ? @"OptionSets" : @"OptionSets.cs";
+            settings.Namespace = $"{info.SharedCommonProject}.Entities";
+            settings.ServiceContextName = "CrmContext";
+            var settingsPath = Path.Combine(settingsDirectory, "EBG." + info.RootNamespace + ".Settings.xml");
+            Directory.CreateDirectory(Path.GetDirectoryName(settingsPath)??"");
             settings.Save(Path.Combine(settingsDirectory, settingsPath));
-            Clipboard.SetText(settingsPath);
+            RunCopyToClipboard(settingsPath);
             Logger.AddDetail(@"Now you should generate your Early Bound Entities for your Org!");
             Logger.AddDetail($@"Open the Early Bound Generator XrmToolBox plugin, connect to your org, and then set the Settings Path to ""{settingsPath}"" (which has been already been copied to your clipboard for your convenience) and generate your entities." + Environment.NewLine);
             Logger.AddDetail($@"These settings should be checked into TFS and should be the settings used by all individuals on your project plugin for generating entities!");
-            MessageBox.Show(@"Please refer to the instructions in the text box for generating your early bound entities.", @"Generate Early Bound Entities!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            MessageBox.Show(@"Please refer to the instructions in the text box for generating your early bound entities.", @"Generate Early Bound Entities!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        /// <summary>
+        /// Work around for this error: Current thread must be set to single thread apartment (STA) mode before OLE calls can be made. Ensure that your Main function has STAThreadAttribute marked on it.
+        /// </summary>
+        /// <param name="text"></param>
+        private static void RunCopyToClipboard(string text)
+        {
+            var thread = new Thread(param => { CopyToClipboard((string)param); });
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start(text);
+        }
+
+        private static void CopyToClipboard(string text)
+        {
+            Clipboard.SetText(text);
         }
 
         private void ExecuteNuGetRestoreForSolution()

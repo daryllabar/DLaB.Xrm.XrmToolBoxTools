@@ -300,6 +300,8 @@ ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.WorkflowCore" "$(TargetDi
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
 ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm" /MIR /NJS /NJH /XD Entities
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
+ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm\Entities\Actions" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm\Entities\Actions" /MIR /NJS /NJH /XF Actions.cs
+if %25errorlevel%25 GTR 4 exit %25errorlevel%25
 ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Workflow" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm.Workflow" /MIR /NJS /NJH
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
 ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Workflow.Tests" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm.Workflow.Tests" /MIR /NJS /NJH /XD bin obj
