@@ -1,29 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using DLaB.VSSolutionAccelerator.Wizard;
 
 namespace DLaB.VSSolutionAccelerator
 {
-    public class InitializeSolutionInfo
+    public class InitializeSolutionInfo : SolutionEditorInfo
     {
-        public string SolutionPath { get; set; }
-        public string RootNamespace { get; set; }
+        public bool CreateSolution { get; set; }
         public NuGetPackage XrmPackage { get; set; }
         public bool ConfigureEarlyBound { get; set; }
-        public string SharedCommonProject { get; set; }
-        public string SharedCommonWorkflowProject { get; set; }
         public bool ConfigureXrmUnitTest { get; set; }
-        public string TestBaseProject { get; set; }
-        public string SharedTestCoreProject { get; set; }
-        public bool CreatePlugin { get; set; }
-        public bool IncludeExamplePlugins { get; set; }
-        public string PluginName { get; set; }
-        public string PluginTestName { get; set; }
-        public bool CreateWorkflow { get; set; }
-        public bool IncludeExampleWorkflow { get; set; }
-        public string WorkflowName { get; set; }
-        public string WorkflowTestName { get; set; }
+        public string RootNamespace { get; set; }
+        public override Version XrmVersion => XrmPackage.Version;
 
         private struct Page
         {
@@ -33,14 +21,14 @@ namespace DLaB.VSSolutionAccelerator
             public const int CreateWorkflow = 9;
         }
 
-        public static List<IWizardPage> InitializePages(string settingsPath)
+        public static List<IWizardPage> InitializePages()
         {
             // ReSharper disable once UseObjectOrCollectionInitializer
             var pages = new List<IWizardPage>();
             AddSolutionNameQuestion(pages); // 0
             AddRootNamespaceQuestion(pages);
             AddXrmNuGetVersionQuestion(pages);
-            AddUseEarlyBoundQuestion(settingsPath, pages);
+            AddUseEarlyBoundQuestion(pages);
             AddSharedCommonNameQuestion(pages);
             AddSharedCommonWorkflowNameQuestion(pages); // 5
             AddUseXrmUnitTestQuestion(pages);
@@ -77,7 +65,7 @@ namespace DLaB.VSSolutionAccelerator
                 "This will determine the NuGet packages referenced and the version of the .Net Framework to use."));
         }
 
-        private static void AddUseEarlyBoundQuestion(string settingsPath, List<IWizardPage> pages)
+        private static void AddUseEarlyBoundQuestion(List<IWizardPage> pages)
         {
             pages.Add(GenericPage.Create(new ConditionalYesNoQuestionInfo("Do you want to use the Early Bound Generator To Create Early Bound Entities?")
             {
@@ -194,23 +182,31 @@ namespace DLaB.VSSolutionAccelerator
             pages.Add(page);
         }
 
+        private InitializeSolutionInfo(Queue<object> queue)
+        {
+            InitializeSolution(queue.Dequeue()); // 0
+            RootNamespace = (string)queue.Dequeue();
+            XrmPackage = (NuGetPackage)queue.Dequeue();
+            InitializeEarlyBound(queue.Dequeue());
+            SharedCommonProject = (string)queue.Dequeue();
+            SharedCommonWorkflowProject = (string)queue.Dequeue(); // 5
+            InitializeXrmUnitTest(queue.Dequeue());
+            InitializePlugin(queue.Dequeue());
+            PluginTestName = (string)queue.Dequeue();
+            InitializeWorkflow(queue.Dequeue());
+            WorkflowTestName = (string)queue.Dequeue(); // 10
+        }
+
         public static InitializeSolutionInfo InitializeSolution(object[] values)
         {
-            var queue = new Queue<object>(values);
-            // ReSharper disable once UseObjectOrCollectionInitializer
-            var info = new InitializeSolutionInfo();
-            info.SolutionPath = (string)queue.Dequeue(); // 0
-            info.RootNamespace = (string)queue.Dequeue();
-            info.XrmPackage = (NuGetPackage)queue.Dequeue();
-            info.InitializeEarlyBound(queue.Dequeue());
-            info.SharedCommonProject = (string)queue.Dequeue();
-            info.SharedCommonWorkflowProject = (string)queue.Dequeue(); // 5
-            info.InitializeXrmUnitTest(queue.Dequeue());
-            info.InitializePlugin(queue.Dequeue());
-            info.PluginTestName = (string)queue.Dequeue();
-            info.InitializeWorkflow(queue.Dequeue());
-            info.WorkflowTestName = (string)queue.Dequeue(); // 10
-            return info;
+            return new InitializeSolutionInfo(new Queue<object>(values));
+        }
+
+        private void InitializeSolution(object yesNoList)
+        {
+            var list = (List<string>)yesNoList;
+            CreateSolution = list[0] == "Y";
+            SolutionPath = list[1];
         }
 
         private void InitializeEarlyBound(object yesNoList)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using DLaB.VSSolutionAccelerator.Logic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -51,7 +52,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
 
             var results = new object[]
             {
-                solutionPath,
+                new List<string>{"Y", solutionPath },
                 "Abc.Xrm",
                 new NuGetPackage
                 {
@@ -83,9 +84,9 @@ namespace DLaB.VSSolutionAccelerator.Tests
                 SolutionDirectory = solutionDirectory
             };
 
-            var logic = new Logic.Logic(context.Info.SolutionPath, context.TemplatePath);
+            var logic = new SolutionInitializer(context.Info.SolutionPath, context.TemplatePath);
             logic.Projects = logic.GetProjectInfos(context.Info);
-            context.Logic = logic;
+            context.SolutionInitializer = logic;
             return context;
         }
 
@@ -98,10 +99,15 @@ namespace DLaB.VSSolutionAccelerator.Tests
                 var lines = TestSharedProjectCreation(context,
                     ProjectInfo.Keys.Common,
                     context.Info.SharedCommonProject,
-                    "Plugin\\PluginBase.cs");
+                    "Plugin\\PluginBase.cs").ToList();
 
                 // Line 12
-                Assert.That.NotExistsLineContaining(lines, ")Entities\\", "The Entities should have been removed.");
+                lines.RemoveAll(l =>
+                    l.Contains("xyz_VoidPaymentRequest")
+                    ||
+                    l.Contains("xyz_VoidPaymentResponse"));
+
+                Assert.That.NotExistsLineContaining(lines.ToArray(), ")Entities\\", "The Entities should have been removed.");
             }
         }
 
@@ -128,7 +134,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
             }, "NuGet"))
             {
                 // Plugin requires Shared Project to be created first
-                context.Logic.CreateProject(ProjectInfo.Keys.Common, context.Info);
+                context.SolutionInitializer.CreateProject(ProjectInfo.Keys.Common, context.Info);
                 TestPluginProjectCreation(context,
                     ProjectInfo.Keys.Plugin,
                     context.Info.PluginName,
@@ -161,7 +167,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
         {
             using (var context = InitializeTest(i => { i.IncludeExamplePlugins = false; }))
             {
-                var project = context.Logic.Projects[ProjectInfo.Keys.Plugin];
+                var project = context.SolutionInitializer.Projects[ProjectInfo.Keys.Plugin];
                 var lines = TestPluginProjectCreation(context,
                     project.Key,
                     context.Info.PluginName,
@@ -234,7 +240,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
         {
             using (var context = InitializeTest(i => { i.IncludeExampleWorkflow = false; }))
             {
-                var project = context.Logic.Projects[ProjectInfo.Keys.Workflow];
+                var project = context.SolutionInitializer.Projects[ProjectInfo.Keys.Workflow];
                 var lines = TestPluginProjectCreation(context,
                     ProjectInfo.Keys.Workflow,
                     context.Info.WorkflowName,
@@ -253,8 +259,8 @@ namespace DLaB.VSSolutionAccelerator.Tests
         private static string[] TestSharedProjectCreation(InitializeSolutionTestInfo context, string key, string newName, string arbitraryFile, string newNameSpace = null)
         {
             newNameSpace = newNameSpace ?? newName;
-            context.Logic.CreateProject(key, context.Info);
-            var id = context.Logic.Projects[key].Id;
+            context.SolutionInitializer.CreateProject(key, context.Info);
+            var id = context.SolutionInitializer.Projects[key].Id;
             // .shproj
             var filePath = Path.Combine(context.SolutionDirectory, newName, newName + ".shproj");
             Assert.IsTrue(File.Exists(filePath), filePath + " was not created!");
@@ -320,9 +326,9 @@ namespace DLaB.VSSolutionAccelerator.Tests
         private static string[] TestProjectCreation(InitializeSolutionTestInfo context, string key, string newName, string arbitraryFile, string newNameSpace = null)
         {
             newNameSpace = newNameSpace ?? newName;
-            context.Logic.CreateProject(key, context.Info);
+            context.SolutionInitializer.CreateProject(key, context.Info);
             var framework = context.Info.XrmPackage.Version.Major >= 9 ? "v4.6.2" : "v4.5.2";
-            var id = context.Logic.Projects[key].Id;
+            var id = context.SolutionInitializer.Projects[key].Id;
             var filePath = Path.Combine(context.SolutionDirectory, newName, newName + ".csproj");
             Assert.IsTrue(File.Exists(filePath), filePath + " was not created!");
             var lines = File.ReadAllLines(filePath);

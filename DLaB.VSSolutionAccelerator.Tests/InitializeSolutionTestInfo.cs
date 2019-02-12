@@ -8,7 +8,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
 {
     public class InitializeSolutionTestInfo : IDisposable
     {
-        public Logic.Logic Logic { get; set; }
+        public Logic.SolutionInitializer SolutionInitializer { get; set; }
         public InitializeSolutionInfo Info { get; set; }
         public ITempDir TempDir { get; set; }
         public string TemplatePath { get; internal set; }

@@ -123,6 +123,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddProjectToSolutionInfo.cs" />
     <Compile Include="App_Packages\DLaB.Common.Source.1.2.0.3\Config.cs" />
     <Compile Include="App_Packages\DLaB.Common.Source.1.2.0.3\ConfigKeyValueSplitInfo.cs" />
     <Compile Include="App_Packages\DLaB.Common.Source.1.2.0.3\ConfigKeyValuesSplitInfo.cs" />
@@ -206,7 +207,9 @@
     <Compile Include="App_Packages\DLaB.Xrm.Source.2.3.0.3\Serialization\SerializableRelatedEntityCollection.cs" />
     <Compile Include="App_Packages\DLaB.Xrm.Source.2.3.0.3\TypedQueryExpression.cs" />
     <Compile Include="InitializeSolutionInfo.cs" />
-    <Compile Include="Logic\Logic.cs" />
+    <Compile Include="Logic\SolutionUpdater.cs" />
+    <Compile Include="Logic\SolutionEditor.cs" />
+    <Compile Include="Logic\SolutionInitializer.cs" />
     <Compile Include="Logic\ProjectFileParser.cs" />
     <Compile Include="Logic\PropertyGroup.cs" />
     <Compile Include="Logic\SolutionFileEditor.cs" />
@@ -215,6 +218,7 @@
     <Compile Include="PackageLister.cs" />
     <Compile Include="Logic\ProjectFile.cs" />
     <Compile Include="Logic\ProjectInfo.cs" />
+    <Compile Include="SolutionEditorInfo.cs" />
     <Compile Include="VsSolutionAccelerator.cs" />
     <Compile Include="VsSolutionAcceleratorPlugin.cs">
       <SubType>UserControl</SubType>
@@ -226,6 +230,13 @@
     <Compile Include="Settings.cs" />
     <Compile Include="Wizard\ComboQuestionInfo.cs" />
     <Compile Include="Wizard\ConditionalYesNoQuestionInfo.cs" />
+    <Compile Include="Wizard\ProjectSelectorInfo.cs" />
+    <Compile Include="Wizard\ProjectSelectorPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Wizard\ProjectSelectorPage.Designer.cs">
+      <DependentUpon>ProjectSelectorPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Wizard\NuGetVersionSelectorPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -248,6 +259,10 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Wizard\PathQuestionInfo.cs" />
+    <Compile Include="Wizard\ProjectSelectorPageWizard.cs">
+      <DependentUpon>ProjectSelectorPage.cs</DependentUpon>
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Wizard\QuestionInfo.cs" />
     <Compile Include="Wizard\TextQuestionInfo.cs" />
     <Compile Include="Wizard\WizardHost.cs">
@@ -260,11 +275,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="VsSolutionAccelerator.nuspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="VsSolutionAcceleratorPlugin.resx">
       <DependentUpon>VsSolutionAcceleratorPlugin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizard\ProjectSelectorPage.resx">
+      <DependentUpon>ProjectSelectorPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Wizard\NuGetVersionSelectorPage.resx">
       <DependentUpon>NuGetVersionSelectorPage.cs</DependentUpon>

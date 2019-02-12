@@ -28,6 +28,18 @@ namespace DLaB.VSSolutionAccelerator.Logic
             public const string WorkflowTests = "Xyz.Xrm.Workflow.Tests";
         }
 
+        public static Dictionary<string,string> IdByKey => new Dictionary<string, string>
+        {
+            { Keys.Plugin, "2B294DBF-8730-436E-B401-8745FEA632FE" },
+            { Keys.PluginTests, "3016D729-1A3B-43C0-AC2F-D4EF6A305FA6" },
+            { Keys.Workflow, "5BD39AC9-97F3-47C8-8E1F-6A58A24AFB9E" },
+            { Keys.WorkflowCommon, "dd5aa002-c1ff-4c0e-b9a5-3d63c7809b07" },
+            { Keys.WorkflowTests, "7056423A-373E-463D-B552-D2F305F5C041" },
+            { Keys.Common, "b22b3bc6-0ac6-4cdd-a118-16e318818ad7" },
+            { Keys.TestCore, "8f91efc7-351b-4802-99aa-6c6f16110505" },
+            { Keys.Test, "F62103E9-D25D-4F99-AABE-ECF348424366" },
+        };
+
         public Guid Id { get; set; }
         public string Key { get; set; }
         public bool AddToSolution { get; set; }
@@ -54,9 +66,9 @@ namespace DLaB.VSSolutionAccelerator.Logic
             PostUpdateCommandResults = new List<string>();
         }
 
-        private string GetTypeId()
+        internal static string GetTypeId(ProjectType type)
         {
-            switch (Type)
+            switch (type)
             {
                 case ProjectType.CsProj:
                     return "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}";
@@ -65,7 +77,12 @@ namespace DLaB.VSSolutionAccelerator.Logic
                     return "{D954291E-2A0B-460D-934E-DC6B0785DB48}";
             }
 
-            throw new NotImplementedException(((int)Type) + Type.ToString());
+            throw new NotImplementedException(((int)type) + type.ToString());
+        }
+
+        private string GetTypeId()
+        {
+            return GetTypeId(Type);
         }
 
         private string GetProjectPostfix()
@@ -127,7 +144,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
             Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory(Path.Combine(templateDirectory, Key), NewDirectory, true);
             DeleteFiles();
             RenameFiles();
-            UpdateProject(rootNamespace);
+            UpdateProject();
             UpdateProjectFiles();
             UpdateCsNamespaces(rootNamespace);
             ExecutePostUpdateCommands();
@@ -206,7 +223,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
             }
         }
 
-        public void UpdateProject(string rootNamespace)
+        public void UpdateProject()
         {
             if (Type != ProjectType.CsProj)
             {

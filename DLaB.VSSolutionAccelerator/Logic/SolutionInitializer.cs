@@ -5,26 +5,14 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using DLaB.Log;
-using Source.DLaB.Common;
 
 namespace DLaB.VSSolutionAccelerator.Logic
 {
-    public class Logic
+    public class SolutionInitializer : SolutionEditor
     {
-        public string OutputBaseDirectory { get; }
-        public string SolutionPath { get; }
-        public string TemplateDirectory { get; }
-        public string StrongNamePath { get; }
-        public string NuGetPath { get; }
-        public Dictionary<string, ProjectInfo> Projects { get; set; }
-
-        public Logic(string solutionPath, string templateDirectory, string strongNamePath = null, string nugetPath = null)
+        public SolutionInitializer(string solutionPath, string templateDirectory, string strongNamePath = null, string nugetPath = null)
+            : base(solutionPath, templateDirectory, strongNamePath, nugetPath)
         {
-            SolutionPath = solutionPath;
-            OutputBaseDirectory = Path.GetDirectoryName(solutionPath);
-            TemplateDirectory = templateDirectory;
-            StrongNamePath = strongNamePath ?? Path.Combine(templateDirectory, "bin\\sn.exe");
-            NuGetPath = nugetPath ?? Path.Combine(templateDirectory, "bin\\nuget.exe");
         }
 
         public Dictionary<string, ProjectInfo> GetProjectInfos(InitializeSolutionInfo info)
@@ -54,11 +42,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 }
             }
 
-            var mapper = new NuGetMapper(NuGetPath, info.XrmPackage.Version);
-            foreach (var project in projects.Values.Where(p => p.Type != ProjectInfo.ProjectType.SharedProj))
-            {
-                project.AddNugetPostUpdateCommands(mapper, Path.Combine(TemplateDirectory, project.Key, "packages.config"), Path.Combine(OutputBaseDirectory, project.Name, "packages.config"));
-            }
+            AddNugetPostUpdateCommandsToProjects(info.XrmPackage.Version, projects);
             return projects;
         }
 
@@ -66,8 +50,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
         {
             var project = CreateDefaultSharedProjectInfo(
                 ProjectInfo.Keys.Common,
-                info.SharedCommonProject,
-                "b22b3bc6-0ac6-4cdd-a118-16e318818ad7");
+                info.SharedCommonProject);
 
             var projItems = project.Files.First(f => f.Name.EndsWith(".projitems"));
             projItems.Removals.Add("$(MSBuildThisFileDirectory)Entities");
@@ -80,7 +63,6 @@ namespace DLaB.VSSolutionAccelerator.Logic
             var project = CreateDefaultSharedProjectInfo(
                 ProjectInfo.Keys.WorkflowCommon,
                 info.SharedCommonWorkflowProject,
-                "dd5aa002-c1ff-4c0e-b9a5-3d63c7809b07",
                 "Xyz.Xrm.Workflow",
                 info.RootNamespace + ".Workflow");
             projects.Add(project.Key, project);
@@ -90,8 +72,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
         {
             var project = CreateDefaultSharedProjectInfo(
                 ProjectInfo.Keys.TestCore,
-                info.SharedTestCoreProject,
-                "8f91efc7-351b-4802-99aa-6c6f16110505", 
+                info.SharedTestCoreProject, 
                 ProjectInfo.Keys.Test,
                 info.TestBaseProject);
 
@@ -103,7 +84,6 @@ namespace DLaB.VSSolutionAccelerator.Logic
             var project = CreateDefaultProjectInfo(
                 ProjectInfo.Keys.Test,
                 info.TestBaseProject,
-                "F62103E9-D25D-4F99-AABE-ECF348424366",
                 "v4.6.2",
                 info.SharedCommonProject);
             project.Files.Add(new ProjectFile
@@ -117,144 +97,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
             projects.Add(project.Key, project);
         }
 
-        private void AddPlugin(Dictionary<string, ProjectInfo> projects, InitializeSolutionInfo info)
-        {
-            var project = CreateDefaultProjectInfo(
-                ProjectInfo.Keys.Plugin,
-                info.PluginName,
-                "2B294DBF-8730-436E-B401-8745FEA632FE",
-                GetPluginAssemblyVersionForSdk(info),
-                info.SharedCommonProject);
-            project.AddRegenKeyPostUpdateCommand(StrongNamePath);
-            project.SharedProjectsReferences.Add(projects[ProjectInfo.Keys.Common]);
-            if (!info.IncludeExamplePlugins)
-            {
-                project.FilesToRemove.AddRange(
-                    new []{@"PluginBaseExamples\EntityAccess.cs",
-                    @"PluginBaseExamples\ContextExample.cs",
-                    @"PluginBaseExamples\VoidPayment.cs",
-                    @"Properties\AssemblyInfo.cs",
-                    @"RemovePhoneNumberFormatting.cs",
-                    @"RenameLogic.cs",
-                    @"SyncContactToAccount.cs"
-                    });
-            }
-            projects.Add(project.Key, project);
-        }
-
-        private void AddPluginTest(Dictionary<string, ProjectInfo> projects, InitializeSolutionInfo info)
-        {
-            var project = CreateDefaultProjectInfo(
-                ProjectInfo.Keys.PluginTests,
-                info.PluginTestName,
-                "3016D729-1A3B-43C0-AC2F-D4EF6A305FA6",
-                GetPluginAssemblyVersionForSdk(info),
-                info.SharedTestCoreProject);
-
-            if (!info.IncludeExamplePlugins)
-            {
-                project.FilesToRemove.AddRange(
-                    new[]{
-                        "AssumptionExampleTests.cs",
-                        "TestMethodClassExampleTests.cs",
-                        "EntityBuilderExampleTests.cs",
-                        "RemovePhoneNumberFormattingTests.cs",
-                        "MsFakesVsXrmUnitTestExampleTests.cs",
-                        "LocalOrServerPluginTest.cs",
-                    });
-            }
-            project.ProjectsReferences.Add(projects[ProjectInfo.Keys.Plugin]);
-            project.ProjectsReferences.Add(projects[ProjectInfo.Keys.Test]);
-            project.SharedProjectsReferences.Add(projects[ProjectInfo.Keys.TestCore]);
-            projects.Add(project.Key, project);
-        }
-
-        private void AddWorkflow(Dictionary<string, ProjectInfo> projects, InitializeSolutionInfo info)
-        {
-            var project = CreateDefaultProjectInfo(
-                ProjectInfo.Keys.Workflow,
-                info.WorkflowName,
-                "5BD39AC9-97F3-47C8-8E1F-6A58A24AFB9E",
-                GetPluginAssemblyVersionForSdk(info),
-                info.SharedCommonProject);
-            project.AddRegenKeyPostUpdateCommand(StrongNamePath);
-            project.SharedProjectsReferences.Add(projects[ProjectInfo.Keys.Common]);
-            project.Files.First().Replacements.Add(
-                @"<Import Project=""..\Xyz.Xrm.WorkflowCore\Xyz.Xrm.WorkflowCore.projitems"" Label=""Shared"" />", 
-                $@"<Import Project=""..\{info.SharedCommonWorkflowProject}\{info.SharedCommonWorkflowProject}.projitems"" Label=""Shared"" />");
-            if (!info.IncludeExampleWorkflow)
-            {
-                project.FilesToRemove.Add("CreateGuidActivity.cs");
-            }
-            projects.Add(project.Key, project);
-        }
-
-        private void AddWorkflowTest(Dictionary<string, ProjectInfo> projects, InitializeSolutionInfo info)
-        {
-            var project = CreateDefaultProjectInfo(
-                ProjectInfo.Keys.WorkflowTests,
-                info.WorkflowTestName,
-                "7056423A-373E-463D-B552-D2F305F5C041",
-                GetPluginAssemblyVersionForSdk(info),
-                info.SharedTestCoreProject);
-
-            if (!info.IncludeExampleWorkflow)
-            {
-                project.FilesToRemove.AddRange(
-                    new[]{
-                        "WorkflowActivityExampleTests.cs"
-                    });
-            }
-            project.ProjectsReferences.Add(projects[ProjectInfo.Keys.Workflow]);
-            project.ProjectsReferences.Add(projects[ProjectInfo.Keys.Test]);
-            project.SharedProjectsReferences.Add(projects[ProjectInfo.Keys.TestCore]);
-            projects.Add(project.Key, project);
-        }
-
-        private string GetPluginAssemblyVersionForSdk(InitializeSolutionInfo info)
-        {
-            return info.XrmPackage.Version.Major >= 9 ? "v4.6.2" : "v4.5.2";
-        }
-
-        private ProjectInfo CreateDefaultProjectInfo(string key, string name, string originalId, string dotNetFramework, string sharedCommonProject)
-        {
-            Logger.AddDetail($"Configuring Project {name} based on {key}.");
-            var id = Guid.NewGuid();
-            var project = new ProjectInfo
-            {
-                Key = key,
-                Id = id,
-                Type = ProjectInfo.ProjectType.CsProj,
-                NewDirectory = Path.Combine(OutputBaseDirectory, name),
-                Name = name,
-                Files = new List<ProjectFile>
-                {
-                    new ProjectFile
-                    {
-                        Name = name + ".csproj",
-                        Replacements = new Dictionary<string, string>
-                        {
-                            {originalId, id.ToString().ToUpper()},
-                            {$"<RootNamespace>{key}</RootNamespace>", $"<RootNamespace>{name}</RootNamespace>"},
-                            {$"<AssemblyName>{key}</AssemblyName>", $"<AssemblyName>{name}</AssemblyName>"},
-                            {"<TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>", $"<TargetFrameworkVersion>{dotNetFramework}</TargetFrameworkVersion>"},
-                            {"<TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>", $"<TargetFrameworkVersion>{dotNetFramework}</TargetFrameworkVersion>"},
-                            {$"<AssemblyOriginatorKeyFile>{key}.Key.snk</AssemblyOriginatorKeyFile>", $"<AssemblyOriginatorKeyFile>{name}.Key.snk</AssemblyOriginatorKeyFile>"},
-                            {$"<None Include=\"{key}.Key.snk\" />", $"<None Include=\"{name}.Key.snk\" />"},
-                            {@"<Import Project=""..\Xyz.Xrm\Xyz.Xrm.projitems"" Label=""Shared"" />", $@"<Import Project=""..\{sharedCommonProject}\{sharedCommonProject}.projitems"" Label=""Shared"" />"},
-                            {@"<Import Project=""..\Xyz.Xrm.TestCore\Xyz.Xrm.TestCore.projitems"" Label=""Shared"" />", $@"<Import Project=""..\{sharedCommonProject}\{sharedCommonProject}.projitems"" Label=""Shared"" />"},
-                        },
-                        Removals = new List<string>
-                        {
-                            "<CodeAnalysisRuleSet>"
-                        }
-                    }
-                },
-            };
-            return project;
-        }
-
-        private ProjectInfo CreateDefaultSharedProjectInfo(string key, string name, string originalId, string originalNamespace = null, string newNamespace = null)
+        private ProjectInfo CreateDefaultSharedProjectInfo(string key, string name, string originalNamespace = null, string newNamespace = null)
         {
             Logger.AddDetail($"Configuring Project {name} based on {key}.");
             originalNamespace = originalNamespace ?? key;
@@ -274,7 +117,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
                         Name = name + ".projitems",
                         Replacements = new Dictionary<string, string>
                         {
-                            {originalId, id.ToString()},
+                            {ProjectInfo.IdByKey[key], id.ToString()},
                             {$"<Import_RootNamespace>{originalNamespace}</Import_RootNamespace>", $"<Import_RootNamespace>{newNamespace}</Import_RootNamespace>"}
                         },
                     },
@@ -283,7 +126,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
                         Name = name + ".shproj",
                         Replacements = new Dictionary<string, string>
                         {
-                            {originalId, id.ToString()},
+                            {ProjectInfo.IdByKey[key], id.ToString()},
                             { key +".projitems", name + ".projitems"}
                         }
                     },
@@ -295,7 +138,8 @@ namespace DLaB.VSSolutionAccelerator.Logic
         public static void Execute(InitializeSolutionInfo info, string templateDirectory, string strongNamePath = null)
         {
             Logger.AddDetail($"Starting to process solution '{info.SolutionPath}' using templates from '{templateDirectory}'");
-            var logic = new Logic(info.SolutionPath, templateDirectory, strongNamePath);
+            CreateSolution(info);
+            var logic = new SolutionInitializer(info.SolutionPath, templateDirectory, strongNamePath);
             logic.Projects = logic.GetProjectInfos(info);
             foreach (var project in logic.Projects)
             {
@@ -306,6 +150,33 @@ namespace DLaB.VSSolutionAccelerator.Logic
             File.WriteAllLines(logic.SolutionPath, solution);
             logic.ExecuteNuGetRestoreForSolution();
             UpdateEarlyBoundConfigOutputPaths(info);
+        }
+
+        private static void CreateSolution(InitializeSolutionInfo info)
+        {
+            if (info.CreateSolution)
+            {
+                if (!info.SolutionPath.EndsWith(".sln"))
+                {
+                    info.SolutionPath += ".sln";
+                }
+
+                File.WriteAllText(info.SolutionPath, $@"
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {{{Guid.NewGuid().ToString().ToUpper()}}}
+	EndGlobalSection
+EndGlobal
+");
+            }
         }
 
         private static void UpdateEarlyBoundConfigOutputPaths(InitializeSolutionInfo info)
@@ -355,15 +226,6 @@ namespace DLaB.VSSolutionAccelerator.Logic
         private static void CopyToClipboard(string text)
         {
             Clipboard.SetText(text);
-        }
-
-        private void ExecuteNuGetRestoreForSolution()
-        {
-            var cmd = new ProcessExecutorInfo(NuGetPath, $"restore \"{SolutionPath}\" -NonInteractive");
-            Logger.Show("Restoring Nuget for the solution.");
-            Logger.AddDetail(cmd.FileName + " " + cmd.Arguments);
-            var results = ProcessExecutor.ExecuteCmd(cmd);
-            Logger.Show(results);
         }
 
         public void CreateProject(string projectKey, InitializeSolutionInfo info)

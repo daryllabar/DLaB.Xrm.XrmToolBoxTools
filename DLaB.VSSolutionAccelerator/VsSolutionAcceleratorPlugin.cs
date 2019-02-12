@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using DLaB.Log;
@@ -18,6 +19,10 @@ namespace DLaB.VSSolutionAccelerator
         public VsSolutionAcceleratorPlugin()
         {
             InitializeComponent();
+            if (Debugger.IsAttached)
+            {
+                ActionCmb.Items.Add("Generate With Default Settings");
+            }
         }
 
         private void MyPluginControl_Load(object sender, EventArgs e)
@@ -50,7 +55,7 @@ namespace DLaB.VSSolutionAccelerator
                 ShowLastButton = false
             })
             {
-                foreach (var page in InitializeSolutionInfo.InitializePages(Paths.SettingsPath))
+                foreach (var page in InitializeSolutionInfo.InitializePages())
                 {
                     host.WizardPages.Add(page);
                 }
@@ -58,7 +63,33 @@ namespace DLaB.VSSolutionAccelerator
                 if (host.ShowDialog() == DialogResult.OK)
                 {
                     var results = host.SaveResults;
+                    var info = InitializeSolutionInfo.InitializeSolution(results);
+                    Execute(info);
+                }
 
+                host.Close();
+            }
+        }
+
+        private void ShowAddAssemblyWizard()
+        {
+            using (var host = new WizardHost
+            {
+                Text = @"Add Accelerators Wizard",
+                ShowFirstButton = false,
+                ShowLastButton = false
+            })
+            {
+                foreach (var page in AddProjectToSolutionInfo.InitializePages())
+                {
+                    host.WizardPages.Add(page);
+                }
+                host.LoadWizard();
+                if (host.ShowDialog() == DialogResult.OK)
+                {
+                    var results = host.SaveResults;
+                    var info = AddProjectToSolutionInfo.Create(results);
+                    Execute(info);
                 }
 
                 host.Close();
@@ -73,65 +104,82 @@ namespace DLaB.VSSolutionAccelerator
                     ShowAddAcceleratorsWizard();
                     break;
                 case 1:
-                    var results = new object[]
-                    {
-                        "C:\\Temp\\AdvXTB\\Abc.Xrm\\Abc.Xrm.sln",
-                        "Abc.Xrm",
-                        new NuGetPackage
-                        {
-                            Id = "Microsoft.CrmSdk.CoreAssemblies",
-                            LicenseUrl = "http://download.microsoft.com/download/E/1/8/E18C0FAD-FEC8-44CD-9A16-98EDC4DAC7A2/LicenseTerms.docx",
-                            Name = "Microsoft Dynamics 365 SDK core assemblies",
-                            Version = new Version("9.0.2.5"),
-                            VersionText = "9.0.2.5",
-                            XrmToolingClient = false
-                        },
-                        new List<string> {"Y"},
-                        "Abc.Xrm",
-                        "Abc.Xrm.WorkflowCore",
-                        new List<string> {"Y", "Abc.Xrm.Test", "Abc.Xrm.TestCore" },
-                        new List<string> {"Y", "Abc.Xrm.Plugin", "0"},
-                        "Abc.Xrm.Plugin.Tests",
-                        new List<string> {"Y", "Abc.Xrm.Workflow", "1"},
-                        "Abc.Xrm.Workflow.Tests"
-                    };
-
-                    var info = InitializeSolutionInfo.InitializeSolution(results);
-                    var solutionDir = Path.GetDirectoryName(info.SolutionPath) ?? Guid.NewGuid().ToString();
-                    if (Directory.Exists(solutionDir))
-                    {
-                        foreach (var file in Directory.EnumerateFiles(solutionDir, "*", SearchOption.AllDirectories))
-                        {
-                            File.Delete(file);
-                        }
-                        Directory.Delete(solutionDir, true);
-                    }
-                    do
-                    {
-                        TxtOutput.AppendText("Creating Directory." + Environment.NewLine);
-                        Directory.CreateDirectory(solutionDir);
-                    }
-                    while (!Directory.Exists(solutionDir));
-
-                    File.Copy("C:\\Temp\\AdvXTB\\Abc.Xrm.sln", info.SolutionPath);
-                    Execute(info);
+                    ShowAddAssemblyWizard();
+                    break;
+                case 2:
+                    GenerateWithDefaultSettings();
                     break;
                 default:
                     throw new NotImplementedException();
             }
         }
 
-        private void Execute(InitializeSolutionInfo info)
+        private void GenerateWithDefaultSettings()
+        {
+            var results = new object[]
+            {
+                new List<string>{"Y", "C:\\Temp\\AdvXTB\\Abc.Xrm\\Abc.Xrm.sln" },
+                "Abc.Xrm",
+                new NuGetPackage
+                {
+                    Id = "Microsoft.CrmSdk.CoreAssemblies",
+                    LicenseUrl = "http://download.microsoft.com/download/E/1/8/E18C0FAD-FEC8-44CD-9A16-98EDC4DAC7A2/LicenseTerms.docx",
+                    Name = "Microsoft Dynamics 365 SDK core assemblies",
+                    Version = new Version("9.0.2.5"),
+                    VersionText = "9.0.2.5",
+                    XrmToolingClient = false
+                },
+                new List<string> {"Y"},
+                "Abc.Xrm",
+                "Abc.Xrm.WorkflowCore",
+                new List<string> {"Y", "Abc.Xrm.Test", "Abc.Xrm.TestCore"},
+                new List<string> {"Y", "Abc.Xrm.Plugin", "0"},
+                "Abc.Xrm.Plugin.Tests",
+                new List<string> {"Y", "Abc.Xrm.Workflow", "1"},
+                "Abc.Xrm.Workflow.Tests"
+            };
+
+            var info = InitializeSolutionInfo.InitializeSolution(results);
+            var solutionDir = Path.GetDirectoryName(info.SolutionPath) ?? Guid.NewGuid().ToString();
+            if (Directory.Exists(solutionDir))
+            {
+                foreach (var file in Directory.EnumerateFiles(solutionDir, "*", SearchOption.AllDirectories))
+                {
+                    File.Delete(file);
+                }
+
+                Directory.Delete(solutionDir, true);
+            }
+
+            do
+            {
+                TxtOutput.AppendText("Creating Directory." + Environment.NewLine);
+                Directory.CreateDirectory(solutionDir);
+            } while (!Directory.Exists(solutionDir));
+
+            File.Copy("C:\\Temp\\AdvXTB\\Abc.Xrm.sln", info.SolutionPath);
+            Execute(info);
+            return;
+        }
+
+        private void Execute(object info)
         {
             Enabled = false;
-            WorkAsync(new WorkAsyncInfo("Adding Accelerator Libraries...", (w, e) => // Work To Do Asynchronously
+            WorkAsync(new WorkAsyncInfo("Performing requested operations...", (w, e) => // Work To Do Asynchronously
             {
-                var arg = (InitializeSolutionInfo)e.Argument;
 
                 Logger.WireUpToReportProgress(w);
                 try
                 {
-                    Logic.Logic.Execute(arg, Path.GetFullPath(Path.Combine(Paths.PluginsPath, "DLaB.VSSolutionAccelerator")));
+                    var templatePath = Path.GetFullPath(Path.Combine(Paths.PluginsPath, "DLaB.VSSolutionAccelerator"));
+                    if (e.Argument is InitializeSolutionInfo solutionInfo)
+                    {
+                        Logic.SolutionInitializer.Execute(solutionInfo, templatePath);
+                    }
+                    else if (e.Argument is AddProjectToSolutionInfo projectInfo)
+                    {
+                        Logic.SolutionUpdater.Execute(projectInfo, templatePath);
+                    }
                     w.ReportProgress(99, "Finished Successfully!");
                 }
                 catch (Exception ex)
