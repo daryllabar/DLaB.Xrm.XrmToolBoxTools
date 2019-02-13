@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 using DLaB.Log;
 using DLaB.VSSolutionAccelerator.Wizard;
@@ -22,6 +23,7 @@ namespace DLaB.VSSolutionAccelerator
             if (Debugger.IsAttached)
             {
                 ActionCmb.Items.Add("Generate With Default Settings");
+                ActionCmb.Items.Add("Add Plugins With Default Settings");
             }
         }
 
@@ -98,19 +100,30 @@ namespace DLaB.VSSolutionAccelerator
 
         private void ExecuteBttn_Click(object sender, EventArgs e)
         {
-            switch (ActionCmb.SelectedIndex)
+            try
             {
-                case 0:
-                    ShowAddAcceleratorsWizard();
-                    break;
-                case 1:
-                    ShowAddAssemblyWizard();
-                    break;
-                case 2:
-                    GenerateWithDefaultSettings();
-                    break;
-                default:
-                    throw new NotImplementedException();
+                switch (ActionCmb.SelectedIndex)
+                {
+                    case 0:
+                        ShowAddAcceleratorsWizard();
+                        break;
+                    case 1:
+                        ShowAddAssemblyWizard();
+                        break;
+                    case 2:
+                        GenerateWithDefaultSettings();
+                        break;
+                    case 3:
+                        GenerateAddAssemblyWithDefaultSettings();
+                        break;
+                    default:
+                        throw new NotImplementedException();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TxtOutput.AppendText(Environment.NewLine + ex);
             }
         }
 
@@ -129,7 +142,7 @@ namespace DLaB.VSSolutionAccelerator
                     VersionText = "9.0.2.5",
                     XrmToolingClient = false
                 },
-                new List<string> {"Y"},
+                "Y",
                 "Abc.Xrm",
                 "Abc.Xrm.WorkflowCore",
                 new List<string> {"Y", "Abc.Xrm.Test", "Abc.Xrm.TestCore"},
@@ -159,7 +172,27 @@ namespace DLaB.VSSolutionAccelerator
 
             File.Copy("C:\\Temp\\AdvXTB\\Abc.Xrm.sln", info.SolutionPath);
             Execute(info);
-            return;
+        }
+
+
+        private void GenerateAddAssemblyWithDefaultSettings()
+        {
+            if (File.Exists(@"C:\Temp\AdvXTB\Abc.Xrm\Abc.Xrm.Lead.Plugin\Abc.Xrm.Lead.Plugin.csproj"))
+            {
+                GenerateWithDefaultSettings();
+                Thread.Sleep(8000);
+            }
+            var results = new object[]
+            {
+                @"C:\Temp\AdvXTB\Abc.Xrm\Abc.Xrm.sln",
+                new List<string> {"Y", "Abc.Xrm.Lead.Plugin"},
+                new List<string> {"Y", "Abc.Xrm.Lead.Plugin.Tests"},
+                new List<string> {"Y", "Abc.Xrm.Lead.Workflow"},
+                new List<string> {"Y", "Abc.Xrm.Lead.Workflow.Tests"},
+            };
+
+            var info = AddProjectToSolutionInfo.Create(results);
+            Execute(info);
         }
 
         private void Execute(object info)

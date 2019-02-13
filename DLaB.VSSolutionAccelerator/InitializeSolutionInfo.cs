@@ -184,16 +184,16 @@ namespace DLaB.VSSolutionAccelerator
 
         private InitializeSolutionInfo(Queue<object> queue)
         {
-            InitializeSolution(queue.Dequeue()); // 0
+            InitializeSolution(new YesNoResult(queue.Dequeue())); // 0
             RootNamespace = (string)queue.Dequeue();
             XrmPackage = (NuGetPackage)queue.Dequeue();
-            InitializeEarlyBound(queue.Dequeue());
+            ConfigureEarlyBound = queue.Dequeue().ToString() == "Y";
             SharedCommonProject = (string)queue.Dequeue();
             SharedCommonWorkflowProject = (string)queue.Dequeue(); // 5
-            InitializeXrmUnitTest(queue.Dequeue());
-            InitializePlugin(queue.Dequeue());
+            InitializeXrmUnitTest(new YesNoResult(queue.Dequeue()));
+            InitializePlugin(new YesNoResult(queue.Dequeue()));
             PluginTestName = (string)queue.Dequeue();
-            InitializeWorkflow(queue.Dequeue());
+            InitializeWorkflow(new YesNoResult(queue.Dequeue()));
             WorkflowTestName = (string)queue.Dequeue(); // 10
         }
 
@@ -202,50 +202,31 @@ namespace DLaB.VSSolutionAccelerator
             return new InitializeSolutionInfo(new Queue<object>(values));
         }
 
-        private void InitializeSolution(object yesNoList)
+        private void InitializeSolution(YesNoResult result)
         {
-            var list = (List<string>)yesNoList;
-            CreateSolution = list[0] == "Y";
-            SolutionPath = list[1];
+            CreateSolution = result.IsYes;
+            SolutionPath =  result[1];
         }
 
-        private void InitializeEarlyBound(object yesNoList)
+        private void InitializeXrmUnitTest(YesNoResult result)
         {
-            var list = (List<string>) yesNoList;
-            ConfigureEarlyBound = list[0] == "Y";
+            ConfigureXrmUnitTest = result.IsYes;
+            TestBaseProject = result[1];
+            SharedTestCoreProject = result[2];
         }
 
-        private void InitializeXrmUnitTest(object yesNoList)
+        private void InitializePlugin(YesNoResult result)
         {
-            var list = (List<string>)yesNoList;
-            ConfigureXrmUnitTest = list[0] == "Y";
-            if (ConfigureXrmUnitTest)
-            {
-                TestBaseProject = list[1];
-                SharedTestCoreProject = list[2];
-            }
+            CreatePlugin = result.IsYes;
+            PluginName = result[1];
+            IncludeExamplePlugins = result[2] == "0";
         }
 
-        private void InitializePlugin(object yesNoList)
+        private void InitializeWorkflow(YesNoResult result)
         {
-            var list = (List<string>)yesNoList;
-            CreatePlugin = list[0] == "Y";
-            if (CreatePlugin)
-            {
-                PluginName = list[1];
-                IncludeExamplePlugins = list[2] == "0";
-            }
-        }
-
-        private void InitializeWorkflow(object yesNoList)
-        {
-            var list = (List<string>)yesNoList;
-            CreateWorkflow = list[0] == "Y";
-            if (CreateWorkflow)
-            {
-                WorkflowName = list[1];
-                IncludeExampleWorkflow = list[2] == "0";
-            }
+            CreateWorkflow = result.IsYes;
+            WorkflowName = result[1];
+            IncludeExampleWorkflow = result[2] == "0";
         }
     }
 }

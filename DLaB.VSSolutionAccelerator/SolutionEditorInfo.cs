@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DLaB.VSSolutionAccelerator
 {
@@ -22,6 +23,25 @@ namespace DLaB.VSSolutionAccelerator
         public string GetPluginAssemblyVersionForSdk()
         {
             return XrmVersion.Major >= 9 ? "v4.6.2" : "v4.5.2";
+        }
+
+        protected class YesNoResult
+        {
+            public bool IsYes => this[0] == "Y";
+            private List<string> List { get; }
+            public YesNoResult(object value)
+            {
+                if (value is List<string> list)
+                {
+                    List = list;
+                }
+                else
+                {
+                    List = new List<string> {value.ToString()};
+                }
+            }
+
+            public string this[int index] => List.Count > index ? List[index] : string.Empty;
         }
     }
 }

@@ -232,8 +232,23 @@ EndGlobal
                 }
             }
 
+            var blankCount = 0;
             foreach (var line in PreProjects)
             {
+                if (string.IsNullOrWhiteSpace(line))
+                {
+                    if (blankCount == 1)
+                    {
+                        continue;
+                    }
+
+                    blankCount++;
+                }
+                else
+                {
+                    blankCount++; // Don't check anymore
+                }
+
                 yield return line;
             }
 

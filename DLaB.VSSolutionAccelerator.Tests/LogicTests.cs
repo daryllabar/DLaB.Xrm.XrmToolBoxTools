@@ -63,7 +63,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
                     VersionText = "9.0.2.5",
                     XrmToolingClient = false
                 },
-                new List<string> {"Y", ebgPath },
+                "Y",
                 "Abc.Xrm",
                 "Abc.Xrm.WorkflowCore",
                 new List<string> {"Y", "Abc.Xrm.Test", "Abc.Xrm.TestCore" },

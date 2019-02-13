@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using DLaB.Log;
 
 namespace DLaB.VSSolutionAccelerator.Logic
@@ -32,7 +33,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 }
             }
 
-            AddNugetPostUpdateCommandsToProjects(null, projects);
+            AddNugetPostUpdateCommandsToProjects(info.XrmVersion, projects);
             return projects;
         }
 
@@ -94,7 +95,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
             Logger.AddDetail($"Starting to process solution '{info.SolutionPath}' using templates from '{templateDirectory}'");
             var adder = new SolutionUpdater(info.SolutionPath, templateDirectory, strongNamePath);
             adder.Projects = adder.GetProjectInfos(info);
-            foreach (var project in adder.Projects)
+            foreach (var project in adder.Projects.Where(p => p.Value.AddToSolution))
             {
                 adder.CreateProject(project.Key);
             }

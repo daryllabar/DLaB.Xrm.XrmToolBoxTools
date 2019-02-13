@@ -57,7 +57,14 @@ namespace DLaB.VSSolutionAccelerator
 
         private static void AddCreateXrmUnitTestProjectQuestion(List<IWizardPage> pages, int forPage)
         {
-            var page = GenericPage.Create(new ConditionalYesNoQuestionInfo("Do you want to create a XrmUnitTest test project for the new assembly?"));
+            var page = GenericPage.Create(new ConditionalYesNoQuestionInfo("Do you want to create a XrmUnitTest test project for the new assembly?")
+            {
+                Yes = new TextQuestionInfo("What do you want the name of the test project to be?")
+                {
+                    DefaultResponse = GenericPage.GetSaveResultsFormat(forPage, 1) + ".Tests",
+                    Description = "This will be the name of the Visual Studio Unit Test Project for the assembly."
+                }
+            });
             page.AddSavedValuedRequiredCondition(forPage, "Y");
             pages.Add(page);
         }
@@ -65,10 +72,10 @@ namespace DLaB.VSSolutionAccelerator
         private AddProjectToSolutionInfo(Queue<object> queue)
         {
             SolutionPath = (string)queue.Dequeue(); // 0
-            InitializePluginProject(queue.Dequeue());
-            CreatePluginTest = (string)queue.Dequeue() == "Y";
-            InitializeWorkflowProject(queue.Dequeue());
-            CreateWorkflowTest = (string)queue.Dequeue() == "Y";
+            InitializePluginProject(new YesNoResult(queue.Dequeue()));
+            InitializePluginTest(new YesNoResult(queue.Dequeue()));
+            InitializeWorkflowProject(new YesNoResult(queue.Dequeue()));
+            InitializeWorkflowTest(new YesNoResult(queue.Dequeue()));
             FindProjectsInSolution();
         }
 
@@ -79,18 +86,28 @@ namespace DLaB.VSSolutionAccelerator
             return info;
         }
 
-        private void InitializePluginProject(object yesNoList)
+        private void InitializePluginProject(YesNoResult result)
         {
-            var list = (List<string>)yesNoList;
-            CreatePlugin = list[0] == "Y";
-            PluginName = CreatePlugin ? list[1] : string.Empty;
+            CreatePlugin = result.IsYes;
+            PluginName = result[1];
         }
 
-        private void InitializeWorkflowProject(object yesNoList)
+        private void InitializePluginTest(YesNoResult result)
         {
-            var list = (List<string>)yesNoList;
-            CreateWorkflow = list[0] == "Y";
-            WorkflowName = CreatePlugin ? list[1] : string.Empty;
+            CreatePluginTest = result.IsYes;
+            PluginTestName = result[1];
+        }
+
+        private void InitializeWorkflowProject(YesNoResult result)
+        {
+            CreateWorkflow = result.IsYes;
+            WorkflowName = result[1];
+        }
+
+        private void InitializeWorkflowTest(YesNoResult result)
+        {
+            CreateWorkflowTest = result.IsYes;
+            WorkflowTestName = result[1];
         }
 
         private void FindProjectsInSolution()
@@ -105,7 +122,7 @@ namespace DLaB.VSSolutionAccelerator
         private void ParseSolutionFileProjects(Dictionary<string, List<string>> sharedProjects, List<ProjectFileParser> projects)
         {
             var solution = new SolutionFileParser(File.ReadAllLines(SolutionPath));
-            foreach (var projectLine in solution.Projects.Select(l => l.Replace(" ", string.Empty)))
+            foreach (var projectLine in solution.Projects.Select(l => l.Replace(" ", string.Empty)).Where(l => l != "EndProject"))
             {
                 var projectName = projectLine.SubstringByString("=\"", "\",\"");
                 var projectRelativePath = projectLine.SubstringByString(",\"", "\",\"");
@@ -155,7 +172,7 @@ namespace DLaB.VSSolutionAccelerator
         private static string FindSharedProjectWithFile(Dictionary<string, List<string>> sharedProjects, string actionMessage, string fileToFind)
         {
             Logger.AddDetail($"Searching For the {actionMessage}, which is a shared project containing the '{fileToFind}' file.");
-            var shared = sharedProjects.FirstOrDefault(p => p.Value.Any(f => f.EndsWith("\\" + fileToFind)));
+            var shared = sharedProjects.FirstOrDefault(p => p.Value.Any(f => f == fileToFind || f.EndsWith("\\" + fileToFind)));
             if (shared.Key == null)
             {
                 throw new Exception($"Unable to find the {actionMessage}!");
@@ -167,7 +184,7 @@ namespace DLaB.VSSolutionAccelerator
         private Version GetXrmVersion()
         {
             var packagesPath = Path.Combine(Path.GetDirectoryName(SolutionPath) ?? "", "packages");
-            var directories = Directory.GetDirectories(packagesPath, "");
+            var directories = Directory.GetDirectories(packagesPath, "Microsoft.CrmSdk.CoreAssemblies.*");
             var xrmDirectory = directories.OrderByDescending(d => d).FirstOrDefault();
             if (xrmDirectory == null)
             {
