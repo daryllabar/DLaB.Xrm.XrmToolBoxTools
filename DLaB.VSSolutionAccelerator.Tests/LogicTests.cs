@@ -13,34 +13,12 @@ namespace DLaB.VSSolutionAccelerator.Tests
     [SuppressMessage("ReSharper", "UnusedMethodReturnValue.Local")]
     public class LogicTests
     {
-        private void ClearDirectory(string directory)
-        {
-            var di = new DirectoryInfo(directory);
-            foreach (var file in di.EnumerateFiles())
-            {
-                file.Delete();
-            }
-            foreach (var dir in di.EnumerateDirectories())
-            {
-                try
-                {
-                    dir.Delete(true);
-                }
-                catch
-                {
-                    System.Threading.Thread.Sleep(2000);
-                    dir.Delete(true);
-                }
-            }
-        }
-
         private InitializeSolutionTestInfo InitializeTest(Action<InitializeSolutionInfo> setCustomSettings = null, string tempDirectoryName = null)
         {
             var tempDir = tempDirectoryName == null 
                 ? TempDir.Create()
                 : new TempDir(tempDirectoryName);
-            ClearDirectory(tempDir.Name);
-            var output = Path.GetFileName(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+            TestBase.ClearDirectory(tempDir.Name);
             var solutionPath = Path.Combine(tempDir.Name, @"Abc.Xrm\Abc.Xrm.sln");
             var solutionDirectory = Path.GetDirectoryName(solutionPath) ?? "";
             var ebgPath = Path.Combine(solutionDirectory + @"DLaB.EBG.Settings.xml");
@@ -70,17 +48,18 @@ namespace DLaB.VSSolutionAccelerator.Tests
                 new List<string> {"Y", "Abc.Xrm.Plugin", "0"},
                 "Abc.Xrm.Plugin.Tests",
                 new List<string> {"Y", "Abc.Xrm.Workflow", "0"},
-                "Abc.Xrm.Workflow.Tests"
+                "Abc.Xrm.Workflow.Tests",
+                new List<string> {"0", "0"},
             };
             var info = InitializeSolutionInfo.InitializeSolution(results);
             setCustomSettings?.Invoke(info);
 
-            var pluginsPath = Path.Combine(Assembly.GetExecutingAssembly().Location, $@"..\..\..\..\DLaB.VSSolutionAccelerator\bin\{output}\Plugins");
+            var templatePath = TestBase.GetTemplatePath();
             var context = new InitializeSolutionTestInfo
             {
                 Info = info,
                 TempDir = tempDir,
-                TemplatePath = Path.GetFullPath(Path.Combine(pluginsPath, "DLaB.VSSolutionAccelerator")),
+                TemplatePath = templatePath,
                 SolutionDirectory = solutionDirectory
             };
 

@@ -77,7 +77,8 @@
             this.ActionCmb.FormattingEnabled = true;
             this.ActionCmb.Items.AddRange(new object[] {
             "Add Accelerator Isolation Libraries to my Solution",
-            "Add Plugin/Workflow Project to an Accelerated Solution"});
+            "Add Plugin/Workflow Project to an Accelerated Solution",
+            "Install Snippets"});
             this.ActionCmb.Location = new System.Drawing.Point(69, 36);
             this.ActionCmb.Name = "ActionCmb";
             this.ActionCmb.Size = new System.Drawing.Size(405, 21);

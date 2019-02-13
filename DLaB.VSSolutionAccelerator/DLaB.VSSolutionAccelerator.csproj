@@ -215,6 +215,7 @@
     <Compile Include="Logic\SolutionFileEditor.cs" />
     <Compile Include="Logic\SolutionFileParser.cs" />
     <Compile Include="Logic\NuGetMapper.cs" />
+    <Compile Include="Logic\VisualStudio.cs" />
     <Compile Include="PackageLister.cs" />
     <Compile Include="Logic\ProjectFile.cs" />
     <Compile Include="Logic\ProjectInfo.cs" />

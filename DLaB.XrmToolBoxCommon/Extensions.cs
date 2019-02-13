@@ -7,9 +7,11 @@ using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
+using DLaB.Log;
 using McTools.Xrm.Connection;
 using Microsoft.Xrm.Sdk.Metadata;
 using Source.DLaB.Xrm;
+using XrmToolBox.Extensibility;
 
 namespace DLaB.XrmToolBoxCommon
 {
@@ -145,5 +147,48 @@ namespace DLaB.XrmToolBoxCommon
         }
 
         #endregion OpenFileDialog
+
+        #region WorkAsyncInfo
+
+        public static WorkAsyncInfo WithLogger(this WorkAsyncInfo info, PluginControlBase plugin, TextBox output, object asyncArgument = null, string successMessage = "Finished Successfully!", int? successPercent = 99)
+        {
+            plugin.Enabled = false;
+            var oldWork = info.Work;
+            info.Work = (w, args) =>
+            {
+                Logger.WireUpToReportProgress(w);
+                try
+                {
+                    oldWork(w, args);
+                    if (successPercent.HasValue)
+                    {
+                        w.ReportProgress(successPercent.Value, successMessage);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    w.ReportProgress(int.MinValue, ex.ToString());
+                }
+                finally
+                {
+                    Logger.UnwireFromReportProgress(w);
+                }
+
+            };
+            info.AsyncArgument = asyncArgument;
+
+            info.PostWorkCallBack = e => // Creation has finished.  Cleanup
+            {
+                Logger.DisplayLog(e, output);
+                plugin.Enabled = true;
+            };
+            info.ProgressChanged = e => // Logic wants to display an update
+            {
+                Logger.DisplayLog(e, plugin.SetWorkingMessage, output);
+            };
+            return info;
+        }
+
+        #endregion WorkAsyncInfo
     }
 }

@@ -36,6 +36,7 @@ namespace DLaB.VSSolutionAccelerator
             AddPluginTestProjectNameQuestion(pages);
             AddCreateWorkflowProjectQuestion(pages);
             AddWorkflowTestProjectNameQuestion(pages); // 10
+            AddInstallCodeSnippetAndAddCodeGenerationQuestion(pages); // 10
             return pages;
         }
 
@@ -126,11 +127,6 @@ namespace DLaB.VSSolutionAccelerator
                 {
                     DefaultResponse = 0,
                     Description = "If example plugin classes are included, it may contain compiler errors if the Early Bound Entities used in the files are not generated.",
-                    Options = new List<KeyValuePair<int, string>>
-                    {
-                        new KeyValuePair<int, string>(0, "Yes"),
-                        new KeyValuePair<int, string>(1, "No"),
-                    }
                 },
                 Description = "This will add a new plugin project to the solution and wire up the appropriate references."
             }));
@@ -159,12 +155,7 @@ namespace DLaB.VSSolutionAccelerator
                 },
                 Yes2 = new ComboQuestionInfo("Include example custom workflow activity?")
                 {
-                    DefaultResponse = 0,
-                    Options = new List<KeyValuePair<int, string>>
-                    {
-                        new KeyValuePair<int, string>(0, "Yes"),
-                        new KeyValuePair<int, string>(1, "No"),
-                    }
+                    DefaultResponse = 0
                 },
                 Description = "This will add a new workflow project to the solution and wire up the appropriate references."
             }));
@@ -182,6 +173,21 @@ namespace DLaB.VSSolutionAccelerator
             pages.Add(page);
         }
 
+        private static void AddInstallCodeSnippetAndAddCodeGenerationQuestion(List<IWizardPage> pages)
+        {
+            var page = GenericPage.Create(new ComboQuestionInfo("Do you want to install code snippets for plugins and unit testing?")
+                {
+                    DefaultResponse = 0,
+                    Description = "This will install snippets in your local Visual Studio \"My Code Snippets\" directories."
+                },
+                new ComboQuestionInfo("Do you want to add Code Generation files to your solution?")
+                {
+                    DefaultResponse = 0,
+                    Description = "The snippet files installed and a LinqPad Guid Generator file will be added to the solution for reference."
+                });
+            pages.Add(page);
+        }
+
         private InitializeSolutionInfo(Queue<object> queue)
         {
             InitializeSolution(new YesNoResult(queue.Dequeue())); // 0
@@ -195,6 +201,7 @@ namespace DLaB.VSSolutionAccelerator
             PluginTestName = (string)queue.Dequeue();
             InitializeWorkflow(new YesNoResult(queue.Dequeue()));
             WorkflowTestName = (string)queue.Dequeue(); // 10
+            InitializeCodeGeneration((List<string>)queue.Dequeue());
         }
 
         public static InitializeSolutionInfo InitializeSolution(object[] values)
@@ -227,6 +234,12 @@ namespace DLaB.VSSolutionAccelerator
             CreateWorkflow = result.IsYes;
             WorkflowName = result[1];
             IncludeExampleWorkflow = result[2] == "0";
+        }
+
+        private void InitializeCodeGeneration(List<string> result)
+        {
+            InstallSnippets = result[0] == "0";
+            IncludeCodeGenerationFiles = result[1] == "0";
         }
     }
 }

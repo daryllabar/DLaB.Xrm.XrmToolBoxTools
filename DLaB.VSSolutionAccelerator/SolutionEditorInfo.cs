@@ -7,6 +7,9 @@ namespace DLaB.VSSolutionAccelerator
     {
         public string SolutionPath { get; set; }
         public bool CreatePlugin { get; set; }
+        public bool IncludeCodeGenerationFiles { get; set; }
+        public bool InstallSnippets { get; set; }
+
         public bool IncludeExamplePlugins { get; set; }
         public bool CreateWorkflow { get; set; }
         public bool IncludeExampleWorkflow { get; set; }

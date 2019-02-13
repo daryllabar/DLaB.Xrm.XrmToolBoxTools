@@ -66,6 +66,10 @@ namespace DLaB.VSSolutionAccelerator
                 {
                     var results = host.SaveResults;
                     var info = InitializeSolutionInfo.InitializeSolution(results);
+                    if (info.InstallSnippets)
+                    {
+                        ExecuteInstallCodeSnippets();
+                    }
                     Execute(info);
                 }
 
@@ -98,6 +102,14 @@ namespace DLaB.VSSolutionAccelerator
             }
         }
 
+        private void ExecuteInstallCodeSnippets()
+        {
+            WorkAsync(new WorkAsyncInfo("Installing Code Snippets...", (w, e) => // Work To Do Asynchronously
+            {
+                Logic.VisualStudio.InstallCodeSnippets(Paths.PluginsPath);
+            }).WithLogger(this, TxtOutput));
+        }
+
         private void ExecuteBttn_Click(object sender, EventArgs e)
         {
             try
@@ -111,9 +123,12 @@ namespace DLaB.VSSolutionAccelerator
                         ShowAddAssemblyWizard();
                         break;
                     case 2:
-                        GenerateWithDefaultSettings();
+                        ExecuteInstallCodeSnippets();
                         break;
                     case 3:
+                        GenerateWithDefaultSettings();
+                        break;
+                    case 4:
                         GenerateAddAssemblyWithDefaultSettings();
                         break;
                     default:
@@ -197,45 +212,18 @@ namespace DLaB.VSSolutionAccelerator
 
         private void Execute(object info)
         {
-            Enabled = false;
             WorkAsync(new WorkAsyncInfo("Performing requested operations...", (w, e) => // Work To Do Asynchronously
             {
-
-                Logger.WireUpToReportProgress(w);
-                try
+                var templatePath = Path.GetFullPath(Path.Combine(Paths.PluginsPath, "DLaB.VSSolutionAccelerator"));
+                if (e.Argument is InitializeSolutionInfo solutionInfo)
                 {
-                    var templatePath = Path.GetFullPath(Path.Combine(Paths.PluginsPath, "DLaB.VSSolutionAccelerator"));
-                    if (e.Argument is InitializeSolutionInfo solutionInfo)
-                    {
-                        Logic.SolutionInitializer.Execute(solutionInfo, templatePath);
-                    }
-                    else if (e.Argument is AddProjectToSolutionInfo projectInfo)
-                    {
-                        Logic.SolutionUpdater.Execute(projectInfo, templatePath);
-                    }
-                    w.ReportProgress(99, "Finished Successfully!");
+                    Logic.SolutionInitializer.Execute(solutionInfo, templatePath);
                 }
-                catch (Exception ex)
+                else if (e.Argument is AddProjectToSolutionInfo projectInfo)
                 {
-                    w.ReportProgress(int.MinValue, ex.ToString());
+                    Logic.SolutionUpdater.Execute(projectInfo, templatePath);
                 }
-                finally
-                {
-                    Logger.UnwireFromReportProgress(w);
-                }
-            })
-            {
-                AsyncArgument = info,
-                PostWorkCallBack = e => // Creation has finished.  Cleanup
-                {
-                    Logger.DisplayLog(e, TxtOutput);
-                    Enabled = true;
-                },
-                ProgressChanged = e => // Logic wants to display an update
-                {
-                    Logger.DisplayLog(e, SetWorkingMessage, TxtOutput);
-                }
-            });
+            }).WithLogger(this, TxtOutput, info));
         }
 
         private void ActionCmb_SelectedIndexChanged(object sender, EventArgs e)
