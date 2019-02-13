@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>DLaB.Xrm.EarlyBoundGenerator</id>
+    <id>DLaB.Xrm.VsSolutionAccelerator</id>
 	  <version>1.2019.2.10</version>
 	  <title>Visual Studio Solution Accelerator</title>
     <authors>Daryl LaBar</authors>
@@ -22,8 +22,7 @@ Beta!
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator.dll" target="lib\net462\plugins" />
-    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\*.*" target="lib\net462\plugins\CrmSvcUtil Ref" />
-	  <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\alphabets\*.*" target="lib\net462\plugins\CrmSvcUtil Ref\alphabets" />
+    <file src="bin\Release\Plugins\DLaB.VSSolutionAccelerator.dll" target="lib\net462\plugins" />
+    <file src="bin\Release\Plugins\VSSAccelerator\**" target="lib\net462\plugins\VSSAccelerator" />
   </files>
 </package>

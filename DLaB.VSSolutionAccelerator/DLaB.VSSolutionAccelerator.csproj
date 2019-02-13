@@ -313,28 +313,28 @@ move /Y $(TargetFileName) Plugins
 
 if NOT EXIST "$(SolutionDir)..\XrmUnitTest.Example" goto :error
 
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Code Generation" "$(TargetDir)Plugins\$(ProjectName)\CodeGeneration" /S /MIR /NJS /NJH
+ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Code Generation" "$(TargetDir)Plugins\VSSAccelerator\CodeGeneration" /S /MIR /NJS /NJH
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)References" "$(TargetDir)Plugins\$(ProjectName)\bin" /MIR /NJS /NJH /XF NuGetC* Microsoft* Set*
+ROBOCOPY "$(SolutionDir)References" "$(TargetDir)Plugins\VSSAccelerator\bin" /MIR /NJS /NJH /XF NuGetC* Microsoft* Set*
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-COPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.ruleset" "$(TargetDir)Plugins\$(ProjectName)\Xyz.ruleset"
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.WorkflowCore" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm.WorkflowCore" /MIR /NJS /NJH
+COPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.ruleset" "$(TargetDir)Plugins\VSSAccelerator\Xyz.ruleset"
+ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.WorkflowCore" "$(TargetDir)Plugins\VSSAccelerator\Xyz.Xrm.WorkflowCore" /MIR /NJS /NJH
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm" /MIR /NJS /NJH /XD Entities
+ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm" "$(TargetDir)Plugins\VSSAccelerator\Xyz.Xrm" /MIR /NJS /NJH /XD Entities
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm\Entities\Actions" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm\Entities\Actions" /MIR /NJS /NJH /XF Actions.cs
+ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm\Entities\Actions" "$(TargetDir)Plugins\VSSAccelerator\Xyz.Xrm\Entities\Actions" /MIR /NJS /NJH /XF Actions.cs
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Workflow" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm.Workflow" /MIR /NJS /NJH
+ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Workflow" "$(TargetDir)Plugins\VSSAccelerator\Xyz.Xrm.Workflow" /MIR /NJS /NJH
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Workflow.Tests" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm.Workflow.Tests" /MIR /NJS /NJH /XD bin obj
+ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Workflow.Tests" "$(TargetDir)Plugins\VSSAccelerator\Xyz.Xrm.Workflow.Tests" /MIR /NJS /NJH /XD bin obj
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Plugin" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm.Plugin" /MIR /NJS /NJH /XD bin obj
+ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Plugin" "$(TargetDir)Plugins\VSSAccelerator\Xyz.Xrm.Plugin" /MIR /NJS /NJH /XD bin obj
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Plugin.Tests" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm.Plugin.Tests" /MIR /NJS /NJH /XD bin obj
+ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Plugin.Tests" "$(TargetDir)Plugins\VSSAccelerator\Xyz.Xrm.Plugin.Tests" /MIR /NJS /NJH /XD bin obj
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Test" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm.Test" /MIR /NJS /NJH /XD bin obj
+ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Test" "$(TargetDir)Plugins\VSSAccelerator\Xyz.Xrm.Test" /MIR /NJS /NJH /XD bin obj
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.TestCore" "$(TargetDir)Plugins\$(ProjectName)\Xyz.Xrm.TestCore" /MIR /NJS /NJH
+ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.TestCore" "$(TargetDir)Plugins\VSSAccelerator\Xyz.Xrm.TestCore" /MIR /NJS /NJH
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
 
 if %25errorlevel%25 LEQ 4 exit 0
