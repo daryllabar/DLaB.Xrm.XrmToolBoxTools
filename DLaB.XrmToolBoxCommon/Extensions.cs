@@ -164,6 +164,10 @@ namespace DLaB.XrmToolBoxCommon
                     {
                         w.ReportProgress(successPercent.Value, successMessage);
                     }
+                    else
+                    {
+                        plugin.Enabled = true;
+                    }
                 }
                 catch (Exception ex)
                 {

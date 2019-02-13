@@ -42,10 +42,20 @@ namespace DLaB.VSSolutionAccelerator
 
         private static void AddSolutionNameQuestion(List<IWizardPage> pages)
         {
-            pages.Add(GenericPage.Create(new PathQuestionInfo("What Solution?")
+            pages.Add(GenericPage.Create(new ConditionalYesNoQuestionInfo("Do you want to add the DLaB Accelerators to an existing solution?")
             {
-                Filter = "Solution Files (*.sln)|*.sln",
-                Description = "This Wizard will walk through the process of adding isolation/plugin/workflow/testing projects based on the DLaB/XrmUnitTest framework, adding the projects to the solution defined here."
+                Yes = new PathQuestionInfo("What Solution?")
+                {
+                    Filter = "Solution Files (*.sln)|*.sln",
+                    Description = "This Wizard will walk through the process of adding isolation/plugin/workflow/testing projects based on the DLaB/XrmUnitTest framework.  The configured projects will be add to the solution defined here."
+                },
+                No = new PathQuestionInfo("What Solution?")
+                {
+                    Filter = "Solution Files (*.sln)|*.sln",
+                    Description = "This Wizard will walk through the process of adding isolation/plugin/workflow/testing projects based on the DLaB/XrmUnitTest framework.  The configured projects will be add to a new solution created at the path defined here.",
+                    RequireFileExists = false,
+                    DefaultResponse = "C:\\FolderUnderSourceControl\\YourCompanyAbbreviation.Xrm.sln"
+                },
             }));
         }
 
@@ -211,7 +221,7 @@ namespace DLaB.VSSolutionAccelerator
 
         private void InitializeSolution(YesNoResult result)
         {
-            CreateSolution = result.IsYes;
+            CreateSolution = !result.IsYes;
             SolutionPath =  result[1];
         }
 

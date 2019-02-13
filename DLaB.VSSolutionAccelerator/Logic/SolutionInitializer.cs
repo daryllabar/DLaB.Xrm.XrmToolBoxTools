@@ -145,11 +145,47 @@ namespace DLaB.VSSolutionAccelerator.Logic
             {
                 logic.CreateProject(project.Key, info);
             }
-            IEnumerable<string> solution = File.ReadAllLines(logic.SolutionPath);
-            solution = SolutionFileEditor.AddMissingProjects(solution, logic.Projects.Values);
-            File.WriteAllLines(logic.SolutionPath, solution);
+            UpdateSolution(info, logic);
             logic.ExecuteNuGetRestoreForSolution();
             UpdateEarlyBoundConfigOutputPaths(info);
+        }
+
+        private static void UpdateSolution(InitializeSolutionInfo info, SolutionInitializer logic)
+        {
+            Logger.Show("Updating Solution");
+            IEnumerable<string> solution = File.ReadAllLines(logic.SolutionPath);
+            solution = SolutionFileEditor.AddMissingProjects(solution, logic.Projects.Values);
+            if (info.IncludeCodeGenerationFiles)
+            {
+                var parser = new SolutionFileParser(solution);
+                var codeGenPath = Path.Combine(logic.TemplateDirectory, "CodeGeneration");
+                var outputPath = Path.Combine(Path.GetDirectoryName(info.SolutionPath) ?? "", "CodeGeneration");
+                Directory.CreateDirectory(outputPath);
+                var files = new List<string>();
+                foreach (var file in Directory.GetFiles(codeGenPath))
+                {
+                    Logger.AddDetail($"Adding {file} to the solution...");
+                    var name = "CodeGeneration\\" + Path.GetFileName(file);
+                    var outputFile = Path.Combine(outputPath, Path.GetFileName(file));
+                    files.Add($"\t\t{name} = {name}");
+                    if (File.Exists(outputFile))
+                    {
+                        Logger.AddDetail($"File '{outputFile}' already existing.  Skipping Adding");
+                        continue;
+                    }
+                    File.Copy(file, outputFile);
+                }
+                parser.Projects.Add($@"Project(""{{2150E333-8FDC-42A3-9474-1A3956D46DE8}}"") = ""Code Generation"", ""Code Generation"", ""{{{Guid.NewGuid()}}}""
+	ProjectSection(SolutionItems) = preProject
+{string.Join(Environment.NewLine, files)}
+	EndProjectSection
+EndProject");
+                File.WriteAllLines(logic.SolutionPath, parser.GetSolution());
+            }
+            else
+            {
+                File.WriteAllLines(logic.SolutionPath, solution);
+            }
         }
 
         private static void CreateSolution(InitializeSolutionInfo info)
@@ -161,6 +197,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
                     info.SolutionPath += ".sln";
                 }
 
+                Directory.CreateDirectory(Path.GetDirectoryName(info.SolutionPath)??"");
                 File.WriteAllText(info.SolutionPath, $@"
 
 Microsoft Visual Studio Solution File, Format Version 12.00

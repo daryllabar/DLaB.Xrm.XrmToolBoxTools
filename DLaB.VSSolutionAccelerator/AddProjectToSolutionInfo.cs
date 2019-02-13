@@ -122,7 +122,7 @@ namespace DLaB.VSSolutionAccelerator
         private void ParseSolutionFileProjects(Dictionary<string, List<string>> sharedProjects, List<ProjectFileParser> projects)
         {
             var solution = new SolutionFileParser(File.ReadAllLines(SolutionPath));
-            foreach (var projectLine in solution.Projects.Select(l => l.Replace(" ", string.Empty)).Where(l => l != "EndProject"))
+            foreach (var projectLine in solution.Projects.Select(l => l.Replace(" ", string.Empty)).Where(l => l.StartsWith("Project(\"{")))
             {
                 var projectName = projectLine.SubstringByString("=\"", "\",\"");
                 var projectRelativePath = projectLine.SubstringByString(",\"", "\",\"");

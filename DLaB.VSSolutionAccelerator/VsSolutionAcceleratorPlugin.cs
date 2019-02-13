@@ -66,10 +66,7 @@ namespace DLaB.VSSolutionAccelerator
                 {
                     var results = host.SaveResults;
                     var info = InitializeSolutionInfo.InitializeSolution(results);
-                    if (info.InstallSnippets)
-                    {
-                        ExecuteInstallCodeSnippets();
-                    }
+
                     Execute(info);
                 }
 
@@ -164,7 +161,8 @@ namespace DLaB.VSSolutionAccelerator
                 new List<string> {"Y", "Abc.Xrm.Plugin", "0"},
                 "Abc.Xrm.Plugin.Tests",
                 new List<string> {"Y", "Abc.Xrm.Workflow", "1"},
-                "Abc.Xrm.Workflow.Tests"
+                "Abc.Xrm.Workflow.Tests",
+                new List<string> {"0", "0"},
             };
 
             var info = InitializeSolutionInfo.InitializeSolution(results);
@@ -195,7 +193,10 @@ namespace DLaB.VSSolutionAccelerator
             if (File.Exists(@"C:\Temp\AdvXTB\Abc.Xrm\Abc.Xrm.Lead.Plugin\Abc.Xrm.Lead.Plugin.csproj"))
             {
                 GenerateWithDefaultSettings();
-                Thread.Sleep(8000);
+                while (!Enabled)
+                {
+                    Thread.Sleep(10);
+                }
             }
             var results = new object[]
             {
@@ -217,6 +218,10 @@ namespace DLaB.VSSolutionAccelerator
                 var templatePath = Path.GetFullPath(Path.Combine(Paths.PluginsPath, "DLaB.VSSolutionAccelerator"));
                 if (e.Argument is InitializeSolutionInfo solutionInfo)
                 {
+                    if (solutionInfo.InstallSnippets)
+                    {
+                        Logic.VisualStudio.InstallCodeSnippets(Paths.PluginsPath);
+                    }
                     Logic.SolutionInitializer.Execute(solutionInfo, templatePath);
                 }
                 else if (e.Argument is AddProjectToSolutionInfo projectInfo)

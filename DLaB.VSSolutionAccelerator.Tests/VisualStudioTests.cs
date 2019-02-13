@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DLaB.VSSolutionAccelerator.Tests
@@ -48,9 +46,11 @@ namespace DLaB.VSSolutionAccelerator.Tests
             foreach (var value in folders.Select(i => new { SnippetFolder = i.Value, Backup = i.Key}))
             {
                 var snippets = Directory.GetFiles(value.SnippetFolder, "*.snippet");
+                // ReSharper disable StringLiteralTypo
                 AssertSnippetCreated(snippets, "crmplugin.snippet");
                 AssertSnippetCreated(snippets, "crmplugintest.snippet");
                 AssertSnippetCreated(snippets, "crmtestmethodclass.snippet");
+                // ReSharper restore StringLiteralTypo
                 AssertSnippetCreated(snippets, "region.snippet");
 
                 TestBase.ClearDirectory(value.SnippetFolder);
