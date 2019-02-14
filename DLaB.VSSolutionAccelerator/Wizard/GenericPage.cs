@@ -71,7 +71,7 @@ namespace DLaB.VSSolutionAccelerator.Wizard
 
         private int SetValues(TextQuestionInfo info)
         {
-            SetDefaultOnLoad(ResponseText, info.DefaultResponse);
+            SetDefaultOnLoad(ResponseText, info.DefaultResponse, info.EditDefaultResponse);
             return SetValues((QuestionInfo)info);
         }
 
@@ -79,7 +79,7 @@ namespace DLaB.VSSolutionAccelerator.Wizard
         {
             SetValues((QuestionInfo)info);
             PathInfo = info;
-            SetDefaultOnLoad(Path, info.DefaultResponse);
+            SetDefaultOnLoad(Path, info.DefaultResponse, info.EditDefaultResponse);
             CheckFileExists = info.RequireFileExists;
             return Rows.PathText;
         }
@@ -105,14 +105,14 @@ namespace DLaB.VSSolutionAccelerator.Wizard
         {
             SetValues2((QuestionInfo)info);
             Path2Info = info;
-            SetDefaultOnLoad(Path2, info.DefaultResponse);
+            SetDefaultOnLoad(Path2, info.DefaultResponse, info.EditDefaultResponse);
             CheckFile2Exists = info.RequireFileExists;
             return Rows.Path2Text;
         }
 
         private int SetValues2(TextQuestionInfo info)
         {
-            SetDefaultOnLoad(Response2Text, info.DefaultResponse);
+            SetDefaultOnLoad(Response2Text, info.DefaultResponse, info.EditDefaultResponse);
             return SetValues2((QuestionInfo)info);
         }
 
@@ -126,7 +126,7 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             return Rows.Text2;
         }
 
-        private void SetDefaultOnLoad(TextBox box, string defaultText)
+        private void SetDefaultOnLoad(TextBox box, string defaultText, Func<string, string> editDefaultResponse)
         {
             if (defaultText == null 
                 || !defaultText.Contains(SaveResultsPrefix))
@@ -137,7 +137,12 @@ namespace DLaB.VSSolutionAccelerator.Wizard
 
             void Action(GenericPage page, object[] saveResults)
             {
-                box.Text = GetDefaultValue(defaultText, saveResults);
+                var defaultValue = GetDefaultValue(defaultText, saveResults);
+                if (editDefaultResponse != null)
+                {
+                    defaultValue = editDefaultResponse(defaultValue);
+                }
+                box.Text = defaultValue;
             }
 
             AddOnLoadAction(Action);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DLaB.VSSolutionAccelerator.Wizard;
+using Source.DLaB.Common;
 
 namespace DLaB.VSSolutionAccelerator
 {
@@ -15,6 +16,7 @@ namespace DLaB.VSSolutionAccelerator
 
         private struct Page
         {
+            public const int SolutionPath = 0;
             public const int RootNamespace = 1;
             public const int UseXrmUnitTest = 6;
             public const int CreatePlugin = 7;
@@ -63,7 +65,16 @@ namespace DLaB.VSSolutionAccelerator
         {
             pages.Add(GenericPage.Create(new TextQuestionInfo("What is the root NameSpace?")
             {
-                DefaultResponse = "YourCompanyNameOrAbbreviation.Xrm",
+                DefaultResponse = GenericPage.GetSaveResultsFormat(Page.SolutionPath,1),
+                EditDefaultResponse = (value) =>
+                {
+                    value = System.IO.Path.GetFileNameWithoutExtension(value) ?? "MyCompanyAbrv.Xrm";
+                    if (!value.ToUpper().Contains("XRM"))
+                    {
+                        value += ".Xrm";
+                    }
+                    return value;
+                },
                 Description = "This is the root namespace that will the Plugin and (if desired) Early Bound Entities will be appended to."
             }));
         }

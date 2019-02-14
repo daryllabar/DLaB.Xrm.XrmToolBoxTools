@@ -8,6 +8,6 @@
     /// </remarks>
     public class Settings
     {
-        public string LastUsedOrganizationWebappUrl { get; set; }
+        public const string TemplateFolder = "VSSAccelerator";
     }
 }

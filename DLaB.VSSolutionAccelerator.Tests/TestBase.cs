@@ -28,7 +28,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
         public static string GetTemplatePath()
         {
             var pluginsPath = GetPluginsPath();
-            var templatePath = Path.GetFullPath(Path.Combine(pluginsPath, "VSSAccelerator"));
+            var templatePath = Path.GetFullPath(Path.Combine(pluginsPath, Settings.TemplateFolder));
             return templatePath;
         }
 

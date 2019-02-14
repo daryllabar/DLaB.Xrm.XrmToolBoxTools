@@ -8,7 +8,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
     {
         public static void InstallCodeSnippets(string pluginPath)
         {
-            var codeGenPath = Path.GetFullPath(Path.Combine(pluginPath, "VSSAccelerator", "CodeGeneration"));
+            var codeGenPath = Path.GetFullPath(Path.Combine(pluginPath, Settings.TemplateFolder, "CodeGeneration"));
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             var vsDirectories = Directory.GetDirectories(documentsPath, "Visual Studio *");
             if (vsDirectories.Length == 0)

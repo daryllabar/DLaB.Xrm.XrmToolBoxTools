@@ -25,6 +25,8 @@ namespace DLaB.VSSolutionAccelerator
                 ActionCmb.Items.Add("Generate With Default Settings");
                 ActionCmb.Items.Add("Add Plugins With Default Settings");
             }
+
+            ActionCmb.SelectedIndex = 0;
         }
 
         private void MyPluginControl_Load(object sender, EventArgs e)
@@ -215,7 +217,7 @@ namespace DLaB.VSSolutionAccelerator
         {
             WorkAsync(new WorkAsyncInfo("Performing requested operations...", (w, e) => // Work To Do Asynchronously
             {
-                var templatePath = Path.GetFullPath(Path.Combine(Paths.PluginsPath, "DLaB.VSSolutionAccelerator"));
+                var templatePath = Path.GetFullPath(Path.Combine(Paths.PluginsPath, Settings.TemplateFolder));
                 if (e.Argument is InitializeSolutionInfo solutionInfo)
                 {
                     if (solutionInfo.InstallSnippets)
