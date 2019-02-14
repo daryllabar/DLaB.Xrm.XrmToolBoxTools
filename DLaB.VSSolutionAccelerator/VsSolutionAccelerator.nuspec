@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Generates Plugin/Workflow Projects and potentially both the DLaB.Xrm Accelerator Libraries and the XrmUnitTest Libraries for a solution.</description>
+    <description>Adds recommended isolation/accelerator projects for use with the DLaB.Xrm and XrmUnitTest framework to your Visual Studio solution.</description>
     <releaseNotes>V1.2019.2.10
 Beta!
 - Generates the happy path of settings that I usually use for a project. 
