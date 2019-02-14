@@ -35,6 +35,10 @@ namespace DLaB.VSSolutionAccelerator.Wizard
                 }
             }
             page.PackageSelector.Items.AddRange(validPackages.Cast<object>().ToArray());
+            if (page.PackageSelector.Items.Count > 0)
+            {
+                page.PackageSelector.SelectedIndex = 0;
+            }
             return page;
         }
     }

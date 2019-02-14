@@ -238,8 +238,8 @@ namespace DLaB.VSSolutionAccelerator
     }
 
     [Export(typeof(IXrmToolBoxPlugin)),
-     ExportMetadata("Name", "VS Solution Accelerator"),
-     ExportMetadata("Description", "Creates recommended isolation assemblies for use with the DLaB.Xrm and XrmUnitTest framework."),
+     ExportMetadata("Name", "Visual Studio Solution Accelerator"),
+     ExportMetadata("Description", "Adds recommended isolation/accelerator projects for use with the DLaB.Xrm and XrmUnitTest framework to your Visual Studio solution."),
      ExportMetadata("SmallImageBase64", SmallImage32X32), // null for "no logo" image or base64 image content 
      ExportMetadata("BigImageBase64", LargeImage120X120), // null for "no logo" image or base64 image content 
      ExportMetadata("BackgroundColor", "White"), // Use a HTML color name
