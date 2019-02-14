@@ -47,6 +47,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
         {
             Logger.AddDetail($"Configuring Project {name} based on {key}.");
             var id = Guid.NewGuid();
+            var trademark = "[assembly: AssemblyTrademark(\"\")]";
             var project = new ProjectInfo
             {
                 Key = key,
@@ -75,6 +76,20 @@ namespace DLaB.VSSolutionAccelerator.Logic
                         {
                             "<CodeAnalysisRuleSet>"
                         }
+                    },
+                    new ProjectFile
+                    {
+                        Name = "Properties\\AssemblyInfo.cs",
+                        Replacements = new Dictionary<string, string>
+                        {
+                            {ProjectInfo.IdByKey[key].ToLower(), id.ToString()},
+                            {$"(\"{key}\")]", $"(\"{name}\")]"},
+                            {trademark, $"[assembly: AssemblyCopyright(\"Copyright ©  {DateTime.Now.Year}\")]{Environment.NewLine}{trademark}"}
+                        },
+                        Removals = new List<string>
+                        {
+                            "Copyright ©"
+                        },
                     }
                 },
             };
@@ -107,7 +122,6 @@ namespace DLaB.VSSolutionAccelerator.Logic
                     @"PluginBaseExamples\EntityAccess.cs",
                     @"PluginBaseExamples\ContextExample.cs",
                     @"PluginBaseExamples\VoidPayment.cs",
-                    @"Properties\AssemblyInfo.cs",
                     @"RemovePhoneNumberFormatting.cs",
                     @"RenameLogic.cs",
                     @"SyncContactToAccount.cs"

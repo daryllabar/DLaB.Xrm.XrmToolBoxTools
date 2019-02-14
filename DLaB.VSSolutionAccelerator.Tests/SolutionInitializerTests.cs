@@ -11,7 +11,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
 {
     [TestClass]
     [SuppressMessage("ReSharper", "UnusedMethodReturnValue.Local")]
-    public class LogicTests
+    public class SolutionInitializerTests
     {
         private InitializeSolutionTestInfo InitializeTest(Action<InitializeSolutionInfo> setCustomSettings = null, string tempDirectoryName = null)
         {
@@ -321,7 +321,19 @@ namespace DLaB.VSSolutionAccelerator.Tests
 
             AssertCsFileNamespaceUpdated(context, newName, arbitraryFile, newNameSpace);
 
+            AssertAssemblyInfoUpdated(context, newName, id);
+
             return lines;
+        }
+
+        private static void AssertAssemblyInfoUpdated(InitializeSolutionTestInfo context, string newName, Guid projectId)
+        {
+            var filePath = Path.Combine(context.SolutionDirectory, newName, "Properties", "AssemblyInfo.cs");
+            var file = File.ReadAllLines(filePath);
+            Assert.That.ExistsLineContaining(file, $"[assembly: AssemblyTitle(\"{newName}\")]");
+            Assert.That.ExistsLineContaining(file, $"[assembly: AssemblyProduct(\"{newName}\")]");
+            Assert.That.ExistsLineContaining(file, $"[assembly: AssemblyCopyright(\"Copyright ©  {DateTime.Now.Year}\")]");
+            Assert.That.ExistsLineContaining(file, $"[assembly: Guid(\"{projectId}\")]");
         }
     }
 }
