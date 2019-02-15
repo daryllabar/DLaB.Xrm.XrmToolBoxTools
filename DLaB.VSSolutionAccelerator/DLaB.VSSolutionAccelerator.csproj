@@ -334,6 +334,7 @@ ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Plugin.Tests" "$(TargetDi
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
 ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Test" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test" /MIR /NJS /NJH /XD bin obj
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
+COPY "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\Assumptions\Entity Xml\Product_Install.xml" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\Assumptions\Entity Xml\Product_Install.cs"
 ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.TestCore" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.TestCore" /MIR /NJS /NJH
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
 

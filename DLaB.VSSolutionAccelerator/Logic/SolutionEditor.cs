@@ -29,6 +29,20 @@ namespace DLaB.VSSolutionAccelerator.Logic
             TemplateDirectory = templateDirectory;
             SolutionPath = solutionPath;
             OutputBaseDirectory = Path.GetDirectoryName(solutionPath);
+            FixNuGetNotCreatingXmlFileBug();
+        }
+
+        private void FixNuGetNotCreatingXmlFileBug()
+        {
+            var assumptionsXmlFolder = Path.Combine(TemplateDirectory, "Xyz.Xrm.Test\\Assumptions\\Entity Xml");
+            foreach (var csFile in Directory.EnumerateFiles(assumptionsXmlFolder, "*.cs"))
+            {
+                var xmlFile = Path.Combine(Path.GetDirectoryName(csFile) ?? "", Path.GetFileNameWithoutExtension(csFile) + ".xml");
+                if (!File.Exists(xmlFile))
+                {
+                    File.Move(csFile, xmlFile);
+                }
+            }
         }
 
         protected void ExecuteNuGetRestoreForSolution()
