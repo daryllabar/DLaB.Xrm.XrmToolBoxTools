@@ -10,15 +10,21 @@ namespace DLaB.VSSolutionAccelerator.Logic
     public class SolutionEditor
     {
         public string NuGetPath { get; }
+        public string NugetContentInstallerPath { get; }
         public string OutputBaseDirectory { get; }
         public Dictionary<string, ProjectInfo> Projects { get; set; }
         public string SolutionPath { get; }
         public string StrongNamePath { get; }
         public string TemplateDirectory { get; }
 
-        public SolutionEditor(string solutionPath, string templateDirectory, string strongNamePath = null,  string nugetPath = null)
+        public SolutionEditor(string solutionPath, 
+                              string templateDirectory, 
+                              string strongNamePath = null,  
+                              string nugetPath = null, 
+                              string nugetContentInstallerPath = null)
         {
             NuGetPath = nugetPath ?? Path.Combine(templateDirectory, "bin\\nuget.exe");
+            NugetContentInstallerPath = nugetContentInstallerPath ?? Path.Combine(templateDirectory, "bin\\nugetContentInstaller.exe");
             StrongNamePath = strongNamePath ?? Path.Combine(templateDirectory, "bin\\sn.exe");
             TemplateDirectory = templateDirectory;
             SolutionPath = solutionPath;
@@ -32,6 +38,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
             Logger.AddDetail(cmd.FileName + " " + cmd.Arguments);
             var results = ProcessExecutor.ExecuteCmd(cmd);
             Logger.Show(results);
+            UpdateProjectsPostSolutionRestore();
         }
 
         protected void AddNugetPostUpdateCommandsToProjects(Version xrmPackageVersion, Dictionary<string, ProjectInfo> projects)
@@ -39,7 +46,11 @@ namespace DLaB.VSSolutionAccelerator.Logic
             var mapper = new NuGetMapper(NuGetPath, xrmPackageVersion);
             foreach (var project in projects.Values.Where(p => p.Type != ProjectInfo.ProjectType.SharedProj))
             {
-                project.AddNugetPostUpdateCommands(mapper, Path.Combine(TemplateDirectory, project.Key, "packages.config"), Path.Combine(OutputBaseDirectory, project.Name, "packages.config"));
+                project.AddNugetPostUpdateCommands(mapper,
+                    Path.Combine(TemplateDirectory, project.Key, "packages.config"),
+                    Path.Combine(OutputBaseDirectory, project.Name, "packages.config"),
+                    NugetContentInstallerPath,
+                    OutputBaseDirectory);
             }
         }
 
@@ -199,6 +210,27 @@ namespace DLaB.VSSolutionAccelerator.Logic
             project.ProjectsReferences.Add(projects[ProjectInfo.Keys.Test]);
             project.SharedProjectsReferences.Add(projects[ProjectInfo.Keys.TestCore]);
             projects.Add(project.Key, project);
+        }
+
+        private void CreateProject(string projectKey, string rootNamespace)
+        {
+            Projects[projectKey].CopyFromAndUpdate(TemplateDirectory, rootNamespace);
+        }
+
+        protected void CreateProjects(string rootNamespace)
+        {
+            foreach (var project in Projects)
+            {
+                CreateProject(project.Key, rootNamespace);
+            }
+        }
+
+        private void UpdateProjectsPostSolutionRestore()
+        {
+            foreach (var project in Projects)
+            {
+                project.Value.UpdatePostSolutionRestore();
+            }
         }
     }
 }

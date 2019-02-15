@@ -8,6 +8,6 @@
     /// </remarks>
     public class Settings
     {
-        public const string TemplateFolder = "VSSAccelerator";
+        public const string TemplateFolder = "DLaB.VSSolutionAccelerator";
     }
 }

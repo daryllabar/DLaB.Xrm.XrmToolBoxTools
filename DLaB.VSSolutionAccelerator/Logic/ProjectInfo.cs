@@ -51,7 +51,9 @@ namespace DLaB.VSSolutionAccelerator.Logic
         public string NewDirectory { get; set; }
         public string SolutionProjectHeader => string.Format("Project(\"{0}\") = \"{1}\", \"{1}\\{1}.{2}\", \"{{{3}}}\"{4}EndProject", GetTypeId(), Name, GetProjectPostfix(), Id.ToString().ToUpper(), Environment.NewLine );
         public List<ProcessExecutorInfo> PostUpdateCommands { get; set; }
+        public List<ProcessExecutorInfo> PostSolutionRestoreCommands { get; set; }
         public List<string> PostUpdateCommandResults { get; private set; }
+        public List<string> PostSolutionRestoreCommandResults { get; private set; }
         public List<string> FilesToRemove { get; internal set; }
 
         public ProjectInfo()
@@ -64,6 +66,8 @@ namespace DLaB.VSSolutionAccelerator.Logic
             ProjectsReferences = new List<ProjectInfo>();
             PostUpdateCommands = new List<ProcessExecutorInfo>();
             PostUpdateCommandResults = new List<string>();
+            PostSolutionRestoreCommands = new List<ProcessExecutorInfo>();
+            PostSolutionRestoreCommandResults = new List<string>();
         }
 
         internal static string GetTypeId(ProjectType type)
@@ -150,6 +154,11 @@ namespace DLaB.VSSolutionAccelerator.Logic
             ExecutePostUpdateCommands();
         }
 
+        public void UpdatePostSolutionRestore()
+        {
+            ExecutePostSolutionRestoreCommands();
+        }
+
         private void DeleteFiles()
         {
             foreach (var file in FilesToRemove)
@@ -185,7 +194,6 @@ namespace DLaB.VSSolutionAccelerator.Logic
 
         private void ExecutePostUpdateCommands()
         {
-
             foreach (var cmd in PostUpdateCommands)
             {
                 Logger.AddDetail($"Executing Command: \"{cmd.FileName}\" {cmd.Arguments}");
@@ -195,7 +203,18 @@ namespace DLaB.VSSolutionAccelerator.Logic
             }
         }
 
-        public void AddNugetPostUpdateCommands(NuGetMapper nuGetMapper, string templatePackagesPath, string packagesPath)
+        private void ExecutePostSolutionRestoreCommands()
+        {
+            foreach (var cmd in PostSolutionRestoreCommands)
+            {
+                Logger.AddDetail($"Executing Command: \"{cmd.FileName}\" {cmd.Arguments}");
+                var result = ProcessExecutor.ExecuteCmd(cmd);
+                Logger.AddDetail(result);
+                PostSolutionRestoreCommandResults.Add(result);
+            }
+        }
+
+        public void AddNugetPostUpdateCommands(NuGetMapper nuGetMapper, string templatePackagesPath, string packagesPath, string nugetContentInstallerPath, string solutionDirectory)
         {
             if (!File.Exists(templatePackagesPath))
             {
@@ -203,6 +222,11 @@ namespace DLaB.VSSolutionAccelerator.Logic
             }
 
             nuGetMapper.AddUpdateCommands(PostUpdateCommands, templatePackagesPath, packagesPath);
+            var packages = File.ReadAllText(templatePackagesPath);
+            if (packages.Contains("DLaB.Xrm.Source") || packages.Contains("DLaB.Xrm.Common.Source"))
+            {
+                PostSolutionRestoreCommands.Add(new ProcessExecutorInfo(nugetContentInstallerPath, $@"""{solutionDirectory}"" ""{Path.Combine(solutionDirectory, Name, Name + "." + GetProjectPostfix())}"""));
+            }
         }
 
         public void RenameFiles()

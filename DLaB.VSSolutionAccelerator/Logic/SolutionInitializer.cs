@@ -141,10 +141,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
             CreateSolution(info);
             var logic = new SolutionInitializer(info.SolutionPath, templateDirectory, strongNamePath);
             logic.Projects = logic.GetProjectInfos(info);
-            foreach (var project in logic.Projects)
-            {
-                logic.CreateProject(project.Key, info);
-            }
+            logic.CreateProjects(info.RootNamespace);
             UpdateSolution(info, logic);
             logic.ExecuteNuGetRestoreForSolution();
             UpdateEarlyBoundConfigOutputPaths(info);
@@ -239,6 +236,7 @@ EndGlobal
             settings.OptionSetOutPath = settings.ExtensionConfig.CreateOneFilePerOptionSet ? @"OptionSets" : @"OptionSets.cs";
             settings.Namespace = $"{info.SharedCommonProject}.Entities";
             settings.ServiceContextName = "CrmContext";
+            settings.Version = "1.2000.1.1"; // Set to old version since the Default version will be the version of the VSSolutionAccelerator, not the EBG
             var settingsPath = Path.Combine(settingsDirectory, "EBG." + info.RootNamespace + ".Settings.xml");
             Directory.CreateDirectory(Path.GetDirectoryName(settingsPath)??"");
             settings.Save(Path.Combine(settingsDirectory, settingsPath));
@@ -265,6 +263,11 @@ EndGlobal
             Clipboard.SetText(text);
         }
 
+        /// <summary>
+        /// Used for Unit Testing
+        /// </summary>
+        /// <param name="projectKey"></param>
+        /// <param name="info"></param>
         public void CreateProject(string projectKey, InitializeSolutionInfo info)
         {
             Projects[projectKey].CopyFromAndUpdate(TemplateDirectory, info.RootNamespace);

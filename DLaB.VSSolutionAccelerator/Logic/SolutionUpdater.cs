@@ -95,19 +95,11 @@ namespace DLaB.VSSolutionAccelerator.Logic
             Logger.AddDetail($"Starting to process solution '{info.SolutionPath}' using templates from '{templateDirectory}'");
             var adder = new SolutionUpdater(info.SolutionPath, templateDirectory, strongNamePath);
             adder.Projects = adder.GetProjectInfos(info);
-            foreach (var project in adder.Projects.Where(p => p.Value.AddToSolution))
-            {
-                adder.CreateProject(project.Key);
-            }
+            adder.CreateProjects(string.Empty);
             IEnumerable<string> solution = File.ReadAllLines(adder.SolutionPath);
             solution = SolutionFileEditor.AddMissingProjects(solution, adder.Projects.Values);
             File.WriteAllLines(adder.SolutionPath, solution);
             adder.ExecuteNuGetRestoreForSolution();
-        }
-
-        public void CreateProject(string projectKey)
-        {
-            Projects[projectKey].CopyFromAndUpdate(TemplateDirectory, string.Empty);
         }
     }
 }
