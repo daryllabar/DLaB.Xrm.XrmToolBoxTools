@@ -21,7 +21,6 @@ using System.Collections.Generic;
 using Microsoft.Crm.Services.Utility;
 using Microsoft.Xrm.Sdk.Metadata;
 using System.Linq;
-using System.Reflection;
 using Source.DLaB.Common;
 
 namespace DLaB.CrmSvcUtilExtensions.OptionSet
@@ -51,6 +50,10 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
             else
             {
                 var t = Type.GetType(OptionSetEntityFilter);
+                if (t == null)
+                {
+                    throw new Exception("Unable to determine OptionSetEntityFilter Type");
+                }
                 EntityFilterService = (ICodeWriterFilterService)Activator.CreateInstance(t, DefaultService);
             }
             GeneratedOptionSets = new HashSet<string>();
@@ -88,7 +91,7 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
                 return false;
             }
 
-            bool generate = false;
+            var generate = false;
 
             if (optionSetMetadata.IsGlobal.GetValueOrDefault())
             {
@@ -104,8 +107,7 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
             }
 
             // Remove Dups
-            var metadataOptionSet = optionSetMetadata as OptionSetMetadata;
-            if (generate && metadataOptionSet != null)
+            if (generate && optionSetMetadata is OptionSetMetadata metadataOptionSet)
             {
                 var namingService = new NamingService((INamingService)services.GetService(typeof(INamingService)));
                 var names = new HashSet<string>();
@@ -134,8 +136,8 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
             var metadata = metadataService.LoadMetadata();
             foreach (var entity in metadata.Entities.Where(m => GenerateEntity(m, services)))
             {
-                foreach (var name in entity.Attributes.Where(a => a.AttributeType == AttributeTypeCode.Picklist)
-                    .Cast<PicklistAttributeMetadata>()
+                foreach (var name in entity.Attributes.Where(a => a.AttributeType == AttributeTypeCode.Picklist || a.AttributeType == AttributeTypeCode.Virtual && a is MultiSelectPicklistAttributeMetadata)
+                    .Cast<EnumAttributeMetadata>()
                     .Where(a => a.OptionSet.IsGlobal.GetValueOrDefault())
                     .Select(a => a.OptionSet.Name.ToLower()))
                 {
