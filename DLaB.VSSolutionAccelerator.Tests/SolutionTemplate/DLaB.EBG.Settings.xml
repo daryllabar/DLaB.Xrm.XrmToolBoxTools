@@ -24,6 +24,7 @@
     <GenerateEnumProperties>true</GenerateEnumProperties>
     <GenerateOnlyReferencedOptionSets>true</GenerateOnlyReferencedOptionSets>
     <InvalidCSharpNamePrefix>_</InvalidCSharpNamePrefix>
+    <MakeAllFieldsEditable>false</MakeAllFieldsEditable>
     <MakeReadonlyFieldsEditable>false</MakeReadonlyFieldsEditable>
     <MakeResponseActionsEditable>false</MakeResponseActionsEditable>
     <LocalOptionSetFormat>{0}_{1}</LocalOptionSetFormat>

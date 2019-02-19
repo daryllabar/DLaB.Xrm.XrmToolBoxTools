@@ -117,4 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="TxtOutput.Text" xml:space="preserve">
+    <value>There are 3 actions you can perfrom with this tool:
+1. Add Accelerator Isolation Libraries to my Solution
+ - This is the first step that is required to be done once per Visual Studio solution.  A wizard will guide you through the installation process, i.e. what to name the required projects, and what optional items you'd like to include (Unit Tests, Early Binding, Code Snippets, etc.).  It will then perfrom the requested actions.
+
+2. Add Plugin/Workflow Project to an Accelerated Solution
+ - This is a follow up step to the first.  If you require additional plugin/workflow libraries in your solution, and you've already installed the required projects, this adds an additional plugin/workflow project to the solution.
+
+3. Install Snippets
+ - This installs a hand full of snippets into the current user's VS code snippets director(y/ies).  Since this can't be done via source control, any new developers or new machines will need this step performed in order to be able to use the snippets.</value>
+  </data>
 </root>

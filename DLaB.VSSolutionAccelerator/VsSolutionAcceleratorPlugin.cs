@@ -6,7 +6,6 @@ using System.IO;
 using System.IO.Compression;
 using System.Threading;
 using System.Windows.Forms;
-using DLaB.Log;
 using DLaB.VSSolutionAccelerator.Wizard;
 using DLaB.XrmToolBoxCommon;
 using XrmToolBox.Extensibility;
