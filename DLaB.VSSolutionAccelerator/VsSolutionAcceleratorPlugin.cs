@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Threading;
 using System.Windows.Forms;
 using DLaB.Log;
@@ -27,7 +28,26 @@ namespace DLaB.VSSolutionAccelerator
             }
 
             ActionCmb.SelectedIndex = 0;
+            UnzipTemplate();
         }
+
+        private void UnzipTemplate()
+        {
+            string zipPath = Path.Combine(Paths.PluginsPath, "DLaB.VSSolutionAccelerator", "Template.zip");
+            if (!File.Exists(zipPath))
+            {
+                return;
+            }
+
+            var tmp = Path.GetTempFileName();
+            File.Move(zipPath, tmp);
+            DeleteDirectory(Path.GetDirectoryName(zipPath));
+            Directory.CreateDirectory(zipPath);
+            ZipFile.ExtractToDirectory(tmp, Path.GetDirectoryName(zipPath));
+            File.SetAttributes(zipPath, FileAttributes.Normal);
+            File.Delete(zipPath);
+        }
+
 
         private void MyPluginControl_Load(object sender, EventArgs e)
         {
@@ -169,15 +189,7 @@ namespace DLaB.VSSolutionAccelerator
 
             var info = InitializeSolutionInfo.InitializeSolution(results);
             var solutionDir = Path.GetDirectoryName(info.SolutionPath) ?? Guid.NewGuid().ToString();
-            if (Directory.Exists(solutionDir))
-            {
-                foreach (var file in Directory.EnumerateFiles(solutionDir, "*", SearchOption.AllDirectories))
-                {
-                    File.Delete(file);
-                }
-
-                Directory.Delete(solutionDir, true);
-            }
+            DeleteDirectory(solutionDir);
 
             do
             {
@@ -187,6 +199,45 @@ namespace DLaB.VSSolutionAccelerator
 
             File.Copy("C:\\Temp\\AdvXTB\\Abc.Xrm.sln", info.SolutionPath);
             Execute(info);
+        }
+
+        private static void DeleteDirectory(string directoryPath)
+        {
+            try
+            {
+                TryDeleteDirectory(directoryPath);
+            }
+            catch
+            {
+                var secondTryFailed = false;
+                try
+                {
+                    Thread.Sleep(3000);
+                    TryDeleteDirectory(directoryPath);
+                }
+                catch
+                {
+                    secondTryFailed = true;
+                }
+
+                if (secondTryFailed)
+                {
+                    throw;
+                }
+            }
+        }
+
+        private static void TryDeleteDirectory(string directoryPath)
+        {
+            if (Directory.Exists(directoryPath))
+            {
+                foreach (var file in Directory.EnumerateFiles(directoryPath, "*", SearchOption.AllDirectories))
+                {
+                    File.Delete(file);
+                }
+
+                Directory.Delete(directoryPath, true);
+            }
         }
 
 
