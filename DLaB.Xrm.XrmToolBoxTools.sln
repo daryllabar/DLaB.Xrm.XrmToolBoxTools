@@ -29,6 +29,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{4209BA61
 		DLaB.AttributeManager\AttributeManager.nuspec = DLaB.AttributeManager\AttributeManager.nuspec
 		DLaB.EarlyBoundGenerator.Api\EarlyBoundGenerator.Api.nuspec = DLaB.EarlyBoundGenerator.Api\EarlyBoundGenerator.Api.nuspec
 		DLaB.EarlyBoundGenerator\EarlyBoundGenerator.nuspec = DLaB.EarlyBoundGenerator\EarlyBoundGenerator.nuspec
+		DLaB.VSSolutionAccelerator\VsSolutionAccelerator.nuspec = DLaB.VSSolutionAccelerator\VsSolutionAccelerator.nuspec
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.CrmSvcUtilExtensions.Tests", "DLaB.CrmSvcUtilExtensions.Tests\DLaB.CrmSvcUtilExtensions.Tests.csproj", "{9E7917B8-42E9-44CA-993A-15D7E60363EF}"
