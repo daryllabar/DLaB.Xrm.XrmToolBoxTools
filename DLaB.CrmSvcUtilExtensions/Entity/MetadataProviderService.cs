@@ -9,10 +9,12 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
     public class MetadataProviderService: BaseMetadataProviderService
     {
         public bool MakeReadonlyFieldsEditable { get; }
+        public bool MakeAllFieldsEditable { get; }
 
         public MetadataProviderService(IMetadataProviderService defaultService, IDictionary<string, string> parameters) : base (defaultService, parameters)
         {
             MakeReadonlyFieldsEditable = ConfigHelper.GetAppSettingOrDefault("MakeReadonlyFieldsEditable", false);
+            MakeAllFieldsEditable = ConfigHelper.GetAppSettingOrDefault("MakeAllFieldsEditable", false);
         }
 
         protected override IOrganizationMetadata LoadMetadataInternal()
@@ -48,6 +50,14 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                     case "statuscode":
                         att.SchemaName = "StatusCode";
                         break;
+                }
+
+                if (MakeAllFieldsEditable)
+                {
+                    if (att.IsValidForCreate != true)
+                    {
+                        prop.SetValue(att, true);
+                    }
                 }
             }
             return metadata;

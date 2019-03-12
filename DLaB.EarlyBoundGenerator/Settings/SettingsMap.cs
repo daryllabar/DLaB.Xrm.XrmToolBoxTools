@@ -163,6 +163,15 @@ namespace DLaB.EarlyBoundGenerator.Settings
         }
 
         [Category("Entities")]
+        [DisplayName("Make All Fields Editable")]
+        [Description("Defines that Entities should be created with all attributes as editable.  This may be confusing for some developers because attempts to update FullName on the contact will silently fail.")]
+        public bool MakeAllFieldsEditable
+        {
+            get => Config.ExtensionConfig.MakeAllFieldsEditable;
+            set => Config.ExtensionConfig.MakeAllFieldsEditable = value;
+        }
+
+        [Category("Entities")]
         [DisplayName("Make Readonly Fields Editable")]
         [Description("Defines that Entities should be created with editable createdby, createdon, modifiedby, modifiedon, owningbusinessunit, owningteam, and owninguser properties.\n\rHelpful for writing linq statements where those attributes are wanting to be returned in the select.")]
         public bool MakeReadonlyFieldsEditable

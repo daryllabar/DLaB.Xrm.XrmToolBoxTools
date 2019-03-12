@@ -83,6 +83,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public string InvalidCSharpNamePrefix { get; set; }
         /// <summary>
+        /// Defines that Entities should be created with all atributes as editable.
+        /// Helpful for writing linq statements where those attributes are wanting to be returned in the select.
+        /// </summary>
+        public bool MakeAllFieldsEditable { get; set; }
+        /// <summary>
         /// Defines that Entities should be created with editable createdby, createdon, modifiedby, modifiedon, owningbusinessunit, owningteam, and owninguser properties.
         /// Helpful for writing linq statements where those attributes are wanting to be returned in the select
         /// </summary>
@@ -181,6 +186,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 EntityAttributeSpecifiedNames = null,
                 EntityPrefixesToSkip = null,
                 InvalidCSharpNamePrefix = "_",
+                MakeAllFieldsEditable = false,
                 MakeReadonlyFieldsEditable = false,
                 MakeResponseActionsEditable = false,
                 LocalOptionSetFormat = "{0}_{1}",
@@ -228,6 +234,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public string EntityPrefixesToSkip { get; set; }
         public bool? GenerateOnlyReferencedOptionSets { get; set; }
         public string InvalidCSharpNamePrefix { get; set; }
+        public bool? MakeAllFieldsEditable { get; set; }
         public bool? MakeReadonlyFieldsEditable { get; set; }
         public bool? MakeResponseActionsEditable { get; set; }
         public string LocalOptionSetFormat { get; set; }
