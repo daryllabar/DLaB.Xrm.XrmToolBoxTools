@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Config xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <AudibleCompletionNotification>true</AudibleCompletionNotification>
-  <CrmSvcUtilRelativePath>CrmSvcUtil Ref\crmsvcutil.exe</CrmSvcUtilRelativePath>
+  <CrmSvcUtilRelativePath>DLaB.EarlyBoundGenerator\crmsvcutil.exe</CrmSvcUtilRelativePath>
   <IncludeCommandLine>true</IncludeCommandLine>
   <MaskPassword>true</MaskPassword>
-  <SettingsVersion>1.2019.1.25</SettingsVersion>
-  <Version>1.2019.1.25</Version>
+  <SettingsVersion>1.2019.3.12</SettingsVersion>
+  <Version>1.2019.3.12</Version>
   <ExtensionConfig>
     <ActionsToSkip />
     <AddDebuggerNonUserCode>true</AddDebuggerNonUserCode>
@@ -119,7 +119,7 @@
     <Argument>
       <SettingType>Actions</SettingType>
       <Name>out</Name>
-      <Value>CrmSvcUtil%20Ref\Actions.cs</Value>
+      <Value>DLaB.EarlyBoundGenerator\Actions.cs</Value>
     </Argument>
     <Argument>
       <SettingType>All</SettingType>
@@ -129,7 +129,7 @@
     <Argument>
       <SettingType>Entities</SettingType>
       <Name>out</Name>
-      <Value>CrmSvcUtil Ref\Entities.cs</Value>
+      <Value>DLaB.EarlyBoundGenerator\Entities.cs</Value>
     </Argument>
     <Argument>
       <SettingType>Entities</SettingType>
@@ -139,7 +139,7 @@
     <Argument>
       <SettingType>OptionSets</SettingType>
       <Name>out</Name>
-      <Value>CrmSvcUtil Ref\OptionSets.cs</Value>
+      <Value>DLaB.EarlyBoundGenerator\OptionSets.cs</Value>
     </Argument>
   </UserArguments>
 </Config>

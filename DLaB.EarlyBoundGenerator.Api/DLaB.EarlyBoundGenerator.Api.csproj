@@ -88,24 +88,24 @@ if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.
 </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)CrmSvcUtil.exe" "$(TargetDir)CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)CrmSvcUtil.exe.config" "$(TargetDir)CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)DLaB.CrmSvcUtilExtensions.dll" "$(TargetDir)CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)DLaB.Common.dll" "$(TargetDir)CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Crm.Sdk.Proxy.dll" "$(TargetDir)CrmSvcUtil Ref\"
+    <PostBuildEvent>xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)CrmSvcUtil.exe" "$(TargetDir)DLaB.EarlyBoundGenerator\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)CrmSvcUtil.exe.config" "$(TargetDir)DLaB.EarlyBoundGenerator\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)DLaB.CrmSvcUtilExtensions.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)DLaB.Common.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Crm.Sdk.Proxy.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
 
-xcopy /I /Y "$(TargetDir)Microsoft.Xrm.Sdk.dll" "$(TargetDir)CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\OptionSet\Transliteration\Alphabets\*" "$(TargetDir)CrmSvcUtil Ref\alphabets"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Newtonsoft.Json.dll" "$(TargetDir)CrmSvcUtil Ref\"
+xcopy /I /Y "$(TargetDir)Microsoft.Xrm.Sdk.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\OptionSet\Transliteration\Alphabets\*" "$(TargetDir)DLaB.EarlyBoundGenerator\alphabets"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Newtonsoft.Json.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
 
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.IdentityModel.Clients.ActiveDirectory.dll" "$(TargetDir)CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" "$(TargetDir)CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Rest.ClientRuntime.dll" "$(TargetDir)CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Portal.dll" "$(TargetDir)CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Client.dll" "$(TargetDir)CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Client.CodeGeneration.dll" "$(TargetDir)CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Tooling.*.dll" "$(TargetDir)CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Sdk.Deployment.dll" "$(TargetDir)CrmSvcUtil Ref\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Sdk.dll" "$(TargetDir)CrmSvcUtil Ref\"</PostBuildEvent>
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.IdentityModel.Clients.ActiveDirectory.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Rest.ClientRuntime.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Portal.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Client.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Client.CodeGeneration.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Tooling.*.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Sdk.Deployment.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Sdk.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"</PostBuildEvent>
   </PropertyGroup>
 </Project>

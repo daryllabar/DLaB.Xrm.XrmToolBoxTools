@@ -214,7 +214,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         private EarlyBoundGeneratorConfig()
         {
-            CrmSvcUtilRelativePath = Config.GetAppSettingOrDefault("CrmSvcUtilRelativePath", @"CrmSvcUtil Ref\crmsvcutil.exe");
+            CrmSvcUtilRelativePath = Config.GetAppSettingOrDefault("CrmSvcUtilRelativePath", @"DLaB.EarlyBoundGenerator\crmsvcutil.exe");
             UseConnectionString = Config.GetAppSettingOrDefault("UseConnectionString", false);
             Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
@@ -333,9 +333,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         private void RemoveObsoleteValues(POCO.Config poco, EarlyBoundGeneratorConfig @default)
         {
-            if (CrmSvcUtilRelativePath == @"Plugins\CrmSvcUtil Ref\crmsvcutil.exe")
+            if (CrmSvcUtilRelativePath == @"Plugins\CrmSvcUtil Ref\crmsvcutil.exe" 
+                || CrmSvcUtilRelativePath == @"CrmSvcUtil Ref\crmsvcutil.exe")
             {
                 // 12.15.2016 XTB changed to use use the User directory, no plugin folder needed now
+                // 3.12.2019 Nuget Stopped liking spaces in the CrmSvcUtilFolder.  Updated to be the plugin specific DLaB.EarlyBoundGenerator
                 CrmSvcUtilRelativePath = @default.CrmSvcUtilRelativePath;
             }
             foreach (var value in poco.ExtensionArguments.Where(a => string.Equals(a.Value, "DLaB.CrmSvcUtilExtensions.Entity.OverridePropertyNames,DLaB.CrmSvcUtilExtensions", StringComparison.InvariantCultureIgnoreCase)).ToList())

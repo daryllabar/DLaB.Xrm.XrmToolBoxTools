@@ -10,6 +10,7 @@ using DLaB.VSSolutionAccelerator.Wizard;
 using DLaB.XrmToolBoxCommon;
 using XrmToolBox.Extensibility;
 using XrmToolBox.Extensibility.Interfaces;
+using Exception = System.Exception;
 
 namespace DLaB.VSSolutionAccelerator
 {
@@ -27,7 +28,14 @@ namespace DLaB.VSSolutionAccelerator
             }
 
             ActionCmb.SelectedIndex = 0;
-            UnzipTemplate();
+            try
+            {
+                UnzipTemplate();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Unable to unzip the template.  " + ex.Message, ex);
+            }
         }
 
         private void UnzipTemplate()
@@ -38,13 +46,13 @@ namespace DLaB.VSSolutionAccelerator
                 return;
             }
 
-            var tmp = Path.GetTempFileName();
+            var tmp = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+            File.SetAttributes(zipPath, FileAttributes.Normal);
             File.Move(zipPath, tmp);
             DeleteDirectory(Path.GetDirectoryName(zipPath));
             Directory.CreateDirectory(zipPath);
             ZipFile.ExtractToDirectory(tmp, Path.GetDirectoryName(zipPath));
-            File.SetAttributes(zipPath, FileAttributes.Normal);
-            File.Delete(zipPath);
+            File.Delete(tmp);
         }
 
 

@@ -59,7 +59,7 @@ V1.2018.3.6
   </metadata>
   <files>
     <file src="bin\Release\DLaB.EarlyBoundGenerator.Api.dll" target="lib\net462" />
-    <file src="bin\Release\CrmSvcUtil Ref\*.*" target="lib\net462\CrmSvcUtil Ref" />
-    <file src="bin\Release\CrmSvcUtil Ref\alphabets\*.*" target="lib\net462\CrmSvcUtil Ref\alphabets" />
+    <file src="bin\Release\DLaB.EarlyBoundGenerator\*.*" target="lib\net462\DLaB.EarlyBoundGenerator" />
+    <file src="bin\Release\DLaB.EarlyBoundGenerator\alphabets\*.*" target="lib\net462\DLaB.EarlyBoundGenerator\alphabets" />
   </files>
 </package>

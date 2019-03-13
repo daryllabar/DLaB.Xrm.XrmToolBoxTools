@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator</id>
-	  <version>1.2019.3.11</version>
+	  <version>1.2019.3.12</version>
 	  <title>Early Bound Generator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,10 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V1.2019.3.11
+    <releaseNotes>V1.2019.3.12
+Fix for Unable to generate files with latest version installed via XrmToolBox #177
+
+V1.2019.3.11
 Added Extension for "Make readonly fields editable" #174
       
 V1.2019.2.12
@@ -57,7 +60,7 @@ V1.2018.3.6
   </metadata>
   <files>
     <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator.dll" target="lib\net462\plugins" />
-    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\*.*" target="lib\net462\plugins\CrmSvcUtil Ref" />
-	  <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\alphabets\*.*" target="lib\net462\plugins\CrmSvcUtil Ref\alphabets" />
+    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\*.*" target="lib\net462\plugins\DLaB.EarlyBoundGenerator" />
+	  <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\alphabets\*.*" target="lib\net462\plugins\DLaB.EarlyBoundGenerator\alphabets" />
   </files>
 </package>

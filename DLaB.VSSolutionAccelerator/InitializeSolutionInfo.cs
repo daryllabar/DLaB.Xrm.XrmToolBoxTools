@@ -93,7 +93,7 @@ namespace DLaB.VSSolutionAccelerator
             {
                 Description = "If yes, generates the default Early Bound Generator Settings, but Configures the output paths of the entities/option sets/actions to generate files in the appropriate shared project within the solution."
                               + Environment.NewLine
-                              + "The Early Bound Generator XrmToolBox plugin must be installed to generate the entities." 
+                              + "The Early Bound Generator XrmToolBox plugin must be installed to generate the entities, and must be a version 1.2019.3.12 or greater."
                               + Environment.NewLine
                               + "The Early Bound Generator will also be triggered upon completion to generate the Early Bound classes."
             }));
