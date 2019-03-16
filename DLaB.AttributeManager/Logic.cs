@@ -980,15 +980,16 @@ namespace DLaB.AttributeManager
             foreach (var query in GetViewsWithAttribute(service, from)
                 .Union(GetUserViewsWithAttribute(service, from)))
             {
-                Trace($"Updating {query.LogicalName} {query.Name}");
-                var toUpdate = query.CreateForUpdate();
+                Trace($"Updating {query.LogicalName} {query.Name} {query.Id}");
+                var toUpdate = query.CreateForUpdate(); //Is returning a query with a blank ID 0000000-0000-0000-00000000
+                toUpdate.Id = query.Id;                 //Added step to populate Id of Query to be updated. This fixed error indicating entity id missing. 
                 toUpdate.FetchXml = ReplaceFetchXmlAttribute(query.FetchXml, from.LogicalName, to.LogicalName);
 
                 if (query.LayoutXml != null)
                 {
                     toUpdate.LayoutXml = ReplaceFetchXmlAttribute(query.LayoutXml, from.LogicalName, to.LogicalName, true);
                 }
-                service.Update((Entity)toUpdate);
+                service.Update((Entity)toUpdate); //Likely culprit. toUpdate entity has an ID 00000000000-0000-0000-000000000000
             }
         }
 
@@ -1006,6 +1007,10 @@ namespace DLaB.AttributeManager
             AddFetchXmlCriteria(qe, SavedQuery.Fields.FetchXml, @from.EntityLogicalName, @from.LogicalName);
 
             Trace("Retrieving Views with Query: " + qe.GetSqlStatement());
+            
+            ///Debug Step to see full list of queries found. 
+            List<SavedQuery> savedqueries = service.GetEntities(qe);
+
             return service.GetEntities(qe);
         }
 
@@ -1021,6 +1026,9 @@ namespace DLaB.AttributeManager
             });
 
             AddFetchXmlCriteria(qe, UserQuery.Fields.FetchXml, @from.EntityLogicalName, @from.LogicalName);
+
+            ///Debug Step to see full list of queries found. 
+            List<UserQuery> userqueries = service.GetEntities(qe);
 
             Trace("Retrieving User Views with Query: " + qe.GetSqlStatement());
             return service.GetEntities(qe);
@@ -1039,9 +1047,19 @@ namespace DLaB.AttributeManager
         private static void AddFetchXmlCriteria(QueryExpression qe, string fieldName, string entityName, string attributeName)
         {
             qe.WhereEqual(
-                new ConditionExpression(fieldName, ConditionOperator.Like, $"%<entity name=\"{entityName}\">%name=\"{attributeName}\"%</entity>%"), 
-                LogicalOperator.Or, 
-                new ConditionExpression(fieldName, ConditionOperator.Like, $"%<entity name=\"{entityName}\">%attribute=\"{attributeName}\"%</entity>%"));
+                //System may add additoinal attributes, such as "alias" between entity and name, so I've added wildcard between <entity tag opening and name attribute. 
+                new ConditionExpression(fieldName, ConditionOperator.Like, $"%<entity%name=\"{entityName}\">%name=\"{attributeName}\"%</entity>%"),
+                LogicalOperator.Or,
+                new ConditionExpression(fieldName, ConditionOperator.Like, $"%<entity%name=\"{entityName}\">%attribute=\"{attributeName}\"%</entity>%"),
+                LogicalOperator.Or,
+                //Add Condition Expression to find queries on linked entities, not just the entity of the target attribute.
+                //new ConditionExpression(fieldName, ConditionOperator.Like, $"%<entity%>%<link-entity name=\"{entityName}\"%>%<attribute name=\"{attributeName}\"%>%</link-entity>%</entity>%"));
+                //Underscore in "link_entity" because hyphen is SQL wildcard for range of characters. Backslash doesn't escape as it conflicts with UTF-8?
+                //new ConditionExpression(fieldName, ConditionOperator.Like, $"%<link_entity name=\"{entityName}\"%>%<attribute name=\"{attributeName}\"%>%</link_entity>%"));
+                //new ConditionExpression(fieldName, ConditionOperator.Like, $"%<%entity name=\"{entityName}\"%attribute name=\"{attributeName}\"%</%entity>%"));
+                new ConditionExpression(fieldName, ConditionOperator.Like, $"%<link-entity%name=\"{entityName}\"%>%name=\"{attributeName}\"%>%</link-entity>%"),
+                LogicalOperator.Or,
+                new ConditionExpression(fieldName, ConditionOperator.Like, $"%<link-entity%name=\"{entityName}\"%>%attribute=\"{attributeName}\"%>%</link-entity>%"));
 
         }
 
@@ -1246,7 +1264,7 @@ namespace DLaB.AttributeManager
                 throw;
             }
 
-            PublishEntity(service, existingAtt.EntityLogicalName);
+            PublishEntity(service, existingAtt.EntityLogicalName); //This will need to be updated to publish changes to other entities, as views on other entities may be updated. 
 
             return clone;
         }
