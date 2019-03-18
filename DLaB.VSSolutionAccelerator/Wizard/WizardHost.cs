@@ -156,6 +156,7 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             SaveResults = new object[WizardPages.Count];
             WizardPages.MovePageFirst();
         }
+
         public void LoadNextPage(int pageIndex, int previousPageIndex, bool savePreviousPage)
         {
             if (pageIndex != -1)

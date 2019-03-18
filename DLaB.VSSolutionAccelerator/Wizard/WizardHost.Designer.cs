@@ -73,7 +73,6 @@
             // 
             // btnPrevious
             // 
-            this.btnPrevious.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnPrevious.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnPrevious.Location = new System.Drawing.Point(153, 417);
             this.btnPrevious.Margin = new System.Windows.Forms.Padding(5);
@@ -123,7 +122,6 @@
             this.AcceptButton = this.btnNext;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnPrevious;
             this.ClientSize = new System.Drawing.Size(594, 452);
             this.Controls.Add(this.tableLayoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
