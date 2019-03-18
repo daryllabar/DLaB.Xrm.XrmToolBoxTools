@@ -185,7 +185,8 @@ namespace DLaB.AttributeManager
             UpdateRelationships(Service, att);
             UpdateMappings(Service, att);
             UpdateWorkflows(Service, att);
-            PublishEntity(Service, att.EntityLogicalName);
+            //PublishEntity(Service, att.EntityLogicalName);
+            PublishAll(Service);
             AssertCanDelete(Service, att);
             Trace("Completed Step: Clearing Field Dependencies" + Environment.NewLine);
         }
@@ -280,7 +281,8 @@ namespace DLaB.AttributeManager
             UpdateWorkflows(Service, fromAtt, toAtt);
             UpdatePluginStepFilters(Service, fromAtt, toAtt);
             UpdatePluginStepImages(Service, fromAtt, toAtt);
-            PublishEntity(Service, fromAtt.EntityLogicalName);
+            //PublishEntity(Service, fromAtt.EntityLogicalName);
+            PublishAll(Service);
             AssertCanDelete(Service, fromAtt);
         }
 
@@ -1263,8 +1265,9 @@ namespace DLaB.AttributeManager
                 Trace("Error Creating Attribute " + existingAtt.EntityLogicalName + "." + newSchemaName);
                 throw;
             }
-
+            
             PublishEntity(service, existingAtt.EntityLogicalName); //This will need to be updated to publish changes to other entities, as views on other entities may be updated. 
+            //PublishAll(Service); In this case, no need to publish all. We are creating a new attribute, not changing anything else. 
 
             return clone;
         }
@@ -1306,6 +1309,13 @@ namespace DLaB.AttributeManager
             {
                 ParameterXml = "<importexportxml>" + "    <entities>" + "        <entity>" + logicalName + "</entity>" + "    </entities>" + "</importexportxml>"
             });
+        }
+
+        //Publish All added by RCP 3/18/19 after updating queries to find views on entities other than the entity of the target attribute. 
+        private void PublishAll(IOrganizationService service)
+        {
+            Trace("Publishing All");
+            service.Execute(new PublishAllXmlRequest());
         }
 
         private void Trace(string message)
