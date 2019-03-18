@@ -2,32 +2,21 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.AttributeManager</id>
-	  <version>1.2018.4.5</version>
+	  <version>1.2019.3.17</version>
 	  <title>Attribute Manager</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
-    <licenseUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/blob/master/LICENSE</licenseUrl>
+    <license type="expression">MIT</license>
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>BETA! - Used to rename/delete/or change the type of an attribute.</description>
-    <releaseNotes>V1.2018.4.5
+    <releaseNotes>V1.2019.3.17
+- Updated query to include views from entities other than the target Entity. #184
+      
+V1.2018.4.5
  - Added support for skipping migration errors
  - Added support for number formatting
- 
-V1.2018.1.25
- - Fixed Null Ref Error when not Selecting a Global Option Set #142
- - Allow for Migrating Data Only #141
- - Fixed Display Name not updating #126
-
-V1.2018.1.11
- - Added Ability To Conditionally Remove Plugin Step Images and Filters On Delete of Attribute #140
- 
-V1.2017.8.8
- - Fixed Multi-line Text Issue #122
-
-V1.2017.8.3
- - Fixed NullReferenceException when trying to convert Single line of text to Multi Line of Text #109    
     </releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>
