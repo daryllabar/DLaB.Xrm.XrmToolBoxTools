@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator</id>
-	  <version>1.2019.3.17</version>
+	  <version>1.2019.3.19</version>
 	  <title>Early Bound Generator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,10 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V1.2019.3.17
+    <releaseNotes>V1.2019.3.19
+Fixed bug for MFA
+      
+V1.2019.3.17
 Updated CrmSvcUtil
 
 V1.2019.3.12
@@ -51,9 +54,6 @@ V1.2018.4.11
 
 V1.2018.4.10
  - Allow for Overriding Enum Language Code #150
-
-V1.2018.3.6
- - Url includes duplicate Org Name #139
     </releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>
