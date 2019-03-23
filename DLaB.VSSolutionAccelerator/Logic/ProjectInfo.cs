@@ -43,6 +43,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
         public Guid Id { get; set; }
         public string Key { get; set; }
         public bool AddToSolution { get; set; }
+        public string CompileConstants { get; set; }
         public string Name { get; set; }
         public ProjectType Type { get; set; }
         public List<ProjectFile> Files { get; set; }
@@ -261,7 +262,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
             parser.PropertyGroups.Remove(localNugetBuild);
             foreach (var group in parser.PropertyGroups.Where(g => g.Type == PropertyGroupType.CompileConfiguration))
             {
-                group.Lines.RemoveAll(l => l.Contains("<CodeAnalysisRuleSet>"));
+                UpdateCompilePropertyGroup(@group);
             }
             var keyGroup = parser.PropertyGroups.FirstOrDefault(g => g.Type == PropertyGroupType.KeyFile);
             if (keyGroup != null)
@@ -308,6 +309,25 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 compileGroup.RemoveAll(l => FilesToRemove.Any(f => l.Contains($@"<Compile Include=""{f}"" />")));
             }
             File.WriteAllLines(projectFilePath, parser.GetProject());
+        }
+
+        private void UpdateCompilePropertyGroup(PropertyGroup group)
+        {
+            group.Lines.RemoveAll(l => l.Contains("<CodeAnalysisRuleSet>"));
+            if (string.IsNullOrWhiteSpace(CompileConstants)) {return;}
+            
+            var constants = group.Lines.FirstOrDefault(l => l.TrimStart().StartsWith("<DefineConstants>")) ?? "    <DefineConstants></DefineConstants>";
+            var index = group.Lines.IndexOf(constants);
+            if (index > 0)
+            {
+                group.Lines.RemoveAt(index);
+            }
+            else
+            {
+                index = 1; // First item in group
+            }
+
+            group.Lines.Insert(index, constants.Insert(constants.IndexOf("</DefineConstants>"), ";" + CompileConstants));
         }
 
         private void RenameRootProjectFile(string oldName, string newName)

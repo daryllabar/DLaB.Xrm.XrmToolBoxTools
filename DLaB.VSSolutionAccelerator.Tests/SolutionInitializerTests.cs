@@ -127,6 +127,30 @@ namespace DLaB.VSSolutionAccelerator.Tests
         }
 
         [TestMethod]
+        public void CreateProject_WithPluginWithPreAttributeKeyNuget_Should_AddCompilationSymbol()
+        {
+            using (var context = InitializeTest(c =>
+            {
+                c.XrmPackage.Version = new Version(6, 1, 2, 0);
+                c.XrmPackage.VersionText = c.XrmPackage.Version.ToString();
+            }, "NuGet"))
+            {
+                // Plugin requires Shared Project to be created first
+                context.SolutionInitializer.CreateProject(ProjectInfo.Keys.Common, context.Info);
+                TestPluginProjectCreation(context,
+                    ProjectInfo.Keys.Plugin,
+                    context.Info.PluginName,
+                    "RenameLogic.cs",
+                    "Abc.Xrm.Plugin");
+                var pluginProjectPath = Path.Combine(context.SolutionDirectory, context.Info.PluginName, context.Info.PluginName + ".csproj");
+                var pluginProject = File.ReadAllLines(pluginProjectPath);
+                Assert.That.ExistsLineContaining(pluginProject, "<DefineConstants>DEBUG;TRACE;PRE_KEYATTRIBUTE</DefineConstants>", "Pre Key Attribute should have been added to the project debug statement");
+                Assert.That.ExistsLineContaining(pluginProject, "<DefineConstants>TRACE;PRE_KEYATTRIBUTE</DefineConstants>", "Pre Key Attribute should have been added to the project release statement");
+
+            }
+        }
+
+        [TestMethod]
         public void CreateProject_WithPluginTest_Should_CreateTestPluginProject()
         {
             using (var context = InitializeTest())

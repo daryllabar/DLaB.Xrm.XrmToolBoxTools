@@ -118,7 +118,18 @@ namespace DLaB.VSSolutionAccelerator.Logic
             project.AddRegenKeyPostUpdateCommand(StrongNamePath);
             project.SharedProjectsReferences.Add(projects[ProjectInfo.Keys.Common]);
             RemovePluginExampleFiles(info.IncludeExamplePlugins, project);
+            AddPluginCompileTimeConstants(project, info);
             projects.Add(project.Key, project);
+        }
+
+        private void AddPluginCompileTimeConstants(ProjectInfo project, SolutionEditorInfo info)
+        {
+            if (info.XrmVersion >= new Version(7, 0, 0, 0))
+            {
+                return;
+            }
+
+            project.CompileConstants = "PRE_KEYATTRIBUTE";
         }
 
         private void RemovePluginExampleFiles(bool includeExamples, ProjectInfo project)
