@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.VsSolutionAccelerator</id>
-	  <version>1.2019.3.13</version>
+	  <version>1.2019.3.22</version>
 	  <title>Visual Studio Solution Accelerator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,10 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Adds recommended isolation/accelerator projects for use with the DLaB.Xrm and XrmUnitTest framework to your Visual Studio solution.</description>
-    <releaseNotes>V1.2019.3.13
+    <releaseNotes>V1.2019.3.22
+- Fixed Missing Pre_KeyAttribute #186.
+      
+V1.2019.3.13
 - Fixed bug where Previous closed Wizard.
       
 V1.2019.3.12
@@ -38,6 +41,6 @@ Beta!
   </metadata>
   <files>
     <file src="bin\Release\Plugins\DLaB.VSSolutionAccelerator.dll" target="lib\net462\plugins" />
-    <file src="bin\Release\Plugins\DLaB.VSSolutionAccelerator\**" target="lib\net462\plugins\DLaB.VSSolutionAccelerator" />
+    <file src="bin\Release\Plugins\DLaB.VSSolutionAccelerator\Template.zip" target="lib\net462\plugins\DLaB.VSSolutionAccelerator\Template.zip" />
   </files>
 </package>
