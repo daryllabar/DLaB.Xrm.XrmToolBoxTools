@@ -23,7 +23,7 @@ namespace DLaB.Xrm.Entities
 
     public partial class SavedQuery : IQuery
     {
-        public IQuery CreateForUpdate() { return new SavedQuery(Id = Id); }
+        public IQuery CreateForUpdate() { return new SavedQuery{Id = Id}; }
     }
 
     // ReSharper disable once InconsistentNaming
