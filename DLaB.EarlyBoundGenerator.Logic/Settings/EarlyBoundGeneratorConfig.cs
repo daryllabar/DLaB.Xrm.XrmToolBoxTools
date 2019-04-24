@@ -244,6 +244,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
             ExtensionConfig = new ExtensionConfig
             {
+                ActionPrefixesWhitelist = AddPipeDelimitedMissingDefaultValues(pocoConfig.ActionPrefixesWhitelist, defaultConfig.ActionPrefixesWhitelist),
+                ActionsWhitelist = AddPipeDelimitedMissingDefaultValues(pocoConfig.ActionsWhitelist, defaultConfig.ActionsWhitelist),
                 ActionsToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.ActionsToSkip, defaultConfig.ActionsToSkip),
                 AddDebuggerNonUserCode = pocoConfig.AddDebuggerNonUserCode.GetValueOrDefault(defaultConfig.AddDebuggerNonUserCode),
                 AddNewFilesToProject = pocoConfig.AddNewFilesToProject.GetValueOrDefault(defaultConfig.AddNewFilesToProject),
@@ -254,6 +256,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 EntitiesWhitelist = AddPipeDelimitedMissingDefaultValues(pocoConfig.EntitiesWhitelist, defaultConfig.EntitiesWhitelist),
                 EntityAttributeSpecifiedNames = AddMissingDictionaryHashDefaultValues(pocoConfig.EntityAttributeSpecifiedNames, defaultConfig.EntityAttributeSpecifiedNames),
                 EntityPrefixesToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.EntityPrefixesToSkip, defaultConfig.EntityPrefixesToSkip),
+                EntityPrefixesWhitelist = AddPipeDelimitedMissingDefaultValues(pocoConfig.EntityPrefixesWhitelist, defaultConfig.EntityPrefixesWhitelist),
                 GenerateActionAttributeNameConsts = pocoConfig.GenerateActionAttributeNameConsts.GetValueOrDefault(defaultConfig.GenerateActionAttributeNameConsts),
                 GenerateAttributeNameConsts = pocoConfig.GenerateAttributeNameConsts.GetValueOrDefault(defaultConfig.GenerateAttributeNameConsts),
                 GenerateAnonymousTypeConstructor = pocoConfig.GenerateAnonymousTypeConstructor.GetValueOrDefault(defaultConfig.GenerateAnonymousTypeConstructor),
