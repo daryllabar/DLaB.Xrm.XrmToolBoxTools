@@ -230,7 +230,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
 
         protected void CreateProjects(string rootNamespace)
         {
-            foreach (var project in Projects)
+            foreach (var project in Projects.Where(p => p.Value.AddToSolution))
             {
                 CreateProject(project.Key, rootNamespace);
             }
