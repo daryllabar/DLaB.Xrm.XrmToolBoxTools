@@ -144,6 +144,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
                     @"PluginBaseExamples\EntityAccess.cs",
                     @"PluginBaseExamples\ContextExample.cs",
                     @"PluginBaseExamples\VoidPayment.cs",
+                    @"RaceConditionPlugin.cs",
                     @"RemovePhoneNumberFormatting.cs",
                     @"RenameLogic.cs",
                     @"SyncContactToAccount.cs"
