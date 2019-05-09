@@ -79,9 +79,9 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             }
 
             // If Whitelist is populated, Skip if not in Whitelist.
-            if (EntitiesWhitelist.Count > 0 && !EntitiesWhitelist.Contains(entityMetadata.LogicalName))
+            if (EntitiesWhitelist.Count > 0 && EntitiesWhitelist.Contains(entityMetadata.LogicalName))
             {
-                return false;
+                return true;
             }
 
             // If any whitelist filter was specified and we didn't match then we will skip since it wasn't in the white list

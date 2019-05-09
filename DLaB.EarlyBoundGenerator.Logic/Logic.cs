@@ -308,7 +308,12 @@ namespace DLaB.EarlyBoundGenerator
                 }
             }
 
-            if (!string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.Password))
+            if (!string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.ConnectionString))
+            {
+                // If a connection string was specified ignore all other connection settings
+                sb.AppendFormat("/connectionstring:\"{0}\" ", earlyBoundGeneratorConfig.ConnectionString.Replace("\"", "\"\""));
+            }
+            else if (!string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.Password))
             {
                 if (earlyBoundGeneratorConfig.UseConnectionString)
                 {
