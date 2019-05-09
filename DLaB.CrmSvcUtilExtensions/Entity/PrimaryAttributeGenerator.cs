@@ -1,8 +1,8 @@
 ﻿// ReSharper disable BitwiseOperatorOnEnumWithoutFlags
+using Microsoft.Crm.Services.Utility;
 using System;
 using System.CodeDom;
 using System.Linq;
-using Microsoft.Crm.Services.Utility;
 
 namespace DLaB.CrmSvcUtilExtensions.Entity
 {
@@ -43,6 +43,15 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                         Type = new CodeTypeReference(typeof(string)),
                         InitExpression = new CodePrimitiveExpression(entityMetadata.PrimaryIdAttribute)
                     });
+
+                type.Members.Insert(2,
+                                    new CodeMemberField
+                                    {
+                                        Attributes = System.CodeDom.MemberAttributes.Public | System.CodeDom.MemberAttributes.Const,
+                                        Name = "EntitySchemaName",
+                                        Type = new CodeTypeReference(typeof(string)),
+                                        InitExpression = new CodePrimitiveExpression(entityMetadata.SchemaName)
+                                    });
             }
         }
     }

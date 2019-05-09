@@ -144,6 +144,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
                     @"PluginBaseExamples\EntityAccess.cs",
                     @"PluginBaseExamples\ContextExample.cs",
                     @"PluginBaseExamples\VoidPayment.cs",
+                    @"RaceConditionPlugin.cs",
                     @"RemovePhoneNumberFormatting.cs",
                     @"RenameLogic.cs",
                     @"SyncContactToAccount.cs"
@@ -230,7 +231,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
 
         protected void CreateProjects(string rootNamespace)
         {
-            foreach (var project in Projects)
+            foreach (var project in Projects.Where(p => p.Value.AddToSolution))
             {
                 CreateProject(project.Key, rootNamespace);
             }

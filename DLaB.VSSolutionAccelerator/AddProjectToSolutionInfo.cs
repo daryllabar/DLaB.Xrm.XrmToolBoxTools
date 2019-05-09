@@ -11,6 +11,7 @@ namespace DLaB.VSSolutionAccelerator
 {
     public class AddProjectToSolutionInfo : SolutionEditorInfo
     {
+        private SolutionSettings SolutionSettings { get; set; }
         public bool CreatePluginTest { get; set; }
         public bool CreateWorkflowTest { get; set; }
         public ProjectFileParser SharedTestProject { get; private set; }
@@ -72,6 +73,7 @@ namespace DLaB.VSSolutionAccelerator
         private AddProjectToSolutionInfo(Queue<object> queue)
         {
             SolutionPath = (string)queue.Dequeue(); // 0
+            SolutionSettings = SolutionSettings.Load(SolutionPath);
             InitializePluginProject(new YesNoResult(queue.Dequeue()));
             InitializePluginTest(new YesNoResult(queue.Dequeue()));
             InitializeWorkflowProject(new YesNoResult(queue.Dequeue()));
@@ -112,15 +114,14 @@ namespace DLaB.VSSolutionAccelerator
 
         private void FindProjectsInSolution()
         {
-            var sharedProjects = new Dictionary<string, List<string>>();
-            var projects = new List<ProjectFileParser>();
-            ParseSolutionFileProjects(sharedProjects, projects);
-            FindSharedProjects(sharedProjects);
+            var projects = ParseSolutionFileProjects();
             FindCommonTestProject(projects);
         }
 
-        private void ParseSolutionFileProjects(Dictionary<string, List<string>> sharedProjects, List<ProjectFileParser> projects)
+        private List<ProjectFileParser> ParseSolutionFileProjects()
         {
+            var sharedProjects = new Dictionary<string, List<string>>();
+            var projects = new List<ProjectFileParser>();
             var solution = new SolutionFileParser(File.ReadAllLines(SolutionPath));
             foreach (var projectLine in solution.Projects.Select(l => l.Replace(" ", string.Empty)).Where(l => l.StartsWith("Project(\"{")))
             {
@@ -140,23 +141,25 @@ namespace DLaB.VSSolutionAccelerator
                     projects.Add(new ProjectFileParser(File.ReadAllLines(path)));
                 }
             }
+            InstantiateSharedProjects(sharedProjects);
+            return projects;
         }
 
-        private void FindSharedProjects(Dictionary<string, List<string>> sharedProjects)
+        private void InstantiateSharedProjects(Dictionary<string, List<string>> sharedProjects)
         {
             if (CreatePlugin || CreateWorkflow)
             {
-                SharedCommonProject = FindSharedProjectWithFile(sharedProjects, "Shared Common Base Project", "PluginBase.cs");
+                SharedCommonProject = FindSharedProjectWithFile(sharedProjects, "Shared Common Base Project", SolutionSettings.BasePluginFileName);
 
                 if (CreateWorkflow)
                 {
-                    SharedCommonWorkflowProject = FindSharedProjectWithFile(sharedProjects, "Shared Common Workflow Base Project", "CodeActivityBase.cs");
+                    SharedCommonWorkflowProject = FindSharedProjectWithFile(sharedProjects, "Shared Common Workflow Base Project", SolutionSettings.CodeActivityBaseFileName);
                 }
             }
 
             if (CreateWorkflowTest || CreatePluginTest)
             {
-                SharedTestCoreProject = FindSharedProjectWithFile(sharedProjects, "Shared Test Core Project", "TestMethodClassBase.cs");
+                SharedTestCoreProject = FindSharedProjectWithFile(sharedProjects, "Shared Test Core Project", SolutionSettings.TestMethodClassBaseFileName);
             }
         }
 
