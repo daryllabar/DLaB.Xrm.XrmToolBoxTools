@@ -64,8 +64,8 @@ V1.2018.4.10
     </frameworkAssemblies>
   </metadata>
   <files>
-    <file src="bin\Release\DLaB.EarlyBoundGenerator.Api.dll" target="lib\net462" />
-    <file src="bin\Release\DLaB.EarlyBoundGenerator\*.*" target="lib\net462\DLaB.EarlyBoundGenerator" />
-    <file src="bin\Release\DLaB.EarlyBoundGenerator\alphabets\*.*" target="lib\net462\DLaB.EarlyBoundGenerator\alphabets" />
+    <file src="bin\Release\DLaB.EarlyBoundGenerator.Api.dll" target="lib\net452" />
+    <file src="bin\Release\DLaB.EarlyBoundGenerator\*.*" target="content\bin\DLaB.EarlyBoundGenerator" />
+    <file src="bin\Release\DLaB.EarlyBoundGenerator\alphabets\*.*" target="content\bin\DLaB.EarlyBoundGenerator\alphabets" />
   </files>
 </package>

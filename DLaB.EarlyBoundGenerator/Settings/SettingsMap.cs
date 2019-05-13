@@ -31,6 +31,20 @@ namespace DLaB.EarlyBoundGenerator.Settings
         }
 
         [Category("Actions")]
+        [DisplayName("Action Prefixes Whitelist")]
+        [Description("Allows for the ability to specify Action prefixes that will be included in generation.")]
+        [Editor(StringEditorName, typeof(UITypeEditor))]
+        [TypeConverter(CollectionCountConverter.Name)]
+        public List<string> ActionPrefixesWhitelist { get; set; }
+
+        [Category("Actions")]
+        [DisplayName("Actions Whitelist")]
+        [Description("Allows for the ability to specify Actions that will be included in generation.")]
+        [Editor(typeof(ActionsHashEditor), typeof(UITypeEditor))]
+        [TypeConverter(CollectionCountConverter.Name)]
+        public HashSet<string> ActionsWhitelist { get; set; }
+
+        [Category("Actions")]
         [DisplayName("Actions Blacklist")]
         [Description("Allows for the ability to specify Actions to not generate.")]
         [Editor(typeof(ActionsHashEditor), typeof(UITypeEditor))]
@@ -125,6 +139,13 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [Editor(StringEditorName, typeof(UITypeEditor))]
         [TypeConverter(CollectionCountConverter.Name)]
         public List<string> EntityPrefixesToSkip { get; set; }
+
+        [Category("Entities")]
+        [DisplayName("Entities Prefix Whitelist")]
+        [Description("Contains list of prefixes to generate.  If the Entity starts with the given prefix, it will be generated.")]
+        [Editor(StringEditorName, typeof(UITypeEditor))]
+        [TypeConverter(CollectionCountConverter.Name)]
+        public List<string> EntityPrefixesWhitelist { get; set; }
 
         [Category("Entities")]
         [DisplayName("Generate Entity Attribute Name Constants")]
@@ -408,11 +429,14 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             }
 
             var info = new ConfigKeyValueSplitInfo { ConvertKeysToLower = false };
+            ActionPrefixesWhitelist = RemoveWhiteSpace(config.ExtensionConfig.ActionPrefixesWhitelist).GetList<string>();
+            ActionsWhitelist = RemoveWhiteSpace(config.ExtensionConfig.ActionsWhitelist).GetHashSet<string>();
             ActionsToSkip = RemoveWhiteSpace(config.ExtensionConfig.ActionsToSkip).GetHashSet<string>(info);
             EntitiesToSkip = RemoveWhiteSpace(config.ExtensionConfig.EntitiesToSkip).GetHashSet<string>();
             EntitiesWhitelist = RemoveWhiteSpace(config.ExtensionConfig.EntitiesWhitelist).GetHashSet<string>();
             EntityAttributeSpecifiedNames = RemoveWhiteSpace(config.ExtensionConfig.EntityAttributeSpecifiedNames).GetDictionaryHash<string, string>();
             EntityPrefixesToSkip = RemoveWhiteSpace(config.ExtensionConfig.EntityPrefixesToSkip).GetList<string>();
+            EntityPrefixesWhitelist = RemoveWhiteSpace(config.ExtensionConfig.EntityPrefixesWhitelist).GetList<string>();
             PropertyEnumMappings = RemoveWhiteSpace(config.ExtensionConfig.PropertyEnumMappings).GetList<string>();
             OptionSetPrefixesToSkip = RemoveWhiteSpace(config.ExtensionConfig.OptionSetPrefixesToSkip).GetList<string>();
             OptionSetsToSkip = RemoveWhiteSpace(config.ExtensionConfig.OptionSetsToSkip).GetHashSet<string>();
@@ -429,11 +453,14 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         public void PushChanges()
         {
             var info = new ConfigKeyValueSplitInfo{ ConvertKeysToLower = false};
+            Config.ExtensionConfig.ActionPrefixesWhitelist = CommonConfig.ToString(ActionPrefixesWhitelist, info);
+            Config.ExtensionConfig.ActionsWhitelist = CommonConfig.ToString(ActionsWhitelist, info);
             Config.ExtensionConfig.ActionsToSkip = CommonConfig.ToString(ActionsToSkip, info);
             Config.ExtensionConfig.EntitiesToSkip = CommonConfig.ToString(EntitiesToSkip);
             Config.ExtensionConfig.EntitiesWhitelist = CommonConfig.ToString(EntitiesWhitelist);
             Config.ExtensionConfig.EntityAttributeSpecifiedNames = CommonConfig.ToString(EntityAttributeSpecifiedNames);
             Config.ExtensionConfig.EntityPrefixesToSkip = CommonConfig.ToString(EntityPrefixesToSkip);
+            Config.ExtensionConfig.EntityPrefixesWhitelist = CommonConfig.ToString(EntityPrefixesWhitelist);
             Config.ExtensionConfig.PropertyEnumMappings = CommonConfig.ToString(PropertyEnumMappings);
             Config.ExtensionConfig.OptionSetPrefixesToSkip = CommonConfig.ToString(OptionSetPrefixesToSkip);
             Config.ExtensionConfig.OptionSetsToSkip = CommonConfig.ToString(OptionSetsToSkip);

@@ -7,6 +7,8 @@
   <SettingsVersion>1.2019.3.12</SettingsVersion>
   <Version>1.2019.3.12</Version>
   <ExtensionConfig>
+    <ActionPrefixesWhitelist />
+    <ActionsWhitelist />
     <ActionsToSkip />
     <AddDebuggerNonUserCode>true</AddDebuggerNonUserCode>
     <AddNewFilesToProject>true</AddNewFilesToProject>
@@ -17,6 +19,7 @@
     <EntitiesWhitelist>account|systemuser</EntitiesWhitelist>
     <EntityAttributeSpecifiedNames />
     <EntityPrefixesToSkip />
+    <EntityPrefixesWhitelist />
     <GenerateActionAttributeNameConsts>false</GenerateActionAttributeNameConsts>
     <GenerateAttributeNameConsts>false</GenerateAttributeNameConsts>
     <GenerateAnonymousTypeConstructor>true</GenerateAnonymousTypeConstructor>

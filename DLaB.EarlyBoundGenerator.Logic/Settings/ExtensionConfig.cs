@@ -13,6 +13,14 @@ namespace DLaB.EarlyBoundGenerator.Settings
     public class ExtensionConfig
     {
         /// <summary>
+        /// Pipe Delimited String containing the publisher prefixes of Actions to be generated.
+        /// </summary>
+        public string ActionPrefixesWhitelist { get; set; }
+        /// <summary>
+        /// Pipe Delimited String containing the logical names of Actions to be generated.
+        /// </summary>
+        public string ActionsWhitelist { get; set; }
+        /// <summary>
         /// Pipe Delimited String containing the logical names of Actions to not generate
         /// </summary>
         public string ActionsToSkip { get; set; }
@@ -54,6 +62,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// Pipe delimited string containing prefixes of entities to not generate.
         /// </summary>
         public string EntityPrefixesToSkip { get; set; }
+        /// <summary>
+        /// Pipe delimited string containing prefixes of entities to be generated.
+        /// </summary>
+        public string EntityPrefixesWhitelist { get; set; }
         /// <summary>
         /// Specifies the generation of an Attributes Struct containing logical names for all attributes for the Action
         /// </summary>
@@ -180,11 +192,14 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 GenerateEntityRelationships = true,
                 GenerateEnumProperties = true,
                 GenerateOnlyReferencedOptionSets = true,
+                ActionPrefixesWhitelist = null,
+                ActionsWhitelist = null,
                 ActionsToSkip = null,
                 EntitiesToSkip = null,
                 EntitiesWhitelist = null,
                 EntityAttributeSpecifiedNames = null,
                 EntityPrefixesToSkip = null,
+                EntityPrefixesWhitelist = null,
                 InvalidCSharpNamePrefix = "_",
                 MakeAllFieldsEditable = false,
                 MakeReadonlyFieldsEditable = false,
@@ -227,11 +242,14 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? GenerateEnumProperties { get; set; }
         public bool? AddDebuggerNonUserCode { get; set; }
         public bool? CreateOneFilePerAction { get; set; }
+        public string ActionPrefixesWhitelist { get; set; }
+        public string ActionsWhitelist { get; set; }
         public string ActionsToSkip { get; set; }
         public string EntitiesToSkip { get; set; }
         public string EntitiesWhitelist { get; set; }
         public string EntityAttributeSpecifiedNames { get; set; }
         public string EntityPrefixesToSkip { get; set; }
+        public string EntityPrefixesWhitelist { get; set; }
         public bool? GenerateOnlyReferencedOptionSets { get; set; }
         public string InvalidCSharpNamePrefix { get; set; }
         public bool? MakeAllFieldsEditable { get; set; }

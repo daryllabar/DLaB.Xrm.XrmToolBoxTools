@@ -217,6 +217,8 @@ namespace DLaB.EarlyBoundGenerator
 
                 var extensions = earlyBoundGeneratorConfig.ExtensionConfig;
                 if (UpdateConfigAppSetting(file, "ActionCommandLineText", extensions.ActionCommandLineText, true) |
+                    UpdateConfigAppSetting(file, "ActionPrefixesWhitelist", extensions.ActionPrefixesWhitelist) |
+                    UpdateConfigAppSetting(file, "ActionsWhitelist", extensions.ActionsWhitelist) |
                     UpdateConfigAppSetting(file, "ActionsToSkip", extensions.ActionsToSkip?.Replace("-","")) |
                     UpdateConfigAppSetting(file, "AddDebuggerNonUserCode", extensions.AddDebuggerNonUserCode.ToString()) |
                     UpdateConfigAppSetting(file, "AddNewFilesToProject", extensions.AddNewFilesToProject.ToString()) |
@@ -228,6 +230,7 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "EntitiesToSkip", extensions.EntitiesToSkip) |
                     UpdateConfigAppSetting(file, "EntitiesWhitelist", extensions.EntitiesWhitelist) |
                     UpdateConfigAppSetting(file, "EntityPrefixesToSkip", extensions.EntityPrefixesToSkip) |
+                    UpdateConfigAppSetting(file, "EntityPrefixesWhitelist", extensions.EntityPrefixesWhitelist) |
                     UpdateConfigAppSetting(file, "GenerateActionAttributeNameConsts", extensions.GenerateActionAttributeNameConsts.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateAttributeNameConsts", extensions.GenerateAttributeNameConsts.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateAnonymousTypeConstructor", extensions.GenerateAnonymousTypeConstructor.ToString()) |
@@ -305,7 +308,12 @@ namespace DLaB.EarlyBoundGenerator
                 }
             }
 
-            if (!string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.Password))
+            if (!string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.ConnectionString))
+            {
+                // If a connection string was specified ignore all other connection settings
+                sb.AppendFormat("/connectionstring:\"{0}\" ", earlyBoundGeneratorConfig.ConnectionString.Replace("\"", "\"\""));
+            }
+            else if (!string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.Password))
             {
                 if (earlyBoundGeneratorConfig.UseConnectionString)
                 {

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Source.DLaB.Common;
+using System.Text.RegularExpressions;
 
 namespace DLaB.CrmSvcUtilExtensions.Entity
 {
@@ -16,7 +17,8 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         public static Dictionary<string, EntityMetadata> EntityMetadata { get; set; }
         public HashSet<string> EntitiesToSkip { get; set; }
         public HashSet<string> EntitiesWhitelist { get; set; }
-        public List<string> EntityPrefixesToSkip { get; set; } 
+        public List<string> EntityPrefixesToSkip { get; set; }
+        public List<string> EntityPrefixesWhitelist { get; set; }
 
         public bool GenerateEntityRelationships { get; set; }
 
@@ -31,6 +33,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             EntitiesToSkip = Config.GetHashSet("EntitiesToSkip", new HashSet<string>());
             EntitiesWhitelist = Config.GetHashSet("EntitiesWhitelist", new HashSet<string>());
             EntityPrefixesToSkip = Config.GetList("EntityPrefixesToSkip", new List<string>());
+            EntityPrefixesWhitelist = Config.GetList("EntityPrefixesWhitelist", new List<string>());
             GenerateEntityRelationships = ConfigHelper.GetAppSettingOrDefault("GenerateEntityRelationships", true);
         }
 
@@ -64,12 +67,31 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                 EntityMetadata.Add(entityMetadata.LogicalName, entityMetadata);
             }
 
+            var prefix = Regex.Match(entityMetadata.LogicalName, "([^_]+)_").Groups[1].Value;
+            var hasPrefix = !string.IsNullOrEmpty(prefix);
+
+            // Check for whitelist filters
+
+            // If the prefix for the entity is in the whitelist then allow it to be generated
+            if ((EntityPrefixesWhitelist.Count > 0) && hasPrefix && EntityPrefixesWhitelist.Any(x => x.Equals(prefix, StringComparison.InvariantCultureIgnoreCase)))
+            {
+                return true;
+            }
+
             // If Whitelist is populated, Skip if not in Whitelist.
-            if (EntitiesWhitelist.Count > 0 && !EntitiesWhitelist.Contains(entityMetadata.LogicalName))
+            if (EntitiesWhitelist.Count > 0 && EntitiesWhitelist.Contains(entityMetadata.LogicalName))
+            {
+                return true;
+            }
+
+            // If any whitelist filter was specified and we didn't match then we will skip since it wasn't in the white list
+            if ((EntityPrefixesWhitelist.Count > 0) || (EntitiesWhitelist.Count > 0))
             {
                 return false;
             }
 
+
+            // Finish checking black list filters if necessary
             return !EntitiesToSkip.Contains(entityMetadata.LogicalName) && !EntityPrefixesToSkip.Any(p => entityMetadata.LogicalName.StartsWith(p));
         }
 
