@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
+using DLaB.Xrm.Entities;
 using Source.DLaB.Xrm;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Messages;
@@ -86,11 +88,18 @@ namespace DLaB.XrmToolBoxCommon
         private void RetrieveActions()
         {
             WorkAsync(new WorkAsyncInfo("Retrieving Actions...", e =>
-            {
-                e.Result = Service.GetEntities("workflow", new ColumnSet(true),
-                    "category", 3, // Action
-                    "parentworkflowid", null);
-            })
+                      {
+                          var qe = QueryExpressionFactory.Create<Workflow>(w => new {w.Name, w.UniqueName},
+                                                                           Workflow.Fields.Category, (int) Workflow_Category.Action,
+                                                                           Workflow.Fields.ParentWorkflowId, null);
+                          qe.AddLink<SdkMessage>(Workflow.Fields.SdkMessageId, m => new {m.Name});
+                          var entities = Service.RetrieveMultiple(qe.Query).ToEntityList<Workflow>();
+                          e.Result = entities.Select(w =>
+                          {
+                              w[@"sdklogicalname"] = w.GetAliasedEntity<SdkMessage>().Name;
+                              return w.ToSdkEntity();
+                          }).ToList();
+                      })
             {
                 PostWorkCallBack = e =>
                 {

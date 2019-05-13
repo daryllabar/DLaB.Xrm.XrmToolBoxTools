@@ -195,6 +195,7 @@
     <Compile Include="Serialization\MetadataResponseField.cs" />
     <Compile Include="Serialization\SdkMessageResolver.cs" />
     <Compile Include="Serialization\SerializableEntityMetadata.cs" />
+    <Compile Include="WhitelistBlacklistLogic.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">

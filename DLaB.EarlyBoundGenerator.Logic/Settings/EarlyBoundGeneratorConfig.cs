@@ -244,6 +244,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
             ExtensionConfig = new ExtensionConfig
             {
+                ActionPrefixesToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.ActionPrefixesToSkip, defaultConfig.ActionPrefixesToSkip),
                 ActionPrefixesWhitelist = AddPipeDelimitedMissingDefaultValues(pocoConfig.ActionPrefixesWhitelist, defaultConfig.ActionPrefixesWhitelist),
                 ActionsWhitelist = AddPipeDelimitedMissingDefaultValues(pocoConfig.ActionsWhitelist, defaultConfig.ActionsWhitelist),
                 ActionsToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.ActionsToSkip, defaultConfig.ActionsToSkip),

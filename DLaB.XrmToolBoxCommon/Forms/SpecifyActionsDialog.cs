@@ -45,8 +45,10 @@ namespace DLaB.XrmToolBoxCommon.Forms
                 LstSpecified.Items.Clear();
                 var localActions = actions.Select(e => e.ToEntity<Workflow>()).ToList(); // Keep from multiple Enumerations
 
-                LstSpecified.Items.AddRange(localActions.Where(e => SpecifiedActions.Contains(e.UniqueName)).Select(e => new ListViewItem(e.Name ?? "N/A") { SubItems = { e.UniqueName } }).ToArray());
-                LstAll.Items.AddRange(localActions.Where(e => !SpecifiedActions.Contains(e.UniqueName)).Select(e => new ListViewItem(e.Name ?? "N/A") { SubItems = { e.UniqueName } }).ToArray());
+                
+
+                LstSpecified.Items.AddRange(localActions.Where(IsSpecified).Select(e => new ListViewItem(e.Name ?? "N/A") { SubItems = { GetKey(e) }}).ToArray());
+                LstAll.Items.AddRange(localActions.Where(e => !IsSpecified(e)).Select(e => new ListViewItem(e.Name ?? "N/A") { SubItems = { GetKey(e) }}).ToArray());
             }
             finally
             {
@@ -54,6 +56,23 @@ namespace DLaB.XrmToolBoxCommon.Forms
                 LstSpecified.EndUpdate();
                 Enable(true);
             }
+        }
+
+        private bool IsSpecified(Workflow action)
+        {
+            var logicalName = action.GetAttributeValue<string>("sdklogicalname");
+            if (!string.IsNullOrWhiteSpace(logicalName) && SpecifiedActions.Contains(logicalName))
+            {
+                return true;
+            }
+
+            // For Backwards compatibility, Check Unique Name
+            return SpecifiedActions.Contains(action.UniqueName) || SpecifiedActions.Contains(action.UniqueName.ToLower());
+        }
+
+        private string GetKey(Workflow action)
+        {
+            return action.GetAttributeValue<string>("sdklogicalname");
         }
 
         private void Enable(bool enable)
@@ -103,5 +122,28 @@ namespace DLaB.XrmToolBoxCommon.Forms
             }
             LstAll.Items.AddRange(values);
         }
+
+        private SortOrder _order = SortOrder.Ascending;
+        private int _sortedColumn = 0;
+        private void ColumnClick(object o, ColumnClickEventArgs e)
+        {
+            if (e.Column == _sortedColumn)
+            {
+                _order = _order == SortOrder.Ascending
+                    ? SortOrder.Descending
+                    : SortOrder.Ascending;
+            }
+            else
+            {
+                _order = SortOrder.Ascending;
+                _sortedColumn = e.Column;
+            }
+
+            // Set the ListViewItemSorter property to a new ListViewItemComparer 
+            // object. Setting this property immediately sorts the 
+            // ListView using the ListViewItemComparer object.
+            ((ListView) o).ListViewItemSorter = new ListViewItemComparer(e.Column, _order);
+        }
+
     }
 }

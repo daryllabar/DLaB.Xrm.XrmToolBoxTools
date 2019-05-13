@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator</id>
-	  <version>1.2019.4.28</version>
+	  <version>1.2019.5.12</version>
 	  <title>Early Bound Generator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,11 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V1.2019.4.28
+    <releaseNotes>V1.2019.5.12
+Added ability to Whitelist actions #190
+Updated the connection string setting to allow a full connection string to be specified and used #190
+
+V1.2019.4.28
 Added Schema Name to Entities
 
 V1.2019.3.19
@@ -43,22 +47,8 @@ V1.2018.9.12
 Updated to latest version of the Xrm Sdk
 Allow for Multi-Select OptionSets - #136
 Added config for setting a Debug
-
-V1.2018.5.2
-Fix for EBG doesn't add files correctly to empty shared project #155
-
-V1.2018.4.11
-Fix for strong password in Command line sometimes not detected correctly #148
-Fix for Bug with Allow for Overriding Enum Language Code #150
-incorporated PR #151   
-
-V1.2018.4.11
- - Fix for strong password in Command line sometimes not detected correctly #148
-
-V1.2018.4.10
- - Allow for Overriding Enum Language Code #150
     </releaseNotes>
-    <copyright>Copyright 2018</copyright>
+    <copyright>Copyright 2019</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>
     <dependencies>
       <dependency id="XrmToolBox" version="1.2017.2.13" />

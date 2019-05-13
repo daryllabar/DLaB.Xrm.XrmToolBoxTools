@@ -166,6 +166,7 @@ namespace DLaB.XrmToolBoxCommon.Forms
             this.LstAll.TabIndex = 3;
             this.LstAll.UseCompatibleStateImageBehavior = false;
             this.LstAll.View = System.Windows.Forms.View.Details;
+            this.LstAll.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(ColumnClick);
             // 
             // CHDisplayName
             // 
@@ -205,6 +206,7 @@ namespace DLaB.XrmToolBoxCommon.Forms
             this.LstSpecified.TabIndex = 7;
             this.LstSpecified.UseCompatibleStateImageBehavior = false;
             this.LstSpecified.View = System.Windows.Forms.View.Details;
+            this.LstSpecified.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(ColumnClick);
             // 
             // columnHeader1
             // 

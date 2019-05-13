@@ -70,11 +70,11 @@ namespace DLaB.XrmToolBoxCommon
         {
             if (innerOrder == SortOrder.Ascending)
             {
-                return String.Compare(x.SubItems[col].Text, y.SubItems[col].Text);
+                return string.CompareOrdinal(x.SubItems[col].Text.ToUpper(), y.SubItems[col].Text.ToUpper());
             }
             else
             {
-                return String.Compare(y.SubItems[col].Text, x.SubItems[col].Text);
+                return string.CompareOrdinal(y.SubItems[col].Text.ToUpper(), x.SubItems[col].Text.ToUpper());
             }
         }
 

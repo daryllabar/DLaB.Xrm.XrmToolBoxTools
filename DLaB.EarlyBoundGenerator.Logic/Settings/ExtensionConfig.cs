@@ -13,7 +13,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
     public class ExtensionConfig
     {
         /// <summary>
-        /// Pipe Delimited String containing the publisher prefixes of Actions to be generated.
+        /// Pipe Delimited String containing the prefixes of Actions to be generated.
         /// </summary>
         public string ActionPrefixesWhitelist { get; set; }
         /// <summary>
@@ -24,6 +24,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// Pipe Delimited String containing the logical names of Actions to not generate
         /// </summary>
         public string ActionsToSkip { get; set; }
+        /// <summary>
+        /// Pipe Delimited String containing the prefixes of Actions to not generate.
+        /// </summary>
+        public string ActionPrefixesToSkip { get; set; }
         /// <summary>
         /// Specifies that the debugger should skip stepping into generated entity files.
         /// </summary>
@@ -192,6 +196,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 GenerateEntityRelationships = true,
                 GenerateEnumProperties = true,
                 GenerateOnlyReferencedOptionSets = true,
+                ActionPrefixesToSkip = null,
                 ActionPrefixesWhitelist = null,
                 ActionsWhitelist = null,
                 ActionsToSkip = null,
@@ -242,9 +247,10 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? GenerateEnumProperties { get; set; }
         public bool? AddDebuggerNonUserCode { get; set; }
         public bool? CreateOneFilePerAction { get; set; }
+        public string ActionPrefixesToSkip { get; set; }
         public string ActionPrefixesWhitelist { get; set; }
-        public string ActionsWhitelist { get; set; }
         public string ActionsToSkip { get; set; }
+        public string ActionsWhitelist { get; set; }
         public string EntitiesToSkip { get; set; }
         public string EntitiesWhitelist { get; set; }
         public string EntityAttributeSpecifiedNames { get; set; }

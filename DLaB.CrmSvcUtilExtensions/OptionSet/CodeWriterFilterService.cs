@@ -39,8 +39,14 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
 
         private static HashSet<string> UsedEntityGlobalOptionSets { get; set; }
 
+        public static WhitelistBlacklistLogic Approver => new WhitelistBlacklistLogic(Config.GetHashSet("OptionSetsWhitelist", new HashSet<string>()),
+                                                                                      Config.GetList("OptionSetsWhitelist", new List<string>()),
+                                                                                      Config.GetHashSet("OptionSetsToSkip", new HashSet<string>()),
+                                                                                      Config.GetList("OptionSetPrefixesToSkip", new List<string>()));
+
         public CodeWriterFilterService(ICodeWriterFilterService defaultService)
         {
+
             DefaultService = defaultService;
             if (string.IsNullOrWhiteSpace(OptionSetEntityFilter)
                 || !GenerateOnlyReferencedOptionSets)
@@ -59,8 +65,6 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
             GeneratedOptionSets = new HashSet<string>();
         }
 
-        private static readonly HashSet<string> OptionSetsToSkip = Config.GetHashSet("OptionSetsToSkip", new HashSet<string>());
-        private static readonly List<string> OptionSetPrefixesToSkip = Config.GetList("OptionSetPrefixesToSkip", new List<string>());
         private static readonly string OptionSetEntityFilter = Config.GetAppSettingOrDefault("OptionSetEntityFilter", "DLaB.CrmSvcUtilExtensions.Entity.CodeWriterFilterService");
         private static readonly bool GenerateOnlyReferencedOptionSets = Config.GetAppSettingOrDefault("GenerateOnlyReferencedOptionSets", false);
 
@@ -86,7 +90,7 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
             }
             
 
-            if (!IsOptionSetGenerated(optionSetMetadata.Name))
+            if (!Approver.IsAllowed(optionSetMetadata.Name.ToLower()))
             {
                 return false;
             }
@@ -147,13 +151,6 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
                     }
                 }
             }
-        }
-
-        public static bool IsOptionSetGenerated(string name)
-        {
-            name = name.ToLower();
-            return !OptionSetsToSkip.Contains(name) 
-                && !OptionSetPrefixesToSkip.Any(p => name.StartsWith(p));
         }
 
         /// <summary>

@@ -90,6 +90,7 @@
     <Compile Include="CrmSvcUtilTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TempDir.cs" />
+    <Compile Include="WhitelistBlacklistLogicTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

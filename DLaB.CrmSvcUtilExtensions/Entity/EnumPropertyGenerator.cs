@@ -77,17 +77,17 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             // By default this check will work
             return property.Type.BaseType == "Microsoft.Xrm.Sdk.OptionSetValue" 
                    || property.Type.BaseType == "Microsoft.Xrm.Sdk.OptionSetValueCollection"
-                   || IsNullableIntPropery(property);
+                   || IsNullableIntProperty(property);
         }
 
         private bool OptionSetIsSkipped(CodeMemberProperty property, string entityLogicalName)
         {
             var info = GetOptionSetEnumInfo(property, entityLogicalName);
-            return info != null && !OptionSet.CodeWriterFilterService.IsOptionSetGenerated(info.OptionSetType);
+            return info != null && !OptionSet.CodeWriterFilterService.Approver.IsAllowed(info.OptionSetType);
         }
 
         // If using the Xrm Client, OptionSets are converted to nullable Ints
-        private static bool IsNullableIntPropery(CodeMemberProperty property)
+        private static bool IsNullableIntProperty(CodeMemberProperty property)
         {
             return property.Type.BaseType == "System.Nullable`1" &&
                    property.Type.TypeArguments != null &&
@@ -203,7 +203,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                 else
                 {
                     setExpression = new CodeSnippetExpression(
-                        IsNullableIntPropery(prop)
+                        IsNullableIntProperty(prop)
                             ? "(int?)value"
                             : "value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null");
                 }

@@ -218,6 +218,7 @@ namespace DLaB.EarlyBoundGenerator
                 var extensions = earlyBoundGeneratorConfig.ExtensionConfig;
                 if (UpdateConfigAppSetting(file, "ActionCommandLineText", extensions.ActionCommandLineText, true) |
                     UpdateConfigAppSetting(file, "ActionPrefixesWhitelist", extensions.ActionPrefixesWhitelist) |
+                    UpdateConfigAppSetting(file, "ActionPrefixesToSkip", extensions.ActionPrefixesToSkip) |
                     UpdateConfigAppSetting(file, "ActionsWhitelist", extensions.ActionsWhitelist) |
                     UpdateConfigAppSetting(file, "ActionsToSkip", extensions.ActionsToSkip?.Replace("-","")) |
                     UpdateConfigAppSetting(file, "AddDebuggerNonUserCode", extensions.AddDebuggerNonUserCode.ToString()) |
