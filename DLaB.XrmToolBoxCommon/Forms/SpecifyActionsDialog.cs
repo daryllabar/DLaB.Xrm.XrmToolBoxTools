@@ -61,7 +61,7 @@ namespace DLaB.XrmToolBoxCommon.Forms
         private bool IsSpecified(Workflow action)
         {
             var logicalName = action.GetAttributeValue<string>("sdklogicalname");
-            if (!string.IsNullOrWhiteSpace(logicalName) && SpecifiedActions.Contains(logicalName))
+            if (!string.IsNullOrWhiteSpace(logicalName) && SpecifiedActions.Contains(logicalName.ToLower()))
             {
                 return true;
             }
