@@ -247,6 +247,7 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "OptionSetsToSkip", extensions.OptionSetsToSkip) |
                     UpdateConfigAppSetting(file, "OptionSetCommandLineText", extensions.OptionSetCommandLineText, true) |
                     UpdateConfigAppSetting(file, "OptionSetLanguageCodeOverride", extensions.OptionSetLanguageCodeOverride?.ToString()) |
+                    UpdateConfigAppSetting(file, "ProjectNameForEarlyBoundFiles", extensions.ProjectNameForEarlyBoundFiles ?? string.Empty) |
                     UpdateConfigAppSetting(file, "PropertyEnumMappings", extensions.PropertyEnumMappings) |
                     UpdateConfigAppSetting(file, "RemoveRuntimeVersionComment", extensions.RemoveRuntimeVersionComment.ToString()) |
                     UpdateConfigAppSetting(file, "UseDeprecatedOptionSetNaming", extensions.UseDeprecatedOptionSetNaming.ToString()) |

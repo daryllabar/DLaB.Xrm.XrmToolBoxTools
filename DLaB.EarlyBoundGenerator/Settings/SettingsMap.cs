@@ -292,6 +292,15 @@ namespace DLaB.EarlyBoundGenerator.Settings
         }
 
         [Category("Global")]
+        [DisplayName("Project Name For Early Bound Files")]
+        [Description("(Optional) Defines the actual project name to search for when searching for a project file. If no value is provided, the first project file found will be used.")]
+        public string ProjectNameForEarlyBoundFiles
+        {
+            get => Config.ExtensionConfig.ProjectNameForEarlyBoundFiles;
+            set => Config.ExtensionConfig.ProjectNameForEarlyBoundFiles = value;
+        }
+
+        [Category("Global")]
         [DisplayName("Remove Runtime Version Comment")]
         [Description(@"Removes the ""//   Runtime Version:X.X.X.X"" comment from the header of generated files.
 This helps to alleviate unnecessary differences that pop up when the classes are generated from machines with different .Net Framework updates installed.")]

@@ -34,6 +34,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         {
             return new Dictionary<string, Action<PropertyValueChangedEventArgs>>
             {
+                { nameof(AddNewFilesToProject), OnAddNewFilesToProjectChange },
                 { nameof(CreateOneFilePerAction), OnCreateOneFilePerActionChange },
                 { nameof(CreateOneFilePerEntity), OnCreateOneFilePerEntityChange },
                 { nameof(CreateOneFilePerOptionSet), OnCreateOneFilePerOptionSetChange },
@@ -41,6 +42,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 { nameof(IncludeCommandLine), OnIncludeCommandLineChange },
                 { nameof(UseDeprecatedOptionSetNaming), OnUseDeprecatedOptionSetNamingChange },
             };
+        }
+
+        private void OnAddNewFilesToProjectChange(PropertyValueChangedEventArgs args)
+        {
+            SetProjectNameForEarlyBoundFilesVisibility();
         }
 
         private void OnCreateOneFilePerActionChange(PropertyValueChangedEventArgs args)
@@ -98,6 +104,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             prop.SetIsBrowsable(CreateOneFilePerAction 
                                 || CreateOneFilePerEntity
                                 || CreateOneFilePerOptionSet);
+            SetProjectNameForEarlyBoundFilesVisibility();
         }
 
         private void SetMaskPasswordVisibility()
@@ -110,6 +117,13 @@ namespace DLaB.EarlyBoundGenerator.Settings
         {
             var prop = Descriptor.GetProperty(nameof(LocalOptionSetFormat));
             prop.SetIsBrowsable(!UseDeprecatedOptionSetNaming);
+        }
+
+        private void SetProjectNameForEarlyBoundFilesVisibility()
+        {
+            var parentProp = Descriptor.GetProperty(nameof(AddNewFilesToProject));
+            var prop = Descriptor.GetProperty(nameof(ProjectNameForEarlyBoundFiles));
+            prop.SetIsBrowsable(parentProp.IsBrowsable && AddNewFilesToProject);
         }
 
         private void SetPropertyEnumMappingVisibility()

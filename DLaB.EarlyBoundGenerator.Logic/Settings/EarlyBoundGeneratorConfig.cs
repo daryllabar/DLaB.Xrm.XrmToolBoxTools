@@ -272,6 +272,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 OptionSetLanguageCodeOverride = pocoConfig.OptionSetLanguageCodeOverride ?? defaultConfig.OptionSetLanguageCodeOverride,
                 OptionSetPrefixesToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.OptionSetPrefixesToSkip, defaultConfig.OptionSetPrefixesToSkip),
                 OptionSetsToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.OptionSetsToSkip, defaultConfig.OptionSetsToSkip),
+                ProjectNameForEarlyBoundFiles = pocoConfig.ProjectNameForEarlyBoundFiles ?? defaultConfig.ProjectNameForEarlyBoundFiles,
                 PropertyEnumMappings = AddPipeDelimitedMissingDefaultValues(pocoConfig.PropertyEnumMappings, defaultConfig.PropertyEnumMappings),
                 RemoveRuntimeVersionComment = pocoConfig.RemoveRuntimeVersionComment.GetValueOrDefault(defaultConfig.RemoveRuntimeVersionComment),
                 UnmappedProperties = AddMissingDictionaryHashDefaultValues(pocoConfig.UnmappedProperties, defaultConfig.UnmappedProperties),

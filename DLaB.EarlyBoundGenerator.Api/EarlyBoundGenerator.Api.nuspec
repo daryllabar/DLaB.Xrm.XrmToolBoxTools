@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator.Api</id>
-    <version>1.2019.5.12</version>
+    <version>1.2019.5.17</version>
     <title>Early Bound Generator Api</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,10 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses CrmSvcUtil from the SDK.</description>
-    <releaseNotes>V1.2019.5.12
+    <releaseNotes>V1.2019.5.17
+Fixed Adding generated files to project sometimes gets it wrong #193
+
+V1.2019.5.12
 Added ability to Whitelist actions #190
 Updated the connection string setting to allow a full connection string to be specified and used #190
 changed the tools to be included as content so they get added to the project and they don't have to manually be copied. #190

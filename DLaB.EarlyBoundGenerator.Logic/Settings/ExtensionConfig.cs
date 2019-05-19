@@ -130,6 +130,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public int? OptionSetLanguageCodeOverride { get; set; }
         /// <summary>
+        /// The name of the project to add newly created files to. If not value is provided, the first one found will be used.
+        /// </summary>
+        public string ProjectNameForEarlyBoundFiles { get; set; }
+        /// <summary>
         /// Remove the Runtime Version in the header comment
         /// </summary>
         public bool RemoveRuntimeVersionComment { get; set; }
@@ -213,6 +217,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 OptionSetPrefixesToSkip = null,
                 OptionSetsToSkip = null,
                 OptionSetLanguageCodeOverride = null,
+                ProjectNameForEarlyBoundFiles = string.Empty,
                 PropertyEnumMappings = string.Empty,
                 RemoveRuntimeVersionComment = true,
                 UnmappedProperties =
@@ -268,6 +273,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public string PropertyEnumMappings { get; set; }
         public string UnmappedProperties { get; set; }
         public bool? AddNewFilesToProject { get; set; }
+        public string ProjectNameForEarlyBoundFiles { get; set; }
         public bool? RemoveRuntimeVersionComment { get; set; }
         public bool? UseDeprecatedOptionSetNaming { get; set; }
         public bool? UseTfsToCheckoutFiles { get; set; }

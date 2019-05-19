@@ -14,6 +14,7 @@ namespace DLaB.CrmSvcUtilExtensions
     {
         public static bool UseTfsToCheckoutFiles { get; } = ConfigHelper.GetAppSettingOrDefault("UseTfsToCheckoutFiles", false);
         public static bool AddNewFilesToProject => ConfigHelper.GetAppSettingOrDefault("AddNewFilesToProject", false);
+        public static string ProjectNameForEarlyBoundFiles => ConfigHelper.GetAppSettingOrDefault("ProjectNameForEarlyBoundFiles", string.Empty);
         public static bool RemoveRuntimeVersionComment => ConfigHelper.GetAppSettingOrDefault("RemoveRuntimeVersionComment", true);
         private static bool LoggingEnabled => ConfigHelper.GetAppSettingOrDefault("LoggingEnabled", false);
         public static IOrganizationMetadata Metadata { get; set; }
@@ -674,6 +675,12 @@ namespace DLaB.CrmSvcUtilExtensions
 
             private FileInfo GetProjectPath(DirectoryInfo directory)
             {
+                bool isProjectFile(FileInfo fi)
+                {
+                    return string.IsNullOrWhiteSpace(ProjectNameForEarlyBoundFiles) 
+                           || fi.FullName.EndsWith(ProjectNameForEarlyBoundFiles);
+                }
+
                 while (true)
                 {
                     if (directory == null)
@@ -681,7 +688,8 @@ namespace DLaB.CrmSvcUtilExtensions
                         return null;
                     }
 
-                    var firstOrDefault = directory.GetFiles("*.csproj").FirstOrDefault() ?? directory.GetFiles("*.projitems").FirstOrDefault();
+                    var firstOrDefault = directory.GetFiles("*.csproj").FirstOrDefault(isProjectFile) 
+                                         ?? directory.GetFiles("*.projitems").FirstOrDefault(isProjectFile);
                     if (firstOrDefault != null)
                     {
                         return firstOrDefault;
