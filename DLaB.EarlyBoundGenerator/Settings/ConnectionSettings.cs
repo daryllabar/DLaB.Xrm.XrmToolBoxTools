@@ -36,9 +36,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         public static ConnectionSettings GetForConnection(ConnectionDetail connectionDetail)
         {
-            ConnectionSettings localSettings;
             // ReSharper disable once UnusedVariable
-            var loadedSuccessfully = SettingsManager.Instance.TryLoad(typeof(EarlyBoundGeneratorPlugin), out localSettings, connectionDetail?.ConnectionName) ||
+            var loadedSuccessfully = SettingsManager.Instance.TryLoad(typeof(EarlyBoundGeneratorPlugin), out ConnectionSettings localSettings, connectionDetail?.ConnectionName) ||
                                      SettingsManager.Instance.TryLoad(typeof(EarlyBoundGeneratorPlugin), out localSettings);
             return localSettings ?? GetDefault();
         }
