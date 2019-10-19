@@ -159,6 +159,7 @@
     <Compile Include="App_Packages\DLaB.Common.Source.1.2.0.3\VersionControl\VsTfsSourceControlProvider.cs" />
     <Compile Include="AttributeConstGeneratorBase.cs" />
     <Compile Include="BaseCustomCodeGenerationService.cs" />
+    <Compile Include="Entity\EntityConstructorsGenerator.cs" />
     <Compile Include="Entity\MultiOptionSetAttributeUpdater.cs" />
     <Compile Include="Entity\PrimaryAttributeGenerator.cs" />
     <Compile Include="Entity\AttributeConstGenerator.cs" />

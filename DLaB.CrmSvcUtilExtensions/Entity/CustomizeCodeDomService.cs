@@ -32,6 +32,10 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             {
                 new CodeCustomization(Parameters).CustomizeCodeDom(codeUnit, services);
             }
+            if(true)
+            {
+                new EntityConstructorsGenerator().CustomizeCodeDom(codeUnit, services);
+            }
             if (AddPrimaryAttributeConsts)
             {
                 new PrimaryAttributeGenerator().CustomizeCodeDom(codeUnit, services);
