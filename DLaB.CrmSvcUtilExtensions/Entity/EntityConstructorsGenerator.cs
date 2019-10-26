@@ -25,7 +25,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         private static void AddEntityConstructors(CodeTypeDeclaration entityClass)
         {
             var entityConstructors = typeof(Microsoft.Xrm.Sdk.Entity).GetConstructors();
-            int position = 2;
+            int position = 1;
 
             foreach (var constructor in entityConstructors)
             {
