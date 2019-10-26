@@ -166,6 +166,15 @@ namespace DLaB.EarlyBoundGenerator.Settings
         }
 
         [Category("Entities")]
+        [DisplayName("Generate Constructor to match Microsoft.Xrm.Sdk.Entity Constructors")]
+        [Description("Adds Constructors to each early bound entity class to use constructors available to Microsoft.Xrm.Sdk.Entity")]
+        public bool GenerateConstructorsSansLogicalName
+        {
+            get => Config.ExtensionConfig.GenerateConstructorsSansLogicalName;
+            set => Config.ExtensionConfig.GenerateConstructorsSansLogicalName = value;
+        }
+
+        [Category("Entities")]
         [DisplayName("Generate Entity Relationships")]
         [Description("Specifies if 1:N, N:1, and N:N relationships properties are generated for entities.")]
         public bool GenerateEntityRelationships

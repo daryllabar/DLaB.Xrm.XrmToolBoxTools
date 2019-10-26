@@ -12,8 +12,6 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
     {
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
-            var metadataService = (IMetadataProviderService)services.GetService(typeof(IMetadataProviderService));
-            var metadata = metadataService.LoadMetadata();
             var types = codeUnit.Namespaces[0].Types;
 
             foreach (var type in types.Cast<CodeTypeDeclaration>().
@@ -27,6 +25,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         private static void AddEntityConstructors(CodeTypeDeclaration entityClass)
         {
             var entityConstructors = typeof(Microsoft.Xrm.Sdk.Entity).GetConstructors();
+            int position = 2;
 
             foreach (var constructor in entityConstructors)
             {
@@ -45,8 +44,6 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                 {
                     if(param.Name == "entityName")
                     {
-                        //codeConstructor.Parameters.Add(new CodeParameterDeclarationExpression(param.ParameterType, param.Name));
-                        //codeConstructor.BaseConstructorArgs.Add(new CodeArgumentReferenceExpression(param.Name));
                         codeConstructor.BaseConstructorArgs.Add(new CodeArgumentReferenceExpression("EntityLogicalName"));
                     }
                     else
@@ -56,7 +53,8 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                     }
                 }
 
-                entityClass.Members.Add(codeConstructor);
+                entityClass.Members.Insert(position, codeConstructor);
+                position++;
             }
         }
 

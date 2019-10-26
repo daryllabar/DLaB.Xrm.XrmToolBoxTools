@@ -13,10 +13,11 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         public bool CreateBaseClasses => ConfigHelper.GetAppSettingOrDefault("CreateBaseClasses", false) && !UseXrmClient;
         public static bool GenerateAnonymousTypeConstructor => ConfigHelper.GetAppSettingOrDefault("GenerateAnonymousTypeConstructor", true);
         public static bool GenerateAttributeNameConsts => ConfigHelper.GetAppSettingOrDefault("GenerateAttributeNameConsts", false);
+        public static bool GenerateConstructorsSansLogicalName => ConfigHelper.GetAppSettingOrDefault("GenerateConstructorsSansLogicalName", false);
         public static bool GenerateEnumProperties => ConfigHelper.GetAppSettingOrDefault("GenerateEnumProperties", true);
         public static bool UseXrmClient => ConfigHelper.GetAppSettingOrDefault("UseXrmClient", false);
         public IDictionary<string, string> Parameters { get; set; }
-
+        
         public CustomizeCodeDomService(IDictionary<string, string> parameters)
         {
           Parameters = parameters;
@@ -32,13 +33,13 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             {
                 new CodeCustomization(Parameters).CustomizeCodeDom(codeUnit, services);
             }
-            if(true)
-            {
-                new EntityConstructorsGenerator().CustomizeCodeDom(codeUnit, services);
-            }
             if (AddPrimaryAttributeConsts)
             {
                 new PrimaryAttributeGenerator().CustomizeCodeDom(codeUnit, services);
+            }
+            if (GenerateConstructorsSansLogicalName)
+            {
+                new EntityConstructorsGenerator().CustomizeCodeDom(codeUnit, services);
             }
             if (GenerateAttributeNameConsts)
             {

@@ -23,6 +23,7 @@
     <GenerateActionAttributeNameConsts>false</GenerateActionAttributeNameConsts>
     <GenerateAttributeNameConsts>false</GenerateAttributeNameConsts>
     <GenerateAnonymousTypeConstructor>true</GenerateAnonymousTypeConstructor>
+    <GenerateConstructorsSansLogicalName>false</GenerateConstructorsSansLogicalName>
     <GenerateEntityRelationships>true</GenerateEntityRelationships>
     <GenerateEnumProperties>true</GenerateEnumProperties>
     <GenerateOnlyReferencedOptionSets>true</GenerateOnlyReferencedOptionSets>
