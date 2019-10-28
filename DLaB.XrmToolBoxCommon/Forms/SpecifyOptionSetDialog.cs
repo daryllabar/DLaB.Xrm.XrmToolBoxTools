@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Source.DLaB.Xrm;
-using DLaB.XrmToolBoxCommon;
-using PropertyInterface = DLaB.XrmToolBoxCommon.PropertyInterface;
 using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Metadata;
 using XrmToolBox.Extensibility;
@@ -131,10 +129,12 @@ namespace DLaB.XrmToolBoxCommon.Forms
                         CmbAttributes.BeginUpdate();
                         CmbAttributes.Items.Clear();
                         CmbAttributes.Text = null;
-
                         var result = ((RetrieveEntityResponse) e.Result).EntityMetadata.Attributes.
                             Where(a =>
-                                (SelectOptionSetsForEntity && a.AttributeType == AttributeTypeCode.Picklist)
+                                (SelectOptionSetsForEntity 
+                                    && (a.AttributeType == AttributeTypeCode.Picklist
+                                        || a.AttributeType == AttributeTypeCode.State
+                                        || a.AttributeType == AttributeTypeCode.Status ))
                                 || a.IsLocalOptionSetAttribute()).
                             Select(a => new ObjectCollectionItem<AttributeMetadata>(a.SchemaName + " (" + a.LogicalName + ")", a)).
                             OrderBy(r => r.DisplayName);
