@@ -236,6 +236,7 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "GenerateActionAttributeNameConsts", extensions.GenerateActionAttributeNameConsts.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateAttributeNameConsts", extensions.GenerateAttributeNameConsts.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateAnonymousTypeConstructor", extensions.GenerateAnonymousTypeConstructor.ToString()) |
+                    UpdateConfigAppSetting(file, "GenerateConstructorsSansLogicalName", extensions.GenerateConstructorsSansLogicalName.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateEntityRelationships", extensions.GenerateEntityRelationships.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateEnumProperties", extensions.GenerateEnumProperties.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateOnlyReferencedOptionSets", extensions.GenerateOnlyReferencedOptionSets.ToString()) |

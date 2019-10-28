@@ -69,7 +69,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [DisplayName("Settings Version")]
         [Description("The Settings File Version.")]
         [ReadOnly(true)]
-        public string SettingsVersion{ get; set; }
+        public string SettingsVersion { get; set; }
         /// <summary>
         /// The version of the EarlyBoundGeneratorPlugin
         /// </summary>
@@ -155,7 +155,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         [XmlIgnore]
         [Browsable(false)]
-        public string CrmSvcUtilPath => 
+        public string CrmSvcUtilPath =>
             Directory.Exists(CrmSvcUtilRelativePath)
                 ? CrmSvcUtilRelativePath
                 : Path.Combine(CrmSvcUtilRealtiveRootPath ?? Directory.GetCurrentDirectory(), CrmSvcUtilRelativePath);
@@ -262,6 +262,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 GenerateActionAttributeNameConsts = pocoConfig.GenerateActionAttributeNameConsts.GetValueOrDefault(defaultConfig.GenerateActionAttributeNameConsts),
                 GenerateAttributeNameConsts = pocoConfig.GenerateAttributeNameConsts.GetValueOrDefault(defaultConfig.GenerateAttributeNameConsts),
                 GenerateAnonymousTypeConstructor = pocoConfig.GenerateAnonymousTypeConstructor.GetValueOrDefault(defaultConfig.GenerateAnonymousTypeConstructor),
+                GenerateConstructorsSansLogicalName = pocoConfig.GenerateConstructorsSansLogicalName.GetValueOrDefault(defaultConfig.GenerateConstructorsSansLogicalName),
                 GenerateEntityRelationships = pocoConfig.GenerateEntityRelationships.GetValueOrDefault(defaultConfig.GenerateEntityRelationships),
                 GenerateEnumProperties = pocoConfig.GenerateEnumProperties.GetValueOrDefault(defaultConfig.GenerateEnumProperties),
                 GenerateOnlyReferencedOptionSets = pocoConfig.GenerateOnlyReferencedOptionSets.GetValueOrDefault(defaultConfig.GenerateOnlyReferencedOptionSets),
@@ -339,7 +340,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         private void RemoveObsoleteValues(POCO.Config poco, EarlyBoundGeneratorConfig @default)
         {
-            if (CrmSvcUtilRelativePath == @"Plugins\CrmSvcUtil Ref\crmsvcutil.exe" 
+            if (CrmSvcUtilRelativePath == @"Plugins\CrmSvcUtil Ref\crmsvcutil.exe"
                 || CrmSvcUtilRelativePath == @"CrmSvcUtil Ref\crmsvcutil.exe")
             {
                 // 12.15.2016 XTB changed to use use the User directory, no plugin folder needed now
@@ -371,9 +372,9 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     return @default ?? value;
                 }
 
-                var splitValues = value.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()).ToList();
+                var splitValues = value.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()).ToList();
                 var hash = new HashSet<string>(splitValues);
-                splitValues.AddRange(@default.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries).
+                splitValues.AddRange(@default.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries).
                                               Where(key => !hash.Contains(key)));
 
                 return Config.ToString(splitValues);
@@ -437,8 +438,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
             {
                 AudibleCompletionNotification = true,
                 IncludeCommandLine = true,
-                MaskPassword = true,    
-                ExtensionArguments = new List<Argument>(new [] {
+                MaskPassword = true,
+                ExtensionArguments = new List<Argument>(new[] {
                     // Actions
                     new Argument(CreationType.Actions, CrmSrvUtilService.CodeCustomization, "DLaB.CrmSvcUtilExtensions.Action.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.Actions, CrmSrvUtilService.CodeGenerationService, "DLaB.CrmSvcUtilExtensions.Action.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions"),
@@ -456,14 +457,14 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     new Argument(CreationType.OptionSets, CrmSrvUtilService.MetadataProviderService, "DLaB.CrmSvcUtilExtensions.BaseMetadataProviderService,DLaB.CrmSvcUtilExtensions")
                 }),
                 ExtensionConfig = ExtensionConfig.GetDefault(),
-                UserArguments = new List<Argument>(new [] {
-                    new Argument(CreationType.Actions, "generateActions", null), 
+                UserArguments = new List<Argument>(new[] {
+                    new Argument(CreationType.Actions, "generateActions", null),
                     new Argument(CreationType.Actions, "out",  @"EBG\Actions.cs"),
                     new Argument(CreationType.All, "namespace", "CrmEarlyBound"),
                     new Argument(CreationType.Entities, "out", @"EBG\Entities.cs"),
                     new Argument(CreationType.Entities, "servicecontextname", "CrmServiceContext"),
                     new Argument(CreationType.OptionSets, "out",  @"EBG\OptionSets.cs")
-                }), 
+                }),
             };
             @default.SettingsVersion = @default.Version;
             return @default;
@@ -481,11 +482,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     return config;
                 }
 
-                var serializer = new XmlSerializer(typeof (POCO.Config));
+                var serializer = new XmlSerializer(typeof(POCO.Config));
                 POCO.Config poco;
                 using (var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
                 {
-                    poco = (POCO.Config) serializer.Deserialize(fs);
+                    poco = (POCO.Config)serializer.Deserialize(fs);
                     fs.Close();
                 }
                 var settings = new EarlyBoundGeneratorConfig(poco, filePath);
@@ -501,7 +502,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         {
             var undoCheckoutIfUnchanged = FileRequiresUndoCheckout(filePath);
 
-            var serializer = new XmlSerializer(typeof (EarlyBoundGeneratorConfig));
+            var serializer = new XmlSerializer(typeof(EarlyBoundGeneratorConfig));
             var xmlWriterSettings = new XmlWriterSettings
             {
                 Indent = true,
@@ -585,8 +586,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         public Argument GetExtensionArgument(CreationType creationType, string setting)
         {
-            return ExtensionArguments.FirstOrDefault(a => a.SettingType == creationType && 
-                                                          string.Equals(a.Name, setting, StringComparison.InvariantCultureIgnoreCase)) ?? 
+            return ExtensionArguments.FirstOrDefault(a => a.SettingType == creationType &&
+                                                          string.Equals(a.Name, setting, StringComparison.InvariantCultureIgnoreCase)) ??
                 new Argument(creationType, setting, string.Empty);
         }
 
@@ -633,7 +634,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             {
                 if (value != null)
                 {
-                    UserArguments.Add(new Argument {Name = setting, SettingType = creationType, Value = value});
+                    UserArguments.Add(new Argument { Name = setting, SettingType = creationType, Value = value });
                 }
             }
             else if (value == null)

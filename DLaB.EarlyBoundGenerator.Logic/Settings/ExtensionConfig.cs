@@ -79,7 +79,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// <summary>
         /// Specifies the generation of an Attributes Struct containing logical names for all attributes for the Action
         /// </summary>
-        public bool GenerateActionAttributeNameConsts { get; set; }        
+        public bool GenerateActionAttributeNameConsts { get; set; }
         /// <summary>
         /// Specifies the generation of an Attributes Struct containing logical names for all attributes for the Entity
         /// </summary>
@@ -88,6 +88,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// Specifies the generation of AnonymousType Constructors for entities
         /// </summary>
         public bool GenerateAnonymousTypeConstructor { get; set; }
+        /// <summary>
+        /// Adds Constructors to each early bound entity class to use constructors available to Microsoft.Xrm.Sdk.Entity
+        /// </summary>
+        public bool GenerateConstructorsSansLogicalName { get; set; }
         /// <summary>
         /// Specifies the generation of Relationships properties for Entities
         /// </summary>
@@ -204,6 +208,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 GenerateActionAttributeNameConsts = false,
                 GenerateAttributeNameConsts = false,
                 GenerateAnonymousTypeConstructor = true,
+                GenerateConstructorsSansLogicalName = false,
                 GenerateEntityRelationships = true,
                 GenerateEnumProperties = true,
                 GenerateOnlyReferencedOptionSets = true,
@@ -229,11 +234,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 RemoveRuntimeVersionComment = true,
                 UnmappedProperties =
                     "DuplicateRule:BaseEntityTypeCode,MatchingEntityTypeCode|" +
-                    "InvoiceDetail:InvoiceStateCode|" + 
-                    "LeadAddress:AddressTypeCode,ShippingMethodCode|" + 
+                    "InvoiceDetail:InvoiceStateCode|" +
+                    "LeadAddress:AddressTypeCode,ShippingMethodCode|" +
                     "Organization:CurrencyFormatCode,DateFormatCode,TimeFormatCode,WeekStartDayCode|" +
-                    "Quote:StatusCode|" + 
-                    "QuoteDetail:QuoteStateCode|" + 
+                    "Quote:StatusCode|" +
+                    "QuoteDetail:QuoteStateCode|" +
                     "SalesOrderDetail:SalesOrderStateCode|",
                 UseDeprecatedOptionSetNaming = false,
                 UseTfsToCheckoutFiles = false,
@@ -256,6 +261,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? GenerateActionAttributeNameConsts { get; set; }
         public bool? GenerateAttributeNameConsts { get; set; }
         public bool? GenerateAnonymousTypeConstructor { get; set; }
+        public bool? GenerateConstructorsSansLogicalName { get; set; }
         public bool? GenerateEntityRelationships { get; set; }
         public bool? GenerateEnumProperties { get; set; }
         public bool? AddDebuggerNonUserCode { get; set; }
