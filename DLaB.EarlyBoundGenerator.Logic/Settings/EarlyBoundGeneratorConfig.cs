@@ -253,6 +253,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 CreateOneFilePerAction = pocoConfig.CreateOneFilePerAction.GetValueOrDefault(defaultConfig.CreateOneFilePerAction),
                 CreateOneFilePerEntity = pocoConfig.CreateOneFilePerEntity.GetValueOrDefault(defaultConfig.CreateOneFilePerEntity),
                 CreateOneFilePerOptionSet = pocoConfig.CreateOneFilePerOptionSet.GetValueOrDefault(defaultConfig.CreateOneFilePerOptionSet),
+                DeleteFilesFromOutputFolders = pocoConfig.DeleteFilesFromOutputFolders.GetValueOrDefault(defaultConfig.DeleteFilesFromOutputFolders),
                 EntitiesToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.EntitiesToSkip, defaultConfig.EntitiesToSkip),
                 EntitiesWhitelist = AddPipeDelimitedMissingDefaultValues(pocoConfig.EntitiesWhitelist, defaultConfig.EntitiesWhitelist),
                 EntityAttributeSpecifiedNames = AddMissingDictionaryHashDefaultValues(pocoConfig.EntityAttributeSpecifiedNames, defaultConfig.EntityAttributeSpecifiedNames),

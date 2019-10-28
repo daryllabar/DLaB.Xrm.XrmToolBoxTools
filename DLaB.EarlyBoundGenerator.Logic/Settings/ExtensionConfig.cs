@@ -49,6 +49,12 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public bool CreateOneFilePerOptionSet { get; set; }
         /// <summary>
+        /// Clears all .cs files from output folders prior to file generation.
+        /// This helps to remove files that are no longer being generated.
+        /// Only used if Create One File Per Action/Entity/OptionSet is true.
+        /// </summary>
+        public bool DeleteFilesFromOutputFolders { get; set; }
+        /// <summary>
         /// Pipe Delimited String containing the logical names of Entities to not generate
         /// </summary>
         public string EntitiesToSkip { get; set; }
@@ -194,6 +200,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 CreateOneFilePerAction = false,
                 CreateOneFilePerEntity = false,
                 CreateOneFilePerOptionSet = false,
+                DeleteFilesFromOutputFolders = false,
                 GenerateActionAttributeNameConsts = false,
                 GenerateAttributeNameConsts = false,
                 GenerateAnonymousTypeConstructor = true,
@@ -245,6 +252,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
     {
         public bool? CreateOneFilePerEntity { get; set; }
         public bool? CreateOneFilePerOptionSet { get; set; }
+        public bool? DeleteFilesFromOutputFolders { get; set; }
         public bool? GenerateActionAttributeNameConsts { get; set; }
         public bool? GenerateAttributeNameConsts { get; set; }
         public bool? GenerateAnonymousTypeConstructor { get; set; }

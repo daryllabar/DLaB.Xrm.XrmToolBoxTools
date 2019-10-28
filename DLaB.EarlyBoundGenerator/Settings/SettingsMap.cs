@@ -265,6 +265,15 @@ namespace DLaB.EarlyBoundGenerator.Settings
         }
 
         [Category("Global")]
+        [DisplayName("Delete Files From Output Folders")]
+        [Description("Clears all .cs files from output folders prior to file generation.  This helps to remove files that are no longer being generated.  Only used if Create One File Per Action/Entity/OptionSet is true.")]
+        public bool DeleteFilesFromOutputFolders
+        {
+            get => Config.ExtensionConfig.DeleteFilesFromOutputFolders;
+            set => Config.ExtensionConfig.DeleteFilesFromOutputFolders = value;
+        }
+
+        [Category("Global")]
         [DisplayName("Include Command Line")]
         [Description("Specifies whether to include in the early bound class the command line used to generate it.")]
         public bool IncludeCommandLine
@@ -420,6 +429,15 @@ This helps to alleviate unnecessary differences that pop up when the classes are
 
         [Browsable(false)]
         public string SettingsPath { get; set; }
+
+        /// <summary>
+        /// True if at least one Action/Entity/OptionSet will create one file per item, else False.
+        /// </summary>
+        [Browsable(false)]
+        private bool AtLeastOneCreateFilePerSelected =>
+            CreateOneFilePerAction
+            || CreateOneFilePerEntity
+            || CreateOneFilePerOptionSet;
 
         private EarlyBoundGeneratorPlugin Plugin { get; }
 

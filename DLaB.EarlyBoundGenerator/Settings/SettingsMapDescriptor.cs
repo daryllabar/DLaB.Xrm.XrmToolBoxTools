@@ -51,19 +51,19 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         private void OnCreateOneFilePerActionChange(PropertyValueChangedEventArgs args)
         {
-            SetAddFilesToProjectVisibility();
+            SetVisibilityForControlsDependentOnFileCreations();
             ActionOutPath = ActionOutPath;
         }
 
         private void OnCreateOneFilePerEntityChange(PropertyValueChangedEventArgs args)
         {
-            SetAddFilesToProjectVisibility();
+            SetVisibilityForControlsDependentOnFileCreations();
             EntityOutPath = EntityOutPath;
         }
 
         private void OnCreateOneFilePerOptionSetChange(PropertyValueChangedEventArgs args)
         {
-            SetAddFilesToProjectVisibility();
+            SetVisibilityForControlsDependentOnFileCreations();
             OptionSetOutPath = OptionSetOutPath;
         }
 
@@ -87,7 +87,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         private void ProcessDynamicallyVisibleProperties()
         {
-            SetAddFilesToProjectVisibility();
+            SetVisibilityForControlsDependentOnFileCreations();
             SetMaskPasswordVisibility();
             SetPropertyEnumMappingVisibility();
             SetUnmappedPropertiesVisibility();
@@ -98,13 +98,23 @@ namespace DLaB.EarlyBoundGenerator.Settings
             TypeDescriptor.Refresh(this);
         }
 
+        private void SetVisibilityForControlsDependentOnFileCreations()
+        {
+            SetAddFilesToProjectVisibility();
+            SetDeleteFilesFromOutputFoldersVisibility();
+            SetProjectNameForEarlyBoundFilesVisibility();
+        }
+
         private void SetAddFilesToProjectVisibility()
         {
             var prop = Descriptor.GetProperty(nameof(AddNewFilesToProject));
-            prop.SetIsBrowsable(CreateOneFilePerAction 
-                                || CreateOneFilePerEntity
-                                || CreateOneFilePerOptionSet);
-            SetProjectNameForEarlyBoundFilesVisibility();
+            prop.SetIsBrowsable(AtLeastOneCreateFilePerSelected);
+        }
+
+        private void SetDeleteFilesFromOutputFoldersVisibility()
+        {
+            var prop = Descriptor.GetProperty(nameof(DeleteFilesFromOutputFolders));
+            prop.SetIsBrowsable(AtLeastOneCreateFilePerSelected);
         }
 
         private void SetMaskPasswordVisibility()

@@ -226,6 +226,7 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "CreateOneFilePerAction", extensions.CreateOneFilePerAction.ToString()) |
                     UpdateConfigAppSetting(file, "CreateOneFilePerEntity", extensions.CreateOneFilePerEntity.ToString()) |
                     UpdateConfigAppSetting(file, "CreateOneFilePerOptionSet", extensions.CreateOneFilePerOptionSet.ToString()) |
+                    UpdateConfigAppSetting(file, "DeleteFilesFromOutputFolders", extensions.DeleteFilesFromOutputFolders.ToString()) |
                     UpdateConfigAppSetting(file, "EntityAttributeSpecifiedNames", extensions.EntityAttributeSpecifiedNames) |
                     UpdateConfigAppSetting(file, "EntityCommandLineText", extensions.EntityCommandLineText, true) |
                     UpdateConfigAppSetting(file, "EntitiesToSkip", extensions.EntitiesToSkip) |

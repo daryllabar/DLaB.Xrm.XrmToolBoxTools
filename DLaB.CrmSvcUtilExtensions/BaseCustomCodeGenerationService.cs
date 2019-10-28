@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Activities.Statements;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.Crm.Services.Utility;
 using Source.DLaB.Common;
 using Source.DLaB.Common.VersionControl;
+using Parallel = System.Threading.Tasks.Parallel;
 
 namespace DLaB.CrmSvcUtilExtensions
 {
@@ -23,6 +24,7 @@ namespace DLaB.CrmSvcUtilExtensions
         protected virtual string CommandLineText => ConfigHelper.GetAppSettingOrDefault("EntityCommandLineText", string.Empty);
         protected virtual CodeUnit SplitByCodeUnit => CodeUnit.Class;
         protected abstract bool CreateOneFilePerCodeUnit { get; }
+        private bool DeleteFilesFromOutputFolders => ConfigHelper.GetAppSettingOrDefault("DeleteFilesFromOutputFolders", false) && CreateOneFilePerCodeUnit;
 
         private VsTfsSourceControlProvider Tfs { get; set; }
         protected ICodeGenerationService DefaultService { get; }
@@ -144,6 +146,8 @@ namespace DLaB.CrmSvcUtilExtensions
             DefaultService.Write(organizationMetadata, language, tempFile, targetNamespace, services);
             Log("Completed writing file {0} to {1}", Path.GetFileName(outputFile), tempFile);
 
+            DeleteExistingFiles(outputFile, tempFile);
+
             // Check if the Header needs to be updated and or the file needs to be split
             if (!string.IsNullOrWhiteSpace(CommandLineText) || RemoveRuntimeVersionComment)
             {
@@ -182,6 +186,24 @@ namespace DLaB.CrmSvcUtilExtensions
             File.Delete(tempFile);
             Log("Completed cleaning up Temporary File");
             DisplayMessage(tempFile + " Moved To: " + outputFile);
+        }
+
+        private void DeleteExistingFiles(string outputFile, string tempFile)
+        {
+            if (!DeleteFilesFromOutputFolders)
+            {
+                return;
+            }
+
+            DisplayMessage($"Deleting *.cs Files From {outputFile} By Code Unit");
+            var directory = Path.GetDirectoryName(tempFile) ?? string.Empty;
+            foreach (var file in Directory.EnumerateFiles(directory, "*.cs", SearchOption.TopDirectoryOnly))
+            {
+                Log("Deleting file: " + file);
+                File.Delete(file);
+            }
+
+            DisplayMessage($"Finished Deleting *.cs Files From {outputFile} By Code Unit");
         }
 
         #endregion // Internal Implementations
@@ -276,7 +298,7 @@ namespace DLaB.CrmSvcUtilExtensions
             var skipNext = false;
             var commandLine = string.Empty;
             var codeUnitStartsWith = codeUnit == CodeUnit.Class ? "public partial class" : "public enum";
-            var files = new List<FileToWrite>(); // Delay this to the end to multithread the creation.  100's of small files takes a long time if checking with TFS sequentially
+            var files = new List<FileToWrite>(); // Delay this to the end to multi-thread the creation.  100's of small files takes a long time if checking with TFS sequentially
 
             foreach (var line in lines)
             {
@@ -675,7 +697,7 @@ namespace DLaB.CrmSvcUtilExtensions
 
             private FileInfo GetProjectPath(DirectoryInfo directory)
             {
-                bool isProjectFile(FileInfo fi)
+                bool IsProjectFile(FileInfo fi)
                 {
                     return string.IsNullOrWhiteSpace(ProjectNameForEarlyBoundFiles) 
                            || fi.FullName.EndsWith(ProjectNameForEarlyBoundFiles);
@@ -688,8 +710,8 @@ namespace DLaB.CrmSvcUtilExtensions
                         return null;
                     }
 
-                    var firstOrDefault = directory.GetFiles("*.csproj").FirstOrDefault(isProjectFile) 
-                                         ?? directory.GetFiles("*.projitems").FirstOrDefault(isProjectFile);
+                    var firstOrDefault = directory.GetFiles("*.csproj").FirstOrDefault(IsProjectFile) 
+                                         ?? directory.GetFiles("*.projitems").FirstOrDefault(IsProjectFile);
                     if (firstOrDefault != null)
                     {
                         return firstOrDefault;
