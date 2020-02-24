@@ -21,25 +21,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                                                                                         .First(a => a.Name == "Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute")
                                                                                         .Arguments[0].Value)).Value.ToString());
 
-
-
-                CodeMemberField entitytypecodefield = null;
-
-                foreach (var member in type.Members)
-                {
-                    if (member.GetType() == typeof(CodeMemberField)) {
-                        var field = (CodeMemberField)member;
-                        if (field.Name == "EntityTypeCode")
-                        {
-                            entitytypecodefield = field;
-                        }
-                    }
-                }
-                if (entitytypecodefield != null)
-                {
-                    type.Members.Remove(entitytypecodefield);
-                }
-
+                RemoveEntityTypeCodeField(type);
 
                 // insert at 2, to be after the constructor and the entity logical name
                 if (entityMetadata.PrimaryNameAttribute != null)
@@ -47,14 +29,14 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                     type.Members.Insert(2,
                         new CodeMemberField
                         {
-                            
+
                             Attributes = System.CodeDom.MemberAttributes.Public | System.CodeDom.MemberAttributes.Const,
                             Name = "PrimaryNameAttribute",
                             Type = new CodeTypeReference(typeof(string)),
                             InitExpression = new CodePrimitiveExpression(entityMetadata.PrimaryNameAttribute)
                         });
                 }
-                type.Members.Insert(2, 
+                type.Members.Insert(2,
                     new CodeMemberField
                     {
                         Attributes = System.CodeDom.MemberAttributes.Public | System.CodeDom.MemberAttributes.Const,
@@ -72,6 +54,22 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                                         InitExpression = new CodePrimitiveExpression(entityMetadata.SchemaName)
                                     });
 
+            }
+        }
+
+        private static void RemoveEntityTypeCodeField(CodeTypeDeclaration type)
+        {
+            foreach (var member in type.Members)
+            {
+                if (member.GetType() == typeof(CodeMemberField))
+                {
+                    var field = (CodeMemberField)member;
+                    if (field.Name == "EntityTypeCode")
+                    {
+                        type.Members.Remove(field);
+                        return;
+                    }
+                }
             }
         }
     }
