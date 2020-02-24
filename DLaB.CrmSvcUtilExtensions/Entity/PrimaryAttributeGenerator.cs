@@ -28,16 +28,17 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                 foreach (var member in type.Members)
                 {
                     if (member.GetType() == typeof(CodeMemberField)) {
-                        var f = (CodeMemberField)member;
-                        Console.WriteLine($"FieldName={f.Name}");
-                        if (f.Name == "EntityTypeCode")
+                        var field = (CodeMemberField)member;
+                        if (field.Name == "EntityTypeCode")
                         {
-                            Console.WriteLine("Found EntityTypeCode");
-                            entitytypecodefield = f;
+                            entitytypecodefield = field;
                         }
                     }
                 }
-                type.Members.Remove(entitytypecodefield);
+                if (entitytypecodefield != null)
+                {
+                    type.Members.Remove(entitytypecodefield);
+                }
 
 
                 // insert at 2, to be after the constructor and the entity logical name
