@@ -22,6 +22,24 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                                                                                         .Arguments[0].Value)).Value.ToString());
 
 
+                Console.WriteLine($"objecttypecode={entityMetadata.ObjectTypeCode}");
+                CodeMemberField entitytypecodefield = null;
+
+                foreach (var member in type.Members)
+                {
+                    if (member.GetType().ToString() == "System.CodeDom.CodeMemberField") {
+                        var f = (CodeMemberField)member;
+                        if (f.Name == "EntityTypeCode")
+                        {
+                            entitytypecodefield = f;
+                        }
+                        Console.WriteLine($"FieldName={f.Name}");
+                    }
+                    Console.WriteLine(member.GetType());
+                }
+                type.Members.Remove(entitytypecodefield);
+
+
                 // insert at 2, to be after the constructor and the entity logical name
                 if (entityMetadata.PrimaryNameAttribute != null)
                 {
@@ -52,6 +70,9 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                                         Type = new CodeTypeReference(typeof(string)),
                                         InitExpression = new CodePrimitiveExpression(entityMetadata.SchemaName)
                                     });
+
+                Console.Write("Hello");
+                Console.Write($"type.name={type.Name}");
             }
         }
     }
