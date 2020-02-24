@@ -22,20 +22,20 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                                                                                         .Arguments[0].Value)).Value.ToString());
 
 
-                Console.WriteLine($"objecttypecode={entityMetadata.ObjectTypeCode}");
+
                 CodeMemberField entitytypecodefield = null;
 
                 foreach (var member in type.Members)
                 {
-                    if (member.GetType().ToString() == "System.CodeDom.CodeMemberField") {
+                    if (member.GetType() == typeof(CodeMemberField)) {
                         var f = (CodeMemberField)member;
+                        Console.WriteLine($"FieldName={f.Name}");
                         if (f.Name == "EntityTypeCode")
                         {
+                            Console.WriteLine("Found EntityTypeCode");
                             entitytypecodefield = f;
                         }
-                        Console.WriteLine($"FieldName={f.Name}");
                     }
-                    Console.WriteLine(member.GetType());
                 }
                 type.Members.Remove(entitytypecodefield);
 
@@ -71,8 +71,6 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                                         InitExpression = new CodePrimitiveExpression(entityMetadata.SchemaName)
                                     });
 
-                Console.Write("Hello");
-                Console.Write($"type.name={type.Name}");
             }
         }
     }
