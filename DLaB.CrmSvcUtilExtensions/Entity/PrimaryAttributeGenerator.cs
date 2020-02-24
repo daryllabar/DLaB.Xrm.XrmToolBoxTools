@@ -29,14 +29,13 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                     type.Members.Insert(2,
                         new CodeMemberField
                         {
-
                             Attributes = System.CodeDom.MemberAttributes.Public | System.CodeDom.MemberAttributes.Const,
                             Name = "PrimaryNameAttribute",
                             Type = new CodeTypeReference(typeof(string)),
                             InitExpression = new CodePrimitiveExpression(entityMetadata.PrimaryNameAttribute)
                         });
                 }
-                type.Members.Insert(2,
+                type.Members.Insert(2, 
                     new CodeMemberField
                     {
                         Attributes = System.CodeDom.MemberAttributes.Public | System.CodeDom.MemberAttributes.Const,
@@ -53,7 +52,6 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                                         Type = new CodeTypeReference(typeof(string)),
                                         InitExpression = new CodePrimitiveExpression(entityMetadata.SchemaName)
                                     });
-
             }
         }
 
