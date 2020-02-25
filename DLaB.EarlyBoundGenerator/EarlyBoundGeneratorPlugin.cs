@@ -24,7 +24,6 @@ namespace DLaB.EarlyBoundGenerator
         public IEnumerable<EntityMetadata> EntityMetadatas { get; set; }
         public IEnumerable<OptionSetMetadataBase> GlobalOptionSets { get; set; }
         public ConnectionSettings ConnectionSettings { get; set; }
-        private bool SkipSaveSettings { get; set; }
         private bool FormLoaded { get; set; }
         private SettingsMap SettingsMap { get; set; }
 
@@ -72,7 +71,6 @@ namespace DLaB.EarlyBoundGenerator
                 Settings.CrmSvcUtilRealtiveRootPath = Paths.PluginsPath;
                 SettingsMap = new SettingsMap(this, Settings){SettingsPath = settingsPath};
                 PropertiesGrid.SelectedObject = SettingsMap;
-                SkipSaveSettings = false;
             }
             catch (Exception ex)
             {
@@ -82,10 +80,6 @@ namespace DLaB.EarlyBoundGenerator
                 {
                     Settings = EarlyBoundGeneratorConfig.GetDefault();
                     Settings.CrmSvcUtilRealtiveRootPath = Paths.PluginsPath;
-                }
-                else
-                {
-                    SkipSaveSettings = true;
                 }
             }
         }
@@ -101,7 +95,7 @@ namespace DLaB.EarlyBoundGenerator
             base.ClosingPlugin(info);
             HydrateSettingsFromUI();
             SaveSettings();
-            if (info.Cancel || SkipSaveSettings) return;
+            if (info.Cancel) return;
 
             ConnectionDetail = null; // Don't save the Connection Details when closing.
         }
@@ -179,10 +173,7 @@ namespace DLaB.EarlyBoundGenerator
                     return;
                 }
             }
-            if (!SkipSaveSettings)
-            {
-                SaveSettings();
-            }
+            SaveSettings();
 
             WorkAsync(new WorkAsyncInfo("Shelling out to Command Line...",
                 (w, e) => // Work To Do Asynchronously
