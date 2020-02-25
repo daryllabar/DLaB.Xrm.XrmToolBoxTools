@@ -2,8 +2,8 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator</id>
-	  <version>1.2019.10.27</version>
-	  <title>Early Bound Generator</title>
+	<version>1.2020.2.24</version>
+	<title>Early Bound Generator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
     <license type="expression">MIT</license>
@@ -11,7 +11,10 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V1.2019.10.27
+    <releaseNotes>V1.2020.2.24
+Removed EntityTypeCode generation by default. #216
+	
+V1.2019.10.27
 Added State/Status Codes as Local Option Sets #206
 Generate entities with more constructors #204
 Added option to clobber folder if "Generate One File Per Action/Entity/Option Set" used #202
