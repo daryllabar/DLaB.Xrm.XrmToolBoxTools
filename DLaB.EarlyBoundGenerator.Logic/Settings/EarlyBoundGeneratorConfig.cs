@@ -264,6 +264,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 GenerateAnonymousTypeConstructor = pocoConfig.GenerateAnonymousTypeConstructor.GetValueOrDefault(defaultConfig.GenerateAnonymousTypeConstructor),
                 GenerateConstructorsSansLogicalName = pocoConfig.GenerateConstructorsSansLogicalName.GetValueOrDefault(defaultConfig.GenerateConstructorsSansLogicalName),
                 GenerateEntityRelationships = pocoConfig.GenerateEntityRelationships.GetValueOrDefault(defaultConfig.GenerateEntityRelationships),
+                GenerateEntityTypeCode = pocoConfig.GenerateEntityTypeCode.GetValueOrDefault(defaultConfig.GenerateEntityTypeCode),
                 GenerateEnumProperties = pocoConfig.GenerateEnumProperties.GetValueOrDefault(defaultConfig.GenerateEnumProperties),
                 GenerateOnlyReferencedOptionSets = pocoConfig.GenerateOnlyReferencedOptionSets.GetValueOrDefault(defaultConfig.GenerateOnlyReferencedOptionSets),
                 InvalidCSharpNamePrefix = pocoConfig.InvalidCSharpNamePrefix ?? defaultConfig.InvalidCSharpNamePrefix,

@@ -21,8 +21,6 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                                                                                         .First(a => a.Name == "Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute")
                                                                                         .Arguments[0].Value)).Value.ToString());
 
-                RemoveEntityTypeCodeField(type);
-
                 // insert at 2, to be after the constructor and the entity logical name
                 if (entityMetadata.PrimaryNameAttribute != null)
                 {
@@ -52,22 +50,6 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                                         Type = new CodeTypeReference(typeof(string)),
                                         InitExpression = new CodePrimitiveExpression(entityMetadata.SchemaName)
                                     });
-            }
-        }
-
-        private static void RemoveEntityTypeCodeField(CodeTypeDeclaration type)
-        {
-            foreach (var member in type.Members)
-            {
-                if (member.GetType() == typeof(CodeMemberField))
-                {
-                    var field = (CodeMemberField)member;
-                    if (field.Name == "EntityTypeCode")
-                    {
-                        type.Members.Remove(field);
-                        return;
-                    }
-                }
             }
         }
     }

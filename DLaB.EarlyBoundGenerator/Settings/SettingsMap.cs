@@ -184,6 +184,15 @@ namespace DLaB.EarlyBoundGenerator.Settings
         }
 
         [Category("Entities")]
+        [DisplayName("Generate Entity Type Code")]
+        [Description("By default the CrmSvcUtil generates the Entity Type Code, this is considered dangerous to use and is not recommended since it is a system generated value, and not one defined in the solution metadata, changing from environment to environment.")]
+        public bool GenerateEntityTypeCode
+        {
+            get => Config.ExtensionConfig.GenerateEntityTypeCode;
+            set => Config.ExtensionConfig.GenerateEntityTypeCode = value;
+        }
+
+        [Category("Entities")]
         [DisplayName("Generate Enum Properties")]
         [Description("Adds an additional property to each early bound entity class for each optionset property it normally contains, typed to the appropriate Enum, rather than OptionSet, with Enum postfixed to the existing optionset name.")]
         public bool GenerateEnumProperties

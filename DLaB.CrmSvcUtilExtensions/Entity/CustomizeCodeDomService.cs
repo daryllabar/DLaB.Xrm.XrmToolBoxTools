@@ -14,6 +14,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         public static bool GenerateAnonymousTypeConstructor => ConfigHelper.GetAppSettingOrDefault("GenerateAnonymousTypeConstructor", true);
         public static bool GenerateAttributeNameConsts => ConfigHelper.GetAppSettingOrDefault("GenerateAttributeNameConsts", false);
         public static bool GenerateConstructorsSansLogicalName => ConfigHelper.GetAppSettingOrDefault("GenerateConstructorsSansLogicalName", false);
+        public static bool GenerateEntityTypeCode => ConfigHelper.GetAppSettingOrDefault("GenerateEntityTypeCode", false);
         public static bool GenerateEnumProperties => ConfigHelper.GetAppSettingOrDefault("GenerateEnumProperties", true);
         public static bool UseXrmClient => ConfigHelper.GetAppSettingOrDefault("UseXrmClient", false);
         public IDictionary<string, string> Parameters { get; set; }
@@ -48,6 +49,10 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             if (GenerateAnonymousTypeConstructor)
             {
                 new AnonymousTypeConstructorGenerator().CustomizeCodeDom(codeUnit, services);
+            }
+            if (!GenerateEntityTypeCode)
+            {
+                new RemoveEntityTypeCodeService().CustomizeCodeDom(codeUnit, services);
             }
 
             var multiSelectCreated = false;

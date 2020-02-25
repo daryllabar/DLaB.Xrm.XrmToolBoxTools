@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using System.Xml.Serialization;
 
 namespace DLaB.EarlyBoundGenerator.Settings
@@ -96,6 +93,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// Specifies the generation of Relationships properties for Entities
         /// </summary>
         public bool GenerateEntityRelationships { get; set; }
+        /// <summary>
+        /// By default the CrmSvcUtil generates the Entity Type Code, this is considered dangerous and not recommended since it is a system generated value, and not one defined in the solution metadata, changing from environment to environment.
+        /// </summary>
+        public bool GenerateEntityTypeCode { get; set; }
         /// <summary>
         /// Specifies the generation of Enum properties for option sets
         /// </summary>                                          
@@ -210,6 +211,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 GenerateAnonymousTypeConstructor = true,
                 GenerateConstructorsSansLogicalName = false,
                 GenerateEntityRelationships = true,
+                GenerateEntityTypeCode = false,
                 GenerateEnumProperties = true,
                 GenerateOnlyReferencedOptionSets = true,
                 ActionPrefixesToSkip = null,
@@ -263,6 +265,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? GenerateAnonymousTypeConstructor { get; set; }
         public bool? GenerateConstructorsSansLogicalName { get; set; }
         public bool? GenerateEntityRelationships { get; set; }
+        public bool? GenerateEntityTypeCode { get; set; }
         public bool? GenerateEnumProperties { get; set; }
         public bool? AddDebuggerNonUserCode { get; set; }
         public bool? CreateOneFilePerAction { get; set; }
