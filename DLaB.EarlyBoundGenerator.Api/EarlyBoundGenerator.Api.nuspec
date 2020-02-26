@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator.Api</id>
-    <version>1.2020.2.24</version>
+    <version>1.2020.2.25</version>
     <title>Early Bound Generator Api</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,10 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses CrmSvcUtil from the SDK.</description>
-    <releaseNotes>V1.2020.2.24
+    <releaseNotes>V1.2020.2.25
+Fixed package error
+
+V1.2020.2.24
 Removed EntityTypeCode generation by default. #216
 	
 V1.2019.10.27
