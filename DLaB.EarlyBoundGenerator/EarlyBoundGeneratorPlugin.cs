@@ -293,13 +293,14 @@ namespace DLaB.EarlyBoundGenerator
             {
                 return ConnectionDetail.UseOnline
                     ? ConnectionDetail.UserDomain
-                    : ConnectionDetail.UserName.Split('\\').FirstOrDefault(); // Domain\UserName
+                    : ConnectionDetail.UserName?.Split('\\').FirstOrDefault(); // Domain\UserName
             }
             else
             {
                 return ConnectionDetail.UserDomain;
             }
         }
+
         private string GetUrlString()
         {
             var orgName = ConnectionDetail.OrganizationUrlName;
