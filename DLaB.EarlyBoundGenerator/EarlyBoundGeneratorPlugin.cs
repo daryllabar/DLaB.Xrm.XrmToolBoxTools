@@ -304,6 +304,14 @@ namespace DLaB.EarlyBoundGenerator
         private string GetUrlString()
         {
             var orgName = ConnectionDetail.OrganizationUrlName;
+            if (orgName == null)
+            {
+                // Fix for Null Reference exception when attempting to generate #221
+                var startIndex = ConnectionDetail.WebApplicationUrl.LastIndexOf('/') + 1;
+                var length = ConnectionDetail.WebApplicationUrl.IndexOf('.') - startIndex;
+                orgName = ConnectionDetail.WebApplicationUrl.Substring(startIndex, length);
+            }
+
             var onPremUrl = ConnectionDetail.WebApplicationUrl;
             onPremUrl = onPremUrl != null && !onPremUrl.ToLower().EndsWith(orgName.ToLower())
                 ? onPremUrl + orgName
