@@ -16,6 +16,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         public static bool GenerateConstructorsSansLogicalName => ConfigHelper.GetAppSettingOrDefault("GenerateConstructorsSansLogicalName", false);
         public static bool GenerateEntityTypeCode => ConfigHelper.GetAppSettingOrDefault("GenerateEntityTypeCode", false);
         public static bool GenerateEnumProperties => ConfigHelper.GetAppSettingOrDefault("GenerateEnumProperties", true);
+        public static bool ReplaceOptionSetPropertiesWithEnum => ConfigHelper.GetAppSettingOrDefault("ReplaceOptionSetPropertiesWithEnum", true);
         public static bool UseXrmClient => ConfigHelper.GetAppSettingOrDefault("UseXrmClient", false);
         public IDictionary<string, string> Parameters { get; set; }
         
@@ -58,7 +59,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             var multiSelectCreated = false;
             if (GenerateEnumProperties)
             {
-                var generator = new EnumPropertyGenerator(CreateBaseClasses);
+                var generator = new EnumPropertyGenerator(CreateBaseClasses, ReplaceOptionSetPropertiesWithEnum);
                 generator.CustomizeCodeDom(codeUnit, services);
                 multiSelectCreated = generator.MultiSelectEnumCreated;
             }

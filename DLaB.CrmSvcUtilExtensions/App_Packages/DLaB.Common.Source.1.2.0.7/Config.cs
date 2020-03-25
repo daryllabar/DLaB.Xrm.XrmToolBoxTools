@@ -580,9 +580,13 @@ namespace Source.DLaB.Common
         public static string ToString<T>(IEnumerable<T> list, ConfigKeyValueSplitInfo info = null, Func<T, string> getString = null)
         {
             info = info ?? ConfigKeyValuesSplitInfo.Default;
-            getString = getString ?? ToStringDefault;
+            return string.Join(info.EntrySeparators.First().ToString(), ToStringIEnumerable(list, info, getString));
+        }
 
-            return string.Join(info.EntrySeparators.First().ToString(), list.Select(s => getString(s)).Select(s => info.ConvertValuesToLower ? s.ToLower() : s));
+        private static IEnumerable<string> ToStringIEnumerable<T>(IEnumerable<T> list, ConfigKeyValueSplitInfo info, Func<T, string> getString)
+        {
+            getString = getString ?? ToStringDefault;
+            return list.Select(s => getString(s)).Select(s => info.ConvertValuesToLower ? s.ToLower() : s);
         }
 
         /// <summary>
@@ -603,15 +607,19 @@ namespace Source.DLaB.Common
                                                     Func<TValue, string> getValueString = null)
         {
             info = info ?? ConfigKeyValueSplitInfo.Default;
+            return string.Join(info.EntrySeparators.First().ToString(), ToStringDictionary(dictionary, info, getKeyString, getValueString));
+        }
+
+        private static IEnumerable<string> ToStringDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary, ConfigKeyValueSplitInfo info, Func<TKey, string> getKeyString, Func<TValue, string> getValueString)
+        {
             getKeyString = getKeyString ?? ToStringDefault;
             getValueString = getValueString ?? ToStringDefault;
 
             var values = from kvp in dictionary
-                         let key = getKeyString(kvp.Key)
-                         let value = getValueString(kvp.Value)
-                         select $"{(info.ConvertKeysToLower ? key.ToLower() : key)}{info.KeyValueSeperators.First()}{(info.ConvertValuesToLower ? value.ToLower() : value)}";
-
-            return string.Join(info.EntrySeparators.First().ToString(), values);
+                let key = getKeyString(kvp.Key)
+                let value = getValueString(kvp.Value)
+                select $"{(info.ConvertKeysToLower ? key.ToLower() : key)}{info.KeyValueSeperators.First()}{(info.ConvertValuesToLower ? value.ToLower() : value)}";
+            return values;
         }
 
         /// <summary>
@@ -632,15 +640,20 @@ namespace Source.DLaB.Common
                                             Func<TValue, string> getValueString = null)
         {
             info = info ?? ConfigKeyValuesSplitInfo.Default;
+            return string.Join(info.EntrySeparators.First().ToString(), ToStringDictionaryList(dictionary, info, getKeyString, getValueString));
+        }
+
+        private static List<string> ToStringDictionaryList<TKey, TValue>(Dictionary<TKey, List<TValue>> dictionary, ConfigKeyValuesSplitInfo info, Func<TKey, string> getKeyString, Func<TValue, string> getValueString)
+        {
             getKeyString = getKeyString ?? ToStringDefault;
             getValueString = getValueString ?? ToStringDefault;
 
             var values = (from kvp in dictionary
-                          let key = getKeyString(kvp.Key)
-                          let prefix = (info.ConvertKeysToLower ? key.ToLower() : key) + info.KeyValueSeperators.First()
-                          let items = (kvp.Value ?? new List<TValue>()).Select(v => getValueString(v)).Select(v => info.ConvertValuesToLower ? v.ToLower() : v)
-                          select prefix + string.Join(info.EntryValuesSeparators.First().ToString(), items)).ToList();
-            return string.Join(info.EntrySeparators.First().ToString(), values);
+                let key = getKeyString(kvp.Key)
+                let prefix = (info.ConvertKeysToLower ? key.ToLower() : key) + info.KeyValueSeperators.First()
+                let items = (kvp.Value ?? new List<TValue>()).Select(v => getValueString(v)).Select(v => info.ConvertValuesToLower ? v.ToLower() : v)
+                select prefix + string.Join(info.EntryValuesSeparators.First().ToString(), items)).ToList();
+            return values;
         }
 
         /// <summary>
@@ -661,15 +674,20 @@ namespace Source.DLaB.Common
                                             Func<TValue, string> getValueString = null)
         {
             info = info ?? ConfigKeyValuesSplitInfo.Default;
+            return string.Join(info.EntrySeparators.First().ToString(), ToStringDictionaryHashSet(dictionary, info, getKeyString, getValueString));
+        }
+
+        private static List<string> ToStringDictionaryHashSet<TKey, TValue>(Dictionary<TKey, HashSet<TValue>> dictionary, ConfigKeyValuesSplitInfo info, Func<TKey, string> getKeyString, Func<TValue, string> getValueString)
+        {
             getKeyString = getKeyString ?? ToStringDefault;
             getValueString = getValueString ?? ToStringDefault;
 
             var values = (from kvp in dictionary
-                          let key = getKeyString(kvp.Key)
-                          let prefix = (info.ConvertKeysToLower ? key.ToLower() : key) + info.KeyValueSeperators.First()
-                          let items = kvp.Value.Select(v => getValueString(v)).Select(v => info.ConvertValuesToLower ? v.ToLower() : v)
-                          select prefix + string.Join(info.EntryValuesSeparators.First().ToString(), items)).ToList();
-            return string.Join(info.EntrySeparators.First().ToString(), values);
+                let key = getKeyString(kvp.Key)
+                let prefix = (info.ConvertKeysToLower ? key.ToLower() : key) + info.KeyValueSeperators.First()
+                let items = kvp.Value.Select(v => getValueString(v)).Select(v => info.ConvertValuesToLower ? v.ToLower() : v)
+                select prefix + string.Join(info.EntryValuesSeparators.First().ToString(), items)).ToList();
+            return values;
         }
 
         /// <summary>
@@ -685,9 +703,14 @@ namespace Source.DLaB.Common
         public static string ToString<T>(HashSet<T> hashset, ConfigKeyValueSplitInfo info = null, Func<T, string> getString = null)
         {
             info = info ?? ConfigKeyValuesSplitInfo.Default;
-            getString = getString ?? ToStringDefault;
+            return string.Join(info.EntrySeparators.First().ToString(), ToStringHashSet(hashset, info, getString));
+        }
 
-            return string.Join(info.EntrySeparators.First().ToString(), hashset.Select(s => getString(s)).Select(s => info.ConvertValuesToLower ? s.ToLower() : s));
+        private static IEnumerable<string> ToStringHashSet<T>(HashSet<T> hashset, ConfigKeyValueSplitInfo info, Func<T, string> getString)
+        {
+            getString = getString ?? ToStringDefault;
+            var values = hashset.Select(s => getString(s)).Select(s => info.ConvertValuesToLower ? s.ToLower() : s);
+            return values;
         }
 
         private static string ToStringDefault<T>(T value)
@@ -701,5 +724,122 @@ namespace Source.DLaB.Common
         }
 
         #endregion ToString
+
+        #region ToStringSorted
+
+        /// <summary>
+        /// Returns a <see cref="string" /> that represents this given list to be stored as a string.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list">The list.</param>
+        /// <param name="info">The information.</param>
+        /// <param name="getString">The get string.</param>
+        /// <param name="sort">The sort function to apply</param>
+        /// <returns>
+        /// A <see cref="string" /> that represents this instance.
+        /// </returns>
+        public static string ToStringSorted<T>(IEnumerable<T> list, ConfigKeyValueSplitInfo info = null, Func<T, string> getString = null, Func<IEnumerable<string>, IOrderedEnumerable<string>> sort = null)
+        {
+            info = info ?? ConfigKeyValuesSplitInfo.Default;
+            sort = sort ?? DefaultSort();
+            return string.Join(info.EntrySeparators.First().ToString(), sort(ToStringIEnumerable(list, info, getString)));
+        }
+
+        private static Func<IEnumerable<string>, IOrderedEnumerable<string>> DefaultSort()
+        {
+            return l => l.OrderBy(v => v);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="string" /> that represents the given dictionary object to be stored as a string
+        /// </summary>
+        /// <typeparam name="TKey">The type of the key.</typeparam>
+        /// <typeparam name="TValue">The type of the value.</typeparam>
+        /// <param name="dictionary">The dictionary.</param>
+        /// <param name="info">The information.</param>
+        /// <param name="getKeyString">The get key string.</param>
+        /// <param name="getValueString">The get value string.</param>
+        /// <param name="sort">The sort function to apply</param>
+        /// <returns>
+        /// A <see cref="string" /> that represents the given dictionary object to be stored as a string
+        /// </returns>
+        public static string ToStringSorted<TKey, TValue>(Dictionary<TKey, TValue> dictionary,
+                                                    ConfigKeyValueSplitInfo info = null,
+                                                    Func<TKey, string> getKeyString = null,
+                                                    Func<TValue, string> getValueString = null,
+                                                    Func<IEnumerable<string>, IOrderedEnumerable<string>> sort = null)
+        {
+            info = info ?? ConfigKeyValueSplitInfo.Default;
+            sort = sort ?? DefaultSort();
+            return string.Join(info.EntrySeparators.First().ToString(), sort(ToStringDictionary(dictionary, info, getKeyString, getValueString)));
+        }
+
+        /// <summary>
+        /// Returns a <see cref="string" /> that represents the given dictionary object to be stored as a string
+        /// </summary>
+        /// <typeparam name="TKey">The type of the key.</typeparam>
+        /// <typeparam name="TValue">The type of the value.</typeparam>
+        /// <param name="dictionary">The dictionary.</param>
+        /// <param name="info">The information.</param>
+        /// <param name="getKeyString">The get key string.</param>
+        /// <param name="getValueString">The get value string.</param>
+        /// <param name="sort">The sort function to apply</param>
+        /// <returns>
+        /// A <see cref="string" /> that represents the given dictionary object to be stored as a string
+        /// </returns>
+        public static string ToStringSorted<TKey, TValue>(Dictionary<TKey, List<TValue>> dictionary,
+                                            ConfigKeyValuesSplitInfo info = null,
+                                            Func<TKey, string> getKeyString = null,
+                                            Func<TValue, string> getValueString = null,
+                                            Func<IEnumerable<string>, IOrderedEnumerable<string>> sort = null)
+        {
+            info = info ?? ConfigKeyValuesSplitInfo.Default;
+            sort = sort ?? DefaultSort();
+            return string.Join(info.EntrySeparators.First().ToString(), sort(ToStringDictionaryList(dictionary, info, getKeyString, getValueString)));
+        }
+
+        /// <summary>
+        /// Returns a <see cref="string" /> that represents the given dictionary object to be stored as a string
+        /// </summary>
+        /// <typeparam name="TKey">The type of the key.</typeparam>
+        /// <typeparam name="TValue">The type of the value.</typeparam>
+        /// <param name="dictionary">The dictionary.</param>
+        /// <param name="info">The information.</param>
+        /// <param name="getKeyString">The get key string.</param>
+        /// <param name="getValueString">The get value string.</param>
+        /// <param name="sort">The sort function to apply</param>
+        /// <returns>
+        /// A <see cref="string" /> that represents the given dictionary object to be stored as a string
+        /// </returns>
+        public static string ToStringSorted<TKey, TValue>(Dictionary<TKey, HashSet<TValue>> dictionary,
+                                            ConfigKeyValuesSplitInfo info = null,
+                                            Func<TKey, string> getKeyString = null,
+                                            Func<TValue, string> getValueString = null,
+                                            Func<IEnumerable<string>, IOrderedEnumerable<string>> sort = null)
+        {
+            info = info ?? ConfigKeyValuesSplitInfo.Default;
+            sort = sort ?? DefaultSort();
+            return string.Join(info.EntrySeparators.First().ToString(), sort(ToStringDictionaryHashSet(dictionary, info, getKeyString, getValueString)));
+        }
+
+        /// <summary>
+        /// Returns a <see cref="string" /> that represents this given hashset to be stored as a string.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="hashset">The hashset.</param>
+        /// <param name="info">The information.</param>
+        /// <param name="getString">The get string.</param>
+        /// <param name="sort">The sort function to apply</param>
+        /// <returns>
+        /// A <see cref="string" /> that represents this instance.
+        /// </returns>
+        public static string ToStringSorted<T>(HashSet<T> hashset, ConfigKeyValueSplitInfo info = null, Func<T, string> getString = null, Func<IEnumerable<string>, IOrderedEnumerable<string>> sort = null)
+        {
+            info = info ?? ConfigKeyValuesSplitInfo.Default;
+            sort = sort ?? DefaultSort();
+            return string.Join(info.EntrySeparators.First().ToString(), sort(ToStringHashSet(hashset, info, getString)));
+        }
+
+        #endregion ToStringSorted
     }
 }

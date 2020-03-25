@@ -253,6 +253,7 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "ProjectNameForEarlyBoundFiles", extensions.ProjectNameForEarlyBoundFiles ?? string.Empty) |
                     UpdateConfigAppSetting(file, "PropertyEnumMappings", extensions.PropertyEnumMappings) |
                     UpdateConfigAppSetting(file, "RemoveRuntimeVersionComment", extensions.RemoveRuntimeVersionComment.ToString()) |
+                    UpdateConfigAppSetting(file, "ReplaceOptionSetPropertiesWithEnum", extensions.ReplaceOptionSetPropertiesWithEnum.ToString()) |
                     UpdateConfigAppSetting(file, "UseDeprecatedOptionSetNaming", extensions.UseDeprecatedOptionSetNaming.ToString()) |
                     UpdateConfigAppSetting(file, "UnmappedProperties", extensions.UnmappedProperties) |
                     UpdateConfigAppSetting(file, "UseTfsToCheckoutFiles", extensions.UseTfsToCheckoutFiles.ToString()) |

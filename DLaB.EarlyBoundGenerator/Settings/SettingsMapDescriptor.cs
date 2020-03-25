@@ -70,6 +70,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         private void OnGenerateEnumPropertiesChange(PropertyValueChangedEventArgs args)
         {
             SetPropertyEnumMappingVisibility();
+            SetPropertyReplaceOptionSetPropertiesWithEnumVisibility();
             SetUnmappedPropertiesVisibility();
         }
 
@@ -90,6 +91,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             SetVisibilityForControlsDependentOnFileCreations();
             SetMaskPasswordVisibility();
             SetPropertyEnumMappingVisibility();
+            SetPropertyReplaceOptionSetPropertiesWithEnumVisibility();
             SetUnmappedPropertiesVisibility();
             SetLocalOptionSetFormatVisibility();
             ActionOutPath = ActionOutPath;
@@ -139,6 +141,12 @@ namespace DLaB.EarlyBoundGenerator.Settings
         private void SetPropertyEnumMappingVisibility()
         {
             var prop = Descriptor.GetProperty(nameof(PropertyEnumMappings));
+            prop.SetIsBrowsable(GenerateEnumProperties);
+        }
+
+        private void SetPropertyReplaceOptionSetPropertiesWithEnumVisibility()
+        {
+            var prop = Descriptor.GetProperty(nameof(ReplaceOptionSetPropertiesWithEnum));
             prop.SetIsBrowsable(GenerateEnumProperties);
         }
 

@@ -149,6 +149,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public bool RemoveRuntimeVersionComment { get; set; }
         /// <summary>
+        /// Used in Conjunction with GenerateEnumProperties.  Allows for replacing the OptionSet properties, rather than duplicating them
+        /// </summary>
+        public bool ReplaceOptionSetPropertiesWithEnum { get; set; }
+        /// <summary>
         /// Used to manually specify an enum mapping for an OptionSetValue Property on an entity 
         /// Format: EntityName.PropertyName,EnumName|
         /// </summary>
@@ -234,6 +238,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 ProjectNameForEarlyBoundFiles = string.Empty,
                 PropertyEnumMappings = string.Empty,
                 RemoveRuntimeVersionComment = true,
+                ReplaceOptionSetPropertiesWithEnum = true,
                 UnmappedProperties =
                     "DuplicateRule:BaseEntityTypeCode,MatchingEntityTypeCode|" +
                     "InvoiceDetail:InvoiceStateCode|" +
@@ -269,6 +274,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? GenerateEnumProperties { get; set; }
         public bool? AddDebuggerNonUserCode { get; set; }
         public bool? CreateOneFilePerAction { get; set; }
+        public bool? ReplaceOptionSetPropertiesWithEnum { get; set; }
         public string ActionPrefixesToSkip { get; set; }
         public string ActionPrefixesWhitelist { get; set; }
         public string ActionsToSkip { get; set; }

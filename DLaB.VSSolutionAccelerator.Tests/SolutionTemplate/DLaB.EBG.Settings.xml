@@ -34,9 +34,9 @@
     <LocalOptionSetFormat>{0}_{1}</LocalOptionSetFormat>
     <OptionSetPrefixesToSkip />
     <OptionSetsToSkip />
-    <OptionSetLanguageCodeOverride
-      xsi:nil="true" />
+    <OptionSetLanguageCodeOverride xsi:nil="true" />
     <RemoveRuntimeVersionComment>true</RemoveRuntimeVersionComment>
+    <ReplaceOptionSetPropertiesWithEnum>true</ReplaceOptionSetPropertiesWithEnum>
     <PropertyEnumMappings />
     <UnmappedProperties>duplicaterule:BaseEntityTypeCode,MatchingEntityTypeCode|invoicedetail:InvoiceStateCode|leadaddress:AddressTypeCode,ShippingMethodCode|organization:CurrencyFormatCode,DateFormatCode,TimeFormatCode,WeekStartDayCode|quote:StatusCode|quotedetail:QuoteStateCode|salesorderdetail:SalesOrderStateCode</UnmappedProperties>
     <UseDeprecatedOptionSetNaming>false</UseDeprecatedOptionSetNaming>

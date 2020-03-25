@@ -1287,7 +1287,24 @@ namespace Source.DLaB.Common
             sb.AppendLogLine(String.Format(message, newArgs));
         }
 
-#endregion StringBuilder
+    #endregion StringBuilder
+    
+#region Type
+
+        /// <summary>
+        /// Gets the class level attribute based on type.
+        /// </summary>
+        /// <remarks>Taken from https://stackoverflow.com/questions/2656189/how-do-i-read-an-attribute-on-a-class-at-runtime </remarks>
+        /// <typeparam name="TAttribute"></typeparam>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static TAttribute GetClassAttribute<TAttribute>(this Type type)
+            where TAttribute : Attribute
+        {
+            return type.GetCustomAttributes(typeof(TAttribute), true).FirstOrDefault() as TAttribute;
+        }
+
+#endregion Type
 
 #region <T>
 
@@ -1315,5 +1332,6 @@ namespace Source.DLaB.Common
         }
 
 #endregion <T>
+
     }
 }

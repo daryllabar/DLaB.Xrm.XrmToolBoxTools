@@ -12,6 +12,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
     class EnumPropertyGenerator : ICustomizeCodeDomService
     {
         public bool CreateBaseClasses { get; }
+        public bool ReplaceOptionSetProperties { get; }
         public bool MultiSelectEnumCreated { get; private set; }
         public Dictionary<string, string> SpecifiedMappings { get; private set; }
         public Dictionary<string, HashSet<string>> UnmappedProperties { get; private set; }
@@ -19,9 +20,10 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         public INamingService NamingService { get; private set; }
         public IServiceProvider Services { get; private set; }
 
-        public EnumPropertyGenerator(bool createBaseClasses)
+        public EnumPropertyGenerator(bool createBaseClasses, bool replaceOptionSetProperties)
         {
             CreateBaseClasses = createBaseClasses;
+            ReplaceOptionSetProperties = replaceOptionSetProperties;
             MultiSelectEnumCreated = false;
         }
 
@@ -38,7 +40,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                 if (!type.IsClass || type.IsContextType() || type.IsBaseEntityType()) { continue; }
 
                 var logicalName = type.GetFieldInitalizedValue("EntityLogicalName");
-                var propertiesToAdd = new List<CodeMemberProperty>();
+                var propertiesToReplace = new Dictionary<int,CodeMemberProperty>();
                 foreach (var member in type.Members)
                 {
                     var property = member as CodeMemberProperty;
@@ -46,12 +48,21 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                     {
                         continue;
                     }
-                    propertiesToAdd.Add(GetOptionSetEnumType(property, logicalName));
+
+                    // ReSharper disable once AssignNullToNotNullAttribute
+                    propertiesToReplace[type.Members.IndexOf(property)] = GetOptionSetEnumType(property, logicalName);
                 }
 
-                foreach (var enumProp in propertiesToAdd.Where(p => p != null))
+                foreach (var enumProp in propertiesToReplace.Where(p => p.Value != null).OrderByDescending(p => p.Key))
                 {
-                    type.Members.Add(enumProp);
+                    if (ReplaceOptionSetProperties)
+                    {
+                        type.Members[enumProp.Key] = enumProp.Value;
+                    }
+                    else
+                    {
+                        type.Members.Insert(enumProp.Key + 1, enumProp.Value);
+                    }
                 }
             }
 
@@ -139,6 +150,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                 Type = new CodeTypeReference(info.EnumType),
                 Attributes = System.CodeDom.MemberAttributes.Public
             };
+            property.Comments.AddRange(prop.Comments);
 
             // [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("AttributeLogicalName")]
             property.CustomAttributes.Add(new CodeAttributeDeclaration("Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute", new CodeAttributeArgument(new CodePrimitiveExpression(info.LogicalName))));
@@ -184,35 +196,50 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
 
         private void AddEnumSet(CodeMemberProperty prop, EnumPropertyInfo info, CodeMemberProperty property)
         {
-            if (prop.HasSet)
+            if (!prop.HasSet)
             {
-                CodeExpression setExpression;
-                if (info.IsMultSelect)
-                {
-                    //EntityOptionSetEnum.GetMultiEnum(this, info.LogicalName, value)
-                    setExpression =
-                        new CodeMethodInvokeExpression(
-                            CreateBaseClasses
-                                ? new CodeTypeReferenceExpression(EntityBaseClassGenerator.BaseEntityName)
-                                : new CodeTypeReferenceExpression("EntityOptionSetEnum"),
-                            "GetMultiEnum",
-                            new CodeThisReferenceExpression(),
-                            new CodePrimitiveExpression(info.LogicalName),
-                            new CodePropertySetValueReferenceExpression());
-                }
-                else
-                {
-                    setExpression = new CodeSnippetExpression(
-                        IsNullableIntProperty(prop)
-                            ? "(int?)value"
-                            : "value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null");
-                }
-
-                property.SetStatements.Add(
-                    new CodeAssignStatement(
-                        new CodeVariableReferenceExpression(prop.Name),
-                        setExpression));
+                return;
             }
+
+            // this.OnPropertyChanging("PropName");
+            property.SetStatements.Add(new CodeMethodInvokeExpression(
+                new CodeThisReferenceExpression(), "OnPropertyChanging", new CodePrimitiveExpression(prop.Name)
+            ));
+
+            CodeExpression getValueToSetExpression;
+            if (info.IsMultSelect)
+            {
+                //EntityOptionSetEnum.GetMultiEnum(this, info.LogicalName, value)
+                getValueToSetExpression =
+                    new CodeMethodInvokeExpression(
+                        CreateBaseClasses
+                            ? new CodeTypeReferenceExpression(EntityBaseClassGenerator.BaseEntityName)
+                            : new CodeTypeReferenceExpression("EntityOptionSetEnum"),
+                        "GetMultiEnum",
+                        new CodeThisReferenceExpression(),
+                        new CodePrimitiveExpression(info.LogicalName),
+                        new CodePropertySetValueReferenceExpression());
+            }
+            else
+            {
+                getValueToSetExpression = new CodeSnippetExpression(
+                    IsNullableIntProperty(prop)
+                        ? "(int?)value"
+                        : "value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null");
+            }
+
+            // this.SetAttributeValue("logicalName", getValueExpression);
+            property.SetStatements.Add(
+                new CodeMethodInvokeExpression(
+                    new CodeThisReferenceExpression(),
+                    "SetAttributeValue",
+                    new CodePrimitiveExpression(prop.GetLogicalName()),
+                    getValueToSetExpression));
+
+            // this.OnPropertyChanged("PropName");
+            property.SetStatements.Add(new CodeMethodInvokeExpression(
+                new CodeThisReferenceExpression(), "OnPropertyChanged", new CodePrimitiveExpression(prop.Name)
+            ));
         }
 
         private EnumPropertyInfo GetOptionSetEnumInfo(CodeMemberProperty prop, string entityLogicalName)
@@ -239,7 +266,9 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             {
                 OptionSetType = enumName,
                 IsMultSelect = picklist is MultiSelectPicklistAttributeMetadata,
-                PropertyName = prop.Name + "Enum",
+                PropertyName = prop.Name + (ReplaceOptionSetProperties
+                    ? string.Empty
+                    : "Enum" ),
                 LogicalName = propertyLogicalName
             };
         }

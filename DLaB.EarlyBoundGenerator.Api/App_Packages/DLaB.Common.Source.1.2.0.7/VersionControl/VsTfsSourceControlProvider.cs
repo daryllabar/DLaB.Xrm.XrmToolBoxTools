@@ -184,7 +184,7 @@ namespace Source.DLaB.Common.VersionControl
         }
 
         /// <summary>
-        /// Returns true if the file was unchanged and an it was checked out
+        /// Returns true if the file was unchanged and so it was checked out
         /// </summary>
         /// <param name="filePath">The file path.</param>
         /// <param name="contents">The contents.</param>

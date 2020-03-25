@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Source.DLaB.Common;
+using Source.DLaB.Common.VersionControl;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -6,8 +8,6 @@ using System.Linq;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
-using Source.DLaB.Common;
-using Source.DLaB.Common.VersionControl;
 
 namespace DLaB.EarlyBoundGenerator.Settings
 {
@@ -242,23 +242,28 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
             UpdateObsoleteSettings(poco, pocoConfig, @default);
 
+            string GetValueOrDefault(string value, string defaultValue)
+            {
+                return string.IsNullOrWhiteSpace(value) ? defaultValue : value;
+            }
+
             ExtensionConfig = new ExtensionConfig
             {
-                ActionPrefixesToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.ActionPrefixesToSkip, defaultConfig.ActionPrefixesToSkip),
-                ActionPrefixesWhitelist = AddPipeDelimitedMissingDefaultValues(pocoConfig.ActionPrefixesWhitelist, defaultConfig.ActionPrefixesWhitelist),
-                ActionsWhitelist = AddPipeDelimitedMissingDefaultValues(pocoConfig.ActionsWhitelist, defaultConfig.ActionsWhitelist),
-                ActionsToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.ActionsToSkip, defaultConfig.ActionsToSkip),
+                ActionPrefixesToSkip = GetValueOrDefault(pocoConfig.ActionPrefixesToSkip, defaultConfig.ActionPrefixesToSkip),
+                ActionPrefixesWhitelist = GetValueOrDefault(pocoConfig.ActionPrefixesWhitelist, defaultConfig.ActionPrefixesWhitelist),
+                ActionsWhitelist = GetValueOrDefault(pocoConfig.ActionsWhitelist, defaultConfig.ActionsWhitelist),
+                ActionsToSkip = GetValueOrDefault(pocoConfig.ActionsToSkip, defaultConfig.ActionsToSkip),
                 AddDebuggerNonUserCode = pocoConfig.AddDebuggerNonUserCode.GetValueOrDefault(defaultConfig.AddDebuggerNonUserCode),
                 AddNewFilesToProject = pocoConfig.AddNewFilesToProject.GetValueOrDefault(defaultConfig.AddNewFilesToProject),
                 CreateOneFilePerAction = pocoConfig.CreateOneFilePerAction.GetValueOrDefault(defaultConfig.CreateOneFilePerAction),
                 CreateOneFilePerEntity = pocoConfig.CreateOneFilePerEntity.GetValueOrDefault(defaultConfig.CreateOneFilePerEntity),
                 CreateOneFilePerOptionSet = pocoConfig.CreateOneFilePerOptionSet.GetValueOrDefault(defaultConfig.CreateOneFilePerOptionSet),
                 DeleteFilesFromOutputFolders = pocoConfig.DeleteFilesFromOutputFolders.GetValueOrDefault(defaultConfig.DeleteFilesFromOutputFolders),
-                EntitiesToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.EntitiesToSkip, defaultConfig.EntitiesToSkip),
-                EntitiesWhitelist = AddPipeDelimitedMissingDefaultValues(pocoConfig.EntitiesWhitelist, defaultConfig.EntitiesWhitelist),
-                EntityAttributeSpecifiedNames = AddMissingDictionaryHashDefaultValues(pocoConfig.EntityAttributeSpecifiedNames, defaultConfig.EntityAttributeSpecifiedNames),
-                EntityPrefixesToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.EntityPrefixesToSkip, defaultConfig.EntityPrefixesToSkip),
-                EntityPrefixesWhitelist = AddPipeDelimitedMissingDefaultValues(pocoConfig.EntityPrefixesWhitelist, defaultConfig.EntityPrefixesWhitelist),
+                EntitiesToSkip = GetValueOrDefault(pocoConfig.EntitiesToSkip, defaultConfig.EntitiesToSkip),
+                EntitiesWhitelist = GetValueOrDefault(pocoConfig.EntitiesWhitelist, defaultConfig.EntitiesWhitelist),
+                EntityAttributeSpecifiedNames = GetValueOrDefault(pocoConfig.EntityAttributeSpecifiedNames, defaultConfig.EntityAttributeSpecifiedNames),
+                EntityPrefixesToSkip = GetValueOrDefault(pocoConfig.EntityPrefixesToSkip, defaultConfig.EntityPrefixesToSkip),
+                EntityPrefixesWhitelist = GetValueOrDefault(pocoConfig.EntityPrefixesWhitelist, defaultConfig.EntityPrefixesWhitelist),
                 GenerateActionAttributeNameConsts = pocoConfig.GenerateActionAttributeNameConsts.GetValueOrDefault(defaultConfig.GenerateActionAttributeNameConsts),
                 GenerateAttributeNameConsts = pocoConfig.GenerateAttributeNameConsts.GetValueOrDefault(defaultConfig.GenerateAttributeNameConsts),
                 GenerateAnonymousTypeConstructor = pocoConfig.GenerateAnonymousTypeConstructor.GetValueOrDefault(defaultConfig.GenerateAnonymousTypeConstructor),
@@ -273,12 +278,13 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 MakeResponseActionsEditable = pocoConfig.MakeResponseActionsEditable ?? defaultConfig.MakeResponseActionsEditable,
                 LocalOptionSetFormat = pocoConfig.LocalOptionSetFormat ?? defaultConfig.LocalOptionSetFormat,
                 OptionSetLanguageCodeOverride = pocoConfig.OptionSetLanguageCodeOverride ?? defaultConfig.OptionSetLanguageCodeOverride,
-                OptionSetPrefixesToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.OptionSetPrefixesToSkip, defaultConfig.OptionSetPrefixesToSkip),
-                OptionSetsToSkip = AddPipeDelimitedMissingDefaultValues(pocoConfig.OptionSetsToSkip, defaultConfig.OptionSetsToSkip),
+                OptionSetPrefixesToSkip = GetValueOrDefault(pocoConfig.OptionSetPrefixesToSkip, defaultConfig.OptionSetPrefixesToSkip),
+                OptionSetsToSkip = GetValueOrDefault(pocoConfig.OptionSetsToSkip, defaultConfig.OptionSetsToSkip),
                 ProjectNameForEarlyBoundFiles = pocoConfig.ProjectNameForEarlyBoundFiles ?? defaultConfig.ProjectNameForEarlyBoundFiles,
-                PropertyEnumMappings = AddPipeDelimitedMissingDefaultValues(pocoConfig.PropertyEnumMappings, defaultConfig.PropertyEnumMappings),
+                PropertyEnumMappings = GetValueOrDefault(pocoConfig.PropertyEnumMappings, defaultConfig.PropertyEnumMappings),
                 RemoveRuntimeVersionComment = pocoConfig.RemoveRuntimeVersionComment.GetValueOrDefault(defaultConfig.RemoveRuntimeVersionComment),
-                UnmappedProperties = AddMissingDictionaryHashDefaultValues(pocoConfig.UnmappedProperties, defaultConfig.UnmappedProperties),
+                ReplaceOptionSetPropertiesWithEnum = pocoConfig.ReplaceOptionSetPropertiesWithEnum.GetValueOrDefault(defaultConfig.ReplaceOptionSetPropertiesWithEnum),
+                UnmappedProperties = GetValueOrDefault(pocoConfig.UnmappedProperties, defaultConfig.UnmappedProperties),
                 UseDeprecatedOptionSetNaming = pocoConfig.UseDeprecatedOptionSetNaming.GetValueOrDefault(defaultConfig.UseDeprecatedOptionSetNaming),
                 UseTfsToCheckoutFiles = pocoConfig.UseTfsToCheckoutFiles.GetValueOrDefault(defaultConfig.UseTfsToCheckoutFiles),
                 UseXrmClient = pocoConfig.UseXrmClient.GetValueOrDefault(defaultConfig.UseXrmClient)
@@ -292,7 +298,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         private static void UpdateObsoleteSettings(POCO.Config poco, POCO.ExtensionConfig pocoConfig, EarlyBoundGeneratorConfig @default)
         {
-            if (new Version(poco.Version) < new Version("1.2016.6.1"))
+            var pocoVersion = new Version(poco.Version);
+            if (pocoVersion < new Version("1.2016.6.1"))
             {
                 // Storing of UnmappedProperties and EntityAttributeSpecified Names switched from Key,Value1,Value2|Key,Value1,Value2 to Key:Value1,Value2|Key:Value1,Value2
                 // Also convert from a List to a HashSet
@@ -300,9 +307,9 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 pocoConfig.UnmappedProperties = ConvertNonColonDelimitedDictionaryListToDictionaryHash(pocoConfig.UnmappedProperties);
             }
 
-            if (new Version(poco.Version) < new Version("1.2018.9.12"))
+            if (pocoVersion < new Version("1.2018.9.12"))
             {
-                // Update the OptionSet codecustomization Argument Setting to use the new Generic Code Customziation Service
+                // Update the OptionSet codecustomization Argument Setting to use the new Generic Code Customization Service
                 var oldValue = poco.ExtensionArguments.FirstOrDefault(
                     a => a.SettingType == CreationType.OptionSets
                          && a.Name == "codecustomization");
@@ -314,6 +321,15 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 {
                     poco.ExtensionArguments.Remove(oldValue);
                     poco.ExtensionArguments.Add(newValue);
+                }
+            }
+
+            if (pocoVersion < new Version("1.2020.3.23"))
+            {
+                // Added new option to overwrite Option Set properties.  This is the desired default now, but don't break old generation settings.
+                if (poco.ExtensionConfig.ReplaceOptionSetPropertiesWithEnum == null)
+                {
+                    poco.ExtensionConfig.ReplaceOptionSetPropertiesWithEnum = false;
                 }
             }
         }
@@ -372,7 +388,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 {
                     return @default ?? value;
                 }
-
                 var splitValues = value.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()).ToList();
                 var hash = new HashSet<string>(splitValues);
                 splitValues.AddRange(@default.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries).
@@ -394,6 +409,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 {
                     return @default ?? value;
                 }
+                // Handle post serialization that saves this value off with newlines.
+                value = value.Replace(Environment.NewLine, String.Empty);
                 var values = Config.GetDictionaryHash<string, string>(Guid.NewGuid().ToString(), value);
                 var defaultValues = Config.GetDictionaryHash<string, string>(Guid.NewGuid().ToString(), @default);
 
@@ -514,6 +531,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 serializer.Serialize(xmlWriter, this);
                 xmlWriter.Close();
             }
+
+            // Put pipe delimited values on new lines to make it easier to see changes in source control
+            var xml = File.ReadAllText(filePath);
+            xml = xml.Replace("|", "|" + Environment.NewLine);
+            File.WriteAllText(filePath, xml);
 
             if (undoCheckoutIfUnchanged)
             {

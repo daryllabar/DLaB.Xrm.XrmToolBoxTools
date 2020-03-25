@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing.Design;
 using DLaB.XrmToolBoxCommon.Editors;
@@ -225,6 +226,15 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [Editor(typeof(AttributesToEnumMapperEditor), typeof(UITypeEditor))]
         [TypeConverter(CollectionCountConverter.Name)]
         public List<string> PropertyEnumMappings { get; set; }
+
+        [Category("Entities")]
+        [DisplayName("Replace Option Set Properties with Enum")]
+        [Description("Only used when Generate Enum Properties is true.  When true, replaces OptionSet properties with Enum properties.  When false, each OptionSet properties is duplicated with Enum postfixed to the existing optionset property name.")]
+        public bool ReplaceOptionSetPropertiesWithEnum
+        {
+            get => Config.ExtensionConfig.ReplaceOptionSetPropertiesWithEnum;
+            set => Config.ExtensionConfig.ReplaceOptionSetPropertiesWithEnum = value;
+        }
 
         [Category("Entities")]
         [DisplayName("Service Context Name")]
@@ -468,24 +478,36 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             Plugin = plugin;
             Config = config;
 
-            string RemoveWhiteSpace(string value)
+            var propertyToParse = nameof(ActionPrefixesWhitelist);
+            var propertyValue = string.Empty;
+            string RemoveWhiteSpace(string propertyName, string value)
             {
+                propertyToParse = propertyName;
+                propertyValue = value;
                 return value?.Replace(" ", string.Empty).Replace("\n", string.Empty).Replace("\r", string.Empty);
             }
 
-            var info = new ConfigKeyValueSplitInfo { ConvertKeysToLower = false };
-            ActionPrefixesWhitelist = RemoveWhiteSpace(config.ExtensionConfig.ActionPrefixesWhitelist).GetList<string>();
-            ActionsWhitelist = RemoveWhiteSpace(config.ExtensionConfig.ActionsWhitelist).GetHashSet<string>();
-            ActionsToSkip = RemoveWhiteSpace(config.ExtensionConfig.ActionsToSkip).GetHashSet<string>(info);
-            EntitiesToSkip = RemoveWhiteSpace(config.ExtensionConfig.EntitiesToSkip).GetHashSet<string>();
-            EntitiesWhitelist = RemoveWhiteSpace(config.ExtensionConfig.EntitiesWhitelist).GetHashSet<string>();
-            EntityAttributeSpecifiedNames = RemoveWhiteSpace(config.ExtensionConfig.EntityAttributeSpecifiedNames).GetDictionaryHash<string, string>();
-            EntityPrefixesToSkip = RemoveWhiteSpace(config.ExtensionConfig.EntityPrefixesToSkip).GetList<string>();
-            EntityPrefixesWhitelist = RemoveWhiteSpace(config.ExtensionConfig.EntityPrefixesWhitelist).GetList<string>();
-            PropertyEnumMappings = RemoveWhiteSpace(config.ExtensionConfig.PropertyEnumMappings).GetList<string>();
-            OptionSetPrefixesToSkip = RemoveWhiteSpace(config.ExtensionConfig.OptionSetPrefixesToSkip).GetList<string>();
-            OptionSetsToSkip = RemoveWhiteSpace(config.ExtensionConfig.OptionSetsToSkip).GetHashSet<string>();
-            UnmappedProperties = RemoveWhiteSpace(Config.ExtensionConfig.UnmappedProperties).GetDictionaryHash<string, string>();
+            try
+            {
+
+                var info = new ConfigKeyValueSplitInfo {ConvertKeysToLower = false};
+                ActionPrefixesWhitelist = RemoveWhiteSpace(nameof(ActionPrefixesWhitelist), config.ExtensionConfig.ActionPrefixesWhitelist).GetList<string>();
+                ActionsWhitelist = RemoveWhiteSpace(nameof(ActionsWhitelist), config.ExtensionConfig.ActionsWhitelist).GetHashSet<string>();
+                ActionsToSkip = RemoveWhiteSpace(nameof(ActionsToSkip), config.ExtensionConfig.ActionsToSkip).GetHashSet<string>(info);
+                EntitiesToSkip = RemoveWhiteSpace(nameof(EntitiesToSkip), config.ExtensionConfig.EntitiesToSkip).GetHashSet<string>();
+                EntitiesWhitelist = RemoveWhiteSpace(nameof(EntitiesWhitelist), config.ExtensionConfig.EntitiesWhitelist).GetHashSet<string>();
+                EntityAttributeSpecifiedNames = RemoveWhiteSpace(nameof(EntityAttributeSpecifiedNames), config.ExtensionConfig.EntityAttributeSpecifiedNames).GetDictionaryHash<string, string>();
+                EntityPrefixesToSkip = RemoveWhiteSpace(nameof(EntityPrefixesToSkip), config.ExtensionConfig.EntityPrefixesToSkip).GetList<string>();
+                EntityPrefixesWhitelist = RemoveWhiteSpace(nameof(EntityPrefixesWhitelist), config.ExtensionConfig.EntityPrefixesWhitelist).GetList<string>();
+                PropertyEnumMappings = RemoveWhiteSpace(nameof(PropertyEnumMappings), config.ExtensionConfig.PropertyEnumMappings).GetList<string>();
+                OptionSetPrefixesToSkip = RemoveWhiteSpace(nameof(OptionSetPrefixesToSkip), config.ExtensionConfig.OptionSetPrefixesToSkip).GetList<string>();
+                OptionSetsToSkip = RemoveWhiteSpace(nameof(OptionSetsToSkip), config.ExtensionConfig.OptionSetsToSkip).GetHashSet<string>();
+                UnmappedProperties = RemoveWhiteSpace(nameof(UnmappedProperties), config.ExtensionConfig.UnmappedProperties).GetDictionaryHash<string, string>();
+            }
+            catch (Exception ex)
+            {
+                throw new FormatException("Unable parsing property " + propertyToParse + Environment.NewLine + "Value: " + propertyValue + Environment.NewLine, ex);
+            }
 
             SetupCustomTypeDescriptor();
             OnChangeMap = GetOnChangeHandlers();
@@ -498,18 +520,18 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         public void PushChanges()
         {
             var info = new ConfigKeyValueSplitInfo{ ConvertKeysToLower = false};
-            Config.ExtensionConfig.ActionPrefixesWhitelist = CommonConfig.ToString(ActionPrefixesWhitelist, info);
-            Config.ExtensionConfig.ActionsWhitelist = CommonConfig.ToString(ActionsWhitelist, info);
-            Config.ExtensionConfig.ActionsToSkip = CommonConfig.ToString(ActionsToSkip, info);
-            Config.ExtensionConfig.EntitiesToSkip = CommonConfig.ToString(EntitiesToSkip);
-            Config.ExtensionConfig.EntitiesWhitelist = CommonConfig.ToString(EntitiesWhitelist);
-            Config.ExtensionConfig.EntityAttributeSpecifiedNames = CommonConfig.ToString(EntityAttributeSpecifiedNames);
-            Config.ExtensionConfig.EntityPrefixesToSkip = CommonConfig.ToString(EntityPrefixesToSkip);
-            Config.ExtensionConfig.EntityPrefixesWhitelist = CommonConfig.ToString(EntityPrefixesWhitelist);
-            Config.ExtensionConfig.PropertyEnumMappings = CommonConfig.ToString(PropertyEnumMappings);
-            Config.ExtensionConfig.OptionSetPrefixesToSkip = CommonConfig.ToString(OptionSetPrefixesToSkip);
-            Config.ExtensionConfig.OptionSetsToSkip = CommonConfig.ToString(OptionSetsToSkip);
-            Config.ExtensionConfig.UnmappedProperties = CommonConfig.ToString(UnmappedProperties);
+            Config.ExtensionConfig.ActionPrefixesWhitelist = CommonConfig.ToStringSorted(ActionPrefixesWhitelist, info);
+            Config.ExtensionConfig.ActionsWhitelist = CommonConfig.ToStringSorted(ActionsWhitelist, info);
+            Config.ExtensionConfig.ActionsToSkip = CommonConfig.ToStringSorted(ActionsToSkip, info);
+            Config.ExtensionConfig.EntitiesToSkip = CommonConfig.ToStringSorted(EntitiesToSkip);
+            Config.ExtensionConfig.EntitiesWhitelist = CommonConfig.ToStringSorted(EntitiesWhitelist);
+            Config.ExtensionConfig.EntityAttributeSpecifiedNames = CommonConfig.ToStringSorted(EntityAttributeSpecifiedNames);
+            Config.ExtensionConfig.EntityPrefixesToSkip = CommonConfig.ToStringSorted(EntityPrefixesToSkip);
+            Config.ExtensionConfig.EntityPrefixesWhitelist = CommonConfig.ToStringSorted(EntityPrefixesWhitelist);
+            Config.ExtensionConfig.PropertyEnumMappings = CommonConfig.ToStringSorted(PropertyEnumMappings);
+            Config.ExtensionConfig.OptionSetPrefixesToSkip = CommonConfig.ToStringSorted(OptionSetPrefixesToSkip);
+            Config.ExtensionConfig.OptionSetsToSkip = CommonConfig.ToStringSorted(OptionSetsToSkip);
+            Config.ExtensionConfig.UnmappedProperties = CommonConfig.ToStringSorted(UnmappedProperties);
         }
 
         public EarlyBoundGeneratorPlugin GetPluginControl()

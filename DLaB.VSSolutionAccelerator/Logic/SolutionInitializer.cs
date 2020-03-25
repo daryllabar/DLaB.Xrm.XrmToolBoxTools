@@ -231,6 +231,7 @@ EndGlobal
             settings.ExtensionConfig.GenerateEnumProperties = true;
             settings.ExtensionConfig.GenerateAttributeNameConsts = true;
             settings.ExtensionConfig.EntitiesWhitelist = "account|businessunit|competitor|contact|lead|product|site|systemuser";
+            settings.ExtensionConfig.ReplaceOptionSetPropertiesWithEnum = true;
             settings.EntityOutPath = settings.ExtensionConfig.CreateOneFilePerEntity ? @"Entities" : @"Entities.cs";
             settings.ExtensionConfig.CreateOneFilePerOptionSet = true;
             settings.OptionSetOutPath = settings.ExtensionConfig.CreateOneFilePerOptionSet ? @"OptionSets" : @"OptionSets.cs";
