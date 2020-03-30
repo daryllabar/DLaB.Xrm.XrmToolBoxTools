@@ -286,8 +286,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 ReplaceOptionSetPropertiesWithEnum = pocoConfig.ReplaceOptionSetPropertiesWithEnum.GetValueOrDefault(defaultConfig.ReplaceOptionSetPropertiesWithEnum),
                 UnmappedProperties = GetValueOrDefault(pocoConfig.UnmappedProperties, defaultConfig.UnmappedProperties),
                 UseDeprecatedOptionSetNaming = pocoConfig.UseDeprecatedOptionSetNaming.GetValueOrDefault(defaultConfig.UseDeprecatedOptionSetNaming),
-                UseTfsToCheckoutFiles = pocoConfig.UseTfsToCheckoutFiles.GetValueOrDefault(defaultConfig.UseTfsToCheckoutFiles),
-                UseXrmClient = pocoConfig.UseXrmClient.GetValueOrDefault(defaultConfig.UseXrmClient)
+                UseTfsToCheckoutFiles = pocoConfig.UseTfsToCheckoutFiles.GetValueOrDefault(defaultConfig.UseTfsToCheckoutFiles)
             };
 
             ExtensionArguments = AddMissingArguments(poco.ExtensionArguments, @default.ExtensionArguments);

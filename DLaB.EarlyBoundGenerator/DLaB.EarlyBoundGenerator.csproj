@@ -345,23 +345,9 @@ DEL /Q "$(TargetDir)Microsoft.IdentityModel.dll"
 
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)CrmSvcUtil.exe" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\"
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)CrmSvcUtil.exe.config" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)DLaB.CrmSvcUtilExtensions.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)DLaB.Common.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Crm.Sdk.Proxy.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)*.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\"
 
-xcopy /I /Y "$(TargetDir)Microsoft.Xrm.Sdk.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\OptionSet\Transliteration\Alphabets\*" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\alphabets"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Newtonsoft.Json.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\"
-
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.IdentityModel.Clients.ActiveDirectory.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Rest.ClientRuntime.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Portal.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Client.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Client.CodeGeneration.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Tooling.*.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Sdk.Deployment.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Sdk.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\"</PostBuildEvent>
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\OptionSet\Transliteration\Alphabets\*" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\alphabets"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

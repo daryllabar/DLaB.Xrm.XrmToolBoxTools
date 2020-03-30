@@ -41,7 +41,6 @@
     <UnmappedProperties>duplicaterule:BaseEntityTypeCode,MatchingEntityTypeCode|invoicedetail:InvoiceStateCode|leadaddress:AddressTypeCode,ShippingMethodCode|organization:CurrencyFormatCode,DateFormatCode,TimeFormatCode,WeekStartDayCode|quote:StatusCode|quotedetail:QuoteStateCode|salesorderdetail:SalesOrderStateCode</UnmappedProperties>
     <UseDeprecatedOptionSetNaming>false</UseDeprecatedOptionSetNaming>
     <UseTfsToCheckoutFiles>false</UseTfsToCheckoutFiles>
-    <UseXrmClient>false</UseXrmClient>
   </ExtensionConfig>
   <ExtensionArguments>
     <Argument>

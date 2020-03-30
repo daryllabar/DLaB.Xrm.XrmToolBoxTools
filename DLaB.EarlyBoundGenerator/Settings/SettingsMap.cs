@@ -252,15 +252,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [TypeConverter(CollectionCountConverter.Name)]
         public Dictionary<string, HashSet<string>> UnmappedProperties { get; set; }
 
-        [Category("Entities")]
-        [DisplayName("Use Xrm Client")]
-        [Description("(Not Recommended) Specifies the Service Context should inherit from CrmOrganizationServiceContext, and conversly, Entities from Xrm.Client.Entity.\r\nThis results in a dependence on Microsoft.Xrm.Client.dll that must be accounted for during plugins and workflows since it has been deprecated and isn't included with CRM by default:\r\nhttps://community.dynamics.com/crm/b/develop1/archive/2013/08/12/microsoft-xrm-client-part-1-crmorganizationservicecontext-and-when-should-i-use-it.")]
-        public bool UseXrmClient
-        {
-            get => Config.ExtensionConfig.UseXrmClient;
-            set => Config.ExtensionConfig.UseXrmClient = value;
-        }
-
         #endregion Entities
 
         #region Global

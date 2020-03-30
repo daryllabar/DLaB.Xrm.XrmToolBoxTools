@@ -76,8 +76,8 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
         {
             PopulateUsedEntityGlobalOptionSetOnInitialCall(services);
 
-            // Skip the state optionsets unless the XrmClient is used 
-            if (!Entity.CustomizeCodeDomService.UseXrmClient && optionSetMetadata.OptionSetType == OptionSetType.State)
+            // Skip the state optionSets
+            if (optionSetMetadata.OptionSetType == OptionSetType.State)
             {
                 return false;
             }

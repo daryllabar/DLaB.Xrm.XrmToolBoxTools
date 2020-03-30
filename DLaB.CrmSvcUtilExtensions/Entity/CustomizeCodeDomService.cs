@@ -2,7 +2,6 @@
 using System.CodeDom;
 using System.Collections.Generic;
 using Microsoft.Crm.Services.Utility;
-using Microsoft.Xrm.Client.CodeGeneration;
 
 namespace DLaB.CrmSvcUtilExtensions.Entity
 {
@@ -10,14 +9,13 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
     {
         public static bool AddDebuggerNonUserCode => ConfigHelper.GetAppSettingOrDefault("AddDebuggerNonUserCode", true);
         public static bool AddPrimaryAttributeConsts => ConfigHelper.GetAppSettingOrDefault("AddPrimaryAttributeConsts", true);
-        public bool CreateBaseClasses => ConfigHelper.GetAppSettingOrDefault("CreateBaseClasses", false) && !UseXrmClient;
+        public bool CreateBaseClasses => ConfigHelper.GetAppSettingOrDefault("CreateBaseClasses", false);
         public static bool GenerateAnonymousTypeConstructor => ConfigHelper.GetAppSettingOrDefault("GenerateAnonymousTypeConstructor", true);
         public static bool GenerateAttributeNameConsts => ConfigHelper.GetAppSettingOrDefault("GenerateAttributeNameConsts", false);
         public static bool GenerateConstructorsSansLogicalName => ConfigHelper.GetAppSettingOrDefault("GenerateConstructorsSansLogicalName", false);
         public static bool GenerateEntityTypeCode => ConfigHelper.GetAppSettingOrDefault("GenerateEntityTypeCode", false);
         public static bool GenerateEnumProperties => ConfigHelper.GetAppSettingOrDefault("GenerateEnumProperties", true);
         public static bool ReplaceOptionSetPropertiesWithEnum => ConfigHelper.GetAppSettingOrDefault("ReplaceOptionSetPropertiesWithEnum", true);
-        public static bool UseXrmClient => ConfigHelper.GetAppSettingOrDefault("UseXrmClient", false);
         public IDictionary<string, string> Parameters { get; set; }
         
         public CustomizeCodeDomService(IDictionary<string, string> parameters)
@@ -31,10 +29,6 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         {
 
             new MultiOptionSetAttributeUpdater().CustomizeCodeDom(codeUnit, services);
-            if (UseXrmClient)
-            {
-                new CodeCustomization(Parameters).CustomizeCodeDom(codeUnit, services);
-            }
             if (AddPrimaryAttributeConsts)
             {
                 new PrimaryAttributeGenerator().CustomizeCodeDom(codeUnit, services);

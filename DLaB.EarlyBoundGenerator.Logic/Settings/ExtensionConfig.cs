@@ -173,10 +173,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// Uses TFS to checkout files
         /// </summary>
         public bool UseTfsToCheckoutFiles { get; set; }
-        /// <summary>
-        /// Specifies that the Service Context should inherit from CrmOrganizationServiceContext, and conversly, Entities from Xrm.Client.Entity  --> 
-        /// </summary>
-        public bool UseXrmClient { get; set; }
 
         #region NonSerialized Properties
 
@@ -248,8 +244,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     "QuoteDetail:QuoteStateCode|" +
                     "SalesOrderDetail:SalesOrderStateCode|",
                 UseDeprecatedOptionSetNaming = false,
-                UseTfsToCheckoutFiles = false,
-                UseXrmClient = false
+                UseTfsToCheckoutFiles = false
             };
         }
     }
@@ -300,6 +295,5 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? RemoveRuntimeVersionComment { get; set; }
         public bool? UseDeprecatedOptionSetNaming { get; set; }
         public bool? UseTfsToCheckoutFiles { get; set; }
-        public bool? UseXrmClient { get; set; }
     }
 }

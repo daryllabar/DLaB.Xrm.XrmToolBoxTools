@@ -60,15 +60,5 @@ namespace DLaB.CrmSvcUtilExtensions.Tests
                 }
             }
         }
-
-        [TestMethod]
-        public void UsingXrmClient_Should_GenerateAccountStateEnum()
-        {
-            ConfigProvider.Instance["UseXrmClient"] = "true";
-            ConfigProvider.Instance["TestFileCreation"] = "true";
-
-
-            CreateTestFile();
-        }
     }
 }
