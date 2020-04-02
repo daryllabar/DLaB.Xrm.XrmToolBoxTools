@@ -390,6 +390,9 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                 new CodeObjectCreateExpression(listType)
                 ));
 
+            // if(value == null){ return list; }
+            get.Statements.Add(new CodeConditionStatement(new CodeSnippetExpression("value == null"), new CodeMethodReturnStatement(new CodeVariableReferenceExpression("list"))));
+
             //list.AddRange(Enumerable.Select(value, v => (T)(object)v.Value));
             get.Statements.Add(new CodeMethodInvokeExpression(
                 new CodeArgumentReferenceExpression("list"),
