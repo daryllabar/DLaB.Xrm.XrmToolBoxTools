@@ -11,6 +11,8 @@
     <AssemblyName>DLaB.EarlyBoundGenerator.Api</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,10 +38,19 @@
     <AssemblyOriginatorKeyFile>DLaB.EarlyBoundGenerator.Api.Key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.9.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.9.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.0\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.IdentityModel" />
@@ -77,6 +88,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ApplicationInsights.config" />
     <None Include="DLaB.EarlyBoundGenerator.Api.Key.snk" />
     <None Include="EarlyBoundGenerator.Api.nuspec">
       <SubType>Designer</SubType>
@@ -85,6 +97,7 @@
   </ItemGroup>
   <Import Project="..\DLaB.EarlyBoundGenerator.Logic\DLaB.EarlyBoundGenerator.Logic.projitems" Label="Shared" />
   <Import Project="..\DLaB.Log\DLaB.Log.projitems" Label="Shared" />
+  <Import Project="..\DLab.AppInsightsHelper\DLab.AppInsightsHelper.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>REM Copy New Content Files
@@ -116,4 +129,11 @@ xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Tool
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Sdk.Deployment.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Sdk.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"</PostBuildEvent>
   </PropertyGroup>
+  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.9.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.9.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.9.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.9.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets'))" />
+  </Target>
 </Project>
