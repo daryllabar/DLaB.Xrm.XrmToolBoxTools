@@ -65,6 +65,7 @@ namespace DLaB.EarlyBoundGenerator
 
             SetConnectionSettingOnLoad();
             HydrateUiFromSettings(ConnectionSettings.FullSettingsPath);
+            Telemetry.EvaluateAiConfig(Properties.Settings.Default["AppInsightsInstrumentationKey"].ToString());
             FormLoaded = true;
         }
 

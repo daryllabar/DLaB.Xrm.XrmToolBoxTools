@@ -297,6 +297,11 @@
       <DependentUpon>AttributesToEnumMapperDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="AttributesToEnumMapperEditor.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="SpecifyAttributesCaseEditor.cs" />
     <Compile Include="PasswordDialog.cs">
       <SubType>Form</SubType>
@@ -359,6 +364,10 @@
     <None Include="ILMerge.props" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="XrmToolBox.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

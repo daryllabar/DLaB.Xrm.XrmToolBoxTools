@@ -11,11 +11,17 @@ namespace DLab.AppInsightsHelper
         private static TelemetryClient _telemetry = GetAppInsightsClient();
 
         public static bool Enabled { get; set; } = true;
+        public static string InstrumentationKey { get; set; } = string.Empty;
 
         private static TelemetryClient GetAppInsightsClient()
         {
+            if (string.IsNullOrEmpty(InstrumentationKey))
+            {
+                return null;
+            }
+
             var config = new TelemetryConfiguration();
-            config.InstrumentationKey = "1e1c8e77-a065-4b97-8e5f-24732732c725";
+            config.InstrumentationKey = InstrumentationKey;
             config.TelemetryChannel = new Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel();
             //config.TelemetryChannel = new Microsoft.ApplicationInsights.Channel.InMemoryChannel(); // Default channel
 
@@ -32,11 +38,17 @@ namespace DLab.AppInsightsHelper
             _telemetry.Context.User.AuthenticatedUserId = user;
         }
 
+        public static void EvaluateAiConfig(string instrumentationKey)
+        {
+            InstrumentationKey = instrumentationKey;
+            _telemetry = GetAppInsightsClient();
+        }
+
         public static void TrackEvent(string eventName, IDictionary<string, string> properties = null, IDictionary<string, double> metrics = null)
         {
             if (Enabled)
             {
-                _telemetry.TrackEvent(eventName, properties, metrics);
+                _telemetry?.TrackEvent(eventName, properties, metrics);
             }
         }
 
@@ -45,14 +57,14 @@ namespace DLab.AppInsightsHelper
             if (ex != null && Enabled)
             {
                 var telex = new Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry(ex);
-                _telemetry.TrackException(telex);
+                _telemetry?.TrackException(telex);
                 Flush();
             }
         }
 
         internal static void Flush()
         {
-            _telemetry.Flush();
+            _telemetry?.Flush();
         }
     }
 }
