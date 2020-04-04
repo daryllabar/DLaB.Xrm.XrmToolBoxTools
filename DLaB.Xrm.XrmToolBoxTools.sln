@@ -46,15 +46,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.VSSolutionAccelerator.
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DLaB.Log", "DLaB.Log\DLaB.Log.shproj", "{A1789142-7510-42D5-AFF4-1BB37F2B08F8}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DLab.AppInsightsHelper", "DLab.AppInsightsHelper\DLab.AppInsightsHelper.shproj", "{40054F41-9A03-4507-A760-7866BE83F381}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		DLab.AppInsightsHelper\DLab.AppInsightsHelper.projitems*{0a143e92-0ede-4630-9bfe-c670bf4c310a}*SharedItemsImports = 4
 		DLaB.EarlyBoundGenerator.Logic\DLaB.EarlyBoundGenerator.Logic.projitems*{0a143e92-0ede-4630-9bfe-c670bf4c310a}*SharedItemsImports = 4
 		DLaB.Log\DLaB.Log.projitems*{0a143e92-0ede-4630-9bfe-c670bf4c310a}*SharedItemsImports = 4
+		DLab.AppInsightsHelper\DLab.AppInsightsHelper.projitems*{40054f41-9a03-4507-a760-7866be83f381}*SharedItemsImports = 13
 		DLaB.Xrm.Entities\DLaB.Xrm.Entities.projitems*{555b6bb7-c5b3-426a-9e23-a9c09aa7715c}*SharedItemsImports = 13
+		DLab.AppInsightsHelper\DLab.AppInsightsHelper.projitems*{7de85f1a-794c-4e95-9e23-fa29dc110aba}*SharedItemsImports = 4
 		DLaB.EarlyBoundGenerator.Logic\DLaB.EarlyBoundGenerator.Logic.projitems*{7de85f1a-794c-4e95-9e23-fa29dc110aba}*SharedItemsImports = 4
 		DLaB.Log\DLaB.Log.projitems*{7de85f1a-794c-4e95-9e23-fa29dc110aba}*SharedItemsImports = 4
 		DLaB.Xrm.Entities\DLaB.Xrm.Entities.projitems*{7de85f1a-794c-4e95-9e23-fa29dc110aba}*SharedItemsImports = 4
 		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{7de85f1a-794c-4e95-9e23-fa29dc110aba}*SharedItemsImports = 4
+		DLab.AppInsightsHelper\DLab.AppInsightsHelper.projitems*{8ee4091f-3d10-433d-a59a-ee2f070fa22f}*SharedItemsImports = 4
 		DLaB.EarlyBoundGenerator.Logic\DLaB.EarlyBoundGenerator.Logic.projitems*{8ee4091f-3d10-433d-a59a-ee2f070fa22f}*SharedItemsImports = 4
 		DLaB.Log\DLaB.Log.projitems*{8ee4091f-3d10-433d-a59a-ee2f070fa22f}*SharedItemsImports = 4
 		DLaB.Xrm.Entities\DLaB.Xrm.Entities.projitems*{8ee4091f-3d10-433d-a59a-ee2f070fa22f}*SharedItemsImports = 4

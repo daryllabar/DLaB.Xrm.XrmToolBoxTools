@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
+using DLab.AppInsightsHelper;
 using DLaB.EarlyBoundGenerator.Settings;
 using DLaB.Log;
 using DLaB.XrmToolBoxCommon;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Client;
 using Microsoft.Xrm.Sdk.Metadata;
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.ApplicationInsights;
 using XrmToolBox.Extensibility;
 using XrmToolBox.Extensibility.Interfaces;
 using PropertyInterface = DLaB.XrmToolBoxCommon.PropertyInterface;
@@ -61,6 +65,7 @@ namespace DLaB.EarlyBoundGenerator
 
             SetConnectionSettingOnLoad();
             HydrateUiFromSettings(ConnectionSettings.FullSettingsPath);
+            Telemetry.EvaluateAiConfig(Properties.Settings.Default["AppInsightsInstrumentationKey"].ToString());
             FormLoaded = true;
         }
 
@@ -171,6 +176,7 @@ namespace DLaB.EarlyBoundGenerator
             EnableForm(false);
 
             HydrateSettingsFromUI();
+            LogExtensionConfigSettings();
             if (new Version(Settings.Version) < new Version(Settings.SettingsVersion))
             {
                 if(MessageBox.Show($@"This version of the Early Bound Generator ({Settings.Version}) is older than the previous ran version from the settings ({Settings.SettingsVersion}).  You should probably update the plugin before running.  Are you sure you want to continue?", @"Older Version detected", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation) != DialogResult.Yes)
@@ -285,6 +291,11 @@ namespace DLaB.EarlyBoundGenerator
                 Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, defaultConfig.GetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter).Value);
                 Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService, defaultConfig.GetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService).Value);
             }
+        }
+
+        private void LogExtensionConfigSettings()
+        {
+            Settings.RegisterSettingsToAppInsights(Settings.ExtensionConfig);
         }
 
         private string GetUserDomain()
