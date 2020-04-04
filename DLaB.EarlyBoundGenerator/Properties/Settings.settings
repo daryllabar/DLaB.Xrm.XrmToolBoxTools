@@ -1,9 +1,0 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DLaB.EarlyBoundGenerator.Properties" GeneratedClassName="Settings">
-  <Profiles />
-  <Settings>
-    <Setting Name="AppInsightsInstrumentationKey" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">3a079617-6a46-4c46-8db3-719f7d2f51c7</Value>
-    </Setting>
-  </Settings>
-</SettingsFile>

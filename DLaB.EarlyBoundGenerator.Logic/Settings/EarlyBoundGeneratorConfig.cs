@@ -158,11 +158,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
         public string CrmSvcUtilPath =>
             Directory.Exists(CrmSvcUtilRelativePath)
                 ? CrmSvcUtilRelativePath
-                : Path.Combine(CrmSvcUtilRealtiveRootPath ?? Directory.GetCurrentDirectory(), CrmSvcUtilRelativePath);
+                : Path.Combine(CrmSvcUtilRelativeRootPath ?? Directory.GetCurrentDirectory(), CrmSvcUtilRelativePath);
 
         [XmlIgnore]
         [Browsable(false)]
-        public string CrmSvcUtilRealtiveRootPath { get; set; }
+        public string CrmSvcUtilRelativeRootPath { get; set; }
 
         #region UserArguments Helpers
 

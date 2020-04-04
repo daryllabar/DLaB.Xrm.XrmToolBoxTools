@@ -62,7 +62,7 @@ namespace DLaB.EarlyBoundGenerator
 
             SetConnectionSettingOnLoad();
             HydrateUiFromSettings(ConnectionSettings.FullSettingsPath);
-            Telemetry.EvaluateAiConfig(Properties.Settings.Default["AppInsightsInstrumentationKey"].ToString());
+            Telemetry.InitAiConfig("3a079617-6a46-4c46-8db3-719f7d2f51c7"); 
             FormLoaded = true;
         }
 
@@ -71,7 +71,7 @@ namespace DLaB.EarlyBoundGenerator
             try
             {
                 Settings = EarlyBoundGeneratorConfig.Load(settingsPath);
-                Settings.CrmSvcUtilRealtiveRootPath = Paths.PluginsPath;
+                Settings.CrmSvcUtilRelativeRootPath = Paths.PluginsPath;
                 SettingsMap = new SettingsMap(this, Settings){SettingsPath = settingsPath};
                 PropertiesGrid.SelectedObject = SettingsMap;
                 SkipSaveSettings = false;
@@ -83,7 +83,7 @@ namespace DLaB.EarlyBoundGenerator
                 if (result == DialogResult.Yes)
                 {
                     Settings = EarlyBoundGeneratorConfig.GetDefault();
-                    Settings.CrmSvcUtilRealtiveRootPath = Paths.PluginsPath;
+                    Settings.CrmSvcUtilRelativeRootPath = Paths.PluginsPath;
                 }
                 else
                 {
@@ -186,7 +186,7 @@ namespace DLaB.EarlyBoundGenerator
                 SaveSettings();
             }
 
-            LogExtensionConfigSettings();
+            LogConfigSettings(creationType);
             WorkAsync(new WorkAsyncInfo("Shelling out to Command Line...",
                 (w, e) => // Work To Do Asynchronously
                 {
@@ -284,19 +284,28 @@ namespace DLaB.EarlyBoundGenerator
             else
             {
                 var defaultConfig = EarlyBoundGeneratorConfig.GetDefault();
-                defaultConfig.CrmSvcUtilRealtiveRootPath = Paths.PluginsPath;
+                defaultConfig.CrmSvcUtilRelativeRootPath = Paths.PluginsPath;
                 Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, defaultConfig.GetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter).Value);
                 Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService, defaultConfig.GetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService).Value);
             }
         }
 
-        private void LogExtensionConfigSettings()
+        private void LogConfigSettings(CreationType creationType)
         {
             var properties = Settings.ExtensionConfig.GetType().GetProperties().ToDictionary(
                 k => k.Name,
                 v => v.GetValue(Settings.ExtensionConfig)?.ToString() ?? string.Empty);
 
-            Telemetry.TrackEvent("ExtensionConfig", properties);
+            properties["AudibleCompletionNotification"] = Settings.AudibleCompletionNotification.ToString();
+            properties["CrmSvcUtilRelativePath"] = Settings.CrmSvcUtilRelativePath;
+            properties["IncludeCommandLine"] = Settings.IncludeCommandLine.ToString();
+            properties["MaskPassword"] = Settings.MaskPassword.ToString();
+            properties["SupportsActions"] = Settings.SupportsActions.ToString();
+            properties["UseCrmOnline"] = Settings.UseCrmOnline.ToString();
+            properties["Version"] = Settings.Version;
+            properties["CreationType"] = creationType.ToString();
+
+            Telemetry.TrackEvent("ConfigSettings", properties);
         }
 
         private string GetUserDomain()

@@ -11,7 +11,7 @@ namespace DLaB.XrmToolBoxCommon.AppInsightsHelper
         private static TelemetryClient _telemetry = GetAppInsightsClient();
 
         public static bool Enabled { get; set; } = true;
-        public static string InstrumentationKey { get; set; } = string.Empty;
+        public static string InstrumentationKey { get; private set; } = string.Empty;
 
         private static TelemetryClient GetAppInsightsClient()
         {
@@ -40,7 +40,7 @@ namespace DLaB.XrmToolBoxCommon.AppInsightsHelper
             _telemetry.Context.User.AuthenticatedUserId = user;
         }
 
-        public static void EvaluateAiConfig(string instrumentationKey)
+        public static void InitAiConfig(string instrumentationKey)
         {
             InstrumentationKey = instrumentationKey;
             _telemetry = GetAppInsightsClient();
