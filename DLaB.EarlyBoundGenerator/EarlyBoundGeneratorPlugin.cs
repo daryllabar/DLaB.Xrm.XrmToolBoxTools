@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Windows.Forms;
-using DLab.AppInsightsHelper;
 using DLaB.EarlyBoundGenerator.Settings;
 using DLaB.Log;
 using DLaB.XrmToolBoxCommon;
+using DLaB.XrmToolBoxCommon.AppInsightsHelper;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Client;
 using Microsoft.Xrm.Sdk.Metadata;
-using Microsoft.ApplicationInsights.Extensibility;
-using Microsoft.ApplicationInsights;
 using XrmToolBox.Extensibility;
 using XrmToolBox.Extensibility.Interfaces;
 using PropertyInterface = DLaB.XrmToolBoxCommon.PropertyInterface;
@@ -176,7 +173,6 @@ namespace DLaB.EarlyBoundGenerator
             EnableForm(false);
 
             HydrateSettingsFromUI();
-            LogExtensionConfigSettings();
             if (new Version(Settings.Version) < new Version(Settings.SettingsVersion))
             {
                 if(MessageBox.Show($@"This version of the Early Bound Generator ({Settings.Version}) is older than the previous ran version from the settings ({Settings.SettingsVersion}).  You should probably update the plugin before running.  Are you sure you want to continue?", @"Older Version detected", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation) != DialogResult.Yes)
@@ -190,6 +186,7 @@ namespace DLaB.EarlyBoundGenerator
                 SaveSettings();
             }
 
+            LogExtensionConfigSettings();
             WorkAsync(new WorkAsyncInfo("Shelling out to Command Line...",
                 (w, e) => // Work To Do Asynchronously
                 {
@@ -295,7 +292,11 @@ namespace DLaB.EarlyBoundGenerator
 
         private void LogExtensionConfigSettings()
         {
-            Settings.RegisterSettingsToAppInsights(Settings.ExtensionConfig);
+            var properties = Settings.ExtensionConfig.GetType().GetProperties().ToDictionary(
+                k => k.Name,
+                v => v.GetValue(Settings.ExtensionConfig)?.ToString() ?? string.Empty);
+
+            Telemetry.TrackEvent("ExtensionConfig", properties);
         }
 
         private string GetUserDomain()

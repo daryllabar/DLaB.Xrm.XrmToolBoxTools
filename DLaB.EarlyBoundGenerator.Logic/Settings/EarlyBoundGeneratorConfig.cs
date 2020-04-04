@@ -8,9 +8,6 @@ using System.Linq;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
-using Microsoft.ApplicationInsights.Extensibility;
-using Microsoft.ApplicationInsights;
-using DLab.AppInsightsHelper;
 
 namespace DLaB.EarlyBoundGenerator.Settings
 {
@@ -544,18 +541,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 var tfs = new VsTfsSourceControlProvider();
                 tfs.UndoCheckoutIfUnchanged(filePath);
             }
-        }
-
-        public void RegisterSettingsToAppInsights(ExtensionConfig extConfig)
-        {
-            var properties = new Dictionary<string, string>();
-
-            foreach (var propInfo in extConfig.GetType().GetProperties())
-            {
-                properties.Add(propInfo.Name, propInfo.GetValue(extConfig)?.ToString() ?? string.Empty);
-            }
-
-            Telemetry.TrackEvent("ExtentionConfig", properties, null);
         }
 
         private bool FileRequiresUndoCheckout(string filePath)

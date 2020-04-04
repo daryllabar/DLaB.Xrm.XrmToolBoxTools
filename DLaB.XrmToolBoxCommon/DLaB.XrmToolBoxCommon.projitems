@@ -9,6 +9,7 @@
     <Import_RootNamespace>DLaB.XrmToolBoxCommon</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AppInsights\Telemetry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DialogBase.cs">
       <SubType>Form</SubType>
     </Compile>

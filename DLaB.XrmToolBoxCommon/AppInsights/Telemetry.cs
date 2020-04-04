@@ -4,7 +4,7 @@ using System.Reflection;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.ApplicationInsights;
 
-namespace DLab.AppInsightsHelper
+namespace DLaB.XrmToolBoxCommon.AppInsightsHelper
 {
     public static class Telemetry
     {

@@ -97,7 +97,6 @@
   </ItemGroup>
   <Import Project="..\DLaB.EarlyBoundGenerator.Logic\DLaB.EarlyBoundGenerator.Logic.projitems" Label="Shared" />
   <Import Project="..\DLaB.Log\DLaB.Log.projitems" Label="Shared" />
-  <Import Project="..\DLab.AppInsightsHelper\DLab.AppInsightsHelper.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>REM Copy New Content Files
