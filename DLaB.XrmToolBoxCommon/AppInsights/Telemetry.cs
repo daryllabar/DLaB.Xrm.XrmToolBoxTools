@@ -11,7 +11,7 @@ namespace DLaB.XrmToolBoxCommon.AppInsightsHelper
         private static TelemetryClient _telemetry = GetAppInsightsClient();
 
         public static bool Enabled { get; set; } = true;
-        public static string InstrumentationKey { get; private set; } = string.Empty;
+        public static string InstrumentationKey { get; private set; }
 
         private static TelemetryClient GetAppInsightsClient()
         {

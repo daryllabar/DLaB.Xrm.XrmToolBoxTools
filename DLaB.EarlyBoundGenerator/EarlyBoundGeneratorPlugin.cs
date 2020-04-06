@@ -11,6 +11,7 @@ using DLaB.XrmToolBoxCommon.AppInsightsHelper;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Client;
 using Microsoft.Xrm.Sdk.Metadata;
+using XrmToolBox;
 using XrmToolBox.Extensibility;
 using XrmToolBox.Extensibility.Interfaces;
 using PropertyInterface = DLaB.XrmToolBoxCommon.PropertyInterface;
@@ -62,6 +63,7 @@ namespace DLaB.EarlyBoundGenerator
 
             SetConnectionSettingOnLoad();
             HydrateUiFromSettings(ConnectionSettings.FullSettingsPath);
+            Telemetry.Enabled = Options.Instance.AllowLogUsage ?? true;
             Telemetry.InitAiConfig("3a079617-6a46-4c46-8db3-719f7d2f51c7"); 
             FormLoaded = true;
         }
@@ -295,6 +297,15 @@ namespace DLaB.EarlyBoundGenerator
             var properties = Settings.ExtensionConfig.GetType().GetProperties().ToDictionary(
                 k => k.Name,
                 v => v.GetValue(Settings.ExtensionConfig)?.ToString() ?? string.Empty);
+            foreach (var kvp in properties.ToList())
+            {
+                if (kvp.Key.ToLower().EndsWith("list"))
+                {
+                    properties.Add(kvp.Key + "Count", string.IsNullOrWhiteSpace(kvp.Value) 
+                        ? "0"
+                        : kvp.Value.Split('|').Length.ToString());
+                }
+            }
 
             properties["AudibleCompletionNotification"] = Settings.AudibleCompletionNotification.ToString();
             properties["CrmSvcUtilRelativePath"] = Settings.CrmSvcUtilRelativePath;
@@ -305,7 +316,14 @@ namespace DLaB.EarlyBoundGenerator
             properties["Version"] = Settings.Version;
             properties["CreationType"] = creationType.ToString();
 
-            Telemetry.TrackEvent("ConfigSettings", properties);
+            if(Telemetry.Enabled){
+                TxtOutput.AppendText($"Tracking {creationType} Generation Event." + Environment.NewLine);
+                Telemetry.TrackEvent("ConfigSettings", properties);
+            }
+            else
+            {
+                TxtOutput.AppendText("Tracking not enabled!  Please consider allowing the Xrm Tool Box to send anonymous statistics via the Configuration --> Settings -- Data Collect.  This allows reporting for which features are used and what features can be deprecated." + Environment.NewLine);
+            }
         }
 
         private string GetUserDomain()
