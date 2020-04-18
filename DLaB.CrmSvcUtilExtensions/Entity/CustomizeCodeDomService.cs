@@ -16,6 +16,9 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         public static bool GenerateEntityTypeCode => ConfigHelper.GetAppSettingOrDefault("GenerateEntityTypeCode", false);
         public static bool GenerateEnumProperties => ConfigHelper.GetAppSettingOrDefault("GenerateEnumProperties", true);
         public static bool ReplaceOptionSetPropertiesWithEnum => ConfigHelper.GetAppSettingOrDefault("ReplaceOptionSetPropertiesWithEnum", true);
+
+        public static bool UpdateMultiOptionSetAttributes => ConfigHelper.GetAppSettingOrDefault("UpdateMultiOptionSetAttributes", true);
+        public static bool UpdateEnumerableEntityProperties => ConfigHelper.GetAppSettingOrDefault("UpdateEnumerableEntityProperties", true);
         public IDictionary<string, string> Parameters { get; set; }
         
         public CustomizeCodeDomService(IDictionary<string, string> parameters)
@@ -27,8 +30,14 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
 
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
-
-            new MultiOptionSetAttributeUpdater().CustomizeCodeDom(codeUnit, services);
+            if (UpdateMultiOptionSetAttributes)
+            {
+                new MultiOptionSetAttributeUpdater().CustomizeCodeDom(codeUnit, services);
+            }
+            if (UpdateEnumerableEntityProperties)
+            {
+                new EnumerableEntityPropertyUpdater().CustomizeCodeDom(codeUnit, services);
+            }
             if (AddPrimaryAttributeConsts)
             {
                 new PrimaryAttributeGenerator().CustomizeCodeDom(codeUnit, services);

@@ -14,11 +14,21 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet.Transliteration
 
         private static readonly List<TransliterationAlphabet> Alphabets = new List<TransliterationAlphabet>();
         private static readonly Lazy<HashSet<int>> LazyAvailableCodes =
-            new Lazy<HashSet<int>>(() => new HashSet<int>(
-            Directory.GetFiles(Path)
-            .Select(System.IO.Path.GetFileName)
-            .Select(x => x.Split('.')[0])
-            .Select(int.Parse)));
+            new Lazy<HashSet<int>>(() => GetAvailableCodes());
+
+        private static HashSet<int> GetAvailableCodes()
+        {
+            if (!Directory.Exists(Path))
+            {
+                return new HashSet<int>();
+            }
+
+            return new HashSet<int>(
+                Directory.GetFiles(Path)
+                         .Select(System.IO.Path.GetFileName)
+                         .Select(x => x.Split('.')[0])
+                         .Select(int.Parse));
+        }
 
         public static HashSet<int> AvailableCodes { get; } = LazyAvailableCodes.Value;
 

@@ -46,7 +46,7 @@ namespace DLaB.CrmSvcUtilExtensions.Tests
 
         private object GetCrmSvcUtilTypeInstance(string typeName, object[] arguments = null)
         {
-            var type = typeof(Microsoft.Crm.Services.Utility.ICodeGenerationService).Assembly.GetType(typeName);
+            var type = typeof(ICodeGenerationService).Assembly.GetType(typeName);
             var ctor = type.GetConstructors(BindingFlags.Instance | BindingFlags.NonPublic)[0];
 
             return ctor.Invoke(arguments);

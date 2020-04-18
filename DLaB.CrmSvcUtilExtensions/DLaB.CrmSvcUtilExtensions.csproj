@@ -155,6 +155,7 @@
     <Compile Include="AttributeConstGeneratorBase.cs" />
     <Compile Include="BaseCustomCodeGenerationService.cs" />
     <Compile Include="Entity\EntityConstructorsGenerator.cs" />
+    <Compile Include="Entity\EnumerableEntityPropertyUpdater.cs" />
     <Compile Include="Entity\MultiOptionSetAttributeUpdater.cs" />
     <Compile Include="Entity\PrimaryAttributeGenerator.cs" />
     <Compile Include="Entity\AttributeConstGenerator.cs" />

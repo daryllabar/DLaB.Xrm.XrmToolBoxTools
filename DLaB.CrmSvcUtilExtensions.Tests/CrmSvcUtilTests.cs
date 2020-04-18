@@ -46,9 +46,10 @@ namespace DLaB.CrmSvcUtilExtensions.Tests
                     //    {"password", "*********"}
                     //}));
 
-                    // factory.Add<ICodeGenerationService>(new CustomCodeGenerationService(factory.GetService<ICodeGenerationService>()));
-                    // factory.Add<ICodeWriterFilterService>(new CodeWriterFilterService(factory.GetService<ICodeWriterFilterService>()));
-                    // factory.Add<INamingService>(new NamingService(factory.GetService<INamingService>()));
+                    //factory.Add<ICustomizeCodeDomService>(new CustomizeCodeDomService(new Dictionary<string, string>()));
+                    //factory.Add<ICodeGenerationService>(new CustomCodeGenerationService(factory.GetService<ICodeGenerationService>()));
+                    //factory.Add<ICodeWriterFilterService>(new CodeWriterFilterService(factory.GetService<ICodeWriterFilterService>()));
+                    //factory.Add<INamingService>(new NamingService(factory.GetService<INamingService>()));
 
                     factory.GetService<ICodeGenerationService>().
                             Write(factory.GetMetadata(), "CS", fileName, "DLaB.CrmSvcUtilExtensions.UnitTest", factory.ServiceProvider);
