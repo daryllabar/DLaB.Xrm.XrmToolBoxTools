@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Activities.Statements;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Microsoft.Crm.Services.Utility;
 using Source.DLaB.Common;
 using Source.DLaB.Common.VersionControl;
@@ -23,6 +23,7 @@ namespace DLaB.CrmSvcUtilExtensions
 
         protected virtual string CommandLineText => ConfigHelper.GetAppSettingOrDefault("EntityCommandLineText", string.Empty);
         protected virtual CodeUnit SplitByCodeUnit => CodeUnit.Class;
+        protected virtual List<string> ClassesToMakeStatic => new List<string>();
         protected abstract bool CreateOneFilePerCodeUnit { get; }
         private bool DeleteFilesFromOutputFolders => ConfigHelper.GetAppSettingOrDefault("DeleteFilesFromOutputFolders", false) && CreateOneFilePerCodeUnit;
 
@@ -124,6 +125,11 @@ namespace DLaB.CrmSvcUtilExtensions
 
         protected virtual void WriteInternal(IOrganizationMetadata organizationMetadata, string language, string outputFile, string targetNamespace, IServiceProvider services)
         {
+            if (outputFile == null)
+            {
+                throw new ArgumentNullException(nameof(outputFile));
+            }
+
             Metadata = organizationMetadata;
             ServiceProvider = services;
             if (UseTfsToCheckoutFiles)
@@ -146,12 +152,14 @@ namespace DLaB.CrmSvcUtilExtensions
             DefaultService.Write(organizationMetadata, language, tempFile, targetNamespace, services);
             Log("Completed writing file {0} to {1}", Path.GetFileName(outputFile), tempFile);
 
+            var fileContents = GetFileContents(tempFile);
+
             DeleteExistingFiles(outputFile, tempFile);
 
             // Check if the Header needs to be updated and or the file needs to be split
             if (!string.IsNullOrWhiteSpace(CommandLineText) || RemoveRuntimeVersionComment)
             {
-                var lines = GetFileTextWithUpdatedClassComment(tempFile, CommandLineText, RemoveRuntimeVersionComment);
+                var lines = GetFileTextWithUpdatedClassComment(fileContents, CommandLineText, RemoveRuntimeVersionComment);
                 if (CreateOneFilePerCodeUnit)
                 {
                     DisplayMessage($"Splitting File {outputFile} By Code Unit");
@@ -161,7 +169,7 @@ namespace DLaB.CrmSvcUtilExtensions
                 {
                     DisplayMessage($"Updating File {outputFile}");
                     File.WriteAllLines(outputFile, lines);
-                    if (UndoCheckoutIfUnchanged(outputFile))
+                    if (UseTfsToCheckoutFiles && UndoCheckoutIfUnchanged(outputFile))
                     {
                         Console.WriteLine(outputFile + " was unchanged.");
                     }
@@ -175,8 +183,8 @@ namespace DLaB.CrmSvcUtilExtensions
             else
             {
                 DisplayMessage($"Copying File {outputFile}");
-                File.Copy(tempFile, outputFile, true);
-                if (UndoCheckoutIfUnchanged(outputFile))
+                File.WriteAllLines(outputFile, fileContents);
+                if (UseTfsToCheckoutFiles && UndoCheckoutIfUnchanged(outputFile))
                 {
                     Console.WriteLine(outputFile + " was unchanged.");
                 }
@@ -206,17 +214,35 @@ namespace DLaB.CrmSvcUtilExtensions
             DisplayMessage($"Finished Deleting *.cs Files From {outputFile} By Code Unit");
         }
 
+        private string[] GetFileContents(string tempFile)
+        {
+            var fileContents = File.ReadAllLines(tempFile);
+            if (ClassesToMakeStatic.Count == 0)
+            {
+                return fileContents;
+            }
+
+            // Match any line that is " class ClassToMakeStaticName"
+            var pattern = @"\b(?:" + string.Join("|", ClassesToMakeStatic.Select(v => $"class {v}")) + @")\b";
+            for (var i = 0; i < fileContents.Length; i++)
+            {
+                fileContents[i] = Regex.Replace(fileContents[i], pattern, t => t.Value.Replace("class ", "static class "));
+            }
+
+            return fileContents;
+        }
+
         #endregion // Internal Implementations
 
         #region Insert Command Line Into Header
 
-        protected IEnumerable<string> GetFileTextWithUpdatedClassComment(string filePath, string commandLineText, bool removeRuntimeVersionComment)
+        protected IEnumerable<string> GetFileTextWithUpdatedClassComment(string[] fileContents, string commandLineText, bool removeRuntimeVersionComment)
         {
             var skipLine = removeRuntimeVersionComment ? 3 : -1;
             commandLineText = string.IsNullOrWhiteSpace(commandLineText)
                 ? ""
                 : "// Created via this command line: " + commandLineText;
-            return GetNewLines(File.ReadAllLines(filePath), 8, commandLineText, skipLine);
+            return GetNewLines(fileContents, 8, commandLineText, skipLine);
         }
 
         private IEnumerable<string> GetNewLines(string[] lines, int insertAtLine, string text, int skipLine)

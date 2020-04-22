@@ -6,7 +6,7 @@ using Source.DLaB.Common;
 
 namespace DLaB.CrmSvcUtilExtensions.Entity
 {
-    class CodeWriterFilterService  : ICodeWriterFilterService
+    public class CodeWriterFilterService  : ICodeWriterFilterService
     {
         private ICodeWriterFilterService DefaultService { get; }
         /// <summary>

@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Configuration;
+using System.Diagnostics;
 using System.IO;
-using System.Reflection;
-using DLaB.CrmSvcUtilExtensions.Entity;
-using DLaB.CrmSvcUtilExtensions.OptionSet;
 using Microsoft.Crm.Services.Utility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Source.DLaB.Common;
-using CustomCodeGenerationService = DLaB.CrmSvcUtilExtensions.Action.CustomCodeGenerationService;
 
 namespace DLaB.CrmSvcUtilExtensions.Tests
 {
@@ -17,20 +10,50 @@ namespace DLaB.CrmSvcUtilExtensions.Tests
     public class CrmSvcUtilTests
     {
         [TestMethod]
-        public void CreateTestFile()
+        public void CreateTestEntityFile()
         {
-            if (!ConfigHelper.GetAppSettingOrDefault("TestFileCreation", false))
+            var factory = new ServiceFactory();
+            var customizeDom = new CrmSvcUtilExtensions.Entity.CustomizeCodeDomService();
+            var codeGen =      new CrmSvcUtilExtensions.Entity.CustomCodeGenerationService(factory.GetService<ICodeGenerationService>());
+            var filter =       new CrmSvcUtilExtensions.Entity.CodeWriterFilterService(factory.GetService<ICodeWriterFilterService>());
+
+            TestFileCreation(factory, customizeDom, codeGen, filter);
+        }
+
+        [TestMethod]
+        public void CreateTestOptionSetFile()
+        {
+            var factory = new ServiceFactory();
+            var customizeDom = new OptionSet.CustomizeCodeDomService();
+            var codeGen =      new OptionSet.CustomCodeGenerationService(factory.GetService<ICodeGenerationService>());
+            var filter =       new OptionSet.CodeWriterFilterService(factory.GetService<ICodeWriterFilterService>());
+
+            TestFileCreation(factory, customizeDom, codeGen, filter);
+        }
+
+        [TestMethod]
+        public void CreateTestActionFile()
+        {
+            var factory = new ServiceFactory();
+            var customizeDom = new Action.CustomizeCodeDomService();
+            var codeGen =      new Action.CustomCodeGenerationService(factory.GetService<ICodeGenerationService>());
+            var filter =       new Action.CodeWriterFilterService(factory.GetService<ICodeWriterFilterService>());
+
+            TestFileCreation(factory, customizeDom, codeGen, filter);
+        }
+
+        private static void TestFileCreation(ServiceFactory factory, ICustomizeCodeDomService customizeDom, ICodeGenerationService codeGen, ICodeWriterFilterService filter)
+        {
+            if (!Debugger.IsAttached && !ConfigHelper.GetAppSettingOrDefault("TestFileCreation", false))
             {
                 return;
             }
 
-            var factory = new ServiceFactory();
             using (var tmp = TempDir.Create())
             {
                 var fileName = Path.Combine(tmp.Name, Guid.NewGuid() + ".txt");
                 try
                 {
-
                     //factory.Add<ICustomizeCodeDomService>(new CustomizeCodeDomService(new Dictionary<string, string>
                     //{
                     //    { "url", @"https://allegient.api.crm.dynamics.com/XRMServices/2011/Organization.svc"},
@@ -46,18 +69,21 @@ namespace DLaB.CrmSvcUtilExtensions.Tests
                     //    {"password", "*********"}
                     //}));
 
-                    //factory.Add<ICustomizeCodeDomService>(new CustomizeCodeDomService(new Dictionary<string, string>()));
-                    //factory.Add<ICodeGenerationService>(new CustomCodeGenerationService(factory.GetService<ICodeGenerationService>()));
-                    //factory.Add<ICodeWriterFilterService>(new CodeWriterFilterService(factory.GetService<ICodeWriterFilterService>()));
-                    //factory.Add<INamingService>(new NamingService(factory.GetService<INamingService>()));
+                    factory.Add(customizeDom);
+                    factory.Add(codeGen);
+                    factory.Add(filter);
+                    factory.Add<INamingService>(new NamingService(factory.GetService<INamingService>()));
 
-                    factory.GetService<ICodeGenerationService>().
-                            Write(factory.GetMetadata(), "CS", fileName, "DLaB.CrmSvcUtilExtensions.UnitTest", factory.ServiceProvider);
+                    factory.GetService<ICodeGenerationService>().Write(factory.GetMetadata(), "CS", fileName, "DLaB.CrmSvcUtilExtensions.UnitTest", factory.ServiceProvider);
                 }
                 catch (Exception ex)
                 {
                     // Line for adding a debug breakpoint
                     var message = ex.Message;
+                    if (message != null)
+                    {
+                        throw;
+                    }
                 }
             }
         }

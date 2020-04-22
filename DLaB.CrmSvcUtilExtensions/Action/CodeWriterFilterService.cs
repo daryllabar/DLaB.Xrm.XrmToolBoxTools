@@ -1,15 +1,12 @@
-﻿using System.Diagnostics;
-using DLaB.CrmSvcUtilExtensions.OptionSet;
-using Microsoft.Crm.Services.Utility;
+﻿using Microsoft.Crm.Services.Utility;
 using Microsoft.Xrm.Sdk.Metadata;
 using System;
-using System.Collections.Generic;
 
 namespace DLaB.CrmSvcUtilExtensions.Action
 {
-    class CodeWriterFilterService  : ICodeWriterFilterService
+    public class CodeWriterFilterService  : ICodeWriterFilterService
     {
-        private ICodeWriterFilterService DefaultService { get; set; }
+        private ICodeWriterFilterService DefaultService { get; }
 
         public CodeWriterFilterService(ICodeWriterFilterService defaultService)
         {

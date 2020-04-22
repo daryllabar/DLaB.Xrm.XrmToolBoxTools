@@ -189,7 +189,7 @@ namespace DLaB.CrmSvcUtilExtensions
             }
             else if (name.Contains(displayName.ToLower()) && name.IndexOf(displayName.ToLower(), StringComparison.Ordinal) == name.LastIndexOf(displayName.ToLower(), StringComparison.Ordinal))
             {
-                // Name only contains the display name, and only once, but also contains other characters.  Captialize the Display Name, and the next character
+                // Name only contains the display name, and only once, but also contains other characters.  Capitalize the Display Name, and the next character
                 // as long as more than one character exists: given HelloWorld, helloworldstatus => HelloWorldStatus but helloworlds => HelloWorlds
                 // May need to check for plural instead... s/es/ies
                 var index = name.IndexOf(displayName.ToLower(), StringComparison.Ordinal) + displayName.Length;

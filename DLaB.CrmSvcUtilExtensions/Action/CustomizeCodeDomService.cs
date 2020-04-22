@@ -93,7 +93,7 @@ namespace DLaB.CrmSvcUtilExtensions.Action
                 // Iterate over all of the types that were created in the namespace.
                 for (var j = 0; j < types.Count; )
                 {
-                    // Remove the type if it is not an enum (all OptionSets are enums) or has no members.
+                    // Remove the type if it is not to be generated.
                     if (GenerateAction(types[j].Name))
                     {
                         ProcessAction(types[j]);

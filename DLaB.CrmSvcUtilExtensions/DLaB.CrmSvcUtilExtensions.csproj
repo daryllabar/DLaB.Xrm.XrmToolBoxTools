@@ -170,6 +170,7 @@
     <Compile Include="Metadata.cs" />
     <Compile Include="BaseMetadataProviderService.cs" />
     <Compile Include="NamingService.cs" />
+    <Compile Include="Entity\OptionSetMetadataAttributeGenerator.cs" />
     <Compile Include="OptionSet\CreateOptionSetEnums.cs" />
     <Compile Include="Entity\CustomizeCodeDomService.cs" />
     <Compile Include="Entity\EnumPropertyGenerator.cs" />

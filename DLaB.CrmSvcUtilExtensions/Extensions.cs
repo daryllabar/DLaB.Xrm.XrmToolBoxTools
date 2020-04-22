@@ -15,6 +15,23 @@ namespace DLaB.CrmSvcUtilExtensions
         private const string XrmAttributeLogicalName = "Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute";
         private const string XrmRelationshipSchemaName = "Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute";
 
+        #region CodeCompileUnit
+
+        public static IEnumerable<CodeTypeDeclaration> GetTypes(this CodeCompileUnit codeUnit)
+        {
+            for (var i = 0; i < codeUnit.Namespaces.Count; ++i)
+            {
+                var types = codeUnit.Namespaces[i].Types;
+                for (var j = 0; j < types.Count; j++)
+                {
+                    yield return types[j];
+                    
+                }
+            }
+        }
+
+        #endregion CodeCompileUnit
+
         #region CodeMemberProperty
 
         public static string GetLogicalName(this CodeMemberProperty property)

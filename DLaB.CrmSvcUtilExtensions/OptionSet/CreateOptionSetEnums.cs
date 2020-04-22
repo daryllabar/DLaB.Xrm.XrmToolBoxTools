@@ -25,7 +25,9 @@ using System;
 using Microsoft.Crm.Services.Utility;
 using System.Diagnostics;
 using System.CodeDom;
+using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xrm.Sdk.Metadata;
 
 namespace DLaB.CrmSvcUtilExtensions.OptionSet
 {
@@ -35,6 +37,8 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
     /// </summary>
     public sealed class CreateOptionSetEnums : ICustomizeCodeDomService
     {
+        public static bool AddOptionSetMetadataAttribute => ConfigHelper.GetAppSettingOrDefault("AddOptionSetMetadataAttribute", false);
+
         /// <summary>
         /// Remove the unnecessary classes that we generated for entities. 
         /// </summary>
@@ -56,10 +60,11 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
             }
 
             //#endif
-
+            var metadata = ((IMetadataProviderService)services.GetService(typeof(IMetadataProviderService))).LoadMetadata();
+            
             RemoveNonOptionSetDefinitions(codeUnit);
+            AddMetadataAttributes(codeUnit, services);
             SortOptionSets(codeUnit);
-
             Trace.TraceInformation("Exiting ICustomizeCodeDomService.CustomizeCodeDom");
         }
 
@@ -82,6 +87,87 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
                     {
                         j += 1;
                     }
+                }
+            }
+        }
+
+        private static void AddMetadataAttributes(CodeCompileUnit codeUnit, IServiceProvider services)
+        {
+            if (!AddOptionSetMetadataAttribute)
+            {
+                return;
+            }
+
+            
+            var metadataByName = GetMetadataForEnums(services);
+            foreach (var type in codeUnit.GetTypes())
+            {
+                if (metadataByName.TryGetValue(type.Name, out var osMetadata))
+                {
+                    AddMetadataAttributesForSet(type, osMetadata);
+                }
+                else
+                {
+                    Trace.TraceInformation("Unable to find metadata for {0}", type.Name);
+                }
+            }
+        }
+
+        private static void AddMetadataAttributesForSet(CodeTypeDeclaration type, OptionSetMetadataBase osMetadata)
+        {
+            Trace.TraceInformation("Adding MetadataAttributes for {0}", type.Name);
+            var options = osMetadata.GetOptions();
+            var metadataByValue = options.ToDictionary(k => k.Value);
+            var orderIndexByValue = new Dictionary<int, int>();
+            for (var i = 0; i < options.Count; i++)
+            {
+                if (options[i].Value is int intValue)
+                {
+                    orderIndexByValue.Add(intValue, i);
+                }
+                else
+                {
+                    Trace.TraceInformation("Unable to find orderIndexByValue for {0}", type.Name);
+                }
+            }
+
+            for (var i = 0; i < type.Members.Count; i++)
+            {
+                var value = type.Members[i] as CodeMemberField;
+                if (value != null 
+                    && value.InitExpression is CodePrimitiveExpression primitive 
+                    && primitive.Value is int intValue 
+                    && metadataByValue.TryGetValue(intValue, out var metadata))
+                {
+                    var attribute = new CodeAttributeDeclaration("OptionSetMetadataAttribute", 
+                        new CodeAttributeArgument(new CodePrimitiveExpression(metadata.Label.GetLocalOrDefaultText())),
+                        new CodeAttributeArgument(new CodePrimitiveExpression(orderIndexByValue[intValue]))
+                    );
+                    var optionalArs = new Stack<string>(new []
+                    {
+                        metadata.Color,
+                        metadata.Description.GetLocalOrDefaultText(),
+                        metadata.ExternalValue
+                    });
+
+                    while (optionalArs.Count > 0 && string.IsNullOrWhiteSpace(optionalArs.Peek()))
+                    {
+                        optionalArs.Pop();
+                    }
+
+                    if (optionalArs.Count > 0)
+                    {
+                        attribute.Arguments.AddRange(
+                            optionalArs.Select(v => new CodeAttributeArgument(new CodePrimitiveExpression(v)))
+                                       .Reverse().ToArray()
+                        );
+                    }
+
+                    value.CustomAttributes.Add(attribute);
+                }
+                else
+                {
+                    Trace.TraceInformation("Unable to determine OptionSetMetadataAttribute for {0}", value?.Name);
                 }
             }
         }
@@ -122,6 +208,39 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
                 }
                 nameSpace.Types.AddRange(tmpType.OrderBy(n => n.Name).ToArray());
             }
+        }
+
+        
+        public static Dictionary<string, OptionSetMetadataBase> GetMetadataForEnums(IServiceProvider services)
+        {
+            var metadataByEnumName = new Dictionary<string, OptionSetMetadataBase>();
+            var metadata = ((IMetadataProviderService)services.GetService(typeof(IMetadataProviderService))).LoadMetadata();
+            var filterService = ((ICodeWriterFilterService)services.GetService(typeof(ICodeWriterFilterService)));
+            var namingService = (INamingService)services.GetService(typeof(INamingService));
+            foreach (var entity in metadata.Entities)
+            {
+                foreach (var attribute in entity.Attributes.OfType<EnumAttributeMetadata>()
+                                                .Where(a => a.OptionSet != null 
+                                                            && filterService.GenerateOptionSet(a.OptionSet, services)))
+                {
+                    var name = namingService.GetNameForOptionSet(entity, attribute.OptionSet, services);
+                    if (!metadataByEnumName.ContainsKey(name))
+                    {
+                        metadataByEnumName[name] = attribute.OptionSet;
+                    }
+                }
+            }
+
+            foreach (var optionSet in metadata.OptionSets)
+            {
+                var name = namingService.GetNameForOptionSet(null, optionSet, services);
+                if (!metadataByEnumName.ContainsKey(name))
+                {
+                    metadataByEnumName[name] = optionSet;
+                }
+            }
+
+            return metadataByEnumName;
         }
     }
 }

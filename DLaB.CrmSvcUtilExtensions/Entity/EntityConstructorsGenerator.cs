@@ -22,20 +22,20 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         private static void AddEntityConstructors(CodeTypeDeclaration entityClass)
         {
             var entityConstructors = typeof(Microsoft.Xrm.Sdk.Entity).GetConstructors();
-            int position = 1;
+            var position = 1;
 
             foreach (var constructor in entityConstructors)
             {
-                var codeConstructor = new CodeConstructor
-                {
-                    Attributes = System.CodeDom.MemberAttributes.Public,
-                };
-
                 var paramsToConstructor = constructor.GetParameters();
 
                 // default constructor already there
                 if (paramsToConstructor.Length <= 1)
                     continue;
+
+                var codeConstructor = new CodeConstructor
+                {
+                    Attributes = System.CodeDom.MemberAttributes.Public,
+                };
 
                 foreach (var param in paramsToConstructor)
                 {
