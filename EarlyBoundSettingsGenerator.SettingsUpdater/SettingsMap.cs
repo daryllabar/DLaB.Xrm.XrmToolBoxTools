@@ -20,7 +20,16 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
 
         private void AddProperty(string[] file)
         {
-            var insertIndex = GetInsertIndexOfAlphabeticallySortedProperty(file, $"#region {Property.Category}", $"#endregion {Property.Category}", Property.Name, "        public ");
+            var start = $"#region {Property.Category}";
+            var end = $"#endregion {Property.Category}";
+            var lineStart = "        public ";
+
+            var firstIndex = GetInsertIndexOfAlphabeticallySortedProperty(file, start, end, " ", lineStart);
+            var insertIndex = GetInsertIndexOfAlphabeticallySortedProperty(file, start, end, Property.Name, lineStart);
+            if (firstIndex != insertIndex)
+            {
+                insertIndex += 6;
+            }
             file[insertIndex - 1] += $@"
         [Category(""{Property.Category}"")]
         [DisplayName(""{Property.DisplayName}"")]
@@ -29,7 +38,8 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
         {{
             get => Config.ExtensionConfig.{Property.Name};
             set => Config.ExtensionConfig.{Property.Name} = value;
-        }}";
+        }}
+";
         }
     }
 }

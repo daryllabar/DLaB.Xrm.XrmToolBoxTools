@@ -224,6 +224,7 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "ActionsToSkip", extensions.ActionsToSkip?.Replace("-","")) |
                     UpdateConfigAppSetting(file, "AddDebuggerNonUserCode", extensions.AddDebuggerNonUserCode.ToString()) |
                     UpdateConfigAppSetting(file, "AddNewFilesToProject", extensions.AddNewFilesToProject.ToString()) |
+                    UpdateConfigAppSetting(file, "AddOptionSetMetadataAttribute", extensions.AddOptionSetMetadataAttribute.ToString()) |
                     UpdateConfigAppSetting(file, "CreateOneFilePerAction", extensions.CreateOneFilePerAction.ToString()) |
                     UpdateConfigAppSetting(file, "CreateOneFilePerEntity", extensions.CreateOneFilePerEntity.ToString()) |
                     UpdateConfigAppSetting(file, "CreateOneFilePerOptionSet", extensions.CreateOneFilePerOptionSet.ToString()) |
@@ -242,6 +243,7 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "GenerateEntityTypeCode", extensions.GenerateEntityTypeCode.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateEnumProperties", extensions.GenerateEnumProperties.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateOnlyReferencedOptionSets", extensions.GenerateOnlyReferencedOptionSets.ToString()) |
+                    UpdateConfigAppSetting(file, "GenerateOptionSetMetadataAttribute", extensions.GenerateOptionSetMetadataAttribute.ToString()) |
                     UpdateConfigAppSetting(file, "InvalidCSharpNamePrefix", extensions.InvalidCSharpNamePrefix) |
                     UpdateConfigAppSetting(file, "MakeAllFieldsEditable", extensions.MakeAllFieldsEditable.ToString()) |
                     UpdateConfigAppSetting(file, "MakeReadonlyFieldsEditable", extensions.MakeReadonlyFieldsEditable.ToString()) |
@@ -253,8 +255,10 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "OptionSetLanguageCodeOverride", extensions.OptionSetLanguageCodeOverride?.ToString()) |
                     UpdateConfigAppSetting(file, "ProjectNameForEarlyBoundFiles", extensions.ProjectNameForEarlyBoundFiles ?? string.Empty) |
                     UpdateConfigAppSetting(file, "PropertyEnumMappings", extensions.PropertyEnumMappings) |
+                    UpdateConfigAppSetting(file, "ReadSerializedMetadata", extensions.ReadSerializedMetadata.ToString()) |
                     UpdateConfigAppSetting(file, "RemoveRuntimeVersionComment", extensions.RemoveRuntimeVersionComment.ToString()) |
                     UpdateConfigAppSetting(file, "ReplaceOptionSetPropertiesWithEnum", extensions.ReplaceOptionSetPropertiesWithEnum.ToString()) |
+                    UpdateConfigAppSetting(file, "SerializeMetadata", extensions.SerializeMetadata.ToString()) |
                     UpdateConfigAppSetting(file, "UseDeprecatedOptionSetNaming", extensions.UseDeprecatedOptionSetNaming.ToString()) |
                     UpdateConfigAppSetting(file, "UnmappedProperties", extensions.UnmappedProperties) |
                     UpdateConfigAppSetting(file, "UseTfsToCheckoutFiles", extensions.UseTfsToCheckoutFiles.ToString()) |

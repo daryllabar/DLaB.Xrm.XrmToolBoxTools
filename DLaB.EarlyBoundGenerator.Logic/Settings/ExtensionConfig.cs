@@ -34,6 +34,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public bool AddNewFilesToProject { get; set; }
         /// <summary>
+        /// Adds the OptionSetMetadataAttribute to enums to be able to access enum metadata.
+        /// Ensure Generate Option Set Metadata Attribute is true to generate the attribute definition, unless this has been handled in some other manner.
+        /// </summary>
+        public bool AddOptionSetMetadataAttribute { get; set; }
+        /// <summary>
         /// Specifies that each Action class should be outputted to it's own file
         /// </summary>
         public bool CreateOneFilePerAction { get; set; }
@@ -106,6 +111,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>                                          
         public bool GenerateOnlyReferencedOptionSets { get; set; }
         /// <summary>
+        /// Generates an OptionSetMetadataAttribute class used to allow for storing of the metadata of OptionSetValues i.e. display order, name, description, etc.
+        /// Only used if Add Option Set Metadata Attribute is true.
+        /// </summary>
+        public bool GenerateOptionSetMetadataAttribute { get; set; }
+        /// <summary>
         /// Specifies the Prefix to be used for OptionSets that would normally start with an invalid first character ie "1st"
         /// </summary>
         public string InvalidCSharpNamePrefix { get; set; }
@@ -157,6 +167,17 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// Format: EntityName.PropertyName,EnumName|
         /// </summary>
         public string PropertyEnumMappings { get; set; }
+        /// <summary>
+        /// For Debugging Only!
+        /// Used to not communicate to the server for the metadata, but to use the local metadata file instead.  Should only be used for testing generation outputs.
+        /// Set Serialize Metadata to true first to connect to the server and retrieve the metadata, then set it back to false to not write it again since it's already local.
+        /// </summary>
+        public bool ReadSerializedMetadata { get; set; }
+        /// <summary>
+        /// For Debugging Only!
+        /// Serializes the Metadata to a local file on disk.  (Generates a 200-400+ mb xml file).
+        /// </summary>
+        public bool SerializeMetadata { get; set; }
         /// <summary>
         /// Used to manually specify an OptionSetValue Property of an entity that doesn't have an enum mapping 
         /// Format: EntityName.PropertyName|
@@ -248,6 +269,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     "Quote:StatusCode|" +
                     "QuoteDetail:QuoteStateCode|" +
                     "SalesOrderDetail:SalesOrderStateCode|",
+                AddOptionSetMetadataAttribute = true,
+                GenerateOptionSetMetadataAttribute = true,
+                ReadSerializedMetadata = false,
+                SerializeMetadata = false,
                 UseDeprecatedOptionSetNaming = false,
                 UseTfsToCheckoutFiles = false,
                 WaitForAttachedDebugger = false,
@@ -297,8 +322,12 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public string PropertyEnumMappings { get; set; }
         public string UnmappedProperties { get; set; }
         public bool? AddNewFilesToProject { get; set; }
+        public bool? AddOptionSetMetadataAttribute { get; set; }
+        public bool? GenerateOptionSetMetadataAttribute { get; set; }
         public string ProjectNameForEarlyBoundFiles { get; set; }
+        public bool? ReadSerializedMetadata { get; set; }
         public bool? RemoveRuntimeVersionComment { get; set; }
+        public bool? SerializeMetadata { get; set; }
         public bool? UseDeprecatedOptionSetNaming { get; set; }
         public bool? UseTfsToCheckoutFiles { get; set; }
         public bool? WaitForAttachedDebugger { get; set; }

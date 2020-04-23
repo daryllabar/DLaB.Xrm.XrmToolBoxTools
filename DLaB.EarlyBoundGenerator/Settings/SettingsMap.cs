@@ -84,6 +84,24 @@ namespace DLaB.EarlyBoundGenerator.Settings
         #region Debug
 
         [Category("Debug")]
+        [DisplayName("Read Serialized Metadata")]
+        [Description("For Debugging Only!  Used to not communicate to the server for the metadata, but to use the local metadata file instead.  Should only be used for testing generation outputs.  Set Serialize Metadata to true first to connect to the server and retrieve the metadata, then set it back to false to not write it again since it's already local.")]
+        public bool ReadSerializedMetadata
+        {
+            get => Config.ExtensionConfig.ReadSerializedMetadata;
+            set => Config.ExtensionConfig.ReadSerializedMetadata = value;
+        }
+
+        [Category("Debug")]
+        [DisplayName("Serialize Metadata")]
+        [Description("For Debugging Only!  Serializes the Metadata to a local file on disk.  (Generates a 200-400+ mb xml file).")]
+        public bool SerializeMetadata
+        {
+            get => Config.ExtensionConfig.SerializeMetadata;
+            set => Config.ExtensionConfig.SerializeMetadata = value;
+        }
+
+        [Category("Debug")]
         [DisplayName("Wait For Attached Debugger")]
         [Description("For Debugging Only!  Waits until a debugger is attached to the CrmSvcUtil.exe before processing the command.")]
         public bool WaitForAttachedDebugger
@@ -213,6 +231,15 @@ namespace DLaB.EarlyBoundGenerator.Settings
         {
             get => Config.ExtensionConfig.GenerateEnumProperties;
             set => Config.ExtensionConfig.GenerateEnumProperties = value;
+        }
+
+        [Category("Entities")]
+        [DisplayName("Generate Option Set Metadata Attribute")]
+        [Description("Generates an OptionSetMetadataAttribute class used to allow for storing of the metadata of OptionSetValues i.e. display order, name, description, etc.  Only used if Add Option Set Metadata Attribute is true.")]
+        public bool GenerateOptionSetMetadataAttribute
+        {
+            get => Config.ExtensionConfig.GenerateOptionSetMetadataAttribute;
+            set => Config.ExtensionConfig.GenerateOptionSetMetadataAttribute = value;
         }
 
         [Category("Entities")]
@@ -377,6 +404,15 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         #endregion Meta
 
         #region Option Sets
+
+        [Category("Option Sets")]
+        [DisplayName("Add Option Set Metadata Attribute")]
+        [Description("Adds the OptionSetMetadataAttribute to enums to be able to access enum metadata.  Ensure Generate Option Set Metadata Attribute is true to generate the attribute definition, unless this has been handled in some other manner.")]
+        public bool AddOptionSetMetadataAttribute
+        {
+            get => Config.ExtensionConfig.AddOptionSetMetadataAttribute;
+            set => Config.ExtensionConfig.AddOptionSetMetadataAttribute = value;
+        }
 
         [Category("Option Sets")]
         [DisplayName("Create One File Per Option Set")]

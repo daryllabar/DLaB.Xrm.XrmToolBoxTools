@@ -39,6 +39,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 { nameof(CreateOneFilePerEntity), OnCreateOneFilePerEntityChange },
                 { nameof(CreateOneFilePerOptionSet), OnCreateOneFilePerOptionSetChange },
                 { nameof(GenerateEnumProperties), OnGenerateEnumPropertiesChange },
+                { nameof(AddOptionSetMetadataAttribute), OnAddOptionSetMetadataAttributeChange },
                 { nameof(IncludeCommandLine), OnIncludeCommandLineChange },
                 { nameof(UseDeprecatedOptionSetNaming), OnUseDeprecatedOptionSetNamingChange },
             };
@@ -74,6 +75,12 @@ namespace DLaB.EarlyBoundGenerator.Settings
             SetUnmappedPropertiesVisibility();
         }
 
+        private void OnAddOptionSetMetadataAttributeChange(PropertyValueChangedEventArgs args)
+        {
+            SetGenerateOptionSetMetadataAttributeVisibility();
+            GenerateOptionSetMetadataAttribute = AddOptionSetMetadataAttribute;
+        }
+
         private void OnIncludeCommandLineChange(PropertyValueChangedEventArgs args)
         {
             SetMaskPasswordVisibility();
@@ -94,6 +101,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             SetPropertyReplaceOptionSetPropertiesWithEnumVisibility();
             SetUnmappedPropertiesVisibility();
             SetLocalOptionSetFormatVisibility();
+            SetGenerateOptionSetMetadataAttributeVisibility();
             ActionOutPath = ActionOutPath;
             EntityOutPath = EntityOutPath;
             OptionSetOutPath = OptionSetOutPath;
@@ -148,6 +156,12 @@ namespace DLaB.EarlyBoundGenerator.Settings
         {
             var prop = Descriptor.GetProperty(nameof(ReplaceOptionSetPropertiesWithEnum));
             prop.SetIsBrowsable(GenerateEnumProperties);
+        }
+        
+        private void SetGenerateOptionSetMetadataAttributeVisibility()
+        {
+            var prop = Descriptor.GetProperty(nameof(GenerateOptionSetMetadataAttribute));
+            prop.SetIsBrowsable(AddOptionSetMetadataAttribute);
         }
 
         private void SetUnmappedPropertiesVisibility()
