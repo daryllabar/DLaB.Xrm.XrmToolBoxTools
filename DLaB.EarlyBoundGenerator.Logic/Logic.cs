@@ -216,7 +216,8 @@ namespace DLaB.EarlyBoundGenerator
                 }
 
                 var extensions = earlyBoundGeneratorConfig.ExtensionConfig;
-                if (UpdateConfigAppSetting(file, "ActionCommandLineText", extensions.ActionCommandLineText, true) |
+                if (
+                    UpdateConfigAppSetting(file, "ActionCommandLineText", extensions.ActionCommandLineText, true) |
                     UpdateConfigAppSetting(file, "ActionPrefixesWhitelist", extensions.ActionPrefixesWhitelist) |
                     UpdateConfigAppSetting(file, "ActionPrefixesToSkip", extensions.ActionPrefixesToSkip) |
                     UpdateConfigAppSetting(file, "ActionsWhitelist", extensions.ActionsWhitelist) |
@@ -256,8 +257,8 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "ReplaceOptionSetPropertiesWithEnum", extensions.ReplaceOptionSetPropertiesWithEnum.ToString()) |
                     UpdateConfigAppSetting(file, "UseDeprecatedOptionSetNaming", extensions.UseDeprecatedOptionSetNaming.ToString()) |
                     UpdateConfigAppSetting(file, "UnmappedProperties", extensions.UnmappedProperties) |
-                    UpdateConfigAppSetting(file, "UseTfsToCheckoutFiles", extensions.UseTfsToCheckoutFiles.ToString()))
-
+                    UpdateConfigAppSetting(file, "UseTfsToCheckoutFiles", extensions.UseTfsToCheckoutFiles.ToString())
+                    )
                 {
                     file.Save(ConfigurationSaveMode.Minimal);
                 }

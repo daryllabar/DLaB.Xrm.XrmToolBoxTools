@@ -225,8 +225,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// Initializes a new instance of the <see cref="EarlyBoundGeneratorConfig"/> class.
         /// </summary>
         /// <param name="poco">The poco.</param>
-        /// <param name="filePath">The file path.</param>
-        private EarlyBoundGeneratorConfig(POCO.Config poco, string filePath)
+        private EarlyBoundGeneratorConfig(POCO.Config poco)
         {
             var @default = GetDefault();
             var defaultConfig = @default.ExtensionConfig;
@@ -286,7 +285,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 ReplaceOptionSetPropertiesWithEnum = pocoConfig.ReplaceOptionSetPropertiesWithEnum.GetValueOrDefault(defaultConfig.ReplaceOptionSetPropertiesWithEnum),
                 UnmappedProperties = GetValueOrDefault(pocoConfig.UnmappedProperties, defaultConfig.UnmappedProperties),
                 UseDeprecatedOptionSetNaming = pocoConfig.UseDeprecatedOptionSetNaming.GetValueOrDefault(defaultConfig.UseDeprecatedOptionSetNaming),
-                UseTfsToCheckoutFiles = pocoConfig.UseTfsToCheckoutFiles.GetValueOrDefault(defaultConfig.UseTfsToCheckoutFiles)
+                UseTfsToCheckoutFiles = pocoConfig.UseTfsToCheckoutFiles.GetValueOrDefault(defaultConfig.UseTfsToCheckoutFiles),
             };
 
             ExtensionArguments = AddMissingArguments(poco.ExtensionArguments, @default.ExtensionArguments);
@@ -506,7 +505,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     poco = (POCO.Config)serializer.Deserialize(fs);
                     fs.Close();
                 }
-                var settings = new EarlyBoundGeneratorConfig(poco, filePath);
+                var settings = new EarlyBoundGeneratorConfig(poco);
                 return settings;
             }
             catch (Exception ex)

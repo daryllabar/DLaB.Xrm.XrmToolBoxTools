@@ -46,6 +46,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.VSSolutionAccelerator.
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DLaB.Log", "DLaB.Log\DLaB.Log.shproj", "{A1789142-7510-42D5-AFF4-1BB37F2B08F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EarlyBoundSettingsGenerator.SettingsUpdater", "EarlyBoundSettingsGenerator.SettingsUpdater\EarlyBoundSettingsGenerator.SettingsUpdater.csproj", "{D522F771-A62C-456B-A9E0-F677CACF3500}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		DLaB.EarlyBoundGenerator.Logic\DLaB.EarlyBoundGenerator.Logic.projitems*{0a143e92-0ede-4630-9bfe-c670bf4c310a}*SharedItemsImports = 4
@@ -99,6 +101,10 @@ Global
 		{9FC14F50-B2B6-4327-96E6-CE66C42B6236}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FC14F50-B2B6-4327-96E6-CE66C42B6236}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FC14F50-B2B6-4327-96E6-CE66C42B6236}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D522F771-A62C-456B-A9E0-F677CACF3500}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D522F771-A62C-456B-A9E0-F677CACF3500}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D522F771-A62C-456B-A9E0-F677CACF3500}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D522F771-A62C-456B-A9E0-F677CACF3500}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

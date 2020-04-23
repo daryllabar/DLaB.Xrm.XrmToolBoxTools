@@ -81,6 +81,12 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         #endregion Actions
 
+        #region Debug
+
+
+
+        #endregion Debug
+
         #region Entities
 
         [Category("Entities")]

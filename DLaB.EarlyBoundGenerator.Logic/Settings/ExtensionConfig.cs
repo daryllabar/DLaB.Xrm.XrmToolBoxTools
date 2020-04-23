@@ -110,7 +110,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public string InvalidCSharpNamePrefix { get; set; }
         /// <summary>
-        /// Defines that Entities should be created with all atributes as editable.
+        /// Defines that Entities should be created with all attributes as editable.
         /// Helpful for writing linq statements where those attributes are wanting to be returned in the select.
         /// </summary>
         public bool MakeAllFieldsEditable { get; set; }
@@ -244,7 +244,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     "QuoteDetail:QuoteStateCode|" +
                     "SalesOrderDetail:SalesOrderStateCode|",
                 UseDeprecatedOptionSetNaming = false,
-                UseTfsToCheckoutFiles = false
+                UseTfsToCheckoutFiles = false,
             };
         }
     }
