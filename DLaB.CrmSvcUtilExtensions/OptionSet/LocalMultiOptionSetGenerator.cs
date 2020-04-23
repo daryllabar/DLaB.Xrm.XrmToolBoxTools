@@ -25,7 +25,9 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
                                                                        && a is MultiSelectPicklistAttributeMetadata enumMeta
                                                                        && enumMeta.OptionSet.IsGlobal == false))
                 {
-                    codeUnit.Namespaces[0].Types.Add(GenerateEnum(entity, (MultiSelectPicklistAttributeMetadata) attribute, services, namingService));
+                    var type = GenerateEnum(entity, (MultiSelectPicklistAttributeMetadata) attribute, services, namingService);
+                    CreateOptionSetEnums.AddMetadataAttributesForSet(type, ((MultiSelectPicklistAttributeMetadata)attribute).OptionSet);
+                    codeUnit.Namespaces[0].Types.Add(type);
                 }
             }
         }

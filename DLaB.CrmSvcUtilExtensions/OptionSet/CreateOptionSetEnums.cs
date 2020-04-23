@@ -113,8 +113,13 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
             }
         }
 
-        private static void AddMetadataAttributesForSet(CodeTypeDeclaration type, OptionSetMetadataBase osMetadata)
+        public static void AddMetadataAttributesForSet(CodeTypeDeclaration type, OptionSetMetadataBase osMetadata)
         {
+            if (!AddOptionSetMetadataAttribute)
+            {
+                return;
+            }
+
             Trace.TraceInformation("Adding MetadataAttributes for {0}", type.Name);
             var options = osMetadata.GetOptions();
             var metadataByValue = options.ToDictionary(k => k.Value);
