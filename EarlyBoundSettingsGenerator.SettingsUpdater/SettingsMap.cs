@@ -28,7 +28,7 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
             var insertIndex = GetInsertIndexOfAlphabeticallySortedProperty(file, start, end, Property.Name, lineStart);
             if (firstIndex != insertIndex)
             {
-                insertIndex += 6;
+                insertIndex += 5;
             }
             file[insertIndex - 1] += $@"
         [Category(""{Property.Category}"")]
