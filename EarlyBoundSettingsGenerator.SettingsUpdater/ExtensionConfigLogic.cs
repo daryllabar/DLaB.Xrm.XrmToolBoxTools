@@ -39,7 +39,7 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
 
         private void AddPropertyToPoco(string[] file)
         {
-            var insertIndex = GetInsertIndexOfAlphabeticallySortedProperty(file, "public class ExtensionConfig", null, Property.Name, "        public ");
+            var insertIndex = GetInsertIndexOfAlphabeticallySortedProperty(file, "namespace DLaB.EarlyBoundGenerator.Settings.POCO", null, Property.Name, "        public ", initialInsertOffset:7);
             file[insertIndex - 1] += $@"
         public {Property.PocoType} {Property.Name} {{ get; set; }}";
         }
