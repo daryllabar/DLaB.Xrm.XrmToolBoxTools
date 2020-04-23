@@ -83,6 +83,14 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         #region Debug
 
+        [Category("Debug")]
+        [DisplayName("Wait For Attached Debugger")]
+        [Description("For Debugging Only!  Waits until a debugger is attached to the CrmSvcUtil.exe before processing the command.")]
+        public bool WaitForAttachedDebugger
+        {
+            get => Config.ExtensionConfig.WaitForAttachedDebugger;
+            set => Config.ExtensionConfig.WaitForAttachedDebugger = value;
+        }
 
         #endregion Debug
 

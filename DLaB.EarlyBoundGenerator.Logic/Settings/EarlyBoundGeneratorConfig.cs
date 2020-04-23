@@ -286,6 +286,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 UnmappedProperties = GetValueOrDefault(pocoConfig.UnmappedProperties, defaultConfig.UnmappedProperties),
                 UseDeprecatedOptionSetNaming = pocoConfig.UseDeprecatedOptionSetNaming ?? defaultConfig.UseDeprecatedOptionSetNaming,
                 UseTfsToCheckoutFiles = pocoConfig.UseTfsToCheckoutFiles ?? defaultConfig.UseTfsToCheckoutFiles,
+                WaitForAttachedDebugger = pocoConfig.WaitForAttachedDebugger ?? defaultConfig.WaitForAttachedDebugger,
             };
 
             ExtensionArguments = AddMissingArguments(poco.ExtensionArguments, @default.ExtensionArguments);

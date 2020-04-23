@@ -173,6 +173,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// Uses TFS to checkout files
         /// </summary>
         public bool UseTfsToCheckoutFiles { get; set; }
+        /// <summary>
+        /// For Debugging Only!
+        /// Waits until a debugger is attached to the CrmSvcUtil.exe before processing the command.
+        /// </summary>
+        public bool WaitForAttachedDebugger { get; set; }
 
         #region NonSerialized Properties
 
@@ -245,6 +250,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     "SalesOrderDetail:SalesOrderStateCode|",
                 UseDeprecatedOptionSetNaming = false,
                 UseTfsToCheckoutFiles = false,
+                WaitForAttachedDebugger = false,
             };
         }
     }
@@ -295,5 +301,6 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? RemoveRuntimeVersionComment { get; set; }
         public bool? UseDeprecatedOptionSetNaming { get; set; }
         public bool? UseTfsToCheckoutFiles { get; set; }
+        public bool? WaitForAttachedDebugger { get; set; }
     }
 }

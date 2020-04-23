@@ -257,7 +257,8 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "ReplaceOptionSetPropertiesWithEnum", extensions.ReplaceOptionSetPropertiesWithEnum.ToString()) |
                     UpdateConfigAppSetting(file, "UseDeprecatedOptionSetNaming", extensions.UseDeprecatedOptionSetNaming.ToString()) |
                     UpdateConfigAppSetting(file, "UnmappedProperties", extensions.UnmappedProperties) |
-                    UpdateConfigAppSetting(file, "UseTfsToCheckoutFiles", extensions.UseTfsToCheckoutFiles.ToString())
+                    UpdateConfigAppSetting(file, "UseTfsToCheckoutFiles", extensions.UseTfsToCheckoutFiles.ToString()) |
+                    UpdateConfigAppSetting(file, "WaitForAttachedDebugger", extensions.WaitForAttachedDebugger.ToString())
                 )
                 {
                     file.Save(ConfigurationSaveMode.Minimal);

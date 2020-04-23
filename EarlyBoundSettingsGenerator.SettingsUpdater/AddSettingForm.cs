@@ -82,6 +82,7 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
             new EarlyBoundGeneratorConfig(info).UpdateFile();
             new EarlyBoundGeneratorConfigLogic(info).UpdateFile();
             new SettingsMap(info).UpdateFile();
+            MessageBox.Show("Finished!", "Property Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private bool MissingValue(Control ctrl, string value)
