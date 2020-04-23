@@ -24,7 +24,7 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
             file[insertIndex - 1] += $@"
         [Category(""{Property.Category}"")]
         [DisplayName(""{Property.DisplayName}"")]
-        [Description(""{Property.Description}"")]
+        [Description(""{Property.Description.Replace(Environment.NewLine, "  ")}"")]
         public {Property.Type} {Property.Name}
         {{
             get => Config.ExtensionConfig.{Property.Name};

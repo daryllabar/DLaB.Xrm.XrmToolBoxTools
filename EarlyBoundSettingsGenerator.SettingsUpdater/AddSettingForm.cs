@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Source.DLaB.Common;
 
 namespace EarlyBoundSettingsGenerator.SettingsUpdater
 {
@@ -19,7 +11,7 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
 
         public string Type
         {
-            get => TypeCmb.SelectedText;
+            get => TypeCmb.SelectedItem.ToString();
             set => TypeCmb.SelectedIndex = TypeCmb.FindStringExact(value);
         }
 
@@ -37,13 +29,13 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
 
         public string DisplayName
         {
-            get => DefaultValueTxt.Text;
-            set => DefaultValueTxt.Text = value;
+            get => DisplayNameTxt.Text;
+            set => DisplayNameTxt.Text = value;
         }
 
         public string Category
         {
-            get => CategoryCmb.SelectedText;
+            get => CategoryCmb.SelectedItem.ToString();
             set => CategoryCmb.SelectedIndex = CategoryCmb.FindStringExact(value);
         }
 
@@ -116,9 +108,9 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
             }
         }
 
-        private void NameTxt_TextChanged(object sender, EventArgs e)
+        private void NameTxt_Leave(object sender, EventArgs e)
         {
-            DisplayName = PropertyName;
+            DisplayName = PropertyName.SpaceOutCamelCase();
         }
     }
 }

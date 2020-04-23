@@ -1,4 +1,4 @@
-﻿using Source.DLaB.Common;
+using Source.DLaB.Common;
 using Source.DLaB.Common.VersionControl;
 using System;
 using System.Collections.Generic;
@@ -234,9 +234,9 @@ namespace DLaB.EarlyBoundGenerator.Settings
             CrmSvcUtilRelativePath = poco.CrmSvcUtilRelativePath ?? @default.CrmSvcUtilRelativePath;
             RemoveObsoleteValues(poco, @default);
 
-            AudibleCompletionNotification = poco.AudibleCompletionNotification.GetValueOrDefault(@default.AudibleCompletionNotification);
-            IncludeCommandLine = poco.IncludeCommandLine.GetValueOrDefault(@default.IncludeCommandLine);
-            MaskPassword = poco.MaskPassword.GetValueOrDefault(@default.MaskPassword);
+            AudibleCompletionNotification = poco.AudibleCompletionNotification ?? @default.AudibleCompletionNotification;
+            IncludeCommandLine = poco.IncludeCommandLine ?? @default.IncludeCommandLine;
+            MaskPassword = poco.MaskPassword ?? @default.MaskPassword;
 
 
             UpdateObsoleteSettings(poco, pocoConfig, @default);
@@ -252,25 +252,25 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 ActionPrefixesWhitelist = GetValueOrDefault(pocoConfig.ActionPrefixesWhitelist, defaultConfig.ActionPrefixesWhitelist),
                 ActionsWhitelist = GetValueOrDefault(pocoConfig.ActionsWhitelist, defaultConfig.ActionsWhitelist),
                 ActionsToSkip = GetValueOrDefault(pocoConfig.ActionsToSkip, defaultConfig.ActionsToSkip),
-                AddDebuggerNonUserCode = pocoConfig.AddDebuggerNonUserCode.GetValueOrDefault(defaultConfig.AddDebuggerNonUserCode),
-                AddNewFilesToProject = pocoConfig.AddNewFilesToProject.GetValueOrDefault(defaultConfig.AddNewFilesToProject),
-                CreateOneFilePerAction = pocoConfig.CreateOneFilePerAction.GetValueOrDefault(defaultConfig.CreateOneFilePerAction),
-                CreateOneFilePerEntity = pocoConfig.CreateOneFilePerEntity.GetValueOrDefault(defaultConfig.CreateOneFilePerEntity),
-                CreateOneFilePerOptionSet = pocoConfig.CreateOneFilePerOptionSet.GetValueOrDefault(defaultConfig.CreateOneFilePerOptionSet),
-                DeleteFilesFromOutputFolders = pocoConfig.DeleteFilesFromOutputFolders.GetValueOrDefault(defaultConfig.DeleteFilesFromOutputFolders),
+                AddDebuggerNonUserCode = pocoConfig.AddDebuggerNonUserCode ?? defaultConfig.AddDebuggerNonUserCode,
+                AddNewFilesToProject = pocoConfig.AddNewFilesToProject ?? defaultConfig.AddNewFilesToProject,
+                CreateOneFilePerAction = pocoConfig.CreateOneFilePerAction ?? defaultConfig.CreateOneFilePerAction,
+                CreateOneFilePerEntity = pocoConfig.CreateOneFilePerEntity ?? defaultConfig.CreateOneFilePerEntity,
+                CreateOneFilePerOptionSet = pocoConfig.CreateOneFilePerOptionSet ?? defaultConfig.CreateOneFilePerOptionSet,
+                DeleteFilesFromOutputFolders = pocoConfig.DeleteFilesFromOutputFolders ?? defaultConfig.DeleteFilesFromOutputFolders,
                 EntitiesToSkip = GetValueOrDefault(pocoConfig.EntitiesToSkip, defaultConfig.EntitiesToSkip),
                 EntitiesWhitelist = GetValueOrDefault(pocoConfig.EntitiesWhitelist, defaultConfig.EntitiesWhitelist),
                 EntityAttributeSpecifiedNames = GetValueOrDefault(pocoConfig.EntityAttributeSpecifiedNames, defaultConfig.EntityAttributeSpecifiedNames),
                 EntityPrefixesToSkip = GetValueOrDefault(pocoConfig.EntityPrefixesToSkip, defaultConfig.EntityPrefixesToSkip),
                 EntityPrefixesWhitelist = GetValueOrDefault(pocoConfig.EntityPrefixesWhitelist, defaultConfig.EntityPrefixesWhitelist),
-                GenerateActionAttributeNameConsts = pocoConfig.GenerateActionAttributeNameConsts.GetValueOrDefault(defaultConfig.GenerateActionAttributeNameConsts),
-                GenerateAttributeNameConsts = pocoConfig.GenerateAttributeNameConsts.GetValueOrDefault(defaultConfig.GenerateAttributeNameConsts),
-                GenerateAnonymousTypeConstructor = pocoConfig.GenerateAnonymousTypeConstructor.GetValueOrDefault(defaultConfig.GenerateAnonymousTypeConstructor),
-                GenerateConstructorsSansLogicalName = pocoConfig.GenerateConstructorsSansLogicalName.GetValueOrDefault(defaultConfig.GenerateConstructorsSansLogicalName),
-                GenerateEntityRelationships = pocoConfig.GenerateEntityRelationships.GetValueOrDefault(defaultConfig.GenerateEntityRelationships),
-                GenerateEntityTypeCode = pocoConfig.GenerateEntityTypeCode.GetValueOrDefault(defaultConfig.GenerateEntityTypeCode),
-                GenerateEnumProperties = pocoConfig.GenerateEnumProperties.GetValueOrDefault(defaultConfig.GenerateEnumProperties),
-                GenerateOnlyReferencedOptionSets = pocoConfig.GenerateOnlyReferencedOptionSets.GetValueOrDefault(defaultConfig.GenerateOnlyReferencedOptionSets),
+                GenerateActionAttributeNameConsts = pocoConfig.GenerateActionAttributeNameConsts ?? defaultConfig.GenerateActionAttributeNameConsts,
+                GenerateAttributeNameConsts = pocoConfig.GenerateAttributeNameConsts ?? defaultConfig.GenerateAttributeNameConsts,
+                GenerateAnonymousTypeConstructor = pocoConfig.GenerateAnonymousTypeConstructor ?? defaultConfig.GenerateAnonymousTypeConstructor,
+                GenerateConstructorsSansLogicalName = pocoConfig.GenerateConstructorsSansLogicalName ?? defaultConfig.GenerateConstructorsSansLogicalName,
+                GenerateEntityRelationships = pocoConfig.GenerateEntityRelationships ?? defaultConfig.GenerateEntityRelationships,
+                GenerateEntityTypeCode = pocoConfig.GenerateEntityTypeCode ?? defaultConfig.GenerateEntityTypeCode,
+                GenerateEnumProperties = pocoConfig.GenerateEnumProperties ?? defaultConfig.GenerateEnumProperties,
+                GenerateOnlyReferencedOptionSets = pocoConfig.GenerateOnlyReferencedOptionSets ?? defaultConfig.GenerateOnlyReferencedOptionSets,
                 InvalidCSharpNamePrefix = pocoConfig.InvalidCSharpNamePrefix ?? defaultConfig.InvalidCSharpNamePrefix,
                 MakeAllFieldsEditable = pocoConfig.MakeAllFieldsEditable ?? defaultConfig.MakeAllFieldsEditable,
                 MakeReadonlyFieldsEditable = pocoConfig.MakeReadonlyFieldsEditable ?? defaultConfig.MakeReadonlyFieldsEditable,
@@ -281,11 +281,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 OptionSetsToSkip = GetValueOrDefault(pocoConfig.OptionSetsToSkip, defaultConfig.OptionSetsToSkip),
                 ProjectNameForEarlyBoundFiles = pocoConfig.ProjectNameForEarlyBoundFiles ?? defaultConfig.ProjectNameForEarlyBoundFiles,
                 PropertyEnumMappings = GetValueOrDefault(pocoConfig.PropertyEnumMappings, defaultConfig.PropertyEnumMappings),
-                RemoveRuntimeVersionComment = pocoConfig.RemoveRuntimeVersionComment.GetValueOrDefault(defaultConfig.RemoveRuntimeVersionComment),
-                ReplaceOptionSetPropertiesWithEnum = pocoConfig.ReplaceOptionSetPropertiesWithEnum.GetValueOrDefault(defaultConfig.ReplaceOptionSetPropertiesWithEnum),
+                RemoveRuntimeVersionComment = pocoConfig.RemoveRuntimeVersionComment ?? defaultConfig.RemoveRuntimeVersionComment,
+                ReplaceOptionSetPropertiesWithEnum = pocoConfig.ReplaceOptionSetPropertiesWithEnum ?? defaultConfig.ReplaceOptionSetPropertiesWithEnum,
                 UnmappedProperties = GetValueOrDefault(pocoConfig.UnmappedProperties, defaultConfig.UnmappedProperties),
-                UseDeprecatedOptionSetNaming = pocoConfig.UseDeprecatedOptionSetNaming.GetValueOrDefault(defaultConfig.UseDeprecatedOptionSetNaming),
-                UseTfsToCheckoutFiles = pocoConfig.UseTfsToCheckoutFiles.GetValueOrDefault(defaultConfig.UseTfsToCheckoutFiles),
+                UseDeprecatedOptionSetNaming = pocoConfig.UseDeprecatedOptionSetNaming ?? defaultConfig.UseDeprecatedOptionSetNaming,
+                UseTfsToCheckoutFiles = pocoConfig.UseTfsToCheckoutFiles ?? defaultConfig.UseTfsToCheckoutFiles,
             };
 
             ExtensionArguments = AddMissingArguments(poco.ExtensionArguments, @default.ExtensionArguments);

@@ -34,7 +34,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,6 +54,22 @@
     <Compile Include="AddSettingForm.Designer.cs">
       <DependentUpon>AddSettingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="App_Packages\DLaB.Common.Source.1.2.0.7\Config.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.2.0.7\ConfigKeyValueSplitInfo.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.2.0.7\ConfigKeyValuesSplitInfo.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.2.0.7\ConfigProvider.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.2.0.7\ConfigValuesSplitInfo.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.2.0.7\Exceptions\DictionaryDuplicateKeyException.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.2.0.7\Exceptions\EnumCaseUndefinedException.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.2.0.7\Exceptions\TypeArgumentException.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.2.0.7\Extensions.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.2.0.7\ProcessExecutor.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.2.0.7\ProcessExecutorInfo.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.2.0.7\TypeSafeEnumBase.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.2.0.7\VersionControl\ISourceControlProvider.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.2.0.7\VersionControl\NoSourceControlProvider.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.2.0.7\VersionControl\SourceControl.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.2.0.7\VersionControl\VsTfsSourceControlProvider.cs" />
     <Compile Include="EarlyBoundGeneratorConfigLogic.cs" />
     <Compile Include="EarlyBoundGeneratorConfig.cs" />
     <Compile Include="SettingsMap.cs" />
@@ -72,6 +90,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

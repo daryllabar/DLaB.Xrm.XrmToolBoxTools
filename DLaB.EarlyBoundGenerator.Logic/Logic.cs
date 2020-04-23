@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
@@ -258,7 +258,7 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "UseDeprecatedOptionSetNaming", extensions.UseDeprecatedOptionSetNaming.ToString()) |
                     UpdateConfigAppSetting(file, "UnmappedProperties", extensions.UnmappedProperties) |
                     UpdateConfigAppSetting(file, "UseTfsToCheckoutFiles", extensions.UseTfsToCheckoutFiles.ToString())
-                    )
+                )
                 {
                     file.Save(ConfigurationSaveMode.Minimal);
                 }

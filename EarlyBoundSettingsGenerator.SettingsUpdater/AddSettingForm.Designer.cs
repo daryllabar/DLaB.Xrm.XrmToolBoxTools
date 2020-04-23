@@ -30,7 +30,7 @@
         {
             this.TypeCmb = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.AddSetting = new System.Windows.Forms.Button();
+            this.AddSettingBtn = new System.Windows.Forms.Button();
             this.NameTxt = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -70,15 +70,15 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Type:";
             // 
-            // AddSetting
+            // AddSettingBtn
             // 
-            this.AddSetting.Location = new System.Drawing.Point(3, 3);
-            this.AddSetting.Name = "AddSetting";
-            this.AddSetting.Size = new System.Drawing.Size(188, 33);
-            this.AddSetting.TabIndex = 3;
-            this.AddSetting.Text = "Add";
-            this.AddSetting.UseVisualStyleBackColor = true;
-            this.AddSetting.Click += new System.EventHandler(this.AddSetting_Click);
+            this.AddSettingBtn.Location = new System.Drawing.Point(3, 3);
+            this.AddSettingBtn.Name = "AddSettingBtn";
+            this.AddSettingBtn.Size = new System.Drawing.Size(188, 33);
+            this.AddSettingBtn.TabIndex = 6;
+            this.AddSettingBtn.Text = "Add";
+            this.AddSettingBtn.UseVisualStyleBackColor = true;
+            this.AddSettingBtn.Click += new System.EventHandler(this.AddSetting_Click);
             // 
             // NameTxt
             // 
@@ -87,8 +87,8 @@
             this.NameTxt.Location = new System.Drawing.Point(114, 65);
             this.NameTxt.Name = "NameTxt";
             this.NameTxt.Size = new System.Drawing.Size(413, 20);
-            this.NameTxt.TabIndex = 1;
-            this.NameTxt.TextChanged += new System.EventHandler(this.NameTxt_TextChanged);
+            this.NameTxt.TabIndex = 2;
+            this.NameTxt.Leave += new System.EventHandler(this.NameTxt_Leave);
             // 
             // tableLayoutPanel1
             // 
@@ -105,11 +105,11 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(515, 45);
-            this.tableLayoutPanel1.TabIndex = 4;
+            this.tableLayoutPanel1.TabIndex = 6;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.AddSetting);
+            this.panel1.Controls.Add(this.AddSettingBtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(160, 3);
             this.panel1.Name = "panel1";
@@ -124,7 +124,7 @@
             this.DescriptionTxt.Multiline = true;
             this.DescriptionTxt.Name = "DescriptionTxt";
             this.DescriptionTxt.Size = new System.Drawing.Size(413, 104);
-            this.DescriptionTxt.TabIndex = 2;
+            this.DescriptionTxt.TabIndex = 5;
             // 
             // label2
             // 
@@ -160,7 +160,7 @@
             this.DefaultValueTxt.Location = new System.Drawing.Point(114, 39);
             this.DefaultValueTxt.Name = "DefaultValueTxt";
             this.DefaultValueTxt.Size = new System.Drawing.Size(413, 20);
-            this.DefaultValueTxt.TabIndex = 8;
+            this.DefaultValueTxt.TabIndex = 1;
             // 
             // CategoryCmb
             // 
@@ -177,7 +177,7 @@
             this.CategoryCmb.Location = new System.Drawing.Point(114, 117);
             this.CategoryCmb.Name = "CategoryCmb";
             this.CategoryCmb.Size = new System.Drawing.Size(413, 21);
-            this.CategoryCmb.TabIndex = 10;
+            this.CategoryCmb.TabIndex = 4;
             // 
             // label5
             // 
@@ -195,7 +195,7 @@
             this.DisplayNameTxt.Location = new System.Drawing.Point(114, 91);
             this.DisplayNameTxt.Name = "DisplayNameTxt";
             this.DisplayNameTxt.Size = new System.Drawing.Size(413, 20);
-            this.DisplayNameTxt.TabIndex = 11;
+            this.DisplayNameTxt.TabIndex = 3;
             // 
             // label6
             // 
@@ -208,6 +208,7 @@
             // 
             // AddSettingForm
             // 
+            this.AcceptButton = this.AddSettingBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(539, 311);
@@ -238,7 +239,7 @@
 
         private System.Windows.Forms.ComboBox TypeCmb;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button AddSetting;
+        private System.Windows.Forms.Button AddSettingBtn;
         private System.Windows.Forms.TextBox NameTxt;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;

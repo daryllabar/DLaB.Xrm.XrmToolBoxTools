@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing.Design;
@@ -82,7 +82,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         #endregion Actions
 
         #region Debug
-
 
 
         #endregion Debug

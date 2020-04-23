@@ -26,7 +26,7 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
             var lineStart = "                    UpdateConfigAppSetting(file, ";
             var lastIndex = GetInsertIndexOfAlphabeticallySortedProperty(file, start, end, "z", lineStart);
             var insertIndex = GetInsertIndexOfAlphabeticallySortedProperty(file, start, end, name, lineStart);
-            file[insertIndex - 1] += $@"
+            file[insertIndex - 1] += $@"{(lastIndex == insertIndex ? " |" : string.Empty)}
                     UpdateConfigAppSetting(file, ""{Property.Name}"", extensions.{Property.Name}{Property.ToStringCall}){(lastIndex == insertIndex ? string.Empty : " |")}";
         }
     }

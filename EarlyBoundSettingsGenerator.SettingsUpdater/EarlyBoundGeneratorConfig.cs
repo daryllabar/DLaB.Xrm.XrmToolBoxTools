@@ -20,8 +20,17 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
         private void AddToConstructorExtensionConfigInitialization(string[] file)
         {
             var insertIndex = GetInsertIndexOfAlphabeticallySortedProperty(file, "ExtensionConfig = new ExtensionConfig", "};", Property.Name, "                ", 0);
-            file[insertIndex - 1] += $@"
+            if (Property.Type == "bool")
+            {
+                file[insertIndex - 1] += $@"
+                {Property.Name} = pocoConfig.{Property.Name} ?? defaultConfig.{Property.Name},";
+            }
+            else
+            {
+                file[insertIndex - 1] += $@"
                 {Property.Name} = GetValueOrDefault(pocoConfig.{Property.Name}, defaultConfig.{Property.Name}),";
+
+            }
         }
     }
 }

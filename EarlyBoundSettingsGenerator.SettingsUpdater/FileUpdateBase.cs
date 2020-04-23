@@ -29,7 +29,7 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
 
         protected string GetGeneratorSettingsFilePath(string fileName)
         {
-            var path = Path.Combine(SolutionDirectory.FullName, LogicSettingsRelativePath, fileName);
+            var path = Path.Combine(SolutionDirectory.FullName, GeneratorSettingsRelativePath, fileName);
             AssertFileExists(path);
             return path;
         }
@@ -71,7 +71,8 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
                     }
                     continue;
                 }
-                if (line.StartsWith(tooFarString))
+                if (tooFarString != null 
+                    && line.StartsWith(tooFarString))
                 {
                     break;
                 }
