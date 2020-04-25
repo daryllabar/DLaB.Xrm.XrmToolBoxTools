@@ -591,7 +591,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             {
                 if (isCsFile)
                 {
-                    value = System.IO.Path.GetDirectoryName(value);
+                    value = System.IO.Path.GetDirectoryName(value) + @"\";
                 }
             }
             else if (!isCsFile)

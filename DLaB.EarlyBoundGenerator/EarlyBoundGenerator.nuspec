@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator</id>
-	  <version>1.2020.4.21</version>
+	  <version>1.2020.4.24</version>
 	  <title>Early Bound Generator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,10 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V1.2020.4.21
+    <releaseNotes>V1.2020.4.24
+Create pit of success for avoiding output folder for entities with dot in the folder name issues #234
+
+V1.2020.4.24
 Add Settings for Add option for Metadata Attribute Properties #232
 
 V1.2020.4.17

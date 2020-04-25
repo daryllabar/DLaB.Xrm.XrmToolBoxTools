@@ -143,7 +143,7 @@ namespace DLaB.EarlyBoundGenerator
             {
                 if (containsExtension)
                 {
-                    MessageBox.Show(name + @" path must be a directory!", @"Invalid " + name + @" Path", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(name + @" path must be a directory!  Did you forget to add a \\?", @"Invalid " + name + @" Path", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     isValid = false;
                 }
             }
