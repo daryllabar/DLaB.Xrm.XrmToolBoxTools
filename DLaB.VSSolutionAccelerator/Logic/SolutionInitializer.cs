@@ -10,8 +10,8 @@ namespace DLaB.VSSolutionAccelerator.Logic
 {
     public class SolutionInitializer : SolutionEditor
     {
-        public SolutionInitializer(string solutionPath, string templateDirectory, string strongNamePath = null, string nugetPath = null)
-            : base(solutionPath, templateDirectory, strongNamePath, nugetPath)
+        public SolutionInitializer(string solutionPath, string templateDirectory, string strongNamePath = null, NuGetSettings nuGetSettings = null)
+            : base(solutionPath, templateDirectory, strongNamePath, nuGetSettings)
         {
         }
 
@@ -135,11 +135,11 @@ namespace DLaB.VSSolutionAccelerator.Logic
             return project;
         }
 
-        public static void Execute(InitializeSolutionInfo info, string templateDirectory, string strongNamePath = null)
+        public static void Execute(InitializeSolutionInfo info, string templateDirectory, string strongNamePath = null, NuGetSettings nuGetSettings = null)
         {
             Logger.AddDetail($"Starting to process solution '{info.SolutionPath}' using templates from '{templateDirectory}'");
             CreateSolution(info);
-            var logic = new SolutionInitializer(info.SolutionPath, templateDirectory, strongNamePath);
+            var logic = new SolutionInitializer(info.SolutionPath, templateDirectory, strongNamePath, nuGetSettings);
             logic.Projects = logic.GetProjectInfos(info);
             logic.CreateProjects(info.RootNamespace);
             UpdateSolution(info, logic);

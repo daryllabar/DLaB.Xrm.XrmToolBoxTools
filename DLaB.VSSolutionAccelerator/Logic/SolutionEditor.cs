@@ -9,8 +9,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
 {
     public class SolutionEditor
     {
-        public string NuGetPath { get; }
-        public string NugetContentInstallerPath { get; }
+        public NuGetSettings NuGetSettings { get; set; }
         public string OutputBaseDirectory { get; }
         public Dictionary<string, ProjectInfo> Projects { get; set; }
         public string SolutionPath { get; }
@@ -19,12 +18,10 @@ namespace DLaB.VSSolutionAccelerator.Logic
 
         public SolutionEditor(string solutionPath, 
                               string templateDirectory, 
-                              string strongNamePath = null,  
-                              string nugetPath = null, 
-                              string nugetContentInstallerPath = null)
+                              string strongNamePath = null,
+                              NuGetSettings nuGetSettings = null)
         {
-            NuGetPath = nugetPath ?? Path.Combine(templateDirectory, "bin\\nuget.exe");
-            NugetContentInstallerPath = nugetContentInstallerPath ?? Path.Combine(templateDirectory, "bin\\nugetContentInstaller.exe");
+            NuGetSettings = nuGetSettings ?? new NuGetSettings(templateDirectory);
             StrongNamePath = strongNamePath ?? Path.Combine(templateDirectory, "bin\\sn.exe");
             TemplateDirectory = templateDirectory;
             SolutionPath = solutionPath;
@@ -33,7 +30,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
 
         protected void ExecuteNuGetRestoreForSolution()
         {
-            var cmd = new ProcessExecutorInfo(NuGetPath, $"restore \"{SolutionPath}\" -NonInteractive");
+            var cmd = new ProcessExecutorInfo(NuGetSettings.ExePath, $"restore \"{SolutionPath}\" -NonInteractive");
             Logger.Show("Restoring Nuget for the solution.");
             Logger.AddDetail(cmd.FileName + " " + cmd.Arguments);
             var results = ProcessExecutor.ExecuteCmd(cmd);
@@ -43,13 +40,14 @@ namespace DLaB.VSSolutionAccelerator.Logic
 
         protected void AddNugetPostUpdateCommandsToProjects(Version xrmPackageVersion, Dictionary<string, ProjectInfo> projects)
         {
-            var mapper = new NuGetMapper(NuGetPath, xrmPackageVersion);
             foreach (var project in projects.Values.Where(p => p.Type != ProjectInfo.ProjectType.SharedProj))
             {
+                var mapper = new NuGetMapper(NuGetSettings, 
+                    xrmPackageVersion, 
+                    Path.Combine(TemplateDirectory, project.Key, "packages.config"), 
+                    Path.Combine(OutputBaseDirectory, project.Name, "packages.config"));
                 project.AddNugetPostUpdateCommands(mapper,
-                    Path.Combine(TemplateDirectory, project.Key, "packages.config"),
-                    Path.Combine(OutputBaseDirectory, project.Name, "packages.config"),
-                    NugetContentInstallerPath,
+                    NuGetSettings.ContentInstallerPath,
                     OutputBaseDirectory);
             }
         }

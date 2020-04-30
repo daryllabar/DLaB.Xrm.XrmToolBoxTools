@@ -42,6 +42,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
         {
             public const string ChooseEnd = "</Choose>";
             public const string ChooseStart = "<Choose>";
+            public const string ItemGroupEmpty = "<ItemGroup />";
             public const string ItemGroupEnd = "</ItemGroup>";
             public const string ItemGroupStart = "<ItemGroup>";
             public const string ImportStart = "<Import Project";
@@ -111,7 +112,8 @@ namespace DLaB.VSSolutionAccelerator.Logic
         private void ParseItemGroup(string line)
         {
             if (IsStartOfState(line) 
-                || line.TrimStart().StartsWith(LineMarkers.ItemGroupEnd))
+                || line.TrimStart().StartsWith(LineMarkers.ItemGroupEnd)
+                || line.TrimStart() == LineMarkers.ItemGroupEmpty)
             {
                 return;
             }

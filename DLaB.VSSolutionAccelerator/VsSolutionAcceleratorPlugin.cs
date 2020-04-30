@@ -70,6 +70,7 @@ namespace DLaB.VSSolutionAccelerator
                 Settings = settings;
                 LogInfo("Settings found and loaded");
             }
+            Settings.Initialize();
         }
 
         private void VsSolutionAcceleratorPlugin_OnCloseTool(object sender, EventArgs e)
@@ -276,17 +277,21 @@ namespace DLaB.VSSolutionAccelerator
             WorkAsync(new WorkAsyncInfo("Performing requested operations...", (w, e) => // Work To Do Asynchronously
             {
                 var templatePath = Path.GetFullPath(Path.Combine(Paths.PluginsPath, Settings.TemplateFolder));
+                var nuGetSettings = new Logic.NuGetSettings(templatePath)
+                {
+                    Sources = Settings.NugetSourcesList
+                };
                 if (e.Argument is InitializeSolutionInfo solutionInfo)
                 {
                     if (solutionInfo.InstallSnippets)
                     {
                         Logic.VisualStudio.InstallCodeSnippets(Paths.PluginsPath);
                     }
-                    Logic.SolutionInitializer.Execute(solutionInfo, templatePath);
+                    Logic.SolutionInitializer.Execute(solutionInfo, templatePath, nuGetSettings: nuGetSettings);
                 }
                 else if (e.Argument is AddProjectToSolutionInfo projectInfo)
                 {
-                    Logic.SolutionUpdater.Execute(projectInfo, templatePath);
+                    Logic.SolutionUpdater.Execute(projectInfo, templatePath, nuGetSettings: nuGetSettings);
                 }
             }).WithLogger(this, TxtOutput, info));
         }

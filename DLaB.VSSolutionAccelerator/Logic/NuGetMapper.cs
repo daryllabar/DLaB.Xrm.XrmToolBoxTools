@@ -17,28 +17,32 @@ namespace DLaB.VSSolutionAccelerator.Logic
             { 5, "2011" }
         };
 
-        public string NuGetPath { get; set; }
-        public Version XrmVersion { get; set; }
+        public NuGetSettings NuGetSettings { get; }
+        public Version XrmVersion { get; }
+        public string SourcePackagesConfigPath { get; }
+        public string DestinationPackagesConfigPath { get; }
 
-        public NuGetMapper(string nuGetPath, Version xrmVersion)
+        public NuGetMapper(NuGetSettings nuGetSettings, Version xrmVersion, string sourcePackagesConfigPath, string destinationPackagesConfigPath)
         {
-            NuGetPath = nuGetPath;
+            NuGetSettings = nuGetSettings;
             XrmVersion = xrmVersion;
+            SourcePackagesConfigPath = sourcePackagesConfigPath;
+            DestinationPackagesConfigPath = destinationPackagesConfigPath;
         }
 
-        public void AddUpdateCommands(List<ProcessExecutorInfo> commands, string templatePackagesPath, string packagesPath, string[] packages = null)
+        public void AddUpdateCommands(List<ProcessExecutorInfo> commands)
         {
-            packages = packages ?? File.ReadAllLines(templatePackagesPath);
+            var packages = File.ReadAllLines(SourcePackagesConfigPath);
             var count = commands.Count;
-            AddUpdateCommandForXrmUnitTest(commands, packagesPath, packages);
-            AddUpdateCommandForXrmPackages(commands, packagesPath, packages, PackageLister.Ids.MicrosoftCrmSdkWorkflow, PackageLister.Ids.CoreXrmAssemblies);
+            AddUpdateCommandForXrmUnitTest(commands, packages);
+            AddUpdateCommandForXrmPackages(commands, packages, PackageLister.Ids.MicrosoftCrmSdkWorkflow, PackageLister.Ids.CoreXrmAssemblies);
             if (count != commands.Count)
             {
-                commands.Insert(count, new ProcessExecutorInfo(NuGetPath, $"restore \"{packagesPath}\" -NonInteractive -SolutionDirectory \"{Directory.GetParent(packagesPath).Parent?.FullName}\""));
+                commands.Insert(count, new ProcessExecutorInfo(NuGetSettings.ExePath, GetRestoreCommand()));
             }
         }
 
-        private void AddUpdateCommandForXrmUnitTest(List<ProcessExecutorInfo> commands, string packagesPath, string[] packages)
+        private void AddUpdateCommandForXrmUnitTest(List<ProcessExecutorInfo> commands, string[] packages)
         {
             var line = packages.FirstOrDefault(p => p.Contains("XrmUnitTest"));
             if (line == null)
@@ -47,23 +51,18 @@ namespace DLaB.VSSolutionAccelerator.Logic
             }
             var packageId = line.SubstringByString("id=\"", "\"");
             var version = new Version(line.SubstringByString("version=\"", "\""));
-            NuGetPackage newest = null;
+            var newest = PackageLister.GetPackagesbyId(GetXrmUnitTestId()).GetNewest();
 
-            if (packageId == GetXrmUnitTestId())
+            if (packageId == GetXrmUnitTestId() && newest.Version == version)
             {
-                // CheckForNewerVersion
-                newest = PackageLister.GetPackagesbyId(packageId).GetNewest();
-                if (newest.Version == version)
-                {
-                    // Latest Version of XrmUnitTest is in use, no need to update
-                    return;
-                }
+                // Latest Version of XrmUnitTest is in use, no need to update
+                return;
             }
-            newest = newest ?? PackageLister.GetPackagesbyId(GetXrmUnitTestId()).GetNewest();
-            commands.Add(new ProcessExecutorInfo(NuGetPath, $"update \"{packagesPath}\" -NonInteractive -Id {newest.Id} -Version {newest.Version}"));
+
+            AddUpdateCommandForPackage(commands, newest);
         }
 
-        private void AddUpdateCommandForXrmPackages(List<ProcessExecutorInfo> commands, string packagesPath, string[] packages, params string[] ids)
+        private void AddUpdateCommandForXrmPackages(List<ProcessExecutorInfo> commands, string[] packages, params string[] ids)
         {
             foreach (var id in ids)
             {
@@ -75,15 +74,33 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 var version = new Version(line.SubstringByString("version=\"", "\""));
                 if (version.Major != XrmVersion.Major)
                 {
-                    AddUpdateCommandForPackage(commands, packagesPath, id);
+                    var newestForMajorRevision = PackageLister.GetPackagesbyId(id).GetNewestForMajorVersion(XrmVersion.Major);
+                    AddUpdateCommandForPackage(commands, newestForMajorRevision);
                 }
             }
         }
 
-        private void AddUpdateCommandForPackage(List<ProcessExecutorInfo> commands, string packagesPath, string id)
+        private void AddUpdateCommandForPackage(List<ProcessExecutorInfo> commands, NuGetPackage package)
         {
-            var newest = PackageLister.GetPackagesbyId(id).GetNewestForMajorVersion(XrmVersion.Major);
-            commands.Add(new ProcessExecutorInfo(NuGetPath, $"update \"{packagesPath}\" -NonInteractive -Id {newest.Id} -Version {newest.Version}"));
+            commands.Add(new ProcessExecutorInfo(NuGetSettings.ExePath, GetUpdateCommand(package)));
+        }
+
+        private string GetUpdateCommand(NuGetPackage package)
+        {
+            return $"update \"{DestinationPackagesConfigPath}\" {GetNuGetArguments()}-Id {package.Id} -Version {package.Version}";
+        }
+
+        private string GetRestoreCommand()
+        {
+            return $"restore \"{DestinationPackagesConfigPath}\" {GetNuGetArguments()}-SolutionDirectory \"{Directory.GetParent(DestinationPackagesConfigPath).Parent?.FullName}\"";
+        }
+
+        private string GetNuGetArguments()
+        {
+            var sources = NuGetSettings.Sources.Count == 0
+                ? string.Empty
+                : string.Join(string.Empty, NuGetSettings.Sources.Select(s => "-Source \"" + s + "\" "));
+            return "-NonInteractive " + sources;
         }
 
         private string GetXrmUnitTestId()

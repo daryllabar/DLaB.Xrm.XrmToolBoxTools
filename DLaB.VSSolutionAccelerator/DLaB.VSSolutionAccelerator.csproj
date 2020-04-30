@@ -246,6 +246,7 @@
     <Compile Include="App_Packages\DLaB.Xrm.Source.3.1.0.0\Serialization\SerializableRelatedEntityCollection.cs" />
     <Compile Include="App_Packages\DLaB.Xrm.Source.3.1.0.0\TypedQueryExpression.cs" />
     <Compile Include="InitializeSolutionInfo.cs" />
+    <Compile Include="Logic\NuGetSettings.cs" />
     <Compile Include="Logic\SolutionUpdater.cs" />
     <Compile Include="Logic\SolutionEditor.cs" />
     <Compile Include="Logic\SolutionInitializer.cs" />

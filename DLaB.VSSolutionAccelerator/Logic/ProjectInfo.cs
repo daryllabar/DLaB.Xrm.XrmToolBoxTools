@@ -215,15 +215,15 @@ namespace DLaB.VSSolutionAccelerator.Logic
             }
         }
 
-        public void AddNugetPostUpdateCommands(NuGetMapper nuGetMapper, string templatePackagesPath, string packagesPath, string nugetContentInstallerPath, string solutionDirectory)
+        public void AddNugetPostUpdateCommands(NuGetMapper nuGetMapper, string nugetContentInstallerPath, string solutionDirectory)
         {
-            if (!File.Exists(templatePackagesPath))
+            if (!File.Exists(nuGetMapper.SourcePackagesConfigPath))
             {
                 return;
             }
 
-            nuGetMapper.AddUpdateCommands(PostUpdateCommands, templatePackagesPath, packagesPath);
-            var packages = File.ReadAllText(templatePackagesPath);
+            nuGetMapper.AddUpdateCommands(PostUpdateCommands);
+            var packages = File.ReadAllText(nuGetMapper.SourcePackagesConfigPath);
             if (packages.Contains("DLaB.Xrm.Source") || packages.Contains("DLaB.Xrm.Common.Source"))
             {
                 PostSolutionRestoreCommands.Add(new ProcessExecutorInfo(nugetContentInstallerPath, $@"""{solutionDirectory}"" ""{Path.Combine(solutionDirectory, Name, Name + "." + GetProjectPostfix())}"""));

@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using DLaB.Log;
 
 namespace DLaB.VSSolutionAccelerator.Logic
 {
     public class SolutionUpdater : SolutionEditor
     {
-        public SolutionUpdater(string solutionPath, string templateDirectory, string strongNamePath = null, string nugetPath = null)
-            : base(solutionPath, templateDirectory, strongNamePath, nugetPath)
+        public SolutionUpdater(string solutionPath, string templateDirectory, string strongNamePath = null, NuGetSettings nuGetSettings = null)
+            : base(solutionPath, templateDirectory, strongNamePath, nuGetSettings)
         { }
 
         public Dictionary<string, ProjectInfo> GetProjectInfos(AddProjectToSolutionInfo info)
@@ -90,10 +89,10 @@ namespace DLaB.VSSolutionAccelerator.Logic
             }
         }
 
-        public static void Execute(AddProjectToSolutionInfo info, string templateDirectory, string strongNamePath = null)
+        public static void Execute(AddProjectToSolutionInfo info, string templateDirectory, string strongNamePath = null, NuGetSettings nuGetSettings = null)
         {
             Logger.AddDetail($"Starting to process solution '{info.SolutionPath}' using templates from '{templateDirectory}'");
-            var adder = new SolutionUpdater(info.SolutionPath, templateDirectory, strongNamePath);
+            var adder = new SolutionUpdater(info.SolutionPath, templateDirectory, strongNamePath, nuGetSettings);
             adder.Projects = adder.GetProjectInfos(info);
             adder.CreateProjects(string.Empty);
             IEnumerable<string> solution = File.ReadAllLines(adder.SolutionPath);
