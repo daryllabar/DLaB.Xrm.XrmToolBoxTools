@@ -187,6 +187,25 @@ namespace DLaB.EarlyBoundGenerator
             {
                 args = p.StartInfo.Arguments.Replace(earlyBoundGeneratorConfig.Password, new string('*', earlyBoundGeneratorConfig.Password.Length));
             }
+            if (earlyBoundGeneratorConfig.MaskPassword && !string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.ConnectionString))
+            {
+                var tmp = earlyBoundGeneratorConfig.ConnectionString;
+                var start = tmp.IndexOf("Password", StringComparison.InvariantCultureIgnoreCase);
+                var end = tmp.IndexOf("=", start, StringComparison.InvariantCultureIgnoreCase);
+                start += end - start + 1;
+                if (tmp.Length <= start + 2)
+                {
+                    return args;
+                }
+
+                end = tmp.IndexOf(tmp[start + 1] == '\'' ? '\'' : ';', start + 1);
+                if (end == -1)
+                {
+                    end = tmp.Length;
+                }
+                args = args.Replace(tmp, tmp.Substring(0, start) + new string('*', end - start) + tmp.Substring(end));
+
+            }
             return args;
         }
 

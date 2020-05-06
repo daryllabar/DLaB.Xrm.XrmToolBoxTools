@@ -241,7 +241,7 @@ namespace DLaB.CrmSvcUtilExtensions
             var skipLine = removeRuntimeVersionComment ? 3 : -1;
             commandLineText = string.IsNullOrWhiteSpace(commandLineText)
                 ? ""
-                : "// Created via this command line: " + commandLineText;
+                : "// Created via this command line: " + commandLineText.Replace(Environment.NewLine, Environment.NewLine + "//");
             return GetNewLines(fileContents, 8, commandLineText, skipLine);
         }
 

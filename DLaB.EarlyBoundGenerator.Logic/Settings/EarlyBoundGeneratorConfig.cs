@@ -228,7 +228,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         private EarlyBoundGeneratorConfig(POCO.Config poco)
         {
             var @default = GetDefault();
-            var defaultConfig = @default.ExtensionConfig;
             var pocoConfig = poco.ExtensionConfig;
 
             CrmSvcUtilRelativePath = poco.CrmSvcUtilRelativePath ?? @default.CrmSvcUtilRelativePath;
@@ -241,57 +240,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
             UpdateObsoleteSettings(poco, pocoConfig, @default);
 
-            string GetValueOrDefault(string value, string defaultValue)
-            {
-                return string.IsNullOrWhiteSpace(value) ? defaultValue : value;
-            }
-
-            ExtensionConfig = new ExtensionConfig
-            {
-                ActionPrefixesToSkip = GetValueOrDefault(pocoConfig.ActionPrefixesToSkip, defaultConfig.ActionPrefixesToSkip),
-                ActionPrefixesWhitelist = GetValueOrDefault(pocoConfig.ActionPrefixesWhitelist, defaultConfig.ActionPrefixesWhitelist),
-                ActionsWhitelist = GetValueOrDefault(pocoConfig.ActionsWhitelist, defaultConfig.ActionsWhitelist),
-                ActionsToSkip = GetValueOrDefault(pocoConfig.ActionsToSkip, defaultConfig.ActionsToSkip),
-                AddDebuggerNonUserCode = pocoConfig.AddDebuggerNonUserCode ?? defaultConfig.AddDebuggerNonUserCode,
-                AddNewFilesToProject = pocoConfig.AddNewFilesToProject ?? defaultConfig.AddNewFilesToProject,
-                AddOptionSetMetadataAttribute = pocoConfig.AddOptionSetMetadataAttribute ?? defaultConfig.AddOptionSetMetadataAttribute,
-                CreateOneFilePerAction = pocoConfig.CreateOneFilePerAction ?? defaultConfig.CreateOneFilePerAction,
-                CreateOneFilePerEntity = pocoConfig.CreateOneFilePerEntity ?? defaultConfig.CreateOneFilePerEntity,
-                CreateOneFilePerOptionSet = pocoConfig.CreateOneFilePerOptionSet ?? defaultConfig.CreateOneFilePerOptionSet,
-                DeleteFilesFromOutputFolders = pocoConfig.DeleteFilesFromOutputFolders ?? defaultConfig.DeleteFilesFromOutputFolders,
-                EntitiesToSkip = GetValueOrDefault(pocoConfig.EntitiesToSkip, defaultConfig.EntitiesToSkip),
-                EntitiesWhitelist = GetValueOrDefault(pocoConfig.EntitiesWhitelist, defaultConfig.EntitiesWhitelist),
-                EntityAttributeSpecifiedNames = GetValueOrDefault(pocoConfig.EntityAttributeSpecifiedNames, defaultConfig.EntityAttributeSpecifiedNames),
-                EntityPrefixesToSkip = GetValueOrDefault(pocoConfig.EntityPrefixesToSkip, defaultConfig.EntityPrefixesToSkip),
-                EntityPrefixesWhitelist = GetValueOrDefault(pocoConfig.EntityPrefixesWhitelist, defaultConfig.EntityPrefixesWhitelist),
-                GenerateActionAttributeNameConsts = pocoConfig.GenerateActionAttributeNameConsts ?? defaultConfig.GenerateActionAttributeNameConsts,
-                GenerateAttributeNameConsts = pocoConfig.GenerateAttributeNameConsts ?? defaultConfig.GenerateAttributeNameConsts,
-                GenerateAnonymousTypeConstructor = pocoConfig.GenerateAnonymousTypeConstructor ?? defaultConfig.GenerateAnonymousTypeConstructor,
-                GenerateConstructorsSansLogicalName = pocoConfig.GenerateConstructorsSansLogicalName ?? defaultConfig.GenerateConstructorsSansLogicalName,
-                GenerateEntityRelationships = pocoConfig.GenerateEntityRelationships ?? defaultConfig.GenerateEntityRelationships,
-                GenerateEntityTypeCode = pocoConfig.GenerateEntityTypeCode ?? defaultConfig.GenerateEntityTypeCode,
-                GenerateEnumProperties = pocoConfig.GenerateEnumProperties ?? defaultConfig.GenerateEnumProperties,
-                GenerateOnlyReferencedOptionSets = pocoConfig.GenerateOnlyReferencedOptionSets ?? defaultConfig.GenerateOnlyReferencedOptionSets,
-                GenerateOptionSetMetadataAttribute = pocoConfig.GenerateOptionSetMetadataAttribute ?? defaultConfig.GenerateOptionSetMetadataAttribute,
-                InvalidCSharpNamePrefix = pocoConfig.InvalidCSharpNamePrefix ?? defaultConfig.InvalidCSharpNamePrefix,
-                MakeAllFieldsEditable = pocoConfig.MakeAllFieldsEditable ?? defaultConfig.MakeAllFieldsEditable,
-                MakeReadonlyFieldsEditable = pocoConfig.MakeReadonlyFieldsEditable ?? defaultConfig.MakeReadonlyFieldsEditable,
-                MakeResponseActionsEditable = pocoConfig.MakeResponseActionsEditable ?? defaultConfig.MakeResponseActionsEditable,
-                LocalOptionSetFormat = pocoConfig.LocalOptionSetFormat ?? defaultConfig.LocalOptionSetFormat,
-                OptionSetLanguageCodeOverride = pocoConfig.OptionSetLanguageCodeOverride ?? defaultConfig.OptionSetLanguageCodeOverride,
-                OptionSetPrefixesToSkip = GetValueOrDefault(pocoConfig.OptionSetPrefixesToSkip, defaultConfig.OptionSetPrefixesToSkip),
-                OptionSetsToSkip = GetValueOrDefault(pocoConfig.OptionSetsToSkip, defaultConfig.OptionSetsToSkip),
-                ProjectNameForEarlyBoundFiles = pocoConfig.ProjectNameForEarlyBoundFiles ?? defaultConfig.ProjectNameForEarlyBoundFiles,
-                PropertyEnumMappings = GetValueOrDefault(pocoConfig.PropertyEnumMappings, defaultConfig.PropertyEnumMappings),
-                ReadSerializedMetadata = pocoConfig.ReadSerializedMetadata ?? defaultConfig.ReadSerializedMetadata,
-                RemoveRuntimeVersionComment = pocoConfig.RemoveRuntimeVersionComment ?? defaultConfig.RemoveRuntimeVersionComment,
-                ReplaceOptionSetPropertiesWithEnum = pocoConfig.ReplaceOptionSetPropertiesWithEnum ?? defaultConfig.ReplaceOptionSetPropertiesWithEnum,
-                SerializeMetadata = pocoConfig.SerializeMetadata ?? defaultConfig.SerializeMetadata,
-                UnmappedProperties = GetValueOrDefault(pocoConfig.UnmappedProperties, defaultConfig.UnmappedProperties),
-                UseDeprecatedOptionSetNaming = pocoConfig.UseDeprecatedOptionSetNaming ?? defaultConfig.UseDeprecatedOptionSetNaming,
-                UseTfsToCheckoutFiles = pocoConfig.UseTfsToCheckoutFiles ?? defaultConfig.UseTfsToCheckoutFiles,
-                WaitForAttachedDebugger = pocoConfig.WaitForAttachedDebugger ?? defaultConfig.WaitForAttachedDebugger,
-            };
+            @default.ExtensionConfig.SetPopulatedValues(poco.ExtensionConfig);
 
             ExtensionArguments = AddMissingArguments(poco.ExtensionArguments, @default.ExtensionArguments);
             UserArguments = AddMissingArguments(poco.UserArguments, @default.UserArguments);

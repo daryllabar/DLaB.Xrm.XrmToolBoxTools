@@ -10,6 +10,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
     public class ExtensionConfig
     {
         /// <summary>
+        /// Pipe Delimited String containing the prefixes of Actions to not generate.
+        /// </summary>
+        public string ActionPrefixesToSkip { get; set; }
+        /// <summary>
         /// Pipe Delimited String containing the prefixes of Actions to be generated.
         /// </summary>
         public string ActionPrefixesWhitelist { get; set; }
@@ -21,10 +25,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// Pipe Delimited String containing the logical names of Actions to not generate
         /// </summary>
         public string ActionsToSkip { get; set; }
-        /// <summary>
-        /// Pipe Delimited String containing the prefixes of Actions to not generate.
-        /// </summary>
-        public string ActionPrefixesToSkip { get; set; }
         /// <summary>
         /// Specifies that the debugger should skip stepping into generated entity files.
         /// </summary>
@@ -139,6 +139,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public string LocalOptionSetFormat { get; set; }
         /// <summary>
+        /// Overrides the default (English:1033) language code used for generating Option Set Value names (the value, not the option set)
+        /// </summary>
+        public int? OptionSetLanguageCodeOverride { get; set; }
+        /// <summary>
         /// Pipe delimited string containing prefixes of entities to not generate.
         /// </summary>
         public string OptionSetPrefixesToSkip { get; set; }
@@ -147,21 +151,9 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public string OptionSetsToSkip { get; set; }
         /// <summary>
-        /// Overrides the default (English:1033) language code used for generating Option Set Value names (the value, not the option set)
-        /// </summary>
-        public int? OptionSetLanguageCodeOverride { get; set; }
-        /// <summary>
         /// The name of the project to add newly created files to. If not value is provided, the first one found will be used.
         /// </summary>
         public string ProjectNameForEarlyBoundFiles { get; set; }
-        /// <summary>
-        /// Remove the Runtime Version in the header comment
-        /// </summary>
-        public bool RemoveRuntimeVersionComment { get; set; }
-        /// <summary>
-        /// Used in Conjunction with GenerateEnumProperties.  Allows for replacing the OptionSet properties, rather than duplicating them
-        /// </summary>
-        public bool ReplaceOptionSetPropertiesWithEnum { get; set; }
         /// <summary>
         /// Used to manually specify an enum mapping for an OptionSetValue Property on an entity 
         /// Format: EntityName.PropertyName,EnumName|
@@ -173,6 +165,14 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// Set Serialize Metadata to true first to connect to the server and retrieve the metadata, then set it back to false to not write it again since it's already local.
         /// </summary>
         public bool ReadSerializedMetadata { get; set; }
+        /// <summary>
+        /// Remove the Runtime Version in the header comment
+        /// </summary>
+        public bool RemoveRuntimeVersionComment { get; set; }
+        /// <summary>
+        /// Used in Conjunction with GenerateEnumProperties.  Allows for replacing the OptionSet properties, rather than duplicating them
+        /// </summary>
+        public bool ReplaceOptionSetPropertiesWithEnum { get; set; }
         /// <summary>
         /// For Debugging Only!
         /// Serializes the Metadata to a local file on disk.  (Generates a 200-400+ mb xml file).
@@ -277,6 +277,62 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 UseTfsToCheckoutFiles = false,
                 WaitForAttachedDebugger = false,
             };
+        }
+
+        /// <summary>
+        /// Updates properties, only if actually populated in the poco.
+        /// </summary>
+        /// <param name="poco"></param>
+        public void SetPopulatedValues(POCO.ExtensionConfig poco)
+        {
+            ActionPrefixesToSkip = GetValueOrDefault(poco.ActionPrefixesToSkip, ActionPrefixesToSkip);
+            ActionPrefixesWhitelist = GetValueOrDefault(poco.ActionPrefixesWhitelist, ActionPrefixesWhitelist);
+            ActionsWhitelist = GetValueOrDefault(poco.ActionsWhitelist, ActionsWhitelist);
+            ActionsToSkip = GetValueOrDefault(poco.ActionsToSkip, ActionsToSkip);
+            AddDebuggerNonUserCode = poco.AddDebuggerNonUserCode ?? AddDebuggerNonUserCode;
+            AddNewFilesToProject = poco.AddNewFilesToProject ?? AddNewFilesToProject;
+            AddOptionSetMetadataAttribute = poco.AddOptionSetMetadataAttribute ?? AddOptionSetMetadataAttribute;
+            CreateOneFilePerAction = poco.CreateOneFilePerAction ?? CreateOneFilePerAction;
+            CreateOneFilePerEntity = poco.CreateOneFilePerEntity ?? CreateOneFilePerEntity;
+            CreateOneFilePerOptionSet = poco.CreateOneFilePerOptionSet ?? CreateOneFilePerOptionSet;
+            DeleteFilesFromOutputFolders = poco.DeleteFilesFromOutputFolders ?? DeleteFilesFromOutputFolders;
+            EntitiesToSkip = GetValueOrDefault(poco.EntitiesToSkip, EntitiesToSkip);
+            EntitiesWhitelist = GetValueOrDefault(poco.EntitiesWhitelist, EntitiesWhitelist);
+            EntityAttributeSpecifiedNames = GetValueOrDefault(poco.EntityAttributeSpecifiedNames, EntityAttributeSpecifiedNames);
+            EntityPrefixesToSkip = GetValueOrDefault(poco.EntityPrefixesToSkip, EntityPrefixesToSkip);
+            EntityPrefixesWhitelist = GetValueOrDefault(poco.EntityPrefixesWhitelist, EntityPrefixesWhitelist);
+            GenerateActionAttributeNameConsts = poco.GenerateActionAttributeNameConsts ?? GenerateActionAttributeNameConsts;
+            GenerateAttributeNameConsts = poco.GenerateAttributeNameConsts ?? GenerateAttributeNameConsts;
+            GenerateAnonymousTypeConstructor = poco.GenerateAnonymousTypeConstructor ?? GenerateAnonymousTypeConstructor;
+            GenerateConstructorsSansLogicalName = poco.GenerateConstructorsSansLogicalName ?? GenerateConstructorsSansLogicalName;
+            GenerateEntityRelationships = poco.GenerateEntityRelationships ?? GenerateEntityRelationships;
+            GenerateEntityTypeCode = poco.GenerateEntityTypeCode ?? GenerateEntityTypeCode;
+            GenerateEnumProperties = poco.GenerateEnumProperties ?? GenerateEnumProperties;
+            GenerateOnlyReferencedOptionSets = poco.GenerateOnlyReferencedOptionSets ?? GenerateOnlyReferencedOptionSets;
+            GenerateOptionSetMetadataAttribute = poco.GenerateOptionSetMetadataAttribute ?? GenerateOptionSetMetadataAttribute;
+            InvalidCSharpNamePrefix = poco.InvalidCSharpNamePrefix ?? InvalidCSharpNamePrefix;
+            MakeAllFieldsEditable = poco.MakeAllFieldsEditable ?? MakeAllFieldsEditable;
+            MakeReadonlyFieldsEditable = poco.MakeReadonlyFieldsEditable ?? MakeReadonlyFieldsEditable;
+            MakeResponseActionsEditable = poco.MakeResponseActionsEditable ?? MakeResponseActionsEditable;
+            LocalOptionSetFormat = poco.LocalOptionSetFormat ?? LocalOptionSetFormat;
+            OptionSetLanguageCodeOverride = poco.OptionSetLanguageCodeOverride ?? OptionSetLanguageCodeOverride;
+            OptionSetPrefixesToSkip = GetValueOrDefault(poco.OptionSetPrefixesToSkip, OptionSetPrefixesToSkip);
+            OptionSetsToSkip = GetValueOrDefault(poco.OptionSetsToSkip, OptionSetsToSkip);
+            ProjectNameForEarlyBoundFiles = poco.ProjectNameForEarlyBoundFiles ?? ProjectNameForEarlyBoundFiles;
+            PropertyEnumMappings = GetValueOrDefault(poco.PropertyEnumMappings, PropertyEnumMappings);
+            ReadSerializedMetadata = poco.ReadSerializedMetadata ?? ReadSerializedMetadata;
+            RemoveRuntimeVersionComment = poco.RemoveRuntimeVersionComment ?? RemoveRuntimeVersionComment;
+            ReplaceOptionSetPropertiesWithEnum = poco.ReplaceOptionSetPropertiesWithEnum ?? ReplaceOptionSetPropertiesWithEnum;
+            SerializeMetadata = poco.SerializeMetadata ?? SerializeMetadata;
+            UnmappedProperties = GetValueOrDefault(poco.UnmappedProperties, UnmappedProperties);
+            UseDeprecatedOptionSetNaming = poco.UseDeprecatedOptionSetNaming ?? UseDeprecatedOptionSetNaming;
+            UseTfsToCheckoutFiles = poco.UseTfsToCheckoutFiles ?? UseTfsToCheckoutFiles;
+            WaitForAttachedDebugger = poco.WaitForAttachedDebugger ?? WaitForAttachedDebugger;
+
+            string GetValueOrDefault(string value, string defaultValue)
+            {
+                return string.IsNullOrWhiteSpace(value) ? defaultValue : value;
+            }
         }
     }
 }

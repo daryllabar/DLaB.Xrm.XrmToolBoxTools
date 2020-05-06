@@ -79,7 +79,6 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
             };
 
             new ExtensionConfigLogic(info).UpdateFile();
-            new EarlyBoundGeneratorConfig(info).UpdateFile();
             new EarlyBoundGeneratorConfigLogic(info).UpdateFile();
             new SettingsMap(info).UpdateFile();
             MessageBox.Show("Finished!", "Property Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
