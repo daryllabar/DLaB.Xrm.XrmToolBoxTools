@@ -106,6 +106,7 @@
             this.MinimumSize = new System.Drawing.Size(600, 39);
             this.Name = "SpecifyAttributesDialog";
             this.Text = "Specify Attributes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.SpecifyAttributesDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

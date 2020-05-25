@@ -138,6 +138,7 @@
             this.lvKeptEntities.UseCompatibleStateImageBehavior = false;
             this.lvKeptEntities.View = System.Windows.Forms.View.Details;
             this.lvKeptEntities.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(Helper.SortListView_OnColumnClick);
+            this.lvKeptEntities.DoubleClick += new System.EventHandler(this.BtnAdd_Click);
             // 
             // chDisplayName
             // 
@@ -175,6 +176,7 @@
             this.lvExcludedEntities.UseCompatibleStateImageBehavior = false;
             this.lvExcludedEntities.View = System.Windows.Forms.View.Details;
             this.lvExcludedEntities.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(Helper.SortListView_OnColumnClick);
+            this.lvExcludedEntities.DoubleClick += new System.EventHandler(this.BtnRemove_Click);
             // 
             // columnHeader1
             // 
@@ -217,6 +219,7 @@
             this.MinimumSize = new System.Drawing.Size(541, 425);
             this.Name = "SpecifyEntitiesDialog";
             this.Text = "Select Entities";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.SpecifyEntitiesDialog_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.bgEntitiesKeep.ResumeLayout(false);

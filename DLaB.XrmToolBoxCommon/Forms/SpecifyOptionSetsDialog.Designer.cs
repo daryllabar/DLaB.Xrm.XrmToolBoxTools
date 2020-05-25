@@ -89,6 +89,7 @@
             this.Controls.Add(this.ChkListBoxOptionSets);
             this.Name = "SpecifyOptionSetsDialog";
             this.Text = "Option Set Selector Dialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.OptionSetSelectorDialog_Load);
             this.ResumeLayout(false);
 
