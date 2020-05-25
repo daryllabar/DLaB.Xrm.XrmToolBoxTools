@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\MSBuild.ILMerge.Task.1.0.5\build\MSBuild.ILMerge.Task.props" Condition="Exists('..\packages\MSBuild.ILMerge.Task.1.0.5\build\MSBuild.ILMerge.Task.props')" />
+  <Import Project="..\packages\ILRepack.2.0.18\build\ILRepack.props" Condition="Exists('..\packages\ILRepack.2.0.18\build\ILRepack.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -342,7 +342,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="ILMerge.doc" />
-    <None Include="ILMerge.props" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -352,7 +351,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ILMerge.exe" />
-    <Content Include="ILMergeOrder.txt" />
   </ItemGroup>
   <Import Project="..\DLaB.Xrm.Entities\DLaB.Xrm.Entities.projitems" Label="Shared" />
   <Import Project="..\DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems" Label="Shared" />
@@ -369,7 +367,14 @@ if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.
 </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>DEL /Q "$(TargetDir)MscrmTools\XrmToolBox\Plugins\*.*"
+    <PostBuildEvent>REM **** Delete Previous Log ****
+del "$(TargetDir)IlRepackLog.txt"
+
+REM **** Run IlMerge ****
+"$(ProjectDir)..\packages\ILRepack.2.0.18\tools\ILRepack.exe" /log:"$(TargetDir)IlRepackLog.txt" /targetplatform:"v4,c:\windows\Microsoft.NET\Framework\v4.0.30319" /out:"$(TargetPath)" "$(TargetPath)" "$(TargetDir)Microsoft.ApplicationInsights.dll" "$(TargetDir)Microsoft.AI.ServerTelemetryChannel.dll"
+
+
+DEL /Q "$(TargetDir)MscrmTools\XrmToolBox\Plugins\*.*"
 xcopy /I /Y "$(TargetDir)DLaB.*" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\"
 DEL /Q "$(TargetDir)DLaB.*"
 DEL /Q "$(TargetDir)Microsoft.IdentityModel.dll"    
@@ -386,10 +391,8 @@ xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\OptionSet\Transliteration\A
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.9.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.9.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets'))" />
-    <Error Condition="!Exists('..\packages\MSBuild.ILMerge.Task.1.0.5\build\MSBuild.ILMerge.Task.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSBuild.ILMerge.Task.1.0.5\build\MSBuild.ILMerge.Task.props'))" />
-    <Error Condition="!Exists('..\packages\MSBuild.ILMerge.Task.1.0.5\build\MSBuild.ILMerge.Task.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSBuild.ILMerge.Task.1.0.5\build\MSBuild.ILMerge.Task.targets'))" />
+    <Error Condition="!Exists('..\packages\ILRepack.2.0.18\build\ILRepack.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ILRepack.2.0.18\build\ILRepack.props'))" />
   </Target>
-  <Import Project="..\packages\MSBuild.ILMerge.Task.1.0.5\build\MSBuild.ILMerge.Task.targets" Condition="Exists('..\packages\MSBuild.ILMerge.Task.1.0.5\build\MSBuild.ILMerge.Task.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

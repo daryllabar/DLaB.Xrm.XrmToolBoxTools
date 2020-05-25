@@ -55,7 +55,9 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         
         public bool GenerateEntity(EntityMetadata entityMetadata, IServiceProvider services)
         {
-            if (!DefaultService.GenerateEntity(entityMetadata, services)) { return false; }
+            // Some entities are not normally create (attachment for example) not sure why.  Allowing Whitelist to Override here.
+            if (!Approver.IsExplicitlyAllowed(entityMetadata.LogicalName)
+                && !DefaultService.GenerateEntity(entityMetadata, services)) { return false; }
 
             if (!EntityMetadata.ContainsKey(entityMetadata.LogicalName))
             {

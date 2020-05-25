@@ -33,7 +33,7 @@ namespace DLaB.XrmToolBoxCommon
             // ReSharper disable once EmptyGeneralCatchClause
             catch
             {
-                // Probably a pervious version of the XTB.  Attempt to soldier on...
+                // Probably a previous version of the XTB.  Attempt to soldier on...
             }
 
             var field = connection.GetType().GetField("userPassword", BindingFlags.Instance | BindingFlags.NonPublic);

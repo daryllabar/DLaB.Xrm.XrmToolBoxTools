@@ -27,6 +27,11 @@ namespace DLaB.CrmSvcUtilExtensions
                    && !IsBlacklisted(value);
         }
 
+        public bool IsExplicitlyAllowed(string value)
+        {
+            return WhiteList.Contains(value);
+        }
+
         private bool IsWhiteListed(string value)
         {
             return WhiteList.Contains(value)
