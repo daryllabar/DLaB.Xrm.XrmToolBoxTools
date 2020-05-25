@@ -240,7 +240,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
             UpdateObsoleteSettings(poco, pocoConfig, @default);
 
-            @default.ExtensionConfig.SetPopulatedValues(poco.ExtensionConfig);
+            ExtensionConfig = @default.ExtensionConfig;
+            ExtensionConfig.SetPopulatedValues(poco.ExtensionConfig);
 
             ExtensionArguments = AddMissingArguments(poco.ExtensionArguments, @default.ExtensionArguments);
             UserArguments = AddMissingArguments(poco.UserArguments, @default.UserArguments);
