@@ -30,7 +30,9 @@ namespace DLaB.EarlyBoundGenerator
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label label4;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EarlyBoundGeneratorPlugin));
             this.BtnCreateOptionSets = new System.Windows.Forms.Button();
             this.BtnCreateAll = new System.Windows.Forms.Button();
             this.BtnCreateEntities = new System.Windows.Forms.Button();
@@ -38,12 +40,15 @@ namespace DLaB.EarlyBoundGenerator
             this.BtnOpenSettingsPathDialog = new System.Windows.Forms.Button();
             this.TxtSettingsPath = new System.Windows.Forms.TextBox();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.BtnSaveSettingsPathDialog = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.BtnCreateActions = new System.Windows.Forms.Button();
             this.PropertiesGrid = new System.Windows.Forms.PropertyGrid();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -115,12 +120,13 @@ namespace DLaB.EarlyBoundGenerator
             // 
             this.BtnOpenSettingsPathDialog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.helpProvider1.SetHelpString(this.BtnOpenSettingsPathDialog, "Overrides Capitalization of Entity Attributes");
-            this.BtnOpenSettingsPathDialog.Location = new System.Drawing.Point(470, 3);
+            this.BtnOpenSettingsPathDialog.Image = ((System.Drawing.Image)(resources.GetObject("BtnOpenSettingsPathDialog.Image")));
+            this.BtnOpenSettingsPathDialog.Location = new System.Drawing.Point(434, 2);
             this.BtnOpenSettingsPathDialog.Name = "BtnOpenSettingsPathDialog";
             this.helpProvider1.SetShowHelp(this.BtnOpenSettingsPathDialog, true);
-            this.BtnOpenSettingsPathDialog.Size = new System.Drawing.Size(27, 23);
+            this.BtnOpenSettingsPathDialog.Size = new System.Drawing.Size(27, 22);
             this.BtnOpenSettingsPathDialog.TabIndex = 15;
-            this.BtnOpenSettingsPathDialog.Text = "...";
+            this.toolTip1.SetToolTip(this.BtnOpenSettingsPathDialog, "Open existing settings file");
             this.BtnOpenSettingsPathDialog.UseVisualStyleBackColor = true;
             this.BtnOpenSettingsPathDialog.Click += new System.EventHandler(this.BtnOpenSettingsPathDialog_Click);
             // 
@@ -130,9 +136,23 @@ namespace DLaB.EarlyBoundGenerator
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtSettingsPath.Location = new System.Drawing.Point(82, 3);
             this.TxtSettingsPath.Name = "TxtSettingsPath";
-            this.TxtSettingsPath.Size = new System.Drawing.Size(382, 20);
+            this.TxtSettingsPath.Size = new System.Drawing.Size(346, 20);
             this.TxtSettingsPath.TabIndex = 13;
             this.TxtSettingsPath.Leave += new System.EventHandler(this.TxtSettingsPath_Leave);
+            // 
+            // BtnSaveSettingsPathDialog
+            // 
+            this.BtnSaveSettingsPathDialog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.helpProvider1.SetHelpString(this.BtnSaveSettingsPathDialog, "Overrides Capitalization of Entity Attributes");
+            this.BtnSaveSettingsPathDialog.Image = ((System.Drawing.Image)(resources.GetObject("BtnSaveSettingsPathDialog.Image")));
+            this.BtnSaveSettingsPathDialog.Location = new System.Drawing.Point(467, 2);
+            this.BtnSaveSettingsPathDialog.Name = "BtnSaveSettingsPathDialog";
+            this.helpProvider1.SetShowHelp(this.BtnSaveSettingsPathDialog, true);
+            this.BtnSaveSettingsPathDialog.Size = new System.Drawing.Size(27, 22);
+            this.BtnSaveSettingsPathDialog.TabIndex = 37;
+            this.toolTip1.SetToolTip(this.BtnSaveSettingsPathDialog, "Save to new settings file");
+            this.BtnSaveSettingsPathDialog.UseVisualStyleBackColor = true;
+            this.BtnSaveSettingsPathDialog.Click += new System.EventHandler(this.BtnSaveSettingsPathDialog_Click);
             // 
             // openFileDialog1
             // 
@@ -200,6 +220,7 @@ namespace DLaB.EarlyBoundGenerator
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.BtnSaveSettingsPathDialog);
             this.splitContainer1.Panel2.Controls.Add(this.PropertiesGrid);
             this.splitContainer1.Panel2.Controls.Add(this.BtnOpenSettingsPathDialog);
             this.splitContainer1.Panel2.Controls.Add(this.TxtSettingsPath);
@@ -262,5 +283,8 @@ namespace DLaB.EarlyBoundGenerator
         private System.Windows.Forms.PropertyGrid PropertiesGrid;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button BtnSaveSettingsPathDialog;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

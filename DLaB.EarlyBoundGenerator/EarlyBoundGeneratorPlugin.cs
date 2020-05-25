@@ -423,6 +423,14 @@ namespace DLaB.EarlyBoundGenerator
             }
         }
 
+        private void BtnSaveSettingsPathDialog_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.SetXmlFilePath(TxtSettingsPath))
+            {
+                SaveSettingsToNewFile();
+            }
+        }
+
         private void TxtSettingsPath_Leave(object sender, EventArgs e)
         {
             ValidatedSettingsPath();
@@ -501,6 +509,16 @@ namespace DLaB.EarlyBoundGenerator
             if (File.Exists(ConnectionSettings.FullSettingsPath))
             {
                 HydrateUiFromSettings(ConnectionSettings.FullSettingsPath);
+            }
+        }
+
+        private void SaveSettingsToNewFile()
+        {
+            ConnectionSettings.SettingsPath = TxtSettingsPath.Text;
+            SaveSettings();
+            if (ConnectionDetail != null)
+            {
+                ConnectionSettings.Save(ConnectionDetail);
             }
         }
 
