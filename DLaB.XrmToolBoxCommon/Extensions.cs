@@ -121,7 +121,7 @@ namespace DLaB.XrmToolBoxCommon
             }
         }
 
-        private static void SetInitialDirectory(OpenFileDialog dialog, TextBox textBox, string rootPath)
+        private static void SetInitialDirectory(FileDialog dialog, TextBox textBox, string rootPath)
         {
             if (!string.IsNullOrWhiteSpace(textBox.Text))
             {
@@ -133,6 +133,20 @@ namespace DLaB.XrmToolBoxCommon
         }
 
         public static bool SetXmlFilePath(this OpenFileDialog dialog, TextBox textBox, string rootPath = null)
+        {
+            dialog.DefaultExt = "xml";
+            dialog.Filter = @"Xml files|*.xml";
+            SetInitialDirectory(dialog, textBox, rootPath);
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                textBox.Text = dialog.FileName;
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool SetXmlFilePath(this SaveFileDialog dialog, TextBox textBox, string rootPath = null)
         {
             dialog.DefaultExt = "xml";
             dialog.Filter = @"Xml files|*.xml";

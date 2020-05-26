@@ -244,6 +244,7 @@
             this.MinimumSize = new System.Drawing.Size(400, 200);
             this.Name = "OptionSetSpecifierDialog";
             this.Text = "Specify Option Set";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.LocalOptionSetSpecifierDialog_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

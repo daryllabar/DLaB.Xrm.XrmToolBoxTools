@@ -167,6 +167,7 @@ namespace DLaB.XrmToolBoxCommon.Forms
             this.LstAll.UseCompatibleStateImageBehavior = false;
             this.LstAll.View = System.Windows.Forms.View.Details;
             this.LstAll.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(ColumnClick);
+            this.LstAll.DoubleClick += new System.EventHandler(BtnAdd_Click);
             // 
             // CHDisplayName
             // 
@@ -207,6 +208,7 @@ namespace DLaB.XrmToolBoxCommon.Forms
             this.LstSpecified.UseCompatibleStateImageBehavior = false;
             this.LstSpecified.View = System.Windows.Forms.View.Details;
             this.LstSpecified.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(ColumnClick);
+            this.LstSpecified.DoubleClick += new System.EventHandler(BtnRemove_Click);
             // 
             // columnHeader1
             // 
@@ -242,6 +244,7 @@ namespace DLaB.XrmToolBoxCommon.Forms
             this.MinimumSize = new System.Drawing.Size(814, 662);
             this.Name = "SpecifyActionsDialog";
             this.Text = "Specify Actions";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.SpecifyActivitiesDialog_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
