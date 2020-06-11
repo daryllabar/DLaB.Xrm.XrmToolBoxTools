@@ -397,7 +397,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                 {
                     Type = new CodeTypeReference(typeof(Attribute)),
                     Name = "attribute",
-                    InitExpression = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(CustomAttributeExtensions)), "GetCustomAttribute", new CodeVariableReferenceExpression("enumType"), new CodeTypeOfExpression(new CodeTypeReference("OptionSetMetadataAttribute")))
+                    InitExpression = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(CustomAttributeExtensions)), "GetCustomAttribute", new CodeVariableReferenceExpression("members[i]"), new CodeTypeOfExpression(new CodeTypeReference("OptionSetMetadataAttribute")))
                 },
                 new CodeConditionStatement(new CodeSnippetExpression("attribute != null"),
                     new CodeMethodReturnStatement(new CodeCastExpression(new CodeTypeReference("OptionSetMetadataAttribute"), new CodeVariableReferenceExpression("attribute"))))
