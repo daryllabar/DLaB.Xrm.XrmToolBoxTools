@@ -34,7 +34,8 @@ namespace DLaB.XrmToolBoxCommon.Editors
                 CheckPathExists = info.CheckPathExists,
                 DefaultExt = info.DefaultExt,
                 Filter = info.Filter,
-                FileName = info.GetDefaultFileName(context, (string)value)
+                FileName = info.GetDefaultFileName(context, (string)value),
+                
             };
 
             using (dlg)
@@ -96,7 +97,7 @@ namespace DLaB.XrmToolBoxCommon.Editors
             {
                 BasePath = Path.GetDirectoryName(BasePath);
             }
-            var absolutePath = Path.Combine(BasePath, currentPath);
+            var absolutePath = Path.Combine(BasePath?? "NULL", currentPath);
             return base.GetDefaultFileName(context, absolutePath);
         }
 
@@ -114,7 +115,7 @@ namespace DLaB.XrmToolBoxCommon.Editors
         {
             if (absolutePath == null)
             {
-                return base.GetPath(absolutePath);
+                return base.GetPath(null);
             }
             if (string.IsNullOrWhiteSpace(relativeDirectory))
             {
@@ -126,8 +127,8 @@ namespace DLaB.XrmToolBoxCommon.Editors
                 relativeDirectory += "\\";
             }
 
-            var relativePath = new Uri(relativeDirectory).MakeRelativeUri(new Uri(absolutePath));
-            return relativePath.ToString().Replace('/', '\\');
+            var relativePath = Uri.UnescapeDataString(new Uri(relativeDirectory).MakeRelativeUri(new Uri(absolutePath)).ToString());
+            return relativePath.Replace('/', '\\');
         }
     }
 
@@ -140,6 +141,7 @@ namespace DLaB.XrmToolBoxCommon.Editors
         /// </summary>
         /// <param name="relativePathPropertyName">Specifies the name of a property of the context that contains the relative path</param>
         /// <param name="filter"></param>
+        /// <param name="defaultExt"></param>
         /// <param name="checkFileExists"></param>
         /// <param name="checkPathExists"></param>
         public DynamicRelativePathEditorAttribute(string relativePathPropertyName, string filter = "All Files (*.*)|*.*", string defaultExt = "", bool checkFileExists = true, bool checkPathExists = true) : base(null, filter, defaultExt, checkFileExists, checkPathExists)

@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator</id>
-	  <version>1.2020.4.24</version>
+	  <version>1.2020.6.22</version>
 	  <title>Early Bound Generator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,13 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V1.2020.4.24
+    <releaseNotes>V1.2020.6.22
+Fix for OptionSetMetadataAttribute comment extra closing tag #248
+Fix for If output path contains a space, a new folder with %20 in lieu of the space is created #241
+Fix issue where accessing OptionSet MetaData returns an error #247
+Added button to save to new settings file #246
+
+V1.2020.4.24
 Create pit of success for avoiding output folder for entities with dot in the folder name issues #234
 
 V1.2020.4.24
@@ -47,19 +53,6 @@ Added option to clobber folder if "Generate One File Per Action/Entity/Option Se
 
 V1.2019.9.13
 Added ability to delete C# files in output directory.
-
-V1.2019.5.17
-Fixed Adding generated files to project sometimes gets it wrong #193
-
-V1.2019.5.13
-Fixed Action List isn't being preserved in UI #192
-      
-V1.2019.5.12
-Added ability to Whitelist actions #190
-Updated the connection string setting to allow a full connection string to be specified and used #190
-
-V1.2019.4.28
-Added Schema Name to Entities
     </releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>

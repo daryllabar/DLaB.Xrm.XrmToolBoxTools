@@ -12,6 +12,9 @@ using Source.DLaB.Common;
 
 namespace DLaB.EarlyBoundGenerator
 {
+    /// <summary>
+    /// Main Logic Class shared between XTB and API version of EBG
+    /// </summary>
     public class Logic
     {
         private readonly object _updateAppConfigToken = new object();
@@ -20,16 +23,26 @@ namespace DLaB.EarlyBoundGenerator
         private bool _configUpdated;
         private bool _useInteractiveMode;
 
+        /// <summary>
+        /// Initializes a new Logic class.
+        /// </summary>
+        /// <param name="earlyBoundGeneratorConfig"></param>
         public Logic(EarlyBoundGeneratorConfig earlyBoundGeneratorConfig)
         {
             EarlyBoundGeneratorConfig = earlyBoundGeneratorConfig;
         }
 
+        /// <summary>
+        /// Creates the Action class
+        /// </summary>
         public void CreateActions()
         {
             Create(CreationType.Actions);
         }
 
+        /// <summary>
+        /// Creates the Action, entities, and option set files.
+        /// </summary>
         public void ExecuteAll()
         {
             if (EarlyBoundGeneratorConfig.SupportsActions)
@@ -42,9 +55,20 @@ namespace DLaB.EarlyBoundGenerator
             }
         }
 
+        /// <summary>
+        /// Generates Entity Definitions
+        /// </summary>
         public void CreateEntities()
         {
             Create(CreationType.Entities);
+        }
+
+        /// <summary>
+        /// Generates OptionSet Definitions
+        /// </summary>
+        public void CreateOptionSets()
+        {
+            Create(CreationType.OptionSets);
         }
 
 
@@ -387,11 +411,6 @@ namespace DLaB.EarlyBoundGenerator
             }
 
             return sb.ToString();
-        }
-
-        public void CreateOptionSets()
-        {
-            Create(CreationType.OptionSets);
         }
 
         private void HandleResult(string filePath, DateTime date, CreationType creationType, string consoleOutput, bool speakResult)

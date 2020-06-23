@@ -2,6 +2,9 @@
 
 namespace DLaB.EarlyBoundGenerator.Settings
 {
+    /// <summary>
+    /// Creation Types
+    /// </summary>
     [Serializable]
     public enum CreationType
     {

@@ -11,6 +11,9 @@ using System.Xml.Serialization;
 
 namespace DLaB.EarlyBoundGenerator.Settings
 {
+    /// <summary>
+    /// POCO for EBG Settings
+    /// </summary>
     [Serializable]
     [XmlType("Config")]
     [XmlRoot("Config")]
@@ -113,22 +116,37 @@ namespace DLaB.EarlyBoundGenerator.Settings
         public List<Argument> UserArguments { get; set; }
 
         #region NonSerialized Properties
+        /// <summary>
+        /// Set during Execution
+        /// </summary>
         [XmlIgnore]
         [Browsable(false)]
         public bool UseCrmOnline { get; set; }
 
+        /// <summary>
+        /// Set during Execution
+        /// </summary>
         [XmlIgnore]
         [Browsable(false)]
         public bool UseConnectionString { get; set; }
 
+        /// <summary>
+        /// Set during Execution
+        /// </summary>
         [XmlIgnore]
         [Browsable(false)]
         public string ConnectionString { get; set; }
 
+        /// <summary>
+        /// Set during Execution
+        /// </summary>
         [XmlIgnore]
         [Browsable(false)]
         public string Domain { get; set; }
 
+        /// <summary>
+        /// Set during Execution
+        /// </summary>
         [XmlIgnore]
         [Browsable(false)]
         public string UserName { get; set; }
@@ -137,22 +155,37 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [Browsable(false)]
         public string Password { get; set; }
 
+        /// <summary>
+        /// Set during Execution
+        /// </summary>
         [XmlIgnore]
         [Browsable(false)]
         public string RootPath { get; set; }
 
+        /// <summary>
+        /// Set during Execution
+        /// </summary>
         [XmlIgnore]
         [Browsable(false)]
         public bool SupportsActions { get; set; }
 
+        /// <summary>
+        /// Set during Execution
+        /// </summary>
         [XmlIgnore]
         [Browsable(false)]
         public string Url { get; set; }
 
+        /// <summary>
+        /// Set during Execution
+        /// </summary>
         [XmlIgnore]
         [Browsable(false)]
         public IEnumerable<Argument> CommandLineArguments => UserArguments.Union(ExtensionArguments);
 
+        /// <summary>
+        /// Path determined based on the Relative Path
+        /// </summary>
         [XmlIgnore]
         [Browsable(false)]
         public string CrmSvcUtilPath =>
@@ -160,12 +193,18 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 ? CrmSvcUtilRelativePath
                 : Path.Combine(CrmSvcUtilRelativeRootPath ?? Directory.GetCurrentDirectory(), CrmSvcUtilRelativePath);
 
+        /// <summary>
+        /// Set during Execution
+        /// </summary>
         [XmlIgnore]
         [Browsable(false)]
         public string CrmSvcUtilRelativeRootPath { get; set; }
 
         #region UserArguments Helpers
 
+        /// <summary>
+        /// Action output path
+        /// </summary>
         [XmlIgnore]
         [Browsable(false)]
         public string ActionOutPath
@@ -174,6 +213,9 @@ namespace DLaB.EarlyBoundGenerator.Settings
             set { SetUserArgument(CreationType.Actions, UserArgumentNames.Out, value); }
         }
 
+        /// <summary>
+        /// Entity output path
+        /// </summary>
         [XmlIgnore]
         [Browsable(false)]
         public string EntityOutPath
@@ -182,6 +224,9 @@ namespace DLaB.EarlyBoundGenerator.Settings
             set { SetUserArgument(CreationType.Entities, UserArgumentNames.Out, value); }
         }
 
+        /// <summary>
+        /// Namespace
+        /// </summary>
         [XmlIgnore]
         [Browsable(false)]
         public string Namespace
@@ -190,6 +235,9 @@ namespace DLaB.EarlyBoundGenerator.Settings
             set { SetUserArgument(CreationType.All, UserArgumentNames.Namespace, value); }
         }
 
+        /// <summary>
+        /// Option set output path
+        /// </summary>
         [XmlIgnore]
         [Browsable(false)]
         public string OptionSetOutPath
@@ -198,6 +246,9 @@ namespace DLaB.EarlyBoundGenerator.Settings
             set { SetUserArgument(CreationType.OptionSets, UserArgumentNames.Out, value); }
         }
 
+        /// <summary>
+        /// Name of the Service Context Created
+        /// </summary>
         [XmlIgnore]
         [Browsable(false)]
         public string ServiceContextName
@@ -228,8 +279,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         private EarlyBoundGeneratorConfig(POCO.Config poco)
         {
             var @default = GetDefault();
-            var pocoConfig = poco.ExtensionConfig;
-
             CrmSvcUtilRelativePath = poco.CrmSvcUtilRelativePath ?? @default.CrmSvcUtilRelativePath;
             RemoveObsoleteValues(poco, @default);
 
@@ -238,7 +287,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             MaskPassword = poco.MaskPassword ?? @default.MaskPassword;
 
 
-            UpdateObsoleteSettings(poco, pocoConfig, @default);
+            UpdateObsoleteSettings(poco, poco.ExtensionConfig, @default);
 
             ExtensionConfig = @default.ExtensionConfig;
             ExtensionConfig.SetPopulatedValues(poco.ExtensionConfig);
@@ -402,6 +451,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
             return value;
         }
 
+        /// <summary>
+        /// Gets the default config
+        /// </summary>
+        /// <returns></returns>
         public static EarlyBoundGeneratorConfig GetDefault()
         {
 
@@ -443,6 +496,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         #endregion // Add Missing Default settings
 
+        /// <summary>
+        /// Loads the Config from the given path.
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
         public static EarlyBoundGeneratorConfig Load(string filePath)
         {
             try
@@ -469,6 +527,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
             }
         }
 
+        /// <summary>
+        /// Saves the Config to the given path
+        /// </summary>
+        /// <param name="filePath"></param>
         public void Save(string filePath)
         {
             var undoCheckoutIfUnchanged = FileRequiresUndoCheckout(filePath);
@@ -542,6 +604,12 @@ namespace DLaB.EarlyBoundGenerator.Settings
             return undoCheckoutIfUnchanged;
         }
 
+        /// <summary>
+        /// Returns the Setting Value
+        /// </summary>
+        /// <param name="creationType"></param>
+        /// <param name="setting"></param>
+        /// <returns></returns>
         public string GetSettingValue(CreationType creationType, string setting)
         {
             var value = CommandLineArguments.FirstOrDefault(s => string.Equals(s.Name, setting, StringComparison.InvariantCultureIgnoreCase)
@@ -555,11 +623,23 @@ namespace DLaB.EarlyBoundGenerator.Settings
             return value.Value;
         }
 
+        /// <summary>
+        /// Returns the extension argument
+        /// </summary>
+        /// <param name="creationType"></param>
+        /// <param name="service"></param>
+        /// <returns></returns>
         public Argument GetExtensionArgument(CreationType creationType, CrmSrvUtilService service)
         {
             return GetExtensionArgument(creationType, service.ToString().ToLower());
         }
 
+        /// <summary>
+        /// Returns the extension argument
+        /// </summary>
+        /// <param name="creationType"></param>
+        /// <param name="setting"></param>
+        /// <returns></returns>
         public Argument GetExtensionArgument(CreationType creationType, string setting)
         {
             return ExtensionArguments.FirstOrDefault(a => a.SettingType == creationType &&
@@ -567,11 +647,23 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 new Argument(creationType, setting, string.Empty);
         }
 
+        /// <summary>
+        /// Sets the extension argument
+        /// </summary>
+        /// <param name="creationType"></param>
+        /// <param name="service"></param>
+        /// <param name="value"></param>
         public void SetExtensionArgument(CreationType creationType, CrmSrvUtilService service, string value)
         {
             SetExtensionArgument(creationType, service.ToString().ToLower(), value);
         }
 
+        /// <summary>
+        /// Sets the extension arguments
+        /// </summary>
+        /// <param name="creationType"></param>
+        /// <param name="setting"></param>
+        /// <param name="value"></param>
         public void SetExtensionArgument(CreationType creationType, string setting, string value)
         {
             var argument = GetExtensionArgument(creationType, setting);
@@ -632,6 +724,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
     }
 }
 
+#pragma warning disable 1591
 namespace DLaB.EarlyBoundGenerator.Settings.POCO
 {
     /// <summary>

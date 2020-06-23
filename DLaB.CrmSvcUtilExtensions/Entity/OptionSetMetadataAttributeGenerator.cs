@@ -142,7 +142,6 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
                           .OrderBy(p => p.ParameterIndex(basicConstructor))
                           .Select(p => new CodeCommentStatement($@"<param name=""{p.VariableName}"">{p.CommentName} of the value.</param>", true)));
 
-            paramComments.Add(new CodeCommentStatement(@"</summary>", true));
             return paramComments.ToArray();
         }
 

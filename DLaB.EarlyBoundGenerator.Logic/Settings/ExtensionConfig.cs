@@ -337,6 +337,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
     }
 }
 
+#pragma warning disable 1591
 namespace DLaB.EarlyBoundGenerator.Settings.POCO
 {
     /// <summary>
