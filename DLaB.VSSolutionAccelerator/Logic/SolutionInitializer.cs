@@ -237,7 +237,7 @@ EndGlobal
             settings.OptionSetOutPath = settings.ExtensionConfig.CreateOneFilePerOptionSet ? @"OptionSets" : @"OptionSets.cs";
             settings.ExtensionConfig.DeleteFilesFromOutputFolders = true;
             settings.Namespace = $"{info.SharedCommonProject}.Entities";
-            settings.ServiceContextName = "CrmContext";
+            settings.ServiceContextName = "CdsContext";
             settings.Version = "1.2019.3.12"; // Set to minimum required version of the EBG since the Default version will be the version of the VSSolutionAccelerator, not the EBG
             var settingsPath = Path.Combine(settingsDirectory, "EBG." + info.RootNamespace + ".Settings.xml");
             Directory.CreateDirectory(Path.GetDirectoryName(settingsPath)??"");

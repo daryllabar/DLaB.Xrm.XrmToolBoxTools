@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.VsSolutionAccelerator</id>
-	  <version>1.2020.4.29</version>
+	  <version>1.2020.6.28</version>
 	  <title>Visual Studio Solution Accelerator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,37 +11,17 @@
     <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Adds recommended isolation/accelerator projects for use with the DLaB.Xrm and XrmUnitTest framework to your Visual Studio solution.</description>
-    <releaseNotes>V1.2020.4.29
+    <releaseNotes>V1.2020.6.28
+- Update of Template Files to newer version #236 and NuGet Fix for specifying NuGet version
+- Updated context of standard EBG to be CdsContext
+
+V1.2020.4.29
 - Upgraded the Entity Generation, Testing, and SDK to the latest version.
 
 V1.2019.10.11
 - Upgraded NuGet Packages to newest versions.
 - Added new snippet for assumptions and added auto add Namespacing.
-      
-V1.2019.5.8
-- Fixed Unable to add a new plugin/workflow to a solution if the base classes in the shared projects have been renamed #189
 
-V1.2019.3.22
-- Fixed Missing Pre_KeyAttribute #186.
-      
-V1.2019.3.13
-- Fixed bug where Previous closed Wizard.
-      
-V1.2019.3.12
-- Updated Default path of EarlyBound Generator settings and version
-
-V1.2019.3.11
-- Example Plugin doesn't register #180
-      
-V1.2019.2.13
-- Fixed Bug with NuGet ignoring Xml Files
-
-V1.2019.2.12
-- Fixed Bug with NuGet Install Path too long for App_Packages
-
-V1.2019.2.11
-Beta!
-- Generates the happy path of settings that I usually use for a project. 
     </releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>

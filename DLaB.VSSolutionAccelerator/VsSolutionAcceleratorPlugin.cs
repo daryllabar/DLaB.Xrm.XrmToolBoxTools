@@ -40,7 +40,8 @@ namespace DLaB.VSSolutionAccelerator
 
         private void UnzipTemplate()
         {
-            string zipPath = Path.Combine(Paths.PluginsPath, "DLaB.VSSolutionAccelerator", "Template.zip");
+            var zipPath = Path.Combine(Paths.PluginsPath, "DLaB.VSSolutionAccelerator", "Template.zip");
+            var zipDirectory = Path.GetDirectoryName(zipPath) ?? "UnableToGetZipDirectory";
             if (!File.Exists(zipPath))
             {
                 return;
@@ -49,9 +50,9 @@ namespace DLaB.VSSolutionAccelerator
             var tmp = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
             File.SetAttributes(zipPath, FileAttributes.Normal);
             File.Move(zipPath, tmp);
-            DeleteDirectory(Path.GetDirectoryName(zipPath));
-            Directory.CreateDirectory(zipPath);
-            ZipFile.ExtractToDirectory(tmp, Path.GetDirectoryName(zipPath));
+            DeleteDirectory(zipDirectory);
+            Directory.CreateDirectory(zipDirectory);
+            ZipFile.ExtractToDirectory(tmp, zipDirectory);
             File.Delete(tmp);
         }
 
