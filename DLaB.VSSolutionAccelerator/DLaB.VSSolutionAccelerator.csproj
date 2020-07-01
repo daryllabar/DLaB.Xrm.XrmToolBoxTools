@@ -385,7 +385,9 @@ if %25errorlevel%25 GTR 4 exit %25errorlevel%25
 
 REM Delete zip file to allow pack batch to rebuild it.
 IF EXIST "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Template.zip" DEL /F "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Template.zip"
+if %25errorlevel%25 GTR 4 exit %25errorlevel%25
 
+IF EXIST "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\UnitTestSettings.user.config" DEL /F "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\UnitTestSettings.user.config"
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
 
 if %25errorlevel%25 LEQ 4 exit 0

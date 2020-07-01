@@ -91,6 +91,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 Name = @"Assumptions\Entity Xml\Product_Install.xml",
                 Replacements = new Dictionary<string, string>
                 {
+                    {"Xyz.Xrm.Plugin", info.PluginName ?? info.WorkflowName ?? info.RootNamespace + ".Plugin"},
                     {"Xyz.Xrm", info.RootNamespace}
                 }
             });
