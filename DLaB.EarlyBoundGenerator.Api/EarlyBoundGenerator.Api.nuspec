@@ -65,7 +65,6 @@ changed the tools to be included as content so they get added to the project and
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System.Configuration" />
       <frameworkAssembly assemblyName="System.Runtime.Serialization" />
-      <frameworkAssembly assemblyName="Microsoft.VisualBasic" />
     </frameworkAssemblies>
   </metadata>
   <files>
