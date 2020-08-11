@@ -299,7 +299,9 @@ namespace DLaB.EarlyBoundGenerator
                 v => v.GetValue(Settings.ExtensionConfig)?.ToString() ?? string.Empty);
             foreach (var kvp in properties.ToList())
             {
-                if (kvp.Key.ToLower().EndsWith("list"))
+                var name = kvp.Key.ToLower();
+                if (name.EndsWith("list")
+                    || name.EndsWith("toskip"))
                 {
                     properties.Add(kvp.Key + "Count", string.IsNullOrWhiteSpace(kvp.Value) 
                         ? "0"
@@ -342,15 +344,7 @@ namespace DLaB.EarlyBoundGenerator
 
         private string GetUrlString()
         {
-            var orgName = ConnectionDetail.OrganizationUrlName;
-            if (orgName == null)
-            {
-                // Fix for Null Reference exception when attempting to generate #221
-                var startIndex = ConnectionDetail.WebApplicationUrl.LastIndexOf('/') + 1;
-                var length = ConnectionDetail.WebApplicationUrl.IndexOf('.') - startIndex;
-                orgName = ConnectionDetail.WebApplicationUrl.Substring(startIndex, length);
-            }
-
+            var orgName = GetOrgName();
             var onPremUrl = ConnectionDetail.WebApplicationUrl;
             onPremUrl = onPremUrl != null && !onPremUrl.ToLower().EndsWith(orgName.ToLower())
                 ? onPremUrl + orgName
@@ -378,6 +372,24 @@ namespace DLaB.EarlyBoundGenerator
             //    return url;
             //}
             //return prefix + ConnectionDetail.OrganizationUrlName + url.Substring(end);
+        }
+
+        private string GetOrgName()
+        {
+            var orgName = ConnectionDetail.OrganizationUrlName;
+            if (string.IsNullOrWhiteSpace(orgName)
+                && !string.IsNullOrWhiteSpace(ConnectionDetail.WebApplicationUrl))
+            {
+                var startIndex = ConnectionDetail.WebApplicationUrl.LastIndexOf('/') + 1;
+                var length = ConnectionDetail.WebApplicationUrl.IndexOf('.') - startIndex;
+                if (length > 0)
+                {
+                    orgName = ConnectionDetail.WebApplicationUrl.Substring(startIndex, length);
+                }
+            }
+
+            return orgName ?? string.Empty;
+
         }
 
         private void EnableForm(bool enable)
