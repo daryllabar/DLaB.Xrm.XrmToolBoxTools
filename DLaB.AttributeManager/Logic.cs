@@ -123,7 +123,7 @@ namespace DLaB.AttributeManager
                     MigrateToTemp(stepsToPerform, oldAtt, tmpAtt);
                     RemoveExisting(stepsToPerform, oldAtt);
                     CreateNew(newAttributeSchemaName, stepsToPerform, tmpAtt, ref newAtt, newAttributeType);
-                    MigrateDataToNew(stepsToPerform, tmpAtt, newAtt, actions, migrationMapping);
+                    MigrateDataToNew(stepsToPerform, tmpAtt, newAtt, actions, new Dictionary<string, string>()); // Don't reapply mapping on Migrate Date to New when Create Temp has already had it applied
                     MigrateToNew(stepsToPerform, tmpAtt, newAtt);
                     RemoveTemp(stepsToPerform, tmpAtt);
                     break;
