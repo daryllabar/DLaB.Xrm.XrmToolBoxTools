@@ -141,7 +141,7 @@ namespace DLaB.EarlyBoundGenerator
             // Validate Path
             if (pathIsDirectory)
             {
-                if (containsExtension)
+                if (containsExtension && !Directory.Exists(path))
                 {
                     MessageBox.Show(name + @" path must be a directory!  Did you forget to add a \\?", @"Invalid " + name + @" Path", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     isValid = false;
