@@ -35,7 +35,9 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
         {
             var insertIndex = GetInsertIndexOfAlphabeticallySortedProperty(file, "return new ExtensionConfig", "};", Property.Name, "                ", 0);
             file[insertIndex - 1] += $@"
-                {Property.Name} = {Property.DefaultValue},";
+                {Property.Name} = {(Property.PocoType == "string" && Property.DefaultValue != null 
+                    ? "\"" + Property.DefaultValue + "\""
+                    : Property.DefaultValue)},";
         }
 
         private void AddPropertyToPoco(string[] file)
@@ -47,7 +49,7 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
 
         private void AddToExtensionConfigSetPopulatedValues(string[] file)
         {
-            var insertIndex = GetInsertIndexOfAlphabeticallySortedProperty(file, "SetPopulatedValues", "string GetValueOrDefault", Property.Name, "            ", 0);
+            var insertIndex = GetInsertIndexOfAlphabeticallySortedProperty(file, "public void SetPopulatedValues", "string GetValueOrDefault", Property.Name, "            ", 0);
             if (Property.Type == "bool")
             {
                 file[insertIndex - 1] += $@"

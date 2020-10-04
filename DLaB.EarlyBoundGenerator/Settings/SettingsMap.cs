@@ -79,6 +79,13 @@ namespace DLaB.EarlyBoundGenerator.Settings
             set => Config.ExtensionConfig.MakeResponseActionsEditable = value;
         }
 
+        [Category("Actions")]
+        [DisplayName("Workflowless Actions")]
+        [Description("Some actions are being created by MS that are not workflows, and don't show up in the list of actions for adding to whitelist/blacklist, but are getting genereated and causing errors.  This setting is used to manually add action names to the selected lists.")]
+        [Editor(StringEditorName, typeof(UITypeEditor))]
+        [TypeConverter(CollectionCountConverter.Name)]
+        public List<string> WorkflowlessActions { get; set; }
+
         #endregion Actions
 
         #region Debug
@@ -543,6 +550,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
                 OptionSetPrefixesToSkip = RemoveWhiteSpace(nameof(OptionSetPrefixesToSkip), config.ExtensionConfig.OptionSetPrefixesToSkip).GetList<string>();
                 OptionSetsToSkip = RemoveWhiteSpace(nameof(OptionSetsToSkip), config.ExtensionConfig.OptionSetsToSkip).GetHashSet<string>();
                 UnmappedProperties = RemoveWhiteSpace(nameof(UnmappedProperties), config.ExtensionConfig.UnmappedProperties).GetDictionaryHash<string, string>();
+                WorkflowlessActions = RemoveWhiteSpace(nameof(WorkflowlessActions), config.WorkflowlessActions).GetList<string>();
             }
             catch (Exception ex)
             {
@@ -572,6 +580,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             Config.ExtensionConfig.OptionSetPrefixesToSkip = CommonConfig.ToStringSorted(OptionSetPrefixesToSkip);
             Config.ExtensionConfig.OptionSetsToSkip = CommonConfig.ToStringSorted(OptionSetsToSkip);
             Config.ExtensionConfig.UnmappedProperties = CommonConfig.ToStringSorted(UnmappedProperties);
+            Config.WorkflowlessActions = CommonConfig.ToStringSorted(WorkflowlessActions, info);
         }
 
         public EarlyBoundGeneratorPlugin GetPluginControl()

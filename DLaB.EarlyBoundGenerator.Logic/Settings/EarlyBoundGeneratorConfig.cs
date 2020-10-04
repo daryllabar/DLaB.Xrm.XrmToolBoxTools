@@ -114,6 +114,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [DisplayName("User Arguments")]
         [Description("Commandline arguments that are passed to the CrmSrvUtil that can have varying values, depending on the user's preference.")]
         public List<Argument> UserArguments { get; set; }
+        /// <summary>
+        /// Some actions are being created by MS that are not workflows, and don't show up in the list of actions for adding to whitelist/blacklist, but are getting genereated and causing errors.  This setting is used to manually add action names to the selected lists
+        /// </summary>
+        public string WorkflowlessActions { get; set; }
 
         #region NonSerialized Properties
         /// <summary>
@@ -285,6 +289,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             AudibleCompletionNotification = poco.AudibleCompletionNotification ?? @default.AudibleCompletionNotification;
             IncludeCommandLine = poco.IncludeCommandLine ?? @default.IncludeCommandLine;
             MaskPassword = poco.MaskPassword ?? @default.MaskPassword;
+            WorkflowlessActions = poco.WorkflowlessActions ?? @default.WorkflowlessActions;
 
 
             UpdateObsoleteSettings(poco, poco.ExtensionConfig, @default);
@@ -332,6 +337,20 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 if (poco.ExtensionConfig.ReplaceOptionSetPropertiesWithEnum == null)
                 {
                     poco.ExtensionConfig.ReplaceOptionSetPropertiesWithEnum = false;
+                }
+            }
+
+            if (pocoVersion < new Version("1.2020.10.1"))
+            {
+                // Issue #254 add invalid actions to blacklist.
+                var invalidBlacklistItems = "RetrieveAppSettingList|RetrieveAppSetting|SaveAppSetting|msdyn_GetSIFeatureConfiguration".ToLower();
+                if (string.IsNullOrWhiteSpace(poco.ExtensionConfig.ActionsToSkip))
+                {
+                    poco.ExtensionConfig.ActionsToSkip = invalidBlacklistItems;
+                }
+                else 
+                {
+                    poco.ExtensionConfig.ActionsToSkip += "|" + invalidBlacklistItems;
                 }
             }
         }
@@ -489,6 +508,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     new Argument(CreationType.Entities, "servicecontextname", "CrmServiceContext"),
                     new Argument(CreationType.OptionSets, "out",  @"EBG\OptionSets.cs")
                 }),
+                WorkflowlessActions = "RetrieveAppSettingList|RetrieveAppSetting|SaveAppSetting|msdyn_GetSIFeatureConfiguration"
             };
             @default.SettingsVersion = @default.Version;
             return @default;
@@ -740,5 +760,6 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public List<Argument> ExtensionArguments { get; set; }
         public List<Argument> UserArguments { get; set; }
         public string Version { get; set; }
+        public string WorkflowlessActions { get; set; }
     }
 }

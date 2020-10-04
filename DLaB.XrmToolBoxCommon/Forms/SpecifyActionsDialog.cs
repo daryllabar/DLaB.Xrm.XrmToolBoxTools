@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DLaB.Xrm.Entities;
 using Microsoft.Xrm.Sdk;
+using Source.DLaB.Common;
 using XrmToolBox.Extensibility;
 
 // ReSharper disable once CheckNamespace
@@ -12,18 +13,22 @@ namespace DLaB.XrmToolBoxCommon.Forms
     public partial class SpecifyActionsDialog : DialogBase
     {
         public HashSet<string> SpecifiedActions { get; set; }
-
+        private List<Workflow> WorkflowlessActions { get; set; }
         #region Constructor / Load
 
         public SpecifyActionsDialog()
         {
             InitializeComponent();
+            WorkflowlessActions = new List<Workflow>();
         }
 
         public SpecifyActionsDialog(PluginControlBase callingControl)
             : base(callingControl)
         {
             InitializeComponent();
+            WorkflowlessActions = callingControl is IGetEditorSetting getter
+                ? GetWorkflowLessActions(getter.GetEditorSetting(EditorSetting.WorkflowlessActions).GetList<string>())
+                : new List<Workflow>();
         }
 
         private void SpecifyActivitiesDialog_Load(object sender, EventArgs e)
@@ -33,6 +38,16 @@ namespace DLaB.XrmToolBoxCommon.Forms
         }
 
         #endregion // Constructor / Load
+
+        private List<Workflow> GetWorkflowLessActions(List<string> names)
+        {
+            return names.Select(n => new Workflow
+            {
+                Name = "(" + n + ")",
+                ["sdklogicalname"] = n.ToLower(),
+                UniqueName = n.ToLower()
+            }).ToList();
+        }
 
         private void LoadActions(IEnumerable<Entity> actions)
         {
@@ -44,7 +59,7 @@ namespace DLaB.XrmToolBoxCommon.Forms
                 LstAll.Items.Clear();
                 LstSpecified.Items.Clear();
                 var localActions = actions.Select(e => e.ToEntity<Workflow>()).ToList(); // Keep from multiple Enumerations
-
+                localActions.AddRange(WorkflowlessActions);
                 
 
                 LstSpecified.Items.AddRange(localActions.Where(IsSpecified).Select(e => new ListViewItem(e.Name ?? "N/A") { SubItems = { GetKey(e) }}).ToArray());

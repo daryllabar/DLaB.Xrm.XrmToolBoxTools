@@ -18,7 +18,7 @@ using PropertyInterface = DLaB.XrmToolBoxCommon.PropertyInterface;
 
 namespace DLaB.EarlyBoundGenerator
 {
-    public partial class EarlyBoundGeneratorPlugin : DLaBPluginControlBase, PropertyInterface.IEntityMetadatas, PropertyInterface.IGlobalOptionSets, PropertyInterface.IActions
+    public partial class EarlyBoundGeneratorPlugin : DLaBPluginControlBase, PropertyInterface.IEntityMetadatas, PropertyInterface.IGlobalOptionSets, PropertyInterface.IActions, IGetEditorSetting
     {
         public EarlyBoundGeneratorConfig Settings { get; set; }
         public IEnumerable<Entity> Actions { get; set; }
@@ -558,6 +558,16 @@ namespace DLaB.EarlyBoundGenerator
         private void PropertiesGrid_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
         {
             SettingsMap.OnPropertyValueChanged(s, e);
+        }
+
+        public string GetEditorSetting(EditorSetting key)
+        {
+            if (key == EditorSetting.WorkflowlessActions)
+            {
+                return Settings.WorkflowlessActions;
+            }
+
+            return null;
         }
     }
 

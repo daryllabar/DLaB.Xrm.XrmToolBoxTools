@@ -56,6 +56,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Forms\SpecifyOptionSetsDialog.Designer.cs">
       <DependentUpon>SpecifyOptionSetsDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)IGetEditorSetting.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ListViewItemComparer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectCollectionItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PluginControlBase.cs" />
