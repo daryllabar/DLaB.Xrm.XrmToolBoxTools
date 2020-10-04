@@ -215,6 +215,11 @@ namespace DLaB.EarlyBoundGenerator
             {
                 var tmp = earlyBoundGeneratorConfig.ConnectionString;
                 var start = tmp.IndexOf("Password", StringComparison.InvariantCultureIgnoreCase);
+                if(start == -1)
+                {
+                    // No Password present
+                    return args;
+                }
                 var end = tmp.IndexOf("=", start, StringComparison.InvariantCultureIgnoreCase);
                 start += end - start + 1;
                 if (tmp.Length <= start + 2)
