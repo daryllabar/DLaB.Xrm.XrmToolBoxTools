@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
+using Source.DLaB.Common;
+
 // ReSharper disable UnusedParameter.Local
 
 namespace DLaB.AttributeManager
@@ -21,16 +23,14 @@ namespace DLaB.AttributeManager
         private object CopyValueInternal(AttributeMetadata oldAttribute, BooleanAttributeMetadata newAttribute, object value, Dictionary<string, string> migrationMapping)
         {
             var copy = value.ToString();
-            string mappedValue;
-            copy = migrationMapping.TryGetValue(copy, out mappedValue) ? mappedValue : copy;
+            copy = migrationMapping.TryGetValue(copy, out var mappedValue) ? mappedValue : copy;
 
             return GetBooleanValue(value, copy);
         }
 
         private object GetBooleanValue(object value, string stringValue)
         {
-            bool output;
-            if (bool.TryParse(stringValue, out output))
+            if (bool.TryParse(stringValue, out var output))
             {
                 return output;
             }
@@ -49,19 +49,16 @@ namespace DLaB.AttributeManager
         private object CopyValueInternal(PicklistAttributeMetadata oldAttribute, BooleanAttributeMetadata newAttribute, object value, Dictionary<string, string> migrationMapping)
         {
             var copy = ((OptionSetValue)value).Value.ToString();
-            string mappedValue;
-            copy = migrationMapping.TryGetValue(copy, out mappedValue) ? mappedValue : copy;
+            copy = migrationMapping.TryGetValue(copy, out var mappedValue) ? mappedValue : copy;
 
             return GetBooleanValue(value, copy);
         }
 
         private object CopyValueInternal(AttributeMetadata oldAttribute, DateTimeAttributeMetadata newAttribute, object value, Dictionary<string, string> migrationMapping)
         {
-            DateTime output;
             var copy = value.ToString();
-            string mappedValue;
-            copy = migrationMapping.TryGetValue(copy, out mappedValue) ? mappedValue : copy;
-            if (DateTime.TryParse(copy, out output))
+            copy = migrationMapping.TryGetValue(copy, out var mappedValue) ? mappedValue : copy;
+            if (DateTime.TryParse(copy, out var output))
             {
                 return output;
             }
@@ -71,11 +68,9 @@ namespace DLaB.AttributeManager
 
         private object CopyValueInternal(AttributeMetadata oldAttribute, DecimalAttributeMetadata newAttribute, object value, Dictionary<string, string> migrationMapping)
         {
-            decimal output;
             var copy = value.ToString();
-            string mappedValue;
-            copy = migrationMapping.TryGetValue(copy, out mappedValue) ? mappedValue : copy;
-            if (decimal.TryParse(copy, out output))
+            copy = migrationMapping.TryGetValue(copy, out var mappedValue) ? mappedValue : copy;
+            if (decimal.TryParse(copy, out var output))
             {
                 return output;
             }
@@ -85,12 +80,10 @@ namespace DLaB.AttributeManager
 
         private object CopyValueInternal(AttributeMetadata oldAttribute, DoubleAttributeMetadata newAttribute, object value, Dictionary<string, string> migrationMapping)
         {
-            double output;
             var copy = value.ToString();
-            string mappedValue;
-            copy = migrationMapping.TryGetValue(copy, out mappedValue) ? mappedValue : copy;
+            copy = migrationMapping.TryGetValue(copy, out var mappedValue) ? mappedValue : copy;
 
-            if (double.TryParse(copy, out output))
+            if (double.TryParse(copy, out var output))
             {
                 return output;
             }
@@ -106,10 +99,8 @@ namespace DLaB.AttributeManager
 
         private object CopyValueInternal(AttributeMetadata oldAttribute, IntegerAttributeMetadata newAttribute, object value, Dictionary<string, string> migrationMapping)
         {
-            int output;
             var unformatted = value.ToString();
-            string mappedValue;
-            unformatted = migrationMapping.TryGetValue(unformatted, out mappedValue) ? mappedValue : unformatted;
+            unformatted = migrationMapping.TryGetValue(unformatted, out var mappedValue) ? mappedValue : unformatted;
 
             // Handle 1.0000
             if (unformatted.Contains("."))
@@ -120,7 +111,7 @@ namespace DLaB.AttributeManager
                 }
             }
 
-            if (int.TryParse(unformatted, out output))
+            if (int.TryParse(unformatted, out var output))
             {
                 return output;
             }
@@ -142,16 +133,14 @@ namespace DLaB.AttributeManager
         private object CopyValueInternal(PicklistAttributeMetadata oldAttribute, PicklistAttributeMetadata newAttribute, object value, Dictionary<string, string> migrationMapping)
         {
             var copy = ((OptionSetValue)value).Value.ToString();
-            string mappedValue;
-            copy = migrationMapping.TryGetValue(copy, out mappedValue) ? mappedValue : copy;
+            copy = migrationMapping.TryGetValue(copy, out var mappedValue) ? mappedValue : copy;
             return new OptionSetValue(int.Parse(copy));
         }
 
         private object CopyValueInternal(BooleanAttributeMetadata oldAttribute, PicklistAttributeMetadata newAttribute, object value, Dictionary<string, string> migrationMapping)
         {
             var copy = value.ToString();
-            string mappedValue;
-            copy = migrationMapping.TryGetValue(copy, out mappedValue) ? mappedValue : null;
+            copy = migrationMapping.TryGetValue(copy, out var mappedValue) ? mappedValue : null;
             if (string.IsNullOrWhiteSpace(copy))
             {
                 Trace("Unable to convert value \"" + value + "\" of type \"" + value.GetType().Name + "\" to OptionSetValue");
@@ -163,10 +152,8 @@ namespace DLaB.AttributeManager
         private object CopyValueInternal(AttributeMetadata oldAttribute, PicklistAttributeMetadata newAttribute, object value, Dictionary<string, string> migrationMapping)
         {
             var copy = value.ToString();
-            string mappedValue;
-            copy = migrationMapping.TryGetValue(copy, out mappedValue) ? mappedValue : null;
-            int newValue;
-            if (string.IsNullOrWhiteSpace(copy) || !int.TryParse(copy, out newValue))
+            copy = migrationMapping.TryGetValue(copy, out var mappedValue) ? mappedValue : null;
+            if (string.IsNullOrWhiteSpace(copy) || !int.TryParse(copy, out var newValue))
             {
                 Trace("Unable to convert value \"" + value + "\" of type \"" + value.GetType().Name + "\" to OptionSetValue");
                 return null;
@@ -177,16 +164,20 @@ namespace DLaB.AttributeManager
         private object CopyValueInternal(AttributeMetadata oldAttribute, StringAttributeMetadata newAttribute, object value, Dictionary<string, string> migrationMapping)
         {
             var copy = value.ToString();
-            string mappedValue;
-            return migrationMapping.TryGetValue(copy, out mappedValue) ? mappedValue : copy;
+            copy = migrationMapping.TryGetValue(copy, out var mappedValue) ? mappedValue : copy;
+            if (copy.Length > newAttribute.MaxLength)
+            {
+                copy = copy.Limit(newAttribute.MaxLength ?? 100);
+            }
+
+            return copy;
         }
 
 
         private object CopyValueInternal(AttributeMetadata oldAttribute, MemoAttributeMetadata newAttribute, object value, Dictionary<string, string> migrationMapping)
         {
             var copy = value.ToString();
-            string mappedValue;
-            return migrationMapping.TryGetValue(copy, out mappedValue) ? mappedValue : copy;
+            return migrationMapping.TryGetValue(copy, out var mappedValue) ? mappedValue : copy;
         }
     }
 }
