@@ -1201,7 +1201,24 @@ namespace DLaB.AttributeManager
             return requests.Count() - countFaults;
         }
 
-        private int GetRecordCount(IOrganizationService service, AttributeMetadata from)
+        private long GetRecordCount(IOrganizationService service, AttributeMetadata from)
+        {
+            try
+            {
+                Trace("Retrieving Entity Count for {0}", from.EntityLogicalName);
+                return ((RetrieveTotalRecordCountResponse) service.Execute(new RetrieveTotalRecordCountRequest
+                {
+                    EntityNames = new[] {from.EntityLogicalName}
+                })).EntityRecordCountCollection.Values.First();
+            }
+            catch(Exception ex)
+            {
+                Trace("Error " + ex);
+                Trace("Attempting to determine record count via legacy method");
+                return GetRecordCountLegacy(service, from);
+            }
+        }
+        private long GetRecordCountLegacy(IOrganizationService service, AttributeMetadata from)
         {
             Trace("Retrieving {0} id attribute name", from.EntityLogicalName);
             var response = (RetrieveEntityResponse) service.Execute(new RetrieveEntityRequest
