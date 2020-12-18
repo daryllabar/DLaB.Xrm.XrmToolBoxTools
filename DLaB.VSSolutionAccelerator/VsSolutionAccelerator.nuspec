@@ -8,7 +8,7 @@
     <owners>Daryl LaBar</owners>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
+    <icon>images\DLaB_Dynamics_Logo_Square_32x32.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Adds recommended isolation/accelerator projects for use with the DLaB.Xrm and XrmUnitTest framework to your Visual Studio solution.</description>
     <releaseNotes>V1.2020.6.30
@@ -35,5 +35,6 @@ V1.2019.10.11
   <files>
     <file src="bin\Release\Plugins\DLaB.VSSolutionAccelerator.dll" target="lib\net462\plugins" />
     <file src="bin\Release\Plugins\DLaB.VSSolutionAccelerator\Template.zip" target="lib\net462\plugins\DLaB.VSSolutionAccelerator\Template.zip" />
+    <file src="bin\Release\Images\DLaB_Dynamics_Logo_Square_32x32.png" target="images\" />
   </files>
 </package>

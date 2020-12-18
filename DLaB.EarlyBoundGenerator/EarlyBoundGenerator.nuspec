@@ -2,16 +2,21 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator</id>
-	  <version>1.2020.6.22</version>
+	  <version>1.2020.10.2</version>
 	  <title>Early Bound Generator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
     <license type="expression">MIT</license>
+    <icon>images\DLaB_Dynamics_Logo_Square_32x32.png</icon>
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V1.2020.6.22
+    <releaseNotes>V1.2020.10.2
+Fix for Output path with folders with "." are being treated as a file and error #214
+Fix for Code to mask password should not assume there is a password #251
+Fix for AppSettingDetailCollection data type which cannot be #254
+
+V1.2020.6.22
 Fix for OptionSetMetadataAttribute comment extra closing tag #248
 Fix for If output path contains a space, a new folder with %20 in lieu of the space is created #241
 Fix issue where accessing OptionSet MetaData returns an error #247
@@ -50,9 +55,6 @@ V1.2019.10.27
 Added State/Status Codes as Local Option Sets #206
 Generate entities with more constructors #204
 Added option to clobber folder if "Generate One File Per Action/Entity/Option Set" used #202
-
-V1.2019.9.13
-Added ability to delete C# files in output directory.
     </releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>
@@ -64,5 +66,6 @@ Added ability to delete C# files in output directory.
     <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator.dll" target="lib\net462\plugins" />
     <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\*.*" target="lib\net462\plugins\DLaB.EarlyBoundGenerator" />
 	  <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\alphabets\*.*" target="lib\net462\plugins\DLaB.EarlyBoundGenerator\alphabets" />
+    <file src="bin\Release\Images\DLaB_Dynamics_Logo_Square_32x32.png" target="images\" />
   </files>
 </package>

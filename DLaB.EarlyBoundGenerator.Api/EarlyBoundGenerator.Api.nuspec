@@ -8,7 +8,7 @@
     <owners>Daryl LaBar</owners>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
+    <icon>images\DLaB_Dynamics_Logo_Square_32x32.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses CrmSvcUtil from the SDK.</description>
     <releaseNotes>V1.2020.6.22
@@ -71,5 +71,6 @@ changed the tools to be included as content so they get added to the project and
     <file src="bin\Release\DLaB.EarlyBoundGenerator.Api.dll" target="lib\net462" />
     <file src="bin\Release\DLaB.EarlyBoundGenerator\*.*" target="content\bin\DLaB.EarlyBoundGenerator" />
     <file src="bin\Release\DLaB.EarlyBoundGenerator\alphabets\*.*" target="content\bin\DLaB.EarlyBoundGenerator\alphabets" />
+    <file src="bin\Release\Images\DLaB_Dynamics_Logo_Square_32x32.png" target="images\" />
   </files>
 </package>

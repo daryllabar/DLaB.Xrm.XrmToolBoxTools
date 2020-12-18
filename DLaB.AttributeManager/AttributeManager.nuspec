@@ -2,24 +2,22 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.AttributeManager</id>
-	  <version>1.2019.3.22</version>
+	  <version>1.2020.10.2</version>
 	  <title>Attribute Manager</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/master/DLaB.XrmToolBoxCommon/Images/DLaB_Dynamics_Logo_Square_32x32.png</iconUrl>
+    <icon>images\DLaB_Dynamics_Logo_Square_32x32.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>BETA! - Used to rename/delete/or change the type of an attribute.</description>
-    <releaseNotes>V1.2019.3.22
-- Fixed issue with Id not being initialized. #184
+    <releaseNotes>V1.2020.10.2
+- Fix for Record counter not working #212
+- Single line of text temp attribute length isn't long enough. #249
+- For for Local to Global OptionSet migration data with mixed values #261
 
-V1.2019.3.17
-- Updated query to include views from entities other than the target Entity. #184
-      
-V1.2018.4.5
- - Added support for skipping migration errors
- - Added support for number formatting
+V1.2019.3.22
+- Fixed issue with Id not being initialized. #184
     </releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>
@@ -29,5 +27,6 @@ V1.2018.4.5
   </metadata>
   <files>
     <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.AttributeManager.dll" target="lib\net462\plugins" />
+    <file src="bin\Release\Images\DLaB_Dynamics_Logo_Square_32x32.png" target="images\" />
   </files>
 </package>

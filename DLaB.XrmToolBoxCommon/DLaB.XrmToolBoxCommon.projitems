@@ -94,7 +94,9 @@
     <Content Include="$(MSBuildThisFileDirectory)Images\DLaB_Dynamics_Logo.png" />
     <Content Include="$(MSBuildThisFileDirectory)Images\DLaB_Dynamics_Logo_Square.png" />
     <Content Include="$(MSBuildThisFileDirectory)Images\DLaB_Dynamics_Logo_Square_120x120.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Images\DLaB_Dynamics_Logo_Square_32x32.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\DLaB_Dynamics_Logo_Square_32x32.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="$(MSBuildThisFileDirectory)Images\tsbClose.Image.png" />
   </ItemGroup>
 </Project>
