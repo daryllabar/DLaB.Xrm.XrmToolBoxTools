@@ -20,12 +20,17 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// Argument Value
         /// </summary>
         public string Value { get; set; }
+        /// <summary>
+        /// Valueless parameters are generated without a value
+        /// </summary>
+        public bool Valueless { get; set; }
 
         /// <summary>
         /// Initializes the Argument
         /// </summary>
         public Argument()
         {
+            Valueless = false;
         }
 
         /// <summary>

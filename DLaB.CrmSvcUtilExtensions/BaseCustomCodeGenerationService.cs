@@ -321,6 +321,7 @@ namespace DLaB.CrmSvcUtilExtensions
             var code = new List<string>();
             var name = string.Empty;
             var proxyTypesAssemblyAttributeLine = string.Empty;
+            var generatedCodeAttributeLine = string.Empty;
             var skipNext = false;
             var commandLine = string.Empty;
             var codeUnitStartsWith = codeUnit == CodeUnit.Class ? "public partial class" : "public enum";
@@ -358,7 +359,12 @@ namespace DLaB.CrmSvcUtilExtensions
                         if (line.Contains("ProxyTypesAssemblyAttribute"))
                         {
                             proxyTypesAssemblyAttributeLine = line;
-                            skipNext = true;
+                            continue;
+                        }
+
+                        if (line.Contains("GeneratedCodeAttribute"))
+                        {
+                            generatedCodeAttributeLine = line;
                             continue;
                         }
                         header.Add(line);
@@ -374,10 +380,10 @@ namespace DLaB.CrmSvcUtilExtensions
                                 // Put Created Via Command Line Back in
                                 header.Insert(header.IndexOf(@"// </auto-generated>")+1, commandLine);
                                 commandLine = string.Empty;
-                                // Put Proxy Types Assembly Attribute Line back in
+                                // Put Assembly Assembly Attribute Lines back in
                                 var i = header.IndexOf(string.Empty, 0) + 1;
                                 header.Insert(i++, proxyTypesAssemblyAttributeLine);
-                                header.Insert(i, string.Empty);
+                                header.Insert(i++, generatedCodeAttributeLine);
                                 currentStage = SplitStage.ServiceContext;
                             }
                             else

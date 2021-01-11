@@ -736,10 +736,11 @@ namespace Source.DLaB.Common
             return values.Contains(value);
         }
 
-#endregion IEquatable<T>
+        #endregion IEquatable<T>
 
-#region IExtensibleDataObject
+        #region IExtensibleDataObject
 
+#if NETCOREAPP == false
         /// <summary>
         /// Serializes the specified obj, returning it's xml serialized value.
         /// </summary>
@@ -770,10 +771,10 @@ namespace Source.DLaB.Common
                 sr?.Dispose();
             }
         }
-
+#endif
 #endregion IExtensibleDataObject
 
-#region MemberInfo
+        #region MemberInfo
 
         /// <summary>
         /// Determines whether the Member Info contains all the specified custom attribute types.

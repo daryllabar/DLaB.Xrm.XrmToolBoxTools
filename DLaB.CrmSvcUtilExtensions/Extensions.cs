@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -25,8 +26,27 @@ namespace DLaB.CrmSvcUtilExtensions
                 for (var j = 0; j < types.Count; j++)
                 {
                     yield return types[j];
-                    
                 }
+            }
+        }
+
+        public static void RemoveAssemblyAttributes(this CodeCompileUnit codeUnit)
+        {
+            var attributesToRemove = new List<CodeAttributeDeclaration>();
+            foreach (CodeAttributeDeclaration attribute in codeUnit.AssemblyCustomAttributes)
+            {
+                Trace.TraceInformation("Attribute BaseType is {0}", attribute.AttributeType.BaseType);
+                var baseType = attribute.AttributeType.BaseType;
+                if (baseType == "Microsoft.Xrm.Sdk.Client.ProxyTypesAssemblyAttribute"
+                    || baseType  == "System.CodeDom.Compiler.GeneratedCodeAttribute")
+                {
+                    attributesToRemove.Add(attribute);
+                }
+            }
+
+            foreach (var attribute in attributesToRemove)
+            {
+                codeUnit.AssemblyCustomAttributes.Remove(attribute);
             }
         }
 

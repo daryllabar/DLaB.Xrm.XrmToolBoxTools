@@ -357,9 +357,13 @@ namespace DLaB.EarlyBoundGenerator
                 {
                     value = GetOutputFilePath(earlyBoundGeneratorConfig, type);
                 }
-                if (argument.Value == null)
+                if (argument.Valueless)
                 {
-                    sb.AppendFormat("/{0} ", argument.Name);
+                    if (argument.Value == "true")
+                    {
+                        sb.AppendFormat("/{0} ", argument.Name);
+
+                    }
                 }
                 else
                 {

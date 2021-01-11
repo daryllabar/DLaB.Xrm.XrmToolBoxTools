@@ -261,6 +261,17 @@ namespace DLaB.EarlyBoundGenerator.Settings
             set { SetUserArgument(CreationType.Entities, UserArgumentNames.ServiceContextName, value); }
         }
 
+        /// <summary>
+        /// Controls if the SuppressGeneratedCodeAttribute is included
+        /// </summary>
+        [XmlIgnore]
+        [Browsable(false)]
+        public bool SuppressGeneratedCodeAttribute
+        {
+            get { return GetUserArgument(CreationType.All, UserArgumentNames.SuppressGeneratedCodeAttribute).Value == "true"; }
+            set { SetUserArgument(CreationType.All, UserArgumentNames.SuppressGeneratedCodeAttribute, value ? "true" : "false"); }
+        }
+
         #endregion // UserArguments Helpers
 
         #endregion // NonSerialized Properties
@@ -351,6 +362,17 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 else 
                 {
                     poco.ExtensionConfig.ActionsToSkip += "|" + invalidBlacklistItems;
+                }
+            }
+
+            if (pocoVersion < new Version("1.2020.12.18"))
+            {
+                // 12.18.2020 introduced Valueless parameters, but GenerateActions existed before as a null, need a boolean value to determine if it should be included
+                var generateActions = poco.UserArguments.FirstOrDefault(a => a.Name == UserArgumentNames.GenerateActions && a.Value == null);
+                if (generateActions != null)
+                {
+                    generateActions.Value = "true";
+                    generateActions.Valueless = true;
                 }
             }
         }
@@ -501,12 +523,13 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 }),
                 ExtensionConfig = ExtensionConfig.GetDefault(),
                 UserArguments = new List<Argument>(new[] {
-                    new Argument(CreationType.Actions, "generateActions", null),
-                    new Argument(CreationType.Actions, "out",  @"EBG\Actions.cs"),
-                    new Argument(CreationType.All, "namespace", "CrmEarlyBound"),
-                    new Argument(CreationType.Entities, "out", @"EBG\Entities.cs"),
-                    new Argument(CreationType.Entities, "servicecontextname", "CrmServiceContext"),
-                    new Argument(CreationType.OptionSets, "out",  @"EBG\OptionSets.cs")
+                    new Argument(CreationType.Actions, UserArgumentNames.GenerateActions, "true"){ Valueless = true},
+                    new Argument(CreationType.Actions, UserArgumentNames.Out,  @"EBG\Actions.cs"),
+                    new Argument(CreationType.All, UserArgumentNames.Namespace, "CrmEarlyBound"),
+                    new Argument(CreationType.All, UserArgumentNames.SuppressGeneratedCodeAttribute, "true"){ Valueless = true},
+                    new Argument(CreationType.Entities, UserArgumentNames.Out, @"EBG\Entities.cs"),
+                    new Argument(CreationType.Entities, UserArgumentNames.ServiceContextName, "CrmServiceContext"),
+                    new Argument(CreationType.OptionSets, UserArgumentNames.Out,  @"EBG\OptionSets.cs")
                 }),
                 WorkflowlessActions = "RetrieveAppSettingList|RetrieveAppSetting|SaveAppSetting|msdyn_GetSIFeatureConfiguration"
             };
@@ -737,9 +760,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         internal struct UserArgumentNames
         {
+            public const string GenerateActions = "generateActions";
             public const string Namespace = "namespace";
             public const string Out = "out";
             public const string ServiceContextName = "servicecontextname";
+            public const string SuppressGeneratedCodeAttribute = "SuppressGeneratedCodeAttribute";
         }
     }
 }

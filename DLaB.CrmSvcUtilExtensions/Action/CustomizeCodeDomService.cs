@@ -59,20 +59,7 @@ namespace DLaB.CrmSvcUtilExtensions.Action
             Trace.TraceInformation("Entering ICustomizeCodeDomService.CustomizeCodeDom");
             Trace.TraceInformation("Number of Namespaces generated: {0}", codeUnit.Namespaces.Count);
 
-            //#if REMOVE_PROXY_TYPE_ASSEMBLY_ATTRIBUTE
-
-            foreach (CodeAttributeDeclaration attribute in codeUnit.AssemblyCustomAttributes)
-            {
-                Trace.TraceInformation("Attribute BaseType is {0}", attribute.AttributeType.BaseType);
-                if (attribute.AttributeType.BaseType == "Microsoft.Xrm.Sdk.Client.ProxyTypesAssemblyAttribute")
-                {
-                    codeUnit.AssemblyCustomAttributes.Remove(attribute);
-                    break;
-                }
-            }
-
-            //#endif
-
+            codeUnit.RemoveAssemblyAttributes();
             ProcessActions(codeUnit);
 
             if (GenerateActionAttributeNameConsts)

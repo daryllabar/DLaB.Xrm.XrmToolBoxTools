@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Crm.Services.Utility;
@@ -24,7 +25,7 @@ namespace DLaB.CrmSvcUtilExtensions.Tests
         public void CreateTestOptionSetFile()
         {
             var factory = new ServiceFactory();
-            var customizeDom = new OptionSet.CustomizeCodeDomService();
+            var customizeDom = new OptionSet.CustomizeCodeDomService(new Dictionary<string, string>());
             var codeGen =      new OptionSet.CustomCodeGenerationService(factory.GetService<ICodeGenerationService>());
             var filter =       new OptionSet.CodeWriterFilterService(factory.GetService<ICodeWriterFilterService>());
 

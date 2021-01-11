@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using Microsoft.Crm.Services.Utility;
@@ -13,6 +14,18 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
     /// </summary>
     public class LocalMultiOptionSetGenerator : ICustomizeCodeDomService
     {
+        private IDictionary<string,string> _parameters;
+        private bool SuppressGeneratedCodeAttribute { get; }
+        private const string SuppressGeneratedCodeAttributeKey = "SuppressGeneratedCodeAttribute";
+
+
+        internal LocalMultiOptionSetGenerator(IDictionary<string, string> parameters)
+        {
+
+            _parameters = parameters;
+            SuppressGeneratedCodeAttribute = parameters.TryGetValue(SuppressGeneratedCodeAttributeKey, out var value) && value == "True";
+        }
+
         #region Implementation of ICustomizeCodeDomService
 
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
@@ -43,11 +56,14 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
             };
             type.CustomAttributes.Add(new CodeAttributeDeclaration(new CodeTypeReference(typeof(DataContractAttribute))));
 
-            var version = System.Diagnostics.FileVersionInfo.GetVersionInfo(typeof(INamingService).Assembly.Location).ProductVersion;
-            type.CustomAttributes.Add(new CodeAttributeDeclaration(
-                new CodeTypeReference(typeof(GeneratedCodeAttribute)), 
-                new CodeAttributeArgument(new CodePrimitiveExpression("CrmSvcUtil")),
-                new CodeAttributeArgument(new CodePrimitiveExpression(version))));
+            if (!SuppressGeneratedCodeAttribute)
+            {
+                var version = System.Diagnostics.FileVersionInfo.GetVersionInfo(typeof(INamingService).Assembly.Location).ProductVersion;
+                type.CustomAttributes.Add(new CodeAttributeDeclaration(
+                    new CodeTypeReference(typeof(GeneratedCodeAttribute)), 
+                    new CodeAttributeArgument(new CodePrimitiveExpression("CrmSvcUtil")),
+                    new CodeAttributeArgument(new CodePrimitiveExpression(version))));
+            }
 
             foreach (var option in metadata.OptionSet.Options)
             {

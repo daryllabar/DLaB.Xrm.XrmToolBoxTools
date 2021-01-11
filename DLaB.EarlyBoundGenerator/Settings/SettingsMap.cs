@@ -340,6 +340,15 @@ namespace DLaB.EarlyBoundGenerator.Settings
         }
 
         [Category("Global")]
+        [DisplayName("Suppress Generated Code Attribute")]
+        [Description("Enables SuppressGeneratedCodeAttribute command line parameters.")]
+        public bool SuppressGeneratedCodeAttribute
+        {
+            get => Config.SuppressGeneratedCodeAttribute;
+            set => Config.SuppressGeneratedCodeAttribute = value;
+        }
+
+        [Category("Global")]
         [DisplayName("Include Command Line")]
         [Description("Specifies whether to include in the early bound class the command line used to generate it.")]
         public bool IncludeCommandLine
