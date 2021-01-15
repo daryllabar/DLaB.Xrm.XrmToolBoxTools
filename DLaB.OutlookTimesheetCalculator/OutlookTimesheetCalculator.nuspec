@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>DLaB.OutlookTimesheetCalculator</id>
+	  <version>1.2021.1.14</version>
+	  <title>Outlook Timesheet Calculator</title>
+    <authors>Daryl LaBar</authors>
+    <owners>Daryl LaBar</owners>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
+    <icon>images\DLaB_Dynamics_Logo_Square_32x32.png</icon>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Reads appointments from Outlook Desktop to calculator hours worked.</description>
+    <releaseNotes>V1.2021.1.14
+- Initial Release
+    </releaseNotes>
+    <copyright>Copyright 2021</copyright>
+    <tags>XrmToolBox Plugins Xrm Outlook Timesheet</tags>
+    <dependencies>
+      <dependency id="XrmToolBox" version="1.2017.2.13" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\Plugins\DLaB.OutlookTimesheetCalculator.dll" target="lib\net462\plugins" />
+    <file src="bin\Release\Plugins\DLaB.OutlookTimesheetCalculator\Microsoft.Office.Interop.Outlook.dll" target="lib\net462\plugins\DLaB.OutlookTimesheetCalculator\Microsoft.Office.Interop.Outlook.dll" />
+    <file src="bin\Release\Plugins\DLaB.OutlookTimesheetCalculator\office.dll" target="lib\net462\plugins\DLaB.OutlookTimesheetCalculator\office.dll" />
+    <file src="bin\Release\Images\DLaB_Dynamics_Logo_Square_32x32.png" target="images\" />
+  </files>
+</package>

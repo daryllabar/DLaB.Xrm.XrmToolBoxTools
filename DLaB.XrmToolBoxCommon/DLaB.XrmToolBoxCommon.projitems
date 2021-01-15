@@ -18,7 +18,6 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)DynamicTypeDescriptor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Editors\CollectionCountConvertor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Editors\ActionsHashEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Editors\OptionSetsHashEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Editors\EntitiesHashEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Editors\IGetPlugin.cs" />
@@ -26,12 +25,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Editors\SpecifyAttributesEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Forms\Helper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Forms\SpecifyActionsDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Forms\SpecifyActionsDialog.Designer.cs">
-      <DependentUpon>SpecifyActionsDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Forms\SpecifyAttributesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,9 +63,6 @@
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)DialogBase.resx">
       <DependentUpon>DialogBase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Forms\SpecifyActionsDialog.resx">
-      <DependentUpon>SpecifyActionsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Forms\SpecifyAttributesDialog.resx">
       <DependentUpon>SpecifyAttributesDialog.cs</DependentUpon>

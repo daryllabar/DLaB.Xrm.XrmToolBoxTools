@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using DLaB.Xrm.Entities;
 using Microsoft.Xrm.Sdk;
 using Source.DLaB.Common;
+using Source.DLaB.Xrm;
 using XrmToolBox.Extensibility;
 
 // ReSharper disable once CheckNamespace
@@ -160,5 +161,46 @@ namespace DLaB.XrmToolBoxCommon.Forms
             ((ListView) o).ListViewItemSorter = new ListViewItemComparer(e.Column, _order);
         }
 
+        protected void RetrieveActionsOnLoad(Action<IEnumerable<Entity>> loadActions)
+        {
+            var actions = ((PropertyInterface.IActions)CallingControl).Actions;
+
+            if (actions == null)
+            {
+                _callBackForRetrieveActions = loadActions;
+                ExecuteMethod(RetrieveActions);
+            }
+            else
+            {
+                loadActions(actions);
+            }
+        }
+
+        private Action<IEnumerable<Entity>> _callBackForRetrieveActions;
+
+        private void RetrieveActions()
+        {
+            WorkAsync(new WorkAsyncInfo("Retrieving Actions...", e =>
+            {
+                var qe = QueryExpressionFactory.Create<Workflow>(w => new { w.Name, w.UniqueName },
+                    Workflow.Fields.Category, (int)Workflow_Category.Action,
+                    Workflow.Fields.ParentWorkflowId, null);
+                qe.AddLink<SdkMessage>(Workflow.Fields.SdkMessageId, m => new { m.Name });
+                var entities = Service.RetrieveMultiple(qe.Query).ToEntityList<Workflow>();
+                e.Result = entities.Select(w =>
+                {
+                    w[@"sdklogicalname"] = w.GetAliasedEntity<SdkMessage>().Name;
+                    return w.ToSdkEntity();
+                }).ToList();
+            })
+            {
+                PostWorkCallBack = e =>
+                {
+                    var actionContainer = ((PropertyInterface.IActions)CallingControl);
+                    actionContainer.Actions = (List<Entity>)e.Result;
+                    _callBackForRetrieveActions(actionContainer.Actions);
+                }
+            });
+        }
     }
 }

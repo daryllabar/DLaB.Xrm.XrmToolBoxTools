@@ -56,7 +56,6 @@ namespace DLaB.VSSolutionAccelerator
             File.Delete(tmp);
         }
 
-
         private void MyPluginControl_Load(object sender, EventArgs e)
         {
             // Loads or creates the settings for the plugin
