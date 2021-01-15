@@ -11,7 +11,7 @@ namespace DLaB.OutlookTimesheetCalculator
 {
     [Export(typeof(IXrmToolBoxPlugin)),
      ExportMetadata("Name", "Outlook Timesheet Calculator"),
-     ExportMetadata("Description", "Reads appointments from Outlook Desktop to calculator hours worked."),
+     ExportMetadata("Description", "Reads appointments from Outlook Desktop to calculate hours worked."),
      ExportMetadata("SmallImageBase64", SmallImage32X32), // null for "no logo" image or base64 image content 
      ExportMetadata("BigImageBase64", LargeImage120X120), // null for "no logo" image or base64 image content 
      ExportMetadata("BackgroundColor", "White"), // Use a HTML color name
