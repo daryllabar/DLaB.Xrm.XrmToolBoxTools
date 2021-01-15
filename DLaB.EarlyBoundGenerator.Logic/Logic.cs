@@ -217,6 +217,10 @@ namespace DLaB.EarlyBoundGenerator
                 var start = tmp.IndexOf("Password", StringComparison.InvariantCultureIgnoreCase);
                 if(start == -1)
                 {
+                    start = tmp.IndexOf("ClientSecret=", StringComparison.InvariantCultureIgnoreCase);
+                }
+                if (start == -1)
+                {
                     // No Password present
                     return args;
                 }

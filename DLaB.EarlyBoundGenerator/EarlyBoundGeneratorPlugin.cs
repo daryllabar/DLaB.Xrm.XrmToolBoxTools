@@ -257,10 +257,9 @@ namespace DLaB.EarlyBoundGenerator
                 Settings.Domain = GetUserDomain();
                 Settings.Password = ConnectionDetail.GetUserPassword();
                 Settings.SupportsActions = ConnectionDetail.OrganizationMajorVersion >= Crm2013;
-                Settings.UseConnectionString = Settings.UseConnectionString; // #151 || Settings.AuthType == AuthenticationProviderType.ActiveDirectory;
                 Settings.UseCrmOnline = ConnectionDetail.UseOnline;
                 Settings.UserName = ConnectionDetail.UserName;
-                Settings.Url = GetUrlString();
+                Settings.Url = ConnectionDetail.GetUrlString();
 
                 if (Settings.UseConnectionString && string.IsNullOrWhiteSpace(Settings.Password))
                 {
@@ -273,6 +272,15 @@ namespace DLaB.EarlyBoundGenerator
                 if (ConnectionDetail.AuthType == AuthenticationProviderType.ActiveDirectory && string.IsNullOrWhiteSpace(Settings.UserName))
                 {
                     Settings.UserName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+                }
+                if (string.IsNullOrWhiteSpace(Settings.ConnectionString))
+                {
+                    // Load any non-username/password situations via connection string #268
+                    Settings.ConnectionString = ConnectionDetail.GetNonUserConnectionString();
+                    if (!string.IsNullOrWhiteSpace(Settings.ConnectionString))
+                    {
+                        Settings.UseConnectionString = true;
+                    }
                 }
             }
 
@@ -340,56 +348,6 @@ namespace DLaB.EarlyBoundGenerator
             {
                 return ConnectionDetail.UserDomain;
             }
-        }
-
-        private string GetUrlString()
-        {
-            var orgName = GetOrgName();
-            var onPremUrl = ConnectionDetail.WebApplicationUrl;
-            onPremUrl = onPremUrl != null && !onPremUrl.ToLower().EndsWith(orgName.ToLower())
-                ? onPremUrl + orgName
-                : onPremUrl;
-            var url = ConnectionDetail.UseOnline 
-                ? ConnectionDetail.OrganizationServiceUrl
-                : onPremUrl;
-            return Settings.UseConnectionString
-                ? url?.Replace(@"/XRMServices/2011/Organization.svc", string.Empty)
-                :  url;
-
-            //if (auth == AuthenticationProviderType.ActiveDirectory)
-            //{
-            //    return url;
-            //}
-            //int start;
-            //var prefix = url.SubstringByString(0, "//", out start) + "//";
-            //if (start < 0)
-            //{
-            //    return url;
-            //}
-            //var end = url.IndexOf(".", start, StringComparison.Ordinal);
-            //if (end < 0)
-            //{
-            //    return url;
-            //}
-            //return prefix + ConnectionDetail.OrganizationUrlName + url.Substring(end);
-        }
-
-        private string GetOrgName()
-        {
-            var orgName = ConnectionDetail.OrganizationUrlName;
-            if (string.IsNullOrWhiteSpace(orgName)
-                && !string.IsNullOrWhiteSpace(ConnectionDetail.WebApplicationUrl))
-            {
-                var startIndex = ConnectionDetail.WebApplicationUrl.LastIndexOf('/') + 1;
-                var length = ConnectionDetail.WebApplicationUrl.IndexOf('.') - startIndex;
-                if (length > 0)
-                {
-                    orgName = ConnectionDetail.WebApplicationUrl.Substring(startIndex, length);
-                }
-            }
-
-            return orgName ?? string.Empty;
-
         }
 
         private void EnableForm(bool enable)
