@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator.Api</id>
-    <version>1.2021.1.13</version>
+    <version>1.2021.1.18</version>
     <title>Early Bound Generator Api</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,10 @@
     <icon>images\DLaB_Dynamics_Logo_Square_32x32.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses CrmSvcUtil from the SDK.</description>
-    <releaseNotes>V1.2021.1.13
+    <releaseNotes>V1.2021.1.18
+Allow for File prefix text #269
+
+V1.2021.1.13
 Added support AppId/ClientSecret #268
 
 V1.2021.1.9
@@ -48,24 +51,7 @@ V1.2020.2.25
 Fixed package error
 
 V1.2020.2.24
-Removed EntityTypeCode generation by default. #216
-	
-V1.2019.10.27
-Added State/Status Codes as Local Option Sets #206
-Generate entities with more constructors #204
-Added option to clobber folder if "Generate One File Per Action/Entity/Option Set" used #202
-
-V1.2019.8.22
-Fixed Adding generated files to project sometimes gets it wrong #193
-
-V1.2019.5.17
-Fixed Adding generated files to project sometimes gets it wrong #193
-
-V1.2019.5.12
-Added ability to Whitelist actions #190
-Updated the connection string setting to allow a full connection string to be specified and used #190
-changed the tools to be included as content so they get added to the project and they don't have to manually be copied. #190
-    </releaseNotes>
+Removed EntityTypeCode generation by default. #216</releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>CrmSvcUtil Xrm EarlyBound Generator</tags>
     <frameworkAssemblies>

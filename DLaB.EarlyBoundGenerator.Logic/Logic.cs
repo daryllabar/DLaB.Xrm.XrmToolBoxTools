@@ -287,6 +287,7 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "EntitiesWhitelist", extensions.EntitiesWhitelist) |
                     UpdateConfigAppSetting(file, "EntityPrefixesToSkip", extensions.EntityPrefixesToSkip) |
                     UpdateConfigAppSetting(file, "EntityPrefixesWhitelist", extensions.EntityPrefixesWhitelist) |
+                    UpdateConfigAppSetting(file, "FilePrefixText", extensions.FilePrefixText) |
                     UpdateConfigAppSetting(file, "GenerateActionAttributeNameConsts", extensions.GenerateActionAttributeNameConsts.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateAttributeNameConsts", extensions.GenerateAttributeNameConsts.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateAnonymousTypeConstructor", extensions.GenerateAnonymousTypeConstructor.ToString()) |

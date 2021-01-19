@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Drawing.Design;
 using DLaB.XrmToolBoxCommon.Editors;
 using CommonConfig = Source.DLaB.Common.Config;
@@ -337,6 +338,16 @@ namespace DLaB.EarlyBoundGenerator.Settings
         {
             get => Config.ExtensionConfig.DeleteFilesFromOutputFolders;
             set => Config.ExtensionConfig.DeleteFilesFromOutputFolders = value;
+        }
+
+        [Category("Global")]
+        [DisplayName("File Prefix Text")]
+        [Description("Text that appears at the top of every file.  Could be used to include Copyright information or #Paragma warning disable statements.  This is a string format text, with {0} being the file name with extension.")]
+        [Editor(typeof(MultilineStringEditor), typeof(UITypeEditor))]
+        public string FilePrefixText
+        {
+            get => Config.ExtensionConfig.FilePrefixText;
+            set => Config.ExtensionConfig.FilePrefixText = value;
         }
 
         [Category("Global")]

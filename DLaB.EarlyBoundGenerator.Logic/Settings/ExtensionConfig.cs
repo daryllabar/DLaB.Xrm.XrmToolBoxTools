@@ -79,6 +79,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public string EntityPrefixesWhitelist { get; set; }
         /// <summary>
+        /// Text that appears at the top of every  file.  Could be used to include Copyright information or #Paragma warning disable statements
+        /// </summary>
+        public string FilePrefixText { get; set; }
+        /// <summary>
         /// Specifies the generation of an Attributes Struct containing logical names for all attributes for the Action
         /// </summary>
         public bool GenerateActionAttributeNameConsts { get; set; }
@@ -270,6 +274,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     "QuoteDetail:QuoteStateCode|" +
                     "SalesOrderDetail:SalesOrderStateCode|",
                 AddOptionSetMetadataAttribute = true,
+                FilePrefixText = null,
                 GenerateOptionSetMetadataAttribute = true,
                 ReadSerializedMetadata = false,
                 SerializeMetadata = false,
@@ -301,6 +306,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             EntityAttributeSpecifiedNames = GetValueOrDefault(poco.EntityAttributeSpecifiedNames, EntityAttributeSpecifiedNames);
             EntityPrefixesToSkip = GetValueOrDefault(poco.EntityPrefixesToSkip, EntityPrefixesToSkip);
             EntityPrefixesWhitelist = GetValueOrDefault(poco.EntityPrefixesWhitelist, EntityPrefixesWhitelist);
+            FilePrefixText = GetValueOrDefault(poco.FilePrefixText, FilePrefixText);
             GenerateActionAttributeNameConsts = poco.GenerateActionAttributeNameConsts ?? GenerateActionAttributeNameConsts;
             GenerateAttributeNameConsts = poco.GenerateAttributeNameConsts ?? GenerateAttributeNameConsts;
             GenerateAnonymousTypeConstructor = poco.GenerateAnonymousTypeConstructor ?? GenerateAnonymousTypeConstructor;
@@ -380,6 +386,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public string UnmappedProperties { get; set; }
         public bool? AddNewFilesToProject { get; set; }
         public bool? AddOptionSetMetadataAttribute { get; set; }
+        public string FilePrefixText { get; set; }
         public bool? GenerateOptionSetMetadataAttribute { get; set; }
         public string ProjectNameForEarlyBoundFiles { get; set; }
         public bool? ReadSerializedMetadata { get; set; }

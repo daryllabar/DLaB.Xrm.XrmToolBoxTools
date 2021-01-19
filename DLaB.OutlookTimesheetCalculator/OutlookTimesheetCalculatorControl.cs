@@ -7,29 +7,25 @@ using System.Windows.Forms;
 using System.IO;
 using Outlook = Microsoft.Office.Interop.Outlook;
 using System.Collections.ObjectModel;
+using DLaB.XrmToolBoxCommon;
 using XrmToolBox.Extensibility;
 
 namespace DLaB.OutlookTimesheetCalculator
 {
-    public partial class OutlookTimesheetCalculatorControl : PluginControlBase
+    public partial class OutlookTimesheetCalculatorControl : DLaBPluginControlBase
     {
         public Settings Settings { get; set; }
         public OptionSettings OptionSettings { get; set; }
         public ObservableCollection<Task> Tasks { get; set; }
         // public List<Task> TempRegexTasks { get; set; }
         public ObservableCollection<Project> Projects { get; set; }
-        private Project DefaultProject { get { return cmbProjects.SelectedItem as Project; } }
+        private Project DefaultProject => cmbProjects.SelectedItem as Project;
 
         private List<AppointmentTask> AppointmentTasks { get; set; }
 
-        private void ShowError(string message)
-        {
-            ShowError(message, null);
-        }
-
         private void ShowError(string message, Exception ex)
         {
-            MessageBox.Show(ex == null ? message : message + Environment.NewLine + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(ex == null ? message : message + Environment.NewLine + ex, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public OutlookTimesheetCalculatorControl()
@@ -73,7 +69,7 @@ namespace DLaB.OutlookTimesheetCalculator
                 }
                 catch (Exception ex)
                 {
-                    ShowError("Erorr Reading Settings File", ex);
+                    ShowError("Error Reading Settings File", ex);
                     throw;
                 }
             }
@@ -128,14 +124,13 @@ namespace DLaB.OutlookTimesheetCalculator
                 var project = Projects.FirstOrDefault();
                 if(project != null)
                 {
-                    Tasks.Add(new Task { Name = "Meeting", IsBillable = true, Project = project.Id });
+                    Tasks.Add(new Task { Name = "Scrum*", IsBillable = true, Project = project.Id });
                     Tasks.Add(new Task { Name = "XYZ - *", IsBillable = true, Project = project.Id });
                 }
 
                 project = Projects.FirstOrDefault(p => p.Name == "Personal");
                 if (project != null)
                 {
-                    Tasks.Add(new Task { Name = "Dr. Appointment", IsBillable = false, Project = project.Id });
                     Tasks.Add(new Task { Name = "Holiday", IsBillable = false, Project = project.Id });
                     Tasks.Add(new Task { Name = "Lunch", IsBillable = false, Project = project.Id });
                     Tasks.Add(new Task { Name = "Vacation", IsBillable = false, Project = project.Id });
@@ -161,7 +156,7 @@ namespace DLaB.OutlookTimesheetCalculator
                 }
                 catch (Exception ex)
                 {
-                    ShowError("Erorr Reading Settings File", ex);
+                    ShowError("Error Reading Settings File", ex);
                     throw;
                 }
             }
@@ -272,61 +267,6 @@ namespace DLaB.OutlookTimesheetCalculator
             }
         }
 
-        private static void AddReoccuringAppointments(List<Outlook.AppointmentItem> appointments, DateTime start, DateTime end, Outlook.AppointmentItem appointment)
-        {
-            Outlook.RecurrencePattern rp = appointment.GetRecurrencePattern();
-            if (rp.PatternStartDate >= end || rp.PatternEndDate <= start) { return; }
-            if (rp.PatternStartDate > start)
-            {
-                start = rp.PatternStartDate;
-            }
-            if (rp.PatternEndDate < end)
-            {
-                end = rp.PatternEndDate;
-            }
-
-            var exceptions = GetExceptions(rp, start, end);
-
-            Outlook.AppointmentItem recur = null;
-            Outlook.Exception exception = null;
-            
-            for (DateTime cur = new DateTime(start.Year, start.Month, start.Day, appointment.Start.Hour, appointment.Start.Minute, 0); cur <= end; cur = cur.AddDays(1))
-            {
-                if ((((int)rp.DayOfWeekMask) & (int)Math.Pow(2,(int)cur.DayOfWeek)) == 0) { continue; }
-                exception = exceptions.FirstOrDefault(e => e.OriginalDate.Date == cur.Date);
-                if (exception == null)
-                {
-                    recur = rp.GetOccurrence(cur);
-                }
-                else if (!exception.Deleted)
-                {
-                    recur = exception.AppointmentItem;
-                }
-
-                if (recur != null)
-                {
-                    appointments.Add(recur);
-                }
-            }
-            if (recur == null)
-            {
-                appointments.Add(appointment);
-            }
-        }
-
-        private static List<Outlook.Exception> GetExceptions(Outlook.RecurrencePattern rp, DateTime start, DateTime end)
-        {
-            List<Outlook.Exception> exceptions = new List<Outlook.Exception>();
-            foreach (Outlook.Exception e in rp.Exceptions)
-            {
-                if (e.OriginalDate >= start && e.OriginalDate < end)
-                {
-                    exceptions.Add(e);
-                }
-            }
-            return exceptions;
-        }
-
         private void cmbProjects_Leave(object sender, EventArgs e)
         {
             Project project = (Project)cmbProjects.SelectedItem;
@@ -341,7 +281,7 @@ namespace DLaB.OutlookTimesheetCalculator
         {
             try
             {
-                var directory = Path.GetDirectoryName(path);
+                var directory = Path.GetDirectoryName(path) ?? string.Empty;
                 if (!Directory.Exists(directory))
                 {
                     Directory.CreateDirectory(directory);
@@ -355,7 +295,6 @@ namespace DLaB.OutlookTimesheetCalculator
             catch (Exception ex)
             {
                 ShowError("Error Saving " + typeof(T).Name + " File", ex);
-                return;
             }
         }
 
@@ -453,7 +392,7 @@ namespace DLaB.OutlookTimesheetCalculator
 
             AppointmentTasks = MatchAppointmentsToTasks(GetOutlookAppointments(dtpStart.Value, dtpEnd.Value.AddDays(1)));
 
-            lblHours.Text = String.Format("Total Hours {0} ({1} Billable)", Math.Round(GetTime(AppointmentTasks).TotalHours, 2), Math.Round(GetTime(AppointmentTasks.Where(at => at.Task.IsBillable)).TotalHours, 2), Environment.NewLine);
+            lblHours.Text = $@"Total Hours {Math.Round(GetTime(AppointmentTasks).TotalHours, 2)} ({Math.Round(GetTime(AppointmentTasks.Where(at => at.Task.IsBillable)).TotalHours, 2)} Billable)";
             
             TimeSpan time;
             foreach (var task in AppointmentTasks.Select(a => a.Task).Distinct().OrderBy(t => t.Name))
@@ -473,18 +412,14 @@ namespace DLaB.OutlookTimesheetCalculator
                 lstProjects.SelectedItem = lstProjects.Items[0];
             }
 
-            List<AppointmentTask> tasksForProjectForDay;
-            StringBuilder sb;
-            double totalHours;
-            double totalBillableHours;
             for (DateTime day = dtpStart.Value; day < dtpEnd.Value.AddDays(1); day = day.AddDays(1))
             {
-                totalHours = 0.0;
-                totalBillableHours = 0.0;
-                sb = new StringBuilder();
+                var totalHours = 0.0;
+                var totalBillableHours = 0.0;
+                var sb = new StringBuilder();
                 foreach (var project in Projects)
                 {
-                    tasksForProjectForDay = AppointmentTasks.Where(at => at.Project == project && day <= at.Appointment.Start && day.AddDays(1) >= at.Appointment.End).ToList();
+                    var tasksForProjectForDay = AppointmentTasks.Where(at => at.Project == project && day <= at.Appointment.Start && day.AddDays(1) >= at.Appointment.End).ToList();
                     time = GetTime(tasksForProjectForDay);
                     if (time.TotalHours > 0)
                     {
@@ -496,13 +431,13 @@ namespace DLaB.OutlookTimesheetCalculator
 
                         foreach (var at in tasksForProjectForDay.GroupBy(t => t.Task.Name).OrderBy(g => g.Key))
                         {
-                            sb.AppendLine(String.Format("\t- {0} = {1}", at.Key, GetTime(at).TotalHours));
+                            sb.AppendLine($"\t- {at.Key} = {GetTime(at).TotalHours}");
                         }
                     }
                 }
                 if (totalHours > 0.0)
                 {
-                    txtDailyHours.AppendText(string.Format("{0} {1} Total Hours {2} ({3} Billable){4}", day.DayOfWeek, day.ToShortDateString(), Math.Round(totalHours, 2), Math.Round(totalBillableHours, 2), Environment.NewLine));
+                    txtDailyHours.AppendText($"{day.DayOfWeek} {day.ToShortDateString()} Total Hours {Math.Round(totalHours, 2)} ({Math.Round(totalBillableHours, 2)} Billable){Environment.NewLine}");
                     sb.AppendLine();
                     txtDailyHours.AppendText(sb.ToString());
                 }
@@ -654,7 +589,7 @@ namespace DLaB.OutlookTimesheetCalculator
             public Project Project { get; set; }
             public override string ToString()
             {
-                return String.Format("{0} {1} - {2} {3}hrs", Task.Name, Appointment.Start, Appointment.End, Appointment.Duration / 60m);
+                return $"{Task.Name} {Appointment.Start} - {Appointment.End} {Appointment.Duration / 60m}hrs";
             }
         }
 
@@ -679,13 +614,13 @@ namespace DLaB.OutlookTimesheetCalculator
 
                     foreach (var at in tasksForProjectForDay.GroupBy(t => t.Task.Name))
                     {
-                        sb.AppendLine(String.Format("\t- {0} = {1}", at.Key, GetTime(at).TotalHours));
+                        sb.AppendLine($"\t- {at.Key} = {GetTime(at).TotalHours}");
                     }
                 }
                 
                 if (totalHours > 0.0)
                 {
-                    txtTaskDailyHours.AppendText(string.Format("{0} {1} Total Hours {2}{3}{4}{3}", day.DayOfWeek, day.ToShortDateString(), Math.Round(totalHours,2), Environment.NewLine, sb.ToString()));
+                    txtTaskDailyHours.AppendText(string.Format("{0} {1} Total Hours {2}{3}{4}{3}", day.DayOfWeek, day.ToShortDateString(), Math.Round(totalHours,2), Environment.NewLine, sb));
                     txtTaskDailyHours.SelectionStart = 0;
                     txtTaskDailyHours.ScrollToCaret();
                 }
@@ -726,11 +661,9 @@ namespace DLaB.OutlookTimesheetCalculator
                     }
                     break;
                 case ListChangedType.ItemAdded:
-                    Project newProject = ((Project)((BindingSource)sender)[e.NewIndex]);
+                    var newProject = ((Project)((BindingSource)sender)[e.NewIndex]);
                     newProject.Id = Guid.NewGuid();
                     newProject.IsBillable = true;
-                    break;
-                default:
                     break;
             }
         }
@@ -747,8 +680,6 @@ namespace DLaB.OutlookTimesheetCalculator
                     {
                         SaveTasks();
                     }
-                    break;
-                default:
                     break;
             }
         }

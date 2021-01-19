@@ -15,6 +15,7 @@ namespace DLaB.CrmSvcUtilExtensions
     {
         public static bool UseTfsToCheckoutFiles { get; } = ConfigHelper.GetAppSettingOrDefault("UseTfsToCheckoutFiles", false);
         public static bool AddNewFilesToProject => ConfigHelper.GetAppSettingOrDefault("AddNewFilesToProject", false);
+        public static string FilePrefixText => ConfigHelper.GetAppSettingOrDefault("FilePrefixText", string.Empty);
         public static string ProjectNameForEarlyBoundFiles => ConfigHelper.GetAppSettingOrDefault("ProjectNameForEarlyBoundFiles", string.Empty);
         public static bool RemoveRuntimeVersionComment => ConfigHelper.GetAppSettingOrDefault("RemoveRuntimeVersionComment", true);
         private static bool LoggingEnabled => ConfigHelper.GetAppSettingOrDefault("LoggingEnabled", false);
@@ -155,6 +156,7 @@ namespace DLaB.CrmSvcUtilExtensions
             var fileContents = GetFileContents(tempFile);
 
             DeleteExistingFiles(outputFile, tempFile);
+            InsertFilePrefixText(outputFile, fileContents);
 
             // Check if the Header needs to be updated and or the file needs to be split
             if (!string.IsNullOrWhiteSpace(CommandLineText) || RemoveRuntimeVersionComment)
@@ -194,6 +196,17 @@ namespace DLaB.CrmSvcUtilExtensions
             File.Delete(tempFile);
             Log("Completed cleaning up Temporary File");
             DisplayMessage(tempFile + " Moved To: " + outputFile);
+        }
+
+        private static void InsertFilePrefixText(string outputFile, string[] fileContents)
+        {
+            if (string.IsNullOrWhiteSpace(FilePrefixText))
+            {
+                return;
+            }
+
+            var text = string.Format(FilePrefixText, Path.GetFileName(outputFile));
+            fileContents[0] = text + Environment.NewLine + fileContents[0];
         }
 
         private void DeleteExistingFiles(string outputFile, string tempFile)
@@ -381,9 +394,9 @@ namespace DLaB.CrmSvcUtilExtensions
                                 header.Insert(header.IndexOf(@"// </auto-generated>")+1, commandLine);
                                 commandLine = string.Empty;
                                 // Put Assembly Assembly Attribute Lines back in
-                                var i = header.IndexOf(string.Empty, 0) + 1;
-                                header.Insert(i++, proxyTypesAssemblyAttributeLine);
-                                header.Insert(i++, generatedCodeAttributeLine);
+                                var i = header.IndexOf(string.Empty, 0);
+                                header.Insert(++i, proxyTypesAssemblyAttributeLine);
+                                header.Insert(++i, generatedCodeAttributeLine);
                                 currentStage = SplitStage.ServiceContext;
                             }
                             else
@@ -551,7 +564,7 @@ namespace DLaB.CrmSvcUtilExtensions
                             Console.WriteLine($"{file.Path} was changed.  Checking Out from TFS.");
                             Tfs.Checkout(file.Path);
                             Log("Updating File locally");
-                            File.Copy(tempFile, file.Path, true);
+                            File.Copy(tempFile, file.Path ?? "Unknown", true);
 
                         }
                         var message = file.Path + $" was {(hasChanged ? "" : "un")}changed.";
@@ -584,7 +597,7 @@ namespace DLaB.CrmSvcUtilExtensions
 
             Trace.TraceInformation(Path.GetFileName(file.Path) + " created / updated.");
             Log("Writing file: " + file.Path);
-            File.WriteAllText(file.Path, file.Contents);
+            File.WriteAllText(file.Path ?? "Unknown", file.Contents);
             Log("Completed file: " + file);
         }
 
@@ -649,9 +662,9 @@ namespace DLaB.CrmSvcUtilExtensions
         private class FileToWrite
         {
             public string Directory => System.IO.Path.GetDirectoryName(Path);
-            public string Path { get; private set; }
-            public string Contents { get; private set; }
-            public bool IsMainFile { get; private set; }
+            public string Path { get; }
+            public string Contents { get; }
+            public bool IsMainFile { get; }
             public bool HasChanged { get; set; }
             public string TempFile { get; set; }
 
@@ -666,17 +679,17 @@ namespace DLaB.CrmSvcUtilExtensions
 
         private class ProjectFile
         {
-            private List<string> Lines { get; set; }
-            public bool ProjectFound { get; private set; }
-            public string ProjectPath { get; private set; }
-            private string ProjectDir { get; set; }
-            private int ProjectFileIndexStart { get; set; }
-            private int ProjectFileIndexEnd { get; set; }
-            private bool UpdateProjectFile { get; set; }
-            private SortedDictionary<string, string> ProjectFiles { get; set; }
+            private List<string> Lines { get; }
+            public bool ProjectFound { get; }
+            public string ProjectPath { get; }
+            private string ProjectDir { get; }
+            private int ProjectFileIndexStart { get; }
+            private int ProjectFileIndexEnd { get; }
+            private bool UpdateProjectFile { get; }
+            private SortedDictionary<string, string> ProjectFiles { get; }
             internal bool ProjectUpdated { get; private set; }
-            private string LineFormat { get; set; }
-            private VsTfsSourceControlProvider Tfs { get; set; }
+            private string LineFormat { get; }
+            private VsTfsSourceControlProvider Tfs { get; }
 
             // ReSharper disable once SuggestBaseTypeForParameter
             public ProjectFile(List<FileToWrite> files, bool updateProjectFile, VsTfsSourceControlProvider tfs)

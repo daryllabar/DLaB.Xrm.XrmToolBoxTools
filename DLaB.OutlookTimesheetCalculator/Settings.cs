@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using XrmToolBox.Extensibility;
 
 namespace DLaB.OutlookTimesheetCalculator
@@ -23,9 +19,9 @@ namespace DLaB.OutlookTimesheetCalculator
 
         public Settings()
         {
-            OptionSettingsPath = Path.Combine(Paths.SettingsPath, "DLaB.OutlookTimesheetCalulator", "Options.xml");
-            ProjectsPath = Path.Combine(Paths.SettingsPath, "DLaB.OutlookTimesheetCalulator", "Projects.xml");
-            TasksPath = Path.Combine(Paths.SettingsPath, "DLaB.OutlookTimesheetCalulator", "Tasks.xml");
+            OptionSettingsPath = Path.Combine(Paths.SettingsPath, "DLaB.OutlookTimesheetCalculator", "Options.xml");
+            ProjectsPath = Path.Combine(Paths.SettingsPath, "DLaB.OutlookTimesheetCalculator", "Projects.xml");
+            TasksPath = Path.Combine(Paths.SettingsPath, "DLaB.OutlookTimesheetCalculator", "Tasks.xml");
         }
     }
 }
