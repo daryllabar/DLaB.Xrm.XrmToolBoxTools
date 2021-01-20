@@ -156,7 +156,6 @@ namespace DLaB.CrmSvcUtilExtensions
             var fileContents = GetFileContents(tempFile);
 
             DeleteExistingFiles(outputFile, tempFile);
-            InsertFilePrefixText(outputFile, fileContents);
 
             // Check if the Header needs to be updated and or the file needs to be split
             if (!string.IsNullOrWhiteSpace(CommandLineText) || RemoveRuntimeVersionComment)
@@ -170,7 +169,7 @@ namespace DLaB.CrmSvcUtilExtensions
                 else
                 {
                     DisplayMessage($"Updating File {outputFile}");
-                    File.WriteAllLines(outputFile, lines);
+                    File.WriteAllLines(outputFile, new []{ GetFormattedPrefixText(outputFile) }.Union(lines));
                     if (UseTfsToCheckoutFiles && UndoCheckoutIfUnchanged(outputFile))
                     {
                         Console.WriteLine(outputFile + " was unchanged.");
@@ -185,6 +184,7 @@ namespace DLaB.CrmSvcUtilExtensions
             else
             {
                 DisplayMessage($"Copying File {outputFile}");
+                fileContents[0] = GetFormattedPrefixText(outputFile) + fileContents[0];
                 File.WriteAllLines(outputFile, fileContents);
                 if (UseTfsToCheckoutFiles && UndoCheckoutIfUnchanged(outputFile))
                 {
@@ -198,15 +198,14 @@ namespace DLaB.CrmSvcUtilExtensions
             DisplayMessage(tempFile + " Moved To: " + outputFile);
         }
 
-        private static void InsertFilePrefixText(string outputFile, string[] fileContents)
+        private static string GetFormattedPrefixText(string outputFile)
         {
             if (string.IsNullOrWhiteSpace(FilePrefixText))
             {
-                return;
+                return string.Empty;
             }
 
-            var text = string.Format(FilePrefixText, Path.GetFileName(outputFile));
-            fileContents[0] = text + Environment.NewLine + fileContents[0];
+            return string.Format(FilePrefixText, Path.GetFileName(outputFile)) + Environment.NewLine;
         }
 
         private void DeleteExistingFiles(string outputFile, string tempFile)
@@ -428,7 +427,12 @@ namespace DLaB.CrmSvcUtilExtensions
                 }
             }
 
-            files.Add(new FileToWrite(filePath, string.IsNullOrWhiteSpace(commandLine) ? string.Join(Environment.NewLine, header.Concat(code)) : commandLine, true));
+            var finalFileText = GetFormattedPrefixText(filePath) + (
+                string.IsNullOrWhiteSpace(commandLine)
+                ? string.Join(Environment.NewLine, header.Concat(code))
+                : commandLine);
+
+            files.Add(new FileToWrite(filePath, finalFileText, true));
 
             WriteFilesAsync(files);
         }
