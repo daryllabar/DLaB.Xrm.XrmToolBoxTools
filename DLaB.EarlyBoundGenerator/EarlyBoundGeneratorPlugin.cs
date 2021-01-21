@@ -14,6 +14,7 @@ using Microsoft.Xrm.Sdk.Metadata;
 using XrmToolBox;
 using XrmToolBox.Extensibility;
 using XrmToolBox.Extensibility.Interfaces;
+using AuthenticationType = Microsoft.Xrm.Tooling.Connector.AuthenticationType;
 using PropertyInterface = DLaB.XrmToolBoxCommon.PropertyInterface;
 
 namespace DLaB.EarlyBoundGenerator
@@ -261,7 +262,11 @@ namespace DLaB.EarlyBoundGenerator
                 Settings.UserName = ConnectionDetail.UserName;
                 Settings.Url = ConnectionDetail.GetUrlString();
 
-                if (Settings.UseConnectionString && string.IsNullOrWhiteSpace(Settings.Password))
+                if (Settings.UseConnectionString
+                    && string.IsNullOrWhiteSpace(Settings.Password)
+                    && ConnectionDetail.NewAuthType != AuthenticationType.Certificate
+                    && ConnectionDetail.NewAuthType != AuthenticationType.ClientSecret
+                    && ConnectionDetail.NewAuthType != AuthenticationType.OAuth)
                 {
                     // Fix for https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/issues/43
                     // Difficulties with Early Bound Generator #43

@@ -277,6 +277,8 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "AddDebuggerNonUserCode", extensions.AddDebuggerNonUserCode.ToString()) |
                     UpdateConfigAppSetting(file, "AddNewFilesToProject", extensions.AddNewFilesToProject.ToString()) |
                     UpdateConfigAppSetting(file, "AddOptionSetMetadataAttribute", extensions.AddOptionSetMetadataAttribute.ToString()) |
+                    UpdateConfigAppSetting(file, "CamelCaseClassNames", extensions.CamelCaseClassNames.ToString()) |
+                    UpdateConfigAppSetting(file, "CamelCaseMemberNames", extensions.CamelCaseMemberNames.ToString()) |
                     UpdateConfigAppSetting(file, "CreateOneFilePerAction", extensions.CreateOneFilePerAction.ToString()) |
                     UpdateConfigAppSetting(file, "CreateOneFilePerEntity", extensions.CreateOneFilePerEntity.ToString()) |
                     UpdateConfigAppSetting(file, "CreateOneFilePerOptionSet", extensions.CreateOneFilePerOptionSet.ToString()) |
@@ -312,6 +314,7 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "RemoveRuntimeVersionComment", extensions.RemoveRuntimeVersionComment.ToString()) |
                     UpdateConfigAppSetting(file, "ReplaceOptionSetPropertiesWithEnum", extensions.ReplaceOptionSetPropertiesWithEnum.ToString()) |
                     UpdateConfigAppSetting(file, "SerializeMetadata", extensions.SerializeMetadata.ToString()) |
+                    UpdateConfigAppSetting(file, "TokenCapitalizationOverrides", extensions.TokenCapitalizationOverrides) |
                     UpdateConfigAppSetting(file, "UseDeprecatedOptionSetNaming", extensions.UseDeprecatedOptionSetNaming.ToString()) |
                     UpdateConfigAppSetting(file, "UnmappedProperties", extensions.UnmappedProperties) |
                     UpdateConfigAppSetting(file, "UseTfsToCheckoutFiles", extensions.UseTfsToCheckoutFiles.ToString()) |

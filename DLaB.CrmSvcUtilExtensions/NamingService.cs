@@ -12,6 +12,8 @@ namespace DLaB.CrmSvcUtilExtensions
     
     public class NamingService : INamingService
     {
+        public static bool CamelCaseClassNames => ConfigHelper.GetNonNullableAppSettingOrDefault("CamelCaseClassNames", false);
+        public static bool CamelCaseMemberNames => ConfigHelper.GetNonNullableAppSettingOrDefault("CamelCaseMemberNames", false);
         public static int LanguageCodeOverride => ConfigHelper.GetNonNullableAppSettingOrDefault("OptionSetLanguageCodeOverride", -1);
         private const int English = 1033;  
         private string ValidCSharpNameRegEx { get; set; }
@@ -58,6 +60,10 @@ namespace DLaB.CrmSvcUtilExtensions
         public string GetNameForOptionSet(EntityMetadata entityMetadata, OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
         {
             var defaultName = DefaultService.GetNameForOptionSet(entityMetadata, optionSetMetadata, services);
+            defaultName = CamelCaseClassNames
+                ? CamelCaser.Case(defaultName)
+                : defaultName;
+
             if (EntityNames.Contains(defaultName))
             {
                 throw new Exception($"{defaultName} already exists as an entity.  This will cause a naming collision.");
@@ -291,7 +297,6 @@ namespace DLaB.CrmSvcUtilExtensions
         private string GetPossiblyDuplicateNameForOption(OptionSetMetadataBase metadata, IServiceProvider services, OptionMetadata option)
         {
             var defaultName = DefaultService.GetNameForOption(metadata, option, services);
-
             defaultName = Transliterate(option, defaultName);
 
             var name = GetValidCSharpName(defaultName);
@@ -357,7 +362,7 @@ namespace DLaB.CrmSvcUtilExtensions
         }
 
         /// <summary>
-        /// Allows for Specified Attribute Nmaes to be used to set the generated attribute name
+        /// Allows for Specified Attribute Names to be used to set the generated attribute name
         /// </summary>
         /// <param name="entityMetadata">The entity metadata.</param>
         /// <param name="attributeMetadata">The attribute metadata.</param>
@@ -375,18 +380,47 @@ namespace DLaB.CrmSvcUtilExtensions
             else
             {
                 attributeName = DefaultService.GetNameForAttribute(entityMetadata, attributeMetadata, services);
+                attributeName = CamelCaseMemberNames
+                    ? CamelCaser.Case(attributeName)
+                    : attributeName;
             }
             return attributeName;
+        }
+        public string GetNameForEntity(EntityMetadata entityMetadata, IServiceProvider services)
+        {
+            var defaultName = DefaultService.GetNameForEntity(entityMetadata, services);
+            return CamelCaseClassNames
+                ? CamelCaser.Case(defaultName)
+                : defaultName;
+        }
+        public string GetNameForRequestField(SdkMessageRequest request, SdkMessageRequestField requestField, IServiceProvider services)
+        {
+            var defaultName = DefaultService.GetNameForRequestField(request, requestField, services);
+            return CamelCaseMemberNames
+                ? CamelCaser.Case(defaultName)
+                : defaultName;
+        }
+        public string GetNameForResponseField(SdkMessageResponse response, SdkMessageResponseField responseField, IServiceProvider services)
+        {
+            var defaultName = DefaultService.GetNameForResponseField(response, responseField, services);
+            return CamelCaseMemberNames
+                ? CamelCaser.Case(defaultName)
+                : defaultName;
+        }
+
+        public string GetNameForRelationship(EntityMetadata entityMetadata, RelationshipMetadataBase relationshipMetadata, EntityRole? reflexiveRole, IServiceProvider services)
+        {
+            var defaultName = DefaultService.GetNameForRelationship(entityMetadata, relationshipMetadata, reflexiveRole, services);
+            return CamelCaseMemberNames
+                ? CamelCaser.Case(defaultName)
+                : defaultName;
         }
 
         #region Default INamingService Calls
 
-        public string GetNameForEntity(EntityMetadata entityMetadata, IServiceProvider services) { return DefaultService.GetNameForEntity(entityMetadata, services); }
-        public string GetNameForRelationship(EntityMetadata entityMetadata, RelationshipMetadataBase relationshipMetadata, EntityRole? reflexiveRole, IServiceProvider services) { return DefaultService.GetNameForRelationship(entityMetadata, relationshipMetadata, reflexiveRole, services); }
+
         public string GetNameForServiceContext(IServiceProvider services) { return DefaultService.GetNameForServiceContext(services); }
         public string GetNameForMessagePair(SdkMessagePair messagePair, IServiceProvider services) { return DefaultService.GetNameForMessagePair(messagePair, services); }
-        public string GetNameForRequestField(SdkMessageRequest request, SdkMessageRequestField requestField, IServiceProvider services) { return DefaultService.GetNameForRequestField(request, requestField, services); }
-        public string GetNameForResponseField(SdkMessageResponse response, SdkMessageResponseField responseField, IServiceProvider services) { return DefaultService.GetNameForResponseField(response, responseField, services); }
         public string GetNameForEntitySet(EntityMetadata entityMetadata, IServiceProvider services) { return DefaultService.GetNameForEntitySet(entityMetadata, services); }
 
         #endregion Default INamingService Calls

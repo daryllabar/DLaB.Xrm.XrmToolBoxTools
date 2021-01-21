@@ -323,6 +323,24 @@ namespace DLaB.EarlyBoundGenerator.Settings
         }
 
         [Category("Global")]
+        [DisplayName("Camel Case Class Names")]
+        [Description("Using a dictionary, attempts to correctly camelcase class/enum names.")]
+        public bool CamelCaseClassNames
+        {
+            get => Config.ExtensionConfig.CamelCaseClassNames;
+            set => Config.ExtensionConfig.CamelCaseClassNames = value;
+        }
+
+        [Category("Global")]
+        [DisplayName("Camel Case Member Names")]
+        [Description("Using a dictionary, attempts to correctly camelcase column/parameter names")]
+        public bool CamelCaseMemberNames
+        {
+            get => Config.ExtensionConfig.CamelCaseMemberNames;
+            set => Config.ExtensionConfig.CamelCaseMemberNames = value;
+        }
+
+        [Category("Global")]
         [DisplayName("CrmSvcUtil Relative Path")]
         [Description("The Path to the CrmSvcUtil.exe, relative to the CrmSvcUtil Realtive Root Path.  Defaults to using the CrmSvcUtil that comes by default.")]
         public string CrmSvcUtilRelativePath
@@ -404,6 +422,13 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             get => Config.ExtensionConfig.RemoveRuntimeVersionComment;
             set => Config.ExtensionConfig.RemoveRuntimeVersionComment = value;
         }
+
+        [Category("Global")]
+        [DisplayName("Token Capitalization Overrides")]
+        [Description("Used in conjuction with Camel Case Class Names and Camel Case Memeber Names to override any defaults.")]
+        [Editor(StringEditorName, typeof(UITypeEditor))]
+        [TypeConverter(CollectionCountConverter.Name)]
+        public List<string> TokenCapitalizationOverrides { get; set; }
 
         [Category("Global")]
         [DisplayName("Use Tfs")]
@@ -569,6 +594,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
                 PropertyEnumMappings = RemoveWhiteSpace(nameof(PropertyEnumMappings), config.ExtensionConfig.PropertyEnumMappings).GetList<string>();
                 OptionSetPrefixesToSkip = RemoveWhiteSpace(nameof(OptionSetPrefixesToSkip), config.ExtensionConfig.OptionSetPrefixesToSkip).GetList<string>();
                 OptionSetsToSkip = RemoveWhiteSpace(nameof(OptionSetsToSkip), config.ExtensionConfig.OptionSetsToSkip).GetHashSet<string>();
+                TokenCapitalizationOverrides = RemoveWhiteSpace(nameof(TokenCapitalizationOverrides), config.ExtensionConfig.TokenCapitalizationOverrides).GetList<string>();
                 UnmappedProperties = RemoveWhiteSpace(nameof(UnmappedProperties), config.ExtensionConfig.UnmappedProperties).GetDictionaryHash<string, string>();
                 WorkflowlessActions = RemoveWhiteSpace(nameof(WorkflowlessActions), config.WorkflowlessActions).GetList<string>();
             }
@@ -599,6 +625,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             Config.ExtensionConfig.PropertyEnumMappings = CommonConfig.ToStringSorted(PropertyEnumMappings);
             Config.ExtensionConfig.OptionSetPrefixesToSkip = CommonConfig.ToStringSorted(OptionSetPrefixesToSkip);
             Config.ExtensionConfig.OptionSetsToSkip = CommonConfig.ToStringSorted(OptionSetsToSkip);
+            Config.ExtensionConfig.TokenCapitalizationOverrides = CommonConfig.ToStringSorted(TokenCapitalizationOverrides);
             Config.ExtensionConfig.UnmappedProperties = CommonConfig.ToStringSorted(UnmappedProperties);
             Config.WorkflowlessActions = CommonConfig.ToStringSorted(WorkflowlessActions, info);
         }

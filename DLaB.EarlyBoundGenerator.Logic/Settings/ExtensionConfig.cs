@@ -39,6 +39,14 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public bool AddOptionSetMetadataAttribute { get; set; }
         /// <summary>
+        /// Using a dictionary, attempts to correctly camelcase class/enum names.
+        /// </summary>
+        public bool CamelCaseClassNames { get; set; }
+        /// <summary>
+        /// Using a dictionary, attempts to correctly camelcase column/parameter names
+        /// </summary>
+        public bool CamelCaseMemberNames { get; set; }
+        /// <summary>
         /// Specifies that each Action class should be outputted to it's own file
         /// </summary>
         public bool CreateOneFilePerAction { get; set; }
@@ -183,6 +191,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public bool SerializeMetadata { get; set; }
         /// <summary>
+        /// Used in conjuction with Camel Case Class Names and Camel Case Memeber Names to override any defaults.
+        /// </summary>
+        public string TokenCapitalizationOverrides { get; set; }
+        /// <summary>
         /// Used to manually specify an OptionSetValue Property of an entity that doesn't have an enum mapping 
         /// Format: EntityName.PropertyName|
         /// </summary>
@@ -274,10 +286,13 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     "QuoteDetail:QuoteStateCode|" +
                     "SalesOrderDetail:SalesOrderStateCode|",
                 AddOptionSetMetadataAttribute = true,
+                CamelCaseClassNames = false,
+                CamelCaseMemberNames = false,
                 FilePrefixText = null,
                 GenerateOptionSetMetadataAttribute = true,
                 ReadSerializedMetadata = false,
                 SerializeMetadata = false,
+                TokenCapitalizationOverrides = "null",
                 UseDeprecatedOptionSetNaming = false,
                 UseTfsToCheckoutFiles = false,
                 WaitForAttachedDebugger = false,
@@ -297,6 +312,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
             AddDebuggerNonUserCode = poco.AddDebuggerNonUserCode ?? AddDebuggerNonUserCode;
             AddNewFilesToProject = poco.AddNewFilesToProject ?? AddNewFilesToProject;
             AddOptionSetMetadataAttribute = poco.AddOptionSetMetadataAttribute ?? AddOptionSetMetadataAttribute;
+                CamelCaseClassNames = poco.CamelCaseClassNames ?? CamelCaseClassNames;
+                CamelCaseMemberNames = poco.CamelCaseMemberNames ?? CamelCaseMemberNames;
             CreateOneFilePerAction = poco.CreateOneFilePerAction ?? CreateOneFilePerAction;
             CreateOneFilePerEntity = poco.CreateOneFilePerEntity ?? CreateOneFilePerEntity;
             CreateOneFilePerOptionSet = poco.CreateOneFilePerOptionSet ?? CreateOneFilePerOptionSet;
@@ -330,6 +347,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             RemoveRuntimeVersionComment = poco.RemoveRuntimeVersionComment ?? RemoveRuntimeVersionComment;
             ReplaceOptionSetPropertiesWithEnum = poco.ReplaceOptionSetPropertiesWithEnum ?? ReplaceOptionSetPropertiesWithEnum;
             SerializeMetadata = poco.SerializeMetadata ?? SerializeMetadata;
+                TokenCapitalizationOverrides = GetValueOrDefault(poco.TokenCapitalizationOverrides, TokenCapitalizationOverrides);
             UnmappedProperties = GetValueOrDefault(poco.UnmappedProperties, UnmappedProperties);
             UseDeprecatedOptionSetNaming = poco.UseDeprecatedOptionSetNaming ?? UseDeprecatedOptionSetNaming;
             UseTfsToCheckoutFiles = poco.UseTfsToCheckoutFiles ?? UseTfsToCheckoutFiles;
@@ -386,12 +404,15 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public string UnmappedProperties { get; set; }
         public bool? AddNewFilesToProject { get; set; }
         public bool? AddOptionSetMetadataAttribute { get; set; }
+        public bool? CamelCaseClassNames { get; set; }
+        public bool? CamelCaseMemberNames { get; set; }
         public string FilePrefixText { get; set; }
         public bool? GenerateOptionSetMetadataAttribute { get; set; }
         public string ProjectNameForEarlyBoundFiles { get; set; }
         public bool? ReadSerializedMetadata { get; set; }
         public bool? RemoveRuntimeVersionComment { get; set; }
         public bool? SerializeMetadata { get; set; }
+        public string TokenCapitalizationOverrides { get; set; }
         public bool? UseDeprecatedOptionSetNaming { get; set; }
         public bool? UseTfsToCheckoutFiles { get; set; }
         public bool? WaitForAttachedDebugger { get; set; }

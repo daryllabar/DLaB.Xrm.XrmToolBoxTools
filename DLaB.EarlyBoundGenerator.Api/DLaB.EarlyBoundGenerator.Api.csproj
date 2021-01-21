@@ -154,6 +154,7 @@ xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)DLaB.Common.dll" "
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Crm.Sdk.Proxy.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
 
 xcopy /I /Y "$(TargetDir)Microsoft.Xrm.Sdk.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\DLaB.Dictionary.txt" "$(TargetDir)DLaB.EarlyBoundGenerator"
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\OptionSet\Transliteration\Alphabets\*" "$(TargetDir)DLaB.EarlyBoundGenerator\alphabets"
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Newtonsoft.Json.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
 

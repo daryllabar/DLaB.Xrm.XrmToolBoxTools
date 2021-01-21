@@ -408,7 +408,8 @@ xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)CrmSvcUtil.exe" "$
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)CrmSvcUtil.exe.config" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\"
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)*.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\"
 
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\OptionSet\Transliteration\Alphabets\*" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\alphabets"</PostBuildEvent>
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\OptionSet\Transliteration\Alphabets\*" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\alphabets"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\DLaB.Dictionary.txt" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator"</PostBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
