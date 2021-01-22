@@ -169,7 +169,7 @@ namespace DLaB.CrmSvcUtilExtensions
                 else
                 {
                     DisplayMessage($"Updating File {outputFile}");
-                    File.WriteAllLines(outputFile, new []{ GetFormattedPrefixText(outputFile) }.Union(lines));
+                    File.WriteAllLines(outputFile, new []{ GetFormattedPrefixText(outputFile) }.Concat(lines));
                     if (UseTfsToCheckoutFiles && UndoCheckoutIfUnchanged(outputFile))
                     {
                         Console.WriteLine(outputFile + " was unchanged.");

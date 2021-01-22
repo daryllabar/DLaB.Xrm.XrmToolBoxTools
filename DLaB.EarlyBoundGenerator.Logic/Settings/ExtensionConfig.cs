@@ -191,7 +191,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public bool SerializeMetadata { get; set; }
         /// <summary>
-        /// Used in conjuction with Camel Case Class Names and Camel Case Memeber Names to override any defaults.
+        /// Used in conjunction with Camel Case Class Names and Camel Case Member Names to override any defaults.
         /// </summary>
         public string TokenCapitalizationOverrides { get; set; }
         /// <summary>
@@ -292,7 +292,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 GenerateOptionSetMetadataAttribute = true,
                 ReadSerializedMetadata = false,
                 SerializeMetadata = false,
-                TokenCapitalizationOverrides = "null",
+                TokenCapitalizationOverrides = "ActiveState|AccessTeam|BusinessAs|CardUci|DefaultOnCase|EmailAnd|FeatureSet|IsMsTeams|IsPaiEnabled|IsSopIntegration|O365Admin|OnHold|OwnerOnAssign|PauseStates|PartiesOnEmail|ParticipatesIn|SentOn|SlaKpi|SlaId|SyncOptIn|Timeout|UserPuid|VoiceMail|Weblink",
                 UseDeprecatedOptionSetNaming = false,
                 UseTfsToCheckoutFiles = false,
                 WaitForAttachedDebugger = false,

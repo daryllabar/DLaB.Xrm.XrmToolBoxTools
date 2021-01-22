@@ -49,17 +49,22 @@ namespace DLaB.CrmSvcUtilExtensions
                          .OrderByDescending(t => t.Length).ToList();
         }
 
-        public static string Case(string value)
+        public static string Case(string value, params string[] preferredEndings)
         {
             value = value.ToLower();
-
-            if (value.EndsWith("id"))
+            preferredEndings = preferredEndings.Length == 0
+                ? new[] {"Id"}
+                : preferredEndings;
+            foreach (var ending in preferredEndings)
             {
-                var tmp = CaseInternal(value.Substring(0, value.Length - 2));
-                value = CaseInternal(value);
-                return tmp.Count(c => char.IsUpper(c)) < value.Count(c => char.IsUpper(c))
-                    ? tmp + "Id"
-                    : value;
+                if (value.EndsWith(ending.ToLower()))
+                {
+                    var tmp = CaseInternal(value.Substring(0, value.Length - ending.Length));
+                    value = CaseInternal(value);
+                    return tmp.Count(char.IsUpper) < value.Count(char.IsUpper)
+                        ? tmp + ending
+                        : value;
+                }
             }
             return CaseInternal(value);
         }

@@ -425,7 +425,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
 
         [Category("Global")]
         [DisplayName("Token Capitalization Overrides")]
-        [Description("Used in conjuction with Camel Case Class Names and Camel Case Memeber Names to override any defaults.")]
+        [Description("Used in conjunction with Camel Case Class Names and Camel Case Member Names to override any defaults.")]
         [Editor(StringEditorName, typeof(UITypeEditor))]
         [TypeConverter(CollectionCountConverter.Name)]
         public List<string> TokenCapitalizationOverrides { get; set; }

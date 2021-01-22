@@ -60,9 +60,6 @@ namespace DLaB.CrmSvcUtilExtensions
         public string GetNameForOptionSet(EntityMetadata entityMetadata, OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
         {
             var defaultName = DefaultService.GetNameForOptionSet(entityMetadata, optionSetMetadata, services);
-            defaultName = CamelCaseClassNames
-                ? CamelCaser.Case(defaultName)
-                : defaultName;
 
             if (EntityNames.Contains(defaultName))
             {
@@ -89,7 +86,7 @@ namespace DLaB.CrmSvcUtilExtensions
                 {
                     if (optionSetMetadata.OptionSetType.GetValueOrDefault() == OptionSetType.Status && defaultName.EndsWith("statuscode"))
                     {
-                        return string.Format(LocalOptionSetFormat, GetNameForEntity(entityMetadata, services), "StatusCode");
+                        defaultName = string.Format(LocalOptionSetFormat, GetNameForEntity(entityMetadata, services), "StatusCode");
                     }
                 }
                 else
@@ -97,7 +94,7 @@ namespace DLaB.CrmSvcUtilExtensions
                     // Concatenate the name of the entity and the name of the attribute
                     // together to form the OptionSet name.
                     return string.Format(LocalOptionSetFormat, GetNameForEntity(entityMetadata, services),
-                           GetNameForAttribute(entityMetadata, attribute, services));
+                           GetNameForAttribute(entityMetadata, attribute, services, CamelCaseClassNames));
                 }
             }
             return UpdateCasingForGlobalOptionSets(defaultName, optionSetMetadata);
@@ -182,10 +179,13 @@ namespace DLaB.CrmSvcUtilExtensions
 
         private static string UpdateCasingForCustomGlobalOptionSets(string name, OptionSetMetadataBase optionSetMetadata)
         {
+            var preferredEndings = new [] {"StateCode", "Status", "State"};
             var displayName = optionSetMetadata.DisplayName?.GetLocalOrDefaultText() ?? string.Empty;
             if (string.IsNullOrWhiteSpace(displayName))
             {
-                return name;
+                return CamelCaseClassNames
+                    ? CamelCaser.Case(name, preferredEndings)
+                    : name;
             }
 
             displayName = displayName.RemoveDiacritics().Replace(" ", ""); // Remove spaces
@@ -205,7 +205,9 @@ namespace DLaB.CrmSvcUtilExtensions
                     name = name.Substring(0, index) + char.ToUpper(name[index]) + name.Substring(index + 1, name.Length - index - 1);
                 }
             }
-            return name;
+            return CamelCaseClassNames
+                ? CamelCaser.Case(name, preferredEndings)
+                : name;
         }
 
         public string GetNameForOption(OptionSetMetadataBase optionSetMetadata, OptionMetadata optionMetadata, IServiceProvider services)
@@ -370,9 +372,13 @@ namespace DLaB.CrmSvcUtilExtensions
         /// <returns></returns>
         public string GetNameForAttribute(EntityMetadata entityMetadata, AttributeMetadata attributeMetadata, IServiceProvider services)
         {
-            HashSet<string> specifiedNames;
+            return GetNameForAttribute(entityMetadata, attributeMetadata, services, CamelCaseMemberNames);
+        }
+
+        private string GetNameForAttribute(EntityMetadata entityMetadata, AttributeMetadata attributeMetadata, IServiceProvider services, bool camelCase)
+        {
             string attributeName;
-            if (EntityAttributeSpecifiedNames.TryGetValue(entityMetadata.LogicalName.ToLower(), out specifiedNames) &&
+            if (EntityAttributeSpecifiedNames.TryGetValue(entityMetadata.LogicalName.ToLower(), out var specifiedNames) &&
                 specifiedNames.Any(s => string.Equals(s, attributeMetadata.LogicalName, StringComparison.OrdinalIgnoreCase)))
             {
                 attributeName = specifiedNames.First(s => string.Equals(s, attributeMetadata.LogicalName, StringComparison.OrdinalIgnoreCase));
@@ -380,12 +386,14 @@ namespace DLaB.CrmSvcUtilExtensions
             else
             {
                 attributeName = DefaultService.GetNameForAttribute(entityMetadata, attributeMetadata, services);
-                attributeName = CamelCaseMemberNames
+                attributeName = camelCase
                     ? CamelCaser.Case(attributeName)
                     : attributeName;
             }
+
             return attributeName;
         }
+
         public string GetNameForEntity(EntityMetadata entityMetadata, IServiceProvider services)
         {
             var defaultName = DefaultService.GetNameForEntity(entityMetadata, services);
