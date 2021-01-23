@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using DLaB.CrmSvcUtilExtensions.Entity;
+using Microsoft.Crm.Services.Utility;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 
@@ -15,8 +16,38 @@ namespace DLaB.CrmSvcUtilExtensions
     {
         private const string XrmAttributeLogicalName = "Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute";
         private const string XrmRelationshipSchemaName = "Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute";
+        private static List<Tuple<CodeTypeDeclaration, EntityMetadata>> _entityTypes;
+
 
         #region CodeCompileUnit
+
+        public static List<Tuple<CodeTypeDeclaration, EntityMetadata>> GetEntityTypes(this CodeCompileUnit codeUnit, IServiceProvider services)
+        {
+            if (_entityTypes != null)
+            {
+                return _entityTypes;
+            }
+
+            _entityTypes = new List<Tuple<CodeTypeDeclaration, EntityMetadata>>();
+            var metadata = ((IMetadataProviderService) services.GetService(typeof(IMetadataProviderService))).LoadMetadata().Entities.ToDictionary(e => e.LogicalName);
+            foreach (var type in codeUnit.GetTypes().Where(type => type.IsClass && !type.IsContextType()))
+            {
+                var logicalNameAttribute = type.CustomAttributes.Cast<CodeAttributeDeclaration>()
+                            .FirstOrDefault(a => a.Name == "Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute");
+                if (logicalNameAttribute == null)
+                {
+                    continue;
+                }
+
+                var typeEntityName = ((CodePrimitiveExpression) logicalNameAttribute.Arguments[0].Value).Value.ToString();
+                if (metadata.TryGetValue(typeEntityName, out var entityMetadata))
+                {
+                    _entityTypes.Add(new Tuple<CodeTypeDeclaration, EntityMetadata>(type, entityMetadata));
+                }
+            }
+
+            return _entityTypes;
+        }
 
         public static IEnumerable<CodeTypeDeclaration> GetTypes(this CodeCompileUnit codeUnit)
         {

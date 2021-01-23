@@ -10,46 +10,50 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
     {
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)   
         {
-            var metadataService = (IMetadataProviderService)services.GetService(typeof(IMetadataProviderService));
-            var metadata = metadataService.LoadMetadata();
-            var types = codeUnit.Namespaces[0].Types;
-
-            foreach (var type in types.Cast<CodeTypeDeclaration>().
-                                 Where(type => type.IsClass && !type.IsContextType()))
-            {
-                var entityMetadata = metadata.Entities.First(e => e.LogicalName == ((CodePrimitiveExpression)(type.CustomAttributes.Cast<CodeAttributeDeclaration>()
-                                                                                        .First(a => a.Name == "Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute")
-                                                                                        .Arguments[0].Value)).Value.ToString());
-
+            foreach (var entity in codeUnit.GetEntityTypes(services).Select(i=> new {Type = i.Item1, Metadata = i.Item2}))
+            { 
                 // insert at 2, to be after the constructor and the entity logical name
-                if (entityMetadata.PrimaryNameAttribute != null)
+                if (entity.Metadata.PrimaryNameAttribute != null)
                 {
-                    type.Members.Insert(2,
+                    entity.Type.Members.Insert(2,
                         new CodeMemberField
                         {
                             Attributes = System.CodeDom.MemberAttributes.Public | System.CodeDom.MemberAttributes.Const,
                             Name = "PrimaryNameAttribute",
                             Type = new CodeTypeReference(typeof(string)),
-                            InitExpression = new CodePrimitiveExpression(entityMetadata.PrimaryNameAttribute)
+                            InitExpression = new CodePrimitiveExpression(entity.Metadata.PrimaryNameAttribute)
                         });
                 }
-                type.Members.Insert(2, 
+                entity.Type.Members.Insert(2, 
                     new CodeMemberField
                     {
                         Attributes = System.CodeDom.MemberAttributes.Public | System.CodeDom.MemberAttributes.Const,
                         Name = "PrimaryIdAttribute",
                         Type = new CodeTypeReference(typeof(string)),
-                        InitExpression = new CodePrimitiveExpression(entityMetadata.PrimaryIdAttribute)
+                        InitExpression = new CodePrimitiveExpression(entity.Metadata.PrimaryIdAttribute)
                     });
 
-                type.Members.Insert(2,
-                                    new CodeMemberField
-                                    {
-                                        Attributes = System.CodeDom.MemberAttributes.Public | System.CodeDom.MemberAttributes.Const,
-                                        Name = "EntitySchemaName",
-                                        Type = new CodeTypeReference(typeof(string)),
-                                        InitExpression = new CodePrimitiveExpression(entityMetadata.SchemaName)
-                                    });
+                entity.Type.Members.Insert(2,
+                    new CodeMemberField
+                    {
+                        Attributes = System.CodeDom.MemberAttributes.Public | System.CodeDom.MemberAttributes.Const,
+                        Name = "EntitySchemaName",
+                        Type = new CodeTypeReference(typeof(string)),
+                        InitExpression = new CodePrimitiveExpression(entity.Metadata.SchemaName)
+                    });
+
+                if (entity.Metadata.Keys != null && entity.Metadata.Keys.Length > 0)
+                {
+                    var value = string.Join("|", entity.Metadata.Keys.Select(k => string.Join(",", k.KeyAttributes)));
+                    entity.Type.Members.Insert(1,
+                        new CodeMemberField
+                        {
+                            Attributes = System.CodeDom.MemberAttributes.Public | System.CodeDom.MemberAttributes.Const,
+                            Name = "AlternateKeys",
+                            Type = new CodeTypeReference(typeof(string)),
+                            InitExpression = new CodePrimitiveExpression(value)
+                        });
+                }
             }
         }
     }

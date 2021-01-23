@@ -2340,6 +2340,9 @@ debate
 debian
 deborah
 debt
+debts
+debtor
+debtors
 debug
 debut
 dec
@@ -2606,6 +2609,7 @@ disappointed
 disaster
 disc
 discharge
+discharged
 disciplinary
 discipline
 disciplines
@@ -2638,6 +2642,7 @@ disk
 disks
 dismiss
 dismissal
+dismissed
 disney
 disorder
 disorders
@@ -3835,7 +3840,6 @@ give
 given
 gives
 giving
-gl
 glad
 glance
 glasgow
@@ -5103,8 +5107,8 @@ lewis
 lexington
 lexmark
 lexus
-lf
 lg
+lk
 li
 liabilities
 liability
