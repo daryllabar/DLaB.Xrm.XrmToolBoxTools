@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator</id>
-	  <version>1.2021.1.23</version>
+	  <version>1.2021.1.24</version>
 	  <title>Early Bound Generator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -73,7 +73,7 @@ Removed EntityTypeCode generation by default. #216
     <copyright>Copyright 2019</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>
     <dependencies>
-      <dependency id="XrmToolBox" version="1.2017.2.13" />
+      <dependency id="XrmToolBoxPackage" version="1.2020.12.43" />
     </dependencies>
   </metadata>
   <files>
