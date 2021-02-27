@@ -177,7 +177,7 @@ namespace DLaB.OutlookTimesheetCalculator
             var appSession = app.Session;
             var calendar = appSession.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderCalendar);
             //string filter = String.Format("[Start] >= {0} And [Start] < {1} And [End] > {0} And [End] <= {1}", start.ToString("ddddd h:nn AMPM"), end.ToString("ddddd h:nn AMPM"));
-            string filter = String.Format("([Start] >= '{0}' AND [Start] < '{1}') OR ([End] > '{0}' AND [End] <= '{1}')", start.ToString("g"), end.ToString("g"));
+            string filter = string.Format("([Start] >= '{0}' AND [Start] < '{1}') OR ([End] > '{0}' AND [End] <= '{1}')", start.ToString("g"), end.ToString("g"));
             var items = calendar.Items;
 
             items.Sort("[Start]", Type.Missing);
@@ -190,7 +190,7 @@ namespace DLaB.OutlookTimesheetCalculator
             foreach (var item in restrictedItems)
             {
                 appointment = item as Outlook.AppointmentItem;
-                if (appointment != null && !appointment.AllDayEvent && (appointment.BusyStatus != Outlook.OlBusyStatus.olOutOfOffice || Tasks.Any(t => String.Equals(t.Name, appointment.Subject, StringComparison.InvariantCultureIgnoreCase))))
+                if (appointment != null && !appointment.AllDayEvent && (appointment.BusyStatus != Outlook.OlBusyStatus.olOutOfOffice || Tasks.Any(t => string.Equals(t.Name, appointment.Subject, StringComparison.InvariantCultureIgnoreCase))))
                 {
                     //if (appointment.IsRecurring)
                     //{
@@ -317,7 +317,7 @@ namespace DLaB.OutlookTimesheetCalculator
 
         private void dgvTasks_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(((string)e.Row.Cells[2].Value)))
+            if (string.IsNullOrWhiteSpace(((string)e.Row.Cells[2].Value)))
             {
                 e.Row.Cells[1].Value = DefaultProject.IsBillable;
                 e.Row.Cells[2].Value = DefaultProject.Id;
@@ -419,7 +419,7 @@ namespace DLaB.OutlookTimesheetCalculator
                 var sb = new StringBuilder();
                 foreach (var project in Projects)
                 {
-                    var tasksForProjectForDay = AppointmentTasks.Where(at => at.Project == project && day <= at.Appointment.Start && day.AddDays(1) >= at.Appointment.End).ToList();
+                    var tasksForProjectForDay = AppointmentTasks.Where(at => at.Project?.Equals(project) == true && day <= at.Appointment.Start && day.AddDays(1) >= at.Appointment.End).ToList();
                     time = GetTime(tasksForProjectForDay);
                     if (time.TotalHours > 0)
                     {
@@ -455,7 +455,7 @@ namespace DLaB.OutlookTimesheetCalculator
             txtTasks.Clear();
             txtTaskDailyHours.Clear();
             txtDailyHours.Clear();
-            lblHours.Text = String.Empty;
+            lblHours.Text = string.Empty;
 
             //var outlook = new Microsoft.Office.Interop.Outlook.Application();
             //var app = outlook.Application;
@@ -492,31 +492,34 @@ namespace DLaB.OutlookTimesheetCalculator
             bool newTask = false;
             foreach (var appt in appointments)
             {
+                var subject = string.IsNullOrWhiteSpace(appt.Subject)
+                    ? "No Subject!"
+                    : appt.Subject;
                 // Everything Matches
-                Task task = defaultProjectTasks.FirstOrDefault(t => String.Equals(t.Name, appt.Subject));
+                Task task = defaultProjectTasks.FirstOrDefault(t => string.Equals(t.Name, subject));
                 if (task == null)
                 {
-                    task = tempTasks.FirstOrDefault(t => String.Equals(t.Name, appt.Subject));
+                    task = tempTasks.FirstOrDefault(t => string.Equals(t.Name, subject));
                 }
                 // Starts with
                 if (task == null)
                 {
-                    task = defaultProjectTasks.FirstOrDefault(t => appt.Subject != null && appt.Subject.ToUpper().StartsWith(t.Name.ToUpper()));
+                    task = defaultProjectTasks.FirstOrDefault(t => subject.ToUpper().StartsWith(t.Name.ToUpper()));
                 }
                 if (task == null)
                 {
-                    task = tempTasks.FirstOrDefault(t => appt.Subject.ToUpper().StartsWith(t.Name.ToUpper()));
+                    task = tempTasks.FirstOrDefault(t => subject.ToUpper().StartsWith(t.Name.ToUpper()));
                 }
                 // Matches Reg Ex, create Temp
                 if (task == null)
                 {
-                    foreach (var regExTask in tempTasks.Where(t => !String.IsNullOrWhiteSpace(t.Regex)))
+                    foreach (var regExTask in tempTasks.Where(t => !string.IsNullOrWhiteSpace(t.Regex)))
                     {
-                        if (System.Text.RegularExpressions.Regex.IsMatch(appt.Subject, regExTask.Regex, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
+                        if (System.Text.RegularExpressions.Regex.IsMatch(subject, regExTask.Regex, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
                         {
                             task = new Task()
                             {
-                                Name = appt.Subject,
+                                Name = subject,
                                 IsBillable = regExTask.IsBillable,
                                 Project = regExTask.Project,
                                 IsRegExTemp = true
@@ -527,11 +530,11 @@ namespace DLaB.OutlookTimesheetCalculator
                     }
                 }
                 // Is a Meeting
-                if (task == null && !String.IsNullOrWhiteSpace(appt.Location))
+                if (task == null && !string.IsNullOrWhiteSpace(appt.Location))
                 {
                     task = defaultProjectTasks.FirstOrDefault(t => t.Name.ToUpper() == "MEETING");
                 }
-                if (task == null && !String.IsNullOrWhiteSpace(appt.Location))
+                if (task == null && !string.IsNullOrWhiteSpace(appt.Location))
                 {
                     task = tempTasks.FirstOrDefault(t => t.Name.ToUpper() == "MEETING");
                 }
@@ -540,7 +543,7 @@ namespace DLaB.OutlookTimesheetCalculator
                 {
                     task = new Task()
                     {
-                        Name = appt.Subject.TrimEnd(),
+                        Name = subject.TrimEnd(),
                         IsBillable = true,
                         Project = DefaultProject.Id
                     };
