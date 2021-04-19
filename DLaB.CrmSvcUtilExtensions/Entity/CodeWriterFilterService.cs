@@ -8,6 +8,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
 {
     public class CodeWriterFilterService  : ICodeWriterFilterService
     {
+        private static bool EnableFileDataType => ConfigHelper.GetAppSettingOrDefault("EnableFileDataType", true);
         private ICodeWriterFilterService DefaultService { get; }
         /// <summary>
         /// Contains Meta Data for entities, key'd by logical name
@@ -36,11 +37,6 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
 
         #region Pass Through Implementations
 
-        public bool GenerateAttribute(AttributeMetadata attributeMetadata, IServiceProvider services)
-        {
-            return DefaultService.GenerateAttribute(attributeMetadata, services);
-        }
-         
         public bool GenerateOption(OptionMetadata optionMetadata, IServiceProvider services)
         {
             return DefaultService.GenerateOption(optionMetadata, services);
@@ -52,7 +48,23 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
         }
 
         #endregion // Pass Through Implementations
-        
+
+        public bool GenerateAttribute(AttributeMetadata metadata, IServiceProvider services)
+        {
+            return EnableFileDataType && IsFileDataTypeAttribute(metadata)
+                   || DefaultService.GenerateAttribute(metadata, services);
+        }
+
+        private static bool IsFileDataTypeAttribute(AttributeMetadata metadata)
+        {
+            return metadata.LogicalName?.EndsWith("_name") == true
+                   && metadata.AttributeOf != null
+                   && metadata.IsRenameable != null
+                   && metadata.IsRenameable.Value == false
+                   && metadata is StringAttributeMetadata;
+        }
+
+
         public bool GenerateEntity(EntityMetadata entityMetadata, IServiceProvider services)
         {
             // Some entities are not normally create (attachment for example) not sure why.  Allowing Whitelist to Override here.
