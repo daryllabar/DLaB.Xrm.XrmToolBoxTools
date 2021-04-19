@@ -29,6 +29,7 @@ namespace DLaB.CrmSvcUtilExtensions
                     Console.WriteLine("[**** Waiting For Debugger ****]");
                     Thread.Sleep(3000);
                 }
+                Console.WriteLine("[**** Debugger Attached.  Starting Generation. ****]");
             }
             DefaultService = defaultService;
             FilePath = ConfigHelper.GetAppSettingOrDefault("SerializedMetadataFilePath", "metadata.xml");
