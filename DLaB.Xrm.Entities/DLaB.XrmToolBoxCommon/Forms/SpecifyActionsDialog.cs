@@ -44,9 +44,9 @@ namespace DLaB.XrmToolBoxCommon.Forms
         {
             return names.Select(n => new Workflow
             {
-                Name = "(" + n + ")",
-                ["sdklogicalname"] = n.ToLower(),
-                UniqueName = n.ToLower()
+                Name = "(" + n.Trim() + ")",
+                ["sdklogicalname"] = n.Trim().ToLower(),
+                UniqueName = n.Trim().ToLower()
             }).ToList();
         }
 
@@ -77,7 +77,9 @@ namespace DLaB.XrmToolBoxCommon.Forms
         private bool IsSpecified(Workflow action)
         {
             var logicalName = action.GetAttributeValue<string>("sdklogicalname");
-            if (!string.IsNullOrWhiteSpace(logicalName) && SpecifiedActions.Contains(logicalName.ToLower()))
+            if (!string.IsNullOrWhiteSpace(logicalName)
+                && (SpecifiedActions.Contains(logicalName.ToLower())
+                    || SpecifiedActions.Contains(logicalName)))
             {
                 return true;
             }
