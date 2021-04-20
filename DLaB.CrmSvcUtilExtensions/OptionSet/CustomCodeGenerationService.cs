@@ -13,7 +13,7 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
 
         protected override bool CreateOneFilePerCodeUnit => ConfigHelper.GetAppSettingOrDefault("CreateOneFilePerOptionSet", false);
 
-        private string LocalOptionSetEntityFileNameFormat => ConfigHelper.GetAppSettingOrDefault("LocalOptionSetEntityFileNameFormat", "{0}Set.cs");
+        private string LocalOptionSetEntityFileNameFormat => ConfigHelper.GetAppSettingOrDefault("LocalOptionSetEntityFileNameFormat", "{0}Sets.cs");
         private bool GroupLocalOptionSetsByEntity => ConfigHelper.GetAppSettingOrDefault("GroupLocalOptionSetsByEntity", false);
 
         protected override CodeUnit SplitByCodeUnit => CodeUnit.Enum;
