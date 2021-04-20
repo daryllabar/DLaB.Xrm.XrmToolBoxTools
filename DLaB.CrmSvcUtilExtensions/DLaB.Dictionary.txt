@@ -623,6 +623,7 @@ astrology
 astronomy
 asus
 asylum
+async
 at
 ata
 ate
@@ -2366,6 +2367,7 @@ decorating
 decorative
 decrease
 decreased
+decrement
 dedicated
 dee
 deemed
@@ -3061,6 +3063,7 @@ entire
 entirely
 entities
 entitled
+entitlement
 entity
 entrance
 entrepreneur
@@ -3099,6 +3102,8 @@ erp
 error
 errors
 es
+escalate
+escalated
 escape
 escorts
 especially
@@ -3301,6 +3306,7 @@ fabric
 fabrics
 fabulous
 face
+facebook
 faced
 faces
 facial
@@ -4668,6 +4674,7 @@ involves
 involving
 io
 ion
+iot
 iowa
 ip
 ipaq
@@ -5401,6 +5408,7 @@ manufacturers
 manufacturing
 many
 map
+mapi
 maple
 mapping
 mappings
@@ -5977,11 +5985,8 @@ newton
 next
 nextel
 nfl
-ng
-nh
 nhl
 nhs
-ni
 niagara
 nicaragua
 nice
@@ -6262,19 +6267,17 @@ oriental
 orientation
 oriented
 origin
+originating
 original
 originally
 origins
 orlando
 orleans
-os
 oscar
-ot
 other
 others
 otherwise
 ottawa
-ou
 ought
 our
 ours
@@ -8027,6 +8030,7 @@ seven
 seventh
 several
 severe
+severity
 sewing
 sexual
 sexuality
@@ -8147,6 +8151,7 @@ silly
 silver
 sim
 similar
+similarity
 similarly
 simon
 simple

@@ -183,6 +183,7 @@
     <Compile Include="Entity\RemoveEntityTypeCodeService.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Entity\MetadataProviderService.cs" />
+    <Compile Include="FileToWrite.cs" />
     <Compile Include="Metadata.cs" />
     <Compile Include="BaseMetadataProviderService.cs" />
     <Compile Include="NamingService.cs" />
@@ -192,6 +193,7 @@
     <Compile Include="Entity\EnumPropertyGenerator.cs" />
     <Compile Include="OptionSet\CustomCodeGenerationService.cs" />
     <Compile Include="OptionSet\CustomizeCodeDomService.cs" />
+    <Compile Include="OptionSet\Extensions.cs" />
     <Compile Include="OptionSet\FilterOptionSetEnums.cs" />
     <Compile Include="Entity\CodeWriterFilterService.cs" />
     <Compile Include="OptionSet\CodeWriterFilterService.cs" />

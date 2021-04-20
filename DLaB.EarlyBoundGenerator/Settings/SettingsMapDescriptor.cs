@@ -65,6 +65,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         private void OnCreateOneFilePerOptionSetChange(PropertyValueChangedEventArgs args)
         {
             SetVisibilityForControlsDependentOnFileCreations();
+            SetGroupLocalOptionSetsByEntityVisibility();
             OptionSetOutPath = OptionSetOutPath;
         }
 
@@ -96,6 +97,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         private void ProcessDynamicallyVisibleProperties()
         {
             SetVisibilityForControlsDependentOnFileCreations();
+            SetGroupLocalOptionSetsByEntityVisibility();
             SetMaskPasswordVisibility();
             SetPropertyEnumMappingVisibility();
             SetPropertyReplaceOptionSetPropertiesWithEnumVisibility();
@@ -117,57 +119,59 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         private void SetAddFilesToProjectVisibility()
         {
-            var prop = Descriptor.GetProperty(nameof(AddNewFilesToProject));
-            prop.SetIsBrowsable(AtLeastOneCreateFilePerSelected);
+            SetPropertyBrowsable(nameof(AddNewFilesToProject), AtLeastOneCreateFilePerSelected);
         }
 
         private void SetDeleteFilesFromOutputFoldersVisibility()
         {
-            var prop = Descriptor.GetProperty(nameof(DeleteFilesFromOutputFolders));
-            prop.SetIsBrowsable(AtLeastOneCreateFilePerSelected);
+            SetPropertyBrowsable(nameof(DeleteFilesFromOutputFolders), AtLeastOneCreateFilePerSelected);
         }
 
-        private void SetMaskPasswordVisibility()
+        private void SetGroupLocalOptionSetsByEntityVisibility()
         {
-            var prop = Descriptor.GetProperty(nameof(MaskPassword));
-            prop.SetIsBrowsable(IncludeCommandLine);
+            SetPropertyBrowsable(nameof(GroupLocalOptionSetsByEntity), CreateOneFilePerOptionSet);
         }
 
         private void SetLocalOptionSetFormatVisibility()
         {
-            var prop = Descriptor.GetProperty(nameof(LocalOptionSetFormat));
-            prop.SetIsBrowsable(!UseDeprecatedOptionSetNaming);
+            SetPropertyBrowsable(nameof(LocalOptionSetFormat), UseDeprecatedOptionSetNaming);
+        }
+
+        private void SetMaskPasswordVisibility()
+        {
+            SetPropertyBrowsable(nameof(MaskPassword), IncludeCommandLine);
         }
 
         private void SetProjectNameForEarlyBoundFilesVisibility()
         {
             var parentProp = Descriptor.GetProperty(nameof(AddNewFilesToProject));
-            var prop = Descriptor.GetProperty(nameof(ProjectNameForEarlyBoundFiles));
-            prop.SetIsBrowsable(parentProp.IsBrowsable && AddNewFilesToProject);
+            SetPropertyBrowsable(nameof(ProjectNameForEarlyBoundFiles), parentProp.IsBrowsable && AddNewFilesToProject);
         }
 
         private void SetPropertyEnumMappingVisibility()
         {
-            var prop = Descriptor.GetProperty(nameof(PropertyEnumMappings));
-            prop.SetIsBrowsable(GenerateEnumProperties);
+            SetPropertyBrowsable(nameof(PropertyEnumMappings), GenerateEnumProperties);
         }
 
         private void SetPropertyReplaceOptionSetPropertiesWithEnumVisibility()
         {
-            var prop = Descriptor.GetProperty(nameof(ReplaceOptionSetPropertiesWithEnum));
-            prop.SetIsBrowsable(GenerateEnumProperties);
+            SetPropertyBrowsable(nameof(ReplaceOptionSetPropertiesWithEnum), GenerateEnumProperties);
         }
         
         private void SetGenerateOptionSetMetadataAttributeVisibility()
         {
-            var prop = Descriptor.GetProperty(nameof(GenerateOptionSetMetadataAttribute));
-            prop.SetIsBrowsable(AddOptionSetMetadataAttribute);
+            SetPropertyBrowsable(nameof(GenerateOptionSetMetadataAttribute), AddOptionSetMetadataAttribute);
         }
 
         private void SetUnmappedPropertiesVisibility()
         {
-            var prop = Descriptor.GetProperty(nameof(UnmappedProperties));
-            prop.SetIsBrowsable(GenerateEnumProperties);
+            SetPropertyBrowsable(nameof(UnmappedProperties), GenerateEnumProperties);
+        }
+
+        private void SetPropertyBrowsable(string propertyName, bool browsable)
+        {
+            var prop = Descriptor.GetProperty(propertyName);
+            prop.SetIsBrowsable(browsable);
         }
     }
 }

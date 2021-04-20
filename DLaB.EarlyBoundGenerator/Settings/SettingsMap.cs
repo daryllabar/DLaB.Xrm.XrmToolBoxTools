@@ -485,6 +485,15 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         }
 
         [Category("Option Sets")]
+        [DisplayName("Group Local Option Sets By Entity")]
+        [Description("Combines all local option sets into a single file per entity.  Only used if Create One File Per Option Set is true.")]
+        public bool GroupLocalOptionSetsByEntity
+        {
+            get => Config.ExtensionConfig.GroupLocalOptionSetsByEntity;
+            set => Config.ExtensionConfig.GroupLocalOptionSetsByEntity = value;
+        }
+
+        [Category("Option Sets")]
         [DisplayName("Invalid C# Name Prefix")]
         [Description("Specifies the Prefix to be used for OptionSets that would normally start with an invalid first character ie \"1st\"")]
         public string InvalidCSharpNamePrefix

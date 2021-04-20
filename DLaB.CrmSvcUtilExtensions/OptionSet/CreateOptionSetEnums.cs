@@ -85,7 +85,7 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
             }
 
             
-            var metadataByName = GetMetadataForEnums(services);
+            var metadataByName = services.GetMetadataForEnumsByName();
             foreach (var type in codeUnit.GetTypes())
             {
                 if (metadataByName.TryGetValue(type.Name, out var osMetadata))
@@ -199,39 +199,6 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
                 }
                 nameSpace.Types.AddRange(tmpType.OrderBy(n => n.Name).ToArray());
             }
-        }
-
-        
-        public static Dictionary<string, OptionSetMetadataBase> GetMetadataForEnums(IServiceProvider services)
-        {
-            var metadataByEnumName = new Dictionary<string, OptionSetMetadataBase>();
-            var metadata = ((IMetadataProviderService)services.GetService(typeof(IMetadataProviderService))).LoadMetadata();
-            var filterService = ((ICodeWriterFilterService)services.GetService(typeof(ICodeWriterFilterService)));
-            var namingService = (INamingService)services.GetService(typeof(INamingService));
-            foreach (var entity in metadata.Entities)
-            {
-                foreach (var attribute in entity.Attributes.OfType<EnumAttributeMetadata>()
-                                                .Where(a => a.OptionSet != null 
-                                                            && filterService.GenerateOptionSet(a.OptionSet, services)))
-                {
-                    var name = namingService.GetNameForOptionSet(entity, attribute.OptionSet, services);
-                    if (!metadataByEnumName.ContainsKey(name))
-                    {
-                        metadataByEnumName[name] = attribute.OptionSet;
-                    }
-                }
-            }
-
-            foreach (var optionSet in metadata.OptionSets)
-            {
-                var name = namingService.GetNameForOptionSet(null, optionSet, services);
-                if (!metadataByEnumName.ContainsKey(name))
-                {
-                    metadataByEnumName[name] = optionSet;
-                }
-            }
-
-            return metadataByEnumName;
         }
     }
 }

@@ -128,6 +128,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public bool GenerateOptionSetMetadataAttribute { get; set; }
         /// <summary>
+        /// Combines all local option sets into a single file per entity.  Only used if Create One File Per Option Set is true.
+        /// </summary>
+        public bool GroupLocalOptionSetsByEntity { get; set; }
+        /// <summary>
         /// Specifies the Prefix to be used for OptionSets that would normally start with an invalid first character ie "1st"
         /// </summary>
         public string InvalidCSharpNamePrefix { get; set; }
@@ -290,9 +294,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 CamelCaseMemberNames = false,
                 FilePrefixText = null,
                 GenerateOptionSetMetadataAttribute = true,
+                GroupLocalOptionSetsByEntity = false,
                 ReadSerializedMetadata = false,
                 SerializeMetadata = false,
-                TokenCapitalizationOverrides = "ActiveState|AccessTeam|BusinessAs|CardUci|DefaultOnCase|EmailAnd|FeatureSet|IsMsTeams|IsPaiEnabled|IsSopIntegration|O365Admin|OnHold|OwnerOnAssign|PauseStates|PartiesOnEmail|ParticipatesIn|SentOn|SlaKpi|SlaId|SyncOptIn|Timeout|UserPuid|VoiceMail|Weblink",
+                TokenCapitalizationOverrides = "ActiveState|AccessTeam|BusinessAs|CardUci|DefaultOnCase|EmailAnd|FeatureSet|IsMsTeams|IsPaiEnabled|IsSopIntegration|MsDyUsd|O365Admin|OnHold|OwnerOnAssign|PauseStates|PartiesOnEmail|ParticipatesIn|SentOn|SlaKpi|SlaId|SyncOptIn|Timeout|UserPuid|VoiceMail|Weblink",
                 UseDeprecatedOptionSetNaming = false,
                 UseTfsToCheckoutFiles = false,
                 WaitForAttachedDebugger = false,
@@ -312,8 +317,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
             AddDebuggerNonUserCode = poco.AddDebuggerNonUserCode ?? AddDebuggerNonUserCode;
             AddNewFilesToProject = poco.AddNewFilesToProject ?? AddNewFilesToProject;
             AddOptionSetMetadataAttribute = poco.AddOptionSetMetadataAttribute ?? AddOptionSetMetadataAttribute;
-                CamelCaseClassNames = poco.CamelCaseClassNames ?? CamelCaseClassNames;
-                CamelCaseMemberNames = poco.CamelCaseMemberNames ?? CamelCaseMemberNames;
+            CamelCaseClassNames = poco.CamelCaseClassNames ?? CamelCaseClassNames;
+            CamelCaseMemberNames = poco.CamelCaseMemberNames ?? CamelCaseMemberNames;
             CreateOneFilePerAction = poco.CreateOneFilePerAction ?? CreateOneFilePerAction;
             CreateOneFilePerEntity = poco.CreateOneFilePerEntity ?? CreateOneFilePerEntity;
             CreateOneFilePerOptionSet = poco.CreateOneFilePerOptionSet ?? CreateOneFilePerOptionSet;
@@ -333,6 +338,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             GenerateEnumProperties = poco.GenerateEnumProperties ?? GenerateEnumProperties;
             GenerateOnlyReferencedOptionSets = poco.GenerateOnlyReferencedOptionSets ?? GenerateOnlyReferencedOptionSets;
             GenerateOptionSetMetadataAttribute = poco.GenerateOptionSetMetadataAttribute ?? GenerateOptionSetMetadataAttribute;
+            GroupLocalOptionSetsByEntity = poco.GroupLocalOptionSetsByEntity ?? GroupLocalOptionSetsByEntity;
             InvalidCSharpNamePrefix = poco.InvalidCSharpNamePrefix ?? InvalidCSharpNamePrefix;
             MakeAllFieldsEditable = poco.MakeAllFieldsEditable ?? MakeAllFieldsEditable;
             MakeReadonlyFieldsEditable = poco.MakeReadonlyFieldsEditable ?? MakeReadonlyFieldsEditable;
@@ -347,7 +353,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             RemoveRuntimeVersionComment = poco.RemoveRuntimeVersionComment ?? RemoveRuntimeVersionComment;
             ReplaceOptionSetPropertiesWithEnum = poco.ReplaceOptionSetPropertiesWithEnum ?? ReplaceOptionSetPropertiesWithEnum;
             SerializeMetadata = poco.SerializeMetadata ?? SerializeMetadata;
-                TokenCapitalizationOverrides = GetValueOrDefault(poco.TokenCapitalizationOverrides, TokenCapitalizationOverrides);
+             TokenCapitalizationOverrides = GetValueOrDefault(poco.TokenCapitalizationOverrides, TokenCapitalizationOverrides);
             UnmappedProperties = GetValueOrDefault(poco.UnmappedProperties, UnmappedProperties);
             UseDeprecatedOptionSetNaming = poco.UseDeprecatedOptionSetNaming ?? UseDeprecatedOptionSetNaming;
             UseTfsToCheckoutFiles = poco.UseTfsToCheckoutFiles ?? UseTfsToCheckoutFiles;
@@ -408,6 +414,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? CamelCaseMemberNames { get; set; }
         public string FilePrefixText { get; set; }
         public bool? GenerateOptionSetMetadataAttribute { get; set; }
+        public bool? GroupLocalOptionSetsByEntity { get; set; }
         public string ProjectNameForEarlyBoundFiles { get; set; }
         public bool? ReadSerializedMetadata { get; set; }
         public bool? RemoveRuntimeVersionComment { get; set; }
