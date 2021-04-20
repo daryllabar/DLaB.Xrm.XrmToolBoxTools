@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator.Api</id>
-    <version>1.2021.1.23</version>
+    <version>1.2021.4.18</version>
     <title>Early Bound Generator Api</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,12 @@
     <icon>images\DLaB_Dynamics_Logo_Square_32x32.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses CrmSvcUtil from the SDK.</description>
-    <releaseNotes>V1.2021.1.23
+    <releaseNotes>V1.2021.4.18
+Added ability to include File data type in the entity classes #279
+Workflowless Actions aren't being handled correctly #280  
+Allow Entity Specific Choices to be in a single file. #281
+
+V1.2021.1.23
 Add Keys to list of Constants for class #274
 
 V1.2021.1.22
