@@ -45,35 +45,6 @@ Fix for OptionSetMetadataAttribute comment extra closing tag #248
 Fix for If output path contains a space, a new folder with %20 in lieu of the space is created #241
 Fix issue where accessing OptionSet MetaData returns an error #247
 Added button to save to new settings file #246
-
-V1.2020.4.24
-Create pit of success for avoiding output folder for entities with dot in the folder name issues #234
-
-V1.2020.4.24
-Add Settings for Add option for Metadata Attribute Properties #232
-
-V1.2020.4.17
-Fix for IEnumerable Activity Party Typing Bug #231
-
-V1.2020.4.1
-Add App Insights to EarlyBound Config #229
-      
-V1.2020.4.1
-Fix for Null Ref Error for Multi-Select Option Sets if there are no values #226
-
-V1.2020.3.29
-Update to latest version of the SDK and removed Microsoft.Xrm.Client References (about time)
-Fix Broken ADFS MFA #223
-
-V1.2020.3.24
-Added ability to Replace OptionSet Attributes with Enums #224
-Added new lines to piped settings so it's easier to see differences in source control
-
-V1.2020.3.20 and V1.2020.3.9
-Fix for Null Reference exception when attempting to generate #221
-      
-V1.2020.2.24
-Removed EntityTypeCode generation by default. #216
     </releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>
