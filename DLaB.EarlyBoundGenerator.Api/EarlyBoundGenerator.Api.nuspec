@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator.Api</id>
-    <version>1.2021.4.19</version>
+    <version>1.2021.4.30</version>
     <title>Early Bound Generator Api</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,11 @@
     <icon>images\DLaB_Dynamics_Logo_Square_32x32.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses CrmSvcUtil from the SDK.</description>
-    <releaseNotes>V1.2021.4.19
+    <releaseNotes>
+V1.2021.4.30
+Added additional output paths. #283
+
+V1.2021.4.19
 Added ability to include File data type in the entity classes #279
 Workflowless Actions aren't being handled correctly #280
 Allow Entity Specific Choices to be in a single file. #281
@@ -41,9 +45,6 @@ Fix issue where accessing OptionSet MetaData returns an error #247
 
 V1.2020.5.5
 Changes for Spkl integration.
-
-V1.2020.4.21
-Add Settings for Add option for Metadata Attribute Properties #232
     </releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>CrmSvcUtil Xrm EarlyBound Generator</tags>
