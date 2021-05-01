@@ -13,7 +13,7 @@
     <description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses CrmSvcUtil from the SDK.</description>
     <releaseNotes>V1.2021.4.19
 Added ability to include File data type in the entity classes #279
-Workflowless Actions aren't being handled correctly #280  
+Workflowless Actions aren't being handled correctly #280
 Allow Entity Specific Choices to be in a single file. #281
 
 V1.2021.1.23
@@ -34,7 +34,7 @@ Added support AppId/ClientSecret #268
 
 V1.2021.1.9
 Added Config for SuppressGeneratedCodeAttribute
-      
+
 V1.2020.6.22
 Fix for OptionSetMetadataAttribute comment extra closing tag #248
 Fix issue where accessing OptionSet MetaData returns an error #247
@@ -51,11 +51,20 @@ Add Settings for Add option for Metadata Attribute Properties #232
       <frameworkAssembly assemblyName="System.Configuration" />
       <frameworkAssembly assemblyName="System.Runtime.Serialization" />
     </frameworkAssemblies>
+    <contentFiles>
+      <files include="any\any\DLaB.EarlyBoundGenerator\**\*.*" buildAction="None" copyToOutput="true" />
+    </contentFiles>
   </metadata>
   <files>
+    <!-- lib -->
     <file src="bin\Release\DLaB.EarlyBoundGenerator.Api.dll" target="lib\net462" />
+    <!-- content -->
     <file src="bin\Release\DLaB.EarlyBoundGenerator\*.*" target="content\bin\DLaB.EarlyBoundGenerator" />
     <file src="bin\Release\DLaB.EarlyBoundGenerator\alphabets\*.*" target="content\bin\DLaB.EarlyBoundGenerator\alphabets" />
+    <!-- contentFiles -->
+    <file src="bin\Release\DLaB.EarlyBoundGenerator\*.*" target="contentFiles\any\any\DLaB.EarlyBoundGenerator" />
+    <file src="bin\Release\DLaB.EarlyBoundGenerator\alphabets\*.*" target="contentFiles\any\any\DLaB.EarlyBoundGenerator\alphabets" />
+    <!-- images -->
     <file src="bin\Release\Images\DLaB_Dynamics_Logo_Square_32x32.png" target="images\" />
   </files>
 </package>
