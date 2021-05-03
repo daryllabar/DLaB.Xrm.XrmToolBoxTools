@@ -1082,7 +1082,7 @@ namespace DLaB.AttributeManager
                 {
                     if (requests.Any())
                     {
-                        updatesSuccess = updatesSuccess + PerformUpdates(service, requests);
+                        updatesSuccess += PerformUpdates(service, requests);
                     }
 
                     Trace("Copying {0} / {1}", count, total);
@@ -1128,7 +1128,7 @@ namespace DLaB.AttributeManager
 
             if (requests.Any())
             {
-                updatesSuccess = updatesSuccess + PerformUpdates(service, requests);
+                updatesSuccess += PerformUpdates(service, requests);
             }
 
             watch.Stop();
@@ -1189,7 +1189,7 @@ namespace DLaB.AttributeManager
                     {
                         if (IgnoreUpdateErrors)
                         {
-                            countFaults = countFaults + 1;
+                            countFaults ++;
                         }
                         else
                         {
