@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using Microsoft.Xrm.Sdk;
 
@@ -26,7 +25,8 @@ namespace Source.DLaB.Xrm
         {
             foreach (var attribute in entityToAdd.Attributes.Where(a => !(a.Value is AliasedValue)))
             {
-                entity.AddAliasedValue(entityToAdd.LogicalName, attribute.Key, attribute.Value);
+                var formattedValue = entityToAdd.FormattedValues.TryGetValue(attribute.Key, out var formatted) ? formatted : null;
+                entity.AddAliasedValue(entityToAdd.LogicalName, attribute.Key, attribute.Value, formattedValue);
             }
         }
 
@@ -39,9 +39,10 @@ namespace Source.DLaB.Xrm
         /// <param name="logicalName">The logical name from which the aliased value would have come from</param>
         /// <param name="attributeName">The logical name of the attribute of the aliased value</param>
         /// <param name="value">The Value to store in the aliased value</param>
-        public static void AddAliasedValue(this Entity entity, string logicalName, string attributeName, object value)
+        /// <param name="formattedValue">The formatted value</param>
+        public static void AddAliasedValue(this Entity entity, string logicalName, string attributeName, object value, string formattedValue = null)
         {
-            entity.AddAliasedValue(null, logicalName, attributeName, value);
+            entity.AddAliasedValue(null, logicalName, attributeName, value, formattedValue);
         }
 
         /// <summary>
@@ -54,11 +55,17 @@ namespace Source.DLaB.Xrm
         /// <param name="logicalName">The logical name from which the aliased value would have come from</param>
         /// <param name="attributeName">The logical name of the attribute of the aliased value</param>
         /// <param name="value">The Value to store in the aliased value</param>
-        public static void AddAliasedValue(this Entity entity, string aliasName, string logicalName, string attributeName, object value)
+        /// <param name="formattedValue">The formatted value</param>
+        public static void AddAliasedValue(this Entity entity, string aliasName, string logicalName, string attributeName, object value, string formattedValue = null)
         {
             aliasName = aliasName ?? logicalName;
-            entity.Attributes.Add(aliasName + "." + attributeName,
-                new AliasedValue(logicalName, attributeName, value));
+            var name = aliasName + "." + attributeName;
+            entity.Attributes.Add(name, new AliasedValue(logicalName, attributeName, value));
+
+            if (formattedValue != null)
+            {
+                entity.FormattedValues.Add(name, formattedValue);
+            }
         }
 
         /// <summary>
@@ -70,7 +77,8 @@ namespace Source.DLaB.Xrm
         /// <param name="logicalName">The logical name from which the aliased value would have come from</param>
         /// <param name="attributeName">The logical name of the attribute of the aliased value</param>
         /// <param name="value">The Value to store in the aliased value</param>
-        public static void AddOrReplaceAliasedValue(this Entity entity, string logicalName, string attributeName, object value)
+        /// <param name="formattedValue">The formatted value</param>
+        public static void AddOrReplaceAliasedValue(this Entity entity, string logicalName, string attributeName, object value, string formattedValue = null)
         {
             // Check for value already existing
             foreach (var attribute in entity.Attributes.Where(a => a.Value is AliasedValue))
@@ -79,10 +87,14 @@ namespace Source.DLaB.Xrm
                 if (aliasedValue.EntityLogicalName != logicalName || aliasedValue.AttributeLogicalName != attributeName) { continue; }
 
                 entity[attribute.Key] = new AliasedValue(aliasedValue.EntityLogicalName, aliasedValue.AttributeLogicalName, value);
+                if (formattedValue != null)
+                {
+                    entity.FormattedValues[attribute.Key] = formattedValue;
+                }
                 return;
             }
 
-            entity.AddAliasedValue(logicalName, attributeName, value);
+            entity.AddAliasedValue(logicalName, attributeName, value, formattedValue);
         }
 
         #endregion AddAliased

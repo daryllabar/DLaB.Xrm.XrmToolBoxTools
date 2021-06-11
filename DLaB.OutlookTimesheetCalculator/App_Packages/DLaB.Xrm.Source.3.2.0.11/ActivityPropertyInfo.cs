@@ -386,7 +386,7 @@ namespace Source.DLaB.Xrm
                     NotActiveState = 0;
                     break;
 
-                // Entities with states that can't be grouped into seperate all inclusive active and inactive states
+                // Entities with states that can't be grouped into separate all inclusive active and inactive states
                 case "asyncoperation":
                 case "bulkdeleteoperation":
                 case "contract":

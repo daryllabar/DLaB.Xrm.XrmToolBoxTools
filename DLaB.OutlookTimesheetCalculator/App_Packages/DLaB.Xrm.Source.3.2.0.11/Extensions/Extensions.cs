@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Concurrent;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -12,11 +10,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq.Expressions;
 using System.Xml;
-using Microsoft.Crm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Client;
 using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Metadata;
-using Microsoft.Xrm.Sdk.Metadata.Query;
 #if DLAB_UNROOT_COMMON_NAMESPACE
 using DLaB.Common;
 #else
@@ -51,7 +47,7 @@ namespace Source.DLaB.Xrm
         {
             if (attribute.AttributeType != AttributeTypeCode.Picklist
                 && attribute.AttributeType != AttributeTypeCode.State
-                && attribute.AttributeType != AttributeTypeCode.Status) 
+                && attribute.AttributeType != AttributeTypeCode.Status)
             {
                 return false;
             }
@@ -96,7 +92,7 @@ namespace Source.DLaB.Xrm
         /// <param name="imageName">The name to Search For</param>
         /// <param name="defaultName">The Default Name to use</param>
         /// <returns></returns>
-        public static T GetEntity<T>(this DataCollection<string, Entity> images, string imageName = null, string defaultName = null) where T: Entity
+        public static T GetEntity<T>(this DataCollection<string, Entity> images, string imageName = null, string defaultName = null) where T : Entity
         {
             if (images.Count == 0)
             {
@@ -133,7 +129,7 @@ namespace Source.DLaB.Xrm
         /// <typeparam name="T"></typeparam>
         /// <param name="entity">The entity.</param>
         /// <returns></returns>
-        public static T AsEntity<T>(this Entity entity) where T: Entity
+        public static T AsEntity<T>(this Entity entity) where T : Entity
         {
             var tEntity = entity as T;
             return tEntity ?? entity.ToEntity<T>();
@@ -526,8 +522,8 @@ namespace Source.DLaB.Xrm
         private static string GetLogicalAttributeName<T>(MemberInfo property) where T : Entity
         {
             var name = property.Name.ToLower();
-            if (name == "id" 
-                || name.Substring(name.Length-1) == "1" && name.StartsWith(typeof(T).GetClassAttribute<EntityLogicalNameAttribute>().LogicalName)) // If an attribute is the same value as the name of the entity, it is created with a 1 post fix to allow for it to compile
+            if (name == "id"
+                || name.Substring(name.Length - 1) == "1" && name.StartsWith(typeof(T).GetClassAttribute<EntityLogicalNameAttribute>().LogicalName)) // If an attribute is the same value as the name of the entity, it is created with a 1 post fix to allow for it to compile
             {
                 var attribute = typeof(T).GetProperty(property.Name)?.GetCustomAttributes<AttributeLogicalNameAttribute>().FirstOrDefault();
                 if (attribute == null)
@@ -580,6 +576,7 @@ namespace Source.DLaB.Xrm
                 att.Value.Entities.AddRange(sdkEntities);
             }
         }
+#if !NETCOREAPP
 
         /// <summary>
         /// Clone Entity (deep copy)
@@ -588,135 +585,12 @@ namespace Source.DLaB.Xrm
         /// <returns>new cloned entity</returns>
         public static T Clone<T>(this T source) where T : Entity
         {
-#if NETCOREAPP
-            var cloned = new Entity(source.LogicalName)
-            {
-                Id = source.Id,
-                LogicalName = source.LogicalName
-            };
-
-            foreach (var kvp in source.FormattedValues)
-            {
-                cloned.FormattedValues.Add(kvp.Key, kvp.Value);
-            }
-
-#if !PRE_KEYATTRIBUTE
-            foreach (var kvp in source.KeyAttributes)
-            {
-                cloned.KeyAttributes.Add(kvp.Key, CloneAttribute(kvp.Value));
-            }
-#endif
-
-            foreach (var kvp in source.Attributes)
-            {
-                cloned[kvp.Key] = CloneAttribute(kvp.Value);
-            }
-
-            foreach (var related in source.RelatedEntities)
-            {
-                var sourceCollection = related.Value;
-                var collection = new EntityCollection(sourceCollection.Entities.Select(e => e.CloneToEntity()).ToList())
-                {
-                    EntityName = sourceCollection.EntityName,
-                    MinActiveRowVersion = sourceCollection.MinActiveRowVersion,
-                    PagingCookie = sourceCollection.PagingCookie,
-                    MoreRecords = sourceCollection.MoreRecords,
-                    TotalRecordCount = sourceCollection.TotalRecordCount,
-                    TotalRecordCountLimitExceeded = sourceCollection.TotalRecordCountLimitExceeded
-                };
-
-                cloned.RelatedEntities.Add(related.Key, collection);
-            }
-            return cloned.ToEntity<T>();
-#else
             return source?.Serialize().DeserializeEntity<T>();
+        }
 #endif
-        }
+        #endregion Entity
 
-        /// <summary>
-        /// Clones the entity, then converts it to the same type as the entity
-        /// </summary>
-        /// <param name="source"></param>
-        /// <returns></returns>
-        private static Entity CloneToEntity(this Entity source)
-        {
-            var clone = source.Clone();
-            if (source.GetType() == typeof(Entity))
-            {
-                return clone;
-            }
-            
-            return (Entity)typeof(Entity)
-                .GetMethod("ToEntity")
-                .MakeGenericMethod(source.GetType())
-                .Invoke(clone, new object[0]);
-        }
-
-        private static object CloneAttribute(this object value)
-        {
-            if (value == null)
-                return null;
-
-            switch (value)
-            {
-                case string stringValue:
-                    return stringValue;
-                case EntityReference entityRef:
-                {
-                    var clone = new EntityReference(entityRef.LogicalName, entityRef.Id)
-                    {
-                        Name = entityRef.Name,
-                        RowVersion = entityRef.RowVersion
-                    };
-#if !PRE_KEYATTRIBUTE
-                    clone.KeyAttributes.AddRange(entityRef.KeyAttributes.Select(kvp => new KeyValuePair<string,object>(kvp.Key, CloneAttribute(kvp.Value))));
-#endif
-                    return clone;
-                }
-                case BooleanManagedProperty boolManaged:
-                    return new BooleanManagedProperty(boolManaged.Value);
-                case AliasedValue aliased:
-                    return new AliasedValue(aliased.EntityLogicalName, aliased.AttributeLogicalName, CloneAttribute(aliased.Value));
-                case OptionSetValue optionSetValue:
-                    return new OptionSetValue(optionSetValue.Value);
-                case Money money:
-                    return new Money(money.Value);
-                case EntityCollection collection:
-                    return new EntityCollection(collection.Entities.Select(e => e.Clone()).ToList());
-                case IEnumerable<Entity> entities:
-                    return entities.Select(e => e.Clone()).ToArray();
-                case byte[] bytes:
-                    return bytes.Select(b => b).ToArray();
-                default:
-                    var type = value.GetType();
-                    if(type.GetInterfaces()
-                         .Where(i =>  i.IsGenericType)
-                         .Any(i => i.GetGenericTypeDefinition() == typeof(IList<>)))
-                    {
-                        dynamic clonedList;
-                        try
-                        {
-                            clonedList = (dynamic) Activator.CreateInstance(type);
-                        }
-                        catch(Exception ex)
-                        {
-                            throw new NotImplementedException($"An attempted was made to clone an attribute of type {type.FullName}, but it does not contain an empty constructor, and therefore requires custom logic to clone.", ex);
-                        }
-                        foreach(var item in (IEnumerable)value)
-                        {
-                            clonedList.Add(item.CloneAttribute());
-                        }
-
-                        return clonedList;
-                    }
-
-                    return value;
-            }
-        }
-
-#endregion Entity
-
-#region EntityCollection
+        #region EntityCollection
 
         /// <summary>
         /// Converts the entity collection into a list, casting each entity.
@@ -735,9 +609,9 @@ namespace Source.DLaB.Xrm
             return col.Entities.Select(e => e.AsEntity<T>()).ToList();
         }
 
-#endregion EntityCollection
+        #endregion EntityCollection
 
-#region EntityMetadata
+        #region EntityMetadata
 
         /// <summary>
         /// Gets the text value of the di.
@@ -749,9 +623,9 @@ namespace Source.DLaB.Xrm
             return entity.DisplayName.GetLocalOrDefaultText(entity.SchemaName) + " (" + entity.LogicalName + ")";
         }
 
-#endregion EntityMetadata
+        #endregion EntityMetadata
 
-#region EntityReference
+        #region EntityReference
 
         /// <summary>
         /// Returns the Name and Id of an entity reference in this format "Name (id)"
@@ -797,15 +671,15 @@ namespace Source.DLaB.Xrm
             return entityReference == value || entityReference != null && entityReference.Equals(value);
         }
 
-#endregion EntityReference
+        #endregion EntityReference
 
-#region EntityReferenceCollection
+        #region EntityReferenceCollection
 
 
 
-#endregion EntityReferenceCollection
+        #endregion EntityReferenceCollection
 
-#region FetchExpression
+        #region FetchExpression
 
         /// <summary>
         /// Get's the logical name of the primary entity for the fetch expression.
@@ -819,9 +693,9 @@ namespace Source.DLaB.Xrm
             return xml.SelectSingleNode("/fetch/entity/@name")?.Value;
         }
 
-#endregion FetchExpression
+        #endregion FetchExpression
 
-#region FilterExpression
+        #region FilterExpression
 
         /// <summary>
         /// Depending on the Type of T, adds the correct is active criteria Statement
@@ -943,11 +817,11 @@ namespace Source.DLaB.Xrm
             return fe;
         }
 
-#endregion FilterExpression
+        #endregion FilterExpression
 
-#region IExecutionContext
+        #region IExecutionContext
 
-#region ContainsAllNonNull
+        #region ContainsAllNonNull
 
         /// <summary>
         /// Checks to see if the PluginExecutionContext.InputParameters Contains the attribute names, and the value is not null
@@ -982,9 +856,9 @@ namespace Source.DLaB.Xrm
             return context.SharedVariables.ContainsAllNonNull(parameterNames);
         }
 
-#endregion ContainsAllNonNull
+        #endregion ContainsAllNonNull
 
-#region GetParameterValue
+        #region GetParameterValue
 
         /// <summary>
         /// Gets the parameter value from the PluginExecutionContext.InputParameters collection, cast to type 'T', or default(T) if the collection doesn't contain a parameter with the given name.
@@ -1081,737 +955,11 @@ namespace Source.DLaB.Xrm
             return context.SharedVariables.GetParameterValue(variableName);
         }
 
-#endregion GetParameterValue
+        #endregion GetParameterValue
 
-#endregion IExecutionContext
+        #endregion IExecutionContext
 
-#region IOrganizationService
-
-#region Assign
-
-        /// <summary>
-        /// Assigns the supplied entity to the supplied user
-        /// </summary>
-        /// <param name="service"></param>
-        /// <param name="target"></param>
-        /// <param name="systemUser"></param>
-        /// <returns>AssignResponse</returns>
-        public static AssignResponse Assign(this IOrganizationService service, EntityReference target, EntityReference systemUser)
-        {
-            return (AssignResponse)service.Execute(new AssignRequest
-            {
-                Assignee = systemUser,
-                Target = target
-            });
-        }
-
-        /// <summary>
-        /// Reassigns the owner of the entity to the new owner
-        /// </summary>
-        /// <param name="service"></param>
-        /// <param name="itemToChangeOwnershipOf">Must have Logical Name and Id Populated</param>
-        /// <param name="newOwnerId"></param>
-        /// <returns></returns>
-        public static AssignResponse Assign(this IOrganizationService service, Entity itemToChangeOwnershipOf, Guid newOwnerId)
-        {
-            return Assign(service, itemToChangeOwnershipOf.ToEntityReference(), newOwnerId);
-        }
-
-        /// <summary>
-        /// Reassigns the owner of the entity to the new owner
-        /// </summary>
-        /// <param name="service"></param>
-        /// <param name="itemToChangeOwnershipOf">Must have Logical Name and Id Populated</param>
-        /// <param name="newOwnerId"></param>
-        /// <returns></returns>
-        public static AssignResponse Assign(this IOrganizationService service, EntityReference itemToChangeOwnershipOf, Guid newOwnerId)
-        {
-            return (AssignResponse)service.Execute(new AssignRequest
-            {
-                Target = itemToChangeOwnershipOf,
-                Assignee = new EntityReference("systemuser", newOwnerId),
-            });
-        }
-
-#endregion Assign
-
-#region Associate
-
-        /// <summary>
-        /// Associates one or more entities to an entity.
-        /// </summary>
-        /// <param name="service"></param>
-        /// <param name="entity"></param>
-        /// <param name="relationshipLogicalName"></param>
-        /// <param name="entities"></param>
-        public static void Associate(this IOrganizationService service, Entity entity, string relationshipLogicalName, params Entity[] entities)
-        {
-            var relationship = new Relationship(relationshipLogicalName);
-            if (entity.LogicalName == entities.First().LogicalName)
-            {
-                relationship.PrimaryEntityRole = EntityRole.Referenced;
-            }
-
-            service.Associate(entity.LogicalName, entity.Id,
-                relationship,
-                new EntityReferenceCollection(entities.Select(e => e.ToEntityReference()).ToList()));
-        }
-
-        /// <summary>
-        /// Associates one or more entities to an entity.
-        /// </summary>
-        /// <param name="service"></param>
-        /// <param name="entity"></param>
-        /// <param name="relationshipLogicalName"></param>
-        /// <param name="entities"></param>
-        public static void Associate(this IOrganizationService service, EntityReference entity, string relationshipLogicalName, params EntityReference[] entities)
-        {
-            var relationship = new Relationship(relationshipLogicalName);
-            if (entity.LogicalName == entities.First().LogicalName)
-            {
-                relationship.PrimaryEntityRole = EntityRole.Referenced;
-            }
-
-            service.Associate(entity.LogicalName, entity.Id,
-                relationship,
-                new EntityReferenceCollection(entities.ToList()));
-        }
-
-#endregion Associate
-
-#region CreateWithSuppressDuplicateDetection
-
-        /// <summary>
-        /// Creates a record with SuppressDuplicateDetection Enabled to Ignore any potential Duplicates Created
-        /// </summary>
-        /// <param name="service"></param>
-        /// <param name="entity"></param>
-        /// <returns></returns>
-        public static Guid CreateWithSuppressDuplicateDetection(this IOrganizationService service, Entity entity)
-        {
-            var response = (CreateResponse)service.Execute(new CreateRequest
-                                                           {
-                                                               Target = entity,
-                                                               ["SuppressDuplicateDetection"] = true
-                                                           });
-            return response.id;
-        }
-
-#endregion CreateWithSuppressDuplicateDetection
-
-#region Delete
-
-        /// <summary>
-        /// Deletes the specified entity
-        /// </summary>
-        /// <param name="service">The service.</param>
-        /// <param name="entity">The entity to be deleted.</param>
-        public static void Delete(this IOrganizationService service, Entity entity)
-        {
-            service.Delete(entity.LogicalName, entity.Id);
-        }
-
-        /// <summary>
-        /// Deletes the specified entity  
-        /// </summary>
-        /// <param name="service"></param>
-        /// <param name="entity"></param>
-        /// <returns></returns>
-        public static void Delete(this IOrganizationService service, EntityReference entity)
-        {
-            service.Delete(entity.LogicalName, entity.Id);
-        }
-
-#endregion Delete
-
-#region DeleteIfExists
-
-        /// <summary>
-        /// Attempts to delete the entity with the given id. If it doesn't exist, false is returned
-        /// </summary>
-        /// <param name="service">The service.</param>
-        /// <param name="entity">The entity to delete if it exists.</param>
-        public static void DeleteIfExists(this IOrganizationService service, Entity entity)
-        {
-            service.DeleteIfExists(entity.LogicalName, entity.Id);
-        }
-
-        /// <summary>
-        /// Delete all active entities in the entity specified by the LogicalName and the Filter Expression
-        /// </summary>
-        /// <param name="service">The service.</param>
-        /// <param name="logicalName">The logical name of the entity that will be deleted.</param>
-        /// <param name="fe">The filter expression to use to determine what records to delete.</param>
-        /// <returns></returns>
-        public static bool DeleteIfExists(this IOrganizationService service, string logicalName, FilterExpression fe)
-        {
-            var qe = new QueryExpression(logicalName) { Criteria = fe };
-            return service.DeleteIfExists(qe);
-        }
-
-        /// <summary>
-        /// Attempts to delete the entity with the given id. If it doesn't exist, false is returned
-        /// </summary>
-        /// <param name="service">The service.</param>
-        /// <param name="entityName">Name of the entity.</param>
-        /// <param name="id">The id of the entity to search and potentially delete.</param>
-        /// <returns></returns>
-        public static bool DeleteIfExists(this IOrganizationService service, string entityName, Guid id)
-        {
-            return DeleteIfExistsWithRetry(service, entityName, id, 0);
-        }
-
-        /// <summary>
-        /// Delete all entities that are returned by the Query Expression.
-        /// </summary>
-        /// <param name="service">The Service</param>
-        /// <param name="qe">The query expression used to define the set of entities to delete</param>
-        /// <returns></returns>
-        public static bool DeleteIfExists(this IOrganizationService service, QueryExpression qe)
-        {
-            var exists = false;
-            var idName = EntityHelper.GetIdAttributeName(qe.EntityName);
-            qe.ColumnSet = new ColumnSet(idName);
-            qe.NoLock = true;
-            var entities = service.RetrieveMultiple(qe);
-            if (entities.Entities.Count > 0)
-            {
-                exists = true;
-                entities.Entities.ToList().ForEach(e => service.Delete(qe.EntityName, e.Id));
-            }
-            return exists;
-        }
-
-        private static bool DeleteIfExistsInternal(IOrganizationService service, string logicalName, Guid id)
-        {
-            var exists = false;
-            var idName = EntityHelper.GetIdAttributeName(logicalName);
-            var qe = new QueryExpression(logicalName) { ColumnSet = new ColumnSet(idName) };
-
-            qe.WhereEqual(idName, id);
-            qe.First();
-            qe.NoLock = true;
-            if (service.RetrieveMultiple(qe).Entities.Count > 0)
-            {
-                service.Delete(logicalName, id);
-                exists = true;
-            }
-            return exists;
-        }
-
-        /// <summary>
-        /// There have been Generic SQL errors caused with calling this while using multi-threading.  This hopefully
-        /// will fix that
-        /// </summary>
-        /// <param name="service">The service.</param>
-        /// <param name="entityName">Name of the entity.</param>
-        /// <param name="id">The id.</param>
-        /// <param name="retryCount">The retry count.</param>
-        /// <returns></returns>
-        private static bool DeleteIfExistsWithRetry(IOrganizationService service, string entityName, Guid id,
-                                                    int retryCount)
-        {
-            bool exists;
-            try
-            {
-                exists = DeleteIfExistsInternal(service, entityName, id);
-            }
-            catch (System.ServiceModel.FaultException<OrganizationServiceFault> ex)
-            {
-                if (retryCount < 10 && ex.Message.Equals("Generic SQL error.", StringComparison.CurrentCultureIgnoreCase))
-                { // This is normally caused by database deadlock issue.  
-                    // Attempt to reprocess once after sleeping a random number of milliseconds
-                    System.Threading.Thread.Sleep(new Random(System.Threading.Thread.CurrentThread.ManagedThreadId).
-                        Next(1000, 5000));
-                    exists = DeleteIfExistsWithRetry(service, entityName, id, retryCount + 1);
-                }
-                else if (ex.Message.EndsWith(id + " Does Not Exist"))
-                {
-                    exists = false;
-                }
-                else if (ex.Message == "The object you tried to delete is associated with another object and cannot be deleted.")
-                {
-                    throw new Exception("Entity " + entityName + " (" + id + ") is associated with another object and cannot be deleted.");
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return exists;
-        }
-
-#endregion DeleteIfExists
-
-        /// <summary>
-        /// Executes a batch of requests against the CRM Web Service using the ExecuteMultipleRequest command.
-        /// </summary>
-        /// <remarks>
-        /// ExecuteMultipleRequest allows for a maximum of 1000 messages to be processed in a single batch job.
-        /// </remarks>
-        /// <param name="service">Organization Service proxy for connecting to the relevant CRM instance.</param>
-        /// <param name="requestCollection">Collection of organization requests to execute against the CRM Web Services.</param>
-        /// <param name="returnResponses">Indicates if responses should be returned for the action taken on each entity in the bulk operation.</param>
-        /// <param name="continueOnError">Indicates if the batch job should continue if an error occurs for any of the entities being processed. Default is true.</param>
-        /// <returns>Returns the <see cref="ExecuteMultipleResponse"/> containing responses and faults from the operation if the returnResponses parameter is set to true; otherwise returns null. Default is true.</returns>
-        public static ExecuteMultipleResponse ExecuteMultiple(this IOrganizationService service, OrganizationRequestCollection requestCollection, bool returnResponses = true, bool continueOnError = true)
-        {
-            // Validate required parameters.
-            if (service == null)
-                throw new ArgumentNullException(nameof(service), "A valid Organization Service Proxy must be specified.");
-            // Validate the request collection.
-            if (requestCollection == null)
-                throw new ArgumentNullException(nameof(requestCollection), "The collection of requests to batch process cannot be null.");
-            // Ensure the user is not attempting to pass in more than 1000 requests for the batch job, as this is the maximum number CRM allows within a single batch.
-            if (requestCollection.Count > 1000)
-                throw new ArgumentOutOfRangeException(nameof(requestCollection), "The Entity Collection cannot contain more than 1000 items, as that is the maximum number of messages that can be processed by the CRM web services in a single batch.");
-
-            try
-            {
-                // Instantiate a new ExecuteMultipleRequest.
-                var multipleRequest = new ExecuteMultipleRequest
-                {
-                    Settings = new ExecuteMultipleSettings { ContinueOnError = continueOnError, ReturnResponses = returnResponses },
-                    Requests = requestCollection
-                };
-
-                return service.Execute(multipleRequest) as ExecuteMultipleResponse;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("An error occurred while executing an ExecuteMultipleRequest. See inner exception for details.", ex);
-            }
-        }
-
-#region GetAllEntities
-
-        /// <summary>
-        /// Gets all entities using the Query Expression
-        /// </summary>
-        /// <typeparam name="T">Type of Entity List to return</typeparam>
-        /// <param name="service">The service.</param>
-        /// <param name="qe">Query Expression to Execute.</param>
-        /// <param name="maxCount">The maximum number of entities to retrieve.  Use null for default.</param>
-        /// <param name="pageSize">Number of records to return in each fetch.  Use null for default.</param>
-        /// <returns></returns>
-        public static IEnumerable<T> GetAllEntities<T>(this IOrganizationService service, QueryExpression qe, int? maxCount = null, int? pageSize = null)
-            where T : Entity
-        {
-            return RetrieveAllEntities<T>.GetAllEntities(service, qe, maxCount, pageSize);
-        }
-
-        /// <summary>
-        /// Gets all entities using the Query Expression
-        /// </summary>
-        /// <typeparam name="T">Type of Entity List to return</typeparam>
-        /// <param name="service">The service.</param>
-        /// <param name="qe">Query Expression to Execute.</param>
-        /// <param name="maxCount">The maximum number of entities to retrieve.  Use null for default.</param>
-        /// <param name="pageSize">Number of records to return in each fetch.  Use null for default.</param>
-        /// <returns></returns>
-        public static IEnumerable<T> GetAllEntities<T>(this IOrganizationService service, TypedQueryExpression<T> qe, int? maxCount = null, int? pageSize = null)
-            where T : Entity
-        {
-            return RetrieveAllEntities<T>.GetAllEntities(service, qe, maxCount, pageSize);
-        }
-
-#endregion GetAllEntities
-
-        /// <summary>
-        /// Returns the WhoAmIResponse to determine the current user's UserId, BusinessUnitId, and OrganizationId
-        /// </summary>
-        /// <param name="service"></param>
-        /// <returns></returns>
-        public static WhoAmIResponse GetCurrentlyExecutingUserInfo(this IOrganizationService service)
-        {
-            return (WhoAmIResponse)service.Execute(new WhoAmIRequest());
-        }
-
-#region GetEntity
-
-        /// <summary>
-        /// Retrieves the Entity of the given type with the given Id, with all columns
-        /// </summary>
-        /// <typeparam name="T">An early bound Entity Type</typeparam>
-        /// <param name="service">open IOrganizationService</param>
-        /// <param name="id">Primary Key of Entity</param>
-        /// <returns></returns>
-        public static T GetEntity<T>(this IOrganizationService service, Guid id)
-            where T : Entity
-        {
-            return service.GetEntity<T>(id, new ColumnSet(true));
-        }
-
-        /// <summary>
-        /// Retrieves the Entity of the given type with the given Id, with the given columns
-        /// </summary>
-        /// <typeparam name="T">An early bound Entity Type</typeparam>
-        /// <param name="service">open IOrganizationService</param>
-        /// <param name="id">Primary Key of Entity</param>
-        /// <param name="anonymousTypeInitializer">An Anonymous Type Initializer where the properties of the anonymous
-        /// type are the column names to add</param>
-        /// <returns></returns>
-        public static T GetEntity<T>(this IOrganizationService service, Guid id, Expression<Func<T, object>> anonymousTypeInitializer)
-            where T : Entity
-        {
-            return service.GetEntity<T>(id, AddColumns(new ColumnSet(), anonymousTypeInitializer));
-        }
-
-        /// <summary>
-        /// Retrieves the Entity of the given type with the given Id, with the given columns
-        /// </summary>
-        /// <typeparam name="T">An early bound Entity Type</typeparam>
-        /// <param name="service">open IOrganizationService</param>
-        /// <param name="id">Primary Key of Entity</param>
-        /// <param name="columnSet">Columns to retrieve</param>
-        /// <returns></returns>
-        public static T GetEntity<T>(this IOrganizationService service, Guid id, ColumnSet columnSet)
-            where T : Entity
-        {
-            return service.Retrieve(EntityHelper.GetEntityLogicalName<T>(), id, columnSet).AsEntity<T>();
-        }
-
-#endregion GetEntity
-
-#region GetEntityLogicalName
-
-        private static readonly ConcurrentDictionary<int, string> ObjectTypeToLogicalNameMapping = new ConcurrentDictionary<int, string>();
-        private static readonly object ObjectTypeToLogicalNameMappingLock = new object();
-        /// <summary>
-        /// Gets the Entity Logical Name for the given object Type Code
-        /// </summary>
-        /// <param name="service"></param>
-        /// <param name="objectTypeCode">The Object Type Code</param>
-        /// <param name="useCache">Allows for caching the calls in a thread safe manner</param>
-        /// <returns></returns>
-        public static string GetEntityLogicalName(this IOrganizationService service, int objectTypeCode, bool useCache=true)
-        {
-            return useCache 
-                ? ObjectTypeToLogicalNameMapping.GetOrAddSafe(ObjectTypeToLogicalNameMappingLock, objectTypeCode, c => GetEntityLogicalNameInternal(service, c)) 
-                : GetEntityLogicalNameInternal(service, objectTypeCode);
-        }
-
-        private static string GetEntityLogicalNameInternal(this IOrganizationService service, int objectTypeCode)
-        {
-            var entityFilter = new MetadataFilterExpression(LogicalOperator.And); 
-            entityFilter.Conditions.Add(new MetadataConditionExpression("ObjectTypeCode", MetadataConditionOperator.Equals, objectTypeCode)); 
-            var propertyExpression = new MetadataPropertiesExpression { AllProperties = false }; 
-            propertyExpression.PropertyNames.Add("LogicalName");
-
-            var response = (RetrieveMetadataChangesResponse)service.Execute(new RetrieveMetadataChangesRequest 
-            { 
-                Query = new EntityQueryExpression 
-                { 
-                    Criteria = entityFilter, 
-                    Properties = propertyExpression 
-                } 
-            }); 
- 
-            return response.EntityMetadata.Count >= 1 
-                ? response.EntityMetadata[0].LogicalName 
-                : null;
-        }
-
-#endregion GetEntityLogicalName
-
-#region GetEntities
-
-        /// <summary>
-        /// Returns first 5000 entities using the Query Expression
-        /// </summary>
-        /// <typeparam name="T">Type of Entity List to return</typeparam>
-        /// <param name="service">The service.</param>
-        /// <param name="qb">Query to Execute.</param>
-        /// <returns></returns>
-        public static List<T> GetEntities<T>(this IOrganizationService service, QueryBase qb) where T : Entity
-        {
-            return service.RetrieveMultiple(qb).ToEntityList<T>();
-        }
-
-        /// <summary>
-        /// Returns first 5000 entities using the Query Expression
-        /// </summary>
-        /// <typeparam name="T">Type of Entity List to return</typeparam>
-        /// <param name="service">The service.</param>
-        /// <param name="qe">Query Expression to Execute.</param>
-        /// <returns></returns>
-        public static List<T> GetEntities<T>(this IOrganizationService service, TypedQueryExpression<T> qe) where T : Entity
-        {
-            return service.RetrieveMultiple(qe).ToEntityList<T>();
-        }
-
-#endregion GetEntities
-
-#region GetFirst
-
-        /// <summary>
-        /// Gets the first entity that matches the query expression.  An exception is thrown if none are found.
-        /// </summary>
-        /// <typeparam name="T">The Entity Type.</typeparam>
-        /// <param name="service">The service.</param>
-        /// <param name="qe">The query expression.</param>
-        /// <returns></returns>
-        public static T GetFirst<T>(this IOrganizationService service, QueryExpression qe) where T : Entity
-        {
-            var entity = service.GetFirstOrDefault<T>(qe);
-            AssertExists(entity, qe);
-            return entity;
-        }
-
-        /// <summary>
-        /// Gets the first entity that matches the query expression.  An exception is thrown if none are found.
-        /// </summary>
-        /// <typeparam name="T">The Entity Type.</typeparam>
-        /// <param name="service">The service.</param>
-        /// <param name="qe">The query expression.</param>
-        /// <returns></returns>
-        public static T GetFirst<T>(this IOrganizationService service, TypedQueryExpression<T> qe) where T : Entity
-        {
-            var entity = service.GetFirstOrDefault(qe);
-            AssertExists(entity, qe);
-            return entity;
-        }
-
-        // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
-        private static void AssertExists<T>(T entity, QueryExpression qe) where T : Entity
-        {
-            if (entity == null)
-            {
-                throw new InvalidOperationException("No " + EntityHelper.GetEntityLogicalName<T>() + " found for query " +
-                                                    qe.GetSqlStatement());
-            }
-        }
-
-#endregion GetFirst
-
-#region GetFirstOrDefault
-
-        /// <summary>
-        /// Gets the first entity that matches the query expression.  Null is returned if none are found.
-        /// </summary>
-        /// <param name="service">The service.</param>
-        /// <param name="query">The query.</param>
-        /// <returns></returns>
-        public static Entity GetFirstOrDefault(this IOrganizationService service, QueryBase query)
-        {
-            query.First();
-            return service.RetrieveMultiple(query).Entities.FirstOrDefault();
-        }
-
-        /// <summary>
-        /// Gets the first entity that is returned by the fetch expression.  Null is returned if none are found.
-        /// </summary>
-        /// <typeparam name="T">The Entity Type.</typeparam>
-        /// <param name="service">The service.</param>
-        /// <param name="fe">The fetch expression.</param>
-        /// <returns></returns>
-        public static T GetFirstOrDefault<T>(this IOrganizationService service, FetchExpression fe) where T : Entity
-        {
-            var entity = service.RetrieveMultiple(fe).Entities.FirstOrDefault();
-            return entity?.AsEntity<T>();
-        }
-
-        /// <summary>
-        /// Gets the first entity that matches the query.  Null is returned if none are found.
-        /// </summary>
-        /// <typeparam name="T">The Entity Type.</typeparam>
-        /// <param name="service">The service.</param>
-        /// <param name="qb">The query.</param>
-        /// <returns></returns>
-        public static T GetFirstOrDefault<T>(this IOrganizationService service, QueryBase qb) where T : Entity
-        {
-            qb.First();
-            return service.GetEntities<T>(qb).FirstOrDefault();
-        }
-
-        /// <summary>
-        /// Gets the first entity that matches the query expression.  Null is returned if none are found.
-        /// </summary>
-        /// <typeparam name="T">The Entity Type.</typeparam>
-        /// <param name="service">The service.</param>
-        /// <param name="qe">The query expression.</param>
-        /// <returns></returns>
-        public static T GetFirstOrDefault<T>(this IOrganizationService service, TypedQueryExpression<T> qe) where T : Entity
-        {
-            return service.GetFirstOrDefault<T>(qe.Query);
-        }
-
-#endregion GetFirstOrDefault
-
-        /// <summary>
-        /// Gets the local time from the UTC time.
-        /// </summary>
-        /// <param name="service"></param>
-        /// <param name="userId">The id of the user to lookup the timezone code user settings</param>
-        /// <param name="utcTime">The given UTC time to find the user's local time for.  Defaults to DateTime.UtcNow</param>
-        /// <param name="defaultTimeZoneCode">Default TimeZoneCode if the user has no TimeZoneCode defined.  Defaults to EDT.</param>
-        public static DateTime GetUserLocalTime(this IOrganizationService service, Guid userId, DateTime? utcTime, int defaultTimeZoneCode = 35)
-        {
-            var timeZoneCode = RetrieveUserSettingsTimeZoneCode(service, userId) ?? defaultTimeZoneCode;
-            var request = new LocalTimeFromUtcTimeRequest
-            {
-                TimeZoneCode = timeZoneCode,
-                UtcTime = utcTime ?? DateTime.UtcNow
-            };
-
-            var response = (LocalTimeFromUtcTimeResponse)service.Execute(request);
-
-            return response.LocalTime;
-        }
-
-        /// <summary>
-        /// Retrieves the current users TimeZoneCode
-        /// </summary>
-        private static int? RetrieveUserSettingsTimeZoneCode(IOrganizationService service, Guid userId)
-        {
-            // ReSharper disable StringLiteralTypo
-            var setting = service.GetFirstOrDefault("usersettings", new ColumnSet("timezonecode"), "systemuserid", userId);
-            return setting?.GetAttributeValue<int?>("timezonecode");
-            // ReSharper restore StringLiteralTypo
-        }
-
-#region InitializeFrom
-
-        /// <summary>
-        /// Utilizes the standard OOB Mappings from CRM to hydrate fields on child record from a parent.
-        /// </summary>
-        /// <param name="service">The service.</param>
-        /// <param name="parentEntity">The Parent Entity.</param>
-        /// <param name="childLogicalName">The logical name of the child</param>
-        /// <param name="targetFieldType">The Target Field Type</param>
-        /// <returns></returns>
-        public static Entity InitializeFrom(this IOrganizationService service, EntityReference parentEntity, string childLogicalName, TargetFieldType targetFieldType = TargetFieldType.All)
-        {
-            var initialize = new InitializeFromRequest
-            {
-                TargetEntityName = childLogicalName,
-                EntityMoniker = parentEntity,
-                TargetFieldType = targetFieldType
-            };
-            var initialized = (InitializeFromResponse)service.Execute(initialize);
-
-            return initialized.Entity;
-        }
-
-        /// <summary>
-        /// Utilizes the standard OOB Mappings from CRM to hydrate fields on child record from a parent.
-        /// </summary>
-        /// <typeparam name="T">The Entity Type to Return</typeparam>
-        /// <param name="service">The service.</param>
-        /// <param name="parentEntity">The Parent Entity.</param>
-        /// <param name="targetFieldType">The Target Field Type</param>
-        /// <returns></returns>
-        public static T InitializeFrom<T>(this IOrganizationService service, EntityReference parentEntity, TargetFieldType targetFieldType = TargetFieldType.All) where T: Entity
-        {
-            var initialize = new InitializeFromRequest
-            {
-                TargetEntityName = EntityHelper.GetEntityLogicalName<T>(),
-                EntityMoniker = parentEntity,
-                TargetFieldType = targetFieldType
-            };
-            var initialized = (InitializeFromResponse)service.Execute(initialize);
-
-            return initialized.Entity.AsEntity<T>();
-        }
-
-#endregion InitializeFrom
-
-        /// <summary>
-        /// Currently only tested against System Users.  Not sure if it will work with other entities
-        /// </summary>
-        /// <param name="service">The service.</param>
-        /// <param name="entity">The entity to set the state of.</param>
-        /// <param name="state">The state to change the entity to.</param>
-        /// <param name="status">The status to change the entity to.</param>
-        /// <returns></returns>
-        public static SetStateResponse SetState(this IOrganizationService service, Entity entity, int state, int? status)
-        {
-            var setStateReq = new SetStateRequest
-            {
-                EntityMoniker = entity.ToEntityReference(),
-                State = new OptionSetValue(state),
-                Status = new OptionSetValue(status ?? -1)
-            };
-
-            return (SetStateResponse)service.Execute(setStateReq);
-        }
-
-        /// <summary>
-        /// Currently only tested against System Users.  Not sure if it will work with other entities
-        /// May need to rename this to SetSystemUserState
-        /// </summary>
-        /// <param name="service">The service.</param>
-        /// <param name="logicalName">logical name of the entity.</param>
-        /// <param name="id">The id of the entity.</param>
-        /// <param name="active">if set to <c>true</c> [active].</param>
-        /// <returns></returns>
-        public static SetStateResponse SetState(this IOrganizationService service, string logicalName, Guid id, bool active)
-        {
-            var info = new LateBoundActivePropertyInfo(logicalName);
-            var state = active ?
-                    info.ActiveState ?? 0 :
-                    info.NotActiveState ?? (info.ActiveState == 1 ? 0 : 1);
-
-
-            var setStateReq = new SetStateRequest
-            {
-                EntityMoniker = new EntityReference(logicalName, id),
-                State = new OptionSetValue(state),
-                Status = new OptionSetValue(-1)
-            };
-
-            return (SetStateResponse)service.Execute(setStateReq);
-        }
-
-        /// <summary>
-        /// Attempts to delete the Entity, eating the error if it doesn't exist
-        /// </summary>
-        /// <param name="service">The service.</param>
-        /// <param name="logicalName">Logical name of the entity.</param>
-        /// <param name="id">The id.</param>
-        /// <returns></returns>
-        public static bool TryDelete(this IOrganizationService service, string logicalName, Guid id)
-        {
-            var exists = false;
-            try
-            {
-                service.Delete(logicalName, id);
-                exists = true;
-            }
-            catch (System.ServiceModel.FaultException<OrganizationServiceFault> ex)
-            {
-                if (!ex.Message.EndsWith(id + " Does Not Exist"))
-                {
-                    throw;
-                }
-            }
-
-            return exists;
-        }
-
-#region UpdateWithSupressDuplicateDetection
-
-        /// <summary>
-        /// Creates a record with SuppressDuplicateDetection Enabled to Ignore any potential Duplicates Created
-        /// </summary>
-        /// <param name="service"></param>
-        /// <param name="entity"></param>
-        /// <returns></returns>
-        public static void UpdateWithSuppressDuplicateDetection(this IOrganizationService service, Entity entity)
-        {
-            service.Execute(new UpdateRequest
-            {
-                Target = entity,
-                ["SuppressDuplicateDetection"] = true
-            });
-        }
-
-#endregion CreateWithSupressDuplicateDetection
-
-#endregion IOrganizationService
-
-#region IServiceProvider
+        #region IServiceProvider
 
         /// <summary>
         /// Gets the service.
@@ -1835,9 +983,9 @@ namespace Source.DLaB.Xrm
             return provider.GetService<IOrganizationServiceFactory>().CreateOrganizationService(userId);
         }
 
-#endregion IServiceProvider
+        #endregion IServiceProvider
 
-#region Label
+        #region Label
 
         /// <summary>
         /// Gets the local or default text.
@@ -1857,9 +1005,9 @@ namespace Source.DLaB.Xrm
             return local.Label ?? defaultIfNull;
         }
 
-#endregion Label
+        #endregion Label
 
-#region LinkEntity
+        #region LinkEntity
 
         /// <summary>
         /// Adds a Condition expression to the LinkCriteria of the LinkEntity to force the statecode to be a specific value.
@@ -1873,9 +1021,9 @@ namespace Source.DLaB.Xrm
             return link;
         }
 
-#endregion LinkEntity
+        #endregion LinkEntity
 
-#region Money
+        #region Money
 
         /// <summary>
         /// Returns the value of the Money, or 0 if it is null
@@ -1927,9 +1075,9 @@ namespace Source.DLaB.Xrm
             return money == value || money != null && money.Equals(value);
         }
 
-#endregion Money
+        #endregion Money
 
-#region OptionSetValue
+        #region OptionSetValue
 
         /// <summary>
         /// Returns the value of the OptionSetValue, or int.MinValue if it is null
@@ -1981,9 +1129,9 @@ namespace Source.DLaB.Xrm
             return osv == value || osv != null && osv.Equals(value);
         }
 
-#endregion OptionSetValue
+        #endregion OptionSetValue
 
-#region OrganizationRequestCollection
+        #region OrganizationRequestCollection
 
         /// <summary>
         /// Adds a CreateRequest to the OrganizationRequestCollection.
@@ -2025,7 +1173,7 @@ namespace Source.DLaB.Xrm
         /// <param name="id">The identifier.</param>
         public static void AddRetrieve<T>(this OrganizationRequestCollection requests, Guid id) where T : Entity
         {
-            requests.AddRetrieve<T>(id, new ColumnSet(true));
+            requests.AddRetrieve<T>(id, SolutionCheckerAvoider.CreateColumnSetWithAllColumns());
         }
 
         /// <summary>
@@ -2074,9 +1222,9 @@ namespace Source.DLaB.Xrm
             requests.Add(new UpdateRequest { Target = entity });
         }
 
-#endregion OrganizationRequestCollection
+        #endregion OrganizationRequestCollection
 
-#region ParameterCollection
+        #region ParameterCollection
 
         /// <summary>
         /// Checks to see if the ParameterCollection Contains the attribute names, and the value is not null
@@ -2118,9 +1266,9 @@ namespace Source.DLaB.Xrm
             return parameters.Contains(parameterName) ? parameters[parameterName] : null;
         }
 
-#endregion ParameterCollection
+        #endregion ParameterCollection
 
-#region PropertyInfo
+        #region PropertyInfo
 
         /// <summary>
         /// Gets the logical attribute name of the given property.  Assumes that the property contains an AttributeLogicalNameAttribute
@@ -2134,14 +1282,14 @@ namespace Source.DLaB.Xrm
             var attribute = property.GetCustomAttribute<AttributeLogicalNameAttribute>();
             if (attribute == null && throwIfNotFound)
             {
-                throw new Exception($"Property \"{property.Name}\" does not contain an AttributeLogicalNameAttribute.  Unable to determine the Attribute Logical Name.");    
+                throw new Exception($"Property \"{property.Name}\" does not contain an AttributeLogicalNameAttribute.  Unable to determine the Attribute Logical Name.");
             }
             return attribute?.LogicalName;
         }
 
-#endregion PropertyInfo
+        #endregion PropertyInfo
 
-#region QueryByAttribute
+        #region QueryByAttribute
 
         /// <summary>
         /// Sets the Count and Page number of the query to return just the first entity.
@@ -2153,7 +1301,7 @@ namespace Source.DLaB.Xrm
             var p = GetPageInfo(query);
             p.Count = 1;
             p.PageNumber = 1;
-            
+
             return query;
         }
 
@@ -2177,9 +1325,9 @@ namespace Source.DLaB.Xrm
             return query;
         }
 
-#endregion QueryByAttribute
+        #endregion QueryByAttribute
 
-#region QueryBase
+        #region QueryBase
 
         /// <summary>
         /// Sets the Count and Page number of the query to return just the first entity.
@@ -2191,14 +1339,14 @@ namespace Source.DLaB.Xrm
             var p = GetPageInfo(query);
             p.Count = 1;
             p.PageNumber = 1;
-            
+
             return query;
         }
 
         private static PagingInfo GetPageInfo<T>(T qb) where T : QueryBase
         {
             PagingInfo p;
-            switch ((QueryBase) qb)
+            switch ((QueryBase)qb)
             {
                 case QueryExpression qe:
                     p = qe.PageInfo;
@@ -2233,9 +1381,9 @@ namespace Source.DLaB.Xrm
             return qb;
         }
 
-#endregion QueryBase
+        #endregion QueryBase
 
-#region QueryExpression
+        #region QueryExpression
 
         /// <summary>
         /// Depending on the Type of T, adds the correct is active criteria Statement
@@ -2271,7 +1419,7 @@ namespace Source.DLaB.Xrm
             var p = GetPageInfo(query);
             p.Count = 1;
             p.PageNumber = 1;
-            
+
             return query;
         }
 
@@ -2345,8 +1493,8 @@ namespace Source.DLaB.Xrm
             var serializer = new NetDataContractSerializer();
             return (T)(serializer.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(xml))));
         }
-#endif
 
-#endregion String
+#endif
+        #endregion String
     }
 }

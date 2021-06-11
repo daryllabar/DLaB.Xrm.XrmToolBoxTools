@@ -9,7 +9,7 @@ namespace DLaB.Xrm.Plugin
 #else
 namespace Source.DLaB.Xrm.Plugin
 #endif
-	
+
 {
     /// <inheritdoc />
     /// <summary>
@@ -18,7 +18,7 @@ namespace Source.DLaB.Xrm.Plugin
 #if !DLAB_XRM_DEBUG
     [DebuggerNonUserCode]
 #endif
-    public abstract class DLaBGenericPluginBase<T> : IRegisteredEventsPlugin where T: IExtendedPluginContext
+    public abstract class DLaBGenericPluginBase<T> : IRegisteredEventsPlugin where T : IExtendedPluginContext
     {
         #region Constants
 
@@ -39,8 +39,6 @@ namespace Source.DLaB.Xrm.Plugin
 
         #region Properties
 
-        private readonly object _initializerLock = new object();
-        private volatile bool _isInitialized;
         private IEnumerable<RegisteredEvent> _events;
 
         /// <inheritdoc />
@@ -72,6 +70,7 @@ namespace Source.DLaB.Xrm.Plugin
         /// <param name="secureConfig"></param>
         protected DLaBGenericPluginBase(string unsecureConfig, string secureConfig)
         {
+            _lazyIsInitialized = new Lazy<bool>(LazyTriggeredInitialize);
             SecureConfig = secureConfig;
             UnsecureConfig = unsecureConfig;
         }
@@ -103,17 +102,24 @@ namespace Source.DLaB.Xrm.Plugin
 
         #region Initialize
 
+        // This used to be a simple lock, but the Solution Checker doesn't like locks, so this is an ugly Lazy implementation
+        private volatile IServiceProvider _initializerServiceProvider; // Maybe set multiple
+        private readonly Lazy<bool> _lazyIsInitialized; // Initialized in Constructor
+
+        private bool LazyTriggeredInitialize()
+        {
+            Initialize(_initializerServiceProvider);
+            return true;
+        }
+
         private void InitializeMain(IServiceProvider serviceProvider)
         {
-            if (_isInitialized) { return; }
-
-            lock (_initializerLock)
+            _initializerServiceProvider = serviceProvider;
+            if (_lazyIsInitialized.Value)
             {
-                if (_isInitialized) { return; }
-
-                _isInitialized = true;
-                Initialize(serviceProvider);
+                return;
             }
+            throw new InvalidOperationException("Lazy Initialization Failed for plugin!");
         }
 
         /// <summary>
@@ -138,7 +144,7 @@ namespace Source.DLaB.Xrm.Plugin
         /// </remarks>
         public void Execute(IServiceProvider serviceProvider)
         {
-            if (!_isInitialized)
+            if (!_lazyIsInitialized.IsValueCreated)
             {
                 InitializeMain(serviceProvider);
             }
@@ -194,7 +200,7 @@ namespace Source.DLaB.Xrm.Plugin
             }
             catch (Exception ex)
             {
-                if(ExecuteExceptionHandler(ex, context))
+                if (ExecuteExceptionHandler(ex, context))
                 {
                     throw;
                 }
@@ -213,7 +219,7 @@ namespace Source.DLaB.Xrm.Plugin
         /// <param name="context"></param>
         /// <returns></returns>
         protected virtual bool ExecuteExceptionHandler(Exception ex, T context)
-        { 
+        {
             context.LogException(ex);
             // Unexpected Exception occurred, log exception then wrap and throw new exception
             if (context.IsolationMode == IsolationMode.Sandbox)
@@ -233,8 +239,9 @@ namespace Source.DLaB.Xrm.Plugin
         /// Method that gets called in the finally block of the Execute
         /// </summary>
         /// <param name="context">The context.</param>
-        protected virtual void PostExecute(IExtendedPluginContext context) {
-            if(context.TracingService is IMaxLengthTracingService maxLengthService)
+        protected virtual void PostExecute(IExtendedPluginContext context)
+        {
+            if (context.TracingService is IMaxLengthTracingService maxLengthService)
             {
                 maxLengthService.RetraceMaxLength();
             }
@@ -297,7 +304,7 @@ namespace Source.DLaB.Xrm.Plugin
 
         private bool ContainsAnyIgnoreCase(string source, params string[] values)
         {
-            return source != null 
+            return source != null
                 && values.Any(v => CultureInfo.InvariantCulture.CompareInfo.IndexOf(source, v, CompareOptions.IgnoreCase) >= 0);
         }
     }

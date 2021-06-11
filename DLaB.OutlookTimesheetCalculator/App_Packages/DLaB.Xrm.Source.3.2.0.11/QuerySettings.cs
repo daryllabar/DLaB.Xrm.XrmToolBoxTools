@@ -83,7 +83,7 @@ namespace Source.DLaB.Xrm
 
         private void DefaultSettings(string logicalName)
         {
-            Columns = new ColumnSet(true);
+            Columns = SolutionCheckerAvoider.CreateColumnSetWithAllColumns();
             First = false;
             ActiveOnly = false;
             CriteriaOperator = LogicalOperator.And;

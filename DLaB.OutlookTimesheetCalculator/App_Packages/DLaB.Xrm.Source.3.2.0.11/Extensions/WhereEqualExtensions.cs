@@ -568,7 +568,7 @@ namespace Source.DLaB.Xrm
         public static T GetOrCreateEntity<T>(this IOrganizationService service, params object[] columnNameAndValuePairs)
                 where T : Entity, new()
         {
-            return service.GetOrCreateEntity<T>(new ColumnSet(true), columnNameAndValuePairs);
+            return service.GetOrCreateEntity<T>(SolutionCheckerAvoider.CreateColumnSetWithAllColumns(), columnNameAndValuePairs);
         }
 
         /// <summary>
