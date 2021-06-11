@@ -711,7 +711,7 @@ namespace DLaB.CrmSvcUtilExtensions
                     {
                         ProjectFileIndexStart = Lines.FindIndex(l => l.Contains("<Compile Include="));
                     }
-                    foreach (var line in Lines.Skip(ProjectFileIndexStart).TakeWhile(l => l.Contains("<Compile Include=")))
+                    foreach (var line in Lines.Skip(ProjectFileIndexStart).TakeWhile(l => l.Contains("<Compile Include=") && !ProjectFiles.ContainsKey(l)))
                     {
                         ProjectFiles.Add(line, line);
                     }
