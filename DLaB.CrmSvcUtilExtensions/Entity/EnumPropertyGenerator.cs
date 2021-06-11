@@ -430,12 +430,15 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             valuesType.TypeArguments.Add(new CodeTypeReference("T"));
             get.Parameters.Add(new CodeParameterDeclarationExpression(valuesType, "values"));
 
+            // if(values == null){ return null; }
+            get.Statements.Add(new CodeConditionStatement(new CodeSnippetExpression("values == null"), new CodeMethodReturnStatement(new CodePrimitiveExpression(null))));
+
             //Microsoft.Xrm.Sdk.OptionSetValueCollection collection = new Microsoft.Xrm.Sdk.OptionSetValueCollection();
             get.Statements.Add(new CodeVariableDeclarationStatement(
                 optionSetValueCollection,
                 "collection",
                 new CodeObjectCreateExpression(optionSetValueCollection)
-            ));
+            ));            
 
             //collection.AddRange(System.Enumerable.Linq.Select(values, v => new Microsoft.Xrm.Sdk.OptionSetValue((int)(object)v));
             get.Statements.Add(new CodeMethodInvokeExpression(
