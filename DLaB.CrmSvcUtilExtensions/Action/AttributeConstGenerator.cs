@@ -15,10 +15,10 @@ namespace DLaB.CrmSvcUtilExtensions.Action
         protected override void AddNonPropertyValues(CodeTypeDeclaration constantsClass, CodeTypeDeclaration type, HashSet<string> attributes)
         {
             var req = type.GetRequestProxyAttribute() ?? type.GetResponseProxyAttribute();
-            AddAttibuteConstToAction(type, new HashSet<string>(), req);
+            AddAttributeConstToAction(type, new HashSet<string>(), req);
         }
 
-        private void AddAttibuteConstToAction(CodeTypeDeclaration type, HashSet<string> attributes, string req)
+        private void AddAttributeConstToAction(CodeTypeDeclaration type, HashSet<string> attributes, string req)
         {
             var index = AddAttributeConstIfNotExists(type, ActionLogicalFieldName, req, attributes);
             if (index >= 0)

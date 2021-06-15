@@ -42,6 +42,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             }
             if (GenerateAttributeNameConsts)
             {
+                new RelationshipConstGenerator().CustomizeCodeDom(codeUnit, services);
                 new AttributeConstGenerator().CustomizeCodeDom(codeUnit, services);
             }
             if (GenerateAnonymousTypeConstructor)

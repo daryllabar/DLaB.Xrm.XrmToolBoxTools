@@ -170,6 +170,7 @@
     <Compile Include="AttributeConstGeneratorBase.cs" />
     <Compile Include="BaseCustomCodeGenerationService.cs" />
     <Compile Include="CamelCaser.cs" />
+    <Compile Include="Entity\RelationshipConstGenerator.cs" />
     <Compile Include="Entity\EntityConstructorsGenerator.cs" />
     <Compile Include="Entity\EnumerableEntityPropertyUpdater.cs" />
     <Compile Include="Entity\MultiOptionSetAttributeUpdater.cs" />

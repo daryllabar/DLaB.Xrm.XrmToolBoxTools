@@ -11,6 +11,8 @@ namespace DLaB.CrmSvcUtilExtensions
 {
     public abstract class AttributeConstGeneratorBase : ICustomizeCodeDomService
     {
+        protected const string RemovalString = "9C8F3879-309D-4DB2-B138-3F2E3A462A1C";
+
         public static string AttributeConstsClassName => ConfigHelper.GetAppSettingOrDefault("AttributeConstsClassName", "Fields");
 
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)   
@@ -22,7 +24,7 @@ namespace DLaB.CrmSvcUtilExtensions
             {
                 attributes.Clear();
                 var @class = new CodeTypeDeclaration {
-                    Name = AttributeConstsClassName, 
+                    Name = GetCodeTypeName(), 
                     IsClass = true,
                     TypeAttributes = TypeAttributes.Public
                 };
@@ -43,6 +45,11 @@ namespace DLaB.CrmSvcUtilExtensions
             }
         }
 
+        protected virtual string GetCodeTypeName()
+        {
+            return AttributeConstsClassName;
+        }
+
         /// <summary>
         /// Gets the name of the attribute logical.
         /// </summary>
@@ -57,7 +64,20 @@ namespace DLaB.CrmSvcUtilExtensions
 
         protected int AddAttributeConstIfNotExists(CodeTypeDeclaration type, string name, string attributeLogicalName, HashSet<string> attributes)
         {
-            if (attributes.Contains(name) || attributeLogicalName == null)
+            if (attributeLogicalName == null)
+            {
+                return -1;
+            }
+
+            // Handle Removal of characters as specified by the attribute logical name (used for N:N relationships
+            if (attributeLogicalName.Contains(RemovalString))
+            {
+                var parts = attributeLogicalName.Split(new [] { RemovalString }, StringSplitOptions.None);
+                attributeLogicalName = parts[1];
+                name = name.Substring(parts[0].Length);
+            }
+
+            if (attributes.Contains(name))
                 return -1;
 
             attributes.Add(name);
