@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator.Api</id>
-    <version>1.2021.6.14</version>
+    <version>1.2021.10.6</version>
     <title>Early Bound Generator Api</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,11 @@
     <icon>images\DLaB_Dynamics_Logo_Square_32x32.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses CrmSvcUtil from the SDK.</description>
-    <releaseNotes>V1.2021.6.14
+    <releaseNotes>V1.2021.10.6
+Add N:N Relationships to Fields Constants #258
+Fix for Global Option Sets with the same name as the entity causes conflicts #300
+
+V1.2021.6.14
 Add N:N Relationships to Fields Constants #258
 
 V1.2021.6.10
@@ -46,13 +50,6 @@ Added support AppId/ClientSecret #268
 
 V1.2021.1.9
 Added Config for SuppressGeneratedCodeAttribute
-
-V1.2020.6.22
-Fix for OptionSetMetadataAttribute comment extra closing tag #248
-Fix issue where accessing OptionSet MetaData returns an error #247
-
-V1.2020.5.5
-Changes for Spkl integration.
     </releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>CrmSvcUtil Xrm EarlyBound Generator</tags>

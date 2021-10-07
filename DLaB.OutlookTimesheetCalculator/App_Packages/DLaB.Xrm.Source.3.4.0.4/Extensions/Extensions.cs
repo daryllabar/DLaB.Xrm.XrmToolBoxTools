@@ -8,6 +8,7 @@ using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq.Expressions;
 using System.Xml;
 using Microsoft.Xrm.Sdk.Client;
@@ -181,7 +182,7 @@ namespace Source.DLaB.Xrm
         }
 
         /// <summary>
-        /// Adds the attributes from the given entity if they do not exist in the current
+        /// Adds the attributes formatted values, and key attributes from the given entity if they do not exist in the current
         /// </summary>
         /// <typeparam name="T">Entity Type</typeparam>
         /// <param name="baseEntity"></param>
@@ -208,6 +209,18 @@ namespace Source.DLaB.Xrm
             foreach (var attribute in entity.Attributes.Where(a => !baseEntity.Contains(a.Key)))
             {
                 baseEntity[attribute.Key] = attribute.Value;
+            }
+
+            foreach (var formattedAtt in entity.FormattedValues.Where(a =>
+                !baseEntity.FormattedValues.Contains(a.Key)
+                && baseEntity.GetAttributeValue<object>(a.Key)?.Equals(entity.GetAttributeValue<object>(a.Key)) == true))
+            {
+                baseEntity.FormattedValues[formattedAtt.Key] = formattedAtt.Value;
+            }
+
+            foreach (var keyAtt in entity.KeyAttributes.Where(k => !baseEntity.KeyAttributes.Contains(k.Key)))
+            {
+                baseEntity.KeyAttributes[keyAtt.Key] = keyAtt.Value;
             }
 
             return baseEntity;
@@ -483,6 +496,84 @@ namespace Source.DLaB.Xrm
         }
 
         /// <summary>
+        /// Calls the Entity.ToEntity() method generically based on the logical name.  Useful for determining if an early bound entity implements a given type.
+        /// </summary>
+        /// <typeparam name="TEntityContext">The Context to use to determine the entity type.</typeparam>
+        /// <param name="entity">The Entity</param>
+        /// <returns></returns>
+        public static Entity ToEarlyBoundEntity<TEntityContext>(this Entity entity) where TEntityContext : OrganizationServiceContext
+        {
+            return entity.ToEarlyBoundEntity(EntityHelper.GetType<TEntityContext>(entity.LogicalName));
+        }
+
+        /// <summary>
+        /// Calls the Entity.ToEntity() method generically based on the logical name.  Useful for determining if an early bound entity implements a given type.
+        /// </summary>
+        /// <param name="entity">The Entity</param>
+        /// <param name="earlyBoundAssembly">The assembly to search</param>
+        /// <param name="namespace">The namespace to search</param>
+        /// <returns></returns>
+        public static Entity ToEarlyBoundEntity(this Entity entity, Assembly earlyBoundAssembly, string @namespace)
+        {
+            return entity.ToEarlyBoundEntity(EntityHelper.GetType(earlyBoundAssembly, @namespace, entity.LogicalName));
+        }
+
+        /// <summary>
+        /// Calls the Entity.ToEntity() method generically based on the logical name.  Useful for determining if an early bound entity implements a given type.
+        /// </summary>
+        /// <param name="entity">The Entity</param>
+        /// <param name="earlyBoundType">The Type to call the ToEntity generic method with.</param>
+        /// <returns></returns>
+        public static Entity ToEarlyBoundEntity(this Entity entity, Type earlyBoundType)
+        {
+            if (entity.GetType() == earlyBoundType)
+            {
+                return entity;
+            }
+            var toEntity = typeof(Entity).GetMethod(nameof(Entity.ToEntity));
+            return (Entity) toEntity?.MakeGenericMethod(earlyBoundType).Invoke(entity, null);
+        }
+
+        /// <summary>
+        /// Attempts to cast the given entity to specified interface by first converting it to it's early bound entity type.
+        /// </summary>
+        /// <typeparam name="TInterface">The Interface to cast the early bound entity to</typeparam>
+        /// <typeparam name="TEntityContext">The EntityContext To Use to lookup the early bound type.</typeparam>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public static TInterface ToEntityInterface<TInterface, TEntityContext>(this Entity entity) where TEntityContext : OrganizationServiceContext
+        {
+            return ((object)entity) is TInterface type
+                ? type
+                : entity.ToEntityInterface<TInterface>(EntityHelper.GetType<TEntityContext>(entity.LogicalName));
+        }
+
+        /// <summary>
+        /// Attempts to cast the given entity to specified interface by first converting it to it's early bound entity type.
+        /// </summary>
+        /// <typeparam name="TInterface">The Interface to cast the early bound entity to</typeparam>
+        /// <param name="earlyBoundAssembly">The early bound assembly.</param>
+        /// <param name="namespace">The namespace.</param>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public static TInterface ToEntityInterface<TInterface>(this Entity entity, Assembly earlyBoundAssembly, string @namespace)
+        {
+            return ((object)entity) is TInterface type
+                ? type
+                : entity.ToEntityInterface<TInterface>(EntityHelper.GetType(earlyBoundAssembly, @namespace, entity.LogicalName));
+        }
+
+        private static TInterface ToEntityInterface<TInterface>(this Entity entity, Type earlyBoundType)
+        {
+            var typedEntity = ToEarlyBoundEntity(entity, earlyBoundType);
+            if (((object)typedEntity) is TInterface type) {
+                return type;
+            }
+            throw new InvalidCastException(string.Format(CultureInfo.InvariantCulture, "Cannot cast entity {0} to {1}!", earlyBoundType.FullName, typeof(TInterface).FullName));
+        }
+
+        /// <summary>
         /// Creates the EntityReference from Entity, settings it's name
         /// </summary>
         /// <param name="entity"></param>
@@ -576,8 +667,68 @@ namespace Source.DLaB.Xrm
                 att.Value.Entities.AddRange(sdkEntities);
             }
         }
-#if !NETCOREAPP
 
+#if NETCOREAPP
+        /// <summary>
+        /// Clone Entity (deep copy)
+        /// </summary>
+        /// <param name="source">source entity.</param>
+        /// <param name="cloneAttributes">Also clones Attributes so Option Sets and Entity References are cloned.</param>
+        /// <returns>new cloned entity</returns>
+        public static T Clone<T>(this T source, bool cloneAttributes = false) where T : Entity
+        {
+            if (source == null)
+            {
+                return null;
+            }
+            var entity = Activator.CreateInstance<T>();
+            entity.Id = source.Id;
+            entity.LogicalName = source.LogicalName;
+            entity.EntityState = source.EntityState;
+            entity.RowVersion = source.RowVersion;
+            foreach (var keyAtt in source.KeyAttributes)
+            {
+                entity[keyAtt.Key] = keyAtt;
+            }
+            foreach (var attribute in source.Attributes)
+            {
+                if (cloneAttributes)
+                {
+                    switch (attribute.Value)
+                    {
+                        case OptionSetValue osv:
+                            entity[attribute.Key] = new OptionSetValue(osv.Value);
+                            break;
+                        case EntityReference er:
+                            entity[attribute.Key] = er.Clone();
+                            break;
+                        case Money m:
+                            entity[attribute.Key] = new Money(m.Value);
+                            break;
+                        case OptionSetValueCollection osvc:
+                            entity[attribute.Key] = new OptionSetValueCollection(osvc.Select(o => new OptionSetValue(o.Value)).ToList());
+                            break;
+                        default:
+                            entity[attribute.Key] = attribute.Value;
+                            break;
+                    }
+                }
+                else
+                {
+                    entity[attribute.Key] = attribute.Value;
+                }
+            }
+            foreach (var formatted in source.FormattedValues)
+            {
+                entity.FormattedValues[formatted.Key] = formatted.Value;
+            }
+            foreach (var related in source.RelatedEntities)
+            {
+                entity.RelatedEntities[related.Key] = related.Value.Clone(cloneAttributes);
+            }
+            return entity;
+        }
+#else
         /// <summary>
         /// Clone Entity (deep copy)
         /// </summary>
@@ -588,17 +739,59 @@ namespace Source.DLaB.Xrm
             return source?.Serialize().DeserializeEntity<T>();
         }
 #endif
+
         #endregion Entity
 
         #region EntityCollection
 
+#if NETCOREAPP
         /// <summary>
-        /// Converts the entity collection into a list, casting each entity.
+        /// Clone EntityCollection (deep copy)
         /// </summary>
-        /// <typeparam name="T">The type of Entity</typeparam>
-        /// <param name="col">The collection to convert</param>
-        /// <returns></returns>
-        public static List<T> ToEntityList<T>(this EntityCollection col) where T : Entity
+        /// <param name="source">source EntityCollection.</param>
+        /// <param name="cloneAttributes">Also clones Attributes so Option Sets and Entity References are cloned.</param>
+        /// <returns>new cloned EntityCollection</returns>
+        public static EntityCollection Clone(this EntityCollection source, bool cloneAttributes = false)
+#else
+        /// <summary>
+        /// Clone EntityCollection (deep copy)
+        /// </summary>
+        /// <param name="source">source EntityCollection.</param>
+        /// <returns>new cloned EntityCollection</returns>
+        public static EntityCollection Clone(this EntityCollection source)
+#endif
+        {
+            if(source == null)
+            {
+                return null;
+            }
+
+            var clone = new EntityCollection
+            {
+                EntityName = source.EntityName,
+                MinActiveRowVersion = source.MinActiveRowVersion,
+                ExtensionData = source.ExtensionData,
+                MoreRecords = source.MoreRecords,
+                PagingCookie = source.PagingCookie,
+                TotalRecordCount = source.TotalRecordCount,
+                TotalRecordCountLimitExceeded = source.TotalRecordCountLimitExceeded
+            };
+
+#if NETCOREAPP
+            clone.Entities.AddRange(source.Entities.Select(e => e.Clone(cloneAttributes)));
+#else
+            clone.Entities.AddRange(source.Entities.Select(e => e.Clone()));
+#endif
+            return clone;
+        }
+
+        /// <summary>
+            /// Converts the entity collection into a list, casting each entity.
+            /// </summary>
+            /// <typeparam name="T">The type of Entity</typeparam>
+            /// <param name="col">The collection to convert</param>
+            /// <returns></returns>
+            public static List<T> ToEntityList<T>(this EntityCollection col) where T : Entity
         {
             if (typeof(T) == typeof(Entity))
             {
@@ -609,9 +802,9 @@ namespace Source.DLaB.Xrm
             return col.Entities.Select(e => e.AsEntity<T>()).ToList();
         }
 
-        #endregion EntityCollection
+#endregion EntityCollection
 
-        #region EntityMetadata
+#region EntityMetadata
 
         /// <summary>
         /// Gets the text value of the di.
@@ -623,16 +816,44 @@ namespace Source.DLaB.Xrm
             return entity.DisplayName.GetLocalOrDefaultText(entity.SchemaName) + " (" + entity.LogicalName + ")";
         }
 
-        #endregion EntityMetadata
+#endregion EntityMetadata
 
-        #region EntityReference
+#region EntityReference
 
         /// <summary>
-        /// Returns the Name and Id of an entity reference in this format "Name (id)"
+        /// Clone Entity (deep copy)
         /// </summary>
-        /// <param name="entity"></param>
-        /// <returns></returns>
-        public static string GetNameId(this EntityReference entity)
+        /// <param name="source">source entity.</param>
+        /// <returns>new cloned entity</returns>
+        public static EntityReference Clone(this EntityReference source)
+        {
+            if (source == null)
+            {
+                return null;
+            }
+            var clone = new EntityReference
+            {
+                RowVersion = source.RowVersion,
+                ExtensionData = source.ExtensionData,
+                Id = source.Id,
+                LogicalName = source.LogicalName,
+                Name = source.Name,
+            };
+
+            foreach(var kvp in source.KeyAttributes)
+            {
+                clone.KeyAttributes[kvp.Key] = kvp.Value;
+            }
+
+            return clone;
+        }
+
+        /// <summary>
+            /// Returns the Name and Id of an entity reference in this format "Name (id)"
+            /// </summary>
+            /// <param name="entity"></param>
+            /// <returns></returns>
+            public static string GetNameId(this EntityReference entity)
         {
             return $"{entity.Name} ({entity.Id})";
         }
@@ -671,15 +892,9 @@ namespace Source.DLaB.Xrm
             return entityReference == value || entityReference != null && entityReference.Equals(value);
         }
 
-        #endregion EntityReference
+#endregion EntityReference
 
-        #region EntityReferenceCollection
-
-
-
-        #endregion EntityReferenceCollection
-
-        #region FetchExpression
+#region FetchExpression
 
         /// <summary>
         /// Get's the logical name of the primary entity for the fetch expression.
@@ -693,9 +908,9 @@ namespace Source.DLaB.Xrm
             return xml.SelectSingleNode("/fetch/entity/@name")?.Value;
         }
 
-        #endregion FetchExpression
+#endregion FetchExpression
 
-        #region FilterExpression
+#region FilterExpression
 
         /// <summary>
         /// Depending on the Type of T, adds the correct is active criteria Statement
@@ -817,11 +1032,11 @@ namespace Source.DLaB.Xrm
             return fe;
         }
 
-        #endregion FilterExpression
+#endregion FilterExpression
 
-        #region IExecutionContext
+#region IExecutionContext
 
-        #region ContainsAllNonNull
+#region ContainsAllNonNull
 
         /// <summary>
         /// Checks to see if the PluginExecutionContext.InputParameters Contains the attribute names, and the value is not null
@@ -856,9 +1071,9 @@ namespace Source.DLaB.Xrm
             return context.SharedVariables.ContainsAllNonNull(parameterNames);
         }
 
-        #endregion ContainsAllNonNull
+#endregion ContainsAllNonNull
 
-        #region GetParameterValue
+#region GetParameterValue
 
         /// <summary>
         /// Gets the parameter value from the PluginExecutionContext.InputParameters collection, cast to type 'T', or default(T) if the collection doesn't contain a parameter with the given name.
@@ -955,11 +1170,11 @@ namespace Source.DLaB.Xrm
             return context.SharedVariables.GetParameterValue(variableName);
         }
 
-        #endregion GetParameterValue
+#endregion GetParameterValue
 
-        #endregion IExecutionContext
+#endregion IExecutionContext
 
-        #region IServiceProvider
+#region IServiceProvider
 
         /// <summary>
         /// Gets the service.
@@ -983,9 +1198,9 @@ namespace Source.DLaB.Xrm
             return provider.GetService<IOrganizationServiceFactory>().CreateOrganizationService(userId);
         }
 
-        #endregion IServiceProvider
+#endregion IServiceProvider
 
-        #region Label
+#region Label
 
         /// <summary>
         /// Gets the local or default text.
@@ -1005,9 +1220,9 @@ namespace Source.DLaB.Xrm
             return local.Label ?? defaultIfNull;
         }
 
-        #endregion Label
+#endregion Label
 
-        #region LinkEntity
+#region LinkEntity
 
         /// <summary>
         /// Adds a Condition expression to the LinkCriteria of the LinkEntity to force the statecode to be a specific value.
@@ -1021,9 +1236,9 @@ namespace Source.DLaB.Xrm
             return link;
         }
 
-        #endregion LinkEntity
+#endregion LinkEntity
 
-        #region Money
+#region Money
 
         /// <summary>
         /// Returns the value of the Money, or 0 if it is null
@@ -1075,9 +1290,9 @@ namespace Source.DLaB.Xrm
             return money == value || money != null && money.Equals(value);
         }
 
-        #endregion Money
+#endregion Money
 
-        #region OptionSetValue
+#region OptionSetValue
 
         /// <summary>
         /// Returns the value of the OptionSetValue, or int.MinValue if it is null
@@ -1129,9 +1344,9 @@ namespace Source.DLaB.Xrm
             return osv == value || osv != null && osv.Equals(value);
         }
 
-        #endregion OptionSetValue
+#endregion OptionSetValue
 
-        #region OrganizationRequestCollection
+#region OrganizationRequestCollection
 
         /// <summary>
         /// Adds a CreateRequest to the OrganizationRequestCollection.
@@ -1222,9 +1437,9 @@ namespace Source.DLaB.Xrm
             requests.Add(new UpdateRequest { Target = entity });
         }
 
-        #endregion OrganizationRequestCollection
+#endregion OrganizationRequestCollection
 
-        #region ParameterCollection
+#region ParameterCollection
 
         /// <summary>
         /// Checks to see if the ParameterCollection Contains the attribute names, and the value is not null
@@ -1266,9 +1481,9 @@ namespace Source.DLaB.Xrm
             return parameters.Contains(parameterName) ? parameters[parameterName] : null;
         }
 
-        #endregion ParameterCollection
+#endregion ParameterCollection
 
-        #region PropertyInfo
+#region PropertyInfo
 
         /// <summary>
         /// Gets the logical attribute name of the given property.  Assumes that the property contains an AttributeLogicalNameAttribute
@@ -1287,9 +1502,9 @@ namespace Source.DLaB.Xrm
             return attribute?.LogicalName;
         }
 
-        #endregion PropertyInfo
+#endregion PropertyInfo
 
-        #region QueryByAttribute
+#region QueryByAttribute
 
         /// <summary>
         /// Sets the Count and Page number of the query to return just the first entity.
@@ -1325,9 +1540,9 @@ namespace Source.DLaB.Xrm
             return query;
         }
 
-        #endregion QueryByAttribute
+#endregion QueryByAttribute
 
-        #region QueryBase
+#region QueryBase
 
         /// <summary>
         /// Sets the Count and Page number of the query to return just the first entity.
@@ -1381,9 +1596,9 @@ namespace Source.DLaB.Xrm
             return qb;
         }
 
-        #endregion QueryBase
+#endregion QueryBase
 
-        #region QueryExpression
+#region QueryExpression
 
         /// <summary>
         /// Depending on the Type of T, adds the correct is active criteria Statement
@@ -1455,7 +1670,7 @@ namespace Source.DLaB.Xrm
             return qe;
         }
 
-        #endregion QueryExpression
+#endregion QueryExpression
 
 #region String
 
@@ -1495,6 +1710,6 @@ namespace Source.DLaB.Xrm
         }
 
 #endif
-        #endregion String
+#endregion String
     }
 }

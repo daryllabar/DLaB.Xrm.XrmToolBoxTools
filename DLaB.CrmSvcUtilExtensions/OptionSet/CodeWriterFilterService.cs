@@ -113,7 +113,7 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
             // Remove Dups
             if (generate && optionSetMetadata is OptionSetMetadata metadataOptionSet)
             {
-                var namingService = new NamingService((INamingService)services.GetService(typeof(INamingService)));
+                var namingService = (INamingService)services.GetService(typeof(INamingService));
                 var names = new HashSet<string>();
                 foreach (var option in metadataOptionSet.Options.ToList())
                 {

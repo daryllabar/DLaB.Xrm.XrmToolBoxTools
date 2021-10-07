@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator</id>
-	  <version>1.2021.6.14</version>
+	  <version>1.2021.10.6</version>
 	  <title>Early Bound Generator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,11 @@
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V1.2021.6.14
+    <releaseNotes>V1.2021.10.6
+Add N:N Relationships to Fields Constants #258
+Fix for Global Option Sets with the same name as the entity causes conflicts #300
+
+V1.2021.6.14
 Add N:N Relationships to Fields Constants #258
 
 V1.2021.6.10
@@ -43,17 +47,6 @@ Added support AppId/ClientSecret #268
 
 V1.2021.1.9
 Added Config for SuppressGeneratedCodeAttribute
-
-V1.2020.10.2
-Fix for Output path with folders with "." are being treated as a file and error #214
-Fix for Code to mask password should not assume there is a password #251
-Fix for AppSettingDetailCollection data type which cannot be #254
-
-V1.2020.6.22
-Fix for OptionSetMetadataAttribute comment extra closing tag #248
-Fix for If output path contains a space, a new folder with %20 in lieu of the space is created #241
-Fix issue where accessing OptionSet MetaData returns an error #247
-Added button to save to new settings file #246
     </releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>

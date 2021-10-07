@@ -448,18 +448,8 @@ namespace Source.DLaB.Xrm.Plugin
         /// <returns></returns>
         private static T DereferenceTarget<T>(IPluginExecutionContext context) where T : Entity
         {
-            var entity = Activator.CreateInstance<T>();
             var target = context.GetTarget<T>();
-            if (target != null)
-            {
-                entity.Id = target.Id;
-                entity.LogicalName = target.LogicalName;
-                foreach (var attribute in target.Attributes)
-                {
-                    entity[attribute.Key] = attribute.Value;
-                }
-            }
-            return entity;
+            return target?.Clone() ?? Activator.CreateInstance<T>();
         }
 
         /// <summary>

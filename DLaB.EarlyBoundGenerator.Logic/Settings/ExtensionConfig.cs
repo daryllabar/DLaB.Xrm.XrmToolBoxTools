@@ -167,6 +167,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public string OptionSetsToSkip { get; set; }
         /// <summary>
+        /// If Option Sets have identical names to Entities, it will cause naming conflicts.  By default this is overcome by post-fixing "_Enum" to the Option Set name.  This setting allows a custom mapping for option set names to be specified.
+        /// </summary>
+        public string OptionSetNames { get; set; }
+        /// <summary>
         /// The name of the project to add newly created files to. If not value is provided, the first one found will be used.
         /// </summary>
         public string ProjectNameForEarlyBoundFiles { get; set; }
@@ -274,6 +278,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 MakeReadonlyFieldsEditable = false,
                 MakeResponseActionsEditable = false,
                 LocalOptionSetFormat = "{0}_{1}",
+                OptionSetNames = null,
                 OptionSetPrefixesToSkip = null,
                 OptionSetsToSkip = null,
                 OptionSetLanguageCodeOverride = null,
@@ -345,6 +350,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             MakeResponseActionsEditable = poco.MakeResponseActionsEditable ?? MakeResponseActionsEditable;
             LocalOptionSetFormat = poco.LocalOptionSetFormat ?? LocalOptionSetFormat;
             OptionSetLanguageCodeOverride = poco.OptionSetLanguageCodeOverride ?? OptionSetLanguageCodeOverride;
+            OptionSetNames = GetValueOrDefault(poco.OptionSetNames, OptionSetNames);
             OptionSetPrefixesToSkip = GetValueOrDefault(poco.OptionSetPrefixesToSkip, OptionSetPrefixesToSkip);
             OptionSetsToSkip = GetValueOrDefault(poco.OptionSetsToSkip, OptionSetsToSkip);
             ProjectNameForEarlyBoundFiles = poco.ProjectNameForEarlyBoundFiles ?? ProjectNameForEarlyBoundFiles;
@@ -415,6 +421,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public string FilePrefixText { get; set; }
         public bool? GenerateOptionSetMetadataAttribute { get; set; }
         public bool? GroupLocalOptionSetsByEntity { get; set; }
+        public string OptionSetNames { get; set; }
         public string ProjectNameForEarlyBoundFiles { get; set; }
         public bool? ReadSerializedMetadata { get; set; }
         public bool? RemoveRuntimeVersionComment { get; set; }

@@ -31,7 +31,7 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
 
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
-            NamingService = new NamingService((INamingService)services.GetService(typeof(INamingService)));
+            NamingService = (INamingService)services.GetService(typeof(INamingService));
             Services = services;
             InitializeMappings();
             var types = codeUnit.Namespaces[0].Types;
@@ -110,11 +110,11 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
 
         private void InitializeMappings()
         {
-            var specifedMappings = ConfigHelper.GetAppSettingOrDefault("PropertyEnumMappings", string.Empty).Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+            var specifiedMappings = ConfigHelper.GetAppSettingOrDefault("PropertyEnumMappings", string.Empty).Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
             UnmappedProperties = ConfigHelper.GetDictionaryHash("UnmappedProperties", true);
             SpecifiedMappings = new Dictionary<string, string>();
 
-            foreach (var specifiedMapping in specifedMappings)
+            foreach (var specifiedMapping in specifiedMappings)
             {
                 if (string.IsNullOrWhiteSpace(specifiedMapping))
                 {

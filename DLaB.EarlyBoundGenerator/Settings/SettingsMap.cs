@@ -546,6 +546,13 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         }
 
         [Category("Option Sets")]
+        [DisplayName("Option Set Names")]
+        [Description("If Option Sets have idential names to Entities, it will cause naming conflicts.  By default this is overcome by postfixing \"_Enum\" to the Option Set name.  This setting allows a custom mapping for option set names to be specified.")]
+        [Editor(typeof(DictionaryEditor), typeof(UITypeEditor))]
+        [TypeConverter(CollectionCountConverter.Name)]
+        public Dictionary<string, string> OptionSetNames { get; set; }
+
+        [Category("Option Sets")]
         [DisplayName("Use Deprecated Option Set Naming")]
         [Description("Creates Local OptionSets Using the Deprecated Naming Convention. prefix_oobentityname_prefix_attribute.")]
         public bool UseDeprecatedOptionSetNaming
@@ -601,6 +608,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
                 EntityPrefixesToSkip = RemoveWhiteSpace(nameof(EntityPrefixesToSkip), config.ExtensionConfig.EntityPrefixesToSkip).GetList<string>();
                 EntityPrefixesWhitelist = RemoveWhiteSpace(nameof(EntityPrefixesWhitelist), config.ExtensionConfig.EntityPrefixesWhitelist).GetList<string>();
                 PropertyEnumMappings = RemoveWhiteSpace(nameof(PropertyEnumMappings), config.ExtensionConfig.PropertyEnumMappings).GetList<string>();
+                OptionSetNames = RemoveWhiteSpace(nameof(OptionSetNames), Config.ExtensionConfig.OptionSetNames).GetDictionary<string,string>();
                 OptionSetPrefixesToSkip = RemoveWhiteSpace(nameof(OptionSetPrefixesToSkip), config.ExtensionConfig.OptionSetPrefixesToSkip).GetList<string>();
                 OptionSetsToSkip = RemoveWhiteSpace(nameof(OptionSetsToSkip), config.ExtensionConfig.OptionSetsToSkip).GetHashSet<string>();
                 TokenCapitalizationOverrides = RemoveWhiteSpace(nameof(TokenCapitalizationOverrides), config.ExtensionConfig.TokenCapitalizationOverrides).GetList<string>();
@@ -632,6 +640,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             Config.ExtensionConfig.EntityPrefixesToSkip = CommonConfig.ToStringSorted(EntityPrefixesToSkip);
             Config.ExtensionConfig.EntityPrefixesWhitelist = CommonConfig.ToStringSorted(EntityPrefixesWhitelist);
             Config.ExtensionConfig.PropertyEnumMappings = CommonConfig.ToStringSorted(PropertyEnumMappings);
+            Config.ExtensionConfig.OptionSetNames = CommonConfig.ToStringSorted(OptionSetNames);
             Config.ExtensionConfig.OptionSetPrefixesToSkip = CommonConfig.ToStringSorted(OptionSetPrefixesToSkip);
             Config.ExtensionConfig.OptionSetsToSkip = CommonConfig.ToStringSorted(OptionSetsToSkip);
             Config.ExtensionConfig.TokenCapitalizationOverrides = CommonConfig.ToStringSorted(TokenCapitalizationOverrides);

@@ -18,12 +18,19 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)DynamicTypeDescriptor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Editors\CollectionCountConvertor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Editors\DictionaryEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Editors\OptionSetsHashEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Editors\EntitiesHashEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Editors\IGetPlugin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Editors\PathEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Editors\SpecifyAttributesEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Forms\DictionaryDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Forms\DictionaryDialog.Designer.cs">
+      <DependentUpon>DictionaryDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Forms\Helper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Forms\SpecifyAttributesDialog.cs">
       <SubType>Form</SubType>
@@ -63,6 +70,9 @@
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)DialogBase.resx">
       <DependentUpon>DialogBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Forms\DictionaryDialog.resx">
+      <DependentUpon>DictionaryDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Forms\SpecifyAttributesDialog.resx">
       <DependentUpon>SpecifyAttributesDialog.cs</DependentUpon>

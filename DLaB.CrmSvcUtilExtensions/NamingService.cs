@@ -15,6 +15,7 @@ namespace DLaB.CrmSvcUtilExtensions
         public static bool CamelCaseClassNames => ConfigHelper.GetNonNullableAppSettingOrDefault("CamelCaseClassNames", false);
         public static bool CamelCaseMemberNames => ConfigHelper.GetNonNullableAppSettingOrDefault("CamelCaseMemberNames", false);
         public static int LanguageCodeOverride => ConfigHelper.GetNonNullableAppSettingOrDefault("OptionSetLanguageCodeOverride", -1);
+        public Dictionary<string, string> OptionSetNames { get; set; }
         private const int English = 1033;  
         private string ValidCSharpNameRegEx { get; set; }
         private INamingService DefaultService { get; set; }
@@ -34,6 +35,7 @@ namespace DLaB.CrmSvcUtilExtensions
         public NamingService(INamingService defaultService)
         {
             DefaultService = defaultService;
+            OptionSetNames = ConfigHelper.GetDictionary("OptionSetNames", false);
             EntityAttributeSpecifiedNames = ConfigHelper.GetDictionaryHash("EntityAttributeSpecifiedNames", false);
             OptionNameValueDuplicates = new Dictionary<OptionSetMetadataBase, Dictionary<string, bool>>();
             InvalidCSharpNamePrefix = ConfigHelper.GetAppSettingOrDefault("InvalidCSharpNamePrefix", "_");
@@ -59,26 +61,32 @@ namespace DLaB.CrmSvcUtilExtensions
         /// </summary>
         public string GetNameForOptionSet(EntityMetadata entityMetadata, OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
         {
-            var defaultName = DefaultService.GetNameForOptionSet(entityMetadata, optionSetMetadata, services);
-
-            if (EntityNames.Contains(defaultName))
+            var name = GetPossiblyConflictedNameForOptionSet(entityMetadata, optionSetMetadata, services);
+            while (EntityNames.Contains(name))
             {
-                throw new Exception($"{defaultName} already exists as an entity.  This will cause a naming collision.");
+                name += "_Enum";
             }
+            return OptionSetNames.TryGetValue(name.ToLower(), out var overriden) ? overriden : name;
+        }
+
+        private string GetPossiblyConflictedNameForOptionSet(EntityMetadata entityMetadata, OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
+        {
+            var defaultName = DefaultService.GetNameForOptionSet(entityMetadata, optionSetMetadata, services);
 
             if (UseDeprecatedOptionSetNaming)
             {
                 return defaultName;
             }
+
             // Ensure that the OptionSet is not global before using the custom implementation.
             if (optionSetMetadata.IsGlobal.HasValue && !optionSetMetadata.IsGlobal.Value)
             {
                 // Find the attribute which uses the specified OptionSet.
                 var attribute =
                     (from a in entityMetadata.Attributes
-                     where a.AttributeType == AttributeTypeCode.Picklist &&
-                        ((EnumAttributeMetadata)a).OptionSet.MetadataId == optionSetMetadata.MetadataId
-                     select a).FirstOrDefault();
+                        where a.AttributeType == AttributeTypeCode.Picklist &&
+                              ((EnumAttributeMetadata) a).OptionSet.MetadataId == optionSetMetadata.MetadataId
+                        select a).FirstOrDefault();
 
                 // Check for null, since statuscode attributes on custom entities are not global, 
                 // but their optionsets are not included in the attribute metadata of the entity, either.
@@ -94,87 +102,55 @@ namespace DLaB.CrmSvcUtilExtensions
                     // Concatenate the name of the entity and the name of the attribute
                     // together to form the OptionSet name.
                     return string.Format(LocalOptionSetFormat, GetNameForEntity(entityMetadata, services),
-                           GetNameForAttribute(entityMetadata, attribute, services, CamelCaseClassNames));
+                        GetNameForAttribute(entityMetadata, attribute, services, CamelCaseClassNames));
                 }
             }
+
             return UpdateCasingForGlobalOptionSets(defaultName, optionSetMetadata);
         }
 
+        private static Dictionary<string,string> CasingByGlobalOptionSet = new Dictionary<string, string>{
+            { "budgetstatus", "BudgetStatus" },
+            { "componentstate", "ComponentState" },
+            { "componenttype", "ComponentType" },
+            { "connectionrole_category", "ConnectionRole_Category" },
+            { "convertrule_channelactivity", "ConvertRule_ChannelActivity" },
+            { "dependencytype", "DependencyType" },
+            { "emailserverprofile_authenticationprotocol", "EmailServerProfile_AuthenticationProtocol" },
+            { "field_security_permission_type", "Field_Security_Permission_Type" },
+            { "goal_fiscalperiod", "Goal_FiscalPeriod" },
+            { "goal_fiscalyear", "Goal_FiscalYear" },
+            { "incident_caseorigincode", "Incident_CaseOriginCode" },
+            { "initialcommunication", "InitialCommunication" },
+            { "lead_salesstage", "Lead_SalesStage" },
+            { "metric_goaltype", "Metric_GoalType" },
+            { "need", "Need" },
+            { "opportunity_salesstage", "Opportunity_SalesStage" },
+            { "principalsyncattributemapping_syncdirection", "PrincipalSyncAttributeMapping_SyncDirection" },
+            { "processstage_category", "Processstage_Category" },
+            { "purchaseprocess", "PurchaseProcess" },
+            { "purchasetimeframe", "PurchaseTimeFrame" },
+            { "qooi_pricingerrorcode", "Qooi_PricingErrorCode" },
+            { "qooiproduct_producttype", "QooiProduct_ProductType" },
+            { "qooiproduct_propertiesconfigurationstatus", "QooiProduct_PropertiesConfigurationStatus" },
+            { "recurrencerule_monthofyear", "RecurrenceRule_MonthOfYear" },
+            { "servicestage", "ServiceStage" },
+            { "sharepoint_validationstatus", "SharePoint_ValidationStatus" },
+            { "sharepoint_validationstatusreason", "SharePoint_ValidationStatusReason" },
+            { "sharepointdocumentlocation_locationtype", "SharePointDocumentLocation_LocationType" },
+            { "socialactivity_postmessagetype", "SocialActivity_PostMessageType" },
+            { "socialprofile_community", "SocialProfile_Community" },
+            { "syncattributemapping_syncdirection", "SyncAttributeMapping_SyncDirection" },
+            { "workflow_runas", "Workflow_RunAs" },
+            { "workflow_stage", "Workflow_Stage" },
+            { "workflowlog_objecttypecode", "WorkflowLog_ObjectTypeCode" }
+        };
+
         private string UpdateCasingForGlobalOptionSets(string name, OptionSetMetadataBase optionSetMetadata)
         {
-            switch (name.ToLower())
-            {
-                case "budgetstatus":
-                    return "BudgetStatus";
-                case "componentstate":
-                    return "ComponentState";
-                case "componenttype":
-                    return "ComponentType";
-                case "connectionrole_category":
-                    return "ConnectionRole_Category";
-                case "convertrule_channelactivity":
-                    return "ConvertRule_ChannelActivity";
-                case "dependencytype":
-                    return "DependencyType";
-                case "emailserverprofile_authenticationprotocol":
-                    return "EmailServerProfile_AuthenticationProtocol";
-                case "field_security_permission_type":
-                    return "Field_Security_Permission_Type";
-                case "goal_fiscalperiod":
-                    return "Goal_FiscalPeriod";
-                case "goal_fiscalyear":
-                    return "Goal_FiscalYear";
-                case "incident_caseorigincode":
-                    return "Incident_CaseOriginCode";
-                case "initialcommunication":
-                    return "InitialCommunication";
-                case "lead_salesstage":
-                    return "Lead_SalesStage";
-                case "metric_goaltype":
-                    return "Metric_GoalType";
-                case "need":
-                    return "Need";
-                case "opportunity_salesstage":
-                    return "Opportunity_SalesStage";
-                case "principalsyncattributemapping_syncdirection":
-                    return "PrincipalSyncAttributeMapping_SyncDirection";
-                case "processstage_category":
-                    return "Processstage_Category";
-                case "purchaseprocess":
-                    return "PurchaseProcess";
-                case "purchasetimeframe":
-                    return "PurchaseTimeFrame";
-                case "qooi_pricingerrorcode":
-                    return "Qooi_PricingErrorCode";
-                case "qooiproduct_producttype":
-                    return "QooiProduct_ProductType";
-                case "qooiproduct_propertiesconfigurationstatus":
-                    return "QooiProduct_PropertiesConfigurationStatus";
-                case "recurrencerule_monthofyear":
-                    return "RecurrenceRule_MonthOfYear";
-                case "servicestage":
-                    return "ServiceStage";
-                case "sharepoint_validationstatus":
-                    return "SharePoint_ValidationStatus";
-                case "sharepoint_validationstatusreason":
-                    return "SharePoint_ValidationStatusReason";
-                case "sharepointdocumentlocation_locationtype":
-                    return "SharePointDocumentLocation_LocationType";
-                case "socialactivity_postmessagetype":
-                    return "SocialActivity_PostMessageType";
-                case "socialprofile_community":
-                    return "SocialProfile_Community";
-                case "syncattributemapping_syncdirection":
-                    return "SyncAttributeMapping_SyncDirection";
-                case "workflow_runas":
-                    return "Workflow_RunAs";
-                case "workflow_stage":
-                    return "Workflow_Stage";
-                case "workflowlog_objecttypecode":
-                    return "WorkflowLog_ObjectTypeCode";
-                default:
-                    return UpdateCasingForCustomGlobalOptionSets(name, optionSetMetadata);
-            }
+            return CasingByGlobalOptionSet.TryGetValue(name, out var casing)
+                ? casing
+                : UpdateCasingForCustomGlobalOptionSets(name, optionSetMetadata);
         }
 
         private static string UpdateCasingForCustomGlobalOptionSets(string name, OptionSetMetadataBase optionSetMetadata)
@@ -401,6 +377,7 @@ namespace DLaB.CrmSvcUtilExtensions
                 ? CamelCaser.Case(defaultName)
                 : defaultName;
         }
+
         public string GetNameForRequestField(SdkMessageRequest request, SdkMessageRequestField requestField, IServiceProvider services)
         {
             var defaultName = DefaultService.GetNameForRequestField(request, requestField, services);
@@ -408,6 +385,7 @@ namespace DLaB.CrmSvcUtilExtensions
                 ? CamelCaser.Case(defaultName)
                 : defaultName;
         }
+
         public string GetNameForResponseField(SdkMessageResponse response, SdkMessageResponseField responseField, IServiceProvider services)
         {
             var defaultName = DefaultService.GetNameForResponseField(response, responseField, services);
@@ -425,7 +403,6 @@ namespace DLaB.CrmSvcUtilExtensions
         }
 
         #region Default INamingService Calls
-
 
         public string GetNameForServiceContext(IServiceProvider services) { return DefaultService.GetNameForServiceContext(services); }
         public string GetNameForMessagePair(SdkMessagePair messagePair, IServiceProvider services) { return DefaultService.GetNameForMessagePair(messagePair, services); }

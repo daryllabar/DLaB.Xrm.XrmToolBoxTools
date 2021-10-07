@@ -12,6 +12,30 @@ namespace DLaB.CrmSvcUtilExtensions
         /// <param name="appSetting"></param>
         /// <param name="lowerCaseValues"></param>
         /// <returns></returns>
+        internal static Dictionary<string, string> GetDictionary(string appSetting, bool lowerCaseValues)
+        {
+            try
+            {
+                return Config.GetDictionary<string, string>(appSetting, string.Empty,
+                    new ConfigKeyValuesSplitInfo
+                    {
+                        ConvertValuesToLower = lowerCaseValues
+                    });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception attempting to GetDictionary for config key: " + appSetting);
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Looks up the appSetting, parses the value by "|", then by "," into a Dictionary of String.  The key will always be lowercased.
+        /// </summary>
+        /// <param name="appSetting"></param>
+        /// <param name="lowerCaseValues"></param>
+        /// <returns></returns>
         internal static Dictionary<string, HashSet<string>> GetDictionaryHash(string appSetting, bool lowerCaseValues)
         {
             try

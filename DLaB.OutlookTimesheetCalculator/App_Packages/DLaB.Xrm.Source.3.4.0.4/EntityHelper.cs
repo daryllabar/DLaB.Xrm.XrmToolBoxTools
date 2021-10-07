@@ -172,10 +172,11 @@ namespace Source.DLaB.Xrm
         /// Returns the attribute name of the id of the entity using late bound approach
         /// </summary>
         /// <param name="logicalName"></param>
+        /// <param name="config"></param>
         /// <returns></returns>
-        public static string GetIdAttributeName(string logicalName)
+        public static string GetIdAttributeName(string logicalName, IEntityHelperConfig config = null)
         {
-            return GetIrregularIdAttributeName(logicalName) ?? logicalName + "id";
+            return GetIrregularIdAttributeName(logicalName, config) ?? logicalName + "id";
         }
 
         /// <summary>
@@ -227,8 +228,9 @@ namespace Source.DLaB.Xrm
         /// Returns the attribute name of the id of the entity if it doesn't follow the standard (logicalName + id) rule, or null
         /// </summary>
         /// <param name="logicalName"></param>
+        /// <param name="config"></param>
         /// <returns></returns>
-        public static string GetIrregularIdAttributeName(string logicalName)
+        public static string GetIrregularIdAttributeName(string logicalName, IEntityHelperConfig config = null)
         {
             string name;
 
@@ -252,7 +254,7 @@ namespace Source.DLaB.Xrm
                     name = "activityid";
                     break;
                 default:
-                    name = DLaBEntityHelperConfig.Config.GetIrregularIdAttributeName(logicalName);
+                    name = (config ?? DLaBXrmConfig.EntityHelperConfig).GetIrregularIdAttributeName(logicalName);
                     break;
             }
 
@@ -263,10 +265,11 @@ namespace Source.DLaB.Xrm
         /// Returns the attribute name of the id of the entity if it doesn't follow the standard (logicalName + id) rule, or null
         /// </summary>
         /// <typeparam name="T">Entity Type to use Reflection to lookup the entity logical name for</typeparam>
+        /// <param name="config">Interface for handling irregular primary attribute names.</param>
         /// <returns></returns>
-        public static string GetIrregularIdAttributeName<T>() where T : Entity
+        public static string GetIrregularIdAttributeName<T>(IEntityHelperConfig config = null) where T : Entity
         {
-            return GetIrregularIdAttributeName(GetEntityLogicalName<T>());
+            return GetIrregularIdAttributeName(GetEntityLogicalName<T>(), config);
         }
 
         #endregion Determine Id Attribute Name
@@ -507,7 +510,7 @@ namespace Source.DLaB.Xrm
                             info.AttributeName = null;
                         }
 
-                        info = (config ?? DLaBEntityHelperConfig.Config).GetIrregularPrimaryFieldInfo(logicalName, info) ?? info;
+                        info = (config ?? DLaBXrmConfig.EntityHelperConfig).GetIrregularPrimaryFieldInfo(logicalName, info) ?? info;
                         break;
                 }
 

@@ -70,7 +70,9 @@ namespace DLaB.XrmToolBoxCommon.Forms
             {
                 var values = dialog.AttributeSchemaName.Split(new []{'.'}, StringSplitOptions.RemoveEmptyEntries);
                 if(values.Length == 2)
-                AddRow(values[0], values[1]);
+                {
+                    AddRow(values[0], values[1]);
+                }
             }
         }
 

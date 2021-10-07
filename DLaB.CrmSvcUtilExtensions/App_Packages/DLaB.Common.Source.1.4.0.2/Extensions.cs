@@ -31,13 +31,13 @@ namespace Source.DLaB.Common
     internal static class Extensions
 #endif
     {
-#region Byte[]
+        #region Byte[]
 
         /// <summary>
         /// Unzips the specified zipped bytes using an in-memory GZipStream.
         /// </summary>
         /// <param name="zippedBytes">The zipped bytes to unzip.</param>
-        /// <param name="encoding">The Encoding to use to parse the bytes.  Defaults to ASCII</param>
+        /// <param name="encoding">The Encoding to use to parse the bytes.  Defaults to UTF8.</param>
         /// <returns></returns>
         public static string Unzip(this byte[] zippedBytes, Encoding encoding = null)
         {
@@ -47,7 +47,7 @@ namespace Source.DLaB.Common
             {
                 unzipper.CopyTo(unzippedBytes);
 
-                encoding = encoding ?? Encoding.ASCII;
+                encoding = encoding ?? DLaBConfig.Config.GetEncoding(EncodingUses.Zip, zippedBytes);
                 return encoding.GetString(unzippedBytes.ToArray());
             }
         }
@@ -76,9 +76,9 @@ namespace Source.DLaB.Common
             return compressed;
         }
 
-#endregion Byte[]
+        #endregion Byte[]
 
-#region ConcurrentDictionary<,>
+        #region ConcurrentDictionary<,>
 
         /// <summary>
         /// Creates a concurrent dictionary from the source.
@@ -107,8 +107,8 @@ namespace Source.DLaB.Common
         public static ConcurrentDictionary<TKey, TElement> ToConcurrentDictionary<TSource, TKey, TElement>(
             this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector)
         {
-            ConcurrentDictionary<TKey, TElement> concurrentDictionary = new ConcurrentDictionary<TKey, TElement>();
-            foreach (TSource local in source)
+            var concurrentDictionary = new ConcurrentDictionary<TKey, TElement>();
+            foreach (var local in source)
             {
                 concurrentDictionary.TryAdd(keySelector(local), elementSelector(local));
             }
@@ -186,9 +186,9 @@ namespace Source.DLaB.Common
             return value;
         }
 
-#endregion ConcurrentDictionary<,>
+        #endregion ConcurrentDictionary<,>
 
-#region ConcurrentQueue<T>
+        #region ConcurrentQueue<T>
 
         /// <summary>
         /// Adds the range of items to the end of the queue.
@@ -204,9 +204,9 @@ namespace Source.DLaB.Common
             }
         }
 
-#endregion ConcurrentQueue
+        #endregion ConcurrentQueue
 
-#region DateTime
+        #region DateTime
 
         /// <summary>
         /// recreates a new instance of the given date time, specified to be UTC
@@ -234,9 +234,9 @@ namespace Source.DLaB.Common
             return start.GetValueOrDefault() <= date && date <= end.GetValueOrDefault();
         }
 
-#endregion Date Time
+        #endregion Date Time
 
-#region Dictionary<,>
+        #region Dictionary<,>
 
         /// <summary>
         /// Extension overload of Dictionary.Add to throw a more context specific exception message based on the key
@@ -299,7 +299,7 @@ namespace Source.DLaB.Common
             this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector)
         {
             var dictionary = new Dictionary<TKey, List<TElement>>();
-            foreach (TSource local in source)
+            foreach (var local in source)
             {
                 if (!dictionary.TryGetValue(keySelector(local), out var elements))
                 {
@@ -339,9 +339,9 @@ namespace Source.DLaB.Common
             return source.TryGetValue(key, out var value) ? value : defaultValue;
         }
 
-#endregion Dictionary<,>
+        #endregion Dictionary<,>
 
-#region Dictionary<, HastSet<>>
+        #region Dictionary<, HastSet<>>
         /// <summary>
         /// Looks up the list for the given key, adding the value if the list is found, or creating a new list and adding
         /// the value to that list if the list is not found.
@@ -389,9 +389,9 @@ namespace Source.DLaB.Common
                 dict.Add(key, values);
             }
         }
-#endregion
+        #endregion
 
-#region Dicitonary<,List<>>
+        #region Dicitonary<,List<>>
 
         /// <summary>
         /// Looks up the list for the given key, adding the value if the list is found, or creating a new list and adding
@@ -438,9 +438,9 @@ namespace Source.DLaB.Common
             }
         }
 
-#endregion Dicitonary<,List<>>
+        #endregion Dicitonary<,List<>>
 
-#region Exception
+        #region Exception
 
         /// <summary>
         /// Checks the ToString results of the Exception and adds the stack trace if it isn't there
@@ -470,9 +470,9 @@ namespace Source.DLaB.Common
             return s;
         }
 
-#endregion Exception
+        #endregion Exception
 
-#region Expression<Func<TEntity,TProperty>>
+        #region Expression<Func<TEntity,TProperty>>
 
         /// <summary>
         /// Gets the name of the lower case property.
@@ -486,12 +486,12 @@ namespace Source.DLaB.Common
             return ((MemberExpression)exp.Body).Member.Name.ToLower();
         }
 
-#endregion Expression<Func<T,TProperty>>
+        #endregion Expression<Func<T,TProperty>>
 
-#region ICollection
+        #region ICollection
 
         /// <summary>
-        /// Equivelent to !collection.Contains().  Purely for readability, especially if you have a negative collection ie. 
+        /// Equivalent to !collection.Contains().  Purely for readability, especially if you have a negative collection ie. 
         /// if(status != null &amp;&amp; !notToCalcStatuses.Contains(status)) vs if(status != null &amp;&amp; notToCalcStatuses.DoesNotContain(status))
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -503,9 +503,9 @@ namespace Source.DLaB.Common
             return !collection.Contains(value);
         }
 
-#endregion ICollection
+        #endregion ICollection
 
-#region IEnumerable<string>
+        #region IEnumerable<string>
 
         /// <summary>
         /// Joins the items in the list to create a csv using string.Join(", ", items)
@@ -517,9 +517,9 @@ namespace Source.DLaB.Common
             return string.Join(", ", items);
         }
 
-#endregion IEnumerable<string>
+        #endregion IEnumerable<string>
 
-#region IEnumerable<T>
+        #region IEnumerable<T>
 
         /// <summary>
         /// Converts an IEnumerable into Batches
@@ -530,18 +530,18 @@ namespace Source.DLaB.Common
         /// <returns></returns>
         public static IEnumerable<List<T>> Batch<T>(this IEnumerable<T> collection, int batchSize)
         {
-            var nextbatch = new List<T>(batchSize);
+            var nextBatch = new List<T>(batchSize);
             foreach (var item in collection)
             {
-                nextbatch.Add(item);
-                if (nextbatch.Count != batchSize) continue;
+                nextBatch.Add(item);
+                if (nextBatch.Count != batchSize) continue;
 
-                yield return nextbatch;
-                nextbatch = new List<T>(batchSize);
+                yield return nextBatch;
+                nextBatch = new List<T>(batchSize);
             }
 
-            if (nextbatch.Count > 0)
-                yield return nextbatch;
+            if (nextBatch.Count > 0)
+                yield return nextBatch;
         }
 
         /// <summary>
@@ -634,7 +634,7 @@ namespace Source.DLaB.Common
         /// <returns></returns>
         public static bool IterateAndDelegateExceptionHandling<T>(this IEnumerable<T> items, Action<T> action, Action<T, Exception> exceptionHandler)
         {
-            bool errored = false;
+            var errored = false;
             foreach (var item in items)
             {
                 try
@@ -665,9 +665,9 @@ namespace Source.DLaB.Common
             return objArray;
         }
 
-#endregion IEnumerable<T>
+        #endregion IEnumerable<T>
 
-#region IEnumerable<string>
+        #region IEnumerable<string>
 
         /// <summary>
         /// Batches the values into batches with the maximum length less than the max.  Useful when executing a command line that can only be a certain length, but there are a large number of arguments to potentially adds.
@@ -708,12 +708,12 @@ namespace Source.DLaB.Common
             return batches;
         }
 
-#endregion IEnumerable<string>
+        #endregion IEnumerable<string>
 
-#region IEquatable<T>
+        #region IEquatable<T>
 
         /// <summary>
-        /// Checks wether the current value is in the list of values.
+        /// Checks whether the current value is in the list of values.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="value">The value.</param>
@@ -725,7 +725,7 @@ namespace Source.DLaB.Common
         }
 
         /// <summary>
-        /// Checks wether the current value is in the list of values.
+        /// Checks whether the current value is in the list of values.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="value">The value.</param>
@@ -772,7 +772,7 @@ namespace Source.DLaB.Common
             }
         }
 #endif
-#endregion IExtensibleDataObject
+        #endregion IExtensibleDataObject
 
         #region MemberInfo
 
@@ -804,9 +804,9 @@ namespace Source.DLaB.Common
             return false;
         }
 
-#endregion MemberInfo
+        #endregion MemberInfo
 
-#region Object
+        #region Object
 
         /// <summary>
         /// Shortcut for throwing an ArgumentNullException
@@ -823,9 +823,9 @@ namespace Source.DLaB.Common
             }
         }
 
-#endregion Object
+        #endregion Object
 
-#region Queue<T>
+        #region Queue<T>
 
         /// <summary>
         /// Adds the range of items to the end of the queue.
@@ -841,9 +841,9 @@ namespace Source.DLaB.Common
             }
         }
 
-#endregion Queue
+        #endregion Queue
 
-#region String
+        #region String
 
         /// <summary>
         /// Determines whether current string contains the specified value.
@@ -874,15 +874,18 @@ namespace Source.DLaB.Common
         /// <typeparam name="T"></typeparam>
         /// <param name="text">The text.</param>
         /// <param name="settings">The settings.</param>
+        /// <param name="encoding">The encoding.  Defaults to Encoding.UTF8.</param>
         /// <returns></returns>
         /// <exception cref="System.ArgumentNullException">text</exception>
-        public static T DeserializeJson<T>(this string text, DataContractJsonSerializerSettings settings = null)
+        public static T DeserializeJson<T>(this string text, DataContractJsonSerializerSettings settings = null, Encoding encoding = null)
         {
             if(text == null){
                 throw new ArgumentNullException(nameof(text));
             }
 
-            using(var reader = new MemoryStream(Encoding.Default.GetBytes(text)))
+            encoding = encoding ?? DLaBConfig.Config.GetEncoding(EncodingUses.Json, text);
+            settings = settings ?? DLaBConfig.Config.GetJsonSerializerSettings(text, encoding);
+            using(var reader = new MemoryStream(encoding.GetBytes(text)))
             {
                 var serializer = new DataContractJsonSerializer(typeof(T), settings);
                 return (T)serializer.ReadObject(reader);
@@ -902,7 +905,7 @@ namespace Source.DLaB.Common
                 return null;
             }
 
-            encoding = encoding ?? Encoding.UTF8;
+            encoding = encoding ?? DLaBConfig.Config.GetEncoding(EncodingUses.Base64, text);
             text = encoding.GetString(Convert.FromBase64String(text));
             var preamble = encoding.GetString(encoding.GetPreamble());
             if (text.StartsWith(preamble))
@@ -938,7 +941,7 @@ namespace Source.DLaB.Common
             var type = typeof(T);
             if (type.IsEnum)
             {
-                // Handle Enums by parsing as ints, and then casting to the enum type
+                // Handle Enums by parsing as integers, and then casting to the enum type
                 return (T)(object)strValue.ParseOrConvertString<int>();
             }
 
@@ -977,17 +980,17 @@ namespace Source.DLaB.Common
         /// Returns true if no parameters in the params array are equal to the value.
         /// </summary>
         /// <param name="value">The value.</param>
-        /// <param name="values">Paramter values to search.</param>
+        /// <param name="values">Parameter values to search.</param>
         /// <returns></returns>
-        public static bool NotIn(this string value, params Object[] values) { return !value.In(values); }
+        public static bool NotIn(this string value, params object[] values) { return !value.In(values); }
 
         /// <summary>
         /// Returns true if a  parameter in the params array is equal to the value.
         /// </summary>
         /// <param name="value">The value.</param>
-        /// <param name="values">Paramter values to search.</param>
+        /// <param name="values">Parameter values to search.</param>
         /// <returns></returns>
-        public static bool In(this string value, params Object[] values)
+        public static bool In(this string value, params object[] values)
         {
             return values.Any(obj => obj.ToString() == value);
         }
@@ -996,16 +999,16 @@ namespace Source.DLaB.Common
         /// Returns true if no parameters in the params array are equal to the value.
         /// </summary>
         /// <param name="value">The value.</param>
-        /// <param name="values">Paramter values to search.</param>
+        /// <param name="values">Parameter values to search.</param>
         /// <returns></returns>
-        public static bool NotIn(this string value, params String[] values) { return !value.In(values); }
+        public static bool NotIn(this string value, params string[] values) { return !value.In(values); }
         /// <summary>
         /// Returns true if a parameter in the params array is equal to the value.
         /// </summary>
         /// <param name="value">The value.</param>
-        /// <param name="values">Paramter values to search.</param>
+        /// <param name="values">Parameter values to search.</param>
         /// <returns></returns>
-        public static bool In(this string value, params String[] values)
+        public static bool In(this string value, params string[] values)
         {
             return values.Any(str => str == value);
         }
@@ -1015,9 +1018,9 @@ namespace Source.DLaB.Common
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="comparison">The comparison.</param>
-        /// <param name="values">Paramter values to search.</param>
+        /// <param name="values">Parameter values to search.</param>
         /// <returns></returns>
-        public static bool NotIn(this string value, StringComparison comparison, params Object[] values)
+        public static bool NotIn(this string value, StringComparison comparison, params object[] values)
         {
             return !value.In(comparison, values);
         }
@@ -1027,9 +1030,9 @@ namespace Source.DLaB.Common
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="comparison">The comparison.</param>
-        /// <param name="values">Paramter values to search.</param>
+        /// <param name="values">Parameter values to search.</param>
         /// <returns></returns>
-        public static bool In(this string value, StringComparison comparison, params Object[] values)
+        public static bool In(this string value, StringComparison comparison, params object[] values)
         {
             return values.Select(obj => obj.ToString()).Any(str => value.Equals(str, comparison));
         }
@@ -1039,23 +1042,23 @@ namespace Source.DLaB.Common
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="comparison">The comparison.</param>
-        /// <param name="values">Paramter values to search.</param>
+        /// <param name="values">Parameter values to search.</param>
         /// <returns></returns>
-        public static bool NotIn(this string value, StringComparison comparison, params String[] values) { return !value.In(comparison, values); }
+        public static bool NotIn(this string value, StringComparison comparison, params string[] values) { return !value.In(comparison, values); }
 
         /// <summary>
         /// Returns true if a parameter in the params array is equal to the value.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="comparison">The comparison.</param>
-        /// <param name="values">Paramter values to search.</param>
+        /// <param name="values">Parameter values to search.</param>
         /// <returns></returns>
-        public static bool In(this string value, StringComparison comparison, params String[] values)
+        public static bool In(this string value, StringComparison comparison, params string[] values)
         {
             return values.Any(str => value.Equals(str, comparison));
         }
 
-#endregion String.In
+        #endregion String.In
 
         /// <summary>
         /// Nullable int parse
@@ -1065,7 +1068,7 @@ namespace Source.DLaB.Common
         public static int? ParseInt(this string stringInt)
         {
             int? value = null;
-            if (stringInt != null && int.TryParse(stringInt, out int i))
+            if (stringInt != null && int.TryParse(stringInt, out var i))
             {
                 value = i;
             }
@@ -1076,7 +1079,7 @@ namespace Source.DLaB.Common
         #region SubstringByString
 
         /// <summary>
-        /// Returns a the substring after the index of the first occurence of the startstring.
+        /// Returns a the substring after the index of the first occurence of the startString.
         /// Example: "012345678910".SubstringByString("2"); returns "345678910"
         /// </summary>
         /// <param name="value">The value.</param>
@@ -1090,7 +1093,7 @@ namespace Source.DLaB.Common
         }
 
         /// <summary>
-        /// Returns a the substring after the index of the first occurence of the startstring and ending before the first instance of the end string.
+        /// Returns a the substring after the index of the first occurence of the startString and ending before the first instance of the end string.
         /// Example: "012345678910".SubstringByString("2", "8"); returns "34567"
         /// </summary>
         /// <param name="value">The value.</param>
@@ -1100,7 +1103,7 @@ namespace Source.DLaB.Common
         /// <returns></returns>
         public static string SubstringByString(this string value, string startString, string endString, StringComparison comparison = StringComparison.Ordinal)
         {
-            return value.SubstringByString(startString, endString, out _);
+            return value.SubstringByString(startString, endString, out _, comparison);
         }
 
         /// <summary>
@@ -1176,7 +1179,7 @@ namespace Source.DLaB.Common
         #region SubstringAllByString
 
         /// <summary>
-        /// Loops through the string, retriving sub strings for the values.  i.e. "_1_2_".SubstringAllByString("_","_") would return a list containing two items, "1" and "2"
+        /// Loops through the string, retrieving sub strings for the values.  i.e. "_1_2_".SubstringAllByString("_","_") would return a list containing two items, "1" and "2"
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="startString">The start string.</param>
@@ -1238,7 +1241,7 @@ namespace Source.DLaB.Common
                 return null;
             }
 
-            encoding = encoding ?? Encoding.UTF8;
+            encoding = encoding ?? DLaBConfig.Config.GetEncoding(EncodingUses.Base64, text);
             if (includePreamble)
             {
                 text = encoding.GetString(encoding.GetPreamble()) + text;
@@ -1255,13 +1258,13 @@ namespace Source.DLaB.Common
         /// <returns></returns>
         public static byte[] Zip(this string text, Encoding encoding = null)
         {
-            encoding = encoding ?? Encoding.ASCII;
+            encoding = encoding ?? DLaBConfig.Config.GetEncoding(EncodingUses.Zip, text);
             return encoding.GetBytes(text).Zip();
         }
 
-#endregion String
+        #endregion String
 
-#region StringBuilder
+        #region StringBuilder
 
         /// <summary>
         /// Adds the current time "HH:MM:ss.fff - "  to the message, and appends a newline at the end
@@ -1282,15 +1285,15 @@ namespace Source.DLaB.Common
         /// <param name="args"></param>
         public static void AppendLogLine(this StringBuilder sb, string message, params object[] args)
         {
-            var newArgs = new Object[args.Length + 1];
+            var newArgs = new object[args.Length + 1];
             args.CopyTo(newArgs, 0);
             newArgs[args.Length] = Environment.NewLine;
-            sb.AppendLogLine(String.Format(message, newArgs));
+            sb.AppendLogLine(string.Format(message, newArgs));
         }
 
-    #endregion StringBuilder
+            #endregion StringBuilder
     
-#region Type
+        #region Type
 
         /// <summary>
         /// Gets the class level attribute based on type.
@@ -1305,9 +1308,23 @@ namespace Source.DLaB.Common
             return type.GetCustomAttributes(typeof(TAttribute), true).FirstOrDefault() as TAttribute;
         }
 
-#endregion Type
+        /// <summary>
+        /// Searches the current assembly for the first (defaults to public) class that implements the interface
+        /// </summary>
+        /// <param name="interfaceType">The Interface Type.</param>
+        /// <param name="assembly">The Assembly to search, defaults to the Assembly of the given type.</param>
+        /// <param name="forceIsPublic">If true only searches public Types.</param>
+        /// <returns></returns>
+        public static Type GetFirstImplementation(this Type interfaceType, Assembly assembly = null, bool forceIsPublic = true)
+        {
+            return (assembly ?? interfaceType.Assembly).ExportedTypes.FirstOrDefault(t => t.IsClass
+                                                                                          && (!forceIsPublic || t.IsPublic)
+                                                                                          && interfaceType.IsAssignableFrom(t));
+        }
 
-#region <T>
+        #endregion Type
+
+        #region <T>
 
         /// <summary>
         /// Serializes the value to a json string.
@@ -1315,24 +1332,28 @@ namespace Source.DLaB.Common
         /// <typeparam name="T"></typeparam>
         /// <param name="value">The Value to serialize to JSON</param>
         /// <param name="settings">The settings.</param>
+        /// <param name="encoding">The encoding.  Defaults to Encoding.UTF8</param>
         /// <returns></returns>
         /// <exception cref="System.ArgumentNullException">text</exception>
-        public static string SerializeToJson<T>(this T value, DataContractJsonSerializerSettings settings = null)
+        public static string SerializeToJson<T>(this T value, DataContractJsonSerializerSettings settings = null, Encoding encoding = null)
         {
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value));
             }
 
+            encoding = encoding ?? DLaBConfig.Config.GetEncoding(EncodingUses.Json, value);
+            settings = settings ?? DLaBConfig.Config.GetJsonSerializerSettings(value, encoding);
+
             using (var memoryStream = new MemoryStream())
             {
                 var serializer = new DataContractJsonSerializer(typeof(T), settings);
                 serializer.WriteObject(memoryStream, value);
-                return Encoding.Default.GetString(memoryStream.ToArray());
+                return encoding.GetString(memoryStream.ToArray());
             }
         }
 
-#endregion <T>
+        #endregion <T>
 
     }
 }
