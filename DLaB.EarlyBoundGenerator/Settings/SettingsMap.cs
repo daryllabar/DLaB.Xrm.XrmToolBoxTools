@@ -322,6 +322,15 @@ namespace DLaB.EarlyBoundGenerator.Settings
             set => Config.AudibleCompletionNotification = value;
         }
 
+        [Category("Entities")]
+        [DisplayName("Use Logical Names for Properties")]
+        [Description("Generate properties of entities with logical name instead of schema name. May result in breaking code if a field has the same logical name as the entity. Attribute namings can be overridden using \"Attribute Capitalization Override\" setting.")]
+        public bool UseLogicalNames
+        {
+            get => Config.ExtensionConfig.UseLogicalNames;
+            set => Config.ExtensionConfig.UseLogicalNames = value;
+        }
+
         [Category("Global")]
         [DisplayName("Camel Case Class Names")]
         [Description("Using a dictionary, attempts to correctly camelcase class/enum names.")]
