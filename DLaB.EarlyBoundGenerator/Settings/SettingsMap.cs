@@ -324,7 +324,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         [Category("Entities")]
         [DisplayName("Use Logical Names for Properties")]
-        [Description("Generate properties of each entity with logical name instead of schema name. May result in non working code if a field has the same logical name as the entity.")]
+        [Description("Generate properties of entities with logical name instead of schema name. May result in breaking code if a field has the same logical name as the entity. Attribute namings can be overridden using \"Attribute Capitalization Override\" setting.")]
         public bool UseLogicalNames
         {
             get => Config.ExtensionConfig.UseLogicalNames;

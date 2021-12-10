@@ -355,14 +355,15 @@ namespace DLaB.CrmSvcUtilExtensions
         private string GetNameForAttribute(EntityMetadata entityMetadata, AttributeMetadata attributeMetadata, IServiceProvider services, bool camelCase, bool useLogicalNames)
         {
             string attributeName;
-            if (useLogicalNames)
-            {
-                attributeName = attributeMetadata.LogicalName;
-            }
-            else if (EntityAttributeSpecifiedNames.TryGetValue(entityMetadata.LogicalName.ToLower(), out var specifiedNames) &&
+
+            if (EntityAttributeSpecifiedNames.TryGetValue(entityMetadata.LogicalName.ToLower(), out var specifiedNames) &&
                 specifiedNames.Any(s => string.Equals(s, attributeMetadata.LogicalName, StringComparison.OrdinalIgnoreCase)))
             {
                 attributeName = specifiedNames.First(s => string.Equals(s, attributeMetadata.LogicalName, StringComparison.OrdinalIgnoreCase));
+            }
+            else if (useLogicalNames)
+            {
+                attributeName = attributeMetadata.LogicalName;
             }
             else
             {
