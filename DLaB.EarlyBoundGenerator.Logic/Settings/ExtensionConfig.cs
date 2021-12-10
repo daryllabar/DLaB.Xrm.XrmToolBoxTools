@@ -215,6 +215,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </value>
         public bool UseDeprecatedOptionSetNaming { get; set; }
         /// <summary>
+        /// Generate entities and properties with logical name instead of schema name.
+        /// </summary>
+        public bool UseLogicalNames { get; set; }
+        /// <summary>
         /// Uses TFS to checkout files
         /// </summary>
         public bool UseTfsToCheckoutFiles { get; set; }
@@ -304,6 +308,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 SerializeMetadata = false,
                 TokenCapitalizationOverrides = "ActiveState|AccessTeam|BusinessAs|CardUci|DefaultOnCase|EmailAnd|FeatureSet|IsMsTeams|IsPaiEnabled|IsSopIntegration|MsDyUsd|O365Admin|OnHold|OwnerOnAssign|PauseStates|PartiesOnEmail|ParticipatesIn|SentOn|SlaKpi|SlaId|SyncOptIn|Timeout|UserPuid|VoiceMail|Weblink",
                 UseDeprecatedOptionSetNaming = false,
+                UseLogicalNames = false,
                 UseTfsToCheckoutFiles = false,
                 WaitForAttachedDebugger = false,
             };
@@ -362,6 +367,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
              TokenCapitalizationOverrides = GetValueOrDefault(poco.TokenCapitalizationOverrides, TokenCapitalizationOverrides);
             UnmappedProperties = GetValueOrDefault(poco.UnmappedProperties, UnmappedProperties);
             UseDeprecatedOptionSetNaming = poco.UseDeprecatedOptionSetNaming ?? UseDeprecatedOptionSetNaming;
+            UseLogicalNames = poco.UseLogicalNames ?? UseLogicalNames;
             UseTfsToCheckoutFiles = poco.UseTfsToCheckoutFiles ?? UseTfsToCheckoutFiles;
             WaitForAttachedDebugger = poco.WaitForAttachedDebugger ?? WaitForAttachedDebugger;
 
@@ -428,6 +434,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? SerializeMetadata { get; set; }
         public string TokenCapitalizationOverrides { get; set; }
         public bool? UseDeprecatedOptionSetNaming { get; set; }
+        public bool? UseLogicalNames { get; set; }
         public bool? UseTfsToCheckoutFiles { get; set; }
         public bool? WaitForAttachedDebugger { get; set; }
     }

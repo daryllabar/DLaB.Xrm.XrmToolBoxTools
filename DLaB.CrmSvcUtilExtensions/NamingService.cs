@@ -12,6 +12,7 @@ namespace DLaB.CrmSvcUtilExtensions
     
     public class NamingService : INamingService
     {
+        public static bool UseLogicalNames => ConfigHelper.GetNonNullableAppSettingOrDefault("UseLogicalNames", false);
         public static bool CamelCaseClassNames => ConfigHelper.GetNonNullableAppSettingOrDefault("CamelCaseClassNames", false);
         public static bool CamelCaseMemberNames => ConfigHelper.GetNonNullableAppSettingOrDefault("CamelCaseMemberNames", false);
         public static int LanguageCodeOverride => ConfigHelper.GetNonNullableAppSettingOrDefault("OptionSetLanguageCodeOverride", -1);
@@ -102,7 +103,7 @@ namespace DLaB.CrmSvcUtilExtensions
                     // Concatenate the name of the entity and the name of the attribute
                     // together to form the OptionSet name.
                     return string.Format(LocalOptionSetFormat, GetNameForEntity(entityMetadata, services),
-                        GetNameForAttribute(entityMetadata, attribute, services, CamelCaseClassNames));
+                        GetNameForAttribute(entityMetadata, attribute, services, CamelCaseClassNames, UseLogicalNames));
                 }
             }
 
@@ -348,13 +349,17 @@ namespace DLaB.CrmSvcUtilExtensions
         /// <returns></returns>
         public string GetNameForAttribute(EntityMetadata entityMetadata, AttributeMetadata attributeMetadata, IServiceProvider services)
         {
-            return GetNameForAttribute(entityMetadata, attributeMetadata, services, CamelCaseMemberNames);
+            return GetNameForAttribute(entityMetadata, attributeMetadata, services, CamelCaseMemberNames, UseLogicalNames);
         }
 
-        private string GetNameForAttribute(EntityMetadata entityMetadata, AttributeMetadata attributeMetadata, IServiceProvider services, bool camelCase)
+        private string GetNameForAttribute(EntityMetadata entityMetadata, AttributeMetadata attributeMetadata, IServiceProvider services, bool camelCase, bool useLogicalNames)
         {
             string attributeName;
-            if (EntityAttributeSpecifiedNames.TryGetValue(entityMetadata.LogicalName.ToLower(), out var specifiedNames) &&
+            if (useLogicalNames)
+            {
+                attributeName = attributeMetadata.LogicalName;
+            }
+            else if (EntityAttributeSpecifiedNames.TryGetValue(entityMetadata.LogicalName.ToLower(), out var specifiedNames) &&
                 specifiedNames.Any(s => string.Equals(s, attributeMetadata.LogicalName, StringComparison.OrdinalIgnoreCase)))
             {
                 attributeName = specifiedNames.First(s => string.Equals(s, attributeMetadata.LogicalName, StringComparison.OrdinalIgnoreCase));
