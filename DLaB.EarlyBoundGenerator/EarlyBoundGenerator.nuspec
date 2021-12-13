@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator</id>
-	  <version>1.2021.10.6</version>
+	  <version>1.2021.12.12</version>
 	  <title>Early Bound Generator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,10 @@
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V1.2021.10.6
+    <releaseNotes>V1.2021.12.12
+Added option to generate attributes using logical names #304
+      
+V1.2021.10.6
 Add N:N Relationships to Fields Constants #258
 Fix for Global Option Sets with the same name as the entity causes conflicts #300
 
