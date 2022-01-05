@@ -167,7 +167,8 @@ xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Clie
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Client.CodeGeneration.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Tooling.*.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
 xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Sdk.Deployment.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Sdk.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"</PostBuildEvent>
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Sdk.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)System.Text.Json.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"</PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.18.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.18.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
