@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator</id>
-	  <version>1.2021.12.12</version>
+	  <version>1.2022.2.4</version>
 	  <title>Early Bound Generator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,10 @@
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V1.2021.12.12
+    <releaseNotes>V1.2022.2.4
+Fix for Can't define an output directory for generated entities #308
+
+V1.2021.12.12
 Added option to generate attributes using logical names #304
       
 V1.2021.10.6
@@ -31,25 +34,6 @@ V1.2021.4.19
 Added ability to include File data type in the entity classes #279
 Workflowless Actions aren't being handled correctly #280  
 Allow Entity Specific Choices to be in a single file. #281
-
-V1.2021.1.23
-Add Keys to list of Constants for class #274
-
-V1.2021.1.22
-Improve Dictionary/TokenOverrides #273
-
-V1.2021.1.21
-Stop Asking for Password when not needed #272
-
-V1.2021.1.20
-Allow for File prefix text #269
-Added support Auto Capitalization of Entities and Attributes #271
-
-V1.2021.1.13
-Added support AppId/ClientSecret #268
-
-V1.2021.1.9
-Added Config for SuppressGeneratedCodeAttribute
     </releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>
