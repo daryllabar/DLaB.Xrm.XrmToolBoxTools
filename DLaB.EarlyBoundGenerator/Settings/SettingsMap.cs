@@ -25,7 +25,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [DisplayName("Action Relative Output Path")]
         [Description("This is realtive to the Path of the Settings File.  If \"Create One File Per Action\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
         [Editor(typeof(PathEditor), typeof(UITypeEditor))]
-        [DynamicRelativePathEditor(nameof(SettingsPath), "C# files|*.cs", "cs", false)]
+        [DynamicRelativePathEditor(nameof(SettingsPath), nameof(CreateOneFilePerAction), "C# files|*.cs", "cs", false)]
         public string ActionOutPath
         {
             get => Config.ActionOutPath;
@@ -144,7 +144,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [DisplayName("Entity Relative Output Path")]
         [Description("This is realtive to the Path of the Settings File.  If \"Create One File Per Entity\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
         [Editor(typeof(PathEditor), typeof(UITypeEditor))]
-        [DynamicRelativePathEditor(nameof(SettingsPath), "C# files|*.cs", "cs", false)]
+        [DynamicRelativePathEditor(nameof(SettingsPath), nameof(CreateOneFilePerEntity), "C# files|*.cs", "cs", false)]
         public string EntityOutPath
         {
             get => Config.EntityOutPath;
@@ -524,7 +524,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         [DisplayName("Option Set Output Relative Path")]
         [Description("This is realtive to the Path of the Settings File.  If \"Create One File Per Option Set\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
         [Editor(typeof(PathEditor), typeof(UITypeEditor))]
-        [DynamicRelativePathEditor(nameof(SettingsPath), "C# files|*.cs", "cs", false)]
+        [DynamicRelativePathEditor(nameof(SettingsPath), nameof(CreateOneFilePerOptionSet), "C# files|*.cs", "cs", false)]
         public string OptionSetOutPath
         {
             get => Config.OptionSetOutPath;

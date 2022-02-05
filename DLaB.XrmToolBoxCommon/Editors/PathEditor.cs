@@ -28,22 +28,43 @@ namespace DLaB.XrmToolBoxCommon.Editors
             var info = (PathEditorAttribute) context.PropertyDescriptor.Attributes.Cast<Attribute>().FirstOrDefault(a => a is PathEditorAttribute)
                        ?? new PathEditorAttribute();
 
-            var dlg = new OpenFileDialog
-            {
-                CheckFileExists = info.CheckFileExists,
-                CheckPathExists = info.CheckPathExists,
-                DefaultExt = info.DefaultExt,
-                Filter = info.Filter,
-                FileName = info.GetDefaultFileName(context, (string)value),
-                
-            };
+            var isDirectory = info.GetDirectoryFlag(context);
+            var fileName = info.GetDefaultFileName(context, (string)value);
 
-            using (dlg)
+            if (isDirectory)
             {
-                DialogResult res = dlg.ShowDialog();
-                if (res == DialogResult.OK)
+                var folderDialog = new FolderBrowserDialog
                 {
-                    return info.GetPath(dlg.FileName);
+                    SelectedPath = fileName == null ? null : Path.GetFullPath(fileName),
+                };
+
+                using (folderDialog)
+                {
+                    DialogResult res = folderDialog.ShowDialog();
+                    if (res == DialogResult.OK)
+                    {
+                        return info.GetPath(folderDialog.SelectedPath) + @"\";
+                    }
+                }
+            }
+            else
+            {
+                var fileDialog = new OpenFileDialog
+                {
+                    CheckFileExists = info.CheckFileExists,
+                    CheckPathExists = info.CheckPathExists,
+                    DefaultExt = info.DefaultExt,
+                    Filter = info.Filter,
+                    FileName = fileName,
+                };
+
+                using (fileDialog)
+                {
+                    DialogResult res = fileDialog.ShowDialog();
+                    if (res == DialogResult.OK)
+                    {
+                        return info.GetPath(fileDialog.FileName);
+                    }
                 }
             }
 
@@ -60,12 +81,15 @@ namespace DLaB.XrmToolBoxCommon.Editors
         public bool CheckPathExists { get; set; }
         public string DefaultExt { get; set; }
 
-        public PathEditorAttribute(string filter = "All Files (*.*)|*.*", string defaultExt = "", bool checkFileExists = true, bool checkPathExists = true)
+        public bool IsDirectory { get; set; }
+
+        public PathEditorAttribute(string filter = "All Files (*.*)|*.*", string defaultExt = "", bool checkFileExists = true, bool checkPathExists = true, bool isDirectory = false)
         {
             CheckFileExists = checkFileExists;
             CheckPathExists = checkPathExists;
             DefaultExt = defaultExt;
             Filter = filter;
+            IsDirectory = isDirectory;
         }
 
         public virtual string GetDefaultFileName(ITypeDescriptorContext context, string currentPath)
@@ -80,13 +104,18 @@ namespace DLaB.XrmToolBoxCommon.Editors
         {
             return absolutePath;
         }
+
+        public virtual bool GetDirectoryFlag(ITypeDescriptorContext context)
+        {
+            return IsDirectory;
+        }
     }
 
     public class RelativePathEditorAttribute : PathEditorAttribute
     {
         public string BasePath { get; set; }
 
-        public RelativePathEditorAttribute(string basePath, string filter = "All Files (*.*)|*.*", string defaultExt = "", bool checkFileExists = true, bool checkPathExists = true) : base(filter, defaultExt, checkFileExists, checkPathExists)
+        public RelativePathEditorAttribute(string basePath, string filter = "All Files (*.*)|*.*", string defaultExt = "", bool checkFileExists = true, bool checkPathExists = true, bool isDirectory = false) : base(filter, defaultExt, checkFileExists, checkPathExists, isDirectory)
         {
             BasePath = basePath;
         }
@@ -135,18 +164,21 @@ namespace DLaB.XrmToolBoxCommon.Editors
     public class DynamicRelativePathEditorAttribute : RelativePathEditorAttribute
     {
         public string RelativePathPropertyName { get; set; }
+        public string DirectoryFlagPropertyName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="relativePathPropertyName">Specifies the name of a property of the context that contains the relative path</param>
+        /// <param name="directoryFlagPropertyName">Specifies the name of a property of the context that determines if the relative path is a folder</param>
         /// <param name="filter"></param>
         /// <param name="defaultExt"></param>
         /// <param name="checkFileExists"></param>
         /// <param name="checkPathExists"></param>
-        public DynamicRelativePathEditorAttribute(string relativePathPropertyName, string filter = "All Files (*.*)|*.*", string defaultExt = "", bool checkFileExists = true, bool checkPathExists = true) : base(null, filter, defaultExt, checkFileExists, checkPathExists)
+        public DynamicRelativePathEditorAttribute(string relativePathPropertyName, string directoryFlagPropertyName, string filter = "All Files (*.*)|*.*", string defaultExt = "", bool checkFileExists = true, bool checkPathExists = true) : base(null, filter, defaultExt, checkFileExists, checkPathExists)
         {
             RelativePathPropertyName = relativePathPropertyName;
+            DirectoryFlagPropertyName = directoryFlagPropertyName;
         }
 
         public override string GetDefaultFileName(ITypeDescriptorContext context, string currentPath)
@@ -158,6 +190,16 @@ namespace DLaB.XrmToolBoxCommon.Editors
             }
             BasePath = (string)prop.GetValue(context.Instance);
             return base.GetDefaultFileName(context, currentPath);
+        }
+
+        public override bool GetDirectoryFlag(ITypeDescriptorContext context)
+        {
+            var prop = context.Instance.GetType().GetProperty(DirectoryFlagPropertyName, BindingFlags.Public | BindingFlags.Instance);
+            if (prop == null)
+            {
+                throw new NullReferenceException(DirectoryFlagPropertyName + " is not a property of " + context.Instance.GetType().FullName);
+            }
+            return IsDirectory = (bool)prop.GetValue(context.Instance);
         }
     }
 }
