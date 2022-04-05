@@ -25,7 +25,6 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
                 return;
             }
 
-            base.UpdateFilesToWrite(files);
             var metadata = ServiceProvider.GetMetadataForLocalEnumsByName();
             var groundFilesByEntity = new Dictionary<string, FileToWrite>();
             foreach (var file in files.ToArray())
@@ -51,6 +50,8 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
             }
 
             files.AddRange(groundFilesByEntity.Values);
+
+            base.UpdateFilesToWrite(files);
         }
     }
 }
