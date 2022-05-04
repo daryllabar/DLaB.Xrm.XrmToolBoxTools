@@ -324,7 +324,20 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "WaitForAttachedDebugger", extensions.WaitForAttachedDebugger.ToString())
                 )
                 {
-                    file.Save(ConfigurationSaveMode.Minimal);
+                    try
+                    {
+                        file.Save(ConfigurationSaveMode.Minimal);
+                    }
+                    catch (InvalidOperationException ex)
+                    {
+                        if (ex.Message == "Method failed with unexpected error code 87.")
+                        {
+                            var tempPath = filePath + ".temp";
+                            file.SaveAs(tempPath, ConfigurationSaveMode.Full);
+                            File.Delete(filePath);
+                            File.Move(tempPath, filePath);
+                        }
+                    }
                 }
                 _configUpdated = true;
             }

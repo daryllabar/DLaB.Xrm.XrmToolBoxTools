@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator</id>
-	  <version>1.2022.4.3</version>
+	  <version>1.2022.5.3</version>
 	  <title>Early Bound Generator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,11 @@
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V1.2022.4.3
+    <releaseNotes>V1.2022.5.3
+Fix for Unable to run from Google Drive #317
+Fix for Deleting files Deletes from Temporary Folder, not output folder #318
+
+V1.2022.4.3
 Fix Action.cs is added to the .csroject file, even if it was deleted by CustomCodeGenerationService.WriteInternal #313
 
 V1.2022.2.4
@@ -29,14 +33,6 @@ Add N:N Relationships to Fields Constants #258
 
 V1.2021.6.10
 Fix error when adding files to the .csproj #291
-
-V1.2021.5.2
-Fix Actions are not generated in an online environment #284
-
-V1.2021.4.19
-Added ability to include File data type in the entity classes #279
-Workflowless Actions aren't being handled correctly #280  
-Allow Entity Specific Choices to be in a single file. #281
     </releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>

@@ -155,7 +155,7 @@ namespace DLaB.CrmSvcUtilExtensions
 
             var fileContents = GetFileContents(tempFile);
 
-            DeleteExistingFiles(outputFile, tempFile);
+            DeleteExistingFiles(outputFile);
 
             // Check if the Header needs to be updated and or the file needs to be split
             if (!string.IsNullOrWhiteSpace(CommandLineText) || RemoveRuntimeVersionComment)
@@ -208,7 +208,7 @@ namespace DLaB.CrmSvcUtilExtensions
             return string.Format(FilePrefixText, Path.GetFileName(outputFile)) + Environment.NewLine;
         }
 
-        private void DeleteExistingFiles(string outputFile, string tempFile)
+        private void DeleteExistingFiles(string outputFile)
         {
             if (!DeleteFilesFromOutputFolders)
             {
@@ -216,7 +216,7 @@ namespace DLaB.CrmSvcUtilExtensions
             }
 
             DisplayMessage($"Deleting *.cs Files From {outputFile} By Code Unit");
-            var directory = Path.GetDirectoryName(tempFile) ?? string.Empty;
+            var directory = Path.GetDirectoryName(outputFile) ?? string.Empty;
             foreach (var file in Directory.EnumerateFiles(directory, "*.cs", SearchOption.TopDirectoryOnly))
             {
                 Log("Deleting file: " + file);
