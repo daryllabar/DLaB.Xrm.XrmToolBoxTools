@@ -1,11 +1,13 @@
 ﻿using System;
 using System.CodeDom;
+using System.Linq;
 using Microsoft.Crm.Services.Utility;
 
 namespace DLaB.CrmSvcUtilExtensions.Entity
 {
     public class CustomizeCodeDomService : ICustomizeCodeDomService
     {
+        public static bool UseInternalAsAccessModifier => ConfigHelper.GetAppSettingOrDefault("UseInternalAsAccessModifier", false);
         public static bool AddDebuggerNonUserCode => ConfigHelper.GetAppSettingOrDefault("AddDebuggerNonUserCode", true);
         public static bool AddPrimaryAttributeConsts => ConfigHelper.GetAppSettingOrDefault("AddPrimaryAttributeConsts", true);
         public static bool CreateBaseClasses => ConfigHelper.GetAppSettingOrDefault("CreateBaseClasses", false);
@@ -74,6 +76,16 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             if (AddDebuggerNonUserCode)
             {
                 new MemberAttributes().CustomizeCodeDom(codeUnit, services);
+            }
+
+            if (UseInternalAsAccessModifier)
+            {
+                var types = codeUnit.Namespaces[0].Types;
+                foreach (var type in types.Cast<CodeTypeDeclaration>())
+                {
+                    type.TypeAttributes &= ~System.Reflection.TypeAttributes.VisibilityMask; // Resetting the visibility of the class
+                    type.TypeAttributes |= System.Reflection.TypeAttributes.NestedAssembly; // Setting to internal
+                }
             }
         }
 

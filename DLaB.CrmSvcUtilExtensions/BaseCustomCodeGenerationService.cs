@@ -13,6 +13,11 @@ namespace DLaB.CrmSvcUtilExtensions
 {
     public abstract class BaseCustomCodeGenerationService : ICodeGenerationService
     {
+        private const string PublicPartialClassDeclaration = "public partial class";
+        private const string InternalPartialClassDeclaration = "internal partial class";
+        private const string PublicEnumDeclaration = "public enum";
+        private const string InternalEnumDeclaration = "internal enum";
+
         public static bool UseTfsToCheckoutFiles { get; } = ConfigHelper.GetAppSettingOrDefault("UseTfsToCheckoutFiles", false);
         public static bool AddNewFilesToProject => ConfigHelper.GetAppSettingOrDefault("AddNewFilesToProject", false);
         public static string FilePrefixText => ConfigHelper.GetAppSettingOrDefault("FilePrefixText", string.Empty);
@@ -336,7 +341,8 @@ namespace DLaB.CrmSvcUtilExtensions
             var generatedCodeAttributeLine = string.Empty;
             var skipNext = false;
             var commandLine = string.Empty;
-            var codeUnitStartsWith = codeUnit == CodeUnit.Class ? "public partial class" : "public enum";
+            var publicCodeUnitStartsWith = codeUnit == CodeUnit.Class ? PublicPartialClassDeclaration : PublicEnumDeclaration;
+            var internalCodeUnitStartsWith = codeUnit == CodeUnit.Class ? InternalPartialClassDeclaration : InternalEnumDeclaration;
             var files = new List<FileToWrite>(); // Delay this to the end to multi-thread the creation.  100's of small files takes a long time if checking with TFS sequentially
 
             foreach (var line in lines)
@@ -383,9 +389,12 @@ namespace DLaB.CrmSvcUtilExtensions
                         break;
 
                     case SplitStage.CodeUnitHeader:
-                        if (line.TrimStart().StartsWith(codeUnitStartsWith))
+                        bool startsWithPublicDeclaration = line.TrimStart().StartsWith(publicCodeUnitStartsWith);
+                        bool startsWithInternalDeclaration = line.TrimStart().StartsWith(internalCodeUnitStartsWith);
+
+                        if (startsWithPublicDeclaration || startsWithInternalDeclaration)
                         {
-                            name = GetName(codeUnit, line);
+                            name = GetName(codeUnit, startsWithPublicDeclaration, line);
                             if (line.Contains(": Microsoft.Xrm.Sdk.Client.OrganizationServiceContext") || // Standard
                                 line.Contains(": Microsoft.Xrm.Client.CrmOrganizationServiceContext")) // Xrm Client
                             {
@@ -612,18 +621,24 @@ namespace DLaB.CrmSvcUtilExtensions
             Log("Completed file: " + file);
         }
 
-        private string GetName(CodeUnit codeUnit, string line)
+        private string GetName(CodeUnit codeUnit, bool isPublicType, string line)
         {
+            const int PublicPartialClassLength = 22;   // "\tpublic partial class ".Length
+            const int InternalPartialClassLength = 24; // "\tinternal partial class ".Length
+            const int PublicEnumLength = 13;   // "\tpublic enum ".Length
+            const int InternalEnumLength = 15; // "\tinternal enum ".Length
+
             int start;
             int end;
+
             if (codeUnit == CodeUnit.Class)
             {
-                start = 22; // "\tpublic partial class ".Length
+                start = isPublicType ? PublicPartialClassLength : InternalPartialClassLength;
                 end = line.IndexOf(':', start)-1;
             }
             else // if (codeUnit == CodeUnit.Enum)
             {
-                start = 13; // "\tpublic enum ".Length
+                start = isPublicType ? PublicEnumLength : InternalEnumLength;
                 end = line.Length;
             }
 
