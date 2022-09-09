@@ -6,8 +6,8 @@ namespace DLaB.AttributeManager
     public class NewTypeAttributeCreationLogic
     {
         public static AttributeMetadata CreateText(int? maxLength = null, StringFormatName formatName = null, ImeMode? imeMode = ImeMode.Auto, string yomiOf = null, string formulaDefinition = null)
-        {
-            maxLength = formulaDefinition != null && maxLength == null ? 4000 : 100;
+        {            
+            maxLength = maxLength != null ? maxLength : (formulaDefinition != null ? 4000 : 100);
 
             return new StringAttributeMetadata
             {
