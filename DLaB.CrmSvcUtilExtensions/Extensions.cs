@@ -171,6 +171,11 @@ namespace DLaB.CrmSvcUtilExtensions
         /// <returns></returns>
         public static bool IsContextType(this CodeTypeDeclaration type)
         {
+            if (type.BaseTypes.Count == 0)
+            {
+                return false;
+            }
+
             var baseType = type.BaseTypes[0].BaseType;
             return baseType == "Microsoft.Xrm.Client.CrmOrganizationServiceContext"
                    || baseType == "Microsoft.Xrm.Sdk.Client.OrganizationServiceContext";
