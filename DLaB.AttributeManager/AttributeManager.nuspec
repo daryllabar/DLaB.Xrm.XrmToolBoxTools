@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.AttributeManager</id>
-	<version>1.2022.9.8</version>
+	<version>1.2022.9.23</version>
 	<title>Attribute Manager</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,7 @@
     <icon>images\DLaB_Dynamics_Logo_Square_32x32.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>BETA! - Used to rename/delete/or change the type of an attribute.</description>
-    <releaseNotes>V1.2022.9.8
+    <releaseNotes>V1.2022.9.23
 - Fix for Single line of text temp attribute length isn't long enough. #249  Thanks Kirill Kanyukov!
     </releaseNotes>
     <copyright>Copyright 2018</copyright>
