@@ -11,7 +11,7 @@ using Microsoft.Crm.Services.Utility;
 
 namespace DLaB.CrmSvcUtilExtensions
 {
-    public class BaseMetadataProviderService: IMetadataProviderService
+    public class BaseMetadataProviderService: IMetadataProviderService2
     {
         private IOrganizationMetadata Metadata { get; set; }
 
@@ -35,9 +35,11 @@ namespace DLaB.CrmSvcUtilExtensions
             FilePath = ConfigHelper.GetAppSettingOrDefault("SerializedMetadataFilePath", "metadata.xml");
         }
 
-        public IOrganizationMetadata LoadMetadata() { return Metadata ?? (Metadata = LoadMetadataInternal()); }
+        public IOrganizationMetadata LoadMetadata() { return Metadata ?? (Metadata = LoadMetadataInternal(null)); }
 
-        protected virtual IOrganizationMetadata LoadMetadataInternal()
+        public IOrganizationMetadata LoadMetadata(IServiceProvider serviceProvider) { return Metadata ?? (Metadata = LoadMetadataInternal(serviceProvider)); }
+
+        protected virtual IOrganizationMetadata LoadMetadataInternal(IServiceProvider serviceProvider)
         {
             IOrganizationMetadata metadata;
             if (ConfigHelper.GetAppSettingOrDefault("ReadSerializedMetadata", false))
@@ -46,7 +48,7 @@ namespace DLaB.CrmSvcUtilExtensions
             }
             else
             {
-                metadata = DefaultService.LoadMetadata();
+                metadata = serviceProvider != null && DefaultService is IMetadataProviderService2 mps2 ? mps2.LoadMetadata(serviceProvider) : DefaultService.LoadMetadata();
 
                 if (ConfigHelper.GetAppSettingOrDefault("SerializeMetadata", false))
                 {

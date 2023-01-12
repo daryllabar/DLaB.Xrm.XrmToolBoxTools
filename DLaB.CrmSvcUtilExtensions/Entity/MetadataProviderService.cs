@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Microsoft.Crm.Services.Utility;
@@ -17,9 +18,9 @@ namespace DLaB.CrmSvcUtilExtensions.Entity
             MakeAllFieldsEditable = ConfigHelper.GetAppSettingOrDefault("MakeAllFieldsEditable", false);
         }
 
-        protected override IOrganizationMetadata LoadMetadataInternal()
+        protected override IOrganizationMetadata LoadMetadataInternal(IServiceProvider serviceProvider)
         {
-            var metadata = base.LoadMetadataInternal();
+            var metadata = base.LoadMetadataInternal(serviceProvider);
             var prop = typeof(AttributeMetadata).GetProperty("IsValidForCreate", BindingFlags.Public | BindingFlags.Instance);
             foreach (var att in metadata.Entities.SelectMany(entity => entity.Attributes))
             {
