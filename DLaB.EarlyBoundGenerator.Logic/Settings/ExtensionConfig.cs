@@ -223,6 +223,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public bool UseTfsToCheckoutFiles { get; set; }
         /// <summary>
+        /// Uses "internal" as the access modifier instead of "public".
+        /// </summary>
+        public bool UseInternalAsAccessModifier { get; set; }
+        /// <summary>
         /// For Debugging Only!
         /// Waits until a debugger is attached to the CrmSvcUtil.exe before processing the command.
         /// </summary>
@@ -308,6 +312,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 SerializeMetadata = false,
                 TokenCapitalizationOverrides = "ActiveState|AccessTeam|BusinessAs|CardUci|DefaultOnCase|EmailAnd|FeatureSet|IsMsTeams|IsPaiEnabled|IsSopIntegration|MsDyUsd|O365Admin|OnHold|OwnerOnAssign|PauseStates|PartiesOnEmail|ParticipatesIn|SentOn|SlaKpi|SlaId|SyncOptIn|Timeout|UserPuid|VoiceMail|Weblink",
                 UseDeprecatedOptionSetNaming = false,
+                UseInternalAsAccessModifier = false,
                 UseLogicalNames = false,
                 UseTfsToCheckoutFiles = false,
                 WaitForAttachedDebugger = false,
@@ -367,6 +372,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
              TokenCapitalizationOverrides = GetValueOrDefault(poco.TokenCapitalizationOverrides, TokenCapitalizationOverrides);
             UnmappedProperties = GetValueOrDefault(poco.UnmappedProperties, UnmappedProperties);
             UseDeprecatedOptionSetNaming = poco.UseDeprecatedOptionSetNaming ?? UseDeprecatedOptionSetNaming;
+            UseInternalAsAccessModifier = poco.UseInternalAsAccessModifier ?? UseInternalAsAccessModifier;
             UseLogicalNames = poco.UseLogicalNames ?? UseLogicalNames;
             UseTfsToCheckoutFiles = poco.UseTfsToCheckoutFiles ?? UseTfsToCheckoutFiles;
             WaitForAttachedDebugger = poco.WaitForAttachedDebugger ?? WaitForAttachedDebugger;
@@ -434,6 +440,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? SerializeMetadata { get; set; }
         public string TokenCapitalizationOverrides { get; set; }
         public bool? UseDeprecatedOptionSetNaming { get; set; }
+        public bool? UseInternalAsAccessModifier { get; set; }
         public bool? UseLogicalNames { get; set; }
         public bool? UseTfsToCheckoutFiles { get; set; }
         public bool? WaitForAttachedDebugger { get; set; }

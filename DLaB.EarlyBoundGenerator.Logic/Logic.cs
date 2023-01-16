@@ -318,6 +318,7 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "SerializeMetadata", extensions.SerializeMetadata.ToString()) |
                     UpdateConfigAppSetting(file, "TokenCapitalizationOverrides", extensions.TokenCapitalizationOverrides) |
                     UpdateConfigAppSetting(file, "UseDeprecatedOptionSetNaming", extensions.UseDeprecatedOptionSetNaming.ToString()) |
+                    UpdateConfigAppSetting(file, "UseInternalAsAccessModifier", extensions.UseInternalAsAccessModifier.ToString()) |
                     UpdateConfigAppSetting(file, "UseLogicalNames", extensions.UseLogicalNames.ToString()) |
                     UpdateConfigAppSetting(file, "UnmappedProperties", extensions.UnmappedProperties) |
                     UpdateConfigAppSetting(file, "UseTfsToCheckoutFiles", extensions.UseTfsToCheckoutFiles.ToString()) |

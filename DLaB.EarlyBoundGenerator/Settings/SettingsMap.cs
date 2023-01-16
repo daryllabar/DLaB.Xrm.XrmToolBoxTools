@@ -448,6 +448,15 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.ExtensionConfig.UseTfsToCheckoutFiles = value;
         }
 
+        [Category("Global")]
+        [DisplayName("Use 'internal' as the access modifier for the generated types")]
+        [Description("Start marking the early bound classes as 'internal' instead of 'public'")]
+        public bool UseInternalAsAccessModifier
+        {
+            get => Config.ExtensionConfig.UseInternalAsAccessModifier;
+            set => Config.ExtensionConfig.UseInternalAsAccessModifier = value;
+        }
+
         #endregion Global Properties
 
         #region Meta
