@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.Text.Json;
 using System.Xml.Serialization;
+using static DLaB.EarlyBoundGenerator.Settings.EarlyBoundGeneratorConfig;
 
 namespace DLaB.EarlyBoundGenerator.Settings
 {
@@ -39,6 +42,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public bool AddOptionSetMetadataAttribute { get; set; }
         /// <summary>
+        /// This is relative to the Path of the Settings File.  This should end with the a ".json" extension.
+        /// </summary>
+        public string BuilderSettingsJsonRelativePath { get; set; }
+        /// <summary>
         /// Using a dictionary, attempts to correctly camelcase class/enum names.
         /// </summary>
         public bool CamelCaseClassNames { get; set; }
@@ -64,9 +71,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// Only used if Create One File Per Action/Entity/OptionSet is true.
         /// </summary>
         public bool DeleteFilesFromOutputFolders { get; set; }
-        /// <summary>
-        /// Pipe Delimited String containing the logical names of Entities to not generate
-        /// </summary>
         public string EntitiesToSkip { get; set; }
         /// <summary>
         /// Pipe Delimited String containing the logical names of Entities to generate.  If empty, all Entities will be included.
@@ -118,6 +122,14 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// Specifies the generation of Enum properties for option sets
         /// </summary>                                          
         public bool GenerateEnumProperties { get; set; }
+        /// <summary>
+        /// Specifies that generated files should contains a header comment with the auto-generated tag
+        /// </summary>
+        public bool GenerateGeneratedCodeAttribute { get; set; }
+        /// <summary>
+        /// Specifies that Entity class should implement the INotifyPropertyChanging and INotifyPropertyChanged interfaces, calling OnPropertyChanging and OnPropertyChanged for each set of an attributes
+        /// </summary>
+        public bool GenerateINotifyPattern { get; set; }
         /// <summary>
         /// Specifies that only option sets that are referenced by Entities that are generated.
         /// </summary>                                          
@@ -254,42 +266,54 @@ namespace DLaB.EarlyBoundGenerator.Settings
         {
             return new ExtensionConfig
             {
+                ActionPrefixesToSkip = null,
+                ActionPrefixesWhitelist = null,
+                ActionsToSkip = null,
+                ActionsWhitelist = null,
                 AddDebuggerNonUserCode = true,
                 AddNewFilesToProject = true,
+                AddOptionSetMetadataAttribute = true,
+                BuilderSettingsJsonRelativePath = "builderSettings.json",
+                CamelCaseClassNames = false,
+                CamelCaseMemberNames = false,
                 CreateOneFilePerAction = false,
                 CreateOneFilePerEntity = false,
                 CreateOneFilePerOptionSet = false,
                 DeleteFilesFromOutputFolders = false,
-                GenerateActionAttributeNameConsts = false,
-                GenerateAttributeNameConsts = false,
-                GenerateAnonymousTypeConstructor = true,
-                GenerateConstructorsSansLogicalName = false,
-                GenerateEntityRelationships = true,
-                GenerateEntityTypeCode = false,
-                GenerateEnumProperties = true,
-                GenerateOnlyReferencedOptionSets = true,
-                ActionPrefixesToSkip = null,
-                ActionPrefixesWhitelist = null,
-                ActionsWhitelist = null,
-                ActionsToSkip = null,
                 EntitiesToSkip = null,
                 EntitiesWhitelist = null,
                 EntityAttributeSpecifiedNames = null,
                 EntityPrefixesToSkip = null,
                 EntityPrefixesWhitelist = null,
+                FilePrefixText = null,
+                GenerateActionAttributeNameConsts = false,
+                GenerateAnonymousTypeConstructor = true,
+                GenerateAttributeNameConsts = false,
+                GenerateConstructorsSansLogicalName = false,
+                GenerateEntityRelationships = true,
+                GenerateEntityTypeCode = false,
+                GenerateEnumProperties = true,
+                GenerateGeneratedCodeAttribute = false,
+                GenerateINotifyPattern = false,
+                GenerateOnlyReferencedOptionSets = true,
+                GenerateOptionSetMetadataAttribute = true,
+                GroupLocalOptionSetsByEntity = false,
                 InvalidCSharpNamePrefix = "_",
+                LocalOptionSetFormat = "{0}_{1}",
                 MakeAllFieldsEditable = false,
                 MakeReadonlyFieldsEditable = false,
                 MakeResponseActionsEditable = false,
-                LocalOptionSetFormat = "{0}_{1}",
+                OptionSetLanguageCodeOverride = null,
                 OptionSetNames = null,
                 OptionSetPrefixesToSkip = null,
                 OptionSetsToSkip = null,
-                OptionSetLanguageCodeOverride = null,
                 ProjectNameForEarlyBoundFiles = string.Empty,
                 PropertyEnumMappings = string.Empty,
+                ReadSerializedMetadata = false,
                 RemoveRuntimeVersionComment = true,
                 ReplaceOptionSetPropertiesWithEnum = true,
+                SerializeMetadata = false,
+                TokenCapitalizationOverrides = "AccessTeam|ActiveState|BusinessAs|CardUci|DefaultOnCase|EmailAnd|FeatureSet|Geronimo|IsMsTeams|IsPaiEnabled|IsSopIntegration|MsDyUsd|O365Admin|OnHold|OrderId|OwnerOnAssign|PauseStates|PredictiveAddress|PartiesOnEmail|ParticipatesIn|SentOn|SlaId|SlaKpi|SyncOptIn|Timeout|UserPuid|VoiceMail",
                 UnmappedProperties =
                     "DuplicateRule:BaseEntityTypeCode,MatchingEntityTypeCode|" +
                     "InvoiceDetail:InvoiceStateCode|" +
@@ -298,15 +322,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     "Quote:StatusCode|" +
                     "QuoteDetail:QuoteStateCode|" +
                     "SalesOrderDetail:SalesOrderStateCode|",
-                AddOptionSetMetadataAttribute = true,
-                CamelCaseClassNames = false,
-                CamelCaseMemberNames = false,
-                FilePrefixText = null,
-                GenerateOptionSetMetadataAttribute = true,
-                GroupLocalOptionSetsByEntity = false,
-                ReadSerializedMetadata = false,
-                SerializeMetadata = false,
-                TokenCapitalizationOverrides = "ActiveState|AccessTeam|BusinessAs|CardUci|DefaultOnCase|EmailAnd|FeatureSet|IsMsTeams|IsPaiEnabled|IsSopIntegration|MsDyUsd|O365Admin|OnHold|OwnerOnAssign|PauseStates|PartiesOnEmail|ParticipatesIn|SentOn|SlaKpi|SlaId|SyncOptIn|Timeout|UserPuid|VoiceMail|Weblink",
                 UseDeprecatedOptionSetNaming = false,
                 UseLogicalNames = false,
                 UseTfsToCheckoutFiles = false,
@@ -327,6 +342,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             AddDebuggerNonUserCode = poco.AddDebuggerNonUserCode ?? AddDebuggerNonUserCode;
             AddNewFilesToProject = poco.AddNewFilesToProject ?? AddNewFilesToProject;
             AddOptionSetMetadataAttribute = poco.AddOptionSetMetadataAttribute ?? AddOptionSetMetadataAttribute;
+            BuilderSettingsJsonRelativePath = GetValueOrDefault(poco.BuilderSettingsJsonRelativePath, BuilderSettingsJsonRelativePath);
             CamelCaseClassNames = poco.CamelCaseClassNames ?? CamelCaseClassNames;
             CamelCaseMemberNames = poco.CamelCaseMemberNames ?? CamelCaseMemberNames;
             CreateOneFilePerAction = poco.CreateOneFilePerAction ?? CreateOneFilePerAction;
@@ -346,6 +362,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
             GenerateEntityRelationships = poco.GenerateEntityRelationships ?? GenerateEntityRelationships;
             GenerateEntityTypeCode = poco.GenerateEntityTypeCode ?? GenerateEntityTypeCode;
             GenerateEnumProperties = poco.GenerateEnumProperties ?? GenerateEnumProperties;
+            GenerateGeneratedCodeAttribute = poco.GenerateGeneratedCodeAttribute ?? GenerateGeneratedCodeAttribute;
+            GenerateINotifyPattern = poco.GenerateINotifyPattern ?? GenerateINotifyPattern;
             GenerateOnlyReferencedOptionSets = poco.GenerateOnlyReferencedOptionSets ?? GenerateOnlyReferencedOptionSets;
             GenerateOptionSetMetadataAttribute = poco.GenerateOptionSetMetadataAttribute ?? GenerateOptionSetMetadataAttribute;
             GroupLocalOptionSetsByEntity = poco.GroupLocalOptionSetsByEntity ?? GroupLocalOptionSetsByEntity;
@@ -364,7 +382,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             RemoveRuntimeVersionComment = poco.RemoveRuntimeVersionComment ?? RemoveRuntimeVersionComment;
             ReplaceOptionSetPropertiesWithEnum = poco.ReplaceOptionSetPropertiesWithEnum ?? ReplaceOptionSetPropertiesWithEnum;
             SerializeMetadata = poco.SerializeMetadata ?? SerializeMetadata;
-             TokenCapitalizationOverrides = GetValueOrDefault(poco.TokenCapitalizationOverrides, TokenCapitalizationOverrides);
+            TokenCapitalizationOverrides = GetValueOrDefault(poco.TokenCapitalizationOverrides, TokenCapitalizationOverrides);
             UnmappedProperties = GetValueOrDefault(poco.UnmappedProperties, UnmappedProperties);
             UseDeprecatedOptionSetNaming = poco.UseDeprecatedOptionSetNaming ?? UseDeprecatedOptionSetNaming;
             UseLogicalNames = poco.UseLogicalNames ?? UseLogicalNames;
@@ -375,6 +393,73 @@ namespace DLaB.EarlyBoundGenerator.Settings
             {
                 return string.IsNullOrWhiteSpace(value) ? defaultValue : value;
             }
+        }
+
+        public void WriteDLaBModelBuilderProperties(Utf8JsonWriter writer)
+        {
+            writer.AddProperty(nameof(ActionCommandLineText), ActionCommandLineText, true);
+            writer.AddPropertyArray(nameof(ActionPrefixesWhitelist), ActionPrefixesWhitelist);
+            writer.AddPropertyArray(nameof(ActionPrefixesToSkip), ActionPrefixesToSkip);
+            writer.AddPropertyArray(nameof(ActionsToSkip), ActionsToSkip?.Replace("-", ""));
+            writer.AddProperty(nameof(AddDebuggerNonUserCode), AddDebuggerNonUserCode);
+            writer.AddProperty(nameof(AddNewFilesToProject), AddNewFilesToProject);
+            writer.AddProperty(nameof(AddOptionSetMetadataAttribute), AddOptionSetMetadataAttribute);
+            writer.AddProperty(nameof(BuilderSettingsJsonRelativePath), BuilderSettingsJsonRelativePath);
+            writer.AddProperty(nameof(CamelCaseClassNames), CamelCaseClassNames);
+            writer.AddProperty(nameof(CamelCaseMemberNames), CamelCaseMemberNames);
+            writer.AddProperty(nameof(CreateOneFilePerAction), CreateOneFilePerAction);
+            writer.AddProperty(nameof(CreateOneFilePerEntity), CreateOneFilePerEntity);
+            writer.AddProperty(nameof(CreateOneFilePerOptionSet), CreateOneFilePerOptionSet);
+            writer.AddProperty(nameof(DeleteFilesFromOutputFolders), DeleteFilesFromOutputFolders);
+            // TODO Split
+            //writer.AddProperty(nameof(EntityAttributeSpecifiedNames), EntityAttributeSpecifiedNames);  
+            writer.AddProperty(nameof(EntityCommandLineText), EntityCommandLineText, true);
+            writer.AddPropertyArray(nameof(EntitiesToSkip), EntitiesToSkip);
+            writer.AddPropertyArray(nameof(EntityPrefixesToSkip), EntityPrefixesToSkip);
+            writer.AddPropertyArray(nameof(EntityPrefixesWhitelist), EntityPrefixesWhitelist);
+            writer.AddProperty(nameof(FilePrefixText), FilePrefixText, true);
+            writer.AddProperty(nameof(GenerateActionAttributeNameConsts), GenerateActionAttributeNameConsts);
+            writer.AddProperty(nameof(GenerateAttributeNameConsts), GenerateAttributeNameConsts);
+            writer.AddProperty(nameof(GenerateAnonymousTypeConstructor), GenerateAnonymousTypeConstructor);
+            writer.AddProperty(nameof(GenerateConstructorsSansLogicalName), GenerateConstructorsSansLogicalName);
+            writer.AddProperty(nameof(GenerateEntityRelationships), GenerateEntityRelationships);
+            writer.AddProperty(nameof(GenerateEntityTypeCode), GenerateEntityTypeCode);
+            writer.AddProperty(nameof(GenerateEnumProperties), GenerateEnumProperties);
+            writer.AddProperty(nameof(GenerateOnlyReferencedOptionSets), GenerateOnlyReferencedOptionSets);
+            writer.AddProperty(nameof(GenerateOptionSetMetadataAttribute), GenerateOptionSetMetadataAttribute);
+            writer.AddProperty(nameof(GroupLocalOptionSetsByEntity), GroupLocalOptionSetsByEntity);
+            writer.AddProperty(nameof(InvalidCSharpNamePrefix), InvalidCSharpNamePrefix);
+            writer.AddProperty(nameof(MakeAllFieldsEditable), MakeAllFieldsEditable);
+            writer.AddProperty(nameof(MakeReadonlyFieldsEditable), MakeReadonlyFieldsEditable);
+            writer.AddProperty(nameof(MakeResponseActionsEditable), MakeResponseActionsEditable);
+            writer.AddProperty(nameof(LocalOptionSetFormat), LocalOptionSetFormat);
+            writer.AddPropertyArray(nameof(OptionSetPrefixesToSkip), OptionSetPrefixesToSkip);
+            writer.AddPropertyArray(nameof(OptionSetsToSkip), OptionSetsToSkip);
+            writer.AddProperty(nameof(OptionSetCommandLineText), OptionSetCommandLineText, true);
+            writer.AddProperty(nameof(OptionSetLanguageCodeOverride), OptionSetLanguageCodeOverride?.ToString());
+            writer.AddProperty(nameof(OptionSetNames), OptionSetNames);
+            writer.AddProperty(nameof(ProjectNameForEarlyBoundFiles), ProjectNameForEarlyBoundFiles ?? string.Empty);
+            writer.AddProperty(nameof(PropertyEnumMappings), PropertyEnumMappings);
+            writer.AddProperty(nameof(ReadSerializedMetadata), ReadSerializedMetadata);
+            writer.AddProperty(nameof(RemoveRuntimeVersionComment), RemoveRuntimeVersionComment);
+            writer.AddProperty(nameof(ReplaceOptionSetPropertiesWithEnum), ReplaceOptionSetPropertiesWithEnum);
+            writer.AddProperty(nameof(SerializeMetadata), SerializeMetadata);
+            writer.AddPropertyArray(nameof(TokenCapitalizationOverrides), TokenCapitalizationOverrides);
+            writer.AddProperty(nameof(UseDeprecatedOptionSetNaming), UseDeprecatedOptionSetNaming);
+            writer.AddProperty(nameof(UseLogicalNames), UseLogicalNames);
+            // TODO Split
+            // writer.AddProperty(nameof(UnmappedProperties), UnmappedProperties);
+            writer.AddProperty(nameof(UseTfsToCheckoutFiles), UseTfsToCheckoutFiles);
+            writer.AddProperty(nameof(WaitForAttachedDebugger), WaitForAttachedDebugger);
+        }
+
+        public void PopulateBuilderProperties(Dictionary<string, JsonProperty> properties)
+        {
+            properties.SetJsonProperty(BuilderSettingsJsonNames.EmitFieldsClasses, GenerateAttributeNameConsts);
+            properties.SetJsonArrayProperty(BuilderSettingsJsonNames.EntityNamesFilter, EntitiesWhitelist);
+            properties.SetJsonArrayProperty(BuilderSettingsJsonNames.MessageNamesFilter, ActionsWhitelist);
+            properties.SetJsonProperty(BuilderSettingsJsonNames.SuppressGeneratedCodeAttribute, !GenerateGeneratedCodeAttribute);
+            properties.SetJsonProperty(BuilderSettingsJsonNames.SuppressINotifyPattern, !GenerateINotifyPattern);
         }
     }
 }
@@ -422,9 +507,12 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public string UnmappedProperties { get; set; }
         public bool? AddNewFilesToProject { get; set; }
         public bool? AddOptionSetMetadataAttribute { get; set; }
+        public string BuilderSettingsJsonRelativePath { get; set; }
         public bool? CamelCaseClassNames { get; set; }
         public bool? CamelCaseMemberNames { get; set; }
         public string FilePrefixText { get; set; }
+        public bool? GenerateGeneratedCodeAttribute { get; set; }
+        public bool? GenerateINotifyPattern { get; set; }
         public bool? GenerateOptionSetMetadataAttribute { get; set; }
         public bool? GroupLocalOptionSetsByEntity { get; set; }
         public string OptionSetNames { get; set; }

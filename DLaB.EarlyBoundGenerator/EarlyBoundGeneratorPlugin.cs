@@ -8,6 +8,7 @@ using DLaB.EarlyBoundGenerator.Settings;
 using DLaB.Log;
 using DLaB.XrmToolBoxCommon;
 using DLaB.XrmToolBoxCommon.AppInsightsHelper;
+using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Client;
 using Microsoft.Xrm.Sdk.Metadata;
@@ -190,37 +191,20 @@ namespace DLaB.EarlyBoundGenerator
             }
 
             LogConfigSettings(creationType);
-            WorkAsync(new WorkAsyncInfo("Shelling out to Command Line...",
+            WorkAsync(new WorkAsyncInfo("Starting Early Bound File Generation Logic...",
                 (w, e) => // Work To Do Asynchronously
                 {
                     var settings = (EarlyBoundGeneratorConfig) e.Argument;
 
-                    var generator = new Logic(settings);
+                    var generator = new LogicV2(settings);
                     Logger.WireUpToReportProgress(w);
                     try
                     {
-                        switch (creationType)
-                        {
-                            case CreationType.Actions:
-                                w.ReportProgress(0, "Executing for Actions");
-                                generator.CreateActions();
-                                break;
-                            case CreationType.All:
-                                w.ReportProgress(0, "Executing for All");
-                                generator.ExecuteAll();
-                                break;
-                            case CreationType.Entities:
-                                w.ReportProgress(0, "Executing for Entities");
-                                generator.CreateEntities();
-                                break;
-                            case CreationType.OptionSets:
-                                w.ReportProgress(0, "Executing for OptionSets");
-                                generator.CreateOptionSets();
-                                break;
-                            default:
-                                throw new ArgumentOutOfRangeException(nameof(creationType));
-                        }
-                        w.ReportProgress(99, "Creation Complete!");
+                        w.ReportProgress(0, "Updating Builder Settings");
+                        generator.UpdateBuilderSettingsJson();
+                        w.ReportProgress(0, "Generating Early Bound Files");
+                        generator.Create(Service);
+                        w.ReportProgress(99, "Generation Complete!");
                     }
                     catch (InvalidOperationException ex)
                     {

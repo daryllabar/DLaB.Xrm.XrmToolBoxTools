@@ -955,6 +955,7 @@ billy
 bin
 binary
 bind
+binder
 binding
 bing
 bingo
@@ -2159,9 +2160,8 @@ covering
 covers
 cow
 cowboy
-cp
+cpa
 cpu
-cr
 crack
 cradle
 craft
@@ -2961,6 +2961,7 @@ elvis
 em
 emacs
 email
+emailed
 emails
 embassy
 embedded
@@ -3375,11 +3376,8 @@ favorites
 favors
 fax
 fbi
-fc
 fcc
-fd
 fda
-fe
 fear
 fears
 feat
@@ -3387,6 +3385,9 @@ feature
 featured
 features
 featuring
+feasible
+feasibly
+feasibility
 feb
 february
 fed
@@ -3419,9 +3420,6 @@ fetish
 fever
 few
 fewer
-ff
-fg
-fi
 fiber
 fibre
 fiction
@@ -5491,6 +5489,7 @@ maui
 mauritius
 max
 maximize
+maximizer
 maximum
 may
 maybe
@@ -5632,6 +5631,8 @@ midnight
 midwest
 might
 mighty
+migrate
+migrated
 migration
 mike
 mil
@@ -7446,6 +7447,8 @@ renew
 renewable
 renewal
 reno
+renovate
+renovation
 rent
 rental
 rentals
@@ -7563,6 +7566,7 @@ retailer
 retailers
 retain
 retained
+retainer
 retention
 retired
 retirement
@@ -9026,6 +9030,7 @@ timber
 time
 timeline
 timely
+timeout
 timer
 times
 timestamp
@@ -9447,6 +9452,7 @@ val
 valentine
 valid
 validation
+validator
 validity
 valium
 valley
@@ -9710,6 +9716,7 @@ web
 webcam
 webcams
 webcast
+weblink
 weblog
 weblogs
 webmaster

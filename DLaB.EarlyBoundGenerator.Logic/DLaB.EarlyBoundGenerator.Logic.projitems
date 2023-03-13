@@ -9,6 +9,8 @@
     <Import_RootNamespace>DLaB.EarlyBoundGenerator.Logic</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LogicV2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logic.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Settings\Argument.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Settings\CreationType.cs" />

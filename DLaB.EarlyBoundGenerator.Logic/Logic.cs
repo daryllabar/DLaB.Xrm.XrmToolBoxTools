@@ -277,6 +277,7 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "AddDebuggerNonUserCode", extensions.AddDebuggerNonUserCode.ToString()) |
                     UpdateConfigAppSetting(file, "AddNewFilesToProject", extensions.AddNewFilesToProject.ToString()) |
                     UpdateConfigAppSetting(file, "AddOptionSetMetadataAttribute", extensions.AddOptionSetMetadataAttribute.ToString()) |
+                    UpdateConfigAppSetting(file, "BuilderSettingsJsonRelativePath", extensions.BuilderSettingsJsonRelativePath) |
                     UpdateConfigAppSetting(file, "CamelCaseClassNames", extensions.CamelCaseClassNames.ToString()) |
                     UpdateConfigAppSetting(file, "CamelCaseMemberNames", extensions.CamelCaseMemberNames.ToString()) |
                     UpdateConfigAppSetting(file, "CreateOneFilePerAction", extensions.CreateOneFilePerAction.ToString()) |
@@ -297,6 +298,8 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "GenerateEntityRelationships", extensions.GenerateEntityRelationships.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateEntityTypeCode", extensions.GenerateEntityTypeCode.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateEnumProperties", extensions.GenerateEnumProperties.ToString()) |
+                    UpdateConfigAppSetting(file, "GenerateGeneratedCodeAttribute", extensions.GenerateGeneratedCodeAttribute.ToString()) |
+                    UpdateConfigAppSetting(file, "GenerateINotifyPattern", extensions.GenerateINotifyPattern.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateOnlyReferencedOptionSets", extensions.GenerateOnlyReferencedOptionSets.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateOptionSetMetadataAttribute", extensions.GenerateOptionSetMetadataAttribute.ToString()) |
                     UpdateConfigAppSetting(file, "GroupLocalOptionSetsByEntity", extensions.GroupLocalOptionSetsByEntity.ToString()) |

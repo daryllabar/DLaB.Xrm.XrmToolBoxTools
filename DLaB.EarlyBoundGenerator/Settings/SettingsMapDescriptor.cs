@@ -110,6 +110,78 @@ namespace DLaB.EarlyBoundGenerator.Settings
             TypeDescriptor.Refresh(this);
         }
 
+        private void DisableUnsupportedProperties()
+        {
+            var disabledProperties = new[]
+            {
+                nameof(ActionOutPath),
+                nameof(ActionPrefixesWhitelist),
+                nameof(ActionsToSkip),
+                nameof(ActionsWhitelist),
+                nameof(AddDebuggerNonUserCode),
+                nameof(AddNewFilesToProject),
+                nameof(AddOptionSetMetadataAttribute),
+                nameof(AudibleCompletionNotification),
+                nameof(CamelCaseClassNames),
+                nameof(CamelCaseMemberNames),
+                nameof(CreateOneFilePerAction),
+                nameof(CreateOneFilePerEntity),
+                nameof(CreateOneFilePerOptionSet),
+                nameof(CrmSvcUtilRelativePath),
+                nameof(DeleteFilesFromOutputFolders),
+                nameof(EntitiesToSkip),
+                nameof(EntitiesWhitelist),
+                nameof(EntityAttributeSpecifiedNames),
+                nameof(EntityOutPath),
+                nameof(EntityPrefixesToSkip),
+                nameof(EntityPrefixesWhitelist),
+                nameof(FilePrefixText),
+                nameof(GenerateActionAttributeNameConsts),
+                nameof(GenerateAnonymousTypeConstructor),
+                nameof(GenerateAttributeNameConsts),
+                nameof(GenerateConstructorsSansLogicalName),
+                nameof(GenerateEntityRelationships),
+                nameof(GenerateEntityTypeCode),
+                nameof(GenerateEnumProperties),
+                nameof(GenerateOnlyReferencedOptionSets),
+                nameof(GenerateOptionSetMetadataAttribute),
+                nameof(GroupLocalOptionSetsByEntity),
+                nameof(IncludeCommandLine),
+                nameof(InvalidCSharpNamePrefix),
+                nameof(LocalOptionSetFormat),
+                nameof(MakeAllFieldsEditable),
+                nameof(MakeReadonlyFieldsEditable),
+                nameof(MakeResponseActionsEditable),
+                nameof(MaskPassword),
+                nameof(Namespace),
+                nameof(OptionSetLanguageCodeOverride),
+                nameof(OptionSetNames),
+                nameof(OptionSetOutPath),
+                nameof(OptionSetPrefixesToSkip),
+                nameof(OptionSetsToSkip),
+                nameof(ProjectNameForEarlyBoundFiles),
+                nameof(PropertyEnumMappings),
+                nameof(ReadSerializedMetadata),
+                nameof(RemoveRuntimeVersionComment),
+                nameof(ReplaceOptionSetPropertiesWithEnum),
+                nameof(SerializeMetadata),
+                nameof(ServiceContextName),
+                nameof(SuppressGeneratedCodeAttribute),
+                nameof(TokenCapitalizationOverrides),
+                nameof(UnmappedProperties),
+                nameof(UseDeprecatedOptionSetNaming),
+                nameof(UseLogicalNames),
+                nameof(UseTfsToCheckoutFiles),
+                nameof(WaitForAttachedDebugger),
+                nameof(WorkflowlessActions),
+            };
+
+            foreach (var property in disabledProperties)
+            {
+                SetPropertyDisabled(property, true);
+            }
+        }
+
         private void SetVisibilityForControlsDependentOnFileCreations()
         {
             SetAddFilesToProjectVisibility();
@@ -172,6 +244,22 @@ namespace DLaB.EarlyBoundGenerator.Settings
         {
             var prop = Descriptor.GetProperty(propertyName);
             prop.SetIsBrowsable(browsable);
+        }
+
+        private const string NotImplemented = "{Not Implemented} ";
+
+        private void SetPropertyDisabled(string propertyName, bool disabled)
+        {
+            var prop = Descriptor.GetProperty(propertyName);
+            if (disabled)
+            {
+                prop.SetDisplayName(NotImplemented + prop.DisplayName);
+            }
+            else
+            {
+                prop.SetDisplayName(prop.DisplayName.Replace(NotImplemented, string.Empty));
+            }
+            prop.SetIsReadOnly(disabled);
         }
     }
 }

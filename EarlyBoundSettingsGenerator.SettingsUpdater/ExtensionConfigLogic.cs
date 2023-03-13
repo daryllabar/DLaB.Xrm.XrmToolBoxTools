@@ -17,6 +17,7 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
             AddProperty(file);
             AddToExtensionConfigGetDefault(file);
             AddToExtensionConfigSetPopulatedValues(file);
+            AddToExtensionConfigWriteDLaBModelBuilderProperties(file);
             AddPropertyToPoco(file);
             File.WriteAllLines(path, file);
         }
@@ -53,14 +54,21 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
             if (Property.Type == "bool")
             {
                 file[insertIndex - 1] += $@"
-                {Property.Name} = poco.{Property.Name} ?? {Property.Name};";
+            {Property.Name} = poco.{Property.Name} ?? {Property.Name};";
             }
             else
             {
                 file[insertIndex - 1] += $@"
-                {Property.Name} = GetValueOrDefault(poco.{Property.Name}, {Property.Name});";
+            {Property.Name} = GetValueOrDefault(poco.{Property.Name}, {Property.Name});";
 
             }
+        }
+
+        private void AddToExtensionConfigWriteDLaBModelBuilderProperties(string[] file)
+        {
+            var insertIndex = GetInsertIndexOfAlphabeticallySortedProperty(file, "public void WriteDLaBModelBuilderProperties", "        }", Property.Name, "            ", 1);
+            file[insertIndex - 1] += $@"
+            writer.AddProperty(nameof({Property.Name}), {Property.Name})";
         }
     }
 }

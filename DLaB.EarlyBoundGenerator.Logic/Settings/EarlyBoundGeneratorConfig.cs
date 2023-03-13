@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text.Json;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -114,6 +115,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [DisplayName("User Arguments")]
         [Description("Commandline arguments that are passed to the CrmSrvUtil that can have varying values, depending on the user's preference.")]
         public List<Argument> UserArguments { get; set; }
+
         /// <summary>
         /// Some actions are being created by MS that are not workflows, and don't show up in the list of actions for adding to whitelist/blacklist, but are getting genereated and causing errors.  This setting is used to manually add action names to the selected lists
         /// </summary>
@@ -203,6 +205,18 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [XmlIgnore]
         [Browsable(false)]
         public string CrmSvcUtilRelativeRootPath { get; set; }
+
+
+        /// <summary>
+        /// Path of the Model Builder Template file,relative to the root path, if not fully rooted
+        /// </summary>
+        [XmlIgnore]
+        [Browsable(false)]
+        public string SettingsTemplatePath =>
+            Path.IsPathRooted(ExtensionConfig.BuilderSettingsJsonRelativePath)
+                ? ExtensionConfig.BuilderSettingsJsonRelativePath
+                : Path.Combine(RootPath, ExtensionConfig.BuilderSettingsJsonRelativePath);
+
 
         #region UserArguments Helpers
 
@@ -498,7 +512,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// <returns></returns>
         public static EarlyBoundGeneratorConfig GetDefault()
         {
-
             var @default = new EarlyBoundGeneratorConfig
             {
                 AudibleCompletionNotification = true,
@@ -765,6 +778,32 @@ namespace DLaB.EarlyBoundGenerator.Settings
             public const string Out = "out";
             public const string ServiceContextName = "servicecontextname";
             public const string SuppressGeneratedCodeAttribute = "SuppressGeneratedCodeAttribute";
+        }
+
+        internal struct BuilderSettingsJsonNames
+        {
+            public const string EmitFieldsClasses = "emitFieldsClasses";
+            public const string EntityNamesFilter = "entityNamesFilter";
+            public const string EntityTypesFolder = "entityTypesFolder";
+            public const string GenerateActions = "generateActions";
+            public const string GenerateGlobalOptionSets = "generateGlobalOptionSets";
+            public const string Language = "language";
+            public const string Namespace = "namespace";
+            public const string MessageNamesFilter = "messageNamesFilter";
+            public const string MessagesTypesFolder = "messagesTypesFolder";
+            public const string OptionSetsTypesFolder = "optionSetsTypesFolder";
+            public const string ServiceContextName = "serviceContextName";
+            public const string SuppressGeneratedCodeAttribute = "suppressGeneratedCodeAttribute";
+            public const string SuppressINotifyPattern = "suppressINotifyPattern";
+        }
+
+        public void PopulateBuilderProperties(Dictionary<string, JsonProperty> properties)
+        {
+            properties.SetJsonProperty(BuilderSettingsJsonNames.EntityTypesFolder, EntityOutPath);
+            properties.SetJsonProperty(BuilderSettingsJsonNames.MessagesTypesFolder, ActionOutPath);
+            properties.SetJsonProperty(BuilderSettingsJsonNames.Namespace, Namespace);
+            properties.SetJsonProperty(BuilderSettingsJsonNames.OptionSetsTypesFolder, OptionSetOutPath);
+            properties.SetJsonProperty(BuilderSettingsJsonNames.ServiceContextName, ServiceContextName);
         }
     }
 }
