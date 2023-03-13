@@ -65,6 +65,7 @@
   },
   "emitFieldsClasses": false,
   "entityTypesFolder": "EBG\\Entities.cs",
+  "generateGlobalOptionSets": true,
   "messagesTypesFolder": "EBG\\Actions.cs",
   "namespace": "CrmEarlyBound",
   "optionSetsTypesFolder": "EBG\\OptionSets.cs",

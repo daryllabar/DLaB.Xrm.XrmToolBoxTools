@@ -37,8 +37,14 @@ namespace DLaB.EarlyBoundGenerator
             "writesettingsTemplateFile"
         });
 
-        private HashSet<string> ModelBuilderNotValidParameters = new HashSet<string>(new[]
+        private HashSet<string> ModelBuilderParametersToSkip = new HashSet<string>(new[]
         {
+            // Parameters that are in the template file
+            "entitytypesfolder",
+            "language",
+            "messagestypesfolder",
+            "optionsetstypesfolder",
+            // Not Valid?
             "includeMessages"
         });
 
@@ -134,15 +140,15 @@ namespace DLaB.EarlyBoundGenerator
             //HandleResult(filePath, date, creationType, consoleOutput.ToString(), EarlyBoundGeneratorConfig.AudibleCompletionNotification);
         }
 
-        private string[] GetParameters(ModelBuilderInvokeParameters parameters)
+        public string[] GetParameters(ModelBuilderInvokeParameters parameters)
         {
             var lines = new List<string>();
             Logger.AddDetail("Generating ProcessModelInvoker Parameters:");
             foreach (var kvp in parameters.ToDictionary().Where(kvp => !string.IsNullOrWhiteSpace(kvp.Value)))
             {
-                if (ModelBuilderNotValidParameters.Contains(kvp.Key))
+                if (ModelBuilderParametersToSkip.Contains(kvp.Key))
                 {
-                    // do nothing...
+                    // skip...
                 }
                 else if (ModelBuilderSwitches.Contains(kvp.Key))
                 {
