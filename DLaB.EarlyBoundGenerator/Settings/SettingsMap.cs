@@ -19,75 +19,75 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         #region Properties
 
-        #region Actions
+        #region Messages
 
-        [Category("Actions")]
-        [DisplayName("Action Relative Output Path")]
-        [Description("This is realtive to the Path of the Settings File.  If \"Create One File Per Action\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
+        [Category("Messages")]
+        [DisplayName("Message Relative Output Path")]
+        [Description("This is realtive to the Path of the Settings File.  If \"Create One File Per Message\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
         [Editor(typeof(PathEditor), typeof(UITypeEditor))]
         [DynamicRelativePathEditor(nameof(SettingsPath), nameof(CreateOneFilePerAction), "C# files|*.cs", "cs", false)]
         public string ActionOutPath
         {
             get => Config.ActionOutPath;
-            set => Config.ActionOutPath = GetRelativePathToFileOrDirectory(value, CreateOneFilePerAction, "Actions.cs");
+            set => Config.ActionOutPath = GetRelativePathToFileOrDirectory(value, CreateOneFilePerAction, "Messages.cs");
         }
 
-        [Category("Actions")]
-        [DisplayName("Action Prefixes Whitelist")]
-        [Description("Allows for the ability to specify Action prefixes that will be included in generation.")]
+        [Category("Messages")]
+        [DisplayName("Message Prefixes Whitelist")]
+        [Description("Allows for the ability to specify Message prefixes that will be included in generation.")]
         [Editor(StringEditorName, typeof(UITypeEditor))]
         [TypeConverter(CollectionCountConverter.Name)]
         public List<string> ActionPrefixesWhitelist { get; set; }
 
-        [Category("Actions")]
-        [DisplayName("Actions Whitelist")]
-        [Description("Allows for the ability to specify Actions that will be included in generation.")]
+        [Category("Messages")]
+        [DisplayName("Messages Whitelist")]
+        [Description("Allows for the ability to specify Messages that will be included in generation.  \"*\" wildcards are valid. ")]
         [Editor(typeof(ActionsHashEditor), typeof(UITypeEditor))]
         [TypeConverter(CollectionCountConverter.Name)]
         public HashSet<string> ActionsWhitelist { get; set; }
 
-        [Category("Actions")]
-        [DisplayName("Actions Blacklist")]
-        [Description("Allows for the ability to specify Actions to not generate.")]
+        [Category("Messages")]
+        [DisplayName("Messages Blacklist")]
+        [Description("Allows for the ability to specify Messages to not generate.")]
         [Editor(typeof(ActionsHashEditor), typeof(UITypeEditor))]
         [TypeConverter(CollectionCountConverter.Name)]
         public HashSet<string> ActionsToSkip { get; set; }
 
-        [Category("Actions")]
-        [DisplayName("Create One File Per Action")]
-        [Description("Specifies that each Action class should be outputted to it's own file rather than a single file with all actions.")]
+        [Category("Messages")]
+        [DisplayName("Create One File Per Message")]
+        [Description("Specifies that each Message class should be outputted to it's own file rather than a single file with all messages.")]
         public bool CreateOneFilePerAction
         {
             get => Config.ExtensionConfig.CreateOneFilePerAction;
             set => Config.ExtensionConfig.CreateOneFilePerAction = value;
         }
 
-        [Category("Actions")]
-        [DisplayName("Generate Action Attribute Name Constants")]
-        [Description("Adds a Static Class to each Action class that contains the Logical Names of all properties for the Action.")]
+        [Category("Messages")]
+        [DisplayName("Generate Message Attribute Name Constants")]
+        [Description("Adds a Static Class to each Message class that contains the Logical Names of all properties for the Message.")]
         public bool GenerateActionAttributeNameConsts
         {
             get => Config.ExtensionConfig.GenerateActionAttributeNameConsts;
             set => Config.ExtensionConfig.GenerateActionAttributeNameConsts = value;
         }
 
-        [Category("Actions")]
-        [DisplayName("Make Response Actions Editable")]
-        [Description("Specifies that the properties of Response Actions should be editable.")]
+        [Category("Messages")]
+        [DisplayName("Make Response Messages Editable")]
+        [Description("Specifies that the properties of Response Messages should be editable.")]
         public bool MakeResponseActionsEditable
         {
             get => Config.ExtensionConfig.MakeResponseActionsEditable;
             set => Config.ExtensionConfig.MakeResponseActionsEditable = value;
         }
 
-        [Category("Actions")]
-        [DisplayName("Workflowless Actions")]
-        [Description("Some actions are being created by MS that are not workflows, and don't show up in the list of actions for adding to whitelist/blacklist, but are getting genereated and causing errors.  This setting is used to manually add action names to the selected lists.")]
+        [Category("Messages")]
+        [DisplayName("Workflowless Messages")]
+        [Description("Some messages are being created by MS that are not workflows, and don't show up in the list of messages for adding to whitelist/blacklist, but are getting genereated and causing errors.  This setting is used to manually add message names to the selected lists.")]
         [Editor(StringEditorName, typeof(UITypeEditor))]
         [TypeConverter(CollectionCountConverter.Name)]
         public List<string> WorkflowlessActions { get; set; }
 
-        #endregion Actions
+        #endregion Messages
 
         #region Debug
 
@@ -378,7 +378,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         [Category("Global")]
         [DisplayName("Delete Files From Output Folders")]
-        [Description("Clears all .cs files from output folders prior to file generation.  This helps to remove files that are no longer being generated.  Only used if Create One File Per Action/Entity/OptionSet is true.")]
+        [Description("Clears all .cs files from output folders prior to file generation.  This helps to remove files that are no longer being generated.  Only used if Create One File Per Entity/Message/OptionSet is true.")]
         public bool DeleteFilesFromOutputFolders
         {
             get => Config.ExtensionConfig.DeleteFilesFromOutputFolders;
@@ -509,6 +509,15 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         {
             get => Config.ExtensionConfig.CreateOneFilePerOptionSet;
             set => Config.ExtensionConfig.CreateOneFilePerOptionSet = value;
+        }
+
+        [Category("Option Sets")]
+        [DisplayName("Generate Global Option Sets")]
+        [Description("Generate all Global OptionSets, note: if an entity contains a reference to a global optionset, it will be emitted even if this switch is not present.")]
+        public bool GenerateGlobalOptionSets
+        {
+            get => Config.ExtensionConfig.GenerateGlobalOptionSets;
+            set => Config.ExtensionConfig.GenerateGlobalOptionSets = value;
         }
 
         [Category("Option Sets")]

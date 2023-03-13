@@ -127,6 +127,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public bool GenerateGeneratedCodeAttribute { get; set; }
         /// <summary>
+        /// Generate all Global OptionSets, note: if an entity contains a reference to a global optionset, it will be emitted even if this switch is not present.
+        /// </summary>
+        public bool GenerateGlobalOptionSets { get; set; }
+        /// <summary>
         /// Specifies that Entity class should implement the INotifyPropertyChanging and INotifyPropertyChanged interfaces, calling OnPropertyChanging and OnPropertyChanged for each set of an attributes
         /// </summary>
         public bool GenerateINotifyPattern { get; set; }
@@ -294,6 +298,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 GenerateEntityTypeCode = false,
                 GenerateEnumProperties = true,
                 GenerateGeneratedCodeAttribute = false,
+                GenerateGlobalOptionSets = true,
                 GenerateINotifyPattern = false,
                 GenerateOnlyReferencedOptionSets = true,
                 GenerateOptionSetMetadataAttribute = true,
@@ -363,6 +368,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             GenerateEntityTypeCode = poco.GenerateEntityTypeCode ?? GenerateEntityTypeCode;
             GenerateEnumProperties = poco.GenerateEnumProperties ?? GenerateEnumProperties;
             GenerateGeneratedCodeAttribute = poco.GenerateGeneratedCodeAttribute ?? GenerateGeneratedCodeAttribute;
+            GenerateGlobalOptionSets = poco.GenerateGlobalOptionSets ?? GenerateGlobalOptionSets;
             GenerateINotifyPattern = poco.GenerateINotifyPattern ?? GenerateINotifyPattern;
             GenerateOnlyReferencedOptionSets = poco.GenerateOnlyReferencedOptionSets ?? GenerateOnlyReferencedOptionSets;
             GenerateOptionSetMetadataAttribute = poco.GenerateOptionSetMetadataAttribute ?? GenerateOptionSetMetadataAttribute;
@@ -457,6 +463,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         {
             properties.SetJsonProperty(BuilderSettingsJsonNames.EmitFieldsClasses, GenerateAttributeNameConsts);
             properties.SetJsonArrayProperty(BuilderSettingsJsonNames.EntityNamesFilter, EntitiesWhitelist);
+            properties.SetJsonProperty(BuilderSettingsJsonNames.GenerateGlobalOptionSets, GenerateGlobalOptionSets);
             properties.SetJsonArrayProperty(BuilderSettingsJsonNames.MessageNamesFilter, ActionsWhitelist);
             properties.SetJsonProperty(BuilderSettingsJsonNames.SuppressGeneratedCodeAttribute, !GenerateGeneratedCodeAttribute);
             properties.SetJsonProperty(BuilderSettingsJsonNames.SuppressINotifyPattern, !GenerateINotifyPattern);
@@ -512,6 +519,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? CamelCaseMemberNames { get; set; }
         public string FilePrefixText { get; set; }
         public bool? GenerateGeneratedCodeAttribute { get; set; }
+        public bool? GenerateGlobalOptionSets { get; set; }
         public bool? GenerateINotifyPattern { get; set; }
         public bool? GenerateOptionSetMetadataAttribute { get; set; }
         public bool? GroupLocalOptionSetsByEntity { get; set; }

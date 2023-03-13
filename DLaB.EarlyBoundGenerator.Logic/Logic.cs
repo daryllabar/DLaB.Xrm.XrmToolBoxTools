@@ -299,6 +299,7 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "GenerateEntityTypeCode", extensions.GenerateEntityTypeCode.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateEnumProperties", extensions.GenerateEnumProperties.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateGeneratedCodeAttribute", extensions.GenerateGeneratedCodeAttribute.ToString()) |
+                    UpdateConfigAppSetting(file, "GenerateGlobalOptionSets", extensions.GenerateGlobalOptionSets.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateINotifyPattern", extensions.GenerateINotifyPattern.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateOnlyReferencedOptionSets", extensions.GenerateOnlyReferencedOptionSets.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateOptionSetMetadataAttribute", extensions.GenerateOptionSetMetadataAttribute.ToString()) |
