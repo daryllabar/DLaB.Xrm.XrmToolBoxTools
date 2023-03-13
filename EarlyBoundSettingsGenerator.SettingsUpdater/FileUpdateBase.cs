@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace EarlyBoundSettingsGenerator.SettingsUpdater
 {
@@ -77,7 +72,13 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
                     break;
                 }
 
-                if (file[i].Replace("\t", "    ").StartsWith(lineStartMatch))
+                var originalLine = file[i];
+                while (line.TrimEnd().EndsWith("=") || line.TrimEnd().EndsWith("+"))
+                {
+                    line += file[++i];
+                }
+
+                if (originalLine.Replace("\t", "    ").StartsWith(lineStartMatch))
                 {
                     var existingPropName = line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[indexOfWordInLine];
                     if (string.Compare(existingPropName, valueToInsert, StringComparison.Ordinal) > 0)

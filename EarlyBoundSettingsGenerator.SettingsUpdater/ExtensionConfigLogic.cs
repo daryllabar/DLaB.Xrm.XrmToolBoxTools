@@ -66,9 +66,9 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
 
         private void AddToExtensionConfigWriteDLaBModelBuilderProperties(string[] file)
         {
-            var insertIndex = GetInsertIndexOfAlphabeticallySortedProperty(file, "public void WriteDLaBModelBuilderProperties", "        }", Property.Name, "            ", 1);
+            var insertIndex = GetInsertIndexOfAlphabeticallySortedProperty(file, "public void WriteDLaBModelBuilderProperties", "public ", Property.Name, "            ", 1);
             file[insertIndex - 1] += $@"
-            writer.AddProperty(nameof({Property.Name}), {Property.Name})";
+            writer.AddProperty(nameof({Property.Name}), {Property.Name});";
         }
     }
 }
