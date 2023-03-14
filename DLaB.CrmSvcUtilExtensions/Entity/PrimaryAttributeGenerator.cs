@@ -4,7 +4,7 @@ using System;
 using System.CodeDom;
 using System.Linq;
 
-namespace DLaB.CrmSvcUtilExtensions.Entity
+namespace DLaB.ModelBuilderExtensions.Entity
 {
     public class PrimaryAttributeGenerator : ICustomizeCodeDomService
     {

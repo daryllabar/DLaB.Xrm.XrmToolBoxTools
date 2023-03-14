@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DLaB.CrmSvcUtilExtensions
+namespace DLaB.ModelBuilderExtensions
 {
     public class WhitelistBlacklistLogic
     {

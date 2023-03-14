@@ -1,11 +1,11 @@
 ﻿using System.Runtime.Serialization;
-using DLaB.CrmSvcUtilExtensions.Serialization;
+using DLaB.ModelBuilderExtensions.Serialization;
 using Microsoft.Crm.Services.Utility;
 using Microsoft.Xrm.Sdk.Metadata;
 
-namespace DLaB.CrmSvcUtilExtensions
+namespace DLaB.ModelBuilderExtensions
 {
-    [DataContract(Namespace = "http://DLaB.CrmSvcUtilExtensions")]
+    [DataContract(Namespace = "http://DLaB.ModelBuilderExtensions")]
     public class Metadata : IOrganizationMetadata, IExtensibleDataObject
     {
         [DataMember]

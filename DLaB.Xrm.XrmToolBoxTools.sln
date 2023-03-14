@@ -18,7 +18,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.EarlyBoundGenerator", 
 		{7827FCAF-6AA2-46B9-BB88-0D3CA9DD4D32} = {7827FCAF-6AA2-46B9-BB88-0D3CA9DD4D32}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.CrmSvcUtilExtensions", "DLaB.CrmSvcUtilExtensions\DLaB.CrmSvcUtilExtensions.csproj", "{7827FCAF-6AA2-46B9-BB88-0D3CA9DD4D32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.ModelBuilderExtensions", "DLaB.CrmSvcUtilExtensions\DLaB.ModelBuilderExtensions.csproj", "{7827FCAF-6AA2-46B9-BB88-0D3CA9DD4D32}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.AttributeManager", "DLaB.AttributeManager\DLaB.AttributeManager.csproj", "{FCB8A4E4-622B-413A-A531-B612E5F1436C}"
 EndProject
@@ -31,7 +31,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{4209BA61
 		DLaB.VSSolutionAccelerator\VsSolutionAccelerator.nuspec = DLaB.VSSolutionAccelerator\VsSolutionAccelerator.nuspec
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.CrmSvcUtilExtensions.Tests", "DLaB.CrmSvcUtilExtensions.Tests\DLaB.CrmSvcUtilExtensions.Tests.csproj", "{9E7917B8-42E9-44CA-993A-15D7E60363EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.ModelBuilderExtensions.Tests", "DLaB.CrmSvcUtilExtensions.Tests\DLaB.ModelBuilderExtensions.Tests.csproj", "{9E7917B8-42E9-44CA-993A-15D7E60363EF}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DLaB.Xrm.Entities", "DLaB.Xrm.Entities\DLaB.Xrm.Entities.shproj", "{555B6BB7-C5B3-426A-9E23-A9C09AA7715C}"
 EndProject

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Source.DLaB.Common;
 
-namespace DLaB.CrmSvcUtilExtensions
+namespace DLaB.ModelBuilderExtensions
 {
     public class ConfigHelper
     {

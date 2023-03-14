@@ -142,10 +142,10 @@ namespace DLaB.EarlyBoundGenerator
             var parameters = new ModelBuilderInvokeParameters
             {
                 SettingsTemplateFile = EarlyBoundGeneratorConfig.SettingsTemplatePath,
-                //CodeCustomizationService = "DLaB.CrmSvcUtilExtensions.Entity.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions",
-                //CodeGenerationService = "DLaB.CrmSvcUtilExtensions.Entity.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions",
-                //CodeWriterFilterService = "DLaB.CrmSvcUtilExtensions.Entity.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions",
-                //MetadataProviderService = "DLaB.CrmSvcUtilExtensions.Entity.MetadataProviderService,DLaB.CrmSvcUtilExtensions",
+                //CodeCustomizationService = "DLaB.ModelBuilderExtensions.Entity.CustomizeCodeDomService,DLaB.ModelBuilderExtensions",
+                //CodeGenerationService = "DLaB.ModelBuilderExtensions.Entity.CustomCodeGenerationService,DLaB.ModelBuilderExtensions",
+                //CodeWriterFilterService = "DLaB.ModelBuilderExtensions.Entity.CodeWriterFilterService,DLaB.ModelBuilderExtensions",
+                //MetadataProviderService = "DLaB.ModelBuilderExtensions.Entity.MetadataProviderService,DLaB.ModelBuilderExtensions",
                 SplitFilesByObject = EarlyBoundGeneratorConfig.ExtensionConfig.GenerateSeparateFiles
             };
 

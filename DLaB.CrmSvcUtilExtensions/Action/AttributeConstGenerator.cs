@@ -1,7 +1,7 @@
 ﻿using System.CodeDom;
 using System.Collections.Generic;
 
-namespace DLaB.CrmSvcUtilExtensions.Action
+namespace DLaB.ModelBuilderExtensions.Action
 {
     public class AttributeConstGenerator : AttributeConstGeneratorBase
     {

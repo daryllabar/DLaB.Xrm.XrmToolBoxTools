@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Documents;
 using Microsoft.Crm.Services.Utility;
 
-namespace DLaB.CrmSvcUtilExtensions.Entity
+namespace DLaB.ModelBuilderExtensions.Entity
 {
     public class CustomCodeGenerationService : BaseCustomCodeGenerationService
     {

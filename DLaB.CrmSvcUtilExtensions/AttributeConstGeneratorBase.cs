@@ -7,7 +7,7 @@ using Microsoft.Crm.Services.Utility;
 using System.Reflection;
 using System.IO;
 
-namespace DLaB.CrmSvcUtilExtensions
+namespace DLaB.ModelBuilderExtensions
 {
     public abstract class AttributeConstGeneratorBase : ICustomizeCodeDomService
     {

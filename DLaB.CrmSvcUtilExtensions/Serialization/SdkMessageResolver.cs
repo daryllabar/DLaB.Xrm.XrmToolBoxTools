@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System.Xml;
 using Microsoft.Crm.Services.Utility;
 
-namespace DLaB.CrmSvcUtilExtensions.Serialization
+namespace DLaB.ModelBuilderExtensions.Serialization
 {
     internal class SdkMessageResolver : DataContractResolver
     {

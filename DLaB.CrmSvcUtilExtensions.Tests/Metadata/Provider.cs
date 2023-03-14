@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
-using DLaB.CrmSvcUtilExtensions.Entity;
+using DLaB.ModelBuilderExtensions.Entity;
 using Microsoft.Crm.Services.Utility;
 using System.IO;
 using System.IO.Compression;
 
-namespace DLaB.CrmSvcUtilExtensions.Tests.Metadata
+namespace DLaB.ModelBuilderExtensions.Tests.Metadata
 {
     public class Provider : IMetadataProviderService
     {

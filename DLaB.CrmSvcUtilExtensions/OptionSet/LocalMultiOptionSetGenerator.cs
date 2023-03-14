@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 using Microsoft.Crm.Services.Utility;
 using Microsoft.Xrm.Sdk.Metadata;
 
-namespace DLaB.CrmSvcUtilExtensions.OptionSet
+namespace DLaB.ModelBuilderExtensions.OptionSet
 {
     /// <summary>
     /// For some reason, CrmSvcUtil doesn't generate enums for Local MultiSelectOptionSets

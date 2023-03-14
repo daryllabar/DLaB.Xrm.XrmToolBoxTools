@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Crm.Services.Utility;
 
-namespace DLaB.CrmSvcUtilExtensions.Serialization
+namespace DLaB.ModelBuilderExtensions.Serialization
 {
-    [DataContract(Namespace = "http://DLaB.CrmSvcUtilExtensions")]
+    [DataContract(Namespace = "http://DLaB.ModelBuilderExtensions")]
     public class MetadataMessages
     {
         [DataMember]

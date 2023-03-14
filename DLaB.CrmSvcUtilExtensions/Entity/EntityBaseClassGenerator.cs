@@ -6,7 +6,7 @@ using Microsoft.Crm.Services.Utility;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace DLaB.CrmSvcUtilExtensions.Entity
+namespace DLaB.ModelBuilderExtensions.Entity
 {
     internal class EntityBaseClassGenerator : ICustomizeCodeDomService
     {

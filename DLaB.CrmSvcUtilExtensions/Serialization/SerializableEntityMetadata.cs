@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 
-namespace DLaB.CrmSvcUtilExtensions.Serialization
+namespace DLaB.ModelBuilderExtensions.Serialization
 {
     [MetadataName(LogicalCollectionName = "EntityDefinitions", LogicalName = "EntityMetadata")]
     [DataContract(Name = "EntityMetadata", Namespace = "http://schemas.microsoft.com/xrm/2011/Metadata")]

@@ -2,7 +2,7 @@
 using System;
 using System.CodeDom;
 
-namespace DLaB.CrmSvcUtilExtensions.Entity
+namespace DLaB.ModelBuilderExtensions.Entity
 {
     class AnonymousTypeConstructorGenerator : ICustomizeCodeDomService
     {

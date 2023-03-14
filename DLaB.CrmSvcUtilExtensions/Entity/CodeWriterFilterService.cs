@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using Source.DLaB.Common;
 
-namespace DLaB.CrmSvcUtilExtensions.Entity
+namespace DLaB.ModelBuilderExtensions.Entity
 {
     public class CodeWriterFilterService  : ICodeWriterFilterService
     {

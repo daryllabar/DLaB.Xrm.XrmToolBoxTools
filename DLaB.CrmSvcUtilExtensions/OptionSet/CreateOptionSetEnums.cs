@@ -29,7 +29,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xrm.Sdk.Metadata;
 
-namespace DLaB.CrmSvcUtilExtensions.OptionSet
+namespace DLaB.ModelBuilderExtensions.OptionSet
 {
     /// <summary>
     /// Create an implementation of ICustomizeCodeDomService if you want to manipulate the

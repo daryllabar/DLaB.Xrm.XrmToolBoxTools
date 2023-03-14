@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using CodeDomMemberAttributes = System.CodeDom.MemberAttributes;
 
-namespace DLaB.CrmSvcUtilExtensions.Entity
+namespace DLaB.ModelBuilderExtensions.Entity
 {
     public class OptionSetMetadataAttributeGenerator : ICustomizeCodeDomService
     {

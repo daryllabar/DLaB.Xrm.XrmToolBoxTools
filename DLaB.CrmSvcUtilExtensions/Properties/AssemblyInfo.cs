@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DLaB.CrmSvcUtilExtensions")]
+[assembly: AssemblyTitle("DLaB.ModelBuilderExtensions")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("D La B")]
-[assembly: AssemblyProduct("DLaB.CrmSvcUtilExtensions")]
+[assembly: AssemblyProduct("DLaB.ModelBuilderExtensions")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

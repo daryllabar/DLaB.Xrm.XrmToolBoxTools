@@ -5,12 +5,12 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using DLaB.CrmSvcUtilExtensions.Entity;
+using DLaB.ModelBuilderExtensions.Entity;
 using Microsoft.Crm.Services.Utility;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 
-namespace DLaB.CrmSvcUtilExtensions
+namespace DLaB.ModelBuilderExtensions
 {
     public static class Extensions
     {
@@ -214,9 +214,7 @@ namespace DLaB.CrmSvcUtilExtensions
         public static List<OptionMetadata> GetOptions(this OptionSetMetadataBase metadata)
         {
             List<OptionMetadata> options;
-            var booleanOptionSet = metadata as BooleanOptionSetMetadata;
-            var nonBooleanOptionSet = metadata as OptionSetMetadata;
-            if (booleanOptionSet != null)
+            if (metadata is BooleanOptionSetMetadata booleanOptionSet)
             {
                 options = new List<OptionMetadata>
                 {
@@ -224,7 +222,7 @@ namespace DLaB.CrmSvcUtilExtensions
                     booleanOptionSet.TrueOption
                 };
             }
-            else if (nonBooleanOptionSet != null)
+            else if (metadata is OptionSetMetadata nonBooleanOptionSet)
             {
                 options = nonBooleanOptionSet.Options.ToList();
             }

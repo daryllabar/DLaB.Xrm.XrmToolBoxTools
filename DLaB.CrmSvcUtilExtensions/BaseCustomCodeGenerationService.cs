@@ -9,7 +9,7 @@ using Source.DLaB.Common;
 using Source.DLaB.Common.VersionControl;
 using Parallel = System.Threading.Tasks.Parallel;
 
-namespace DLaB.CrmSvcUtilExtensions
+namespace DLaB.ModelBuilderExtensions
 {
     public abstract class BaseCustomCodeGenerationService : ICodeGenerationService
     {

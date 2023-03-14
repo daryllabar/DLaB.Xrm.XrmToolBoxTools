@@ -28,7 +28,7 @@
 //using System.Linq;
 
 
-//namespace DLaB.CrmSvcUtilExtensions.OptionSet
+//namespace DLaB.ModelBuilderExtensions.OptionSet
 //{
 //    /// <summary>
 //    /// Specifies that OptionSets should be created.  Works in conjunction with CreateOptionSetEnums, since it also specifies other

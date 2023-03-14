@@ -5,7 +5,7 @@ using System.IO;
 using Microsoft.Crm.Services.Utility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DLaB.CrmSvcUtilExtensions.Tests
+namespace DLaB.ModelBuilderExtensions.Tests
 {
     [TestClass]
     public class CrmSvcUtilTests
@@ -61,11 +61,11 @@ namespace DLaB.CrmSvcUtilExtensions.Tests
                     //    { "namespace", @"Test.Xrm.Entities"},
                     //    { "out", fileName },
                     //    {"servicecontextname", "CrmContext"},
-                    //    {"codecustomization", "DLaB.CrmSvcUtilExtensions.Entity.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions"},
-                    //    {"codegenerationservice", "DLaB.CrmSvcUtilExtensions.Entity.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions" },
-                    //    {"codewriterfilter", "DLaB.CrmSvcUtilExtensions.Entity.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions"},
-                    //    {"metadataproviderservice:", "DLaB.CrmSvcUtilExtensions.Entity.MetadataProviderService,DLaB.CrmSvcUtilExtensions"},
-                    //    {"namingservice", "DLaB.CrmSvcUtilExtensions.NamingService,DLaB.CrmSvcUtilExtensions"},
+                    //    {"codecustomization", "DLaB.ModelBuilderExtensions.Entity.CustomizeCodeDomService,DLaB.ModelBuilderExtensions"},
+                    //    {"codegenerationservice", "DLaB.ModelBuilderExtensions.Entity.CustomCodeGenerationService,DLaB.ModelBuilderExtensions" },
+                    //    {"codewriterfilter", "DLaB.ModelBuilderExtensions.Entity.CodeWriterFilterService,DLaB.ModelBuilderExtensions"},
+                    //    {"metadataproviderservice:", "DLaB.ModelBuilderExtensions.Entity.MetadataProviderService,DLaB.ModelBuilderExtensions"},
+                    //    {"namingservice", "DLaB.ModelBuilderExtensions.NamingService,DLaB.ModelBuilderExtensions"},
                     //    {"username", "dlabar@allegient.com"},
                     //    {"password", "*********"}
                     //}));
@@ -75,7 +75,7 @@ namespace DLaB.CrmSvcUtilExtensions.Tests
                     factory.Add(filter);
                     factory.Add<INamingService>(new NamingService(factory.GetService<INamingService>()));
 
-                    factory.GetService<ICodeGenerationService>().Write(factory.GetMetadata(), "CS", fileName, "DLaB.CrmSvcUtilExtensions.UnitTest", factory.ServiceProvider);
+                    factory.GetService<ICodeGenerationService>().Write(factory.GetMetadata(), "CS", fileName, "DLaB.ModelBuilderExtensions.UnitTest", factory.ServiceProvider);
                 }
                 catch (Exception ex)
                 {

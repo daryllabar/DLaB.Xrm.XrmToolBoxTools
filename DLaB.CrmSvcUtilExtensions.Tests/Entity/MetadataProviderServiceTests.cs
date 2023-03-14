@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Crm.Services.Utility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DLaB.CrmSvcUtilExtensions.Tests.Entity
+namespace DLaB.ModelBuilderExtensions.Tests.Entity
 {
     [TestClass]
     public class MetadataProviderServiceTests

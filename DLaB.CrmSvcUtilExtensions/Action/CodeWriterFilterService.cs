@@ -2,7 +2,7 @@
 using Microsoft.Xrm.Sdk.Metadata;
 using System;
 
-namespace DLaB.CrmSvcUtilExtensions.Action
+namespace DLaB.ModelBuilderExtensions.Action
 {
     public class CodeWriterFilterService  : ICodeWriterFilterService
     {

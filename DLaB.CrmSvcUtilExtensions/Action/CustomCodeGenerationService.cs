@@ -4,7 +4,7 @@ using System.IO;
 using Microsoft.Crm.Services.Utility;
 using System.Linq;
 
-namespace DLaB.CrmSvcUtilExtensions.Action
+namespace DLaB.ModelBuilderExtensions.Action
 {
     public class CustomCodeGenerationService : BaseCustomCodeGenerationService
     {

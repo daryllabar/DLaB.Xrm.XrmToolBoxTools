@@ -8,7 +8,6 @@ using DLaB.EarlyBoundGenerator.Settings;
 using DLaB.Log;
 using DLaB.XrmToolBoxCommon;
 using DLaB.XrmToolBoxCommon.AppInsightsHelper;
-using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Client;
 using Microsoft.Xrm.Sdk.Metadata;
@@ -277,7 +276,7 @@ namespace DLaB.EarlyBoundGenerator
             Settings.RootPath = Path.GetDirectoryName(Path.GetFullPath(TxtSettingsPath.Text));
             if (SettingsMap.UseDeprecatedOptionSetNaming)
             {
-                Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, @"DLaB.CrmSvcUtilExtensions.OptionSet.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions");
+                Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, @"DLaB.ModelBuilderExtensions.OptionSet.CodeWriterFilterService,DLaB.ModelBuilderExtensions");
                 Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService, string.Empty);
             }
             else

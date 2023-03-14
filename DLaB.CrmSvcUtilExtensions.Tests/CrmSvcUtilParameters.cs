@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DLaB.CrmSvcUtilExtensions.Tests
+namespace DLaB.ModelBuilderExtensions.Tests
 {
     internal class CrmSvcUtilParameters
     {
@@ -43,11 +43,11 @@ namespace DLaB.CrmSvcUtilExtensions.Tests
                 Namespace = "EarlyBound.Xrm.Entities",
                 OutputFile = outputFile,
                 ServiceContextName = "CrmContext", 
-                CodeCustomizationService = "DLaB.CrmSvcUtilExtensions.Entity.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions",
-                CodeGenerationService = "DLaB.CrmSvcUtilExtensions.Entity.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions",
-                CodeWriterFilterService = "DLaB.CrmSvcUtilExtensions.Entity.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions",
-                MetadataProviderService = "DLaB.CrmSvcUtilExtensions.Entity.MetadataProviderService,DLaB.CrmSvcUtilExtensions",
-                NamingService = "DLaB.CrmSvcUtilExtensions.NamingService,DLaB.CrmSvcUtilExtensions",
+                CodeCustomizationService = "DLaB.ModelBuilderExtensions.Entity.CustomizeCodeDomService,DLaB.ModelBuilderExtensions",
+                CodeGenerationService = "DLaB.ModelBuilderExtensions.Entity.CustomCodeGenerationService,DLaB.ModelBuilderExtensions",
+                CodeWriterFilterService = "DLaB.ModelBuilderExtensions.Entity.CodeWriterFilterService,DLaB.ModelBuilderExtensions",
+                MetadataProviderService = "DLaB.ModelBuilderExtensions.Entity.MetadataProviderService,DLaB.ModelBuilderExtensions",
+                NamingService = "DLaB.ModelBuilderExtensions.NamingService,DLaB.ModelBuilderExtensions",
                 UserName = "MyUser@MyTest.microsoftonline.com",
                 Password = "***********"
             };

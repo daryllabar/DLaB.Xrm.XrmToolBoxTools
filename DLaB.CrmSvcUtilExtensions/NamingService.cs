@@ -6,7 +6,7 @@ using Microsoft.Crm.Services.Utility;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 
-namespace DLaB.CrmSvcUtilExtensions
+namespace DLaB.ModelBuilderExtensions
 {
     using OptionSet.Transliteration;
     
@@ -50,7 +50,7 @@ namespace DLaB.CrmSvcUtilExtensions
             var metadata = BaseCustomCodeGenerationService.Metadata;
             if (metadata == null)
             {
-                throw new Exception("DLaB.CrmSvcUtilExtensions.BaseCustomCodeGenerationService hasn't been called!");
+                throw new Exception("DLaB.ModelBuilderExtensions.BaseCustomCodeGenerationService hasn't been called!");
             }
             return new HashSet<string>(metadata.Entities.Select(e => GetNameForEntity(e, BaseCustomCodeGenerationService.ServiceProvider)).ToArray());
         }

@@ -23,7 +23,7 @@ using Microsoft.Xrm.Sdk.Metadata;
 using System.Linq;
 using Source.DLaB.Common;
 
-namespace DLaB.CrmSvcUtilExtensions.OptionSet
+namespace DLaB.ModelBuilderExtensions.OptionSet
 {
     /// <summary>
     /// Specifies that OptionSets should be created.  Works in conjunction with CreateOptionSetEnums, since it also specifies other
@@ -65,7 +65,7 @@ namespace DLaB.CrmSvcUtilExtensions.OptionSet
             GeneratedOptionSets = new HashSet<string>();
         }
 
-        private static readonly string OptionSetEntityFilter = Config.GetAppSettingOrDefault("OptionSetEntityFilter", "DLaB.CrmSvcUtilExtensions.Entity.CodeWriterFilterService");
+        private static readonly string OptionSetEntityFilter = Config.GetAppSettingOrDefault("OptionSetEntityFilter", "DLaB.ModelBuilderExtensions.Entity.CodeWriterFilterService");
         private static readonly bool GenerateOnlyReferencedOptionSets = Config.GetAppSettingOrDefault("GenerateOnlyReferencedOptionSets", false);
 
         /// <summary>

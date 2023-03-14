@@ -164,9 +164,9 @@
     <Folder Include="bin\Release\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DLaB.CrmSvcUtilExtensions\DLaB.CrmSvcUtilExtensions.csproj">
-      <Project>{7827FCAF-6AA2-46B9-BB88-0D3CA9DD4D32}</Project>
-      <Name>DLaB.CrmSvcUtilExtensions</Name>
+    <ProjectReference Include="..\DLaB.CrmSvcUtilExtensions\DLaB.ModelBuilderExtensions.csproj">
+      <Project>{7827fcaf-6aa2-46b9-bb88-0d3ca9dd4d32}</Project>
+      <Name>DLaB.ModelBuilderExtensions</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

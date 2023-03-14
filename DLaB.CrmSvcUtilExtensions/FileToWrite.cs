@@ -1,4 +1,4 @@
-﻿namespace DLaB.CrmSvcUtilExtensions
+﻿namespace DLaB.ModelBuilderExtensions
 {
     public class FileToWrite
     {

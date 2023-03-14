@@ -1,6 +1,6 @@
 ﻿using System.CodeDom;
 
-namespace DLaB.CrmSvcUtilExtensions.Entity
+namespace DLaB.ModelBuilderExtensions.Entity
 {
     public class RelationshipConstGenerator : AttributeConstGenerator
     {

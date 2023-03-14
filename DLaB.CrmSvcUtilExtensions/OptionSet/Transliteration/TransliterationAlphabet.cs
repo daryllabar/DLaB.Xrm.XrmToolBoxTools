@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DLaB.CrmSvcUtilExtensions.OptionSet.Transliteration
+namespace DLaB.ModelBuilderExtensions.OptionSet.Transliteration
 {
     public class TransliterationAlphabet
     {

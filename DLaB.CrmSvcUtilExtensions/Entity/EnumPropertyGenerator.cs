@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace DLaB.CrmSvcUtilExtensions.Entity
+namespace DLaB.ModelBuilderExtensions.Entity
 {
     class EnumPropertyGenerator : ICustomizeCodeDomService
     {

@@ -4,7 +4,7 @@ using System.Reflection;
 using Microsoft.Crm.Services.Utility;
 using Microsoft.Xrm.Sdk.Metadata;
 
-namespace DLaB.CrmSvcUtilExtensions.Entity
+namespace DLaB.ModelBuilderExtensions.Entity
 {
     public class MetadataProviderService: BaseMetadataProviderService
     {

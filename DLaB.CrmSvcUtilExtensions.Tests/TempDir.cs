@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 // http://geekswithblogs.net/akraus1/archive/2013/12/28/154992.aspx
 
-namespace DLaB.CrmSvcUtilExtensions.Tests
+namespace DLaB.ModelBuilderExtensions.Tests
 {
     interface ITempDir : IDisposable
     {

@@ -9,7 +9,7 @@ using System.Threading;
 using System.Xml;
 using Microsoft.Crm.Services.Utility;
 
-namespace DLaB.CrmSvcUtilExtensions
+namespace DLaB.ModelBuilderExtensions
 {
     public class BaseMetadataProviderService: IMetadataProviderService
     {

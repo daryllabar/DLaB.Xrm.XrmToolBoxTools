@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DLaB.CrmSvcUtilExtensions.Tests
+namespace DLaB.ModelBuilderExtensions.Tests
 {
     [TestClass]
     public class WhitelistBlacklistLogicTests

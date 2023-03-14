@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Microsoft.Crm.Services.Utility;
 
-namespace DLaB.CrmSvcUtilExtensions.Tests
+namespace DLaB.ModelBuilderExtensions.Tests
 {
     /// <summary>
     /// Class needed to get default services from CrmSvcUtil.  Using reflection, this depends on the following things being unchanged:<para/>

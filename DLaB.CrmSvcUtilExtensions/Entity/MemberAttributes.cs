@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.Crm.Services.Utility;
 
-namespace DLaB.CrmSvcUtilExtensions.Entity
+namespace DLaB.ModelBuilderExtensions.Entity
 {
     /// <summary>
     /// Adds the System.Diagnostics.AddDebuggerNonUserCode Attribute

@@ -6,7 +6,7 @@ using Microsoft.Crm.Services.Utility;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 
-namespace DLaB.CrmSvcUtilExtensions.Entity
+namespace DLaB.ModelBuilderExtensions.Entity
 {
     public class MultiOptionSetAttributeUpdater : ICustomizeCodeDomService
     {

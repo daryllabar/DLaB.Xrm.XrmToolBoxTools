@@ -96,14 +96,14 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [Description("Settings that will get written to the CrmSrvUtil.exe.config.")]
         public ExtensionConfig ExtensionConfig { get; set; }
         /// <summary>
-        /// These are the required commandline arguments that are passed to the CrmSrvUtil to correctly wire up the extensions in DLaB.CrmSvcUtilExtensions.
+        /// These are the required commandline arguments that are passed to the CrmSrvUtil to correctly wire up the extensions in DLaB.ModelBuilderExtensions.
         /// </summary>
         /// <value>
         /// The extension arguments.
         /// </value>
         [Category("CrmSvcUtil")]
         [DisplayName("Extension Arguments")]
-        [Description("These are the required commandline arguments that are passed to the CrmSrvUtil to correctly wire up the extensions in DLaB.CrmSvcUtilExtensions.")]
+        [Description("These are the required commandline arguments that are passed to the CrmSrvUtil to correctly wire up the extensions in DLaB.ModelBuilderExtensions.")]
         public List<Argument> ExtensionArguments { get; set; }
         /// <summary>
         /// These are the commandline arguments that are passed to the CrmSrvUtil that can have varying values, depending on the user's preference.
@@ -518,6 +518,20 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 MaskPassword = true,
                 ExtensionArguments = new List<Argument>(new[] {
                     // Actions
+                    //new Argument(CreationType.Actions, CrmSrvUtilService.CodeCustomization, "DLaB.ModelBuilderExtensions.Action.CustomizeCodeDomService,DLaB.ModelBuilderExtensions"),
+                    //new Argument(CreationType.Actions, CrmSrvUtilService.CodeGenerationService, "DLaB.ModelBuilderExtensions.Action.CustomCodeGenerationService,DLaB.ModelBuilderExtensions"),
+                    //new Argument(CreationType.Actions, CrmSrvUtilService.CodeWriterFilter, "DLaB.ModelBuilderExtensions.Action.CodeWriterFilterService,DLaB.ModelBuilderExtensions"),
+                    //new Argument(CreationType.Actions, CrmSrvUtilService.MetadataProviderService, "DLaB.ModelBuilderExtensions.BaseMetadataProviderService,DLaB.ModelBuilderExtensions"),
+                    //new Argument(CreationType.Entities, CrmSrvUtilService.CodeCustomization, "DLaB.ModelBuilderExtensions.Entity.CustomizeCodeDomService,DLaB.ModelBuilderExtensions"),
+                    //new Argument(CreationType.Entities, CrmSrvUtilService.CodeGenerationService, "DLaB.ModelBuilderExtensions.Entity.CustomCodeGenerationService,DLaB.ModelBuilderExtensions"),
+                    //new Argument(CreationType.Entities, CrmSrvUtilService.CodeWriterFilter, "DLaB.ModelBuilderExtensions.Entity.CodeWriterFilterService,DLaB.ModelBuilderExtensions"),
+                    //new Argument(CreationType.Entities, CrmSrvUtilService.NamingService, "DLaB.ModelBuilderExtensions.NamingService,DLaB.ModelBuilderExtensions"),
+                    //new Argument(CreationType.Entities, CrmSrvUtilService.MetadataProviderService, "DLaB.ModelBuilderExtensions.Entity.MetadataProviderService,DLaB.ModelBuilderExtensions"),
+                    //new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeCustomization, "DLaB.ModelBuilderExtensions.OptionSet.CustomizeCodeDomService,DLaB.ModelBuilderExtensions"),
+                    //new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeGenerationService, "DLaB.ModelBuilderExtensions.OptionSet.CustomCodeGenerationService,DLaB.ModelBuilderExtensions"),
+                    //new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, "DLaB.ModelBuilderExtensions.OptionSet.CodeWriterFilterService,DLaB.ModelBuilderExtensions"),
+                    //new Argument(CreationType.OptionSets, CrmSrvUtilService.NamingService, "DLaB.ModelBuilderExtensions.NamingService,DLaB.ModelBuilderExtensions"),
+                    //new Argument(CreationType.OptionSets, CrmSrvUtilService.MetadataProviderService, "DLaB.ModelBuilderExtensions.BaseMetadataProviderService,DLaB.ModelBuilderExtensions")
                     new Argument(CreationType.Actions, CrmSrvUtilService.CodeCustomization, "DLaB.CrmSvcUtilExtensions.Action.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.Actions, CrmSrvUtilService.CodeGenerationService, "DLaB.CrmSvcUtilExtensions.Action.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.Actions, CrmSrvUtilService.CodeWriterFilter, "DLaB.CrmSvcUtilExtensions.Action.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions"),
@@ -531,7 +545,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeGenerationService, "DLaB.CrmSvcUtilExtensions.OptionSet.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, "DLaB.CrmSvcUtilExtensions.OptionSet.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions"),
                     new Argument(CreationType.OptionSets, CrmSrvUtilService.NamingService, "DLaB.CrmSvcUtilExtensions.NamingService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.OptionSets, CrmSrvUtilService.MetadataProviderService, "DLaB.CrmSvcUtilExtensions.BaseMetadataProviderService,DLaB.CrmSvcUtilExtensions")
+                    //new Argument(CreationType.OptionSets, CrmSrvUtilService.MetadataProviderService, "DLaB.ModelBuilderExtensions.BaseMetadataProviderService,DLaB.ModelBuilderExtensions")
                 }),
                 ExtensionConfig = ExtensionConfig.GetDefault(),
                 UserArguments = new List<Argument>(new[] {

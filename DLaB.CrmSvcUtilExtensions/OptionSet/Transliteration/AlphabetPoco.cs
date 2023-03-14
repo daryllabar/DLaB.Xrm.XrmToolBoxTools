@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 // ReSharper disable InconsistentNaming
 
-namespace DLaB.CrmSvcUtilExtensions.OptionSet.Transliteration
+namespace DLaB.ModelBuilderExtensions.OptionSet.Transliteration
 {
     [DataContract]
     public class AlphabetPoco

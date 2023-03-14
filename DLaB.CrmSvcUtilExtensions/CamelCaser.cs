@@ -6,7 +6,7 @@ using System.Linq;
 using Microsoft.Crm.Sdk.Messages;
 using Source.DLaB.Common;
 
-namespace DLaB.CrmSvcUtilExtensions
+namespace DLaB.ModelBuilderExtensions
 {
     public static class CamelCaser
     {

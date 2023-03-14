@@ -4,7 +4,7 @@ using System.Linq;
 using Microsoft.Crm.Services.Utility;
 using Microsoft.Xrm.Sdk.Metadata;
 
-namespace DLaB.CrmSvcUtilExtensions.OptionSet
+namespace DLaB.ModelBuilderExtensions.OptionSet
 {
     public static class Extensions
     {

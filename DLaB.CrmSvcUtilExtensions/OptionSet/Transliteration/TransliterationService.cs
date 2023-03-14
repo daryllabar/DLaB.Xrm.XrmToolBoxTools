@@ -6,7 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization.Json;
 using Microsoft.Xrm.Sdk;
 
-namespace DLaB.CrmSvcUtilExtensions.OptionSet.Transliteration
+namespace DLaB.ModelBuilderExtensions.OptionSet.Transliteration
 {
     public static class TransliterationService
     {
