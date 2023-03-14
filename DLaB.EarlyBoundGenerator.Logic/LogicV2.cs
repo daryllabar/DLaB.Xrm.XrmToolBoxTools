@@ -21,7 +21,7 @@ namespace DLaB.EarlyBoundGenerator
         private readonly object _speakToken = new object();
         private EarlyBoundGeneratorConfig EarlyBoundGeneratorConfig { get; }
         private bool _useInteractiveMode;
-        private HashSet<string> ModelBuilderSwitches = new HashSet<string>(new[]
+        private static readonly HashSet<string> ModelBuilderSwitches = new HashSet<string>(new[]
         {
             "emitfieldsclasses",
             "generateActions",
@@ -37,7 +37,7 @@ namespace DLaB.EarlyBoundGenerator
             "writesettingsTemplateFile"
         });
 
-        private HashSet<string> ModelBuilderParametersToSkip = new HashSet<string>(new[]
+        private static readonly HashSet<string> ModelBuilderParametersToSkip = new HashSet<string>(new[]
         {
             // Parameters that are in the template file
             "entitytypesfolder",
@@ -68,20 +68,17 @@ namespace DLaB.EarlyBoundGenerator
 
         public void Create(IOrganizationService service)
         {
-            var parameters = new ModelBuilderInvokeParameters
+            var currentOut = Console.Out;
+            var logger = new LoggerTextWriter();
+            Console.SetOut(logger);
+            var runner = new ProcessModelInvoker(GetParameters(GetParameters()));
+            var result = runner.Invoke(service);
+            logger.FlushLogger();
+            Console.SetOut(currentOut);
+            if (result != 0)
             {
-                OutputFile = EarlyBoundGeneratorConfig.CrmSvcUtilRelativeRootPath,
-                SettingsTemplateFile = EarlyBoundGeneratorConfig.SettingsTemplatePath
-                //CodeCustomizationService = "DLaB.CrmSvcUtilExtensions.Entity.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions",
-                //CodeGenerationService = "DLaB.CrmSvcUtilExtensions.Entity.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions",
-                //CodeWriterFilterService = "DLaB.CrmSvcUtilExtensions.Entity.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions",
-                //NamingService = "DLaB.CrmSvcUtilExtensions.NamingService,DLaB.CrmSvcUtilExtensions",
-                //MetadataProviderService = "DLaB.CrmSvcUtilExtensions.Entity.MetadataProviderService,DLaB.CrmSvcUtilExtensions",
-                //ConnectionString= ""
-            };
-
-            var runner = new ProcessModelInvoker(GetParameters(parameters));
-            runner.Invoke(service);
+                Logger.Show("An error occurred!", " An error when calling ProcessModelInvoker.Invoke.  Result: "  + result);
+            }
 
             //var filePath = Path.Combine(EarlyBoundGeneratorConfig.RootPath, EarlyBoundGeneratorConfig.EntityOutPath,
             //    EarlyBoundGeneratorConfig.ServiceContextName + ".cs");
@@ -138,6 +135,30 @@ namespace DLaB.EarlyBoundGenerator
             //}
             //
             //HandleResult(filePath, date, creationType, consoleOutput.ToString(), EarlyBoundGeneratorConfig.AudibleCompletionNotification);
+        }
+
+        private ModelBuilderInvokeParameters GetParameters()
+        {
+            var parameters = new ModelBuilderInvokeParameters
+            {
+                SettingsTemplateFile = EarlyBoundGeneratorConfig.SettingsTemplatePath,
+                //CodeCustomizationService = "DLaB.CrmSvcUtilExtensions.Entity.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions",
+                //CodeGenerationService = "DLaB.CrmSvcUtilExtensions.Entity.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions",
+                //CodeWriterFilterService = "DLaB.CrmSvcUtilExtensions.Entity.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions",
+                //MetadataProviderService = "DLaB.CrmSvcUtilExtensions.Entity.MetadataProviderService,DLaB.CrmSvcUtilExtensions",
+                SplitFilesByObject = EarlyBoundGeneratorConfig.ExtensionConfig.GenerateSeparateFiles
+            };
+
+            if (parameters.SplitFilesByObject)
+            {
+                parameters.OutDirectory = EarlyBoundGeneratorConfig.RootPath;
+            }
+            else
+            {
+                parameters.OutputFile = Path.Combine(EarlyBoundGeneratorConfig.RootPath, EarlyBoundGeneratorConfig.ServiceContextName + ".cs");
+            }
+
+            return parameters;
         }
 
         public string[] GetParameters(ModelBuilderInvokeParameters parameters)

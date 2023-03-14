@@ -31,13 +31,15 @@ namespace DLaB.EarlyBoundGenerator.Api.Tests
             var modelParameters = new ModelBuilderInvokeParameters
             {
                 OutputFile = "TestOutputFilePath",
-                SettingsTemplateFile = "SettingsTemplateFilePath"
+                SettingsTemplateFile = "SettingsTemplateFilePath",
+                SplitFilesByObject = true
             };
             var parameters = _sut.GetParameters(modelParameters);
             var expected = new []
             {
                 "/out:TestOutputFilePath",
-                "/settingsTemplateFile:SettingsTemplateFilePath"
+                "/settingsTemplateFile:SettingsTemplateFilePath",
+                "/splitfiles"
             };
             for (var i = 0; i < parameters.Length; i++)
             {

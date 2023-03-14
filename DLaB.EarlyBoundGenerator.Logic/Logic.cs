@@ -303,6 +303,7 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "GenerateINotifyPattern", extensions.GenerateINotifyPattern.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateOnlyReferencedOptionSets", extensions.GenerateOnlyReferencedOptionSets.ToString()) |
                     UpdateConfigAppSetting(file, "GenerateOptionSetMetadataAttribute", extensions.GenerateOptionSetMetadataAttribute.ToString()) |
+                    UpdateConfigAppSetting(file, "GenerateSeparateFiles", extensions.GenerateSeparateFiles.ToString()) |
                     UpdateConfigAppSetting(file, "GroupLocalOptionSetsByEntity", extensions.GroupLocalOptionSetsByEntity.ToString()) |
                     UpdateConfigAppSetting(file, "InvalidCSharpNamePrefix", extensions.InvalidCSharpNamePrefix) |
                     UpdateConfigAppSetting(file, "MakeAllFieldsEditable", extensions.MakeAllFieldsEditable.ToString()) |

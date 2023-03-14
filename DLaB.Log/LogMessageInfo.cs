@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DLaB.Log
+﻿namespace DLaB.Log
 {
     public class LogMessageInfo
     {

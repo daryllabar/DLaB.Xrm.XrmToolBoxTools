@@ -2,16 +2,19 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator.Api</id>
-    <version>1.2022.9.22</version>
+    <version>2.2023.3.12</version>
     <title>Early Bound Generator Api</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
     <license type="expression">MIT</license>
-    <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <icon>images\DLaB_Dynamics_Logo_Square_32x32.png</icon>
+    <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses CrmSvcUtil from the SDK.</description>
-    <releaseNotes>V1.2022.9.22
+    <releaseNotes>V2.2023.3.12
+Update to use new PAC ModelBuilder #352
+
+V1.2022.9.22
 Fix for Object Reference Not Set to Instance of Object after using clientid/secret connection? #333
 
 V1.2022.5.3
@@ -32,7 +35,7 @@ Add N:N Relationships to Fields Constants #258
 Fix for Global Option Sets with the same name as the entity causes conflicts #300
     </releaseNotes>
     <copyright>Copyright 2019</copyright>
-    <tags>CrmSvcUtil Xrm EarlyBound Generator</tags>
+    <tags>PAC ModelBuilder Dataverse Xrm EarlyBound Generator</tags>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System.Configuration" />
       <frameworkAssembly assemblyName="System.Runtime.Serialization" />

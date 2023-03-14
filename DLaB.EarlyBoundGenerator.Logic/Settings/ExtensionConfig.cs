@@ -144,6 +144,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public bool GenerateOptionSetMetadataAttribute { get; set; }
         /// <summary>
+        /// Splits the output into files by type, organized by entity, message, and optionsets.
+        /// </summary>
+        public bool GenerateSeparateFiles { get; set; }
+        /// <summary>
         /// Combines all local option sets into a single file per entity.  Only used if Create One File Per Option Set is true.
         /// </summary>
         public bool GroupLocalOptionSetsByEntity { get; set; }
@@ -302,6 +306,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 GenerateINotifyPattern = false,
                 GenerateOnlyReferencedOptionSets = true,
                 GenerateOptionSetMetadataAttribute = true,
+                GenerateSeparateFiles = true,
                 GroupLocalOptionSetsByEntity = false,
                 InvalidCSharpNamePrefix = "_",
                 LocalOptionSetFormat = "{0}_{1}",
@@ -372,6 +377,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             GenerateINotifyPattern = poco.GenerateINotifyPattern ?? GenerateINotifyPattern;
             GenerateOnlyReferencedOptionSets = poco.GenerateOnlyReferencedOptionSets ?? GenerateOnlyReferencedOptionSets;
             GenerateOptionSetMetadataAttribute = poco.GenerateOptionSetMetadataAttribute ?? GenerateOptionSetMetadataAttribute;
+            GenerateSeparateFiles = poco.GenerateSeparateFiles ?? GenerateSeparateFiles;
             GroupLocalOptionSetsByEntity = poco.GroupLocalOptionSetsByEntity ?? GroupLocalOptionSetsByEntity;
             InvalidCSharpNamePrefix = poco.InvalidCSharpNamePrefix ?? InvalidCSharpNamePrefix;
             MakeAllFieldsEditable = poco.MakeAllFieldsEditable ?? MakeAllFieldsEditable;
@@ -433,6 +439,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             writer.AddProperty(nameof(GenerateEnumProperties), GenerateEnumProperties);
             writer.AddProperty(nameof(GenerateOnlyReferencedOptionSets), GenerateOnlyReferencedOptionSets);
             writer.AddProperty(nameof(GenerateOptionSetMetadataAttribute), GenerateOptionSetMetadataAttribute);
+            writer.AddProperty(nameof(GenerateSeparateFiles), GenerateSeparateFiles);
             writer.AddProperty(nameof(GroupLocalOptionSetsByEntity), GroupLocalOptionSetsByEntity);
             writer.AddProperty(nameof(InvalidCSharpNamePrefix), InvalidCSharpNamePrefix);
             writer.AddProperty(nameof(MakeAllFieldsEditable), MakeAllFieldsEditable);
@@ -522,6 +529,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? GenerateGlobalOptionSets { get; set; }
         public bool? GenerateINotifyPattern { get; set; }
         public bool? GenerateOptionSetMetadataAttribute { get; set; }
+        public bool? GenerateSeparateFiles { get; set; }
         public bool? GroupLocalOptionSetsByEntity { get; set; }
         public string OptionSetNames { get; set; }
         public string ProjectNameForEarlyBoundFiles { get; set; }

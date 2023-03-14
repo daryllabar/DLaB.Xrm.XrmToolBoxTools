@@ -405,6 +405,15 @@ namespace DLaB.EarlyBoundGenerator.Settings
         }
 
         [Category("Global")]
+        [DisplayName("Generate Separate Files")]
+        [Description("Splits the output into files by type, organized by entity, message, and optionsets.")]
+        public bool GenerateSeparateFiles
+        {
+            get => Config.ExtensionConfig.GenerateSeparateFiles;
+            set => Config.ExtensionConfig.GenerateSeparateFiles = value;
+        }
+
+        [Category("Global")]
         [DisplayName("Suppress Generated Code Attribute")]
         [Description("Enables SuppressGeneratedCodeAttribute command line parameters.")]
         public bool SuppressGeneratedCodeAttribute

@@ -316,7 +316,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             MaskPassword = poco.MaskPassword ?? @default.MaskPassword;
             WorkflowlessActions = poco.WorkflowlessActions ?? @default.WorkflowlessActions;
 
-
             UpdateObsoleteSettings(poco, poco.ExtensionConfig, @default);
 
             ExtensionConfig = @default.ExtensionConfig;
