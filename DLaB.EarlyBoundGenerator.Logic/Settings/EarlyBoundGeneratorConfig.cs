@@ -75,12 +75,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [ReadOnly(true)]
         public string Version { get; set; }
         /// <summary>
-        /// Settings that will get written to the CrmSrvUtil.exe.config
+        /// Settings that will get written to the builderSettings.json
         /// </summary>
         /// <value>
         /// The extension configuration.
         /// </value>
-        [Category("CrmSvcUtil")]
         [DisplayName("Settings")]
         [Description("Settings that will get written to the CrmSrvUtil.exe.config.")]
         public ExtensionConfig ExtensionConfig { get; set; }
@@ -94,6 +93,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [DisplayName("Extension Arguments")]
         [Description("These are the required commandline arguments that are passed to the CrmSrvUtil to correctly wire up the extensions in DLaB.ModelBuilderExtensions.")]
         public List<Argument> ExtensionArguments { get; set; }
+        /// <summary>
+        /// If this is set to false, then all setting changes made in the Early Bound Generator will not take affect outside of out directory since the builderSettings.json file isn't getting updated, but is helpful if custom editing of the builderSettings.json file is required.
+        /// </summary>
+        public bool UpdateBuilderSettingsJson { get; set; }
         /// <summary>
         /// These are the commandline arguments that are passed to the CrmSrvUtil that can have varying values, depending on the user's preference.
         /// </summary>
@@ -282,6 +285,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             AudibleCompletionNotification = poco.AudibleCompletionNotification ?? @default.AudibleCompletionNotification;
             IncludeCommandLine = poco.IncludeCommandLine ?? @default.IncludeCommandLine;
             MaskPassword = poco.MaskPassword ?? @default.MaskPassword;
+            UpdateBuilderSettingsJson = poco.UpdateBuilderSettingsJson ?? @default.UpdateBuilderSettingsJson;
             WorkflowlessActions = poco.WorkflowlessActions ?? @default.WorkflowlessActions;
 
             UpdateObsoleteSettings(poco, poco.ExtensionConfig, @default);
@@ -509,6 +513,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     //new Argument(CreationType.OptionSets, CrmSrvUtilService.MetadataProviderService, "DLaB.ModelBuilderExtensions.BaseMetadataProviderService,DLaB.ModelBuilderExtensions")
                 }),
                 ExtensionConfig = ExtensionConfig.GetDefault(),
+                UpdateBuilderSettingsJson = true,
                 UserArguments = new List<Argument>(new[] {
                     new Argument(CreationType.Actions, UserArgumentNames.GenerateActions, "true"){ Valueless = true},
                     new Argument(CreationType.Actions, UserArgumentNames.Out,  @"EBG\Actions.cs"),
@@ -798,6 +803,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? MaskPassword { get; set; }
         public ExtensionConfig ExtensionConfig { get; set; }
         public List<Argument> ExtensionArguments { get; set; }
+        public bool? UpdateBuilderSettingsJson { get; set; }
         public List<Argument> UserArguments { get; set; }
         public string Version { get; set; }
         public string WorkflowlessActions { get; set; }

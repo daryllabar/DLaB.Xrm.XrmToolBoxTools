@@ -199,8 +199,11 @@ namespace DLaB.EarlyBoundGenerator
                     Logger.WireUpToReportProgress(w);
                     try
                     {
-                        w.ReportProgress(0, "Updating Builder Settings");
-                        generator.UpdateBuilderSettingsJson();
+                        if (settings.UpdateBuilderSettingsJson)
+                        {
+                            w.ReportProgress(0, "Updating Builder Settings");
+                            generator.UpdateBuilderSettingsJson();
+                        }
                         w.ReportProgress(0, "Generating Early Bound Files");
                         generator.Create(Service);
                         w.ReportProgress(99, "Generation Complete!");

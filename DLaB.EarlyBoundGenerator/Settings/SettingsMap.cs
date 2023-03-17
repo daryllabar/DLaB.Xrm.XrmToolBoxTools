@@ -110,6 +110,15 @@ namespace DLaB.EarlyBoundGenerator.Settings
         }
 
         [Category("Debug")]
+        [DisplayName("Update Builder Settings Json")]
+        [Description("If this is set to false, then all setting changes made in the Early Bound Generator will not take affect outside of out directory since the builderSettings.json file isn't getting updated, but is helpful if custom editing of the builderSettings.json file is required.")]
+        public bool UpdateBuilderSettingsJson
+        {
+            get => Config.UpdateBuilderSettingsJson;
+            set => Config.UpdateBuilderSettingsJson = value;
+        }
+
+        [Category("Debug")]
         [DisplayName("Wait For Attached Debugger")]
         [Description("For Debugging Only!  Waits until a debugger is attached to the ModelBuilder before processing the command.")]
         public bool WaitForAttachedDebugger
