@@ -629,6 +629,15 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         #region Service Generation Extensions
 
         [Category("Service Generation Extensions")]
+        [DisplayName("Code Customization Service")]
+        [Description("Called after the CodeDOM generation has been completed, assuming the default instance of ICodeGenerationService. It is useful for generating additional classes, such as the constants in picklists.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator. ")]
+        public string CodeCustomizationService
+        {
+            get => Config.CodeCustomizationService;
+            set => Config.CodeCustomizationService = value;
+        }
+
+        [Category("Service Generation Extensions")]
         [DisplayName("Naming Service")]
         [Description("Called during the CodeDOM generation to determine the name for objects.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator. ")]
         public string NamingService

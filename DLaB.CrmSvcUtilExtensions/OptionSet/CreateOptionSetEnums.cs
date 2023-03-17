@@ -47,7 +47,6 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
             Trace.TraceInformation("Entering ICustomizeCodeDomService.CustomizeCodeDom");
             Trace.TraceInformation("Number of Namespaces generated: {0}", codeUnit.Namespaces.Count);
 
-            codeUnit.RemoveAssemblyAttributes();            
             RemoveNonOptionSetDefinitions(codeUnit);
             AddMetadataAttributes(codeUnit, services);
             SortOptionSets(codeUnit);

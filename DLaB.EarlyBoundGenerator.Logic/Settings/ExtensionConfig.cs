@@ -518,6 +518,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? CreateOneFilePerAction { get; set; }
         public bool? CreateOneFilePerEntity { get; set; }
         public bool? CreateOneFilePerOptionSet { get; set; }
+        public string CustomizeCodeDomService { get; set; }
         public bool? DeleteFilesFromOutputFolders { get; set; }
         public string EntitiesToSkip { get; set; }
         public string EntitiesWhitelist { get; set; }

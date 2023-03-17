@@ -28,6 +28,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
         public bool AudibleCompletionNotification { get; set; }
 
         /// <summary>
+        /// Called after the CodeDOM generation has been completed, assuming the default instance of ICodeGenerationService. It is useful for generating additional classes, such as the constants in picklists.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator. 
+        /// </summary>
+        public string CodeCustomizationService { get; set; }
+
+        /// <summary>
         /// Entity output path
         /// </summary>
         public string EntityTypesFolder { get; set; }
@@ -221,6 +226,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             RemoveObsoleteValues(poco);
 
             AudibleCompletionNotification = poco.AudibleCompletionNotification ?? @default.AudibleCompletionNotification;
+            CodeCustomizationService = poco.CodeCustomizationService ?? @default.CodeCustomizationService;
             EntityTypesFolder = poco.EntityTypesFolder ?? @default.EntityTypesFolder;
             IncludeCommandLine = poco.IncludeCommandLine ?? @default.IncludeCommandLine;
             GenerateMessages = poco.GenerateMessages ?? @default.GenerateMessages;
@@ -374,6 +380,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             var @default = new EarlyBoundGeneratorConfig
             {
                 AudibleCompletionNotification = true,
+                CodeCustomizationService = "DLaB.ModelBuilderExtensions.CustomizeCodeDomService,DLaB.ModelBuilderExtensions",
                 EntityTypesFolder = "Entities",
                 ExtensionConfig = ExtensionConfig.GetDefault(),
                 GenerateMessages = true,
@@ -381,20 +388,14 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 MaskPassword = true,
                 //ExtensionArguments = new List<Argument>(new[] {
                     // Actions
-                    //new Argument(CreationType.Actions, CrmSrvUtilService.CodeCustomization, "DLaB.ModelBuilderExtensions.Action.CustomizeCodeDomService,DLaB.ModelBuilderExtensions"),
                     //new Argument(CreationType.Actions, CrmSrvUtilService.CodeGenerationService, "DLaB.ModelBuilderExtensions.Action.CustomCodeGenerationService,DLaB.ModelBuilderExtensions"),
                     //new Argument(CreationType.Actions, CrmSrvUtilService.CodeWriterFilter, "DLaB.ModelBuilderExtensions.Action.CodeWriterFilterService,DLaB.ModelBuilderExtensions"),
                     //new Argument(CreationType.Actions, CrmSrvUtilService.MetadataProviderService, "DLaB.ModelBuilderExtensions.BaseMetadataProviderService,DLaB.ModelBuilderExtensions"),
-                    //new Argument(CreationType.Entities, CrmSrvUtilService.CodeCustomization, "DLaB.ModelBuilderExtensions.Entity.CustomizeCodeDomService,DLaB.ModelBuilderExtensions"),
                     //new Argument(CreationType.Entities, CrmSrvUtilService.CodeGenerationService, "DLaB.ModelBuilderExtensions.Entity.CustomCodeGenerationService,DLaB.ModelBuilderExtensions"),
                     //new Argument(CreationType.Entities, CrmSrvUtilService.CodeWriterFilter, "DLaB.ModelBuilderExtensions.Entity.CodeWriterFilterService,DLaB.ModelBuilderExtensions"),
-                    //new Argument(CreationType.Entities, CrmSrvUtilService.NamingService, "DLaB.ModelBuilderExtensions.NamingService,DLaB.ModelBuilderExtensions"),
                     //new Argument(CreationType.Entities, CrmSrvUtilService.MetadataProviderService, "DLaB.ModelBuilderExtensions.Entity.MetadataProviderService,DLaB.ModelBuilderExtensions"),
-                    //new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeCustomization, "DLaB.ModelBuilderExtensions.OptionSet.CustomizeCodeDomService,DLaB.ModelBuilderExtensions"),
                     //new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeGenerationService, "DLaB.ModelBuilderExtensions.OptionSet.CustomCodeGenerationService,DLaB.ModelBuilderExtensions"),
                     //new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, "DLaB.ModelBuilderExtensions.OptionSet.CodeWriterFilterService,DLaB.ModelBuilderExtensions"),
-                    //new Argument(CreationType.OptionSets, CrmSrvUtilService.NamingService, "DLaB.ModelBuilderExtensions.NamingService,DLaB.ModelBuilderExtensions"),
-                    //new Argument(CreationType.OptionSets, CrmSrvUtilService.MetadataProviderService, "DLaB.ModelBuilderExtensions.BaseMetadataProviderService,DLaB.ModelBuilderExtensions")
                     //new Argument(CreationType.OptionSets, CrmSrvUtilService.MetadataProviderService, "DLaB.ModelBuilderExtensions.BaseMetadataProviderService,DLaB.ModelBuilderExtensions")
                 //}),
                 MessageTypesFolder = "Messages",
@@ -574,6 +575,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         {
             var isXrmToolBoxEarlyBound = typeof(ExtensionConfig).AssemblyQualifiedName?.StartsWith("DLaB.EarlyBoundGenerator.Settings.ExtensionConfig, DLaB.EarlyBoundGenerator,") ?? true;
 
+            properties.SetJsonProperty(BuilderSettingsJsonNames.CodeCustomizationService, CodeCustomizationService);
             properties.SetJsonProperty(BuilderSettingsJsonNames.EntityTypesFolder, EntityTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.GenerateActions, GenerateMessages);
             properties.SetJsonProperty(BuilderSettingsJsonNames.MessagesTypesFolder, MessageTypesFolder);
@@ -601,6 +603,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
     public class Config
     {
         public bool? AudibleCompletionNotification { get; set; }
+        public string CodeCustomizationService { get; set; }
         public string EntityTypesFolder { get; set; }
         public ExtensionConfig ExtensionConfig { get; set; }
         public List<Argument> ExtensionArguments { get; set; }

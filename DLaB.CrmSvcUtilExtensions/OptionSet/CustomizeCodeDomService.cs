@@ -12,8 +12,6 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
 
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
-            new CreateOptionSetEnums().CustomizeCodeDom(codeUnit, services);
-            new LocalMultiOptionSetGenerator(_parameters).CustomizeCodeDom(codeUnit, services);
         }
 
         #endregion

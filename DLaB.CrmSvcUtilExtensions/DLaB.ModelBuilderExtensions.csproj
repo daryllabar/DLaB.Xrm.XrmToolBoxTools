@@ -142,7 +142,6 @@
   <ItemGroup>
     <Compile Include="Action\AttributeConstGenerator.cs" />
     <Compile Include="Action\CodeWriterFilterService.cs" />
-    <Compile Include="Action\CustomizeCodeDomService.cs" />
     <Compile Include="Action\CustomCodeGenerationService.cs" />
     <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\Config.cs" />
     <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ConfigKeyValueSplitInfo.cs" />
@@ -268,7 +267,7 @@
     <Compile Include="NamingService.cs" />
     <Compile Include="Entity\OptionSetMetadataAttributeGenerator.cs" />
     <Compile Include="OptionSet\CreateOptionSetEnums.cs" />
-    <Compile Include="Entity\CustomizeCodeDomService.cs" />
+    <Compile Include="CustomizeCodeDomService.cs" />
     <Compile Include="Entity\EnumPropertyGenerator.cs" />
     <Compile Include="OptionSet\CustomCodeGenerationService.cs" />
     <Compile Include="OptionSet\CustomizeCodeDomService.cs" />

@@ -14,16 +14,15 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
     /// </summary>
     public class LocalMultiOptionSetGenerator : ICustomizeCodeDomService
     {
-        private IDictionary<string,string> _parameters;
-        private bool SuppressGeneratedCodeAttribute { get; }
-        private const string SuppressGeneratedCodeAttributeKey = "SuppressGeneratedCodeAttribute";
+        //private IDictionary<string,string> _parameters;
+        //private bool SuppressGeneratedCodeAttribute { get; }
+        //private const string SuppressGeneratedCodeAttributeKey = "SuppressGeneratedCodeAttribute";
 
 
-        internal LocalMultiOptionSetGenerator(IDictionary<string, string> parameters)
+        internal LocalMultiOptionSetGenerator()//IDictionary<string, string> parameters)
         {
-
-            _parameters = parameters;
-            SuppressGeneratedCodeAttribute = parameters.TryGetValue(SuppressGeneratedCodeAttributeKey, out var value) && value == "True";
+            //_parameters = parameters;
+            //SuppressGeneratedCodeAttribute = parameters.TryGetValue(SuppressGeneratedCodeAttributeKey, out var value) && value == "True";
         }
 
         #region Implementation of ICustomizeCodeDomService
@@ -56,14 +55,14 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
             };
             type.CustomAttributes.Add(new CodeAttributeDeclaration(new CodeTypeReference(typeof(DataContractAttribute))));
 
-            if (!SuppressGeneratedCodeAttribute)
-            {
-                var version = System.Diagnostics.FileVersionInfo.GetVersionInfo(typeof(INamingService).Assembly.Location).ProductVersion;
-                type.CustomAttributes.Add(new CodeAttributeDeclaration(
-                    new CodeTypeReference(typeof(GeneratedCodeAttribute)), 
-                    new CodeAttributeArgument(new CodePrimitiveExpression("CrmSvcUtil")),
-                    new CodeAttributeArgument(new CodePrimitiveExpression(version))));
-            }
+            //if (!SuppressGeneratedCodeAttribute)
+            //{
+            //    var version = System.Diagnostics.FileVersionInfo.GetVersionInfo(typeof(INamingService).Assembly.Location).ProductVersion;
+            //    type.CustomAttributes.Add(new CodeAttributeDeclaration(
+            //        new CodeTypeReference(typeof(GeneratedCodeAttribute)), 
+            //        new CodeAttributeArgument(new CodePrimitiveExpression("CrmSvcUtil")),
+            //        new CodeAttributeArgument(new CodePrimitiveExpression(version))));
+            //}
 
             foreach (var option in metadata.OptionSet.Options)
             {
