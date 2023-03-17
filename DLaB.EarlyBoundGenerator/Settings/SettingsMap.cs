@@ -19,76 +19,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         #region Properties
 
-        #region Messages
-
-        [Category("Messages")]
-        [DisplayName("Message Relative Output Path")]
-        [Description("This is realtive to the Path of the Settings File.  If \"Create One File Per Message\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
-        [Editor(typeof(PathEditor), typeof(UITypeEditor))]
-        [DynamicRelativePathEditor(nameof(SettingsPath), nameof(CreateOneFilePerAction), "C# files|*.cs", "cs", false)]
-        public string ActionOutPath
-        {
-            get => Config.ActionOutPath;
-            set => Config.ActionOutPath = GetRelativePathToFileOrDirectory(value, CreateOneFilePerAction, "Messages.cs");
-        }
-
-        [Category("Messages")]
-        [DisplayName("Message Prefixes Whitelist")]
-        [Description("Allows for the ability to specify Message prefixes that will be included in generation.")]
-        [Editor(StringEditorName, typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
-        public List<string> ActionPrefixesWhitelist { get; set; }
-
-        [Category("Messages")]
-        [DisplayName("Messages Whitelist")]
-        [Description("Allows for the ability to specify Messages that will be included in generation.  \"*\" wildcards are valid. ")]
-        [Editor(typeof(ActionsHashEditor), typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
-        public HashSet<string> ActionsWhitelist { get; set; }
-
-        [Category("Messages")]
-        [DisplayName("Messages Blacklist")]
-        [Description("Allows for the ability to specify Messages to not generate.")]
-        [Editor(typeof(ActionsHashEditor), typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
-        public HashSet<string> ActionsToSkip { get; set; }
-
-        [Category("Messages")]
-        [DisplayName("Create One File Per Message")]
-        [Description("Specifies that each Message class should be outputted to it's own file rather than a single file with all messages.")]
-        public bool CreateOneFilePerAction
-        {
-            get => Config.ExtensionConfig.CreateOneFilePerAction;
-            set => Config.ExtensionConfig.CreateOneFilePerAction = value;
-        }
-
-        [Category("Messages")]
-        [DisplayName("Generate Message Attribute Name Constants")]
-        [Description("Adds a Static Class to each Message class that contains the Logical Names of all properties for the Message.")]
-        public bool GenerateActionAttributeNameConsts
-        {
-            get => Config.ExtensionConfig.GenerateActionAttributeNameConsts;
-            set => Config.ExtensionConfig.GenerateActionAttributeNameConsts = value;
-        }
-
-        [Category("Messages")]
-        [DisplayName("Make Response Messages Editable")]
-        [Description("Specifies that the properties of Response Messages should be editable.")]
-        public bool MakeResponseActionsEditable
-        {
-            get => Config.ExtensionConfig.MakeResponseActionsEditable;
-            set => Config.ExtensionConfig.MakeResponseActionsEditable = value;
-        }
-
-        [Category("Messages")]
-        [DisplayName("Workflowless Messages")]
-        [Description("Some messages are being created by MS that are not workflows, and don't show up in the list of messages for adding to whitelist/blacklist, but are getting genereated and causing errors.  This setting is used to manually add message names to the selected lists.")]
-        [Editor(StringEditorName, typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
-        public List<string> WorkflowlessActions { get; set; }
-
-        #endregion Messages
-
         #region Debug
 
         [Category("Debug")]
@@ -154,10 +84,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [Description("This is realtive to the Path of the Settings File.  If \"Create One File Per Entity\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
         [Editor(typeof(PathEditor), typeof(UITypeEditor))]
         [DynamicRelativePathEditor(nameof(SettingsPath), nameof(CreateOneFilePerEntity), "C# files|*.cs", "cs", false)]
-        public string EntityOutPath
+        public string EntityTypesFolder
         {
-            get => Config.EntityOutPath;
-            set => Config.EntityOutPath = GetRelativePathToFileOrDirectory(value, CreateOneFilePerEntity, "Entities.cs");
+            get => Config.EntityTypesFolder;
+            set => Config.EntityTypesFolder = GetRelativePathToFileOrDirectory(value, CreateOneFilePerEntity, "Entities.cs");
         }
 
         [Category("Entities")]
@@ -424,7 +354,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         [Category("Global")]
         [DisplayName("Suppress Generated Code Attribute")]
-        [Description("Enables SuppressGeneratedCodeAttribute command line parameters.")]
+        [Description("Suppress all generated objects being tagged with the code generation engine and version.")]
         public bool SuppressGeneratedCodeAttribute
         {
             get => Config.SuppressGeneratedCodeAttribute;
@@ -494,6 +424,85 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         }
 
         #endregion Global Properties
+
+        #region Messages
+
+        [Category("Messages")]
+        [DisplayName("Message Relative Output Path")]
+        [Description("This is realtive to the Path of the Settings File.  If \"Create One File Per Message\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
+        [Editor(typeof(PathEditor), typeof(UITypeEditor))]
+        [DynamicRelativePathEditor(nameof(SettingsPath), nameof(CreateOneFilePerAction), "C# files|*.cs", "cs", false)]
+        public string MessageTypesFolder
+        {
+            get => Config.MessageTypesFolder;
+            set => Config.MessageTypesFolder = GetRelativePathToFileOrDirectory(value, CreateOneFilePerAction, "Messages.cs"); //TODO IS THIS RIGHT?  
+        }
+
+        [Category("Messages")]
+        [DisplayName("Message Prefixes Whitelist")]
+        [Description("Allows for the ability to specify Message prefixes that will be included in generation.")]
+        [Editor(StringEditorName, typeof(UITypeEditor))]
+        [TypeConverter(CollectionCountConverter.Name)]
+        public List<string> ActionPrefixesWhitelist { get; set; }
+
+        [Category("Messages")]
+        [DisplayName("Messages Whitelist")]
+        [Description("Allows for the ability to specify Messages that will be included in generation.  \"*\" wildcards are valid. ")]
+        [Editor(typeof(ActionsHashEditor), typeof(UITypeEditor))]
+        [TypeConverter(CollectionCountConverter.Name)]
+        public HashSet<string> ActionsWhitelist { get; set; }
+
+        [Category("Messages")]
+        [DisplayName("Messages Blacklist")]
+        [Description("Allows for the ability to specify Messages to not generate.")]
+        [Editor(typeof(ActionsHashEditor), typeof(UITypeEditor))]
+        [TypeConverter(CollectionCountConverter.Name)]
+        public HashSet<string> ActionsToSkip { get; set; }
+
+        [Category("Messages")]
+        [DisplayName("Create One File Per Message")]
+        [Description("Specifies that each Message class should be outputted to it's own file rather than a single file with all messages.")]
+        public bool CreateOneFilePerAction
+        {
+            get => Config.ExtensionConfig.CreateOneFilePerAction;
+            set => Config.ExtensionConfig.CreateOneFilePerAction = value;
+        }
+
+        [Category("Messages")]
+        [DisplayName("Generate Message Attribute Name Constants")]
+        [Description("Adds a Static Class to each Message class that contains the Logical Names of all properties for the Message.")]
+        public bool GenerateActionAttributeNameConsts
+        {
+            get => Config.ExtensionConfig.GenerateActionAttributeNameConsts;
+            set => Config.ExtensionConfig.GenerateActionAttributeNameConsts = value;
+        }
+
+        [Category("Messages")]
+        [DisplayName("Generate Messages")]
+        [Description("Generates classes for messages (Actions/Custom APIs/Microsoft Messages) as part of code generation.    ")]
+        public bool GenerateMessages
+        {
+            get => Config.GenerateMessages;
+            set => Config.GenerateMessages = value;
+        }
+
+        [Category("Messages")]
+        [DisplayName("Make Response Messages Editable")]
+        [Description("Specifies that the properties of Response Messages should be editable.")]
+        public bool MakeResponseActionsEditable
+        {
+            get => Config.ExtensionConfig.MakeResponseActionsEditable;
+            set => Config.ExtensionConfig.MakeResponseActionsEditable = value;
+        }
+
+        [Category("Messages")]
+        [DisplayName("Workflowless Messages")]
+        [Description("Some messages are being created by MS that are not workflows, and don't show up in the list of messages for adding to whitelist/blacklist, but are getting genereated and causing errors.  This setting is used to manually add message names to the selected lists.")]
+        [Editor(StringEditorName, typeof(UITypeEditor))]
+        [TypeConverter(CollectionCountConverter.Name)]
+        public List<string> WorkflowlessActions { get; set; }
+
+        #endregion Messages
 
         #region Meta
 
@@ -579,10 +588,10 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         [Description("This is realtive to the Path of the Settings File.  If \"Create One File Per Option Set\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
         [Editor(typeof(PathEditor), typeof(UITypeEditor))]
         [DynamicRelativePathEditor(nameof(SettingsPath), nameof(CreateOneFilePerOptionSet), "C# files|*.cs", "cs", false)]
-        public string OptionSetOutPath
+        public string OptionSetsTypesFolder
         {
-            get => Config.OptionSetOutPath;
-            set => Config.OptionSetOutPath = GetRelativePathToFileOrDirectory(value, CreateOneFilePerOptionSet, "OptionSets.cs");
+            get => Config.OptionSetsTypesFolder;
+            set => Config.OptionSetsTypesFolder = GetRelativePathToFileOrDirectory(value, CreateOneFilePerOptionSet, "OptionSets.cs");
         }
 
         [Category("Option Sets")]

@@ -168,10 +168,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CategoryCmb.FormattingEnabled = true;
             this.CategoryCmb.Items.AddRange(new object[] {
-            "Actions",
             "Debug",
             "Entities",
             "Global",
+            "Messages",
             "Meta",
             "Option Sets",
             "Service Generation Extensions"});

@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
+using System;
 using System.CodeDom;
-using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
+using System.Collections.Generic;
 
 namespace DLaB.ModelBuilderExtensions.Entity
 {
@@ -19,6 +20,11 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
         public static bool UpdateMultiOptionSetAttributes => ConfigHelper.GetAppSettingOrDefault("UpdateMultiOptionSetAttributes", true);
         public static bool UpdateEnumerableEntityProperties => ConfigHelper.GetAppSettingOrDefault("UpdateEnumerableEntityProperties", true);
+
+        public CustomizeCodeDomService(ICustomizeCodeDomService defaultService, IDictionary<string, string> paramaters)
+        {
+
+        }
 
         #region ICustomizeCodeDomService Members
 

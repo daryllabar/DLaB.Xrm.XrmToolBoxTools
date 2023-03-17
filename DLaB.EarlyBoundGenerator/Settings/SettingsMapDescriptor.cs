@@ -52,20 +52,20 @@ namespace DLaB.EarlyBoundGenerator.Settings
         private void OnCreateOneFilePerActionChange(PropertyValueChangedEventArgs args)
         {
             SetVisibilityForControlsDependentOnFileCreations();
-            ActionOutPath = ActionOutPath;
+            MessageTypesFolder = MessageTypesFolder;
         }
 
         private void OnCreateOneFilePerEntityChange(PropertyValueChangedEventArgs args)
         {
             SetVisibilityForControlsDependentOnFileCreations();
-            EntityOutPath = EntityOutPath;
+            EntityTypesFolder = EntityTypesFolder;
         }
 
         private void OnCreateOneFilePerOptionSetChange(PropertyValueChangedEventArgs args)
         {
             SetVisibilityForControlsDependentOnFileCreations();
             SetGroupLocalOptionSetsByEntityVisibility();
-            OptionSetOutPath = OptionSetOutPath;
+            OptionSetsTypesFolder = OptionSetsTypesFolder;
         }
 
         private void OnGenerateEnumPropertiesChange(PropertyValueChangedEventArgs args)
@@ -97,9 +97,9 @@ namespace DLaB.EarlyBoundGenerator.Settings
             SetPropertyReplaceOptionSetPropertiesWithEnumVisibility();
             SetUnmappedPropertiesVisibility();
             SetGenerateOptionSetMetadataAttributeVisibility();
-            ActionOutPath = ActionOutPath;
-            EntityOutPath = EntityOutPath;
-            OptionSetOutPath = OptionSetOutPath;
+            MessageTypesFolder = MessageTypesFolder;
+            EntityTypesFolder = EntityTypesFolder;
+            OptionSetsTypesFolder = OptionSetsTypesFolder;
             TypeDescriptor.Refresh(this);
         }
 
@@ -143,7 +143,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 nameof(RemoveRuntimeVersionComment),
                 nameof(ReplaceOptionSetPropertiesWithEnum),
                 nameof(SerializeMetadata),
-                nameof(SuppressGeneratedCodeAttribute),
                 nameof(TokenCapitalizationOverrides),
                 nameof(UnmappedProperties),
                 nameof(UseTfsToCheckoutFiles),

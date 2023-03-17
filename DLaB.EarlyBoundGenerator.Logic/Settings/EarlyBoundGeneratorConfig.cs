@@ -25,10 +25,25 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// <summary>
         /// Use speech synthesizer to notify of code generation completion.
         /// </summary>
-        [Category("Global")]
-        [DisplayName("Audible Completion Notification")]
-        [Description("Use speech synthesizer to notify of code generation completion.")]
         public bool AudibleCompletionNotification { get; set; }
+
+        /// <summary>
+        /// Entity output path
+        /// </summary>
+        public string EntityTypesFolder { get; set; }
+
+        /// <summary>
+        /// Settings that will get written to the builderSettings.json
+        /// </summary>
+        /// <value>
+        /// The extension configuration.
+        /// </value>
+        public ExtensionConfig ExtensionConfig { get; set; }
+
+        /// <summary>
+        /// Generates classes for messages (Actions/Custom APIs/Microsoft Messages) as part of code generation.
+        /// </summary>
+        public bool GenerateMessages { get; set; }
 
         /// <summary>
         /// Specifies whether to include in the early bound class, the command line used to generate it.
@@ -36,9 +51,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// <value>
         ///   <c>true</c> if [include command line]; otherwise, <c>false</c>.
         /// </value>
-        [Category("Global")]
-        [DisplayName("Include Command Line")]
-        [Description("Specifies whether to include in the early bound class, the command line used to generate it.")]
         public bool IncludeCommandLine { get; set; }
 
         /// <summary>
@@ -47,10 +59,32 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// <value>
         ///   <c>true</c> if [mask password]; otherwise, <c>false</c>.
         /// </value>
-        [Category("Global")]
-        [DisplayName("Mask Password")]
-        [Description("Masks the password in the outputted command line.")]
         public bool MaskPassword { get; set; }
+
+        /// <summary>
+        /// Folder name that will contain messages
+        /// </summary>
+        public string MessageTypesFolder { get; set; }
+
+        /// <summary>
+        /// Option set output path
+        /// </summary>
+        public string OptionSetsTypesFolder { get; set; }
+
+        /// <summary>
+        /// Namespace
+        /// </summary>
+        public string Namespace { get; set; }
+
+        /// <summary>
+        /// Name of the Service Context
+        /// </summary>
+        public string ServiceContextName { get; set; }
+
+        /// <summary>
+        /// Suppress all generated objects being tagged with the code generation engine and version
+        /// </summary>
+        public bool SuppressGeneratedCodeAttribute { get; set; }
 
         /// <summary>
         /// Gets or sets the last ran version.
@@ -58,55 +92,28 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// <value>
         /// The last ran version.
         /// </value>
-        [Category("Meta")]
-        [DisplayName("Settings Version")]
-        [Description("The Settings File Version.")]
-        [ReadOnly(true)]
         public string SettingsVersion { get; set; }
-        /// <summary>
-        /// The version of the EarlyBoundGeneratorPlugin
-        /// </summary>
-        /// <value>
-        /// The version.
-        /// </value>
-        [Category("Meta")]
-        [DisplayName("Version")]
-        [Description("Version of the Early Bound Generator.")]
-        [ReadOnly(true)]
-        public string Version { get; set; }
-        /// <summary>
-        /// Settings that will get written to the builderSettings.json
-        /// </summary>
-        /// <value>
-        /// The extension configuration.
-        /// </value>
-        [DisplayName("Settings")]
-        [Description("Settings that will get written to the CrmSrvUtil.exe.config.")]
-        public ExtensionConfig ExtensionConfig { get; set; }
-        /// <summary>
-        /// These are the required commandline arguments that are passed to the CrmSrvUtil to correctly wire up the extensions in DLaB.ModelBuilderExtensions.
-        /// </summary>
-        /// <value>
-        /// The extension arguments.
-        /// </value>
-        [Category("CrmSvcUtil")]
-        [DisplayName("Extension Arguments")]
-        [Description("These are the required commandline arguments that are passed to the CrmSrvUtil to correctly wire up the extensions in DLaB.ModelBuilderExtensions.")]
-        public List<Argument> ExtensionArguments { get; set; }
+
         /// <summary>
         /// If this is set to false, then all setting changes made in the Early Bound Generator will not take affect outside of out directory since the builderSettings.json file isn't getting updated, but is helpful if custom editing of the builderSettings.json file is required.
         /// </summary>
         public bool UpdateBuilderSettingsJson { get; set; }
+
         /// <summary>
         /// These are the commandline arguments that are passed to the CrmSrvUtil that can have varying values, depending on the user's preference.
         /// </summary>
         /// <value>
         /// The user arguments.
         /// </value>
-        [Category("CrmSvcUtil")]
-        [DisplayName("User Arguments")]
-        [Description("Commandline arguments that are passed to the CrmSrvUtil that can have varying values, depending on the user's preference.")]
         public List<Argument> UserArguments { get; set; }
+
+        /// <summary>
+        /// The version of the EarlyBoundGeneratorPlugin
+        /// </summary>
+        /// <value>
+        /// The version.
+        /// </value>
+        public string Version { get; set; }
 
         /// <summary>
         /// Some actions are being created by MS that are not workflows, and don't show up in the list of actions for adding to whitelist/blacklist, but are getting genereated and causing errors.  This setting is used to manually add action names to the selected lists
@@ -141,7 +148,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [XmlIgnore]
         [Browsable(false)]
         public string Domain { get; set; }
-
         /// <summary>
         /// Set during Execution
         /// </summary>
@@ -152,14 +158,12 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [XmlIgnore]
         [Browsable(false)]
         public string Password { get; set; }
-
         /// <summary>
         /// Set during Execution
         /// </summary>
         [XmlIgnore]
         [Browsable(false)]
         public string RootPath { get; set; }
-
         /// <summary>
         /// Set during Execution
         /// </summary>
@@ -179,7 +183,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         [XmlIgnore]
         [Browsable(false)]
-        public IEnumerable<Argument> CommandLineArguments => UserArguments.Union(ExtensionArguments);
+        public IEnumerable<Argument> CommandLineArguments => UserArguments;
 
         /// <summary>
         /// Path of the Model Builder Template file, relative to the root path, if not fully rooted
@@ -190,77 +194,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             Path.IsPathRooted(ExtensionConfig.BuilderSettingsJsonRelativePath)
                 ? ExtensionConfig.BuilderSettingsJsonRelativePath
                 : Path.Combine(RootPath, ExtensionConfig.BuilderSettingsJsonRelativePath);
-
-
-        #region UserArguments Helpers
-
-        /// <summary>
-        /// Action output path
-        /// </summary>
-        [XmlIgnore]
-        [Browsable(false)]
-        public string ActionOutPath
-        {
-            get { return GetUserArgument(CreationType.Actions, UserArgumentNames.Out).Value; }
-            set { SetUserArgument(CreationType.Actions, UserArgumentNames.Out, value); }
-        }
-
-        /// <summary>
-        /// Entity output path
-        /// </summary>
-        [XmlIgnore]
-        [Browsable(false)]
-        public string EntityOutPath
-        {
-            get { return GetUserArgument(CreationType.Entities, UserArgumentNames.Out).Value; }
-            set { SetUserArgument(CreationType.Entities, UserArgumentNames.Out, value); }
-        }
-
-        /// <summary>
-        /// Namespace
-        /// </summary>
-        [XmlIgnore]
-        [Browsable(false)]
-        public string Namespace
-        {
-            get { return GetUserArgument(CreationType.All, UserArgumentNames.Namespace).Value; }
-            set { SetUserArgument(CreationType.All, UserArgumentNames.Namespace, value); }
-        }
-
-        /// <summary>
-        /// Option set output path
-        /// </summary>
-        [XmlIgnore]
-        [Browsable(false)]
-        public string OptionSetOutPath
-        {
-            get { return GetUserArgument(CreationType.OptionSets, UserArgumentNames.Out).Value; }
-            set { SetUserArgument(CreationType.OptionSets, UserArgumentNames.Out, value); }
-        }
-
-        /// <summary>
-        /// Name of the Service Context Created
-        /// </summary>
-        [XmlIgnore]
-        [Browsable(false)]
-        public string ServiceContextName
-        {
-            get { return GetUserArgument(CreationType.Entities, UserArgumentNames.ServiceContextName).Value; }
-            set { SetUserArgument(CreationType.Entities, UserArgumentNames.ServiceContextName, value); }
-        }
-
-        /// <summary>
-        /// Controls if the SuppressGeneratedCodeAttribute is included
-        /// </summary>
-        [XmlIgnore]
-        [Browsable(false)]
-        public bool SuppressGeneratedCodeAttribute
-        {
-            get { return GetUserArgument(CreationType.All, UserArgumentNames.SuppressGeneratedCodeAttribute).Value == "true"; }
-            set { SetUserArgument(CreationType.All, UserArgumentNames.SuppressGeneratedCodeAttribute, value ? "true" : "false"); }
-        }
-
-        #endregion // UserArguments Helpers
 
         #endregion // NonSerialized Properties
 
@@ -280,7 +213,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         private EarlyBoundGeneratorConfig(POCO.Config poco)
         {
             var @default = GetDefault();
-            RemoveObsoleteValues(poco, @default);
+            RemoveObsoleteValues(poco);
 
             AudibleCompletionNotification = poco.AudibleCompletionNotification ?? @default.AudibleCompletionNotification;
             IncludeCommandLine = poco.IncludeCommandLine ?? @default.IncludeCommandLine;
@@ -288,18 +221,17 @@ namespace DLaB.EarlyBoundGenerator.Settings
             UpdateBuilderSettingsJson = poco.UpdateBuilderSettingsJson ?? @default.UpdateBuilderSettingsJson;
             WorkflowlessActions = poco.WorkflowlessActions ?? @default.WorkflowlessActions;
 
-            UpdateObsoleteSettings(poco, poco.ExtensionConfig, @default);
+            UpdateObsoleteSettings(poco, poco.ExtensionConfig);
 
             ExtensionConfig = @default.ExtensionConfig;
             ExtensionConfig.SetPopulatedValues(poco.ExtensionConfig);
 
-            ExtensionArguments = AddMissingArguments(poco.ExtensionArguments, @default.ExtensionArguments);
             UserArguments = AddMissingArguments(poco.UserArguments, @default.UserArguments);
             SettingsVersion = string.IsNullOrWhiteSpace(poco.Version) ? "0.0.0.0" : poco.Version;
             Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
-        private static void UpdateObsoleteSettings(POCO.Config poco, POCO.ExtensionConfig pocoConfig, EarlyBoundGeneratorConfig @default)
+        private static void UpdateObsoleteSettings(POCO.Config poco, POCO.ExtensionConfig pocoConfig)
         {
             var pocoVersion = new Version(poco.Version);
             if (pocoVersion < new Version("1.2016.6.1"))
@@ -308,23 +240,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 // Also convert from a List to a HashSet
                 pocoConfig.EntityAttributeSpecifiedNames = ConvertNonColonDelimitedDictionaryListToDictionaryHash(pocoConfig.EntityAttributeSpecifiedNames);
                 pocoConfig.UnmappedProperties = ConvertNonColonDelimitedDictionaryListToDictionaryHash(pocoConfig.UnmappedProperties);
-            }
-
-            if (pocoVersion < new Version("1.2018.9.12"))
-            {
-                // Update the OptionSet codecustomization Argument Setting to use the new Generic Code Customization Service
-                var oldValue = poco.ExtensionArguments.FirstOrDefault(
-                    a => a.SettingType == CreationType.OptionSets
-                         && a.Name == "codecustomization");
-                var newValue = @default.ExtensionArguments.FirstOrDefault(
-                    a => a.SettingType == CreationType.OptionSets
-                         && a.Name == "codecustomization");
-                if (oldValue != null
-                    && newValue != null)
-                {
-                    poco.ExtensionArguments.Remove(oldValue);
-                    poco.ExtensionArguments.Add(newValue);
-                }
             }
 
             if (pocoVersion < new Version("1.2020.3.23"))
@@ -353,12 +268,37 @@ namespace DLaB.EarlyBoundGenerator.Settings
             if (pocoVersion < new Version("1.2020.12.18"))
             {
                 // 12.18.2020 introduced Valueless parameters, but GenerateActions existed before as a null, need a boolean value to determine if it should be included
-                var generateActions = poco.UserArguments.FirstOrDefault(a => a.Name == UserArgumentNames.GenerateActions && a.Value == null);
+                var generateActions = poco.UserArguments.FirstOrDefault(a => a.Name == "generateActions" && a.Value == null);
                 if (generateActions != null)
                 {
                     generateActions.Value = "true";
                     generateActions.Valueless = true;
                 }
+            }
+
+            if (pocoVersion < new Version("2.2023.3.12"))
+            {
+                // 3.2.2023 Switch to Model Builder.  Pull User Arguments into typed settings
+                ObsoleteUserArgument(poco, a => a.Name == "generateActions", (p, arg) => poco.GenerateMessages = bool.Parse(arg.Value));
+                ObsoleteUserArgument(poco, a => a.Name == "namespace", (p, arg) => poco.Namespace = arg.Value);
+                ObsoleteUserArgument(poco, a => a.Name == "out" && a.SettingType == CreationType.Actions, (p, arg) => poco.MessageTypesFolder = arg.Value);
+                ObsoleteUserArgument(poco, a => a.Name == "out" && a.SettingType == CreationType.Entities, (p, arg) => poco.EntityTypesFolder = arg.Value);
+                ObsoleteUserArgument(poco, a => a.Name == "out" && a.SettingType == CreationType.OptionSets, (p, arg) => poco.OptionSetsTypesFolder = arg.Value);
+                ObsoleteUserArgument(poco, a => a.Name == "servicecontextname", (p, arg) => poco.ServiceContextName = arg.Value);
+                ObsoleteUserArgument(poco, a => a.Name == "SuppressGeneratedCodeAttribute", (p, arg) => poco.SuppressGeneratedCodeAttribute = bool.Parse(arg.Value));
+            }
+        }
+
+        private static void ObsoleteUserArgument(POCO.Config poco, Func<Argument, bool> firstArg, Action<POCO.Config, Argument> updateAction)
+        {
+            var arg = poco.UserArguments.FirstOrDefault(firstArg);
+            if (arg != null)
+            {
+                if (!string.IsNullOrWhiteSpace(arg.Value))
+                {
+                    updateAction(poco, arg);
+                }
+                poco.UserArguments.Remove(arg);
             }
         }
 
@@ -383,7 +323,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             return Config.ToString(newValues);
         }
 
-        private void RemoveObsoleteValues(POCO.Config poco, EarlyBoundGeneratorConfig @default)
+        private void RemoveObsoleteValues(POCO.Config poco)
         {
             foreach (var value in poco.ExtensionArguments.Where(a => string.Equals(a.Value, "DLaB.CrmSvcUtilExtensions.Entity.OverridePropertyNames,DLaB.CrmSvcUtilExtensions", StringComparison.InvariantCultureIgnoreCase)).ToList())
             {
@@ -398,64 +338,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             if (string.Equals(poco.ExtensionConfig.PropertyEnumMappings, old, StringComparison.InvariantCultureIgnoreCase) || string.Equals(poco.ExtensionConfig.PropertyEnumMappings, old + "|", StringComparison.InvariantCultureIgnoreCase))
             {
                 poco.ExtensionConfig.PropertyEnumMappings = string.Empty;
-            }
-        }
-
-        private string AddPipeDelimitedMissingDefaultValues(string value, string @default)
-        {
-            try
-            {
-                if (value == null || @default == null)
-                {
-                    return @default ?? value;
-                }
-                var splitValues = value.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()).ToList();
-                var hash = new HashSet<string>(splitValues);
-                splitValues.AddRange(@default.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries).
-                                              Where(key => !hash.Contains(key)));
-
-                return Config.ToString(splitValues);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error Processing config value: " + value, ex);
-            }
-        }
-
-        private string AddMissingDictionaryHashDefaultValues(string value, string @default)
-        {
-            try
-            {
-                if (value == null || @default == null)
-                {
-                    return @default ?? value;
-                }
-                // Handle post serialization that saves this value off with newlines.
-                value = value.Replace(Environment.NewLine, String.Empty);
-                var values = Config.GetDictionaryHash<string, string>(Guid.NewGuid().ToString(), value);
-                var defaultValues = Config.GetDictionaryHash<string, string>(Guid.NewGuid().ToString(), @default);
-
-                foreach (var entry in defaultValues)
-                {
-                    HashSet<string> hash;
-                    if (!values.TryGetValue(entry.Key, out hash))
-                    {
-                        hash = new HashSet<string>();
-                        values[entry.Key] = hash;
-                    }
-
-                    foreach (var item in entry.Value.Where(v => !hash.Contains(v)))
-                    {
-                        hash.Add(item);
-                    }
-                }
-
-                // All missing values have been added.  Join back Values
-                return Config.ToString(values);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error Processing config value: " + value, ex);
             }
         }
 
@@ -479,9 +361,12 @@ namespace DLaB.EarlyBoundGenerator.Settings
             var @default = new EarlyBoundGeneratorConfig
             {
                 AudibleCompletionNotification = true,
+                EntityTypesFolder = "Entities",
+                ExtensionConfig = ExtensionConfig.GetDefault(),
+                GenerateMessages = true,
                 IncludeCommandLine = true,
                 MaskPassword = true,
-                ExtensionArguments = new List<Argument>(new[] {
+                //ExtensionArguments = new List<Argument>(new[] {
                     // Actions
                     //new Argument(CreationType.Actions, CrmSrvUtilService.CodeCustomization, "DLaB.ModelBuilderExtensions.Action.CustomizeCodeDomService,DLaB.ModelBuilderExtensions"),
                     //new Argument(CreationType.Actions, CrmSrvUtilService.CodeGenerationService, "DLaB.ModelBuilderExtensions.Action.CustomCodeGenerationService,DLaB.ModelBuilderExtensions"),
@@ -497,32 +382,14 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     //new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, "DLaB.ModelBuilderExtensions.OptionSet.CodeWriterFilterService,DLaB.ModelBuilderExtensions"),
                     //new Argument(CreationType.OptionSets, CrmSrvUtilService.NamingService, "DLaB.ModelBuilderExtensions.NamingService,DLaB.ModelBuilderExtensions"),
                     //new Argument(CreationType.OptionSets, CrmSrvUtilService.MetadataProviderService, "DLaB.ModelBuilderExtensions.BaseMetadataProviderService,DLaB.ModelBuilderExtensions")
-                    new Argument(CreationType.Actions, CrmSrvUtilService.CodeCustomization, "DLaB.CrmSvcUtilExtensions.Action.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.Actions, CrmSrvUtilService.CodeGenerationService, "DLaB.CrmSvcUtilExtensions.Action.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.Actions, CrmSrvUtilService.CodeWriterFilter, "DLaB.CrmSvcUtilExtensions.Action.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.Actions, CrmSrvUtilService.MetadataProviderService, "DLaB.CrmSvcUtilExtensions.BaseMetadataProviderService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.Entities, CrmSrvUtilService.CodeCustomization, "DLaB.CrmSvcUtilExtensions.Entity.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.Entities, CrmSrvUtilService.CodeGenerationService, "DLaB.CrmSvcUtilExtensions.Entity.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.Entities, CrmSrvUtilService.CodeWriterFilter, "DLaB.CrmSvcUtilExtensions.Entity.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.Entities, CrmSrvUtilService.NamingService, "DLaB.CrmSvcUtilExtensions.NamingService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.Entities, CrmSrvUtilService.MetadataProviderService, "DLaB.CrmSvcUtilExtensions.Entity.MetadataProviderService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeCustomization, "DLaB.CrmSvcUtilExtensions.OptionSet.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeGenerationService, "DLaB.CrmSvcUtilExtensions.OptionSet.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, "DLaB.CrmSvcUtilExtensions.OptionSet.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions"),
-                    new Argument(CreationType.OptionSets, CrmSrvUtilService.NamingService, "DLaB.CrmSvcUtilExtensions.NamingService,DLaB.CrmSvcUtilExtensions"),
                     //new Argument(CreationType.OptionSets, CrmSrvUtilService.MetadataProviderService, "DLaB.ModelBuilderExtensions.BaseMetadataProviderService,DLaB.ModelBuilderExtensions")
-                }),
-                ExtensionConfig = ExtensionConfig.GetDefault(),
+                //}),
+                MessageTypesFolder = "Messages",
+                Namespace = "DataverseModel",
+                OptionSetsTypesFolder = "OptionSets",
+                ServiceContextName = "DataverseContext", 
+                SuppressGeneratedCodeAttribute = true,
                 UpdateBuilderSettingsJson = true,
-                UserArguments = new List<Argument>(new[] {
-                    new Argument(CreationType.Actions, UserArgumentNames.GenerateActions, "true"){ Valueless = true},
-                    new Argument(CreationType.Actions, UserArgumentNames.Out,  @"EBG\Actions.cs"),
-                    new Argument(CreationType.All, UserArgumentNames.Namespace, "CrmEarlyBound"),
-                    new Argument(CreationType.All, UserArgumentNames.SuppressGeneratedCodeAttribute, "true"){ Valueless = true},
-                    new Argument(CreationType.Entities, UserArgumentNames.Out, @"EBG\Entities.cs"),
-                    new Argument(CreationType.Entities, UserArgumentNames.ServiceContextName, "CrmServiceContext"),
-                    new Argument(CreationType.OptionSets, UserArgumentNames.Out,  @"EBG\OptionSets.cs")
-                }),
                 WorkflowlessActions = "RetrieveAppSettingList|RetrieveAppSetting|SaveAppSetting|msdyn_GetSIFeatureConfiguration"
             };
             @default.SettingsVersion = @default.Version;
@@ -535,7 +402,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// Loads the Config from the given path.
         /// </summary>
         /// <param name="filePath"></param>
-        /// <param name="pacOrXrmToolBoxPluginPath"></param>
         /// <returns></returns>
         public static EarlyBoundGeneratorConfig Load(string filePath)
         {
@@ -609,7 +475,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 return false;
             }
 
-            attributes = attributes & ~FileAttributes.ReadOnly;
+            attributes &= ~FileAttributes.ReadOnly;
             if (ExtensionConfig.UseTfsToCheckoutFiles)
             {
                 try
@@ -659,109 +525,19 @@ namespace DLaB.EarlyBoundGenerator.Settings
             return value.Value;
         }
 
-        /// <summary>
-        /// Returns the extension argument
-        /// </summary>
-        /// <param name="creationType"></param>
-        /// <param name="service"></param>
-        /// <returns></returns>
-        public Argument GetExtensionArgument(CreationType creationType, CrmSrvUtilService service)
-        {
-            return GetExtensionArgument(creationType, service.ToString().ToLower());
-        }
-
-        /// <summary>
-        /// Returns the extension argument
-        /// </summary>
-        /// <param name="creationType"></param>
-        /// <param name="setting"></param>
-        /// <returns></returns>
-        public Argument GetExtensionArgument(CreationType creationType, string setting)
-        {
-            return ExtensionArguments.FirstOrDefault(a => a.SettingType == creationType &&
-                                                          string.Equals(a.Name, setting, StringComparison.InvariantCultureIgnoreCase)) ??
-                new Argument(creationType, setting, string.Empty);
-        }
-
-        /// <summary>
-        /// Sets the extension argument
-        /// </summary>
-        /// <param name="creationType"></param>
-        /// <param name="service"></param>
-        /// <param name="value"></param>
-        public void SetExtensionArgument(CreationType creationType, CrmSrvUtilService service, string value)
-        {
-            SetExtensionArgument(creationType, service.ToString().ToLower(), value);
-        }
-
-        /// <summary>
-        /// Sets the extension arguments
-        /// </summary>
-        /// <param name="creationType"></param>
-        /// <param name="setting"></param>
-        /// <param name="value"></param>
-        public void SetExtensionArgument(CreationType creationType, string setting, string value)
-        {
-            var argument = GetExtensionArgument(creationType, setting);
-
-            if (argument == null)
-            {
-                if (value != null)
-                {
-                    ExtensionArguments.Add(new Argument { Name = setting, SettingType = creationType, Value = value });
-                }
-            }
-            else if (value == null)
-            {
-                ExtensionArguments.Remove(argument);
-            }
-            else
-            {
-                argument.Value = value;
-            }
-        }
-
-        private Argument GetUserArgument(CreationType creationType, string setting)
-        {
-            var argument = UserArguments.FirstOrDefault(s =>
-                string.Equals(s.Name, setting, StringComparison.InvariantCultureIgnoreCase)
-                && s.SettingType == creationType);
-
-            return argument ?? new Argument(creationType, setting, string.Empty);
-        }
-
-        private void SetUserArgument(CreationType creationType, string setting, string value)
-        {
-            var argument = GetUserArgument(creationType, setting);
-
-            if (argument == null)
-            {
-                if (value != null)
-                {
-                    UserArguments.Add(new Argument { Name = setting, SettingType = creationType, Value = value });
-                }
-            }
-            else if (value == null)
-            {
-                UserArguments.Remove(argument);
-            }
-            else
-            {
-                argument.Value = value;
-            }
-        }
-
         internal struct UserArgumentNames
         {
-            public const string GenerateActions = "generateActions";
-            public const string Namespace = "namespace";
             public const string Out = "out";
-            public const string ServiceContextName = "servicecontextname";
-            public const string SuppressGeneratedCodeAttribute = "SuppressGeneratedCodeAttribute";
+            public const string OutDirectory = "outDirectory";
+            public const string SettingsTemplateFile = "settingsTemplateFile";
         }
 
         internal struct BuilderSettingsJsonNames
         {
+            public const string CodeCustomizationService = "codeCustomizationService";
+            public const string CodeGenerationService = "codeGenerationService";
+            public const string CodeWriterFilterService = "codeWriterFilterService";
+            public const string CodeWriterMessageFilterService = "codeWriterMessageFilterService";
             public const string EmitFieldsClasses = "emitFieldsClasses";
             public const string EntityNamesFilter = "entityNamesFilter";
             public const string EntityTypesFolder = "entityTypesFolder";
@@ -770,6 +546,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
             public const string Language = "language";
             public const string Namespace = "namespace";
             public const string NamingService = "namingService";
+            public const string MetadataProviderService = "metadataProviderService";
+            public const string MetadataQueryProviderService = "metadataQueryProviderService";
             public const string MessageNamesFilter = "messageNamesFilter";
             public const string MessagesTypesFolder = "messagesTypesFolder";
             public const string OptionSetsTypesFolder = "optionSetsTypesFolder";
@@ -780,16 +558,16 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         public void PopulateBuilderProperties(Dictionary<string, JsonProperty> properties)
         {
-            properties.SetJsonProperty(BuilderSettingsJsonNames.EntityTypesFolder, EntityOutPath);
-            properties.SetJsonProperty(BuilderSettingsJsonNames.MessagesTypesFolder, ActionOutPath);
+            properties.SetJsonProperty(BuilderSettingsJsonNames.EntityTypesFolder, EntityTypesFolder);
+            properties.SetJsonProperty(BuilderSettingsJsonNames.GenerateActions, GenerateMessages);
+            properties.SetJsonProperty(BuilderSettingsJsonNames.MessagesTypesFolder, MessageTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.Namespace, Namespace);
-            properties.SetJsonProperty(BuilderSettingsJsonNames.OptionSetsTypesFolder, OptionSetOutPath);
+            properties.SetJsonProperty(BuilderSettingsJsonNames.OptionSetsTypesFolder, OptionSetsTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.ServiceContextName, ServiceContextName);
         }
     }
 }
 
-#pragma warning disable 1591
 namespace DLaB.EarlyBoundGenerator.Settings.POCO
 {
     /// <summary>
@@ -798,11 +576,17 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
     public class Config
     {
         public bool? AudibleCompletionNotification { get; set; }
-        public string CamelCaseNamesDictionaryRelativePath { get; set; }
-        public bool? IncludeCommandLine { get; set; }
-        public bool? MaskPassword { get; set; }
+        public string EntityTypesFolder { get; set; }
         public ExtensionConfig ExtensionConfig { get; set; }
         public List<Argument> ExtensionArguments { get; set; }
+        public bool? IncludeCommandLine { get; set; }
+        public bool? GenerateMessages { get; set; }
+        public string Namespace { get; set; }
+        public bool? MaskPassword { get; set; }
+        public string MessageTypesFolder { get; set; }
+        public string OptionSetsTypesFolder { get; set; }
+        public string ServiceContextName { get; set; }
+        public bool? SuppressGeneratedCodeAttribute { get; set; }
         public bool? UpdateBuilderSettingsJson { get; set; }
         public List<Argument> UserArguments { get; set; }
         public string Version { get; set; }
