@@ -266,106 +266,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\Config.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ConfigKeyValueSplitInfo.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ConfigKeyValuesSplitInfo.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ConfigProvider.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ConfigValuesSplitInfo.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\DLaBConfig.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\Exceptions\DictionaryDuplicateKeyException.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\Exceptions\EnumCaseUndefinedException.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\Exceptions\TypeArgumentException.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\Extensions.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ProcessExecutor.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ProcessExecutorInfo.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\TypeSafeEnumBase.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\VersionControl\ISourceControlProvider.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\VersionControl\NoSourceControlProvider.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\VersionControl\SourceControl.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\VersionControl\VsTfsSourceControlProvider.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\ActivityPropertyInfo.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Comparers\AttributeComparer.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Comparers\ColumnSetComparer.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Comparers\ConditionExpressionComparer.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Comparers\EnumerableComparer.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Comparers\FilterExpressionComparer.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Comparers\HashCode.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Comparers\LinkEntityComparer.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Comparers\OrderExpressionComparer.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Comparers\PagingInfoComparer.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Comparers\ProjectionEqualityComparer.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Comparers\QueryExpressionComparer.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\DLaBXrmConfig.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\EntityHelper.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\ErrorCodes.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Exceptions\EnumCaseUndefinedException.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Exceptions\InvalidPluginStepRegistrationException.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Exceptions\MissingAttributeException.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\ExtendedOrganizationService.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\ExtendedOrganizationServiceSettings.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\ExtendedTracingService.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\AddLinkExtensions.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\AliasedExtensions.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\AreEqualExtensions.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\ByIdExtensions.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\Extensions.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\HasConditionExtensions.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\HasConditionInWithValuesExtensions.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\OptimisticConcurrencyExtensions.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\OrganizationServiceExtensions.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\QueryExpressionConvertExtensions.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\ToStringDebugExtensions.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\WhereEqualExtensions.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\WhereInExtensions.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\IExtendedExecutionContext.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\IMaxLengthTracingService.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\IMinimumUpdater.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\LateBoundActivePropertyInfo.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\LateBoundQuerySettings.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\MinimumUpdaterDefault.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\AssertValidator.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\ColumnRequirementCheck.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\ContextEntity.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\DLaBExtendedPluginContextBase.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\DLaBExtendedPluginContextSettings.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\DLaBGenericPluginBase.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\DLaBPluginBase.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\ExtendedContextCreator.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\Extensions.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\IExtendedContextCreator.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\IExtendedPluginContext.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\IExtendedPluginContextInitializer.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\InvalidColumnReason.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\InvalidRequirementReason.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\IRegisteredEventsPlugin.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\IRequirementValidator.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\IsolationMode.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\MessageType.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\ParameterName.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\PipelineStage.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\RegisteredEvent.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\RegisteredEventBuilder.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\RequirementValidator.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\TraceTimer.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\PrimaryFieldInfo.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\QueryExpressionFactory.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\QuerySettings.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\ReadOnlyCachedService.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\RetrieveAllEntities.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Sandbox\ExceptionHandler.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Serialization\Extensions.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Serialization\KeyValuePairOfRelationshipEntityCollectionX_PsK4FkN.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Serialization\KeyValuePairOfstringanyType.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Serialization\KeyValuePairOfstringstring.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Serialization\SerializableAttributeCollection.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Serialization\SerializableEntity.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Serialization\SerializableEntityCollection.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Serialization\SerializableEntityReference.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Serialization\SerializableFormattedValueCollection.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Serialization\SerializableKeyAttributeCollection.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Serialization\SerializableRelatedEntityCollection.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\SolutionCheckerAvoider.cs" />
-    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\TypedQueryExpression.cs" />
     <Compile Include="AttributeToEnumMapperDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -450,6 +350,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DLaB.CrmSvcUtilExtensions\DLaB.ModelBuilderExtensions.csproj">
+      <Project>{7827fcaf-6aa2-46b9-bb88-0d3ca9dd4d32}</Project>
+      <Name>DLaB.ModelBuilderExtensions</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="..\DLaB.Xrm.Entities\DLaB.Xrm.Entities.projitems" Label="Shared" />
   <Import Project="..\DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems" Label="Shared" />
   <Import Project="..\DLaB.EarlyBoundGenerator.Logic\DLaB.EarlyBoundGenerator.Logic.projitems" Label="Shared" />
@@ -469,7 +375,7 @@ if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.
 del "$(TargetDir)IlRepackLog.txt"
 
 REM **** Run IlMerge ****
-"$(ProjectDir)..\packages\ILRepack.2.0.18\tools\ILRepack.exe" /log:"$(TargetDir)IlRepackLog.txt" /targetplatform:"v4,c:\windows\Microsoft.NET\Framework\v4.0.30319" /out:"$(TargetPath)" "$(TargetPath)" "$(TargetDir)Microsoft.ApplicationInsights.dll" "$(TargetDir)Microsoft.AI.ServerTelemetryChannel.dll" "$(TargetDir)Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll"
+"$(ProjectDir)..\packages\ILRepack.2.0.18\tools\ILRepack.exe" /log:"$(TargetDir)IlRepackLog.txt" /targetplatform:"v4,c:\windows\Microsoft.NET\Framework\v4.0.30319" /out:"$(TargetPath)" "$(TargetPath)" "$(TargetDir)Microsoft.ApplicationInsights.dll" "$(TargetDir)Microsoft.AI.ServerTelemetryChannel.dll" "$(TargetDir)Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" "$(TargetDir)DLaB.ModelBuilderExtensions.dll"
 
 
 DEL /Q "$(TargetDir)MscrmTools\XrmToolBox\Plugins\*.*"

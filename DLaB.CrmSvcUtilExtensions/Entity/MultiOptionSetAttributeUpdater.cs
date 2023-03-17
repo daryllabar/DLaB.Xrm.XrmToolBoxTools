@@ -2,7 +2,7 @@
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Crm.Services.Utility;
+using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 
@@ -15,7 +15,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
             var attributesByEntity = ((IMetadataProviderService)services.GetService(typeof(IMetadataProviderService)))
-                .LoadMetadata().Entities
+                .LoadMetadata(services).Entities
                 .ToDictionary(k => k.LogicalName, v => v.Attributes.ToDictionary(k => k.LogicalName));
 
             var types = codeUnit.Namespaces[0].Types;

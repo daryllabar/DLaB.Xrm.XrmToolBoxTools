@@ -125,7 +125,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 nameof(CreateOneFilePerAction),
                 nameof(CreateOneFilePerEntity),
                 nameof(CreateOneFilePerOptionSet),
-                nameof(CrmSvcUtilRelativePath),
                 nameof(DeleteFilesFromOutputFolders),
                 nameof(EntitiesToSkip),
                 nameof(EntityAttributeSpecifiedNames),

@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Microsoft.Crm.Services.Utility;
+using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Source.DLaB.Common;
 using Source.DLaB.Common.VersionControl;
 using Parallel = System.Threading.Tasks.Parallel;
@@ -797,7 +797,9 @@ namespace DLaB.ModelBuilderExtensions
             }
 
             // ReSharper disable once UnusedMember.Local
+#pragma warning disable IDE0051 // Remove unused private members
             private void Log(string log)
+#pragma warning restore IDE0051 // Remove unused private members
             {
                 if (LoggingEnabled)
                 {

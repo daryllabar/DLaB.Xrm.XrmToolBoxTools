@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Crm.Services.Utility;
+﻿using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DLaB.ModelBuilderExtensions.Tests.Entity
@@ -17,7 +12,7 @@ namespace DLaB.ModelBuilderExtensions.Tests.Entity
             var factory = new ServiceFactory();
             var provider = factory.GetService<IMetadataProviderService>();
             Assert.IsNotNull(provider);
-            var metadata = provider.LoadMetadata();
+            var metadata = provider.LoadMetadata(factory);
             Assert.AreNotEqual(0, metadata.Entities.Length);
         }
     }

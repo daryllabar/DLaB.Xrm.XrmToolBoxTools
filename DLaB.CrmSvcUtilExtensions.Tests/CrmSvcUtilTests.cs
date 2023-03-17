@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using Microsoft.Crm.Services.Utility;
+using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DLaB.ModelBuilderExtensions.Tests
@@ -14,9 +14,9 @@ namespace DLaB.ModelBuilderExtensions.Tests
         public void CreateTestEntityFile()
         {
             var factory = new ServiceFactory();
-            var customizeDom = new CrmSvcUtilExtensions.Entity.CustomizeCodeDomService();
-            var codeGen =      new CrmSvcUtilExtensions.Entity.CustomCodeGenerationService(factory.GetService<ICodeGenerationService>());
-            var filter =       new CrmSvcUtilExtensions.Entity.CodeWriterFilterService(factory.GetService<ICodeWriterFilterService>());
+            var customizeDom = new ModelBuilderExtensions.Entity.CustomizeCodeDomService();
+            var codeGen =      new ModelBuilderExtensions.Entity.CustomCodeGenerationService(factory.GetService<ICodeGenerationService>());
+            var filter =       new ModelBuilderExtensions.Entity.CodeWriterFilterService(factory.GetService<ICodeWriterFilterService>());
 
             TestFileCreation(factory, customizeDom, codeGen, filter);
         }
@@ -73,7 +73,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
                     factory.Add(customizeDom);
                     factory.Add(codeGen);
                     factory.Add(filter);
-                    factory.Add<INamingService>(new NamingService(factory.GetService<INamingService>()));
+                    factory.Add<INamingService>(new NamingService(factory.GetService<INamingService>(), new Dictionary<string, string>{{ "settingsTemplateFile", "Default" }}));
 
                     factory.GetService<ICodeGenerationService>().Write(factory.GetMetadata(), "CS", fileName, "DLaB.ModelBuilderExtensions.UnitTest", factory.ServiceProvider);
                 }

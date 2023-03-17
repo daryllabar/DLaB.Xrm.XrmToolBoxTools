@@ -71,14 +71,21 @@ namespace DLaB.EarlyBoundGenerator
             var currentOut = Console.Out;
             var logger = new LoggerTextWriter();
             Console.SetOut(logger);
-            var runner = new ProcessModelInvoker(GetParameters(GetParameters()));
-            var result = runner.Invoke(service);
-            logger.FlushLogger();
-            Console.SetOut(currentOut);
-            if (result != 0)
+            try
             {
-                Logger.Show("An error occurred!", " An error when calling ProcessModelInvoker.Invoke.  Result: "  + result);
+                var runner = new ProcessModelInvoker(GetParameters(GetParameters()));
+                var result = runner.Invoke(service);
+                Console.SetOut(currentOut);
+                if (result != 0)
+                {
+                    Logger.Show("An error occurred!", " An error when calling ProcessModelInvoker.Invoke.  Result: " + result);
+                }
             }
+            finally
+            {
+                logger.FlushLogger();
+            }
+
 
             //var filePath = Path.Combine(EarlyBoundGeneratorConfig.RootPath, EarlyBoundGeneratorConfig.EntityOutPath,
             //    EarlyBoundGeneratorConfig.ServiceContextName + ".cs");

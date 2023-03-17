@@ -111,7 +111,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         [Category("Debug")]
         [DisplayName("Wait For Attached Debugger")]
-        [Description("For Debugging Only!  Waits until a debugger is attached to the CrmSvcUtil.exe before processing the command.")]
+        [Description("For Debugging Only!  Waits until a debugger is attached to the ModelBuilder before processing the command.")]
         public bool WaitForAttachedDebugger
         {
             get => Config.ExtensionConfig.WaitForAttachedDebugger;
@@ -225,7 +225,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         [Category("Entities")]
         [DisplayName("Generate Entity Type Code")]
-        [Description("By default the CrmSvcUtil generates the Entity Type Code, this is considered dangerous to use and is not recommended since it is a system generated value, and not one defined in the solution metadata, changing from environment to environment.")]
+        [Description("By default the ModelBuilder generates the Entity Type Code, this is considered dangerous to use and is not recommended since it is a system generated value, and not one defined in the solution metadata, changing from environment to environment.")]
         public bool GenerateEntityTypeCode
         {
             get => Config.ExtensionConfig.GenerateEntityTypeCode;
@@ -359,21 +359,21 @@ namespace DLaB.EarlyBoundGenerator.Settings
         }
 
         [Category("Global")]
+        [DisplayName("Camel Case Dictionary Relative Path")]
+        [Description("The path relative to the XrmToolBox Plugins directory to a Dictionary file containing a single word on each line.  This is used when auto camel casing names when either the \"Gobal: Camel Case Class Names\" or \"Global: Camel Case Member Names\" is set to true.")]
+        public string CamelCaseNamesDictionaryRelativePath
+        {
+            get => Config.ExtensionConfig.CamelCaseNamesDictionaryRelativePath;
+            set => Config.ExtensionConfig.CamelCaseNamesDictionaryRelativePath = value;
+        }
+
+        [Category("Global")]
         [DisplayName("Camel Case Member Names")]
         [Description("Using a dictionary, attempts to correctly camelcase column/parameter names")]
         public bool CamelCaseMemberNames
         {
             get => Config.ExtensionConfig.CamelCaseMemberNames;
             set => Config.ExtensionConfig.CamelCaseMemberNames = value;
-        }
-
-        [Category("Global")]
-        [DisplayName("CrmSvcUtil Relative Path")]
-        [Description("The Path to the CrmSvcUtil.exe, relative to the CrmSvcUtil Realtive Root Path.  Defaults to using the CrmSvcUtil that comes by default.")]
-        public string CrmSvcUtilRelativePath
-        {
-            get => Config.CrmSvcUtilRelativePath;
-            set => Config.CrmSvcUtilRelativePath = value;
         }
 
         [Category("Global")]
@@ -616,6 +616,19 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         }
 
         #endregion Option Sets
+
+        #region Service Generation Extensions
+
+        [Category("Service Generation Extensions")]
+        [DisplayName("Naming Service")]
+        [Description("Called during the CodeDOM generation to determine the name for objects.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator. ")]
+        public string NamingService
+        {
+            get => Config.ExtensionConfig.NamingService;
+            set => Config.ExtensionConfig.NamingService = value;
+        }
+
+        #endregion Service Generation Extensions
 
         [Browsable(false)]
         public string SettingsPath { get; set; }

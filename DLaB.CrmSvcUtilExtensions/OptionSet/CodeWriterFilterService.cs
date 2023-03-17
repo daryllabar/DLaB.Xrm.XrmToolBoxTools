@@ -18,7 +18,7 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.Crm.Services.Utility;
+using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.Xrm.Sdk.Metadata;
 using System.Linq;
 using Source.DLaB.Common;
@@ -137,7 +137,7 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
             if (!GenerateOnlyReferencedOptionSets) { return; }
 
             var metadataService = (IMetadataProviderService) services.GetService(typeof(IMetadataProviderService));
-            var metadata = metadataService.LoadMetadata();
+            var metadata = metadataService.LoadMetadata(services);
             foreach (var entity in metadata.Entities.Where(m => GenerateEntity(m, services)))
             {
                 foreach (var name in entity.Attributes.Where(a => a.AttributeType == AttributeTypeCode.Picklist || a.AttributeType == AttributeTypeCode.Virtual && a is MultiSelectPicklistAttributeMetadata)

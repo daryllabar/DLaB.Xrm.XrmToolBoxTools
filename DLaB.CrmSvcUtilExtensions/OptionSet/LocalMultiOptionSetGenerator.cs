@@ -4,7 +4,7 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using Microsoft.Crm.Services.Utility;
+using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.Xrm.Sdk.Metadata;
 
 namespace DLaB.ModelBuilderExtensions.OptionSet
@@ -30,7 +30,7 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
 
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
-            var metadata = ((IMetadataProviderService) services.GetService(typeof(IMetadataProviderService))).LoadMetadata();
+            var metadata = ((IMetadataProviderService) services.GetService(typeof(IMetadataProviderService))).LoadMetadata(services);
             var namingService = (INamingService) services.GetService(typeof(INamingService));
             foreach (var entity in metadata.Entities)
             {

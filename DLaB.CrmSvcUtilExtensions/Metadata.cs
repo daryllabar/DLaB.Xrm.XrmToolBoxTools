@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 using DLaB.ModelBuilderExtensions.Serialization;
-using Microsoft.Crm.Services.Utility;
+using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.Xrm.Sdk.Metadata;
 
 namespace DLaB.ModelBuilderExtensions

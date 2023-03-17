@@ -7,7 +7,8 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading;
 using System.Xml;
-using Microsoft.Crm.Services.Utility;
+using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
+using Microsoft.Xrm.Sdk;
 
 namespace DLaB.ModelBuilderExtensions
 {
@@ -35,9 +36,9 @@ namespace DLaB.ModelBuilderExtensions
             FilePath = ConfigHelper.GetAppSettingOrDefault("SerializedMetadataFilePath", "metadata.xml");
         }
 
-        public IOrganizationMetadata LoadMetadata() { return Metadata ?? (Metadata = LoadMetadataInternal()); }
+        public IOrganizationMetadata LoadMetadata(IServiceProvider service) { return Metadata ?? (Metadata = LoadMetadataInternal(service)); }
 
-        protected virtual IOrganizationMetadata LoadMetadataInternal()
+        protected virtual IOrganizationMetadata LoadMetadataInternal(IServiceProvider service)
         {
             IOrganizationMetadata metadata;
             if (ConfigHelper.GetAppSettingOrDefault("ReadSerializedMetadata", false))
@@ -46,7 +47,7 @@ namespace DLaB.ModelBuilderExtensions
             }
             else
             {
-                metadata = DefaultService.LoadMetadata();
+                metadata = DefaultService.LoadMetadata(service);
 
                 if (ConfigHelper.GetAppSettingOrDefault("SerializeMetadata", false))
                 {
@@ -114,5 +115,8 @@ namespace DLaB.ModelBuilderExtensions
                 }
             }
         }
+
+        public IOrganizationService ServiceConnection { get; set; }
+        public bool IsLiveConnectionRequired { get; set; }
     }
 }

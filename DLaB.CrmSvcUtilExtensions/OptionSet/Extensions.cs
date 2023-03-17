@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
+using Microsoft.Xrm.Sdk.Metadata;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Crm.Services.Utility;
-using Microsoft.Xrm.Sdk.Metadata;
 
 namespace DLaB.ModelBuilderExtensions.OptionSet
 {
@@ -11,7 +11,7 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
         public static Dictionary<string, OptionSetMetadataBase> GetMetadataForEnumsByName(this IServiceProvider services)
         {
             var metadataByEnumName = new Dictionary<string, OptionSetMetadataBase>();
-            var metadata = ((IMetadataProviderService)services.GetService(typeof(IMetadataProviderService))).LoadMetadata();
+            var metadata = ((IMetadataProviderService)services.GetService(typeof(IMetadataProviderService))).LoadMetadata(services);
             var filterService = ((ICodeWriterFilterService)services.GetService(typeof(ICodeWriterFilterService)));
             var namingService = (INamingService)services.GetService(typeof(INamingService));
             foreach (var entity in metadata.Entities)
@@ -43,7 +43,7 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
         public static Dictionary<string, Tuple<string, OptionSetMetadata>> GetMetadataForLocalEnumsByName(this IServiceProvider services)
         {
             var metadataByEnumName = new Dictionary<string, Tuple<string, OptionSetMetadata>>();
-            var metadata = ((IMetadataProviderService)services.GetService(typeof(IMetadataProviderService))).LoadMetadata();
+            var metadata = ((IMetadataProviderService)services.GetService(typeof(IMetadataProviderService))).LoadMetadata(services);
             var filterService = ((ICodeWriterFilterService)services.GetService(typeof(ICodeWriterFilterService)));
             var namingService = (INamingService)services.GetService(typeof(INamingService));
             foreach (var entity in metadata.Entities)

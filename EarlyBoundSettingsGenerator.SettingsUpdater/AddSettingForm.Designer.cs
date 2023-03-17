@@ -173,7 +173,8 @@
             "Entities",
             "Global",
             "Meta",
-            "Option Sets"});
+            "Option Sets",
+            "Service Generation Extensions"});
             this.CategoryCmb.Location = new System.Drawing.Point(114, 117);
             this.CategoryCmb.Name = "CategoryCmb";
             this.CategoryCmb.Size = new System.Drawing.Size(413, 21);

@@ -37,61 +37,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrmSvcUtil, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\coretools\CrmSvcUtil.exe</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Crm.Sdk.Proxy, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.48\lib\net462\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
+      <HintPath>..\packages\Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.1.0.18\lib\net48\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.IdentityModel.6.1.7600.16394\lib\net35\Microsoft.IdentityModel.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=3.19.8.16603, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.19.8\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.Platform, Version=3.19.8.16603, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.19.8\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.1.1.1\lib\net462\Microsoft.Rest.ClientRuntime.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.PowerPlatform.Dataverse.ModelBuilderLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.1.0.18\lib\net48\Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.48\lib\net462\Microsoft.Xrm.Sdk.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Xrm.Sdk.Deployment, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.Deployment.9.0.2.34\lib\net462\Microsoft.Xrm.Sdk.Deployment.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Xrm.Sdk.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.Workflow.9.0.2.48\lib\net462\Microsoft.Xrm.Sdk.Workflow.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Xrm.Tooling.Connector, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.1.1.1\lib\net462\Microsoft.Xrm.Tooling.Connector.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Xrm.Tooling.CrmConnectControl, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.WpfControls.9.1.1.1\lib\net462\Microsoft.Xrm.Tooling.CrmConnectControl.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Xrm.Tooling.Ui.Styles, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.WpfControls.9.1.1.1\lib\net462\Microsoft.Xrm.Tooling.Ui.Styles.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Xrm.Tooling.WebResourceUtility, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.WpfControls.9.1.1.1\lib\net462\Microsoft.Xrm.Tooling.WebResourceUtility.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.1.0.18\lib\net48\Microsoft.Xrm.Sdk.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
@@ -101,6 +58,9 @@
     <Reference Include="System.Activities.Presentation" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CodeDom, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.CodeDom.6.0.0\lib\net461\System.CodeDom.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Configuration" />
@@ -149,17 +109,15 @@
     <Reference Include="System.Text.Encodings.Web, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encodings.Web.6.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
-    <Reference Include="System.Text.Json, Version=6.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Json.6.0.2\lib\net461\System.Text.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="System.Text.Json, Version=6.0.0.7, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.6.0.7\lib\net461\System.Text.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -174,6 +132,11 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.XmlDocument, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Xml.XmlDocument.4.3.0\lib\net46\System.Xml.XmlDocument.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -198,9 +161,93 @@
     <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\VersionControl\NoSourceControlProvider.cs" />
     <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\VersionControl\SourceControl.cs" />
     <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\VersionControl\VsTfsSourceControlProvider.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\ActivityPropertyInfo.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Comparers\AttributeComparer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Comparers\ColumnSetComparer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Comparers\ConditionExpressionComparer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Comparers\EnumerableComparer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Comparers\FilterExpressionComparer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Comparers\HashCode.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Comparers\LinkEntityComparer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Comparers\OrderExpressionComparer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Comparers\PagingInfoComparer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Comparers\ProjectionEqualityComparer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Comparers\QueryExpressionComparer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\DLaBXrmConfig.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\EntityHelper.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\ErrorCodes.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Exceptions\EnumCaseUndefinedException.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Exceptions\InvalidPluginStepRegistrationException.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Exceptions\MissingAttributeException.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\ExtendedOrganizationService.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\ExtendedOrganizationServiceSettings.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\ExtendedTracingService.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\AddLinkExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\AliasedExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\AreEqualExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\ByIdExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\Extensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\HasConditionExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\HasConditionInWithValuesExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\OptimisticConcurrencyExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\OrganizationServiceExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\QueryExpressionConvertExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\ToStringDebugExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\WhereEqualExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Extensions\WhereInExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\IExtendedExecutionContext.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\IMaxLengthTracingService.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\IMinimumUpdater.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\LateBoundActivePropertyInfo.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\LateBoundQuerySettings.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\MinimumUpdaterDefault.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\AssertValidator.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\ColumnRequirementCheck.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\ContextEntity.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\DLaBExtendedPluginContextBase.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\DLaBExtendedPluginContextSettings.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\DLaBGenericPluginBase.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\DLaBPluginBase.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\ExtendedContextCreator.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\Extensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\IExtendedContextCreator.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\IExtendedPluginContext.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\IExtendedPluginContextInitializer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\InvalidColumnReason.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\InvalidRequirementReason.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\IRegisteredEventsPlugin.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\IRequirementValidator.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\IsolationMode.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\MessageType.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\ParameterName.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\PipelineStage.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\RegisteredEvent.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\RegisteredEventBuilder.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\RequirementValidator.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Plugin\TraceTimer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\PrimaryFieldInfo.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\QueryExpressionFactory.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\QuerySettings.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\ReadOnlyCachedService.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\RetrieveAllEntities.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Sandbox\ExceptionHandler.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Serialization\Extensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Serialization\KeyValuePairOfRelationshipEntityCollectionX_PsK4FkN.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Serialization\KeyValuePairOfstringanyType.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Serialization\KeyValuePairOfstringstring.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Serialization\SerializableAttributeCollection.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Serialization\SerializableEntity.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Serialization\SerializableEntityCollection.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Serialization\SerializableEntityReference.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Serialization\SerializableFormattedValueCollection.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Serialization\SerializableKeyAttributeCollection.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\Serialization\SerializableRelatedEntityCollection.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\SolutionCheckerAvoider.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\TypedQueryExpression.cs" />
     <Compile Include="AttributeConstGeneratorBase.cs" />
     <Compile Include="BaseCustomCodeGenerationService.cs" />
     <Compile Include="CamelCaser.cs" />
+    <Compile Include="DLaBModelBuilderSettings.cs" />
     <Compile Include="Entity\RelationshipConstGenerator.cs" />
     <Compile Include="Entity\EntityConstructorsGenerator.cs" />
     <Compile Include="Entity\EnumerableEntityPropertyUpdater.cs" />
@@ -250,10 +297,6 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="bin\coretools\CrmSvcUtil.exe.config" />
-    <None Include="bin\coretools\LicenseTerms.docx" />
-    <None Include="bin\coretools\pacTelemetryUpload.exe.config" />
-    <None Include="bin\coretools\SolutionPackager.exe.config" />
     <None Include="bin\Debug\CrmSvcUtil.exe.config" />
     <None Include="bin\Debug\DLaB.CrmSvcUtilExtensions.dll.config" />
     <None Include="bin\Release\CrmSvcUtil.exe.config" />
@@ -268,27 +311,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\coretools\CrmSvcUtil.exe" />
-    <Content Include="bin\coretools\CrmSvcUtil.xml" />
-    <Content Include="bin\coretools\Microsoft.ApplicationInsights.dll" />
-    <Content Include="bin\coretools\Microsoft.Crm.Sdk.Proxy.dll" />
-    <Content Include="bin\coretools\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
     <Content Include="bin\coretools\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
-    <Content Include="bin\coretools\Microsoft.PowerPlatform.Tooling.BatchedTelemetry.dll" />
-    <Content Include="bin\coretools\Microsoft.Rest.ClientRuntime.dll" />
-    <Content Include="bin\coretools\Microsoft.Xrm.Sdk.Deployment.dll" />
-    <Content Include="bin\coretools\Microsoft.Xrm.Sdk.dll" />
-    <Content Include="bin\coretools\Microsoft.Xrm.Tooling.Connector.dll" />
-    <Content Include="bin\coretools\Microsoft.Xrm.Tooling.CrmConnectControl.dll" />
-    <Content Include="bin\coretools\Microsoft.Xrm.Tooling.Ui.Styles.dll" />
-    <Content Include="bin\coretools\Newtonsoft.Json.dll" />
-    <Content Include="bin\coretools\Other Redistributable.txt" />
-    <Content Include="bin\coretools\pacTelemetryUpload.exe" />
-    <Content Include="bin\coretools\SolutionPackager.exe" />
-    <Content Include="bin\coretools\SolutionPackagerLib.dll" />
-    <Content Include="bin\coretools\System.Diagnostics.DiagnosticSource.dll" />
-    <Content Include="bin\coretools\System.Text.Json.dll" />
-    <Content Include="bin\coretools\System.ValueTuple.dll" />
     <Content Include="bin\Debug\AntiXssLibrary.dll" />
     <Content Include="bin\Debug\CrmSvcUtil.exe" />
     <Content Include="bin\Debug\CrmSvcUtil.xml" />
@@ -1111,13 +1134,6 @@ xcopy /I /Y "$(SolutionDir)packages\Microsoft.CrmSdk.CoreTools.9.1.0.115\content
 
 </PreBuildEvent>
   </PropertyGroup>
-  <Import Project="..\packages\System.Text.Json.6.0.2\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.2\build\System.Text.Json.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\System.Text.Json.6.0.2\build\System.Text.Json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Text.Json.6.0.2\build\System.Text.Json.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

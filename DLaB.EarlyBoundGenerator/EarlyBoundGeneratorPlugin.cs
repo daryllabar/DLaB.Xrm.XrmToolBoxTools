@@ -74,7 +74,7 @@ namespace DLaB.EarlyBoundGenerator
             try
             {
                 Settings = EarlyBoundGeneratorConfig.Load(settingsPath);
-                Settings.CrmSvcUtilRelativeRootPath = Paths.PluginsPath;
+                Settings.ExtensionConfig.XrmToolBoxPluginPath = Paths.PluginsPath;
                 SettingsMap = new SettingsMap(this, Settings){SettingsPath = settingsPath};
                 PropertiesGrid.SelectedObject = SettingsMap;
                 SkipSaveSettings = false;
@@ -86,7 +86,7 @@ namespace DLaB.EarlyBoundGenerator
                 if (result == DialogResult.Yes)
                 {
                     Settings = EarlyBoundGeneratorConfig.GetDefault();
-                    Settings.CrmSvcUtilRelativeRootPath = Paths.PluginsPath;
+                    Settings.ExtensionConfig.XrmToolBoxPluginPath = Paths.PluginsPath;
                 }
                 else
                 {
@@ -282,7 +282,7 @@ namespace DLaB.EarlyBoundGenerator
             else
             {
                 var defaultConfig = EarlyBoundGeneratorConfig.GetDefault();
-                defaultConfig.CrmSvcUtilRelativeRootPath = Paths.PluginsPath;
+                defaultConfig.ExtensionConfig.XrmToolBoxPluginPath = Paths.PluginsPath;
                 Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, defaultConfig.GetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter).Value);
                 Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService, defaultConfig.GetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService).Value);
             }
@@ -306,7 +306,6 @@ namespace DLaB.EarlyBoundGenerator
             }
 
             properties["AudibleCompletionNotification"] = Settings.AudibleCompletionNotification.ToString();
-            properties["CrmSvcUtilRelativePath"] = Settings.CrmSvcUtilRelativePath;
             properties["IncludeCommandLine"] = Settings.IncludeCommandLine.ToString();
             properties["MaskPassword"] = Settings.MaskPassword.ToString();
             properties["SupportsActions"] = Settings.SupportsActions.ToString();

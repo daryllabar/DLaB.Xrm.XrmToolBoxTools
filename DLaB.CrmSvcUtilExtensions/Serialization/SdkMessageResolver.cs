@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using System.Xml;
-using Microsoft.Crm.Services.Utility;
+using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 
 namespace DLaB.ModelBuilderExtensions.Serialization
 {

@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Source.DLaB.Common;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using Microsoft.Crm.Sdk.Messages;
-using Source.DLaB.Common;
 
 namespace DLaB.ModelBuilderExtensions
 {
@@ -12,13 +10,18 @@ namespace DLaB.ModelBuilderExtensions
     {
         public static Lazy<Dictionary<int,HashSet<string>>> Dictionary = new Lazy<Dictionary<int, HashSet<string>>>(LoadDictionary);
         public static Lazy<List<string>> Overrides = new Lazy<List<string>>(LoadOverrides);
-        private static readonly string Directory = Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule?.FileName ?? "C:\\") ?? "C:\\");
         private static int _maxWordLength = int.MaxValue;
 
         private static Dictionary<int, HashSet<string>> LoadDictionary()
         {
             var dict = new Dictionary<int, HashSet<string>>();
-            foreach (var word in File.ReadLines(Path.Combine(Directory, "DLaB.Dictionary.txt")).Select(f => f.Trim().ToLower()))
+            var dictPath = ConfigHelper.Settings.DLaBModelBuilder.CamelCaseNamesDictionaryPath;
+            if (!File.Exists(dictPath))
+            {
+                throw new FileNotFoundException("Camel Case Dictionary not found!", dictPath);
+            }
+
+            foreach (var word in File.ReadLines(dictPath).Select(f => f.Trim().ToLower()))
             {
                 try
                 {

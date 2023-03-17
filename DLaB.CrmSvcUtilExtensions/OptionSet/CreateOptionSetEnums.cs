@@ -22,7 +22,7 @@
 
 using System;
 
-using Microsoft.Crm.Services.Utility;
+using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using System.Diagnostics;
 using System.CodeDom;
 using System.Collections.Generic;

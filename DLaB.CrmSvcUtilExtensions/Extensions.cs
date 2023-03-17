@@ -6,7 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using DLaB.ModelBuilderExtensions.Entity;
-using Microsoft.Crm.Services.Utility;
+using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 
@@ -29,7 +29,7 @@ namespace DLaB.ModelBuilderExtensions
             }
 
             _entityTypes = new List<Tuple<CodeTypeDeclaration, EntityMetadata>>();
-            var metadata = ((IMetadataProviderService) services.GetService(typeof(IMetadataProviderService))).LoadMetadata().Entities.ToDictionary(e => e.LogicalName);
+            var metadata = ((IMetadataProviderService) services.GetService(typeof(IMetadataProviderService))).LoadMetadata(services).Entities.ToDictionary(e => e.LogicalName);
             foreach (var type in codeUnit.GetTypes().Where(type => type.IsClass && !type.IsContextType()))
             {
                 var logicalNameAttribute = type.CustomAttributes.Cast<CodeAttributeDeclaration>()

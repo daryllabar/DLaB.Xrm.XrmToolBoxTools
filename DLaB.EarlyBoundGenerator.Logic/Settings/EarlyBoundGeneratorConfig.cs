@@ -31,17 +31,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         public bool AudibleCompletionNotification { get; set; }
 
         /// <summary>
-        /// The CrmSvcUtil relative path.
-        /// </summary>
-        /// <value>
-        /// The CrmSvcUtil relative path.
-        /// </value>
-        [Category("Global")]
-        [DisplayName("CrmSvcUtil Relative Path")]
-        [Description("The Path to the CrmSvcUtil.exe, relative to the CrmSvcUtil Realtive Root Path.  Defaults to using the CrmSvcUtil that comes by default.")]
-        public string CrmSvcUtilRelativePath { get; set; }
-
-        /// <summary>
         /// Specifies whether to include in the early bound class, the command line used to generate it.
         /// </summary>
         /// <value>
@@ -190,25 +179,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         public IEnumerable<Argument> CommandLineArguments => UserArguments.Union(ExtensionArguments);
 
         /// <summary>
-        /// Path determined based on the Relative Path
-        /// </summary>
-        [XmlIgnore]
-        [Browsable(false)]
-        public string CrmSvcUtilPath =>
-            Directory.Exists(CrmSvcUtilRelativePath)
-                ? CrmSvcUtilRelativePath
-                : Path.Combine(CrmSvcUtilRelativeRootPath ?? Directory.GetCurrentDirectory(), CrmSvcUtilRelativePath);
-
-        /// <summary>
-        /// Set during Execution
-        /// </summary>
-        [XmlIgnore]
-        [Browsable(false)]
-        public string CrmSvcUtilRelativeRootPath { get; set; }
-
-
-        /// <summary>
-        /// Path of the Model Builder Template file,relative to the root path, if not fully rooted
+        /// Path of the Model Builder Template file, relative to the root path, if not fully rooted
         /// </summary>
         [XmlIgnore]
         [Browsable(false)]
@@ -294,7 +265,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         private EarlyBoundGeneratorConfig()
         {
-            CrmSvcUtilRelativePath = Config.GetAppSettingOrDefault("CrmSvcUtilRelativePath", @"DLaB.EarlyBoundGenerator\crmsvcutil.exe");
             UseConnectionString = Config.GetAppSettingOrDefault("UseConnectionString", false);
             Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
@@ -304,11 +274,9 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// <summary>
         /// Initializes a new instance of the <see cref="EarlyBoundGeneratorConfig"/> class.
         /// </summary>
-        /// <param name="poco">The poco.</param>
         private EarlyBoundGeneratorConfig(POCO.Config poco)
         {
             var @default = GetDefault();
-            CrmSvcUtilRelativePath = poco.CrmSvcUtilRelativePath ?? @default.CrmSvcUtilRelativePath;
             RemoveObsoleteValues(poco, @default);
 
             AudibleCompletionNotification = poco.AudibleCompletionNotification ?? @default.AudibleCompletionNotification;
@@ -413,13 +381,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         private void RemoveObsoleteValues(POCO.Config poco, EarlyBoundGeneratorConfig @default)
         {
-            if (CrmSvcUtilRelativePath == @"Plugins\CrmSvcUtil Ref\crmsvcutil.exe"
-                || CrmSvcUtilRelativePath == @"CrmSvcUtil Ref\crmsvcutil.exe")
-            {
-                // 12.15.2016 XTB changed to use use the User directory, no plugin folder needed now
-                // 3.12.2019 Nuget Stopped liking spaces in the CrmSvcUtilFolder.  Updated to be the plugin specific DLaB.EarlyBoundGenerator
-                CrmSvcUtilRelativePath = @default.CrmSvcUtilRelativePath;
-            }
             foreach (var value in poco.ExtensionArguments.Where(a => string.Equals(a.Value, "DLaB.CrmSvcUtilExtensions.Entity.OverridePropertyNames,DLaB.CrmSvcUtilExtensions", StringComparison.InvariantCultureIgnoreCase)).ToList())
             {
                 // Pre 2.13.2016, this was the default value.  Replaced with a single naming service that both Entities and OptionSets can use
@@ -569,6 +530,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// Loads the Config from the given path.
         /// </summary>
         /// <param name="filePath"></param>
+        /// <param name="pacOrXrmToolBoxPluginPath"></param>
         /// <returns></returns>
         public static EarlyBoundGeneratorConfig Load(string filePath)
         {
@@ -802,6 +764,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             public const string GenerateGlobalOptionSets = "generateGlobalOptionSets";
             public const string Language = "language";
             public const string Namespace = "namespace";
+            public const string NamingService = "namingService";
             public const string MessageNamesFilter = "messageNamesFilter";
             public const string MessagesTypesFolder = "messagesTypesFolder";
             public const string OptionSetsTypesFolder = "optionSetsTypesFolder";
@@ -830,7 +793,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
     public class Config
     {
         public bool? AudibleCompletionNotification { get; set; }
-        public string CrmSvcUtilRelativePath { get; set; }
+        public string CamelCaseNamesDictionaryRelativePath { get; set; }
         public bool? IncludeCommandLine { get; set; }
         public bool? MaskPassword { get; set; }
         public ExtensionConfig ExtensionConfig { get; set; }

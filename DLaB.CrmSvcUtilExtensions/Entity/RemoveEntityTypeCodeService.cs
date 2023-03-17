@@ -1,7 +1,7 @@
 ﻿using System;
 using System.CodeDom;
 using System.Linq;
-using Microsoft.Crm.Services.Utility;
+using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 
 namespace DLaB.ModelBuilderExtensions.Entity
 {

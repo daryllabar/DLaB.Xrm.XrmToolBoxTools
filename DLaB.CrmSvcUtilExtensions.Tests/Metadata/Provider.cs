@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Linq;
 using DLaB.ModelBuilderExtensions.Entity;
-using Microsoft.Crm.Services.Utility;
 using System.IO;
 using System.IO.Compression;
+using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
+using Microsoft.Xrm.Sdk;
 
 namespace DLaB.ModelBuilderExtensions.Tests.Metadata
 {
@@ -21,7 +22,9 @@ namespace DLaB.ModelBuilderExtensions.Tests.Metadata
             _metadata = MetadataProviderService.DeserializeMetadata(path);
         }
 
-        public IOrganizationMetadata LoadMetadata() { return _metadata; }
+        public IOrganizationMetadata LoadMetadata(IServiceProvider services) { return _metadata; }
+        public IOrganizationService ServiceConnection { get; set; }
+        public bool IsLiveConnectionRequired { get; set; }
 
         private void UnzipMetadata(string xmlPath)
         {

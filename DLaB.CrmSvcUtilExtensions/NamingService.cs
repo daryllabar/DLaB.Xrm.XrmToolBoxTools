@@ -1,21 +1,23 @@
-﻿using System;
+﻿using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
+using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Metadata;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Microsoft.Crm.Services.Utility;
-using Microsoft.Xrm.Sdk;
-using Microsoft.Xrm.Sdk.Metadata;
 
 namespace DLaB.ModelBuilderExtensions
 {
     using OptionSet.Transliteration;
-    
+    using Source.DLaB.Xrm;
+
     public class NamingService : INamingService
     {
-        public static bool UseLogicalNames => ConfigHelper.GetNonNullableAppSettingOrDefault("UseLogicalNames", false);
-        public static bool CamelCaseClassNames => ConfigHelper.GetNonNullableAppSettingOrDefault("CamelCaseClassNames", false);
-        public static bool CamelCaseMemberNames => ConfigHelper.GetNonNullableAppSettingOrDefault("CamelCaseMemberNames", false);
-        public static int LanguageCodeOverride => ConfigHelper.GetNonNullableAppSettingOrDefault("OptionSetLanguageCodeOverride", -1);
+        public bool UseLogicalNames { get; set; }
+        public bool CamelCaseClassNames { get; set; }
+
+        public bool CamelCaseMemberNames { get; set; }
+        public int LanguageCodeOverride { get; set; }
         public Dictionary<string, string> OptionSetNames { get; set; }
         private const int English = 1033;  
         private string ValidCSharpNameRegEx { get; set; }
@@ -24,35 +26,41 @@ namespace DLaB.ModelBuilderExtensions
         private string InvalidCSharpNamePrefix { get; }
         private string LocalOptionSetFormat { get; }
         private bool UseDeprecatedOptionSetNaming { get; }
-        private static HashSet<string> _entityNames;
-
-        public HashSet<string> EntityNames => _entityNames ?? (_entityNames = GenerateEntityNames());
+        private HashSet<string> _entityNames;
 
         /// <summary>
         /// This field keeps track of options with the same name and the values that have been defined.  Internal Dictionary Key is Name + "_" + Value
         /// </summary>
         private Dictionary<OptionSetMetadataBase, Dictionary<string, bool>> OptionNameValueDuplicates { get; }
 
-        public NamingService(INamingService defaultService)
+        public NamingService(INamingService defaultService, IDictionary<string, string> parameters)
         {
             DefaultService = defaultService;
-            OptionSetNames = ConfigHelper.GetDictionary("OptionSetNames", false);
-            EntityAttributeSpecifiedNames = ConfigHelper.GetDictionaryHash("EntityAttributeSpecifiedNames", false);
+            ConfigHelper.Initialize(parameters);
+            var config = ConfigHelper.Settings.DLaBModelBuilder;
+            CamelCaseClassNames = config.CamelCaseClassNames;
+            CamelCaseMemberNames = config.CamelCaseMemberNames;
+            EntityAttributeSpecifiedNames = config.EntityAttributeSpecifiedNames;
+            InvalidCSharpNamePrefix = config.InvalidCSharpNamePrefix;
+            LanguageCodeOverride = config.OptionSetLanguageCodeOverride;
+            LocalOptionSetFormat = config.LocalOptionSetFormat;
             OptionNameValueDuplicates = new Dictionary<OptionSetMetadataBase, Dictionary<string, bool>>();
-            InvalidCSharpNamePrefix = ConfigHelper.GetAppSettingOrDefault("InvalidCSharpNamePrefix", "_");
-            LocalOptionSetFormat = ConfigHelper.GetAppSettingOrDefault("LocalOptionSetFormat", "{0}_{1}");
-            UseDeprecatedOptionSetNaming = ConfigHelper.GetAppSettingOrDefault("UseDeprecatedOptionSetNaming", false);
-            ValidCSharpNameRegEx = ConfigHelper.GetAppSettingOrDefault("ValidCSharpNameRegEx", @"[^a-zA-Z0-9_]");
+            OptionSetNames = config.OptionSetNames;
+            UseDeprecatedOptionSetNaming = config.UseDeprecatedOptionSetNaming;
+            UseLogicalNames = config.UseLogicalNames;
+            ValidCSharpNameRegEx = config.ValidCSharpNameRegEx;
         }
 
-        private HashSet<string> GenerateEntityNames()
+        public HashSet<string> GetEntityNames(IServiceProvider services)
         {
-            var metadata = BaseCustomCodeGenerationService.Metadata;
-            if (metadata == null)
+            if (_entityNames != null)
             {
-                throw new Exception("DLaB.ModelBuilderExtensions.BaseCustomCodeGenerationService hasn't been called!");
+                return _entityNames;
             }
-            return new HashSet<string>(metadata.Entities.Select(e => GetNameForEntity(e, BaseCustomCodeGenerationService.ServiceProvider)).ToArray());
+            var metadataProvider = services.GetService<IMetadataProviderService>();
+            var metadata = metadataProvider.LoadMetadata(services);
+            _entityNames = new HashSet<string>(metadata.Entities.Select(e => GetNameForEntity(e, BaseCustomCodeGenerationService.ServiceProvider)).ToArray());
+            return _entityNames;
         }
 
         /// <summary>
@@ -63,7 +71,8 @@ namespace DLaB.ModelBuilderExtensions
         public string GetNameForOptionSet(EntityMetadata entityMetadata, OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
         {
             var name = GetPossiblyConflictedNameForOptionSet(entityMetadata, optionSetMetadata, services);
-            while (EntityNames.Contains(name))
+            var entityNames = GetEntityNames(services);
+            while (entityNames.Contains(name))
             {
                 name += "_Enum";
             }
@@ -110,7 +119,7 @@ namespace DLaB.ModelBuilderExtensions
             return UpdateCasingForGlobalOptionSets(defaultName, optionSetMetadata);
         }
 
-        private static Dictionary<string,string> CasingByGlobalOptionSet = new Dictionary<string, string>{
+        private static readonly Dictionary<string,string> CasingByGlobalOptionSet = new Dictionary<string, string>{
             { "budgetstatus", "BudgetStatus" },
             { "componentstate", "ComponentState" },
             { "componenttype", "ComponentType" },
@@ -154,7 +163,7 @@ namespace DLaB.ModelBuilderExtensions
                 : UpdateCasingForCustomGlobalOptionSets(name, optionSetMetadata);
         }
 
-        private static string UpdateCasingForCustomGlobalOptionSets(string name, OptionSetMetadataBase optionSetMetadata)
+        private string UpdateCasingForCustomGlobalOptionSets(string name, OptionSetMetadataBase optionSetMetadata)
         {
             var preferredEndings = new [] {"StateCode", "Status", "State"};
             var displayName = optionSetMetadata.DisplayName?.GetLocalOrDefaultText() ?? string.Empty;
@@ -193,7 +202,7 @@ namespace DLaB.ModelBuilderExtensions
             return AppendValueForDuplicateOptionSetValueNames(optionSetMetadata, possiblyDuplicateName, optionMetadata.Value.GetValueOrDefault(), services);
         }
 
-        private static string Transliterate(OptionMetadata optionMetadata, string englishName)
+        private string Transliterate(OptionMetadata optionMetadata, string englishName)
         {
             var localizedLabels = optionMetadata.Label.LocalizedLabels;
             if (LanguageCodeOverride < 0 || LanguageCodeOverride == English)
@@ -281,7 +290,7 @@ namespace DLaB.ModelBuilderExtensions
             var name = GetValidCSharpName(defaultName);
             if (defaultName == string.Empty)
             {
-                name = name + option.Value;
+                name += option.Value;
             }
             return name;
         }
@@ -303,8 +312,7 @@ namespace DLaB.ModelBuilderExtensions
         /// <returns></returns>
         private string AppendValueForDuplicateOptionSetValueNames(OptionSetMetadataBase optionSetMetadata, string name, int? value, IServiceProvider services)
         {
-            Dictionary<string, bool> duplicateNameValues;
-            if (!OptionNameValueDuplicates.TryGetValue(optionSetMetadata, out duplicateNameValues))
+            if (!OptionNameValueDuplicates.TryGetValue(optionSetMetadata, out var duplicateNameValues))
             {
                 // Only do the work of determining all of the names and their values once.
                 duplicateNameValues = GetDuplicateNameValues(optionSetMetadata, services);

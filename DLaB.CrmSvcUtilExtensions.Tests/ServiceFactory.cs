@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Microsoft.Crm.Services.Utility;
+using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 
 namespace DLaB.ModelBuilderExtensions.Tests
 {
@@ -41,7 +41,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
                 Add<IMetadataProviderService>(new Metadata.Provider(fileName));
             }
             var provider = GetService<IMetadataProviderService>();
-            return provider.LoadMetadata();
+            return provider.LoadMetadata(this);
         }
 
         private object GetCrmSvcUtilTypeInstance(string typeName, object[] arguments = null)

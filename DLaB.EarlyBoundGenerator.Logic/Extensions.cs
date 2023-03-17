@@ -3,6 +3,7 @@ using System.Reflection;
 using System;
 using System.Text.Json;
 using static DLaB.EarlyBoundGenerator.Settings.EarlyBoundGeneratorConfig;
+using Source.DLaB.Common;
 
 namespace DLaB.EarlyBoundGenerator.Settings
 {
@@ -107,6 +108,52 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 writer.WriteStringValue(splitValue.Trim());
             }
             writer.WriteEndArray();
+        }
+
+        public static void AddPropertyDictionaryStringString(this Utf8JsonWriter writer, string key, string value, bool lowerCaseValues = true)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                return;
+            }
+            
+            writer.WritePropertyName(key.LowerFirstChar());
+            writer.WriteStartObject();
+            var dictionary = value.GetDictionary<string, string>(new ConfigKeyValueSplitInfo
+            {
+                ConvertValuesToLower = lowerCaseValues
+            });
+            foreach (var kvp in dictionary)
+            {
+                writer.WriteString(kvp.Key, kvp.Value);
+            }
+            writer.WriteEndObject();
+        }
+
+        public static void AddPropertyDictionaryStringHashString(this Utf8JsonWriter writer, string key, string value, bool lowerCaseValues = true)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                return;
+            }
+
+            writer.WritePropertyName(key.LowerFirstChar());
+            writer.WriteStartObject();
+            var dictionary = value.GetDictionaryHash<string, string>(new ConfigKeyValuesSplitInfo
+            {
+                ConvertValuesToLower = lowerCaseValues
+            });
+            foreach (var kvp in dictionary)
+            {
+                writer.WritePropertyName(kvp.Key);
+                writer.WriteStartArray();
+                foreach (var hashValue in kvp.Value)
+                {
+                    writer.WriteStringValue(hashValue);
+                }
+                writer.WriteEndArray();
+            }
+            writer.WriteEndObject();
         }
 
         public static string LowerFirstChar(this string value)
