@@ -123,9 +123,9 @@ namespace DLaB.EarlyBoundGenerator
         {
             SettingsMap.PushChanges();
             var isValid =
-                IsValidPath(creationType, CreationType.Entities, SettingsMap.EntityOutPath, SettingsMap.CreateOneFilePerEntity, "Entities") &&
-                IsValidPath(creationType, CreationType.Entities, SettingsMap.OptionSetOutPath, SettingsMap.CreateOneFilePerOptionSet, "OptionSets") &&
-                IsValidPath(creationType, CreationType.Entities, SettingsMap.ActionOutPath, SettingsMap.CreateOneFilePerAction, "Actions") &&
+                IsValidPath(creationType, CreationType.Entities, SettingsMap.EntityTypesFolder, SettingsMap.CreateOneFilePerEntity, "Entities") &&
+                IsValidPath(creationType, CreationType.Entities, SettingsMap.OptionSetsTypesFolder, SettingsMap.CreateOneFilePerOptionSet, "OptionSets") &&
+                IsValidPath(creationType, CreationType.Entities, SettingsMap.MessageTypesFolder, SettingsMap.CreateOneFilePerAction, "Actions") &&
                 IsNamespaceDifferentThanContext();
 
             return isValid;
