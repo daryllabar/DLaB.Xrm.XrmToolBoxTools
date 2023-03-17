@@ -1681,6 +1681,7 @@ clips
 clock
 clocks
 clone
+cloned
 close
 closed
 closely

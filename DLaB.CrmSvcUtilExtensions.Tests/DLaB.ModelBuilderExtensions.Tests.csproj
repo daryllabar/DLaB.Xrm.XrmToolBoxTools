@@ -140,6 +140,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CamelCaserTests.cs" />
     <Compile Include="CrmSvcUtilParameters.cs" />
     <Compile Include="Entity\MetadataProviderServiceTests.cs" />
     <Compile Include="Metadata\Provider.cs" />

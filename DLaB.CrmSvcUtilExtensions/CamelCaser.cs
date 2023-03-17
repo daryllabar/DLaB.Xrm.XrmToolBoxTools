@@ -1,16 +1,25 @@
-﻿using Source.DLaB.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace DLaB.ModelBuilderExtensions
 {
-    public static class CamelCaser
+    public class CamelCaser
     {
-        public static Lazy<Dictionary<int,HashSet<string>>> Dictionary = new Lazy<Dictionary<int, HashSet<string>>>(LoadDictionary);
-        public static Lazy<List<string>> Overrides = new Lazy<List<string>>(LoadOverrides);
-        private static int _maxWordLength = int.MaxValue;
+        private static CamelCaser _default;
+        private Dictionary<int, HashSet<string>> Dictionary { get; }
+        private List<string> Overrides { get; }
+        private static Lazy<Dictionary<int,HashSet<string>>> LazyDictionary = new Lazy<Dictionary<int, HashSet<string>>>(LoadDictionary);
+        private static Lazy<List<string>> LazyOverrides = new Lazy<List<string>>(LoadOverrides);
+        private int _maxWordLength = int.MaxValue;
+
+        public CamelCaser(Dictionary<int, HashSet<string>> dictionary, List<string> overrides = null)
+        {
+            Dictionary = dictionary;
+            Overrides = overrides ?? new List<string>();
+            _maxWordLength = dictionary.Keys.Max();
+        }
 
         private static Dictionary<int, HashSet<string>> LoadDictionary()
         {
@@ -41,22 +50,21 @@ namespace DLaB.ModelBuilderExtensions
                 }
             }
 
-            _maxWordLength = dict.Keys.Max();
             return dict;
         }
 
         private static List<string> LoadOverrides()
         {
-            return Config.GetList("TokenCapitalizationOverrides", new List<string>())
+            return ConfigHelper.Settings.DLaBModelBuilder.TokenCapitalizationOverrides
                          .Select(t=>  t.Trim())
                          .OrderByDescending(t => t.Length).ToList();
         }
 
-        public static string Case(string value, params string[] preferredEndings)
+        public string CaseWord(string value, params string[] preferredEndings)
         {
             value = value.ToLower();
             preferredEndings = preferredEndings.Length == 0
-                ? new[] {"Id"}
+                ? new[] { "Id" }
                 : preferredEndings;
             foreach (var ending in preferredEndings)
             {
@@ -72,9 +80,19 @@ namespace DLaB.ModelBuilderExtensions
             return CaseInternal(value);
         }
 
-        private static string CaseInternal(string value)
+        public static string Case(string value, params string[] preferredEndings)
         {
-            foreach (var token in Overrides.Value)
+            if (_default == null)
+            {
+                _default = new CamelCaser(LazyDictionary.Value, LazyOverrides.Value);
+            }
+
+            return _default.CaseWord(value, preferredEndings);
+        }
+
+        private string CaseInternal(string value)
+        {
+            foreach (var token in Overrides)
             {
                 var index = value.IndexOf(token, StringComparison.InvariantCultureIgnoreCase);
                 if (index >= 0)
@@ -99,7 +117,7 @@ namespace DLaB.ModelBuilderExtensions
             return CasePart(value);
         }
 
-        private static string CasePart(string part)
+        private string CasePart(string part)
         {
             if (string.IsNullOrWhiteSpace(part))
             {
@@ -114,7 +132,7 @@ namespace DLaB.ModelBuilderExtensions
             var currentLength = part.Length > _maxWordLength ? _maxWordLength : part.Length;
             for (var length = currentLength; length > 1; length--)
             {
-                if (Dictionary.Value.TryGetValue(length, out var hash))
+                if (Dictionary.TryGetValue(length, out var hash))
                 {
                     var word = part.Substring(part.Length-length);
                     if (hash.Contains(word))
@@ -128,7 +146,7 @@ namespace DLaB.ModelBuilderExtensions
             return CasePart(part.Substring(0, part.Length-1)) + nonWord.ToString().ToUpper();
         }
 
-        private static string CaseRemaining(string whole, string word)
+        private string CaseRemaining(string whole, string word)
         {
             if (whole.Length == word.Length)
             {
@@ -141,7 +159,7 @@ namespace DLaB.ModelBuilderExtensions
                 : CasePart(remaining);
         }
 
-        private static string Capitalize(string word)
+        private string Capitalize(string word)
         {
             return word.Length > 1
                 ? word.First().ToString().ToUpper() + word.Substring(1)
