@@ -633,8 +633,8 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         [Description("Called during the CodeDOM generation to determine the name for objects.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator. ")]
         public string NamingService
         {
-            get => Config.ExtensionConfig.NamingService;
-            set => Config.ExtensionConfig.NamingService = value;
+            get => Config.NamingService;
+            set => Config.NamingService = value;
         }
 
         #endregion Service Generation Extensions

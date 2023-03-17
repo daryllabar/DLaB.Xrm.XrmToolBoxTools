@@ -67,6 +67,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
         public string MessageTypesFolder { get; set; }
 
         /// <summary>
+        /// Called during the CodeDOM generation to determine the name for objects.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator. 
+        /// </summary>
+        public string NamingService { get; set; }
+
+        /// <summary>
         /// Option set output path
         /// </summary>
         public string OptionSetsTypesFolder { get; set; }
@@ -216,8 +221,16 @@ namespace DLaB.EarlyBoundGenerator.Settings
             RemoveObsoleteValues(poco);
 
             AudibleCompletionNotification = poco.AudibleCompletionNotification ?? @default.AudibleCompletionNotification;
+            EntityTypesFolder = poco.EntityTypesFolder ?? @default.EntityTypesFolder;
             IncludeCommandLine = poco.IncludeCommandLine ?? @default.IncludeCommandLine;
+            GenerateMessages = poco.GenerateMessages ?? @default.GenerateMessages;
+            Namespace = poco.Namespace ?? @default.Namespace;
+            NamingService = poco.NamingService ?? @default.NamingService;
             MaskPassword = poco.MaskPassword ?? @default.MaskPassword;
+            MessageTypesFolder = poco.MessageTypesFolder ?? @default.MessageTypesFolder;
+            OptionSetsTypesFolder = poco.OptionSetsTypesFolder ?? @default.OptionSetsTypesFolder;
+            ServiceContextName = poco.ServiceContextName ?? @default.ServiceContextName;
+            SuppressGeneratedCodeAttribute = poco.SuppressGeneratedCodeAttribute ?? @default.SuppressGeneratedCodeAttribute;
             UpdateBuilderSettingsJson = poco.UpdateBuilderSettingsJson ?? @default.UpdateBuilderSettingsJson;
             WorkflowlessActions = poco.WorkflowlessActions ?? @default.WorkflowlessActions;
 
@@ -386,6 +399,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 //}),
                 MessageTypesFolder = "Messages",
                 Namespace = "DataverseModel",
+                NamingService = "DLaB.ModelBuilderExtensions.NamingService,DLaB.ModelBuilderExtensions",
                 OptionSetsTypesFolder = "OptionSets",
                 ServiceContextName = "DataverseContext", 
                 SuppressGeneratedCodeAttribute = true,
@@ -558,12 +572,23 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         public void PopulateBuilderProperties(Dictionary<string, JsonProperty> properties)
         {
+            var isXrmToolBoxEarlyBound = typeof(ExtensionConfig).AssemblyQualifiedName?.StartsWith("DLaB.EarlyBoundGenerator.Settings.ExtensionConfig, DLaB.EarlyBoundGenerator,") ?? true;
+
             properties.SetJsonProperty(BuilderSettingsJsonNames.EntityTypesFolder, EntityTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.GenerateActions, GenerateMessages);
             properties.SetJsonProperty(BuilderSettingsJsonNames.MessagesTypesFolder, MessageTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.Namespace, Namespace);
+            properties.SetJsonProperty(BuilderSettingsJsonNames.NamingService, isXrmToolBoxEarlyBound ? ReplaceAssemblyName(NamingService) : NamingService);
             properties.SetJsonProperty(BuilderSettingsJsonNames.OptionSetsTypesFolder, OptionSetsTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.ServiceContextName, ServiceContextName);
+        }
+
+        /// <summary>
+        /// Handle updating the Assembly name of Services when running via API dll with reference to DLaB.ModelBuilderExtensions vs the XTB.  DLaB.ModelBuilderExtensions will be ILMerged into the plugin dll itself.
+        /// </summary>
+        private string ReplaceAssemblyName(string serviceName)
+        {
+            return serviceName.Replace(",DLaB.ModelBuilderExtensions", ",DLaB.EarlyBoundGenerator");
         }
     }
 }
@@ -582,6 +607,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? IncludeCommandLine { get; set; }
         public bool? GenerateMessages { get; set; }
         public string Namespace { get; set; }
+        public string NamingService { get; set; }
         public bool? MaskPassword { get; set; }
         public string MessageTypesFolder { get; set; }
         public string OptionSetsTypesFolder { get; set; }

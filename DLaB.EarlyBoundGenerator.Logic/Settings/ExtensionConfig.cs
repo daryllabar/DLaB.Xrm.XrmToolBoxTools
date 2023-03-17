@@ -180,10 +180,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public string LocalOptionSetFormat { get; set; }
         /// <summary>
-        /// Called during the CodeDOM generation to determine the name for objects.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator. 
-        /// </summary>
-        public string NamingService { get; set; }
-        /// <summary>
         /// Overrides the default (English:1033) language code used for generating Option Set Value names (the value, not the option set)
         /// </summary>
         public int? OptionSetLanguageCodeOverride { get; set; }
@@ -337,7 +333,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 MakeAllFieldsEditable = false,
                 MakeReadonlyFieldsEditable = false,
                 MakeResponseActionsEditable = false,
-                NamingService = "DLaB.ModelBuilderExtensions.NamingService,DLaB.ModelBuilderExtensions",
                 OptionSetLanguageCodeOverride = null,
                 OptionSetNames = null,
                 OptionSetPrefixesToSkip = null,
@@ -409,7 +404,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             MakeReadonlyFieldsEditable = poco.MakeReadonlyFieldsEditable ?? MakeReadonlyFieldsEditable;
             MakeResponseActionsEditable = poco.MakeResponseActionsEditable ?? MakeResponseActionsEditable;
             LocalOptionSetFormat = poco.LocalOptionSetFormat ?? LocalOptionSetFormat;
-            NamingService = GetValueOrDefault(poco.NamingService, NamingService);
             OptionSetLanguageCodeOverride = poco.OptionSetLanguageCodeOverride ?? OptionSetLanguageCodeOverride;
             OptionSetNames = GetValueOrDefault(poco.OptionSetNames, OptionSetNames);
             OptionSetPrefixesToSkip = GetValueOrDefault(poco.OptionSetPrefixesToSkip, OptionSetPrefixesToSkip);
@@ -493,23 +487,12 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         public void PopulateBuilderProperties(Dictionary<string, JsonProperty> properties)
         {
-            var isXrmToolBoxEarlyBound = typeof(ExtensionConfig).AssemblyQualifiedName?.StartsWith("DLaB.EarlyBoundGenerator.Settings.ExtensionConfig, DLaB.EarlyBoundGenerator,") ?? true;
-            properties.SetJsonProperty(BuilderSettingsJsonNames.NamingService, isXrmToolBoxEarlyBound ? ReplaceAssemblyName(NamingService): NamingService);
-
             properties.SetJsonProperty(BuilderSettingsJsonNames.EmitFieldsClasses, GenerateAttributeNameConsts);
             properties.SetJsonArrayProperty(BuilderSettingsJsonNames.EntityNamesFilter, EntitiesWhitelist);
             properties.SetJsonProperty(BuilderSettingsJsonNames.GenerateGlobalOptionSets, GenerateGlobalOptionSets);
             properties.SetJsonArrayProperty(BuilderSettingsJsonNames.MessageNamesFilter, ActionsWhitelist);
             properties.SetJsonProperty(BuilderSettingsJsonNames.SuppressGeneratedCodeAttribute, !GenerateGeneratedCodeAttribute);
             properties.SetJsonProperty(BuilderSettingsJsonNames.SuppressINotifyPattern, !GenerateINotifyPattern);
-        }
-
-        /// <summary>
-        /// Handle updating the Assembly name of Services when running via API dll with reference to DLaB.ModelBuilderExtensions vs the XTB.  DLaB.ModelBuilderExtensions will be ILMerged into the plugin dll itself.
-        /// </summary>
-        private string ReplaceAssemblyName(string serviceName)
-        {
-            return serviceName.Replace(",DLaB.ModelBuilderExtensions", ",DLaB.EarlyBoundGenerator");
         }
     }
 }
@@ -562,7 +545,6 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? MakeAllFieldsEditable { get; set; }
         public bool? MakeReadonlyFieldsEditable { get; set; }
         public bool? MakeResponseActionsEditable { get; set; }
-        public string NamingService { get; set; }
         public string OptionSetNames { get; set; }
         public string OptionSetPrefixesToSkip { get; set; }
         public string OptionSetsToSkip { get; set; }

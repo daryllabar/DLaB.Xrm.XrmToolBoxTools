@@ -21,7 +21,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
         public static bool UpdateMultiOptionSetAttributes => ConfigHelper.GetAppSettingOrDefault("UpdateMultiOptionSetAttributes", true);
         public static bool UpdateEnumerableEntityProperties => ConfigHelper.GetAppSettingOrDefault("UpdateEnumerableEntityProperties", true);
 
-        public CustomizeCodeDomService(ICustomizeCodeDomService defaultService, IDictionary<string, string> paramaters)
+        public CustomizeCodeDomService(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters)
         {
 
         }
