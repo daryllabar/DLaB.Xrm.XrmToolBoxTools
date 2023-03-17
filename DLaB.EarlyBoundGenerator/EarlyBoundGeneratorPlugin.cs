@@ -274,18 +274,11 @@ namespace DLaB.EarlyBoundGenerator
 
             SettingsMap.PushChanges();
             Settings.RootPath = Path.GetDirectoryName(Path.GetFullPath(TxtSettingsPath.Text));
-            if (SettingsMap.UseDeprecatedOptionSetNaming)
-            {
-                Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, @"DLaB.ModelBuilderExtensions.OptionSet.CodeWriterFilterService,DLaB.ModelBuilderExtensions");
-                Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService, string.Empty);
-            }
-            else
-            {
-                var defaultConfig = EarlyBoundGeneratorConfig.GetDefault();
-                defaultConfig.ExtensionConfig.XrmToolBoxPluginPath = Paths.PluginsPath;
-                Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, defaultConfig.GetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter).Value);
-                Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService, defaultConfig.GetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService).Value);
-            }
+
+            var defaultConfig = EarlyBoundGeneratorConfig.GetDefault();
+            defaultConfig.ExtensionConfig.XrmToolBoxPluginPath = Paths.PluginsPath;
+            Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, defaultConfig.GetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter).Value);
+            Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService, defaultConfig.GetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService).Value);
         }
 
         private void LogConfigSettings(CreationType creationType)

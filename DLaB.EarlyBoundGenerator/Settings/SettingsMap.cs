@@ -606,15 +606,6 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         [TypeConverter(CollectionCountConverter.Name)]
         public Dictionary<string, string> OptionSetNames { get; set; }
 
-        [Category("Option Sets")]
-        [DisplayName("Use Deprecated Option Set Naming")]
-        [Description("Creates Local OptionSets Using the Deprecated Naming Convention. prefix_oobentityname_prefix_attribute.")]
-        public bool UseDeprecatedOptionSetNaming
-        {
-            get => Config.ExtensionConfig.UseDeprecatedOptionSetNaming;
-            set => Config.ExtensionConfig.UseDeprecatedOptionSetNaming = value;
-        }
-
         #endregion Option Sets
 
         #region Service Generation Extensions

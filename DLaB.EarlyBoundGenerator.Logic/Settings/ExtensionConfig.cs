@@ -242,7 +242,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// <value>
         /// <c>true</c> if [use Deprecated Option Set Naming]; otherwise, <c>false</c>.
         /// </value>
-        public bool UseDeprecatedOptionSetNaming { get; set; }
         /// <summary>
         /// Generate entities and properties with logical name instead of schema name.
         /// </summary>
@@ -358,7 +357,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     "Quote:StatusCode|" +
                     "QuoteDetail:QuoteStateCode|" +
                     "SalesOrderDetail:SalesOrderStateCode|",
-                UseDeprecatedOptionSetNaming = false,
                 UseLogicalNames = false,
                 UseTfsToCheckoutFiles = false,
                 WaitForAttachedDebugger = false,
@@ -424,7 +422,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             SerializeMetadata = poco.SerializeMetadata ?? SerializeMetadata;
             TokenCapitalizationOverrides = GetValueOrDefault(poco.TokenCapitalizationOverrides, TokenCapitalizationOverrides);
             UnmappedProperties = GetValueOrDefault(poco.UnmappedProperties, UnmappedProperties);
-            UseDeprecatedOptionSetNaming = poco.UseDeprecatedOptionSetNaming ?? UseDeprecatedOptionSetNaming;
             UseLogicalNames = poco.UseLogicalNames ?? UseLogicalNames;
             UseTfsToCheckoutFiles = poco.UseTfsToCheckoutFiles ?? UseTfsToCheckoutFiles;
             WaitForAttachedDebugger = poco.WaitForAttachedDebugger ?? WaitForAttachedDebugger;
@@ -486,7 +483,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             writer.AddProperty(nameof(ReplaceOptionSetPropertiesWithEnum), ReplaceOptionSetPropertiesWithEnum);
             writer.AddProperty(nameof(SerializeMetadata), SerializeMetadata);
             writer.AddPropertyArray(nameof(TokenCapitalizationOverrides), TokenCapitalizationOverrides);
-            writer.AddProperty(nameof(UseDeprecatedOptionSetNaming), UseDeprecatedOptionSetNaming);
             writer.AddProperty(nameof(UseLogicalNames), UseLogicalNames);
             // TODO Split
             // writer.AddProperty(nameof(UnmappedProperties), UnmappedProperties);
@@ -578,7 +574,6 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? SerializeMetadata { get; set; }
         public string TokenCapitalizationOverrides { get; set; }
         public string UnmappedProperties { get; set; }
-        public bool? UseDeprecatedOptionSetNaming { get; set; }
         public bool? UseLogicalNames { get; set; }
         public bool? UseTfsToCheckoutFiles { get; set; }
         public bool? WaitForAttachedDebugger { get; set; }

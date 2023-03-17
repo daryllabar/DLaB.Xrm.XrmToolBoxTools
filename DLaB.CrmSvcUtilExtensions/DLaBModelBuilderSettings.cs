@@ -140,9 +140,6 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("tokenCapitalizationOverrides")]
         public List<string> TokenCapitalizationOverrides { get; set; }
 
-        [JsonPropertyName("useDeprecatedOptionSetNaming")]
-        public bool UseDeprecatedOptionSetNaming { get; set; }
-
         [JsonPropertyName("useLogicalNames")]
         public bool UseLogicalNames { get; set; }
 

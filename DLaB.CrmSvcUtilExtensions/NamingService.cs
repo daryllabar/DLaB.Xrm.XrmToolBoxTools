@@ -13,42 +13,52 @@ namespace DLaB.ModelBuilderExtensions
 
     public class NamingService : INamingService
     {
-        public bool UseLogicalNames { get; set; }
-        public bool CamelCaseClassNames { get; set; }
+        public const int English = 1033;
 
+        public bool CamelCaseClassNames { get; set; }
         public bool CamelCaseMemberNames { get; set; }
+        public INamingService DefaultService { get; set; }
+        public Dictionary<string, HashSet<string>> EntityAttributeSpecifiedNames { get; set; }
+        public string InvalidCSharpNamePrefix { get; set; }
         public int LanguageCodeOverride { get; set; }
+        public string LocalOptionSetFormat { get; set; }
         public Dictionary<string, string> OptionSetNames { get; set; }
-        private const int English = 1033;  
-        private string ValidCSharpNameRegEx { get; set; }
-        private INamingService DefaultService { get; set; }
-        private Dictionary<string, HashSet<string>> EntityAttributeSpecifiedNames { get; set; }
-        private string InvalidCSharpNamePrefix { get; }
-        private string LocalOptionSetFormat { get; }
-        private bool UseDeprecatedOptionSetNaming { get; }
+        public bool UseLogicalNames { get; set; }
+        public string ValidCSharpNameRegEx { get; set; }
+        
         private HashSet<string> _entityNames;
 
         /// <summary>
         /// This field keeps track of options with the same name and the values that have been defined.  Internal Dictionary Key is Name + "_" + Value
         /// </summary>
-        private Dictionary<OptionSetMetadataBase, Dictionary<string, bool>> OptionNameValueDuplicates { get; }
+        private Dictionary<OptionSetMetadataBase, Dictionary<string, bool>> OptionNameValueDuplicates { get; set; }
 
         public NamingService(INamingService defaultService, IDictionary<string, string> parameters)
         {
-            DefaultService = defaultService;
             ConfigHelper.Initialize(parameters);
-            var config = ConfigHelper.Settings.DLaBModelBuilder;
+            Initialize(defaultService, ConfigHelper.Settings.DLaBModelBuilder);
+        }
+
+        private void Initialize(INamingService defaultService, DLaBModelBuilder config)
+        {
+            DefaultService = defaultService;
+
             CamelCaseClassNames = config.CamelCaseClassNames;
             CamelCaseMemberNames = config.CamelCaseMemberNames;
             EntityAttributeSpecifiedNames = config.EntityAttributeSpecifiedNames;
             InvalidCSharpNamePrefix = config.InvalidCSharpNamePrefix;
             LanguageCodeOverride = config.OptionSetLanguageCodeOverride;
             LocalOptionSetFormat = config.LocalOptionSetFormat;
-            OptionNameValueDuplicates = new Dictionary<OptionSetMetadataBase, Dictionary<string, bool>>();
             OptionSetNames = config.OptionSetNames;
-            UseDeprecatedOptionSetNaming = config.UseDeprecatedOptionSetNaming;
             UseLogicalNames = config.UseLogicalNames;
             ValidCSharpNameRegEx = config.ValidCSharpNameRegEx;
+
+            OptionNameValueDuplicates = new Dictionary<OptionSetMetadataBase, Dictionary<string, bool>>();
+        }
+
+        public NamingService(INamingService defaultService, DLaBModelBuilder config)
+        {
+            Initialize(defaultService, config); 
         }
 
         public HashSet<string> GetEntityNames(IServiceProvider services)
@@ -82,11 +92,6 @@ namespace DLaB.ModelBuilderExtensions
         private string GetPossiblyConflictedNameForOptionSet(EntityMetadata entityMetadata, OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
         {
             var defaultName = DefaultService.GetNameForOptionSet(entityMetadata, optionSetMetadata, services);
-
-            if (UseDeprecatedOptionSetNaming)
-            {
-                return defaultName;
-            }
 
             // Ensure that the OptionSet is not global before using the custom implementation.
             if (optionSetMetadata.IsGlobal.HasValue && !optionSetMetadata.IsGlobal.Value)

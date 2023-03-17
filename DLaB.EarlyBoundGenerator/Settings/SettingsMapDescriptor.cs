@@ -41,7 +41,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 { nameof(GenerateEnumProperties), OnGenerateEnumPropertiesChange },
                 { nameof(AddOptionSetMetadataAttribute), OnAddOptionSetMetadataAttributeChange },
                 { nameof(IncludeCommandLine), OnIncludeCommandLineChange },
-                { nameof(UseDeprecatedOptionSetNaming), OnUseDeprecatedOptionSetNamingChange },
             };
         }
 
@@ -87,11 +86,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             SetMaskPasswordVisibility();
         }
 
-        private void OnUseDeprecatedOptionSetNamingChange(PropertyValueChangedEventArgs args)
-        {
-            SetLocalOptionSetFormatVisibility();
-        }
-
         #endregion OnChange Handlers
 
         private void ProcessDynamicallyVisibleProperties()
@@ -102,7 +96,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             SetPropertyEnumMappingVisibility();
             SetPropertyReplaceOptionSetPropertiesWithEnumVisibility();
             SetUnmappedPropertiesVisibility();
-            SetLocalOptionSetFormatVisibility();
             SetGenerateOptionSetMetadataAttributeVisibility();
             ActionOutPath = ActionOutPath;
             EntityOutPath = EntityOutPath;
@@ -160,7 +153,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 nameof(SuppressGeneratedCodeAttribute),
                 nameof(TokenCapitalizationOverrides),
                 nameof(UnmappedProperties),
-                nameof(UseDeprecatedOptionSetNaming),
                 nameof(UseLogicalNames),
                 nameof(UseTfsToCheckoutFiles),
                 nameof(WaitForAttachedDebugger),
@@ -193,11 +185,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         private void SetGroupLocalOptionSetsByEntityVisibility()
         {
             SetPropertyBrowsable(nameof(GroupLocalOptionSetsByEntity), CreateOneFilePerOptionSet);
-        }
-
-        private void SetLocalOptionSetFormatVisibility()
-        {
-            SetPropertyBrowsable(nameof(LocalOptionSetFormat), UseDeprecatedOptionSetNaming);
         }
 
         private void SetMaskPasswordVisibility()

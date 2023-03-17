@@ -324,7 +324,6 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "ReplaceOptionSetPropertiesWithEnum", extensions.ReplaceOptionSetPropertiesWithEnum.ToString()) |
                     UpdateConfigAppSetting(file, "SerializeMetadata", extensions.SerializeMetadata.ToString()) |
                     UpdateConfigAppSetting(file, "TokenCapitalizationOverrides", extensions.TokenCapitalizationOverrides) |
-                    UpdateConfigAppSetting(file, "UseDeprecatedOptionSetNaming", extensions.UseDeprecatedOptionSetNaming.ToString()) |
                     UpdateConfigAppSetting(file, "UseLogicalNames", extensions.UseLogicalNames.ToString()) |
                     UpdateConfigAppSetting(file, "UnmappedProperties", extensions.UnmappedProperties) |
                     UpdateConfigAppSetting(file, "UseTfsToCheckoutFiles", extensions.UseTfsToCheckoutFiles.ToString()) |
