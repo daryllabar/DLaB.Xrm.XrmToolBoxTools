@@ -60,26 +60,6 @@ namespace DLaB.ModelBuilderExtensions
                          .OrderByDescending(t => t.Length).ToList();
         }
 
-        public string CaseWord(string value, params string[] preferredEndings)
-        {
-            value = value.ToLower();
-            preferredEndings = preferredEndings.Length == 0
-                ? new[] { "Id" }
-                : preferredEndings;
-            foreach (var ending in preferredEndings)
-            {
-                if (value.EndsWith(ending.ToLower()))
-                {
-                    var tmp = CaseInternal(value.Substring(0, value.Length - ending.Length));
-                    value = CaseInternal(value);
-                    return tmp.Count(char.IsUpper) < value.Count(char.IsUpper)
-                        ? tmp + ending
-                        : value;
-                }
-            }
-            return CaseInternal(value);
-        }
-
         public static string Case(string value, params string[] preferredEndings)
         {
             if (_default == null)
@@ -90,14 +70,51 @@ namespace DLaB.ModelBuilderExtensions
             return _default.CaseWord(value, preferredEndings);
         }
 
-        private string CaseInternal(string value)
+        public string CaseWord(string value, params string[] preferredEndings)
+        {
+            value = value.ToLower();
+            preferredEndings = preferredEndings.Length == 0
+                ? new[] { "Id" }
+                : preferredEndings;
+
+            var backward = CaseWord(value, preferredEndings, false);
+            var forward = CaseWord(value, preferredEndings, true);
+
+            return ChooseBest(backward, forward);
+        }
+
+        private string CaseWord(string value, string[] preferredEndings, bool parseForward)
+        {
+            foreach (var ending in preferredEndings)
+            {
+                if (value.EndsWith(ending.ToLower()))
+                {
+                    var tmp = CaseInternal(value.Substring(0, value.Length - ending.Length), parseForward);
+                    value = CaseInternal(value, parseForward);
+                    return tmp.Count(char.IsUpper) < value.Count(char.IsUpper)
+                        ? tmp + ending
+                        : value;
+                }
+            }
+
+            return CaseInternal(value, parseForward);
+        }
+
+        private string ChooseBest(string option1, string option2)
+        {
+            return option1.Count(char.IsUpper) < option2.Count(char.IsUpper)
+                ? option1
+                : option2;
+        }
+
+        private string CaseInternal(string value, bool parseForward)
         {
             foreach (var token in Overrides)
             {
                 var index = value.IndexOf(token, StringComparison.InvariantCultureIgnoreCase);
                 if (index >= 0)
                 {
-                    return CaseInternal(value.Substring(0, index)) + token + CaseInternal(value.Substring(index + token.Length));
+                    return CaseInternal(value.Substring(0, index), parseForward) + token + CaseInternal(value.Substring(index + token.Length), parseForward);
                 }
             }
 
@@ -108,16 +125,16 @@ namespace DLaB.ModelBuilderExtensions
 
                 for (var i = 0; i < parts.Length; i++)
                 {
-                    parts[i] = CasePart(parts[i]);
+                    parts[i] = CasePart(parts[i], parseForward);
                 }
 
                 return string.Join("_", parts);
             }
 
-            return CasePart(value);
+            return CasePart(value, parseForward);
         }
 
-        private string CasePart(string part)
+        private string CasePart(string part, bool parseForward)
         {
             if (string.IsNullOrWhiteSpace(part))
             {
@@ -128,35 +145,42 @@ namespace DLaB.ModelBuilderExtensions
             {
                 return Capitalize(part);
             }
+
             // split by word, biggest to littlest
             var currentLength = part.Length > _maxWordLength ? _maxWordLength : part.Length;
             for (var length = currentLength; length > 1; length--)
             {
                 if (Dictionary.TryGetValue(length, out var hash))
                 {
-                    var word = part.Substring(part.Length-length);
+                    var word = parseForward
+                        ? part.Substring(0, length)
+                        : part.Substring(part.Length-length);
                     if (hash.Contains(word))
                     {
-                        return CaseRemaining(part, word) + Capitalize(word);
+                        return parseForward
+                            ? Capitalize(word) + CaseRemaining(part, word, parseForward)
+                            : CaseRemaining(part, word, parseForward) + Capitalize(word);
                     }
                 }
             }
 
             var nonWord = part[part.Length-1];
-            return CasePart(part.Substring(0, part.Length-1)) + nonWord.ToString().ToUpper();
+            return CasePart(part.Substring(0, part.Length-1), parseForward) + nonWord.ToString().ToUpper();
         }
 
-        private string CaseRemaining(string whole, string word)
+        private string CaseRemaining(string whole, string word, bool parseForward)
         {
             if (whole.Length == word.Length)
             {
                 return string.Empty;
             }
 
-            var remaining = whole.Substring(0, whole.Length - word.Length);
+            var remaining = parseForward
+                ? whole.Substring(word.Length)
+                : whole.Substring(0, whole.Length - word.Length);
             return remaining.Length < 2 
                 ? Capitalize(remaining) 
-                : CasePart(remaining);
+                : CasePart(remaining, parseForward);
         }
 
         private string Capitalize(string word)
