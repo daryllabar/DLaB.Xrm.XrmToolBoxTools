@@ -68,6 +68,7 @@ namespace DLaB.OutlookTimesheetCalculator
             this.dtpEnd = new System.Windows.Forms.DateTimePicker();
             this.dtpStart = new System.Windows.Forms.DateTimePicker();
             this.tcMain = new System.Windows.Forms.TabControl();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabProjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProjects)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsProject)).BeginInit();
@@ -89,71 +90,64 @@ namespace DLaB.OutlookTimesheetCalculator
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 17);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Location = new System.Drawing.Point(8, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 24);
+            this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Time Start:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 65);
-            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label3.Location = new System.Drawing.Point(11, 35);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 24);
+            this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "Time End:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 6);
-            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label6.Location = new System.Drawing.Point(3, 3);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(110, 24);
+            this.label6.Size = new System.Drawing.Size(66, 13);
             this.label6.TabIndex = 8;
             this.label6.Text = "Task Totals:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 0);
-            this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label7.Location = new System.Drawing.Point(3, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(82, 24);
+            this.label7.Size = new System.Drawing.Size(48, 13);
             this.label7.TabIndex = 11;
             this.label7.Text = "Projects:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 11);
-            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label5.Location = new System.Drawing.Point(9, 6);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 24);
+            this.label5.Size = new System.Drawing.Size(64, 13);
             this.label5.TabIndex = 6;
             this.label5.Text = "Daily Hours:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 6);
-            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label4.Location = new System.Drawing.Point(3, 3);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(174, 24);
+            this.label4.Size = new System.Drawing.Size(100, 13);
             this.label4.TabIndex = 6;
             this.label4.Text = "Project Daily Hours:";
             // 
             // tabProjects
             // 
             this.tabProjects.Controls.Add(this.dgvProjects);
-            this.tabProjects.Location = new System.Drawing.Point(4, 33);
-            this.tabProjects.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tabProjects.Location = new System.Drawing.Point(4, 22);
             this.tabProjects.Name = "tabProjects";
-            this.tabProjects.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.tabProjects.Size = new System.Drawing.Size(1658, 941);
+            this.tabProjects.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabProjects.Size = new System.Drawing.Size(901, 504);
             this.tabProjects.TabIndex = 3;
             this.tabProjects.Text = "Projects";
             this.tabProjects.UseVisualStyleBackColor = true;
@@ -170,9 +164,8 @@ namespace DLaB.OutlookTimesheetCalculator
             this.isBillableDataGridViewCheckBoxColumn});
             this.dgvProjects.DataSource = this.bsProject;
             this.dgvProjects.Location = new System.Drawing.Point(0, 0);
-            this.dgvProjects.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.dgvProjects.Name = "dgvProjects";
-            this.dgvProjects.Size = new System.Drawing.Size(1656, 990);
+            this.dgvProjects.Size = new System.Drawing.Size(903, 536);
             this.dgvProjects.TabIndex = 0;
             this.dgvProjects.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvProjects_UserDeletingRow);
             // 
@@ -189,7 +182,7 @@ namespace DLaB.OutlookTimesheetCalculator
             this.isBillableDataGridViewCheckBoxColumn.DataPropertyName = "IsBillable";
             this.isBillableDataGridViewCheckBoxColumn.HeaderText = "IsBillable";
             this.isBillableDataGridViewCheckBoxColumn.Name = "isBillableDataGridViewCheckBoxColumn";
-            this.isBillableDataGridViewCheckBoxColumn.Width = 89;
+            this.isBillableDataGridViewCheckBoxColumn.Width = 54;
             // 
             // bsProject
             // 
@@ -201,11 +194,10 @@ namespace DLaB.OutlookTimesheetCalculator
             this.tabTasks.Controls.Add(this.cmbProjects);
             this.tabTasks.Controls.Add(this.label1);
             this.tabTasks.Controls.Add(this.dgvTasks);
-            this.tabTasks.Location = new System.Drawing.Point(4, 33);
-            this.tabTasks.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tabTasks.Location = new System.Drawing.Point(4, 22);
             this.tabTasks.Name = "tabTasks";
-            this.tabTasks.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.tabTasks.Size = new System.Drawing.Size(1658, 941);
+            this.tabTasks.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabTasks.Size = new System.Drawing.Size(901, 504);
             this.tabTasks.TabIndex = 1;
             this.tabTasks.Text = "Tasks";
             this.tabTasks.UseVisualStyleBackColor = true;
@@ -217,10 +209,9 @@ namespace DLaB.OutlookTimesheetCalculator
             this.cmbProjects.DataSource = this.bsDefaultProject;
             this.cmbProjects.DisplayMember = "Name";
             this.cmbProjects.FormattingEnabled = true;
-            this.cmbProjects.Location = new System.Drawing.Point(178, 11);
-            this.cmbProjects.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cmbProjects.Location = new System.Drawing.Point(97, 6);
             this.cmbProjects.Name = "cmbProjects";
-            this.cmbProjects.Size = new System.Drawing.Size(1463, 32);
+            this.cmbProjects.Size = new System.Drawing.Size(800, 21);
             this.cmbProjects.TabIndex = 5;
             this.cmbProjects.ValueMember = "Id";
             this.cmbProjects.Leave += new System.EventHandler(this.cmbProjects_Leave);
@@ -232,10 +223,9 @@ namespace DLaB.OutlookTimesheetCalculator
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 17);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Location = new System.Drawing.Point(11, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 24);
+            this.label1.Size = new System.Drawing.Size(80, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Default Project:";
             // 
@@ -251,10 +241,9 @@ namespace DLaB.OutlookTimesheetCalculator
             this.isBillableDataGridViewCheckBoxColumn1,
             this.projectDataGridViewComboBoxColumn});
             this.dgvTasks.DataSource = this.bsTask;
-            this.dgvTasks.Location = new System.Drawing.Point(0, 61);
-            this.dgvTasks.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dgvTasks.Location = new System.Drawing.Point(0, 33);
             this.dgvTasks.Name = "dgvTasks";
-            this.dgvTasks.Size = new System.Drawing.Size(1656, 929);
+            this.dgvTasks.Size = new System.Drawing.Size(903, 503);
             this.dgvTasks.TabIndex = 0;
             this.dgvTasks.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvTasks_CellBeginEdit);
             this.dgvTasks.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTasks_CellEndEdit);
@@ -293,6 +282,7 @@ namespace DLaB.OutlookTimesheetCalculator
             // 
             // tabTime
             // 
+            this.tabTime.Controls.Add(this.label8);
             this.tabTime.Controls.Add(this.calCLB);
             this.tabTime.Controls.Add(this.splitContainer1);
             this.tabTime.Controls.Add(this.lblHours);
@@ -301,11 +291,10 @@ namespace DLaB.OutlookTimesheetCalculator
             this.tabTime.Controls.Add(this.dtpEnd);
             this.tabTime.Controls.Add(this.label2);
             this.tabTime.Controls.Add(this.dtpStart);
-            this.tabTime.Location = new System.Drawing.Point(4, 33);
-            this.tabTime.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tabTime.Location = new System.Drawing.Point(4, 22);
             this.tabTime.Name = "tabTime";
-            this.tabTime.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.tabTime.Size = new System.Drawing.Size(1658, 941);
+            this.tabTime.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabTime.Size = new System.Drawing.Size(901, 504);
             this.tabTime.TabIndex = 0;
             this.tabTime.Text = "Time";
             this.tabTime.UseVisualStyleBackColor = true;
@@ -313,10 +302,9 @@ namespace DLaB.OutlookTimesheetCalculator
             // calCLB
             // 
             this.calCLB.FormattingEnabled = true;
-            this.calCLB.Location = new System.Drawing.Point(598, 12);
-            this.calCLB.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.calCLB.Location = new System.Drawing.Point(415, 9);
             this.calCLB.Name = "calCLB";
-            this.calCLB.Size = new System.Drawing.Size(598, 76);
+            this.calCLB.Size = new System.Drawing.Size(328, 49);
             this.calCLB.TabIndex = 10;
             // 
             // splitContainer1
@@ -324,9 +312,8 @@ namespace DLaB.OutlookTimesheetCalculator
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(20, 124);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.splitContainer1.MinimumSize = new System.Drawing.Size(550, 0);
+            this.splitContainer1.Location = new System.Drawing.Point(11, 67);
+            this.splitContainer1.MinimumSize = new System.Drawing.Size(300, 0);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -335,25 +322,23 @@ namespace DLaB.OutlookTimesheetCalculator
             this.splitContainer1.Panel1.Controls.Add(this.TaskTotalsPanel);
             this.splitContainer1.Panel1.Controls.Add(this.ProjectsPanel);
             this.splitContainer1.Panel1.Controls.Add(this.ProjectDailyHoursPanel);
-            this.splitContainer1.Panel1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.splitContainer1.Panel1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.label5);
             this.splitContainer1.Panel2.Controls.Add(this.txtDailyHours);
-            this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.splitContainer1.Size = new System.Drawing.Size(1617, 807);
-            this.splitContainer1.SplitterDistance = 551;
-            this.splitContainer1.SplitterWidth = 7;
+            this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.splitContainer1.Size = new System.Drawing.Size(882, 437);
+            this.splitContainer1.SplitterDistance = 300;
             this.splitContainer1.TabIndex = 9;
             // 
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter1.Location = new System.Drawing.Point(6, 559);
-            this.splitter1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.splitter1.Location = new System.Drawing.Point(3, 303);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(539, 6);
+            this.splitter1.Size = new System.Drawing.Size(294, 3);
             this.splitter1.TabIndex = 16;
             this.splitter1.TabStop = false;
             // 
@@ -362,10 +347,9 @@ namespace DLaB.OutlookTimesheetCalculator
             this.TaskTotalsPanel.Controls.Add(this.label4);
             this.TaskTotalsPanel.Controls.Add(this.txtTaskDailyHours);
             this.TaskTotalsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TaskTotalsPanel.Location = new System.Drawing.Point(6, 261);
-            this.TaskTotalsPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.TaskTotalsPanel.Location = new System.Drawing.Point(3, 141);
             this.TaskTotalsPanel.Name = "TaskTotalsPanel";
-            this.TaskTotalsPanel.Size = new System.Drawing.Size(539, 304);
+            this.TaskTotalsPanel.Size = new System.Drawing.Size(294, 165);
             this.TaskTotalsPanel.TabIndex = 12;
             // 
             // txtTaskDailyHours
@@ -374,12 +358,11 @@ namespace DLaB.OutlookTimesheetCalculator
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTaskDailyHours.Font = new System.Drawing.Font("Consolas", 10F);
-            this.txtTaskDailyHours.Location = new System.Drawing.Point(6, 35);
-            this.txtTaskDailyHours.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtTaskDailyHours.Location = new System.Drawing.Point(3, 19);
             this.txtTaskDailyHours.Multiline = true;
             this.txtTaskDailyHours.Name = "txtTaskDailyHours";
             this.txtTaskDailyHours.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtTaskDailyHours.Size = new System.Drawing.Size(530, 260);
+            this.txtTaskDailyHours.Size = new System.Drawing.Size(291, 143);
             this.txtTaskDailyHours.TabIndex = 9;
             this.txtTaskDailyHours.WordWrap = false;
             this.txtTaskDailyHours.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTaskDailyHours_KeyDown);
@@ -389,10 +372,9 @@ namespace DLaB.OutlookTimesheetCalculator
             this.ProjectsPanel.Controls.Add(this.label7);
             this.ProjectsPanel.Controls.Add(this.lstProjects);
             this.ProjectsPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ProjectsPanel.Location = new System.Drawing.Point(6, 6);
-            this.ProjectsPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.ProjectsPanel.Location = new System.Drawing.Point(3, 3);
             this.ProjectsPanel.Name = "ProjectsPanel";
-            this.ProjectsPanel.Size = new System.Drawing.Size(539, 255);
+            this.ProjectsPanel.Size = new System.Drawing.Size(294, 138);
             this.ProjectsPanel.TabIndex = 15;
             // 
             // lstProjects
@@ -401,11 +383,9 @@ namespace DLaB.OutlookTimesheetCalculator
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lstProjects.FormattingEnabled = true;
-            this.lstProjects.ItemHeight = 24;
-            this.lstProjects.Location = new System.Drawing.Point(0, 30);
-            this.lstProjects.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.lstProjects.Location = new System.Drawing.Point(0, 16);
             this.lstProjects.Name = "lstProjects";
-            this.lstProjects.Size = new System.Drawing.Size(536, 220);
+            this.lstProjects.Size = new System.Drawing.Size(294, 121);
             this.lstProjects.TabIndex = 7;
             this.lstProjects.SelectedIndexChanged += new System.EventHandler(this.lstTasks_SelectedIndexChanged);
             // 
@@ -414,10 +394,9 @@ namespace DLaB.OutlookTimesheetCalculator
             this.ProjectDailyHoursPanel.Controls.Add(this.label6);
             this.ProjectDailyHoursPanel.Controls.Add(this.txtTasks);
             this.ProjectDailyHoursPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ProjectDailyHoursPanel.Location = new System.Drawing.Point(6, 565);
-            this.ProjectDailyHoursPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.ProjectDailyHoursPanel.Location = new System.Drawing.Point(3, 306);
             this.ProjectDailyHoursPanel.Name = "ProjectDailyHoursPanel";
-            this.ProjectDailyHoursPanel.Size = new System.Drawing.Size(539, 236);
+            this.ProjectDailyHoursPanel.Size = new System.Drawing.Size(294, 128);
             this.ProjectDailyHoursPanel.TabIndex = 14;
             // 
             // txtTasks
@@ -426,12 +405,11 @@ namespace DLaB.OutlookTimesheetCalculator
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTasks.Font = new System.Drawing.Font("Consolas", 10F);
-            this.txtTasks.Location = new System.Drawing.Point(0, 35);
-            this.txtTasks.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtTasks.Location = new System.Drawing.Point(0, 19);
             this.txtTasks.Multiline = true;
             this.txtTasks.Name = "txtTasks";
             this.txtTasks.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtTasks.Size = new System.Drawing.Size(536, 192);
+            this.txtTasks.Size = new System.Drawing.Size(294, 106);
             this.txtTasks.TabIndex = 10;
             this.txtTasks.WordWrap = false;
             this.txtTasks.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTasks_KeyDown);
@@ -442,12 +420,11 @@ namespace DLaB.OutlookTimesheetCalculator
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDailyHours.Font = new System.Drawing.Font("Consolas", 10F);
-            this.txtDailyHours.Location = new System.Drawing.Point(11, 41);
-            this.txtDailyHours.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtDailyHours.Location = new System.Drawing.Point(6, 22);
             this.txtDailyHours.Multiline = true;
             this.txtDailyHours.Name = "txtDailyHours";
             this.txtDailyHours.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtDailyHours.Size = new System.Drawing.Size(1028, 757);
+            this.txtDailyHours.Size = new System.Drawing.Size(561, 412);
             this.txtDailyHours.TabIndex = 5;
             this.txtDailyHours.WordWrap = false;
             this.txtDailyHours.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDailyHours_KeyDown);
@@ -455,18 +432,16 @@ namespace DLaB.OutlookTimesheetCalculator
             // lblHours
             // 
             this.lblHours.AutoSize = true;
-            this.lblHours.Location = new System.Drawing.Point(18, 120);
-            this.lblHours.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblHours.Location = new System.Drawing.Point(10, 65);
             this.lblHours.Name = "lblHours";
-            this.lblHours.Size = new System.Drawing.Size(0, 24);
+            this.lblHours.Size = new System.Drawing.Size(0, 13);
             this.lblHours.TabIndex = 8;
             // 
             // btnCalc
             // 
-            this.btnCalc.Location = new System.Drawing.Point(398, 33);
-            this.btnCalc.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnCalc.Location = new System.Drawing.Point(217, 18);
             this.btnCalc.Name = "btnCalc";
-            this.btnCalc.Size = new System.Drawing.Size(180, 42);
+            this.btnCalc.Size = new System.Drawing.Size(98, 23);
             this.btnCalc.TabIndex = 4;
             this.btnCalc.Text = "Calculate Time";
             this.btnCalc.UseVisualStyleBackColor = true;
@@ -475,19 +450,17 @@ namespace DLaB.OutlookTimesheetCalculator
             // dtpEnd
             // 
             this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEnd.Location = new System.Drawing.Point(132, 59);
-            this.dtpEnd.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dtpEnd.Location = new System.Drawing.Point(72, 32);
             this.dtpEnd.Name = "dtpEnd";
-            this.dtpEnd.Size = new System.Drawing.Size(178, 29);
+            this.dtpEnd.Size = new System.Drawing.Size(99, 20);
             this.dtpEnd.TabIndex = 2;
             // 
             // dtpStart
             // 
             this.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpStart.Location = new System.Drawing.Point(132, 11);
-            this.dtpStart.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dtpStart.Location = new System.Drawing.Point(72, 6);
             this.dtpStart.Name = "dtpStart";
-            this.dtpStart.Size = new System.Drawing.Size(178, 29);
+            this.dtpStart.Size = new System.Drawing.Size(99, 20);
             this.dtpStart.TabIndex = 0;
             // 
             // tcMain
@@ -497,20 +470,27 @@ namespace DLaB.OutlookTimesheetCalculator
             this.tcMain.Controls.Add(this.tabProjects);
             this.tcMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcMain.Location = new System.Drawing.Point(0, 0);
-            this.tcMain.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tcMain.Name = "tcMain";
             this.tcMain.SelectedIndex = 0;
-            this.tcMain.Size = new System.Drawing.Size(1666, 978);
+            this.tcMain.Size = new System.Drawing.Size(909, 530);
             this.tcMain.TabIndex = 0;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(352, 9);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(57, 13);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Calendars:";
             // 
             // OutlookTimesheetCalculatorControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tcMain);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "OutlookTimesheetCalculatorControl";
-            this.Size = new System.Drawing.Size(1666, 978);
+            this.Size = new System.Drawing.Size(909, 530);
             this.tabProjects.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProjects)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsProject)).EndInit();
@@ -575,6 +555,7 @@ namespace DLaB.OutlookTimesheetCalculator
         private Label label5;
         private Label label4;
         private CheckedListBox calCLB;
+        private Label label8;
     }
 }
 
