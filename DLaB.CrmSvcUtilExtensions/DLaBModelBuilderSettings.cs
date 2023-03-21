@@ -4,7 +4,6 @@ using System.Text.Json.Serialization;
 
 namespace DLaB.ModelBuilderExtensions
 {
-    // Root myDeserializedClass = JsonSerializer.Deserialize<DLaBModelBuilderSettings>(myJsonResponse);
     public class DLaBModelBuilder
     {
         [JsonPropertyName("addDebuggerNonUserCode")]
@@ -15,6 +14,12 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("addOptionSetMetadataAttribute")]
         public bool AddOptionSetMetadataAttribute { get; set; }
+
+        /// <summary>
+        /// No Config
+        /// </summary>
+        [JsonPropertyName("addPrimaryAttributeConsts")]
+        public bool AddPrimaryAttributeConsts { get; set; }
 
         [JsonPropertyName("builderSettingsJsonRelativePath")]
         public string BuilderSettingsJsonRelativePath { get; set; }
@@ -42,6 +47,12 @@ namespace DLaB.ModelBuilderExtensions
             }
             set => _camelCaseNamesDictionaryRelativePath = value;
         }
+
+        /// <summary>
+        /// No Config
+        /// </summary>
+        [JsonPropertyName("createBaseClasses")]
+        public bool CreateBaseClasses { get; set; }
 
         [JsonPropertyName("createOneFilePerAction")]
         public bool CreateOneFilePerAction { get; set; }
@@ -139,6 +150,18 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("tokenCapitalizationOverrides")]
         public List<string> TokenCapitalizationOverrides { get; set; }
+
+        /// <summary>
+        /// No Config
+        /// </summary>
+        [JsonPropertyName("updateEnumerableEntityProperties")]
+        public bool UpdateEnumerableEntityProperties { get; set; }
+
+        /// <summary>
+        /// No Config
+        /// </summary>
+        [JsonPropertyName("updateMultiOptionSetAttributes")]
+        public bool UpdateMultiOptionSetAttributes { get; set; }
 
         [JsonPropertyName("useLogicalNames")]
         public bool UseLogicalNames { get; set; }

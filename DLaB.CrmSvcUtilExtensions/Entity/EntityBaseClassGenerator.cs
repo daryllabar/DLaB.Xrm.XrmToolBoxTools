@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DLaB.ModelBuilderExtensions.Entity
 {
-    internal class EntityBaseClassGenerator : ICustomizeCodeDomService
+    internal class EntityBaseClassGenerator : TypedServiceSettings<ICustomizeCodeDomService>, ICustomizeCodeDomService
     {
         public static HashSet<string> BaseEntityMembers { get; } = new HashSet<string>
         {
@@ -48,9 +48,12 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
         private bool MultiSelectCreated { get; }
 
-        public EntityBaseClassGenerator(bool multiSelectCreated)
+        public EntityBaseClassGenerator(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters) : base (defaultService, parameters)
         {
-            MultiSelectCreated = multiSelectCreated;
+        }
+
+        public EntityBaseClassGenerator(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings settings) : base(defaultService, settings)
+        {
         }
 
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
@@ -99,7 +102,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
             entityClass.Members.AddRange(type.Members.Cast<CodeTypeMember>().Where(p => BaseEntityMembers.Contains(p.Name)).Select(GetCodeTypeMember).ToArray());
 
-            if (CustomizeCodeDomService.GenerateEnumProperties)
+            if (ConfigHelper.Settings.DLaBModelBuilder.GenerateEnumProperties)
             {
                 entityClass.Members.AddRange(EnumPropertyGenerator.CreateGetEnumMethods(MultiSelectCreated));
             }

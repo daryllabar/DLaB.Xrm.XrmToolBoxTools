@@ -1,20 +1,18 @@
-﻿using System;
+﻿using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using System.Collections.Generic;
-using System.Windows.Documents;
-using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 
 namespace DLaB.ModelBuilderExtensions.Entity
 {
     public class CustomCodeGenerationService : BaseCustomCodeGenerationService
     {
-        protected override bool CreateOneFilePerCodeUnit => ConfigHelper.GetAppSettingOrDefault("CreateOneFilePerEntity", false);
+        protected override bool CreateOneFilePerCodeUnit => DLaBSettings.CreateOneFilePerEntity;
 
         protected override List<string> ClassesToMakeStatic
         {
             get
             { 
                 var value = new List<string>();
-                if (CustomizeCodeDomService.GenerateOptionSetMetadataAttribute)
+                if (DLaBSettings.GenerateOptionSetMetadataAttribute)
                 {
                     value.Add("OptionSetExtension");
                 }
@@ -22,6 +20,12 @@ namespace DLaB.ModelBuilderExtensions.Entity
             }
         }
 
-        public CustomCodeGenerationService(ICodeGenerationService service) : base(service) {}
+        public CustomCodeGenerationService(ICodeGenerationService service, IDictionary<string, string> parameters) : base(service, parameters)
+        {
+        }
+
+        public CustomCodeGenerationService(ICodeGenerationService service, DLaBModelBuilderSettings settings) : base(service, settings)
+        {
+        }
     }
 }

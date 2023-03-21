@@ -14,8 +14,8 @@ namespace DLaB.ModelBuilderExtensions.Tests
         public void CreateTestEntityFile()
         {
             var factory = new ServiceFactory();
-            var customizeDom = new ModelBuilderExtensions.Entity.CustomizeCodeDomService();
-            var codeGen =      new ModelBuilderExtensions.Entity.CustomCodeGenerationService(factory.GetService<ICodeGenerationService>());
+            var customizeDom = new CustomizeCodeDomService(null, new DLaBModelBuilder());
+            var codeGen =      new ModelBuilderExtensions.Entity.CustomCodeGenerationService(factory.GetService<ICodeGenerationService>(), null);
             var filter =       new ModelBuilderExtensions.Entity.CodeWriterFilterService(factory.GetService<ICodeWriterFilterService>());
 
             TestFileCreation(factory, customizeDom, codeGen, filter);
@@ -36,7 +36,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
         public void CreateTestActionFile()
         {
             var factory = new ServiceFactory();
-            var customizeDom = new Action.CustomizeCodeDomService();
+            var customizeDom = new CustomizeCodeDomService(null, new DLaBModelBuilder());
             var codeGen =      new Action.CustomCodeGenerationService(factory.GetService<ICodeGenerationService>());
             var filter =       new Action.CodeWriterFilterService(factory.GetService<ICodeWriterFilterService>());
 

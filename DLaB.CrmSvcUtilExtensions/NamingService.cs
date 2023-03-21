@@ -11,54 +11,33 @@ namespace DLaB.ModelBuilderExtensions
     using OptionSet.Transliteration;
     using Source.DLaB.Xrm;
 
-    public class NamingService : INamingService
+    public class NamingService : TypedServiceSettings<INamingService>, INamingService
     {
         public const int English = 1033;
 
-        public bool CamelCaseClassNames { get; set; }
-        public bool CamelCaseMemberNames { get; set; }
-        public INamingService DefaultService { get; set; }
-        public Dictionary<string, HashSet<string>> EntityAttributeSpecifiedNames { get; set; }
-        public string InvalidCSharpNamePrefix { get; set; }
-        public int LanguageCodeOverride { get; set; }
-        public string LocalOptionSetFormat { get; set; }
-        public Dictionary<string, string> OptionSetNames { get; set; }
-        public bool UseLogicalNames { get; set; }
-        public string ValidCSharpNameRegEx { get; set; }
-        
+        public bool CamelCaseClassNames { get { return DLaBSettings.CamelCaseClassNames; } set{ DLaBSettings.CamelCaseClassNames = value; } }
+        public bool CamelCaseMemberNames { get { return DLaBSettings.CamelCaseMemberNames; } set { DLaBSettings.CamelCaseMemberNames = value; } }
+        public Dictionary<string, HashSet<string>> EntityAttributeSpecifiedNames { get { return DLaBSettings.EntityAttributeSpecifiedNames; } set { DLaBSettings.EntityAttributeSpecifiedNames = value; } }
+        public string InvalidCSharpNamePrefix { get { return DLaBSettings.InvalidCSharpNamePrefix; } set { DLaBSettings.InvalidCSharpNamePrefix = value; } }
+        public int LanguageCodeOverride { get { return DLaBSettings.OptionSetLanguageCodeOverride; } set { DLaBSettings.OptionSetLanguageCodeOverride = value; } }
+        public string LocalOptionSetFormat { get { return DLaBSettings.LocalOptionSetFormat; } set { DLaBSettings.LocalOptionSetFormat = value; } }
+        public Dictionary<string, string> OptionSetNames { get { return DLaBSettings.OptionSetNames; } set { DLaBSettings.OptionSetNames = value; } }
+        public bool UseLogicalNames { get { return DLaBSettings.UseLogicalNames; } set { DLaBSettings.UseLogicalNames = value; } }
+        public string ValidCSharpNameRegEx { get { return DLaBSettings.ValidCSharpNameRegEx; } set { DLaBSettings.ValidCSharpNameRegEx = value; } }
+
         private HashSet<string> _entityNames;
 
         /// <summary>
         /// This field keeps track of options with the same name and the values that have been defined.  Internal Dictionary Key is Name + "_" + Value
         /// </summary>
-        private Dictionary<OptionSetMetadataBase, Dictionary<string, bool>> OptionNameValueDuplicates { get; set; }
+        private Dictionary<OptionSetMetadataBase, Dictionary<string, bool>> OptionNameValueDuplicates { get; set; } = new Dictionary<OptionSetMetadataBase, Dictionary<string, bool>>();
 
-        public NamingService(INamingService defaultService, IDictionary<string, string> parameters)
+        public NamingService(INamingService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
-            ConfigHelper.Initialize(parameters);
-            Initialize(defaultService, ConfigHelper.Settings.DLaBModelBuilder);
         }
 
-        private void Initialize(INamingService defaultService, DLaBModelBuilder config)
+        public NamingService(INamingService defaultService, DLaBModelBuilderSettings settings) : base(defaultService, settings)
         {
-            DefaultService = defaultService;
-
-            CamelCaseClassNames = config.CamelCaseClassNames;
-            CamelCaseMemberNames = config.CamelCaseMemberNames;
-            EntityAttributeSpecifiedNames = config.EntityAttributeSpecifiedNames;
-            InvalidCSharpNamePrefix = config.InvalidCSharpNamePrefix;
-            LanguageCodeOverride = config.OptionSetLanguageCodeOverride;
-            LocalOptionSetFormat = config.LocalOptionSetFormat;
-            OptionSetNames = config.OptionSetNames;
-            UseLogicalNames = config.UseLogicalNames;
-            ValidCSharpNameRegEx = config.ValidCSharpNameRegEx;
-
-            OptionNameValueDuplicates = new Dictionary<OptionSetMetadataBase, Dictionary<string, bool>>();
-        }
-
-        public NamingService(INamingService defaultService, DLaBModelBuilder config)
-        {
-            Initialize(defaultService, config); 
         }
 
         public HashSet<string> GetEntityNames(IServiceProvider services)

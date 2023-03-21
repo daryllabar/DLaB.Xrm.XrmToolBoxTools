@@ -1,4 +1,5 @@
-﻿using DLaB.ModelBuilderExtensions.OptionSet;
+﻿using DLaB.ModelBuilderExtensions.Entity;
+using DLaB.ModelBuilderExtensions.OptionSet;
 using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Source.DLaB.Common;
 using System;
@@ -6,49 +7,49 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using DLaB.ModelBuilderExtensions.Entity;
 
 namespace DLaB.ModelBuilderExtensions
 {
-    public class CustomizeCodeDomService : ICustomizeCodeDomService
+    public class CustomizeCodeDomService : TypedServiceSettings<ICustomizeCodeDomService>, ICustomizeCodeDomService
     {
-        public ICustomizeCodeDomService DefaultService { get; }
         #region Entity Properties
 
-        public static bool AddDebuggerNonUserCode => ConfigHelper.GetAppSettingOrDefault("AddDebuggerNonUserCode", true);
-        public static bool AddPrimaryAttributeConsts => ConfigHelper.GetAppSettingOrDefault("AddPrimaryAttributeConsts", true);
-        public static bool CreateBaseClasses => ConfigHelper.GetAppSettingOrDefault("CreateBaseClasses", false);
-        public static bool GenerateAnonymousTypeConstructor => ConfigHelper.GetAppSettingOrDefault("GenerateAnonymousTypeConstructor", true);
-        public static bool GenerateAttributeNameConsts => ConfigHelper.GetAppSettingOrDefault("GenerateAttributeNameConsts", false);
-        public static bool GenerateConstructorsSansLogicalName => ConfigHelper.GetAppSettingOrDefault("GenerateConstructorsSansLogicalName", false);
-        public static bool GenerateEntityTypeCode => ConfigHelper.GetAppSettingOrDefault("GenerateEntityTypeCode", false);
-        public static bool GenerateEnumProperties => ConfigHelper.GetAppSettingOrDefault("GenerateEnumProperties", true);
-        public static bool GenerateOptionSetMetadataAttribute => ConfigHelper.GetAppSettingOrDefault("GenerateOptionSetMetadataAttribute", false);
-        public static bool ReplaceOptionSetPropertiesWithEnum => ConfigHelper.GetAppSettingOrDefault("ReplaceOptionSetPropertiesWithEnum", true);
-        public static bool UpdateMultiOptionSetAttributes => ConfigHelper.GetAppSettingOrDefault("UpdateMultiOptionSetAttributes", true);
-        public static bool UpdateEnumerableEntityProperties => ConfigHelper.GetAppSettingOrDefault("UpdateEnumerableEntityProperties", true);
+        public bool AddDebuggerNonUserCode { get { return DLaBSettings.AddDebuggerNonUserCode; } set { DLaBSettings.AddDebuggerNonUserCode = value; } }
+        public bool AddPrimaryAttributeConsts { get { return DLaBSettings.AddPrimaryAttributeConsts; } set { DLaBSettings.AddPrimaryAttributeConsts = value; } }
+        public bool CreateBaseClasses { get { return DLaBSettings.CreateBaseClasses; } set { DLaBSettings.CreateBaseClasses = value; } }
+        public bool GenerateAnonymousTypeConstructor { get { return DLaBSettings.GenerateAnonymousTypeConstructor; } set { DLaBSettings.GenerateAnonymousTypeConstructor = value; } }
+        public bool GenerateAttributeNameConsts { get { return DLaBSettings.GenerateAttributeNameConsts; } set { DLaBSettings.GenerateAttributeNameConsts = value; } }
+        public bool GenerateConstructorsSansLogicalName { get { return DLaBSettings.GenerateConstructorsSansLogicalName; } set { DLaBSettings.GenerateConstructorsSansLogicalName = value; } }
+        public bool GenerateEntityTypeCode { get { return DLaBSettings.GenerateEntityTypeCode; } set { DLaBSettings.GenerateEntityTypeCode = value; } }
+        public bool GenerateEnumProperties { get { return DLaBSettings.GenerateEnumProperties; } set { DLaBSettings.GenerateEnumProperties = value; } }
+        public bool GenerateOptionSetMetadataAttribute { get { return DLaBSettings.GenerateOptionSetMetadataAttribute; } set { DLaBSettings.GenerateOptionSetMetadataAttribute = value; } }
+        public bool ReplaceOptionSetPropertiesWithEnum { get { return DLaBSettings.ReplaceOptionSetPropertiesWithEnum; } set { DLaBSettings.ReplaceOptionSetPropertiesWithEnum = value; } }
+        public bool UpdateMultiOptionSetAttributes { get { return DLaBSettings.UpdateMultiOptionSetAttributes; } set { DLaBSettings.UpdateMultiOptionSetAttributes = value; } }
+        public bool UpdateEnumerableEntityProperties { get { return DLaBSettings.UpdateEnumerableEntityProperties; } set { DLaBSettings.UpdateEnumerableEntityProperties = value; } }
 
         #endregion Entity Properties
 
         #region Message Properties
 
-        public static bool GenerateActionAttributeNameConsts => ConfigHelper.GetAppSettingOrDefault("GenerateActionAttributeNameConsts", false);
         public WhitelistBlacklistLogic Approver { get; }
+        public bool GenerateActionAttributeNameConsts { get { return DLaBSettings.GenerateActionAttributeNameConsts; } set { DLaBSettings.GenerateActionAttributeNameConsts = value; } }
 
-        public bool MakeResponseActionsEditable { get; }
+        public bool MakeResponseActionsEditable { get { return DLaBSettings.MakeResponseActionsEditable; } set { DLaBSettings.MakeResponseActionsEditable = value; } } 
 
         #endregion Message Properties
 
-        public CustomizeCodeDomService(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters)
+        public CustomizeCodeDomService(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
-            DefaultService = defaultService;
-            ConfigHelper.Initialize(parameters);
 
-            MakeResponseActionsEditable = ConfigHelper.GetAppSettingOrDefault("MakeResponseActionsEditable", false);
-            Approver = new WhitelistBlacklistLogic(Config.GetHashSet("ActionsWhitelist", new HashSet<string>()),
+            Approver = new WhitelistBlacklistLogic(
+                Config.GetHashSet("ActionsWhitelist", new HashSet<string>()),
                 Config.GetList("ActionPrefixesWhitelist", new List<string>()),
                 Config.GetHashSet("ActionsToSkip", new HashSet<string>()),
                 Config.GetList("ActionPrefixesToSkip", new List<string>()));
+        }
+
+        public CustomizeCodeDomService(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings settings) : base(defaultService, settings)
+        {
         }
 
         #region ICustomizeCodeDomService Members
@@ -66,27 +67,33 @@ namespace DLaB.ModelBuilderExtensions
             {
                 new MultiOptionSetAttributeUpdater().CustomizeCodeDom(codeUnit, services);
             }
+
             if (UpdateEnumerableEntityProperties)
             {
                 new EnumerableEntityPropertyUpdater().CustomizeCodeDom(codeUnit, services);
             }
+
             if (AddPrimaryAttributeConsts)
             {
                 new PrimaryAttributeGenerator().CustomizeCodeDom(codeUnit, services);
             }
+
             if (GenerateConstructorsSansLogicalName)
             {
                 new EntityConstructorsGenerator().CustomizeCodeDom(codeUnit, services);
             }
+
             if (GenerateAttributeNameConsts)
             {
                 new RelationshipConstGenerator().CustomizeCodeDom(codeUnit, services);
                 new AttributeConstGenerator().CustomizeCodeDom(codeUnit, services);
             }
+
             if (GenerateAnonymousTypeConstructor)
             {
                 new AnonymousTypeConstructorGenerator().CustomizeCodeDom(codeUnit, services);
             }
+
             if (!GenerateEntityTypeCode)
             {
                 new RemoveEntityTypeCodeService().CustomizeCodeDom(codeUnit, services);
@@ -99,7 +106,7 @@ namespace DLaB.ModelBuilderExtensions
                 generator.CustomizeCodeDom(codeUnit, services);
                 multiSelectCreated = generator.MultiSelectEnumCreated;
             }
-        
+
             if (GenerateOptionSetMetadataAttribute)
             {
                 new OptionSetMetadataAttributeGenerator().CustomizeCodeDom(codeUnit, services);
@@ -107,8 +114,9 @@ namespace DLaB.ModelBuilderExtensions
 
             if (CreateBaseClasses)
             {
-                new EntityBaseClassGenerator(multiSelectCreated).CustomizeCodeDom(codeUnit, services);
+                new EntityBaseClassGenerator(this, Settings).CustomizeCodeDom(codeUnit, services);
             }
+
             if (AddDebuggerNonUserCode)
             {
                 new Entity.MemberAttributes().CustomizeCodeDom(codeUnit, services);
@@ -162,9 +170,9 @@ namespace DLaB.ModelBuilderExtensions
             if (MakeResponseActionsEditable && action.BaseTypes.OfType<CodeTypeReference>().Any(r => r.BaseType == orgResponse))
             {
                 foreach (var prop in from CodeTypeMember member in action.Members
-                                     let propDom = member as CodeMemberProperty
-                                     where propDom != null && !propDom.HasSet
-                                     select propDom)
+                         let propDom = member as CodeMemberProperty
+                         where propDom != null && !propDom.HasSet
+                         select propDom)
                 {
                     var thisMember = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), "Results");
                     var indexOf = new CodeArrayIndexerExpression(thisMember, new CodePrimitiveExpression(prop.Name));

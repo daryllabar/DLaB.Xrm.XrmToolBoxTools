@@ -35,6 +35,7 @@ namespace DLaB.ModelBuilderExtensions
             }
         }
 
+        private static string _loadedSettingsPath;
         /// <summary>
         /// Required call to setup static Configuration.
         /// </summary>
@@ -44,9 +45,13 @@ namespace DLaB.ModelBuilderExtensions
             _parameters = parameters;
             if (parameters.TryGetValue("settingsTemplateFile", out var settingsPath))
             {
-                _settings = settingsPath.ToUpper() == "DEFAULT"
-                    ? new DLaBModelBuilderSettings()
-                    : JsonSerializer.Deserialize<DLaBModelBuilderSettings>(File.ReadAllText(settingsPath));
+                if (_settings == null || _loadedSettingsPath != settingsPath)
+                {
+                    _loadedSettingsPath = settingsPath;
+                    _settings = settingsPath.ToUpper() == "DEFAULT"
+                        ? new DLaBModelBuilderSettings()
+                        : JsonSerializer.Deserialize<DLaBModelBuilderSettings>(File.ReadAllText(settingsPath));
+                }
             }
             else
             {

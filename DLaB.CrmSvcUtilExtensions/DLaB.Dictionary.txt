@@ -1,5 +1,4 @@
-﻿a
-aaron
+﻿aaron
 abandoned
 abc
 aberdeen
@@ -26,7 +25,6 @@ ac
 academic
 academics
 academy
-acc
 accent
 accept
 acceptable
@@ -186,10 +184,8 @@ advisory
 advocacy
 advocate
 adware
-ae
 aerial
 aerospace
-af
 affair
 affairs
 affect
@@ -232,9 +228,7 @@ agreements
 agrees
 agricultural
 agriculture
-ah
 ahead
-ai
 aid
 aids
 aim
@@ -248,7 +242,6 @@ airlines
 airplane
 airport
 airports
-aj
 ak
 aka
 akas
@@ -654,6 +647,8 @@ attempts
 attend
 attendance
 attended
+attendee
+attendees
 attending
 attention
 attitude
@@ -666,12 +661,10 @@ attractions
 attractive
 attribute
 attributes
-au
 auburn
 auckland
 auction
 auctions
-aud
 audi
 audience
 audio
@@ -680,7 +673,6 @@ auditor
 aug
 august
 aurora
-aus
 austin
 australia
 australian
@@ -703,7 +695,6 @@ automobiles
 automotive
 autos
 autumn
-av
 availability
 available
 avatar
@@ -716,7 +707,6 @@ aviation
 avoid
 avoiding
 avon
-aw
 award
 awarded
 awards
@@ -727,6 +717,7 @@ awesome
 awful
 axis
 aye
+az
 azure
 azerbaijan
 babe
@@ -824,8 +815,6 @@ battery
 battle
 battlefield
 bay
-bbc
-bbs
 bc
 bcc
 be
@@ -980,8 +969,6 @@ bits
 biz
 bizarre
 bizrate
-bk
-bl
 black
 blackberry
 blackjack
@@ -1001,6 +988,7 @@ bless
 blessed
 blind
 blink
+blob
 block
 blocked
 blocking
@@ -1093,7 +1081,6 @@ boxing
 boy
 boys
 bpf
-br
 bra
 bracelet
 bracelets
@@ -1182,8 +1169,6 @@ brussels
 brutal
 bryan
 bryant
-bs
-bt
 bubble
 buck
 bucks
@@ -1244,7 +1229,6 @@ buyers
 buying
 buys
 buzz
-bw
 by
 bye
 byte
@@ -1414,16 +1398,11 @@ causing
 caution
 cave
 cayman
-cb
 cbs
 cc
 ccd
-cd
 cdn
-cdna
-cds
 cdt
-ce
 cedar
 ceiling
 celebrate
@@ -1591,7 +1570,6 @@ chubby
 chuck
 church
 churches
-ci
 cia
 cialis
 ciao
@@ -1626,8 +1604,6 @@ civic
 civil
 civilian
 civilization
-cj
-cl
 claim
 claimant
 claimants
@@ -1700,9 +1676,7 @@ club
 clubs
 cluster
 clusters
-cm
 cms
-cn
 cnet
 cnn
 co
@@ -2217,17 +2191,18 @@ cruises
 cruz
 cry
 crystal
-cs
 css
 cst
 ct
 ctrl
-cu
 cuba
 cube
 cubic
 cuisine
 cult
+cultivate
+cultivated
+cultivator
 cultural
 culture
 cultures
@@ -2259,18 +2234,14 @@ cut
 cute
 cuts
 cutting
-cv
 cvs
-cw
 cyber
 cycle
 cycles
 cycling
 cylinder
 cyprus
-cz
 czech
-da
 dad
 daddy
 daily
@@ -2318,10 +2289,6 @@ dawn
 day
 days
 dayton
-db
-dc
-dd
-ddr
 de
 dead
 deadline
@@ -2414,6 +2381,7 @@ delivered
 delivering
 delivers
 delivery
+deliveries
 dell
 delta
 deluxe
@@ -2535,10 +2503,6 @@ devices
 devil
 devon
 devoted
-df
-dg
-dh
-di
 diabetes
 diagnosis
 diagnostic
@@ -2675,6 +2639,10 @@ distributors
 district
 districts
 disturbed
+disqualify
+disqualified
+disqualifies
+disqualifying
 div
 dive
 diverse
@@ -2689,10 +2657,6 @@ divisions
 divorce
 divx
 diy
-dj
-dk
-dl
-dm
 dna
 dns
 do
@@ -2760,9 +2724,7 @@ downloads
 downtown
 dozen
 dozens
-dp
 dpi
-dr
 draft
 drag
 dragon
@@ -2806,12 +2768,9 @@ drums
 drunk
 dry
 dryer
-ds
 dsc
 dsl
-dt
 dts
-du
 dual
 dubai
 dublin
@@ -2841,7 +2800,6 @@ dying
 dylan
 dynamic
 dynamics
-ea
 each
 eagle
 eagles
@@ -2872,7 +2830,6 @@ ebay
 ebony
 ebook
 ebooks
-ec
 echo
 eclipse
 eco
@@ -2907,8 +2864,6 @@ educational
 educators
 edward
 edwards
-ee
-ef
 effect
 effective
 effectively
@@ -2925,7 +2880,6 @@ egypt
 egyptian
 eight
 either
-el
 elder
 elderly
 elect
@@ -2959,7 +2913,6 @@ ellis
 else
 elsewhere
 elvis
-em
 emacs
 email
 emailed
@@ -3084,7 +3037,6 @@ epinions
 episode
 episodes
 epson
-eq
 equal
 equality
 equally
@@ -3103,7 +3055,6 @@ erotica
 erp
 error
 errors
-es
 escalate
 escalated
 escape
@@ -3129,7 +3080,6 @@ estimated
 estimates
 estimation
 estonia
-et
 etc
 eternal
 ethernet
@@ -3137,14 +3087,12 @@ ethical
 ethics
 ethiopia
 ethnic
-eu
 eugene
 eur
 euro
 europe
 european
 euros
-ev
 eva
 eval
 evaluate
@@ -3171,7 +3119,6 @@ evidence
 evident
 evil
 evolution
-ex
 exact
 exactly
 exam
@@ -3302,8 +3249,6 @@ extremely
 eye
 eyed
 eyes
-ez
-fa
 fabric
 fabrics
 fabulous
@@ -7724,15 +7669,11 @@ rows
 roy
 royal
 royalty
-rp
 rpg
 rpm
-rr
 rrp
-rs
 rss
-rt
-ru
+rsvp
 rubber
 ruby
 rug
@@ -7753,10 +7694,7 @@ russell
 russia
 russian
 ruth
-rv
-rw
 rwanda
-rx
 ryan
 sa
 sacramento
@@ -9375,7 +9313,8 @@ unnecessary
 unresolve
 unresolved
 unresolves
-unsafeS
+unsafe
+unshare
 unsigned
 unsubmit
 unsubmitted
@@ -9967,10 +9906,8 @@ yourself
 youth
 yr
 yrs
-yu
 yugoslavia
 yukon
-za
 zambia
 zdnet
 zealand
@@ -9987,6 +9924,5 @@ zoo
 zoom
 zope
 zshops
-zu
 zum
 zus

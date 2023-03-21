@@ -11,7 +11,7 @@ using Parallel = System.Threading.Tasks.Parallel;
 
 namespace DLaB.ModelBuilderExtensions
 {
-    public abstract class BaseCustomCodeGenerationService : ICodeGenerationService
+    public abstract class BaseCustomCodeGenerationService : TypedServiceSettings<ICodeGenerationService>, ICodeGenerationService
     {
         public static bool UseTfsToCheckoutFiles { get; } = ConfigHelper.GetAppSettingOrDefault("UseTfsToCheckoutFiles", false);
         public static bool AddNewFilesToProject => ConfigHelper.GetAppSettingOrDefault("AddNewFilesToProject", false);
@@ -29,11 +29,13 @@ namespace DLaB.ModelBuilderExtensions
         private bool DeleteFilesFromOutputFolders => ConfigHelper.GetAppSettingOrDefault("DeleteFilesFromOutputFolders", false) && CreateOneFilePerCodeUnit;
 
         private VsTfsSourceControlProvider Tfs { get; set; }
-        protected ICodeGenerationService DefaultService { get; }
 
-        protected BaseCustomCodeGenerationService(ICodeGenerationService service)
+        protected BaseCustomCodeGenerationService(ICodeGenerationService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
-            DefaultService = service;
+        }
+
+        protected BaseCustomCodeGenerationService(ICodeGenerationService defaultService, DLaBModelBuilderSettings settings) : base(defaultService, settings)
+        {
         }
 
         #region ICodeGenerationService Members
