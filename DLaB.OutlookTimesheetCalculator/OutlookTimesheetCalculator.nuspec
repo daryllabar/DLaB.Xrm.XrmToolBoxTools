@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.OutlookTimesheetCalculator</id>
-	  <version>1.2021.1.15</version>
+	  <version>1.2023.3.21</version>
 	  <title>Outlook Timesheet Calculator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,10 @@
     <icon>images\DLaB_Dynamics_Logo_Square_32x32.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Reads appointments from Outlook Desktop to calculate hours worked.</description>
-    <releaseNotes>V1.2021.1.15
+    <releaseNotes>V1.2023.3.21
+- Allow to read from multiple Calendars #360
+
+V1.2021.1.15
 - Fixed Description Text
 
 V1.2021.1.14

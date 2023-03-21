@@ -10,6 +10,8 @@ using System.Collections.ObjectModel;
 using DLaB.XrmToolBoxCommon;
 using XrmToolBox.Extensibility;
 
+#pragma warning disable IDE1006 // Naming Styles
+
 namespace DLaB.OutlookTimesheetCalculator
 {
     public partial class OutlookTimesheetCalculatorControl : DLaBPluginControlBase
@@ -48,6 +50,7 @@ namespace DLaB.OutlookTimesheetCalculator
             InitializeOptionSettings();
             InitializeTasks();
             BindTasks();
+            LoadCalendars();
 
             DateTime start = DateTime.Now.Date.AddDays(-(int)DateTime.Now.DayOfWeek + 1);
             if (start > DateTime.Now)
@@ -146,6 +149,41 @@ namespace DLaB.OutlookTimesheetCalculator
             bsTask.DataSource = Tasks;
         }
 
+
+        private readonly Dictionary<string, Outlook.MAPIFolder> _calendarsByName = new Dictionary<string, Outlook.MAPIFolder>();
+        private void LoadCalendars()
+        {
+            var outlook = new Outlook.Application();
+            var app = outlook.Application;
+            var appSession = app.Session;
+
+            calCLB.Items.Clear();
+            _calendarsByName.Clear();
+            var index = 0;
+            foreach (dynamic folder in appSession.Folders)
+            {
+                var path = (string)folder.FolderPath.ToString();
+                if (path.StartsWith("\\\\") && path.Length > 2)
+                {
+                    path = path.Substring(2);
+                    if (path == "Internet Calendars")
+                    {
+                        continue;
+                    }
+                }
+                calCLB.Items.Add(path);
+                foreach (var subFolder in folder.Folders)
+                {
+                    if (subFolder.FolderPath == "\\\\" + path + "\\Calendar")
+                    {
+                        _calendarsByName[path] = subFolder;
+                        break;
+                    }
+                }
+                calCLB.SetItemChecked(index++, true);
+            }
+        }
+
         private void InitializeOptionSettings()
         {
             if (File.Exists(Settings.OptionSettingsPath))
@@ -172,32 +210,31 @@ namespace DLaB.OutlookTimesheetCalculator
 
         private List<Outlook.AppointmentItem> GetOutlookAppointments(DateTime start, DateTime end)
         {
-            var outlook = new Microsoft.Office.Interop.Outlook.Application();
-            var app = outlook.Application;
-            var appSession = app.Session;
-            var calendar = appSession.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderCalendar);
-            //string filter = String.Format("[Start] >= {0} And [Start] < {1} And [End] > {0} And [End] <= {1}", start.ToString("ddddd h:nn AMPM"), end.ToString("ddddd h:nn AMPM"));
-            string filter = string.Format("([Start] >= '{0}' AND [Start] < '{1}') OR ([End] > '{0}' AND [End] <= '{1}')", start.ToString("g"), end.ToString("g"));
-            var items = calendar.Items;
-
-            items.Sort("[Start]", Type.Missing);
-            items.IncludeRecurrences = true;
-            var restrictedItems = items.Restrict(filter);
-
-            Outlook.AppointmentItem appointment;
-            var appointments = new List<Outlook.AppointmentItem>();
-            if (items.Count <= 0) { return appointments; }
-            foreach (var item in restrictedItems)
+            var filter = string.Format("([Start] >= '{0}' AND [Start] < '{1}') OR ([End] > '{0}' AND [End] <= '{1}')", start.ToString("g"), end.ToString("g"));
+            var restrictedAppointments = new List<Outlook.AppointmentItem>();
+            foreach (string checkedItem in calCLB.CheckedItems)
             {
-                appointment = item as Outlook.AppointmentItem;
-                if (appointment != null && !appointment.AllDayEvent && (appointment.BusyStatus != Outlook.OlBusyStatus.olOutOfOffice || Tasks.Any(t => string.Equals(t.Name, appointment.Subject, StringComparison.InvariantCultureIgnoreCase))))
+                var items = _calendarsByName[checkedItem].Items;
+                items.Sort("[Start]", Type.Missing);
+                items.IncludeRecurrences = true;
+                foreach (Outlook.AppointmentItem item in items.Restrict(filter))
+                {
+                    restrictedAppointments.Add(item);
+                }
+            }
+
+            var appointments = new List<Outlook.AppointmentItem>();
+            if (restrictedAppointments.Count <= 0) { return appointments; }
+            foreach (var appointment in restrictedAppointments)
+            {
+                if (appointment != null && !appointment.AllDayEvent && (appointment.BusyStatus != Outlook.OlBusyStatus.olOutOfOffice || Tasks.Any(t => String.Equals(t.Name, appointment.Subject, StringComparison.InvariantCultureIgnoreCase))))
                 {
                     //if (appointment.IsRecurring)
                     //{
                     //    AddReoccuringAppointments(appointments, start, end, appointment);
                     //}
                     //else 
-                        if (appointment.Start.Date != appointment.End.Date)
+                    if (appointment.Start.Date != appointment.End.Date)
                     {
                         appointments.AddRange(SplitAppointments(appointment, dtpEnd.Value.AddDays(1).Date));
                     }
@@ -227,9 +264,11 @@ namespace DLaB.OutlookTimesheetCalculator
                     if (appointmentEnd < appt.End)
                     {
                         // Update Appointment to be outside of first.
-                        Outlook.AppointmentItem copy = new NonOutlookAppointmentItem(appt);
-                        copy.Duration = (int)(appt.End - appointmentEnd).TotalMinutes;
-                        copy.Start = appointmentEnd;
+                        Outlook.AppointmentItem copy = new NonOutlookAppointmentItem(appt)
+                        {
+                            Duration = (int)(appt.End - appointmentEnd).TotalMinutes,
+                            Start = appointmentEnd
+                        };
                         copy.End = copy.Start.AddMinutes(copy.Duration);
                         appointmentEnd = copy.End;
                         appointments.Add(copy);
@@ -258,9 +297,11 @@ namespace DLaB.OutlookTimesheetCalculator
                 // Set eod Or Appointment to the eod of the start, or if the date of the end and the date of the index are equal, set to end of appointment
                 eodOrAppointment = maxEnd.Date == index.Date ? maxEnd : index.AddDays(1).Date;
 
-                splitAppointment = new NonOutlookAppointmentItem(appointment);
-                splitAppointment.Duration = (int)(eodOrAppointment - index).TotalMinutes;
-                splitAppointment.Start = index;
+                splitAppointment = new NonOutlookAppointmentItem(appointment)
+                {
+                    Duration = (int)(eodOrAppointment - index).TotalMinutes,
+                    Start = index
+                };
                 splitAppointment.End = index.AddMinutes(splitAppointment.Duration);
                 index = eodOrAppointment;
                 yield return splitAppointment;
@@ -311,7 +352,7 @@ namespace DLaB.OutlookTimesheetCalculator
             catch (Exception ex)
             {
                 ShowError("Error Loading " + typeof(T).Name + " File", ex);
-                return default(T);
+                return default;
             }
         }
 
@@ -388,6 +429,12 @@ namespace DLaB.OutlookTimesheetCalculator
 
         private void btnCalc_Click(object sender, EventArgs e)
         {
+            if (calCLB.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("No Calendars selected!");
+                return;
+            }
+
             ClearCalculations();
 
             AppointmentTasks = MatchAppointmentsToTasks(GetOutlookAppointments(dtpStart.Value, dtpEnd.Value.AddDays(1)));
