@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
 
 namespace DLaB.ModelBuilderExtensions.Tests
 {
@@ -9,30 +8,17 @@ namespace DLaB.ModelBuilderExtensions.Tests
         [TestMethod]
         public void Case_ShouldPreferId()
         {
-            var dictionary = new Dictionary<int, HashSet<string>>
-            {
-                [2] = new HashSet<string>(new[] { "id", }),
-                [3] = new HashSet<string>(new[] { "arc", "did", "lid" }),
-                [5] = new HashSet<string>(new[] { "block", "clone" }),
-                [6] = new HashSet<string>(new[] { "cloned", "parcel" })
-            };
-            var sut = new CamelCaser(dictionary);
+            var sut = new CamelCaser("id", "arc", "did", "lid", "guid", "block", "clone", "cloned", "parcel");
 
-            //Assert.AreEqual("ClonedId", sut.CaseWord("clonedid"));
+            Assert.AreEqual("ClonedId", sut.CaseWord("clonedid"));
+            Assert.AreEqual("ClonedGuid", sut.CaseWord("clonedguid"));
             Assert.AreEqual("ParcelIdBlock", sut.CaseWord("parcelidblock"));
         }
 
         [TestMethod]
         public void Case_ShouldPreferLessWords_WhenCasingCreditOnHold()
         {
-            var dictionary = new Dictionary<int, HashSet<string>>
-            {
-                [2] = new HashSet<string>(new[] { "re", "di", "on" }),
-                [3] = new HashSet<string>(new[] { "ton" }),
-                [4] = new HashSet<string>(new[] { "hold" }),
-                [6] = new HashSet<string>(new[] { "credit" })
-            };
-            var sut = new CamelCaser(dictionary);
+            var sut = new CamelCaser("re", "di", "on", "ton", "hold", "credit");
 
             Assert.AreEqual("CreditOnHold", sut.CaseWord("creditonhold"));
         }
@@ -40,14 +26,17 @@ namespace DLaB.ModelBuilderExtensions.Tests
         [TestMethod]
         public void Case_ShouldIgnoreSplitByNumbers()
         {
-            var dictionary = new Dictionary<int, HashSet<string>>
-            {
-                [2] = new HashSet<string>(new[] { "id" }),
-                [3] = new HashSet<string>(new[] { "crm", "mid" }),
-            };
-            var sut = new CamelCaser(dictionary);
+            var sut = new CamelCaser("id", "crm", "mid");
 
             Assert.AreEqual("CrmId2", sut.CaseWord("crmid2"));
+        }
+
+        [TestMethod]
+        public void Case_ShouldFavorBackwardsProcessing()
+        {
+            var sut = new CamelCaser("do", "not", "note", "mail", "email");
+
+            Assert.AreEqual("DoNotEmail", sut.CaseWord("donotemail"));
         }
     }
 }

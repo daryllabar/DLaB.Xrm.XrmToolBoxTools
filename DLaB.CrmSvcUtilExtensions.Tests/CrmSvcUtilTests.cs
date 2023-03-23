@@ -14,9 +14,9 @@ namespace DLaB.ModelBuilderExtensions.Tests
         public void CreateTestEntityFile()
         {
             var factory = new ServiceFactory();
-            var customizeDom = new CustomizeCodeDomService(null, new DLaBModelBuilder());
-            var codeGen =      new ModelBuilderExtensions.Entity.CustomCodeGenerationService(factory.GetService<ICodeGenerationService>(), null);
-            var filter =       new ModelBuilderExtensions.Entity.CodeWriterFilterService(factory.GetService<ICodeWriterFilterService>());
+            var customizeDom = new CustomizeCodeDomService(null, new DLaBModelBuilderSettings());
+            var codeGen =      new ModelBuilderExtensions.Entity.CustomCodeGenerationService(factory.GetService<ICodeGenerationService>(), new DLaBModelBuilderSettings());
+            var filter =       new ModelBuilderExtensions.Entity.CodeWriterFilterService(factory.GetService<ICodeWriterFilterService>(), new DLaBModelBuilderSettings());
 
             TestFileCreation(factory, customizeDom, codeGen, filter);
         }
@@ -26,7 +26,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
         {
             var factory = new ServiceFactory();
             var customizeDom = new OptionSet.CustomizeCodeDomService(new Dictionary<string, string>());
-            var codeGen =      new OptionSet.CustomCodeGenerationService(factory.GetService<ICodeGenerationService>());
+            var codeGen =      new OptionSet.CustomCodeGenerationService(factory.GetService<ICodeGenerationService>(), new DLaBModelBuilderSettings());
             var filter =       new OptionSet.CodeWriterFilterService(factory.GetService<ICodeWriterFilterService>());
 
             TestFileCreation(factory, customizeDom, codeGen, filter);
@@ -36,8 +36,8 @@ namespace DLaB.ModelBuilderExtensions.Tests
         public void CreateTestActionFile()
         {
             var factory = new ServiceFactory();
-            var customizeDom = new CustomizeCodeDomService(null, new DLaBModelBuilder());
-            var codeGen =      new Action.CustomCodeGenerationService(factory.GetService<ICodeGenerationService>());
+            var customizeDom = new CustomizeCodeDomService(null, new DLaBModelBuilderSettings());
+            var codeGen =      new Action.CustomCodeGenerationService(factory.GetService<ICodeGenerationService>(), new DLaBModelBuilderSettings());
             var filter =       new Action.CodeWriterFilterService(factory.GetService<ICodeWriterFilterService>());
 
             TestFileCreation(factory, customizeDom, codeGen, filter);

@@ -15,15 +15,15 @@ namespace DLaB.ModelBuilderExtensions
     {
         public const int English = 1033;
 
-        public bool CamelCaseClassNames { get { return DLaBSettings.CamelCaseClassNames; } set{ DLaBSettings.CamelCaseClassNames = value; } }
-        public bool CamelCaseMemberNames { get { return DLaBSettings.CamelCaseMemberNames; } set { DLaBSettings.CamelCaseMemberNames = value; } }
-        public Dictionary<string, HashSet<string>> EntityAttributeSpecifiedNames { get { return DLaBSettings.EntityAttributeSpecifiedNames; } set { DLaBSettings.EntityAttributeSpecifiedNames = value; } }
-        public string InvalidCSharpNamePrefix { get { return DLaBSettings.InvalidCSharpNamePrefix; } set { DLaBSettings.InvalidCSharpNamePrefix = value; } }
-        public int LanguageCodeOverride { get { return DLaBSettings.OptionSetLanguageCodeOverride; } set { DLaBSettings.OptionSetLanguageCodeOverride = value; } }
-        public string LocalOptionSetFormat { get { return DLaBSettings.LocalOptionSetFormat; } set { DLaBSettings.LocalOptionSetFormat = value; } }
-        public Dictionary<string, string> OptionSetNames { get { return DLaBSettings.OptionSetNames; } set { DLaBSettings.OptionSetNames = value; } }
-        public bool UseLogicalNames { get { return DLaBSettings.UseLogicalNames; } set { DLaBSettings.UseLogicalNames = value; } }
-        public string ValidCSharpNameRegEx { get { return DLaBSettings.ValidCSharpNameRegEx; } set { DLaBSettings.ValidCSharpNameRegEx = value; } }
+        public bool CamelCaseClassNames { get => DLaBSettings.CamelCaseClassNames; set => DLaBSettings.CamelCaseClassNames = value; }
+        public bool CamelCaseMemberNames { get => DLaBSettings.CamelCaseMemberNames; set => DLaBSettings.CamelCaseMemberNames = value; }
+        public Dictionary<string, HashSet<string>> EntityAttributeSpecifiedNames { get => DLaBSettings.EntityAttributeSpecifiedNames; set => DLaBSettings.EntityAttributeSpecifiedNames = value; }
+        public string InvalidCSharpNamePrefix { get => DLaBSettings.InvalidCSharpNamePrefix; set => DLaBSettings.InvalidCSharpNamePrefix = value; }
+        public int LanguageCodeOverride { get => DLaBSettings.OptionSetLanguageCodeOverride; set => DLaBSettings.OptionSetLanguageCodeOverride = value; }
+        public string LocalOptionSetFormat { get => DLaBSettings.LocalOptionSetFormat; set => DLaBSettings.LocalOptionSetFormat = value; }
+        public Dictionary<string, string> OptionSetNames { get => DLaBSettings.OptionSetNames; set => DLaBSettings.OptionSetNames = value; }
+        public bool UseLogicalNames { get => DLaBSettings.UseLogicalNames; set => DLaBSettings.UseLogicalNames = value; }
+        public string ValidCSharpNameRegEx { get => DLaBSettings.ValidCSharpNameRegEx; set => DLaBSettings.ValidCSharpNameRegEx = value; }
 
         private HashSet<string> _entityNames;
 

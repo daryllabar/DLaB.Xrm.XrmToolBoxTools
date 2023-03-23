@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Source.DLaB.Common;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,6 +20,23 @@ namespace DLaB.ModelBuilderExtensions
             Dictionary = dictionary;
             Overrides = overrides ?? new List<string>();
             _maxWordLength = dictionary.Keys.Max();
+        }
+
+        public CamelCaser(params string[] words)
+        {
+            var dictionary = new Dictionary<int, HashSet<string>>();
+            foreach (var word in words)
+            {
+                dictionary.AddOrAppend(word.Length, word);
+            }
+            Dictionary = dictionary;
+            Overrides = new List<string>();
+            _maxWordLength = dictionary.Keys.Max();
+        }
+
+        public CamelCaser(List<string> overrides = null, params string[] words): this(words)
+        {
+            Overrides = overrides ?? new List<string>();
         }
 
         private static Dictionary<int, HashSet<string>> LoadDictionary()
@@ -74,7 +92,7 @@ namespace DLaB.ModelBuilderExtensions
         {
             value = value.ToLower();
             preferredEndings = preferredEndings.Length == 0
-                ? new[] { "Id" }
+                ? new[] { "Guid", "Id" }
                 : preferredEndings;
 
             var backward = CaseWord(value, preferredEndings, false);
@@ -102,7 +120,7 @@ namespace DLaB.ModelBuilderExtensions
 
         private string ChooseBest(string option1, string option2)
         {
-            return option1.Count(char.IsUpper) < option2.Count(char.IsUpper)
+            return option1.Count(char.IsUpper) <= option2.Count(char.IsUpper)
                 ? option1
                 : option2;
         }

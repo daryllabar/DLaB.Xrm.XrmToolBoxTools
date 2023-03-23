@@ -224,6 +224,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         {
             var @default = GetDefault();
             RemoveObsoleteValues(poco);
+            UpdateObsoleteSettings(poco, poco.ExtensionConfig);
 
             AudibleCompletionNotification = poco.AudibleCompletionNotification ?? @default.AudibleCompletionNotification;
             CodeCustomizationService = poco.CodeCustomizationService ?? @default.CodeCustomizationService;
@@ -239,8 +240,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             SuppressGeneratedCodeAttribute = poco.SuppressGeneratedCodeAttribute ?? @default.SuppressGeneratedCodeAttribute;
             UpdateBuilderSettingsJson = poco.UpdateBuilderSettingsJson ?? @default.UpdateBuilderSettingsJson;
             WorkflowlessActions = poco.WorkflowlessActions ?? @default.WorkflowlessActions;
-
-            UpdateObsoleteSettings(poco, poco.ExtensionConfig);
 
             ExtensionConfig = @default.ExtensionConfig;
             ExtensionConfig.SetPopulatedValues(poco.ExtensionConfig);
@@ -575,7 +574,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         {
             var isXrmToolBoxEarlyBound = typeof(ExtensionConfig).AssemblyQualifiedName?.StartsWith("DLaB.EarlyBoundGenerator.Settings.ExtensionConfig, DLaB.EarlyBoundGenerator,") ?? true;
 
-            properties.SetJsonProperty(BuilderSettingsJsonNames.CodeCustomizationService, CodeCustomizationService);
+            properties.SetJsonProperty(BuilderSettingsJsonNames.CodeCustomizationService, isXrmToolBoxEarlyBound ? ReplaceAssemblyName(CodeCustomizationService) : CodeCustomizationService);
             properties.SetJsonProperty(BuilderSettingsJsonNames.EntityTypesFolder, EntityTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.GenerateActions, GenerateMessages);
             properties.SetJsonProperty(BuilderSettingsJsonNames.MessagesTypesFolder, MessageTypesFolder);

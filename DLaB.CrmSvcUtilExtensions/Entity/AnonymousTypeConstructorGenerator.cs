@@ -1,11 +1,20 @@
 ﻿using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
+using Microsoft.Xrm.Sdk.Metadata;
 using System;
 using System.CodeDom;
+using System.Collections.Generic;
 
 namespace DLaB.ModelBuilderExtensions.Entity
 {
-    class AnonymousTypeConstructorGenerator : ICustomizeCodeDomService
+    internal class AnonymousTypeConstructorGenerator : ICustomizeCodeDomService
     {
+        private Dictionary<string, EntityMetadata> Entities { get; set; }
+
+        internal AnonymousTypeConstructorGenerator(Dictionary<string, EntityMetadata> entities)
+        {
+            Entities = entities;
+        }
+
         #region ICustomizeCodeDomService Members
 
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
@@ -23,7 +32,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
         private CodeConstructor GetAnonymousTypeConstructor(CodeTypeDeclaration type)
         {
-            var data = CodeWriterFilterService.EntityMetadata[type.GetFieldInitalizedValue("EntityLogicalName")];
+            var data = Entities[type.GetFieldInitalizedValue("EntityLogicalName")];
             var constructor = new CodeConstructor
             {
                 Attributes = System.CodeDom.MemberAttributes.Public,

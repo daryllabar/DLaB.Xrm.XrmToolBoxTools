@@ -1,12 +1,13 @@
 ﻿using DLaB.ModelBuilderExtensions.Entity;
 using DLaB.ModelBuilderExtensions.OptionSet;
 using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
-using Source.DLaB.Common;
+using Source.DLaB.Xrm;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Microsoft.Xrm.Sdk.Metadata;
 
 namespace DLaB.ModelBuilderExtensions
 {
@@ -14,51 +15,51 @@ namespace DLaB.ModelBuilderExtensions
     {
         #region Entity Properties
 
-        public bool AddDebuggerNonUserCode { get { return DLaBSettings.AddDebuggerNonUserCode; } set { DLaBSettings.AddDebuggerNonUserCode = value; } }
-        public bool AddPrimaryAttributeConsts { get { return DLaBSettings.AddPrimaryAttributeConsts; } set { DLaBSettings.AddPrimaryAttributeConsts = value; } }
-        public bool CreateBaseClasses { get { return DLaBSettings.CreateBaseClasses; } set { DLaBSettings.CreateBaseClasses = value; } }
-        public bool GenerateAnonymousTypeConstructor { get { return DLaBSettings.GenerateAnonymousTypeConstructor; } set { DLaBSettings.GenerateAnonymousTypeConstructor = value; } }
-        public bool GenerateAttributeNameConsts { get { return DLaBSettings.GenerateAttributeNameConsts; } set { DLaBSettings.GenerateAttributeNameConsts = value; } }
-        public bool GenerateConstructorsSansLogicalName { get { return DLaBSettings.GenerateConstructorsSansLogicalName; } set { DLaBSettings.GenerateConstructorsSansLogicalName = value; } }
-        public bool GenerateEntityTypeCode { get { return DLaBSettings.GenerateEntityTypeCode; } set { DLaBSettings.GenerateEntityTypeCode = value; } }
-        public bool GenerateEnumProperties { get { return DLaBSettings.GenerateEnumProperties; } set { DLaBSettings.GenerateEnumProperties = value; } }
-        public bool GenerateOptionSetMetadataAttribute { get { return DLaBSettings.GenerateOptionSetMetadataAttribute; } set { DLaBSettings.GenerateOptionSetMetadataAttribute = value; } }
-        public bool ReplaceOptionSetPropertiesWithEnum { get { return DLaBSettings.ReplaceOptionSetPropertiesWithEnum; } set { DLaBSettings.ReplaceOptionSetPropertiesWithEnum = value; } }
-        public bool UpdateMultiOptionSetAttributes { get { return DLaBSettings.UpdateMultiOptionSetAttributes; } set { DLaBSettings.UpdateMultiOptionSetAttributes = value; } }
-        public bool UpdateEnumerableEntityProperties { get { return DLaBSettings.UpdateEnumerableEntityProperties; } set { DLaBSettings.UpdateEnumerableEntityProperties = value; } }
+        public bool AddDebuggerNonUserCode { get => DLaBSettings.AddDebuggerNonUserCode; set => DLaBSettings.AddDebuggerNonUserCode = value; }
+        public bool AddPrimaryAttributeConsts { get => DLaBSettings.AddPrimaryAttributeConsts; set => DLaBSettings.AddPrimaryAttributeConsts = value; }
+        public bool CreateBaseClasses { get => DLaBSettings.CreateBaseClasses; set => DLaBSettings.CreateBaseClasses = value; }
+        public bool GenerateAnonymousTypeConstructor { get => DLaBSettings.GenerateAnonymousTypeConstructor; set => DLaBSettings.GenerateAnonymousTypeConstructor = value; }
+        public bool GenerateAttributeNameConsts { get => DLaBSettings.GenerateAttributeNameConsts; set => DLaBSettings.GenerateAttributeNameConsts = value; }
+        public bool GenerateConstructorsSansLogicalName { get => DLaBSettings.GenerateConstructorsSansLogicalName; set => DLaBSettings.GenerateConstructorsSansLogicalName = value; }
+        public bool GenerateEntityTypeCode { get => DLaBSettings.GenerateEntityTypeCode; set => DLaBSettings.GenerateEntityTypeCode = value; }
+        public bool GenerateEnumProperties { get => DLaBSettings.GenerateEnumProperties; set => DLaBSettings.GenerateEnumProperties = value; }
+        public bool GenerateOptionSetMetadataAttribute { get => DLaBSettings.GenerateOptionSetMetadataAttribute; set => DLaBSettings.GenerateOptionSetMetadataAttribute = value; }
+        public bool ReplaceOptionSetPropertiesWithEnum { get => DLaBSettings.ReplaceOptionSetPropertiesWithEnum; set => DLaBSettings.ReplaceOptionSetPropertiesWithEnum = value; }
+        public bool UpdateMultiOptionSetAttributes { get => DLaBSettings.UpdateMultiOptionSetAttributes; set => DLaBSettings.UpdateMultiOptionSetAttributes = value; }
+        public bool UpdateEnumerableEntityProperties { get => DLaBSettings.UpdateEnumerableEntityProperties; set => DLaBSettings.UpdateEnumerableEntityProperties = value; }
 
         #endregion Entity Properties
 
         #region Message Properties
 
-        public WhitelistBlacklistLogic Approver { get; }
-        public bool GenerateActionAttributeNameConsts { get { return DLaBSettings.GenerateActionAttributeNameConsts; } set { DLaBSettings.GenerateActionAttributeNameConsts = value; } }
+        public WhitelistBlacklistLogic MessageApprover { get; set; }
+        public bool GenerateActionAttributeNameConsts { get => DLaBSettings.GenerateActionAttributeNameConsts; set => DLaBSettings.GenerateActionAttributeNameConsts = value; }
 
-        public bool MakeResponseActionsEditable { get { return DLaBSettings.MakeResponseActionsEditable; } set { DLaBSettings.MakeResponseActionsEditable = value; } } 
+        public bool MakeResponseActionsEditable { get => DLaBSettings.MakeResponseActionsEditable; set => DLaBSettings.MakeResponseActionsEditable = value; }
 
         #endregion Message Properties
 
+        private Dictionary<string, EntityMetadata> _entities;
+
         public CustomizeCodeDomService(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
-
-            Approver = new WhitelistBlacklistLogic(
-                Config.GetHashSet("ActionsWhitelist", new HashSet<string>()),
-                Config.GetList("ActionPrefixesWhitelist", new List<string>()),
-                Config.GetHashSet("ActionsToSkip", new HashSet<string>()),
-                Config.GetList("ActionPrefixesToSkip", new List<string>()));
+            MessageApprover = new WhitelistBlacklistLogic(Settings.MessageNamesFilter?.Any() == true,
+                new HashSet<string>(DLaBSettings.MessageToSkip),
+                DLaBSettings.MessagePrefixesToSkip);
         }
 
         public CustomizeCodeDomService(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings settings) : base(defaultService, settings)
         {
+            MessageApprover = new WhitelistBlacklistLogic(Settings.MessageNamesFilter?.Any() == true,
+                new HashSet<string>(DLaBSettings.MessageToSkip),
+                DLaBSettings.MessagePrefixesToSkip);
         }
 
         #region ICustomizeCodeDomService Members
 
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
-            Trace.TraceInformation("Entering ICustomizeCodeDomService.CustomizeCodeDom");
-            Trace.TraceInformation("Number of Namespaces generated: {0}", codeUnit.Namespaces.Count);
-
+            Trace.TraceInformation("Entering DLaB.ModelBuilderExtensions.CustomizeCodeDomService.CustomizeCodeDom");
 
             ProcessActions(codeUnit, services);
             ProcessOptionSets(codeUnit, services);
@@ -91,7 +92,7 @@ namespace DLaB.ModelBuilderExtensions
 
             if (GenerateAnonymousTypeConstructor)
             {
-                new AnonymousTypeConstructorGenerator().CustomizeCodeDom(codeUnit, services);
+                new AnonymousTypeConstructorGenerator(GetEntities(services)).CustomizeCodeDom(codeUnit, services);
             }
 
             if (!GenerateEntityTypeCode)
@@ -99,12 +100,10 @@ namespace DLaB.ModelBuilderExtensions
                 new RemoveEntityTypeCodeService().CustomizeCodeDom(codeUnit, services);
             }
 
-            var multiSelectCreated = false;
             if (GenerateEnumProperties)
             {
-                var generator = new EnumPropertyGenerator(CreateBaseClasses, ReplaceOptionSetPropertiesWithEnum);
+                var generator = new EnumPropertyGenerator(CreateBaseClasses, ReplaceOptionSetPropertiesWithEnum, GetEntities(services));
                 generator.CustomizeCodeDom(codeUnit, services);
-                multiSelectCreated = generator.MultiSelectEnumCreated;
             }
 
             if (GenerateOptionSetMetadataAttribute)
@@ -128,6 +127,10 @@ namespace DLaB.ModelBuilderExtensions
 
         #endregion
 
+        private Dictionary<string, EntityMetadata> GetEntities(IServiceProvider services)
+        {
+            return _entities ?? (_entities = services.GetService<IMetadataProviderService>().LoadMetadata(services).Entities.ToDictionary(e => e.LogicalName));
+        }
 
         private void ProcessActions(CodeCompileUnit codeUnit, IServiceProvider services)
         {
@@ -140,7 +143,7 @@ namespace DLaB.ModelBuilderExtensions
                 for (var j = 0; j < types.Count;)
                 {
                     // Remove the type if it is not to be generated.
-                    if (GenerateAction(types[j].Name))
+                    if (GenerateMessage(types[j].Name))
                     {
                         ProcessAction(types[j]);
                         j++;
@@ -181,7 +184,7 @@ namespace DLaB.ModelBuilderExtensions
             }
         }
 
-        private bool GenerateAction(string name)
+        private bool GenerateMessage(string name)
         {
             name = name.Replace(" ", string.Empty);
             // Actions are weird, don't know how to get the whole name since it's a workflow, so I'll hack this here
@@ -194,7 +197,7 @@ namespace DLaB.ModelBuilderExtensions
                 name = name.Remove(name.Length - "Response".Length);
             }
 
-            return Approver.IsAllowed(name.ToLower());
+            return MessageApprover.IsAllowed(name.ToLower());
         }
     }
 }

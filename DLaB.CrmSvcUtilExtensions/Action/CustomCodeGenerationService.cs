@@ -8,13 +8,17 @@ namespace DLaB.ModelBuilderExtensions.Action
 {
     public class CustomCodeGenerationService : BaseCustomCodeGenerationService
     {
-        public CustomCodeGenerationService(ICodeGenerationService service) : base(service) { }
-
-        protected override string CommandLineText => ConfigHelper.GetAppSettingOrDefault("ActionCommandLineText", string.Empty);
-
-        protected override bool CreateOneFilePerCodeUnit => ConfigHelper.GetAppSettingOrDefault("CreateOneFilePerAction", false);
+        protected override bool CreateOneFilePerCodeUnit => DLaBSettings.CreateOneFilePerAction;
 
         private string OutputFilePath { get; set; }
+
+        public CustomCodeGenerationService(ICodeGenerationService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
+        {
+        }
+
+        public CustomCodeGenerationService(ICodeGenerationService defaultService, DLaBModelBuilderSettings settings) : base(defaultService, settings)
+        {
+        }
 
         protected override void WriteInternal(IOrganizationMetadata organizationMetadata, string language, string outputFile, string targetNamespace, IServiceProvider services)
         {

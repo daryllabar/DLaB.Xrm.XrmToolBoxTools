@@ -2,35 +2,35 @@
 using Microsoft.Xrm.Sdk.Metadata;
 using System;
 using System.Collections.Generic;
-using Source.DLaB.Common;
+using System.Linq;
 
 namespace DLaB.ModelBuilderExtensions.Entity
 {
-    public class CodeWriterFilterService  : ICodeWriterFilterService
+    public class CodeWriterFilterService : TypedServiceSettings<ICodeWriterFilterService>, ICodeWriterFilterService
     {
-        private static bool EnableFileDataType => ConfigHelper.GetAppSettingOrDefault("EnableFileDataType", true);
-        private ICodeWriterFilterService DefaultService { get; }
+        public WhitelistBlacklistLogic Approver { get; set; }
+
+        private bool EnableFileDataType { get => DLaBSettings.EnableFileDataType; set => DLaBSettings.EnableFileDataType = value; }
+
         /// <summary>
         /// Contains Meta Data for entities, key'd by logical name
         /// </summary>
-        public static Dictionary<string, EntityMetadata> EntityMetadata { get; set; }
-        public WhitelistBlacklistLogic Approver { get; }
+        public Dictionary<string, EntityMetadata> EntityMetadata { get; set; } = new Dictionary<string, EntityMetadata>();
 
-        public bool GenerateEntityRelationships { get; set; }
+        public bool GenerateEntityRelationships { get => DLaBSettings.GenerateEntityRelationships; set => DLaBSettings.GenerateEntityRelationships = value; }
 
-        static CodeWriterFilterService()
+        public CodeWriterFilterService(ICodeWriterFilterService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
-            EntityMetadata = new Dictionary<string, EntityMetadata>();
+            Approver = new WhitelistBlacklistLogic(Settings.EntityNamesFilter?.Any() == true,
+                new HashSet<string>(DLaBSettings.EntitiesToSkip),
+                DLaBSettings.EntityPrefixesToSkip);
         }
 
-        public CodeWriterFilterService(ICodeWriterFilterService defaultService)
-        { 
-            DefaultService = defaultService;
-            Approver = new WhitelistBlacklistLogic(Config.GetHashSet("EntitiesWhitelist", new HashSet<string>()),
-                                                   Config.GetList("EntityPrefixesWhitelist", new List<string>()),
-                                                   Config.GetHashSet("EntitiesToSkip", new HashSet<string>()),
-                                                   Config.GetList("EntityPrefixesToSkip", new List<string>()));
-            GenerateEntityRelationships = ConfigHelper.GetAppSettingOrDefault("GenerateEntityRelationships", true);
+        public CodeWriterFilterService(ICodeWriterFilterService defaultService, DLaBModelBuilderSettings settings) : base(defaultService, settings)
+        {
+            Approver = new WhitelistBlacklistLogic(Settings.EntityNamesFilter?.Any() == true,
+                new HashSet<string>(DLaBSettings.EntitiesToSkip),
+                DLaBSettings.EntityPrefixesToSkip);
         }
 
         #region ICodeWriterFilterService Members
@@ -68,8 +68,9 @@ namespace DLaB.ModelBuilderExtensions.Entity
         public bool GenerateEntity(EntityMetadata entityMetadata, IServiceProvider services)
         {
             // Some entities are not normally create (attachment for example) not sure why.  Allowing Whitelist to Override here.
-            if (!Approver.IsExplicitlyAllowed(entityMetadata.LogicalName)
-                && !DefaultService.GenerateEntity(entityMetadata, services)) { return false; }
+            // Commented out on switch to ModelBuilder. Not sure if this is valid.
+            //if (!Approver.IsExplicitlyAllowed(entityMetadata.LogicalName)
+            //    && !DefaultService.GenerateEntity(entityMetadata, services)) { return false; }
 
             if (!EntityMetadata.ContainsKey(entityMetadata.LogicalName))
             {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
+using Source.DLaB.Xrm;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
@@ -16,23 +17,26 @@ namespace DLaB.ModelBuilderExtensions.Entity
         public bool MultiSelectEnumCreated { get; private set; }
         public Dictionary<string, string> SpecifiedMappings { get; private set; }
         public Dictionary<string, HashSet<string>> UnmappedProperties { get; private set; }
+        public Dictionary<string, EntityMetadata> Entities { get; set; }
 
         public INamingService NamingService { get; private set; }
         public IServiceProvider Services { get; private set; }
 
-        public EnumPropertyGenerator(bool createBaseClasses, bool replaceOptionSetProperties)
+
+        public EnumPropertyGenerator(bool createBaseClasses, bool replaceOptionSetProperties, Dictionary<string,EntityMetadata> entities)
         {
             CreateBaseClasses = createBaseClasses;
             ReplaceOptionSetProperties = replaceOptionSetProperties;
             MultiSelectEnumCreated = false;
+            Entities = entities;
         }
 
         #region ICustomizeCodeDomService Members
 
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
-            NamingService = (INamingService)services.GetService(typeof(INamingService));
             Services = services;
+            NamingService = services.GetService<INamingService>();
             InitializeMappings();
             var types = codeUnit.Namespaces[0].Types;
             foreach (CodeTypeDeclaration type in types)
@@ -94,7 +98,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
         private bool OptionSetIsSkipped(CodeMemberProperty property, string entityLogicalName)
         {
             var info = GetOptionSetEnumInfo(property, entityLogicalName);
-            return info != null && !OptionSet.CodeWriterFilterService.Approver.IsAllowed(info.OptionSetType);
+            return info != null; //&& !OptionSet.CodeWriterFilterService.Approver.IsAllowed(info.OptionSetType);
         }
 
         // If using the Xrm Client, OptionSets are converted to nullable Ints
@@ -247,7 +251,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
             var propertyLogicalName = prop.GetLogicalName();
             if (propertyLogicalName == null) { throw new Exception("Unable to determine property Logical Name"); }
 
-            var data = CodeWriterFilterService.EntityMetadata[entityLogicalName];
+            var data = Entities[entityLogicalName];
             var attribute = data.Attributes.FirstOrDefault(a => a.LogicalName == propertyLogicalName);
             var picklist = attribute as EnumAttributeMetadata;
             if (picklist == null) { return null; }
@@ -257,7 +261,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
             {
                 enumName = specifiedEnum;
             }
-            else if (CodeWriterFilterService.EntityMetadata.ContainsKey(enumName) && CodeWriterFilterService.EntityMetadata[enumName].SchemaName == enumName)
+            else if (Entities.ContainsKey(enumName) && Entities[enumName].SchemaName == enumName)
             {
                 enumName += "Enum";
             }

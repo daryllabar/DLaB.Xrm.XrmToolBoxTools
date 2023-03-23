@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using System.Xml.Serialization;
 using static DLaB.EarlyBoundGenerator.Settings.EarlyBoundGeneratorConfig;
@@ -343,7 +344,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 RemoveRuntimeVersionComment = true,
                 ReplaceOptionSetPropertiesWithEnum = true,
                 SerializeMetadata = false,
-                TokenCapitalizationOverrides = "AccessTeam|ActiveState|BusinessAs|CardUci|DefaultOnCase|EmailAnd|FeatureSet|Geronimo|IsMsTeams|IsPaiEnabled|IsSopIntegration|MsDyUsd|O365Admin|OnHold|OrderId|OwnerOnAssign|PauseStates|PredictiveAddress|PartiesOnEmail|ParticipatesIn|SentOn|SlaId|SlaKpi|SyncOptIn|Timeout|UserPuid|VoiceMail",
+                TokenCapitalizationOverrides = "AccessTeam|ActiveState|BusinessAs|CardUci|DefaultOnCase|EmailAnd|FeatureSet|Geronimo|IsMsTeams|IsPaiEnabled|IsSopIntegration|MsDynCe_|MsDynMkt_|MsDyUsd|O365Admin|OcSkillIdentMlModel|OnHold|OrderId|OwnerOnAssign|PauseStates|PredictiveAddress|PartiesOnEmail|ParticipatesIn|SentOn|SettingsAndSummary|SlaId|SlaKpi|SyncOptIn|Timeout|UserPuid|VoiceMail",
                 UnmappedProperties =
                     "DuplicateRule:BaseEntityTypeCode,MatchingEntityTypeCode|" +
                     "InvoiceDetail:InvoiceStateCode|" +
@@ -429,9 +430,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
         public void WriteDLaBModelBuilderProperties(Utf8JsonWriter writer)
         {
             writer.AddProperty(nameof(ActionCommandLineText), ActionCommandLineText, true);
-            writer.AddPropertyArray(nameof(ActionPrefixesWhitelist), ActionPrefixesWhitelist);
-            writer.AddPropertyArray(nameof(ActionPrefixesToSkip), ActionPrefixesToSkip);
-            writer.AddPropertyArray(nameof(ActionsToSkip), ActionsToSkip?.Replace("-", ""));
+            writer.AddPropertyArray(nameof(ActionPrefixesToSkip).Replace("Action", "Message"), ActionPrefixesToSkip);
+            writer.AddPropertyArray(nameof(ActionsToSkip).Replace("Action", "Message"), ActionsToSkip?.Replace("-", ""));
             writer.AddProperty(nameof(AddDebuggerNonUserCode), AddDebuggerNonUserCode);
             writer.AddProperty(nameof(AddNewFilesToProject), AddNewFilesToProject);
             writer.AddProperty(nameof(AddOptionSetMetadataAttribute), AddOptionSetMetadataAttribute);
@@ -443,11 +443,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
             writer.AddProperty(nameof(CreateOneFilePerEntity), CreateOneFilePerEntity);
             writer.AddProperty(nameof(CreateOneFilePerOptionSet), CreateOneFilePerOptionSet);
             writer.AddProperty(nameof(DeleteFilesFromOutputFolders), DeleteFilesFromOutputFolders);
-            writer.AddPropertyDictionaryStringHashString(nameof(EntityAttributeSpecifiedNames), EntityAttributeSpecifiedNames, false);  
+            writer.AddPropertyDictionaryStringHashString(nameof(EntityAttributeSpecifiedNames), EntityAttributeSpecifiedNames, false);
             writer.AddProperty(nameof(EntityCommandLineText), EntityCommandLineText, true);
             writer.AddPropertyArray(nameof(EntitiesToSkip), EntitiesToSkip);
             writer.AddPropertyArray(nameof(EntityPrefixesToSkip), EntityPrefixesToSkip);
-            writer.AddPropertyArray(nameof(EntityPrefixesWhitelist), EntityPrefixesWhitelist);
             writer.AddProperty(nameof(FilePrefixText), FilePrefixText, true);
             writer.AddProperty(nameof(GenerateActionAttributeNameConsts), GenerateActionAttributeNameConsts);
             writer.AddProperty(nameof(GenerateAttributeNameConsts), GenerateAttributeNameConsts);
@@ -488,11 +487,25 @@ namespace DLaB.EarlyBoundGenerator.Settings
         public void PopulateBuilderProperties(Dictionary<string, JsonProperty> properties)
         {
             properties.SetJsonProperty(BuilderSettingsJsonNames.EmitFieldsClasses, GenerateAttributeNameConsts);
-            properties.SetJsonArrayProperty(BuilderSettingsJsonNames.EntityNamesFilter, EntitiesWhitelist);
+            properties.SetJsonArrayProperty(BuilderSettingsJsonNames.EntityNamesFilter, JoinWhiteLists(EntitiesWhitelist, EntityPrefixesWhitelist));
             properties.SetJsonProperty(BuilderSettingsJsonNames.GenerateGlobalOptionSets, GenerateGlobalOptionSets);
-            properties.SetJsonArrayProperty(BuilderSettingsJsonNames.MessageNamesFilter, ActionsWhitelist);
+            properties.SetJsonArrayProperty(BuilderSettingsJsonNames.MessageNamesFilter, JoinWhiteLists(ActionsWhitelist, ActionPrefixesWhitelist));
             properties.SetJsonProperty(BuilderSettingsJsonNames.SuppressGeneratedCodeAttribute, !GenerateGeneratedCodeAttribute);
             properties.SetJsonProperty(BuilderSettingsJsonNames.SuppressINotifyPattern, !GenerateINotifyPattern);
+        }
+
+        private string JoinWhiteLists(string entities, string prefixes)
+        {
+            if (string.IsNullOrWhiteSpace(prefixes))
+            {
+                return entities;
+            }
+
+            prefixes = string.Join("|", prefixes.Split('|').Select(v => v.Contains('*') ? v : v + "*"));
+
+            return string.IsNullOrWhiteSpace(entities)
+                ? prefixes
+                : string.Join("|", entities, prefixes);
         }
     }
 }

@@ -7,16 +7,20 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
 {
     public class CustomCodeGenerationService : BaseCustomCodeGenerationService
     {
-        public CustomCodeGenerationService(ICodeGenerationService service) : base(service) {}
-
-        protected override string CommandLineText => ConfigHelper.GetAppSettingOrDefault("OptionSetCommandLineText", string.Empty);
-
-        protected override bool CreateOneFilePerCodeUnit => ConfigHelper.GetAppSettingOrDefault("CreateOneFilePerOptionSet", false);
+        protected override bool CreateOneFilePerCodeUnit => DLaBSettings.CreateOneFilePerOptionSet;
 
         private string LocalOptionSetEntityFileNameFormat => ConfigHelper.GetAppSettingOrDefault("LocalOptionSetEntityFileNameFormat", "{0}Sets.cs");
         private bool GroupLocalOptionSetsByEntity => ConfigHelper.GetAppSettingOrDefault("GroupLocalOptionSetsByEntity", false);
 
         protected override CodeUnit SplitByCodeUnit => CodeUnit.Enum;
+
+        public CustomCodeGenerationService(ICodeGenerationService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
+        {
+        }
+
+        public CustomCodeGenerationService(ICodeGenerationService defaultService, DLaBModelBuilderSettings settings) : base(defaultService, settings)
+        {
+        }
 
         protected override void UpdateFilesToWrite(List<FileToWrite> files)
         {

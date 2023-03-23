@@ -39,10 +39,10 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
 
         private static HashSet<string> UsedEntityGlobalOptionSets { get; set; }
 
-        public static WhitelistBlacklistLogic Approver => new WhitelistBlacklistLogic(Config.GetHashSet("OptionSetsWhitelist", new HashSet<string>()),
-                                                                                      Config.GetList("OptionSetsWhitelist", new List<string>()),
-                                                                                      Config.GetHashSet("OptionSetsToSkip", new HashSet<string>()),
-                                                                                      Config.GetList("OptionSetPrefixesToSkip", new List<string>()));
+        //public static WhitelistBlacklistLogic Approver => new WhitelistBlacklistLogic(Config.GetHashSet("OptionSetsWhitelist", new HashSet<string>()),
+        //                                                                              Config.GetList("OptionSetsWhitelist", new List<string>()),
+        //                                                                              Config.GetHashSet("OptionSetsToSkip", new HashSet<string>()),
+        //                                                                              Config.GetList("OptionSetPrefixesToSkip", new List<string>()));
 
         public CodeWriterFilterService(ICodeWriterFilterService defaultService)
         {
@@ -90,10 +90,10 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
             }
             
 
-            if (!Approver.IsAllowed(optionSetMetadata.Name.ToLower()))
-            {
-                return false;
-            }
+            //if (!Approver.IsAllowed(optionSetMetadata.Name.ToLower()))
+            //{
+            //    return false;
+            //}
 
             var generate = false;
 

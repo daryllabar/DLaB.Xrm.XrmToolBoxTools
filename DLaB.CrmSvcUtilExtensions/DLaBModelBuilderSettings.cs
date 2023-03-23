@@ -65,9 +65,21 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("deleteFilesFromOutputFolders")]
         public bool DeleteFilesFromOutputFolders { get; set; }
-        
+
+        /// <summary>
+        /// No Config
+        /// </summary>
+        [JsonPropertyName("enableFileDataType")]
+        public bool EnableFileDataType { get; set; }
+
         [JsonPropertyName("entityAttributeSpecifiedNames")]
         public Dictionary<string, HashSet<string>> EntityAttributeSpecifiedNames { get; set; }
+
+        [JsonPropertyName("entityPrefixesToSkip")]
+        public List<string> EntityPrefixesToSkip { get; set; }
+
+        [JsonPropertyName("entitiesToSkip")]
+        public List<string> EntitiesToSkip { get; set; }
 
         [JsonPropertyName("generateActionAttributeNameConsts")]
         public bool GenerateActionAttributeNameConsts { get; set; }
@@ -105,6 +117,9 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("invalidCSharpNamePrefix")]
         public string InvalidCSharpNamePrefix { get; set; }
 
+        [JsonPropertyName("localOptionSetFormat")]
+        public string LocalOptionSetFormat { get; set; }
+
         [JsonPropertyName("makeAllFieldsEditable")]
         public bool MakeAllFieldsEditable { get; set; }
 
@@ -114,8 +129,11 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("makeResponseActionsEditable")]
         public bool MakeResponseActionsEditable { get; set; }
 
-        [JsonPropertyName("localOptionSetFormat")]
-        public string LocalOptionSetFormat { get; set; }
+        [JsonPropertyName("messagePrefixesToSkip")]
+        public List<string> MessagePrefixesToSkip { get; set; }
+
+        [JsonPropertyName("messageToSkip")]
+        public List<string> MessageToSkip { get; set; }
 
         private string _optionSetLanguageCodeOverride;
         [JsonPropertyName("optionSetLanguageCodeOverride")]
@@ -180,10 +198,17 @@ namespace DLaB.ModelBuilderExtensions
 
         public DLaBModelBuilder()
         {
+            EnableFileDataType = true;
+            EntitiesToSkip = new List<string>();
             EntityAttributeSpecifiedNames = new Dictionary<string, HashSet<string>>();
+            EntityPrefixesToSkip = new List<string>();
+            GenerateEntityRelationships = true;
             InvalidCSharpNamePrefix = "_";
             LocalOptionSetFormat = "{0}_{1}";
+            MessagePrefixesToSkip = new List<string>();
+            MessageToSkip = new List<string>();
             OptionSetNames = new Dictionary<string, string>();
+            TokenCapitalizationOverrides = new List<string>();
             ValidCSharpNameRegEx = @"[^a-zA-Z0-9_]";
         }
     }
@@ -228,6 +253,13 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("suppressINotifyPattern")]
         public bool SuppressINotifyPattern { get; set; }
+
+        public DLaBModelBuilderSettings()
+        {
+            DLaBModelBuilder = new DLaBModelBuilder();
+            EntityNamesFilter = new List<string>();
+            MessageNamesFilter = new List<string>();
+        }
     }
 
 
