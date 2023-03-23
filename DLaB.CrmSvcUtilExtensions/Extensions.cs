@@ -61,6 +61,14 @@ namespace DLaB.ModelBuilderExtensions
             }
         }
 
+        public static IEnumerable<CodeTypeReference> GetTypes(this CodeTypeReferenceCollection collection)
+        {
+            for (var i = 0; i < collection.Count; ++i)
+            {
+                yield return collection[i];
+            }
+        }
+
         public static void RemoveAssemblyAttributes(this CodeCompileUnit codeUnit)
         {
             var attributesToRemove = new List<CodeAttributeDeclaration>();

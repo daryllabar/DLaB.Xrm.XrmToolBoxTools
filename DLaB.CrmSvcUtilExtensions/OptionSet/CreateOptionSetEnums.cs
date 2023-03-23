@@ -44,13 +44,13 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
         /// </summary>
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
-            Trace.TraceInformation("Entering ICustomizeCodeDomService.CustomizeCodeDom");
-            Trace.TraceInformation("Number of Namespaces generated: {0}", codeUnit.Namespaces.Count);
+            //Trace.TraceInformation("Entering ICustomizeCodeDomService.CustomizeCodeDom");
+            //Trace.TraceInformation("Number of Namespaces generated: {0}", codeUnit.Namespaces.Count);
 
             RemoveNonOptionSetDefinitions(codeUnit);
             AddMetadataAttributes(codeUnit, services);
             SortOptionSets(codeUnit);
-            Trace.TraceInformation("Exiting ICustomizeCodeDomService.CustomizeCodeDom");
+            //Trace.TraceInformation("Exiting ICustomizeCodeDomService.CustomizeCodeDom");
         }
 
         private void RemoveNonOptionSetDefinitions(CodeCompileUnit codeUnit)
@@ -59,7 +59,6 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
             for (var i = 0; i < codeUnit.Namespaces.Count; ++i)
             {
                 var types = codeUnit.Namespaces[i].Types;
-                Trace.TraceInformation("Number of types in Namespace {0}: {1}", codeUnit.Namespaces[i].Name, types.Count);
                 // Iterate over all of the types that were created in the namespace.
                 for (var j = 0; j < types.Count;)
                 {

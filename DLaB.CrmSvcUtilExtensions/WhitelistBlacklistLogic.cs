@@ -19,8 +19,8 @@ namespace DLaB.ModelBuilderExtensions
 
         public bool IsAllowed(string value)
         {
-            return !WhiteListEnabled
-                   && !IsBlacklisted(value);
+            return WhiteListEnabled
+                   || !IsBlacklisted(value);
         }
 
         private bool IsBlacklisted(string value)

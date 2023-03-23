@@ -43,6 +43,7 @@ namespace DLaB.ModelBuilderExtensions
 
         public CustomizeCodeDomService(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
+            Trace.TraceInformation("DLaB.ModelBuilderExtensions.CustomizeCodeDomService.CustomizeCodeDom Created!");
             MessageApprover = new WhitelistBlacklistLogic(Settings.MessageNamesFilter?.Any() == true,
                 new HashSet<string>(DLaBSettings.MessageToSkip),
                 DLaBSettings.MessagePrefixesToSkip);
@@ -56,14 +57,50 @@ namespace DLaB.ModelBuilderExtensions
         }
 
         #region ICustomizeCodeDomService Members
-
+        
+        /// <summary>
+        /// Called once for every single file.
+        /// </summary>
+        /// <param name="codeUnit"></param>
+        /// <param name="services"></param>
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
-            Trace.TraceInformation("Entering DLaB.ModelBuilderExtensions.CustomizeCodeDomService.CustomizeCodeDom");
+            if (codeUnit.GetTypes().All(t => t.IsEnum))
+            {
+                ProcessOptionSet(codeUnit, services);
+                return;
+            }
 
-            ProcessActions(codeUnit, services);
-            ProcessOptionSets(codeUnit, services);
+            if (codeUnit.GetTypes()
+                .Any(t => t.IsClass
+                          && t.BaseTypes.GetTypes().Any(b => b.BaseType.EndsWith(".OrganizationRequest"))))
+            {
+                ProcessMessage(codeUnit, services);
+                return;
+            }
 
+            if (codeUnit.GetTypes()
+                .Any(t => t.IsClass
+                          && t.BaseTypes.GetTypes().Any(b => b.BaseType.EndsWith(".Entity"))))
+            {
+                ProcessEntity(codeUnit, services);
+                return;
+            }
+
+            if (GenerateOptionSetMetadataAttribute
+                && codeUnit.GetTypes()
+                .Any(t => t.IsClass
+                          && t.BaseTypes.GetTypes().Any(b => b.BaseType.EndsWith(".OrganizationServiceContext"))))
+            {
+                new OptionSetMetadataAttributeGenerator().CustomizeCodeDom(codeUnit, services);
+                return;
+            }
+
+            Trace.TraceInformation("DLaB.ModelBuilderExtensions.CustomizeCodeDomService.CustomizeCodeDom Skipping processing of {0}!", string.Join(", ", codeUnit.GetTypes().Select(t => t.Name)));
+        }
+
+        private void ProcessEntity(CodeCompileUnit codeUnit, IServiceProvider services)
+        {
             if (UpdateMultiOptionSetAttributes)
             {
                 new MultiOptionSetAttributeUpdater().CustomizeCodeDom(codeUnit, services);
@@ -106,11 +143,6 @@ namespace DLaB.ModelBuilderExtensions
                 generator.CustomizeCodeDom(codeUnit, services);
             }
 
-            if (GenerateOptionSetMetadataAttribute)
-            {
-                new OptionSetMetadataAttributeGenerator().CustomizeCodeDom(codeUnit, services);
-            }
-
             if (CreateBaseClasses)
             {
                 new EntityBaseClassGenerator(this, Settings).CustomizeCodeDom(codeUnit, services);
@@ -120,9 +152,6 @@ namespace DLaB.ModelBuilderExtensions
             {
                 new Entity.MemberAttributes().CustomizeCodeDom(codeUnit, services);
             }
-
-
-            Trace.TraceInformation("Exiting ICustomizeCodeDomService.CustomizeCodeDom");
         }
 
         #endregion
@@ -132,20 +161,19 @@ namespace DLaB.ModelBuilderExtensions
             return _entities ?? (_entities = services.GetService<IMetadataProviderService>().LoadMetadata(services).Entities.ToDictionary(e => e.LogicalName));
         }
 
-        private void ProcessActions(CodeCompileUnit codeUnit, IServiceProvider services)
+        private void ProcessMessage(CodeCompileUnit codeUnit, IServiceProvider services)
         {
             // Iterate over all of the namespaces that were generated.
             for (var i = 0; i < codeUnit.Namespaces.Count; ++i)
             {
                 var types = codeUnit.Namespaces[i].Types;
-                Trace.TraceInformation("Number of types in Namespace {0}: {1}", codeUnit.Namespaces[i].Name, types.Count);
                 // Iterate over all of the types that were created in the namespace.
                 for (var j = 0; j < types.Count;)
                 {
                     // Remove the type if it is not to be generated.
                     if (GenerateMessage(types[j].Name))
                     {
-                        ProcessAction(types[j]);
+                        ProcessMessage(types[j]);
                         j++;
                     }
                     else
@@ -161,18 +189,18 @@ namespace DLaB.ModelBuilderExtensions
             }
         }
 
-        private void ProcessOptionSets(CodeCompileUnit codeUnit, IServiceProvider services)
+        private void ProcessOptionSet(CodeCompileUnit codeUnit, IServiceProvider services)
         {
             new CreateOptionSetEnums().CustomizeCodeDom(codeUnit, services);
             new LocalMultiOptionSetGenerator().CustomizeCodeDom(codeUnit, services);
         }
 
-        private void ProcessAction(CodeTypeDeclaration action)
+        private void ProcessMessage(CodeTypeDeclaration message)
         {
             var orgResponse = new CodeTypeReference(typeof(Microsoft.Xrm.Sdk.OrganizationResponse)).BaseType;
-            if (MakeResponseActionsEditable && action.BaseTypes.OfType<CodeTypeReference>().Any(r => r.BaseType == orgResponse))
+            if (MakeResponseActionsEditable && message.BaseTypes.OfType<CodeTypeReference>().Any(r => r.BaseType == orgResponse))
             {
-                foreach (var prop in from CodeTypeMember member in action.Members
+                foreach (var prop in from CodeTypeMember member in message.Members
                          let propDom = member as CodeMemberProperty
                          where propDom != null && !propDom.HasSet
                          select propDom)
