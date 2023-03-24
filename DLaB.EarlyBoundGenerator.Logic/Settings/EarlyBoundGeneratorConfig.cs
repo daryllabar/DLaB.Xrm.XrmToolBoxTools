@@ -209,6 +209,34 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         #endregion // Properties       
 
+        private static readonly string[] PreV2TokenCapitalizations = {
+            "AccessTeam",
+            "ActiveState",
+            "BusinessAs",
+            "CardUci",
+            "DefaultOnCase",
+            "EmailAnd",
+            "FeatureSet",
+            "IsMsTeams",
+            "IsPaiEnabled",
+            "IsSopIntegration",
+            "MsDyUsd",
+            "O365Admin",
+            "OnHold",
+            "OwnerOnAssign",
+            "ParticipatesIn",
+            "PartiesOnEmail",
+            "PauseStates",
+            "SentOn",
+            "SlaId",
+            "SlaKpi",
+            "SyncOptIn",
+            "Timeout",
+            "UserPuid",
+            "VoiceMail",
+            "Weblink"
+        };
+
         private EarlyBoundGeneratorConfig()
         {
             UseConnectionString = Config.GetAppSettingOrDefault("UseConnectionString", false);
@@ -224,7 +252,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         {
             var @default = GetDefault();
             RemoveObsoleteValues(poco);
-            UpdateObsoleteSettings(poco, poco.ExtensionConfig);
+            UpdateObsoleteSettings(poco, poco.ExtensionConfig, @default.ExtensionConfig);
 
             AudibleCompletionNotification = poco.AudibleCompletionNotification ?? @default.AudibleCompletionNotification;
             CodeCustomizationService = poco.CodeCustomizationService ?? @default.CodeCustomizationService;
@@ -249,7 +277,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
-        private static void UpdateObsoleteSettings(POCO.Config poco, POCO.ExtensionConfig pocoConfig)
+        private static void UpdateObsoleteSettings(POCO.Config poco, POCO.ExtensionConfig pocoConfig, ExtensionConfig defaultConfig)
         {
             var pocoVersion = new Version(poco.Version);
             if (pocoVersion < new Version("1.2016.6.1"))
@@ -304,7 +332,27 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 ObsoleteUserArgument(poco, a => a.Name == "out" && a.SettingType == CreationType.OptionSets, (p, arg) => poco.OptionSetsTypesFolder = arg.Value);
                 ObsoleteUserArgument(poco, a => a.Name == "servicecontextname", (p, arg) => poco.ServiceContextName = arg.Value);
                 ObsoleteUserArgument(poco, a => a.Name == "SuppressGeneratedCodeAttribute", (p, arg) => poco.SuppressGeneratedCodeAttribute = bool.Parse(arg.Value));
+
+                AddNewTokens(pocoConfig, defaultConfig, PreV2TokenCapitalizations);
             }
+        }
+
+        private static void AddNewTokens(POCO.ExtensionConfig pocoConfig, ExtensionConfig defaultConfig, string[] previousTokens)
+        {
+            var previousExisting = new HashSet<string>(pocoConfig.TokenCapitalizationOverrides.ToLower().Split('|'));
+            var existing = new HashSet<string>(pocoConfig.TokenCapitalizationOverrides.Split('|'));
+            var previousOob = new HashSet<string>(previousTokens.Select(v => v.ToLower()));
+            foreach (var value in defaultConfig.TokenCapitalizationOverrides.Split('|'))
+            {
+                if (previousOob.Contains(value.ToLower()) || previousExisting.Contains(value.ToLower()))
+                {
+                    continue;
+                }
+
+                existing.Add(value);
+            }
+
+            pocoConfig.TokenCapitalizationOverrides = string.Join("|", existing);
         }
 
         private static void ObsoleteUserArgument(POCO.Config poco, Func<Argument, bool> firstArg, Action<POCO.Config, Argument> updateAction)

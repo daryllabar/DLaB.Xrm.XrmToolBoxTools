@@ -16,7 +16,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
         [TestMethod]
         public void WhitelistBlacklistLogic_WithWhitelist_Should_OnlyAllowWhitelisted()
         {
-            var sut = new WhitelistBlacklistLogic(_apple, _ba, _emptySet, _emptyList);
+            var sut = new WhitelistBlacklistLogic(true, _emptySet, _emptyList);
             Assert.IsTrue(sut.IsAllowed("apple"));
             Assert.IsTrue(sut.IsAllowed("banana"));
             Assert.IsFalse(sut.IsAllowed("pear"));
@@ -26,7 +26,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
         [TestMethod]
         public void WhitelistBlacklistLogic_WithNothing_Should_OnlyAllowAnything()
         {
-            var sut = new WhitelistBlacklistLogic(_emptySet, _emptyList, _emptySet, _emptyList);
+            var sut = new WhitelistBlacklistLogic(false, _emptySet, _emptyList);
             Assert.IsTrue(sut.IsAllowed("apple"));
             Assert.IsTrue(sut.IsAllowed("banana"));
             Assert.IsTrue(sut.IsAllowed("pear"));
@@ -36,7 +36,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
         [TestMethod]
         public void WhitelistBlacklistLogic_WithWhiteAndBlacklists_Should_OnlyAllowWhitelisted()
         {
-            var sut = new WhitelistBlacklistLogic(_apple, _ba, _pear, _or);
+            var sut = new WhitelistBlacklistLogic(true, _pear, _or);
             Assert.IsTrue(sut.IsAllowed("apple"));
             Assert.IsTrue(sut.IsAllowed("banana"));
             Assert.IsFalse(sut.IsAllowed("pear"));
@@ -46,7 +46,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
         [TestMethod]
         public void WhitelistBlacklistLogic_WithBlacklists_Should_OnlyAllowNonBlacklisted()
         {
-            var sut = new WhitelistBlacklistLogic(_emptySet, _emptyList, _pear, _or);
+            var sut = new WhitelistBlacklistLogic(false, _pear, _or);
             Assert.IsTrue(sut.IsAllowed("apple"));
             Assert.IsTrue(sut.IsAllowed("banana"));
             Assert.IsFalse(sut.IsAllowed("pear"));

@@ -30,6 +30,12 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("camelCaseMemberNames")]
         public bool CamelCaseMemberNames { get; set; }
 
+        /// <summary>
+        /// No Config
+        /// </summary>
+        [JsonPropertyName("camelCaseOptionSetNames")]
+        public bool CamelCaseOptionSetNames { get; set; }
+
         private string _camelCaseNamesDictionaryRelativePath;
         [JsonPropertyName("camelCaseNamesDictionaryRelativePath")]
         public string CamelCaseNamesDictionaryPath

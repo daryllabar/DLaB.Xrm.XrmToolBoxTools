@@ -344,7 +344,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 RemoveRuntimeVersionComment = true,
                 ReplaceOptionSetPropertiesWithEnum = true,
                 SerializeMetadata = false,
-                TokenCapitalizationOverrides = "AccessTeam|ActiveState|BusinessAs|CardUci|DefaultOnCase|EmailAnd|FeatureSet|Geronimo|IsMsTeams|IsPaiEnabled|IsSopIntegration|MsDynCe_|MsDynMkt_|MsDyUsd|O365Admin|OcSkillIdentMlModel|OnHold|OrderId|OwnerOnAssign|PauseStates|PredictiveAddress|PartiesOnEmail|ParticipatesIn|SentOn|SettingsAndSummary|SlaId|SlaKpi|SyncOptIn|Timeout|UserPuid|VoiceMail",
+                TokenCapitalizationOverrides = "AccessTeam|ActiveState|AssignedTo|BusinessAs|CardUci|DefaultOnCase|EmailAnd|EmailSend|EmailSender|FeatureSet|FedEx|ForAn|Geronimo|IsMsTeams|IsPaiEnabled|IsSopIntegration|MsDynCe_|MsDynMkt_|MsDyUsd|O365Admin|OcSkillIdentMlModel|OnHold|OrderId|OwnerOnAssign|PauseStates|PredictiveAddress|PartiesOnEmail|ParticipatesIn|SentOn|SettingsAndSummary|SlaId|SlaKpi|SyncOptIn|Timeout|TradeShow|UserPuid|VoiceMail",
                 UnmappedProperties =
                     "DuplicateRule:BaseEntityTypeCode,MatchingEntityTypeCode|" +
                     "InvoiceDetail:InvoiceStateCode|" +

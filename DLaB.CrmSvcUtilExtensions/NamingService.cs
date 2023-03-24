@@ -17,6 +17,7 @@ namespace DLaB.ModelBuilderExtensions
 
         public bool CamelCaseClassNames { get => DLaBSettings.CamelCaseClassNames; set => DLaBSettings.CamelCaseClassNames = value; }
         public bool CamelCaseMemberNames { get => DLaBSettings.CamelCaseMemberNames; set => DLaBSettings.CamelCaseMemberNames = value; }
+        public bool CamelCaseOptionSetNames { get => DLaBSettings.CamelCaseOptionSetNames; set => DLaBSettings.CamelCaseOptionSetNames = value; }
         public Dictionary<string, HashSet<string>> EntityAttributeSpecifiedNames { get => DLaBSettings.EntityAttributeSpecifiedNames; set => DLaBSettings.EntityAttributeSpecifiedNames = value; }
         public string InvalidCSharpNamePrefix { get => DLaBSettings.InvalidCSharpNamePrefix; set => DLaBSettings.InvalidCSharpNamePrefix = value; }
         public int LanguageCodeOverride { get => DLaBSettings.OptionSetLanguageCodeOverride; set => DLaBSettings.OptionSetLanguageCodeOverride = value; }
@@ -276,7 +277,10 @@ namespace DLaB.ModelBuilderExtensions
             {
                 name += option.Value;
             }
-            return name;
+
+            return CamelCaseOptionSetNames
+                ? CamelCaser.Case(name)
+                : name;
         }
 
         private static string AppendState(OptionMetadata option, string name)
