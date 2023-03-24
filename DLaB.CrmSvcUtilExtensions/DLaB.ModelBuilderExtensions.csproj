@@ -140,9 +140,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Action\AttributeConstGenerator.cs" />
-    <Compile Include="Action\CodeWriterFilterService.cs" />
-    <Compile Include="Action\CustomCodeGenerationService.cs" />
+    <Compile Include="Message\AttributeConstGenerator.cs" />
+    <Compile Include="Message\CodeWriterFilterService.cs" />
+    <Compile Include="Message\CustomCodeGenerationService.cs" />
     <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\Config.cs" />
     <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ConfigKeyValueSplitInfo.cs" />
     <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ConfigKeyValuesSplitInfo.cs" />

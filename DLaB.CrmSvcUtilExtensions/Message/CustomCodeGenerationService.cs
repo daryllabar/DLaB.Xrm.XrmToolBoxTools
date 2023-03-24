@@ -4,7 +4,7 @@ using System.IO;
 using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using System.Linq;
 
-namespace DLaB.ModelBuilderExtensions.Action
+namespace DLaB.ModelBuilderExtensions.Message
 {
     public class CustomCodeGenerationService : BaseCustomCodeGenerationService
     {

@@ -1,53 +1,53 @@
-﻿using System.CodeDom;
+﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 
 namespace DLaB.ModelBuilderExtensions.Entity
 {
     public class AttributeConstGenerator : AttributeConstGeneratorBase
     {
-        protected const string XrmAttributeLogicalName = "Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute";
-        protected const string XrmRelationshipSchemaName = "Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute";
+        public override bool GenerateAttributeNameConsts { get => DLaBSettings.GenerateAttributeNameConsts; set => DLaBSettings.GenerateAttributeNameConsts = value; }
 
-        protected override string GetAttributeLogicalName(CodeMemberProperty prop)
+        public AttributeConstGenerator(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
-            var info = (from CodeAttributeDeclaration att in prop.CustomAttributes
-                    where IsConstGeneratingAttribute(prop, att)
-                    select new
-                    {
-                        FieldName = ((CodePrimitiveExpression)att.Arguments[0].Value).Value.ToString(),
-                        Order = att.AttributeType.BaseType == XrmRelationshipSchemaName ? 0 : 1,
-                        Att = att
-                    })
-                .OrderBy(a => a.Order)
-                .FirstOrDefault();
-
-            return info == null
-                ? null
-                : GenerateAttributeLogicalName(info.FieldName, prop, info.Att);
         }
 
-        protected override void AddNonPropertyValues(CodeTypeDeclaration constantsClass, CodeTypeDeclaration type, HashSet<string> attributes)
+        public AttributeConstGenerator(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
         {
-            // None
         }
 
-        protected virtual bool IsConstGeneratingAttribute(CodeMemberProperty prop, CodeAttributeDeclaration att)
+        public override void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
-            return att.AttributeType.BaseType == XrmAttributeLogicalName
-                   || HasAttributeAndRelationship(prop, att);
+            if (GenerateAttributeNameConsts)
+            {
+                CreateConstsClass(codeUnit);
+            }
+            else
+            {
+                RemoveMemberType(codeUnit);
+            }
         }
 
-        protected virtual string GenerateAttributeLogicalName(string fieldName, CodeMemberProperty prop, CodeAttributeDeclaration att)
+        protected virtual void CreateConstsClass(CodeCompileUnit codeUnit)
         {
-            return fieldName;
+            if (AttributeConstsClassName != OobConstsClassName)
+            {
+                var type = codeUnit.GetTypes().First(t => t.IsClass && t.Name == OobConstsClassName);
+                type.Name = AttributeConstsClassName;
+            }
         }
 
-
-        private static bool HasAttributeAndRelationship(CodeMemberProperty prop, CodeAttributeDeclaration att)
+        private static void RemoveMemberType(CodeCompileUnit codeUnit)
         {
-            return att?.AttributeType.BaseType == XrmRelationshipSchemaName 
-                && prop.CustomAttributes.Cast<CodeAttributeDeclaration>().Any(a => a.AttributeType.BaseType == XrmAttributeLogicalName);
+            foreach (var type in codeUnit.GetTypes().Where(t => t.IsClass))
+            {
+                foreach (var member in type.GetMembers<CodeTypeDeclaration>().Where(t => t.Name == OobConstsClassName).ToList())
+                {
+                    type.Members.Remove(member);
+                }
+            }
         }
     }
 }

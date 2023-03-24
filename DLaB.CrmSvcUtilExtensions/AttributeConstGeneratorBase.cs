@@ -1,38 +1,57 @@
-﻿using System;
+﻿using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
+using System;
 using System.CodeDom;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
-using System.Linq;
-using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
-using System.Reflection;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 
 namespace DLaB.ModelBuilderExtensions
 {
-    public abstract class AttributeConstGeneratorBase : ICustomizeCodeDomService
+    public abstract class AttributeConstGeneratorBase : TypedServiceSettings<ICustomizeCodeDomService>, ICustomizeCodeDomService
     {
         protected const string RemovalString = "9C8F3879-309D-4DB2-B138-3F2E3A462A1C";
+        protected const string OobConstsClassName = "Fields";
 
-        public static string AttributeConstsClassName => ConfigHelper.GetAppSettingOrDefault("AttributeConstsClassName", "Fields");
+        public virtual string AttributeConstsClassName { get => DLaBSettings.AttributeConstsClassName; set => DLaBSettings.AttributeConstsClassName = value; }
+        public abstract bool GenerateAttributeNameConsts { get; set; }
+        public virtual int InsertIndex { get; }
 
-        public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)   
+        protected AttributeConstGeneratorBase(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
+
+        }
+
+        protected AttributeConstGeneratorBase(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
+        {
+
+        }
+
+        public virtual void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
+        {
+            if (!GenerateAttributeNameConsts)
+            {
+                return;
+            }
+
             var types = codeUnit.Namespaces[0].Types;
             var attributes = new HashSet<string>();
             foreach (var type in types.Cast<CodeTypeDeclaration>().
-                                 Where(type => type.IsClass && !type.IsContextType()))
+                         Where(type => type.IsClass && !type.IsContextType()))
             {
                 attributes.Clear();
-                var @class = new CodeTypeDeclaration {
-                    Name = GetCodeTypeName(), 
+                var @class = new CodeTypeDeclaration
+                {
+                    Name = AttributeConstsClassName,
                     IsClass = true,
                     TypeAttributes = TypeAttributes.Public
                 };
 
                 AddNonPropertyValues(@class, type, attributes);
-                foreach (var member in from CodeTypeMember member in type.Members 
-                                       let prop = member as CodeMemberProperty 
-                                       where prop != null 
+                foreach (var member in from CodeTypeMember member in type.Members
+                                       let prop = member as CodeMemberProperty
+                                       where prop != null
                                        select prop)
                 {
                     CreateAttributeConstForProperty(@class, member, attributes);
@@ -40,23 +59,20 @@ namespace DLaB.ModelBuilderExtensions
 
                 if (attributes.Any())
                 {
-                    type.Members.Insert(0, GenerateTypeWithoutEmptyLines(@class));
+                    type.Members.Insert(InsertIndex, GenerateTypeWithoutEmptyLines(@class));
                 }
             }
         }
 
-        protected virtual string GetCodeTypeName()
+        protected virtual void AddNonPropertyValues(CodeTypeDeclaration constantsClass, CodeTypeDeclaration type, HashSet<string> attributes)
         {
-            return AttributeConstsClassName;
+            // None
         }
 
-        /// <summary>
-        /// Gets the name of the attribute logical.
-        /// </summary>
-        /// <returns></returns>
-        protected abstract string GetAttributeLogicalName(CodeMemberProperty prop);
-        protected abstract void AddNonPropertyValues(CodeTypeDeclaration constantsClass, CodeTypeDeclaration type, HashSet<string> attributes);
-
+        protected virtual string GetAttributeLogicalName(CodeMemberProperty prop)
+        {
+            return prop.Name;
+        }
         private void CreateAttributeConstForProperty(CodeTypeDeclaration type, CodeMemberProperty prop, HashSet<string> attributes)
         {
             AddAttributeConstIfNotExists(type, prop.Name, GetAttributeLogicalName(prop), attributes);
@@ -72,7 +88,7 @@ namespace DLaB.ModelBuilderExtensions
             // Handle Removal of characters as specified by the attribute logical name (used for N:N relationships
             if (attributeLogicalName.Contains(RemovalString))
             {
-                var parts = attributeLogicalName.Split(new [] { RemovalString }, StringSplitOptions.None);
+                var parts = attributeLogicalName.Split(new[] { RemovalString }, StringSplitOptions.None);
                 attributeLogicalName = parts[1];
                 name = name.Substring(parts[0].Length);
             }

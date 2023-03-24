@@ -52,7 +52,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
         {
         }
 
-        public EntityBaseClassGenerator(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings settings) : base(defaultService, settings)
+        public EntityBaseClassGenerator(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
         {
         }
 

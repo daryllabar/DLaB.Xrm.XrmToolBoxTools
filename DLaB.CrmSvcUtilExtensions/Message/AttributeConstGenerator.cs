@@ -1,15 +1,25 @@
-﻿using System.CodeDom;
+﻿using System;
+using System.CodeDom;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 
-namespace DLaB.ModelBuilderExtensions.Action
+namespace DLaB.ModelBuilderExtensions.Message
 {
     public class AttributeConstGenerator : AttributeConstGeneratorBase
     {
         public static string ActionLogicalFieldName => ConfigHelper.GetAppSettingOrDefault("ActionLogicalFieldName", "ActionLogicalName");
+        public override bool GenerateAttributeNameConsts { get => DLaBSettings.GenerateActionAttributeNameConsts; set => DLaBSettings.GenerateActionAttributeNameConsts = value; }
 
-        protected override string GetAttributeLogicalName(CodeMemberProperty prop)
+        public AttributeConstGenerator(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
-            return prop.Name;
+        }
+
+        public AttributeConstGenerator(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings settings) : base(defaultService, settings)
+        {
         }
 
         protected override void AddNonPropertyValues(CodeTypeDeclaration constantsClass, CodeTypeDeclaration type, HashSet<string> attributes)

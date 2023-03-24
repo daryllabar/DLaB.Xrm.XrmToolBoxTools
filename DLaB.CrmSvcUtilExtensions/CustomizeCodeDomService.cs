@@ -49,7 +49,7 @@ namespace DLaB.ModelBuilderExtensions
                 DLaBSettings.MessagePrefixesToSkip);
         }
 
-        public CustomizeCodeDomService(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings settings) : base(defaultService, settings)
+        public CustomizeCodeDomService(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
         {
             MessageApprover = new WhitelistBlacklistLogic(Settings.MessageNamesFilter?.Any() == true,
                 new HashSet<string>(DLaBSettings.MessageToSkip),
@@ -121,11 +121,8 @@ namespace DLaB.ModelBuilderExtensions
                 new EntityConstructorsGenerator().CustomizeCodeDom(codeUnit, services);
             }
 
-            if (GenerateAttributeNameConsts)
-            {
-                new RelationshipConstGenerator().CustomizeCodeDom(codeUnit, services);
-                new AttributeConstGenerator().CustomizeCodeDom(codeUnit, services);
-            }
+            new RelationshipConstGenerator(DefaultService, Settings).CustomizeCodeDom(codeUnit, services);
+            new AttributeConstGenerator(DefaultService, Settings).CustomizeCodeDom(codeUnit, services);
 
             if (GenerateAnonymousTypeConstructor)
             {
@@ -183,10 +180,7 @@ namespace DLaB.ModelBuilderExtensions
                 }
             }
 
-            if (GenerateActionAttributeNameConsts)
-            {
-                new AttributeConstGenerator().CustomizeCodeDom(codeUnit, services);
-            }
+            new Message.AttributeConstGenerator(DefaultService, Settings).CustomizeCodeDom(codeUnit, services);
         }
 
         private void ProcessOptionSet(CodeCompileUnit codeUnit, IServiceProvider services)

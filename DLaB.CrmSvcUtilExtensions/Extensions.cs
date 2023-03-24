@@ -61,6 +61,32 @@ namespace DLaB.ModelBuilderExtensions
             }
         }
 
+        #region CodeTypeDeclaration
+
+        /// <summary>
+        /// System.CodeDom.CodeMemberEvent
+        /// System.CodeDom.CodeMemberField
+        /// System.CodeDom.CodeMemberMethod
+        /// System.CodeDom.CodeMemberProperty
+        /// System.CodeDom.CodeSnippetTypeMember
+        /// System.CodeDom.CodeTypeDeclaration
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static IEnumerable<T> GetMembers<T>(this CodeTypeDeclaration type) where T: CodeTypeDeclaration
+        {
+            for (var i = 0; i < type.Members.Count; ++i)
+            {
+                if (type.Members[i] is T @event)
+                {
+                    yield return @event;
+                }
+            }
+        }
+
+        #endregion CodeTypeDeclaration
+
         public static IEnumerable<CodeTypeReference> GetTypes(this CodeTypeReferenceCollection collection)
         {
             for (var i = 0; i < collection.Count; ++i)

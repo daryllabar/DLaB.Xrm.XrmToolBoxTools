@@ -1,22 +1,48 @@
-﻿using System.CodeDom;
+﻿using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
+using System.CodeDom;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DLaB.ModelBuilderExtensions.Entity
 {
-    public class RelationshipConstGenerator : AttributeConstGenerator
+    public class RelationshipConstGenerator : AttributeConstGeneratorBase
     {
-        public static string RelationshipConstsClassName => ConfigHelper.GetAppSettingOrDefault("RelationshipConstsClassName", "Relationships");
+        protected const string XrmAttributeLogicalName = "Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute";
+        protected const string XrmRelationshipSchemaName = "Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute";
 
-        protected override string GetCodeTypeName()
+        public override string AttributeConstsClassName { get => DLaBSettings.RelationshipConstsClassName; set => DLaBSettings.RelationshipConstsClassName = value; }
+        public override bool GenerateAttributeNameConsts { get => DLaBSettings.GenerateAttributeNameConsts; set => DLaBSettings.GenerateAttributeNameConsts = value; }
+        public override int InsertIndex => 1;
+
+        public RelationshipConstGenerator(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
-            return RelationshipConstsClassName;
         }
 
-        protected override bool IsConstGeneratingAttribute(CodeMemberProperty prop, CodeAttributeDeclaration att)
+        public RelationshipConstGenerator(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
         {
-            return IsManyToMany(prop, att);
         }
 
-        protected override string GenerateAttributeLogicalName(string fieldName, CodeMemberProperty prop, CodeAttributeDeclaration att)
+
+        protected override string GetAttributeLogicalName(CodeMemberProperty prop)
+        {
+            var info = (from CodeAttributeDeclaration att in prop.CustomAttributes
+                    where IsManyToMany(prop, att)
+                    select new
+                    {
+                        FieldName = ((CodePrimitiveExpression)att.Arguments[0].Value).Value.ToString(),
+                        Order = att.AttributeType.BaseType == XrmRelationshipSchemaName ? 0 : 1,
+                        Att = att
+                    })
+                .OrderBy(a => a.Order)
+                .FirstOrDefault();
+
+            return info == null
+                ? null
+                : GenerateAttributeLogicalName(info.FieldName, prop, info.Att);
+        }
+
+
+        protected string GenerateAttributeLogicalName(string fieldName, CodeMemberProperty prop, CodeAttributeDeclaration att)
         {
             return GetManyToManyName(fieldName, prop, att, "Referencing")
                    ?? GetManyToManyName(fieldName, prop, att, "Referenced")

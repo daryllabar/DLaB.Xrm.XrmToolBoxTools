@@ -8,10 +8,10 @@ namespace DLaB.ModelBuilderExtensions
         protected DLaBModelBuilderSettings Settings { get; set; }
         protected DLaBModelBuilder DLaBSettings => Settings.DLaBModelBuilder;
 
-        protected TypedServiceSettings(T defaultService, DLaBModelBuilderSettings settings)
+        protected TypedServiceSettings(T defaultService, DLaBModelBuilderSettings settings = null)
         {
             DefaultService = defaultService;
-            Settings = settings;
+            Settings = settings ?? new DLaBModelBuilderSettings();
         }
 
         protected TypedServiceSettings(T defaultService, IDictionary<string, string> parameters)

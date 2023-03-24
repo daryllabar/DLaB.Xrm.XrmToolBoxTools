@@ -6,6 +6,12 @@ namespace DLaB.ModelBuilderExtensions
 {
     public class DLaBModelBuilder
     {
+        /// <summary>
+        /// No Config
+        /// </summary>
+        [JsonPropertyName("attributeConstsClassName")]
+        public string AttributeConstsClassName { get; set; }
+
         [JsonPropertyName("addDebuggerNonUserCode")]
         public bool AddDebuggerNonUserCode { get; set; }
 
@@ -165,6 +171,11 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("removeRuntimeVersionComment")]
         public bool RemoveRuntimeVersionComment { get; set; }
+        /// <summary>
+        /// No Config
+        /// </summary>
+        [JsonPropertyName("relationshipConstsClassName")]
+        public string RelationshipConstsClassName { get; set; }
 
         [JsonPropertyName("replaceOptionSetPropertiesWithEnum")]
         public bool ReplaceOptionSetPropertiesWithEnum { get; set; }
@@ -204,6 +215,7 @@ namespace DLaB.ModelBuilderExtensions
 
         public DLaBModelBuilder()
         {
+            AttributeConstsClassName = "Fields";
             EnableFileDataType = true;
             EntitiesToSkip = new List<string>();
             EntityAttributeSpecifiedNames = new Dictionary<string, HashSet<string>>();
@@ -214,6 +226,7 @@ namespace DLaB.ModelBuilderExtensions
             MessagePrefixesToSkip = new List<string>();
             MessageToSkip = new List<string>();
             OptionSetNames = new Dictionary<string, string>();
+            RelationshipConstsClassName = "Relationships";
             TokenCapitalizationOverrides = new List<string>();
             ValidCSharpNameRegEx = @"[^a-zA-Z0-9_]";
         }

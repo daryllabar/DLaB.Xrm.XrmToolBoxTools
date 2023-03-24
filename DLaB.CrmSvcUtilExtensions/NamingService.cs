@@ -37,7 +37,7 @@ namespace DLaB.ModelBuilderExtensions
         {
         }
 
-        public NamingService(INamingService defaultService, DLaBModelBuilderSettings settings) : base(defaultService, settings)
+        public NamingService(INamingService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
         {
         }
 

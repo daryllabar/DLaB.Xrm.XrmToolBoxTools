@@ -26,7 +26,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
                 DLaBSettings.EntityPrefixesToSkip);
         }
 
-        public CodeWriterFilterService(ICodeWriterFilterService defaultService, DLaBModelBuilderSettings settings) : base(defaultService, settings)
+        public CodeWriterFilterService(ICodeWriterFilterService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
         {
             Approver = new WhitelistBlacklistLogic(Settings.EntityNamesFilter?.Any() == true,
                 new HashSet<string>(DLaBSettings.EntitiesToSkip),

@@ -34,7 +34,7 @@ namespace DLaB.ModelBuilderExtensions
         {
         }
 
-        protected BaseCustomCodeGenerationService(ICodeGenerationService defaultService, DLaBModelBuilderSettings settings) : base(defaultService, settings)
+        protected BaseCustomCodeGenerationService(ICodeGenerationService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
         {
         }
 
