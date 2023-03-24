@@ -2,15 +2,27 @@
 using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using System;
 using System.CodeDom;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DLaB.ModelBuilderExtensions.Entity
 {
-    public class PrimaryAttributeGenerator : ICustomizeCodeDomService
+    public class PrimaryAttributeGenerator : TypedServiceBase<ICustomizeCodeDomService>, ICustomizeCodeDomService
     {
+
+        public PrimaryAttributeGenerator(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
+        {
+        }
+
+        public PrimaryAttributeGenerator(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
+        {
+        }
+
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)   
         {
-            foreach (var entity in codeUnit.GetEntityTypes(services).Select(i=> new {Type = i.Item1, Metadata = i.Item2}))
+            SetServiceCache(services);
+
+            foreach (var entity in codeUnit.GetEntityTypes(ServiceCache.EntityMetadataByLogicalName).Select(i=> new {Type = i.Item1, Metadata = i.Item2}))
             {
                 // insert at 2, to be after the constructor and the entity logical name
                 entity.Type.Members.Insert(2,

@@ -215,6 +215,7 @@ namespace DLaB.ModelBuilderExtensions
 
         public DLaBModelBuilder()
         {
+            AddPrimaryAttributeConsts = true;
             AttributeConstsClassName = "Fields";
             EnableFileDataType = true;
             EntitiesToSkip = new List<string>();

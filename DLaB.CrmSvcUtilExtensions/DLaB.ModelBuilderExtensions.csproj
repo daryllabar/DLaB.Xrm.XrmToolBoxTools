@@ -290,6 +290,8 @@
     <Compile Include="Serialization\MetadataResponseField.cs" />
     <Compile Include="Serialization\SdkMessageResolver.cs" />
     <Compile Include="Serialization\SerializableEntityMetadata.cs" />
+    <Compile Include="ServiceCache.cs" />
+    <Compile Include="TypedServiceBase.cs" />
     <Compile Include="TypedServiceSettings.cs" />
     <Compile Include="WhitelistBlacklistLogic.cs" />
   </ItemGroup>

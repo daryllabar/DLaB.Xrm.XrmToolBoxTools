@@ -6,7 +6,6 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using DLaB.ModelBuilderExtensions.Entity;
-using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 
@@ -16,20 +15,12 @@ namespace DLaB.ModelBuilderExtensions
     {
         private const string XrmAttributeLogicalName = "Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute";
         private const string XrmRelationshipSchemaName = "Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute";
-        private static List<Tuple<CodeTypeDeclaration, EntityMetadata>> _entityTypes;
-
 
         #region CodeCompileUnit
 
-        public static List<Tuple<CodeTypeDeclaration, EntityMetadata>> GetEntityTypes(this CodeCompileUnit codeUnit, IServiceProvider services)
+        public static List<Tuple<CodeTypeDeclaration, EntityMetadata>> GetEntityTypes(this CodeCompileUnit codeUnit, Dictionary<string, EntityMetadata> entityTypesByLogicalName)
         {
-            if (_entityTypes != null)
-            {
-                return _entityTypes;
-            }
-
-            _entityTypes = new List<Tuple<CodeTypeDeclaration, EntityMetadata>>();
-            var metadata = ((IMetadataProviderService) services.GetService(typeof(IMetadataProviderService))).LoadMetadata(services).Entities.ToDictionary(e => e.LogicalName);
+            var entityTypes = new List<Tuple<CodeTypeDeclaration, EntityMetadata>>();
             foreach (var type in codeUnit.GetTypes().Where(type => type.IsClass && !type.IsContextType()))
             {
                 var logicalNameAttribute = type.CustomAttributes.Cast<CodeAttributeDeclaration>()
@@ -40,13 +31,13 @@ namespace DLaB.ModelBuilderExtensions
                 }
 
                 var typeEntityName = ((CodePrimitiveExpression) logicalNameAttribute.Arguments[0].Value).Value.ToString();
-                if (metadata.TryGetValue(typeEntityName, out var entityMetadata))
+                if (entityTypesByLogicalName.TryGetValue(typeEntityName, out var entityMetadata))
                 {
-                    _entityTypes.Add(new Tuple<CodeTypeDeclaration, EntityMetadata>(type, entityMetadata));
+                    entityTypes.Add(new Tuple<CodeTypeDeclaration, EntityMetadata>(type, entityMetadata));
                 }
             }
 
-            return _entityTypes;
+            return entityTypes;
         }
 
         public static IEnumerable<CodeTypeDeclaration> GetTypes(this CodeCompileUnit codeUnit)

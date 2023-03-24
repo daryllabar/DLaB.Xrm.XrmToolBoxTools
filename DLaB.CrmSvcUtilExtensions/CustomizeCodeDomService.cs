@@ -1,17 +1,15 @@
 ﻿using DLaB.ModelBuilderExtensions.Entity;
 using DLaB.ModelBuilderExtensions.OptionSet;
 using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
-using Source.DLaB.Xrm;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Microsoft.Xrm.Sdk.Metadata;
 
 namespace DLaB.ModelBuilderExtensions
 {
-    public class CustomizeCodeDomService : TypedServiceSettings<ICustomizeCodeDomService>, ICustomizeCodeDomService
+    public class CustomizeCodeDomService : TypedServiceBase<ICustomizeCodeDomService>, ICustomizeCodeDomService
     {
         #region Entity Properties
 
@@ -19,7 +17,6 @@ namespace DLaB.ModelBuilderExtensions
         public bool AddPrimaryAttributeConsts { get => DLaBSettings.AddPrimaryAttributeConsts; set => DLaBSettings.AddPrimaryAttributeConsts = value; }
         public bool CreateBaseClasses { get => DLaBSettings.CreateBaseClasses; set => DLaBSettings.CreateBaseClasses = value; }
         public bool GenerateAnonymousTypeConstructor { get => DLaBSettings.GenerateAnonymousTypeConstructor; set => DLaBSettings.GenerateAnonymousTypeConstructor = value; }
-        public bool GenerateAttributeNameConsts { get => DLaBSettings.GenerateAttributeNameConsts; set => DLaBSettings.GenerateAttributeNameConsts = value; }
         public bool GenerateConstructorsSansLogicalName { get => DLaBSettings.GenerateConstructorsSansLogicalName; set => DLaBSettings.GenerateConstructorsSansLogicalName = value; }
         public bool GenerateEntityTypeCode { get => DLaBSettings.GenerateEntityTypeCode; set => DLaBSettings.GenerateEntityTypeCode = value; }
         public bool GenerateEnumProperties { get => DLaBSettings.GenerateEnumProperties; set => DLaBSettings.GenerateEnumProperties = value; }
@@ -33,13 +30,10 @@ namespace DLaB.ModelBuilderExtensions
         #region Message Properties
 
         public WhitelistBlacklistLogic MessageApprover { get; set; }
-        public bool GenerateActionAttributeNameConsts { get => DLaBSettings.GenerateActionAttributeNameConsts; set => DLaBSettings.GenerateActionAttributeNameConsts = value; }
 
         public bool MakeResponseActionsEditable { get => DLaBSettings.MakeResponseActionsEditable; set => DLaBSettings.MakeResponseActionsEditable = value; }
 
         #endregion Message Properties
-
-        private Dictionary<string, EntityMetadata> _entities;
 
         public CustomizeCodeDomService(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
@@ -65,6 +59,8 @@ namespace DLaB.ModelBuilderExtensions
         /// <param name="services"></param>
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
+            SetServiceCache(services);
+
             if (codeUnit.GetTypes().All(t => t.IsEnum))
             {
                 ProcessOptionSet(codeUnit, services);
@@ -113,7 +109,7 @@ namespace DLaB.ModelBuilderExtensions
 
             if (AddPrimaryAttributeConsts)
             {
-                new PrimaryAttributeGenerator().CustomizeCodeDom(codeUnit, services);
+                new PrimaryAttributeGenerator(DefaultService, Settings).CustomizeCodeDom(codeUnit, services);
             }
 
             if (GenerateConstructorsSansLogicalName)
@@ -126,7 +122,7 @@ namespace DLaB.ModelBuilderExtensions
 
             if (GenerateAnonymousTypeConstructor)
             {
-                new AnonymousTypeConstructorGenerator(GetEntities(services)).CustomizeCodeDom(codeUnit, services);
+                new AnonymousTypeConstructorGenerator(ServiceCache.EntityMetadataByLogicalName).CustomizeCodeDom(codeUnit, services);
             }
 
             if (!GenerateEntityTypeCode)
@@ -136,7 +132,7 @@ namespace DLaB.ModelBuilderExtensions
 
             if (GenerateEnumProperties)
             {
-                var generator = new EnumPropertyGenerator(CreateBaseClasses, ReplaceOptionSetPropertiesWithEnum, GetEntities(services));
+                var generator = new EnumPropertyGenerator(CreateBaseClasses, ReplaceOptionSetPropertiesWithEnum, ServiceCache.EntityMetadataByLogicalName);
                 generator.CustomizeCodeDom(codeUnit, services);
             }
 
@@ -153,10 +149,6 @@ namespace DLaB.ModelBuilderExtensions
 
         #endregion
 
-        private Dictionary<string, EntityMetadata> GetEntities(IServiceProvider services)
-        {
-            return _entities ?? (_entities = services.GetService<IMetadataProviderService>().LoadMetadata(services).Entities.ToDictionary(e => e.LogicalName));
-        }
 
         private void ProcessMessage(CodeCompileUnit codeUnit, IServiceProvider services)
         {
