@@ -141,7 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Message\AttributeConstGenerator.cs" />
-    <Compile Include="Message\CodeWriterFilterService.cs" />
     <Compile Include="Message\CustomCodeGenerationService.cs" />
     <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\Config.cs" />
     <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ConfigKeyValueSplitInfo.cs" />
@@ -272,7 +271,7 @@
     <Compile Include="OptionSet\CustomizeCodeDomService.cs" />
     <Compile Include="OptionSet\Extensions.cs" />
     <Compile Include="OptionSet\FilterOptionSetEnums.cs" />
-    <Compile Include="Entity\CodeWriterFilterService.cs" />
+    <Compile Include="CodeWriterFilterService.cs" />
     <Compile Include="OptionSet\CodeWriterFilterService.cs" />
     <Compile Include="OptionSet\LocalMultiOptionSetGenerator.cs" />
     <Compile Include="OptionSet\Transliteration\AlphabetPoco.cs" />

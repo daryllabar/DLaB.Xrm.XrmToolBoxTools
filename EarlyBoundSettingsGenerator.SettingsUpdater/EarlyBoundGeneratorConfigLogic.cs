@@ -11,11 +11,13 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
         
         public override void UpdateFile()
         {
-            var path = GetLogicFilePath(FileName);
-            var file = File.ReadAllLines(path);
-
-            AddExtensionConfigInit(file);
-            File.WriteAllLines(path, file);
+            return;
+            // Model Builder doesn't need Logic updated
+            //var path = GetLogicFilePath(FileName);
+            //var file = File.ReadAllLines(path);
+            //
+            //AddExtensionConfigInit(file);
+            //File.WriteAllLines(path, file);
         }
 
         private void AddExtensionConfigInit(string[] file)

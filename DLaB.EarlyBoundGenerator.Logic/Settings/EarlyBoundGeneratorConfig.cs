@@ -34,6 +34,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
         public string CodeCustomizationService { get; set; }
 
         /// <summary>
+        /// Called during the CodeDOM generation to determine if Option Sets, Options, Entities, Attributes Relationships, or Service Contexts are generated.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator.
+        /// </summary>
+        public string CodeWriterFilterService { get; set; }
+
+        /// <summary>
         /// Entity output path
         /// </summary>
         public string EntityTypesFolder { get; set; }
@@ -262,6 +267,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
             AudibleCompletionNotification  =  poco.AudibleCompletionNotification  ?? @default.AudibleCompletionNotification;
             CodeCustomizationService       =  poco.CodeCustomizationService       ?? @default.CodeCustomizationService;
+            CodeWriterFilterService       =  poco.CodeWriterFilterService         ?? @default.CodeWriterFilterService;
             EntityTypesFolder              =  poco.EntityTypesFolder              ?? @default.EntityTypesFolder;
             IncludeCommandLine             =  poco.IncludeCommandLine             ?? @default.IncludeCommandLine;
             GenerateMessages               =  poco.GenerateMessages               ?? @default.GenerateMessages;
@@ -445,6 +451,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             {
                 AudibleCompletionNotification = true,
                 CodeCustomizationService = "DLaB.ModelBuilderExtensions.CustomizeCodeDomService,DLaB.ModelBuilderExtensions",
+                CodeWriterFilterService = "DLaB.ModelBuilderExtensions.CodeWriterFilterService,DLaB.ModelBuilderExtensions",
                 EntityTypesFolder = "Entities",
                 ExtensionConfig = ExtensionConfig.GetDefault(),
                 GenerateMessages = true,
@@ -640,15 +647,21 @@ namespace DLaB.EarlyBoundGenerator.Settings
         {
             var isXrmToolBoxEarlyBound = typeof(ExtensionConfig).AssemblyQualifiedName?.StartsWith("DLaB.EarlyBoundGenerator.Settings.ExtensionConfig, DLaB.EarlyBoundGenerator,") ?? true;
 
-            properties.SetJsonProperty(BuilderSettingsJsonNames.CodeCustomizationService, isXrmToolBoxEarlyBound ? ReplaceAssemblyName(CodeCustomizationService) : CodeCustomizationService);
-            properties.SetJsonProperty(BuilderSettingsJsonNames.MetadataProviderService, isXrmToolBoxEarlyBound ? ReplaceAssemblyName(MetadataProviderService) : MetadataProviderService);
+            SetModelBuilderServiceProperty(BuilderSettingsJsonNames.CodeCustomizationService, CodeCustomizationService);
+            SetModelBuilderServiceProperty(BuilderSettingsJsonNames.CodeWriterFilterService, CodeWriterFilterService);
+            SetModelBuilderServiceProperty(BuilderSettingsJsonNames.MetadataProviderService, MetadataProviderService);
             properties.SetJsonProperty(BuilderSettingsJsonNames.EntityTypesFolder, EntityTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.GenerateActions, GenerateMessages);
             properties.SetJsonProperty(BuilderSettingsJsonNames.MessagesTypesFolder, MessageTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.Namespace, Namespace);
-            properties.SetJsonProperty(BuilderSettingsJsonNames.NamingService, isXrmToolBoxEarlyBound ? ReplaceAssemblyName(NamingService) : NamingService);
+            SetModelBuilderServiceProperty(BuilderSettingsJsonNames.NamingService, NamingService);
             properties.SetJsonProperty(BuilderSettingsJsonNames.OptionSetsTypesFolder, OptionSetsTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.ServiceContextName, ServiceContextName);
+
+            void SetModelBuilderServiceProperty(string propertyName, string typeName)
+            {
+                properties.SetJsonPropertyIfPopulated(propertyName, isXrmToolBoxEarlyBound ? ReplaceAssemblyName(typeName) : typeName);
+            }
         }
 
         /// <summary>
@@ -670,6 +683,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
     {
         public bool? AudibleCompletionNotification { get; set; }
         public string CodeCustomizationService { get; set; }
+        public string CodeWriterFilterService { get; set; }
         public string EntityTypesFolder { get; set; }
         public ExtensionConfig ExtensionConfig { get; set; }
         public List<Argument> ExtensionArguments { get; set; }

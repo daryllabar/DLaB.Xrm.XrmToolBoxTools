@@ -67,6 +67,15 @@ namespace DLaB.EarlyBoundGenerator.Settings
             return property;
         }
 
+        public static void SetJsonPropertyIfPopulated(this Dictionary<string, JsonProperty> properties, string name, string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                return;
+            }
+            properties.SetJsonProperty(name,value);
+        }
+
         public static void SetJsonProperty(this Dictionary<string, JsonProperty> properties, string name, string value)
         {
             name = name.LowerFirstChar();

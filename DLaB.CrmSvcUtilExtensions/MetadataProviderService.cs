@@ -82,6 +82,11 @@ namespace DLaB.ModelBuilderExtensions
 
         private void UpdateEntityMetadata(IOrganizationMetadata metadata)
         {
+            MakeReadonlyEntityAttributesEditable(metadata);
+        }
+
+        private void MakeReadonlyEntityAttributesEditable(IOrganizationMetadata metadata)
+        {
             var prop = typeof(AttributeMetadata).GetProperty("IsValidForCreate", BindingFlags.Public | BindingFlags.Instance);
             if (prop == null)
             {
@@ -111,6 +116,7 @@ namespace DLaB.ModelBuilderExtensions
                         {
                             prop.SetValue(att, true);
                         }
+
                         break;
                     case "statecode":
                         att.SchemaName = "StateCode";

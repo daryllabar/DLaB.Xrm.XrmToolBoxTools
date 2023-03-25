@@ -4,11 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DLaB.ModelBuilderExtensions.Entity
+namespace DLaB.ModelBuilderExtensions
 {
     public class CodeWriterFilterService : TypedServiceSettings<ICodeWriterFilterService>, ICodeWriterFilterService
     {
-        public WhitelistBlacklistLogic Approver { get; set; }
+        public WhitelistBlacklistLogic EntityApprover { get; set; }
 
         private bool EnableFileDataType { get => DLaBSettings.EnableFileDataType; set => DLaBSettings.EnableFileDataType = value; }
 
@@ -21,14 +21,14 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
         public CodeWriterFilterService(ICodeWriterFilterService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
-            Approver = new WhitelistBlacklistLogic(Settings.EntityNamesFilter?.Any() == true,
+            EntityApprover = new WhitelistBlacklistLogic(Settings.EntityNamesFilter?.Any() == true,
                 new HashSet<string>(DLaBSettings.EntitiesToSkip),
                 DLaBSettings.EntityPrefixesToSkip);
         }
 
         public CodeWriterFilterService(ICodeWriterFilterService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
         {
-            Approver = new WhitelistBlacklistLogic(Settings.EntityNamesFilter?.Any() == true,
+            EntityApprover = new WhitelistBlacklistLogic(Settings.EntityNamesFilter?.Any() == true,
                 new HashSet<string>(DLaBSettings.EntitiesToSkip),
                 DLaBSettings.EntityPrefixesToSkip);
         }
@@ -55,19 +55,9 @@ namespace DLaB.ModelBuilderExtensions.Entity
                    || DefaultService.GenerateAttribute(metadata, services);
         }
 
-        private static bool IsFileDataTypeAttribute(AttributeMetadata metadata)
-        {
-            return metadata.LogicalName?.EndsWith("_name") == true
-                   && metadata.AttributeOf != null
-                   && metadata.IsRenameable != null
-                   && metadata.IsRenameable.Value == false
-                   && metadata is StringAttributeMetadata;
-        }
-
-
         public bool GenerateEntity(EntityMetadata entityMetadata, IServiceProvider services)
         {
-            // Some entities are not normally create (attachment for example) not sure why.  Allowing Whitelist to Override here.
+            // Some entities are not normally created (attachment for example) not sure why.  Allowing Whitelist to Override here.
             // Commented out on switch to ModelBuilder. Not sure if this is valid.
             //if (!Approver.IsExplicitlyAllowed(entityMetadata.LogicalName)
             //    && !DefaultService.GenerateEntity(entityMetadata, services)) { return false; }
@@ -77,7 +67,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
                 EntityMetadata.Add(entityMetadata.LogicalName, entityMetadata);
             }
 
-            return Approver.IsAllowed(entityMetadata.LogicalName);
+            return EntityApprover.IsAllowed(entityMetadata.LogicalName);
         }
 
         public bool GenerateRelationship(RelationshipMetadataBase relationshipMetadata, EntityMetadata otherEntityMetadata, IServiceProvider services)
@@ -105,5 +95,14 @@ namespace DLaB.ModelBuilderExtensions.Entity
         }
 
         #endregion
+
+        private static bool IsFileDataTypeAttribute(AttributeMetadata metadata)
+        {
+            return metadata.LogicalName?.EndsWith("_name") == true
+                   && metadata.AttributeOf != null
+                   && metadata.IsRenameable != null
+                   && metadata.IsRenameable.Value == false
+                   && metadata is StringAttributeMetadata;
+        }
     }
 }

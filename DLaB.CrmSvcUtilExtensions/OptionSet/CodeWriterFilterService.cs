@@ -30,6 +30,7 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
     /// data to be created, but the CreateOptionSetEnums removes it from the DOM after it's already been added, since it needs the metadata.
     /// Prevents duplicate OptionSetGeneration
     /// </summary>
+    [Obsolete]
     public sealed class CodeWriterFilterService : ICodeWriterFilterService
     {
         private HashSet<string> GeneratedOptionSets { get; }
