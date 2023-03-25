@@ -168,13 +168,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CategoryCmb.FormattingEnabled = true;
             this.CategoryCmb.Items.AddRange(new object[] {
-            "Debug",
-            "Entities",
-            "Global",
-            "Messages",
-            "Meta",
-            "Option Sets",
-            "Service Generation Extensions"});
+            "1 - Global",
+            "2 - Entities",
+            "3 - Messages",
+            "4 - Option Sets",
+            "5 - Meta",
+            "6 - Service Generation Extensions",
+            "7 - Debug"});
             this.CategoryCmb.Location = new System.Drawing.Point(114, 117);
             this.CategoryCmb.Name = "CategoryCmb";
             this.CategoryCmb.Size = new System.Drawing.Size(413, 21);
