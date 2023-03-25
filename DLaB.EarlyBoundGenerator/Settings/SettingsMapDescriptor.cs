@@ -41,6 +41,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 { nameof(GenerateEnumProperties), OnGenerateEnumPropertiesChange },
                 { nameof(AddOptionSetMetadataAttribute), OnAddOptionSetMetadataAttributeChange },
                 { nameof(IncludeCommandLine), OnIncludeCommandLineChange },
+                { nameof(MakeAllFieldsEditable), OnMakeAllFieldsEditableChange },
             };
         }
 
@@ -84,6 +85,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
         private void OnIncludeCommandLineChange(PropertyValueChangedEventArgs args)
         {
             SetMaskPasswordVisibility();
+        }
+
+        private void OnMakeAllFieldsEditableChange(PropertyValueChangedEventArgs args)
+        {
+            SetMakeReadonlyFieldsEditableVisibility();
         }
 
         #endregion OnChange Handlers
@@ -131,22 +137,17 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 nameof(GenerateOptionSetMetadataAttribute),
                 nameof(GroupLocalOptionSetsByEntity),
                 nameof(IncludeCommandLine),
-                nameof(MakeAllFieldsEditable),
-                nameof(MakeReadonlyFieldsEditable),
                 nameof(MakeResponseActionsEditable),
                 nameof(MaskPassword),
                 nameof(OptionSetPrefixesToSkip),
                 nameof(OptionSetsToSkip),
                 nameof(ProjectNameForEarlyBoundFiles),
                 nameof(PropertyEnumMappings),
-                nameof(ReadSerializedMetadata),
                 nameof(RemoveRuntimeVersionComment),
                 nameof(ReplaceOptionSetPropertiesWithEnum),
-                nameof(SerializeMetadata),
                 nameof(TokenCapitalizationOverrides),
                 nameof(UnmappedProperties),
                 nameof(UseTfsToCheckoutFiles),
-                nameof(WaitForAttachedDebugger),
                 nameof(WorkflowlessActions),
             };
 
@@ -181,6 +182,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
         private void SetMaskPasswordVisibility()
         {
             SetPropertyBrowsable(nameof(MaskPassword), IncludeCommandLine);
+        }
+
+        private void SetMakeReadonlyFieldsEditableVisibility()
+        {
+            SetPropertyBrowsable(nameof(MakeReadonlyFieldsEditable), MakeAllFieldsEditable);
         }
 
         private void SetProjectNameForEarlyBoundFilesVisibility()

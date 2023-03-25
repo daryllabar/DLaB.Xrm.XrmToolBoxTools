@@ -37,8 +37,8 @@ namespace DLaB.ModelBuilderExtensions.Tests
         {
             var factory = new ServiceFactory();
             var customizeDom = new CustomizeCodeDomService(null, new DLaBModelBuilderSettings());
-            var codeGen =      new Action.CustomCodeGenerationService(factory.GetService<ICodeGenerationService>(), new DLaBModelBuilderSettings());
-            var filter =       new Action.CodeWriterFilterService(factory.GetService<ICodeWriterFilterService>());
+            var codeGen =      new Message.CustomCodeGenerationService(factory.GetService<ICodeGenerationService>(), new DLaBModelBuilderSettings());
+            var filter =       new Message.CodeWriterFilterService(factory.GetService<ICodeWriterFilterService>());
 
             TestFileCreation(factory, customizeDom, codeGen, filter);
         }

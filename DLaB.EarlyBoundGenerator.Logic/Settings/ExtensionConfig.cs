@@ -560,6 +560,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? MakeAllFieldsEditable { get; set; }
         public bool? MakeReadonlyFieldsEditable { get; set; }
         public bool? MakeResponseActionsEditable { get; set; }
+        public string MetadataProviderService { get; set; }
         public string OptionSetNames { get; set; }
         public string OptionSetPrefixesToSkip { get; set; }
         public string OptionSetsToSkip { get; set; }

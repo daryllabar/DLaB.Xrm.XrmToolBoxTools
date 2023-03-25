@@ -114,6 +114,7 @@ namespace DLaB.EarlyBoundGenerator
             this.TxtOutput.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.TxtOutput.Size = new System.Drawing.Size(377, 471);
             this.TxtOutput.TabIndex = 1;
+            this.TxtOutput.WordWrap = false;
             this.TxtOutput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtOutput_KeyDown);
             // 
             // BtnOpenSettingsPathDialog

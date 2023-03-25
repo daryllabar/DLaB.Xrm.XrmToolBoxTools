@@ -31,7 +31,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         [Category("7 - Debug")]
         [DisplayName("Serialize Metadata")]
-        [Description("For Debugging Only!  Serializes the Metadata to a local file on disk.  (Generates a 200-400+ mb xml file).")]
+        [Description("For Debugging Only!  Serializes the Metadata to a local file on disk.  By default, this writes to a file named \"metadata.xml\" in the directory of the XrmToolBox.exe file. (Generates a 200-400+ mb xml file).")]
         public bool SerializeMetadata
         {
             get => Config.ExtensionConfig.SerializeMetadata;
@@ -629,7 +629,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
 
         [Category("6 - Service Generation Extensions")]
         [DisplayName("Code Customization Service")]
-        [Description("Called after the CodeDOM generation has been completed, assuming the default instance of ICodeGenerationService. It is useful for generating additional classes, such as the constants in picklists.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator. ")]
+        [Description("Called after the CodeDOM generation has been completed, assuming the default instance of ICodeGenerationService. It is useful for generating additional classes, such as the constants in picklists.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator.")]
         public string CodeCustomizationService
         {
             get => Config.CodeCustomizationService;
@@ -637,8 +637,17 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         }
 
         [Category("6 - Service Generation Extensions")]
+        [DisplayName("Metadata Provider Service")]
+        [Description("Used to retrieve the metadata from the server.  Using the 7 - Debug settings, this can be used cache the metadata for testing purposes.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator.")]
+        public string MetadataProviderService
+        {
+            get => Config.MetadataProviderService;
+            set => Config.MetadataProviderService = value;
+        }
+
+        [Category("6 - Service Generation Extensions")]
         [DisplayName("Naming Service")]
-        [Description("Called during the CodeDOM generation to determine the name for objects.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator. ")]
+        [Description("Called during the CodeDOM generation to determine the name for objects.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator.")]
         public string NamingService
         {
             get => Config.NamingService;

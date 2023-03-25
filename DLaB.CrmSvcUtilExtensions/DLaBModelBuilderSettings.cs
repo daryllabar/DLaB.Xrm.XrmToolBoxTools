@@ -147,6 +147,12 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("messageToSkip")]
         public List<string> MessageToSkip { get; set; }
 
+        /// <summary>
+        /// No Config
+        /// </summary>
+        [JsonPropertyName("serializedMetadataRelativeFilePath")]
+        public string SerializedMetadataRelativeFilePath { get; set; }
+
         private string _optionSetLanguageCodeOverride;
         [JsonPropertyName("optionSetLanguageCodeOverride")]
         public string OptionSetLanguageCodeOverrideString {
@@ -226,6 +232,7 @@ namespace DLaB.ModelBuilderExtensions
             LocalOptionSetFormat = "{0}_{1}";
             MessagePrefixesToSkip = new List<string>();
             MessageToSkip = new List<string>();
+            SerializedMetadataRelativeFilePath = "metadata.xml";
             OptionSetNames = new Dictionary<string, string>();
             RelationshipConstsClassName = "Relationships";
             TokenCapitalizationOverrides = new List<string>();
@@ -237,6 +244,8 @@ namespace DLaB.ModelBuilderExtensions
     {
         [JsonPropertyName("dLaB.ModelBuilder")]
         public DLaBModelBuilder DLaBModelBuilder { get; set; }
+
+        #region ModelBuilder Properties
 
         [JsonPropertyName("emitFieldsClasses")]
         public bool EmitFieldsClasses { get; set; }
@@ -273,6 +282,8 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("suppressINotifyPattern")]
         public bool SuppressINotifyPattern { get; set; }
+
+        #endregion ModelBuilder Properties
 
         public DLaBModelBuilderSettings()
         {

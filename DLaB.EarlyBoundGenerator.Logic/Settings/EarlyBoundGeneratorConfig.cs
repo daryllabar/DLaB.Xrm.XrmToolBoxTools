@@ -73,6 +73,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
         public string MessageTypesFolder { get; set; }
 
         /// <summary>
+        /// Used to retrieve the metadata from the server.  Using the 7 - Debug settings, this can be used cache the metadata for testing purposes.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator."
+        /// </summary>
+        public string MetadataProviderService { get; set; }
+
+        /// <summary>
         /// Called during the CodeDOM generation to determine the name for objects.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator. 
         /// </summary>
         public string NamingService { get; set; }
@@ -255,20 +260,21 @@ namespace DLaB.EarlyBoundGenerator.Settings
             RemoveObsoleteValues(poco);
             UpdateObsoleteSettings(poco, poco.ExtensionConfig, @default.ExtensionConfig);
 
-            AudibleCompletionNotification = poco.AudibleCompletionNotification ?? @default.AudibleCompletionNotification;
-            CodeCustomizationService = poco.CodeCustomizationService ?? @default.CodeCustomizationService;
-            EntityTypesFolder = poco.EntityTypesFolder ?? @default.EntityTypesFolder;
-            IncludeCommandLine = poco.IncludeCommandLine ?? @default.IncludeCommandLine;
-            GenerateMessages = poco.GenerateMessages ?? @default.GenerateMessages;
-            Namespace = poco.Namespace ?? @default.Namespace;
-            NamingService = poco.NamingService ?? @default.NamingService;
-            MaskPassword = poco.MaskPassword ?? @default.MaskPassword;
-            MessageTypesFolder = poco.MessageTypesFolder ?? @default.MessageTypesFolder;
-            OptionSetsTypesFolder = poco.OptionSetsTypesFolder ?? @default.OptionSetsTypesFolder;
-            ServiceContextName = poco.ServiceContextName ?? @default.ServiceContextName;
-            SuppressGeneratedCodeAttribute = poco.SuppressGeneratedCodeAttribute ?? @default.SuppressGeneratedCodeAttribute;
-            UpdateBuilderSettingsJson = poco.UpdateBuilderSettingsJson ?? @default.UpdateBuilderSettingsJson;
-            WorkflowlessActions = poco.WorkflowlessActions ?? @default.WorkflowlessActions;
+            AudibleCompletionNotification  =  poco.AudibleCompletionNotification  ?? @default.AudibleCompletionNotification;
+            CodeCustomizationService       =  poco.CodeCustomizationService       ?? @default.CodeCustomizationService;
+            EntityTypesFolder              =  poco.EntityTypesFolder              ?? @default.EntityTypesFolder;
+            IncludeCommandLine             =  poco.IncludeCommandLine             ?? @default.IncludeCommandLine;
+            GenerateMessages               =  poco.GenerateMessages               ?? @default.GenerateMessages;
+            MetadataProviderService        =  poco.MetadataProviderService        ?? @default.MetadataProviderService;
+            Namespace                      =  poco.Namespace                      ?? @default.Namespace;
+            NamingService                  =  poco.NamingService                  ?? @default.NamingService;
+            MaskPassword                   =  poco.MaskPassword                   ?? @default.MaskPassword;
+            MessageTypesFolder             =  poco.MessageTypesFolder             ?? @default.MessageTypesFolder;
+            OptionSetsTypesFolder          =  poco.OptionSetsTypesFolder          ?? @default.OptionSetsTypesFolder;
+            ServiceContextName             =  poco.ServiceContextName             ?? @default.ServiceContextName;
+            SuppressGeneratedCodeAttribute =  poco.SuppressGeneratedCodeAttribute ?? @default.SuppressGeneratedCodeAttribute;
+            UpdateBuilderSettingsJson      =  poco.UpdateBuilderSettingsJson      ?? @default.UpdateBuilderSettingsJson;
+            WorkflowlessActions            =  poco.WorkflowlessActions            ?? @default.WorkflowlessActions;
 
             ExtensionConfig = @default.ExtensionConfig;
             ExtensionConfig.SetPopulatedValues(poco.ExtensionConfig);
@@ -456,6 +462,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                     //new Argument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, "DLaB.ModelBuilderExtensions.OptionSet.CodeWriterFilterService,DLaB.ModelBuilderExtensions"),
                     //new Argument(CreationType.OptionSets, CrmSrvUtilService.MetadataProviderService, "DLaB.ModelBuilderExtensions.BaseMetadataProviderService,DLaB.ModelBuilderExtensions")
                 //}),
+                MetadataProviderService = "DLaB.ModelBuilderExtensions.MetadataProviderService,DLaB.ModelBuilderExtensions",
                 MessageTypesFolder = "Messages",
                 Namespace = "DataverseModel",
                 NamingService = "DLaB.ModelBuilderExtensions.NamingService,DLaB.ModelBuilderExtensions",
@@ -634,6 +641,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             var isXrmToolBoxEarlyBound = typeof(ExtensionConfig).AssemblyQualifiedName?.StartsWith("DLaB.EarlyBoundGenerator.Settings.ExtensionConfig, DLaB.EarlyBoundGenerator,") ?? true;
 
             properties.SetJsonProperty(BuilderSettingsJsonNames.CodeCustomizationService, isXrmToolBoxEarlyBound ? ReplaceAssemblyName(CodeCustomizationService) : CodeCustomizationService);
+            properties.SetJsonProperty(BuilderSettingsJsonNames.MetadataProviderService, isXrmToolBoxEarlyBound ? ReplaceAssemblyName(MetadataProviderService) : MetadataProviderService);
             properties.SetJsonProperty(BuilderSettingsJsonNames.EntityTypesFolder, EntityTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.GenerateActions, GenerateMessages);
             properties.SetJsonProperty(BuilderSettingsJsonNames.MessagesTypesFolder, MessageTypesFolder);
@@ -670,6 +678,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public string Namespace { get; set; }
         public string NamingService { get; set; }
         public bool? MaskPassword { get; set; }
+        public string MetadataProviderService { get; set; }
         public string MessageTypesFolder { get; set; }
         public string OptionSetsTypesFolder { get; set; }
         public string ServiceContextName { get; set; }

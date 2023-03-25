@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 
 namespace EarlyBoundSettingsGenerator.SettingsUpdater
 {
@@ -20,8 +21,8 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
 
         private void AddProperty(string[] file)
         {
-            var start = $"#region {Property.Category}";
-            var end = $"#endregion {Property.Category}";
+            var start = $"#region {Property.Category.Substring(4)}";
+            var end = $"#endregion {Property.Category.Substring(4)}";
             var lineStart = "        public ";
 
             var firstIndex = GetInsertIndexOfAlphabeticallySortedProperty(file, start, end, " ", lineStart);
