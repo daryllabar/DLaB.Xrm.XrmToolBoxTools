@@ -182,9 +182,8 @@ namespace DLaB.EarlyBoundGenerator
                 {
                     if (bool.TryParse(kvp.Value, out var boolVal) && boolVal)
                     {
-                        var @switch = $"/{kvp.Key}";
-                        Logger.AddDetail("--" + @switch);
-                        lines.Add(@switch);
+                        Logger.AddDetail("--" + kvp.Key);
+                        lines.Add($"/{kvp.Key}");
                     }
                 }
                 else

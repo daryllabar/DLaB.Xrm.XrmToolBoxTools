@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Text.Json;
 using System.Xml;
 using System.Xml.Serialization;
+using DLaB.Log;
 
 namespace DLaB.EarlyBoundGenerator.Settings
 {
@@ -282,6 +283,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             var pocoVersion = new Version(poco.Version);
             if (pocoVersion < new Version("1.2016.6.1"))
             {
+                Logger.AddDetail("Updating config to 1.2016.6.1 settings.");
                 // Storing of UnmappedProperties and EntityAttributeSpecified Names switched from Key,Value1,Value2|Key,Value1,Value2 to Key:Value1,Value2|Key:Value1,Value2
                 // Also convert from a List to a HashSet
                 pocoConfig.EntityAttributeSpecifiedNames = ConvertNonColonDelimitedDictionaryListToDictionaryHash(pocoConfig.EntityAttributeSpecifiedNames);
@@ -290,6 +292,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
             if (pocoVersion < new Version("1.2020.3.23"))
             {
+                Logger.AddDetail("Updating config to 1.2020.3.23 settings.");
                 // Added new option to overwrite Option Set properties.  This is the desired default now, but don't break old generation settings.
                 if (poco.ExtensionConfig.ReplaceOptionSetPropertiesWithEnum == null)
                 {
@@ -299,6 +302,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
             if (pocoVersion < new Version("1.2020.10.1"))
             {
+                Logger.AddDetail("Updating config to 1.2020.10.1 settings.");
                 // Issue #254 add invalid actions to blacklist.
                 var invalidBlacklistItems = "RetrieveAppSettingList|RetrieveAppSetting|SaveAppSetting|msdyn_GetSIFeatureConfiguration".ToLower();
                 if (string.IsNullOrWhiteSpace(poco.ExtensionConfig.ActionsToSkip))
@@ -313,6 +317,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
             if (pocoVersion < new Version("1.2020.12.18"))
             {
+                Logger.AddDetail("Updating config to 1.2020.12.18 settings.");
                 // 12.18.2020 introduced Valueless parameters, but GenerateActions existed before as a null, need a boolean value to determine if it should be included
                 var generateActions = poco.UserArguments.FirstOrDefault(a => a.Name == "generateActions" && a.Value == null);
                 if (generateActions != null)
@@ -324,6 +329,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
             if (pocoVersion < new Version("2.2023.3.12"))
             {
+                Logger.AddDetail("Updating config to 2.2023.3.12 settings.");
                 // 3.2.2023 Switch to Model Builder.  Pull User Arguments into typed settings
                 ObsoleteUserArgument(poco, a => a.Name == "generateActions", (p, arg) => poco.GenerateMessages = bool.Parse(arg.Value));
                 ObsoleteUserArgument(poco, a => a.Name == "namespace", (p, arg) => poco.Namespace = arg.Value);
@@ -332,6 +338,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 ObsoleteUserArgument(poco, a => a.Name == "out" && a.SettingType == CreationType.OptionSets, (p, arg) => poco.OptionSetsTypesFolder = arg.Value);
                 ObsoleteUserArgument(poco, a => a.Name == "servicecontextname", (p, arg) => poco.ServiceContextName = arg.Value);
                 ObsoleteUserArgument(poco, a => a.Name == "SuppressGeneratedCodeAttribute", (p, arg) => poco.SuppressGeneratedCodeAttribute = bool.Parse(arg.Value));
+                pocoConfig.GenerateINotifyPattern = true;
 
                 AddNewTokens(pocoConfig, defaultConfig, PreV2TokenCapitalizations);
             }
@@ -340,7 +347,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         private static void AddNewTokens(POCO.ExtensionConfig pocoConfig, ExtensionConfig defaultConfig, string[] previousTokens)
         {
             var previousExisting = new HashSet<string>(pocoConfig.TokenCapitalizationOverrides.ToLower().Split('|'));
-            var existing = new HashSet<string>(pocoConfig.TokenCapitalizationOverrides.Split('|'));
+            var existing = new HashSet<string>(pocoConfig.TokenCapitalizationOverrides.Split('|').Select(v => v.Trim()));
             var previousOob = new HashSet<string>(previousTokens.Select(v => v.ToLower()));
             foreach (var value in defaultConfig.TokenCapitalizationOverrides.Split('|'))
             {
@@ -348,11 +355,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 {
                     continue;
                 }
-
+                Logger.AddDetail("Adding " + value + " to TokenCapitalizationOverrides.");
                 existing.Add(value);
             }
 
-            pocoConfig.TokenCapitalizationOverrides = string.Join("|", existing);
+            pocoConfig.TokenCapitalizationOverrides = string.Join("|" + Environment.NewLine, existing);
         }
 
         private static void ObsoleteUserArgument(POCO.Config poco, Func<Argument, bool> firstArg, Action<POCO.Config, Argument> updateAction)

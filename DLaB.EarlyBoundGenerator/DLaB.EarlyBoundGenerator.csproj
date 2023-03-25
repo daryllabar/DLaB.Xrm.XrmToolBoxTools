@@ -324,6 +324,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EarlyBoundGeneratorPlugin.resx">
       <DependentUpon>EarlyBoundGeneratorPlugin.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="AttributesToEnumMapperDialog.resx">
       <DependentUpon>AttributesToEnumMapperDialog.cs</DependentUpon>

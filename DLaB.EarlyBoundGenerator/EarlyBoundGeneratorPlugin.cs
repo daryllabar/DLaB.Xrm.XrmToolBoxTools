@@ -57,6 +57,7 @@ namespace DLaB.EarlyBoundGenerator
 
         private void EarlyBoundGenerator_Load(object sender, EventArgs e)
         {
+            Logger.Instance.OnLog += OnLoadLog;
             if (ConnectionDetail != null)
             {
                 DisplayActionsIfSupported();
@@ -67,12 +68,23 @@ namespace DLaB.EarlyBoundGenerator
             Telemetry.Enabled = Options.Instance.AllowLogUsage ?? true;
             Telemetry.InitAiConfig("3a079617-6a46-4c46-8db3-719f7d2f51c7"); 
             FormLoaded = true;
+            Logger.Instance.OnLog -= OnLoadLog;
+        }
+
+        private void OnLoadLog(LogMessageInfo info)
+        {
+            TxtOutput.AppendText(info.Detail + Environment.NewLine);
+            if (!string.IsNullOrWhiteSpace(info.ModalMessage))
+            {
+                MessageBox.Show(info.ModalMessage);
+            }
         }
 
         private void HydrateUiFromSettings(string settingsPath)
         {
             try
             {
+                Logger.AddDetail("Loading settings from " + settingsPath);
                 Settings = EarlyBoundGeneratorConfig.Load(settingsPath);
                 Settings.ExtensionConfig.XrmToolBoxPluginPath = Paths.PluginsPath;
                 SettingsMap = new SettingsMap(this, Settings){SettingsPath = settingsPath};
@@ -194,9 +206,9 @@ namespace DLaB.EarlyBoundGenerator
                 (w, e) => // Work To Do Asynchronously
                 {
                     var settings = (EarlyBoundGeneratorConfig) e.Argument;
+                    Logger.WireUpToReportProgress(w);
 
                     var generator = new LogicV2(settings);
-                    Logger.WireUpToReportProgress(w);
                     try
                     {
                         if (settings.UpdateBuilderSettingsJson)
