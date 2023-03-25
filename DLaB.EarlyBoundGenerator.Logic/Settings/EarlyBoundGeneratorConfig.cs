@@ -339,6 +339,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 ObsoleteUserArgument(poco, a => a.Name == "servicecontextname", (p, arg) => poco.ServiceContextName = arg.Value);
                 ObsoleteUserArgument(poco, a => a.Name == "SuppressGeneratedCodeAttribute", (p, arg) => poco.SuppressGeneratedCodeAttribute = bool.Parse(arg.Value));
                 pocoConfig.GenerateINotifyPattern = true;
+                if (pocoConfig.GenerateOnlyReferencedOptionSets == true)
+                {
+                    pocoConfig.GenerateGlobalOptionSets = false;
+                }
 
                 AddNewTokens(pocoConfig, defaultConfig, PreV2TokenCapitalizations);
             }

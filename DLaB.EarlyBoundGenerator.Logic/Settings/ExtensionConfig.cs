@@ -323,7 +323,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 GenerateEntityTypeCode = false,
                 GenerateEnumProperties = true,
                 GenerateGeneratedCodeAttribute = false,
-                GenerateGlobalOptionSets = true,
+                GenerateGlobalOptionSets = false,
                 GenerateINotifyPattern = false,
                 GenerateOnlyReferencedOptionSets = true,
                 GenerateOptionSetMetadataAttribute = true,
@@ -490,7 +490,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
             properties.SetJsonArrayProperty(BuilderSettingsJsonNames.EntityNamesFilter, JoinWhiteLists(EntitiesWhitelist, EntityPrefixesWhitelist));
             properties.SetJsonProperty(BuilderSettingsJsonNames.GenerateGlobalOptionSets, GenerateGlobalOptionSets);
             properties.SetJsonArrayProperty(BuilderSettingsJsonNames.MessageNamesFilter, JoinWhiteLists(ActionsWhitelist, ActionPrefixesWhitelist));
-            properties.SetJsonProperty(BuilderSettingsJsonNames.SuppressGeneratedCodeAttribute, !GenerateGeneratedCodeAttribute);
+            // Currently there is a bug in the Model builder where the SuppressGeneratedCodeAttribute Flag works opposite.  This should be !GenerateGeneratedCodeAttribute
+            properties.SetJsonProperty(BuilderSettingsJsonNames.SuppressGeneratedCodeAttribute, GenerateGeneratedCodeAttribute);
             properties.SetJsonProperty(BuilderSettingsJsonNames.SuppressINotifyPattern, !GenerateINotifyPattern);
         }
 
