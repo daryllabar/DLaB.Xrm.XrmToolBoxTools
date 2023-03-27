@@ -93,6 +93,9 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("entitiesToSkip")]
         public List<string> EntitiesToSkip { get; set; }
 
+        [JsonPropertyName("filePrefixText")]
+        public string FilePrefixText { get; set; }
+
         [JsonPropertyName("generateActionAttributeNameConsts")]
         public bool GenerateActionAttributeNameConsts { get; set; }
 
@@ -132,6 +135,12 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("localOptionSetFormat")]
         public string LocalOptionSetFormat { get; set; }
 
+        /// <summary>
+        /// No Config
+        /// </summary>
+        [JsonPropertyName("loggingEnabled")]
+        public bool LoggingEnabled { get; set; }
+
         [JsonPropertyName("makeAllFieldsEditable")]
         public bool MakeAllFieldsEditable { get; set; }
 
@@ -146,12 +155,6 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("messageToSkip")]
         public List<string> MessageToSkip { get; set; }
-
-        /// <summary>
-        /// No Config
-        /// </summary>
-        [JsonPropertyName("serializedMetadataRelativeFilePath")]
-        public string SerializedMetadataRelativeFilePath { get; set; }
 
         private string _optionSetLanguageCodeOverride;
         [JsonPropertyName("optionSetLanguageCodeOverride")]
@@ -172,6 +175,10 @@ namespace DLaB.ModelBuilderExtensions
         [JsonIgnore]
         public int OptionSetLanguageCodeOverride { get; set; }
 
+
+        [JsonPropertyName("projectNameForEarlyBoundFiles")]
+        public string ProjectNameForEarlyBoundFiles { get; set; }
+
         [JsonPropertyName("readSerializedMetadata")]
         public bool ReadSerializedMetadata { get; set; }
 
@@ -185,6 +192,12 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("replaceOptionSetPropertiesWithEnum")]
         public bool ReplaceOptionSetPropertiesWithEnum { get; set; }
+
+        /// <summary>
+        /// No Config
+        /// </summary>
+        [JsonPropertyName("serializedMetadataRelativeFilePath")]
+        public string SerializedMetadataRelativeFilePath { get; set; }
 
         [JsonPropertyName("serializeMetadata")]
         public bool SerializeMetadata { get; set; }
@@ -273,6 +286,12 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("optionSetsTypesFolder")]
         public string OptionSetsTypesFolder { get; set; }
+
+        /// <summary>
+        /// Pulled from the parameters in the ConfigHelper.Initialize
+        /// </summary>
+        [JsonPropertyName("outDirectory")]
+        public string OutDirectory { get; set; }
 
         [JsonPropertyName("serviceContextName")]
         public string ServiceContextName { get; set; }

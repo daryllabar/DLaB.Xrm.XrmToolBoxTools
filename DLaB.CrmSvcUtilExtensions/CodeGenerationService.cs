@@ -1,40 +1,35 @@
-﻿using System;
+﻿using DLaB.ModelBuilderExtensions.OptionSet;
+using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
+using Source.DLaB.Common;
+using Source.DLaB.Common.VersionControl;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
-using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
-using Source.DLaB.Common;
-using Source.DLaB.Common.VersionControl;
 using Parallel = System.Threading.Tasks.Parallel;
 
 namespace DLaB.ModelBuilderExtensions
 {
-    public abstract class BaseCustomCodeGenerationService : TypedServiceSettings<ICodeGenerationService>, ICodeGenerationService
+    public class CodeGenerationService : TypedServiceBase<ICodeGenerationService>, ICodeGenerationService
     {
-        public static bool UseTfsToCheckoutFiles { get; } = ConfigHelper.GetAppSettingOrDefault("UseTfsToCheckoutFiles", false);
-        public static bool AddNewFilesToProject => ConfigHelper.GetAppSettingOrDefault("AddNewFilesToProject", false);
-        public static string FilePrefixText => ConfigHelper.GetAppSettingOrDefault("FilePrefixText", string.Empty);
-        public static string ProjectNameForEarlyBoundFiles => ConfigHelper.GetAppSettingOrDefault("ProjectNameForEarlyBoundFiles", string.Empty);
-        public static bool RemoveRuntimeVersionComment => ConfigHelper.GetAppSettingOrDefault("RemoveRuntimeVersionComment", true);
-        private static bool LoggingEnabled => ConfigHelper.GetAppSettingOrDefault("LoggingEnabled", false);
-        public static IOrganizationMetadata Metadata { get; set; }
-        public static IServiceProvider ServiceProvider { get; set; }
+        public bool UseTfsToCheckoutFiles { get; } = false; //ConfigHelper.GetAppSettingOrDefault("UseTfsToCheckoutFiles", false);
+        public bool AddNewFilesToProject { get => DLaBSettings.AddNewFilesToProject; set => DLaBSettings.AddNewFilesToProject = value; }
+        private bool DeleteFilesFromOutputFolders { get => DLaBSettings.DeleteFilesFromOutputFolders; set => DLaBSettings.DeleteFilesFromOutputFolders = value; }
+        public string FilePrefixText { get => DLaBSettings.FilePrefixText; set => DLaBSettings.FilePrefixText = value; }
+        public string ProjectNameForEarlyBoundFiles { get => DLaBSettings.ProjectNameForEarlyBoundFiles; set => DLaBSettings.ProjectNameForEarlyBoundFiles = value; }
+        public string OutDirectory { get => Settings.OutDirectory; set => Settings.OutDirectory = value; }
+        private bool LoggingEnabled { get => DLaBSettings.LoggingEnabled; set => DLaBSettings.LoggingEnabled = value; }
 
-        protected virtual string CommandLineText => ConfigHelper.GetAppSettingOrDefault("EntityCommandLineText", string.Empty);
-        protected virtual CodeUnit SplitByCodeUnit => CodeUnit.Class;
-        protected virtual List<string> ClassesToMakeStatic => new List<string>();
-        protected abstract bool CreateOneFilePerCodeUnit { get; }
-        private bool DeleteFilesFromOutputFolders => ConfigHelper.GetAppSettingOrDefault("DeleteFilesFromOutputFolders", false) && CreateOneFilePerCodeUnit;
+        public bool RemoveRuntimeVersionComment { get => DLaBSettings.RemoveRuntimeVersionComment; set => DLaBSettings.RemoveRuntimeVersionComment = value; }
 
         private VsTfsSourceControlProvider Tfs { get; set; }
 
-        protected BaseCustomCodeGenerationService(ICodeGenerationService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
+        public CodeGenerationService(ICodeGenerationService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
         }
 
-        protected BaseCustomCodeGenerationService(ICodeGenerationService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
+        public CodeGenerationService(ICodeGenerationService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
         {
         }
 
@@ -42,44 +37,52 @@ namespace DLaB.ModelBuilderExtensions
 
         public CodeGenerationType GetTypeForAttribute(Microsoft.Xrm.Sdk.Metadata.EntityMetadata entityMetadata, Microsoft.Xrm.Sdk.Metadata.AttributeMetadata attributeMetadata, IServiceProvider services)
         {
-            return GetTypeForAttributeInternal(entityMetadata, attributeMetadata, services);
+            SetServiceCache(services);
+            return DefaultService.GetTypeForAttribute(entityMetadata, attributeMetadata, services);
         }
 
         public CodeGenerationType GetTypeForEntity(Microsoft.Xrm.Sdk.Metadata.EntityMetadata entityMetadata, IServiceProvider services)
         {
-            return GetTypeForEntityInternal(entityMetadata, services);
+            SetServiceCache(services);
+            return DefaultService.GetTypeForEntity(entityMetadata, services);
         }
 
         public CodeGenerationType GetTypeForMessagePair(SdkMessagePair messagePair, IServiceProvider services)
         {
-            return GetTypeForMessagePairInternal(messagePair, services);
+            SetServiceCache(services);
+            return DefaultService.GetTypeForMessagePair(messagePair, services);
         }
 
         public CodeGenerationType GetTypeForOption(Microsoft.Xrm.Sdk.Metadata.OptionSetMetadataBase optionSetMetadata, Microsoft.Xrm.Sdk.Metadata.OptionMetadata optionMetadata, IServiceProvider services)
         {
-            return GetTypeForOptionInternal(optionSetMetadata, optionMetadata, services);
+            SetServiceCache(services);
+            return DefaultService.GetTypeForOption(optionSetMetadata, optionMetadata, services);
         }
 
         public CodeGenerationType GetTypeForOptionSet(Microsoft.Xrm.Sdk.Metadata.EntityMetadata entityMetadata, Microsoft.Xrm.Sdk.Metadata.OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
         {
-            return GetTypeForOptionSetInternal(entityMetadata, optionSetMetadata, services);
+            SetServiceCache(services);
+            return DefaultService.GetTypeForOptionSet(entityMetadata, optionSetMetadata, services);
         }
 
         public CodeGenerationType GetTypeForRequestField(SdkMessageRequest request, SdkMessageRequestField requestField, IServiceProvider services)
         {
-            return GetTypeForRequestFieldInternal(request, requestField, services);
+            SetServiceCache(services);
+            return DefaultService.GetTypeForRequestField(request, requestField, services);
         }
 
         public CodeGenerationType GetTypeForResponseField(SdkMessageResponse response, SdkMessageResponseField responseField, IServiceProvider services)
         {
-            return GetTypeForResponseFieldInternal(response, responseField, services);
+            SetServiceCache(services);
+            return DefaultService.GetTypeForResponseField(response, responseField, services);
         }
 
         public void Write(IOrganizationMetadata organizationMetadata, string language, string outputFile, string outputNamespace, IServiceProvider services)
         {
             try
             {
-                WriteInternal(organizationMetadata, language, Path.GetFullPath(outputFile), outputNamespace, services);
+                SetServiceCache(services);
+                WriteInternal(organizationMetadata, language, outputFile, outputNamespace, services);
             }
             catch (Exception ex)
             {
@@ -91,50 +94,14 @@ namespace DLaB.ModelBuilderExtensions
 
         #region Internal Implementations
 
-        protected virtual CodeGenerationType GetTypeForAttributeInternal(Microsoft.Xrm.Sdk.Metadata.EntityMetadata entityMetadata, Microsoft.Xrm.Sdk.Metadata.AttributeMetadata attributeMetadata, IServiceProvider services)
-        {
-            return DefaultService.GetTypeForAttribute(entityMetadata, attributeMetadata, services);
-        }
-
-        protected virtual CodeGenerationType GetTypeForEntityInternal(Microsoft.Xrm.Sdk.Metadata.EntityMetadata entityMetadata, IServiceProvider services)
-        {
-            return DefaultService.GetTypeForEntity(entityMetadata, services);
-        }
-
-        protected virtual CodeGenerationType GetTypeForMessagePairInternal(SdkMessagePair messagePair, IServiceProvider services)
-        {
-            return DefaultService.GetTypeForMessagePair(messagePair, services);
-        }
-
-        protected virtual CodeGenerationType GetTypeForOptionInternal(Microsoft.Xrm.Sdk.Metadata.OptionSetMetadataBase optionSetMetadata, Microsoft.Xrm.Sdk.Metadata.OptionMetadata optionMetadata, IServiceProvider services)
-        {
-            return DefaultService.GetTypeForOption(optionSetMetadata, optionMetadata, services);
-        }
-
-        protected virtual CodeGenerationType GetTypeForOptionSetInternal(Microsoft.Xrm.Sdk.Metadata.EntityMetadata entityMetadata, Microsoft.Xrm.Sdk.Metadata.OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
-        {
-            return DefaultService.GetTypeForOptionSet(entityMetadata, optionSetMetadata, services);
-        }
-
-        protected virtual CodeGenerationType GetTypeForRequestFieldInternal(SdkMessageRequest request, SdkMessageRequestField requestField, IServiceProvider services)
-        {
-            return DefaultService.GetTypeForRequestField(request, requestField, services);
-        }
-
-        protected virtual CodeGenerationType GetTypeForResponseFieldInternal(SdkMessageResponse response, SdkMessageResponseField responseField, IServiceProvider services)
-        {
-            return DefaultService.GetTypeForResponseField(response, responseField, services);
-        }
-
         protected virtual void WriteInternal(IOrganizationMetadata organizationMetadata, string language, string outputFile, string targetNamespace, IServiceProvider services)
         {
+            outputFile = outputFile ?? OutDirectory;
             if (outputFile == null)
             {
                 throw new ArgumentNullException(nameof(outputFile));
             }
 
-            Metadata = organizationMetadata;
-            ServiceProvider = services;
             if (UseTfsToCheckoutFiles)
             {
                 Tfs = new VsTfsSourceControlProvider(null, new ProcessExecutorInfo
@@ -146,61 +113,52 @@ namespace DLaB.ModelBuilderExtensions
             DisplayMessage("Ensuring Context File is Accessible");
             EnsureFileIsAccessible(outputFile);
 
-            Log("Creating Temp file");
-            var tempFile = Path.GetTempFileName();
-            Log("File " + tempFile + " Created");
-            
             // Write the file out as normal
-            DisplayMessage($"Writing file {Path.GetFileName(outputFile)} to {tempFile}");
-            DefaultService.Write(organizationMetadata, language, tempFile, targetNamespace, services);
-            Log("Completed writing file {0} to {1}", Path.GetFileName(outputFile), tempFile);
-
-            var fileContents = GetFileContents(tempFile);
+            var hack = new PacModelBuilderCodeGenHack(Settings, DefaultService, true, false);
+            hack.Write(organizationMetadata, language, outputFile, targetNamespace, services);
 
             DeleteExistingFiles(outputFile);
 
+            // TODO: Move removal of Runtime Version to Code Gen
+            // Handle 
             // Check if the Header needs to be updated and or the file needs to be split
-            if (!string.IsNullOrWhiteSpace(CommandLineText) || RemoveRuntimeVersionComment)
-            {
-                var lines = GetFileTextWithUpdatedClassComment(fileContents, CommandLineText, RemoveRuntimeVersionComment);
-                if (CreateOneFilePerCodeUnit)
-                {
-                    DisplayMessage($"Splitting File {outputFile} By Code Unit");
-                    SplitFileByCodeUnit(SplitByCodeUnit, outputFile, lines);
-                }
-                else
-                {
-                    DisplayMessage($"Updating File {outputFile}");
-                    File.WriteAllLines(outputFile, new []{ GetFormattedPrefixText(outputFile) }.Concat(lines));
-                    if (UseTfsToCheckoutFiles && UndoCheckoutIfUnchanged(outputFile))
-                    {
-                        Console.WriteLine(outputFile + " was unchanged.");
-                    }
-                }
-            }
-            else if (CreateOneFilePerCodeUnit)
-            {
-                DisplayMessage($"Splitting File {outputFile} By Code Unit");
-                SplitFileByCodeUnit(SplitByCodeUnit, outputFile, File.ReadAllLines(tempFile));
-            }
-            else
-            {
-                DisplayMessage($"Copying File {outputFile}");
-                fileContents[0] = GetFormattedPrefixText(outputFile) + fileContents[0];
-                File.WriteAllLines(outputFile, fileContents);
-                if (UseTfsToCheckoutFiles && UndoCheckoutIfUnchanged(outputFile))
-                {
-                    Console.WriteLine(outputFile + " was unchanged.");
-                }
-            }
-
-            DisplayMessage($"Cleaning up Temporary File {tempFile}");
-            File.Delete(tempFile);
-            Log("Completed cleaning up Temporary File");
-            DisplayMessage(tempFile + " Moved To: " + outputFile);
+            //if (RemoveRuntimeVersionComment)
+            //{
+            //    var lines = GetFileTextWithUpdatedClassComment(fileContents, CommandLineText, RemoveRuntimeVersionComment);
+            //    if (CreateOneFilePerCodeUnit)
+            //    {
+            //        DisplayMessage($"Splitting File {outputFile} By Code Unit");
+            //        SplitFileByCodeUnit(SplitByCodeUnit, outputFile, lines);
+            //    }
+            //    else
+            //    {
+            //        DisplayMessage($"Updating File {outputFile}");
+            //        File.WriteAllLines(outputFile, new []{ GetFormattedPrefixText(outputFile) }.Concat(lines));
+            //        if (UseTfsToCheckoutFiles && UndoCheckoutIfUnchanged(outputFile))
+            //        {
+            //            Console.WriteLine(outputFile + " was unchanged.");
+            //        }
+            //    }
+            //}
+            //else if (CreateOneFilePerCodeUnit)
+            //{
+            //    //TODO handle combining files
+            //    DisplayMessage($"Splitting File {outputFile} By Code Unit");
+            //    SplitFileByCodeUnit(SplitByCodeUnit, outputFile, File.ReadAllLines(tempFile));
+            //}
+            //else
+            //{
+            //    DisplayMessage($"Copying File {outputFile}");
+            //    fileContents[0] = GetFormattedPrefixText(outputFile) + fileContents[0];
+            //    File.WriteAllLines(outputFile, fileContents);
+            //    if (UseTfsToCheckoutFiles && UndoCheckoutIfUnchanged(outputFile))
+            //    {
+            //        Console.WriteLine(outputFile + " was unchanged.");
+            //    }
+            //}
         }
 
-        private static string GetFormattedPrefixText(string outputFile)
+        private string GetFormattedPrefixText(string outputFile)
         {
             if (string.IsNullOrWhiteSpace(FilePrefixText))
             {
@@ -226,24 +184,6 @@ namespace DLaB.ModelBuilderExtensions
             }
 
             DisplayMessage($"Finished Deleting *.cs Files From {outputFile} By Code Unit");
-        }
-
-        private string[] GetFileContents(string tempFile)
-        {
-            var fileContents = File.ReadAllLines(tempFile);
-            if (ClassesToMakeStatic.Count == 0)
-            {
-                return fileContents;
-            }
-
-            // Match any line that is " class ClassToMakeStaticName"
-            var pattern = @"\b(?:" + string.Join("|", ClassesToMakeStatic.Select(v => $"class {v}")) + @")\b";
-            for (var i = 0; i < fileContents.Length; i++)
-            {
-                fileContents[i] = Regex.Replace(fileContents[i], pattern, t => t.Value.Replace("class ", "static class "));
-            }
-
-            return fileContents;
         }
 
         #endregion // Internal Implementations
@@ -443,12 +383,41 @@ namespace DLaB.ModelBuilderExtensions
 
         protected virtual void UpdateFilesToWrite(List<FileToWrite> files)
         {
-            // do nothing by default
+            //if (!GroupLocalOptionSetsByEntity)
+            //{
+            //    return;
+            //}
+
+            var metadata = ServiceProvider.GetMetadataForLocalEnumsByName();
+            var groundFilesByEntity = new Dictionary<string, FileToWrite>();
+            foreach (var file in files.ToArray())
+            {
+                var optionSetName = Path.GetFileNameWithoutExtension(file.Path) ?? string.Empty;
+                if (!metadata.TryGetValue(optionSetName, out var localOptionSet))
+                {
+                    continue;
+                }
+
+                files.Remove(file);
+                if (groundFilesByEntity.TryGetValue(localOptionSet.Item1, out var entityFile))
+                {
+                    var closingNamespaceIndex = entityFile.Contents.LastIndexOf("}", StringComparison.InvariantCulture);
+                    var startingNamespaceIndex = file.Contents.IndexOf("{", StringComparison.InvariantCulture);
+                    var content = entityFile.Contents.Substring(0, closingNamespaceIndex) + file.Contents.Substring(startingNamespaceIndex + 1);
+                    groundFilesByEntity[localOptionSet.Item1] = new FileToWrite(entityFile.Path, content);
+                }
+                else
+                {
+                    //groundFilesByEntity[localOptionSet.Item1] = new FileToWrite(Path.Combine(file.Directory, string.Format(LocalOptionSetEntityFileNameFormat, localOptionSet.Item1)), file.Contents);
+                }
+            }
+
+            files.AddRange(groundFilesByEntity.Values);
         }
 
         private void WriteFilesAsync(List<FileToWrite> files)
         {
-            var project = new ProjectFile(files, AddNewFilesToProject, Tfs);
+            var project = new ProjectFile(files, this);
 
             if (UseTfsToCheckoutFiles)
             {
@@ -512,9 +481,10 @@ namespace DLaB.ModelBuilderExtensions
 
             if (project.ProjectUpdated)
             {
-                WriteFileIfDifferent(new ProjectFile(null, false, null), new FileToWrite(project.ProjectPath, project.GetContents()));
+                WriteFileIfDifferent(new ProjectFile(null, this), new FileToWrite(project.ProjectPath, project.GetContents()));
             }
         }
+
         private void CheckoutChangedFiles(List<FileToWrite> files)
         {
             DisplayMessage("Checking out Changed Files From TFS");
@@ -680,16 +650,16 @@ namespace DLaB.ModelBuilderExtensions
             private string ProjectDir { get; }
             private int ProjectFileIndexStart { get; }
             private int ProjectFileIndexEnd { get; }
-            private bool UpdateProjectFile { get; }
             private SortedDictionary<string, string> ProjectFiles { get; }
             internal bool ProjectUpdated { get; private set; }
             private string LineFormat { get; }
-            private VsTfsSourceControlProvider Tfs { get; }
+            private CodeGenerationService CodeGenService { get; }
 
             // ReSharper disable once SuggestBaseTypeForParameter
-            public ProjectFile(List<FileToWrite> files, bool updateProjectFile, VsTfsSourceControlProvider tfs)
+            public ProjectFile(List<FileToWrite> files, CodeGenerationService codeGenerationService)
             {
-                if (updateProjectFile && files.Count > 0)
+                CodeGenService = codeGenerationService;
+                if (codeGenerationService.AddNewFilesToProject && files.Count > 0)
                 {
                     ProjectFiles = new SortedDictionary<string, string>(StringComparer.OrdinalIgnoreCase);
                     // ReSharper disable once AssignNullToNotNullAttribute
@@ -730,17 +700,15 @@ namespace DLaB.ModelBuilderExtensions
                     LineFormat = first.Substring(0, startEndIndex) + "{0}" + first.Substring(first.LastIndexOf("\"", StringComparison.Ordinal), first.Length - first.LastIndexOf("\"", StringComparison.Ordinal));
                 }
 
-                UpdateProjectFile = updateProjectFile;
                 ProjectUpdated = false;
-                Tfs = tfs;
             }
 
             private FileInfo GetProjectPath(DirectoryInfo directory)
             {
                 bool IsProjectFile(FileInfo fi)
                 {
-                    return string.IsNullOrWhiteSpace(ProjectNameForEarlyBoundFiles) 
-                           || fi.FullName.EndsWith(ProjectNameForEarlyBoundFiles);
+                    return string.IsNullOrWhiteSpace(CodeGenService.ProjectNameForEarlyBoundFiles) 
+                           || fi.FullName.EndsWith(CodeGenService.ProjectNameForEarlyBoundFiles);
                 }
 
                 while (true)
@@ -765,7 +733,7 @@ namespace DLaB.ModelBuilderExtensions
             {
                 path = Path.GetFullPath(path);
 
-                if (!UpdateProjectFile || !ProjectFound)
+                if (!CodeGenService.AddNewFilesToProject || !ProjectFound)
                 {
                     return;
                 }
@@ -783,9 +751,9 @@ namespace DLaB.ModelBuilderExtensions
                     Log("Project \"{0}\" does not contains file \"{1}\"", ProjectPath, path);
                     ProjectFiles.Add(line, line);
                 }
-                if (UseTfsToCheckoutFiles)
+                if (CodeGenService.UseTfsToCheckoutFiles)
                 {
-                    Tfs.Add(path);
+                    CodeGenService.Tfs.Add(path);
                 }
                 
                 Console.WriteLine(path + " added to project.");
@@ -803,7 +771,7 @@ namespace DLaB.ModelBuilderExtensions
             private void Log(string log)
 #pragma warning restore IDE0051 // Remove unused private members
             {
-                if (LoggingEnabled)
+                if (CodeGenService.LoggingEnabled)
                 {
                     Console.WriteLine(DateTime.Now.ToString("hh:MM:ss:fff") + ": " + log);
                 }
@@ -811,7 +779,7 @@ namespace DLaB.ModelBuilderExtensions
 
             private void Log(string logFormat, params object[] args)
             {
-                if (LoggingEnabled)
+                if (CodeGenService.LoggingEnabled)
                 {
                     Console.WriteLine(DateTime.Now.ToString("hh:MM:ss:fff") + ": " + logFormat, args);
                 }

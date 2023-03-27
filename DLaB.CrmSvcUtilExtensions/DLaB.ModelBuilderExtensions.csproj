@@ -141,7 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Message\AttributeConstGenerator.cs" />
-    <Compile Include="Message\CustomCodeGenerationService.cs" />
     <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\Config.cs" />
     <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ConfigKeyValueSplitInfo.cs" />
     <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ConfigKeyValuesSplitInfo.cs" />
@@ -243,7 +242,7 @@
     <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\SolutionCheckerAvoider.cs" />
     <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.4\TypedQueryExpression.cs" />
     <Compile Include="AttributeConstGeneratorBase.cs" />
-    <Compile Include="BaseCustomCodeGenerationService.cs" />
+    <Compile Include="CodeGenerationService.cs" />
     <Compile Include="CamelCaser.cs" />
     <Compile Include="DLaBModelBuilderSettings.cs" />
     <Compile Include="Entity\RelationshipConstGenerator.cs" />
@@ -252,7 +251,6 @@
     <Compile Include="Entity\MultiOptionSetAttributeUpdater.cs" />
     <Compile Include="Entity\PrimaryAttributeGenerator.cs" />
     <Compile Include="Entity\AttributeConstGenerator.cs" />
-    <Compile Include="Entity\CustomCodeGenerationService.cs" />
     <Compile Include="Entity\EntityBaseClassGenerator.cs" />
     <Compile Include="Entity\MemberAttributes.cs" />
     <Compile Include="ConfigHelper.cs" />
@@ -267,8 +265,6 @@
     <Compile Include="OptionSet\CreateOptionSetEnums.cs" />
     <Compile Include="CustomizeCodeDomService.cs" />
     <Compile Include="Entity\EnumPropertyGenerator.cs" />
-    <Compile Include="OptionSet\CustomCodeGenerationService.cs" />
-    <Compile Include="OptionSet\CustomizeCodeDomService.cs" />
     <Compile Include="OptionSet\Extensions.cs" />
     <Compile Include="OptionSet\FilterOptionSetEnums.cs" />
     <Compile Include="CodeWriterFilterService.cs" />
@@ -277,6 +273,7 @@
     <Compile Include="OptionSet\Transliteration\AlphabetPoco.cs" />
     <Compile Include="OptionSet\Transliteration\TransliterationAlphabet.cs" />
     <Compile Include="OptionSet\Transliteration\TransliterationService.cs" />
+    <Compile Include="PacModelBuilderCodeGenHack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\MetadataFilter.cs" />
     <Compile Include="Serialization\MetadataMessage.cs" />

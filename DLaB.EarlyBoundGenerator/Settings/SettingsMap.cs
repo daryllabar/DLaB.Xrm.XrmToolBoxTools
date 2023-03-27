@@ -637,6 +637,15 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         }
 
         [Category("6 - Service Generation Extensions")]
+        [DisplayName("Code Generation Service")]
+        [Description("Called after MetadataProviderService returns the metadata.  Controls calling all other services.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator.")]
+        public string CodeGenerationService
+        {
+            get => Config.CodeGenerationService;
+            set => Config.CodeGenerationService = value;
+        }
+
+        [Category("6 - Service Generation Extensions")]
         [DisplayName("Code Writer Filter Service")]
         [Description("Called during the CodeDOM generation to determine if Option Sets, Options, Entities, Attributes Relationships, or Service Contexts are generated.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator.")]
         public string CodeWriterFilterService

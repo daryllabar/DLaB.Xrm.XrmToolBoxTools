@@ -8,6 +8,9 @@ using CodeDomMemberAttributes = System.CodeDom.MemberAttributes;
 
 namespace DLaB.ModelBuilderExtensions.Entity
 {
+    /// <summary>
+    /// TODO: This really should be changed so the code generator service generates this code into a separate file, rather than adding it to the namespace via the CustomizeCodeDomeService
+    /// </summary>
     public class OptionSetMetadataAttributeGenerator : ICustomizeCodeDomService
     {
         #region ICustomizeCodeDomService Members

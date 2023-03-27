@@ -1,40 +1,13 @@
-﻿// =====================================================================
-//
-//  This file is part of the Microsoft Dynamics CRM SDK Code Samples.
-//
-//  Copyright (C) Microsoft Corporation.  All rights reserved.
-//
-//  This source code is intended only as a supplement to Microsoft
-//  Development Tools and/or online documentation.  See these other
-//  materials for detailed information regarding Microsoft code samples.
-//
-//  THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY
-//  KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
-//  IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
-//  PARTICULAR PURPOSE.
-//
-// =====================================================================
-//<snippetCodeCustomizationService>
-
-// Define REMOVE_PROXY_TYPE_ASSEMBLY_ATTRIBUTE if you plan on compiling the output from
-// this CrmSvcUtil extension with the output from the unextended CrmSvcUtil in the same
-// assembly (this assembly attribute can only be defined once in the assembly).
-
+﻿using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
+using Microsoft.Xrm.Sdk.Metadata;
 using System;
-
-using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
-using System.Diagnostics;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using Microsoft.Xrm.Sdk.Metadata;
 
 namespace DLaB.ModelBuilderExtensions.OptionSet
 {
-    /// <summary>
-    /// Create an implementation of ICustomizeCodeDomService if you want to manipulate the
-    /// code dom after ICodeGenerationService has run.
-    /// </summary>
     public sealed class CreateOptionSetEnums : ICustomizeCodeDomService
     {
         public static bool AddOptionSetMetadataAttribute => ConfigHelper.GetAppSettingOrDefault("AddOptionSetMetadataAttribute", false);
@@ -47,7 +20,7 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
             //Trace.TraceInformation("Entering ICustomizeCodeDomService.CustomizeCodeDom");
             //Trace.TraceInformation("Number of Namespaces generated: {0}", codeUnit.Namespaces.Count);
 
-            RemoveNonOptionSetDefinitions(codeUnit);
+            //RemoveNonOptionSetDefinitions(codeUnit);
             AddMetadataAttributes(codeUnit, services);
             SortOptionSets(codeUnit);
             //Trace.TraceInformation("Exiting ICustomizeCodeDomService.CustomizeCodeDom");

@@ -49,7 +49,7 @@ namespace DLaB.ModelBuilderExtensions
             }
             var metadataProvider = services.GetService<IMetadataProviderService>();
             var metadata = metadataProvider.LoadMetadata(services);
-            _entityNames = new HashSet<string>(metadata.Entities.Select(e => GetNameForEntity(e, BaseCustomCodeGenerationService.ServiceProvider)).ToArray());
+            _entityNames = new HashSet<string>(metadata.Entities.Select(e => GetNameForEntity(e, services)).ToArray());
             return _entityNames;
         }
 
@@ -380,6 +380,14 @@ namespace DLaB.ModelBuilderExtensions
                 : defaultName;
         }
 
+        public string GetNameForMessagePair(SdkMessagePair messagePair, IServiceProvider services)
+        {
+            var defaultName = DefaultService.GetNameForMessagePair(messagePair, services);
+            return CamelCaseMemberNames
+                ? CamelCaser.Case(defaultName)
+                : defaultName;
+        }
+
         public string GetNameForRequestField(SdkMessageRequest request, SdkMessageRequestField requestField, IServiceProvider services)
         {
             var defaultName = DefaultService.GetNameForRequestField(request, requestField, services);
@@ -407,7 +415,6 @@ namespace DLaB.ModelBuilderExtensions
         #region Default INamingService Calls
 
         public string GetNameForServiceContext(IServiceProvider services) { return DefaultService.GetNameForServiceContext(services); }
-        public string GetNameForMessagePair(SdkMessagePair messagePair, IServiceProvider services) { return DefaultService.GetNameForMessagePair(messagePair, services); }
         public string GetNameForEntitySet(EntityMetadata entityMetadata, IServiceProvider services) { return DefaultService.GetNameForEntitySet(entityMetadata, services); }
 
         #endregion Default INamingService Calls
