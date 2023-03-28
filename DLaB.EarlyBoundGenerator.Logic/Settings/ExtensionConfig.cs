@@ -470,15 +470,14 @@ namespace DLaB.EarlyBoundGenerator.Settings
             writer.AddProperty(nameof(OptionSetLanguageCodeOverride), OptionSetLanguageCodeOverride?.ToString());
             writer.AddPropertyDictionaryStringString(nameof(OptionSetNames), OptionSetNames);
             writer.AddProperty(nameof(ProjectNameForEarlyBoundFiles), ProjectNameForEarlyBoundFiles ?? string.Empty);
-            writer.AddProperty(nameof(PropertyEnumMappings), PropertyEnumMappings);
+            writer.AddPropertyDictionaryStringString(nameof(PropertyEnumMappings), PropertyEnumMappings, false);
             writer.AddProperty(nameof(ReadSerializedMetadata), ReadSerializedMetadata);
             writer.AddProperty(nameof(RemoveRuntimeVersionComment), RemoveRuntimeVersionComment);
             writer.AddProperty(nameof(ReplaceOptionSetPropertiesWithEnum), ReplaceOptionSetPropertiesWithEnum);
             writer.AddProperty(nameof(SerializeMetadata), SerializeMetadata);
             writer.AddPropertyArray(nameof(TokenCapitalizationOverrides), TokenCapitalizationOverrides);
             writer.AddProperty(nameof(UseLogicalNames), UseLogicalNames);
-            // TODO Split
-            // writer.AddProperty(nameof(UnmappedProperties), UnmappedProperties);
+            writer.AddPropertyDictionaryStringHashString(nameof(UnmappedProperties), UnmappedProperties);
             writer.AddProperty(nameof(UseTfsToCheckoutFiles), UseTfsToCheckoutFiles);
             writer.AddProperty(nameof(WaitForAttachedDebugger), WaitForAttachedDebugger);
             writer.AddProperty(nameof(XrmToolBoxPluginPath), XrmToolBoxPluginPath);

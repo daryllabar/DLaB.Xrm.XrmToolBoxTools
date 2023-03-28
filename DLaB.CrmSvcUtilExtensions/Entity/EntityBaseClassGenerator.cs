@@ -42,10 +42,9 @@ namespace DLaB.ModelBuilderExtensions.Entity
             "OwningUser"
         }));
 
-        public static string BaseEntityName => ConfigHelper.GetAppSettingOrDefault("BaseEntityClassName", "EarlyBoundEntity");
-        public static string OrgEntityName => ConfigHelper.GetAppSettingOrDefault("OrgEntityClassName", "OrganizationOwnedEntity");
-        public static string UserEntityName => ConfigHelper.GetAppSettingOrDefault("UserEntityClassName", "UserOwnedEntity");
-
+        public string BaseEntityName { get => DLaBSettings.BaseEntityClassName; set => DLaBSettings.BaseEntityClassName = value; }
+        public string OrgEntityName { get => DLaBSettings.OrgEntityClassName; set => DLaBSettings.OrgEntityClassName = value; }
+        public string UserEntityName { get => DLaBSettings.UserEntityClassName; set => DLaBSettings.UserEntityClassName = value; } 
         private bool MultiSelectCreated { get; }
 
         public EntityBaseClassGenerator(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters) : base (defaultService, parameters)
@@ -142,7 +141,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
             }
         }
 
-        public static CodeTypeDeclaration GetOrgEntity(CodeTypeDeclaration type)
+        public CodeTypeDeclaration GetOrgEntity(CodeTypeDeclaration type)
         {
             var entityClass = new CodeTypeDeclaration(OrgEntityName)
             {
@@ -160,7 +159,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
             return entityClass;
         }
 
-        public static CodeTypeDeclaration GetUserEntity(CodeTypeDeclaration type)
+        public CodeTypeDeclaration GetUserEntity(CodeTypeDeclaration type)
         {
             var entityClass = new CodeTypeDeclaration(UserEntityName)
             {

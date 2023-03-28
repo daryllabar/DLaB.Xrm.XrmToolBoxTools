@@ -9,8 +9,8 @@ namespace DLaB.ModelBuilderExtensions
         /// <summary>
         /// No Config
         /// </summary>
-        [JsonPropertyName("attributeConstsClassName")]
-        public string AttributeConstsClassName { get; set; }
+        [JsonPropertyName("actionLogicalFieldName")]
+        public string ActionLogicalFieldName { get; set; }
 
         [JsonPropertyName("addDebuggerNonUserCode")]
         public bool AddDebuggerNonUserCode { get; set; }
@@ -26,6 +26,18 @@ namespace DLaB.ModelBuilderExtensions
         /// </summary>
         [JsonPropertyName("addPrimaryAttributeConsts")]
         public bool AddPrimaryAttributeConsts { get; set; }
+
+        /// <summary>
+        /// No Config
+        /// </summary>
+        [JsonPropertyName("attributeConstsClassName")]
+        public string AttributeConstsClassName { get; set; }
+
+        /// <summary>
+        /// No Config
+        /// </summary>
+        [JsonPropertyName("baseEntityClassName")]
+        public string BaseEntityClassName { get; set; }
 
         [JsonPropertyName("builderSettingsJsonRelativePath")]
         public string BuilderSettingsJsonRelativePath { get; set; }
@@ -175,9 +187,17 @@ namespace DLaB.ModelBuilderExtensions
         [JsonIgnore]
         public int OptionSetLanguageCodeOverride { get; set; }
 
+        /// <summary>
+        /// No Config
+        /// </summary>
+        [JsonPropertyName("orgEntityClassName")]
+        public string OrgEntityClassName { get; set; }
 
         [JsonPropertyName("projectNameForEarlyBoundFiles")]
         public string ProjectNameForEarlyBoundFiles { get; set; }
+
+        [JsonPropertyName("propertyEnumMappings")]
+        public Dictionary<string, string> PropertyEnumMappings { get; set; }
 
         [JsonPropertyName("readSerializedMetadata")]
         public bool ReadSerializedMetadata { get; set; }
@@ -217,6 +237,15 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("updateMultiOptionSetAttributes")]
         public bool UpdateMultiOptionSetAttributes { get; set; }
 
+        [JsonPropertyName("unmappedProperties")]
+        public Dictionary<string, HashSet<string>> UnmappedProperties { get; set; }
+
+        /// <summary>
+        /// No Config
+        /// </summary>
+        [JsonPropertyName("userEntityClassName")]
+        public string UserEntityClassName { get; set; }
+
         [JsonPropertyName("useLogicalNames")]
         public bool UseLogicalNames { get; set; }
 
@@ -234,8 +263,12 @@ namespace DLaB.ModelBuilderExtensions
 
         public DLaBModelBuilder()
         {
+            ActionLogicalFieldName = "ActionLogicalName";
             AddPrimaryAttributeConsts = true;
             AttributeConstsClassName = "Fields";
+            BaseEntityClassName = "EarlyBoundEntity";
+            OrgEntityClassName = "OrganizationOwnedEntity";
+            UserEntityClassName = "UserOwnedEntity";
             EnableFileDataType = true;
             EntitiesToSkip = new List<string>();
             EntityAttributeSpecifiedNames = new Dictionary<string, HashSet<string>>();
@@ -247,8 +280,10 @@ namespace DLaB.ModelBuilderExtensions
             MessageToSkip = new List<string>();
             SerializedMetadataRelativeFilePath = "metadata.xml";
             OptionSetNames = new Dictionary<string, string>();
+            PropertyEnumMappings = new Dictionary<string, string>();
             RelationshipConstsClassName = "Relationships";
             TokenCapitalizationOverrides = new List<string>();
+            UnmappedProperties = new Dictionary<string, HashSet<string>>();
             ValidCSharpNameRegEx = @"[^a-zA-Z0-9_]";
         }
     }

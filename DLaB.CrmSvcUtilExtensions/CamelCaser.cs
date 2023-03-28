@@ -315,6 +315,7 @@ namespace DLaB.ModelBuilderExtensions
                     : fallback.Remaining + Capitalize(fallback.Word);
             }
 
+            // ReSharper disable ConditionIsAlwaysTrueOrFalse
             if (parseForward)
             {
                 return part[0].ToString().ToUpper() + CasePart(part.Substring(1), parseForward);
@@ -323,6 +324,7 @@ namespace DLaB.ModelBuilderExtensions
             var nonWordIndex = part.Length - 1;
             var nonWord = part[nonWordIndex];
             return CasePart(part.Substring(0, nonWordIndex), parseForward) + nonWord.ToString().ToUpper();
+            // ReSharper restore ConditionIsAlwaysTrueOrFalse
         }
 
         private int FirstNonWordPartIndex(string remaining)

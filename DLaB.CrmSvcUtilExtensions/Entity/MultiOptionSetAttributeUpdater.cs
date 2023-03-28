@@ -1,9 +1,9 @@
-﻿using System;
-using System.CodeDom;
-using System.Linq;
-using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
+﻿using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
+using System;
+using System.CodeDom;
+using System.Linq;
 
 namespace DLaB.ModelBuilderExtensions.Entity
 {
@@ -17,11 +17,8 @@ namespace DLaB.ModelBuilderExtensions.Entity
                 .LoadMetadata(services).Entities
                 .ToDictionary(k => k.LogicalName, v => v.Attributes.ToDictionary(k => k.LogicalName));
 
-            var types = codeUnit.Namespaces[0].Types;
-            foreach (CodeTypeDeclaration type in types)
+            foreach (var type in codeUnit.GetEntityTypes())
             {
-                if (!type.IsClass || type.IsContextType() || type.IsBaseEntityType()) { continue; }
-
                 var logicalName = type.GetEntityLogicalName();
                 if (!attributesByEntity.TryGetValue(logicalName, out var attributes))
                 {

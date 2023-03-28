@@ -5,6 +5,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime;
 
 namespace DLaB.ModelBuilderExtensions
 {
@@ -20,7 +21,6 @@ namespace DLaB.ModelBuilderExtensions
         public bool GenerateEntityTypeCode { get => DLaBSettings.GenerateEntityTypeCode; set => DLaBSettings.GenerateEntityTypeCode = value; }
         public bool GenerateEnumProperties { get => DLaBSettings.GenerateEnumProperties; set => DLaBSettings.GenerateEnumProperties = value; }
         public bool GenerateOptionSetMetadataAttribute { get => DLaBSettings.GenerateOptionSetMetadataAttribute; set => DLaBSettings.GenerateOptionSetMetadataAttribute = value; }
-        public bool ReplaceOptionSetPropertiesWithEnum { get => DLaBSettings.ReplaceOptionSetPropertiesWithEnum; set => DLaBSettings.ReplaceOptionSetPropertiesWithEnum = value; }
         public bool UpdateMultiOptionSetAttributes { get => DLaBSettings.UpdateMultiOptionSetAttributes; set => DLaBSettings.UpdateMultiOptionSetAttributes = value; }
         public bool UpdateEnumerableEntityProperties { get => DLaBSettings.UpdateEnumerableEntityProperties; set => DLaBSettings.UpdateEnumerableEntityProperties = value; }
 
@@ -37,6 +37,7 @@ namespace DLaB.ModelBuilderExtensions
         #region Sub Service Properties
 
         public OptionSet.CustomizeCodeDomService OptionSetCustomizer { get; set; }
+        public EnumPropertyGenerator EnumPropertyCustomizer { get; set; }
 
         #endregion Sub Service Properties
 
@@ -53,8 +54,8 @@ namespace DLaB.ModelBuilderExtensions
 
         private void Initialize()
         {
-            MessageApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.MessageToSkip),
-                DLaBSettings.MessagePrefixesToSkip);
+            EnumPropertyCustomizer = new EnumPropertyGenerator(DefaultService, Settings);
+            MessageApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.MessageToSkip), DLaBSettings.MessagePrefixesToSkip);
             OptionSetCustomizer = new OptionSet.CustomizeCodeDomService(DefaultService, Settings);
         }
 
@@ -136,8 +137,7 @@ namespace DLaB.ModelBuilderExtensions
 
             if (GenerateEnumProperties)
             {
-                var generator = new EnumPropertyGenerator(CreateBaseClasses, ReplaceOptionSetPropertiesWithEnum, ServiceCache.EntityMetadataByLogicalName);
-                generator.CustomizeCodeDom(codeUnit, services);
+                EnumPropertyCustomizer.CustomizeCodeDom(codeUnit, services);
             }
 
             if (CreateBaseClasses)

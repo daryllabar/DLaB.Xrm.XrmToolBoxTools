@@ -229,20 +229,29 @@ namespace DLaB.ModelBuilderExtensions
                    || baseType == "Microsoft.Xrm.Sdk.OrganizationResponse";
         }
 
-        public static bool IsBaseEntityType(this CodeTypeDeclaration type)
-        {
-            var name = type.Name;
-            return name == EntityBaseClassGenerator.BaseEntityName
-                   || name == EntityBaseClassGenerator.OrgEntityName
-                   || name == EntityBaseClassGenerator.UserEntityName;
-        }
-
         public static bool IsEntityType(this CodeTypeDeclaration type)
         {
             return type.GetCustomAttribute("Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute") != null;
         }
 
         #endregion // CodeTypeDeclaration
+
+        #region IDictionary<string,string>
+
+        public static string GetFirstKey(this IDictionary<string, string> dict, params string[] keys)
+        {
+            foreach (var key in keys)
+            {
+                if (dict.TryGetValue(key, out var value))
+                {
+                    return value;
+                }
+            }
+
+            return null;
+        }
+
+        #endregion Dictionary<string,string>
 
         #region Label
 

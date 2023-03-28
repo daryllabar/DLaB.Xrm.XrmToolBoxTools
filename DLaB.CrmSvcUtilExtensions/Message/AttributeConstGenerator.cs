@@ -6,7 +6,7 @@ namespace DLaB.ModelBuilderExtensions.Message
 {
     public class AttributeConstGenerator : AttributeConstGeneratorBase
     {
-        public static string ActionLogicalFieldName => ConfigHelper.GetAppSettingOrDefault("ActionLogicalFieldName", "ActionLogicalName");
+        public string ActionLogicalFieldName { get => DLaBSettings.ActionLogicalFieldName; set => DLaBSettings.ActionLogicalFieldName = value; }
         public override bool GenerateAttributeNameConsts { get => DLaBSettings.GenerateActionAttributeNameConsts; set => DLaBSettings.GenerateActionAttributeNameConsts = value; }
 
         public AttributeConstGenerator(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)

@@ -1,7 +1,6 @@
 ﻿using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using System;
 using System.CodeDom;
-using System.Linq;
 
 namespace DLaB.ModelBuilderExtensions.Entity
 {
@@ -9,10 +8,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
     {
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
-            var types = codeUnit.Namespaces[0].Types;
-
-            foreach (var type in types.Cast<CodeTypeDeclaration>().
-                                 Where(type => type.IsClass && !type.IsContextType()))
+            foreach (var type in codeUnit.GetEntityTypes())
             {
                 AddEntityConstructors(type);
             }

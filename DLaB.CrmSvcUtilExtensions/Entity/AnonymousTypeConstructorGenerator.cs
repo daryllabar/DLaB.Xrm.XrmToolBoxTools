@@ -19,11 +19,8 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
-            var types = codeUnit.Namespaces[0].Types;
-            foreach (CodeTypeDeclaration type in types)
+            foreach (CodeTypeDeclaration type in codeUnit.GetEntityTypes())
             {
-                if (!type.IsClass || type.IsContextType() || type.IsBaseEntityType()) { continue; }
-
                 type.Members.Add(GetAnonymousTypeConstructor(type));
             }
         }

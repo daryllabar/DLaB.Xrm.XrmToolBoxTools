@@ -1,50 +1,45 @@
 ﻿using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
-using Source.DLaB.Xrm;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Microsoft.Xrm.Sdk.Extensions;
 
 //using System.Reflection;
 
 namespace DLaB.ModelBuilderExtensions.Entity
 {
-    class EnumPropertyGenerator : ICustomizeCodeDomService
+    public class EnumPropertyGenerator : TypedServiceBase<ICustomizeCodeDomService>
     {
-        public bool CreateBaseClasses { get; }
-        public bool ReplaceOptionSetProperties { get; }
+        public string BaseEntityName { get => DLaBSettings.BaseEntityClassName; set => DLaBSettings.BaseEntityClassName = value; }
+        public bool CreateBaseClasses { get => DLaBSettings.CreateBaseClasses; set => DLaBSettings.CreateBaseClasses = value; }
         public bool MultiSelectEnumCreated { get; private set; }
-        public Dictionary<string, string> SpecifiedMappings { get; private set; }
-        public Dictionary<string, HashSet<string>> UnmappedProperties { get; private set; }
-        public Dictionary<string, EntityMetadata> Entities { get; set; }
-
-        public INamingService NamingService { get; private set; }
-        public IServiceProvider Services { get; private set; }
+        public Dictionary<string, string> PropertyEnumMappings { get => DLaBSettings.PropertyEnumMappings; set => DLaBSettings.PropertyEnumMappings = value; }
+        public bool ReplaceOptionSetPropertiesWithEnum { get => DLaBSettings.ReplaceOptionSetPropertiesWithEnum; set => DLaBSettings.ReplaceOptionSetPropertiesWithEnum = value; }
+        public Dictionary<string, HashSet<string>> UnmappedProperties { get => DLaBSettings.UnmappedProperties; set => DLaBSettings.UnmappedProperties = value; }
 
 
-        public EnumPropertyGenerator(bool createBaseClasses, bool replaceOptionSetProperties, Dictionary<string,EntityMetadata> entities)
+        public EnumPropertyGenerator(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
-            CreateBaseClasses = createBaseClasses;
-            ReplaceOptionSetProperties = replaceOptionSetProperties;
             MultiSelectEnumCreated = false;
-            Entities = entities;
+        }
+
+        public EnumPropertyGenerator(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
+        {
+            MultiSelectEnumCreated = false;
         }
 
         #region ICustomizeCodeDomService Members
 
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
-            Services = services;
-            NamingService = services.GetService<INamingService>();
-            InitializeMappings();
-            var types = codeUnit.Namespaces[0].Types;
-            foreach (CodeTypeDeclaration type in types)
-            {
-                if (!type.IsClass || type.IsContextType() || type.IsBaseEntityType()) { continue; }
+            SetServiceCache(services);
 
+            foreach (var type in codeUnit.GetEntityTypes())
+            {
                 var logicalName = type.GetEntityLogicalName();
                 var propertiesToReplace = new Dictionary<int,CodeMemberProperty>();
                 foreach (var member in type.Members)
@@ -61,7 +56,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
                 foreach (var enumProp in propertiesToReplace.Where(p => p.Value != null).OrderByDescending(p => p.Key))
                 {
-                    if (!ReplaceOptionSetProperties)
+                    if (!ReplaceOptionSetPropertiesWithEnum)
                     {
                         type.Members.Insert(enumProp.Key + 1, enumProp.Value);
                     }
@@ -110,23 +105,6 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
         #endregion
 
-        private void InitializeMappings()
-        {
-            var specifiedMappings = ConfigHelper.GetAppSettingOrDefault("PropertyEnumMappings", string.Empty).Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
-            UnmappedProperties = ConfigHelper.GetDictionaryHash("UnmappedProperties", true);
-            SpecifiedMappings = new Dictionary<string, string>();
-
-            foreach (var specifiedMapping in specifiedMappings)
-            {
-                if (string.IsNullOrWhiteSpace(specifiedMapping))
-                {
-                    continue;
-                }
-                var parts = specifiedMapping.Split(',');
-                SpecifiedMappings.Add(parts[0].Trim().ToLower(), parts[1].Trim());
-            }
-        }
-
         private class EnumPropertyInfo
         {
             public string OptionSetType { get; set; }
@@ -172,7 +150,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
                     new CodeMethodInvokeExpression(
                         new CodeMethodReferenceExpression(
                             CreateBaseClasses
-                                ? new CodeTypeReferenceExpression(EntityBaseClassGenerator.BaseEntityName)
+                                ? new CodeTypeReferenceExpression(BaseEntityName)
                                 : new CodeTypeReferenceExpression("EntityOptionSetEnum"),
                             "GetMultiEnum",
                             new CodeTypeReference(info.OptionSetType)),
@@ -186,7 +164,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
                         info.EnumType,
                         new CodeMethodInvokeExpression(
                             CreateBaseClasses
-                                ? new CodeTypeReferenceExpression(EntityBaseClassGenerator.BaseEntityName)
+                                ? new CodeTypeReferenceExpression(BaseEntityName)
                                 : new CodeTypeReferenceExpression("EntityOptionSetEnum"),
                             "GetEnum",
                             new CodeThisReferenceExpression(),
@@ -215,7 +193,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
                 getValueToSetExpression =
                     new CodeMethodInvokeExpression(
                         CreateBaseClasses
-                            ? new CodeTypeReferenceExpression(EntityBaseClassGenerator.BaseEntityName)
+                            ? new CodeTypeReferenceExpression(BaseEntityName)
                             : new CodeTypeReferenceExpression("EntityOptionSetEnum"),
                         "GetMultiEnum",
                         new CodeThisReferenceExpression(),
@@ -249,17 +227,19 @@ namespace DLaB.ModelBuilderExtensions.Entity
             var propertyLogicalName = prop.GetLogicalName();
             if (propertyLogicalName == null) { throw new Exception("Unable to determine property Logical Name"); }
         
-            var data = Entities[entityLogicalName];
+            var data = ServiceCache.EntityMetadataByLogicalName[entityLogicalName];
             var attribute = data.Attributes.FirstOrDefault(a => a.LogicalName == propertyLogicalName);
-            var picklist = attribute as EnumAttributeMetadata;
-            if (picklist == null) { return null; }
+            if (!(attribute is EnumAttributeMetadata picklist))
+            {
+                return null;
+            }
         
-            var enumName = NamingService.GetNameForOptionSet(data, picklist.OptionSet, Services);
-            if (SpecifiedMappings.TryGetValue(entityLogicalName.ToLower() + "." + prop.Name.ToLower(), out var specifiedEnum))
+            var enumName = ServiceProvider.Get<INamingService>().GetNameForOptionSet(data, picklist.OptionSet, ServiceCache.ServiceProvider);
+            if (PropertyEnumMappings.TryGetValue(entityLogicalName.ToLower() + "." + prop.Name.ToLower(), out var specifiedEnum))
             {
                 enumName = specifiedEnum;
             }
-            else if (Entities.ContainsKey(enumName) && Entities[enumName].SchemaName == enumName)
+            else if (ServiceCache.EntityMetadataByLogicalName.ContainsKey(enumName) && ServiceCache.EntityMetadataByLogicalName[enumName].SchemaName == enumName)
             {
                 enumName += "Enum";
             }
@@ -268,7 +248,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
             {
                 OptionSetType = enumName,
                 IsMultSelect = picklist is MultiSelectPicklistAttributeMetadata,
-                PropertyName = prop.Name + (ReplaceOptionSetProperties
+                PropertyName = prop.Name + (ReplaceOptionSetPropertiesWithEnum
                     ? string.Empty
                     : "Enum" ),
                 LogicalName = propertyLogicalName

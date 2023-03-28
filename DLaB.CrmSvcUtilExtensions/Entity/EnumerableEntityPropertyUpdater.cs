@@ -10,10 +10,8 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
-            foreach (CodeTypeDeclaration type in codeUnit.Namespaces[0].Types)
+            foreach (var type in codeUnit.GetEntityTypes())
             {
-                if (!type.IsClass || type.IsContextType() || type.IsBaseEntityType()) { continue; }
-
                 foreach (var member in type.Members)
                 {
                     if (!(member is CodeMemberProperty property)

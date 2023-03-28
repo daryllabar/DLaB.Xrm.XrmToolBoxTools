@@ -12,7 +12,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
     [TestClass]
     public class DataModelBuilderTests
     {
-        private readonly HashSet<string> Switches = new HashSet<string>(new[]
+        private readonly HashSet<string> _switches = new HashSet<string>(new[]
         {
             "emitfieldsclasses",
             "generateActions",
@@ -28,7 +28,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
             "writesettingsTemplateFile"
         });
 
-        private readonly HashSet<string> NotValid = new HashSet<string>(new[]
+        private readonly HashSet<string> _notValid = new HashSet<string>(new[]
         {
             "entitytypesfolder",
             "language",
@@ -40,12 +40,12 @@ namespace DLaB.ModelBuilderExtensions.Tests
         [TestMethod]
         public void CreateTestFileGeneration()
         {
-            if (!Debugger.IsAttached && !ConfigHelper.GetAppSettingOrDefault("TestFileCreation", false))
+            if (!Debugger.IsAttached && !Source.DLaB.Common.Config.GetAppSettingOrDefault("TestFileCreation", false))
             {
                 Assert.Inconclusive("No Debugger Attached and Test File Creation is not true!");
                 return;
             }
-            var connectionString = ConfigHelper.GetAppSettingOrDefault("DLaB.EarlyBoundGenerator.ConnectionString", "NONE");
+            var connectionString = Source.DLaB.Common.Config.GetAppSettingOrDefault("DLaB.EarlyBoundGenerator.ConnectionString", "NONE");
             if (connectionString == "NONE")
             {
                 Console.WriteLine("Add DLaB.EarlyBoundGenerator.ConnectionString to the app.config or to your machine.config!");
@@ -77,11 +77,11 @@ namespace DLaB.ModelBuilderExtensions.Tests
 
             foreach (var kvp in parameters.ToDictionary().Where(kvp => !string.IsNullOrWhiteSpace(kvp.Value)))
             {
-                if (NotValid.Contains(kvp.Key))
+                if (_notValid.Contains(kvp.Key))
                 {
                     // do nothing...
                 }
-                else if (Switches.Contains(kvp.Key))
+                else if (_switches.Contains(kvp.Key))
                 {
                     if (bool.TryParse(kvp.Value, out var boolVal) && boolVal)
                     {
