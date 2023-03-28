@@ -2,13 +2,12 @@
 using Microsoft.Xrm.Sdk.Metadata;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace DLaB.ModelBuilderExtensions
 {
     public class CodeWriterFilterService : TypedServiceSettings<ICodeWriterFilterService>, ICodeWriterFilterService
     {
-        public WhitelistBlacklistLogic EntityApprover { get; set; }
+        public BlacklistLogic EntityApprover { get; set; }
 
         private bool EnableFileDataType { get => DLaBSettings.EnableFileDataType; set => DLaBSettings.EnableFileDataType = value; }
 
@@ -21,15 +20,13 @@ namespace DLaB.ModelBuilderExtensions
 
         public CodeWriterFilterService(ICodeWriterFilterService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
-            EntityApprover = new WhitelistBlacklistLogic(Settings.EntityNamesFilter?.Any() == true,
-                new HashSet<string>(DLaBSettings.EntitiesToSkip),
+            EntityApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.EntitiesToSkip),
                 DLaBSettings.EntityPrefixesToSkip);
         }
 
         public CodeWriterFilterService(ICodeWriterFilterService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
         {
-            EntityApprover = new WhitelistBlacklistLogic(Settings.EntityNamesFilter?.Any() == true,
-                new HashSet<string>(DLaBSettings.EntitiesToSkip),
+            EntityApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.EntitiesToSkip),
                 DLaBSettings.EntityPrefixesToSkip);
         }
 

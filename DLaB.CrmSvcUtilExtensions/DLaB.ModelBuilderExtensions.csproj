@@ -288,7 +288,7 @@
     <Compile Include="ServiceCache.cs" />
     <Compile Include="TypedServiceBase.cs" />
     <Compile Include="TypedServiceSettings.cs" />
-    <Compile Include="WhitelistBlacklistLogic.cs" />
+    <Compile Include="BlacklistLogic.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">

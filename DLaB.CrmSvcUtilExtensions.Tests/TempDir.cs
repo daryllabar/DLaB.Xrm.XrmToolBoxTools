@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 // http://geekswithblogs.net/akraus1/archive/2013/12/28/154992.aspx
 
@@ -24,7 +20,6 @@ namespace DLaB.ModelBuilderExtensions.Tests
         public string Name
         {
             get;
-            private set;
         }
 
         /// <summary>
@@ -55,7 +50,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
 
             if (Name.Length < 10)
             {
-                throw new InvalidOperationException(String.Format("Directory name seesm to be invalid. Do not delete recursively your hard disc.", Name));
+                throw new InvalidOperationException(String.Format("Directory name '{0}' seems to be invalid. Do not recursively delete your hard disc.", Name));
             }
 
             // delete all files in temp directory

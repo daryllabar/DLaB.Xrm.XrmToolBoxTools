@@ -27,6 +27,10 @@ namespace DLaB.ModelBuilderExtensions.Tests.Metadata
 
         private void UnzipMetadata(string xmlPath)
         {
+            if (File.Exists(xmlPath))
+            {
+                return;
+            }
             var zipPath = Path.ChangeExtension(xmlPath, "zip");
             if (!File.Exists(zipPath))
             {

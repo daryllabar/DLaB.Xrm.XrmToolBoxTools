@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Source.DLaB.Common;
 
 namespace DLaB.EarlyBoundGenerator.Api.Tests
 {

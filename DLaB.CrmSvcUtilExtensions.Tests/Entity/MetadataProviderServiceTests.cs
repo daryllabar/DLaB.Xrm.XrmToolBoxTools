@@ -1,5 +1,4 @@
-﻿using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DLaB.ModelBuilderExtensions.Tests.Entity
 {
@@ -9,10 +8,8 @@ namespace DLaB.ModelBuilderExtensions.Tests.Entity
         [TestMethod]
         public void CanDeserializeMetadata()
         {
-            var factory = new ServiceFactory();
-            var provider = factory.GetService<IMetadataProviderService>();
-            Assert.IsNotNull(provider);
-            var metadata = provider.LoadMetadata(factory);
+            var provider = new Metadata.Provider("2016.xml");
+            var metadata = provider.LoadMetadata(null);
             Assert.AreNotEqual(0, metadata.Entities.Length);
         }
     }

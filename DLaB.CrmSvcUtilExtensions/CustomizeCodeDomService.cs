@@ -29,7 +29,7 @@ namespace DLaB.ModelBuilderExtensions
 
         #region Message Properties
 
-        public WhitelistBlacklistLogic MessageApprover { get; set; }
+        public BlacklistLogic MessageApprover { get; set; }
 
         public bool MakeResponseActionsEditable { get => DLaBSettings.MakeResponseActionsEditable; set => DLaBSettings.MakeResponseActionsEditable = value; }
 
@@ -38,15 +38,13 @@ namespace DLaB.ModelBuilderExtensions
         public CustomizeCodeDomService(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
             Trace.TraceInformation("DLaB.ModelBuilderExtensions.CustomizeCodeDomService.CustomizeCodeDom Created!");
-            MessageApprover = new WhitelistBlacklistLogic(Settings.MessageNamesFilter?.Any() == true,
-                new HashSet<string>(DLaBSettings.MessageToSkip),
+            MessageApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.MessageToSkip),
                 DLaBSettings.MessagePrefixesToSkip);
         }
 
         public CustomizeCodeDomService(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
         {
-            MessageApprover = new WhitelistBlacklistLogic(Settings.MessageNamesFilter?.Any() == true,
-                new HashSet<string>(DLaBSettings.MessageToSkip),
+            MessageApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.MessageToSkip),
                 DLaBSettings.MessagePrefixesToSkip);
         }
 
