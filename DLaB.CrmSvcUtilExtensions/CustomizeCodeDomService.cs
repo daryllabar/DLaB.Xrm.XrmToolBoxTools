@@ -1,5 +1,4 @@
 ﻿using DLaB.ModelBuilderExtensions.Entity;
-using DLaB.ModelBuilderExtensions.OptionSet;
 using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using System;
 using System.CodeDom;
@@ -35,17 +34,28 @@ namespace DLaB.ModelBuilderExtensions
 
         #endregion Message Properties
 
+        #region Sub Service Properties
+
+        public OptionSet.CustomizeCodeDomService OptionSetCustomizer { get; set; }
+
+        #endregion Sub Service Properties
+
         public CustomizeCodeDomService(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
             Trace.TraceInformation("DLaB.ModelBuilderExtensions.CustomizeCodeDomService.CustomizeCodeDom Created!");
-            MessageApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.MessageToSkip),
-                DLaBSettings.MessagePrefixesToSkip);
+            Initialize();
         }
 
         public CustomizeCodeDomService(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
         {
+            Initialize();
+        }
+
+        private void Initialize()
+        {
             MessageApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.MessageToSkip),
                 DLaBSettings.MessagePrefixesToSkip);
+            OptionSetCustomizer = new OptionSet.CustomizeCodeDomService(DefaultService, Settings);
         }
 
         #region ICustomizeCodeDomService Members
@@ -59,11 +69,7 @@ namespace DLaB.ModelBuilderExtensions
         {
             SetServiceCache(services);
 
-            if (codeUnit.GetTypes().All(t => t.IsEnum))
-            {
-                ProcessOptionSet(codeUnit, services);
-                return;
-            }
+            ProcessOptionSets(codeUnit, services);
 
             if (codeUnit.GetTypes()
                 .Any(t => t.IsClass
@@ -173,10 +179,9 @@ namespace DLaB.ModelBuilderExtensions
             new Message.AttributeConstGenerator(DefaultService, Settings).CustomizeCodeDom(codeUnit, services);
         }
 
-        private void ProcessOptionSet(CodeCompileUnit codeUnit, IServiceProvider services)
+        private void ProcessOptionSets(CodeCompileUnit codeUnit, IServiceProvider services)
         {
-            new CreateOptionSetEnums().CustomizeCodeDom(codeUnit, services);
-            new LocalMultiOptionSetGenerator().CustomizeCodeDom(codeUnit, services);
+            OptionSetCustomizer.CustomizeCodeDom(codeUnit, services);
         }
 
         private void ProcessMessage(CodeTypeDeclaration message)

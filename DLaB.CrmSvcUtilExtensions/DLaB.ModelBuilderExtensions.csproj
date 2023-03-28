@@ -262,14 +262,12 @@
     <Compile Include="MetadataProviderService.cs" />
     <Compile Include="NamingService.cs" />
     <Compile Include="Entity\OptionSetMetadataAttributeGenerator.cs" />
-    <Compile Include="OptionSet\CreateOptionSetEnums.cs" />
+    <Compile Include="OptionSet\CustomizeCodeDomService.cs" />
     <Compile Include="CustomizeCodeDomService.cs" />
     <Compile Include="Entity\EnumPropertyGenerator.cs" />
-    <Compile Include="OptionSet\Extensions.cs" />
     <Compile Include="OptionSet\FilterOptionSetEnums.cs" />
     <Compile Include="CodeWriterFilterService.cs" />
     <Compile Include="OptionSet\CodeWriterFilterService.cs" />
-    <Compile Include="OptionSet\LocalMultiOptionSetGenerator.cs" />
     <Compile Include="OptionSet\Transliteration\AlphabetPoco.cs" />
     <Compile Include="OptionSet\Transliteration\TransliterationAlphabet.cs" />
     <Compile Include="OptionSet\Transliteration\TransliterationService.cs" />

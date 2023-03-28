@@ -5,58 +5,102 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.Serialization;
 
 namespace DLaB.ModelBuilderExtensions.OptionSet
 {
-    public sealed class CreateOptionSetEnums : ICustomizeCodeDomService
+    public class CustomizeCodeDomService : TypedServiceBase<ICustomizeCodeDomService>, ICustomizeCodeDomService
     {
-        public static bool AddOptionSetMetadataAttribute => ConfigHelper.GetAppSettingOrDefault("AddOptionSetMetadataAttribute", false);
+        public bool AddOptionSetMetadataAttribute { get => DLaBSettings.AddOptionSetMetadataAttribute; set => DLaBSettings.AddOptionSetMetadataAttribute = value; }
+
+        public CustomizeCodeDomService(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
+        { }
+
+        public CustomizeCodeDomService(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
+        { }
 
         /// <summary>
         /// Remove the unnecessary classes that we generated for entities. 
         /// </summary>
-        public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
+        public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services) 
         {
+            SetServiceCache(services);
             //Trace.TraceInformation("Entering ICustomizeCodeDomService.CustomizeCodeDom");
             //Trace.TraceInformation("Number of Namespaces generated: {0}", codeUnit.Namespaces.Count);
 
             //RemoveNonOptionSetDefinitions(codeUnit);
-            AddMetadataAttributes(codeUnit, services);
+            AddLocalMultiSelectOptionSets(codeUnit, services);
+            AddMetadataAttributes(codeUnit);
             SortOptionSets(codeUnit);
             //Trace.TraceInformation("Exiting ICustomizeCodeDomService.CustomizeCodeDom");
         }
 
-        private void RemoveNonOptionSetDefinitions(CodeCompileUnit codeUnit)
+        /// <summary>
+        /// For some reason, CrmSvcUtil doesn't generate enums for Local MultiSelectOptionSets
+        /// </summary>
+        /// <param name="codeUnit"></param>
+        /// <param name="services"></param>
+        public void AddLocalMultiSelectOptionSets(CodeCompileUnit codeUnit, IServiceProvider services)
         {
-            // Iterate over all of the namespaces that were generated.
-            for (var i = 0; i < codeUnit.Namespaces.Count; ++i)
+            var namingService = (INamingService)services.GetService(typeof(INamingService));
+            foreach (var entityLogicalName in codeUnit.GetEntityTypes().Select(t => t.GetEntityLogicalName()))
             {
-                var types = codeUnit.Namespaces[i].Types;
-                // Iterate over all of the types that were created in the namespace.
-                for (var j = 0; j < types.Count;)
+                if (!ServiceCache.LocalMultiSelectOptionSetAttributesByEntityLogicalName.TryGetValue(entityLogicalName, out var attributes))
                 {
-                    // Remove the type if it is not an enum (all OptionSets are enums) or has been defined to be skipped.
-                    if (!types[j].IsEnum)
-                    {
-                        types.RemoveAt(j);
-                    }
-                    else
-                    {
-                        j += 1;
-                    }
+                    continue;
+                }
+
+                foreach (var attribute in attributes)
+                {
+                    var type = GenerateEnum(ServiceCache.EntityMetadataByLogicalName[entityLogicalName], attribute, services, namingService);
+                    AddMetadataAttributesForSet(type, attribute.OptionSet);
+                    codeUnit.Namespaces[0].Types.Add(type);
                 }
             }
         }
 
-        private static void AddMetadataAttributes(CodeCompileUnit codeUnit, IServiceProvider services)
+        private CodeTypeDeclaration GenerateEnum(EntityMetadata entityMetadata, MultiSelectPicklistAttributeMetadata metadata, IServiceProvider services, INamingService service)
+        {
+            var name = service.GetNameForOptionSet(entityMetadata, metadata.OptionSet, services);
+            var type = new CodeTypeDeclaration(name)
+            {
+                IsEnum = true
+            };
+            type.CustomAttributes.Add(new CodeAttributeDeclaration(new CodeTypeReference(typeof(DataContractAttribute))));
+
+            //if (!SuppressGeneratedCodeAttribute)
+            //{
+            //    var version = System.Diagnostics.FileVersionInfo.GetVersionInfo(typeof(INamingService).Assembly.Location).ProductVersion;
+            //    type.CustomAttributes.Add(new CodeAttributeDeclaration(
+            //        new CodeTypeReference(typeof(GeneratedCodeAttribute)), 
+            //        new CodeAttributeArgument(new CodePrimitiveExpression("CrmSvcUtil")),
+            //        new CodeAttributeArgument(new CodePrimitiveExpression(version))));
+            //}
+
+            foreach (var option in metadata.OptionSet.Options)
+            {
+                // Creates the enum member
+                CodeMemberField value = new CodeMemberField
+                {
+                    Name = service.GetNameForOption(metadata.OptionSet, option, services),
+                    InitExpression = new CodePrimitiveExpression(option.Value.GetValueOrDefault())
+                };
+                value.CustomAttributes.Add(new CodeAttributeDeclaration(new CodeTypeReference(typeof(EnumMemberAttribute))));
+
+                type.Members.Add(value);
+            }
+
+            return type;
+        }
+
+        private void AddMetadataAttributes(CodeCompileUnit codeUnit)
         {
             if (!AddOptionSetMetadataAttribute)
             {
                 return;
             }
 
-            
-            var metadataByName = services.GetMetadataForEnumsByName();
+            var metadataByName = ServiceCache.MetadataForEnumsByName;
             foreach (var type in codeUnit.GetTypes())
             {
                 if (metadataByName.TryGetValue(type.Name, out var osMetadata))
@@ -70,14 +114,13 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
             }
         }
 
-        public static void AddMetadataAttributesForSet(CodeTypeDeclaration type, OptionSetMetadataBase osMetadata)
+        public void AddMetadataAttributesForSet(CodeTypeDeclaration type, OptionSetMetadataBase osMetadata)
         {
             if (!AddOptionSetMetadataAttribute)
             {
                 return;
             }
 
-            Trace.TraceInformation("Adding MetadataAttributes for {0}", type.Name);
             var options = osMetadata.GetOptions();
             var metadataByValue = options.ToDictionary(k => k.Value);
             var orderIndexByValue = new Dictionary<int, int>();
@@ -140,35 +183,44 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
             var temp = new CodeNamespace[codeUnit.Namespaces.Count];
             codeUnit.Namespaces.CopyTo(temp, 0);
 
-            for (int i = 0; i < codeUnit.Namespaces.Count; i++)
+            for (var i = 0; i < codeUnit.Namespaces.Count; i++)
             {
                 codeUnit.Namespaces.RemoveAt(i);
             }
             codeUnit.Namespaces.AddRange(temp.OrderBy(n => n.Name).ToArray());
 
-            for (int i = codeUnit.Namespaces.Count - 1; i >= 0; i--)
+            for (var i = codeUnit.Namespaces.Count - 1; i >= 0; i--)
             {
                 var nameSpace = codeUnit.Namespaces[i];
+                var optionSets = new List<CodeTypeDeclaration>();
+                var indexQueue = new Queue<int>();
 
-                // Attempt to order by name by copying to temp collection, removing all from real collection, then adding back ordered by the name
-                var tmpType = new CodeTypeDeclaration[nameSpace.Types.Count];
-                nameSpace.Types.CopyTo(tmpType, 0);
-
-                for (int j = nameSpace.Types.Count - 1; j >= 0; j--)
+                for (var j = nameSpace.Types.Count - 1; j >= 0; j--)
                 {
                     var type = nameSpace.Types[j];
-                    nameSpace.Types.RemoveAt(j);
+                    if (!type.IsEnum)
+                    {
+                        continue;
+                    }
+
+                    optionSets.Add(type);
+                    indexQueue.Enqueue(j);
 
                     var tmpMember = new CodeTypeMember[type.Members.Count];
                     type.Members.CopyTo(tmpMember, 0);
 
-                    for (int k = type.Members.Count - 1; k >= 0; k--)
+                    for (var k = type.Members.Count - 1; k >= 0; k--)
                     {
                         type.Members.RemoveAt(k);
                     }
                     type.Members.AddRange(tmpMember.OrderBy(m => m.Name).ToArray());
                 }
-                nameSpace.Types.AddRange(tmpType.OrderBy(n => n.Name).ToArray());
+
+
+                foreach (var optionSet in optionSets.OrderBy(s => s.Name))
+                {
+                    nameSpace.Types[indexQueue.Dequeue()] = optionSet;
+                }
             }
         }
     }

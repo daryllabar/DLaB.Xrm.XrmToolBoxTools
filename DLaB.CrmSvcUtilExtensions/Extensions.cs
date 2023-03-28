@@ -21,7 +21,7 @@ namespace DLaB.ModelBuilderExtensions
         public static List<Tuple<CodeTypeDeclaration, EntityMetadata>> GetEntityTypes(this CodeCompileUnit codeUnit, Dictionary<string, EntityMetadata> entityTypesByLogicalName)
         {
             var entityTypes = new List<Tuple<CodeTypeDeclaration, EntityMetadata>>();
-            foreach (var type in codeUnit.GetTypes().Where(type => type.IsClass && !type.IsContextType()))
+            foreach (var type in codeUnit.GetEntityTypes())
             {
                 var logicalNameAttribute = type.CustomAttributes.Cast<CodeAttributeDeclaration>()
                             .FirstOrDefault(a => a.Name == "Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute");
@@ -38,6 +38,12 @@ namespace DLaB.ModelBuilderExtensions
             }
 
             return entityTypes;
+        }
+
+        public static IEnumerable<CodeTypeDeclaration> GetEntityTypes(this CodeCompileUnit codeUnit)
+        {
+            return codeUnit.GetTypes().Where(type => type.IsClass
+                                                     && type.IsEntityType());
         }
 
         public static IEnumerable<CodeTypeDeclaration> GetTypes(this CodeCompileUnit codeUnit)
@@ -206,12 +212,34 @@ namespace DLaB.ModelBuilderExtensions
                    || baseType == "Microsoft.Xrm.Sdk.Client.OrganizationServiceContext";
         }
 
+        /// <summary>
+        /// Determines if the type inherits from one of the known Message types.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns></returns>
+        public static bool IsMessageType(this CodeTypeDeclaration type)
+        {
+            if (type.BaseTypes.Count == 0)
+            {
+                return false;
+            }
+
+            var baseType = type.BaseTypes[0].BaseType;
+            return baseType == "Microsoft.Xrm.Sdk.OrganizationRequest"
+                   || baseType == "Microsoft.Xrm.Sdk.OrganizationResponse";
+        }
+
         public static bool IsBaseEntityType(this CodeTypeDeclaration type)
         {
             var name = type.Name;
             return name == EntityBaseClassGenerator.BaseEntityName
                    || name == EntityBaseClassGenerator.OrgEntityName
                    || name == EntityBaseClassGenerator.UserEntityName;
+        }
+
+        public static bool IsEntityType(this CodeTypeDeclaration type)
+        {
+            return type.GetCustomAttribute("Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute") != null;
         }
 
         #endregion // CodeTypeDeclaration

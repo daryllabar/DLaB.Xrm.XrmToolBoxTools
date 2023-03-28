@@ -426,7 +426,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
 
         #region Messages
 
-        [Category("3 - Messages")]
+        [Category("4 - Messages")]
         [DisplayName("Message Relative Output Path")]
         [Description("This is realtive to the Path of the Settings File.  If \"Create One File Per Message\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
         [Editor(typeof(PathEditor), typeof(UITypeEditor))]
@@ -437,28 +437,28 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.MessageTypesFolder = GetRelativePathToFileOrDirectory(value, CreateOneFilePerAction, "Messages.cs"); //TODO IS THIS RIGHT?  
         }
 
-        [Category("3 - Messages")]
+        [Category("4 - Messages")]
         [DisplayName("Message Prefixes Whitelist")]
         [Description("Allows for the ability to specify Message prefixes that will be included in generation.")]
         [Editor(StringEditorName, typeof(UITypeEditor))]
         [TypeConverter(CollectionCountConverter.Name)]
         public List<string> ActionPrefixesWhitelist { get; set; }
 
-        [Category("3 - Messages")]
+        [Category("4 - Messages")]
         [DisplayName("Messages Whitelist")]
         [Description("Allows for the ability to specify Messages that will be included in generation.  \"*\" wildcards are valid. ")]
         [Editor(typeof(ActionsHashEditor), typeof(UITypeEditor))]
         [TypeConverter(CollectionCountConverter.Name)]
         public HashSet<string> ActionsWhitelist { get; set; }
 
-        [Category("3 - Messages")]
+        [Category("4 - Messages")]
         [DisplayName("Messages Blacklist")]
         [Description("Allows for the ability to specify Messages to not generate.")]
         [Editor(typeof(ActionsHashEditor), typeof(UITypeEditor))]
         [TypeConverter(CollectionCountConverter.Name)]
         public HashSet<string> ActionsToSkip { get; set; }
 
-        [Category("3 - Messages")]
+        [Category("4 - Messages")]
         [DisplayName("Create One File Per Message")]
         [Description("Specifies that each Message class should be outputted to it's own file rather than a single file with all messages.")]
         public bool CreateOneFilePerAction
@@ -467,7 +467,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.ExtensionConfig.CreateOneFilePerAction = value;
         }
 
-        [Category("3 - Messages")]
+        [Category("4 - Messages")]
         [DisplayName("Generate Message Attribute Name Constants")]
         [Description("Adds a Static Class to each Message class that contains the Logical Names of all properties for the Message.")]
         public bool GenerateActionAttributeNameConsts
@@ -476,7 +476,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.ExtensionConfig.GenerateActionAttributeNameConsts = value;
         }
 
-        [Category("3 - Messages")]
+        [Category("4 - Messages")]
         [DisplayName("Generate Messages")]
         [Description("Generates classes for messages (Actions/Custom APIs/Microsoft Messages) as part of code generation.    ")]
         public bool GenerateMessages
@@ -485,7 +485,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.GenerateMessages = value;
         }
 
-        [Category("3 - Messages")]
+        [Category("4 - Messages")]
         [DisplayName("Make Response Messages Editable")]
         [Description("Specifies that the properties of Response Messages should be editable.")]
         public bool MakeResponseActionsEditable
@@ -494,7 +494,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.ExtensionConfig.MakeResponseActionsEditable = value;
         }
 
-        [Category("3 - Messages")]
+        [Category("4 - Messages")]
         [DisplayName("Workflowless Messages")]
         [Description("Some messages are being created by MS that are not workflows, and don't show up in the list of messages for adding to whitelist/blacklist, but are getting genereated and causing errors.  This setting is used to manually add message names to the selected lists.")]
         [Editor(StringEditorName, typeof(UITypeEditor))]

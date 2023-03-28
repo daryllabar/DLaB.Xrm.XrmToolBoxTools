@@ -388,7 +388,7 @@ namespace DLaB.ModelBuilderExtensions
             //    return;
             //}
 
-            var metadata = ServiceProvider.GetMetadataForLocalEnumsByName();
+            var metadata = ServiceCache.MetadataForLocalEnumsByName;
             var groundFilesByEntity = new Dictionary<string, FileToWrite>();
             foreach (var file in files.ToArray())
             {
