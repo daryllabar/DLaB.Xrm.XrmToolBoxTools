@@ -26,12 +26,8 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
 
             var firstIndex = GetInsertIndexOfAlphabeticallySortedProperty(file, start, end, " ", lineStart);
             var insertIndex = GetInsertIndexOfAlphabeticallySortedProperty(file, start, end, Property.Name, lineStart);
-            if (firstIndex != insertIndex)
-            {
-                insertIndex += 5;
-            }
 
-            file[insertIndex - 1] += $@"
+            file[insertIndex] += $@"
         [JsonPropertyName(""{Property.Name[0].ToString().ToLower() + Property.Name.Substring(1)}"")]
         public {Property.Type} {Property.Name} {{ get; set; }}
 ";
