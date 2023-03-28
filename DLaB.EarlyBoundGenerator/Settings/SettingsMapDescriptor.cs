@@ -117,7 +117,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 nameof(ActionsToSkip),
                 nameof(AddDebuggerNonUserCode),
                 nameof(AddNewFilesToProject),
-                nameof(AddOptionSetMetadataAttribute),
                 nameof(AudibleCompletionNotification),
                 nameof(CreateOneFilePerAction),
                 nameof(CreateOneFilePerEntity),

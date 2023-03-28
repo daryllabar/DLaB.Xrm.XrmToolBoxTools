@@ -147,7 +147,7 @@ namespace DLaB.ModelBuilderExtensions
             filePath = RootPath(filePath);
             Console.WriteLine("[**** Writing Metadata to File {0} ****]", filePath);
             File.WriteAllText(filePath, Serialize(localMetadata,true));
-            Console.WriteLine("[**** Finished Writing Metadata ****]", filePath);
+            Console.WriteLine("[**** Finished Writing Metadata ****]");
         }
 
         private static string RootPath(string filePath)

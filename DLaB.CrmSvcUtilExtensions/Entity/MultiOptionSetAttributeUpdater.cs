@@ -1,6 +1,5 @@
 ﻿using System;
 using System.CodeDom;
-using System.Collections.Generic;
 using System.Linq;
 using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.Xrm.Sdk;
@@ -23,12 +22,12 @@ namespace DLaB.ModelBuilderExtensions.Entity
             {
                 if (!type.IsClass || type.IsContextType() || type.IsBaseEntityType()) { continue; }
 
-                var logicalName = type.GetFieldInitalizedValue("EntityLogicalName");
-                Dictionary<string, AttributeMetadata> attributes;
-                if (!attributesByEntity.TryGetValue(logicalName, out attributes))
+                var logicalName = type.GetEntityLogicalName();
+                if (!attributesByEntity.TryGetValue(logicalName, out var attributes))
                 {
                     continue;
                 }
+
                 foreach (var member in type.Members)
                 {
                     if (!(member is CodeMemberProperty property)

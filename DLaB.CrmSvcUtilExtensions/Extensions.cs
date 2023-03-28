@@ -136,7 +136,7 @@ namespace DLaB.ModelBuilderExtensions
 
         #region CodeTypeDeclaration
 
-        public static string GetFieldInitalizedValue(this CodeTypeDeclaration type, string fieldName)
+        public static string GetFieldInitializedValue(this CodeTypeDeclaration type, string fieldName)
         {
             var field = type.Members.OfType<CodeMemberField>().FirstOrDefault(f => f.Name == fieldName);
             if (field != null)

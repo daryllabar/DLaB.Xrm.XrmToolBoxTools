@@ -32,7 +32,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
         private CodeConstructor GetAnonymousTypeConstructor(CodeTypeDeclaration type)
         {
-            var data = Entities[type.GetFieldInitalizedValue("EntityLogicalName")];
+            var data = Entities[type.GetEntityLogicalName()];
             var constructor = new CodeConstructor
             {
                 Attributes = System.CodeDom.MemberAttributes.Public,
