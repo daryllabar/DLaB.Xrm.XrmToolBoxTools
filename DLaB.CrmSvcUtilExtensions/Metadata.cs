@@ -17,11 +17,14 @@ namespace DLaB.ModelBuilderExtensions
         private SdkMessages _messages;
         public SdkMessages Messages
         {
-            get { return _messages ?? (_messages = MetadataMessages); }
+            get => _messages ?? (_messages = MetadataMessages);
             set
             {
                 _messages = value;
-                MetadataMessages = new MetadataMessages(value); }
+                if (value != null) {
+                    MetadataMessages = new MetadataMessages(value);
+                }
+            }
         }
 
         [DataMember]

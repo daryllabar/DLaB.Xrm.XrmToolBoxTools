@@ -35,10 +35,8 @@ namespace DLaB.ModelBuilderExtensions
                 return;
             }
 
-            var types = codeUnit.Namespaces[0].Types;
             var attributes = new HashSet<string>();
-            foreach (var type in types.Cast<CodeTypeDeclaration>().
-                         Where(type => type.IsClass && !type.IsContextType()))
+            foreach (var type in codeUnit.GetMessageTypes())
             {
                 attributes.Clear();
                 var @class = new CodeTypeDeclaration

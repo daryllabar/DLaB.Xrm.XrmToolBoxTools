@@ -24,7 +24,6 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
             var end = "public DLaBModelBuilder()";
             var lineStart = "        public ";
 
-            var firstIndex = GetInsertIndexOfAlphabeticallySortedProperty(file, start, end, " ", lineStart);
             var insertIndex = GetInsertIndexOfAlphabeticallySortedProperty(file, start, end, Property.Name, lineStart);
 
             file[insertIndex] += $@"

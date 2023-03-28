@@ -46,6 +46,12 @@ namespace DLaB.ModelBuilderExtensions
                                                      && type.IsEntityType());
         }
 
+        public static IEnumerable<CodeTypeDeclaration> GetMessageTypes(this CodeCompileUnit codeUnit)
+        {
+            return codeUnit.GetTypes().Where(type => type.IsClass
+                                                     && type.IsMessageType());
+        }
+
         public static IEnumerable<CodeTypeDeclaration> GetTypes(this CodeCompileUnit codeUnit)
         {
             for (var i = 0; i < codeUnit.Namespaces.Count; ++i)

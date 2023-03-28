@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Runtime.Serialization;
 using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 
@@ -42,6 +43,8 @@ namespace DLaB.ModelBuilderExtensions.Serialization
         public static implicit operator SdkMessage(MetadataMessage message)
         {
             var sdk = new SdkMessage(message.Id, message.Name, message.IsPrivate);
+            var isCustomField = typeof(SdkMessage).GetField("_isCustomAction", BindingFlags.Instance | BindingFlags.NonPublic);
+            isCustomField?.SetValue(sdk, message.IsCustomAction);
 
             foreach (var filter in message.MetadataFilters)
             {

@@ -5,6 +5,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Runtime;
 
 namespace DLaB.ModelBuilderExtensions
@@ -20,6 +21,7 @@ namespace DLaB.ModelBuilderExtensions
         public bool GenerateConstructorsSansLogicalName { get => DLaBSettings.GenerateConstructorsSansLogicalName; set => DLaBSettings.GenerateConstructorsSansLogicalName = value; }
         public bool GenerateEntityTypeCode { get => DLaBSettings.GenerateEntityTypeCode; set => DLaBSettings.GenerateEntityTypeCode = value; }
         public bool GenerateEnumProperties { get => DLaBSettings.GenerateEnumProperties; set => DLaBSettings.GenerateEnumProperties = value; }
+        public bool GenerateTypesAsInternal { get => DLaBSettings.GenerateTypesAsInternal; set => DLaBSettings.GenerateTypesAsInternal = value; }
         public bool GenerateOptionSetMetadataAttribute { get => DLaBSettings.GenerateOptionSetMetadataAttribute; set => DLaBSettings.GenerateOptionSetMetadataAttribute = value; }
         public bool UpdateMultiOptionSetAttributes { get => DLaBSettings.UpdateMultiOptionSetAttributes; set => DLaBSettings.UpdateMultiOptionSetAttributes = value; }
         public bool UpdateEnumerableEntityProperties { get => DLaBSettings.UpdateEnumerableEntityProperties; set => DLaBSettings.UpdateEnumerableEntityProperties = value; }
@@ -69,32 +71,37 @@ namespace DLaB.ModelBuilderExtensions
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
             SetServiceCache(services);
-
-            ProcessOptionSets(codeUnit, services);
-
-            if (codeUnit.GetTypes()
-                .Any(t => t.IsClass
-                          && t.BaseTypes.GetTypes().Any(b => b.BaseType.EndsWith(".OrganizationRequest"))))
+            try
             {
+                ProcessOptionSets(codeUnit, services);
                 ProcessMessage(codeUnit, services);
-                return;
-            }
 
-            if (codeUnit.GetTypes()
-                .Any(t => t.IsClass
-                          && t.BaseTypes.GetTypes().Any(b => b.BaseType.EndsWith(".Entity"))))
-            {
-                ProcessEntity(codeUnit, services);
-                return;
-            }
+                if (codeUnit.GetTypes()
+                    .Any(t => t.IsClass
+                              && t.BaseTypes.GetTypes().Any(b => b.BaseType.EndsWith(".Entity"))))
+                {
+                    ProcessEntity(codeUnit, services);
+                    return;
+                }
 
-            if (GenerateOptionSetMetadataAttribute
-                && codeUnit.GetTypes()
-                .Any(t => t.IsClass
-                          && t.BaseTypes.GetTypes().Any(b => b.BaseType.EndsWith(".OrganizationServiceContext"))))
+                if (GenerateOptionSetMetadataAttribute
+                    && codeUnit.GetTypes()
+                        .Any(t => t.IsClass
+                                  && t.BaseTypes.GetTypes().Any(b => b.BaseType.EndsWith(".OrganizationServiceContext"))))
+                {
+                    new OptionSetMetadataAttributeGenerator().CustomizeCodeDom(codeUnit, services);
+                    return;
+                }
+            }
+            finally
             {
-                new OptionSetMetadataAttributeGenerator().CustomizeCodeDom(codeUnit, services);
-                return;
+                if (GenerateTypesAsInternal)
+                {
+                    foreach (var type in codeUnit.GetTypes().Where(t => t.IsClass || t.IsEnum))
+                    {
+                        type.TypeAttributes = (type.TypeAttributes & ~TypeAttributes.VisibilityMask) | TypeAttributes.NestedAssembly;
+                    }
+                }
             }
 
             Trace.TraceInformation("DLaB.ModelBuilderExtensions.CustomizeCodeDomService.CustomizeCodeDom Skipping processing of {0}!", string.Join(", ", codeUnit.GetTypes().Select(t => t.Name)));
@@ -156,6 +163,12 @@ namespace DLaB.ModelBuilderExtensions
 
         private void ProcessMessage(CodeCompileUnit codeUnit, IServiceProvider services)
         {
+            FilterMessageTypes(codeUnit);
+            new Message.AttributeConstGenerator(DefaultService, Settings).CustomizeCodeDom(codeUnit, services);
+        }
+
+        private void FilterMessageTypes(CodeCompileUnit codeUnit)
+        {
             // Iterate over all of the namespaces that were generated.
             for (var i = 0; i < codeUnit.Namespaces.Count; ++i)
             {
@@ -163,6 +176,13 @@ namespace DLaB.ModelBuilderExtensions
                 // Iterate over all of the types that were created in the namespace.
                 for (var j = 0; j < types.Count;)
                 {
+                    var type = types[j];
+                    if (!type.IsMessageType())
+                    {
+                        j++;
+                        continue;
+                    }
+
                     // Remove the type if it is not to be generated.
                     if (GenerateMessage(types[j].Name))
                     {
@@ -175,8 +195,6 @@ namespace DLaB.ModelBuilderExtensions
                     }
                 }
             }
-
-            new Message.AttributeConstGenerator(DefaultService, Settings).CustomizeCodeDom(codeUnit, services);
         }
 
         private void ProcessOptionSets(CodeCompileUnit codeUnit, IServiceProvider services)
