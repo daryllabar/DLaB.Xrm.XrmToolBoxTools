@@ -352,6 +352,15 @@ namespace DLaB.EarlyBoundGenerator.Settings
         }
 
         [Category("1 - Global")]
+        [DisplayName("Generate Types As Internal")]
+        [Description("All generated types are marked as \"internal\" instead of \"public\".")]
+        public bool GenerateTypesAsInternal
+        {
+            get => Config.ExtensionConfig.GenerateTypesAsInternal;
+            set => Config.ExtensionConfig.GenerateTypesAsInternal = value;
+        }
+
+        [Category("1 - Global")]
         [DisplayName("Suppress Generated Code Attribute")]
         [Description("Suppress all generated objects being tagged with the code generation engine and version.")]
         public bool SuppressGeneratedCodeAttribute

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.Json.Serialization;
 
@@ -137,6 +137,9 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("generateSeparateFiles")]
         public bool GenerateSeparateFiles { get; set; }
+
+        [JsonPropertyName("generateTypesAsInternal")]
+        public bool GenerateTypesAsInternal { get; set; }
 
         [JsonPropertyName("groupLocalOptionSetsByEntity")]
         public bool GroupLocalOptionSetsByEntity { get; set; }

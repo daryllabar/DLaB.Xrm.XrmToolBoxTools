@@ -8,6 +8,7 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
     {
         public const string LogicSettingsRelativePath = @"DLaB.EarlyBoundGenerator.Logic\Settings";
         public const string LogicRelativePath = @"DLaB.EarlyBoundGenerator.Logic";
+        public const string ModelBuilderExtensionsPath = @"DLaB.CrmSvcUtilExtensions";
         public const string GeneratorSettingsRelativePath = @"DLaB.EarlyBoundGenerator\Settings";
 
         public PropertyInfo Property { get; set; }
@@ -39,6 +40,13 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
         protected string GetLogicFilePath(string fileName)
         {
             var path = Path.Combine(SolutionDirectory.FullName, LogicRelativePath, fileName);
+            AssertFileExists(path);
+            return path;
+        }
+
+        protected string GetModelBuilderExtPath(string fileName)
+        {
+            var path = Path.Combine(SolutionDirectory.FullName, ModelBuilderExtensionsPath, fileName);
             AssertFileExists(path);
             return path;
         }

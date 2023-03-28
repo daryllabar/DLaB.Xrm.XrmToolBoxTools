@@ -3,15 +3,15 @@ using System.IO;
 
 namespace EarlyBoundSettingsGenerator.SettingsUpdater
 {
-    public class SettingsMap: FileUpdateBase
+    public class ModelBuilderSettings: FileUpdateBase
     {
-        public const string FileName = @"SettingsMap.cs";
+        public const string FileName = @"DLaBModelBuilderSettings.cs";
 
-        public SettingsMap(PropertyInfo property) : base(property) { }
+        public ModelBuilderSettings(PropertyInfo property) : base(property) { }
         
         public override void UpdateFile()
         {
-            var path = GetGeneratorSettingsFilePath(FileName);
+            var path = GetModelBuilderExtPath(FileName);
             var file = File.ReadAllLines(path);
 
             AddProperty(file);
@@ -20,8 +20,8 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
 
         private void AddProperty(string[] file)
         {
-            var start = $"#region {Property.Category.Substring(4)}";
-            var end = $"#endregion {Property.Category.Substring(4)}";
+            var start = "public class DLaBModelBuilder";
+            var end = "public DLaBModelBuilder()";
             var lineStart = "        public ";
 
             var firstIndex = GetInsertIndexOfAlphabeticallySortedProperty(file, start, end, " ", lineStart);
@@ -30,15 +30,10 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
             {
                 insertIndex += 5;
             }
+
             file[insertIndex - 1] += $@"
-        [Category(""{Property.Category}"")]
-        [DisplayName(""{Property.DisplayName}"")]
-        [Description(""{Property.Description.Replace(Environment.NewLine, "  ").Replace("\"", "\\\"")}"")]
-        public {Property.Type} {Property.Name}
-        {{
-            get => Config.ExtensionConfig.{Property.Name};
-            set => Config.ExtensionConfig.{Property.Name} = value;
-        }}
+        [JsonPropertyName(""{Property.Name[0].ToString().ToLower() + Property.Name.Substring(1)}"")]
+        public {Property.Type} {Property.Name} {{ get; set; }}
 ";
         }
     }

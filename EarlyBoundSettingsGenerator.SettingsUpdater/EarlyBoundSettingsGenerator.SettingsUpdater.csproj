@@ -90,6 +90,7 @@
     <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\VersionControl\SourceControl.cs" />
     <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\VersionControl\VsTfsSourceControlProvider.cs" />
     <Compile Include="EarlyBoundGeneratorConfigLogic.cs" />
+    <Compile Include="ModelBuilderSettings.cs" />
     <Compile Include="SettingsMap.cs" />
     <Compile Include="ExtensionConfigLogic.cs" />
     <Compile Include="FileUpdateBase.cs" />
