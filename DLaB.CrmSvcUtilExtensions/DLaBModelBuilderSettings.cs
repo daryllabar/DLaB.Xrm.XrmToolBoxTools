@@ -249,6 +249,9 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("unmappedProperties")]
         public Dictionary<string, HashSet<string>> UnmappedProperties { get; set; }
 
+        [JsonPropertyName("useCrmSvcUtilStateEnumNamingConvention")]
+        public bool UseCrmSvcUtilStateEnumNamingConvention { get; set; }
+
         /// <summary>
         /// No Config
         /// </summary>

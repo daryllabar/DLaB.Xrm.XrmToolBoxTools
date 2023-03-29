@@ -23,6 +23,7 @@ namespace DLaB.ModelBuilderExtensions
         public int LanguageCodeOverride { get => DLaBSettings.OptionSetLanguageCodeOverride; set => DLaBSettings.OptionSetLanguageCodeOverride = value; }
         public string LocalOptionSetFormat { get => DLaBSettings.LocalOptionSetFormat; set => DLaBSettings.LocalOptionSetFormat = value; }
         public Dictionary<string, string> OptionSetNames { get => DLaBSettings.OptionSetNames; set => DLaBSettings.OptionSetNames = value; }
+        public bool UseCrmSvcUtilStateEnumNamingConvention { get => DLaBSettings.UseCrmSvcUtilStateEnumNamingConvention; set => DLaBSettings.UseCrmSvcUtilStateEnumNamingConvention = value; }
         public bool UseLogicalNames { get => DLaBSettings.UseLogicalNames; set => DLaBSettings.UseLogicalNames = value; }
         public string ValidCSharpNameRegEx { get => DLaBSettings.ValidCSharpNameRegEx; set => DLaBSettings.ValidCSharpNameRegEx = value; }
 
@@ -47,9 +48,7 @@ namespace DLaB.ModelBuilderExtensions
             {
                 return _entityNames;
             }
-            var metadataProvider = services.GetService<IMetadataProviderService>();
-            var metadata = metadataProvider.LoadMetadata(services);
-            _entityNames = new HashSet<string>(metadata.Entities.Select(e => GetNameForEntity(e, services)).ToArray());
+            _entityNames = new HashSet<string>(ServiceCache.GetDefault(services).EntityMetadataByLogicalName.Values.Select(e => GetNameForEntity(e, services)).ToArray());
             return _entityNames;
         }
 
@@ -65,6 +64,15 @@ namespace DLaB.ModelBuilderExtensions
             while (entityNames.Contains(name))
             {
                 name += "_Enum";
+            }
+
+            if(UseCrmSvcUtilStateEnumNamingConvention
+               && optionSetMetadata.IsGlobal != true
+               && name.EndsWith("_StateCode")
+               && entityMetadata.Attributes.FirstOrDefault(a => a.AttributeType == AttributeTypeCode.State) != null)
+            {
+                const int stateLength = 10;
+                name = name.Substring(0, name.Length - stateLength) + "State";
             }
             return OptionSetNames.TryGetValue(name.ToLower(), out var overriden) ? overriden : name;
         }
@@ -100,6 +108,7 @@ namespace DLaB.ModelBuilderExtensions
                         GetNameForAttribute(entityMetadata, attribute, services, CamelCaseClassNames, UseLogicalNames));
                 }
             }
+
 
             return UpdateCasingForGlobalOptionSets(defaultName, optionSetMetadata);
         }

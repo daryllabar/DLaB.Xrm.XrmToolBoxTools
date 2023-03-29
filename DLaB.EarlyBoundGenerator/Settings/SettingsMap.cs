@@ -617,6 +617,15 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         }
 
         [Category("4 - Option Sets")]
+        [DisplayName("Use CrmSvcUtil State Enum Naming Convention")]
+        [Description("The CrmSvcUtil names entity statecode enums as \"{EntityName}State\", but the PAC ModelBuilder names them the same way all other enums are generated \"{EntityName}_StateCode\".  This allows for maintaining backwards compability.")]
+        public bool UseCrmSvcUtilStateEnumNamingConvention
+        {
+            get => Config.ExtensionConfig.UseCrmSvcUtilStateEnumNamingConvention;
+            set => Config.ExtensionConfig.UseCrmSvcUtilStateEnumNamingConvention = value;
+        }
+
+        [Category("4 - Option Sets")]
         [DisplayName("Option Set Names")]
         [Description("If Option Sets have idential names to Entities, it will cause naming conflicts.  By default this is overcome by postfixing \"_Enum\" to the Option Set name.  This setting allows a custom mapping for option set names to be specified.")]
         [Editor(typeof(DictionaryEditor), typeof(UITypeEditor))]

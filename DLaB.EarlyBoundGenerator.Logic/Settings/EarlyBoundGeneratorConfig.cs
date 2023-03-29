@@ -361,6 +361,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 {
                     pocoConfig.GenerateGlobalOptionSets = false;
                 }
+                pocoConfig.UseCrmSvcUtilStateEnumNamingConvention = true;
 
                 AddNewTokens(pocoConfig, defaultConfig, PreV2TokenCapitalizations);
             }

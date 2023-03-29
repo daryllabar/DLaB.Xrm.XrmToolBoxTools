@@ -74,6 +74,7 @@
       "VoiceMail"
     ],
     "useLogicalNames": false,
+    "useCrmSvcUtilStateEnumNamingConvention": false,
     "useTfsToCheckoutFiles": false,
     "waitForAttachedDebugger": false
   },
