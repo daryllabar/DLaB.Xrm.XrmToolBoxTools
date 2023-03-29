@@ -150,10 +150,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public bool GenerateOptionSetMetadataAttribute { get; set; }
         /// <summary>
-        /// Splits the output into files by type, organized by entity, message, and optionsets.
-        /// </summary>
-        public bool GenerateSeparateFiles { get; set; }
-        /// <summary>
         /// All generated types are marked as "internal" instead of "public".
         /// </summary>
         public bool GenerateTypesAsInternal { get; set; }
@@ -331,7 +327,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 GenerateINotifyPattern = false,
                 GenerateOnlyReferencedOptionSets = true,
                 GenerateOptionSetMetadataAttribute = true,
-                GenerateSeparateFiles = true,
                 GenerateTypesAsInternal = false,
                 GroupLocalOptionSetsByEntity = false,
                 InvalidCSharpNamePrefix = "_",
@@ -350,14 +345,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 ReplaceOptionSetPropertiesWithEnum = true,
                 SerializeMetadata = false,
                 TokenCapitalizationOverrides = "AccessTeam|ActiveState|AssignedTo|BusinessAs|CardUci|DefaultOnCase|EmailAnd|EmailSend|EmailSender|FeatureSet|FedEx|ForAn|Geronimo|IsMsTeams|IsPaiEnabled|IsSopIntegration|MsDynCe_|MsDynMkt_|MsDyUsd|O365Admin|OcSkillIdentMlModel|OnHold|OrderId|OwnerOnAssign|PauseStates|PredictiveAddress|PartiesOnEmail|ParticipatesIn|SentOn|SettingsAndSummary|SlaId|SlaKpi|SyncOptIn|Timeout|TradeShow|UserPuid|VoiceMail",
-                UnmappedProperties =
-                    "DuplicateRule:BaseEntityTypeCode,MatchingEntityTypeCode|" +
-                    "InvoiceDetail:InvoiceStateCode|" +
-                    "LeadAddress:AddressTypeCode,ShippingMethodCode|" +
-                    "Organization:CurrencyFormatCode,DateFormatCode,TimeFormatCode,WeekStartDayCode|" +
-                    "Quote:StatusCode|" +
-                    "QuoteDetail:QuoteStateCode|" +
-                    "SalesOrderDetail:SalesOrderStateCode|",
+                UnmappedProperties = null,
                 UseLogicalNames = false,
                 UseTfsToCheckoutFiles = false,
                 WaitForAttachedDebugger = false,
@@ -403,7 +391,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             GenerateINotifyPattern = poco.GenerateINotifyPattern ?? GenerateINotifyPattern;
             GenerateOnlyReferencedOptionSets = poco.GenerateOnlyReferencedOptionSets ?? GenerateOnlyReferencedOptionSets;
             GenerateOptionSetMetadataAttribute = poco.GenerateOptionSetMetadataAttribute ?? GenerateOptionSetMetadataAttribute;
-            GenerateSeparateFiles = poco.GenerateSeparateFiles ?? GenerateSeparateFiles;
             GenerateTypesAsInternal = poco.GenerateTypesAsInternal ?? GenerateTypesAsInternal;
             GroupLocalOptionSetsByEntity = poco.GroupLocalOptionSetsByEntity ?? GroupLocalOptionSetsByEntity;
             InvalidCSharpNamePrefix = poco.InvalidCSharpNamePrefix ?? InvalidCSharpNamePrefix;
@@ -433,7 +420,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             }
         }
 
-        public void WriteDLaBModelBuilderProperties(Utf8JsonWriter writer)
+        public void WriteDLaBModelBuilderProperties(Utf8JsonWriter writer, EarlyBoundGeneratorConfig settings)
         {
             writer.AddProperty(nameof(ActionCommandLineText), ActionCommandLineText, true);
             writer.AddPropertyArray(nameof(ActionPrefixesToSkip).Replace("Action", "Message"), ActionPrefixesToSkip);
@@ -451,6 +438,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             writer.AddProperty(nameof(DeleteFilesFromOutputFolders), DeleteFilesFromOutputFolders);
             writer.AddPropertyDictionaryStringHashString(nameof(EntityAttributeSpecifiedNames), EntityAttributeSpecifiedNames, false);
             writer.AddProperty(nameof(EntityCommandLineText), EntityCommandLineText, true);
+            AddOptionalProperty("EntitiesFileName", settings.EntityTypesFolder, CreateOneFilePerEntity);
             writer.AddPropertyArray(nameof(EntitiesToSkip), EntitiesToSkip);
             writer.AddPropertyArray(nameof(EntityPrefixesToSkip), EntityPrefixesToSkip);
             writer.AddProperty(nameof(FilePrefixText), FilePrefixText, true);
@@ -463,17 +451,18 @@ namespace DLaB.EarlyBoundGenerator.Settings
             writer.AddProperty(nameof(GenerateEnumProperties), GenerateEnumProperties);
             writer.AddProperty(nameof(GenerateOnlyReferencedOptionSets), GenerateOnlyReferencedOptionSets);
             writer.AddProperty(nameof(GenerateOptionSetMetadataAttribute), GenerateOptionSetMetadataAttribute);
-            writer.AddProperty(nameof(GenerateSeparateFiles), GenerateSeparateFiles);
             writer.AddProperty(nameof(GenerateTypesAsInternal), GenerateTypesAsInternal);
             writer.AddProperty(nameof(GroupLocalOptionSetsByEntity), GroupLocalOptionSetsByEntity);
             writer.AddProperty(nameof(InvalidCSharpNamePrefix), InvalidCSharpNamePrefix);
             writer.AddProperty(nameof(MakeAllFieldsEditable), MakeAllFieldsEditable);
             writer.AddProperty(nameof(MakeReadonlyFieldsEditable), MakeReadonlyFieldsEditable);
             writer.AddProperty(nameof(MakeResponseActionsEditable), MakeResponseActionsEditable);
+            AddOptionalProperty("MessagesFileName", settings.MessageTypesFolder, CreateOneFilePerAction);
             writer.AddProperty(nameof(LocalOptionSetFormat), LocalOptionSetFormat);
             writer.AddPropertyArray(nameof(OptionSetPrefixesToSkip), OptionSetPrefixesToSkip);
             writer.AddPropertyArray(nameof(OptionSetsToSkip), OptionSetsToSkip);
             writer.AddProperty(nameof(OptionSetCommandLineText), OptionSetCommandLineText, true);
+            AddOptionalProperty("OptionSetsFileName", settings.OptionSetsTypesFolder, CreateOneFilePerOptionSet);
             writer.AddProperty(nameof(OptionSetLanguageCodeOverride), OptionSetLanguageCodeOverride?.ToString());
             writer.AddPropertyDictionaryStringString(nameof(OptionSetNames), OptionSetNames);
             writer.AddProperty(nameof(ProjectNameForEarlyBoundFiles), ProjectNameForEarlyBoundFiles ?? string.Empty);
@@ -488,6 +477,14 @@ namespace DLaB.EarlyBoundGenerator.Settings
             writer.AddProperty(nameof(UseTfsToCheckoutFiles), UseTfsToCheckoutFiles);
             writer.AddProperty(nameof(WaitForAttachedDebugger), WaitForAttachedDebugger);
             writer.AddProperty(nameof(XrmToolBoxPluginPath), XrmToolBoxPluginPath);
+
+            void AddOptionalProperty(string fileNameKey, string fileNameValue, bool createProperty)
+            {
+                if (createProperty)
+                {
+                    writer.AddProperty(fileNameKey, fileNameValue);
+                }
+            }
         }
 
         public void PopulateBuilderProperties(Dictionary<string, JsonProperty> properties)
@@ -557,7 +554,6 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? GenerateINotifyPattern { get; set; }
         public bool? GenerateOnlyReferencedOptionSets { get; set; }
         public bool? GenerateOptionSetMetadataAttribute { get; set; }
-        public bool? GenerateSeparateFiles { get; set; }
         public bool? GenerateTypesAsInternal { get; set; }
         public bool? GroupLocalOptionSetsByEntity { get; set; }
         public bool? ReplaceOptionSetPropertiesWithEnum { get; set; }

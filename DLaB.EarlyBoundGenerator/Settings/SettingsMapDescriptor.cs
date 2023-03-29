@@ -140,6 +140,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 nameof(OptionSetsToSkip),
                 nameof(ProjectNameForEarlyBoundFiles),
                 nameof(RemoveRuntimeVersionComment),
+                nameof(UnmappedProperties),
                 nameof(UseTfsToCheckoutFiles),
                 nameof(WorkflowlessActions),
             };

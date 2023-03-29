@@ -653,22 +653,29 @@ namespace DLaB.EarlyBoundGenerator.Settings
         public void PopulateBuilderProperties(Dictionary<string, JsonProperty> properties)
         {
             var isXrmToolBoxEarlyBound = typeof(ExtensionConfig).AssemblyQualifiedName?.StartsWith("DLaB.EarlyBoundGenerator.Settings.ExtensionConfig, DLaB.EarlyBoundGenerator,") ?? true;
+            var defaultSettings = GetDefault();
 
             SetModelBuilderServiceProperty(BuilderSettingsJsonNames.CodeCustomizationService, CodeCustomizationService);
             SetModelBuilderServiceProperty(BuilderSettingsJsonNames.CodeGenerationService, CodeGenerationService);
             SetModelBuilderServiceProperty(BuilderSettingsJsonNames.CodeWriterFilterService, CodeWriterFilterService);
             SetModelBuilderServiceProperty(BuilderSettingsJsonNames.MetadataProviderService, MetadataProviderService);
-            properties.SetJsonProperty(BuilderSettingsJsonNames.EntityTypesFolder, EntityTypesFolder);
+
+            SetOutputFolderProperty(BuilderSettingsJsonNames.EntityTypesFolder, EntityTypesFolder, defaultSettings.EntityTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.GenerateActions, GenerateMessages);
-            properties.SetJsonProperty(BuilderSettingsJsonNames.MessagesTypesFolder, MessageTypesFolder);
+            SetOutputFolderProperty(BuilderSettingsJsonNames.MessagesTypesFolder, MessageTypesFolder, defaultSettings.MessageTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.Namespace, Namespace);
             SetModelBuilderServiceProperty(BuilderSettingsJsonNames.NamingService, NamingService);
-            properties.SetJsonProperty(BuilderSettingsJsonNames.OptionSetsTypesFolder, OptionSetsTypesFolder);
+            SetOutputFolderProperty(BuilderSettingsJsonNames.OptionSetsTypesFolder, OptionSetsTypesFolder, defaultSettings.OptionSetsTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.ServiceContextName, ServiceContextName);
 
             void SetModelBuilderServiceProperty(string propertyName, string typeName)
             {
                 properties.SetJsonPropertyIfPopulated(propertyName, isXrmToolBoxEarlyBound ? ReplaceAssemblyName(typeName) : typeName);
+            }
+
+            void SetOutputFolderProperty(string propertyName, string typeName, string @default)
+            {
+                properties.SetJsonPropertyIfPopulated(propertyName, typeName.Contains(".cs") ? @default : typeName);
             }
         }
 

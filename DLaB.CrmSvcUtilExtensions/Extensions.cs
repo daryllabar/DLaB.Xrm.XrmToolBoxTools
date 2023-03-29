@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Text;
-using DLaB.ModelBuilderExtensions.Entity;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 
@@ -63,6 +63,18 @@ namespace DLaB.ModelBuilderExtensions
                 }
             }
         }
+
+        #region CodeNamespaceCollection
+
+        public static IEnumerable<CodeTypeDeclaration> GetTypes(this CodeNamespace codeNamespace)
+        {
+            for (var j = 0; j < codeNamespace.Types.Count; j++)
+            {
+                yield return codeNamespace.Types[j];
+            }
+        }
+
+        #endregion CodeNamespaceCollection
 
         #region CodeTypeDeclaration
 
@@ -258,6 +270,21 @@ namespace DLaB.ModelBuilderExtensions
         }
 
         #endregion Dictionary<string,string>
+
+        #region IServiceProvider
+
+        public static void UpdateService<T>(this IServiceProvider services, T service)
+        {
+            var dictionaryField = services.GetType().GetField("_services", BindingFlags.NonPublic | BindingFlags.Instance);
+            if (dictionaryField == null)
+            {
+                throw new NotImplementedException("Unable to determine the dictionary field for the IServiceProvider in UpdateService!");
+            }
+            var dictionary = (Dictionary<Type, object>)dictionaryField.GetValue(services);
+            dictionary[typeof(T)] = service;
+        }
+
+        #endregion IServiceProvider
 
         #region Label
 

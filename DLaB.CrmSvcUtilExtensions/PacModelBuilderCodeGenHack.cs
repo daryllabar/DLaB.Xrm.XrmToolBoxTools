@@ -12,7 +12,7 @@ namespace DLaB.ModelBuilderExtensions
     internal class PacModelBuilderCodeGenHack
     {
         public ICodeGenerationService DefaultService { get; set; }
-        public List<string> FilesWritten { get; set; } = new List<string>();
+        public Dictionary<string, CodeNamespace> FilesWritten { get; set; } = new Dictionary<string, CodeNamespace>();
         public bool LegacyMode { get; set; }
         public DLaBModelBuilderSettings Settings { get; set; }
         public bool SplitFilesByObject { get; set; }
@@ -50,7 +50,7 @@ namespace DLaB.ModelBuilderExtensions
                     var filePath = GetFilePath(keyValuePair.Key, keyValuePair.Value);
                     CodeGenerationService_WriteFile(filePath, language, keyValuePair.Value, serviceProvider, keyValuePair.Key.Contains(str), true);
                     MakeConfiguredClassesStatic(filePath, keyValuePair.Value);
-                    FilesWritten.Add(filePath);
+                    FilesWritten.Add(filePath, keyValuePair.Value);
                 }
 
                 if (string.IsNullOrEmpty(str))
@@ -64,7 +64,7 @@ namespace DLaB.ModelBuilderExtensions
                 CodeNamespace codenamespace = CodeGenerationService_BuildCodeDom(organizationMetadata, outputNamespace, serviceProvider, LegacyMode);
                 CodeGenerationService_WriteFile(outputFile, language, codenamespace, serviceProvider);
                 MakeConfiguredClassesStatic(outputFile);
-                FilesWritten.Add(outputFile);
+                FilesWritten.Add(outputFile, codenamespace);
             }
             ProcessModelInvoker_ModelBuilderLogger_TraceMethodStop("Exiting {0}", nameof(Write));
         }
@@ -150,7 +150,7 @@ namespace DLaB.ModelBuilderExtensions
             });
         }
 
-        private void CodeGenerationService_WriteFile(
+        public void CodeGenerationService_WriteFile(
             string outputFile,
             string language,
             CodeNamespace codenamespace,
@@ -216,6 +216,12 @@ namespace DLaB.ModelBuilderExtensions
             }
 
             return method.Invoke(instance, parameters);
+        }
+
+        public void WriteFileWithoutCustomizations(string outputFile, string language, CodeNamespace codenamespace, IServiceProvider serviceProvider, bool writeProxyAttrib = true)
+        {
+            serviceProvider.UpdateService<ICustomizeCodeDomService>(new CustomizeCodeDomServiceEmpty());
+            CodeGenerationService_WriteFile(outputFile, language, codenamespace, serviceProvider, writeProxyAttrib);
         }
     }
 }

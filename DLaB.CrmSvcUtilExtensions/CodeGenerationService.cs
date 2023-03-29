@@ -1,12 +1,13 @@
-﻿using DLaB.ModelBuilderExtensions.OptionSet;
-using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
+﻿using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Source.DLaB.Common;
 using Source.DLaB.Common.VersionControl;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using Parallel = System.Threading.Tasks.Parallel;
 
 namespace DLaB.ModelBuilderExtensions
@@ -14,12 +15,20 @@ namespace DLaB.ModelBuilderExtensions
     public class CodeGenerationService : TypedServiceBase<ICodeGenerationService>, ICodeGenerationService
     {
         public bool UseTfsToCheckoutFiles { get; } = false; //ConfigHelper.GetAppSettingOrDefault("UseTfsToCheckoutFiles", false);
+
         public bool AddNewFilesToProject { get => DLaBSettings.AddNewFilesToProject; set => DLaBSettings.AddNewFilesToProject = value; }
+        private bool CreateOneFilePerEntity { get => DLaBSettings.CreateOneFilePerEntity; set => DLaBSettings.CreateOneFilePerEntity = value; }
         private bool DeleteFilesFromOutputFolders { get => DLaBSettings.DeleteFilesFromOutputFolders; set => DLaBSettings.DeleteFilesFromOutputFolders = value; }
+        public string EntitiesFileName { get => DLaBSettings.EntitiesFileName; set => DLaBSettings.EntitiesFileName = value; }
+        public string EntityTypesFolder { get => Settings.EntityTypesFolder; set => Settings.EntityTypesFolder = value; }
         public string FilePrefixText { get => DLaBSettings.FilePrefixText; set => DLaBSettings.FilePrefixText = value; }
-        public string ProjectNameForEarlyBoundFiles { get => DLaBSettings.ProjectNameForEarlyBoundFiles; set => DLaBSettings.ProjectNameForEarlyBoundFiles = value; }
-        public string OutDirectory { get => Settings.OutDirectory; set => Settings.OutDirectory = value; }
         private bool LoggingEnabled { get => DLaBSettings.LoggingEnabled; set => DLaBSettings.LoggingEnabled = value; }
+        public string MessagesFileName { get => DLaBSettings.MessagesFileName; set => DLaBSettings.MessagesFileName = value; }
+        public string MessageTypesFolder { get => Settings.MessagesTypesFolder; set => Settings.MessagesTypesFolder = value; }
+        public string OptionSetsFileName { get => DLaBSettings.OptionSetsFileName; set => DLaBSettings.OptionSetsFileName = value; }
+        public string OptionSetTypesFolder { get => Settings.OptionSetsTypesFolder; set => Settings.OptionSetsTypesFolder = value; }
+        public string OutDirectory { get => Settings.OutDirectory; set => Settings.OutDirectory = value; }
+        public string ProjectNameForEarlyBoundFiles { get => DLaBSettings.ProjectNameForEarlyBoundFiles; set => DLaBSettings.ProjectNameForEarlyBoundFiles = value; }
 
         public bool RemoveRuntimeVersionComment { get => DLaBSettings.RemoveRuntimeVersionComment; set => DLaBSettings.RemoveRuntimeVersionComment = value; }
 
@@ -116,6 +125,33 @@ namespace DLaB.ModelBuilderExtensions
             // Write the file out as normal
             var hack = new PacModelBuilderCodeGenHack(Settings, DefaultService, true, false);
             hack.Write(organizationMetadata, language, outputFile, targetNamespace, services);
+
+            // If single file, combine everything!
+            if (!CreateOneFilePerEntity)
+            {
+                CodeNamespace code = null;
+                var entityFolder = Path.Combine(OutDirectory, EntityTypesFolder);
+                foreach (var file in hack.FilesWritten.Where(kvp => string.Equals(Path.GetDirectoryName(kvp.Key), entityFolder, StringComparison.CurrentCultureIgnoreCase)
+                                                                    || string.Equals(Path.GetDirectoryName(kvp.Key), OutDirectory, StringComparison.CurrentCultureIgnoreCase)).ToList())
+                {
+                    if (code == null)
+                    {
+                        code = file.Value;
+                    }
+                    else
+                    {
+                        code.Types.AddRange(file.Value.Types);
+                    }
+
+                    File.Delete(file.Key);
+                    hack.FilesWritten.Remove(file.Key);
+                }
+
+                if (code != null)
+                {
+                    hack.WriteFileWithoutCustomizations(Path.Combine(OutDirectory, EntitiesFileName), language, code, ServiceProvider);
+                }
+            }
 
             DeleteExistingFiles(outputFile);
 

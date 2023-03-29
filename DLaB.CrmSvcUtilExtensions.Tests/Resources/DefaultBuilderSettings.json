@@ -23,7 +23,6 @@
     "generateEnumProperties": true,
     "generateOnlyReferencedOptionSets": true,
     "generateOptionSetMetadataAttribute": true,
-    "generateSeparateFiles": true,
     "groupLocalOptionSetsByEntity": false,
     "invalidCSharpNamePrefix": "_",
     "makeAllFieldsEditable": false,

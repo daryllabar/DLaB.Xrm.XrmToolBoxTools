@@ -99,6 +99,9 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("entityAttributeSpecifiedNames")]
         public Dictionary<string, HashSet<string>> EntityAttributeSpecifiedNames { get; set; }
 
+        [JsonPropertyName("entitiesFileName")]
+        public string EntitiesFileName { get; set; }
+
         [JsonPropertyName("entityPrefixesToSkip")]
         public List<string> EntityPrefixesToSkip { get; set; }
 
@@ -135,9 +138,6 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("generateOptionSetMetadataAttribute")]
         public bool GenerateOptionSetMetadataAttribute { get; set; }
 
-        [JsonPropertyName("generateSeparateFiles")]
-        public bool GenerateSeparateFiles { get; set; }
-
         [JsonPropertyName("generateTypesAsInternal")]
         public bool GenerateTypesAsInternal { get; set; }
 
@@ -168,8 +168,14 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("messagePrefixesToSkip")]
         public List<string> MessagePrefixesToSkip { get; set; }
 
+        [JsonPropertyName("messagesFileName")]
+        public string MessagesFileName { get; set; }
+
         [JsonPropertyName("messageToSkip")]
         public List<string> MessageToSkip { get; set; }
+
+        [JsonPropertyName("optionSetFileName")]
+        public string OptionSetsFileName { get; set; }
 
         private string _optionSetLanguageCodeOverride;
         [JsonPropertyName("optionSetLanguageCodeOverride")]
@@ -270,9 +276,8 @@ namespace DLaB.ModelBuilderExtensions
             AddPrimaryAttributeConsts = true;
             AttributeConstsClassName = "Fields";
             BaseEntityClassName = "EarlyBoundEntity";
-            OrgEntityClassName = "OrganizationOwnedEntity";
-            UserEntityClassName = "UserOwnedEntity";
             EnableFileDataType = true;
+            EntitiesFileName = "Entities.cs";
             EntitiesToSkip = new List<string>();
             EntityAttributeSpecifiedNames = new Dictionary<string, HashSet<string>>();
             EntityPrefixesToSkip = new List<string>();
@@ -281,12 +286,16 @@ namespace DLaB.ModelBuilderExtensions
             LocalOptionSetFormat = "{0}_{1}";
             MessagePrefixesToSkip = new List<string>();
             MessageToSkip = new List<string>();
+            MessagesFileName = "Messages.cs";
             SerializedMetadataRelativeFilePath = "metadata.xml";
             OptionSetNames = new Dictionary<string, string>();
+            OptionSetsFileName = "OptionSet.cs";
+            OrgEntityClassName = "OrganizationOwnedEntity";
             PropertyEnumMappings = new Dictionary<string, string>();
             RelationshipConstsClassName = "Relationships";
             TokenCapitalizationOverrides = new List<string>();
             UnmappedProperties = new Dictionary<string, HashSet<string>>();
+            UserEntityClassName = "UserOwnedEntity";
             ValidCSharpNameRegEx = @"[^a-zA-Z0-9_]";
         }
     }

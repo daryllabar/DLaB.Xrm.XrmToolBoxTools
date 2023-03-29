@@ -153,17 +153,10 @@ namespace DLaB.EarlyBoundGenerator
                 //CodeGenerationService = "DLaB.ModelBuilderExtensions.Entity.CustomCodeGenerationService,DLaB.ModelBuilderExtensions",
                 //CodeWriterFilterService = "DLaB.ModelBuilderExtensions.Entity.CodeWriterFilterService,DLaB.ModelBuilderExtensions",
                 //MetadataProviderService = "DLaB.ModelBuilderExtensions.Entity.MetadataProviderService,DLaB.ModelBuilderExtensions",
-                SplitFilesByObject = EarlyBoundGeneratorConfig.ExtensionConfig.GenerateSeparateFiles
+                //SplitFilesByObject = EarlyBoundGeneratorConfig.ExtensionConfig.GenerateSeparateFiles
             };
 
-            if (parameters.SplitFilesByObject)
-            {
-                parameters.OutDirectory = EarlyBoundGeneratorConfig.RootPath;
-            }
-            else
-            {
-                parameters.OutputFile = Path.Combine(EarlyBoundGeneratorConfig.RootPath, EarlyBoundGeneratorConfig.ServiceContextName + ".cs");
-            }
+            parameters.OutDirectory = EarlyBoundGeneratorConfig.RootPath;
 
             return parameters;
         }
@@ -318,7 +311,7 @@ namespace DLaB.EarlyBoundGenerator
                             {
                                 writer.WritePropertyName(kvp.Key);
                                 writer.WriteStartObject();
-                                earlyBoundGeneratorConfig.ExtensionConfig.WriteDLaBModelBuilderProperties(writer);
+                                earlyBoundGeneratorConfig.ExtensionConfig.WriteDLaBModelBuilderProperties(writer, earlyBoundGeneratorConfig);
                                 writer.WriteEndObject();
                             }
                             else

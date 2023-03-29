@@ -343,15 +343,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         }
 
         [Category("1 - Global")]
-        [DisplayName("Generate Separate Files")]
-        [Description("Splits the output into files by type, organized by entity, message, and optionsets.")]
-        public bool GenerateSeparateFiles
-        {
-            get => Config.ExtensionConfig.GenerateSeparateFiles;
-            set => Config.ExtensionConfig.GenerateSeparateFiles = value;
-        }
-
-        [Category("1 - Global")]
         [DisplayName("Generate Types As Internal")]
         [Description("All generated types are marked as \"internal\" instead of \"public\".")]
         public bool GenerateTypesAsInternal
