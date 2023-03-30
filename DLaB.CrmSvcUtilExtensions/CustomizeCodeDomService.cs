@@ -32,7 +32,7 @@ namespace DLaB.ModelBuilderExtensions
 
         public BlacklistLogic MessageApprover { get; set; }
 
-        public bool MakeResponseActionsEditable { get => DLaBSettings.MakeResponseActionsEditable; set => DLaBSettings.MakeResponseActionsEditable = value; }
+        public bool MakeResponseActionsEditable { get => DLaBSettings.MakeResponseMessagesEditable; set => DLaBSettings.MakeResponseMessagesEditable = value; }
 
         #endregion Message Properties
 

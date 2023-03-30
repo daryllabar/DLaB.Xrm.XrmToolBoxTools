@@ -9,8 +9,8 @@ namespace DLaB.ModelBuilderExtensions
         /// <summary>
         /// No Config
         /// </summary>
-        [JsonPropertyName("actionLogicalFieldName")]
-        public string ActionLogicalFieldName { get; set; }
+        [JsonPropertyName("messageLogicalFieldName")]
+        public string MessageLogicalFieldName { get; set; }
 
         [JsonPropertyName("addDebuggerNonUserCode")]
         public bool AddDebuggerNonUserCode { get; set; }
@@ -78,8 +78,8 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("createBaseClasses")]
         public bool CreateBaseClasses { get; set; }
 
-        [JsonPropertyName("createOneFilePerAction")]
-        public bool CreateOneFilePerAction { get; set; }
+        [JsonPropertyName("createOneFilePerMessage")]
+        public bool CreateOneFilePerMessage { get; set; }
 
         [JsonPropertyName("createOneFilePerEntity")]
         public bool CreateOneFilePerEntity { get; set; }
@@ -111,8 +111,8 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("filePrefixText")]
         public string FilePrefixText { get; set; }
 
-        [JsonPropertyName("generateActionAttributeNameConsts")]
-        public bool GenerateActionAttributeNameConsts { get; set; }
+        [JsonPropertyName("generateMessageAttributeNameConsts")]
+        public bool GenerateMessageAttributeNameConsts { get; set; }
 
         [JsonPropertyName("generateAttributeNameConsts")]
         public bool GenerateAttributeNameConsts { get; set; }
@@ -162,8 +162,8 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("makeReadonlyFieldsEditable")]
         public bool MakeReadonlyFieldsEditable { get; set; }
 
-        [JsonPropertyName("makeResponseActionsEditable")]
-        public bool MakeResponseActionsEditable { get; set; }
+        [JsonPropertyName("makeResponseMessagesEditable")]
+        public bool MakeResponseMessagesEditable { get; set; }
 
         [JsonPropertyName("messagePrefixesToSkip")]
         public List<string> MessagePrefixesToSkip { get; set; }
@@ -275,7 +275,7 @@ namespace DLaB.ModelBuilderExtensions
 
         public DLaBModelBuilder()
         {
-            ActionLogicalFieldName = "ActionLogicalName";
+            MessageLogicalFieldName = "ActionLogicalName";
             AddPrimaryAttributeConsts = true;
             AttributeConstsClassName = "Fields";
             BaseEntityClassName = "EarlyBoundEntity";
@@ -318,6 +318,9 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("entityTypesFolder")]
         public string EntityTypesFolder { get; set; }
+
+        [JsonPropertyName("generateActions")]
+        public bool GenerateActions { get; set; }
 
         [JsonPropertyName("generateGlobalOptionSets")]
         public bool GenerateGlobalOptionSets { get; set; }

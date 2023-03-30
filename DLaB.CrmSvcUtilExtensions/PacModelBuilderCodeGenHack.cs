@@ -221,7 +221,7 @@ namespace DLaB.ModelBuilderExtensions
         public void WriteFileWithoutCustomizations(string outputFile, string language, CodeNamespace codenamespace, IServiceProvider serviceProvider, bool writeProxyAttrib = true)
         {
             serviceProvider.UpdateService<ICustomizeCodeDomService>(new CustomizeCodeDomServiceEmpty());
-            CodeGenerationService_WriteFile(outputFile, language, codenamespace, serviceProvider, writeProxyAttrib);
+            CodeGenerationService_WriteFile(outputFile, language, codenamespace.OrderTypesByName(), serviceProvider, writeProxyAttrib);
         }
     }
 }

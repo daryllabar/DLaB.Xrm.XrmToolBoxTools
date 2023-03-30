@@ -7,8 +7,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using Parallel = System.Threading.Tasks.Parallel;
 
 namespace DLaB.ModelBuilderExtensions
 {
@@ -17,12 +15,16 @@ namespace DLaB.ModelBuilderExtensions
         public bool UseTfsToCheckoutFiles { get; } = false; //ConfigHelper.GetAppSettingOrDefault("UseTfsToCheckoutFiles", false);
 
         public bool AddNewFilesToProject { get => DLaBSettings.AddNewFilesToProject; set => DLaBSettings.AddNewFilesToProject = value; }
-        private bool CreateOneFilePerEntity { get => DLaBSettings.CreateOneFilePerEntity; set => DLaBSettings.CreateOneFilePerEntity = value; }
-        private bool DeleteFilesFromOutputFolders { get => DLaBSettings.DeleteFilesFromOutputFolders; set => DLaBSettings.DeleteFilesFromOutputFolders = value; }
+        public bool CreateOneFilePerMessage { get => DLaBSettings.CreateOneFilePerMessage; set => DLaBSettings.CreateOneFilePerMessage = value; }
+        public bool CreateOneFilePerEntity { get => DLaBSettings.CreateOneFilePerEntity; set => DLaBSettings.CreateOneFilePerEntity = value; }
+        public bool CreateOneFilePerOptionSet { get => DLaBSettings.CreateOneFilePerOptionSet; set => DLaBSettings.CreateOneFilePerOptionSet = value; }
+        public bool DeleteFilesFromOutputFolders { get => DLaBSettings.DeleteFilesFromOutputFolders; set => DLaBSettings.DeleteFilesFromOutputFolders = value; }
         public string EntitiesFileName { get => DLaBSettings.EntitiesFileName; set => DLaBSettings.EntitiesFileName = value; }
         public string EntityTypesFolder { get => Settings.EntityTypesFolder; set => Settings.EntityTypesFolder = value; }
         public string FilePrefixText { get => DLaBSettings.FilePrefixText; set => DLaBSettings.FilePrefixText = value; }
-        private bool LoggingEnabled { get => DLaBSettings.LoggingEnabled; set => DLaBSettings.LoggingEnabled = value; }
+        public bool GenerateActions { get => Settings.GenerateActions; set => Settings.GenerateActions = value; }
+        public bool GroupLocalOptionSetsByEntity { get => DLaBSettings.CreateOneFilePerOptionSet && DLaBSettings.GroupLocalOptionSetsByEntity; set => DLaBSettings.GroupLocalOptionSetsByEntity = value; }
+        public bool LoggingEnabled { get => DLaBSettings.LoggingEnabled; set => DLaBSettings.LoggingEnabled = value; }
         public string MessagesFileName { get => DLaBSettings.MessagesFileName; set => DLaBSettings.MessagesFileName = value; }
         public string MessageTypesFolder { get => Settings.MessagesTypesFolder; set => Settings.MessagesTypesFolder = value; }
         public string OptionSetsFileName { get => DLaBSettings.OptionSetsFileName; set => DLaBSettings.OptionSetsFileName = value; }
@@ -119,41 +121,18 @@ namespace DLaB.ModelBuilderExtensions
                     OnErrorReceived = DisplayMessage
                 });
             }
+
             DisplayMessage("Ensuring Context File is Accessible");
             EnsureFileIsAccessible(outputFile);
 
-            // Write the file out as normal
+            DeleteExistingFiles(outputFile);
+
+            // Write the files out as normal
             var hack = new PacModelBuilderCodeGenHack(Settings, DefaultService, true, false);
             hack.Write(organizationMetadata, language, outputFile, targetNamespace, services);
 
-            // If single file, combine everything!
-            if (!CreateOneFilePerEntity)
-            {
-                CodeNamespace code = null;
-                var entityFolder = Path.Combine(OutDirectory, EntityTypesFolder);
-                foreach (var file in hack.FilesWritten.Where(kvp => string.Equals(Path.GetDirectoryName(kvp.Key), entityFolder, StringComparison.CurrentCultureIgnoreCase)
-                                                                    || string.Equals(Path.GetDirectoryName(kvp.Key), OutDirectory, StringComparison.CurrentCultureIgnoreCase)).ToList())
-                {
-                    if (code == null)
-                    {
-                        code = file.Value;
-                    }
-                    else
-                    {
-                        code.Types.AddRange(file.Value.Types);
-                    }
+            ConditionallyCombineFiles(language, hack);
 
-                    File.Delete(file.Key);
-                    hack.FilesWritten.Remove(file.Key);
-                }
-
-                if (code != null)
-                {
-                    hack.WriteFileWithoutCustomizations(Path.Combine(OutDirectory, EntitiesFileName), language, code, ServiceProvider);
-                }
-            }
-
-            DeleteExistingFiles(outputFile);
 
             // TODO: Move removal of Runtime Version to Code Gen
             // Handle 
@@ -194,15 +173,172 @@ namespace DLaB.ModelBuilderExtensions
             //}
         }
 
-        private string GetFormattedPrefixText(string outputFile)
+        #region Combine Files
+
+        private void ConditionallyCombineFiles(string language, PacModelBuilderCodeGenHack hack)
         {
-            if (string.IsNullOrWhiteSpace(FilePrefixText))
+            if (!CreateOneFilePerEntity || !CreateOneFilePerOptionSet)
             {
-                return string.Empty;
+                var optionSetsInEntities = ExtractOptionSetsAndConditionallyCombineEntities(language, hack);
+                CombineOrWriteEntityOptionSets(language, hack, optionSetsInEntities);
             }
 
-            return string.Format(FilePrefixText, Path.GetFileName(outputFile)) + Environment.NewLine;
+            if (GenerateActions && !CreateOneFilePerMessage)
+            {
+                CombineMessages(language, hack);
+            }
+
+            DeleteEmptyFolder(EntityTypesFolder);
+            DeleteEmptyFolder(MessageTypesFolder);
+            DeleteEmptyFolder(OptionSetTypesFolder);
+
+            void DeleteEmptyFolder(string relativeFolder)
+            {
+                var entityFolder = Path.Combine(OutDirectory, relativeFolder);
+                if (!Directory.EnumerateFiles(entityFolder).Any())
+                {
+                    Directory.Delete(entityFolder);
+                }
+            }
         }
+
+        private List<CodeTypeDeclaration> ExtractOptionSetsAndConditionallyCombineEntities(string language, PacModelBuilderCodeGenHack hack)
+        {
+            DisplayMessage(!CreateOneFilePerEntity ? "Combining entities into single file." : "Extracting OptionSets from entities.");
+            var optionSetsInEntities = new List<CodeTypeDeclaration>();
+            CodeNamespace code = null;
+            foreach (var file in hack.FilesWritten.Where(kvp => kvp.Value.GetTypes().Any(t => t.IsEntityType())).ToList())
+            {
+                // Remove Option Sets from Entity
+                var enums = file.Value.GetTypes().Where(t => t.IsEnum).OrderBy(t => t.Name).ToArray();
+                foreach (var value in enums)
+                {
+                    file.Value.Types.Remove(value);
+                }
+
+                if (GroupLocalOptionSetsByEntity)
+                {
+                    var temp = file.Value;
+                    var existing = temp.GetTypes();
+                    temp.Types.Clear();
+                    temp.Types.AddRange(enums);
+                    hack.WriteFileWithoutCustomizations(Path.Combine(OutDirectory, OptionSetTypesFolder, Path.GetFileNameWithoutExtension(file.Key) + "Sets.cs"), language, temp, ServiceProvider);
+                    temp.Types.Clear();
+                    temp.Types.AddRange(existing.ToArray());
+                }
+                else
+                {
+                    optionSetsInEntities.AddRange(enums);
+                }
+
+                File.Delete(file.Key);
+                if (CreateOneFilePerEntity)
+                {
+                    hack.WriteFileWithoutCustomizations(file.Key, language, file.Value, ServiceProvider);
+                }
+                else
+                {
+                    if (code == null)
+                    {
+                        code = file.Value;
+                    }
+                    else
+                    {
+                        code.Types.AddRange(file.Value.Types);
+                    }
+
+                    hack.FilesWritten.Remove(file.Key);
+                }
+            }
+
+            if (code != null)
+            {
+                hack.WriteFileWithoutCustomizations(Path.Combine(OutDirectory, EntitiesFileName), language, code, ServiceProvider);
+            }
+
+            return optionSetsInEntities;
+        }
+
+        private void CombineOrWriteEntityOptionSets(string language, PacModelBuilderCodeGenHack hack, List<CodeTypeDeclaration> optionSetsInEntities)
+        {
+            var optionSetsFolder = Path.Combine(OutDirectory, OptionSetTypesFolder);
+            if (CreateOneFilePerOptionSet)
+            {
+                DisplayMessage("Writing OptionSets from Entities.");
+                var code = hack.FilesWritten.First(IsOptionSetFile).Value;
+                foreach (var optionSet in optionSetsInEntities)
+                {
+                    code.Types.Clear();
+                    code.Types.Add(optionSet);
+                    hack.WriteFileWithoutCustomizations(Path.Combine(optionSetsFolder, optionSet.Name + ".cs"), language, code, ServiceProvider);
+                }
+            }
+            else
+            {
+                DisplayMessage("Combining OptionSets into single file.");
+                CodeNamespace code = null;
+                foreach (var file in hack.FilesWritten.Where(IsOptionSetFile).ToList())
+                {
+                    File.Delete(file.Key);
+                    if (code == null)
+                    {
+                        code = file.Value;
+                    }
+                    else
+                    {
+                        code.Types.AddRange(file.Value.Types);
+                    }
+                }
+
+                if (code != null)
+                {
+                    optionSetsInEntities.AddRange(code.GetTypes());
+                    code.Types.Clear();
+                    code.Types.AddRange(optionSetsInEntities.OrderBy(o => o.Name).ToArray());
+                    hack.WriteFileWithoutCustomizations(Path.Combine(OutDirectory, OptionSetsFileName), language, code, ServiceProvider);
+                }
+            }
+
+            bool IsOptionSetFile(KeyValuePair<string, CodeNamespace> kvp)
+            {
+                return string.Equals(Path.GetDirectoryName(kvp.Key), optionSetsFolder, StringComparison.CurrentCultureIgnoreCase) && kvp.Value.GetTypes().All(t => t.IsEnum);
+            }
+        }
+
+        private void CombineMessages(string language, PacModelBuilderCodeGenHack hack)
+        {
+            DisplayMessage("Combining Messages into single file.");
+            CodeNamespace code = null;
+            foreach (var file in hack.FilesWritten.Where(kvp => kvp.Value.GetTypes().Any(t => t.IsMessageType())).ToList())
+            {
+                File.Delete(file.Key);
+                if (code == null)
+                {
+                    code = file.Value;
+                }
+                else
+                {
+                    code.Types.AddRange(file.Value.Types);
+                }
+            }
+
+            if (code != null)
+            {
+                hack.WriteFileWithoutCustomizations(Path.Combine(OutDirectory, MessagesFileName), language, code, ServiceProvider);
+            }
+        }
+
+        #endregion Combine Files
+
+        //private string GetFormattedPrefixText(string outputFile)
+        //{
+        //    if (string.IsNullOrWhiteSpace(FilePrefixText))
+        //    {
+        //        return string.Empty;
+        //    }
+        //
+        //    return string.Format(FilePrefixText, Path.GetFileName(outputFile)) + Environment.NewLine;
+        //}
 
         private void DeleteExistingFiles(string outputFile)
         {
@@ -303,223 +439,223 @@ namespace DLaB.ModelBuilderExtensions
 
         #region Split File Into Multiple Files By Class
 
-        private void SplitFileByCodeUnit(CodeUnit codeUnit, string filePath, IEnumerable<string> lines)
-        {
-            var directory = Path.GetDirectoryName(filePath) ?? string.Empty;
-            var currentStage = SplitStage.Header;
-            var header = new List<string>();
-            var code = new List<string>();
-            var name = string.Empty;
-            var proxyTypesAssemblyAttributeLine = string.Empty;
-            var generatedCodeAttributeLine = string.Empty;
-            var skipNext = false;
-            var commandLine = string.Empty;
-            var codeUnitStartsWith = codeUnit == CodeUnit.Class ? "public partial class" : "public enum";
-            var files = new List<FileToWrite>(); // Delay this to the end to multi-thread the creation.  100's of small files takes a long time if checking with TFS sequentially
+        //private void SplitFileByCodeUnit(CodeUnit codeUnit, string filePath, IEnumerable<string> lines)
+        //{
+        //    var directory = Path.GetDirectoryName(filePath) ?? string.Empty;
+        //    var currentStage = SplitStage.Header;
+        //    var header = new List<string>();
+        //    var code = new List<string>();
+        //    var name = string.Empty;
+        //    var proxyTypesAssemblyAttributeLine = string.Empty;
+        //    var generatedCodeAttributeLine = string.Empty;
+        //    var skipNext = false;
+        //    var commandLine = string.Empty;
+        //    var codeUnitStartsWith = codeUnit == CodeUnit.Class ? "public partial class" : "public enum";
+        //    var files = new List<FileToWrite>(); // Delay this to the end to multi-thread the creation.  100's of small files takes a long time if checking with TFS sequentially
+        //
+        //    foreach (var line in lines)
+        //    {
+        //        if (skipNext) { skipNext = false; continue; }
+        //
+        //        switch (currentStage)
+        //        {
+        //            case SplitStage.Header:
+        //                if (string.IsNullOrEmpty(line))
+        //                {
+        //                    currentStage = SplitStage.Namespace;
+        //                    header.Add(line);
+        //                }
+        //                else if (line.StartsWith(@"// Created via this command line:"))
+        //                {
+        //                    // Since we are splitting the files, we don't want to put the command line in each file.  It would show every file as having been updated each time you change the path or user
+        //                    commandLine = line;
+        //                }
+        //                else
+        //                {
+        //                    header.Add(line);
+        //                }
+        //                break;
+        //
+        //            case SplitStage.Namespace:
+        //                if (header.Last().StartsWith("namespace "))
+        //                {
+        //                    currentStage = SplitStage.CodeUnitHeader;
+        //                    skipNext = true;
+        //                }
+        //                if (line.Contains("ProxyTypesAssemblyAttribute"))
+        //                {
+        //                    proxyTypesAssemblyAttributeLine = line;
+        //                    continue;
+        //                }
+        //
+        //                if (line.Contains("GeneratedCodeAttribute"))
+        //                {
+        //                    generatedCodeAttributeLine = line;
+        //                    continue;
+        //                }
+        //                header.Add(line);
+        //                break;
+        //
+        //            case SplitStage.CodeUnitHeader:
+        //                if (line.TrimStart().StartsWith(codeUnitStartsWith))
+        //                {
+        //                    name = GetName(codeUnit, line);
+        //                    if (line.Contains(": Microsoft.Xrm.Sdk.Client.OrganizationServiceContext") || // Standard
+        //                        line.Contains(": Microsoft.Xrm.Client.CrmOrganizationServiceContext")) // Xrm Client
+        //                    {
+        //                        // Put Created Via Command Line Back in
+        //                        header.Insert(header.IndexOf(@"// </auto-generated>")+1, commandLine);
+        //                        commandLine = string.Empty;
+        //                        // Put Assembly Assembly Attribute Lines back in
+        //                        var i = header.IndexOf(string.Empty, 0);
+        //                        header.Insert(++i, proxyTypesAssemblyAttributeLine);
+        //                        header.Insert(++i, generatedCodeAttributeLine);
+        //                        currentStage = SplitStage.ServiceContext;
+        //                    }
+        //                    else
+        //                    {
+        //                        currentStage = SplitStage.CodeUnit;
+        //                    }
+        //                }
+        //                code.Add(line);
+        //                break;
+        //
+        //            case SplitStage.CodeUnit:
+        //                code.Add(line);
+        //                if (line == "\t}")
+        //                {
+        //                    code.Add("}");
+        //                    var fileName = Path.Combine(directory, name + ".cs");
+        //                    files.Add(new FileToWrite(fileName, string.Join(Environment.NewLine, header.Concat(code))));
+        //                    code.Clear();
+        //                    currentStage = SplitStage.CodeUnitHeader;
+        //                }
+        //                break;
+        //
+        //            case SplitStage.ServiceContext:
+        //                code.Add(line);
+        //                break;
+        //
+        //            default:
+        //                throw new Exception("No Enum Defined");
+        //        }
+        //    }
+        //
+        //    var finalFileText = GetFormattedPrefixText(filePath) + (
+        //        string.IsNullOrWhiteSpace(commandLine)
+        //        ? string.Join(Environment.NewLine, header.Concat(code))
+        //        : commandLine);
+        //
+        //    files.Add(new FileToWrite(filePath, finalFileText, true));
+        //
+        //    UpdateFilesToWrite(files);
+        //
+        //    WriteFilesAsync(files);
+        //}
 
-            foreach (var line in lines)
-            {
-                if (skipNext) { skipNext = false; continue; }
-
-                switch (currentStage)
-                {
-                    case SplitStage.Header:
-                        if (string.IsNullOrEmpty(line))
-                        {
-                            currentStage = SplitStage.Namespace;
-                            header.Add(line);
-                        }
-                        else if (line.StartsWith(@"// Created via this command line:"))
-                        {
-                            // Since we are splitting the files, we don't want to put the command line in each file.  It would show every file as having been updated each time you change the path or user
-                            commandLine = line;
-                        }
-                        else
-                        {
-                            header.Add(line);
-                        }
-                        break;
-
-                    case SplitStage.Namespace:
-                        if (header.Last().StartsWith("namespace "))
-                        {
-                            currentStage = SplitStage.CodeUnitHeader;
-                            skipNext = true;
-                        }
-                        if (line.Contains("ProxyTypesAssemblyAttribute"))
-                        {
-                            proxyTypesAssemblyAttributeLine = line;
-                            continue;
-                        }
-
-                        if (line.Contains("GeneratedCodeAttribute"))
-                        {
-                            generatedCodeAttributeLine = line;
-                            continue;
-                        }
-                        header.Add(line);
-                        break;
-
-                    case SplitStage.CodeUnitHeader:
-                        if (line.TrimStart().StartsWith(codeUnitStartsWith))
-                        {
-                            name = GetName(codeUnit, line);
-                            if (line.Contains(": Microsoft.Xrm.Sdk.Client.OrganizationServiceContext") || // Standard
-                                line.Contains(": Microsoft.Xrm.Client.CrmOrganizationServiceContext")) // Xrm Client
-                            {
-                                // Put Created Via Command Line Back in
-                                header.Insert(header.IndexOf(@"// </auto-generated>")+1, commandLine);
-                                commandLine = string.Empty;
-                                // Put Assembly Assembly Attribute Lines back in
-                                var i = header.IndexOf(string.Empty, 0);
-                                header.Insert(++i, proxyTypesAssemblyAttributeLine);
-                                header.Insert(++i, generatedCodeAttributeLine);
-                                currentStage = SplitStage.ServiceContext;
-                            }
-                            else
-                            {
-                                currentStage = SplitStage.CodeUnit;
-                            }
-                        }
-                        code.Add(line);
-                        break;
-
-                    case SplitStage.CodeUnit:
-                        code.Add(line);
-                        if (line == "\t}")
-                        {
-                            code.Add("}");
-                            var fileName = Path.Combine(directory, name + ".cs");
-                            files.Add(new FileToWrite(fileName, string.Join(Environment.NewLine, header.Concat(code))));
-                            code.Clear();
-                            currentStage = SplitStage.CodeUnitHeader;
-                        }
-                        break;
-
-                    case SplitStage.ServiceContext:
-                        code.Add(line);
-                        break;
-
-                    default:
-                        throw new Exception("No Enum Defined");
-                }
-            }
-
-            var finalFileText = GetFormattedPrefixText(filePath) + (
-                string.IsNullOrWhiteSpace(commandLine)
-                ? string.Join(Environment.NewLine, header.Concat(code))
-                : commandLine);
-
-            files.Add(new FileToWrite(filePath, finalFileText, true));
-
-            UpdateFilesToWrite(files);
-
-            WriteFilesAsync(files);
-        }
-
-        protected virtual void UpdateFilesToWrite(List<FileToWrite> files)
-        {
-            //if (!GroupLocalOptionSetsByEntity)
-            //{
-            //    return;
-            //}
-
-            var metadata = ServiceCache.MetadataForLocalEnumsByName;
-            var groundFilesByEntity = new Dictionary<string, FileToWrite>();
-            foreach (var file in files.ToArray())
-            {
-                var optionSetName = Path.GetFileNameWithoutExtension(file.Path) ?? string.Empty;
-                if (!metadata.TryGetValue(optionSetName, out var localOptionSet))
-                {
-                    continue;
-                }
-
-                files.Remove(file);
-                if (groundFilesByEntity.TryGetValue(localOptionSet.Item1, out var entityFile))
-                {
-                    var closingNamespaceIndex = entityFile.Contents.LastIndexOf("}", StringComparison.InvariantCulture);
-                    var startingNamespaceIndex = file.Contents.IndexOf("{", StringComparison.InvariantCulture);
-                    var content = entityFile.Contents.Substring(0, closingNamespaceIndex) + file.Contents.Substring(startingNamespaceIndex + 1);
-                    groundFilesByEntity[localOptionSet.Item1] = new FileToWrite(entityFile.Path, content);
-                }
-                else
-                {
-                    //groundFilesByEntity[localOptionSet.Item1] = new FileToWrite(Path.Combine(file.Directory, string.Format(LocalOptionSetEntityFileNameFormat, localOptionSet.Item1)), file.Contents);
-                }
-            }
-
-            files.AddRange(groundFilesByEntity.Values);
-        }
-
-        private void WriteFilesAsync(List<FileToWrite> files)
-        {
-            var project = new ProjectFile(files, this);
-
-            if (UseTfsToCheckoutFiles)
-            {
-                DisplayMessage("Creating Required Directories");
-                foreach (var dir in files.Select(f => f.Directory).Distinct())
-                {
-                    if (dir != null && !Directory.Exists(dir))
-                    {
-                        Directory.CreateDirectory(dir);
-                    }
-                }
-                DisplayMessage("Getting Latest from TFS");
-                // Get Latest Version of all files
-                foreach (var batch in files.Select(f => f.Path).Batch(50))
-                {
-                    Tfs.Get(true, batch.ToArray());
-                }
-
-                if (Debugger.IsAttached)
-                {
-                    DisplayMessage("Creating Temporary Files");
-                    foreach (var file in files)
-                    {
-                        WriteFilesForTfs(project, file);
-                    }
-                    CheckoutChangedFiles(files);
-                    DisplayMessage("Updating Changed Files");
-                    foreach (var file in files)
-                    {
-                        CopyChangedFiles(file);
-                    }
-                }
-                else
-                {
-                    DisplayMessage("Creating Temporary Files");
-                    Parallel.ForEach(files, f => WriteFilesForTfs(project, f));
-                    CheckoutChangedFiles(files);
-                    DisplayMessage("Updating Changed Files");
-                    Parallel.ForEach(files, CopyChangedFiles);
-                }
-            }
-            else
-            {
-                if (Debugger.IsAttached)
-                {
-                    foreach (var file in files)
-                    {
-                        WriteFileIfDifferent(project, file);
-                    }
-                }
-                else
-                {
-                    Parallel.ForEach(files, f => WriteFileIfDifferent(project, f));
-                }
-            }
-
-            if (AddNewFilesToProject && !project.ProjectFound)
-            {
-                Log("Unable to find a Project file to add newly created files to.  Either output the files into a directory that has a single project in it's path, or uncheck the \"Add New Files to Project\" Setting");
-            }
-
-            if (project.ProjectUpdated)
-            {
-                WriteFileIfDifferent(new ProjectFile(null, this), new FileToWrite(project.ProjectPath, project.GetContents()));
-            }
-        }
+        //protected virtual void UpdateFilesToWrite(List<FileToWrite> files)
+        //{
+        //    //if (!GroupLocalOptionSetsByEntity)
+        //    //{
+        //    //    return;
+        //    //}
+        //
+        //    var metadata = ServiceCache.MetadataForLocalEnumsByName;
+        //    var groupFilesByEntity = new Dictionary<string, FileToWrite>();
+        //    foreach (var file in files.ToArray())
+        //    {
+        //        var optionSetName = Path.GetFileNameWithoutExtension(file.Path) ?? string.Empty;
+        //        if (!metadata.TryGetValue(optionSetName, out var localOptionSet))
+        //        {
+        //            continue;
+        //        }
+        //
+        //        files.Remove(file);
+        //        if (groupFilesByEntity.TryGetValue(localOptionSet.Item1, out var entityFile))
+        //        {
+        //            var closingNamespaceIndex = entityFile.Contents.LastIndexOf("}", StringComparison.InvariantCulture);
+        //            var startingNamespaceIndex = file.Contents.IndexOf("{", StringComparison.InvariantCulture);
+        //            var content = entityFile.Contents.Substring(0, closingNamespaceIndex) + file.Contents.Substring(startingNamespaceIndex + 1);
+        //            groupFilesByEntity[localOptionSet.Item1] = new FileToWrite(entityFile.Path, content);
+        //        }
+        //        else
+        //        {
+        //            //groundFilesByEntity[localOptionSet.Item1] = new FileToWrite(Path.Combine(file.Directory, string.Format(LocalOptionSetEntityFileNameFormat, localOptionSet.Item1)), file.Contents);
+        //        }
+        //    }
+        //
+        //    files.AddRange(groupFilesByEntity.Values);
+        //}
+        //
+        //private void WriteFilesAsync(List<FileToWrite> files)
+        //{
+        //    var project = new ProjectFile(files, this);
+        //
+        //    if (UseTfsToCheckoutFiles)
+        //    {
+        //        DisplayMessage("Creating Required Directories");
+        //        foreach (var dir in files.Select(f => f.Directory).Distinct())
+        //        {
+        //            if (dir != null && !Directory.Exists(dir))
+        //            {
+        //                Directory.CreateDirectory(dir);
+        //            }
+        //        }
+        //        DisplayMessage("Getting Latest from TFS");
+        //        // Get Latest Version of all files
+        //        foreach (var batch in files.Select(f => f.Path).Batch(50))
+        //        {
+        //            Tfs.Get(true, batch.ToArray());
+        //        }
+        //
+        //        if (Debugger.IsAttached)
+        //        {
+        //            DisplayMessage("Creating Temporary Files");
+        //            foreach (var file in files)
+        //            {
+        //                WriteFilesForTfs(project, file);
+        //            }
+        //            CheckoutChangedFiles(files);
+        //            DisplayMessage("Updating Changed Files");
+        //            foreach (var file in files)
+        //            {
+        //                CopyChangedFiles(file);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            DisplayMessage("Creating Temporary Files");
+        //            Parallel.ForEach(files, f => WriteFilesForTfs(project, f));
+        //            CheckoutChangedFiles(files);
+        //            DisplayMessage("Updating Changed Files");
+        //            Parallel.ForEach(files, CopyChangedFiles);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (Debugger.IsAttached)
+        //        {
+        //            foreach (var file in files)
+        //            {
+        //                WriteFileIfDifferent(project, file);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            Parallel.ForEach(files, f => WriteFileIfDifferent(project, f));
+        //        }
+        //    }
+        //
+        //    if (AddNewFilesToProject && !project.ProjectFound)
+        //    {
+        //        Log("Unable to find a Project file to add newly created files to.  Either output the files into a directory that has a single project in it's path, or uncheck the \"Add New Files to Project\" Setting");
+        //    }
+        //
+        //    if (project.ProjectUpdated)
+        //    {
+        //        WriteFileIfDifferent(new ProjectFile(null, this), new FileToWrite(project.ProjectPath, project.GetContents()));
+        //    }
+        //}
 
         private void CheckoutChangedFiles(List<FileToWrite> files)
         {

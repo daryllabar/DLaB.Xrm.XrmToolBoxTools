@@ -152,6 +152,18 @@ namespace DLaB.ModelBuilderExtensions
 
         #endregion CodeMemberProperty
 
+        #region CodeNamespace
+
+        public static CodeNamespace OrderTypesByName(this CodeNamespace code)
+        {
+            var types = code.GetTypes().OrderBy(t => t.Name).ToArray();
+            code.Types.Clear();
+            code.Types.AddRange(types);
+            return code;
+        }
+
+        #endregion CodeNamespace
+
         #region CodeTypeDeclaration
 
         public static string GetFieldInitializedValue(this CodeTypeDeclaration type, string fieldName)

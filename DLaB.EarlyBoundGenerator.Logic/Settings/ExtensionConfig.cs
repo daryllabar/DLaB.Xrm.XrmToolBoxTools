@@ -428,9 +428,9 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         public void WriteDLaBModelBuilderProperties(Utf8JsonWriter writer, EarlyBoundGeneratorConfig settings)
         {
-            writer.AddProperty(nameof(ActionCommandLineText), ActionCommandLineText, true);
-            writer.AddPropertyArray(nameof(ActionPrefixesToSkip).Replace("Action", "Message"), ActionPrefixesToSkip);
-            writer.AddPropertyArray(nameof(ActionsToSkip).Replace("Action", "Message"), ActionsToSkip?.Replace("-", ""));
+            writer.AddProperty(AsMessage(nameof(ActionCommandLineText)), ActionCommandLineText, true);
+            writer.AddPropertyArray(AsMessage(nameof(ActionPrefixesToSkip)), ActionPrefixesToSkip);
+            writer.AddPropertyArray(AsMessage(nameof(ActionsToSkip)), ActionsToSkip?.Replace("-", ""));
             writer.AddProperty(nameof(AddDebuggerNonUserCode), AddDebuggerNonUserCode);
             writer.AddProperty(nameof(AddNewFilesToProject), AddNewFilesToProject);
             writer.AddProperty(nameof(AddOptionSetMetadataAttribute), AddOptionSetMetadataAttribute);
@@ -438,7 +438,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             writer.AddProperty(nameof(CamelCaseClassNames), CamelCaseClassNames);
             writer.AddProperty(nameof(CamelCaseMemberNames), CamelCaseMemberNames);
             writer.AddProperty(nameof(CamelCaseNamesDictionaryRelativePath), CamelCaseNamesDictionaryRelativePath);
-            writer.AddProperty(nameof(CreateOneFilePerAction), CreateOneFilePerAction);
+            writer.AddProperty(AsMessage(nameof(CreateOneFilePerAction)), CreateOneFilePerAction);
             writer.AddProperty(nameof(CreateOneFilePerEntity), CreateOneFilePerEntity);
             writer.AddProperty(nameof(CreateOneFilePerOptionSet), CreateOneFilePerOptionSet);
             writer.AddProperty(nameof(DeleteFilesFromOutputFolders), DeleteFilesFromOutputFolders);
@@ -448,7 +448,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             writer.AddPropertyArray(nameof(EntitiesToSkip), EntitiesToSkip);
             writer.AddPropertyArray(nameof(EntityPrefixesToSkip), EntityPrefixesToSkip);
             writer.AddProperty(nameof(FilePrefixText), FilePrefixText, true);
-            writer.AddProperty(nameof(GenerateActionAttributeNameConsts), GenerateActionAttributeNameConsts);
+            writer.AddProperty(AsMessage(nameof(GenerateActionAttributeNameConsts)), GenerateActionAttributeNameConsts);
             writer.AddProperty(nameof(GenerateAttributeNameConsts), GenerateAttributeNameConsts);
             writer.AddProperty(nameof(GenerateAnonymousTypeConstructor), GenerateAnonymousTypeConstructor);
             writer.AddProperty(nameof(GenerateConstructorsSansLogicalName), GenerateConstructorsSansLogicalName);
@@ -462,7 +462,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             writer.AddProperty(nameof(InvalidCSharpNamePrefix), InvalidCSharpNamePrefix);
             writer.AddProperty(nameof(MakeAllFieldsEditable), MakeAllFieldsEditable);
             writer.AddProperty(nameof(MakeReadonlyFieldsEditable), MakeReadonlyFieldsEditable);
-            writer.AddProperty(nameof(MakeResponseActionsEditable), MakeResponseActionsEditable);
+            writer.AddProperty(AsMessage(nameof(MakeResponseActionsEditable)), MakeResponseActionsEditable);
             AddOptionalProperty("MessagesFileName", settings.MessageTypesFolder, CreateOneFilePerAction);
             writer.AddProperty(nameof(LocalOptionSetFormat), LocalOptionSetFormat);
             writer.AddPropertyArray(nameof(OptionSetPrefixesToSkip), OptionSetPrefixesToSkip);
@@ -491,6 +491,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 {
                     writer.AddProperty(fileNameKey, fileNameValue);
                 }
+            }
+
+            string AsMessage(string actionName)
+            {
+                return actionName.Replace("Action", "Message");
             }
         }
 
