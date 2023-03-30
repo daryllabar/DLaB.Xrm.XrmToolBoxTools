@@ -16,7 +16,7 @@ namespace DLaB.XrmToolBoxCommon
         #region IPayPalPlugin
 
         public virtual string DonationDescription => "Support Development for the DLaB XTB Tools!";
-        public virtual string EmailAccount => "d3labar@hotmail.com";
+        public virtual string EmailAccount => "d3labar" + "@hotmail" + ".com";
 
         #endregion IPayPalPlugin
 

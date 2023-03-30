@@ -147,6 +147,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         public string WorkflowlessActions { get; set; }
 
         #region NonSerialized Properties
+
         /// <summary>
         /// Set during Execution
         /// </summary>
@@ -296,7 +297,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
-        private static void UpdateObsoleteSettings(POCO.Config poco, POCO.ExtensionConfig pocoConfig, ExtensionConfig defaultConfig)
+        private void UpdateObsoleteSettings(POCO.Config poco, POCO.ExtensionConfig pocoConfig, ExtensionConfig defaultConfig)
         {
             var pocoVersion = new Version(poco.Version);
             if (pocoVersion < new Version("1.2016.6.1"))
@@ -347,6 +348,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
             if (pocoVersion < new Version("2.2023.3.12"))
             {
+                if (pocoConfig.AddNewFilesToProject != true)
+                {
+                    Logger.Show("You are upgrading from a CrmSvcUtil based Early Bound Generator to PAC ModelBuilder one, but don't have \"1 - Global - Add New Files To Project\" enabled.  It is suggested that this is enabled before generating the new types to simplify the transition!");
+                }
+                
                 Logger.AddDetail("Updating config to 2.2023.3.12 settings.");
                 // 3.2.2023 Switch to Model Builder.  Pull User Arguments into typed settings
                 ObsoleteUserArgument(poco, a => a.Name == "generateActions", (p, arg) => poco.GenerateMessages = bool.Parse(arg.Value));
@@ -356,6 +362,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 ObsoleteUserArgument(poco, a => a.Name == "out" && a.SettingType == CreationType.OptionSets, (p, arg) => poco.OptionSetsTypesFolder = arg.Value);
                 ObsoleteUserArgument(poco, a => a.Name == "servicecontextname", (p, arg) => poco.ServiceContextName = arg.Value);
                 ObsoleteUserArgument(poco, a => a.Name == "SuppressGeneratedCodeAttribute", (p, arg) => poco.SuppressGeneratedCodeAttribute = bool.Parse(arg.Value));
+                pocoConfig.CleanupCrmSvcUtilLocalOptionSets = true;
                 pocoConfig.GenerateINotifyPattern = true;
                 if (pocoConfig.GenerateOnlyReferencedOptionSets == true)
                 {
@@ -364,6 +371,14 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 pocoConfig.UseCrmSvcUtilStateEnumNamingConvention = true;
 
                 AddNewTokens(pocoConfig, defaultConfig, PreV2TokenCapitalizations);
+
+                Logger.AddDetail("Finished Updating Config to 2.2023.3.12 settings!");
+                Logger.AddDetail("Check out the update documentation!");
+                Logger.AddDetail("https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/wiki/Version-2.2023.3.12---Upgrade-To-PAC-ModelBuilder");
+            }
+            else if (pocoConfig.UseCrmSvcUtilStateEnumNamingConvention == true)
+            {
+                pocoConfig.UseCrmSvcUtilStateEnumNamingConvention = false;
             }
         }
 

@@ -72,6 +72,9 @@ namespace DLaB.ModelBuilderExtensions
             set => _camelCaseNamesDictionaryRelativePath = value;
         }
 
+        [JsonPropertyName("cleanupCrmSvcUtilLocalOptionSets")]
+        public bool CleanupCrmSvcUtilLocalOptionSets { get; set; }
+
         /// <summary>
         /// No Config
         /// </summary>
@@ -131,9 +134,6 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("generateEnumProperties")]
         public bool GenerateEnumProperties { get; set; }
-
-        [JsonPropertyName("generateOnlyReferencedOptionSets")]
-        public bool GenerateOnlyReferencedOptionSets { get; set; }
 
         [JsonPropertyName("generateOptionSetMetadataAttribute")]
         public bool GenerateOptionSetMetadataAttribute { get; set; }

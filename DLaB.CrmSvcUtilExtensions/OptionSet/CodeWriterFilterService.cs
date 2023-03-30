@@ -66,8 +66,8 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
             GeneratedOptionSets = new HashSet<string>();
         }
 
-        private static readonly string OptionSetEntityFilter = Config.GetAppSettingOrDefault("OptionSetEntityFilter", "DLaB.ModelBuilderExtensions.Entity.CodeWriterFilterService");
-        private static readonly bool GenerateOnlyReferencedOptionSets = Config.GetAppSettingOrDefault("GenerateOnlyReferencedOptionSets", false);
+        private static readonly string OptionSetEntityFilter = "DLaB.ModelBuilderExtensions.Entity.CodeWriterFilterService"; // Config.GetAppSettingOrDefault("OptionSetEntityFilter", "DLaB.ModelBuilderExtensions.Entity.CodeWriterFilterService");
+        private static readonly bool GenerateOnlyReferencedOptionSets = false;// Config.GetAppSettingOrDefault("GenerateOnlyReferencedOptionSets", false);
 
         /// <summary>
         /// Does not mark the OptionSet for generation if it has already been generated.  

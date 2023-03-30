@@ -1,4 +1,4 @@
-﻿{
+{
   "codeCustomizationService": "DLaB.ModelBuilderExtensions.CustomizeCodeDomService,DLaB.ModelBuilderExtensions",
   "codeGenerationService": "DLaB.ModelBuilderExtensions.CodeGenerationService,DLaB.ModelBuilderExtensions",
   "codeWriterFilterService": "DLaB.ModelBuilderExtensions.CodeWriterFilterService,DLaB.ModelBuilderExtensions",
@@ -11,6 +11,7 @@
     "camelCaseMemberNames": false,
     "camelCaseNamesDictionaryRelativePath": "DLaB.EarlyBoundGenerator\\DLaB.Dictionary.txt",
     "createOneFilePerMessage": false,
+    "cleanupCrmSvcUtilLocalOptionSets"=false,
     "createOneFilePerEntity": false,
     "createOneFilePerOptionSet": false,
     "deleteFilesFromOutputFolders": false,
@@ -21,7 +22,7 @@
     "generateEntityRelationships": true,
     "generateEntityTypeCode": false,
     "generateEnumProperties": true,
-    "generateOnlyReferencedOptionSets": true,
+   
     "generateOptionSetMetadataAttribute": true,
     "generateTypesAsInternal": false,
     "groupLocalOptionSetsByEntity": false,

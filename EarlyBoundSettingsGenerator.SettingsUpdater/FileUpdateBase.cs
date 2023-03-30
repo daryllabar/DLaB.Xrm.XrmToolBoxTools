@@ -6,10 +6,11 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
 {
     public abstract class FileUpdateBase
     {
+        public const string ApiTestResourcesPath = @"DLaB.EarlyBoundGenerator.Api.Tests\Resources";
+        public const string GeneratorSettingsRelativePath = @"DLaB.EarlyBoundGenerator\Settings";
         public const string LogicSettingsRelativePath = @"DLaB.EarlyBoundGenerator.Logic\Settings";
         public const string LogicRelativePath = @"DLaB.EarlyBoundGenerator.Logic";
         public const string ModelBuilderExtensionsPath = @"DLaB.CrmSvcUtilExtensions";
-        public const string GeneratorSettingsRelativePath = @"DLaB.EarlyBoundGenerator\Settings";
 
         public PropertyInfo Property { get; set; }
         public DirectoryInfo SolutionDirectory => SolutionDirectoryLazy.Value;
@@ -47,6 +48,13 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
         protected string GetModelBuilderExtPath(string fileName)
         {
             var path = Path.Combine(SolutionDirectory.FullName, ModelBuilderExtensionsPath, fileName);
+            AssertFileExists(path);
+            return path;
+        }
+
+        protected string GetApiTestResourcesPath(string fileName)
+        {
+            var path = Path.Combine(SolutionDirectory.FullName, ApiTestResourcesPath, fileName);
             AssertFileExists(path);
             return path;
         }

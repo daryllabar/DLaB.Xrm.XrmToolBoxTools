@@ -58,11 +58,6 @@ namespace DLaB.EarlyBoundGenerator
         private void EarlyBoundGenerator_Load(object sender, EventArgs e)
         {
             Logger.Instance.OnLog += OnLoadLog;
-            if (ConnectionDetail != null)
-            {
-                DisplayActionsIfSupported();
-            }
-
             SetConnectionSettingOnLoad();
             HydrateUiFromSettings(ConnectionSettings.FullSettingsPath);
             Telemetry.Enabled = Options.Instance.AllowLogUsage ?? true;
@@ -347,9 +342,6 @@ namespace DLaB.EarlyBoundGenerator
 
         private void EnableForm(bool enable)
         {
-            BtnCreateActions.Enabled = enable;
-            BtnCreateEntities.Enabled = enable;
-            BtnCreateOptionSets.Enabled = enable;
             BtnCreateAll.Enabled = enable;
             TxtSettingsPath.Enabled = enable;
             TxtOutput.Enabled = enable;
@@ -358,24 +350,9 @@ namespace DLaB.EarlyBoundGenerator
 
         #region Create Button Click Events
 
-        private void BtnCreateActions_Click(object sender, EventArgs e)
-        {
-            Create(CreationType.Actions);
-        }
-
-        private void BtnCreateEntities_Click(object sender, EventArgs e)
-        {
-            Create(CreationType.Entities);
-        }
-
         private void BtnCreateBoth_Click(object sender, EventArgs e)
         {
             Create(CreationType.All);
-        }
-
-        private void BtnCreateOptionSets_Click(object sender, EventArgs e)
-        {
-            Create(CreationType.OptionSets);
         }
 
         #endregion // Create Button Click Events
@@ -421,11 +398,6 @@ namespace DLaB.EarlyBoundGenerator
             {
                 MessageBox.Show($@"File ""{file}"" Not Found!  Unable to Update the Settings");
             }
-        }
-
-        public void DisplayActionsIfSupported()
-        {
-            BtnCreateActions.Enabled = ConnectionDetail.OrganizationMajorVersion >= Crm2013;
         }
 
         private void SetConnectionSettingOnLoad()
@@ -496,7 +468,6 @@ namespace DLaB.EarlyBoundGenerator
             EntityMetadatas = null;
             GlobalOptionSets = null;
             Actions = null;
-            DisplayActionsIfSupported();
             SetConnectionSettingOnConnectionChanged();
         }
 

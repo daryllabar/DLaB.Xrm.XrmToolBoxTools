@@ -60,6 +60,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public string CamelCaseNamesDictionaryRelativePath { get; set; }
         /// <summary>
+        /// The PAC ModelBuilder generates local option sets in the same files as the entity class, but the CrmSvcUtil created these option sets separately.  This setting will look for these files and delete them from the disk.  After the upgrade, this should be disabled.  It is recommended to enable "1 - Global - Add New Files To Project" as well to cleanup the files from the project.
+        /// </summary>
+        public bool CleanupCrmSvcUtilLocalOptionSets { get; set; }
+        /// <summary>
         /// Specifies that each Action class should be outputted to it's own file
         /// </summary>
         public bool CreateOneFilePerAction { get; set; }
@@ -140,10 +144,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// Specifies that Entity class should implement the INotifyPropertyChanging and INotifyPropertyChanged interfaces, calling OnPropertyChanging and OnPropertyChanged for each set of an attributes
         /// </summary>
         public bool GenerateINotifyPattern { get; set; }
-        /// <summary>
-        /// Specifies that only option sets that are referenced by Entities that are generated.
-        /// </summary>                                          
-        public bool GenerateOnlyReferencedOptionSets { get; set; }
         /// <summary>
         /// Generates an OptionSetMetadataAttribute class used to allow for storing of the metadata of OptionSetValues i.e. display order, name, description, etc.
         /// Only used if Add Option Set Metadata Attribute is true.
@@ -309,6 +309,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 CamelCaseClassNames = false,
                 CamelCaseNamesDictionaryRelativePath = @"DLaB.EarlyBoundGenerator\DLaB.Dictionary.txt",
                 CamelCaseMemberNames = false,
+                CleanupCrmSvcUtilLocalOptionSets = false,
                 CreateOneFilePerAction = false,
                 CreateOneFilePerEntity = false,
                 CreateOneFilePerOptionSet = false,
@@ -329,7 +330,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 GenerateGeneratedCodeAttribute = false,
                 GenerateGlobalOptionSets = false,
                 GenerateINotifyPattern = false,
-                GenerateOnlyReferencedOptionSets = true,
                 GenerateOptionSetMetadataAttribute = true,
                 GenerateTypesAsInternal = false,
                 GroupLocalOptionSetsByEntity = false,
@@ -374,6 +374,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             CamelCaseClassNames = poco.CamelCaseClassNames ?? CamelCaseClassNames;
             CamelCaseNamesDictionaryRelativePath = poco.CamelCaseNamesDictionaryRelativePath ?? CamelCaseNamesDictionaryRelativePath;
             CamelCaseMemberNames = poco.CamelCaseMemberNames ?? CamelCaseMemberNames;
+            CleanupCrmSvcUtilLocalOptionSets = poco.CleanupCrmSvcUtilLocalOptionSets ?? CleanupCrmSvcUtilLocalOptionSets;
             CreateOneFilePerAction = poco.CreateOneFilePerAction ?? CreateOneFilePerAction;
             CreateOneFilePerEntity = poco.CreateOneFilePerEntity ?? CreateOneFilePerEntity;
             CreateOneFilePerOptionSet = poco.CreateOneFilePerOptionSet ?? CreateOneFilePerOptionSet;
@@ -394,7 +395,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             GenerateGeneratedCodeAttribute = poco.GenerateGeneratedCodeAttribute ?? GenerateGeneratedCodeAttribute;
             GenerateGlobalOptionSets = poco.GenerateGlobalOptionSets ?? GenerateGlobalOptionSets;
             GenerateINotifyPattern = poco.GenerateINotifyPattern ?? GenerateINotifyPattern;
-            GenerateOnlyReferencedOptionSets = poco.GenerateOnlyReferencedOptionSets ?? GenerateOnlyReferencedOptionSets;
             GenerateOptionSetMetadataAttribute = poco.GenerateOptionSetMetadataAttribute ?? GenerateOptionSetMetadataAttribute;
             GenerateTypesAsInternal = poco.GenerateTypesAsInternal ?? GenerateTypesAsInternal;
             GroupLocalOptionSetsByEntity = poco.GroupLocalOptionSetsByEntity ?? GroupLocalOptionSetsByEntity;
@@ -438,6 +438,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             writer.AddProperty(nameof(CamelCaseClassNames), CamelCaseClassNames);
             writer.AddProperty(nameof(CamelCaseMemberNames), CamelCaseMemberNames);
             writer.AddProperty(nameof(CamelCaseNamesDictionaryRelativePath), CamelCaseNamesDictionaryRelativePath);
+            writer.AddProperty(nameof(CleanupCrmSvcUtilLocalOptionSets), CleanupCrmSvcUtilLocalOptionSets);
             writer.AddProperty(AsMessage(nameof(CreateOneFilePerAction)), CreateOneFilePerAction);
             writer.AddProperty(nameof(CreateOneFilePerEntity), CreateOneFilePerEntity);
             writer.AddProperty(nameof(CreateOneFilePerOptionSet), CreateOneFilePerOptionSet);
@@ -455,7 +456,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             writer.AddProperty(nameof(GenerateEntityRelationships), GenerateEntityRelationships);
             writer.AddProperty(nameof(GenerateEntityTypeCode), GenerateEntityTypeCode);
             writer.AddProperty(nameof(GenerateEnumProperties), GenerateEnumProperties);
-            writer.AddProperty(nameof(GenerateOnlyReferencedOptionSets), GenerateOnlyReferencedOptionSets);
             writer.AddProperty(nameof(GenerateOptionSetMetadataAttribute), GenerateOptionSetMetadataAttribute);
             writer.AddProperty(nameof(GenerateTypesAsInternal), GenerateTypesAsInternal);
             writer.AddProperty(nameof(GroupLocalOptionSetsByEntity), GroupLocalOptionSetsByEntity);
@@ -543,6 +543,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? CamelCaseClassNames { get; set; }
         public bool? CamelCaseMemberNames { get; set; }
         public string CamelCaseNamesDictionaryRelativePath { get; set; }
+        public bool? CleanupCrmSvcUtilLocalOptionSets { get; set; }
         public bool? CreateOneFilePerAction { get; set; }
         public bool? CreateOneFilePerEntity { get; set; }
         public bool? CreateOneFilePerOptionSet { get; set; }
@@ -564,6 +565,9 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? GenerateGeneratedCodeAttribute { get; set; }
         public bool? GenerateGlobalOptionSets { get; set; }
         public bool? GenerateINotifyPattern { get; set; }
+        /// <summary>
+        /// Legacy for CrmSvcUtil
+        /// </summary>
         public bool? GenerateOnlyReferencedOptionSets { get; set; }
         public bool? GenerateOptionSetMetadataAttribute { get; set; }
         public bool? GenerateTypesAsInternal { get; set; }

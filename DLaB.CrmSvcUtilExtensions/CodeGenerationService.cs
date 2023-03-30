@@ -15,6 +15,7 @@ namespace DLaB.ModelBuilderExtensions
         public bool UseTfsToCheckoutFiles { get; } = false; //ConfigHelper.GetAppSettingOrDefault("UseTfsToCheckoutFiles", false);
 
         public bool AddNewFilesToProject { get => DLaBSettings.AddNewFilesToProject; set => DLaBSettings.AddNewFilesToProject = value; }
+        public bool CleanupCrmSvcUtilLocalOptionSets { get => DLaBSettings.CleanupCrmSvcUtilLocalOptionSets && !DeleteFilesFromOutputFolders; set => DLaBSettings.CleanupCrmSvcUtilLocalOptionSets = value; }
         public bool CreateOneFilePerMessage { get => DLaBSettings.CreateOneFilePerMessage; set => DLaBSettings.CreateOneFilePerMessage = value; }
         public bool CreateOneFilePerEntity { get => DLaBSettings.CreateOneFilePerEntity; set => DLaBSettings.CreateOneFilePerEntity = value; }
         public bool CreateOneFilePerOptionSet { get => DLaBSettings.CreateOneFilePerOptionSet; set => DLaBSettings.CreateOneFilePerOptionSet = value; }
@@ -107,10 +108,9 @@ namespace DLaB.ModelBuilderExtensions
 
         protected virtual void WriteInternal(IOrganizationMetadata organizationMetadata, string language, string outputFile, string targetNamespace, IServiceProvider services)
         {
-            outputFile = outputFile ?? OutDirectory;
-            if (outputFile == null)
+            if (OutDirectory == null)
             {
-                throw new ArgumentNullException(nameof(outputFile));
+                throw new ArgumentNullException(nameof(OutDirectory));
             }
 
             if (UseTfsToCheckoutFiles)
@@ -121,17 +121,19 @@ namespace DLaB.ModelBuilderExtensions
                     OnErrorReceived = DisplayMessage
                 });
             }
+            
+            DeleteExistingFiles();
 
-            DisplayMessage("Ensuring Context File is Accessible");
-            EnsureFileIsAccessible(outputFile);
-
-            DeleteExistingFiles(outputFile);
-
+            var timePriorToFileGeneration = DateTime.Now;
             // Write the files out as normal
             var hack = new PacModelBuilderCodeGenHack(Settings, DefaultService, true, false);
             hack.Write(organizationMetadata, language, outputFile, targetNamespace, services);
 
+            CleanupLocalOptionSets(hack, timePriorToFileGeneration);
+
             ConditionallyCombineFiles(language, hack);
+
+            UpdateProjectFile(hack.FilesWritten.Keys);
 
 
             // TODO: Move removal of Runtime Version to Code Gen
@@ -171,6 +173,33 @@ namespace DLaB.ModelBuilderExtensions
             //        Console.WriteLine(outputFile + " was unchanged.");
             //    }
             //}
+        }
+
+        private void CleanupLocalOptionSets(PacModelBuilderCodeGenHack hack, DateTime timePriorToFileGeneration)
+        {
+            if (!CleanupCrmSvcUtilLocalOptionSets)
+            {
+                return;
+            }
+            var optionSetFolder = Path.Combine(OutDirectory, OptionSetTypesFolder);
+            var types = hack.FilesWritten.Values.SelectMany(v => v.GetTypes()).ToList();
+            foreach (var enumType in types.Where(t => t.IsEnum).Select(t => t.Name))
+            {
+                var file = Path.Combine(optionSetFolder, enumType + ".cs");
+                if (File.Exists(file) && File.GetLastWriteTime(file) < timePriorToFileGeneration)
+                {
+                    File.Delete(file);
+                }
+            }
+
+            foreach (var entity in types.Where(t => t.IsEntityType()))
+            {
+                var file = Path.Combine(optionSetFolder, entity.Name + "Sets.cs");
+                if (File.Exists(file) && File.GetLastWriteTime(file) < timePriorToFileGeneration)
+                {
+                    File.Delete(file);
+                }
+            }
         }
 
         #region Combine Files
@@ -330,6 +359,35 @@ namespace DLaB.ModelBuilderExtensions
 
         #endregion Combine Files
 
+        private void UpdateProjectFile(IEnumerable<string> files)
+        {
+            if (!AddNewFilesToProject)
+            {
+                return;
+            }
+
+            var project = new ProjectFile(OutDirectory, this);
+            if (!project.ProjectFound)
+            {
+                throw new InvalidOperationException("File " + project.ProjectPath);
+            }
+
+            foreach (var file in files)
+            {
+                if (File.Exists(file))
+                {
+                    project.AddFileIfMissing(file);
+                }
+            }
+
+            project.RemoveMissingFiles();
+
+            if (project.ProjectUpdated)
+            {
+                File.WriteAllText(project.ProjectPath, project.GetContents());
+            }
+        }
+
         //private string GetFormattedPrefixText(string outputFile)
         //{
         //    if (string.IsNullOrWhiteSpace(FilePrefixText))
@@ -340,22 +398,28 @@ namespace DLaB.ModelBuilderExtensions
         //    return string.Format(FilePrefixText, Path.GetFileName(outputFile)) + Environment.NewLine;
         //}
 
-        private void DeleteExistingFiles(string outputFile)
+        private void DeleteExistingFiles()
         {
             if (!DeleteFilesFromOutputFolders)
             {
                 return;
             }
 
-            DisplayMessage($"Deleting *.cs Files From {outputFile} By Code Unit");
-            var directory = Path.GetDirectoryName(outputFile) ?? string.Empty;
-            foreach (var file in Directory.EnumerateFiles(directory, "*.cs", SearchOption.TopDirectoryOnly))
+            DeleteCSharpFilesInDirectory(Path.Combine(OutDirectory, EntityTypesFolder));
+            DeleteCSharpFilesInDirectory(Path.Combine(OutDirectory, MessageTypesFolder));
+            DeleteCSharpFilesInDirectory(Path.Combine(OutDirectory, OptionSetTypesFolder));
+        }
+
+        private void DeleteCSharpFilesInDirectory(string directory, SearchOption searchOption = SearchOption.TopDirectoryOnly)
+        {
+            DisplayMessage($"Deleting *.cs Files From {directory} By Code Unit");
+            foreach (var file in Directory.EnumerateFiles(directory, "*.cs", searchOption))
             {
                 Log("Deleting file: " + file);
                 File.Delete(file);
             }
 
-            DisplayMessage($"Finished Deleting *.cs Files From {outputFile} By Code Unit");
+            DisplayMessage($"Finished Deleting *.cs Files From {directory} By Code Unit");
         }
 
         #endregion // Internal Implementations
@@ -389,34 +453,6 @@ namespace DLaB.ModelBuilderExtensions
         #endregion // Insert Command Line Into Header
 
         #region Checkout File / Remove Readonly Flag
-
-        protected void EnsureFileIsAccessible(string filePath)
-        {
-            Log("Checking accessibility for file: " + filePath);
-            // ReSharper disable AssignNullToNotNullAttribute
-            if (!Directory.Exists(Path.GetDirectoryName(filePath)))
-            {
-                Directory.CreateDirectory(Path.GetDirectoryName(filePath));
-                return;
-            }
-            // ReSharper restore AssignNullToNotNullAttribute
-
-            if(!File.Exists(filePath) || !File.GetAttributes(filePath).HasFlag(FileAttributes.ReadOnly)) { return; }
-
-            try
-            {
-                new FileInfo(filePath) {IsReadOnly = false}.Refresh();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Unable to check out file " + filePath + Environment.NewLine + ex);
-            }
-
-            if (File.GetAttributes(filePath).HasFlag(FileAttributes.ReadOnly))
-            {
-                throw new Exception("File \"" + filePath + "\" is read only, please checkout the file before running");
-            }
-        }
 
         /// <summary>
         /// Returns true if the file was unchanged and an undo operation was performed
@@ -747,7 +783,7 @@ namespace DLaB.ModelBuilderExtensions
                 return;
             }
 
-            EnsureFileIsAccessible(file.Path);
+            //EnsureFileIsAccessible(file.Path);
             project.AddFileIfMissing(file.Path);
 
             Trace.TraceInformation(Path.GetFileName(file.Path) + " created / updated.");
@@ -826,51 +862,60 @@ namespace DLaB.ModelBuilderExtensions
             internal bool ProjectUpdated { get; private set; }
             private string LineFormat { get; }
             private CodeGenerationService CodeGenService { get; }
+            private Dictionary<string, string> InitialFiles { get; }
 
             // ReSharper disable once SuggestBaseTypeForParameter
-            public ProjectFile(List<FileToWrite> files, CodeGenerationService codeGenerationService)
+            public ProjectFile(string directory, CodeGenerationService codeGenerationService)
             {
                 CodeGenService = codeGenerationService;
-                if (codeGenerationService.AddNewFilesToProject && files.Count > 0)
+                InitialFiles = new Dictionary<string, string>();
+                ProjectFiles = new SortedDictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+                // ReSharper disable once AssignNullToNotNullAttribute
+                var file = GetProjectPath(new DirectoryInfo(directory));
+                ProjectFound = file != null;
+                if (file == null)
                 {
-                    ProjectFiles = new SortedDictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-                    // ReSharper disable once AssignNullToNotNullAttribute
-                    var file = GetProjectPath(new DirectoryInfo(files[0].Directory));
-                    ProjectFound = file != null;
-                    if (file == null)
-                    {
-                        return;
-                    }
-                    ProjectPath = file.FullName;
-                    Lines = File.ReadAllLines(ProjectPath).ToList();
-                    ProjectDir = Path.GetDirectoryName(ProjectPath);
-                    if (!Lines.Any(l => l.Contains("<Compile Include=")))
-                    {
-                        ProjectFileIndexStart = Lines.FindLastIndex(l => l.Contains("</PropertyGroup>"))+1;
-                        Lines.Insert(ProjectFileIndexStart, "</ItemGroup>");
-                        Lines.Insert(ProjectFileIndexStart, "<ItemGroup>");
-                        ProjectFileIndexStart++;
-                    }
-                    else
-                    {
-                        ProjectFileIndexStart = Lines.FindIndex(l => l.Contains("<Compile Include="));
-                    }
-                    foreach (var line in Lines.Skip(ProjectFileIndexStart).TakeWhile(l => l.Contains("<Compile Include=") && !ProjectFiles.ContainsKey(l)))
-                    {
-                        ProjectFiles.Add(line, line);
-                    }
-                    ProjectFileIndexEnd = ProjectFileIndexStart + ProjectFiles.Count;
-
-                    // Determine Line Format, defaulting if none currently exist
-                    var first = ProjectFiles.Keys.FirstOrDefault() ?? (ProjectPath.EndsWith("projitems") 
-                                    ? "    <Compile Include=\"$(MSBuildThisFileDirectory)\" />"
-                                    : "    <Compile Include=\"\" />");
-
-                    var startEndIndex = first.Contains("$(") 
-                        ? first.IndexOf(")", first.IndexOf("$(", StringComparison.Ordinal), StringComparison.Ordinal) + 1 // Path contains Ms Build Variable
-                        : first.IndexOf("\"", StringComparison.Ordinal) + 1;
-                    LineFormat = first.Substring(0, startEndIndex) + "{0}" + first.Substring(first.LastIndexOf("\"", StringComparison.Ordinal), first.Length - first.LastIndexOf("\"", StringComparison.Ordinal));
+                    return;
                 }
+
+                ProjectPath = file.FullName;
+                Lines = File.ReadAllLines(ProjectPath).ToList();
+                ProjectDir = Path.GetDirectoryName(ProjectPath) ?? "NULL";
+                if (!Lines.Any(l => l.Contains("<Compile Include=")))
+                {
+                    ProjectFileIndexStart = Lines.FindLastIndex(l => l.Contains("</PropertyGroup>")) + 1;
+                    Lines.Insert(ProjectFileIndexStart, "</ItemGroup>");
+                    Lines.Insert(ProjectFileIndexStart, "<ItemGroup>");
+                    ProjectFileIndexStart++;
+                }
+                else
+                {
+                    ProjectFileIndexStart = Lines.FindIndex(l => l.Contains("<Compile Include="));
+                }
+
+                foreach (var line in Lines.Skip(ProjectFileIndexStart).TakeWhile(l => l.Contains("<Compile Include=") && !ProjectFiles.ContainsKey(l)))
+                {
+                    ProjectFiles.Add(line, line);
+                    var start = line.IndexOf(')') > 0
+                        ? ")"
+                        : "\"";
+                    InitialFiles.Add(Path.Combine(ProjectDir, line.SubstringByString(start, "\"")), line);
+                }
+
+                ProjectFileIndexEnd = ProjectFileIndexStart + ProjectFiles.Count;
+
+                // Determine Line Format, defaulting if none currently exist
+                // Shared project format: <Compile Include="$(MSBuildThisFileDirectory)Entities\Entities\Contact.cs" />
+                // Standard project format: <Compile Include="Entities\Entities\Contact.cs" />
+                var first = ProjectFiles.Keys.FirstOrDefault() ?? (ProjectPath.EndsWith("projitems")
+                    ? "    <Compile Include=\"$(MSBuildThisFileDirectory)\" />"
+                    : "    <Compile Include=\"\" />");
+
+                var startEndIndex = first.Contains("$(")
+                    ? first.IndexOf(")", first.IndexOf("$(", StringComparison.Ordinal), StringComparison.Ordinal) + 1 // Path contains Ms Build Variable
+                    : first.IndexOf("\"", StringComparison.Ordinal) + 1;
+                LineFormat = first.Substring(0, startEndIndex) + "{0}" + first.Substring(first.LastIndexOf("\"", StringComparison.Ordinal),
+                    first.Length - first.LastIndexOf("\"", StringComparison.Ordinal));
 
                 ProjectUpdated = false;
             }
@@ -905,11 +950,6 @@ namespace DLaB.ModelBuilderExtensions
             {
                 path = Path.GetFullPath(path);
 
-                if (!CodeGenService.AddNewFilesToProject || !ProjectFound)
-                {
-                    return;
-                }
-
                 Log("Checking if project \"{0}\" contains file \"{1}\"", ProjectPath, path);
                 var line = string.Format(LineFormat, path.Substring(ProjectDir.Length + 1, path.Length - ProjectDir.Length - 1));
                 lock (_dictionaryLock)
@@ -930,6 +970,19 @@ namespace DLaB.ModelBuilderExtensions
                 
                 Console.WriteLine(path + " added to project.");
                 ProjectUpdated = true;
+            }
+
+            internal void RemoveMissingFiles()
+            {
+                lock (_dictionaryLock)
+                {
+                    foreach (var missingFile in InitialFiles.Where(f => !File.Exists(f.Key)))
+                    {
+                        Log("Removing file \"{0}\" from Project \"{1}\"", missingFile.Key, ProjectPath);
+                        ProjectFiles.Remove(missingFile.Value);
+                        ProjectUpdated = true;
+                    }
+                }
             }
 
             internal string GetContents()

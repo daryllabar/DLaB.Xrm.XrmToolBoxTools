@@ -60,12 +60,6 @@ namespace DLaB.EarlyBoundGenerator
         /// <summary>
         /// Creates the entities, and optionally global Option Sets and Messages.
         /// </summary>
-        [Obsolete("Not Implemented", true)]
-        public void Create()
-        {
-            
-        }
-
         public void Create(IOrganizationService service)
         {
             var currentOut = Console.Out;
@@ -146,19 +140,16 @@ namespace DLaB.EarlyBoundGenerator
 
         private ModelBuilderInvokeParameters GetParameters()
         {
-            var parameters = new ModelBuilderInvokeParameters
+            return new ModelBuilderInvokeParameters
             {
                 SettingsTemplateFile = EarlyBoundGeneratorConfig.SettingsTemplatePath,
                 //CodeCustomizationService = "DLaB.ModelBuilderExtensions.Entity.CustomizeCodeDomService,DLaB.ModelBuilderExtensions",
                 //CodeGenerationService = "DLaB.ModelBuilderExtensions.Entity.CustomCodeGenerationService,DLaB.ModelBuilderExtensions",
                 //CodeWriterFilterService = "DLaB.ModelBuilderExtensions.Entity.CodeWriterFilterService,DLaB.ModelBuilderExtensions",
                 //MetadataProviderService = "DLaB.ModelBuilderExtensions.Entity.MetadataProviderService,DLaB.ModelBuilderExtensions",
-                //SplitFilesByObject = EarlyBoundGeneratorConfig.ExtensionConfig.GenerateSeparateFiles
+                SplitFilesByObject = true,
+                OutDirectory = EarlyBoundGeneratorConfig.RootPath
             };
-
-            parameters.OutDirectory = EarlyBoundGeneratorConfig.RootPath;
-
-            return parameters;
         }
 
         public string[] GetParameters(ModelBuilderInvokeParameters parameters)
@@ -188,8 +179,13 @@ namespace DLaB.EarlyBoundGenerator
             }
 
             Logger.AddDetail("Finished Generating ProcessModelInvoker Parameters.");
-            return lines.OrderBy(v => v)
+            var values = lines.OrderBy(v => v)
                 .ToArray();
+
+            Logger.AddDetail("Command line for Cloud generation:");
+            Logger.AddDetail($"PAC modelbuilder build {string.Join(" ", values.Where(v => !v.Contains("splitfiles")).Select(l => l.Replace(" /", " --")))}");
+
+            return values;
         }
 
         protected bool AbleToMakeFileAccessible(string filePath)

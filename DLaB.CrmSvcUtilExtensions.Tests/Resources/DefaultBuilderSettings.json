@@ -21,7 +21,6 @@
     "generateEntityRelationships": true,
     "generateEntityTypeCode": false,
     "generateEnumProperties": true,
-    "generateOnlyReferencedOptionSets": true,
     "generateOptionSetMetadataAttribute": true,
     "groupLocalOptionSetsByEntity": false,
     "invalidCSharpNamePrefix": "_",

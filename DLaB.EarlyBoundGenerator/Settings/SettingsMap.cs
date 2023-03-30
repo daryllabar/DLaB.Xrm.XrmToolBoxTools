@@ -529,6 +529,15 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         }
 
         [Category("4 - Option Sets")]
+        [DisplayName("Cleanup CrmSvcUtil Local Option Sets")]
+        [Description("The PAC ModelBuilder generates local option sets in the same files as the entity class, but the CrmSvcUtil created these option sets separately.  This setting will look for these files and delete them from the disk.  After the upgrade, this should be disabled.  It is recommended to enable \"1 - Global - Add New Files To Project\" as well to cleanup the files from the project.")]
+        public bool CleanupCrmSvcUtilLocalOptionSets
+        {
+            get => Config.ExtensionConfig.CleanupCrmSvcUtilLocalOptionSets;
+            set => Config.ExtensionConfig.CleanupCrmSvcUtilLocalOptionSets = value;
+        }
+
+        [Category("4 - Option Sets")]
         [DisplayName("Create One File Per Option Set")]
         [Description("Specifies that each Option Set Enum should be outputted to it's own file, rather than a single file with all Enums.")]
         public bool CreateOneFilePerOptionSet
@@ -544,15 +553,6 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         {
             get => Config.ExtensionConfig.GenerateGlobalOptionSets;
             set => Config.ExtensionConfig.GenerateGlobalOptionSets = value;
-        }
-
-        [Category("4 - Option Sets")]
-        [DisplayName("Generate Only Referenced Option Sets")]
-        [Description("Uses the defined entity filtering to only generate Option Set Enums that are actually referenced in the entities.  This include both Global and Local Option Sets. ")]
-        public bool GenerateOnlyReferencedOptionSets
-        {
-            get => Config.ExtensionConfig.GenerateOnlyReferencedOptionSets;
-            set => Config.ExtensionConfig.GenerateOnlyReferencedOptionSets = value;
         }
 
         [Category("4 - Option Sets")]

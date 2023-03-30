@@ -158,6 +158,7 @@ namespace DLaB.ModelBuilderExtensions
             bool writeProxyAttrib = true,
             bool isFileSplit = false)
         {
+            EnsureFileIsAccessible(outputFile);
             InvokeMicrosoft_PowerPlatform_Dataverse_ModelBuilderLib_NonPublicStaticMethod("WriteFile", new object[]
             {
                 outputFile,
@@ -167,6 +168,36 @@ namespace DLaB.ModelBuilderExtensions
                 writeProxyAttrib,
                 isFileSplit
             });
+        }
+
+        protected void EnsureFileIsAccessible(string filePath)
+        {
+            // ReSharper disable AssignNullToNotNullAttribute
+            if (!Directory.Exists(Path.GetDirectoryName(filePath)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+                return;
+            }
+            // ReSharper restore AssignNullToNotNullAttribute
+
+            if (!File.Exists(filePath) || !File.GetAttributes(filePath).HasFlag(FileAttributes.ReadOnly))
+            {
+                return;
+            }
+        
+            try
+            {
+                new FileInfo(filePath) {IsReadOnly = false}.Refresh();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Unable to check out file " + filePath + Environment.NewLine + ex);
+            }
+        
+            if (File.GetAttributes(filePath).HasFlag(FileAttributes.ReadOnly))
+            {
+                throw new Exception("File \"" + filePath + "\" is read only, please checkout the file before running");
+            }
         }
 
         private void ProcessModelInvoker_ModelBuilderLogger_TraceMethodStart(string message, params object[] messageData)
@@ -221,6 +252,7 @@ namespace DLaB.ModelBuilderExtensions
         public void WriteFileWithoutCustomizations(string outputFile, string language, CodeNamespace codenamespace, IServiceProvider serviceProvider, bool writeProxyAttrib = true)
         {
             serviceProvider.UpdateService<ICustomizeCodeDomService>(new CustomizeCodeDomServiceEmpty());
+            EnsureFileIsAccessible(outputFile);
             CodeGenerationService_WriteFile(outputFile, language, codenamespace.OrderTypesByName(), serviceProvider, writeProxyAttrib);
         }
     }

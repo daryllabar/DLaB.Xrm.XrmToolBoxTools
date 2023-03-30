@@ -176,31 +176,13 @@ SET myCmd= "$(SolutionDir)References\NuGetContentInstaller.exe" "$(SolutionDir) 
 echo %25myCmd%25
 %25myCmd%25
 
-if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.exe" "$(ProjectDir)Properties\AssemblyInfo.cs"
-</PreBuildEvent>
+if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.exe" "$(ProjectDir)Properties\AssemblyInfo.cs"</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)CrmSvcUtil.exe" "$(TargetDir)DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)CrmSvcUtil.exe.config" "$(TargetDir)DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)DLaB.CrmSvcUtilExtensions.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)DLaB.Common.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Crm.Sdk.Proxy.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
+    <PostBuildEvent>xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)DLaB.ModelBuilderExtensions.dll" "$(TargetDir)"
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\DLaB.Dictionary.txt" "$(TargetDir)"
 
-xcopy /I /Y "$(TargetDir)Microsoft.Xrm.Sdk.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\DLaB.Dictionary.txt" "$(TargetDir)DLaB.EarlyBoundGenerator"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\OptionSet\Transliteration\Alphabets\*" "$(TargetDir)DLaB.EarlyBoundGenerator\alphabets"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Newtonsoft.Json.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
-
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.IdentityModel.Clients.ActiveDirectory.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Rest.ClientRuntime.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Portal.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Client.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Client.CodeGeneration.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Tooling.*.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Sdk.Deployment.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)Microsoft.Xrm.Sdk.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"
-xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\$(OutDir)System.Text.Json.dll" "$(TargetDir)DLaB.EarlyBoundGenerator\"</PostBuildEvent>
+xcopy /I /Y "$(SolutionDir)DLaB.CrmSvcUtilExtensions\OptionSet\Transliteration\Alphabets\*" "$(TargetDir)alphabets"</PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.18.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.18.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

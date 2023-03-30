@@ -38,6 +38,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 { nameof(CreateOneFilePerAction), OnCreateOneFilePerActionChange },
                 { nameof(CreateOneFilePerEntity), OnCreateOneFilePerEntityChange },
                 { nameof(CreateOneFilePerOptionSet), OnCreateOneFilePerOptionSetChange },
+                { nameof(DeleteFilesFromOutputFolders), OnDeleteFilesFromOutputFoldersChange },
                 { nameof(GenerateEnumProperties), OnGenerateEnumPropertiesChange },
                 { nameof(AddOptionSetMetadataAttribute), OnAddOptionSetMetadataAttributeChange },
                 { nameof(IncludeCommandLine), OnIncludeCommandLineChange },
@@ -69,6 +70,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
             OptionSetsTypesFolder = OptionSetsTypesFolder;
         }
 
+        private void OnDeleteFilesFromOutputFoldersChange(PropertyValueChangedEventArgs args)
+        {
+            SetCleanupCrmSvcUtilLocalOptionSets();
+        }
+
         private void OnGenerateEnumPropertiesChange(PropertyValueChangedEventArgs args)
         {
             SetPropertyEnumMappingVisibility();
@@ -97,6 +103,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         private void ProcessDynamicallyVisibleProperties()
         {
             SetVisibilityForControlsDependentOnFileCreations();
+            SetCleanupCrmSvcUtilLocalOptionSets();
             SetGroupLocalOptionSetsByEntityVisibility();
             SetMaskPasswordVisibility();
             SetPropertyEnumMappingVisibility();
@@ -114,15 +121,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
             var disabledProperties = new[]
             {
                 nameof(ActionPrefixesWhitelist),
-                nameof(ActionsToSkip),
                 nameof(AddDebuggerNonUserCode),
-                nameof(AddNewFilesToProject),
                 nameof(AudibleCompletionNotification),
-                nameof(CreateOneFilePerAction),
-                nameof(CreateOneFilePerEntity),
-                nameof(CreateOneFilePerOptionSet),
-                nameof(DeleteFilesFromOutputFolders),
-                nameof(EntitiesToSkip),
                 nameof(EntityPrefixesToSkip),
                 nameof(EntityPrefixesWhitelist),
                 nameof(FilePrefixText),
@@ -130,11 +130,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 nameof(GenerateEntityRelationships),
                 nameof(GenerateEntityTypeCode),
                 nameof(GenerateEnumProperties),
-                nameof(GenerateOnlyReferencedOptionSets),
                 nameof(GenerateOptionSetMetadataAttribute),
-                nameof(GroupLocalOptionSetsByEntity),
                 nameof(IncludeCommandLine),
-                nameof(MakeResponseActionsEditable),
                 nameof(MaskPassword),
                 nameof(OptionSetPrefixesToSkip),
                 nameof(OptionSetsToSkip),
@@ -161,6 +158,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
         private void SetAddFilesToProjectVisibility()
         {
             SetPropertyBrowsable(nameof(AddNewFilesToProject), AtLeastOneCreateFilePerSelected);
+        }
+
+        private void SetCleanupCrmSvcUtilLocalOptionSets()
+        {
+            SetPropertyBrowsable(nameof(CleanupCrmSvcUtilLocalOptionSets), !DeleteFilesFromOutputFolders);
         }
 
         private void SetDeleteFilesFromOutputFoldersVisibility()
