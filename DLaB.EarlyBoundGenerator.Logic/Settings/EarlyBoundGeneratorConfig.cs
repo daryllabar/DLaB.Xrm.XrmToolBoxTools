@@ -368,6 +368,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 {
                     pocoConfig.GenerateGlobalOptionSets = false;
                 }
+
+                if (pocoConfig.CreateOneFilePerAction == false)
+                {
+                    pocoConfig.GroupMessageRequestWithResponse = false;
+                }
                 pocoConfig.UseCrmSvcUtilStateEnumNamingConvention = true;
 
                 AddNewTokens(pocoConfig, defaultConfig, PreV2TokenCapitalizations);
