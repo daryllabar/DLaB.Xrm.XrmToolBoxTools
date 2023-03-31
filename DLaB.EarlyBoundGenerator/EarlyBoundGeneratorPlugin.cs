@@ -9,12 +9,10 @@ using DLaB.Log;
 using DLaB.XrmToolBoxCommon;
 using DLaB.XrmToolBoxCommon.AppInsightsHelper;
 using Microsoft.Xrm.Sdk;
-using Microsoft.Xrm.Sdk.Client;
 using Microsoft.Xrm.Sdk.Metadata;
 using XrmToolBox;
 using XrmToolBox.Extensibility;
 using XrmToolBox.Extensibility.Interfaces;
-using AuthenticationType = Microsoft.Xrm.Tooling.Connector.AuthenticationType;
 using PropertyInterface = DLaB.XrmToolBoxCommon.PropertyInterface;
 
 namespace DLaB.EarlyBoundGenerator
@@ -84,6 +82,7 @@ namespace DLaB.EarlyBoundGenerator
                 Settings.ExtensionConfig.XrmToolBoxPluginPath = Paths.PluginsPath;
                 SettingsMap = new SettingsMap(this, Settings){SettingsPath = settingsPath};
                 PropertiesGrid.SelectedObject = SettingsMap;
+                HideUnusedCategories();
                 SkipSaveSettings = false;
             }
             catch (Exception ex)
@@ -99,6 +98,17 @@ namespace DLaB.EarlyBoundGenerator
                 {
                     SkipSaveSettings = true;
                 }
+            }
+        }
+
+        private void HideUnusedCategories()
+        {
+            foreach (var category in PropertiesGrid.GetAllGridItems()
+                         .Where(i => i.Label != null
+                                     && i.GridItemType == GridItemType.Category 
+                                     && i.Label[0] > '4'))
+            {
+                category.Expanded = false;
             }
         }
 
@@ -259,11 +269,11 @@ namespace DLaB.EarlyBoundGenerator
 
         private void LogConfigSettings()
         {
-            var properties = Settings.GetType().GetProperties()
-                .Union(Settings.ExtensionConfig.GetType().GetProperties())
+            var properties = Settings.GetType().GetProperties().Select(prop => new { Object = (object)Settings, Property = prop })
+                .Union(Settings.ExtensionConfig.GetType().GetProperties().Select(prop => new { Object = (object)Settings.ExtensionConfig, Property = prop }))
                 .ToDictionary(
-                    k => k.Name,
-                    v => v.GetValue(Settings.ExtensionConfig)?.ToString() ?? string.Empty);
+                    k => k.Property.Name,
+                    v => v.Property.GetValue(v.Object)?.ToString() ?? string.Empty);
             foreach (var kvp in properties.ToList())
             {
                 var name = kvp.Key.ToLower();
@@ -283,20 +293,6 @@ namespace DLaB.EarlyBoundGenerator
             else
             {
                 TxtOutput.AppendText("Tracking not enabled!  Please consider allowing the Xrm Tool Box to send anonymous statistics via the Configuration --> Settings -- Data Collect.  This allows reporting for which features are used and what features can be deprecated." + Environment.NewLine);
-            }
-        }
-
-        private string GetUserDomain()
-        {
-            if (string.IsNullOrWhiteSpace(ConnectionDetail.UserDomain))
-            {
-                return ConnectionDetail.UseOnline
-                    ? ConnectionDetail.UserDomain
-                    : ConnectionDetail.UserName?.Split('\\').FirstOrDefault(); // Domain\UserName
-            }
-            else
-            {
-                return ConnectionDetail.UserDomain;
             }
         }
 

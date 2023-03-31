@@ -285,6 +285,7 @@
       <DependentUpon>AttributesToEnumMapperDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="AttributesToEnumMapperEditor.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="SpecifyAttributesCaseEditor.cs" />
     <Compile Include="PasswordDialog.cs">
       <SubType>Form</SubType>

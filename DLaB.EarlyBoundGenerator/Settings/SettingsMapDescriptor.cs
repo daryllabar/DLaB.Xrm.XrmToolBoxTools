@@ -117,7 +117,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             {
                 nameof(ActionPrefixesWhitelist),
                 nameof(AddDebuggerNonUserCode),
-                nameof(AudibleCompletionNotification),
                 nameof(EntityPrefixesToSkip),
                 nameof(EntityPrefixesWhitelist),
                 nameof(GenerateEntityRelationships),
@@ -127,7 +126,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 nameof(OptionSetPrefixesToSkip),
                 nameof(OptionSetsToSkip),
                 nameof(UnmappedProperties),
-                nameof(UseTfsToCheckoutFiles),
                 nameof(WorkflowlessActions),
             };
 
