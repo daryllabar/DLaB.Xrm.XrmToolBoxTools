@@ -10,8 +10,8 @@
     "camelCaseClassNames": false,
     "camelCaseMemberNames": false,
     "camelCaseNamesDictionaryRelativePath": "DLaB.EarlyBoundGenerator\\DLaB.Dictionary.txt",
+    "cleanupCrmSvcUtilLocalOptionSets": false,
     "createOneFilePerMessage": false,
-    "cleanupCrmSvcUtilLocalOptionSets"=false,
     "createOneFilePerEntity": false,
     "createOneFilePerOptionSet": false,
     "deleteFilesFromOutputFolders": false,
@@ -22,7 +22,6 @@
     "generateEntityRelationships": true,
     "generateEntityTypeCode": false,
     "generateEnumProperties": true,
-   
     "generateOptionSetMetadataAttribute": true,
     "generateTypesAsInternal": false,
     "groupLocalOptionSetsByEntity": false,
