@@ -369,7 +369,8 @@ namespace DLaB.ModelBuilderExtensions
             var project = new ProjectFile(OutDirectory, this);
             if (!project.ProjectFound)
             {
-                throw new InvalidOperationException("File " + project.ProjectPath);
+                Log($"Project file {project.ProjectPath} not found in directory {OutDirectory}!");
+                return;
             }
 
             foreach (var file in files)
@@ -412,6 +413,11 @@ namespace DLaB.ModelBuilderExtensions
 
         private void DeleteCSharpFilesInDirectory(string directory, SearchOption searchOption = SearchOption.TopDirectoryOnly)
         {
+            if (!Directory.Exists(directory))
+            {
+                return;
+            }
+
             DisplayMessage($"Deleting *.cs Files From {directory} By Code Unit");
             foreach (var file in Directory.EnumerateFiles(directory, "*.cs", searchOption))
             {
