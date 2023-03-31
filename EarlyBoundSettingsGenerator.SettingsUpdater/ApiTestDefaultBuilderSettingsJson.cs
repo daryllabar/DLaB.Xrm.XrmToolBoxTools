@@ -29,7 +29,7 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
 
             var jsonValue = Property.Type == "bool" ? Property.DefaultValue : "\"" + Property.DefaultValue + "\"";
             file[insertIndex] += $@"
-    ""{jsonName}""={jsonValue},";
+    ""{jsonName}"": {jsonValue},";
         }
     }
 }

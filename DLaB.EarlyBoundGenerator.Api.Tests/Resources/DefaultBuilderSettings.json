@@ -26,6 +26,7 @@
     "generateTypesAsInternal": false,
     "groupLocalOptionSetsByEntity": false,
     "invalidCSharpNamePrefix": "_",
+    "groupMessageRequestWithResponse": true,
     "makeAllFieldsEditable": false,
     "makeReadonlyFieldsEditable": false,
     "makeResponseMessagesEditable": false,

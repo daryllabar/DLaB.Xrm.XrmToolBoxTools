@@ -158,6 +158,10 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public bool GroupLocalOptionSetsByEntity { get; set; }
         /// <summary>
+        /// The CrmSvcUtil version of the Early Bound Generator created seperate files for each message request/response class, but the PAC ModelBuilder combines each request/response pair into a single file.  This allows for turning this off to maintain backwards compability.
+        /// </summary>
+        public bool GroupMessageRequestWithResponse { get; set; }
+        /// <summary>
         /// Specifies the Prefix to be used for OptionSets that would normally start with an invalid first character ie "1st"
         /// </summary>
         public string InvalidCSharpNamePrefix { get; set; }
@@ -333,6 +337,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 GenerateOptionSetMetadataAttribute = true,
                 GenerateTypesAsInternal = false,
                 GroupLocalOptionSetsByEntity = false,
+                GroupMessageRequestWithResponse = true,
                 InvalidCSharpNamePrefix = "_",
                 LocalOptionSetFormat = "{0}_{1}",
                 MakeAllFieldsEditable = false,
@@ -398,6 +403,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             GenerateOptionSetMetadataAttribute = poco.GenerateOptionSetMetadataAttribute ?? GenerateOptionSetMetadataAttribute;
             GenerateTypesAsInternal = poco.GenerateTypesAsInternal ?? GenerateTypesAsInternal;
             GroupLocalOptionSetsByEntity = poco.GroupLocalOptionSetsByEntity ?? GroupLocalOptionSetsByEntity;
+            GroupMessageRequestWithResponse = poco.GroupMessageRequestWithResponse ?? GroupMessageRequestWithResponse;
             InvalidCSharpNamePrefix = poco.InvalidCSharpNamePrefix ?? InvalidCSharpNamePrefix;
             MakeAllFieldsEditable = poco.MakeAllFieldsEditable ?? MakeAllFieldsEditable;
             MakeReadonlyFieldsEditable = poco.MakeReadonlyFieldsEditable ?? MakeReadonlyFieldsEditable;
@@ -459,6 +465,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             writer.AddProperty(nameof(GenerateOptionSetMetadataAttribute), GenerateOptionSetMetadataAttribute);
             writer.AddProperty(nameof(GenerateTypesAsInternal), GenerateTypesAsInternal);
             writer.AddProperty(nameof(GroupLocalOptionSetsByEntity), GroupLocalOptionSetsByEntity);
+            writer.AddProperty(nameof(GroupMessageRequestWithResponse), GroupMessageRequestWithResponse);
             writer.AddProperty(nameof(InvalidCSharpNamePrefix), InvalidCSharpNamePrefix);
             writer.AddProperty(nameof(MakeAllFieldsEditable), MakeAllFieldsEditable);
             writer.AddProperty(nameof(MakeReadonlyFieldsEditable), MakeReadonlyFieldsEditable);
@@ -572,6 +579,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? GenerateOptionSetMetadataAttribute { get; set; }
         public bool? GenerateTypesAsInternal { get; set; }
         public bool? GroupLocalOptionSetsByEntity { get; set; }
+        public bool? GroupMessageRequestWithResponse { get; set; }
         public bool? ReplaceOptionSetPropertiesWithEnum { get; set; }
         public string InvalidCSharpNamePrefix { get; set; }
         public string LocalOptionSetFormat { get; set; }

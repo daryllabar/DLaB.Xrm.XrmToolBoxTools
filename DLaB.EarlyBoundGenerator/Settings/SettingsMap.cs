@@ -485,6 +485,15 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.GenerateMessages = value;
         }
 
+        [Category("3 - Messages")]
+        [DisplayName("Group Message Request With Response")]
+        [Description("The CrmSvcUtil version of the Early Bound Generator created seperate files for each message request/response class, but the PAC ModelBuilder combines each request/response pair into a single file.  This allows for turning this off to maintain backwards compability.")]
+        public bool GroupMessageRequestWithResponse
+        {
+            get => Config.ExtensionConfig.GroupMessageRequestWithResponse;
+            set => Config.ExtensionConfig.GroupMessageRequestWithResponse = value;
+        }
+
         [Category("4 - Messages")]
         [DisplayName("Make Response Messages Editable")]
         [Description("Specifies that the properties of Response Messages should be editable.")]

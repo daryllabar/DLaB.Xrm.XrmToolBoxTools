@@ -1122,13 +1122,7 @@ SET myCmd= "$(SolutionDir)References\NuGetContentInstaller.exe" "$(SolutionDir) 
 echo %25myCmd%25
 %25myCmd%25
 
-if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.exe" "$(ProjectDir)Properties\AssemblyInfo.cs"
-
-xcopy /I /Y "$(SolutionDir)packages\Microsoft.CrmSdk.CoreTools.9.1.0.115\content\bin\coretools\*.dll" "$(TargetDir)"
-xcopy /I /Y "$(SolutionDir)packages\Microsoft.CrmSdk.CoreTools.9.1.0.115\content\bin\coretools\CrmSvcUtil.exe" "$(TargetDir)"
-xcopy /I /Y "$(SolutionDir)packages\Microsoft.CrmSdk.CoreTools.9.1.0.115\content\bin\coretools\CrmSvcUtil.exe.config" "$(TargetDir)"
-
-</PreBuildEvent>
+if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.exe" "$(ProjectDir)Properties\AssemblyInfo.cs"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -24,7 +24,8 @@ namespace DLaB.ModelBuilderExtensions
         public string EntityTypesFolder { get => Settings.EntityTypesFolder; set => Settings.EntityTypesFolder = value; }
         public string FilePrefixText { get => DLaBSettings.FilePrefixText; set => DLaBSettings.FilePrefixText = value; }
         public bool GenerateActions { get => Settings.GenerateActions; set => Settings.GenerateActions = value; }
-        public bool GroupLocalOptionSetsByEntity { get => DLaBSettings.CreateOneFilePerOptionSet && DLaBSettings.GroupLocalOptionSetsByEntity; set => DLaBSettings.GroupLocalOptionSetsByEntity = value; }
+        public bool GroupMessageRequestWithResponse { get => DLaBSettings.GroupMessageRequestWithResponse; set => DLaBSettings.GroupMessageRequestWithResponse = value; }
+        public bool GroupLocalOptionSetsByEntity { get => DLaBSettings.GroupLocalOptionSetsByEntity && CreateOneFilePerOptionSet; set => DLaBSettings.GroupLocalOptionSetsByEntity = value; }
         public bool LoggingEnabled { get => DLaBSettings.LoggingEnabled; set => DLaBSettings.LoggingEnabled = value; }
         public string MessagesFileName { get => DLaBSettings.MessagesFileName; set => DLaBSettings.MessagesFileName = value; }
         public string MessageTypesFolder { get => Settings.MessagesTypesFolder; set => Settings.MessagesTypesFolder = value; }
@@ -130,9 +131,8 @@ namespace DLaB.ModelBuilderExtensions
             hack.Write(organizationMetadata, language, outputFile, targetNamespace, services);
 
             CleanupLocalOptionSets(hack, timePriorToFileGeneration);
-
             ConditionallyCombineFiles(language, hack);
-
+            ConditionallySplitMessageFiles(language, hack);
             UpdateProjectFile(hack.FilesWritten.Keys);
 
 
@@ -173,6 +173,31 @@ namespace DLaB.ModelBuilderExtensions
             //        Console.WriteLine(outputFile + " was unchanged.");
             //    }
             //}
+        }
+
+        private void ConditionallySplitMessageFiles(string language, PacModelBuilderCodeGenHack hack)
+        {
+            if (!GenerateActions
+                || !CreateOneFilePerMessage
+                || GroupMessageRequestWithResponse)
+            {
+                return;
+            }
+
+            DisplayMessage("Splitting Message Request/Response classes into separate files.");
+            foreach (var file in hack.FilesWritten.Where(kvp => kvp.Value.GetTypes().Any(t => t.IsMessageType())).ToList())
+            {
+                var code = file.Value;
+                foreach (var type in file.Value.GetTypes().ToList())
+                {
+                    code.Types.Clear();
+                    code.Types.Add(type);
+                    hack.WriteFileWithoutCustomizations(Path.Combine(OutDirectory, MessageTypesFolder, type.Name + ".cs"), language, code, ServiceProvider);
+                }
+
+                File.Delete(file.Key);
+                hack.FilesWritten.Remove(file.Key);
+            }
         }
 
         private void CleanupLocalOptionSets(PacModelBuilderCodeGenHack hack, DateTime timePriorToFileGeneration)
@@ -260,6 +285,7 @@ namespace DLaB.ModelBuilderExtensions
                     optionSetsInEntities.AddRange(enums);
                 }
 
+                // ReSharper disable once AssignNullToNotNullAttribute
                 File.Delete(file.Key);
                 if (CreateOneFilePerEntity)
                 {

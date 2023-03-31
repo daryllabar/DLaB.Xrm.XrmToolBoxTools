@@ -144,6 +144,9 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("groupLocalOptionSetsByEntity")]
         public bool GroupLocalOptionSetsByEntity { get; set; }
 
+        [JsonPropertyName("groupMessageRequestWithResponse")]
+        public bool GroupMessageRequestWithResponse { get; set; }
+
         [JsonPropertyName("invalidCSharpNamePrefix")]
         public string InvalidCSharpNamePrefix { get; set; }
 
@@ -285,6 +288,7 @@ namespace DLaB.ModelBuilderExtensions
             EntityAttributeSpecifiedNames = new Dictionary<string, HashSet<string>>();
             EntityPrefixesToSkip = new List<string>();
             GenerateEntityRelationships = true;
+            GroupMessageRequestWithResponse = true;
             InvalidCSharpNamePrefix = "_";
             LocalOptionSetFormat = "{0}_{1}";
             MessagePrefixesToSkip = new List<string>();

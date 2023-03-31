@@ -35,7 +35,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             return new Dictionary<string, Action<PropertyValueChangedEventArgs>>
             {
                 { nameof(AddNewFilesToProject), OnAddNewFilesToProjectChange },
-                { nameof(CreateOneFilePerAction), OnCreateOneFilePerActionChange },
+                { nameof(CreateOneFilePerAction), OnCreateOneFilePerMessageChange },
                 { nameof(CreateOneFilePerEntity), OnCreateOneFilePerEntityChange },
                 { nameof(CreateOneFilePerOptionSet), OnCreateOneFilePerOptionSetChange },
                 { nameof(DeleteFilesFromOutputFolders), OnDeleteFilesFromOutputFoldersChange },
@@ -51,12 +51,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             SetProjectNameForEarlyBoundFilesVisibility();
         }
 
-        private void OnCreateOneFilePerActionChange(PropertyValueChangedEventArgs args)
-        {
-            SetVisibilityForControlsDependentOnFileCreations();
-            MessageTypesFolder = MessageTypesFolder;
-        }
-
         private void OnCreateOneFilePerEntityChange(PropertyValueChangedEventArgs args)
         {
             SetVisibilityForControlsDependentOnFileCreations();
@@ -68,6 +62,13 @@ namespace DLaB.EarlyBoundGenerator.Settings
             SetVisibilityForControlsDependentOnFileCreations();
             SetGroupLocalOptionSetsByEntityVisibility();
             OptionSetsTypesFolder = OptionSetsTypesFolder;
+        }
+
+        private void OnCreateOneFilePerMessageChange(PropertyValueChangedEventArgs args)
+        {
+            SetVisibilityForControlsDependentOnFileCreations();
+            SetGroupMessageRequestWithResponseVisibility();
+            MessageTypesFolder = MessageTypesFolder;
         }
 
         private void OnDeleteFilesFromOutputFoldersChange(PropertyValueChangedEventArgs args)
@@ -105,6 +106,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             SetVisibilityForControlsDependentOnFileCreations();
             SetCleanupCrmSvcUtilLocalOptionSets();
             SetGroupLocalOptionSetsByEntityVisibility();
+            SetGroupMessageRequestWithResponseVisibility();
             SetMaskPasswordVisibility();
             SetPropertyEnumMappingVisibility();
             SetPropertyReplaceOptionSetPropertiesWithEnumVisibility();
@@ -126,7 +128,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 nameof(EntityPrefixesToSkip),
                 nameof(EntityPrefixesWhitelist),
                 nameof(FilePrefixText),
-                nameof(GenerateActionAttributeNameConsts),
                 nameof(GenerateEntityRelationships),
                 nameof(GenerateEntityTypeCode),
                 nameof(GenerateEnumProperties),
@@ -173,6 +174,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
         private void SetGroupLocalOptionSetsByEntityVisibility()
         {
             SetPropertyBrowsable(nameof(GroupLocalOptionSetsByEntity), CreateOneFilePerOptionSet);
+        }
+
+        private void SetGroupMessageRequestWithResponseVisibility()
+        {
+            SetPropertyBrowsable(nameof(GroupMessageRequestWithResponse), CreateOneFilePerAction);
         }
 
         private void SetMaskPasswordVisibility()
