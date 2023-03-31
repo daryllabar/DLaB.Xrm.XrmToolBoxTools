@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace DLaB.ModelBuilderExtensions
 {
@@ -23,7 +23,7 @@ namespace DLaB.ModelBuilderExtensions
         private bool IsBlacklisted(string value)
         {
             return BlackList.Contains(value)
-                   || BlacklistPrefixes.Any(preFix => value.StartsWith(preFix, StringComparison.InvariantCultureIgnoreCase));
+                   || BlacklistPrefixes.Any(pattern => Regex.Match(value, pattern).Success);
         }
     }
 }

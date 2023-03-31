@@ -105,11 +105,11 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("entitiesFileName")]
         public string EntitiesFileName { get; set; }
 
-        [JsonPropertyName("entityPrefixesToSkip")]
-        public List<string> EntityPrefixesToSkip { get; set; }
+        [JsonPropertyName("entitiesBlacklist")]
+        public List<string> EntitiesBlacklist { get; set; }
 
-        [JsonPropertyName("entitiesToSkip")]
-        public List<string> EntitiesToSkip { get; set; }
+        [JsonPropertyName("entityRegExBlacklist")]
+        public List<string> EntityRegExBlacklist { get; set; }
 
         [JsonPropertyName("filePrefixText")]
         public string FilePrefixText { get; set; }
@@ -171,8 +171,8 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("makeResponseMessagesEditable")]
         public bool MakeResponseMessagesEditable { get; set; }
 
-        [JsonPropertyName("messagePrefixesToSkip")]
-        public List<string> MessagePrefixesToSkip { get; set; }
+        [JsonPropertyName("messageBlacklist")]
+        public List<string> MessageBlacklist { get; set; }
 
         [JsonPropertyName("messagesFileName")]
         public string MessagesFileName { get; set; }
@@ -287,14 +287,14 @@ namespace DLaB.ModelBuilderExtensions
             BaseEntityClassName = "EarlyBoundEntity";
             EnableFileDataType = true;
             EntitiesFileName = "Entities.cs";
-            EntitiesToSkip = new List<string>();
+            EntitiesBlacklist = new List<string>();
             EntityAttributeSpecifiedNames = new Dictionary<string, HashSet<string>>();
-            EntityPrefixesToSkip = new List<string>();
+            EntityRegExBlacklist = new List<string>();
             GenerateEntityRelationships = true;
             GroupMessageRequestWithResponse = true;
             InvalidCSharpNamePrefix = "_";
             LocalOptionSetFormat = "{0}_{1}";
-            MessagePrefixesToSkip = new List<string>();
+            MessageBlacklist = new List<string>();
             MessageToSkip = new List<string>();
             MessagesFileName = "Messages.cs";
             SerializedMetadataRelativeFilePath = "metadata.xml";

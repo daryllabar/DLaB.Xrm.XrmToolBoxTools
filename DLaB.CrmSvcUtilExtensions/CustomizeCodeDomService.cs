@@ -56,7 +56,7 @@ namespace DLaB.ModelBuilderExtensions
         private void Initialize()
         {
             EnumPropertyCustomizer = new EnumPropertyGenerator(DefaultService, Settings);
-            MessageApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.MessageToSkip), DLaBSettings.MessagePrefixesToSkip);
+            MessageApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.MessageToSkip), DLaBSettings.MessageBlacklist);
             OptionSetCustomizer = new OptionSet.CustomizeCodeDomService(DefaultService, Settings);
         }
 

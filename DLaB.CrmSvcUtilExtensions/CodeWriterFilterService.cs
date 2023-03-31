@@ -20,14 +20,14 @@ namespace DLaB.ModelBuilderExtensions
 
         public CodeWriterFilterService(ICodeWriterFilterService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
-            EntityApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.EntitiesToSkip),
-                DLaBSettings.EntityPrefixesToSkip);
+            EntityApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.EntitiesBlacklist),
+                DLaBSettings.EntityRegExBlacklist);
         }
 
         public CodeWriterFilterService(ICodeWriterFilterService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
         {
-            EntityApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.EntitiesToSkip),
-                DLaBSettings.EntityPrefixesToSkip);
+            EntityApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.EntitiesBlacklist),
+                DLaBSettings.EntityRegExBlacklist);
         }
 
         #region ICodeWriterFilterService Members
@@ -59,10 +59,10 @@ namespace DLaB.ModelBuilderExtensions
             //if (!Approver.IsExplicitlyAllowed(entityMetadata.LogicalName)
             //    && !DefaultService.GenerateEntity(entityMetadata, services)) { return false; }
 
-            if (!EntityMetadata.ContainsKey(entityMetadata.LogicalName))
-            {
-                EntityMetadata.Add(entityMetadata.LogicalName, entityMetadata);
-            }
+            //if (!EntityMetadata.ContainsKey(entityMetadata.LogicalName))
+            //{
+            //    EntityMetadata.Add(entityMetadata.LogicalName, entityMetadata);
+            //}
 
             return EntityApprover.IsAllowed(entityMetadata.LogicalName);
         }

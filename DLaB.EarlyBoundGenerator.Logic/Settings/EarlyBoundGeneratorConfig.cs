@@ -311,6 +311,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 }
                 pocoConfig.UseCrmSvcUtilStateEnumNamingConvention = true;
 
+                if (!string.IsNullOrWhiteSpace(pocoConfig.EntityPrefixesToSkip))
+                {
+                    pocoConfig.EntityPrefixesToSkip = InjectMissingWildcards(pocoConfig.EntityPrefixesToSkip);
+                }
+
                 AddNewTokens(pocoConfig, defaultConfig, PreV2TokenCapitalizations);
 
                 Logger.AddDetail("Finished Updating Config to 2.2023.3.12 settings!");
@@ -321,6 +326,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
             {
                 pocoConfig.UseCrmSvcUtilStateEnumNamingConvention = false;
             }
+        }
+
+        private static string InjectMissingWildcards(string value)
+        {
+            return string.Join("|", value.Split('|').Select(v => v.Contains("*") ? v.Replace("*", ".*") : v + ".*").ToArray());
         }
 
         private static void AddNewTokens(POCO.ExtensionConfig pocoConfig, ExtensionConfig defaultConfig, string[] previousTokens)

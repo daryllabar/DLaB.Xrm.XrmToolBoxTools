@@ -115,15 +115,12 @@ namespace DLaB.EarlyBoundGenerator.Settings
         {
             var disabledProperties = new[]
             {
-                nameof(ActionPrefixesWhitelist),
-                nameof(EntityPrefixesToSkip),
-                nameof(EntityPrefixesWhitelist),
+                nameof(MessageWildcardWhitelist),
+                nameof(EntityWildcardWhitelist),
                 nameof(GenerateEntityRelationships),
                 nameof(GenerateEntityTypeCode),
                 nameof(GenerateEnumProperties),
                 nameof(GenerateOptionSetMetadataAttribute),
-                nameof(OptionSetPrefixesToSkip),
-                nameof(OptionSetsToSkip),
                 nameof(UnmappedProperties),
                 nameof(WorkflowlessActions),
             };

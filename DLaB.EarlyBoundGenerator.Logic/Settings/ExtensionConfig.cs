@@ -15,10 +15,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
     public class ExtensionConfig
     {
         /// <summary>
-        /// Pipe Delimited String containing the prefixes of Actions to not generate.
-        /// </summary>
-        public string ActionPrefixesToSkip { get; set; }
-        /// <summary>
         /// Pipe Delimited String containing the prefixes of Actions to be generated.
         /// </summary>
         public string ActionPrefixesWhitelist { get; set; }
@@ -189,14 +185,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public int? OptionSetLanguageCodeOverride { get; set; }
         /// <summary>
-        /// Pipe delimited string containing prefixes of entities to not generate.
-        /// </summary>
-        public string OptionSetPrefixesToSkip { get; set; }
-        /// <summary>
-        /// Pipe Delimited String containing the logical names of Option Set Names to not generate
-        /// </summary>
-        public string OptionSetsToSkip { get; set; }
-        /// <summary>
         /// If Option Sets have identical names to Entities, it will cause naming conflicts.  By default this is overcome by post-fixing "_Enum" to the Option Set name.  This setting allows a custom mapping for option set names to be specified.
         /// </summary>
         public string OptionSetNames { get; set; }
@@ -284,7 +272,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         {
             return new ExtensionConfig
             {
-                ActionPrefixesToSkip = null,
                 ActionPrefixesWhitelist = null,
                 ActionsToSkip = null,
                 ActionsWhitelist = null,
@@ -327,8 +314,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 MakeResponseActionsEditable = false,
                 OptionSetLanguageCodeOverride = null,
                 OptionSetNames = null,
-                OptionSetPrefixesToSkip = null,
-                OptionSetsToSkip = null,
                 ProjectNameForEarlyBoundFiles = string.Empty,
                 PropertyEnumMappings = string.Empty,
                 ReadSerializedMetadata = false,
@@ -350,7 +335,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// <param name="poco"></param>
         public void SetPopulatedValues(POCO.ExtensionConfig poco)
         {
-            ActionPrefixesToSkip = GetValueOrDefault(poco.ActionPrefixesToSkip, ActionPrefixesToSkip);
             ActionPrefixesWhitelist = GetValueOrDefault(poco.ActionPrefixesWhitelist, ActionPrefixesWhitelist);
             ActionsWhitelist = GetValueOrDefault(poco.ActionsWhitelist, ActionsWhitelist);
             ActionsToSkip = GetValueOrDefault(poco.ActionsToSkip, ActionsToSkip);
@@ -393,8 +377,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             LocalOptionSetFormat = poco.LocalOptionSetFormat ?? LocalOptionSetFormat;
             OptionSetLanguageCodeOverride = poco.OptionSetLanguageCodeOverride ?? OptionSetLanguageCodeOverride;
             OptionSetNames = GetValueOrDefault(poco.OptionSetNames, OptionSetNames);
-            OptionSetPrefixesToSkip = GetValueOrDefault(poco.OptionSetPrefixesToSkip, OptionSetPrefixesToSkip);
-            OptionSetsToSkip = GetValueOrDefault(poco.OptionSetsToSkip, OptionSetsToSkip);
             ProjectNameForEarlyBoundFiles = poco.ProjectNameForEarlyBoundFiles ?? ProjectNameForEarlyBoundFiles;
             PropertyEnumMappings = GetValueOrDefault(poco.PropertyEnumMappings, PropertyEnumMappings);
             ReadSerializedMetadata = poco.ReadSerializedMetadata ?? ReadSerializedMetadata;
@@ -416,8 +398,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         public void WriteDLaBModelBuilderProperties(Utf8JsonWriter writer, EarlyBoundGeneratorConfig settings)
         {
-            writer.AddPropertyArray(AsMessage(nameof(ActionPrefixesToSkip)), ActionPrefixesToSkip);
-            writer.AddPropertyArray(AsMessage(nameof(ActionsToSkip)), ActionsToSkip?.Replace("-", ""));
             writer.AddProperty(nameof(AddDebuggerNonUserCode), AddDebuggerNonUserCode);
             writer.AddProperty(nameof(AddNewFilesToProject), AddNewFilesToProject);
             writer.AddProperty(nameof(AddOptionSetMetadataAttribute), AddOptionSetMetadataAttribute);
@@ -433,7 +413,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             writer.AddPropertyDictionaryStringHashString(nameof(EntityAttributeSpecifiedNames), EntityAttributeSpecifiedNames, false);
             AddOptionalProperty("EntitiesFileName", settings.EntityTypesFolder, CreateOneFilePerEntity);
             writer.AddPropertyArray(nameof(EntitiesToSkip), EntitiesToSkip);
-            writer.AddPropertyArray(nameof(EntityPrefixesToSkip), EntityPrefixesToSkip);
+            writer.AddPropertyArray("EntityRegExBlacklist", EntityPrefixesToSkip);
             writer.AddProperty(nameof(FilePrefixText), FilePrefixText, true);
             writer.AddProperty(AsMessage(nameof(GenerateActionAttributeNameConsts)), GenerateActionAttributeNameConsts);
             writer.AddProperty(nameof(GenerateAttributeNameConsts), GenerateAttributeNameConsts);
@@ -451,10 +431,9 @@ namespace DLaB.EarlyBoundGenerator.Settings
             writer.AddProperty(nameof(MakeAllFieldsEditable), MakeAllFieldsEditable);
             writer.AddProperty(nameof(MakeReadonlyFieldsEditable), MakeReadonlyFieldsEditable);
             writer.AddProperty(AsMessage(nameof(MakeResponseActionsEditable)), MakeResponseActionsEditable);
+            writer.AddPropertyArray("MessageBlacklist", ActionsToSkip?.Replace("-", ""));
             AddOptionalProperty("MessagesFileName", settings.MessageTypesFolder, CreateOneFilePerAction);
             writer.AddProperty(nameof(LocalOptionSetFormat), LocalOptionSetFormat);
-            writer.AddPropertyArray(nameof(OptionSetPrefixesToSkip), OptionSetPrefixesToSkip);
-            writer.AddPropertyArray(nameof(OptionSetsToSkip), OptionSetsToSkip);
             AddOptionalProperty("OptionSetsFileName", settings.OptionSetsTypesFolder, CreateOneFilePerOptionSet);
             writer.AddProperty(nameof(OptionSetLanguageCodeOverride), OptionSetLanguageCodeOverride?.ToString());
             writer.AddPropertyDictionaryStringString(nameof(OptionSetNames), OptionSetNames);
@@ -519,7 +498,6 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
     /// </summary>
     public class ExtensionConfig
     {
-        public string ActionPrefixesToSkip { get; set; }
         public string ActionPrefixesWhitelist { get; set; }
         public string ActionsToSkip { get; set; }
         public string ActionsWhitelist { get; set; }
@@ -568,8 +546,6 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? MakeResponseActionsEditable { get; set; }
         public string MetadataProviderService { get; set; }
         public string OptionSetNames { get; set; }
-        public string OptionSetPrefixesToSkip { get; set; }
-        public string OptionSetsToSkip { get; set; }
         public int? OptionSetLanguageCodeOverride { get; set; }
         public string PropertyEnumMappings { get; set; }
         public string ProjectNameForEarlyBoundFiles { get; set; }

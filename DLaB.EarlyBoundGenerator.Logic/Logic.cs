@@ -272,7 +272,6 @@ namespace DLaB.EarlyBoundGenerator
                 if (
                     //UpdateConfigAppSetting(file, "ActionCommandLineText", extensions.ActionCommandLineText, true) |
                     UpdateConfigAppSetting(file, "ActionPrefixesWhitelist", extensions.ActionPrefixesWhitelist) |
-                    UpdateConfigAppSetting(file, "ActionPrefixesToSkip", extensions.ActionPrefixesToSkip) |
                     UpdateConfigAppSetting(file, "ActionsWhitelist", extensions.ActionsWhitelist) |
                     UpdateConfigAppSetting(file, "ActionsToSkip", extensions.ActionsToSkip?.Replace("-","")) |
                     UpdateConfigAppSetting(file, "AddDebuggerNonUserCode", extensions.AddDebuggerNonUserCode.ToString()) |
@@ -308,8 +307,6 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "MakeReadonlyFieldsEditable", extensions.MakeReadonlyFieldsEditable.ToString()) |
                     UpdateConfigAppSetting(file, "MakeResponseActionsEditable", extensions.MakeResponseActionsEditable.ToString()) |
                     UpdateConfigAppSetting(file, "LocalOptionSetFormat", extensions.LocalOptionSetFormat) |
-                    UpdateConfigAppSetting(file, "OptionSetPrefixesToSkip", extensions.OptionSetPrefixesToSkip) |
-                    UpdateConfigAppSetting(file, "OptionSetsToSkip", extensions.OptionSetsToSkip) |
                     //UpdateConfigAppSetting(file, "OptionSetCommandLineText", extensions.OptionSetCommandLineText, true) |
                     UpdateConfigAppSetting(file, "OptionSetLanguageCodeOverride", extensions.OptionSetLanguageCodeOverride?.ToString()) |
                     UpdateConfigAppSetting(file, "OptionSetNames", extensions.OptionSetNames) |
