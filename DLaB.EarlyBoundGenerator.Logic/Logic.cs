@@ -270,7 +270,7 @@ namespace DLaB.EarlyBoundGenerator
 
                 var extensions = earlyBoundGeneratorConfig.ExtensionConfig;
                 if (
-                    UpdateConfigAppSetting(file, "ActionCommandLineText", extensions.ActionCommandLineText, true) |
+                    //UpdateConfigAppSetting(file, "ActionCommandLineText", extensions.ActionCommandLineText, true) |
                     UpdateConfigAppSetting(file, "ActionPrefixesWhitelist", extensions.ActionPrefixesWhitelist) |
                     UpdateConfigAppSetting(file, "ActionPrefixesToSkip", extensions.ActionPrefixesToSkip) |
                     UpdateConfigAppSetting(file, "ActionsWhitelist", extensions.ActionsWhitelist) |
@@ -286,7 +286,7 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "CreateOneFilePerOptionSet", extensions.CreateOneFilePerOptionSet.ToString()) |
                     UpdateConfigAppSetting(file, "DeleteFilesFromOutputFolders", extensions.DeleteFilesFromOutputFolders.ToString()) |
                     UpdateConfigAppSetting(file, "EntityAttributeSpecifiedNames", extensions.EntityAttributeSpecifiedNames) |
-                    UpdateConfigAppSetting(file, "EntityCommandLineText", extensions.EntityCommandLineText, true) |
+                    //UpdateConfigAppSetting(file, "EntityCommandLineText", extensions.EntityCommandLineText, true) |
                     UpdateConfigAppSetting(file, "EntitiesToSkip", extensions.EntitiesToSkip) |
                     UpdateConfigAppSetting(file, "EntitiesWhitelist", extensions.EntitiesWhitelist) |
                     UpdateConfigAppSetting(file, "EntityPrefixesToSkip", extensions.EntityPrefixesToSkip) |
@@ -310,7 +310,7 @@ namespace DLaB.EarlyBoundGenerator
                     UpdateConfigAppSetting(file, "LocalOptionSetFormat", extensions.LocalOptionSetFormat) |
                     UpdateConfigAppSetting(file, "OptionSetPrefixesToSkip", extensions.OptionSetPrefixesToSkip) |
                     UpdateConfigAppSetting(file, "OptionSetsToSkip", extensions.OptionSetsToSkip) |
-                    UpdateConfigAppSetting(file, "OptionSetCommandLineText", extensions.OptionSetCommandLineText, true) |
+                    //UpdateConfigAppSetting(file, "OptionSetCommandLineText", extensions.OptionSetCommandLineText, true) |
                     UpdateConfigAppSetting(file, "OptionSetLanguageCodeOverride", extensions.OptionSetLanguageCodeOverride?.ToString()) |
                     UpdateConfigAppSetting(file, "OptionSetNames", extensions.OptionSetNames) |
                     UpdateConfigAppSetting(file, "ProjectNameForEarlyBoundFiles", extensions.ProjectNameForEarlyBoundFiles ?? string.Empty) |

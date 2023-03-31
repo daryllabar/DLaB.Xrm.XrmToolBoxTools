@@ -124,7 +124,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 nameof(GenerateEntityTypeCode),
                 nameof(GenerateEnumProperties),
                 nameof(GenerateOptionSetMetadataAttribute),
-                nameof(IncludeCommandLine),
                 nameof(OptionSetPrefixesToSkip),
                 nameof(OptionSetsToSkip),
                 nameof(ProjectNameForEarlyBoundFiles),

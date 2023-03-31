@@ -457,29 +457,29 @@ namespace DLaB.ModelBuilderExtensions
 
         #region Insert Command Line Into Header
 
-        protected IEnumerable<string> GetFileTextWithUpdatedClassComment(string[] fileContents, string commandLineText, bool removeRuntimeVersionComment)
-        {
-            var skipLine = removeRuntimeVersionComment ? 3 : -1;
-            commandLineText = string.IsNullOrWhiteSpace(commandLineText)
-                ? ""
-                : "// Created via this command line: " + commandLineText.Replace(Environment.NewLine, Environment.NewLine + "//");
-            return GetNewLines(fileContents, 8, commandLineText, skipLine);
-        }
-
-        private IEnumerable<string> GetNewLines(string[] lines, int insertAtLine, string text, int skipLine)
-        {
-            for (var i = 0; i < insertAtLine; i++)
-            {
-                if (skipLine == i) { continue; }
-                yield return lines[i];
-            }
-            yield return text;
-            for (var i = insertAtLine; i < lines.Length; i++)
-            {
-                if (skipLine == i) { continue; }
-                yield return lines[i];
-            }
-        }
+        //protected IEnumerable<string> GetFileTextWithUpdatedClassComment(string[] fileContents, string commandLineText, bool removeRuntimeVersionComment)
+        //{
+        //    var skipLine = removeRuntimeVersionComment ? 3 : -1;
+        //    commandLineText = string.IsNullOrWhiteSpace(commandLineText)
+        //        ? ""
+        //        : "// Created via this command line: " + commandLineText.Replace(Environment.NewLine, Environment.NewLine + "//");
+        //    return GetNewLines(fileContents, 8, commandLineText, skipLine);
+        //}
+        //
+        //private IEnumerable<string> GetNewLines(string[] lines, int insertAtLine, string text, int skipLine)
+        //{
+        //    for (var i = 0; i < insertAtLine; i++)
+        //    {
+        //        if (skipLine == i) { continue; }
+        //        yield return lines[i];
+        //    }
+        //    yield return text;
+        //    for (var i = insertAtLine; i < lines.Length; i++)
+        //    {
+        //        if (skipLine == i) { continue; }
+        //        yield return lines[i];
+        //    }
+        //}
 
         #endregion // Insert Command Line Into Header
 

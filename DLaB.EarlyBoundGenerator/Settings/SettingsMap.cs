@@ -362,7 +362,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         [Category("1 - Global")]
         [DisplayName("Include Command Line")]
-        [Description("Specifies whether to include in the early bound class the command line used to generate it.")]
+        [Description("Specifies whether to include in the service context class the command line used to generate the classes.")]
         public bool IncludeCommandLine
         {
             get => Config.IncludeCommandLine;

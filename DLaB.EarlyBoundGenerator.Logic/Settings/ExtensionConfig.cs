@@ -264,24 +264,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         #region NonSerialized Properties
 
         /// <summary>
-        /// If populated, used as the Command Line text to insert into generated header for Actions
-        /// </summary>
-        [XmlIgnore]
-        public string ActionCommandLineText { get; set; }
-
-        /// <summary>
-        /// If populated, used as the Command Line text to insert into generated header for Entities
-        /// </summary>
-        [XmlIgnore]
-        public string EntityCommandLineText { get; set; }
-
-        /// <summary>
-        /// If populated, used as the Command Line text to insert into generated header for OptionSets
-        /// </summary>
-        [XmlIgnore]
-        public string OptionSetCommandLineText { get; set; }
-
-        /// <summary>
         /// Path of the Camel Case Names Dictionary file, relative to the PacOrXrmToolBoxPluginPath, if not fully rooted
         /// </summary>
         [XmlIgnore]
@@ -434,7 +416,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         public void WriteDLaBModelBuilderProperties(Utf8JsonWriter writer, EarlyBoundGeneratorConfig settings)
         {
-            writer.AddProperty(AsMessage(nameof(ActionCommandLineText)), ActionCommandLineText, true);
             writer.AddPropertyArray(AsMessage(nameof(ActionPrefixesToSkip)), ActionPrefixesToSkip);
             writer.AddPropertyArray(AsMessage(nameof(ActionsToSkip)), ActionsToSkip?.Replace("-", ""));
             writer.AddProperty(nameof(AddDebuggerNonUserCode), AddDebuggerNonUserCode);
@@ -450,7 +431,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             writer.AddProperty(nameof(CreateOneFilePerOptionSet), CreateOneFilePerOptionSet);
             writer.AddProperty(nameof(DeleteFilesFromOutputFolders), DeleteFilesFromOutputFolders);
             writer.AddPropertyDictionaryStringHashString(nameof(EntityAttributeSpecifiedNames), EntityAttributeSpecifiedNames, false);
-            writer.AddProperty(nameof(EntityCommandLineText), EntityCommandLineText, true);
             AddOptionalProperty("EntitiesFileName", settings.EntityTypesFolder, CreateOneFilePerEntity);
             writer.AddPropertyArray(nameof(EntitiesToSkip), EntitiesToSkip);
             writer.AddPropertyArray(nameof(EntityPrefixesToSkip), EntityPrefixesToSkip);
@@ -466,6 +446,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             writer.AddProperty(nameof(GenerateTypesAsInternal), GenerateTypesAsInternal);
             writer.AddProperty(nameof(GroupLocalOptionSetsByEntity), GroupLocalOptionSetsByEntity);
             writer.AddProperty(nameof(GroupMessageRequestWithResponse), GroupMessageRequestWithResponse);
+            writer.AddProperty(nameof(settings.IncludeCommandLine), settings.IncludeCommandLine);
             writer.AddProperty(nameof(InvalidCSharpNamePrefix), InvalidCSharpNamePrefix);
             writer.AddProperty(nameof(MakeAllFieldsEditable), MakeAllFieldsEditable);
             writer.AddProperty(nameof(MakeReadonlyFieldsEditable), MakeReadonlyFieldsEditable);
@@ -474,7 +455,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             writer.AddProperty(nameof(LocalOptionSetFormat), LocalOptionSetFormat);
             writer.AddPropertyArray(nameof(OptionSetPrefixesToSkip), OptionSetPrefixesToSkip);
             writer.AddPropertyArray(nameof(OptionSetsToSkip), OptionSetsToSkip);
-            writer.AddProperty(nameof(OptionSetCommandLineText), OptionSetCommandLineText, true);
             AddOptionalProperty("OptionSetsFileName", settings.OptionSetsTypesFolder, CreateOneFilePerOptionSet);
             writer.AddProperty(nameof(OptionSetLanguageCodeOverride), OptionSetLanguageCodeOverride?.ToString());
             writer.AddPropertyDictionaryStringString(nameof(OptionSetNames), OptionSetNames);

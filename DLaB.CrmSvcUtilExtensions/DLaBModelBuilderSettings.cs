@@ -147,6 +147,9 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("groupMessageRequestWithResponse")]
         public bool GroupMessageRequestWithResponse { get; set; }
 
+        [JsonPropertyName("includeCommandLine")]
+        public bool IncludeCommandLine { get; set; }
+
         [JsonPropertyName("invalidCSharpNamePrefix")]
         public string InvalidCSharpNamePrefix { get; set; }
 

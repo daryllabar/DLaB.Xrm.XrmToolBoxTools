@@ -77,21 +77,14 @@ namespace DLaB.ModelBuilderExtensions
                 ProcessMessage(codeUnit, services);
 
                 if (codeUnit.GetTypes()
-                    .Any(t => t.IsClass
-                              && t.BaseTypes.GetTypes().Any(b => b.BaseType.EndsWith(".Entity"))))
+                    .Any(t => t.IsEntityType()))
                 {
                     ProcessEntity(codeUnit, services);
                     return;
                 }
 
-                if (GenerateOptionSetMetadataAttribute
-                    && codeUnit.GetTypes()
-                        .Any(t => t.IsClass
-                                  && t.BaseTypes.GetTypes().Any(b => b.BaseType.EndsWith(".OrganizationServiceContext"))))
-                {
-                    new OptionSetMetadataAttributeGenerator().CustomizeCodeDom(codeUnit, services);
-                    return;
-                }
+                ProcessServiceContext(codeUnit, services);
+
             }
             finally
             {
@@ -105,6 +98,20 @@ namespace DLaB.ModelBuilderExtensions
             }
 
             Trace.TraceInformation("DLaB.ModelBuilderExtensions.CustomizeCodeDomService.CustomizeCodeDom Skipping processing of {0}!", string.Join(", ", codeUnit.GetTypes().Select(t => t.Name)));
+        }
+
+        private void ProcessServiceContext(CodeCompileUnit codeUnit, IServiceProvider services)
+        {
+            if (!codeUnit.GetTypes()
+                    .Any(t => t.IsContextType()))
+            {
+                return;
+            }
+            
+            if (GenerateOptionSetMetadataAttribute)
+            {
+                new OptionSetMetadataAttributeGenerator().CustomizeCodeDom(codeUnit, services);
+            }
         }
 
         private void ProcessEntity(CodeCompileUnit codeUnit, IServiceProvider services)
