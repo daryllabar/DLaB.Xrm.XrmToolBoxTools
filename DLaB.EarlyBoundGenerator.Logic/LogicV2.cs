@@ -67,17 +67,27 @@ namespace DLaB.EarlyBoundGenerator
             Console.SetOut(logger);
             try
             {
-                var runner = new ProcessModelInvoker(GetParameters(GetParameters()));
-                var result = runner.Invoke(service);
-                Console.SetOut(currentOut);
-                if (result != 0)
+                var parameters = GetParameters();
+                var firstFile = Directory.GetFiles(parameters.OutDirectory).FirstOrDefault();
+                if (!string.IsNullOrWhiteSpace(firstFile) && !AbleToMakeFileAccessible(firstFile))
                 {
+                    return;
+                }
+                var runner = new ProcessModelInvoker(GetParameters(parameters));
+                var result = runner.Invoke(service);
+                if (result == 0)
+                {
+                    Speak("Early Bound Generation Completed Successfully");
+                }
+                else{
                     Logger.Show("An error occurred!", " An error when calling ProcessModelInvoker.Invoke.  Result: " + result);
+                    Speak("Early Bound Generation Errored");
                 }
             }
             finally
             {
                 logger.FlushLogger();
+                Console.SetOut(currentOut);
             }
 
 
@@ -219,43 +229,6 @@ namespace DLaB.EarlyBoundGenerator
             return false;
         }
 
-        private static string GetSafeArgs(EarlyBoundGeneratorConfig earlyBoundGeneratorConfig, Process p)
-        {
-            var args = p.StartInfo.Arguments;
-            if (earlyBoundGeneratorConfig.MaskPassword && !string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.Password))
-            {
-                args = p.StartInfo.Arguments.Replace(earlyBoundGeneratorConfig.Password, new string('*', earlyBoundGeneratorConfig.Password.Length));
-            }
-            if (earlyBoundGeneratorConfig.MaskPassword && !string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.ConnectionString))
-            {
-                var tmp = earlyBoundGeneratorConfig.ConnectionString;
-                var start = tmp.IndexOf("Password", StringComparison.InvariantCultureIgnoreCase);
-                if(start == -1)
-                {
-                    start = tmp.IndexOf("ClientSecret=", StringComparison.InvariantCultureIgnoreCase);
-                }
-                if (start == -1)
-                {
-                    // No Password present
-                    return args;
-                }
-                var end = tmp.IndexOf("=", start, StringComparison.InvariantCultureIgnoreCase);
-                start += end - start + 1;
-                if (tmp.Length <= start + 2)
-                {
-                    return args;
-                }
-
-                end = tmp.IndexOf(tmp[start + 1] == '\'' ? '\'' : ';', start + 1);
-                if (end == -1)
-                {
-                    end = tmp.Length;
-                }
-                args = args.Replace(tmp, tmp.Substring(0, start) + new string('*', end - start) + tmp.Substring(end));
-
-            }
-            return args;
-        }
 
         public void UpdateBuilderSettingsJson()
         {
@@ -333,143 +306,8 @@ namespace DLaB.EarlyBoundGenerator
             }
         }
 
-        private string GetConfigArguments(EarlyBoundGeneratorConfig earlyBoundGeneratorConfig, CreationType type)
+        private void Speak(string words)
         {
-            var sb = new StringBuilder();
-            if (!earlyBoundGeneratorConfig.UseConnectionString)
-            {
-                sb.AppendFormat("/url:\"{0}\" ", earlyBoundGeneratorConfig.Url);
-            }
-
-            foreach (var argument in earlyBoundGeneratorConfig.CommandLineArguments.Where(a => a.SettingType == CreationType.All || a.SettingType == type))
-            {
-                var value = argument.Value;
-                if (argument.Name == "out")
-                {
-                    value = EarlyBoundGeneratorConfig.RootPath;
-                }
-                if (argument.Valueless)
-                {
-                    if (argument.Value == "true")
-                    {
-                        sb.AppendFormat("/{0} ", argument.Name);
-
-                    }
-                }
-                else
-                {
-                    sb.AppendFormat("/{0}:\"{1}\" ", argument.Name, value);
-                }
-            }
-
-            if (!string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.ConnectionString))
-            {
-                // If a connection string was specified ignore all other connection settings
-                sb.AppendFormat("/connectionstring:\"{0}\" ", earlyBoundGeneratorConfig.ConnectionString.Replace("\"", "\"\""));
-            }
-            else if (!string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.Password))
-            {
-                if (earlyBoundGeneratorConfig.UseConnectionString)
-                {
-                    // Fix for https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/issues/14 - Problem with CRM 2016 on premises with ADFS
-                    // CrmSvcUtil.exe /out:entities.cs / connectionstring:"Url=https://serverName.domain.com:444/orgName;Domain=myDomain;UserName=username;Password=*****"
-                    // And this command doesn't work :
-                    // CrmSvcUtil.exe /out:entitie.cs /url:"https://serverName.domain.com:444/orgName" / domain:"myDomain" / username:"username" / password:"*****"
-
-                    var domain = string.Empty;
-                    if (!string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.Domain))
-                    {
-                        domain = "Domain=" +earlyBoundGeneratorConfig.Domain + ";";
-                    }
-                    //var password = earlyBoundGeneratorConfig.Password.Replace("^", "^^").Replace("\"", "^\"").Replace("&", "^&");  // Handle Double Quotes and &s???
-                    //To handle special characters, enclose in single quotes. If password contains single quotes, they must be doubled.
-                    //https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlconnection.connectionstring.aspx
-                    var password = $"'{earlyBoundGeneratorConfig.Password.Replace("'", "''")}'"; 
-                    var builder = new System.Data.Common.DbConnectionStringBuilder
-                    {
-                        {"A", $"Url={earlyBoundGeneratorConfig.Url};{domain}UserName={earlyBoundGeneratorConfig.UserName};Password={password}"}
-                    };
-                    
-                    sb.AppendFormat("/connectionstring:{0} ", builder.ConnectionString.Substring(2)); // Replace "A=" with "/connectionstring:"
-                }
-                else
-                {
-                    sb.AppendFormat("/username:\"{0}\" ", earlyBoundGeneratorConfig.UserName);
-                    sb.AppendFormat("/password:\"{0}\" ", earlyBoundGeneratorConfig.Password);
-
-                    // Add Login Info
-                    if (!earlyBoundGeneratorConfig.UseCrmOnline && !string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.Domain))
-                    {
-                        sb.AppendFormat("/domain:\"{0}\" ", earlyBoundGeneratorConfig.Domain);
-                    }
-                }
-            }
-
-            if (_useInteractiveMode)
-            {
-                sb.Append("/interactivelogin:true ");
-            }
-
-            return sb.ToString();
-        }
-
-        private void HandleResult(string filePath, DateTime date, CreationType creationType, string consoleOutput, bool speakResult)
-        {
-            try
-            {
-                if (consoleOutput.Contains("Unable to Login to Dynamics CRM"))
-                {
-                    Logger.Show("Unable to login.  Attempting to login using interactive mode.");
-                    _useInteractiveMode = true;
-                    //Create();
-                    return;
-                }
-                //if (creationType == CreationType.Actions && Config.ExtensionConfig.CreateOneFilePerAction)
-                //{
-                //    var tempPath = filePath;
-                //    filePath = "Actions.cs";
-                //    if (!File.Exists(tempPath))
-                //    {
-                //        lock (_speakToken)
-                //        {
-                //            speaker.Speak("Actions.cs Completed Successfully");
-                //        }
-                //        return;
-                //    }
-                //}
-                //else if (creationType == CreationType.OptionSets && Config.ExtensionConfig.CreateOneFilePerOptionSet)
-                //{
-                //    var tempPath = filePath;
-                //    filePath = "OptionSet.cs";
-                //    if (!File.Exists(tempPath))
-                //    {
-                //        lock (_speakToken)
-                //        {
-                //            speaker.Speak("OptionSet.cs Completed Successfully");
-                //        }
-                //        return;
-                //    }
-                //}
-                //else 
-                if (date != File.GetLastWriteTimeUtc(filePath) || consoleOutput.Contains(filePath + " was unchanged."))
-                {
-                    Speak(creationType + " Completed Successfully", speakResult);
-                    return;
-                }
-            }
-            catch(Exception ex)
-            {
-                Logger.Show("Error", ex.ToString());
-                Speak(creationType + " Errored", speakResult);
-            }
-
-            Logger.Show("Error", "Output file was not updated or not found!  " + filePath);
-
-        }
-
-        private void Speak(string words, bool speakResult)
-        {
-            if (!speakResult) { return; }
             var speaker = new SpeechSynthesizer();
             lock (_speakToken)
             {

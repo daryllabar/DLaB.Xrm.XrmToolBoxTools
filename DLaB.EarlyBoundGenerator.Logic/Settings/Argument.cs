@@ -45,26 +45,5 @@ namespace DLaB.EarlyBoundGenerator.Settings
             Name = name;
             Value = value;
         }
-
-        /// <summary>
-        /// Initializes the Argument
-        /// </summary>
-        /// <param name="settingType"></param>
-        /// <param name="service"></param>
-        /// <param name="value"></param>
-        public Argument(CreationType settingType, CrmSrvUtilService service, string value) :this(settingType, service.ToString().ToLower(), value)
-        { }
-    }
-
-    /// <summary>
-    /// List of possible CrmSrvUtil Services
-    /// </summary>
-    public enum CrmSrvUtilService
-    {
-        CodeCustomization,
-        CodeGenerationService,
-        CodeWriterFilter,
-        MetadataProviderService,
-        NamingService
     }
 }

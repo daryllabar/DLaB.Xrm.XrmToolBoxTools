@@ -370,15 +370,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         }
 
         [Category("1 - Global")]
-        [DisplayName("Mask Password")]
-        [Description("Masks the password in the outputted command line.")]
-        public bool MaskPassword
-        {
-            get => Config.MaskPassword;
-            set => Config.MaskPassword = value;
-        }
-
-        [Category("1 - Global")]
         [DisplayName("Namespace")]
         [Description("The Namespace generated code will be placed in.")]
         public string Namespace

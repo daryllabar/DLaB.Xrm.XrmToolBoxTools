@@ -70,14 +70,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         public bool IncludeCommandLine { get; set; }
 
         /// <summary>
-        /// Masks the password in the command line
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if [mask password]; otherwise, <c>false</c>.
-        /// </value>
-        public bool MaskPassword { get; set; }
-
-        /// <summary>
         /// Folder name that will contain messages
         /// </summary>
         public string MessageTypesFolder { get; set; }
@@ -126,14 +118,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         public bool UpdateBuilderSettingsJson { get; set; }
 
         /// <summary>
-        /// These are the commandline arguments that are passed to the CrmSrvUtil that can have varying values, depending on the user's preference.
-        /// </summary>
-        /// <value>
-        /// The user arguments.
-        /// </value>
-        public List<Argument> UserArguments { get; set; }
-
-        /// <summary>
         /// The version of the EarlyBoundGeneratorPlugin
         /// </summary>
         /// <value>
@@ -154,37 +138,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [XmlIgnore]
         [Browsable(false)]
         public bool UseCrmOnline { get; set; }
-
-        /// <summary>
-        /// Set during Execution
-        /// </summary>
-        [XmlIgnore]
-        [Browsable(false)]
-        public bool UseConnectionString { get; set; }
-
-        /// <summary>
-        /// Set during Execution
-        /// </summary>
-        [XmlIgnore]
-        [Browsable(false)]
-        public string ConnectionString { get; set; }
-
-        /// <summary>
-        /// Set during Execution
-        /// </summary>
-        [XmlIgnore]
-        [Browsable(false)]
-        public string Domain { get; set; }
-        /// <summary>
-        /// Set during Execution
-        /// </summary>
-        [XmlIgnore]
-        [Browsable(false)]
-        public string UserName { get; set; }
-
-        [XmlIgnore]
-        [Browsable(false)]
-        public string Password { get; set; }
         /// <summary>
         /// Set during Execution
         /// </summary>
@@ -197,20 +150,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [XmlIgnore]
         [Browsable(false)]
         public bool SupportsActions { get; set; }
-
-        /// <summary>
-        /// Set during Execution
-        /// </summary>
-        [XmlIgnore]
-        [Browsable(false)]
-        public string Url { get; set; }
-
-        /// <summary>
-        /// Set during Execution
-        /// </summary>
-        [XmlIgnore]
-        [Browsable(false)]
-        public IEnumerable<Argument> CommandLineArguments => UserArguments;
 
         /// <summary>
         /// Path of the Model Builder Template file, relative to the root path, if not fully rooted
@@ -256,7 +195,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         private EarlyBoundGeneratorConfig()
         {
-            UseConnectionString = Config.GetAppSettingOrDefault("UseConnectionString", false);
             Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
@@ -281,7 +219,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             MetadataProviderService        =  poco.MetadataProviderService        ?? @default.MetadataProviderService;
             Namespace                      =  poco.Namespace                      ?? @default.Namespace;
             NamingService                  =  poco.NamingService                  ?? @default.NamingService;
-            MaskPassword                   =  poco.MaskPassword                   ?? @default.MaskPassword;
             MessageTypesFolder             =  poco.MessageTypesFolder             ?? @default.MessageTypesFolder;
             OptionSetsTypesFolder          =  poco.OptionSetsTypesFolder          ?? @default.OptionSetsTypesFolder;
             ServiceContextName             =  poco.ServiceContextName             ?? @default.ServiceContextName;
@@ -292,7 +229,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             ExtensionConfig = @default.ExtensionConfig;
             ExtensionConfig.SetPopulatedValues(poco.ExtensionConfig);
 
-            UserArguments = AddMissingArguments(poco.UserArguments, @default.UserArguments);
             SettingsVersion = string.IsNullOrWhiteSpace(poco.Version) ? "0.0.0.0" : poco.Version;
             Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
@@ -457,17 +393,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             }
         }
 
-        private List<Argument> AddMissingArguments(List<Argument> value, List<Argument> @default)
-        {
-            if (value == null || @default == null)
-            {
-                return value ?? @default ?? new List<Argument>();
-            }
-            value.AddRange(@default.Where(arg => !value.Any(a => a.SettingType == arg.SettingType && a.Name == arg.Name)));
-
-            return value;
-        }
-
         /// <summary>
         /// Gets the default config
         /// </summary>
@@ -484,7 +409,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 ExtensionConfig = ExtensionConfig.GetDefault(),
                 GenerateMessages = true,
                 IncludeCommandLine = true,
-                MaskPassword = true,
                 //ExtensionArguments = new List<Argument>(new[] {
                     // Actions
                     //new Argument(CreationType.Actions, CrmSrvUtilService.CodeGenerationService, "DLaB.ModelBuilderExtensions.Action.CustomCodeGenerationService,DLaB.ModelBuilderExtensions"),
@@ -621,25 +545,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             return undoCheckoutIfUnchanged;
         }
 
-        /// <summary>
-        /// Returns the Setting Value
-        /// </summary>
-        /// <param name="creationType"></param>
-        /// <param name="setting"></param>
-        /// <returns></returns>
-        public string GetSettingValue(CreationType creationType, string setting)
-        {
-            var value = CommandLineArguments.FirstOrDefault(s => string.Equals(s.Name, setting, StringComparison.InvariantCultureIgnoreCase)
-                                                                 && (s.SettingType == creationType || s.SettingType == CreationType.All));
-
-            if (value == null)
-            {
-                throw new KeyNotFoundException("Unable to find setting for " + creationType + " " + setting);
-            }
-
-            return value.Value;
-        }
-
         internal struct UserArgumentNames
         {
             public const string Out = "out";
@@ -728,7 +633,6 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? GenerateMessages { get; set; }
         public string Namespace { get; set; }
         public string NamingService { get; set; }
-        public bool? MaskPassword { get; set; }
         public string MetadataProviderService { get; set; }
         public string MessageTypesFolder { get; set; }
         public string OptionSetsTypesFolder { get; set; }

@@ -37,7 +37,7 @@ namespace DLaB.EarlyBoundGenerator
         /// </summary>
         public void CreateActions()
         {
-            Create(CreationType.Actions);
+            //Create(CreationType.Actions);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace DLaB.EarlyBoundGenerator
         /// </summary>
         public void CreateEntities()
         {
-            Create(CreationType.Entities);
+            //Create(CreationType.Entities);
         }
 
         /// <summary>
@@ -68,81 +68,81 @@ namespace DLaB.EarlyBoundGenerator
         /// </summary>
         public void CreateOptionSets()
         {
-            Create(CreationType.OptionSets);
+            //Create(CreationType.OptionSets);
         }
 
 
-        private void Create(CreationType creationType)
+        private void Create()
         {
-            var filePath = GetOutputFilePath(EarlyBoundGeneratorConfig, creationType);
-            // Check for file to be editable if not using TFS and creating only one file
-            if (!EarlyBoundGeneratorConfig.ExtensionConfig.UseTfsToCheckoutFiles 
-                && ((creationType == CreationType.Actions && !EarlyBoundGeneratorConfig.ExtensionConfig.CreateOneFilePerAction) || 
-                    (creationType == CreationType.Entities && !EarlyBoundGeneratorConfig.ExtensionConfig.CreateOneFilePerEntity) ||
-                    (creationType == CreationType.OptionSets && !EarlyBoundGeneratorConfig.ExtensionConfig.CreateOneFilePerOptionSet))
-                && !AbleToMakeFileAccessible(filePath))
-            {
-                return;
-            }
-
-            var date = File.GetLastWriteTimeUtc(filePath);
-            var p = new Process
-            {
-                StartInfo =
-                {
-                    //FileName = Path.GetFullPath(EarlyBoundGeneratorConfig.CrmSvcUtilPath),
-                    RedirectStandardError = true,
-                    RedirectStandardOutput = true,
-                    UseShellExecute = false,
-                    Arguments = GetConfigArguments(EarlyBoundGeneratorConfig, creationType),
-                },
-            };
-
-            if (!File.Exists(p.StartInfo.FileName))
-            {
-                throw new FileNotFoundException("Unable to locate CrmSvcUtil at path '" + p.StartInfo.FileName +"'.  Update the CrmSvcUtilRelativePath in the DLaB.EarlyBoundGeneratorPlugin.Settings.xml file and try again.");
-            }
-
-            var args = GetSafeArgs(EarlyBoundGeneratorConfig, p);
-            if (EarlyBoundGeneratorConfig.IncludeCommandLine)
-            {
-                switch (creationType)
-                {
-                    case CreationType.Actions:
-                        EarlyBoundGeneratorConfig.ExtensionConfig.ActionCommandLineText = "\"" + p.StartInfo.FileName + "\" " + args;
-                        break;
-                    case CreationType.All:
-                        break;
-                    case CreationType.Entities:
-                        EarlyBoundGeneratorConfig.ExtensionConfig.EntityCommandLineText = "\"" + p.StartInfo.FileName + "\" " + args;
-                        break;
-                    case CreationType.OptionSets:
-                        EarlyBoundGeneratorConfig.ExtensionConfig.OptionSetCommandLineText = "\"" + p.StartInfo.FileName + "\" " + args;
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException(nameof(creationType));
-                }
-            }
-            UpdateCrmSvcUtilConfig(EarlyBoundGeneratorConfig);
-            Logger.Show("Shelling out to CrmSrvUtil for creating " + creationType, "Executing \"" + p.StartInfo.FileName + "\" " + args);
-            p.Start();
-            var consoleOutput = new StringBuilder();
-            while (!p.StandardOutput.EndOfStream)
-            {
-                var line = p.StandardOutput.ReadLine();
-                if (!string.IsNullOrWhiteSpace(line) && line.Contains("[****") && line.Contains("****]"))
-                {
-                    line = line.SubstringByString("[****", "****]");
-                    Logger.Show(line);
-                }
-                else
-                {
-                    Logger.AddDetail(line);
-                }
-                consoleOutput.AppendLine(line);
-            }
-
-            HandleResult(filePath, date, creationType, consoleOutput.ToString(), EarlyBoundGeneratorConfig.AudibleCompletionNotification);
+            //var filePath = GetOutputFilePath(EarlyBoundGeneratorConfig, creationType);
+            //// Check for file to be editable if not using TFS and creating only one file
+            //if (!EarlyBoundGeneratorConfig.ExtensionConfig.UseTfsToCheckoutFiles 
+            //    && ((creationType == CreationType.Actions && !EarlyBoundGeneratorConfig.ExtensionConfig.CreateOneFilePerAction) || 
+            //        (creationType == CreationType.Entities && !EarlyBoundGeneratorConfig.ExtensionConfig.CreateOneFilePerEntity) ||
+            //        (creationType == CreationType.OptionSets && !EarlyBoundGeneratorConfig.ExtensionConfig.CreateOneFilePerOptionSet))
+            //    && !AbleToMakeFileAccessible(filePath))
+            //{
+            //    return;
+            //}
+            //
+            //var date = File.GetLastWriteTimeUtc(filePath);
+            //var p = new Process
+            //{
+            //    StartInfo =
+            //    {
+            //        //FileName = Path.GetFullPath(EarlyBoundGeneratorConfig.CrmSvcUtilPath),
+            //        RedirectStandardError = true,
+            //        RedirectStandardOutput = true,
+            //        UseShellExecute = false,
+            //        Arguments = GetConfigArguments(EarlyBoundGeneratorConfig, creationType),
+            //    },
+            //};
+            //
+            //if (!File.Exists(p.StartInfo.FileName))
+            //{
+            //    throw new FileNotFoundException("Unable to locate CrmSvcUtil at path '" + p.StartInfo.FileName +"'.  Update the CrmSvcUtilRelativePath in the DLaB.EarlyBoundGeneratorPlugin.Settings.xml file and try again.");
+            //}
+            //
+            //var args = GetSafeArgs(EarlyBoundGeneratorConfig, p);
+            //if (EarlyBoundGeneratorConfig.IncludeCommandLine)
+            //{
+            //    switch (creationType)
+            //    {
+            //        case CreationType.Actions:
+            //            EarlyBoundGeneratorConfig.ExtensionConfig.ActionCommandLineText = "\"" + p.StartInfo.FileName + "\" " + args;
+            //            break;
+            //        case CreationType.All:
+            //            break;
+            //        case CreationType.Entities:
+            //            EarlyBoundGeneratorConfig.ExtensionConfig.EntityCommandLineText = "\"" + p.StartInfo.FileName + "\" " + args;
+            //            break;
+            //        case CreationType.OptionSets:
+            //            EarlyBoundGeneratorConfig.ExtensionConfig.OptionSetCommandLineText = "\"" + p.StartInfo.FileName + "\" " + args;
+            //            break;
+            //        default:
+            //            throw new ArgumentOutOfRangeException(nameof(creationType));
+            //    }
+            //}
+            //UpdateCrmSvcUtilConfig(EarlyBoundGeneratorConfig);
+            //Logger.Show("Shelling out to CrmSrvUtil for creating " + creationType, "Executing \"" + p.StartInfo.FileName + "\" " + args);
+            //p.Start();
+            //var consoleOutput = new StringBuilder();
+            //while (!p.StandardOutput.EndOfStream)
+            //{
+            //    var line = p.StandardOutput.ReadLine();
+            //    if (!string.IsNullOrWhiteSpace(line) && line.Contains("[****") && line.Contains("****]"))
+            //    {
+            //        line = line.SubstringByString("[****", "****]");
+            //        Logger.Show(line);
+            //    }
+            //    else
+            //    {
+            //        Logger.AddDetail(line);
+            //    }
+            //    consoleOutput.AppendLine(line);
+            //}
+            //
+            //HandleResult(filePath, date, creationType, consoleOutput.ToString(), EarlyBoundGeneratorConfig.AudibleCompletionNotification);
         }
 
         protected bool AbleToMakeFileAccessible(string filePath)
@@ -176,69 +176,69 @@ namespace DLaB.EarlyBoundGenerator
             return false;
         }
 
-        private string GetOutputFilePath(EarlyBoundGeneratorConfig earlyBoundGeneratorConfig, CreationType creationType)
-        {
-            // ReSharper disable once AssignNullToNotNullAttribute
-            var filePath = Path.Combine(EarlyBoundGeneratorConfig.RootPath, EarlyBoundGeneratorConfig.GetSettingValue(creationType, EarlyBoundGeneratorConfig.UserArgumentNames.Out));
-
-            if (creationType == CreationType.Actions && earlyBoundGeneratorConfig.ExtensionConfig.CreateOneFilePerAction)
-            {
-                filePath = Path.Combine(filePath, "Actions.cs");
-            }
-            else if (creationType == CreationType.Entities && earlyBoundGeneratorConfig.ExtensionConfig.CreateOneFilePerEntity)
-            {
-                var entities = earlyBoundGeneratorConfig.ServiceContextName;
-
-                if (string.IsNullOrWhiteSpace(entities))
-                {
-                    entities = "Entities";
-                }
-
-                filePath = Path.Combine(filePath, entities + ".cs");
-            }
-            else if (creationType == CreationType.OptionSets && earlyBoundGeneratorConfig.ExtensionConfig.CreateOneFilePerOptionSet)
-            {
-                filePath = Path.Combine(filePath, "OptionSets.cs");
-            }
-
-            return Path.GetFullPath(filePath);
-        }
+        //private string GetOutputFilePath(EarlyBoundGeneratorConfig earlyBoundGeneratorConfig, CreationType creationType)
+        //{
+        //    // ReSharper disable once AssignNullToNotNullAttribute
+        //    var filePath = Path.Combine(EarlyBoundGeneratorConfig.RootPath, EarlyBoundGeneratorConfig.GetSettingValue(creationType, EarlyBoundGeneratorConfig.UserArgumentNames.Out));
+        //
+        //    if (creationType == CreationType.Actions && earlyBoundGeneratorConfig.ExtensionConfig.CreateOneFilePerAction)
+        //    {
+        //        filePath = Path.Combine(filePath, "Actions.cs");
+        //    }
+        //    else if (creationType == CreationType.Entities && earlyBoundGeneratorConfig.ExtensionConfig.CreateOneFilePerEntity)
+        //    {
+        //        var entities = earlyBoundGeneratorConfig.ServiceContextName;
+        //
+        //        if (string.IsNullOrWhiteSpace(entities))
+        //        {
+        //            entities = "Entities";
+        //        }
+        //
+        //        filePath = Path.Combine(filePath, entities + ".cs");
+        //    }
+        //    else if (creationType == CreationType.OptionSets && earlyBoundGeneratorConfig.ExtensionConfig.CreateOneFilePerOptionSet)
+        //    {
+        //        filePath = Path.Combine(filePath, "OptionSets.cs");
+        //    }
+        //
+        //    return Path.GetFullPath(filePath);
+        //}
 
         private static string GetSafeArgs(EarlyBoundGeneratorConfig earlyBoundGeneratorConfig, Process p)
         {
             var args = p.StartInfo.Arguments;
-            if (earlyBoundGeneratorConfig.MaskPassword && !string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.Password))
-            {
-                args = p.StartInfo.Arguments.Replace(earlyBoundGeneratorConfig.Password, new string('*', earlyBoundGeneratorConfig.Password.Length));
-            }
-            if (earlyBoundGeneratorConfig.MaskPassword && !string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.ConnectionString))
-            {
-                var tmp = earlyBoundGeneratorConfig.ConnectionString;
-                var start = tmp.IndexOf("Password", StringComparison.InvariantCultureIgnoreCase);
-                if(start == -1)
-                {
-                    start = tmp.IndexOf("ClientSecret=", StringComparison.InvariantCultureIgnoreCase);
-                }
-                if (start == -1)
-                {
-                    // No Password present
-                    return args;
-                }
-                var end = tmp.IndexOf("=", start, StringComparison.InvariantCultureIgnoreCase);
-                start += end - start + 1;
-                if (tmp.Length <= start + 2)
-                {
-                    return args;
-                }
+            //if (earlyBoundGeneratorConfig.MaskPassword && !string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.Password))
+            //{
+            //    args = p.StartInfo.Arguments.Replace(earlyBoundGeneratorConfig.Password, new string('*', earlyBoundGeneratorConfig.Password.Length));
+            //}
+            //if (earlyBoundGeneratorConfig.MaskPassword && !string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.ConnectionString))
+            //{
+            //    var tmp = earlyBoundGeneratorConfig.ConnectionString;
+            //    var start = tmp.IndexOf("Password", StringComparison.InvariantCultureIgnoreCase);
+            //    if(start == -1)
+            //    {
+            //        start = tmp.IndexOf("ClientSecret=", StringComparison.InvariantCultureIgnoreCase);
+            //    }
+            //    if (start == -1)
+            //    {
+            //        // No Password present
+            //        return args;
+            //    }
+            //    var end = tmp.IndexOf("=", start, StringComparison.InvariantCultureIgnoreCase);
+            //    start += end - start + 1;
+            //    if (tmp.Length <= start + 2)
+            //    {
+            //        return args;
+            //    }
 
-                end = tmp.IndexOf(tmp[start + 1] == '\'' ? '\'' : ';', start + 1);
-                if (end == -1)
-                {
-                    end = tmp.Length;
-                }
-                args = args.Replace(tmp, tmp.Substring(0, start) + new string('*', end - start) + tmp.Substring(end));
+            //    end = tmp.IndexOf(tmp[start + 1] == '\'' ? '\'' : ';', start + 1);
+            //    if (end == -1)
+            //    {
+            //        end = tmp.Length;
+            //    }
+            //    args = args.Replace(tmp, tmp.Substring(0, start) + new string('*', end - start) + tmp.Substring(end));
 
-            }
+            //}
             return args;
         }
 
@@ -368,87 +368,87 @@ namespace DLaB.EarlyBoundGenerator
             return update;
         }
 
-        private string GetConfigArguments(EarlyBoundGeneratorConfig earlyBoundGeneratorConfig, CreationType type)
+        private string GetConfigArguments(EarlyBoundGeneratorConfig earlyBoundGeneratorConfig)
         {
             var sb = new StringBuilder();
-            if (!earlyBoundGeneratorConfig.UseConnectionString)
-            {
-                sb.AppendFormat("/url:\"{0}\" ", earlyBoundGeneratorConfig.Url);
-            }
-
-            foreach (var argument in earlyBoundGeneratorConfig.CommandLineArguments.Where(a => a.SettingType == CreationType.All || a.SettingType == type))
-            {
-                var value = argument.Value;
-                if (argument.Name == "out")
-                {
-                    value = GetOutputFilePath(earlyBoundGeneratorConfig, type);
-                }
-                if (argument.Valueless)
-                {
-                    if (argument.Value == "true")
-                    {
-                        sb.AppendFormat("/{0} ", argument.Name);
-
-                    }
-                }
-                else
-                {
-                    sb.AppendFormat("/{0}:\"{1}\" ", argument.Name, value);
-                }
-            }
-
-            if (!string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.ConnectionString))
-            {
-                // If a connection string was specified ignore all other connection settings
-                sb.AppendFormat("/connectionstring:\"{0}\" ", earlyBoundGeneratorConfig.ConnectionString.Replace("\"", "\"\""));
-            }
-            else if (!string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.Password))
-            {
-                if (earlyBoundGeneratorConfig.UseConnectionString)
-                {
-                    // Fix for https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/issues/14 - Problem with CRM 2016 on premises with ADFS
-                    // CrmSvcUtil.exe /out:entities.cs / connectionstring:"Url=https://serverName.domain.com:444/orgName;Domain=myDomain;UserName=username;Password=*****"
-                    // And this command doesn't work :
-                    // CrmSvcUtil.exe /out:entitie.cs /url:"https://serverName.domain.com:444/orgName" / domain:"myDomain" / username:"username" / password:"*****"
-
-                    var domain = string.Empty;
-                    if (!string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.Domain))
-                    {
-                        domain = "Domain=" +earlyBoundGeneratorConfig.Domain + ";";
-                    }
-                    //var password = earlyBoundGeneratorConfig.Password.Replace("^", "^^").Replace("\"", "^\"").Replace("&", "^&");  // Handle Double Quotes and &s???
-                    //To handle special characters, enclose in single quotes. If password contains single quotes, they must be doubled.
-                    //https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlconnection.connectionstring.aspx
-                    var password = $"'{earlyBoundGeneratorConfig.Password.Replace("'", "''")}'"; 
-                    var builder = new System.Data.Common.DbConnectionStringBuilder
-                    {
-                        {"A", $"Url={earlyBoundGeneratorConfig.Url};{domain}UserName={earlyBoundGeneratorConfig.UserName};Password={password}"}
-                    };
-                    
-                    sb.AppendFormat("/connectionstring:{0} ", builder.ConnectionString.Substring(2)); // Replace "A=" with "/connectionstring:"
-                }
-                else
-                {
-                    sb.AppendFormat("/username:\"{0}\" ", earlyBoundGeneratorConfig.UserName);
-                    sb.AppendFormat("/password:\"{0}\" ", earlyBoundGeneratorConfig.Password);
-
-                    // Add Login Info
-                    if (!earlyBoundGeneratorConfig.UseCrmOnline && !string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.Domain))
-                    {
-                        sb.AppendFormat("/domain:\"{0}\" ", earlyBoundGeneratorConfig.Domain);
-                    }
-                }
-            }
-
-            if (_useInteractiveMode)
-            {
-                sb.Append("/interactivelogin:true ");
-            }
+            //if (!earlyBoundGeneratorConfig.UseConnectionString)
+            //{
+            //    sb.AppendFormat("/url:\"{0}\" ", earlyBoundGeneratorConfig.Url);
+            //}
+            //
+            //foreach (var argument in earlyBoundGeneratorConfig.CommandLineArguments.Where(a => a.SettingType == CreationType.All || a.SettingType == type))
+            //{
+            //    var value = argument.Value;
+            //    if (argument.Name == "out")
+            //    {
+            //        value = GetOutputFilePath(earlyBoundGeneratorConfig, type);
+            //    }
+            //    if (argument.Valueless)
+            //    {
+            //        if (argument.Value == "true")
+            //        {
+            //            sb.AppendFormat("/{0} ", argument.Name);
+            //
+            //        }
+            //    }
+            //    else
+            //    {
+            //        sb.AppendFormat("/{0}:\"{1}\" ", argument.Name, value);
+            //    }
+            //}
+            //
+            //if (!string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.ConnectionString))
+            //{
+            //    // If a connection string was specified ignore all other connection settings
+            //    sb.AppendFormat("/connectionstring:\"{0}\" ", earlyBoundGeneratorConfig.ConnectionString.Replace("\"", "\"\""));
+            //}
+            //else if (!string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.Password))
+            //{
+            //    if (earlyBoundGeneratorConfig.UseConnectionString)
+            //    {
+            //        // Fix for https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/issues/14 - Problem with CRM 2016 on premises with ADFS
+            //        // CrmSvcUtil.exe /out:entities.cs / connectionstring:"Url=https://serverName.domain.com:444/orgName;Domain=myDomain;UserName=username;Password=*****"
+            //        // And this command doesn't work :
+            //        // CrmSvcUtil.exe /out:entitie.cs /url:"https://serverName.domain.com:444/orgName" / domain:"myDomain" / username:"username" / password:"*****"
+            //
+            //        var domain = string.Empty;
+            //        if (!string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.Domain))
+            //        {
+            //            domain = "Domain=" +earlyBoundGeneratorConfig.Domain + ";";
+            //        }
+            //        //var password = earlyBoundGeneratorConfig.Password.Replace("^", "^^").Replace("\"", "^\"").Replace("&", "^&");  // Handle Double Quotes and &s???
+            //        //To handle special characters, enclose in single quotes. If password contains single quotes, they must be doubled.
+            //        //https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlconnection.connectionstring.aspx
+            //        var password = $"'{earlyBoundGeneratorConfig.Password.Replace("'", "''")}'"; 
+            //        var builder = new System.Data.Common.DbConnectionStringBuilder
+            //        {
+            //            {"A", $"Url={earlyBoundGeneratorConfig.Url};{domain}UserName={earlyBoundGeneratorConfig.UserName};Password={password}"}
+            //        };
+            //        
+            //        sb.AppendFormat("/connectionstring:{0} ", builder.ConnectionString.Substring(2)); // Replace "A=" with "/connectionstring:"
+            //    }
+            //    else
+            //    {
+            //        sb.AppendFormat("/username:\"{0}\" ", earlyBoundGeneratorConfig.UserName);
+            //        sb.AppendFormat("/password:\"{0}\" ", earlyBoundGeneratorConfig.Password);
+            //
+            //        // Add Login Info
+            //        if (!earlyBoundGeneratorConfig.UseCrmOnline && !string.IsNullOrWhiteSpace(earlyBoundGeneratorConfig.Domain))
+            //        {
+            //            sb.AppendFormat("/domain:\"{0}\" ", earlyBoundGeneratorConfig.Domain);
+            //        }
+            //    }
+            //}
+            //
+            //if (_useInteractiveMode)
+            //{
+            //    sb.Append("/interactivelogin:true ");
+            //}
 
             return sb.ToString();
         }
 
-        private void HandleResult(string filePath, DateTime date, CreationType creationType, string consoleOutput, bool speakResult)
+        private void HandleResult(string filePath, DateTime date, string consoleOutput, bool speakResult)
         {
             try
             {
@@ -456,7 +456,7 @@ namespace DLaB.EarlyBoundGenerator
                 {
                     Logger.Show("Unable to login.  Attempting to login using interactive mode.");
                     _useInteractiveMode = true;
-                    Create(creationType);
+                    Create();
                     return;
                 }
                 //if (creationType == CreationType.Actions && Config.ExtensionConfig.CreateOneFilePerAction)
@@ -488,14 +488,14 @@ namespace DLaB.EarlyBoundGenerator
                 //else 
                 if (date != File.GetLastWriteTimeUtc(filePath) || consoleOutput.Contains(filePath + " was unchanged."))
                 {
-                    Speak(creationType + " Completed Successfully", speakResult);
+                    Speak("Completed Successfully", speakResult);
                     return;
                 }
             }
             catch(Exception ex)
             {
                 Logger.Show("Error", ex.ToString());
-                Speak(creationType + " Errored", speakResult);
+                Speak(" Errored", speakResult);
             }
 
             Logger.Show("Error", "Output file was not updated or not found!  " + filePath);

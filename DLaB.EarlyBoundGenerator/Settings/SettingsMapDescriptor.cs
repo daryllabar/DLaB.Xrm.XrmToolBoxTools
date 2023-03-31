@@ -41,7 +41,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 { nameof(DeleteFilesFromOutputFolders), OnDeleteFilesFromOutputFoldersChange },
                 { nameof(GenerateEnumProperties), OnGenerateEnumPropertiesChange },
                 { nameof(AddOptionSetMetadataAttribute), OnAddOptionSetMetadataAttributeChange },
-                { nameof(IncludeCommandLine), OnIncludeCommandLineChange },
                 { nameof(MakeAllFieldsEditable), OnMakeAllFieldsEditableChange },
             };
         }
@@ -89,11 +88,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             GenerateOptionSetMetadataAttribute = AddOptionSetMetadataAttribute;
         }
 
-        private void OnIncludeCommandLineChange(PropertyValueChangedEventArgs args)
-        {
-            SetMaskPasswordVisibility();
-        }
-
         private void OnMakeAllFieldsEditableChange(PropertyValueChangedEventArgs args)
         {
             SetMakeReadonlyFieldsEditableVisibility();
@@ -107,7 +101,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             SetCleanupCrmSvcUtilLocalOptionSets();
             SetGroupLocalOptionSetsByEntityVisibility();
             SetGroupMessageRequestWithResponseVisibility();
-            SetMaskPasswordVisibility();
             SetPropertyEnumMappingVisibility();
             SetPropertyReplaceOptionSetPropertiesWithEnumVisibility();
             SetUnmappedPropertiesVisibility();
@@ -133,7 +126,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 nameof(GenerateEnumProperties),
                 nameof(GenerateOptionSetMetadataAttribute),
                 nameof(IncludeCommandLine),
-                nameof(MaskPassword),
                 nameof(OptionSetPrefixesToSkip),
                 nameof(OptionSetsToSkip),
                 nameof(ProjectNameForEarlyBoundFiles),
@@ -179,11 +171,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         private void SetGroupMessageRequestWithResponseVisibility()
         {
             SetPropertyBrowsable(nameof(GroupMessageRequestWithResponse), CreateOneFilePerAction);
-        }
-
-        private void SetMaskPasswordVisibility()
-        {
-            SetPropertyBrowsable(nameof(MaskPassword), IncludeCommandLine);
         }
 
         private void SetMakeReadonlyFieldsEditableVisibility()

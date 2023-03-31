@@ -118,32 +118,28 @@ namespace DLaB.EarlyBoundGenerator
             ConnectionDetail = null; // Don't save the Connection Details when closing.
         }
 
-        private void Create(CreationType creationType)
+        private void Create()
         {
-            if (IsFormValid(creationType))
+            if (IsFormValid())
             {
-                ExecuteMethod(CreateCode, creationType);
+                ExecuteMethod(CreateCode);
             }
         }
 
-        private bool IsFormValid(CreationType creationType)
+        private bool IsFormValid()
         {
             SettingsMap.PushChanges();
             var isValid =
-                IsValidPath(creationType, CreationType.Entities, SettingsMap.EntityTypesFolder, SettingsMap.CreateOneFilePerEntity, "Entities") &&
-                IsValidPath(creationType, CreationType.Entities, SettingsMap.OptionSetsTypesFolder, SettingsMap.CreateOneFilePerOptionSet, "OptionSets") &&
-                IsValidPath(creationType, CreationType.Entities, SettingsMap.MessageTypesFolder, SettingsMap.CreateOneFilePerAction, "Actions") &&
+                IsValidPath(SettingsMap.EntityTypesFolder, SettingsMap.CreateOneFilePerEntity, "Entities") &&
+                IsValidPath(SettingsMap.OptionSetsTypesFolder, SettingsMap.CreateOneFilePerOptionSet, "OptionSets") &&
+                IsValidPath(SettingsMap.MessageTypesFolder, SettingsMap.CreateOneFilePerAction, "Actions") &&
                 IsNamespaceDifferentThanContext();
 
             return isValid;
         }
 
-        private static bool IsValidPath(CreationType creationType, CreationType creationTypeToCheck, string path, bool pathIsDirectory, string name)
+        private static bool IsValidPath(string path, bool pathIsDirectory, string name)
         {
-            if (creationType != creationTypeToCheck && creationType != CreationType.All)
-            {
-                return true;
-            }
             var isValid = true;
             var containsExtension = !string.IsNullOrWhiteSpace(Path.GetExtension(path));
             // Validate Path
@@ -178,7 +174,7 @@ namespace DLaB.EarlyBoundGenerator
             return isValid;
         }
 
-        public void CreateCode(CreationType creationType)
+        public void CreateCode()
         {
             EnableForm(false);
 
@@ -196,7 +192,7 @@ namespace DLaB.EarlyBoundGenerator
                 SaveSettings();
             }
 
-            LogConfigSettings(creationType);
+            LogConfigSettings();
             WorkAsync(new WorkAsyncInfo("Starting Early Bound File Generation Logic...",
                 (w, e) => // Work To Do Asynchronously
                 {
@@ -248,38 +244,8 @@ namespace DLaB.EarlyBoundGenerator
             if (ConnectionDetail != null)
             {   
                 TxtOutput.AppendText("CRM Authentication Type Detected: " + ConnectionDetail.AuthType + Environment.NewLine);
-                Settings.Domain = GetUserDomain();
-                Settings.Password = ConnectionDetail.GetUserPassword();
                 Settings.SupportsActions = ConnectionDetail.OrganizationMajorVersion >= Crm2013;
                 Settings.UseCrmOnline = ConnectionDetail.UseOnline;
-                Settings.UserName = ConnectionDetail.UserName;
-                Settings.Url = ConnectionDetail.GetUrlString();
-
-                if (Settings.UseConnectionString
-                    && string.IsNullOrWhiteSpace(Settings.Password)
-                    && ConnectionDetail.NewAuthType != AuthenticationType.Certificate
-                    && ConnectionDetail.NewAuthType != AuthenticationType.ClientSecret
-                    && ConnectionDetail.NewAuthType != AuthenticationType.OAuth)
-                {
-                    // Fix for https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/issues/43
-                    // Difficulties with Early Bound Generator #43
-
-                    var askForPassword = new PasswordDialog(this);
-                    Settings.Password = askForPassword.ShowDialog(this) == DialogResult.OK ? askForPassword.Password : "UNKNOWN";
-                }
-                if (ConnectionDetail.AuthType == AuthenticationProviderType.ActiveDirectory && string.IsNullOrWhiteSpace(Settings.UserName))
-                {
-                    Settings.UserName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-                }
-                if (string.IsNullOrWhiteSpace(Settings.ConnectionString))
-                {
-                    // Load any non-username/password situations via connection string #268
-                    Settings.ConnectionString = ConnectionDetail.GetNonUserConnectionString();
-                    if (!string.IsNullOrWhiteSpace(Settings.ConnectionString))
-                    {
-                        Settings.UseConnectionString = true;
-                    }
-                }
             }
 
             SettingsMap.PushChanges();
@@ -291,11 +257,13 @@ namespace DLaB.EarlyBoundGenerator
             // Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService, defaultConfig.GetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService).Value);
         }
 
-        private void LogConfigSettings(CreationType creationType)
+        private void LogConfigSettings()
         {
-            var properties = Settings.ExtensionConfig.GetType().GetProperties().ToDictionary(
-                k => k.Name,
-                v => v.GetValue(Settings.ExtensionConfig)?.ToString() ?? string.Empty);
+            var properties = Settings.GetType().GetProperties()
+                .Union(Settings.ExtensionConfig.GetType().GetProperties())
+                .ToDictionary(
+                    k => k.Name,
+                    v => v.GetValue(Settings.ExtensionConfig)?.ToString() ?? string.Empty);
             foreach (var kvp in properties.ToList())
             {
                 var name = kvp.Key.ToLower();
@@ -308,16 +276,8 @@ namespace DLaB.EarlyBoundGenerator
                 }
             }
 
-            properties["AudibleCompletionNotification"] = Settings.AudibleCompletionNotification.ToString();
-            properties["IncludeCommandLine"] = Settings.IncludeCommandLine.ToString();
-            properties["MaskPassword"] = Settings.MaskPassword.ToString();
-            properties["SupportsActions"] = Settings.SupportsActions.ToString();
-            properties["UseCrmOnline"] = Settings.UseCrmOnline.ToString();
-            properties["Version"] = Settings.Version;
-            properties["CreationType"] = creationType.ToString();
-
             if(Telemetry.Enabled){
-                TxtOutput.AppendText($"Tracking {creationType} Generation Event." + Environment.NewLine);
+                TxtOutput.AppendText("Tracking Generation Event." + Environment.NewLine);
                 Telemetry.TrackEvent("ConfigSettings", properties);
             }
             else
@@ -352,7 +312,7 @@ namespace DLaB.EarlyBoundGenerator
 
         private void BtnCreateBoth_Click(object sender, EventArgs e)
         {
-            Create(CreationType.All);
+            Create();
         }
 
         #endregion // Create Button Click Events
