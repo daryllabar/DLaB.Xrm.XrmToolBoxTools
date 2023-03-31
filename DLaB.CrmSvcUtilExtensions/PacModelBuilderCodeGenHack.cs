@@ -199,7 +199,7 @@ namespace DLaB.ModelBuilderExtensions
             bool flag1 = language.Equals("CS", StringComparison.OrdinalIgnoreCase);
             bool flag2 = language.Equals("VB", StringComparison.OrdinalIgnoreCase);
             var commandLine = GetCommandLineToGenerate(codenamespace);
-            using (StreamWriter writer = new StreamWriter(outputFile))
+            using (var writer = Settings.DLaBModelBuilder.RemoveRuntimeVersionComment ? (TextWriter) new CustomTextWriter(new StreamWriter(outputFile), true): new StreamWriter(outputFile))
             {
                 using (CodeDomProvider provider = CodeDomProvider.CreateProvider(language))
                 {

@@ -141,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomizeCodeDomServiceEmpty.cs" />
+    <Compile Include="CustomTextWriter.cs" />
     <Compile Include="Message\AttributeConstGenerator.cs" />
     <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\Config.cs" />
     <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ConfigKeyValueSplitInfo.cs" />

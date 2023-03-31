@@ -303,6 +303,7 @@ namespace DLaB.ModelBuilderExtensions
             OrgEntityClassName = "OrganizationOwnedEntity";
             PropertyEnumMappings = new Dictionary<string, string>();
             RelationshipConstsClassName = "Relationships";
+            RemoveRuntimeVersionComment = true;
             TokenCapitalizationOverrides = new List<string>();
             UnmappedProperties = new Dictionary<string, HashSet<string>>();
             UserEntityClassName = "UserOwnedEntity";
