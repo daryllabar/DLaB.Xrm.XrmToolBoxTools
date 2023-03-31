@@ -126,7 +126,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 nameof(GenerateOptionSetMetadataAttribute),
                 nameof(OptionSetPrefixesToSkip),
                 nameof(OptionSetsToSkip),
-                nameof(ProjectNameForEarlyBoundFiles),
                 nameof(RemoveRuntimeVersionComment),
                 nameof(UnmappedProperties),
                 nameof(UseTfsToCheckoutFiles),
