@@ -227,15 +227,15 @@ EndGlobal
             // ReSharper restore StringLiteralTypo
             settings.ExtensionConfig.CreateOneFilePerAction = true;
             settings.ExtensionConfig.GenerateActionAttributeNameConsts = true;
-            settings.ActionOutPath = settings.ExtensionConfig.CreateOneFilePerAction ? @"Actions" : @"Actions.cs";
+            settings.MessageTypesFolder = settings.ExtensionConfig.CreateOneFilePerAction ? @"Actions" : @"Actions.cs";
             settings.ExtensionConfig.CreateOneFilePerEntity = true;
             settings.ExtensionConfig.GenerateEnumProperties = true;
             settings.ExtensionConfig.GenerateAttributeNameConsts = true;
             settings.ExtensionConfig.EntitiesWhitelist = "account|businessunit|competitor|contact|lead|product|site|systemuser";
             settings.ExtensionConfig.ReplaceOptionSetPropertiesWithEnum = true;
-            settings.EntityOutPath = settings.ExtensionConfig.CreateOneFilePerEntity ? @"Entities" : @"Entities.cs";
+            settings.EntityTypesFolder = settings.ExtensionConfig.CreateOneFilePerEntity ? @"Entities" : @"Entities.cs";
             settings.ExtensionConfig.CreateOneFilePerOptionSet = true;
-            settings.OptionSetOutPath = settings.ExtensionConfig.CreateOneFilePerOptionSet ? @"OptionSets" : @"OptionSets.cs";
+            settings.OptionSetsTypesFolder = settings.ExtensionConfig.CreateOneFilePerOptionSet ? @"OptionSets" : @"OptionSets.cs";
             settings.ExtensionConfig.DeleteFilesFromOutputFolders = true;
             settings.Namespace = $"{info.SharedCommonProject}.Entities";
             settings.ServiceContextName = "CdsContext";
