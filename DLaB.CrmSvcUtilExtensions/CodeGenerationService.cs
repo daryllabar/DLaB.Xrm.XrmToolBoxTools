@@ -105,8 +105,6 @@ namespace DLaB.ModelBuilderExtensions
 
         #endregion // ICodeGenerationService Members
 
-        #region Internal Implementations
-
         protected virtual void WriteInternal(IOrganizationMetadata organizationMetadata, string language, string outputFile, string targetNamespace, IServiceProvider services)
         {
             if (OutDirectory == null)
@@ -127,7 +125,7 @@ namespace DLaB.ModelBuilderExtensions
 
             var timePriorToFileGeneration = DateTime.Now;
             // Write the files out as normal
-            var hack = new PacModelBuilderCodeGenHack(Settings, DefaultService, true, false);
+            var hack = new PacModelBuilderCodeGenHack(Settings, DefaultService, true, false, FilePrefixText);
             hack.Write(organizationMetadata, language, outputFile, targetNamespace, services);
 
             CleanupLocalOptionSets(hack, timePriorToFileGeneration);
@@ -199,34 +197,6 @@ namespace DLaB.ModelBuilderExtensions
                 hack.FilesWritten.Remove(file.Key);
             }
         }
-
-        private void CleanupLocalOptionSets(PacModelBuilderCodeGenHack hack, DateTime timePriorToFileGeneration)
-        {
-            if (!CleanupCrmSvcUtilLocalOptionSets)
-            {
-                return;
-            }
-            var optionSetFolder = Path.Combine(OutDirectory, OptionSetTypesFolder);
-            var types = hack.FilesWritten.Values.SelectMany(v => v.GetTypes()).ToList();
-            foreach (var enumType in types.Where(t => t.IsEnum).Select(t => t.Name))
-            {
-                var file = Path.Combine(optionSetFolder, enumType + ".cs");
-                if (File.Exists(file) && File.GetLastWriteTime(file) < timePriorToFileGeneration)
-                {
-                    File.Delete(file);
-                }
-            }
-
-            foreach (var entity in types.Where(t => t.IsEntityType()))
-            {
-                var file = Path.Combine(optionSetFolder, entity.Name + "Sets.cs");
-                if (File.Exists(file) && File.GetLastWriteTime(file) < timePriorToFileGeneration)
-                {
-                    File.Delete(file);
-                }
-            }
-        }
-
         #region Combine Files
 
         private void ConditionallyCombineFiles(string language, PacModelBuilderCodeGenHack hack)
@@ -385,6 +355,35 @@ namespace DLaB.ModelBuilderExtensions
 
         #endregion Combine Files
 
+        #region Cleanup Files
+
+        private void CleanupLocalOptionSets(PacModelBuilderCodeGenHack hack, DateTime timePriorToFileGeneration)
+        {
+            if (!CleanupCrmSvcUtilLocalOptionSets)
+            {
+                return;
+            }
+            var optionSetFolder = Path.Combine(OutDirectory, OptionSetTypesFolder);
+            var types = hack.FilesWritten.Values.SelectMany(v => v.GetTypes()).ToList();
+            foreach (var enumType in types.Where(t => t.IsEnum).Select(t => t.Name))
+            {
+                var file = Path.Combine(optionSetFolder, enumType + ".cs");
+                if (File.Exists(file) && File.GetLastWriteTime(file) < timePriorToFileGeneration)
+                {
+                    File.Delete(file);
+                }
+            }
+
+            foreach (var entity in types.Where(t => t.IsEntityType()))
+            {
+                var file = Path.Combine(optionSetFolder, entity.Name + "Sets.cs");
+                if (File.Exists(file) && File.GetLastWriteTime(file) < timePriorToFileGeneration)
+                {
+                    File.Delete(file);
+                }
+            }
+        }
+
         private void UpdateProjectFile(IEnumerable<string> files)
         {
             if (!AddNewFilesToProject)
@@ -454,7 +453,7 @@ namespace DLaB.ModelBuilderExtensions
             DisplayMessage($"Finished Deleting *.cs Files From {directory} By Code Unit");
         }
 
-        #endregion // Internal Implementations
+        #endregion Cleanup Files
 
         #region Insert Command Line Into Header
 

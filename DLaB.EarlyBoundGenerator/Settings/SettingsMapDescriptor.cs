@@ -120,7 +120,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 nameof(AudibleCompletionNotification),
                 nameof(EntityPrefixesToSkip),
                 nameof(EntityPrefixesWhitelist),
-                nameof(FilePrefixText),
                 nameof(GenerateEntityRelationships),
                 nameof(GenerateEntityTypeCode),
                 nameof(GenerateEnumProperties),
