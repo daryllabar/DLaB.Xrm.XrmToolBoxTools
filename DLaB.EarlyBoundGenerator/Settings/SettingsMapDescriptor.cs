@@ -116,7 +116,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             var disabledProperties = new[]
             {
                 nameof(ActionPrefixesWhitelist),
-                nameof(AddDebuggerNonUserCode),
                 nameof(EntityPrefixesToSkip),
                 nameof(EntityPrefixesWhitelist),
                 nameof(GenerateEntityRelationships),
