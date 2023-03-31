@@ -408,7 +408,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 EntityTypesFolder = "Entities",
                 ExtensionConfig = ExtensionConfig.GetDefault(),
                 GenerateMessages = true,
-                IncludeCommandLine = true,
+                IncludeCommandLine = false,
                 //ExtensionArguments = new List<Argument>(new[] {
                     // Actions
                     //new Argument(CreationType.Actions, CrmSrvUtilService.CodeGenerationService, "DLaB.ModelBuilderExtensions.Action.CustomCodeGenerationService,DLaB.ModelBuilderExtensions"),
