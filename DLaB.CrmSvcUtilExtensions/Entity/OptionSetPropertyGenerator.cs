@@ -13,7 +13,6 @@ namespace DLaB.ModelBuilderExtensions.Entity
         public Dictionary<string, string> PropertyEnumMappings { get => DLaBSettings.PropertyEnumMappings; set => DLaBSettings.PropertyEnumMappings = value; }
         public bool SuppressINotifyPattern { get => Settings.SuppressINotifyPattern; set => Settings.SuppressINotifyPattern = value; }
         public bool ReplaceEnumPropertiesWithOptionSet { get => DLaBSettings.ReplaceEnumPropertiesWithOptionSet; set => DLaBSettings.ReplaceEnumPropertiesWithOptionSet = value; }
-        public Dictionary<string, HashSet<string>> UnmappedProperties { get => DLaBSettings.UnmappedProperties; set => DLaBSettings.UnmappedProperties = value; }
 
         #region Constructors
 
@@ -72,7 +71,6 @@ namespace DLaB.ModelBuilderExtensions.Entity
             return property == null ||
                    attribute == null ||
                    !attribute.IsOptionSet() ||
-                   (UnmappedProperties.TryGetValue(type.Name.ToLower(), out var attributes) && attributes.Contains(property.Name.ToLower())) ||
                    property.CustomAttributes.Cast<CodeAttributeDeclaration>().Any(att => att.Name == "System.ObsoleteAttribute");// ||
                    //OptionSetIsSkipped(property, entityLogicalName);
         }

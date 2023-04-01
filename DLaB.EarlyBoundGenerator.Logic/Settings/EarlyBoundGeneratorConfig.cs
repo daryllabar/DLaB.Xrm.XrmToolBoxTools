@@ -242,7 +242,8 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 // Storing of UnmappedProperties and EntityAttributeSpecified Names switched from Key,Value1,Value2|Key,Value1,Value2 to Key:Value1,Value2|Key:Value1,Value2
                 // Also convert from a List to a HashSet
                 pocoConfig.EntityAttributeSpecifiedNames = ConvertNonColonDelimitedDictionaryListToDictionaryHash(pocoConfig.EntityAttributeSpecifiedNames);
-                pocoConfig.UnmappedProperties = ConvertNonColonDelimitedDictionaryListToDictionaryHash(pocoConfig.UnmappedProperties);
+                // Unmapped Properties were removed, don't need to worry about upgrade path
+                //pocoConfig.UnmappedProperties = ConvertNonColonDelimitedDictionaryListToDictionaryHash(pocoConfig.UnmappedProperties);
             }
 
             if (pocoVersion < new Version("1.2020.3.23"))

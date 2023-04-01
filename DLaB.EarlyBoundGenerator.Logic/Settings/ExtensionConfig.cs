@@ -221,11 +221,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public string TokenCapitalizationOverrides { get; set; }
         /// <summary>
-        /// Used to manually specify an OptionSetValue Property of an entity that doesn't have an enum mapping 
-        /// Format: EntityName.PropertyName|
-        /// </summary>
-        public string UnmappedProperties { get; set; }
-        /// <summary>
         /// The CrmSvcUtil names entity statecode enums as "{EntityName}State", but the PAC ModelBuilder names them the same way all other enums are generated "{EntityName}_StateCode".  This allows for maintaining backwards compability.
         /// </summary>
         public bool UseCrmSvcUtilStateEnumNamingConvention { get; set; }
@@ -321,7 +316,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 ReplaceOptionSetPropertiesWithEnum = true,
                 SerializeMetadata = false,
                 TokenCapitalizationOverrides = "AccessTeam|ActiveState|AssignedTo|BusinessAs|CardUci|DefaultOnCase|EmailAnd|EmailSend|EmailSender|FeatureSet|FedEx|ForAn|Geronimo|IsMsTeams|IsPaiEnabled|IsSopIntegration|MsDynCe_|MsDynMkt_|MsDyUsd|O365Admin|OcSkillIdentMlModel|OnHold|OrderId|OwnerOnAssign|PauseStates|PredictiveAddress|PartiesOnEmail|ParticipatesIn|SentOn|SettingsAndSummary|SlaId|SlaKpi|SyncOptIn|Timeout|TradeShow|UserPuid|VoiceMail",
-                UnmappedProperties = null,
                 UseCrmSvcUtilStateEnumNamingConvention = false,
                 UseLogicalNames = false,
                 UseTfsToCheckoutFiles = false,
@@ -384,7 +378,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             ReplaceOptionSetPropertiesWithEnum = poco.ReplaceOptionSetPropertiesWithEnum ?? ReplaceOptionSetPropertiesWithEnum;
             SerializeMetadata = poco.SerializeMetadata ?? SerializeMetadata;
             TokenCapitalizationOverrides = GetValueOrDefault(poco.TokenCapitalizationOverrides, TokenCapitalizationOverrides);
-            UnmappedProperties = GetValueOrDefault(poco.UnmappedProperties, UnmappedProperties);
             UseCrmSvcUtilStateEnumNamingConvention = poco.UseCrmSvcUtilStateEnumNamingConvention ?? UseCrmSvcUtilStateEnumNamingConvention;
             UseLogicalNames = poco.UseLogicalNames ?? UseLogicalNames;
             UseTfsToCheckoutFiles = poco.UseTfsToCheckoutFiles ?? UseTfsToCheckoutFiles;
@@ -445,7 +438,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             writer.AddProperty(nameof(SerializeMetadata), SerializeMetadata);
             writer.AddPropertyArray(nameof(TokenCapitalizationOverrides), TokenCapitalizationOverrides);
             writer.AddProperty(nameof(UseLogicalNames), UseLogicalNames);
-            writer.AddPropertyDictionaryStringHashString(nameof(UnmappedProperties), UnmappedProperties);
             writer.AddProperty(nameof(UseCrmSvcUtilStateEnumNamingConvention), UseCrmSvcUtilStateEnumNamingConvention);
             writer.AddProperty(nameof(UseTfsToCheckoutFiles), UseTfsToCheckoutFiles);
             writer.AddProperty(nameof(WaitForAttachedDebugger), WaitForAttachedDebugger);
@@ -553,7 +545,6 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? RemoveRuntimeVersionComment { get; set; }
         public bool? SerializeMetadata { get; set; }
         public string TokenCapitalizationOverrides { get; set; }
-        public string UnmappedProperties { get; set; }
         public bool? UseCrmSvcUtilStateEnumNamingConvention { get; set; }
         public bool? UseLogicalNames { get; set; }
         public bool? UseTfsToCheckoutFiles { get; set; }

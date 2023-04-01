@@ -79,7 +79,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         {
             SetPropertyEnumMappingVisibility();
             SetPropertyReplaceOptionSetPropertiesWithEnumVisibility();
-            SetUnmappedPropertiesVisibility();
         }
 
         private void OnAddOptionSetMetadataAttributeChange(PropertyValueChangedEventArgs args)
@@ -103,27 +102,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
             SetGroupMessageRequestWithResponseVisibility();
             SetPropertyEnumMappingVisibility();
             SetPropertyReplaceOptionSetPropertiesWithEnumVisibility();
-            SetUnmappedPropertiesVisibility();
             SetGenerateOptionSetMetadataAttributeVisibility();
             MessageTypesFolder = MessageTypesFolder;
             EntityTypesFolder = EntityTypesFolder;
             OptionSetsTypesFolder = OptionSetsTypesFolder;
             TypeDescriptor.Refresh(this);
-        }
-
-        private void DisableUnsupportedProperties()
-        {
-            var disabledProperties = new[]
-            {
-                nameof(MessageWildcardWhitelist),
-                nameof(UnmappedProperties),
-                nameof(WorkflowlessActions),
-            };
-
-            foreach (var property in disabledProperties)
-            {
-                SetPropertyDisabled(property, true);
-            }
         }
 
         private void SetVisibilityForControlsDependentOnFileCreations()
@@ -182,11 +165,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         private void SetGenerateOptionSetMetadataAttributeVisibility()
         {
             SetPropertyBrowsable(nameof(GenerateOptionSetMetadataAttribute), AddOptionSetMetadataAttribute);
-        }
-
-        private void SetUnmappedPropertiesVisibility()
-        {
-            SetPropertyBrowsable(nameof(UnmappedProperties), GenerateEnumProperties);
         }
 
         private void SetPropertyBrowsable(string propertyName, bool browsable)

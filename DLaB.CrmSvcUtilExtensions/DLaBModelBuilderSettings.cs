@@ -240,9 +240,6 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("updateMultiOptionSetAttributes")]
         public bool UpdateMultiOptionSetAttributes { get; set; }
 
-        [JsonPropertyName("unmappedProperties")]
-        public Dictionary<string, HashSet<string>> UnmappedProperties { get; set; }
-
         [JsonPropertyName("useCrmSvcUtilStateEnumNamingConvention")]
         public bool UseCrmSvcUtilStateEnumNamingConvention { get; set; }
 
@@ -292,7 +289,6 @@ namespace DLaB.ModelBuilderExtensions
             RelationshipConstsClassName = "Relationships";
             RemoveRuntimeVersionComment = true;
             TokenCapitalizationOverrides = new List<string>();
-            UnmappedProperties = new Dictionary<string, HashSet<string>>();
             UserEntityClassName = "UserOwnedEntity";
             ValidCSharpNameRegEx = @"[^a-zA-Z0-9_]";
         }

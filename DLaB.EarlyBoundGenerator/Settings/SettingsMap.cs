@@ -240,13 +240,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             set => Config.ServiceContextName = value;
         }
 
-        [Category("2 - Entities")]
-        [DisplayName("Unmapped Properties")]
-        [Description("Allows for the ability to specify an OptionSetValue Property of an entity that doesn't have an enum mapping.")]
-        [Editor(typeof(SpecifyAttributesEditor), typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
-        public Dictionary<string, HashSet<string>> UnmappedProperties { get; set; }
-
         #endregion Entities
 
         #region Global
@@ -717,7 +710,6 @@ This helps to alleviate unnecessary differences that pop up when the classes are
                 PropertyEnumMappings = RemoveWhiteSpace(nameof(PropertyEnumMappings), config.ExtensionConfig.PropertyEnumMappings).GetList<string>();
                 OptionSetNames = RemoveWhiteSpace(nameof(OptionSetNames), Config.ExtensionConfig.OptionSetNames).GetDictionary<string,string>();
                 TokenCapitalizationOverrides = RemoveWhiteSpace(nameof(TokenCapitalizationOverrides), config.ExtensionConfig.TokenCapitalizationOverrides).GetList<string>();
-                UnmappedProperties = RemoveWhiteSpace(nameof(UnmappedProperties), config.ExtensionConfig.UnmappedProperties).GetDictionaryHash<string, string>();
                 WorkflowlessActions = RemoveWhiteSpace(nameof(WorkflowlessActions), config.WorkflowlessActions).GetList<string>();
             }
             catch (Exception ex)
@@ -728,7 +720,6 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             SetupCustomTypeDescriptor();
             OnChangeMap = GetOnChangeHandlers();
             ProcessDynamicallyVisibleProperties();
-            DisableUnsupportedProperties();
         }
 
         /// <summary>
@@ -748,7 +739,6 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             Config.ExtensionConfig.PropertyEnumMappings = CommonConfig.ToStringSorted(PropertyEnumMappings);
             Config.ExtensionConfig.OptionSetNames = CommonConfig.ToStringSorted(OptionSetNames);
             Config.ExtensionConfig.TokenCapitalizationOverrides = CommonConfig.ToStringSorted(TokenCapitalizationOverrides);
-            Config.ExtensionConfig.UnmappedProperties = CommonConfig.ToStringSorted(UnmappedProperties);
             Config.WorkflowlessActions = CommonConfig.ToStringSorted(WorkflowlessActions, info);
         }
 
