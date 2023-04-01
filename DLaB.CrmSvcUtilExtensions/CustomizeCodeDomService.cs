@@ -18,7 +18,7 @@ namespace DLaB.ModelBuilderExtensions
         public bool GenerateAnonymousTypeConstructor { get => DLaBSettings.GenerateAnonymousTypeConstructor; set => DLaBSettings.GenerateAnonymousTypeConstructor = value; }
         public bool GenerateConstructorsSansLogicalName { get => DLaBSettings.GenerateConstructorsSansLogicalName; set => DLaBSettings.GenerateConstructorsSansLogicalName = value; }
         public bool GenerateEntityTypeCode { get => DLaBSettings.GenerateEntityTypeCode; set => DLaBSettings.GenerateEntityTypeCode = value; }
-        public bool GenerateEnumProperties { get => DLaBSettings.GenerateEnumProperties; set => DLaBSettings.GenerateEnumProperties = value; }
+        public bool GenerateOptionSetProperties { get => DLaBSettings.GenerateOptionSetProperties; set => DLaBSettings.GenerateOptionSetProperties = value; }
         public bool GenerateTypesAsInternal { get => DLaBSettings.GenerateTypesAsInternal; set => DLaBSettings.GenerateTypesAsInternal = value; }
         public bool GenerateOptionSetMetadataAttribute { get => DLaBSettings.GenerateOptionSetMetadataAttribute; set => DLaBSettings.GenerateOptionSetMetadataAttribute = value; }
         public bool UpdateMultiOptionSetAttributes { get => DLaBSettings.UpdateMultiOptionSetAttributes; set => DLaBSettings.UpdateMultiOptionSetAttributes = value; }
@@ -37,7 +37,7 @@ namespace DLaB.ModelBuilderExtensions
         #region Sub Service Properties
 
         public OptionSet.CustomizeCodeDomService OptionSetCustomizer { get; set; }
-        public EnumPropertyGenerator EnumPropertyCustomizer { get; set; }
+        public OptionSetPropertyGenerator OptionSetPropertyCustomizer { get; set; }
 
         #endregion Sub Service Properties
 
@@ -54,7 +54,7 @@ namespace DLaB.ModelBuilderExtensions
 
         private void Initialize()
         {
-            EnumPropertyCustomizer = new EnumPropertyGenerator(DefaultService, Settings);
+            OptionSetPropertyCustomizer = new OptionSetPropertyGenerator(DefaultService, Settings);
             MessageApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.MessageToSkip), DLaBSettings.MessageBlacklist);
             OptionSetCustomizer = new OptionSet.CustomizeCodeDomService(DefaultService, Settings);
         }
@@ -147,9 +147,9 @@ namespace DLaB.ModelBuilderExtensions
                 new RemoveEntityTypeCodeService().CustomizeCodeDom(codeUnit, services);
             }
 
-            if (GenerateEnumProperties)
+            if (GenerateOptionSetProperties)
             {
-                EnumPropertyCustomizer.CustomizeCodeDom(codeUnit, services);
+                OptionSetPropertyCustomizer.CustomizeCodeDom(codeUnit, services);
             }
 
             if (AddDebuggerNonUserCode)

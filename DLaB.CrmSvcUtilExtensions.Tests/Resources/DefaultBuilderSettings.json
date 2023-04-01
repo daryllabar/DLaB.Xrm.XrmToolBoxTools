@@ -20,7 +20,7 @@
     "generateConstructorsSansLogicalName": false,
     "generateEntityRelationships": true,
     "generateEntityTypeCode": false,
-    "generateEnumProperties": true,
+    "generateOptionSetProperties": false,
     "generateOptionSetMetadataAttribute": true,
     "groupLocalOptionSetsByEntity": false,
     "invalidCSharpNamePrefix": "_",
@@ -30,7 +30,7 @@
     "localOptionSetFormat": "{0}_{1}",
     "readSerializedMetadata": false,
     "removeRuntimeVersionComment": true,
-    "replaceOptionSetPropertiesWithEnum": true,
+    "replaceEnumPropertiesWithOptionSet": false,
     "serializeMetadata": false,
     "tokenCapitalizationOverrides": [
       "AccessTeam",

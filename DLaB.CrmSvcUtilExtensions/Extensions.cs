@@ -16,6 +16,19 @@ namespace DLaB.ModelBuilderExtensions
         private const string XrmAttributeLogicalName = "Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute";
         private const string XrmRelationshipSchemaName = "Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute";
 
+        #region AttributeMetadata
+
+        public static bool IsOptionSet(this AttributeMetadata attribute)
+        {
+            var type = attribute.AttributeType;
+            return type == AttributeTypeCode.State
+                   || type == AttributeTypeCode.Status
+                   || type == AttributeTypeCode.Picklist
+                   || type == AttributeTypeCode.Virtual && attribute is EnumAttributeMetadata;
+        }
+
+        #endregion AttributeMetadata
+
         #region CodeCompileUnit
 
         public static List<Tuple<CodeTypeDeclaration, EntityMetadata>> GetEntityTypes(this CodeCompileUnit codeUnit, Dictionary<string, EntityMetadata> entityTypesByLogicalName)

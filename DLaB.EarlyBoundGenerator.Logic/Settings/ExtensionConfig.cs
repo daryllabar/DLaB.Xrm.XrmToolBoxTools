@@ -421,7 +421,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             writer.AddProperty(nameof(GenerateConstructorsSansLogicalName), GenerateConstructorsSansLogicalName);
             writer.AddProperty(nameof(GenerateEntityRelationships), GenerateEntityRelationships);
             writer.AddProperty(nameof(GenerateEntityTypeCode), GenerateEntityTypeCode);
-            writer.AddProperty(nameof(GenerateEnumProperties), GenerateEnumProperties);
+            writer.AddProperty("GenerateOptionSetProperties", !GenerateEnumProperties || !ReplaceOptionSetPropertiesWithEnum);
             writer.AddProperty(nameof(GenerateOptionSetMetadataAttribute), GenerateOptionSetMetadataAttribute);
             writer.AddProperty(nameof(GenerateTypesAsInternal), GenerateTypesAsInternal);
             writer.AddProperty(nameof(GroupLocalOptionSetsByEntity), GroupLocalOptionSetsByEntity);
@@ -441,7 +441,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             writer.AddPropertyDictionaryStringString(nameof(PropertyEnumMappings), PropertyEnumMappings, false);
             writer.AddProperty(nameof(ReadSerializedMetadata), ReadSerializedMetadata);
             writer.AddProperty(nameof(RemoveRuntimeVersionComment), RemoveRuntimeVersionComment);
-            writer.AddProperty(nameof(ReplaceOptionSetPropertiesWithEnum), ReplaceOptionSetPropertiesWithEnum);
+            writer.AddProperty("ReplaceEnumPropertiesWithOptionSet", !ReplaceOptionSetPropertiesWithEnum);
             writer.AddProperty(nameof(SerializeMetadata), SerializeMetadata);
             writer.AddPropertyArray(nameof(TokenCapitalizationOverrides), TokenCapitalizationOverrides);
             writer.AddProperty(nameof(UseLogicalNames), UseLogicalNames);

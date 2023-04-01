@@ -120,8 +120,8 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("generateEntityTypeCode")]
         public bool GenerateEntityTypeCode { get; set; }
 
-        [JsonPropertyName("generateEnumProperties")]
-        public bool GenerateEnumProperties { get; set; }
+        [JsonPropertyName("generateOptionSetProperties")]
+        public bool GenerateOptionSetProperties { get; set; }
 
         [JsonPropertyName("generateOptionSetMetadataAttribute")]
         public bool GenerateOptionSetMetadataAttribute { get; set; }
@@ -213,8 +213,8 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("relationshipConstsClassName")]
         public string RelationshipConstsClassName { get; set; }
 
-        [JsonPropertyName("replaceOptionSetPropertiesWithEnum")]
-        public bool ReplaceOptionSetPropertiesWithEnum { get; set; }
+        [JsonPropertyName("replaceEnumPropertiesWithOptionSet")]
+        public bool ReplaceEnumPropertiesWithOptionSet { get; set; }
 
         /// <summary>
         /// No Config

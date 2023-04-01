@@ -265,7 +265,7 @@
     <Compile Include="Entity\OptionSetMetadataAttributeGenerator.cs" />
     <Compile Include="OptionSet\CustomizeCodeDomService.cs" />
     <Compile Include="CustomizeCodeDomService.cs" />
-    <Compile Include="Entity\EnumPropertyGenerator.cs" />
+    <Compile Include="Entity\OptionSetPropertyGenerator.cs" />
     <Compile Include="OptionSet\FilterOptionSetEnums.cs" />
     <Compile Include="CodeWriterFilterService.cs" />
     <Compile Include="OptionSet\CodeWriterFilterService.cs" />
