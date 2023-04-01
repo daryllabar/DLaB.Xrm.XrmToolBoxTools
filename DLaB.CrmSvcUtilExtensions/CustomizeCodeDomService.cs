@@ -15,7 +15,6 @@ namespace DLaB.ModelBuilderExtensions
 
         public bool AddDebuggerNonUserCode { get => DLaBSettings.AddDebuggerNonUserCode; set => DLaBSettings.AddDebuggerNonUserCode = value; }
         public bool AddPrimaryAttributeConsts { get => DLaBSettings.AddPrimaryAttributeConsts; set => DLaBSettings.AddPrimaryAttributeConsts = value; }
-        public bool CreateBaseClasses { get => DLaBSettings.CreateBaseClasses; set => DLaBSettings.CreateBaseClasses = value; }
         public bool GenerateAnonymousTypeConstructor { get => DLaBSettings.GenerateAnonymousTypeConstructor; set => DLaBSettings.GenerateAnonymousTypeConstructor = value; }
         public bool GenerateConstructorsSansLogicalName { get => DLaBSettings.GenerateConstructorsSansLogicalName; set => DLaBSettings.GenerateConstructorsSansLogicalName = value; }
         public bool GenerateEntityTypeCode { get => DLaBSettings.GenerateEntityTypeCode; set => DLaBSettings.GenerateEntityTypeCode = value; }
@@ -151,11 +150,6 @@ namespace DLaB.ModelBuilderExtensions
             if (GenerateEnumProperties)
             {
                 EnumPropertyCustomizer.CustomizeCodeDom(codeUnit, services);
-            }
-
-            if (CreateBaseClasses)
-            {
-                new EntityBaseClassGenerator(this, Settings).CustomizeCodeDom(codeUnit, services);
             }
 
             if (AddDebuggerNonUserCode)

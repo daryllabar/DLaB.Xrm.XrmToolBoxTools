@@ -33,12 +33,6 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("attributeConstsClassName")]
         public string AttributeConstsClassName { get; set; }
 
-        /// <summary>
-        /// No Config
-        /// </summary>
-        [JsonPropertyName("baseEntityClassName")]
-        public string BaseEntityClassName { get; set; }
-
         [JsonPropertyName("builderSettingsJsonRelativePath")]
         public string BuilderSettingsJsonRelativePath { get; set; }
 
@@ -74,12 +68,6 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("cleanupCrmSvcUtilLocalOptionSets")]
         public bool CleanupCrmSvcUtilLocalOptionSets { get; set; }
-
-        /// <summary>
-        /// No Config
-        /// </summary>
-        [JsonPropertyName("createBaseClasses")]
-        public bool CreateBaseClasses { get; set; }
 
         [JsonPropertyName("createOneFilePerMessage")]
         public bool CreateOneFilePerMessage { get; set; }
@@ -284,7 +272,6 @@ namespace DLaB.ModelBuilderExtensions
             MessageLogicalFieldName = "ActionLogicalName";
             AddPrimaryAttributeConsts = true;
             AttributeConstsClassName = "Fields";
-            BaseEntityClassName = "EarlyBoundEntity";
             EnableFileDataType = true;
             EntitiesFileName = "Entities.cs";
             EntityBlacklist = new List<string>();
