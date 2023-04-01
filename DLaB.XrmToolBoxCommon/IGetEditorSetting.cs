@@ -7,7 +7,6 @@
 
     public enum EditorSetting
     {
-        WorkflowlessActions
+        
     }
-
 }

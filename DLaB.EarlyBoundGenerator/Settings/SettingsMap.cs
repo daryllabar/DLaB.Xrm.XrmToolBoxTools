@@ -7,7 +7,6 @@ using DLaB.XrmToolBoxCommon.Editors;
 using CommonConfig = Source.DLaB.Common.Config;
 using Source.DLaB.Common;
 using XrmToolBox.Extensibility;
-using DLaB.XrmToolBoxCommon.Forms;
 
 // ReSharper disable UnusedMember.Global
 namespace DLaB.EarlyBoundGenerator.Settings
@@ -246,7 +245,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         [Category("1 - Global")]
         [DisplayName("Add New Files To Project")]
-        [Description("Allows adding any newly generated files that don't already exist, to the first project file found in the hierarchy of the output path.")]
+        [Description("Allows adding any newly generated files that don't already exist, to the first project file found in the hierarchy of the output path.  ** NOTE ** Visual Studio tends to cache shared project files in the projects that are shared by it, which causes the file to not get loaded correctly.  It is recommended to either unload the shared project or shut down Visual Studio before generating entities in order for this to work correctly.")]
         public bool AddNewFilesToProject
         {
             get => Config.ExtensionConfig.AddNewFilesToProject;
@@ -488,13 +487,6 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.ExtensionConfig.MakeResponseActionsEditable = value;
         }
 
-        [Category("3 - Messages")]
-        [DisplayName("Workflowless Messages")]
-        [Description("Some messages are being created by MS that are not workflows, and don't show up in the list of messages for adding to whitelist/blacklist, but are getting genereated and causing errors.  This setting is used to manually add message names to the selected lists.")]
-        [Editor(StringEditorName, typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
-        public List<string> WorkflowlessActions { get; set; }
-
         #endregion Messages
 
         #region Meta
@@ -644,6 +636,15 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         }
 
         [Category("6 - Service Generation Extensions")]
+        [DisplayName("Code Writer Message Filter Service")]
+        [Description("Called during the CodeDOM generation to determine if the Message is generated.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator.")]
+        public string CodeWriterMessageFilterService
+        {
+            get => Config.CodeWriterMessageFilterService;
+            set => Config.CodeWriterMessageFilterService = value;
+        }
+
+        [Category("6 - Service Generation Extensions")]
         [DisplayName("Metadata Provider Service")]
         [Description("Used to retrieve the metadata from the server.  Using the 7 - Debug settings, this can be used cache the metadata for testing purposes.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator.")]
         public string MetadataProviderService
@@ -710,7 +711,6 @@ This helps to alleviate unnecessary differences that pop up when the classes are
                 PropertyEnumMappings = RemoveWhiteSpace(nameof(PropertyEnumMappings), config.ExtensionConfig.PropertyEnumMappings).GetList<string>();
                 OptionSetNames = RemoveWhiteSpace(nameof(OptionSetNames), Config.ExtensionConfig.OptionSetNames).GetDictionary<string,string>();
                 TokenCapitalizationOverrides = RemoveWhiteSpace(nameof(TokenCapitalizationOverrides), config.ExtensionConfig.TokenCapitalizationOverrides).GetList<string>();
-                WorkflowlessActions = RemoveWhiteSpace(nameof(WorkflowlessActions), config.WorkflowlessActions).GetList<string>();
             }
             catch (Exception ex)
             {
@@ -739,7 +739,6 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             Config.ExtensionConfig.PropertyEnumMappings = CommonConfig.ToStringSorted(PropertyEnumMappings);
             Config.ExtensionConfig.OptionSetNames = CommonConfig.ToStringSorted(OptionSetNames);
             Config.ExtensionConfig.TokenCapitalizationOverrides = CommonConfig.ToStringSorted(TokenCapitalizationOverrides);
-            Config.WorkflowlessActions = CommonConfig.ToStringSorted(WorkflowlessActions, info);
         }
 
         public EarlyBoundGeneratorPlugin GetPluginControl()

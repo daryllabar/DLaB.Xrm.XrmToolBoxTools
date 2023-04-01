@@ -165,9 +165,6 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("messagesFileName")]
         public string MessagesFileName { get; set; }
 
-        [JsonPropertyName("messageToSkip")]
-        public List<string> MessageToSkip { get; set; }
-
         [JsonPropertyName("optionSetFileName")]
         public string OptionSetsFileName { get; set; }
 
@@ -279,7 +276,6 @@ namespace DLaB.ModelBuilderExtensions
             InvalidCSharpNamePrefix = "_";
             LocalOptionSetFormat = "{0}_{1}";
             MessageBlacklist = new List<string>();
-            MessageToSkip = new List<string>();
             MessagesFileName = "Messages.cs";
             SerializedMetadataRelativeFilePath = "metadata.xml";
             OptionSetNames = new Dictionary<string, string>();

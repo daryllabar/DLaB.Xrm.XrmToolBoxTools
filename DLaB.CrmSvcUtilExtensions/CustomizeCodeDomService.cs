@@ -26,13 +26,7 @@ namespace DLaB.ModelBuilderExtensions
 
         #endregion Entity Properties
 
-        #region Message Properties
-
-        public BlacklistLogic MessageApprover { get; set; }
-
         public bool MakeResponseActionsEditable { get => DLaBSettings.MakeResponseMessagesEditable; set => DLaBSettings.MakeResponseMessagesEditable = value; }
-
-        #endregion Message Properties
 
         #region Sub Service Properties
 
@@ -55,7 +49,6 @@ namespace DLaB.ModelBuilderExtensions
         private void Initialize()
         {
             OptionSetPropertyCustomizer = new OptionSetPropertyGenerator(DefaultService, Settings);
-            MessageApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.MessageToSkip), DLaBSettings.MessageBlacklist);
             OptionSetCustomizer = new OptionSet.CustomizeCodeDomService(DefaultService, Settings);
         }
 
@@ -169,31 +162,9 @@ namespace DLaB.ModelBuilderExtensions
 
         private void FilterMessageTypes(CodeCompileUnit codeUnit)
         {
-            // Iterate over all of the namespaces that were generated.
-            for (var i = 0; i < codeUnit.Namespaces.Count; ++i)
+            foreach (var type in codeUnit.GetMessageTypes())
             {
-                var types = codeUnit.Namespaces[i].Types;
-                // Iterate over all of the types that were created in the namespace.
-                for (var j = 0; j < types.Count;)
-                {
-                    var type = types[j];
-                    if (!type.IsMessageType())
-                    {
-                        j++;
-                        continue;
-                    }
-
-                    // Remove the type if it is not to be generated.
-                    if (GenerateMessage(types[j].Name))
-                    {
-                        ProcessMessage(types[j]);
-                        j++;
-                    }
-                    else
-                    {
-                        types.RemoveAt(j);
-                    }
-                }
+                ProcessMessage(type);
             }
         }
 
@@ -217,22 +188,6 @@ namespace DLaB.ModelBuilderExtensions
                     prop.SetStatements.Add(new CodeAssignStatement(indexOf, new CodePropertySetValueReferenceExpression()));
                 }
             }
-        }
-
-        private bool GenerateMessage(string name)
-        {
-            name = name.Replace(" ", string.Empty);
-            // Actions are weird, don't know how to get the whole name since it's a workflow, so I'll hack this here
-            if (name.EndsWith("Request"))
-            {
-                name = name.Remove(name.Length - "Request".Length);
-            }
-            else if (name.EndsWith("Response"))
-            {
-                name = name.Remove(name.Length - "Response".Length);
-            }
-
-            return MessageApprover.IsAllowed(name.ToLower());
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DLaB.Xrm.Entities;
 using Microsoft.Xrm.Sdk;
-using Source.DLaB.Common;
+using Microsoft.Xrm.Sdk.Query;
 using Source.DLaB.Xrm;
 using XrmToolBox.Extensibility;
 
@@ -14,22 +14,18 @@ namespace DLaB.XrmToolBoxCommon.Forms
     public partial class SpecifyActionsDialog : DialogBase
     {
         public HashSet<string> SpecifiedActions { get; set; }
-        private List<Workflow> WorkflowlessActions { get; set; }
+
         #region Constructor / Load
 
         public SpecifyActionsDialog()
         {
             InitializeComponent();
-            WorkflowlessActions = new List<Workflow>();
         }
 
         public SpecifyActionsDialog(PluginControlBase callingControl)
             : base(callingControl)
         {
             InitializeComponent();
-            WorkflowlessActions = callingControl is IGetEditorSetting getter
-                ? GetWorkflowLessActions(getter.GetEditorSetting(EditorSetting.WorkflowlessActions).GetList<string>())
-                : new List<Workflow>();
         }
 
         private void SpecifyActivitiesDialog_Load(object sender, EventArgs e)
@@ -40,16 +36,6 @@ namespace DLaB.XrmToolBoxCommon.Forms
 
         #endregion // Constructor / Load
 
-        private List<Workflow> GetWorkflowLessActions(List<string> names)
-        {
-            return names.Select(n => new Workflow
-            {
-                Name = "(" + n.Trim() + ")",
-                ["sdklogicalname"] = n.Trim().ToLower(),
-                UniqueName = n.Trim().ToLower()
-            }).ToList();
-        }
-
         private void LoadActions(IEnumerable<Entity> actions)
         {
             try
@@ -59,9 +45,7 @@ namespace DLaB.XrmToolBoxCommon.Forms
                 Enable(false);
                 LstAll.Items.Clear();
                 LstSpecified.Items.Clear();
-                var localActions = actions.Select(e => e.ToEntity<Workflow>()).ToList(); // Keep from multiple Enumerations
-                localActions.AddRange(WorkflowlessActions);
-                
+                var localActions = actions.Select(e => e.ToEntity<SdkMessage>()).ToList(); // Keep from multiple Enumerations
 
                 LstSpecified.Items.AddRange(localActions.Where(IsSpecified).Select(e => new ListViewItem(e.Name ?? "N/A") { SubItems = { GetKey(e) }}).ToArray());
                 LstAll.Items.AddRange(localActions.Where(e => !IsSpecified(e)).Select(e => new ListViewItem(e.Name ?? "N/A") { SubItems = { GetKey(e) }}).ToArray());
@@ -74,23 +58,16 @@ namespace DLaB.XrmToolBoxCommon.Forms
             }
         }
 
-        private bool IsSpecified(Workflow action)
+        private bool IsSpecified(SdkMessage action)
         {
-            var logicalName = action.GetAttributeValue<string>("sdklogicalname");
-            if (!string.IsNullOrWhiteSpace(logicalName)
-                && (SpecifiedActions.Contains(logicalName.ToLower())
-                    || SpecifiedActions.Contains(logicalName)))
-            {
-                return true;
-            }
-
-            // For Backwards compatibility, Check Unique Name
-            return SpecifiedActions.Contains(action.UniqueName) || SpecifiedActions.Contains(action.UniqueName.ToLower());
+            return !string.IsNullOrWhiteSpace(action.Name)
+                   && (SpecifiedActions.Contains(action.Name.ToLower())
+                       || SpecifiedActions.Contains(action.Name));
         }
 
-        private string GetKey(Workflow action)
+        private string GetKey(SdkMessage action)
         {
-            return action.GetAttributeValue<string>("sdklogicalname");
+            return action.Name.ToLower();
         }
 
         private void Enable(bool enable)
@@ -115,7 +92,7 @@ namespace DLaB.XrmToolBoxCommon.Forms
             Enable(false);
 
             // Clear existing entity list
-            ((PropertyInterface.IActions)CallingControl).Actions = null;
+            ((PropertyInterface.IActions)CallingControl).SdkMessages = null;
 
             // Retrieve entities
             RetrieveActionsOnLoad(LoadActions);
@@ -142,7 +119,7 @@ namespace DLaB.XrmToolBoxCommon.Forms
         }
 
         private SortOrder _order = SortOrder.Ascending;
-        private int _sortedColumn = 0;
+        private int _sortedColumn;
         private void ColumnClick(object o, ColumnClickEventArgs e)
         {
             if (e.Column == _sortedColumn)
@@ -165,11 +142,11 @@ namespace DLaB.XrmToolBoxCommon.Forms
 
         protected void RetrieveActionsOnLoad(Action<IEnumerable<Entity>> loadActions)
         {
-            var actions = ((PropertyInterface.IActions)CallingControl).Actions;
+            var actions = ((PropertyInterface.IActions)CallingControl).SdkMessages;
 
             if (actions == null)
             {
-                _callBackForRetrieveActions = loadActions;
+                _callBackForRetrieveSdkMessages = loadActions;
                 ExecuteMethod(RetrieveActions);
             }
             else
@@ -178,29 +155,35 @@ namespace DLaB.XrmToolBoxCommon.Forms
             }
         }
 
-        private Action<IEnumerable<Entity>> _callBackForRetrieveActions;
+        private Action<IEnumerable<Entity>> _callBackForRetrieveSdkMessages;
 
         private void RetrieveActions()
         {
             WorkAsync(new WorkAsyncInfo("Retrieving Actions...", e =>
             {
-                var qe = QueryExpressionFactory.Create<Workflow>(w => new { w.Name, w.UniqueName },
-                    Workflow.Fields.Category, (int)Workflow_Category.Action,
-                    Workflow.Fields.ParentWorkflowId, null);
-                qe.AddLink<SdkMessage>(Workflow.Fields.SdkMessageId, m => new { m.Name });
-                var entities = Service.RetrieveMultiple(qe.Query).ToEntityList<Workflow>();
-                e.Result = entities.Select(w =>
-                {
-                    w[@"sdklogicalname"] = w.GetAliasedEntity<SdkMessage>().Name;
-                    return w.ToSdkEntity();
-                }).ToList();
+                // This came from the Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.Resource RetrieveAllSDKMessages
+                var qe = QueryExpressionFactory.Create<SdkMessage>(m => new
+                    {
+                        m.Name,
+                        m.IsPrivate,
+                        m.SdkMessageId,
+                        m.CustomizationLevel
+                    });
+                qe.AddLink<SdkMessagePair>(SdkMessagePair.Fields.SdkMessageId)
+                    .WhereEqual(SdkMessagePair.Fields.Endpoint, @"2011/Organization.svc");
+                qe.AddLink<SdkMessageFilter>(SdkMessageFilter.Fields.SdkMessageId)
+                    .WhereEqual(SdkMessageFilter.Fields.IsVisible, true );
+                qe.AddOrder(SdkMessage.Fields.Name, OrderType.Ascending);
+                qe.Query.Distinct = true;
+
+                e.Result = Service.GetAllEntities(qe).Select(m => m.ToSdkEntity()).ToList();
             })
             {
                 PostWorkCallBack = e =>
                 {
                     var actionContainer = ((PropertyInterface.IActions)CallingControl);
-                    actionContainer.Actions = (List<Entity>)e.Result;
-                    _callBackForRetrieveActions(actionContainer.Actions);
+                    actionContainer.SdkMessages = (List<Entity>)e.Result;
+                    _callBackForRetrieveSdkMessages(actionContainer.SdkMessages);
                 }
             });
         }

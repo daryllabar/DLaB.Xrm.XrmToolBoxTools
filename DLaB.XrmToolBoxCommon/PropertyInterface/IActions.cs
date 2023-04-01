@@ -10,6 +10,6 @@ namespace DLaB.XrmToolBoxCommon.PropertyInterface
 {
     public interface IActions
     {
-        IEnumerable<Entity> Actions { get; set; }
+        IEnumerable<Entity> SdkMessages { get; set; }
     }
 }

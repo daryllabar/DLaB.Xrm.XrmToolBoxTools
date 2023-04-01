@@ -44,6 +44,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
         public string CodeWriterFilterService { get; set; }
 
         /// <summary>
+        /// Called during the CodeDOM generation to determine if the Message is generated.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator.
+        /// </summary>
+        public string CodeWriterMessageFilterService { get; set; }
+
+        /// <summary>
         /// Entity output path
         /// </summary>
         public string EntityTypesFolder { get; set; }
@@ -124,11 +129,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// The version.
         /// </value>
         public string Version { get; set; }
-
-        /// <summary>
-        /// Some actions are being created by MS that are not workflows, and don't show up in the list of actions for adding to whitelist/blacklist, but are getting genereated and causing errors.  This setting is used to manually add action names to the selected lists
-        /// </summary>
-        public string WorkflowlessActions { get; set; }
 
         #region NonSerialized Properties
 
@@ -213,6 +213,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             CodeCustomizationService       =  poco.CodeCustomizationService       ?? @default.CodeCustomizationService;
             CodeGenerationService          =  poco.CodeGenerationService          ?? @default.CodeGenerationService;
             CodeWriterFilterService        =  poco.CodeWriterFilterService        ?? @default.CodeWriterFilterService;
+            CodeWriterMessageFilterService =  poco.CodeWriterMessageFilterService ?? @default.CodeWriterMessageFilterService;
             EntityTypesFolder              =  poco.EntityTypesFolder              ?? @default.EntityTypesFolder;
             IncludeCommandLine             =  poco.IncludeCommandLine             ?? @default.IncludeCommandLine;
             GenerateMessages               =  poco.GenerateMessages               ?? @default.GenerateMessages;
@@ -224,7 +225,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             ServiceContextName             =  poco.ServiceContextName             ?? @default.ServiceContextName;
             SuppressGeneratedCodeAttribute =  poco.SuppressGeneratedCodeAttribute ?? @default.SuppressGeneratedCodeAttribute;
             UpdateBuilderSettingsJson      =  poco.UpdateBuilderSettingsJson      ?? @default.UpdateBuilderSettingsJson;
-            WorkflowlessActions            =  poco.WorkflowlessActions            ?? @default.WorkflowlessActions;
 
             ExtensionConfig = @default.ExtensionConfig;
             ExtensionConfig.SetPopulatedValues(poco.ExtensionConfig);
@@ -416,6 +416,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 CodeCustomizationService = "DLaB.ModelBuilderExtensions.CustomizeCodeDomService,DLaB.ModelBuilderExtensions",
                 CodeGenerationService = "DLaB.ModelBuilderExtensions.CodeGenerationService,DLaB.ModelBuilderExtensions",
                 CodeWriterFilterService = "DLaB.ModelBuilderExtensions.CodeWriterFilterService,DLaB.ModelBuilderExtensions",
+                CodeWriterMessageFilterService = "DLaB.ModelBuilderExtensions.CodeWriterMessageFilterService,DLaB.ModelBuilderExtensions",
                 EntityTypesFolder = "Entities",
                 ExtensionConfig = ExtensionConfig.GetDefault(),
                 GenerateMessages = true,
@@ -439,8 +440,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
                 OptionSetsTypesFolder = "OptionSets",
                 ServiceContextName = "DataverseContext", 
                 SuppressGeneratedCodeAttribute = true,
-                UpdateBuilderSettingsJson = true,
-                WorkflowlessActions = "RetrieveAppSettingList|RetrieveAppSetting|SaveAppSetting|msdyn_GetSIFeatureConfiguration"
+                UpdateBuilderSettingsJson = true
             };
             @default.SettingsVersion = @default.Version;
             return @default;
@@ -595,6 +595,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             SetModelBuilderServiceProperty(BuilderSettingsJsonNames.CodeCustomizationService, CodeCustomizationService);
             SetModelBuilderServiceProperty(BuilderSettingsJsonNames.CodeGenerationService, CodeGenerationService);
             SetModelBuilderServiceProperty(BuilderSettingsJsonNames.CodeWriterFilterService, CodeWriterFilterService);
+            SetModelBuilderServiceProperty(BuilderSettingsJsonNames.CodeWriterMessageFilterService, CodeWriterMessageFilterService);
             SetModelBuilderServiceProperty(BuilderSettingsJsonNames.MetadataProviderService, MetadataProviderService);
 
             SetOutputFolderProperty(BuilderSettingsJsonNames.EntityTypesFolder, EntityTypesFolder, defaultSettings.EntityTypesFolder);
@@ -637,6 +638,7 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public string CodeCustomizationService { get; set; }
         public string CodeGenerationService { get; set; }
         public string CodeWriterFilterService { get; set; }
+        public string CodeWriterMessageFilterService { get; set; }
         public string EntityTypesFolder { get; set; }
         public ExtensionConfig ExtensionConfig { get; set; }
         public List<Argument> ExtensionArguments { get; set; }
@@ -652,6 +654,5 @@ namespace DLaB.EarlyBoundGenerator.Settings.POCO
         public bool? UpdateBuilderSettingsJson { get; set; }
         public List<Argument> UserArguments { get; set; }
         public string Version { get; set; }
-        public string WorkflowlessActions { get; set; }
     }
 }

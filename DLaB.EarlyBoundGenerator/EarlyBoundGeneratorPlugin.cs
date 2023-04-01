@@ -20,7 +20,7 @@ namespace DLaB.EarlyBoundGenerator
     public partial class EarlyBoundGeneratorPlugin : DLaBPluginControlBase, PropertyInterface.IEntityMetadatas, PropertyInterface.IGlobalOptionSets, PropertyInterface.IActions, IGetEditorSetting
     {
         public EarlyBoundGeneratorConfig Settings { get; set; }
-        public IEnumerable<Entity> Actions { get; set; }
+        public IEnumerable<Entity> SdkMessages { get; set; }
         // ReSharper disable once IdentifierTypo
         public IEnumerable<EntityMetadata> EntityMetadatas { get; set; }
         public IEnumerable<OptionSetMetadataBase> GlobalOptionSets { get; set; }
@@ -423,7 +423,7 @@ namespace DLaB.EarlyBoundGenerator
             }
             EntityMetadatas = null;
             GlobalOptionSets = null;
-            Actions = null;
+            SdkMessages = null;
             SetConnectionSettingOnConnectionChanged();
         }
 
@@ -442,11 +442,6 @@ namespace DLaB.EarlyBoundGenerator
 
         public string GetEditorSetting(EditorSetting key)
         {
-            if (key == EditorSetting.WorkflowlessActions)
-            {
-                return Settings.WorkflowlessActions;
-            }
-
             return null;
         }
     }

@@ -2,6 +2,7 @@
   "codeCustomizationService": "DLaB.ModelBuilderExtensions.CustomizeCodeDomService,DLaB.ModelBuilderExtensions",
   "codeGenerationService": "DLaB.ModelBuilderExtensions.CodeGenerationService,DLaB.ModelBuilderExtensions",
   "codeWriterFilterService": "DLaB.ModelBuilderExtensions.CodeWriterFilterService,DLaB.ModelBuilderExtensions",
+  "codeWriterMessageFilterService": "DLaB.ModelBuilderExtensions.CodeWriterMessageFilterService,DLaB.ModelBuilderExtensions",
   "dLaB.ModelBuilder": {
     "addDebuggerNonUserCode": true,
     "addNewFilesToProject": true,
