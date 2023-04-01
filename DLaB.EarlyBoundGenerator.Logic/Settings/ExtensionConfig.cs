@@ -93,7 +93,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         /// </summary>
         public string EntityPrefixesToSkip { get; set; }
         /// <summary>
-        /// Pipe delimited string containing prefixes of entities to be generated.
+        /// Pipe delimited string containing wildcard capable values of entities to be generated.
         /// </summary>
         public string EntityPrefixesWhitelist { get; set; }
         /// <summary>
@@ -412,7 +412,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
             writer.AddProperty(nameof(DeleteFilesFromOutputFolders), DeleteFilesFromOutputFolders);
             writer.AddPropertyDictionaryStringHashString(nameof(EntityAttributeSpecifiedNames), EntityAttributeSpecifiedNames, false);
             AddOptionalProperty("EntitiesFileName", settings.EntityTypesFolder, CreateOneFilePerEntity);
-            writer.AddPropertyArray(nameof(EntitiesToSkip), EntitiesToSkip);
+            writer.AddPropertyArray("EntityBlacklist", EntitiesToSkip);
             writer.AddPropertyArray("EntityRegExBlacklist", EntityPrefixesToSkip);
             writer.AddProperty(nameof(FilePrefixText), FilePrefixText, true);
             writer.AddProperty(AsMessage(nameof(GenerateActionAttributeNameConsts)), GenerateActionAttributeNameConsts);

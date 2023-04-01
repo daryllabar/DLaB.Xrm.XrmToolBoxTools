@@ -20,13 +20,13 @@ namespace DLaB.ModelBuilderExtensions
 
         public CodeWriterFilterService(ICodeWriterFilterService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
-            EntityApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.EntitiesBlacklist),
+            EntityApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.EntityBlacklist),
                 DLaBSettings.EntityRegExBlacklist);
         }
 
         public CodeWriterFilterService(ICodeWriterFilterService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
         {
-            EntityApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.EntitiesBlacklist),
+            EntityApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.EntityBlacklist),
                 DLaBSettings.EntityRegExBlacklist);
         }
 

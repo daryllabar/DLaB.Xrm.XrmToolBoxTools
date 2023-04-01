@@ -105,8 +105,8 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("entitiesFileName")]
         public string EntitiesFileName { get; set; }
 
-        [JsonPropertyName("entitiesBlacklist")]
-        public List<string> EntitiesBlacklist { get; set; }
+        [JsonPropertyName("entityBlacklist")]
+        public List<string> EntityBlacklist { get; set; }
 
         [JsonPropertyName("entityRegExBlacklist")]
         public List<string> EntityRegExBlacklist { get; set; }
@@ -287,7 +287,7 @@ namespace DLaB.ModelBuilderExtensions
             BaseEntityClassName = "EarlyBoundEntity";
             EnableFileDataType = true;
             EntitiesFileName = "Entities.cs";
-            EntitiesBlacklist = new List<string>();
+            EntityBlacklist = new List<string>();
             EntityAttributeSpecifiedNames = new Dictionary<string, HashSet<string>>();
             EntityRegExBlacklist = new List<string>();
             GenerateEntityRelationships = true;
