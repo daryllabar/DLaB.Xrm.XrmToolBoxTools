@@ -35,12 +35,13 @@ namespace DLaB.EarlyBoundGenerator.Settings
             return new Dictionary<string, Action<PropertyValueChangedEventArgs>>
             {
                 { nameof(AddNewFilesToProject), OnAddNewFilesToProjectChange },
-                { nameof(CreateOneFilePerAction), OnCreateOneFilePerMessageChange },
+                { nameof(AddOptionSetMetadataAttribute), OnAddOptionSetMetadataAttributeChange },
                 { nameof(CreateOneFilePerEntity), OnCreateOneFilePerEntityChange },
                 { nameof(CreateOneFilePerOptionSet), OnCreateOneFilePerOptionSetChange },
+                { nameof(CreateOneFilePerMessage), OnCreateOneFilePerMessageChange },
                 { nameof(DeleteFilesFromOutputFolders), OnDeleteFilesFromOutputFoldersChange },
                 { nameof(GenerateEnumProperties), OnGenerateEnumPropertiesChange },
-                { nameof(AddOptionSetMetadataAttribute), OnAddOptionSetMetadataAttributeChange },
+                { nameof(GenerateMessages), OnGenerateMessagesChange },
                 { nameof(MakeAllFieldsEditable), OnMakeAllFieldsEditableChange },
             };
         }
@@ -81,6 +82,11 @@ namespace DLaB.EarlyBoundGenerator.Settings
             SetPropertyReplaceOptionSetPropertiesWithEnumVisibility();
         }
 
+        private void OnGenerateMessagesChange(PropertyValueChangedEventArgs args)
+        {
+            SetVisibilityForControlsDependentOnGenerateMessages();
+        }
+
         private void OnAddOptionSetMetadataAttributeChange(PropertyValueChangedEventArgs args)
         {
             SetGenerateOptionSetMetadataAttributeVisibility();
@@ -96,13 +102,15 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         private void ProcessDynamicallyVisibleProperties()
         {
-            SetVisibilityForControlsDependentOnFileCreations();
             SetCleanupCrmSvcUtilLocalOptionSets();
+            SetGenerateOptionSetMetadataAttributeVisibility();
             SetGroupLocalOptionSetsByEntityVisibility();
             SetGroupMessageRequestWithResponseVisibility();
             SetPropertyEnumMappingVisibility();
             SetPropertyReplaceOptionSetPropertiesWithEnumVisibility();
-            SetGenerateOptionSetMetadataAttributeVisibility();
+            SetVisibilityForControlsDependentOnFileCreations();
+            SetVisibilityForControlsDependentOnGenerateMessages();
+
             MessageTypesFolder = MessageTypesFolder;
             EntityTypesFolder = EntityTypesFolder;
             OptionSetsTypesFolder = OptionSetsTypesFolder;
@@ -116,6 +124,18 @@ namespace DLaB.EarlyBoundGenerator.Settings
             SetProjectNameForEarlyBoundFilesVisibility();
         }
 
+        private void SetVisibilityForControlsDependentOnGenerateMessages()
+        {
+            SetCreateOneFilePerMessageVisibility();
+            SetGenerateMessageAttributeNameConstsVisibility();
+            SetGroupMessageRequestWithResponseVisibility();
+            SetMakeResponseMessagesEditableVisibility();
+            SetMessageBlacklistVisibility();
+            SetMessageTypesFolderVisibility();
+            SetMessageWhitelistVisibility();
+            SetMessageWildcardWhitelistVisibility();
+        }
+
         private void SetAddFilesToProjectVisibility()
         {
             SetPropertyBrowsable(nameof(AddNewFilesToProject), AtLeastOneCreateFilePerSelected);
@@ -126,9 +146,24 @@ namespace DLaB.EarlyBoundGenerator.Settings
             SetPropertyBrowsable(nameof(CleanupCrmSvcUtilLocalOptionSets), !DeleteFilesFromOutputFolders);
         }
 
+        private void SetCreateOneFilePerMessageVisibility()
+        {
+            SetPropertyBrowsable(nameof(CreateOneFilePerMessage), GenerateMessages);
+        }
+        
         private void SetDeleteFilesFromOutputFoldersVisibility()
         {
             SetPropertyBrowsable(nameof(DeleteFilesFromOutputFolders), AtLeastOneCreateFilePerSelected);
+        }
+
+        private void SetGenerateMessageAttributeNameConstsVisibility()
+        {
+            SetPropertyBrowsable(nameof(GenerateMessageAttributeNameConsts), GenerateMessages);
+        }
+
+        private void SetGenerateOptionSetMetadataAttributeVisibility()
+        {
+            SetPropertyBrowsable(nameof(GenerateOptionSetMetadataAttribute), AddOptionSetMetadataAttribute);
         }
 
         private void SetGroupLocalOptionSetsByEntityVisibility()
@@ -138,12 +173,17 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         private void SetGroupMessageRequestWithResponseVisibility()
         {
-            SetPropertyBrowsable(nameof(GroupMessageRequestWithResponse), CreateOneFilePerAction);
+            SetPropertyBrowsable(nameof(GroupMessageRequestWithResponse), CreateOneFilePerMessage && GenerateMessages);
         }
 
         private void SetMakeReadonlyFieldsEditableVisibility()
         {
             SetPropertyBrowsable(nameof(MakeReadonlyFieldsEditable), MakeAllFieldsEditable);
+        }
+
+        private void SetMakeResponseMessagesEditableVisibility()
+        {
+            SetPropertyBrowsable(nameof(MakeResponseMessagesEditable), GenerateMessages);
         }
 
         private void SetProjectNameForEarlyBoundFilesVisibility()
@@ -161,19 +201,34 @@ namespace DLaB.EarlyBoundGenerator.Settings
         {
             SetPropertyBrowsable(nameof(ReplaceOptionSetPropertiesWithEnum), GenerateEnumProperties);
         }
-        
-        private void SetGenerateOptionSetMetadataAttributeVisibility()
+
+        private void SetMessageBlacklistVisibility()
         {
-            SetPropertyBrowsable(nameof(GenerateOptionSetMetadataAttribute), AddOptionSetMetadataAttribute);
+            SetPropertyBrowsable(nameof(MessageBlacklist), GenerateMessages);
         }
+
+        private void SetMessageTypesFolderVisibility()
+        {
+            SetPropertyBrowsable(nameof(MessageTypesFolder), GenerateMessages);
+        }
+
+        private void SetMessageWhitelistVisibility()
+        {
+            SetPropertyBrowsable(nameof(MessageWhitelist), GenerateMessages);
+        }
+
+        private void SetMessageWildcardWhitelistVisibility()
+        {
+            SetPropertyBrowsable(nameof(MessageWildcardWhitelist), GenerateMessages);
+        }
+
+        private const string NotImplemented = "{Not Implemented} ";
 
         private void SetPropertyBrowsable(string propertyName, bool browsable)
         {
             var prop = Descriptor.GetProperty(propertyName);
             prop.SetIsBrowsable(browsable);
         }
-
-        private const string NotImplemented = "{Not Implemented} ";
 
         private void SetPropertyDisabled(string propertyName, bool disabled)
         {

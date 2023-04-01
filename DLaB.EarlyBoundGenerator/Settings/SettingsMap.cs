@@ -414,11 +414,11 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         [DisplayName("Message Relative Output Path")]
         [Description("This is realtive to the Path of the Settings File.  If \"Create One File Per Message\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
         [Editor(typeof(PathEditor), typeof(UITypeEditor))]
-        [DynamicRelativePathEditor(nameof(SettingsPath), nameof(CreateOneFilePerAction), "C# files|*.cs", "cs", false)]
+        [DynamicRelativePathEditor(nameof(SettingsPath), nameof(CreateOneFilePerMessage), "C# files|*.cs", "cs", false)]
         public string MessageTypesFolder
         {
             get => Config.MessageTypesFolder;
-            set => Config.MessageTypesFolder = GetRelativePathToFileOrDirectory(value, CreateOneFilePerAction, "Messages.cs"); //TODO IS THIS RIGHT?  
+            set => Config.MessageTypesFolder = GetRelativePathToFileOrDirectory(value, CreateOneFilePerMessage, "Messages.cs"); //TODO IS THIS RIGHT?  
         }
 
         [Category("3 - Messages")]
@@ -445,7 +445,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         [Category("3 - Messages")]
         [DisplayName("Create One File Per Message")]
         [Description("Specifies that each Message class should be outputted to it's own file rather than a single file with all messages.")]
-        public bool CreateOneFilePerAction
+        public bool CreateOneFilePerMessage
         {
             get => Config.ExtensionConfig.CreateOneFilePerAction;
             set => Config.ExtensionConfig.CreateOneFilePerAction = value;
@@ -454,7 +454,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         [Category("3 - Messages")]
         [DisplayName("Generate Message Attribute Name Constants")]
         [Description("Adds a Static Class to each Message class that contains the Logical Names of all properties for the Message.")]
-        public bool GenerateActionAttributeNameConsts
+        public bool GenerateMessageAttributeNameConsts
         {
             get => Config.ExtensionConfig.GenerateActionAttributeNameConsts;
             set => Config.ExtensionConfig.GenerateActionAttributeNameConsts = value;
@@ -481,7 +481,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         [Category("3 - Messages")]
         [DisplayName("Make Response Messages Editable")]
         [Description("Specifies that the properties of Response Messages should be editable.")]
-        public bool MakeResponseActionsEditable
+        public bool MakeResponseMessagesEditable
         {
             get => Config.ExtensionConfig.MakeResponseActionsEditable;
             set => Config.ExtensionConfig.MakeResponseActionsEditable = value;
@@ -672,7 +672,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         /// </summary>
         [Browsable(false)]
         private bool AtLeastOneCreateFilePerSelected =>
-            CreateOneFilePerAction
+            CreateOneFilePerMessage
             || CreateOneFilePerEntity
             || CreateOneFilePerOptionSet;
 

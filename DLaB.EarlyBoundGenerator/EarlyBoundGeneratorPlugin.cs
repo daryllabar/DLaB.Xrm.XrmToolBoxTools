@@ -142,7 +142,7 @@ namespace DLaB.EarlyBoundGenerator
             var isValid =
                 IsValidPath(SettingsMap.EntityTypesFolder, SettingsMap.CreateOneFilePerEntity, "Entities") &&
                 IsValidPath(SettingsMap.OptionSetsTypesFolder, SettingsMap.CreateOneFilePerOptionSet, "OptionSets") &&
-                IsValidPath(SettingsMap.MessageTypesFolder, SettingsMap.CreateOneFilePerAction, "Actions") &&
+                IsValidPath(SettingsMap.MessageTypesFolder, SettingsMap.CreateOneFilePerMessage, "Actions") &&
                 IsNamespaceDifferentThanContext();
 
             return isValid;
