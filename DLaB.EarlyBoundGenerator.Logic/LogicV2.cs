@@ -4,11 +4,9 @@ using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.Xrm.Sdk;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Speech.Synthesis;
-using System.Text;
 using System.Text.Json;
 
 namespace DLaB.EarlyBoundGenerator
@@ -20,7 +18,6 @@ namespace DLaB.EarlyBoundGenerator
     {
         private readonly object _speakToken = new object();
         private EarlyBoundGeneratorConfig EarlyBoundGeneratorConfig { get; }
-        private bool _useInteractiveMode;
         private static readonly HashSet<string> ModelBuilderSwitches = new HashSet<string>(new[]
         {
             "emitfieldsclasses",
@@ -58,9 +55,9 @@ namespace DLaB.EarlyBoundGenerator
         }
 
         /// <summary>
-        /// Creates the entities, and optionally global Option Sets and Messages.
+        /// Creates the entities, Option Sets and Messages.
         /// </summary>
-        public void Create(IOrganizationService service)
+        public bool Create(IOrganizationService service)
         {
             var currentOut = Console.Out;
             var logger = new LoggerTextWriter();
@@ -71,17 +68,20 @@ namespace DLaB.EarlyBoundGenerator
                 var firstFile = Directory.GetFiles(parameters.OutDirectory).FirstOrDefault();
                 if (!string.IsNullOrWhiteSpace(firstFile) && !AbleToMakeFileAccessible(firstFile))
                 {
-                    return;
+                    return false;
                 }
                 var runner = new ProcessModelInvoker(GetParameters(parameters));
                 var result = runner.Invoke(service);
                 if (result == 0)
                 {
                     Speak("Early Bound Generation Completed Successfully");
+                    return true;
                 }
-                else{
+                else
+                {
                     Logger.Show("An error occurred!", " An error when calling ProcessModelInvoker.Invoke.  Result: " + result);
                     Speak("Early Bound Generation Errored");
+                    return false;
                 }
             }
             finally
@@ -301,7 +301,7 @@ namespace DLaB.EarlyBoundGenerator
                 }
 
                 File.Delete(path);
-                File.WriteAllText(path, "{}");
+                File.WriteAllText(path, @"{}");
                 UpdateBuilderSettingsJson(earlyBoundGeneratorConfig, false);
             }
         }
