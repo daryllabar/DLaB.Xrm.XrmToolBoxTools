@@ -102,7 +102,7 @@ namespace DLaB.ModelBuilderExtensions
         /// <typeparam name="T"></typeparam>
         /// <param name="type"></param>
         /// <returns></returns>
-        public static IEnumerable<T> GetMembers<T>(this CodeTypeDeclaration type) where T: CodeTypeDeclaration
+        public static IEnumerable<T> GetMembers<T>(this CodeTypeDeclaration type) where T: CodeTypeMember
         {
             for (var i = 0; i < type.Members.Count; ++i)
             {

@@ -86,9 +86,25 @@ namespace DLaB.ModelBuilderExtensions
                         type.TypeAttributes = (type.TypeAttributes & ~TypeAttributes.VisibilityMask) | TypeAttributes.NestedAssembly;
                     }
                 }
+
+                MakeMemberNamesUnique(codeUnit);
             }
 
             Trace.TraceInformation("DLaB.ModelBuilderExtensions.CustomizeCodeDomService.CustomizeCodeDom Skipping processing of {0}!", string.Join(", ", codeUnit.GetTypes().Select(t => t.Name)));
+        }
+
+        private static void MakeMemberNamesUnique(CodeCompileUnit codeUnit)
+        {
+            foreach (var type in codeUnit.GetTypes())
+            {
+                foreach (var member in type.GetMembers<CodeTypeMember>())
+                {
+                    if (member.Name == type.Name)
+                    {
+                        member.Name += "__Member";
+                    }
+                }
+            }
         }
 
         private void ProcessServiceContext(CodeCompileUnit codeUnit, IServiceProvider services)
