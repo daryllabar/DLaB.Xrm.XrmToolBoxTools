@@ -116,7 +116,6 @@ namespace DLaB.EarlyBoundGenerator.Settings
             var disabledProperties = new[]
             {
                 nameof(MessageWildcardWhitelist),
-                nameof(GenerateEntityTypeCode),
                 nameof(GenerateEnumProperties),
                 nameof(GenerateOptionSetMetadataAttribute),
                 nameof(UnmappedProperties),
