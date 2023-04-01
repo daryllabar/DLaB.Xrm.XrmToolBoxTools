@@ -251,8 +251,7 @@ namespace DLaB.ModelBuilderExtensions
             }
 
             var baseType = type.BaseTypes[0].BaseType;
-            return baseType == "Microsoft.Xrm.Client.CrmOrganizationServiceContext"
-                   || baseType == "Microsoft.Xrm.Sdk.Client.OrganizationServiceContext";
+            return baseType == "Microsoft.Xrm.Sdk.Client.OrganizationServiceContext";
         }
 
         /// <summary>

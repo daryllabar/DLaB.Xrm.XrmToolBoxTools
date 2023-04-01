@@ -567,8 +567,7 @@ namespace DLaB.ModelBuilderExtensions
         //                if (line.TrimStart().StartsWith(codeUnitStartsWith))
         //                {
         //                    name = GetName(codeUnit, line);
-        //                    if (line.Contains(": Microsoft.Xrm.Sdk.Client.OrganizationServiceContext") || // Standard
-        //                        line.Contains(": Microsoft.Xrm.Client.CrmOrganizationServiceContext")) // Xrm Client
+        //                    if (line.Contains(": Microsoft.Xrm.Sdk.Client.OrganizationServiceContext") // Standard
         //                    {
         //                        // Put Created Via Command Line Back in
         //                        header.Insert(header.IndexOf(@"// </auto-generated>")+1, commandLine);
