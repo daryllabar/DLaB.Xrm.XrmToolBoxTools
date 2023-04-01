@@ -13,11 +13,15 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
     {
         public bool AddOptionSetMetadataAttribute { get => DLaBSettings.AddOptionSetMetadataAttribute; set => DLaBSettings.AddOptionSetMetadataAttribute = value; }
 
+        #region Constructors
+
         public CustomizeCodeDomService(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         { }
 
         public CustomizeCodeDomService(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
         { }
+
+        #endregion Constructors
 
         /// <summary>
         /// Remove the unnecessary classes that we generated for entities. 
