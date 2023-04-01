@@ -11,11 +11,6 @@ namespace DLaB.ModelBuilderExtensions
 
         private bool EnableFileDataType { get => DLaBSettings.EnableFileDataType; set => DLaBSettings.EnableFileDataType = value; }
 
-        /// <summary>
-        /// Contains Meta Data for entities, key'd by logical name
-        /// </summary>
-        public Dictionary<string, EntityMetadata> EntityMetadata { get; set; } = new Dictionary<string, EntityMetadata>();
-
         public bool GenerateEntityRelationships { get => DLaBSettings.GenerateEntityRelationships; set => DLaBSettings.GenerateEntityRelationships = value; }
 
         public CodeWriterFilterService(ICodeWriterFilterService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
@@ -69,11 +64,7 @@ namespace DLaB.ModelBuilderExtensions
 
         public bool GenerateRelationship(RelationshipMetadataBase relationshipMetadata, EntityMetadata otherEntityMetadata, IServiceProvider services)
         {
-            if (!GenerateEntityRelationships)
-            {
-                return false;
-            }
-            return DefaultService.GenerateRelationship(relationshipMetadata, otherEntityMetadata, services);
+            return GenerateEntityRelationships && DefaultService.GenerateRelationship(relationshipMetadata, otherEntityMetadata, services);
         }
 
         public bool GenerateOptionSet(OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
