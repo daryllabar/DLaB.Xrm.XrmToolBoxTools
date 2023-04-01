@@ -44,8 +44,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
         public string BaseEntityName { get => DLaBSettings.BaseEntityClassName; set => DLaBSettings.BaseEntityClassName = value; }
         public string OrgEntityName { get => DLaBSettings.OrgEntityClassName; set => DLaBSettings.OrgEntityClassName = value; }
-        public string UserEntityName { get => DLaBSettings.UserEntityClassName; set => DLaBSettings.UserEntityClassName = value; } 
-        private bool MultiSelectCreated { get; }
+        public string UserEntityName { get => DLaBSettings.UserEntityClassName; set => DLaBSettings.UserEntityClassName = value; }
 
         public EntityBaseClassGenerator(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters) : base (defaultService, parameters)
         {
@@ -101,10 +100,6 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
             entityClass.Members.AddRange(type.Members.Cast<CodeTypeMember>().Where(p => BaseEntityMembers.Contains(p.Name)).Select(GetCodeTypeMember).ToArray());
 
-            if (ConfigHelper.Settings.DLaBModelBuilder.GenerateEnumProperties)
-            {
-                entityClass.Members.AddRange(EnumPropertyGenerator.CreateGetEnumMethods(MultiSelectCreated));
-            }
             return entityClass;
         }
 
