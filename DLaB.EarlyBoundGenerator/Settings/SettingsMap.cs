@@ -172,7 +172,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
 
         [Category("2 - Entities")]
         [DisplayName("Generate Enum Properties")]
-        [Description("Adds an additional property to each early bound entity class for each optionset property it normally contains, typed to the appropriate Enum, rather than OptionSet, with Enum postfixed to the existing optionset name.")]
+        [Description("OptionSet attributes are generated as enums rather than Option Sets.  Default is to replace the OptionSet property with a typed enum version, but they can also be generated as an additional property using the \"2 - Entities - Replace Option Set Properties with Enum\" setting.")]
         public bool GenerateEnumProperties
         {
             get => Config.ExtensionConfig.GenerateEnumProperties;
