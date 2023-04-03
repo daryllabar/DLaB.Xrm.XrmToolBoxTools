@@ -274,7 +274,6 @@
     <Content Include="bin\coretools\System.Diagnostics.DiagnosticSource.dll" />
     <Content Include="bin\coretools\System.Text.Json.dll" />
     <Content Include="bin\coretools\System.ValueTuple.dll" />
-    <Content Include="Metadata\2016.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />

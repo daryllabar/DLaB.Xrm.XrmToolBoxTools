@@ -10,7 +10,7 @@
     "builderSettingsJsonRelativePath": "builderSettings.json",
     "camelCaseClassNames": false,
     "camelCaseMemberNames": false,
-    "camelCaseNamesDictionaryRelativePath": "DLaB.EarlyBoundGenerator\\DLaB.Dictionary.txt",
+    "camelCaseNamesDictionaryRelativePath": "DLaB.EarlyBoundGeneratorV2\\DLaB.Dictionary.txt",
     "cleanupCrmSvcUtilLocalOptionSets": false,
     "createOneFilePerMessage": false,
     "createOneFilePerEntity": false,
@@ -76,6 +76,7 @@
       "UserPuid",
       "VoiceMail"
     ],
+    "transliterationRelativePath": "DLaB.EarlyBoundGeneratorV2\\alphabets",
     "useLogicalNames": false,
     "useCrmSvcUtilStateEnumNamingConvention": false,
     "useTfsToCheckoutFiles": false,

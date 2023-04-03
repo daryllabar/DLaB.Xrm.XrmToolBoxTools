@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Json;
@@ -8,33 +7,38 @@ using Microsoft.Xrm.Sdk;
 
 namespace DLaB.ModelBuilderExtensions.OptionSet.Transliteration
 {
-    public static class TransliterationService
+    public class TransliterationService
     {
-        private static readonly string Path = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName), "alphabets");
+        private DLaBModelBuilder DLaBSettings { get; set; }
+        public string TransliterationPath { get => DLaBSettings.TransliterationPath; set => DLaBSettings.TransliterationPath = value; }
 
-        private static readonly List<TransliterationAlphabet> Alphabets = new List<TransliterationAlphabet>();
-        private static readonly Lazy<HashSet<int>> LazyAvailableCodes =
-            new Lazy<HashSet<int>>(() => GetAvailableCodes());
+        private readonly List<TransliterationAlphabet> Alphabets = new List<TransliterationAlphabet>();
 
-        private static HashSet<int> GetAvailableCodes()
+        private HashSet<int> _availableCodes;
+        public HashSet<int> AvailableCodes => _availableCodes ?? (_availableCodes = GetAvailableCodes());
+
+        public TransliterationService(DLaBModelBuilder settings)
         {
-            if (!Directory.Exists(Path))
+            DLaBSettings = settings;
+        }
+
+        private HashSet<int> GetAvailableCodes()
+        {
+            if (!Directory.Exists(TransliterationPath))
             {
                 return new HashSet<int>();
             }
 
             return new HashSet<int>(
-                Directory.GetFiles(Path)
-                         .Select(System.IO.Path.GetFileName)
-                         .Select(x => x.Split('.')[0])
-                         .Select(int.Parse));
+                Directory.GetFiles(TransliterationPath)
+                    .Select(Path.GetFileName)
+                    .Select(x => x.Split('.')[0])
+                    .Select(int.Parse));
         }
 
-        public static HashSet<int> AvailableCodes { get; } = LazyAvailableCodes.Value;
+        public string Transliterate(LocalizedLabel label) { return Transliterate(label.LanguageCode, label.Label); }
 
-        public static string Transliterate(LocalizedLabel label) { return Transliterate(label.LanguageCode, label.Label); }
-
-        public static string Transliterate(int languageCode, string label)
+        public string Transliterate(int languageCode, string label)
         {
             var alphabet = 
                 Alphabets.SingleOrDefault(x => x.LanguageCode == languageCode) ?? LoadAlphabet(languageCode);
@@ -42,12 +46,12 @@ namespace DLaB.ModelBuilderExtensions.OptionSet.Transliteration
             return alphabet.Transliterate(label);
         }
 
-        public static bool HasCode(int languageCode) { return AvailableCodes.Contains(languageCode); }
+        public bool HasCode(int languageCode) { return AvailableCodes.Contains(languageCode); }
 
-        private static TransliterationAlphabet LoadAlphabet(int languageCode)
+        private TransliterationAlphabet LoadAlphabet(int languageCode)
         {
             var serializer = new DataContractJsonSerializer(typeof(AlphabetPoco));
-            var path = System.IO.Path.Combine(Path, languageCode + ".json");
+            var path = Path.Combine(TransliterationPath, languageCode + ".json");
             AlphabetPoco alphabetJson;
             using (var stream = GenerateStreamFromString(File.ReadAllText(path)))
             {
@@ -76,14 +80,18 @@ namespace DLaB.ModelBuilderExtensions.OptionSet.Transliteration
             return alphabet;
         }
 
-        public static Stream GenerateStreamFromString(string s)
+        private Stream GenerateStreamFromString(string s)
         {
-            MemoryStream stream = new MemoryStream();
-            StreamWriter writer = new StreamWriter(stream);
-            writer.Write(s);
-            writer.Flush();
-            stream.Position = 0;
-            return stream;
+            using (var stream = new MemoryStream())
+            {
+                using (var writer = new StreamWriter(stream))
+                {
+                    writer.Write(s);
+                    writer.Flush();
+                    stream.Position = 0;
+                    return stream;
+                }
+            }
         }
     }
 }

@@ -52,17 +52,7 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("camelCaseNamesDictionaryRelativePath")]
         public string CamelCaseNamesDictionaryPath
         {
-            get
-            {
-                if (string.IsNullOrWhiteSpace(_camelCaseNamesDictionaryRelativePath))
-                {
-                    return _camelCaseNamesDictionaryRelativePath;
-                }
-
-                return Path.IsPathRooted(_camelCaseNamesDictionaryRelativePath)
-                    ? _camelCaseNamesDictionaryRelativePath
-                    : Path.Combine(XrmToolBoxPluginPath ?? Directory.GetCurrentDirectory(), _camelCaseNamesDictionaryRelativePath);
-            }
+            get => ConvertRelativePathToAbsolute(_camelCaseNamesDictionaryRelativePath);
             set => _camelCaseNamesDictionaryRelativePath = value;
         }
 
@@ -225,6 +215,14 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("tokenCapitalizationOverrides")]
         public List<string> TokenCapitalizationOverrides { get; set; }
 
+        private string _transliterationRelativePath;
+        [JsonPropertyName("transliterationRelativePath")]
+        public string TransliterationPath
+        {
+            get => ConvertRelativePathToAbsolute(_transliterationRelativePath);
+            set => _transliterationRelativePath = value;
+        }
+
         /// <summary>
         /// No Config
         /// </summary>
@@ -287,6 +285,18 @@ namespace DLaB.ModelBuilderExtensions
             TokenCapitalizationOverrides = new List<string>();
             UserEntityClassName = "UserOwnedEntity";
             ValidCSharpNameRegEx = @"[^a-zA-Z0-9_]";
+        }
+
+        private string ConvertRelativePathToAbsolute(string path)
+        {
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                return path;
+            }
+
+            return Path.IsPathRooted(path)
+                ? path
+                : Path.Combine(XrmToolBoxPluginPath ?? Directory.GetCurrentDirectory(), path);
         }
     }
 

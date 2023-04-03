@@ -29,6 +29,8 @@ namespace DLaB.ModelBuilderExtensions
 
         private HashSet<string> _entityNames;
 
+        private TransliterationService TransliterationService { get; set; }
+
         /// <summary>
         /// This field keeps track of options with the same name and the values that have been defined.  Internal Dictionary Key is Name + "_" + Value
         /// </summary>
@@ -36,10 +38,12 @@ namespace DLaB.ModelBuilderExtensions
 
         public NamingService(INamingService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
+            TransliterationService = new TransliterationService(DLaBSettings);
         }
 
         public NamingService(INamingService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
         {
+            TransliterationService = new TransliterationService(DLaBSettings);
         }
 
         public HashSet<string> GetEntityNames(IServiceProvider services)

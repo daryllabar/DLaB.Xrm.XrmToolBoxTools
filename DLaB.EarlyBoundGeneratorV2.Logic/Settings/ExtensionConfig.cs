@@ -221,6 +221,10 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         /// </summary>
         public string TokenCapitalizationOverrides { get; set; }
         /// <summary>
+        /// The path relative, to the XrmToolBox Plugins directory, to a folder containing the language code json files to be used for transliteration.
+        /// </summary>
+        public string TransliterationRelativePath { get; set; }
+        /// <summary>
         /// The CrmSvcUtil names entity statecode enums as "{EntityName}State", but the PAC ModelBuilder names them the same way all other enums are generated "{EntityName}_StateCode".  This allows for maintaining backwards compability.
         /// </summary>
         public bool UseCrmSvcUtilStateEnumNamingConvention { get; set; }
@@ -316,6 +320,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 ReplaceOptionSetPropertiesWithEnum = true,
                 SerializeMetadata = false,
                 TokenCapitalizationOverrides = "AccessTeam|ActiveState|AssignedTo|BusinessAs|CardUci|DefaultOnCase|EmailAnd|EmailSend|EmailSender|FeatureSet|FedEx|ForAn|Geronimo|IsMsTeams|IsPaiEnabled|IsSopIntegration|MsDynCe_|MsDynMkt_|MsDyUsd|O365Admin|OcSkillIdentMlModel|OnHold|OrderId|OwnerOnAssign|PauseStates|PredictiveAddress|PartiesOnEmail|ParticipatesIn|SentOn|SettingsAndSummary|SlaId|SlaKpi|SyncOptIn|Timeout|TradeShow|UserPuid|VoiceMail",
+                TransliterationRelativePath = @"DLaB.EarlyBoundGeneratorV2\alphabets",
                 UseCrmSvcUtilStateEnumNamingConvention = false,
                 UseLogicalNames = false,
                 UseTfsToCheckoutFiles = false,
@@ -378,6 +383,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             ReplaceOptionSetPropertiesWithEnum = poco.ReplaceOptionSetPropertiesWithEnum ?? ReplaceOptionSetPropertiesWithEnum;
             SerializeMetadata = poco.SerializeMetadata ?? SerializeMetadata;
             TokenCapitalizationOverrides = GetValueOrDefault(poco.TokenCapitalizationOverrides, TokenCapitalizationOverrides);
+            TransliterationRelativePath = GetValueOrDefault(poco.TransliterationRelativePath, TransliterationRelativePath);
             UseCrmSvcUtilStateEnumNamingConvention = poco.UseCrmSvcUtilStateEnumNamingConvention ?? UseCrmSvcUtilStateEnumNamingConvention;
             UseLogicalNames = poco.UseLogicalNames ?? UseLogicalNames;
             UseTfsToCheckoutFiles = poco.UseTfsToCheckoutFiles ?? UseTfsToCheckoutFiles;
@@ -437,6 +443,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddProperty("ReplaceEnumPropertiesWithOptionSet", !ReplaceOptionSetPropertiesWithEnum);
             writer.AddProperty(nameof(SerializeMetadata), SerializeMetadata);
             writer.AddPropertyArray(nameof(TokenCapitalizationOverrides), TokenCapitalizationOverrides);
+            writer.AddProperty(nameof(TransliterationRelativePath), TransliterationRelativePath);
             writer.AddProperty(nameof(UseLogicalNames), UseLogicalNames);
             writer.AddProperty(nameof(UseCrmSvcUtilStateEnumNamingConvention), UseCrmSvcUtilStateEnumNamingConvention);
             writer.AddProperty(nameof(UseTfsToCheckoutFiles), UseTfsToCheckoutFiles);
@@ -545,6 +552,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings.POCO
         public bool? RemoveRuntimeVersionComment { get; set; }
         public bool? SerializeMetadata { get; set; }
         public string TokenCapitalizationOverrides { get; set; }
+        public string TransliterationRelativePath { get; set; }
         public bool? UseCrmSvcUtilStateEnumNamingConvention { get; set; }
         public bool? UseLogicalNames { get; set; }
         public bool? UseTfsToCheckoutFiles { get; set; }
