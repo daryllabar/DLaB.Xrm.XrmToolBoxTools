@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>DLaB.Xrm.EarlyBoundGenerator.Api</id>
+    <version>1.2022.9.22</version>
+    <title>Early Bound Generator Api</title>
+    <authors>Daryl LaBar</authors>
+    <owners>Daryl LaBar</owners>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
+    <icon>images\DLaB_Dynamics_Logo_Square_32x32.png</icon>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses CrmSvcUtil from the SDK.</description>
+    <releaseNotes>V1.2022.9.22
+Fix for Object Reference Not Set to Instance of Object after using clientid/secret connection? #333
+
+V1.2022.5.3
+Fix for Unable to run from Google Drive #317
+Fix for Deleting files Deletes from Temporary Folder, not output folder #318
+	    
+V1.2022.4.3
+Fix Action.cs is added to the .csroject file, even if it was deleted by CustomCodeGenerationService.WriteInternal #313
+
+V1.2022.1.4
+Fix for Missing System.Text.Json.dll in DLaB.Xrm.EarlyBoundGenerator.Api #30
+
+V1.2021.12.12
+Added option to generate attributes using logical names #304
+      
+V1.2021.10.6
+Add N:N Relationships to Fields Constants #258
+Fix for Global Option Sets with the same name as the entity causes conflicts #300
+    </releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>CrmSvcUtil Xrm EarlyBound Generator</tags>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Configuration" />
+      <frameworkAssembly assemblyName="System.Runtime.Serialization" />
+    </frameworkAssemblies>
+    <contentFiles>
+      <files include="any\any\DLaB.EarlyBoundGenerator\**\*.*" buildAction="None" copyToOutput="true" />
+    </contentFiles>
+  </metadata>
+  <files>
+    <!-- lib -->
+    <file src="bin\Release\DLaB.EarlyBoundGenerator.Api.dll" target="lib\net462" />
+    <!-- content -->
+    <file src="bin\Release\DLaB.EarlyBoundGenerator\*.*" target="content\bin\DLaB.EarlyBoundGenerator" />
+    <file src="bin\Release\DLaB.EarlyBoundGenerator\alphabets\*.*" target="content\bin\DLaB.EarlyBoundGenerator\alphabets" />
+    <!-- contentFiles -->
+    <file src="bin\Release\DLaB.EarlyBoundGenerator\*.*" target="contentFiles\any\any\DLaB.EarlyBoundGenerator" />
+    <file src="bin\Release\DLaB.EarlyBoundGenerator\alphabets\*.*" target="contentFiles\any\any\DLaB.EarlyBoundGenerator\alphabets" />
+    <!-- images -->
+    <file src="bin\Release\Images\DLaB_Dynamics_Logo_Square_32x32.png" target="images\" />
+  </files>
+</package>
