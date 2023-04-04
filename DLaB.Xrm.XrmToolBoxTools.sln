@@ -222,6 +222,9 @@ Global
 		DLaB.Xrm.Entities\DLaB.Xrm.Entities.projitems*{df755d05-ecad-433c-ad2c-01649b27f238}*SharedItemsImports = 4
 		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{df755d05-ecad-433c-ad2c-01649b27f238}*SharedItemsImports = 4
 		DLaB.EarlyBoundGeneratorV2.Logic\DLaB.EarlyBoundGeneratorV2.Logic.projitems*{f199a4a0-bd4e-4296-b87c-a5e3148e311b}*SharedItemsImports = 13
+		DLaB.Log\DLaB.Log.projitems*{fcb8a4e4-622b-413a-a531-b612e5f1436c}*SharedItemsImports = 4
+		DLaB.Xrm.Entities\DLaB.Xrm.Entities.projitems*{fcb8a4e4-622b-413a-a531-b612e5f1436c}*SharedItemsImports = 4
+		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{fcb8a4e4-622b-413a-a531-b612e5f1436c}*SharedItemsImports = 4
 		DLaB.EarlyBoundGenerator.Logic\DLaB.EarlyBoundGenerator.Logic.projitems*{fe8b91e7-c778-4712-bbf0-537736442b51}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal

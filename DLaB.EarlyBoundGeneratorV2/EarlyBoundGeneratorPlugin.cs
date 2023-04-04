@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Windows.Forms;
 using DLaB.EarlyBoundGeneratorV2.Settings;
 using DLaB.Log;
@@ -78,12 +79,7 @@ namespace DLaB.EarlyBoundGeneratorV2
             try
             {
                 Logger.AddDetail("Loading settings from " + settingsPath);
-                Settings = EarlyBoundGeneratorConfig.Load(settingsPath);
-                Settings.ExtensionConfig.XrmToolBoxPluginPath = Paths.PluginsPath;
-                SettingsMap = new SettingsMap(this, Settings){SettingsPath = settingsPath};
-                PropertiesGrid.SelectedObject = SettingsMap;
-                HideUnusedCategories();
-                SkipSaveSettings = false;
+                HydrateUiFromSettings(EarlyBoundGeneratorConfig.Load(settingsPath), settingsPath);
             }
             catch (Exception ex)
             {
@@ -98,6 +94,34 @@ namespace DLaB.EarlyBoundGeneratorV2
                 {
                     SkipSaveSettings = true;
                 }
+            }
+        }
+
+        private void HydrateUiFromSettings(EarlyBoundGeneratorConfig config, string settingsPath)
+        {
+            Settings = config;
+            Settings.ExtensionConfig.XrmToolBoxPluginPath = Paths.PluginsPath;
+            SettingsMap = new SettingsMap(this, Settings) { SettingsPath = settingsPath };
+            PropertiesGrid.SelectedObject = SettingsMap;
+            HideUnusedCategories();
+            SkipSaveSettings = false;
+
+            if (settingsPath.EndsWith(@"MscrmTools\XrmToolBox\Settings\DLaB.EarlyBoundGeneratorV2.DefaultSettings.xml"))
+            {
+                SystemSounds.Beep.Play();
+                SystemSounds.Beep.Play();
+                Logger.AddDetail(@"******************************
+* Default Settings Detected! *
+******************************
+Best practice is to save a copy of the default settings into the same directory as where the files will be generated, and to check it into source control.
+
+This allows for the following:
+  1. Changes to how the files are configured will be checked into control, allowing tracking of what changes have been made, and merging of users with more than one change.
+  2. Allows for anyone to regenerate the files in the identical manner.
+  3. Most file paths are relative to the settings file, this includes the ability to automatically add/remove files to the C# project/shared project file.
+
+Please consider clicking the save button in the top right to save the settings where the classes are being generated in a source control.
+");
             }
         }
 
@@ -323,6 +347,16 @@ namespace DLaB.EarlyBoundGeneratorV2
             {
                 ValidatedSettingsPath();
             }
+        }
+
+        private void BtnRefreshSettings_Click(object sender, EventArgs e)
+        {
+            HydrateUiFromSettings(ConnectionSettings.FullSettingsPath);
+        }
+
+        private void BtnResetSettings_Click(object sender, EventArgs e)
+        {
+            HydrateUiFromSettings(EarlyBoundGeneratorConfig.GetDefault(), ConnectionSettings.FullSettingsPath);
         }
 
         private void BtnSaveSettingsPathDialog_Click(object sender, EventArgs e)
