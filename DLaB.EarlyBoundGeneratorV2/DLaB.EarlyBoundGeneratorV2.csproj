@@ -245,13 +245,16 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
-      <HintPath>..\packages\DockPanelSuite.3.1.0\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=3.0.6.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <HintPath>..\packages\DockPanelSuite.3.0.6\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
     </Reference>
-    <Reference Include="WeifenLuo.WinFormsUI.Docking.ThemeVS2015, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
-      <HintPath>..\packages\DockPanelSuite.ThemeVS2015.3.1.0\lib\net40\WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll</HintPath>
+    <Reference Include="WeifenLuo.WinFormsUI.Docking.ThemeVS2015, Version=3.0.6.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <HintPath>..\packages\DockPanelSuite.ThemeVS2015.3.0.6\lib\net40\WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
+    <Reference Include="xrmtb.XrmToolBox.Controls, Version=2.2.10.0, Culture=neutral, PublicKeyToken=34def2c40500c62c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xrmtb.XrmToolBox.Controls.2.2.10\lib\net47\xrmtb.XrmToolBox.Controls.dll</HintPath>
+    </Reference>
     <Reference Include="XrmToolBox, Version=1.2022.10.58, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\XrmToolBoxPackage.1.2022.10.58\lib\net462\XrmToolBox.exe</HintPath>
     </Reference>
@@ -287,6 +290,12 @@
     <Compile Include="Settings\ConnectionSettings.cs" />
     <Compile Include="Settings\SettingsMap.cs" />
     <Compile Include="Settings\SettingsMapDescriptor.cs" />
+    <Compile Include="SpecifyAttributesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpecifyAttributesDialog.Designer.cs">
+      <DependentUpon>SpecifyAttributesDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="SpecifyStringValuesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -320,6 +329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AttributesToEnumMapperDialog.resx">
       <DependentUpon>AttributesToEnumMapperDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpecifyAttributesDialog.resx">
+      <DependentUpon>SpecifyAttributesDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SpecifyStringValuesDialog.resx">
       <DependentUpon>SpecifyStringValuesDialog.cs</DependentUpon>
@@ -358,7 +370,7 @@ SET myCmd= "$(SolutionDir)References\NuGetContentInstaller.exe" "$(SolutionDir) 
 echo %25myCmd%25
 %25myCmd%25
 
-if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.exe" "$(ProjectDir)Properties\AssemblyInfo.cs"
+if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.exe"  "$(ProjectDir)Properties\AssemblyInfo.cs"
 </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
@@ -366,7 +378,7 @@ if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.
 del "$(TargetDir)IlRepackLog.txt"
 
 REM **** Run IlMerge ****
-"$(ProjectDir)..\packages\ILRepack.2.0.18\tools\ILRepack.exe" /log:"$(TargetDir)IlRepackLog.txt" /targetplatform:"v4,c:\windows\Microsoft.NET\Framework\v4.0.30319" /out:"$(TargetPath)" "$(TargetPath)" "$(TargetDir)Microsoft.ApplicationInsights.dll" "$(TargetDir)Microsoft.AI.ServerTelemetryChannel.dll" "$(TargetDir)Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" "$(TargetDir)DLaB.ModelBuilderExtensions.dll"
+"$(ProjectDir)..\packages\ILRepack.2.0.18\tools\ILRepack.exe" /log:"$(TargetDir)IlRepackLog.txt" /targetplatform:"v4,c:\windows\Microsoft.NET\Framework\v4.0.30319" /out:"$(TargetPath)" "$(TargetPath)" "$(TargetDir)Microsoft.ApplicationInsights.dll" "$(TargetDir)Microsoft.AI.ServerTelemetryChannel.dll" "$(TargetDir)xrmtb.XrmToolBox.Controls.dll" "$(TargetDir)Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" "$(TargetDir)DLaB.ModelBuilderExtensions.dll"
 
 
 DEL /Q "$(TargetDir)MscrmTools\XrmToolBox\Plugins\*.*"

@@ -47,6 +47,7 @@ namespace DLaB.EarlyBoundGeneratorV2
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -98,7 +99,7 @@ namespace DLaB.EarlyBoundGeneratorV2
             this.BtnOpenSettingsPathDialog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.helpProvider1.SetHelpString(this.BtnOpenSettingsPathDialog, "Overrides Capitalization of Entity Attributes");
             this.BtnOpenSettingsPathDialog.Image = ((System.Drawing.Image)(resources.GetObject("BtnOpenSettingsPathDialog.Image")));
-            this.BtnOpenSettingsPathDialog.Location = new System.Drawing.Point(779, 4);
+            this.BtnOpenSettingsPathDialog.Location = new System.Drawing.Point(776, 4);
             this.BtnOpenSettingsPathDialog.Margin = new System.Windows.Forms.Padding(6);
             this.BtnOpenSettingsPathDialog.Name = "BtnOpenSettingsPathDialog";
             this.helpProvider1.SetShowHelp(this.BtnOpenSettingsPathDialog, true);
@@ -115,7 +116,7 @@ namespace DLaB.EarlyBoundGeneratorV2
             this.TxtSettingsPath.Location = new System.Drawing.Point(92, 15);
             this.TxtSettingsPath.Margin = new System.Windows.Forms.Padding(6);
             this.TxtSettingsPath.Name = "TxtSettingsPath";
-            this.TxtSettingsPath.Size = new System.Drawing.Size(551, 20);
+            this.TxtSettingsPath.Size = new System.Drawing.Size(548, 20);
             this.TxtSettingsPath.TabIndex = 13;
             this.TxtSettingsPath.Leave += new System.EventHandler(this.TxtSettingsPath_Leave);
             // 
@@ -124,7 +125,7 @@ namespace DLaB.EarlyBoundGeneratorV2
             this.BtnSaveSettingsPathDialog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.helpProvider1.SetHelpString(this.BtnSaveSettingsPathDialog, "Overrides Capitalization of Entity Attributes");
             this.BtnSaveSettingsPathDialog.Image = ((System.Drawing.Image)(resources.GetObject("BtnSaveSettingsPathDialog.Image")));
-            this.BtnSaveSettingsPathDialog.Location = new System.Drawing.Point(841, 4);
+            this.BtnSaveSettingsPathDialog.Location = new System.Drawing.Point(838, 4);
             this.BtnSaveSettingsPathDialog.Margin = new System.Windows.Forms.Padding(6);
             this.BtnSaveSettingsPathDialog.Name = "BtnSaveSettingsPathDialog";
             this.helpProvider1.SetShowHelp(this.BtnSaveSettingsPathDialog, true);
@@ -139,7 +140,7 @@ namespace DLaB.EarlyBoundGeneratorV2
             this.BtnReloadSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.helpProvider1.SetHelpString(this.BtnReloadSettings, "Overrides Capitalization of Entity Attributes");
             this.BtnReloadSettings.Image = ((System.Drawing.Image)(resources.GetObject("BtnReloadSettings.Image")));
-            this.BtnReloadSettings.Location = new System.Drawing.Point(717, 6);
+            this.BtnReloadSettings.Location = new System.Drawing.Point(714, 6);
             this.BtnReloadSettings.Margin = new System.Windows.Forms.Padding(6);
             this.BtnReloadSettings.Name = "BtnReloadSettings";
             this.helpProvider1.SetShowHelp(this.BtnReloadSettings, true);
@@ -154,7 +155,7 @@ namespace DLaB.EarlyBoundGeneratorV2
             this.BtnResetSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.helpProvider1.SetHelpString(this.BtnResetSettings, "Overrides Capitalization of Entity Attributes");
             this.BtnResetSettings.Image = ((System.Drawing.Image)(resources.GetObject("BtnResetSettings.Image")));
-            this.BtnResetSettings.Location = new System.Drawing.Point(655, 7);
+            this.BtnResetSettings.Location = new System.Drawing.Point(652, 7);
             this.BtnResetSettings.Margin = new System.Windows.Forms.Padding(6);
             this.BtnResetSettings.Name = "BtnResetSettings";
             this.helpProvider1.SetShowHelp(this.BtnResetSettings, true);
@@ -179,7 +180,7 @@ namespace DLaB.EarlyBoundGeneratorV2
             this.PropertiesGrid.Location = new System.Drawing.Point(4, 54);
             this.PropertiesGrid.Margin = new System.Windows.Forms.Padding(6);
             this.PropertiesGrid.Name = "PropertiesGrid";
-            this.PropertiesGrid.Size = new System.Drawing.Size(887, 945);
+            this.PropertiesGrid.Size = new System.Drawing.Size(884, 945);
             this.PropertiesGrid.TabIndex = 36;
             this.PropertiesGrid.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.PropertiesGrid_PropertyValueChanged);
             // 
@@ -194,6 +195,7 @@ namespace DLaB.EarlyBoundGeneratorV2
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.button1);
             this.splitContainer1.Panel1.Controls.Add(this.tableLayoutPanel1);
             this.splitContainer1.Panel1.Controls.Add(this.TxtOutput);
             // 
@@ -228,6 +230,16 @@ namespace DLaB.EarlyBoundGeneratorV2
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(690, 42);
             this.tableLayoutPanel1.TabIndex = 28;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(84, 115);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(180, 160);
+            this.button1.TabIndex = 29;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // EarlyBoundGeneratorPlugin
             // 
@@ -267,5 +279,6 @@ namespace DLaB.EarlyBoundGeneratorV2
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button BtnReloadSettings;
         private System.Windows.Forms.Button BtnResetSettings;
+        private System.Windows.Forms.Button button1;
     }
 }
