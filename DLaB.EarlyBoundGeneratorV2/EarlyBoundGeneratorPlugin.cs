@@ -222,7 +222,7 @@ namespace DLaB.EarlyBoundGeneratorV2
                         w.ReportProgress(99, "Generation Complete!");
                         if (settings.UpdateBuilderSettingsJson)
                         {
-                            generator.RevertEarlyBoundGeneratorAssemblyNaming();
+                            generator.RevertEarlyBoundGeneratorSettings();
                         }
                     }
                     catch (InvalidOperationException ex)

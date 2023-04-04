@@ -397,6 +397,9 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
 
         public void WriteDLaBModelBuilderProperties(Utf8JsonWriter writer, EarlyBoundGeneratorConfig settings)
         {
+            // Write first since it will be cleaned up after the file is processed, and don't want to mess with the line before ending in a comma
+            writer.AddProperty(nameof(XrmToolBoxPluginPath), XrmToolBoxPluginPath);
+
             writer.AddProperty(nameof(AddDebuggerNonUserCode), AddDebuggerNonUserCode);
             writer.AddProperty(nameof(AddNewFilesToProject), AddNewFilesToProject);
             writer.AddProperty(nameof(AddOptionSetMetadataAttribute), AddOptionSetMetadataAttribute);
@@ -448,7 +451,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddProperty(nameof(UseCrmSvcUtilStateEnumNamingConvention), UseCrmSvcUtilStateEnumNamingConvention);
             writer.AddProperty(nameof(UseTfsToCheckoutFiles), UseTfsToCheckoutFiles);
             writer.AddProperty(nameof(WaitForAttachedDebugger), WaitForAttachedDebugger);
-            writer.AddProperty(nameof(XrmToolBoxPluginPath), XrmToolBoxPluginPath);
 
             void AddOptionalProperty(string fileNameKey, string fileNameValue, bool createProperty)
             {

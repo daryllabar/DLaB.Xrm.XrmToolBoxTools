@@ -89,63 +89,6 @@ namespace DLaB.EarlyBoundGeneratorV2
                 logger.FlushLogger();
                 Console.SetOut(currentOut);
             }
-
-
-            //var filePath = Path.Combine(EarlyBoundGeneratorConfig.RootPath, EarlyBoundGeneratorConfig.EntityOutPath,
-            //    EarlyBoundGeneratorConfig.ServiceContextName + ".cs");
-            //
-            //// Check for file to be editable if not using TFS and creating only one file
-            //if (!EarlyBoundGeneratorConfig.ExtensionConfig.UseTfsToCheckoutFiles 
-            //    && !EarlyBoundGeneratorConfig.ExtensionConfig.CreateOneFilePerEntity
-            //    && !AbleToMakeFileAccessible(filePath))
-            //{
-            //    return;
-            //}
-            //
-            //var date = File.GetLastWriteTimeUtc(filePath);
-            //
-            //
-            //
-            //var args = GetSafeArgs(EarlyBoundGeneratorConfig, p);
-            //if (EarlyBoundGeneratorConfig.IncludeCommandLine)
-            //{
-            //    switch (creationType)
-            //    {
-            //        case CreationType.Actions:
-            //            EarlyBoundGeneratorConfig.ExtensionConfig.ActionCommandLineText = "\"" + p.StartInfo.FileName + "\" " + args;
-            //            break;
-            //        case CreationType.All:
-            //            break;
-            //        case CreationType.Entities:
-            //            EarlyBoundGeneratorConfig.ExtensionConfig.EntityCommandLineText = "\"" + p.StartInfo.FileName + "\" " + args;
-            //            break;
-            //        case CreationType.OptionSets:
-            //            EarlyBoundGeneratorConfig.ExtensionConfig.OptionSetCommandLineText = "\"" + p.StartInfo.FileName + "\" " + args;
-            //            break;
-            //        default:
-            //            throw new ArgumentOutOfRangeException(nameof(creationType));
-            //    }
-            //}
-            //UpdateBuilderSettingsJson(EarlyBoundGeneratorConfig);
-            //Logger.Show("Shelling out to CrmSrvUtil for creating " + creationType, "Executing \"" + p.StartInfo.FileName + "\" " + args);
-            //p.Start();
-            //var consoleOutput = new StringBuilder();
-            //while (!p.StandardOutput.EndOfStream)
-            //{
-            //    var line = p.StandardOutput.ReadLine();
-            //    if (!string.IsNullOrWhiteSpace(line) && line.Contains("[****") && line.Contains("****]"))
-            //    {
-            //        line = line.SubstringByString("[****", "****]");
-            //        Logger.Show(line);
-            //    }
-            //    else
-            //    {
-            //        Logger.AddDetail(line);
-            //    }
-            //    consoleOutput.AppendLine(line);
-            //}
-            //
-            //HandleResult(filePath, date, creationType, consoleOutput.ToString(), EarlyBoundGeneratorConfig.AudibleCompletionNotification);
         }
 
         private ModelBuilderInvokeParameters GetParameters()
@@ -153,10 +96,6 @@ namespace DLaB.EarlyBoundGeneratorV2
             return new ModelBuilderInvokeParameters
             {
                 SettingsTemplateFile = EarlyBoundGeneratorConfig.SettingsTemplatePath,
-                //CodeCustomizationService = "DLaB.ModelBuilderExtensions.Entity.CustomizeCodeDomService,DLaB.ModelBuilderExtensions",
-                //CodeGenerationService = "DLaB.ModelBuilderExtensions.Entity.CustomCodeGenerationService,DLaB.ModelBuilderExtensions",
-                //CodeWriterFilterService = "DLaB.ModelBuilderExtensions.Entity.CodeWriterFilterService,DLaB.ModelBuilderExtensions",
-                //MetadataProviderService = "DLaB.ModelBuilderExtensions.Entity.MetadataProviderService,DLaB.ModelBuilderExtensions",
                 SplitFilesByObject = true,
                 OutDirectory = EarlyBoundGeneratorConfig.RootPath
             };
@@ -165,6 +104,7 @@ namespace DLaB.EarlyBoundGeneratorV2
         public string[] GetParameters(ModelBuilderInvokeParameters parameters)
         {
             var lines = new List<string>();
+            var commandLine = new List<string>();
             Logger.AddDetail("Generating ProcessModelInvoker Parameters:");
             foreach (var kvp in parameters.ToDictionary().Where(kvp => !string.IsNullOrWhiteSpace(kvp.Value)))
             {
@@ -176,15 +116,18 @@ namespace DLaB.EarlyBoundGeneratorV2
                 {
                     if (bool.TryParse(kvp.Value, out var boolVal) && boolVal)
                     {
-                        Logger.AddDetail("--" + kvp.Key);
+                        var flag = "--" + kvp.Key;
+                        commandLine.Add(flag);
+                        Logger.AddDetail(flag);
                         lines.Add($"/{kvp.Key}");
                     }
                 }
                 else
                 {
-                    var kvpParameter = $"/{kvp.Key}:{kvp.Value}";
-                    Logger.AddDetail($"--{kvp.Key} {kvp.Value}");
-                    lines.Add(kvpParameter);
+                    var kvpParameter = $"--{kvp.Key} {kvp.Value}";
+                    commandLine.Add(kvpParameter);
+                    Logger.AddDetail(kvpParameter);
+                    lines.Add($"/{kvp.Key}:{kvp.Value}");
                 }
             }
 
@@ -193,7 +136,7 @@ namespace DLaB.EarlyBoundGeneratorV2
                 .ToArray();
 
             Logger.AddDetail("Command line for Cloud generation:");
-            Logger.AddDetail($"PAC modelbuilder build {string.Join(" ", values.Where(v => !v.Contains("splitfiles")).Select(l => l.Replace(" /", " --")))}");
+            Logger.AddDetail($"PAC modelbuilder build {string.Join(" ", commandLine.Where(v => !v.Contains("splitfiles")))}");
 
             return values;
         }
@@ -315,13 +258,13 @@ namespace DLaB.EarlyBoundGeneratorV2
         /// <summary>
         /// The Extensions to the Pac Model Builder will live in a different assembly.  To ensure that users can run against the PAC commandline, reset the namespace to the PAC version
         /// </summary>
-        public void RevertEarlyBoundGeneratorAssemblyNaming()
+        public void RevertEarlyBoundGeneratorSettings()
         {
             var path = GetJsonConfigPath(EarlyBoundGeneratorConfig);
 
             var contents = EarlyBoundGeneratorConfig.ReplaceEarlyBoundAssemblyName(File.ReadAllText(path));
 
-            File.WriteAllText(path, contents);
+            File.WriteAllLines(path, contents.Split(new [] { Environment.NewLine }, StringSplitOptions.None).Where(l => !l.TrimStart().StartsWith("\"xrmToolBoxPluginPath\"")));
             
         }
 
@@ -333,66 +276,5 @@ namespace DLaB.EarlyBoundGeneratorV2
                 speaker.Speak(words);
             }
         }
-
-        #region UpdateStatus
-
-        //public delegate void LogHandler(LogMessageInfo info);
-        //public event LogHandler OnLog;
-
-        //private void UpdateDetail(string message)
-        //{
-        //    Update(new LogMessageInfo(null, message));
-        //}
-
-        //private void Update(string summary)
-        //{
-        //    Update(new LogMessageInfo(summary, summary));
-        //}
-
-        //private void Update(string summary, string detail)
-        //{
-        //    Update(new LogMessageInfo(summary, detail));
-        //}
-
-        //private void Update(LogMessageInfo info)
-        //{
-        //    OnLog?.Invoke(info);
-        //}
-
-        //public class LogMessageInfo
-        //{
-        //    public string ModalMessage { get; set; }
-        //    public string Detail { get; set; }
-
-        //    public LogMessageInfo(string modalMessage, string detail)
-        //    {
-        //        // Since the format and the string, string constructors have identical looking signatures, check to ensure that an "object[] args" wasn't intended
-        //        var conditionalFormat = ConditionallyFormat(modalMessage, detail);
-        //        if (conditionalFormat != null)
-        //        {
-        //            modalMessage = null;
-        //            detail = conditionalFormat;
-        //        }
-        //        ModalMessage = modalMessage;
-        //        Detail = detail;
-        //    }
-
-        //    private string ConditionallyFormat(string format, string value)
-        //    {
-        //        if (!string.IsNullOrWhiteSpace(format) && format.Contains("{0}"))
-        //        {
-        //            return string.Format(format, value);
-        //        }
-
-        //        return null;
-        //    }
-        //}
-
-        //public class LogMessageInfoFormat : LogMessageInfo
-        //{
-        //    public LogMessageInfoFormat(string messageFormat, params object[] args) : base(null, string.Format(messageFormat, args)) { }
-        //}
-
-        #endregion // UpdateStatus
     }
 }

@@ -46,7 +46,7 @@ namespace DLaB.ModelBuilderExtensions
             var dictPath = ConfigHelper.Settings.DLaBModelBuilder.CamelCaseNamesDictionaryPath;
             if (!File.Exists(dictPath))
             {
-                throw new FileNotFoundException("Camel Case Dictionary not found!", dictPath);
+                throw new FileNotFoundException($"Camel Case Dictionary not found at {dictPath}!", dictPath);
             }
 
             foreach (var word in File.ReadLines(dictPath).Select(f => f.Trim().ToLower()))

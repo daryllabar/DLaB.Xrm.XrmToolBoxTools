@@ -155,7 +155,7 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("messagesFileName")]
         public string MessagesFileName { get; set; }
 
-        [JsonPropertyName("optionSetFileName")]
+        [JsonPropertyName("optionSetsFileName")]
         public string OptionSetsFileName { get; set; }
 
         private string _optionSetLanguageCodeOverride;

@@ -2,8 +2,8 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGeneratorV2</id>
-	<version>2.2023.3.12</version>
-	<title>Early Bound Generator</title>
+	<version>2.2023.4.3</version>
+	<title>Early Bound Generator V2</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
     <license type="expression">MIT</license>
@@ -11,7 +11,10 @@
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V2.2023.3.12
+    <releaseNotes>V2.2023.4.3
+
+
+V2.2023.3.12
 Allow for configurable Transliteration Path #379
 Hide Message Properties when not generated #378
 Removal of Microsoft.Xrm.Client #377
@@ -68,8 +71,9 @@ Fix for Global Option Sets with the same name as the entity causes conflicts #30
   </metadata>
   <files>
     <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGeneratorV2.dll" target="lib\net462\plugins" />
+    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.ModelBuilderExtensions.dll" target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2" />
     <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGeneratorV2\*.*" target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2" />
-	  <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGeneratorV2\alphabets\*.*" target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\alphabets" />
+    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGeneratorV2\alphabets\*.*" target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\alphabets" />
     <file src="bin\Release\Images\DLaB_Dynamics_Logo_Square_32x32.png" target="images\" />
   </files>
 </package>
