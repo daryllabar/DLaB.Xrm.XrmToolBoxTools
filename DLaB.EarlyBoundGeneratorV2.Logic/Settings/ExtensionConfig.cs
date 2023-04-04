@@ -410,7 +410,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddProperty(nameof(CreateOneFilePerOptionSet), CreateOneFilePerOptionSet);
             writer.AddProperty(nameof(DeleteFilesFromOutputFolders), DeleteFilesFromOutputFolders);
             writer.AddPropertyDictionaryStringHashString(nameof(EntityAttributeSpecifiedNames), EntityAttributeSpecifiedNames, false);
-            AddOptionalProperty("EntitiesFileName", settings.EntityTypesFolder, CreateOneFilePerEntity);
+            AddOptionalProperty("EntitiesFileName", settings.EntityTypesFolder, !CreateOneFilePerEntity);
             writer.AddPropertyArray("EntityBlacklist", EntitiesToSkip);
             writer.AddPropertyArray("EntityRegExBlacklist", EntityPrefixesToSkip);
             writer.AddProperty(nameof(FilePrefixText), FilePrefixText, true);
@@ -431,9 +431,9 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddProperty(nameof(MakeReadonlyFieldsEditable), MakeReadonlyFieldsEditable);
             writer.AddProperty(AsMessage(nameof(MakeResponseActionsEditable)), MakeResponseActionsEditable);
             writer.AddPropertyArray("MessageBlacklist", ActionsToSkip?.Replace("-", ""));
-            AddOptionalProperty("MessagesFileName", settings.MessageTypesFolder, CreateOneFilePerAction);
+            AddOptionalProperty("MessagesFileName", settings.MessageTypesFolder, !CreateOneFilePerAction);
             writer.AddProperty(nameof(LocalOptionSetFormat), LocalOptionSetFormat);
-            AddOptionalProperty("OptionSetsFileName", settings.OptionSetsTypesFolder, CreateOneFilePerOptionSet);
+            AddOptionalProperty("OptionSetsFileName", settings.OptionSetsTypesFolder, !CreateOneFilePerOptionSet);
             writer.AddProperty(nameof(OptionSetLanguageCodeOverride), OptionSetLanguageCodeOverride?.ToString());
             writer.AddPropertyDictionaryStringString(nameof(OptionSetNames), OptionSetNames);
             writer.AddProperty(nameof(ProjectNameForEarlyBoundFiles), ProjectNameForEarlyBoundFiles ?? string.Empty);
