@@ -170,8 +170,8 @@
             this.CategoryCmb.Items.AddRange(new object[] {
             "1 - Global",
             "2 - Entities",
-            "3 - Messages",
-            "4 - Option Sets",
+            "3 - Option Sets",
+            "4 - Messages",
             "5 - Meta",
             "6 - Service Generation Extensions",
             "7 - Debug"});

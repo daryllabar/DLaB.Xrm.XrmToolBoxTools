@@ -372,11 +372,7 @@ REM **** Run IlMerge ****
 
 
 DEL /Q "$(TargetDir)MscrmTools\XrmToolBox\Plugins\*.*"
-xcopy /I /Y "$(TargetDir)DLaB.*" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\"
-DEL /Q "$(TargetDir)DLaB.*"
-DEL /Q "$(TargetDir)Microsoft.IdentityModel.dll"    
-
-xcopy /I /Y "$(SolutionDir)DLaB.ModelBuilderExtensions\$(OutDir)*.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGeneratorV2\"
+xcopy /I /Y "$(TargetDir)DLaB.EarlyBoundGeneratorV2*" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\"
 
 xcopy /I /Y "$(SolutionDir)DLaB.ModelBuilderExtensions\OptionSet\Transliteration\Alphabets\*" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGeneratorV2\alphabets"
 xcopy /I /Y "$(SolutionDir)DLaB.ModelBuilderExtensions\DLaB.Dictionary.txt" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGeneratorV2"</PostBuildEvent>

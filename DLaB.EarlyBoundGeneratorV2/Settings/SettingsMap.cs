@@ -410,7 +410,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
 
         #region Messages
 
-        [Category("3 - Messages")]
+        [Category("4 - Messages")]
         [DisplayName("Message Relative Output Path")]
         [Description("This is realtive to the Path of the Settings File.  If \"Create One File Per Message\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
         [Editor(typeof(PathEditor), typeof(UITypeEditor))]
@@ -421,28 +421,28 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.MessageTypesFolder = GetRelativePathToFileOrDirectory(value, CreateOneFilePerMessage, "Messages.cs"); //TODO IS THIS RIGHT?  
         }
 
-        [Category("3 - Messages")]
+        [Category("4 - Messages")]
         [DisplayName("Message Wildcard Whitelist")]
         [Description("Message wildcard \"*\" to generate.  If the Message matches the wildcard search value it will be included.")]
         [Editor(StringEditorName, typeof(UITypeEditor))]
         [TypeConverter(CollectionCountConverter.Name)]
         public List<string> MessageWildcardWhitelist { get; set; }
 
-        [Category("3 - Messages")]
+        [Category("4 - Messages")]
         [DisplayName("Messages Whitelist")]
         [Description("Allows for the ability to specify Messages that will be included in generation.  \"*\" wildcards are valid. ")]
         [Editor(typeof(ActionsHashEditor), typeof(UITypeEditor))]
         [TypeConverter(CollectionCountConverter.Name)]
         public HashSet<string> MessageWhitelist { get; set; }
 
-        [Category("3 - Messages")]
+        [Category("4 - Messages")]
         [DisplayName("Messages Blacklist")]
         [Description("Allows for the ability to specify Messages to not generate.")]
         [Editor(typeof(ActionsHashEditor), typeof(UITypeEditor))]
         [TypeConverter(CollectionCountConverter.Name)]
         public HashSet<string> MessageBlacklist { get; set; }
 
-        [Category("3 - Messages")]
+        [Category("4 - Messages")]
         [DisplayName("Create One File Per Message")]
         [Description("Specifies that each Message class should be outputted to it's own file rather than a single file with all messages.")]
         public bool CreateOneFilePerMessage
@@ -451,7 +451,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.ExtensionConfig.CreateOneFilePerAction = value;
         }
 
-        [Category("3 - Messages")]
+        [Category("4 - Messages")]
         [DisplayName("Generate Message Attribute Name Constants")]
         [Description("Adds a Static Class to each Message class that contains the Logical Names of all properties for the Message.")]
         public bool GenerateMessageAttributeNameConsts
@@ -460,7 +460,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.ExtensionConfig.GenerateActionAttributeNameConsts = value;
         }
 
-        [Category("3 - Messages")]
+        [Category("4 - Messages")]
         [DisplayName("Generate Messages")]
         [Description("Generates classes for messages (Actions/Custom APIs/Microsoft Messages) as part of code generation.    ")]
         public bool GenerateMessages
@@ -469,7 +469,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.GenerateMessages = value;
         }
 
-        [Category("3 - Messages")]
+        [Category("4 - Messages")]
         [DisplayName("Group Message Request With Response")]
         [Description("The CrmSvcUtil version of the Early Bound Generator created seperate files for each message request/response class, but the PAC ModelBuilder combines each request/response pair into a single file.  This allows for turning this off to maintain backwards compability.")]
         public bool GroupMessageRequestWithResponse
@@ -478,7 +478,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.ExtensionConfig.GroupMessageRequestWithResponse = value;
         }
 
-        [Category("3 - Messages")]
+        [Category("4 - Messages")]
         [DisplayName("Make Response Messages Editable")]
         [Description("Specifies that the properties of Response Messages should be editable.")]
         public bool MakeResponseMessagesEditable
@@ -505,7 +505,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
 
         #region Option Sets
 
-        [Category("4 - Option Sets")]
+        [Category("3 - Option Sets")]
         [DisplayName("Add Option Set Metadata Attribute")]
         [Description("Adds the OptionSetMetadataAttribute to enums to be able to access enum metadata.  Ensure Generate Option Set Metadata Attribute is true to generate the attribute definition, unless this has been handled in some other manner.")]
         public bool AddOptionSetMetadataAttribute
@@ -514,7 +514,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.ExtensionConfig.AddOptionSetMetadataAttribute = value;
         }
 
-        [Category("4 - Option Sets")]
+        [Category("3 - Option Sets")]
         [DisplayName("Cleanup CrmSvcUtil Local Option Sets")]
         [Description("The PAC ModelBuilder generates local option sets in the same files as the entity class, but the CrmSvcUtil created these option sets separately.  This setting will look for these files and delete them from the disk.  After the upgrade, this should be disabled.  It is recommended to enable \"1 - Global - Add New Files To Project\" as well to cleanup the files from the project.")]
         public bool CleanupCrmSvcUtilLocalOptionSets
@@ -523,7 +523,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.ExtensionConfig.CleanupCrmSvcUtilLocalOptionSets = value;
         }
 
-        [Category("4 - Option Sets")]
+        [Category("3 - Option Sets")]
         [DisplayName("Create One File Per Option Set")]
         [Description("Specifies that each Option Set Enum should be outputted to it's own file, rather than a single file with all Enums.")]
         public bool CreateOneFilePerOptionSet
@@ -532,7 +532,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.ExtensionConfig.CreateOneFilePerOptionSet = value;
         }
 
-        [Category("4 - Option Sets")]
+        [Category("3 - Option Sets")]
         [DisplayName("Generate Global Option Sets")]
         [Description("Generate all Global OptionSets, note: if an entity contains a reference to a global optionset, it will be emitted even if this switch is not present.")]
         public bool GenerateGlobalOptionSets
@@ -541,7 +541,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.ExtensionConfig.GenerateGlobalOptionSets = value;
         }
 
-        [Category("4 - Option Sets")]
+        [Category("3 - Option Sets")]
         [DisplayName("Group Local Option Sets By Entity")]
         [Description("Combines all local option sets into a single file per entity.  Only used if Create One File Per Option Set is true.")]
         public bool GroupLocalOptionSetsByEntity
@@ -550,7 +550,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.ExtensionConfig.GroupLocalOptionSetsByEntity = value;
         }
 
-        [Category("4 - Option Sets")]
+        [Category("3 - Option Sets")]
         [DisplayName("Invalid C# Name Prefix")]
         [Description("Specifies the Prefix to be used for OptionSets that would normally start with an invalid first character ie \"1st\"")]
         public string InvalidCSharpNamePrefix
@@ -559,7 +559,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.ExtensionConfig.InvalidCSharpNamePrefix = value;
         }
 
-        [Category("4 - Option Sets")]
+        [Category("3 - Option Sets")]
         [DisplayName("Local Option Set Format")]
         [Description("Defines the format of Local Option Sets where {0} is the Entity Schema Name, and {1} is the Attribute Schema Name.   The format Specified in the SDK is {0}{1}, but the default is {0}_{1}, but used to be prefix_{0}_{1}(all lower case).")]
         public string LocalOptionSetFormat
@@ -568,7 +568,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.ExtensionConfig.LocalOptionSetFormat = value;
         }
 
-        [Category("4 - Option Sets")]
+        [Category("3 - Option Sets")]
         [DisplayName("Option Set Output Relative Path")]
         [Description("This is realtive to the Path of the Settings File.  If \"Create One File Per Option Set\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
         [Editor(typeof(PathEditor), typeof(UITypeEditor))]
@@ -579,7 +579,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.OptionSetsTypesFolder = GetRelativePathToFileOrDirectory(value, CreateOneFilePerOptionSet, "OptionSets.cs");
         }
 
-        [Category("4 - Option Sets")]
+        [Category("3 - Option Sets")]
         [DisplayName("Option Set Value Language Code Override")]
         [Description("Overrides the default (English:1033) language code used for generating Option Set Value names (the value, not the option set).")]
         public int? OptionSetLanguageCodeOverride
@@ -588,7 +588,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.ExtensionConfig.OptionSetLanguageCodeOverride = value;
         }
 
-        [Category("4 - Option Sets")]
+        [Category("3 - Option Sets")]
         [DisplayName("Transliteration Relative Path")]
         [Description("The path relative, to the XrmToolBox Plugins directory, to a folder containing the language code json files to be used for transliteration.")]
         public string TransliterationRelativePath
@@ -597,7 +597,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.ExtensionConfig.TransliterationRelativePath = value;
         }
 
-        [Category("4 - Option Sets")]
+        [Category("3 - Option Sets")]
         [DisplayName("Use CrmSvcUtil State Enum Naming Convention")]
         [Description("The CrmSvcUtil names entity statecode enums as \"{EntityName}State\", but the PAC ModelBuilder names them the same way all other enums are generated \"{EntityName}_StateCode\".  This allows for maintaining backwards compability.")]
         public bool UseCrmSvcUtilStateEnumNamingConvention
@@ -606,7 +606,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.ExtensionConfig.UseCrmSvcUtilStateEnumNamingConvention = value;
         }
 
-        [Category("4 - Option Sets")]
+        [Category("3 - Option Sets")]
         [DisplayName("Option Set Names")]
         [Description("If Option Sets have idential names to Entities, it will cause naming conflicts.  By default this is overcome by postfixing \"_Enum\" to the Option Set name.  This setting allows a custom mapping for option set names to be specified.")]
         [Editor(typeof(DictionaryEditor), typeof(UITypeEditor))]

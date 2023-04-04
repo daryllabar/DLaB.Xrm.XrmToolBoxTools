@@ -21,24 +21,9 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
 
         public static ConnectionSettings GetDefault()
         {
-            var newSettingsPath = Path.GetFullPath(Path.Combine(Paths.SettingsPath, "DLaB.EarlyBoundGeneratorV2.DefaultSettings.xml"));
-            var oldSettingsPath = Path.GetFullPath(Path.Combine(Paths.PluginsPath, "DLaB.EarlyBoundGenerator.DefaultSettings.xml"));
-            var olderSettingsPath = Path.GetFullPath(Path.Combine(Paths.PluginsPath, "DLaB.EarlyBoundGenerator.Settings.xml"));
-            if (!File.Exists(newSettingsPath))
-            {
-                if (File.Exists(oldSettingsPath))
-                {
-                    File.Move(oldSettingsPath, newSettingsPath);
-                }
-                else if(File.Exists(olderSettingsPath)) { }
-                {
-                    File.Move(olderSettingsPath, newSettingsPath);
-                }
-            }
-            
             return new ConnectionSettings
             {
-                SettingsPath = newSettingsPath
+                SettingsPath = Path.GetFullPath(Path.Combine(Paths.SettingsPath, "DLaB.EarlyBoundGeneratorV2.DefaultSettings.xml"))
             };
         }
 

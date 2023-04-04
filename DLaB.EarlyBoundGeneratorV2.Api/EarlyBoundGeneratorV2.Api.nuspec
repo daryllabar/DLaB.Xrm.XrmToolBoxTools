@@ -11,9 +11,34 @@
 		<projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses CrmSvcUtil from the SDK.</description>
-		<releaseNotes>
-			V2.2023.3.12
-			Update to use new PAC ModelBuilder #352
+		<releaseNotes>V2.2023.3.12
+Allow for configurable Transliteration Path #379
+Hide Message Properties when not generated #378
+Removal of Microsoft.Xrm.Client #377
+Remove Base Class Generation #376
+Implement Entities Category Settings #375
+Implement Global Settings #374
+Create Group Message By Request Setting #373
+Implement Suppress Generated Code Attribute #372
+Add option to split Actions/Messages #371
+Allow for Legacy CrmSvcUtil State Enums #370
+Allow For Single Files #369
+Remove All App Config References #368
+Implement CodeGenerationService #367
+Implement CodeWriterFilterService #366
+Implement IMetadataProviderService #365
+Cleanup Local Option Set files #364
+Enum names aren't being cased #362
+Update the config for Field Generation #361
+Enable CustomizeCodeDomService SettingsMap Settings #358
+Update to use new PAC ModelBuilder #352
+PAC Modelbuilder Utilize DLaB Naming Service #353
+Enable generation of Entity Consts #354
+Enable NamingService SettingsMap Settings #355
+Allow for not updating Settings File #357
+Member names cannot be the same as their enclosing type with generated Actions #349
+EarlyBoundGenerator.Api doesn't return any indication when an error occurs #332
+Order settings a bit better #321
 		</releaseNotes>
 		<copyright>Copyright 2019</copyright>
 		<tags>PAC ModelBuilder Dataverse Xrm EarlyBound Generator</tags>

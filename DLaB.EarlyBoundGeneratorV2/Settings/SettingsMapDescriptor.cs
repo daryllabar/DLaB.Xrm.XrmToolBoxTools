@@ -36,6 +36,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             {
                 { nameof(AddNewFilesToProject), OnAddNewFilesToProjectChange },
                 { nameof(AddOptionSetMetadataAttribute), OnAddOptionSetMetadataAttributeChange },
+                { nameof(CamelCaseMemberNames), OnCamelCaseMemberNamesChange },
                 { nameof(CreateOneFilePerEntity), OnCreateOneFilePerEntityChange },
                 { nameof(CreateOneFilePerOptionSet), OnCreateOneFilePerOptionSetChange },
                 { nameof(CreateOneFilePerMessage), OnCreateOneFilePerMessageChange },
@@ -51,29 +52,38 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             SetProjectNameForEarlyBoundFilesVisibility();
         }
 
+        private void OnAddOptionSetMetadataAttributeChange(PropertyValueChangedEventArgs args)
+        {
+            SetGenerateOptionSetMetadataAttributeVisibility();
+            GenerateOptionSetMetadataAttribute = AddOptionSetMetadataAttribute;
+        }
+
+        private void OnCamelCaseMemberNamesChange(PropertyValueChangedEventArgs args)
+        {
+            SetUseLogicalNamesVisibility();
+            UseLogicalNames = false;
+        }
+
         private void OnCreateOneFilePerEntityChange(PropertyValueChangedEventArgs args)
         {
             SetVisibilityForControlsDependentOnFileCreations();
-            EntityTypesFolder = EntityTypesFolder;
         }
 
         private void OnCreateOneFilePerOptionSetChange(PropertyValueChangedEventArgs args)
         {
             SetVisibilityForControlsDependentOnFileCreations();
             SetGroupLocalOptionSetsByEntityVisibility();
-            OptionSetsTypesFolder = OptionSetsTypesFolder;
         }
 
         private void OnCreateOneFilePerMessageChange(PropertyValueChangedEventArgs args)
         {
             SetVisibilityForControlsDependentOnFileCreations();
             SetGroupMessageRequestWithResponseVisibility();
-            MessageTypesFolder = MessageTypesFolder;
         }
 
         private void OnDeleteFilesFromOutputFoldersChange(PropertyValueChangedEventArgs args)
         {
-            SetCleanupCrmSvcUtilLocalOptionSets();
+            SetCleanupCrmSvcUtilLocalOptionSetsVisibility();
         }
 
         private void OnGenerateEnumPropertiesChange(PropertyValueChangedEventArgs args)
@@ -87,12 +97,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             SetVisibilityForControlsDependentOnGenerateMessages();
         }
 
-        private void OnAddOptionSetMetadataAttributeChange(PropertyValueChangedEventArgs args)
-        {
-            SetGenerateOptionSetMetadataAttributeVisibility();
-            GenerateOptionSetMetadataAttribute = AddOptionSetMetadataAttribute;
-        }
-
         private void OnMakeAllFieldsEditableChange(PropertyValueChangedEventArgs args)
         {
             SetMakeReadonlyFieldsEditableVisibility();
@@ -102,12 +106,13 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
 
         private void ProcessDynamicallyVisibleProperties()
         {
-            SetCleanupCrmSvcUtilLocalOptionSets();
+            SetCleanupCrmSvcUtilLocalOptionSetsVisibility();
             SetGenerateOptionSetMetadataAttributeVisibility();
             SetGroupLocalOptionSetsByEntityVisibility();
             SetGroupMessageRequestWithResponseVisibility();
             SetPropertyEnumMappingVisibility();
             SetPropertyReplaceOptionSetPropertiesWithEnumVisibility();
+            SetUseLogicalNamesVisibility();
             SetVisibilityForControlsDependentOnFileCreations();
             SetVisibilityForControlsDependentOnGenerateMessages();
 
@@ -141,7 +146,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             SetPropertyBrowsable(nameof(AddNewFilesToProject), AtLeastOneCreateFilePerSelected);
         }
 
-        private void SetCleanupCrmSvcUtilLocalOptionSets()
+        private void SetCleanupCrmSvcUtilLocalOptionSetsVisibility()
         {
             SetPropertyBrowsable(nameof(CleanupCrmSvcUtilLocalOptionSets), !DeleteFilesFromOutputFolders);
         }
@@ -220,6 +225,11 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         private void SetMessageWildcardWhitelistVisibility()
         {
             SetPropertyBrowsable(nameof(MessageWildcardWhitelist), GenerateMessages);
+        }
+
+        private void SetUseLogicalNamesVisibility()
+        {
+            SetPropertyBrowsable(nameof(UseLogicalNames), CamelCaseMemberNames);
         }
 
         private const string NotImplemented = "{Not Implemented} ";
