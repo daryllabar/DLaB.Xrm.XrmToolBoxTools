@@ -67,18 +67,24 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         private void OnCreateOneFilePerEntityChange(PropertyValueChangedEventArgs args)
         {
             SetVisibilityForControlsDependentOnFileCreations();
+            // Convert the value to be a folder or a file
+            EntityTypesFolder = EntityTypesFolder;
         }
 
         private void OnCreateOneFilePerOptionSetChange(PropertyValueChangedEventArgs args)
         {
             SetVisibilityForControlsDependentOnFileCreations();
             SetGroupLocalOptionSetsByEntityVisibility();
+            // Convert the value to be a folder or a file
+            OptionSetsTypesFolder = OptionSetsTypesFolder;
         }
 
         private void OnCreateOneFilePerMessageChange(PropertyValueChangedEventArgs args)
         {
             SetVisibilityForControlsDependentOnFileCreations();
             SetGroupMessageRequestWithResponseVisibility();
+            // Convert the value to be a folder or a file
+            MessageTypesFolder = MessageTypesFolder;
         }
 
         private void OnDeleteFilesFromOutputFoldersChange(PropertyValueChangedEventArgs args)

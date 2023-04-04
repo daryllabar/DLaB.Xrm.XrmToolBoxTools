@@ -418,7 +418,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         public string MessageTypesFolder
         {
             get => Config.MessageTypesFolder;
-            set => Config.MessageTypesFolder = GetRelativePathToFileOrDirectory(value, CreateOneFilePerMessage, "Messages.cs"); //TODO IS THIS RIGHT?  
+            set => Config.MessageTypesFolder = GetRelativePathToFileOrDirectory(value, CreateOneFilePerMessage, "Messages.cs");
         }
 
         [Category("4 - Messages")]
