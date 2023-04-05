@@ -12,8 +12,6 @@ namespace DLaB.ModelBuilderExtensions
         private static CamelCaser _default;
         private Dictionary<int, HashSet<string>> Dictionary { get; }
         private List<string> Overrides { get; }
-        private static readonly Lazy<Dictionary<int,HashSet<string>>> LazyDictionary = new Lazy<Dictionary<int, HashSet<string>>>(LoadDictionary);
-        private static readonly Lazy<List<string>> LazyOverrides = new Lazy<List<string>>(LoadOverrides);
         private readonly int _maxWordLength;
 
         public CamelCaser(Dictionary<int, HashSet<string>> dictionary, List<string> overrides = null)
@@ -83,10 +81,15 @@ namespace DLaB.ModelBuilderExtensions
         {
             if (_default == null)
             {
-                _default = new CamelCaser(LazyDictionary.Value, LazyOverrides.Value);
+                _default = new CamelCaser(LoadDictionary(), LoadOverrides());
             }
 
             return _default.CaseWord(value, preferredEndings);
+        }
+
+        public static void ClearCache()
+        {
+            _default = null;
         }
 
         public string CaseWord(string value, params string[] preferredEndings)
@@ -236,23 +239,23 @@ namespace DLaB.ModelBuilderExtensions
             return CasePart(value, parseForward);
         }
 
-        private static readonly Dictionary<string, string> AlreadyCasedBackward = new Dictionary<string, string>();
-        private static readonly Dictionary<string, string> AlreadyCasedForward = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> _alreadyCasedBackward = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> _alreadyCasedForward = new Dictionary<string, string>();
 
         private string CasePart(string part, bool parseForward)
         {
-            if (parseForward && AlreadyCasedForward.TryGetValue(part, out var forward))
+            if (parseForward && _alreadyCasedForward.TryGetValue(part, out var forward))
             {
                 return forward;
             }
 
-            if (!parseForward && AlreadyCasedBackward.TryGetValue(part, out var backward))
+            if (!parseForward && _alreadyCasedBackward.TryGetValue(part, out var backward))
             {
                 return backward;
             }
 
             var result = CasePartForCache(part, parseForward);
-            (parseForward ? AlreadyCasedForward : AlreadyCasedBackward)[part] = result;
+            (parseForward ? _alreadyCasedForward : _alreadyCasedBackward)[part] = result;
             return result;
         }
 

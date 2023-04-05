@@ -1,5 +1,4 @@
-﻿using Source.DLaB.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -72,6 +71,13 @@ namespace DLaB.ModelBuilderExtensions
             {
                 throw new Exception("No \"settingsTemplateFile\" found in the parameters collection!");
             }
+        }
+
+        public static void ClearCache()
+        {
+            _parameters = null;
+            _settings = null;
+            _loadedSettingsPath = null;
         }
     }
 }

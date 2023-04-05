@@ -53,16 +53,23 @@ namespace DLaB.ModelBuilderExtensions.OptionSet.Transliteration
             var serializer = new DataContractJsonSerializer(typeof(AlphabetPoco));
             var path = Path.Combine(TransliterationPath, languageCode + ".json");
             AlphabetPoco alphabetJson;
-            using (var stream = GenerateStreamFromString(File.ReadAllText(path)))
+            try
             {
-                alphabetJson = (AlphabetPoco)serializer.ReadObject(stream);
+                using (var stream = GenerateStreamFromString(File.ReadAllText(path)))
+                {
+                    alphabetJson = (AlphabetPoco)serializer.ReadObject(stream);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Unable to load Alphabet from file " + path, ex);
             }
 
             if (alphabetJson.alphabet.Any(a =>
-                a == null ||
-                a.Length < 2 ||
-                string.IsNullOrWhiteSpace(a[0]) ||
-                a[1] == null))
+                    a == null ||
+                    a.Length < 2 ||
+                    string.IsNullOrWhiteSpace(a[0]) ||
+                    a[1] == null))
             {
                 throw new Exception($"Error in format of Transliteration file {path}");    
             }

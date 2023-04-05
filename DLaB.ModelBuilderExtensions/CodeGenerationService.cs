@@ -101,6 +101,12 @@ namespace DLaB.ModelBuilderExtensions
                 ErrorLogger.Log(ex);
                 throw;
             }
+            finally
+            {
+                CamelCaser.ClearCache();
+                ConfigHelper.ClearCache();
+                ServiceCache.ClearCache();
+            }
         }
 
         #endregion // ICodeGenerationService Members

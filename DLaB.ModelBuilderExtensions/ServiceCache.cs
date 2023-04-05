@@ -147,5 +147,9 @@ namespace DLaB.ModelBuilderExtensions
             return _default ?? (_default = new ServiceCache(services));
         }
 
+        public static void ClearCache()
+        {
+            _default = null;
+        }
     }
 }
