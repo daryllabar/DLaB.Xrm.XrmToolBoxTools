@@ -59,25 +59,33 @@ namespace DLaB.ModelBuilderExtensions
 
         private IOrganizationMetadata LoadMetadataInternal(IServiceProvider service)
         {
-            DefaultService.ServiceConnection = ServiceConnection;
-
-            IOrganizationMetadata metadata;
-            if (ReadSerializedMetadata)
+            try
             {
-               metadata = DeserializeMetadata(FilePath);
-            }
-            else
-            {
-                metadata = DefaultService.LoadMetadata(service);
+                DefaultService.ServiceConnection = ServiceConnection;
 
-                if (WriteMetadata)
+                IOrganizationMetadata metadata;
+                if (ReadSerializedMetadata)
                 {
-                    SerializeMetadata(metadata, FilePath);
+                    metadata = DeserializeMetadata(FilePath);
                 }
-            }
+                else
+                {
+                    metadata = DefaultService.LoadMetadata(service);
 
-            UpdateEntityMetadata(metadata);
-            return metadata;
+                    if (WriteMetadata)
+                    {
+                        SerializeMetadata(metadata, FilePath);
+                    }
+                }
+
+                UpdateEntityMetadata(metadata);
+                return metadata;
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.Log(ex);
+                throw;
+            }
         }
 
         private void UpdateEntityMetadata(IOrganizationMetadata metadata)

@@ -4,7 +4,6 @@ using Source.DLaB.Common.VersionControl;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -99,7 +98,7 @@ namespace DLaB.ModelBuilderExtensions
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                ErrorLogger.Log(ex);
                 throw;
             }
         }
@@ -724,122 +723,122 @@ namespace DLaB.ModelBuilderExtensions
         //    }
         //}
 
-        private void CheckoutChangedFiles(List<FileToWrite> files)
-        {
-            DisplayMessage("Checking out Changed Files From TFS");
-            Tfs.Checkout(files.Where(f => f.HasChanged && f.TempFile != null).Select(f => f.Path).ToArray());
-        }
-
-        private void WriteFilesForTfs(ProjectFile project, FileToWrite file)
-        {
-            Log("Processing file: " + file.Path);
-            if (File.Exists(file.Path))
-            {
-                var tfsFile = File.ReadAllText(file.Path);
-                if (tfsFile.Equals(file.Contents))
-                {
-                    Log(tfsFile);
-                    Log(file.Contents);
-                    Log(file.Path + " was unchanged.");
-                    return;
-                }
-                file.TempFile = Path.Combine(file.Directory, "zzzTempEarlyBoundGenerator." + Path.GetFileName(file.Path) + ".tmp");
-                Log("Creating Temp File " + file.TempFile);
-                File.WriteAllText(file.TempFile, file.Contents);
-                file.HasChanged = true;
-            }
-            else
-            {
-                File.WriteAllText(file.Path, file.Contents);
-                Tfs.Add(file.Path);
-                Console.WriteLine(file.Path + " created.");
-                project.AddFileIfMissing(file.Path);
-            }
-        }
-
-        private void CopyChangedFiles(FileToWrite file)
-        {
-            if (file.TempFile == null)
-            {
-                return;                
-            }
-            File.Copy(file.TempFile, file.Path, true);
-            File.Delete(file.TempFile);
-        }
-
-        private void WriteFileIfDifferent(ProjectFile project, FileToWrite file)
-        {
-            Log("Processing file: " + file.Path);
-            if (UseTfsToCheckoutFiles)
-            {
-                if (File.Exists(file.Path))
-                {
-                    Trace.TraceInformation(Path.GetFileName(file.Path) + " Checking out and updating if different.");
-                    var tempFile = Path.Combine(file.Directory, "zzzTempEarlyBoundGenerator." + Path.GetFileName(file.Path) + ".tmp");
-                    try
-                    {
-                        Log("Creating Temp File " + tempFile);
-                        File.WriteAllText(tempFile, file.Contents);
-                        var hasChanged = Tfs.AreDifferent(file.Path, tempFile);
-                        if (hasChanged)
-                        {
-                            Console.WriteLine($"{file.Path} was changed.  Checking Out from TFS.");
-                            Tfs.Checkout(file.Path);
-                            Log("Updating File locally");
-                            File.Copy(tempFile, file.Path ?? "Unknown", true);
-
-                        }
-                        var message = file.Path + $" was {(hasChanged ? "" : "un")}changed.";
-                        if (file.IsMainFile)
-                        {
-                            Console.WriteLine(message);
-                        }
-                        else
-                        {
-                            Log(message);
-                        }
-                    }
-                    finally
-                    {
-                        File.Delete(tempFile);
-                    }
-                }
-                else
-                {
-                    File.WriteAllText(file.Path, file.Contents);
-                    Tfs.Add(file.Path);
-                    Console.WriteLine(file.Path + " created.");
-                    project.AddFileIfMissing(file.Path);
-                }
-                return;
-            }
-
-            //EnsureFileIsAccessible(file.Path);
-            project.AddFileIfMissing(file.Path);
-
-            Trace.TraceInformation(Path.GetFileName(file.Path) + " created / updated.");
-            Log("Writing file: " + file.Path);
-            File.WriteAllText(file.Path ?? "Unknown", file.Contents);
-            Log("Completed file: " + file);
-        }
-
-        private string GetName(CodeUnit codeUnit, string line)
-        {
-            int start;
-            int end;
-            if (codeUnit == CodeUnit.Class)
-            {
-                start = 22; // "\tpublic partial class ".Length
-                end = line.IndexOf(':', start)-1;
-            }
-            else // if (codeUnit == CodeUnit.Enum)
-            {
-                start = 13; // "\tpublic enum ".Length
-                end = line.Length;
-            }
-
-            return line.Substring(start, end - start);
-        }
+        //private void CheckoutChangedFiles(List<FileToWrite> files)
+        //{
+        //    DisplayMessage("Checking out Changed Files From TFS");
+        //    Tfs.Checkout(files.Where(f => f.HasChanged && f.TempFile != null).Select(f => f.Path).ToArray());
+        //}
+        //
+        //private void WriteFilesForTfs(ProjectFile project, FileToWrite file)
+        //{
+        //    Log("Processing file: " + file.Path);
+        //    if (File.Exists(file.Path))
+        //    {
+        //        var tfsFile = File.ReadAllText(file.Path);
+        //        if (tfsFile.Equals(file.Contents))
+        //        {
+        //            Log(tfsFile);
+        //            Log(file.Contents);
+        //            Log(file.Path + " was unchanged.");
+        //            return;
+        //        }
+        //        file.TempFile = Path.Combine(file.Directory, "zzzTempEarlyBoundGenerator." + Path.GetFileName(file.Path) + ".tmp");
+        //        Log("Creating Temp File " + file.TempFile);
+        //        File.WriteAllText(file.TempFile, file.Contents);
+        //        file.HasChanged = true;
+        //    }
+        //    else
+        //    {
+        //        File.WriteAllText(file.Path, file.Contents);
+        //        Tfs.Add(file.Path);
+        //        Console.WriteLine(file.Path + " created.");
+        //        project.AddFileIfMissing(file.Path);
+        //    }
+        //}
+        //
+        //private void CopyChangedFiles(FileToWrite file)
+        //{
+        //    if (file.TempFile == null)
+        //    {
+        //        return;                
+        //    }
+        //    File.Copy(file.TempFile, file.Path, true);
+        //    File.Delete(file.TempFile);
+        //}
+        //
+        //private void WriteFileIfDifferent(ProjectFile project, FileToWrite file)
+        //{
+        //    Log("Processing file: " + file.Path);
+        //    if (UseTfsToCheckoutFiles)
+        //    {
+        //        if (File.Exists(file.Path))
+        //        {
+        //            Trace.TraceInformation(Path.GetFileName(file.Path) + " Checking out and updating if different.");
+        //            var tempFile = Path.Combine(file.Directory, "zzzTempEarlyBoundGenerator." + Path.GetFileName(file.Path) + ".tmp");
+        //            try
+        //            {
+        //                Log("Creating Temp File " + tempFile);
+        //                File.WriteAllText(tempFile, file.Contents);
+        //                var hasChanged = Tfs.AreDifferent(file.Path, tempFile);
+        //                if (hasChanged)
+        //                {
+        //                    Console.WriteLine($"{file.Path} was changed.  Checking Out from TFS.");
+        //                    Tfs.Checkout(file.Path);
+        //                    Log("Updating File locally");
+        //                    File.Copy(tempFile, file.Path ?? "Unknown", true);
+        //
+        //                }
+        //                var message = file.Path + $" was {(hasChanged ? "" : "un")}changed.";
+        //                if (file.IsMainFile)
+        //                {
+        //                    Console.WriteLine(message);
+        //                }
+        //                else
+        //                {
+        //                    Log(message);
+        //                }
+        //            }
+        //            finally
+        //            {
+        //                File.Delete(tempFile);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            File.WriteAllText(file.Path, file.Contents);
+        //            Tfs.Add(file.Path);
+        //            Console.WriteLine(file.Path + " created.");
+        //            project.AddFileIfMissing(file.Path);
+        //        }
+        //        return;
+        //    }
+        //
+        //    //EnsureFileIsAccessible(file.Path);
+        //    project.AddFileIfMissing(file.Path);
+        //
+        //    Trace.TraceInformation(Path.GetFileName(file.Path) + " created / updated.");
+        //    Log("Writing file: " + file.Path);
+        //    File.WriteAllText(file.Path ?? "Unknown", file.Contents);
+        //    Log("Completed file: " + file);
+        //}
+        //
+        //private string GetName(CodeUnit codeUnit, string line)
+        //{
+        //    int start;
+        //    int end;
+        //    if (codeUnit == CodeUnit.Class)
+        //    {
+        //        start = 22; // "\tpublic partial class ".Length
+        //        end = line.IndexOf(':', start)-1;
+        //    }
+        //    else // if (codeUnit == CodeUnit.Enum)
+        //    {
+        //        start = 13; // "\tpublic enum ".Length
+        //        end = line.Length;
+        //    }
+        //
+        //    return line.Substring(start, end - start);
+        //}
 
         /// <summary>
         /// Displays the message with a header always
@@ -866,20 +865,20 @@ namespace DLaB.ModelBuilderExtensions
             }
         }
 
-        enum SplitStage
-        {
-            Header,
-            CodeUnit,
-            CodeUnitHeader,
-            Namespace,
-            ServiceContext,
-        }
-
-        protected enum CodeUnit
-        {
-            Class,
-            Enum
-        }
+        //enum SplitStage
+        //{
+        //    Header,
+        //    CodeUnit,
+        //    CodeUnitHeader,
+        //    Namespace,
+        //    ServiceContext,
+        //}
+        //
+        //protected enum CodeUnit
+        //{
+        //    Class,
+        //    Enum
+        //}
 
         private class ProjectFile
         {

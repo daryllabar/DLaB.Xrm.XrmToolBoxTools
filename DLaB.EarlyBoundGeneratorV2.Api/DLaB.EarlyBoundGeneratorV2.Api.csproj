@@ -164,6 +164,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DLaB.ModelBuilderExtensions\DLaB.ModelBuilderExtensions.csproj">
+      <Project>{7827fcaf-6aa2-46b9-bb88-0d3ca9dd4d32}</Project>
+      <Name>DLaB.ModelBuilderExtensions</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="..\DLaB.Log\DLaB.Log.projitems" Label="Shared" />
   <Import Project="..\DLaB.EarlyBoundGeneratorV2.Logic\DLaB.EarlyBoundGeneratorV2.Logic.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

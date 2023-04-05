@@ -8,6 +8,7 @@ using System.Linq;
 using System.Speech.Synthesis;
 using System.Text.Json;
 using DLaB.EarlyBoundGeneratorV2.Settings;
+using DLaB.ModelBuilderExtensions;
 
 namespace DLaB.EarlyBoundGeneratorV2
 {
@@ -70,6 +71,12 @@ namespace DLaB.EarlyBoundGeneratorV2
                 {
                     return false;
                 }
+
+                var logFilePath = ErrorLogger.GetLogPath(EarlyBoundGeneratorConfig.ExtensionConfig.XrmToolBoxPluginPath);
+                if (File.Exists(logFilePath))
+                {
+                    File.Delete(logFilePath);
+                }
                 var runner = new ProcessModelInvoker(GetParameters(parameters));
                 var result = runner.Invoke(service);
                 if (result == 0)
@@ -81,6 +88,13 @@ namespace DLaB.EarlyBoundGeneratorV2
                 {
                     Logger.Show("An error occurred!", " An error when calling ProcessModelInvoker.Invoke.  Result: " + result);
                     Speak("Early Bound Generation Errored");
+
+                    if (File.Exists(logFilePath))
+                    {
+                        Logger.AddDetail("Log File:");
+                        Logger.AddDetail(File.ReadAllText(logFilePath));
+                    }
+
                     return false;
                 }
             }
