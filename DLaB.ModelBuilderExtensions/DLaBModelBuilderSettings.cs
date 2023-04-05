@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json.Serialization;
@@ -296,7 +297,7 @@ namespace DLaB.ModelBuilderExtensions
 
             return Path.IsPathRooted(path)
                 ? path
-                : Path.Combine(XrmToolBoxPluginPath ?? Directory.GetCurrentDirectory(), path);
+                : Path.Combine(XrmToolBoxPluginPath ?? AppDomain.CurrentDomain.BaseDirectory, path);
         }
     }
 
