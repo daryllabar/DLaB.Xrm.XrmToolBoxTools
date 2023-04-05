@@ -106,6 +106,7 @@ namespace DLaB.ModelBuilderExtensions
                 CamelCaser.ClearCache();
                 ConfigHelper.ClearCache();
                 ServiceCache.ClearCache();
+                PacModelBuilderCodeGenHack.ClearMsUtilitiesCache();
             }
         }
 

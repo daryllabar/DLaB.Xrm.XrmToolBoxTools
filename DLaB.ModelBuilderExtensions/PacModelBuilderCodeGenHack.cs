@@ -337,6 +337,27 @@ namespace DLaB.ModelBuilderExtensions
             CodeGenerationService_WriteFile(outputFile, language, codenamespace.OrderTypesByName(), serviceProvider, writeProxyAttrib);
         }
 
+        public static void ClearMsUtilitiesCache()
+        {
+            var typeName = "Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.Utility.Utilites";
+            var fieldName = "_locatedKeys";
+            var type = Type.GetType(typeName);
+            if (type == null)
+            {
+                throw new Exception("Unable to lookup the type: " + typeName);
+            }
+            var field = type.GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Static);
+            if (field == null)
+            {
+                throw new Exception("Unable to lookup the field: " + typeName + " on type " + typeName);
+            }
+            var value = (Dictionary<string, object>)field.GetValue(null);
+            if (value != null)
+            {
+                value.Clear();
+            }
+        }
+
         internal static string ApplicationName
         {
             get

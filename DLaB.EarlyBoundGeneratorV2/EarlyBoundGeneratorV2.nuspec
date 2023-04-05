@@ -12,6 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
     <releaseNotes>V2.2023.4.5
+The Updated Settings Are Not Reflected Immediately Until the XrmToolBox is Closed And Reopened #390
 Don't write message filter if not generating messages #389
 UseCrmSvcUtilStateEnumNamingConvention gets reset #388
 Switching from one file per entity leaves slash in path #387
