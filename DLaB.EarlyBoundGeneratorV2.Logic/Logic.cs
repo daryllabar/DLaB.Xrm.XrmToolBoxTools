@@ -225,7 +225,7 @@ namespace DLaB.EarlyBoundGeneratorV2
                         var properties = document.RootElement.EnumerateObject().ToDictionary(k => k.Name);
                         properties["dLaB.ModelBuilder"] = new JsonProperty();
                         earlyBoundGeneratorConfig.PopulateBuilderProperties(properties);
-                        earlyBoundGeneratorConfig.ExtensionConfig.PopulateBuilderProperties(properties);
+                        earlyBoundGeneratorConfig.ExtensionConfig.PopulateBuilderProperties(properties, earlyBoundGeneratorConfig.GenerateMessages);
 
 
                         writer.WriteStartObject();

@@ -604,7 +604,10 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
 
             SetOutputFolderProperty(BuilderSettingsJsonNames.EntityTypesFolder, EntityTypesFolder, defaultSettings.EntityTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.GenerateActions, GenerateMessages);
-            SetOutputFolderProperty(BuilderSettingsJsonNames.MessagesTypesFolder, MessageTypesFolder, defaultSettings.MessageTypesFolder);
+            if (GenerateMessages)
+            {
+                SetOutputFolderProperty(BuilderSettingsJsonNames.MessagesTypesFolder, MessageTypesFolder, defaultSettings.MessageTypesFolder);
+            }
             properties.SetJsonProperty(BuilderSettingsJsonNames.Namespace, Namespace);
             SetModelBuilderServiceProperty(BuilderSettingsJsonNames.NamingService, NamingService);
             SetOutputFolderProperty(BuilderSettingsJsonNames.OptionSetsTypesFolder, OptionSetsTypesFolder, defaultSettings.OptionSetsTypesFolder);
