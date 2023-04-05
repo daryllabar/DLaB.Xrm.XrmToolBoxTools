@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Media;
 using System.Windows.Forms;
-using DLaB.EarlyBoundGeneratorV2.Forms;
 using DLaB.EarlyBoundGeneratorV2.Settings;
 using DLaB.Log;
 using DLaB.XrmToolBoxCommon;
@@ -482,12 +481,6 @@ Please consider clicking the save button in the top right to save the settings w
         public string GetEditorSetting(EditorSetting key)
         {
             return null;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var tmp = new SpecifyAttributesDialog(this);
-            tmp.ShowDialog();
         }
     }
 
