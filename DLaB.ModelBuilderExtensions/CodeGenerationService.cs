@@ -219,7 +219,7 @@ namespace DLaB.ModelBuilderExtensions
             void DeleteEmptyFolder(string relativeFolder)
             {
                 var entityFolder = Path.Combine(OutDirectory, relativeFolder);
-                if (!Directory.EnumerateFiles(entityFolder).Any())
+                if (Directory.Exists(entityFolder) && !Directory.EnumerateFiles(entityFolder).Any())
                 {
                     Directory.Delete(entityFolder);
                 }
