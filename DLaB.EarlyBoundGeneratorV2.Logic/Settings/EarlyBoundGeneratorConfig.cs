@@ -286,14 +286,14 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 }
             }
 
-            if (pocoVersion < new Version("2.2023.3.12"))
+            if (pocoVersion < new Version("2.2023.4.3"))
             {
                 if (pocoConfig.AddNewFilesToProject != true)
                 {
                     Logger.Show("You are upgrading from a CrmSvcUtil based Early Bound Generator to PAC ModelBuilder one, but don't have \"1 - Global - Add New Files To Project\" enabled.  It is suggested that this is enabled before generating the new types to simplify the transition!");
                 }
                 
-                Logger.AddDetail("Updating config to 2.2023.3.12 settings.");
+                Logger.AddDetail("Updating config to 2.2023.4.3 settings.");
                 // 3.2.2023 Switch to Model Builder.  Pull User Arguments into typed settings
                 ObsoleteUserArgument(poco, a => a.Name == "generateActions", (p, arg) => poco.GenerateMessages = bool.Parse(arg.Value));
                 ObsoleteUserArgument(poco, a => a.Name == "namespace", (p, arg) => poco.Namespace = arg.Value);
@@ -327,9 +327,9 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
 
                 AddNewTokens(pocoConfig, defaultConfig, PreV2TokenCapitalizations);
 
-                Logger.AddDetail("Finished Updating Config to 2.2023.3.12 settings!");
+                Logger.AddDetail("Finished Updating Config to 2.2023.4.3 settings!");
                 Logger.AddDetail("Check out the update documentation!");
-                Logger.AddDetail("https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/wiki/Version-2.2023.3.12---Upgrade-To-PAC-ModelBuilder");
+                Logger.AddDetail("https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/wiki/Version-2.2023.4.3-Upgrade-To-PAC-ModelBuilder");
             }
             else if (pocoConfig.UseCrmSvcUtilStateEnumNamingConvention == true)
             {

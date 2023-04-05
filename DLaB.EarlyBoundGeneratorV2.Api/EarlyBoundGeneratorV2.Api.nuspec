@@ -2,16 +2,19 @@
 <package >
 	<metadata>
 		<id>DLaB.Xrm.EarlyBoundGeneratorV2.Api</id>
-		<version>2.2023.3.12</version>
-		<title>Early Bound Generator Api</title>
+		<version>2.2023.4.3</version>
+		<title>Early Bound Generator V2 Api</title>
 		<authors>Daryl LaBar</authors>
 		<owners>Daryl LaBar</owners>
 		<license type="expression">MIT</license>
 		<icon>images\DLaB_Dynamics_Logo_Square_32x32.png</icon>
 		<projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
-		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses CrmSvcUtil from the SDK.</description>
-		<releaseNotes>V2.2023.3.12
+		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses ModelBuilder from the PAC.</description>
+		<releaseNotes>V2.2023.4.3
+Warn on Default Settings Loaded #382
+Default location errors #381
+Output Folders not converting to Output File Name #380
 Allow for configurable Transliteration Path #379
 Hide Message Properties when not generated #378
 Removal of Microsoft.Xrm.Client #377
@@ -49,17 +52,22 @@ Order settings a bit better #321
 		<contentFiles>
 			<files include="any\any\DLaB.EarlyBoundGenerator\**\*.*" buildAction="None" copyToOutput="true" />
 		</contentFiles>
+		<dependencies>
+			<group targetFramework=".NETFramework4.8">
+				<dependency id="Microsoft.PowerPlatform.Dataverse.ModelBuilderLib" version="1.0.18" />
+			</group>
+		</dependencies>
 	</metadata>
 	<files>
 		<!-- lib -->
 		<file src="bin\Release\DLaB.ModelBuilderExtensions.dll" target="lib\net48" />
-		<file src="bin\Release\DLaB.EarlyBoundGenerator2.Api.dll" target="lib\net48" />
+		<file src="bin\Release\DLaB.EarlyBoundGeneratorV2.Api.dll" target="lib\net48" />
 		<!-- content -->
-		<file src="bin\Release\DLaB.EarlyBoundGeneratorV2\*.*" target="content\bin\DLaB.EarlyBoundGeneratorV2" />
-		<file src="bin\Release\DLaB.EarlyBoundGeneratorV2\alphabets\*.*" target="content\bin\DLaB.EarlyBoundGeneratorV2\alphabets" />
+		<file src="bin\Release\DLaB.Dictionary.txt" target="content\bin\DLaB.EarlyBoundGeneratorV2\DLaB.Dictionary.txt" />
+		<file src="bin\Release\alphabets\*.*" target="content\bin\DLaB.EarlyBoundGeneratorV2\alphabets" />
 		<!-- contentFiles -->
-		<file src="bin\Release\DLaB.EarlyBoundGeneratorV2\*.*" target="contentFiles\any\any\DLaB.EarlyBoundGeneratorV2" />
-		<file src="bin\Release\DLaB.EarlyBoundGeneratorV2\alphabets\*.*" target="contentFiles\any\any\DLaB.EarlyBoundGeneratorV2\alphabets" />
+		<file src="bin\Release\DLaB.Dictionary.txt" target="contentFiles\bin\DLaB.EarlyBoundGeneratorV2\DLaB.Dictionary.txt" />
+		<file src="bin\Release\alphabets\*.*" target="contentFiles\any\any\DLaB.EarlyBoundGeneratorV2\alphabets" />
 		<!-- images -->
 		<file src="bin\Release\Images\DLaB_Dynamics_Logo_Square_32x32.png" target="images\" />
 	</files>

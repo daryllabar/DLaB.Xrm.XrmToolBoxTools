@@ -12,9 +12,9 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
     <releaseNotes>V2.2023.4.3
-
-
-V2.2023.3.12
+Warn on Default Settings Loaded #382
+Default location errors #381
+Output Folders not converting to Output File Name #380
 Allow for configurable Transliteration Path #379
 Hide Message Properties when not generated #378
 Removal of Microsoft.Xrm.Client #377
