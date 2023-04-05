@@ -50,7 +50,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         [DisplayName("Wait For Attached Debugger")]
         [Description("For Debugging Only!  Waits until a debugger is attached to the ModelBuilder before processing the command.")]
         public bool WaitForAttachedDebugger
-        {
+        {   
             get => Config.ExtensionConfig.WaitForAttachedDebugger;
             set => Config.ExtensionConfig.WaitForAttachedDebugger = value;
         }
@@ -767,7 +767,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             {
                 if (isCsFile)
                 {
-                    value = System.IO.Path.GetDirectoryName(value) + @"\";
+                    value = System.IO.Path.GetDirectoryName(value);
                 }
             }
             else if (!isCsFile)
