@@ -279,7 +279,6 @@ namespace DLaB.EarlyBoundGeneratorV2
             var contents = EarlyBoundGeneratorConfig.ReplaceEarlyBoundAssemblyName(File.ReadAllText(path));
 
             File.WriteAllLines(path, contents.Split(new [] { Environment.NewLine }, StringSplitOptions.None).Where(l => !l.TrimStart().StartsWith("\"xrmToolBoxPluginPath\"")));
-            
         }
 
         private void Speak(string words)

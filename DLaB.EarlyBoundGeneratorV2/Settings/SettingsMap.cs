@@ -39,7 +39,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
 
         [Category("7 - Debug")]
         [DisplayName("Update Builder Settings Json")]
-        [Description("If this is set to false, then all setting changes made in the Early Bound Generator will not take affect outside of out directory since the builderSettings.json file isn't getting updated, but is helpful if custom editing of the builderSettings.json file is required.")]
+        [Description("If this is set to false, then all setting changes made in the Early Bound Generator will not take affect outside of out directory since the builderSettings.json file isn't getting updated, but is helpful if custom editing of the builderSettings.json file is required.  Please note, the assembly of the services will most likely need to be updated to from \",DLaB.ModelBuilderExtensions\" to \",DLaB.EarlyBoundGeneratorV2\" and the \"dLaB.ModelBuilder.xrmToolBoxPluginPath\" set")]
         public bool UpdateBuilderSettingsJson
         {
             get => Config.UpdateBuilderSettingsJson;
