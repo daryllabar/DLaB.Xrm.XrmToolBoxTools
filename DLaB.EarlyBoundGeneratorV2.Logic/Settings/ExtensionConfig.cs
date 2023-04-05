@@ -471,10 +471,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             properties.SetJsonProperty(BuilderSettingsJsonNames.EmitFieldsClasses, GenerateAttributeNameConsts);
             properties.SetJsonArrayProperty(BuilderSettingsJsonNames.EntityNamesFilter, JoinWhiteLists(EntitiesWhitelist, EntityPrefixesWhitelist));
             properties.SetJsonProperty(BuilderSettingsJsonNames.GenerateGlobalOptionSets, GenerateGlobalOptionSets);
-            if (generateMessages)
-            {
-                properties.SetJsonArrayProperty(BuilderSettingsJsonNames.MessageNamesFilter, JoinWhiteLists(ActionsWhitelist, ActionPrefixesWhitelist));
-            }
+            properties.SetJsonArrayProperty(BuilderSettingsJsonNames.MessageNamesFilter, generateMessages ? JoinWhiteLists(ActionsWhitelist, ActionPrefixesWhitelist) : null);
             properties.SetJsonProperty(BuilderSettingsJsonNames.SuppressGeneratedCodeAttribute, !GenerateGeneratedCodeAttribute);
             properties.SetJsonProperty(BuilderSettingsJsonNames.SuppressINotifyPattern, !GenerateINotifyPattern);
         }

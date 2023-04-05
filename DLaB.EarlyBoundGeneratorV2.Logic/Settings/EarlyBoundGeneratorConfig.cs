@@ -604,10 +604,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
 
             SetOutputFolderProperty(BuilderSettingsJsonNames.EntityTypesFolder, EntityTypesFolder, defaultSettings.EntityTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.GenerateActions, GenerateMessages);
-            if (GenerateMessages)
-            {
-                SetOutputFolderProperty(BuilderSettingsJsonNames.MessagesTypesFolder, MessageTypesFolder, defaultSettings.MessageTypesFolder);
-            }
+            SetOutputFolderProperty(BuilderSettingsJsonNames.MessagesTypesFolder, MessageTypesFolder, defaultSettings.MessageTypesFolder, !GenerateMessages);
             properties.SetJsonProperty(BuilderSettingsJsonNames.Namespace, Namespace);
             SetModelBuilderServiceProperty(BuilderSettingsJsonNames.NamingService, NamingService);
             SetOutputFolderProperty(BuilderSettingsJsonNames.OptionSetsTypesFolder, OptionSetsTypesFolder, defaultSettings.OptionSetsTypesFolder);
@@ -618,8 +615,18 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 properties.SetJsonPropertyIfPopulated(propertyName, isXrmToolBoxEarlyBound ? ReplaceModelBuilderAssemblyName(typeName) : typeName);
             }
 
-            void SetOutputFolderProperty(string propertyName, string typeName, string @default)
+            void SetOutputFolderProperty(string propertyName, string typeName, string @default, bool remove = false)
             {
+                if (remove)
+                {
+                    propertyName = propertyName.LowerFirstChar();
+                    if(properties.ContainsKey(propertyName))
+                    {
+                        properties.Remove(propertyName);
+                    }
+                    return;
+                }
+
                 properties.SetJsonPropertyIfPopulated(propertyName, typeName.Contains(".cs") ? @default : typeName);
             }
         }
