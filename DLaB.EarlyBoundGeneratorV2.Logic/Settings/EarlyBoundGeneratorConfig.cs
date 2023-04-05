@@ -331,10 +331,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 Logger.AddDetail("Check out the update documentation!");
                 Logger.AddDetail("https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/wiki/Version-2.2023.4.3-Upgrade-To-PAC-ModelBuilder");
             }
-            else if (pocoConfig.UseCrmSvcUtilStateEnumNamingConvention == true)
-            {
-                pocoConfig.UseCrmSvcUtilStateEnumNamingConvention = false;
-            }
         }
 
         private static string InjectMissingWildcards(string value)
