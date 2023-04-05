@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Logger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LoggerTextWriter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LogMessageInfo.cs" />
   </ItemGroup>
 </Project>

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9E7917B8-42E9-44CA-993A-15D7E60363EF}</ProjectGuid>
+    <ProjectGuid>{421ABA56-C7A2-4DAD-BE87-DB080CD0DDF9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DLaB.CrmSvcUtilExtensions.Tests</RootNamespace>
@@ -163,7 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DLaB.CrmSvcUtilExtensions\DLaB.CrmSvcUtilExtensions.csproj">
-      <Project>{7827FCAF-6AA2-46B9-BB88-0D3CA9DD4D32}</Project>
+      <Project>{d2a3139a-54bd-4dc3-bf6c-d1562d4f4644}</Project>
       <Name>DLaB.CrmSvcUtilExtensions</Name>
     </ProjectReference>
   </ItemGroup>

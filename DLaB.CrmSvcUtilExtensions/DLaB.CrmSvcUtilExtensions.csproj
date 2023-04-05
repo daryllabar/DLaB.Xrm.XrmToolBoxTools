@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7827FCAF-6AA2-46B9-BB88-0D3CA9DD4D32}</ProjectGuid>
+    <ProjectGuid>{D2A3139A-54BD-4DC3-BF6C-D1562D4F4644}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DLaB.CrmSvcUtilExtensions</RootNamespace>

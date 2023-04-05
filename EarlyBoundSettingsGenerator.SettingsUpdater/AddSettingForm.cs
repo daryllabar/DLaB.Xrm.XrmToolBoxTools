@@ -81,6 +81,9 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
             new ExtensionConfigLogic(info).UpdateFile();
             new EarlyBoundGeneratorConfigLogic(info).UpdateFile();
             new SettingsMap(info).UpdateFile();
+            new ModelBuilderSettings(info).UpdateFile();
+            new ApiTestDefaultBuilderSettingsJson(info).UpdateFile();
+
             MessageBox.Show("Finished!", "Property Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 

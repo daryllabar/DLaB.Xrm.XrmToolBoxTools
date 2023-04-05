@@ -20,8 +20,8 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
 
         private void AddProperty(string[] file)
         {
-            var start = $"#region {Property.Category}";
-            var end = $"#endregion {Property.Category}";
+            var start = $"#region {Property.Category.Substring(4)}";
+            var end = $"#endregion {Property.Category.Substring(4)}";
             var lineStart = "        public ";
 
             var firstIndex = GetInsertIndexOfAlphabeticallySortedProperty(file, start, end, " ", lineStart);
@@ -33,7 +33,7 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
             file[insertIndex - 1] += $@"
         [Category(""{Property.Category}"")]
         [DisplayName(""{Property.DisplayName}"")]
-        [Description(""{Property.Description.Replace(Environment.NewLine, "  ")}"")]
+        [Description(""{Property.Description.Replace(Environment.NewLine, "  ").Replace("\"", "\\\"")}"")]
         public {Property.Type} {Property.Name}
         {{
             get => Config.ExtensionConfig.{Property.Name};

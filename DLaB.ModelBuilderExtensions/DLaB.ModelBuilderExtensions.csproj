@@ -1,0 +1,1135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7827FCAF-6AA2-46B9-BB88-0D3CA9DD4D32}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DLaB.ModelBuilderExtensions</RootNamespace>
+    <AssemblyName>DLaB.ModelBuilderExtensions</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;DLAB_PUBLIC</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;DLAB_PUBLIC</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Crm.Sdk.Proxy, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.1.0.18\lib\net48\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.PowerPlatform.Dataverse.ModelBuilderLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.1.0.18\lib\net48\Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.1.0.18\lib\net48\Microsoft.Xrm.Sdk.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Activities.Presentation" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CodeDom, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.CodeDom.6.0.0\lib\net461\System.CodeDom.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.6.0.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.6.0.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Text.Encodings.Web, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.6.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=6.0.0.7, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.6.0.7\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Workflow.Activities" />
+    <Reference Include="System.Workflow.ComponentModel" />
+    <Reference Include="System.Workflow.Runtime" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.XmlDocument, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Xml.XmlDocument.4.3.0\lib\net46\System.Xml.XmlDocument.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\ActivityPropertyInfo.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Comparers\AttributeComparer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Comparers\ColumnSetComparer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Comparers\ConditionExpressionComparer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Comparers\EnumerableComparer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Comparers\FilterExpressionComparer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Comparers\HashCode.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Comparers\LinkEntityComparer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Comparers\OrderExpressionComparer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Comparers\PagingInfoComparer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Comparers\ProjectionEqualityComparer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Comparers\QueryExpressionComparer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\DLaBXrmConfig.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\EntityHelper.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\ErrorCodes.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Exceptions\EnumCaseUndefinedException.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Exceptions\InvalidPluginStepRegistrationException.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Exceptions\MissingAttributeException.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\ExtendedOrganizationService.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\ExtendedOrganizationServiceSettings.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\ExtendedTracingService.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Extensions\AddLinkExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Extensions\AliasedExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Extensions\AreEqualExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Extensions\ByIdExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Extensions\Extensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Extensions\HasConditionExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Extensions\HasConditionInWithValuesExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Extensions\OptimisticConcurrencyExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Extensions\OrganizationServiceExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Extensions\QueryExpressionConvertExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Extensions\ToStringDebugExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Extensions\WhereEqualExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Extensions\WhereInExtensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\IExtendedExecutionContext.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\IMaxLengthTracingService.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\IMinimumUpdater.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\LateBoundActivePropertyInfo.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\LateBoundQuerySettings.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\MinimumUpdaterDefault.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\AssertValidator.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\ColumnRequirementCheck.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\ContextEntity.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\DLaBExtendedPluginContextBase.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\DLaBExtendedPluginContextSettings.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\DLaBGenericPluginBase.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\DLaBPluginBase.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\ExtendedContextCreator.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\Extensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\IExtendedContextCreator.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\IExtendedPluginContext.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\IExtendedPluginContextInitializer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\InvalidColumnReason.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\InvalidRequirementReason.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\IRegisteredEventsPlugin.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\IRequirementValidator.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\IsolationMode.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\MessageType.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\ParameterName.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\PipelineStage.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\RegisteredEvent.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\RegisteredEventBuilder.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\RequirementValidator.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Plugin\TraceTimer.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\PrimaryFieldInfo.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\QueryExpressionFactory.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\QuerySettings.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\ReadOnlyCachedService.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\RetrieveAllEntities.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Sandbox\ExceptionHandler.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Serialization\Extensions.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Serialization\KeyValuePairOfRelationshipEntityCollectionX_PsK4FkN.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Serialization\KeyValuePairOfstringanyType.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Serialization\KeyValuePairOfstringstring.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Serialization\SerializableAttributeCollection.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Serialization\SerializableEntity.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Serialization\SerializableEntityCollection.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Serialization\SerializableEntityReference.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Serialization\SerializableFormattedValueCollection.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Serialization\SerializableKeyAttributeCollection.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Serialization\SerializableRelatedEntityCollection.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\SolutionCheckerAvoider.cs" />
+    <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\TypedQueryExpression.cs" />
+    <Compile Include="CodeWriterMessageFilterService.cs" />
+    <Compile Include="CustomizeCodeDomServiceEmpty.cs" />
+    <Compile Include="CustomTextWriter.cs" />
+    <Compile Include="Message\AttributeConstGenerator.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\Config.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ConfigKeyValueSplitInfo.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ConfigKeyValuesSplitInfo.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ConfigProvider.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ConfigValuesSplitInfo.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\DLaBConfig.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\Exceptions\DictionaryDuplicateKeyException.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\Exceptions\EnumCaseUndefinedException.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\Exceptions\TypeArgumentException.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\Extensions.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ProcessExecutor.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ProcessExecutorInfo.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\TypeSafeEnumBase.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\VersionControl\ISourceControlProvider.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\VersionControl\NoSourceControlProvider.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\VersionControl\SourceControl.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\VersionControl\VsTfsSourceControlProvider.cs" />
+    <Compile Include="AttributeConstGeneratorBase.cs" />
+    <Compile Include="CodeGenerationService.cs" />
+    <Compile Include="CamelCaser.cs" />
+    <Compile Include="DLaBModelBuilderSettings.cs" />
+    <Compile Include="Entity\RelationshipConstGenerator.cs" />
+    <Compile Include="Entity\EntityConstructorsGenerator.cs" />
+    <Compile Include="Entity\EnumerableEntityPropertyUpdater.cs" />
+    <Compile Include="Entity\MultiOptionSetAttributeUpdater.cs" />
+    <Compile Include="Entity\PrimaryAttributeGenerator.cs" />
+    <Compile Include="Entity\AttributeConstGenerator.cs" />
+    <Compile Include="Entity\MemberAttributes.cs" />
+    <Compile Include="ConfigHelper.cs" />
+    <Compile Include="Entity\AnonymousTypeConstructorGenerator.cs" />
+    <Compile Include="Entity\RemoveEntityTypeCodeService.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="FileToWrite.cs" />
+    <Compile Include="Metadata.cs" />
+    <Compile Include="MetadataProviderService.cs" />
+    <Compile Include="NamingService.cs" />
+    <Compile Include="Entity\OptionSetMetadataAttributeGenerator.cs" />
+    <Compile Include="OptionSet\CustomizeCodeDomService.cs" />
+    <Compile Include="CustomizeCodeDomService.cs" />
+    <Compile Include="Entity\OptionSetPropertyGenerator.cs" />
+    <Compile Include="OptionSet\FilterOptionSetEnums.cs" />
+    <Compile Include="CodeWriterFilterService.cs" />
+    <Compile Include="OptionSet\CodeWriterFilterService.cs" />
+    <Compile Include="OptionSet\Transliteration\AlphabetPoco.cs" />
+    <Compile Include="OptionSet\Transliteration\TransliterationAlphabet.cs" />
+    <Compile Include="OptionSet\Transliteration\TransliterationService.cs" />
+    <Compile Include="PacModelBuilderCodeGenHack.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\MetadataFilter.cs" />
+    <Compile Include="Serialization\MetadataMessage.cs" />
+    <Compile Include="Serialization\MetadataMessages.cs" />
+    <Compile Include="Serialization\MetadataPair.cs" />
+    <Compile Include="Serialization\MetadataRequest.cs" />
+    <Compile Include="Serialization\MetadataRequestField.cs" />
+    <Compile Include="Serialization\MetadataResponse.cs" />
+    <Compile Include="Serialization\MetadataResponseField.cs" />
+    <Compile Include="Serialization\SdkMessageResolver.cs" />
+    <Compile Include="Serialization\SerializableEntityMetadata.cs" />
+    <Compile Include="ServiceCache.cs" />
+    <Compile Include="TypedServiceBase.cs" />
+    <Compile Include="TypedServiceSettings.cs" />
+    <Compile Include="BlacklistLogic.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\CrmSvcUtil.exe.config" />
+    <None Include="bin\Debug\DLaB.CrmSvcUtilExtensions.dll.config" />
+    <None Include="bin\Release\CrmSvcUtil.exe.config" />
+    <None Include="bin\Release\DLaB.CrmSvcUtilExtensions.dll.config" />
+    <None Include="OptionSet\Transliteration\Alphabets\1031.json" />
+    <None Include="OptionSet\Transliteration\Alphabets\1036.json" />
+    <None Include="OptionSet\Transliteration\Alphabets\1040.json" />
+    <None Include="OptionSet\Transliteration\Alphabets\1044.json" />
+    <None Include="OptionSet\Transliteration\Alphabets\1045.json" />
+    <None Include="OptionSet\Transliteration\Alphabets\1049.json" />
+    <None Include="OptionSet\Transliteration\Alphabets\1058.json" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\coretools\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
+    <Content Include="bin\Debug\AntiXssLibrary.dll" />
+    <Content Include="bin\Debug\CrmSvcUtil.exe" />
+    <Content Include="bin\Debug\CrmSvcUtil.xml" />
+    <Content Include="bin\Debug\cs\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Debug\cs\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Debug\cs\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Debug\cs\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Debug\cs\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Debug\cs\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Debug\cs\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Debug\cs\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Debug\cs\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\cs\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\cs\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Debug\cs\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Debug\cs\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Debug\cs\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Debug\cs\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Debug\cs\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Debug\cs\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Debug\cs\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Debug\cs\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Debug\cs\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Debug\cs\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Debug\cs\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Debug\de\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Debug\de\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Debug\de\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Debug\de\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Debug\de\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Debug\de\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Debug\de\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Debug\de\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Debug\de\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\de\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\de\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Debug\de\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Debug\de\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Debug\de\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Debug\de\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Debug\de\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Debug\de\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Debug\de\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Debug\de\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Debug\de\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Debug\de\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Debug\de\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Debug\DLaB.CrmSvcUtilExtensions.dll" />
+    <Content Include="bin\Debug\DLaB.CrmSvcUtilExtensions.pdb" />
+    <Content Include="bin\Debug\es\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Debug\es\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Debug\es\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Debug\es\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Debug\es\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Debug\es\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Debug\es\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Debug\es\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Debug\es\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\es\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\es\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Debug\es\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Debug\es\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Debug\es\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Debug\es\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Debug\es\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Debug\es\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Debug\es\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Debug\es\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Debug\es\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Debug\es\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Debug\es\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Debug\it\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Debug\it\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Debug\it\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Debug\it\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Debug\it\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Debug\it\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Debug\it\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Debug\it\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Debug\it\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\it\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\it\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Debug\it\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Debug\it\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Debug\it\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Debug\it\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Debug\it\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Debug\it\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Debug\it\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Debug\it\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Debug\it\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Debug\it\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Debug\it\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Debug\McTools.Xrm.Connection.dll" />
+    <Content Include="bin\Debug\McTools.Xrm.Connection.WinForms.dll" />
+    <Content Include="bin\Debug\Microsoft.Crm.Sdk.Proxy.dll" />
+    <Content Include="bin\Debug\Microsoft.Crm.Sdk.Proxy.xml" />
+    <Content Include="bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+    <Content Include="bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
+    <Content Include="bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.xml" />
+    <Content Include="bin\Debug\Microsoft.IdentityModel.dll" />
+    <Content Include="bin\Debug\Microsoft.ServiceBus.dll" />
+    <Content Include="bin\Debug\Microsoft.ServiceBus.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Build.Client.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Build.Client.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Build.Common.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Build.Common.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Build2.WebApi.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Build2.WebApi.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Chat.WebApi.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Chat.WebApi.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Client.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Client.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Common.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Common.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Core.WebApi.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Core.WebApi.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.DeleteTeamProject.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.DeleteTeamProject.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Diff.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Diff.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Discussion.Client.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Discussion.Client.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Git.Client.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Git.Client.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Lab.Client.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Lab.Client.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Lab.Common.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Lab.Common.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Lab.TestIntegration.Client.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Lab.TestIntegration.Client.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Policy.WebApi.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Policy.WebApi.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.ProjectManagement.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.ProjectManagement.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.SharePointReporting.Integration.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.SharePointReporting.Integration.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.SourceControl.WebApi.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.SourceControl.WebApi.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Test.WebApi.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Test.WebApi.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.TestImpact.Client.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.TestImpact.Client.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.TestManagement.Client.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.TestManagement.Client.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.TestManagement.Common.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.TestManagement.Common.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.TestManagement.WebApi.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.TestManagement.WebApi.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.VersionControl.Client.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.VersionControl.Client.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.VersionControl.Common.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.VersionControl.Common.Integration.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.VersionControl.Common.Integration.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.VersionControl.Common.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Work.WebApi.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.Work.WebApi.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.WorkItemTracking.Client.DataStoreLoader.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.WorkItemTracking.Client.DataStoreLoader.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.WorkItemTracking.Client.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.WorkItemTracking.Client.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.WorkItemTracking.Common.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.WorkItemTracking.Common.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.WorkItemTracking.Proxy.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.WorkItemTracking.Proxy.xml" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.WorkItemTracking.WebApi.dll" />
+    <Content Include="bin\Debug\Microsoft.TeamFoundation.WorkItemTracking.WebApi.xml" />
+    <Content Include="bin\Debug\Microsoft.VisualStudio.Services.Client.dll" />
+    <Content Include="bin\Debug\Microsoft.VisualStudio.Services.Client.xml" />
+    <Content Include="bin\Debug\Microsoft.VisualStudio.Services.Common.dll" />
+    <Content Include="bin\Debug\Microsoft.VisualStudio.Services.Common.xml" />
+    <Content Include="bin\Debug\Microsoft.VisualStudio.Services.WebApi.dll" />
+    <Content Include="bin\Debug\Microsoft.VisualStudio.Services.WebApi.xml" />
+    <Content Include="bin\Debug\Microsoft.WindowsAzure.Configuration.dll" />
+    <Content Include="bin\Debug\Microsoft.WITDataStore32.dll" />
+    <Content Include="bin\Debug\Microsoft.WITDataStore64.dll" />
+    <Content Include="bin\Debug\Microsoft.Xrm.Client.CodeGeneration.dll" />
+    <Content Include="bin\Debug\Microsoft.Xrm.Client.dll" />
+    <Content Include="bin\Debug\Microsoft.Xrm.Portal.dll" />
+    <Content Include="bin\Debug\Microsoft.Xrm.Sdk.Deployment.dll" />
+    <Content Include="bin\Debug\Microsoft.Xrm.Sdk.Deployment.xml" />
+    <Content Include="bin\Debug\Microsoft.Xrm.Sdk.dll" />
+    <Content Include="bin\Debug\Microsoft.Xrm.Sdk.Workflow.dll" />
+    <Content Include="bin\Debug\Microsoft.Xrm.Sdk.Workflow.xml" />
+    <Content Include="bin\Debug\Microsoft.Xrm.Sdk.xml" />
+    <Content Include="bin\Debug\Microsoft.Xrm.Tooling.Connector.dll" />
+    <Content Include="bin\Debug\Microsoft.Xrm.Tooling.Connector.xml" />
+    <Content Include="bin\Debug\Microsoft.Xrm.Tooling.CrmConnectControl.dll" />
+    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
+    <Content Include="bin\Debug\Newtonsoft.Json.xml" />
+    <Content Include="bin\Debug\pl\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Debug\pl\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Debug\pl\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Debug\pl\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Debug\pl\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Debug\pl\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Debug\pl\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Debug\pl\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Debug\pl\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\pl\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\pl\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Debug\pl\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Debug\pl\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Debug\pl\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Debug\pl\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Debug\pl\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Debug\pl\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Debug\pl\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Debug\pl\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Debug\pl\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Debug\pl\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Debug\pl\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Debug\pt-BR\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Debug\pt-BR\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Debug\pt-BR\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Debug\pt-BR\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Debug\pt-BR\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Debug\pt-BR\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Debug\pt-BR\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Debug\pt-BR\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Debug\pt-BR\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\pt-BR\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\pt-BR\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Debug\pt-BR\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Debug\pt-BR\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Debug\pt-BR\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Debug\pt-BR\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Debug\pt-BR\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Debug\pt-BR\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Debug\pt-BR\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Debug\pt-BR\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Debug\pt-BR\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Debug\pt-BR\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Debug\pt-BR\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Debug\System.IdentityModel.Tokens.Jwt.dll" />
+    <Content Include="bin\Debug\System.IdentityModel.Tokens.Jwt.xml" />
+    <Content Include="bin\Debug\System.Net.Http.Formatting.dll" />
+    <Content Include="bin\Debug\System.Net.Http.Formatting.xml" />
+    <Content Include="bin\Debug\System.Web.Http.dll" />
+    <Content Include="bin\Debug\System.Web.Http.xml" />
+    <Content Include="bin\Debug\tr\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Debug\tr\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Debug\tr\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Debug\tr\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Debug\tr\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Debug\tr\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Debug\tr\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Debug\tr\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Debug\tr\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\tr\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\tr\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Debug\tr\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Debug\tr\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Debug\tr\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Debug\tr\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Debug\tr\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Debug\tr\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Debug\tr\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Debug\tr\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Debug\tr\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Debug\tr\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Debug\tr\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Debug\XrmToolBox.exe" />
+    <Content Include="bin\Debug\XrmToolBox.Extensibility.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Release\AntiXssLibrary.dll" />
+    <Content Include="bin\Release\CrmSvcUtil.exe" />
+    <Content Include="bin\Release\CrmSvcUtil.xml" />
+    <Content Include="bin\Release\cs\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Release\cs\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Release\cs\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Release\cs\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Release\cs\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Release\cs\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Release\cs\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Release\cs\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Release\cs\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\cs\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\cs\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Release\cs\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Release\cs\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Release\cs\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Release\cs\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Release\cs\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Release\cs\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Release\cs\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Release\cs\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Release\cs\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Release\cs\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Release\cs\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Release\de\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Release\de\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Release\de\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Release\de\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Release\de\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Release\de\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Release\de\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Release\de\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Release\de\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\de\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\de\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Release\de\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Release\de\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Release\de\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Release\de\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Release\de\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Release\de\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Release\de\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Release\de\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Release\de\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Release\de\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Release\de\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Release\DLaB.CrmSvcUtilExtensions.dll" />
+    <Content Include="bin\Release\DLaB.CrmSvcUtilExtensions.pdb" />
+    <Content Include="bin\Release\es\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Release\es\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Release\es\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Release\es\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Release\es\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Release\es\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Release\es\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Release\es\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Release\es\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\es\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\es\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Release\es\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Release\es\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Release\es\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Release\es\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Release\es\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Release\es\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Release\es\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Release\es\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Release\es\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Release\es\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Release\es\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Release\fr\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Release\fr\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Release\fr\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Release\fr\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Release\fr\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Release\fr\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Release\fr\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Release\fr\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Release\fr\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\fr\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\fr\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Release\fr\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Release\fr\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Release\fr\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Release\fr\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Release\fr\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Release\fr\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Release\fr\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Release\fr\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Release\fr\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Release\fr\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Release\fr\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Release\it\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Release\it\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Release\it\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Release\it\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Release\it\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Release\it\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Release\it\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Release\it\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Release\it\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\it\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\it\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Release\it\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Release\it\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Release\it\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Release\it\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Release\it\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Release\it\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Release\it\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Release\it\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Release\it\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Release\it\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Release\it\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Release\ja\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Release\ja\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Release\ja\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Release\ja\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Release\ja\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Release\ja\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Release\ja\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Release\ja\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Release\ja\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\ja\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\ja\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Release\ja\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Release\ja\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Release\ja\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Release\ja\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Release\ja\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Release\ja\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Release\ja\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Release\ja\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Release\ja\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Release\ja\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Release\ja\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Release\ko\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Release\ko\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Release\ko\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Release\ko\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Release\ko\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Release\ko\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Release\ko\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Release\ko\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Release\ko\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\ko\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\ko\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Release\ko\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Release\ko\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Release\ko\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Release\ko\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Release\ko\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Release\ko\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Release\ko\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Release\ko\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Release\ko\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Release\ko\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Release\ko\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Release\McTools.Xrm.Connection.dll" />
+    <Content Include="bin\Release\McTools.Xrm.Connection.WinForms.dll" />
+    <Content Include="bin\Release\Microsoft.Crm.Sdk.Proxy.dll" />
+    <Content Include="bin\Release\Microsoft.Crm.Sdk.Proxy.xml" />
+    <Content Include="bin\Release\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+    <Content Include="bin\Release\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
+    <Content Include="bin\Release\Microsoft.IdentityModel.Clients.ActiveDirectory.xml" />
+    <Content Include="bin\Release\Microsoft.IdentityModel.dll" />
+    <Content Include="bin\Release\Microsoft.ServiceBus.dll" />
+    <Content Include="bin\Release\Microsoft.ServiceBus.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Build.Client.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Build.Client.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Build.Common.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Build.Common.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Build2.WebApi.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Build2.WebApi.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Chat.WebApi.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Chat.WebApi.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Client.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Client.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Common.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Common.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Core.WebApi.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Core.WebApi.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.DeleteTeamProject.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.DeleteTeamProject.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Diff.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Diff.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Discussion.Client.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Discussion.Client.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Git.Client.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Git.Client.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Lab.Client.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Lab.Client.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Lab.Common.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Lab.Common.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Lab.TestIntegration.Client.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Lab.TestIntegration.Client.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Policy.WebApi.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Policy.WebApi.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.ProjectManagement.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.ProjectManagement.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.SharePointReporting.Integration.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.SharePointReporting.Integration.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.SourceControl.WebApi.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.SourceControl.WebApi.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Test.WebApi.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Test.WebApi.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.TestImpact.Client.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.TestImpact.Client.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.TestManagement.Client.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.TestManagement.Client.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.TestManagement.Common.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.TestManagement.Common.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.TestManagement.WebApi.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.TestManagement.WebApi.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.VersionControl.Client.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.VersionControl.Client.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.VersionControl.Common.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.VersionControl.Common.Integration.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.VersionControl.Common.Integration.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.VersionControl.Common.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Work.WebApi.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.Work.WebApi.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.WorkItemTracking.Client.DataStoreLoader.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.WorkItemTracking.Client.DataStoreLoader.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.WorkItemTracking.Client.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.WorkItemTracking.Client.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.WorkItemTracking.Common.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.WorkItemTracking.Common.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.WorkItemTracking.Proxy.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.WorkItemTracking.Proxy.xml" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.WorkItemTracking.WebApi.dll" />
+    <Content Include="bin\Release\Microsoft.TeamFoundation.WorkItemTracking.WebApi.xml" />
+    <Content Include="bin\Release\Microsoft.VisualStudio.Services.Client.dll" />
+    <Content Include="bin\Release\Microsoft.VisualStudio.Services.Client.xml" />
+    <Content Include="bin\Release\Microsoft.VisualStudio.Services.Common.dll" />
+    <Content Include="bin\Release\Microsoft.VisualStudio.Services.Common.xml" />
+    <Content Include="bin\Release\Microsoft.VisualStudio.Services.WebApi.dll" />
+    <Content Include="bin\Release\Microsoft.VisualStudio.Services.WebApi.xml" />
+    <Content Include="bin\Release\Microsoft.WindowsAzure.Configuration.dll" />
+    <Content Include="bin\Release\Microsoft.WITDataStore32.dll" />
+    <Content Include="bin\Release\Microsoft.WITDataStore64.dll" />
+    <Content Include="bin\Release\Microsoft.Xrm.Client.CodeGeneration.dll" />
+    <Content Include="bin\Release\Microsoft.Xrm.Client.dll" />
+    <Content Include="bin\Release\Microsoft.Xrm.Portal.dll" />
+    <Content Include="bin\Release\Microsoft.Xrm.Sdk.Deployment.dll" />
+    <Content Include="bin\Release\Microsoft.Xrm.Sdk.Deployment.xml" />
+    <Content Include="bin\Release\Microsoft.Xrm.Sdk.dll" />
+    <Content Include="bin\Release\Microsoft.Xrm.Sdk.Workflow.dll" />
+    <Content Include="bin\Release\Microsoft.Xrm.Sdk.Workflow.xml" />
+    <Content Include="bin\Release\Microsoft.Xrm.Sdk.xml" />
+    <Content Include="bin\Release\Microsoft.Xrm.Tooling.Connector.dll" />
+    <Content Include="bin\Release\Microsoft.Xrm.Tooling.Connector.xml" />
+    <Content Include="bin\Release\Microsoft.Xrm.Tooling.CrmConnectControl.dll" />
+    <Content Include="bin\Release\Newtonsoft.Json.dll" />
+    <Content Include="bin\Release\Newtonsoft.Json.xml" />
+    <Content Include="bin\Release\pl\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Release\pl\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Release\pl\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Release\pl\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Release\pl\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Release\pl\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Release\pl\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Release\pl\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Release\pl\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\pl\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\pl\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Release\pl\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Release\pl\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Release\pl\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Release\pl\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Release\pl\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Release\pl\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Release\pl\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Release\pl\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Release\pl\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Release\pl\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Release\pl\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Release\pt-BR\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Release\pt-BR\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Release\pt-BR\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Release\pt-BR\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Release\pt-BR\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Release\pt-BR\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Release\pt-BR\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Release\pt-BR\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Release\pt-BR\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\pt-BR\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\pt-BR\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Release\pt-BR\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Release\pt-BR\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Release\pt-BR\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Release\pt-BR\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Release\pt-BR\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Release\pt-BR\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Release\pt-BR\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Release\pt-BR\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Release\pt-BR\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Release\pt-BR\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Release\pt-BR\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Release\ru\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Release\ru\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Release\ru\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Release\ru\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Release\ru\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Release\ru\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Release\ru\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Release\ru\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Release\ru\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\ru\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\ru\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Release\ru\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Release\ru\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Release\ru\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Release\ru\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Release\ru\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Release\ru\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Release\ru\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Release\ru\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Release\ru\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Release\ru\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Release\ru\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Release\System.IdentityModel.Tokens.Jwt.dll" />
+    <Content Include="bin\Release\System.IdentityModel.Tokens.Jwt.xml" />
+    <Content Include="bin\Release\System.Net.Http.Formatting.dll" />
+    <Content Include="bin\Release\System.Net.Http.Formatting.xml" />
+    <Content Include="bin\Release\System.Web.Http.dll" />
+    <Content Include="bin\Release\System.Web.Http.xml" />
+    <Content Include="bin\Release\tr\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Release\tr\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Release\tr\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Release\tr\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Release\tr\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Release\tr\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Release\tr\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Release\tr\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Release\tr\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\tr\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\tr\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Release\tr\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Release\tr\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Release\tr\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Release\tr\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Release\tr\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Release\tr\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Release\tr\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Release\tr\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Release\tr\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Release\tr\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Release\tr\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Release\XrmToolBox.exe" />
+    <Content Include="bin\Release\XrmToolBox.Extensibility.dll" />
+    <Content Include="bin\Release\zh-Hans\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Release\zh-Hans\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Release\zh-Hans\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Release\zh-Hans\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Release\zh-Hans\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Release\zh-Hans\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Release\zh-Hans\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Release\zh-Hans\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Release\zh-Hans\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\zh-Hans\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\zh-Hans\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Release\zh-Hans\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Release\zh-Hans\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Release\zh-Hans\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Release\zh-Hans\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Release\zh-Hans\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Release\zh-Hans\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Release\zh-Hans\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Release\zh-Hans\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Release\zh-Hans\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Release\zh-Hans\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Release\zh-Hans\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <Content Include="bin\Release\zh-Hant\Microsoft.TeamFoundation.Build.Client.resources.dll" />
+    <Content Include="bin\Release\zh-Hant\Microsoft.TeamFoundation.Build.Common.resources.dll" />
+    <Content Include="bin\Release\zh-Hant\Microsoft.TeamFoundation.Client.resources.dll" />
+    <Content Include="bin\Release\zh-Hant\Microsoft.TeamFoundation.Common.resources.dll" />
+    <Content Include="bin\Release\zh-Hant\Microsoft.TeamFoundation.Core.WebApi.resources.dll" />
+    <Content Include="bin\Release\zh-Hant\Microsoft.TeamFoundation.Discussion.Client.resources.dll" />
+    <Content Include="bin\Release\zh-Hant\Microsoft.TeamFoundation.Lab.Client.resources.dll" />
+    <Content Include="bin\Release\zh-Hant\Microsoft.TeamFoundation.Lab.Common.resources.dll" />
+    <Content Include="bin\Release\zh-Hant\Microsoft.TeamFoundation.Lab.TestIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\zh-Hant\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.resources.dll" />
+    <Content Include="bin\Release\zh-Hant\Microsoft.TeamFoundation.SharePointReporting.Integration.resources.dll" />
+    <Content Include="bin\Release\zh-Hant\Microsoft.TeamFoundation.TestImpact.Client.resources.dll" />
+    <Content Include="bin\Release\zh-Hant\Microsoft.TeamFoundation.TestManagement.Client.resources.dll" />
+    <Content Include="bin\Release\zh-Hant\Microsoft.TeamFoundation.VersionControl.Common.Integration.resources.dll" />
+    <Content Include="bin\Release\zh-Hant\Microsoft.TeamFoundation.VersionControl.Common.resources.dll" />
+    <Content Include="bin\Release\zh-Hant\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.resources.dll" />
+    <Content Include="bin\Release\zh-Hant\Microsoft.TeamFoundation.WorkItemTracking.Client.resources.dll" />
+    <Content Include="bin\Release\zh-Hant\Microsoft.TeamFoundation.WorkItemTracking.Common.resources.dll" />
+    <Content Include="bin\Release\zh-Hant\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll" />
+    <Content Include="bin\Release\zh-Hant\Microsoft.VisualStudio.Services.Client.resources.dll" />
+    <Content Include="bin\Release\zh-Hant\Microsoft.VisualStudio.Services.Common.resources.dll" />
+    <Content Include="bin\Release\zh-Hant\Microsoft.VisualStudio.Services.WebApi.resources.dll" />
+    <None Include="DLaB.Dictionary.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>REM Copy New Content Files
+SET myCmd= "$(SolutionDir)References\NuGetContentInstaller.exe" "$(SolutionDir) " "$(ProjectPath)"
+echo %25myCmd%25
+%25myCmd%25
+
+if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.exe" "$(ProjectDir)Properties\AssemblyInfo.cs"</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

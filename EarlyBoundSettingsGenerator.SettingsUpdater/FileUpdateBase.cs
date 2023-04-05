@@ -1,19 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace EarlyBoundSettingsGenerator.SettingsUpdater
 {
     public abstract class FileUpdateBase
     {
-        public const string LogicSettingsRelativePath = @"DLaB.EarlyBoundGenerator.Logic\Settings";
-        public const string LogicRelativePath = @"DLaB.EarlyBoundGenerator.Logic";
-        public const string GeneratorSettingsRelativePath = @"DLaB.EarlyBoundGenerator\Settings";
+        public const string ApiTestResourcesPath = @"DLaB.EarlyBoundGeneratorV2.Api.Tests\Resources";
+        public const string GeneratorSettingsRelativePath = @"DLaB.EarlyBoundGeneratorV2\Settings";
+        public const string LogicSettingsRelativePath = @"DLaB.EarlyBoundGeneratorV2.Logic\Settings";
+        public const string LogicRelativePath = @"DLaB.EarlyBoundGeneratorV2.Logic";
+        public const string ModelBuilderExtensionsPath = @"DLaB.ModelBuilderExtensions";
 
         public PropertyInfo Property { get; set; }
         public DirectoryInfo SolutionDirectory => SolutionDirectoryLazy.Value;
@@ -48,6 +45,20 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
             return path;
         }
 
+        protected string GetModelBuilderExtPath(string fileName)
+        {
+            var path = Path.Combine(SolutionDirectory.FullName, ModelBuilderExtensionsPath, fileName);
+            AssertFileExists(path);
+            return path;
+        }
+
+        protected string GetApiTestResourcesPath(string fileName)
+        {
+            var path = Path.Combine(SolutionDirectory.FullName, ApiTestResourcesPath, fileName);
+            AssertFileExists(path);
+            return path;
+        }
+
         protected void AssertFileExists(string path)
         {
             if (!File.Exists(path))
@@ -77,7 +88,13 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
                     break;
                 }
 
-                if (file[i].Replace("\t", "    ").StartsWith(lineStartMatch))
+                var originalLine = file[i];
+                while (line.TrimEnd().EndsWith("=") || line.TrimEnd().EndsWith("+"))
+                {
+                    line += file[++i];
+                }
+
+                if (originalLine.Replace("\t", "    ").StartsWith(lineStartMatch))
                 {
                     var existingPropName = line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[indexOfWordInLine];
                     if (string.Compare(existingPropName, valueToInsert, StringComparison.Ordinal) > 0)

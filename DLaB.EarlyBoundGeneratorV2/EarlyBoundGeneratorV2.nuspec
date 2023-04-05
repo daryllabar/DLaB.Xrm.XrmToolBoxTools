@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>DLaB.Xrm.EarlyBoundGeneratorV2</id>
+	<version>2.2023.4.3</version>
+	<title>Early Bound Generator V2</title>
+    <authors>Daryl LaBar</authors>
+    <owners>Daryl LaBar</owners>
+    <license type="expression">MIT</license>
+    <icon>images\DLaB_Dynamics_Logo_Square_32x32.png</icon>
+    <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
+    <releaseNotes>V2.2023.4.3
+
+
+V2.2023.3.12
+Allow for configurable Transliteration Path #379
+Hide Message Properties when not generated #378
+Removal of Microsoft.Xrm.Client #377
+Remove Base Class Generation #376
+Implement Entities Category Settings #375
+Implement Global Settings #374
+Create Group Message By Request Setting #373
+Implement Suppress Generated Code Attribute #372
+Add option to split Actions/Messages #371
+Allow for Legacy CrmSvcUtil State Enums #370
+Allow For Single Files #369
+Remove All App Config References #368
+Implement CodeGenerationService #367
+Implement CodeWriterFilterService #366
+Implement IMetadataProviderService #365
+Cleanup Local Option Set files #364
+Enum names aren't being cased #362
+Update the config for Field Generation #361
+Enable CustomizeCodeDomService SettingsMap Settings #358
+Update to use new PAC ModelBuilder #352
+PAC Modelbuilder Utilize DLaB Naming Service #353
+Enable generation of Entity Consts #354
+Enable NamingService SettingsMap Settings #355
+Allow for not updating Settings File #357
+Member names cannot be the same as their enclosing type with generated Actions #349
+EarlyBoundGenerator.Api doesn't return any indication when an error occurs #332
+Order settings a bit better #321
+
+V1.2022.9.22
+Fix for Object Reference Not Set to Instance of Object after using clientid/secret connection? #333
+	    
+V1.2022.5.3
+Fix for Unable to run from Google Drive #317
+Fix for Deleting files Deletes from Temporary Folder, not output folder #318
+
+V1.2022.4.3
+Fix Action.cs is added to the .csroject file, even if it was deleted by CustomCodeGenerationService.WriteInternal #313
+
+V1.2022.2.4
+Fix for Can't define an output directory for generated entities #308
+
+V1.2021.12.12
+Added option to generate attributes using logical names #304
+      
+V1.2021.10.6
+Add N:N Relationships to Fields Constants #258
+Fix for Global Option Sets with the same name as the entity causes conflicts #300
+    </releaseNotes>
+    <copyright>Copyright 2019</copyright>
+	  <tags>PAC ModelBuilder Dataverse Xrm EarlyBound Generator XrmToolBox Plugins</tags>
+    <dependencies>
+      <dependency id="XrmToolBoxPackage" version="1.2020.12.43" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGeneratorV2.dll" target="lib\net462\plugins" />
+    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.ModelBuilderExtensions.dll" target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2" />
+    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGeneratorV2\*.*" target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2" />
+    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGeneratorV2\alphabets\*.*" target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\alphabets" />
+    <file src="bin\Release\Images\DLaB_Dynamics_Logo_Square_32x32.png" target="images\" />
+  </files>
+</package>
