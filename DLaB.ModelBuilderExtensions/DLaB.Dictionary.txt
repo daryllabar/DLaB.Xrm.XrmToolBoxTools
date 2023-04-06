@@ -2642,11 +2642,15 @@ disks
 dismiss
 dismissal
 dismissed
+dismisses
 disney
 disorder
 disorders
 dispatch
 dispatched
+dispatches
+displacement
+displacements
 display
 displayed
 displaying
@@ -9671,6 +9675,7 @@ volvo
 von
 vote
 voted
+voter
 voters
 votes
 voting

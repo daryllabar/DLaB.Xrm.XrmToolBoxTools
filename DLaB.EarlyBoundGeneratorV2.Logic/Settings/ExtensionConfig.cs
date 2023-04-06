@@ -397,6 +397,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
 
         public void WriteDLaBModelBuilderProperties(Utf8JsonWriter writer, EarlyBoundGeneratorConfig settings)
         {
+            var generateOptionSetProperties = !GenerateEnumProperties || (GenerateEnumProperties && !ReplaceOptionSetPropertiesWithEnum);
             // Write first since it will be cleaned up after the file is processed, and don't want to mess with the line before ending in a comma
             writer.AddProperty(nameof(XrmToolBoxPluginPath), XrmToolBoxPluginPath);
 
@@ -423,7 +424,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddProperty(nameof(GenerateConstructorsSansLogicalName), GenerateConstructorsSansLogicalName);
             writer.AddProperty(nameof(GenerateEntityRelationships), GenerateEntityRelationships);
             writer.AddProperty(nameof(GenerateEntityTypeCode), GenerateEntityTypeCode);
-            writer.AddProperty("GenerateOptionSetProperties", !GenerateEnumProperties || !ReplaceOptionSetPropertiesWithEnum);
+            writer.AddProperty("GenerateOptionSetProperties", generateOptionSetProperties);
             writer.AddProperty(nameof(GenerateOptionSetMetadataAttribute), GenerateOptionSetMetadataAttribute);
             writer.AddProperty(nameof(GenerateTypesAsInternal), GenerateTypesAsInternal);
             writer.AddProperty(nameof(GroupLocalOptionSetsByEntity), GroupLocalOptionSetsByEntity);
@@ -443,7 +444,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddPropertyDictionaryStringString(nameof(PropertyEnumMappings), PropertyEnumMappings, false);
             writer.AddProperty(nameof(ReadSerializedMetadata), ReadSerializedMetadata);
             writer.AddProperty(nameof(RemoveRuntimeVersionComment), RemoveRuntimeVersionComment);
-            writer.AddProperty("ReplaceEnumPropertiesWithOptionSet", !ReplaceOptionSetPropertiesWithEnum);
+            AddOptionalBoolProperty("ReplaceEnumPropertiesWithOptionSet", !GenerateEnumProperties, generateOptionSetProperties);
             writer.AddProperty(nameof(SerializeMetadata), SerializeMetadata);
             writer.AddPropertyArray(nameof(TokenCapitalizationOverrides), TokenCapitalizationOverrides);
             writer.AddProperty(nameof(TransliterationRelativePath), TransliterationRelativePath);
@@ -457,6 +458,14 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 if (createProperty)
                 {
                     writer.AddProperty(fileNameKey, fileNameValue);
+                }
+            }
+
+            void AddOptionalBoolProperty(string fileNameKey, bool value, bool createProperty)
+            {
+                if (createProperty)
+                {
+                    writer.AddProperty(fileNameKey, value);
                 }
             }
 
