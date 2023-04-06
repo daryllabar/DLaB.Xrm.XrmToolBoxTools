@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGeneratorV2</id>
-	<version>2.2023.4.5</version>
+	<version>2.2023.4.6</version>
 	<title>Early Bound Generator V2</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,11 @@
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V2.2023.4.5
+    <releaseNotes>V2.2023.4.6
+Allow StateCode to be Enum Specifically #393
+Enum Postfixed Properties are not getting generated #392
+
+V2.2023.4.5
 The Updated Settings Are Not Reflected Immediately Until the XrmToolBox is Closed And Reopened #390
 Don't write message filter if not generating messages #389
 UseCrmSvcUtilStateEnumNamingConvention gets reset #388
@@ -69,11 +73,13 @@ Fix for Deleting files Deletes from Temporary Folder, not output folder #318
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2.dll" target="lib\net462\plugins" />
-    <file src="bin\Release\DLaB.ModelBuilderExtensions.dll" target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\DLaB.ModelBuilderExtensions.dll" />
+    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2.dll"                        target="lib\net462\plugins" />
+    <file src="bin\Release\DLaB.ModelBuilderExtensions.dll"                       target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\DLaB.ModelBuilderExtensions.dll" />
+    <file src="bin\Release\Microsoft.AI.ServerTelemetryChannel.dll"               target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\Microsoft.AI.ServerTelemetryChannel.dll" />
+    <file src="bin\Release\Microsoft.ApplicationInsights.dll"                     target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\Microsoft.ApplicationInsights.dll" />
     <file src="bin\Release\Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" />
-    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2\*.*" target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2" />
-    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2\alphabets\*.*" target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\alphabets" />
-    <file src="bin\Release\Images\DLaB_Dynamics_Logo_Square_32x32.png" target="images\" />
+    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2\*.*"                        target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2" />
+    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2\alphabets\*.*"              target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\alphabets" />
+    <file src="bin\Release\Images\DLaB_Dynamics_Logo_Square_32x32.png"            target="images\" />
   </files>
 </package>

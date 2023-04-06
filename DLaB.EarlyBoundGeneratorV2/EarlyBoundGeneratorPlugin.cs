@@ -60,7 +60,9 @@ namespace DLaB.EarlyBoundGeneratorV2
             SetConnectionSettingOnLoad();
             HydrateUiFromSettings(ConnectionSettings.FullSettingsPath);
             Telemetry.Enabled = Options.Instance.AllowLogUsage ?? true;
-            Telemetry.InitAiConfig("3a079617-6a46-4c46-8db3-719f7d2f51c7"); 
+            // Totally security by obscurity
+            var key = new Guid(Convert.FromBase64String("F5YHOkZqRky" + "Ns3GffS9Rxw=="));
+            Telemetry.InitAiConnection($"InstrumentationKey={key};IngestionEndpoint=https://westus2-1.in.applicationinsights.azure.com/;LiveEndpoint=https://westus2.livediagnostics.monitor.azure.com/");
             FormLoaded = true;
             Logger.Instance.OnLog -= OnLoadLog;
         }
@@ -246,7 +248,7 @@ Please consider clicking the save button in the top right to save the settings w
                         w.ReportProgress(99, "Generation Complete!");
                         if (settings.UpdateBuilderSettingsJson)
                         {
-                            generator.RevertEarlyBoundGeneratorSettings();
+                            generator.RemoveXrmToolBoxPluginPath();
                         }
                     }
                     catch (InvalidOperationException ex)

@@ -42,6 +42,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 { nameof(CreateOneFilePerMessage), OnCreateOneFilePerMessageChange },
                 { nameof(DeleteFilesFromOutputFolders), OnDeleteFilesFromOutputFoldersChange },
                 { nameof(GenerateEnumProperties), OnGenerateEnumPropertiesChange },
+                { nameof(ReplaceOptionSetPropertiesWithEnum), OnReplaceOptionSetPropertiesWithEnumChange },
                 { nameof(GenerateMessages), OnGenerateMessagesChange },
                 { nameof(MakeAllFieldsEditable), OnMakeAllFieldsEditableChange },
             };
@@ -95,7 +96,8 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         private void OnGenerateEnumPropertiesChange(PropertyValueChangedEventArgs args)
         {
             SetPropertyEnumMappingVisibility();
-            SetPropertyReplaceOptionSetPropertiesWithEnumVisibility();
+            SetReplaceOptionSetPropertiesWithEnumVisibility();
+            SetUseEnumForStateCodesVisibility();
         }
 
         private void OnGenerateMessagesChange(PropertyValueChangedEventArgs args)
@@ -108,6 +110,11 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             SetMakeReadonlyFieldsEditableVisibility();
         }
 
+        private void OnReplaceOptionSetPropertiesWithEnumChange(PropertyValueChangedEventArgs args)
+        {
+            SetUseEnumForStateCodesVisibility();
+        }
+
         #endregion OnChange Handlers
 
         private void ProcessDynamicallyVisibleProperties()
@@ -117,7 +124,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             SetGroupLocalOptionSetsByEntityVisibility();
             SetGroupMessageRequestWithResponseVisibility();
             SetPropertyEnumMappingVisibility();
-            SetPropertyReplaceOptionSetPropertiesWithEnumVisibility();
+            SetReplaceOptionSetPropertiesWithEnumVisibility();
             SetUseLogicalNamesVisibility();
             SetVisibilityForControlsDependentOnFileCreations();
             SetVisibilityForControlsDependentOnGenerateMessages();
@@ -207,12 +214,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         {
             SetPropertyBrowsable(nameof(PropertyEnumMappings), GenerateEnumProperties);
         }
-
-        private void SetPropertyReplaceOptionSetPropertiesWithEnumVisibility()
-        {
-            SetPropertyBrowsable(nameof(ReplaceOptionSetPropertiesWithEnum), GenerateEnumProperties);
-        }
-
         private void SetMessageBlacklistVisibility()
         {
             SetPropertyBrowsable(nameof(MessageBlacklist), GenerateMessages);
@@ -232,6 +233,19 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         {
             SetPropertyBrowsable(nameof(MessageWildcardWhitelist), GenerateMessages);
         }
+
+        private void SetReplaceOptionSetPropertiesWithEnumVisibility()
+        {
+            SetPropertyBrowsable(nameof(ReplaceOptionSetPropertiesWithEnum), GenerateEnumProperties);
+            SetUseEnumForStateCodesVisibility();
+        }
+
+        private void SetUseEnumForStateCodesVisibility()
+        {
+            var areOptionSetsGenerated = !GenerateEnumProperties || (GenerateEnumProperties && !ReplaceOptionSetPropertiesWithEnum);
+            SetPropertyBrowsable(nameof(UseEnumForStateCodes), areOptionSetsGenerated && !ReplaceOptionSetPropertiesWithEnum);
+        }
+
 
         private void SetUseLogicalNamesVisibility()
         {

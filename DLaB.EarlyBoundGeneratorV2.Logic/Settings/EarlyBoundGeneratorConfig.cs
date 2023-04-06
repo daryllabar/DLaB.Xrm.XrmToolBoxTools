@@ -21,8 +21,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
     [XmlRoot("Config")]
     public class EarlyBoundGeneratorConfig
     {
-        public const string EarlyBoundGeneratorAssembly = "DLaB.EarlyBoundGeneratorV2";
-        public const string ModelBuilderAssembly = "DLaB.ModelBuilderExtensions";
+        private const string EarlyBoundGeneratorV2Name= "DLaB.EarlyBoundGeneratorV2";
 
         #region Properties
 
@@ -305,7 +304,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
 
                 if (!string.IsNullOrWhiteSpace(pocoConfig.CamelCaseNamesDictionaryRelativePath) && pocoConfig.CamelCaseNamesDictionaryRelativePath.Contains(@"DLaB.EarlyBoundGenerator\"))
                 {
-                    pocoConfig.CamelCaseNamesDictionaryRelativePath = pocoConfig.CamelCaseNamesDictionaryRelativePath.Replace(@"DLaB.EarlyBoundGenerator\", $@"{EarlyBoundGeneratorAssembly}\");
+                    pocoConfig.CamelCaseNamesDictionaryRelativePath = pocoConfig.CamelCaseNamesDictionaryRelativePath.Replace(@"DLaB.EarlyBoundGenerator\", $@"{EarlyBoundGeneratorV2Name}\");
                 }
                 pocoConfig.CleanupCrmSvcUtilLocalOptionSets = true;
                 pocoConfig.GenerateINotifyPattern = true;
@@ -593,27 +592,21 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
 
         public void PopulateBuilderProperties(Dictionary<string, JsonProperty> properties)
         {
-            var isXrmToolBoxEarlyBound = typeof(ExtensionConfig).AssemblyQualifiedName?.StartsWith($"{EarlyBoundGeneratorAssembly}.Settings.ExtensionConfig, {EarlyBoundGeneratorAssembly},") ?? true;
             var defaultSettings = GetDefault();
 
-            SetModelBuilderServiceProperty(BuilderSettingsJsonNames.CodeCustomizationService, CodeCustomizationService);
-            SetModelBuilderServiceProperty(BuilderSettingsJsonNames.CodeGenerationService, CodeGenerationService);
-            SetModelBuilderServiceProperty(BuilderSettingsJsonNames.CodeWriterFilterService, CodeWriterFilterService);
-            SetModelBuilderServiceProperty(BuilderSettingsJsonNames.CodeWriterMessageFilterService, CodeWriterMessageFilterService);
-            SetModelBuilderServiceProperty(BuilderSettingsJsonNames.MetadataProviderService, MetadataProviderService);
+            properties.SetJsonPropertyIfPopulated(BuilderSettingsJsonNames.CodeCustomizationService, CodeCustomizationService);
+            properties.SetJsonPropertyIfPopulated(BuilderSettingsJsonNames.CodeGenerationService, CodeGenerationService);
+            properties.SetJsonPropertyIfPopulated(BuilderSettingsJsonNames.CodeWriterFilterService, CodeWriterFilterService);
+            properties.SetJsonPropertyIfPopulated(BuilderSettingsJsonNames.CodeWriterMessageFilterService, CodeWriterMessageFilterService);
+            properties.SetJsonPropertyIfPopulated(BuilderSettingsJsonNames.MetadataProviderService, MetadataProviderService);
 
             SetOutputFolderProperty(BuilderSettingsJsonNames.EntityTypesFolder, EntityTypesFolder, defaultSettings.EntityTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.GenerateActions, GenerateMessages);
             SetOutputFolderProperty(BuilderSettingsJsonNames.MessagesTypesFolder, MessageTypesFolder, defaultSettings.MessageTypesFolder, !GenerateMessages);
             properties.SetJsonProperty(BuilderSettingsJsonNames.Namespace, Namespace);
-            SetModelBuilderServiceProperty(BuilderSettingsJsonNames.NamingService, NamingService);
+            properties.SetJsonPropertyIfPopulated(BuilderSettingsJsonNames.NamingService, NamingService);
             SetOutputFolderProperty(BuilderSettingsJsonNames.OptionSetsTypesFolder, OptionSetsTypesFolder, defaultSettings.OptionSetsTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.ServiceContextName, ServiceContextName);
-
-            void SetModelBuilderServiceProperty(string propertyName, string typeName)
-            {
-                properties.SetJsonPropertyIfPopulated(propertyName, isXrmToolBoxEarlyBound ? ReplaceModelBuilderAssemblyName(typeName) : typeName);
-            }
 
             void SetOutputFolderProperty(string propertyName, string typeName, string @default, bool remove = false)
             {
@@ -629,19 +622,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
 
                 properties.SetJsonPropertyIfPopulated(propertyName, typeName.Contains(".cs") ? @default : typeName);
             }
-        }
-
-        /// <summary>
-        /// Handle updating the Assembly name of Services when running via API dll with reference to DLaB.ModelBuilderExtensions vs the XTB.  DLaB.ModelBuilderExtensions will be ILMerged into the plugin dll itself.
-        /// </summary>
-        internal string ReplaceModelBuilderAssemblyName(string serviceName)
-        {
-            return serviceName.Replace($",{ModelBuilderAssembly}", $",{EarlyBoundGeneratorAssembly}");
-        }
-
-        internal string ReplaceEarlyBoundAssemblyName(string serviceName)
-        {
-            return serviceName.Replace($",{EarlyBoundGeneratorAssembly}", $",{ModelBuilderAssembly}");
         }
     }
 }

@@ -245,12 +245,6 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
-      <HintPath>..\packages\DockPanelSuite.3.1.0\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
-    </Reference>
-    <Reference Include="WeifenLuo.WinFormsUI.Docking.ThemeVS2015, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
-      <HintPath>..\packages\DockPanelSuite.ThemeVS2015.3.1.0\lib\net40\WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="XrmToolBox, Version=1.2022.10.58, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\XrmToolBoxPackage.1.2022.10.58\lib\net462\XrmToolBox.exe</HintPath>

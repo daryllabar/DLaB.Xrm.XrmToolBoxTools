@@ -272,13 +272,13 @@ namespace DLaB.EarlyBoundGeneratorV2
         /// <summary>
         /// The Extensions to the Pac Model Builder will live in a different assembly.  To ensure that users can run against the PAC commandline, reset the namespace to the PAC version
         /// </summary>
-        public void RevertEarlyBoundGeneratorSettings()
+        public void RemoveXrmToolBoxPluginPath()
         {
             var path = GetJsonConfigPath(EarlyBoundGeneratorConfig);
 
-            var contents = EarlyBoundGeneratorConfig.ReplaceEarlyBoundAssemblyName(File.ReadAllText(path));
+            var contents = File.ReadAllLines(path);
 
-            File.WriteAllLines(path, contents.Split(new [] { Environment.NewLine }, StringSplitOptions.None).Where(l => !l.TrimStart().StartsWith("\"xrmToolBoxPluginPath\"")));
+            File.WriteAllLines(path, contents.Where(l => !l.TrimStart().StartsWith("\"xrmToolBoxPluginPath\"")));
         }
 
         private void Speak(string words)

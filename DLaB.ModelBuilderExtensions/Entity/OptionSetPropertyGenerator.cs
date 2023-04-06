@@ -13,6 +13,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
         public Dictionary<string, string> PropertyEnumMappings { get => DLaBSettings.PropertyEnumMappings; set => DLaBSettings.PropertyEnumMappings = value; }
         public bool SuppressINotifyPattern { get => Settings.SuppressINotifyPattern; set => Settings.SuppressINotifyPattern = value; }
         public bool ReplaceEnumPropertiesWithOptionSet { get => DLaBSettings.ReplaceEnumPropertiesWithOptionSet; set => DLaBSettings.ReplaceEnumPropertiesWithOptionSet = value; }
+        public bool UseEnumForStateCodes { get => DLaBSettings.UseEnumForStateCodes; set => DLaBSettings.UseEnumForStateCodes = value; }
 
         #region Constructors
 
@@ -55,6 +56,11 @@ namespace DLaB.ModelBuilderExtensions.Entity
                 foreach (var enumProp in enumProperties.Where(p => p.Value != null).OrderByDescending(p => p.Key))
                 {
                     var property = enumProp.Value;
+                    if (UseEnumForStateCodes && property.GetLogicalName() == "statecode")
+                    {
+                        continue;
+                    }
+
                     type.Members[enumProp.Key] = GetOptionSetPropertyType(property);
 
                     if (!ReplaceEnumPropertiesWithOptionSet)

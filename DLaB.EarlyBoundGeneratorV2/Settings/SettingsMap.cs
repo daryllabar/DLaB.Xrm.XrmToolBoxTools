@@ -239,6 +239,15 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             set => Config.ServiceContextName = value;
         }
 
+        [Category("2 - Entities")]
+        [DisplayName("Use Enum For State Codes")]
+        [Description("The CrmSvcUtil generates state codes as enums properties.  This allows for generating just this property as an enum.  Only valid when Replace Option Set Properties with Enum is false.")]
+        public bool UseEnumForStateCodes
+        {
+            get => Config.ExtensionConfig.UseEnumForStateCodes;
+            set => Config.ExtensionConfig.UseEnumForStateCodes = value;
+        }
+
         #endregion Entities
 
         #region Global

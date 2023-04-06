@@ -12,6 +12,7 @@ namespace DLaB.XrmToolBoxCommon.AppInsightsHelper
 
         public static bool Enabled { get; set; } = true;
         public static string InstrumentationKey { get; private set; }
+        public static string ConnectionString { get; private set; }
 
         private static TelemetryClient GetAppInsightsClient()
         {
@@ -22,7 +23,7 @@ namespace DLaB.XrmToolBoxCommon.AppInsightsHelper
 
             var config = new TelemetryConfiguration
             {
-                InstrumentationKey = InstrumentationKey, 
+                ConnectionString = ConnectionString,
                 TelemetryChannel = new Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel()
             };
             //config.TelemetryChannel = new Microsoft.ApplicationInsights.Channel.InMemoryChannel(); // Default channel
@@ -40,9 +41,16 @@ namespace DLaB.XrmToolBoxCommon.AppInsightsHelper
             _telemetry.Context.User.AuthenticatedUserId = user;
         }
 
+        [Obsolete("Use InitAiConnection")]
         public static void InitAiConfig(string instrumentationKey)
         {
-            InstrumentationKey = instrumentationKey;
+            InstrumentationKey = $"InstrumentationKey={instrumentationKey};IngestionEndpoint=https://westus2-1.in.applicationinsights.azure.com/;LiveEndpoint=https://westus2.livediagnostics.monitor.azure.com/";
+            _telemetry = GetAppInsightsClient();
+        }
+
+        public static void InitAiConnection(string connectionString)
+        {
+            ConnectionString = connectionString;
             _telemetry = GetAppInsightsClient();
         }
 

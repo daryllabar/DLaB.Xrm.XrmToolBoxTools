@@ -339,7 +339,7 @@ namespace DLaB.ModelBuilderExtensions
 
         public static void ClearMsUtilitiesCache()
         {
-            var typeName = "Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.Utility.Utilites";
+            var typeName = "Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.Utility.Utilites,Microsoft.PowerPlatform.Dataverse.ModelBuilderLib";
             var fieldName = "_locatedKeys";
             var type = Type.GetType(typeName);
             if (type == null)
