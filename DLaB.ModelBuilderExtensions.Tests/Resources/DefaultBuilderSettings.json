@@ -30,7 +30,6 @@
     "localOptionSetFormat": "{0}_{1}",
     "readSerializedMetadata": false,
     "removeRuntimeVersionComment": true,
-    "replaceEnumPropertiesWithOptionSet": false,
     "serializeMetadata": false,
     "tokenCapitalizationOverrides": [
       "AccessTeam",

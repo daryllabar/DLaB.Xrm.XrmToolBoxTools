@@ -362,18 +362,8 @@ if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.
 </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>REM **** Delete Previous Log ****
-del "$(TargetDir)IlRepackLog.txt"
-
-REM **** Run IlMerge ****
-"$(ProjectDir)..\packages\ILRepack.2.0.18\tools\ILRepack.exe" /log:"$(TargetDir)IlRepackLog.txt" /targetplatform:"v4,c:\windows\Microsoft.NET\Framework\v4.0.30319" /out:"$(TargetPath)" "$(TargetPath)" "$(TargetDir)Microsoft.ApplicationInsights.dll" "$(TargetDir)Microsoft.AI.ServerTelemetryChannel.dll" "$(TargetDir)Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" "$(TargetDir)DLaB.ModelBuilderExtensions.dll"
-
-
-DEL /Q "$(TargetDir)MscrmTools\XrmToolBox\Plugins\*.*"
-xcopy /I /Y "$(TargetDir)DLaB.*.dll" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\"
-
-xcopy /I /Y "$(SolutionDir)DLaB.ModelBuilderExtensions\OptionSet\Transliteration\Alphabets\*" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGeneratorV2\alphabets"
-xcopy /I /Y "$(SolutionDir)DLaB.ModelBuilderExtensions\DLaB.Dictionary.txt" "$(TargetDir)MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGeneratorV2"</PostBuildEvent>
+    <PostBuildEvent>xcopy /I /Y "$(SolutionDir)DLaB.ModelBuilderExtensions\OptionSet\Transliteration\Alphabets\*" "$(TargetDir)DLaB.EarlyBoundGeneratorV2\alphabets"
+xcopy /I /Y "$(SolutionDir)DLaB.ModelBuilderExtensions\DLaB.Dictionary.txt" "$(TargetDir)DLaB.EarlyBoundGeneratorV2"</PostBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

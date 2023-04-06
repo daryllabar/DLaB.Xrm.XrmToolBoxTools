@@ -494,6 +494,11 @@ Please consider clicking the save button in the top right to save the settings w
      ExportMetadata("SecondaryFontColor", "DarkGray")]
     public class EarlyBoundGenerator : PluginFactory
     {
+        public EarlyBoundGenerator()
+        {
+            AppDomain.CurrentDomain.AssemblyResolve += AssemblyResolveEventHandler;
+        }
+
         public override IXrmToolBoxPluginControl GetControl()
         {
             return new EarlyBoundGeneratorPlugin();

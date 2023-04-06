@@ -312,6 +312,16 @@ namespace DLaB.VSSolutionAccelerator
      ExportMetadata("SecondaryFontColor", "DarkGray")]
     public class VsSolutionAccelerator : PluginFactory, INoConnectionRequired
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public VsSolutionAccelerator()
+        {
+            // If you have external assemblies that you need to load, uncomment the following to
+            // hook into the event that will fire when an Assembly fails to resolve
+            AppDomain.CurrentDomain.AssemblyResolve += AssemblyResolveEventHandler;
+        }
+
         public override IXrmToolBoxPluginControl GetControl()
         {
             return new VsSolutionAcceleratorPlugin();

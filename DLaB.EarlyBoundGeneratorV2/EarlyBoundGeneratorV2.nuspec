@@ -69,10 +69,11 @@ Fix for Deleting files Deletes from Temporary Folder, not output folder #318
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGeneratorV2.dll" target="lib\net462\plugins" />
-    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.ModelBuilderExtensions.dll" target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2" />
-    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGeneratorV2\*.*" target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2" />
-    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGeneratorV2\alphabets\*.*" target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\alphabets" />
+    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2.dll" target="lib\net462\plugins" />
+    <file src="bin\Release\DLaB.ModelBuilderExtensions.dll" target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\DLaB.ModelBuilderExtensions.dll" />
+    <file src="bin\Release\Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" />
+    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2\*.*" target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2" />
+    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2\alphabets\*.*" target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\alphabets" />
     <file src="bin\Release\Images\DLaB_Dynamics_Logo_Square_32x32.png" target="images\" />
   </files>
 </package>

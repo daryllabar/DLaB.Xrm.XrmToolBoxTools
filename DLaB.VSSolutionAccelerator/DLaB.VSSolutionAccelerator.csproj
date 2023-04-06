@@ -366,10 +366,7 @@
   <Import Project="..\DLaB.EarlyBoundGeneratorV2.Logic\DLaB.EarlyBoundGeneratorV2.Logic.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>REM **** Run IlMerge ****
-"$(ProjectDir)..\packages\ILRepack.2.0.18\tools\ILRepack.exe" /log:"$(TargetDir)IlRepackLog.txt" /targetplatform:"v4,c:\windows\Microsoft.NET\Framework\v4.0.30319" /out:"$(TargetPath)" "$(TargetPath)" "$(TargetDir)Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" "$(TargetDir)DLaB.ModelBuilderExtensions.dll"
-
-IF NOT EXIST Plugins mkdir Plugins
+    <PostBuildEvent>IF NOT EXIST Plugins mkdir Plugins
 move /Y $(TargetFileName) Plugins
 
 if NOT EXIST "$(SolutionDir)..\XrmUnitTest.Example" goto :error
