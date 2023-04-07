@@ -39,7 +39,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
 
         [Category("7 - Debug")]
         [DisplayName("Update Builder Settings Json")]
-        [Description("If this is set to false, then all setting changes made in the Early Bound Generator will not take affect outside of out directory since the builderSettings.json file isn't getting updated, but is helpful if custom editing of the builderSettings.json file is required.  Please note, the assembly of the services will most likely need to be updated to from \",DLaB.ModelBuilderExtensions\" to \",DLaB.EarlyBoundGeneratorV2\" and the \"dLaB.ModelBuilder.xrmToolBoxPluginPath\" set")]
+        [Description("If this is set to false, then all setting changes made in the Early Bound Generator will not take affect outside of out directory since the builderSettings.json file isn't getting updated, but is helpful if custom editing of the builderSettings.json file is required.  Please note, the \"dLaB.ModelBuilder.xrmToolBoxPluginPath\" will most likely need to be set.")]
         public bool UpdateBuilderSettingsJson
         {
             get => Config.UpdateBuilderSettingsJson;
@@ -237,6 +237,15 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         {
             get => Config.ServiceContextName;
             set => Config.ServiceContextName = value;
+        }
+
+        [Category("2 - Entities")]
+        [DisplayName("Use Display Name For BPF Class Names")]
+        [Description("By default, Business Process Flows entities are named with the format {PublshierPrefix}_bpf_GUID. This will instead generate the entity class with the format {PublshierPrefix}_bpf_{DisplayName}.")]
+        public bool UseDisplayNameForBpfClassNames
+        {
+            get => Config.ExtensionConfig.UseDisplayNameForBpfClassNames;
+            set => Config.ExtensionConfig.UseDisplayNameForBpfClassNames = value;
         }
 
         [Category("2 - Entities")]

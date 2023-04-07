@@ -24,10 +24,12 @@ namespace DLaB.ModelBuilderExtensions
         public string LocalOptionSetFormat { get => DLaBSettings.LocalOptionSetFormat; set => DLaBSettings.LocalOptionSetFormat = value; }
         public Dictionary<string, string> OptionSetNames { get => DLaBSettings.OptionSetNames; set => DLaBSettings.OptionSetNames = value; }
         public bool UseCrmSvcUtilStateEnumNamingConvention { get => DLaBSettings.UseCrmSvcUtilStateEnumNamingConvention; set => DLaBSettings.UseCrmSvcUtilStateEnumNamingConvention = value; }
+        public bool UseDisplayNameForBpfClassNames { get => DLaBSettings.UseDisplayNameForBpfClassNames; set => DLaBSettings.UseDisplayNameForBpfClassNames = value; }
         public bool UseLogicalNames { get => DLaBSettings.UseLogicalNames; set => DLaBSettings.UseLogicalNames = value; }
         public string ValidCSharpNameRegEx { get => DLaBSettings.ValidCSharpNameRegEx; set => DLaBSettings.ValidCSharpNameRegEx = value; }
 
         private HashSet<string> _entityNames;
+        private Dictionary<string,string> _generatedBpfLogicalNamesByClassName = new Dictionary<string, string>();
 
         private TransliterationService TransliterationService { get; set; }
 
@@ -72,7 +74,7 @@ namespace DLaB.ModelBuilderExtensions
 
             if(UseCrmSvcUtilStateEnumNamingConvention
                && optionSetMetadata.IsGlobal != true
-               && name.EndsWith("_StateCode")
+               && name.ToLower().EndsWith("_statecode")
                && entityMetadata.Attributes.FirstOrDefault(a => a.AttributeType == AttributeTypeCode.State) != null)
             {
                 const int stateLength = 10;
@@ -84,6 +86,13 @@ namespace DLaB.ModelBuilderExtensions
         private string GetPossiblyConflictedNameForOptionSet(EntityMetadata entityMetadata, OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
         {
             var defaultName = DefaultService.GetNameForOptionSet(entityMetadata, optionSetMetadata, services);
+
+            if (UseDisplayNameForBpfClassNames && defaultName.ToLower().EndsWith("_statecode"))
+            {
+                var end = "_" + defaultName.Split('_').Last();
+                var name = defaultName.Substring(0, defaultName.Length - end.Length);
+                defaultName = GetBpfNameToDisplay(name, entityMetadata) + end;
+            }
 
             // Ensure that the OptionSet is not global before using the custom implementation.
             if (optionSetMetadata.IsGlobal.HasValue && !optionSetMetadata.IsGlobal.Value)
@@ -388,9 +397,42 @@ namespace DLaB.ModelBuilderExtensions
         public string GetNameForEntity(EntityMetadata entityMetadata, IServiceProvider services)
         {
             var defaultName = DefaultService.GetNameForEntity(entityMetadata, services);
+            
+            if (UseDisplayNameForBpfClassNames)
+            {
+                defaultName = GetBpfNameToDisplay(defaultName, entityMetadata);
+            }
+
             return CamelCaseClassNames
                 ? CamelCaser.Case(defaultName)
                 : defaultName;
+        }
+
+        private string GetBpfNameToDisplay(string name, EntityMetadata entityMetadata)
+        {
+            var bpf = BpfInfo.Parse(name);
+            if (!bpf.IsBpfName)
+            {
+                return name;
+            }
+            name = bpf.Prefix + GetValidCSharpName(entityMetadata.DisplayName.GetLocalOrDefaultText());
+            name = MakeNameUniqueIfAlreadyUsedByDifferentLogicalName(name, entityMetadata, bpf);
+
+            return name;
+        }
+
+        private string MakeNameUniqueIfAlreadyUsedByDifferentLogicalName(string name, EntityMetadata entityMetadata, BpfInfo bpf)
+        {
+            if (_generatedBpfLogicalNamesByClassName.TryGetValue(name, out var logicalName) && logicalName != entityMetadata.LogicalName)
+            {
+                name += bpf.Postfix;
+            }
+            else
+            {
+                _generatedBpfLogicalNamesByClassName[name] = entityMetadata.LogicalName;
+            }
+
+            return name;
         }
 
         public string GetNameForMessagePair(SdkMessagePair messagePair, IServiceProvider services)

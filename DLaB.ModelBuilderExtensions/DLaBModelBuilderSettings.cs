@@ -239,6 +239,9 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("useCrmSvcUtilStateEnumNamingConvention")]
         public bool UseCrmSvcUtilStateEnumNamingConvention { get; set; }
 
+        [JsonPropertyName("useDisplayNameForBpfClassNames")]
+        public bool UseDisplayNameForBpfClassNames { get; set; }
+
         [JsonPropertyName("useEnumForStateCodes")]
         public bool UseEnumForStateCodes { get; set; }
 

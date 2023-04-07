@@ -194,7 +194,7 @@ namespace DLaB.ModelBuilderExtensions
         {
             try
             {
-                return ((CodePrimitiveExpression)type.GetCustomAttribute("Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute").Arguments[0].Value).Value.ToString();
+                return ((CodePrimitiveExpression)type.GetCustomAttribute("Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute")?.Arguments[0].Value)?.Value.ToString();
             }
             catch (Exception ex)
             {

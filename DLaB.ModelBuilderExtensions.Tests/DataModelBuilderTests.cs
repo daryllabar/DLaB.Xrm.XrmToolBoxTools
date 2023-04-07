@@ -1,6 +1,8 @@
 ﻿using Microsoft.PowerPlatform.Dataverse.Client;
 using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.Xrm.Sdk;
+using Source.DLaB.Common;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -37,28 +39,40 @@ namespace DLaB.ModelBuilderExtensions.Tests
             "includeMessages"
         });
 
+        /// <summary>
+        /// Used to manually test generation using either a real connection, or serialized metadata.
+        /// </summary>
         [TestMethod]
         public void CreateTestFileGeneration()
         {
-            if (!Debugger.IsAttached && !Source.DLaB.Common.Config.GetAppSettingOrDefault("TestFileCreation", false))
+            if (!Debugger.IsAttached && !Config.GetAppSettingOrDefault("TestFileCreation", false))
             {
                 Assert.Inconclusive("No Debugger Attached and Test File Creation is not true!");
                 return;
             }
-            var connectionString = Source.DLaB.Common.Config.GetAppSettingOrDefault("DLaB.EarlyBoundGenerator.ConnectionString", "NONE");
-            if (connectionString == "NONE")
+            //<add key="TestFile.SerializedMetadataPath" value ="C:\Tools\XrmToolBox\metadata.xml" />
+            //<add key="TestFile.JsonFileToUse" value="C:\_dev\Vexcel\WIC360CRMSourceCode\MIS.CRM.EntityWrapper\builderSettings.json" />
+            //<add key="TestFileCreation" value="True" />
+            IOrganizationService client = null;
+
+            var serializedMetadataPath = Config.GetAppSettingOrDefault("SerializedMetadataPath", "NONE");
+            if (serializedMetadataPath == "NONE")
             {
-                Console.WriteLine("Add DLaB.EarlyBoundGenerator.ConnectionString to the app.config or to your machine.config!");
-                Assert.Inconclusive("No Connection string found!");
-                return;
+                var connectionString = Config.GetAppSettingOrDefault("DLaB.EarlyBoundGenerator.ConnectionString", "NONE");
+                if (connectionString == "NONE")
+                {
+                    Console.WriteLine("Add DLaB.EarlyBoundGenerator.ConnectionString to the app.config or to your machine.config or serialize the metadata and set the SerializedMetadataPath!");
+                    Assert.Inconclusive("No Connection string found!");
+                    return;
+                }
+                client = new ServiceClient(connectionString);
             }
 
             using (var tmp = TempDir.Create())
             {
-                var settingsPath = CreateBuilderSettingsConfig(tmp);
+                var settingsPath = CreateBuilderSettingsConfig(tmp, serializedMetadataPath);
                 var parameters = CreateParameters(settingsPath, tmp);
                 var runner = new ProcessModelInvoker(parameters);
-                var client = new ServiceClient(connectionString);
                 var invoke = runner.Invoke(client);
                 Assert.AreEqual(0, invoke);
             }
@@ -98,13 +112,67 @@ namespace DLaB.ModelBuilderExtensions.Tests
             return linesArray;
         }
 
-        private static string CreateBuilderSettingsConfig(ITempDir tmp)
+        private static string CreateBuilderSettingsConfig(ITempDir tmp, string serializedMetadataPath)
         {
             var settingsPath = Path.Combine(tmp.Name, "builderSettings.json");
-            var json = TestProject.GetResourceText("Resources.DefaultBuilderSettings.json");
-            json = json.Replace(",DLaB.EarlyBoundGenerator", ",DLaB.ModelBuilderExtensions");
+            var path = Config.GetAppSettingOrDefault("JsonFileToUse", "DEFAULT");
+            var json = path.ToUpper() == "DEFAULT" ? TestProject.GetResourceText("Resources.DefaultBuilderSettings.json") : File.ReadAllText(path);
+            json = UpdateJson(json, path, serializedMetadataPath);
             File.WriteAllText(settingsPath, json);
             return settingsPath;
+        }
+
+        private static string UpdateJson(string json, string sourceJsonPath, string serializedMetadataPath)
+        {
+            if (string.IsNullOrWhiteSpace(serializedMetadataPath))
+            {
+                return json;
+            }
+
+            var lines = json.Split(new[] { Environment.NewLine }, StringSplitOptions.None).ToList();
+            serializedMetadataPath = $"    \"serializedMetadataRelativeFilePath\": \"{serializedMetadataPath.Replace("\\", "\\\\")}\",";
+            var readSerialized = "    \"readSerializedMetadata\": true,";
+            var modelBuilderIndex = -1;
+            var updateJsonPath = sourceJsonPath != "DEFAULT";
+            for (var i = 0; i < lines.Count; i++)
+            {
+                var line = lines[i];
+                if (line.Contains("\"dLaB.ModelBuilder\""))
+                {
+                    modelBuilderIndex = i;
+                }
+
+                if (line.Contains("\"serializedMetadataRelativeFilePath\""))
+                {
+                    lines[i] = serializedMetadataPath;
+                    serializedMetadataPath = null;
+                }
+
+                if (line.Contains("\"readSerializedMetadata\""))
+                {
+                    lines[i] = readSerialized;
+                    readSerialized = null;
+                }
+
+                if (updateJsonPath && line.Contains("\"camelCaseNamesDictionaryRelativePath\""))
+                {
+                    var path = Config.GetAppSettingOrDefault("DictionaryPath", "MISSING DICTIONARY PATH APP.CONFIG VALUES!").Replace("\\", "\\\\");
+                    lines[i] = $"    \"camelCaseNamesDictionaryRelativePath\": \"{path}\",";
+                    updateJsonPath = false;
+                }
+            }
+
+            if (serializedMetadataPath != null)
+            {
+                lines.Insert(modelBuilderIndex+1, serializedMetadataPath);
+            }
+
+            if (readSerialized != null)
+            {
+                lines.Insert(modelBuilderIndex + 1, readSerialized);
+            }
+
+            return string.Join(Environment.NewLine, lines);
         }
     }
 }

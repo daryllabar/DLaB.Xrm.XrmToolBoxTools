@@ -78,6 +78,7 @@
     "transliterationRelativePath": "DLaB.EarlyBoundGeneratorV2\\alphabets",
     "useLogicalNames": false,
     "useCrmSvcUtilStateEnumNamingConvention": false,
+    "useDisplayNameForBpfClassNames": true,
     "useTfsToCheckoutFiles": false,
     "waitForAttachedDebugger": false
   },

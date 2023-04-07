@@ -229,6 +229,10 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         /// </summary>
         public bool UseCrmSvcUtilStateEnumNamingConvention { get; set; }
         /// <summary>
+        /// By default, Business Process Flows entities are named with the format {PublshierPrefix}_bpf_GUID. This will instead generate the entity class with the format {PublshierPrefix}_bpf_{DisplayName}.
+        /// </summary>
+        public bool UseDisplayNameForBpfClassNames { get; set; }
+        /// <summary>
         /// The CrmSvcUtil generates state codes as enums properties.  This allows for generating just this property as an enum.  Only valid when Replace Option Set Properties with Enum is false.
         /// </summary>
         public bool UseEnumForStateCodes { get; set; }
@@ -326,6 +330,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 TokenCapitalizationOverrides = "AccessTeam|ActiveState|AssignedTo|BusinessAs|CardUci|DefaultOnCase|EmailAnd|EmailSend|EmailSender|FeatureSet|FedEx|ForAn|Geronimo|IsMsTeams|IsPaiEnabled|IsSopIntegration|MsDynCe_|MsDynMkt_|MsDyUsd|O365Admin|OcSkillIdentMlModel|OnHold|OrderId|OwnerOnAssign|PauseStates|PredictiveAddress|PartiesOnEmail|ParticipatesIn|SentOn|SettingsAndSummary|SlaId|SlaKpi|SyncOptIn|Timeout|TradeShow|UserPuid|VoiceMail",
                 TransliterationRelativePath = @"DLaB.EarlyBoundGeneratorV2\alphabets",
                 UseCrmSvcUtilStateEnumNamingConvention = false,
+                UseDisplayNameForBpfClassNames = true,
                 UseEnumForStateCodes = false,
                 UseLogicalNames = false,
                 UseTfsToCheckoutFiles = false,
@@ -390,6 +395,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             TokenCapitalizationOverrides = GetValueOrDefault(poco.TokenCapitalizationOverrides, TokenCapitalizationOverrides);
             TransliterationRelativePath = GetValueOrDefault(poco.TransliterationRelativePath, TransliterationRelativePath);
             UseCrmSvcUtilStateEnumNamingConvention = poco.UseCrmSvcUtilStateEnumNamingConvention ?? UseCrmSvcUtilStateEnumNamingConvention;
+            UseDisplayNameForBpfClassNames = poco.UseDisplayNameForBpfClassNames ?? UseDisplayNameForBpfClassNames;
             UseEnumForStateCodes = poco.UseEnumForStateCodes ?? UseEnumForStateCodes;
             UseLogicalNames = poco.UseLogicalNames ?? UseLogicalNames;
             UseTfsToCheckoutFiles = poco.UseTfsToCheckoutFiles ?? UseTfsToCheckoutFiles;
@@ -456,6 +462,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddProperty(nameof(TransliterationRelativePath), TransliterationRelativePath);
             writer.AddProperty(nameof(UseLogicalNames), UseLogicalNames);
             writer.AddProperty(nameof(UseCrmSvcUtilStateEnumNamingConvention), UseCrmSvcUtilStateEnumNamingConvention);
+            writer.AddProperty(nameof(UseDisplayNameForBpfClassNames), UseDisplayNameForBpfClassNames);
             AddOptionalBoolProperty(nameof(UseEnumForStateCodes), UseEnumForStateCodes, generateOptionSetProperties && !ReplaceOptionSetPropertiesWithEnum);
             writer.AddProperty(nameof(UseTfsToCheckoutFiles), UseTfsToCheckoutFiles);
             writer.AddProperty(nameof(WaitForAttachedDebugger), WaitForAttachedDebugger);
@@ -572,6 +579,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings.POCO
         public string TokenCapitalizationOverrides { get; set; }
         public string TransliterationRelativePath { get; set; }
         public bool? UseCrmSvcUtilStateEnumNamingConvention { get; set; }
+        public bool? UseDisplayNameForBpfClassNames { get; set; }
         public bool? UseEnumForStateCodes { get; set; }
         public bool? UseLogicalNames { get; set; }
         public bool? UseTfsToCheckoutFiles { get; set; }

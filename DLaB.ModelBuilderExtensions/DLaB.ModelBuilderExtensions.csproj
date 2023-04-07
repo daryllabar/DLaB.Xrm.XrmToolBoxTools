@@ -229,6 +229,7 @@
     <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\Serialization\SerializableRelatedEntityCollection.cs" />
     <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\SolutionCheckerAvoider.cs" />
     <Compile Include="App_Packages\DLaB.Xrm.Source.3.5.0.5\TypedQueryExpression.cs" />
+    <Compile Include="BpfInfo.cs" />
     <Compile Include="CodeWriterMessageFilterService.cs" />
     <Compile Include="CustomizeCodeDomServiceEmpty.cs" />
     <Compile Include="CustomTextWriter.cs" />
