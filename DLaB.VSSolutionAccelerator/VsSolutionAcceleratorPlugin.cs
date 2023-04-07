@@ -4,6 +4,8 @@ using System.ComponentModel.Composition;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 using DLaB.VSSolutionAccelerator.Wizard;
@@ -325,6 +327,41 @@ namespace DLaB.VSSolutionAccelerator
         public override IXrmToolBoxPluginControl GetControl()
         {
             return new VsSolutionAcceleratorPlugin();
+        }
+
+        private Assembly AssemblyResolveEventHandler(object sender, ResolveEventArgs args)
+        {
+            Assembly loadAssembly = null;
+            Assembly currAssembly = Assembly.GetExecutingAssembly();
+
+            // base name of the assembly that failed to resolve
+            var argName = args.Name.Substring(0, args.Name.IndexOf(","));
+
+            // check to see if the failing assembly is one that we reference.
+            List<AssemblyName> refAssemblies = currAssembly.GetReferencedAssemblies().ToList();
+            var refAssembly = refAssemblies.Where(a => a.Name == argName).FirstOrDefault();
+
+            // if the current unresolved assembly is referenced by our plugin, attempt to load
+            if (refAssembly != null)
+            {
+                // load from the path to this plugin assembly, not host executable
+                string dir = Path.GetDirectoryName(currAssembly.Location).ToLower();
+                string folder = Path.GetFileNameWithoutExtension(currAssembly.Location);
+                dir = Path.Combine(dir, folder);
+
+                var assmbPath = Path.Combine(dir, $"{argName}.dll");
+
+                if (File.Exists(assmbPath))
+                {
+                    loadAssembly = Assembly.LoadFrom(assmbPath);
+                }
+                else
+                {
+                    throw new FileNotFoundException($"Unable to locate dependency: {assmbPath}");
+                }
+            }
+
+            return loadAssembly;
         }
     }
 }
