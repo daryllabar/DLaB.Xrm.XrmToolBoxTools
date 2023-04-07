@@ -57,7 +57,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
                 if (entity.Metadata.Keys != null && entity.Metadata.Keys.Length > 0)
                 {
-                    var value = string.Join("|", entity.Metadata.Keys.Select(k => string.Join(",", k.KeyAttributes)));
+                    var value = string.Join("|", entity.Metadata.Keys.Select(k => string.Join(",", k.KeyAttributes.OrderBy(a => a))).Select(_ => _));
                     entity.Type.Members.Insert(1,
                         new CodeMemberField
                         {
