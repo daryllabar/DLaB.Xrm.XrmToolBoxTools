@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGeneratorV2</id>
-	<version>2.2023.4.6</version>
+	<version>2.2023.4.9</version>
 	<title>Early Bound Generator V2</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,10 +11,11 @@
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>
+    <releaseNotes>V2.2023.4.9
+Increase Dictionary #400
 Whitelist Prefix Doesn't work #399
 Unable to clear Whitelist of Entities #398
-AlernateKeys Order Should be sorted alphabetically #397
+AlternateKeys Order Should be sorted alphabetically #397
 Local Multi-Select Option Sets are Generated Twice #395
 Generate BPFs with a better name then Publisher_bpf_GUID #391
 

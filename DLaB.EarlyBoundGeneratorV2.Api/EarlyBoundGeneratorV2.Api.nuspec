@@ -2,7 +2,7 @@
 <package >
 	<metadata>
 		<id>DLaB.Xrm.EarlyBoundGeneratorV2.Api</id>
-		<version>2.2023.4.3</version>
+		<version>2.2023.4.9</version>
 		<title>Early Bound Generator V2 Api</title>
 		<authors>Daryl LaBar</authors>
 		<owners>Daryl LaBar</owners>
@@ -11,7 +11,31 @@
 		<projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses ModelBuilder from the PAC.</description>
-		<releaseNotes>V2.2023.4.3
+		<releaseNotes>V2.2023.4.9
+Increase Dictionary #400
+Whitelist Prefix Doesn't work #399
+Unable to clear Whitelist of Entities #398
+AlternateKeys Order Should be sorted alphabetically #397
+Local Multi-Select Option Sets are Generated Twice #395
+Generate BPFs with a better name then Publisher_bpf_GUID #391
+
+V2.2023.4.6
+Allow StateCode to be Enum Specifically #393
+Enum Postfixed Properties are not getting generated #392
+
+V2.2023.4.5
+The Updated Settings Are Not Reflected Immediately Until the XrmToolBox is Closed And Reopened #390
+Don't write message filter if not generating messages #389
+UseCrmSvcUtilStateEnumNamingConvention gets reset #388
+Switching from one file per entity leaves slash in path #387
+Update Builder Settings to False Breaks Immediately #386
+
+V2.2023.4.4
+Error when Not Writing Messages #385
+Write to Error log to then read from error log. #384
+Rooting Path Uses the Current directory, rather than the executing Assemblies current directory #383
+	    
+V2.2023.4.3
 Warn on Default Settings Loaded #382
 Default location errors #381
 Output Folders not converting to Output File Name #380
