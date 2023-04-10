@@ -681,6 +681,15 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         }
 
         [Category("6 - Service Generation Extensions")]
+        [DisplayName("Metadata Query Provider Service")]
+        [Description("Used to determine the query to retrieve the metadata from the server.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator.")]
+        public string MetadataQueryProviderService
+        {
+            get => Config.MetadataQueryProviderService;
+            set => Config.MetadataQueryProviderService = value;
+        }
+
+        [Category("6 - Service Generation Extensions")]
         [DisplayName("Naming Service")]
         [Description("Called during the CodeDOM generation to determine the name for objects.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator.")]
         public string NamingService

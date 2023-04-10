@@ -97,6 +97,7 @@
   "generateGlobalOptionSets": false,
   "messagesTypesFolder": "Messages",
   "metadataProviderService": "DLaB.ModelBuilderExtensions.MetadataProviderService,DLaB.ModelBuilderExtensions",
+  "metadataQueryProviderService": "DLaB.ModelBuilderExtensions.MetadataQueryProviderService,DLaB.ModelBuilderExtensions",
   "namespace": "DataverseModel",
   "namingService": "DLaB.ModelBuilderExtensions.NamingService,DLaB.ModelBuilderExtensions",
   "optionSetsTypesFolder": "OptionSets",

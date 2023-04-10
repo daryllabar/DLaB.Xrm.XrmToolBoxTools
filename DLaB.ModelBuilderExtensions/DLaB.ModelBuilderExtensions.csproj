@@ -269,6 +269,7 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="FileToWrite.cs" />
     <Compile Include="Metadata.cs" />
+    <Compile Include="MetadataQueryProviderService.cs" />
     <Compile Include="MetadataProviderService.cs" />
     <Compile Include="NamingService.cs" />
     <Compile Include="Entity\OptionSetMetadataAttributeGenerator.cs" />

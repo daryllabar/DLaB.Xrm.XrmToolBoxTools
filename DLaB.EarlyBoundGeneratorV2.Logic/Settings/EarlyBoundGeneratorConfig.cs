@@ -87,6 +87,11 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         public string MetadataProviderService { get; set; }
 
         /// <summary>
+        /// Used to determine the query to retrieve the metadata from the server.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator.
+        /// </summary>
+        public string MetadataQueryProviderService { get; set; }
+
+        /// <summary>
         /// Called during the CodeDOM generation to determine the name for objects.  This really shouldn't be changed unless there is something custom that is required and is not, and will not, be added to the Early Bound Generator. 
         /// </summary>
         public string NamingService { get; set; }
@@ -220,6 +225,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             IncludeCommandLine             =  poco.IncludeCommandLine             ?? @default.IncludeCommandLine;
             GenerateMessages               =  poco.GenerateMessages               ?? @default.GenerateMessages;
             MetadataProviderService        =  poco.MetadataProviderService        ?? @default.MetadataProviderService;
+            MetadataQueryProviderService   =  poco.MetadataQueryProviderService   ?? @default.MetadataQueryProviderService;
             Namespace                      =  poco.Namespace                      ?? @default.Namespace;
             NamingService                  =  poco.NamingService                  ?? @default.NamingService;
             MessageTypesFolder             =  poco.MessageTypesFolder             ?? @default.MessageTypesFolder;
@@ -437,6 +443,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                     //new Argument(CreationType.OptionSets, CrmSrvUtilService.MetadataProviderService, "DLaB.ModelBuilderExtensions.BaseMetadataProviderService,DLaB.ModelBuilderExtensions")
                 //}),
                 MetadataProviderService = "DLaB.ModelBuilderExtensions.MetadataProviderService,DLaB.ModelBuilderExtensions",
+                MetadataQueryProviderService = "DLaB.ModelBuilderExtensions.MetadataQueryProviderService,DLaB.ModelBuilderExtensions",
                 MessageTypesFolder = "Messages",
                 Namespace = "DataverseModel",
                 NamingService = "DLaB.ModelBuilderExtensions.NamingService,DLaB.ModelBuilderExtensions",
@@ -599,6 +606,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             properties.SetJsonPropertyIfPopulated(BuilderSettingsJsonNames.CodeWriterFilterService, CodeWriterFilterService);
             properties.SetJsonPropertyIfPopulated(BuilderSettingsJsonNames.CodeWriterMessageFilterService, CodeWriterMessageFilterService);
             properties.SetJsonPropertyIfPopulated(BuilderSettingsJsonNames.MetadataProviderService, MetadataProviderService);
+            properties.SetJsonPropertyIfPopulated(BuilderSettingsJsonNames.MetadataQueryProviderService, MetadataQueryProviderService);
 
             SetOutputFolderProperty(BuilderSettingsJsonNames.EntityTypesFolder, EntityTypesFolder, defaultSettings.EntityTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.GenerateActions, GenerateMessages);
@@ -646,6 +654,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings.POCO
         public string Namespace { get; set; }
         public string NamingService { get; set; }
         public string MetadataProviderService { get; set; }
+        public string MetadataQueryProviderService { get; set; }
         public string MessageTypesFolder { get; set; }
         public string OptionSetsTypesFolder { get; set; }
         public string ServiceContextName { get; set; }
