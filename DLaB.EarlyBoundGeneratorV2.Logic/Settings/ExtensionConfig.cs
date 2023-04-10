@@ -360,7 +360,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             CreateOneFilePerOptionSet = poco.CreateOneFilePerOptionSet ?? CreateOneFilePerOptionSet;
             DeleteFilesFromOutputFolders = poco.DeleteFilesFromOutputFolders ?? DeleteFilesFromOutputFolders;
             EntitiesToSkip = GetValueOrDefault(poco.EntitiesToSkip, EntitiesToSkip);
-            EntitiesWhitelist = GetValueOrDefault(poco.EntitiesWhitelist, EntitiesWhitelist);
+            EntitiesWhitelist = poco.EntitiesWhitelist ?? EntitiesWhitelist;
             EntityAttributeSpecifiedNames = GetValueOrDefault(poco.EntityAttributeSpecifiedNames, EntityAttributeSpecifiedNames);
             EntityPrefixesToSkip = GetValueOrDefault(poco.EntityPrefixesToSkip, EntityPrefixesToSkip);
             EntityPrefixesWhitelist = GetValueOrDefault(poco.EntityPrefixesWhitelist, EntityPrefixesWhitelist);
