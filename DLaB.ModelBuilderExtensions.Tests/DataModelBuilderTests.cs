@@ -50,9 +50,6 @@ namespace DLaB.ModelBuilderExtensions.Tests
                 Assert.Inconclusive("No Debugger Attached and Test File Creation is not true!");
                 return;
             }
-            //<add key="TestFile.SerializedMetadataPath" value ="C:\Tools\XrmToolBox\metadata.xml" />
-            //<add key="TestFile.JsonFileToUse" value="C:\_dev\Vexcel\WIC360CRMSourceCode\MIS.CRM.EntityWrapper\builderSettings.json" />
-            //<add key="TestFileCreation" value="True" />
             IOrganizationService client = null;
 
             var serializedMetadataPath = Config.GetAppSettingOrDefault("SerializedMetadataPath", "NONE");

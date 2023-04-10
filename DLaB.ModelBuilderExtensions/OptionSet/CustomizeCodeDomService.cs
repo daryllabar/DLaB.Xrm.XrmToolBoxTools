@@ -5,7 +5,6 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Runtime.Serialization;
 
 namespace DLaB.ModelBuilderExtensions.OptionSet
 {
@@ -33,68 +32,9 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
             //Trace.TraceInformation("Number of Namespaces generated: {0}", codeUnit.Namespaces.Count);
 
             //RemoveNonOptionSetDefinitions(codeUnit);
-            AddLocalMultiSelectOptionSets(codeUnit, services);
             AddMetadataAttributes(codeUnit);
             SortOptionSets(codeUnit);
             //Trace.TraceInformation("Exiting ICustomizeCodeDomService.CustomizeCodeDom");
-        }
-
-        /// <summary>
-        /// For some reason, CrmSvcUtil doesn't generate enums for Local MultiSelectOptionSets
-        /// </summary>
-        /// <param name="codeUnit"></param>
-        /// <param name="services"></param>
-        public void AddLocalMultiSelectOptionSets(CodeCompileUnit codeUnit, IServiceProvider services)
-        {
-            var namingService = (INamingService)services.GetService(typeof(INamingService));
-            foreach (var entityLogicalName in codeUnit.GetEntityTypes().Select(t => t.GetEntityLogicalName()))
-            {
-                if (!ServiceCache.LocalMultiSelectOptionSetAttributesByEntityLogicalName.TryGetValue(entityLogicalName, out var attributes))
-                {
-                    continue;
-                }
-
-                foreach (var attribute in attributes)
-                {
-                    var type = GenerateEnum(ServiceCache.EntityMetadataByLogicalName[entityLogicalName], attribute, services, namingService);
-                    AddMetadataAttributesForSet(type, attribute.OptionSet);
-                    codeUnit.Namespaces[0].Types.Add(type);
-                }
-            }
-        }
-
-        private CodeTypeDeclaration GenerateEnum(EntityMetadata entityMetadata, MultiSelectPicklistAttributeMetadata metadata, IServiceProvider services, INamingService service)
-        {
-            var name = service.GetNameForOptionSet(entityMetadata, metadata.OptionSet, services);
-            var type = new CodeTypeDeclaration(name)
-            {
-                IsEnum = true
-            };
-            type.CustomAttributes.Add(new CodeAttributeDeclaration(new CodeTypeReference(typeof(DataContractAttribute))));
-
-            //if (!SuppressGeneratedCodeAttribute)
-            //{
-            //    var version = System.Diagnostics.FileVersionInfo.GetVersionInfo(typeof(INamingService).Assembly.Location).ProductVersion;
-            //    type.CustomAttributes.Add(new CodeAttributeDeclaration(
-            //        new CodeTypeReference(typeof(GeneratedCodeAttribute)), 
-            //        new CodeAttributeArgument(new CodePrimitiveExpression("CrmSvcUtil")),
-            //        new CodeAttributeArgument(new CodePrimitiveExpression(version))));
-            //}
-
-            foreach (var option in metadata.OptionSet.Options)
-            {
-                // Creates the enum member
-                CodeMemberField value = new CodeMemberField
-                {
-                    Name = service.GetNameForOption(metadata.OptionSet, option, services),
-                    InitExpression = new CodePrimitiveExpression(option.Value.GetValueOrDefault())
-                };
-                value.CustomAttributes.Add(new CodeAttributeDeclaration(new CodeTypeReference(typeof(EnumMemberAttribute))));
-
-                type.Members.Add(value);
-            }
-
-            return type;
         }
 
         private void AddMetadataAttributes(CodeCompileUnit codeUnit)
