@@ -12,6 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
     <releaseNotes>
+Project file corrupted after import #402
 Allow For Custom Dictionary Entries #401
 
 V2.2023.4.9
