@@ -36,7 +36,8 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             {
                 { nameof(AddNewFilesToProject), OnAddNewFilesToProjectChange },
                 { nameof(AddOptionSetMetadataAttribute), OnAddOptionSetMetadataAttributeChange },
-                { nameof(CamelCaseMemberNames), OnCamelCaseMemberNamesChange },
+                { nameof(CamelCaseClassNames), OnCamelCaseChange },
+                { nameof(CamelCaseMemberNames), OnCamelCaseChange },
                 { nameof(CreateOneFilePerEntity), OnCreateOneFilePerEntityChange },
                 { nameof(CreateOneFilePerOptionSet), OnCreateOneFilePerOptionSetChange },
                 { nameof(CreateOneFilePerMessage), OnCreateOneFilePerMessageChange },
@@ -59,10 +60,13 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             GenerateOptionSetMetadataAttribute = AddOptionSetMetadataAttribute;
         }
 
-        private void OnCamelCaseMemberNamesChange(PropertyValueChangedEventArgs args)
+        /// <summary>
+        /// Applies if either Camel Case Class Names or Camel Case Member Names is updated
+        /// </summary>
+        /// <param name="args"></param>
+        private void OnCamelCaseChange(PropertyValueChangedEventArgs args)
         {
-            SetUseLogicalNamesVisibility();
-            UseLogicalNames = false;
+            SetVisibilityForControlsDependentOnCamelCasing();
         }
 
         private void OnCreateOneFilePerEntityChange(PropertyValueChangedEventArgs args)
@@ -126,6 +130,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             SetPropertyEnumMappingVisibility();
             SetReplaceOptionSetPropertiesWithEnumVisibility();
             SetUseLogicalNamesVisibility();
+            SetVisibilityForControlsDependentOnCamelCasing();
             SetVisibilityForControlsDependentOnFileCreations();
             SetVisibilityForControlsDependentOnGenerateMessages();
 
@@ -133,6 +138,13 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             EntityTypesFolder = EntityTypesFolder;
             OptionSetsTypesFolder = OptionSetsTypesFolder;
             TypeDescriptor.Refresh(this);
+        }
+
+        private void SetVisibilityForControlsDependentOnCamelCasing()
+        {
+            SetCamelCaseCustomWordsVisibility();
+            SetCamelCaseDictionaryRelativePathVisibility();
+            SetUseLogicalNamesVisibility();
         }
 
         private void SetVisibilityForControlsDependentOnFileCreations()
@@ -157,6 +169,16 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         private void SetAddFilesToProjectVisibility()
         {
             SetPropertyBrowsable(nameof(AddNewFilesToProject), AtLeastOneCreateFilePerSelected);
+        }
+
+        private void SetCamelCaseCustomWordsVisibility()
+        {
+            SetPropertyBrowsable(nameof(CamelCaseCustomWords), CamelCaseClassNames || CamelCaseMemberNames);
+        }
+
+        private void SetCamelCaseDictionaryRelativePathVisibility()
+        {
+            SetPropertyBrowsable(nameof(CamelCaseNamesDictionaryRelativePath), CamelCaseClassNames || CamelCaseMemberNames);
         }
 
         private void SetCleanupCrmSvcUtilLocalOptionSetsVisibility()
@@ -246,10 +268,9 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             SetPropertyBrowsable(nameof(UseEnumForStateCodes), areOptionSetsGenerated && !ReplaceOptionSetPropertiesWithEnum);
         }
 
-
         private void SetUseLogicalNamesVisibility()
         {
-            SetPropertyBrowsable(nameof(UseLogicalNames), CamelCaseMemberNames);
+            SetPropertyBrowsable(nameof(UseLogicalNames), !CamelCaseMemberNames);
         }
 
         private const string NotImplemented = "{Not Implemented} ";

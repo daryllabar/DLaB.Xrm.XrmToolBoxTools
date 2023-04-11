@@ -49,25 +49,35 @@ namespace DLaB.ModelBuilderExtensions
 
             foreach (var word in File.ReadLines(dictPath).Select(f => f.Trim().ToLower()))
             {
-                try
-                {
-                    var length = word.Length;
-                    if (dict.TryGetValue(length, out var hash))
-                    {
-                        hash.Add(word);
-                    }
-                    else
-                    {
-                        dict[length] = new HashSet<string>{ word };
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Error processing word " + word, ex);
-                }
+                AddWord(dict, word);
+            }
+
+            foreach (var word in ConfigHelper.Settings.DLaBModelBuilder.CamelCaseCustomWords)
+            {
+                AddWord(dict, word);
             }
 
             return dict;
+        }
+
+        private static void AddWord(Dictionary<int, HashSet<string>> dict, string word)
+        {
+            try
+            {
+                var length = word.Length;
+                if (dict.TryGetValue(length, out var hash))
+                {
+                    hash.Add(word);
+                }
+                else
+                {
+                    dict[length] = new HashSet<string> { word };
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error processing word " + word, ex);
+            }
         }
 
         private static List<string> LoadOverrides()

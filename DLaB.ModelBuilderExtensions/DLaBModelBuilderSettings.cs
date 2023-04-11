@@ -40,6 +40,9 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("camelCaseClassNames")]
         public bool CamelCaseClassNames { get; set; }
 
+        [JsonPropertyName("camelCaseCustomWords")]
+        public List<string> CamelCaseCustomWords { get; set; }
+
         [JsonPropertyName("camelCaseMemberNames")]
         public bool CamelCaseMemberNames { get; set; }
 
@@ -271,6 +274,7 @@ namespace DLaB.ModelBuilderExtensions
             MessageLogicalFieldName = "ActionLogicalName";
             AddPrimaryAttributeConsts = true;
             AttributeConstsClassName = "Fields";
+            CamelCaseCustomWords = new List<string>();
             EnableFileDataType = true;
             EntitiesFileName = "Entities.cs";
             EntityBlacklist = new List<string>();

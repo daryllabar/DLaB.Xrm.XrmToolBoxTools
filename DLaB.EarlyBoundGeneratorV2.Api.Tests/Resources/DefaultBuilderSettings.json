@@ -10,6 +10,7 @@
     "builderSettingsJsonRelativePath": "builderSettings.json",
     "camelCaseClassNames": true,
     "camelCaseMemberNames": true,
+    "camelCaseCustomWords": "null",
     "camelCaseNamesDictionaryRelativePath": "DLaB.EarlyBoundGeneratorV2\\DLaB.Dictionary.txt",
     "cleanupCrmSvcUtilLocalOptionSets": false,
     "createOneFilePerMessage": true,

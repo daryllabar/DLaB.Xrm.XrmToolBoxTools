@@ -307,6 +307,13 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         }
 
         [Category("1 - Global")]
+        [DisplayName("Camel Case Custom Words")]
+        [Description("Custom words to add to the standard dictionary file.  Allows for more control of the camel case naming convention, without having to check the entire dictionary file in.")]
+        [Editor(StringEditorName, typeof(UITypeEditor))]
+        [TypeConverter(CollectionCountConverter.Name)]
+        public List<string> CamelCaseCustomWords { get; set; }
+
+        [Category("1 - Global")]
         [DisplayName("Camel Case Dictionary Relative Path")]
         [Description("The path relative to the XrmToolBox Plugins directory to a Dictionary file containing a single word on each line.  This is used when auto camel casing names when either the \"Gobal: Camel Case Class Names\" or \"Global: Camel Case Member Names\" is set to true.")]
         public string CamelCaseNamesDictionaryRelativePath
@@ -736,14 +743,15 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             {
 
                 var info = new ConfigKeyValueSplitInfo {ConvertKeysToLower = false};
-                MessageWildcardWhitelist = RemoveWhiteSpace(nameof(MessageWildcardWhitelist), config.ExtensionConfig.ActionPrefixesWhitelist).GetList<string>();
-                MessageWhitelist = RemoveWhiteSpace(nameof(MessageWhitelist), config.ExtensionConfig.ActionsWhitelist).GetHashSet<string>();
-                MessageBlacklist = RemoveWhiteSpace(nameof(MessageBlacklist), config.ExtensionConfig.ActionsToSkip).GetHashSet<string>(info);
+                CamelCaseCustomWords = RemoveWhiteSpace(nameof(CamelCaseCustomWords), config.ExtensionConfig.CamelCaseCustomWords?.ToLower()).GetList<string>();
                 EntitiesBlacklist = RemoveWhiteSpace(nameof(EntitiesBlacklist), config.ExtensionConfig.EntitiesToSkip).GetHashSet<string>();
                 EntitiesWhitelist = RemoveWhiteSpace(nameof(EntitiesWhitelist), config.ExtensionConfig.EntitiesWhitelist).GetHashSet<string>();
                 EntityAttributeSpecifiedNames = RemoveWhiteSpace(nameof(EntityAttributeSpecifiedNames), config.ExtensionConfig.EntityAttributeSpecifiedNames).GetDictionaryHash<string, string>();
                 EntityRegExBlacklist = RemoveWhiteSpace(nameof(EntityRegExBlacklist), config.ExtensionConfig.EntityPrefixesToSkip).GetList<string>();
                 EntityWildcardWhitelist = RemoveWhiteSpace(nameof(EntityWildcardWhitelist), config.ExtensionConfig.EntityPrefixesWhitelist).GetList<string>();
+                MessageBlacklist = RemoveWhiteSpace(nameof(MessageBlacklist), config.ExtensionConfig.ActionsToSkip).GetHashSet<string>(info);
+                MessageWhitelist = RemoveWhiteSpace(nameof(MessageWhitelist), config.ExtensionConfig.ActionsWhitelist).GetHashSet<string>();
+                MessageWildcardWhitelist = RemoveWhiteSpace(nameof(MessageWildcardWhitelist), config.ExtensionConfig.ActionPrefixesWhitelist).GetList<string>();
                 PropertyEnumMappings = RemoveWhiteSpace(nameof(PropertyEnumMappings), config.ExtensionConfig.PropertyEnumMappings).GetList<string>();
                 OptionSetNames = RemoveWhiteSpace(nameof(OptionSetNames), Config.ExtensionConfig.OptionSetNames).GetDictionary<string,string>();
                 TokenCapitalizationOverrides = RemoveWhiteSpace(nameof(TokenCapitalizationOverrides), config.ExtensionConfig.TokenCapitalizationOverrides).GetList<string>();
@@ -767,6 +775,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             Config.ExtensionConfig.ActionPrefixesWhitelist = CommonConfig.ToStringSorted(MessageWildcardWhitelist, info);
             Config.ExtensionConfig.ActionsWhitelist = CommonConfig.ToStringSorted(MessageWhitelist, info);
             Config.ExtensionConfig.ActionsToSkip = CommonConfig.ToStringSorted(MessageBlacklist, info);
+            Config.ExtensionConfig.CamelCaseCustomWords = CommonConfig.ToStringSorted(CamelCaseCustomWords);
             Config.ExtensionConfig.EntitiesToSkip = CommonConfig.ToStringSorted(EntitiesBlacklist);
             Config.ExtensionConfig.EntitiesWhitelist = CommonConfig.ToStringSorted(EntitiesWhitelist);
             Config.ExtensionConfig.EntityAttributeSpecifiedNames = CommonConfig.ToStringSorted(EntityAttributeSpecifiedNames);

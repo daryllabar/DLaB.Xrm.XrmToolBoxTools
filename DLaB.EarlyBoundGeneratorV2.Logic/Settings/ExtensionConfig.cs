@@ -48,6 +48,10 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         /// </summary>
         public bool CamelCaseClassNames { get; set; }
         /// <summary>
+        /// Custom words to add to the standard dictionary file.  Allows for more control of the camel case naming convention, without having to check the entire dictionary file in.
+        /// </summary>
+        public string CamelCaseCustomWords { get; set; }
+        /// <summary>
         /// Using a dictionary, attempts to correctly camelcase column/parameter names
         /// </summary>
         public bool CamelCaseMemberNames { get; set; }
@@ -287,6 +291,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 AddOptionSetMetadataAttribute = true,
                 BuilderSettingsJsonRelativePath = "builderSettings.json",
                 CamelCaseClassNames = true,
+                CamelCaseCustomWords = null,
                 CamelCaseNamesDictionaryRelativePath = @"DLaB.EarlyBoundGeneratorV2\DLaB.Dictionary.txt",
                 CamelCaseMemberNames = true,
                 CleanupCrmSvcUtilLocalOptionSets = false,
@@ -352,6 +357,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             AddOptionSetMetadataAttribute = poco.AddOptionSetMetadataAttribute ?? AddOptionSetMetadataAttribute;
             BuilderSettingsJsonRelativePath = GetValueOrDefault(poco.BuilderSettingsJsonRelativePath, BuilderSettingsJsonRelativePath);
             CamelCaseClassNames = poco.CamelCaseClassNames ?? CamelCaseClassNames;
+            CamelCaseCustomWords = GetValueOrDefault(poco.CamelCaseCustomWords, CamelCaseCustomWords);
             CamelCaseNamesDictionaryRelativePath = poco.CamelCaseNamesDictionaryRelativePath ?? CamelCaseNamesDictionaryRelativePath;
             CamelCaseMemberNames = poco.CamelCaseMemberNames ?? CamelCaseMemberNames;
             CleanupCrmSvcUtilLocalOptionSets = poco.CleanupCrmSvcUtilLocalOptionSets ?? CleanupCrmSvcUtilLocalOptionSets;
@@ -418,6 +424,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddProperty(nameof(AddOptionSetMetadataAttribute), AddOptionSetMetadataAttribute);
             writer.AddProperty(nameof(BuilderSettingsJsonRelativePath), BuilderSettingsJsonRelativePath);
             writer.AddProperty(nameof(CamelCaseClassNames), CamelCaseClassNames);
+            writer.AddPropertyArray(nameof(CamelCaseCustomWords), CamelCaseCustomWords);
             writer.AddProperty(nameof(CamelCaseMemberNames), CamelCaseMemberNames);
             writer.AddProperty(nameof(CamelCaseNamesDictionaryRelativePath), CamelCaseNamesDictionaryRelativePath);
             writer.AddProperty(nameof(CleanupCrmSvcUtilLocalOptionSets), CleanupCrmSvcUtilLocalOptionSets);
@@ -530,6 +537,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings.POCO
         public bool? AddOptionSetMetadataAttribute { get; set; }
         public string BuilderSettingsJsonRelativePath { get; set; }
         public bool? CamelCaseClassNames { get; set; }
+        public string CamelCaseCustomWords { get; set; }
         public bool? CamelCaseMemberNames { get; set; }
         public string CamelCaseNamesDictionaryRelativePath { get; set; }
         public bool? CleanupCrmSvcUtilLocalOptionSets { get; set; }

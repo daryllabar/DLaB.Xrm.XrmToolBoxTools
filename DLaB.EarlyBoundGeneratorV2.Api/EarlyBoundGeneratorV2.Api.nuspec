@@ -11,7 +11,10 @@
 		<projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses ModelBuilder from the PAC.</description>
-		<releaseNotes>V2.2023.4.9
+		<releaseNotes>
+Allow For Custom Dictionary Entries #401
+
+V2.2023.4.9
 Increase Dictionary #400
 Whitelist Prefix Doesn't work #399
 Unable to clear Whitelist of Entities #398
