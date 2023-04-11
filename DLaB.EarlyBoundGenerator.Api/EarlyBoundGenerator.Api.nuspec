@@ -11,7 +11,10 @@
     <icon>images\DLaB_Dynamics_Logo_Square_32x32.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses CrmSvcUtil from the SDK.</description>
-    <releaseNotes>V1.2022.9.22
+    <releaseNotes>
+Project file corrupted after import #402
+
+V1.2022.9.22
 Fix for Object Reference Not Set to Instance of Object after using clientid/secret connection? #333
 
 V1.2022.5.3

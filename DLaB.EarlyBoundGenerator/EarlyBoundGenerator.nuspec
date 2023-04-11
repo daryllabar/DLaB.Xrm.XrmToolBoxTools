@@ -11,7 +11,10 @@
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V1.2022.9.22
+    <releaseNotes>
+Project file corrupted after import #402
+
+V1.2022.9.22
 Fix for Object Reference Not Set to Instance of Object after using clientid/secret connection? #333
 	    
 V1.2022.5.3

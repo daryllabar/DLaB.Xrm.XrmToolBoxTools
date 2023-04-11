@@ -714,6 +714,8 @@ namespace DLaB.CrmSvcUtilExtensions
                     }
                     ProjectPath = file.FullName;
                     Lines = File.ReadAllLines(ProjectPath).ToList();
+                    CombineMultiLinedCompileStatements();
+
                     ProjectDir = Path.GetDirectoryName(ProjectPath);
                     if (!Lines.Any(l => l.Contains("<Compile Include=")))
                     {
@@ -747,6 +749,39 @@ namespace DLaB.CrmSvcUtilExtensions
                 ProjectUpdated = false;
                 Tfs = tfs;
             }
+
+            /// <summary>
+            /// Moves all Compile sections that are multi-lined onto a single line
+            /// </summary>
+            private void CombineMultiLinedCompileStatements()
+            {
+                for (var i = 0; i < Lines.Count; i++)
+                {
+                    var line = Lines[i];
+                    var trimmed = line.Trim();
+                    if (trimmed.StartsWith("<Compile Include =")
+                        && !trimmed.EndsWith("/>"))
+                    {
+                        var index = i;
+                        i++;
+                        while (i < Lines.Count
+                               && !Lines[i].Contains("</Compile>"))
+                        {
+                            trimmed += Environment.NewLine + Lines[i];
+                            Lines.RemoveAt(i);
+                        }
+
+                        if (i < Lines.Count)
+                        {
+                            trimmed += Environment.NewLine + Lines[i];
+                            Lines.RemoveAt(i);
+                        }
+
+                        Lines[index] = trimmed;
+                    }
+                }
+            }
+
 
             private FileInfo GetProjectPath(DirectoryInfo directory)
             {
