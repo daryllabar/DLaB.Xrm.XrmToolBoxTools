@@ -240,15 +240,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         }
 
         [Category("2 - Entities")]
-        [DisplayName("Use Display Name For BPF Class Names")]
-        [Description("By default, Business Process Flows entities are named with the format {PublshierPrefix}_bpf_GUID. This will instead generate the entity class with the format {PublshierPrefix}_bpf_{DisplayName}.")]
-        public bool UseDisplayNameForBpfClassNames
-        {
-            get => Config.ExtensionConfig.UseDisplayNameForBpfClassNames;
-            set => Config.ExtensionConfig.UseDisplayNameForBpfClassNames = value;
-        }
-
-        [Category("2 - Entities")]
         [DisplayName("Use Enum For State Codes")]
         [Description("The CrmSvcUtil generates state codes as enums properties.  This allows for generating just this property as an enum.  Only valid when Replace Option Set Properties with Enum is false.")]
         public bool UseEnumForStateCodes
@@ -420,6 +411,15 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         [Editor(StringEditorName, typeof(UITypeEditor))]
         [TypeConverter(CollectionCountConverter.Name)]
         public List<string> TokenCapitalizationOverrides { get; set; }
+
+        [Category("1 - Global")]
+        [DisplayName("Use Display Name For BPF Name")]
+        [Description("By default, Business Process Flows entities are named with the format {PublisherPrefix}_bpf_GUID. This will instead generate the bpf clases with the format {PublisherPrefix}_bpf_{DisplayName} and entity relationships with similarly, guid replaced by display name, formats.")]
+        public bool UseDisplayNameForBpfName
+        {
+            get => Config.ExtensionConfig.UseDisplayNameForBpfName;
+            set => Config.ExtensionConfig.UseDisplayNameForBpfName = value;
+        }
 
         [Category("1 - Global")]
         [DisplayName("Use Tfs")]

@@ -101,7 +101,7 @@ namespace DLaB.ModelBuilderExtensions
         public string GetFilePath(string filePath, CodeNamespace code)
         {
             var fileName = Path.GetFileNameWithoutExtension(filePath);
-            var bpfInfo = Settings.DLaBModelBuilder.UseDisplayNameForBpfClassNames
+            var bpfInfo = Settings.DLaBModelBuilder.UseDisplayNameForBpfName
                 ? BpfInfo.Parse(fileName)
                 : new BpfInfo();
 

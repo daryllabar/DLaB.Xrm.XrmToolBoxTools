@@ -1,4 +1,5 @@
-﻿using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
+﻿using DLaB.ModelBuilderExtensions.OptionSet.Transliteration;
+using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 using System;
@@ -8,10 +9,7 @@ using System.Text.RegularExpressions;
 
 namespace DLaB.ModelBuilderExtensions
 {
-    using OptionSet.Transliteration;
-    using Source.DLaB.Xrm;
-
-    public class NamingService : TypedServiceSettings<INamingService>, INamingService
+    public class NamingService : TypedServiceBase<INamingService>, INamingService
     {
         public const int English = 1033;
 
@@ -24,12 +22,12 @@ namespace DLaB.ModelBuilderExtensions
         public string LocalOptionSetFormat { get => DLaBSettings.LocalOptionSetFormat; set => DLaBSettings.LocalOptionSetFormat = value; }
         public Dictionary<string, string> OptionSetNames { get => DLaBSettings.OptionSetNames; set => DLaBSettings.OptionSetNames = value; }
         public bool UseCrmSvcUtilStateEnumNamingConvention { get => DLaBSettings.UseCrmSvcUtilStateEnumNamingConvention; set => DLaBSettings.UseCrmSvcUtilStateEnumNamingConvention = value; }
-        public bool UseDisplayNameForBpfClassNames { get => DLaBSettings.UseDisplayNameForBpfClassNames; set => DLaBSettings.UseDisplayNameForBpfClassNames = value; }
+        public bool UseDisplayNameForBpfName { get => DLaBSettings.UseDisplayNameForBpfName; set => DLaBSettings.UseDisplayNameForBpfName = value; }
         public bool UseLogicalNames { get => DLaBSettings.UseLogicalNames; set => DLaBSettings.UseLogicalNames = value; }
         public string ValidCSharpNameRegEx { get => DLaBSettings.ValidCSharpNameRegEx; set => DLaBSettings.ValidCSharpNameRegEx = value; }
 
         private HashSet<string> _entityNames;
-        private Dictionary<string,string> _generatedBpfLogicalNamesByClassName = new Dictionary<string, string>();
+        private readonly Dictionary<string,string> _generatedBpfLogicalNamesByClassName = new Dictionary<string, string>();
 
         private TransliterationService TransliterationService { get; set; }
 
@@ -37,6 +35,8 @@ namespace DLaB.ModelBuilderExtensions
         /// This field keeps track of options with the same name and the values that have been defined.  Internal Dictionary Key is Name + "_" + Value
         /// </summary>
         private Dictionary<OptionSetMetadataBase, Dictionary<string, bool>> OptionNameValueDuplicates { get; set; } = new Dictionary<OptionSetMetadataBase, Dictionary<string, bool>>();
+
+        #region Constructors
 
         public NamingService(INamingService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
@@ -47,6 +47,8 @@ namespace DLaB.ModelBuilderExtensions
         {
             TransliterationService = new TransliterationService(DLaBSettings);
         }
+
+        #endregion Constructors   
 
         public HashSet<string> GetEntityNames(IServiceProvider services)
         {
@@ -65,6 +67,7 @@ namespace DLaB.ModelBuilderExtensions
         /// </summary>
         public string GetNameForOptionSet(EntityMetadata entityMetadata, OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
         {
+            SetServiceCache(services);
             var name = GetPossiblyConflictedNameForOptionSet(entityMetadata, optionSetMetadata, services);
             var entityNames = GetEntityNames(services);
             while (entityNames.Contains(name))
@@ -87,7 +90,7 @@ namespace DLaB.ModelBuilderExtensions
         {
             var defaultName = DefaultService.GetNameForOptionSet(entityMetadata, optionSetMetadata, services);
 
-            if (UseDisplayNameForBpfClassNames && defaultName.ToLower().EndsWith("_statecode"))
+            if (UseDisplayNameForBpfName && defaultName.ToLower().EndsWith("_statecode"))
             {
                 var end = "_" + defaultName.Split('_').Last();
                 var name = defaultName.Substring(0, defaultName.Length - end.Length);
@@ -205,6 +208,7 @@ namespace DLaB.ModelBuilderExtensions
 
         public string GetNameForOption(OptionSetMetadataBase optionSetMetadata, OptionMetadata optionMetadata, IServiceProvider services)
         {
+            SetServiceCache(services);
             var possiblyDuplicateName = GetPossiblyDuplicateNameForOption(optionSetMetadata, services, optionMetadata);
             return AppendValueForDuplicateOptionSetValueNames(optionSetMetadata, possiblyDuplicateName, optionMetadata.Value.GetValueOrDefault(), services);
         }
@@ -367,6 +371,7 @@ namespace DLaB.ModelBuilderExtensions
         /// <returns></returns>
         public string GetNameForAttribute(EntityMetadata entityMetadata, AttributeMetadata attributeMetadata, IServiceProvider services)
         {
+            SetServiceCache(services);
             return GetNameForAttribute(entityMetadata, attributeMetadata, services, CamelCaseMemberNames, UseLogicalNames);
         }
 
@@ -396,9 +401,10 @@ namespace DLaB.ModelBuilderExtensions
 
         public string GetNameForEntity(EntityMetadata entityMetadata, IServiceProvider services)
         {
+            SetServiceCache(services);
             var defaultName = DefaultService.GetNameForEntity(entityMetadata, services);
             
-            if (UseDisplayNameForBpfClassNames)
+            if (UseDisplayNameForBpfName)
             {
                 defaultName = GetBpfNameToDisplay(defaultName, entityMetadata);
             }
@@ -410,12 +416,24 @@ namespace DLaB.ModelBuilderExtensions
 
         private string GetBpfNameToDisplay(string name, EntityMetadata entityMetadata)
         {
+            return GetBpfNameToDisplay(name, entityMetadata, null);
+        }
+
+        private string GetBpfNameToDisplay(string name, string entityLogicalName)
+        {
+            return GetBpfNameToDisplay(name, null, entityLogicalName);
+        }
+
+        private string GetBpfNameToDisplay(string name, EntityMetadata entityMetadata, string entityLogicalName)
+        {
             var bpf = BpfInfo.Parse(name);
             if (!bpf.IsBpfName)
             {
                 return name;
             }
-            name = bpf.Prefix + GetValidCSharpName(entityMetadata.DisplayName.GetLocalOrDefaultText());
+
+            entityMetadata = entityMetadata ?? ServiceCache.EntityMetadataByLogicalName[entityLogicalName];
+            name = bpf.Prefix + GetValidCSharpName(entityMetadata.DisplayName.GetLocalOrDefaultText()) + bpf.Postfix;
             name = MakeNameUniqueIfAlreadyUsedByDifferentLogicalName(name, entityMetadata, bpf);
 
             return name;
@@ -425,7 +443,7 @@ namespace DLaB.ModelBuilderExtensions
         {
             if (_generatedBpfLogicalNamesByClassName.TryGetValue(name, out var logicalName) && logicalName != entityMetadata.LogicalName)
             {
-                name += bpf.Postfix;
+                name += bpf.Id;
             }
             else
             {
@@ -437,6 +455,7 @@ namespace DLaB.ModelBuilderExtensions
 
         public string GetNameForMessagePair(SdkMessagePair messagePair, IServiceProvider services)
         {
+            SetServiceCache(services);
             var defaultName = DefaultService.GetNameForMessagePair(messagePair, services);
             return CamelCaseMemberNames
                 ? CamelCaser.Case(defaultName)
@@ -445,6 +464,7 @@ namespace DLaB.ModelBuilderExtensions
 
         public string GetNameForRequestField(SdkMessageRequest request, SdkMessageRequestField requestField, IServiceProvider services)
         {
+            SetServiceCache(services);
             var defaultName = DefaultService.GetNameForRequestField(request, requestField, services);
             return CamelCaseMemberNames
                 ? CamelCaser.Case(defaultName)
@@ -453,6 +473,7 @@ namespace DLaB.ModelBuilderExtensions
 
         public string GetNameForResponseField(SdkMessageResponse response, SdkMessageResponseField responseField, IServiceProvider services)
         {
+            SetServiceCache(services);
             var defaultName = DefaultService.GetNameForResponseField(response, responseField, services);
             return CamelCaseMemberNames
                 ? CamelCaser.Case(defaultName)
@@ -461,7 +482,19 @@ namespace DLaB.ModelBuilderExtensions
 
         public string GetNameForRelationship(EntityMetadata entityMetadata, RelationshipMetadataBase relationshipMetadata, EntityRole? reflexiveRole, IServiceProvider services)
         {
+            SetServiceCache(services);
             var defaultName = DefaultService.GetNameForRelationship(entityMetadata, relationshipMetadata, reflexiveRole, services);
+
+            if (UseDisplayNameForBpfName
+                && relationshipMetadata is OneToManyRelationshipMetadata oneToMany)
+            {
+                var logicalName = oneToMany.ReferencedEntityNavigationPropertyName == defaultName
+                                  && oneToMany.ReferencingEntity != "processsession"
+                    ? oneToMany.ReferencingEntity
+                    : oneToMany.ReferencedEntity;
+                defaultName = GetBpfNameToDisplay(defaultName, logicalName);
+            }
+
             return CamelCaseMemberNames
                 ? CamelCaser.Case(defaultName)
                 : defaultName;
@@ -469,8 +502,17 @@ namespace DLaB.ModelBuilderExtensions
 
         #region Default INamingService Calls
 
-        public string GetNameForServiceContext(IServiceProvider services) { return DefaultService.GetNameForServiceContext(services); }
-        public string GetNameForEntitySet(EntityMetadata entityMetadata, IServiceProvider services) { return DefaultService.GetNameForEntitySet(entityMetadata, services); }
+        public string GetNameForServiceContext(IServiceProvider services)
+        {
+            SetServiceCache(services); 
+            return DefaultService.GetNameForServiceContext(services);
+        }
+
+        public string GetNameForEntitySet(EntityMetadata entityMetadata, IServiceProvider services)
+        {
+            SetServiceCache(services); 
+            return DefaultService.GetNameForEntitySet(entityMetadata, services);
+        }
 
         #endregion Default INamingService Calls
     }

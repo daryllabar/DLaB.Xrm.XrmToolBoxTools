@@ -12,6 +12,7 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses ModelBuilder from the PAC.</description>
 		<releaseNotes>
+Use BPF Display Name for Relationship Attributes #403
 Project file corrupted after import #402
 Allow For Custom Dictionary Entries #401
 

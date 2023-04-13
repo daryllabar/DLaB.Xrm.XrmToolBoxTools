@@ -1,41 +1,57 @@
 ﻿using System;
+using System.Linq;
 
 namespace DLaB.ModelBuilderExtensions
 {
     public struct BpfInfo
     {
-        private const string Bpf = "bpf_";
+        private const string Bpf = "bpf";
 
         public bool IsBpfName { get; }
+        public bool IsBpfRelationshipName { get; }
         /// <summary>
-        /// All text after the last instance of "bpf_"
+        /// The Id of the parsed Bpf
         /// </summary>
-        public string Postfix { get; }
+        public string Id { get; }
         /// <summary>
         /// All text up to and including the last instance of "bpf_"
         /// </summary>
         public string Prefix { get; }
+        /// <summary>
+        /// Any Text that appears after the bpf id 
+        /// </summary>
+        public string Postfix { get; }
 
-        public BpfInfo(string prefix, string postfix)
+        public BpfInfo(string prefix, string id, string postfix)
         {
             IsBpfName = true;
-            Postfix = postfix.ToUpper();
+            Id = id.ToUpper();
             Prefix = prefix;
+            Postfix = postfix ?? string.Empty;
+            IsBpfRelationshipName = !string.IsNullOrWhiteSpace(postfix);
         }
 
         public static BpfInfo Parse(string name)
         {
-            var searchName = name.ToLower();
-            if (!searchName.Contains(Bpf))
+            var parts = name.Split('_').ToList();
+            var bpfIndex = parts.FindLastIndex(p => p.ToLower() == Bpf);
+            if (bpfIndex < 0)
             {
                 return new BpfInfo();
             }
 
-            var index = searchName.ToLower().LastIndexOf(Bpf, StringComparison.Ordinal) + Bpf.Length;
-            var postText = name.Substring(index);
-            return Guid.TryParse(postText, out _)
-                ? new BpfInfo(name.Substring(0, index), postText)
-                : new BpfInfo();
+            var id = parts[bpfIndex + 1];
+            if (!Guid.TryParse(id, out _))
+            {
+                return new BpfInfo();
+            }
+
+            var prefix = string.Join("_", parts.Take(bpfIndex + 1)) + "_";
+            var postfix = bpfIndex + 2 < parts.Count
+                ? "_" + string.Join("_", parts.Skip(bpfIndex + 2))
+                : null;
+
+            return new BpfInfo(prefix, id, postfix);
         }
     }
 }
