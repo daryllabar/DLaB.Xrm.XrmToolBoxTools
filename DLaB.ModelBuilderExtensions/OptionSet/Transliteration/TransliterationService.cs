@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Json;
+using System.Text.Json;
 using Microsoft.Xrm.Sdk;
 
 namespace DLaB.ModelBuilderExtensions.OptionSet.Transliteration
@@ -50,15 +51,11 @@ namespace DLaB.ModelBuilderExtensions.OptionSet.Transliteration
 
         private TransliterationAlphabet LoadAlphabet(int languageCode)
         {
-            var serializer = new DataContractJsonSerializer(typeof(AlphabetPoco));
             var path = Path.Combine(TransliterationPath, languageCode + ".json");
             AlphabetPoco alphabetJson;
             try
             {
-                using (var stream = GenerateStreamFromString(File.ReadAllText(path)))
-                {
-                    alphabetJson = (AlphabetPoco)serializer.ReadObject(stream);
-                }
+                alphabetJson = JsonSerializer.Deserialize<AlphabetPoco>(File.ReadAllText(path));
             }
             catch (Exception ex)
             {
@@ -74,9 +71,8 @@ namespace DLaB.ModelBuilderExtensions.OptionSet.Transliteration
                 throw new Exception($"Error in format of Transliteration file {path}");    
             }
 
-            var dictionary =
-                alphabetJson.alphabet
-                .ToDictionary(
+            var dictionary = alphabetJson.alphabet
+                    .ToDictionary(
                     x => x[0][0],
                     x => x[1]);
 
@@ -85,20 +81,6 @@ namespace DLaB.ModelBuilderExtensions.OptionSet.Transliteration
             Alphabets.Add(alphabet);
 
             return alphabet;
-        }
-
-        private Stream GenerateStreamFromString(string s)
-        {
-            using (var stream = new MemoryStream())
-            {
-                using (var writer = new StreamWriter(stream))
-                {
-                    writer.Write(s);
-                    writer.Flush();
-                    stream.Position = 0;
-                    return stream;
-                }
-            }
         }
     }
 }

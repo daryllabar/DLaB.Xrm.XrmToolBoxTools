@@ -4,14 +4,10 @@ using System.Runtime.Serialization;
 
 namespace DLaB.ModelBuilderExtensions.OptionSet.Transliteration
 {
-    [DataContract]
     public class AlphabetPoco
     {
-        [DataMember]
         public int code { get; set; }
-        [DataMember]
         public string language { get; set; }
-        [DataMember]
         public List<string[]> alphabet { get; set; }
     }
 
