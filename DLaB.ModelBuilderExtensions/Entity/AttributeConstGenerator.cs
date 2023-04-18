@@ -20,32 +20,21 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
         public override void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
-            if (GenerateAttributeNameConsts)
+            foreach (var entity in codeUnit.GetEntityTypes())
             {
-                CreateConstsClass(codeUnit);
-            }
-            else
-            {
-                RemoveMemberType(codeUnit);
-            }
-        }
-
-        protected virtual void CreateConstsClass(CodeCompileUnit codeUnit)
-        {
-            if (AttributeConstsClassName != OobConstsClassName)
-            {
-                var type = codeUnit.GetTypes().First(t => t.IsClass && t.Name == OobConstsClassName);
-                type.Name = AttributeConstsClassName;
-            }
-        }
-
-        private static void RemoveMemberType(CodeCompileUnit codeUnit)
-        {
-            foreach (var type in codeUnit.GetTypes().Where(t => t.IsClass))
-            {
-                foreach (var member in type.GetMembers<CodeTypeDeclaration>().Where(t => t.Name == OobConstsClassName).ToList())
+                var constsClass = entity.GetMembers<CodeSnippetTypeMember>().FirstOrDefault(s => s.Text.Contains($"public static class {OobConstsClassName}"));
+                if (constsClass == null)
                 {
-                    type.Members.Remove(member);
+                    continue;
+                }
+
+                if (GenerateAttributeNameConsts)
+                {
+                    constsClass.Text = constsClass.Text.Replace($"public static class {OobConstsClassName}", $"public static partial class {AttributeConstsClassName}");
+                }
+                else
+                {
+                    entity.Members.Remove(constsClass);
                 }
             }
         }

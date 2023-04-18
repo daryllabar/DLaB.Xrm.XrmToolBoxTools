@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGeneratorV2</id>
-	<version>2.2023.4.12</version>
+	<version>2.2023.4.17</version>
 	<title>Early Bound Generator V2</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,10 +11,11 @@
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>
+    <releaseNotes>V2.2023.4.17
+Make Fields Class Partial #405
 Error on Transliteration #404
 
-2.2023.4.12
+V2.2023.4.12
 Use BPF Display Name for Relationship Attributes #403
 Project file corrupted after import #402
 Allow For Custom Dictionary Entries #401
