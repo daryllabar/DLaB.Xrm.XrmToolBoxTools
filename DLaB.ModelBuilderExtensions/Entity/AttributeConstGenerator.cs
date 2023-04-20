@@ -8,14 +8,18 @@ namespace DLaB.ModelBuilderExtensions.Entity
 {
     public class AttributeConstGenerator : AttributeConstGeneratorBase
     {
+        private readonly ServiceCache _serviceCache;
+
         public override bool GenerateAttributeNameConsts { get => DLaBSettings.GenerateAttributeNameConsts; set => DLaBSettings.GenerateAttributeNameConsts = value; }
 
-        public AttributeConstGenerator(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
+        public AttributeConstGenerator(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters, ServiceCache cache) : base(defaultService, parameters)
         {
+            _serviceCache = cache;
         }
 
-        public AttributeConstGenerator(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
+        public AttributeConstGenerator(ICustomizeCodeDomService defaultService, ServiceCache cache, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
         {
+            _serviceCache = cache;
         }
 
         public override void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
@@ -28,9 +32,30 @@ namespace DLaB.ModelBuilderExtensions.Entity
                     continue;
                 }
 
+                
                 if (GenerateAttributeNameConsts)
                 {
-                    constsClass.Text = constsClass.Text.Replace($"public static class {OobConstsClassName}", $"public static partial class {AttributeConstsClassName}");
+                    var lines = constsClass.Text.Replace($"public static class {OobConstsClassName}", $"public static partial class {AttributeConstsClassName}")
+                        .Replace($"\" +{Environment.NewLine}\t\t\"","")
+                        .Split(new [] {
+                        Environment.NewLine
+                    }, StringSplitOptions.None).ToList();
+                    
+                    var start = lines.FindIndex(l => l.StartsWith("\t\t\tpublic const string "));
+                    var end = lines.FindIndex(l => l.StartsWith("\t\t}"));
+                    var atts = lines.Skip(start).Take(end - start).ToList();
+                    lines.RemoveRange(start,end-start);
+
+                    var metadata = _serviceCache.EntityMetadataByLogicalName[entity.GetEntityLogicalName()];
+                    foreach (var relationship in metadata.ManyToOneRelationships)
+                    {
+                        var attLine = atts.First(a => a.ToLower().Contains(" " + relationship.ReferencingAttribute + " "));
+                        atts.Add(attLine.Replace(" =", "Name =").Replace("\";", "name\";"));
+                        atts.Add(attLine.Replace(" =", "Type =").Replace("\";", "type\";"));
+                    }
+
+                    lines.InsertRange(start, atts.OrderBy(a => a.Split(' ').Last()));
+                    constsClass.Text = string.Join(Environment.NewLine, lines);
                 }
                 else
                 {

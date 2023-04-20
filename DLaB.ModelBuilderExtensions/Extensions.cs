@@ -36,14 +36,7 @@ namespace DLaB.ModelBuilderExtensions
             var entityTypes = new List<Tuple<CodeTypeDeclaration, EntityMetadata>>();
             foreach (var type in codeUnit.GetEntityTypes())
             {
-                var logicalNameAttribute = type.CustomAttributes.Cast<CodeAttributeDeclaration>()
-                            .FirstOrDefault(a => a.Name == "Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute");
-                if (logicalNameAttribute == null)
-                {
-                    continue;
-                }
-
-                var typeEntityName = ((CodePrimitiveExpression) logicalNameAttribute.Arguments[0].Value).Value.ToString();
+                var typeEntityName = GetEntityLogicalName(type);
                 if (entityTypesByLogicalName.TryGetValue(typeEntityName, out var entityMetadata))
                 {
                     entityTypes.Add(new Tuple<CodeTypeDeclaration, EntityMetadata>(type, entityMetadata));

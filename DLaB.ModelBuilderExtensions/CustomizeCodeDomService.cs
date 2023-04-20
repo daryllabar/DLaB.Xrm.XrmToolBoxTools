@@ -144,7 +144,7 @@ namespace DLaB.ModelBuilderExtensions
             }
 
             new RelationshipConstGenerator(DefaultService, Settings).CustomizeCodeDom(codeUnit, services);
-            new AttributeConstGenerator(DefaultService, Settings).CustomizeCodeDom(codeUnit, services);
+            new AttributeConstGenerator(DefaultService, ServiceCache, Settings).CustomizeCodeDom(codeUnit, services);
 
             if (GenerateAnonymousTypeConstructor)
             {
