@@ -11,7 +11,10 @@
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V2.2023.4.17
+    <releaseNotes>
+Fields Const file should generate related entity name fields #406
+
+V2.2023.4.17
 Make Fields Class Partial #405
 Error on Transliteration #404
 

@@ -47,11 +47,16 @@ namespace DLaB.ModelBuilderExtensions.Entity
                     lines.RemoveRange(start,end-start);
 
                     var metadata = _serviceCache.EntityMetadataByLogicalName[entity.GetEntityLogicalName()];
+                    var createdNames = new HashSet<string>();
                     foreach (var relationship in metadata.ManyToOneRelationships)
                     {
+                        if (createdNames.Contains(relationship.ReferencingAttribute))
+                        {
+                            continue;
+                        }
+                        createdNames.Add(relationship.ReferencingAttribute);
                         var attLine = atts.First(a => a.ToLower().Contains(" " + relationship.ReferencingAttribute + " "));
                         atts.Add(attLine.Replace(" =", "Name =").Replace("\";", "name\";"));
-                        atts.Add(attLine.Replace(" =", "Type =").Replace("\";", "type\";"));
                     }
 
                     lines.InsertRange(start, atts.OrderBy(a => a.Split(' ').Last()));
