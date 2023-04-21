@@ -45,7 +45,7 @@ namespace DLaB.ModelBuilderExtensions
             IServiceProvider serviceProvider)
         {
             FilesWritten.Clear();
-            ProcessModelInvoker_ModelBuilderLogger_TraceMethodStart("Entering {0}", nameof(Write));
+            ProcessModelInvoker.ModelBuilderLogger.TraceMethodStart("Entering {0}", nameof(Write));
             if (SplitFilesByObject)
             {
                 Dictionary<string, CodeNamespace> dictionary = CodeGenerationService_BuildCodeDom2(organizationMetadata, outputNamespace, serviceProvider, language, LegacyMode);
@@ -60,7 +60,7 @@ namespace DLaB.ModelBuilderExtensions
 
                 if (string.IsNullOrEmpty(str))
                 {
-                    ProcessModelInvoker_ModelBuilderLogger_TraceWarning("ProxyTypesAssemblyAttribute not written, Please add this to a file in your class");
+                    ProcessModelInvoker.ModelBuilderLogger.TraceWarning("ProxyTypesAssemblyAttribute not written, Please add this to a file in your class");
                     Console.Out.WriteLine("ProxyTypesAssemblyAttribute not written, Please add [assembly: Microsoft.Xrm.Sdk.Client.ProxyTypesAssemblyAttribute()] to a file in your class");
                 }
             }
@@ -71,7 +71,7 @@ namespace DLaB.ModelBuilderExtensions
                 MakeConfiguredClassesStatic(outputFile);
                 FilesWritten.Add(outputFile, codenamespace);
             }
-            ProcessModelInvoker_ModelBuilderLogger_TraceMethodStop("Exiting {0}", nameof(Write));
+            ProcessModelInvoker.ModelBuilderLogger.TraceMethodStop("Exiting {0}", nameof(Write));
         }
 
         public void MakeConfiguredClassesStatic(string filePath, CodeNamespace code)
@@ -195,7 +195,7 @@ namespace DLaB.ModelBuilderExtensions
               bool writeProxyAttrib = true,
               bool isFileSplit = false)
         {
-            ProcessModelInvoker_ModelBuilderLogger_TraceMethodStart("Entering {0}", (object)MethodBase.GetCurrentMethod().Name);
+            ProcessModelInvoker.ModelBuilderLogger.TraceMethodStart("Entering {0}", (object)MethodBase.GetCurrentMethod().Name);
             FileInfo fileInfo = new FileInfo(outputFile);
             if (!fileInfo.Directory.Exists)
                 fileInfo.Directory.Create();
@@ -239,7 +239,7 @@ namespace DLaB.ModelBuilderExtensions
                         provider.GenerateCodeFromCompileUnit((CodeCompileUnit)new CodeSnippetCompileUnit("#pragma warning restore CS1591"), (TextWriter)writer, options);
                 }
             }
-            ProcessModelInvoker_ModelBuilderLogger_TraceInformation("Exit {0}: Code file written to {1}", (object)MethodBase.GetCurrentMethod().Name, (object)outputFile);
+            ProcessModelInvoker.ModelBuilderLogger.TraceInformation("Exit {0}: Code file written to {1}", (object)MethodBase.GetCurrentMethod().Name, (object)outputFile);
             Console.Out.WriteLine(string.Format((IFormatProvider)CultureInfo.InvariantCulture, "\tCode written to {0}.", (object)Path.GetFullPath(outputFile)));
         }
 
@@ -288,30 +288,6 @@ namespace DLaB.ModelBuilderExtensions
             }
         }
 
-        private void ProcessModelInvoker_ModelBuilderLogger_TraceMethodStart(string message, params object[] messageData)
-        {
-            InvokePublicInstanceMethodOnNonPublicStaticField<ProcessModelInvoker>("ModelBuilderLogger", "TraceMethodStart",
-                new object[] { message, messageData });
-        }
-
-        private void ProcessModelInvoker_ModelBuilderLogger_TraceMethodStop(string message, params object[] messageData)
-        {
-            InvokePublicInstanceMethodOnNonPublicStaticField<ProcessModelInvoker>("ModelBuilderLogger", "TraceMethodStop",
-                new object[] { message, messageData });
-        }
-
-        private void ProcessModelInvoker_ModelBuilderLogger_TraceWarning(string message, params object[] messageData)
-        {
-            InvokePublicInstanceMethodOnNonPublicStaticField<ProcessModelInvoker>("ModelBuilderLogger", "TraceWarning",
-                new object[] { message, messageData });
-        }
-
-        private void ProcessModelInvoker_ModelBuilderLogger_TraceInformation(string message, params object[] messageData)
-        {
-            InvokePublicInstanceMethodOnNonPublicStaticField<ProcessModelInvoker>("ModelBuilderLogger", "TraceInformation",
-                new object[] { message, messageData });
-        }
-
         private object InvokeMicrosoft_PowerPlatform_Dataverse_ModelBuilderLib_NonPublicStaticMethod(string methodName, object[] parameters)
         {
             var method = DefaultService.GetType().GetMethod(methodName, BindingFlags.NonPublic | BindingFlags.Static);
@@ -321,26 +297,6 @@ namespace DLaB.ModelBuilderExtensions
             }
 
             return method.Invoke(null, parameters);
-        }
-
-        private object InvokePublicInstanceMethodOnNonPublicStaticField<TStaticFieldType>(string fieldName, string methodName, object[] parameters)
-        {
-            // System.NotSupportedException: Unable to lookup non-public instance method TraceMethodStart of type Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.TraceLogger!
-            var type = typeof(TStaticFieldType);
-            var field = type.GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Static);
-            if (field == null)
-            {
-                throw new NotSupportedException($"Unable to lookup static field {fieldName} of type {type.FullName}!");
-            }
-
-            var instance = field.GetValue(null);
-            var method = instance.GetType().GetMethod(methodName, BindingFlags.Public | BindingFlags.Instance);
-            if (method == null)
-            {
-                throw new NotSupportedException($"Unable to lookup non-public instance method {methodName} of type {instance.GetType().FullName}!");
-            }
-
-            return method.Invoke(instance, parameters);
         }
 
         public void WriteFileWithoutCustomizations(string outputFile, string language, CodeNamespace codenamespace, IServiceProvider serviceProvider, bool writeProxyAttrib = true)

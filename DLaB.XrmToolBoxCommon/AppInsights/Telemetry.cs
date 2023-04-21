@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !DLAB_NO_TELEMETRY
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Microsoft.ApplicationInsights.Extensibility;
@@ -78,3 +79,4 @@ namespace DLaB.XrmToolBoxCommon.AppInsightsHelper
         }
     }
 }
+#endif
