@@ -58,7 +58,7 @@ namespace DLaB.ModelBuilderExtensions
                     FilesWritten.Add(filePath, keyValuePair.Value);
                 }
 
-                if (string.IsNullOrEmpty(str))
+                if (str == "##@")
                 {
                     ProcessModelInvoker.ModelBuilderLogger.TraceWarning("ProxyTypesAssemblyAttribute not written, Please add this to a file in your class");
                     Console.Out.WriteLine("ProxyTypesAssemblyAttribute not written, Please add [assembly: Microsoft.Xrm.Sdk.Client.ProxyTypesAssemblyAttribute()] to a file in your class");
@@ -299,7 +299,7 @@ namespace DLaB.ModelBuilderExtensions
             return method.Invoke(null, parameters);
         }
 
-        public void WriteFileWithoutCustomizations(string outputFile, string language, CodeNamespace codenamespace, IServiceProvider serviceProvider, bool writeProxyAttrib = true)
+        public void WriteFileWithoutCustomizations(string outputFile, string language, CodeNamespace codenamespace, IServiceProvider serviceProvider, bool writeProxyAttrib = false)
         {
             serviceProvider.UpdateService<ICustomizeCodeDomService>(new CustomizeCodeDomServiceEmpty());
             EnsureFileIsAccessible(outputFile);
