@@ -55,7 +55,17 @@ namespace DLaB.ModelBuilderExtensions.Entity
                             continue;
                         }
                         createdNames.Add(relationship.ReferencingAttribute);
-                        var attLine = atts.First(a => a.ToLower().Contains(" " + relationship.ReferencingAttribute + " "));
+                        var attLine = atts.FirstOrDefault(a => a.ToLower().Contains(" " + relationship.ReferencingAttribute + " "));
+                        if (attLine == null && entity.Name.ToLower() == relationship.ReferencingAttribute)
+                        {
+                            attLine = atts.FirstOrDefault(a => a.ToLower().Contains(" " + relationship.ReferencingAttribute + "1 "));
+                        }
+
+                        if (attLine == null)
+                        {
+                            throw new Exception($"Error attempting to GenerateAttributeNameConsts!  Unable to find attribute {relationship.ReferencingAttribute} in {entity.Name}");
+                        }
+
                         atts.Add(attLine.Replace(" =", "Name =").Replace("\";", "name\";"));
                     }
 
