@@ -37,6 +37,14 @@ namespace DLaB.ModelBuilderExtensions
             }
         }
 
+        /// <summary>
+        /// Code comes from Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.Write
+        /// </summary>
+        /// <param name="organizationMetadata"></param>
+        /// <param name="language"></param>
+        /// <param name="outputFile"></param>
+        /// <param name="outputNamespace"></param>
+        /// <param name="serviceProvider"></param>
         internal void Write(
             IOrganizationMetadata organizationMetadata,
             string language,
