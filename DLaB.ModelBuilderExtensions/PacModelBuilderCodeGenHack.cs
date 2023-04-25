@@ -307,7 +307,7 @@ namespace DLaB.ModelBuilderExtensions
             return method.Invoke(null, parameters);
         }
 
-        public void WriteFileWithoutCustomizations(string outputFile, string language, CodeNamespace codenamespace, IServiceProvider serviceProvider, bool writeProxyAttrib = true)
+        public void WriteFileWithoutCustomizations(string outputFile, string language, CodeNamespace codenamespace, IServiceProvider serviceProvider, bool writeProxyAttrib = false)
         {
             serviceProvider.UpdateService<ICustomizeCodeDomService>(new CustomizeCodeDomServiceEmpty());
             EnsureFileIsAccessible(outputFile);

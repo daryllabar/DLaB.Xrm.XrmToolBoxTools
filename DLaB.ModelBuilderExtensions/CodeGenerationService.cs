@@ -290,7 +290,7 @@ namespace DLaB.ModelBuilderExtensions
 
             if (code != null)
             {
-                hack.WriteFileWithoutCustomizations(Path.Combine(OutDirectory, EntitiesFileName), language, code, ServiceProvider);
+                hack.WriteFileWithoutCustomizations(Path.Combine(OutDirectory, EntitiesFileName), language, code, ServiceProvider, true);
             }
 
             return optionSetsInEntities;

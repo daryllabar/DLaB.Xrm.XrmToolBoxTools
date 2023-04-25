@@ -12,6 +12,8 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses ModelBuilder from the PAC.</description>
 		<releaseNotes>
+ProxyTypesAssemblyAttribute is generated multiple times on each entity class #408
+Error when generating AttributeNameConsts when attribute name matches entity name #411
 Fix for Exception on generating model with Model Builder V2 nuget #407
 Fields Const file should generate related entity name fields #406
 Make Fields Class Partial #405
