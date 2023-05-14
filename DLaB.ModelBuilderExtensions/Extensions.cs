@@ -160,6 +160,21 @@ namespace DLaB.ModelBuilderExtensions
 
         #region CodeNamespace
 
+        public static CodeNamespace CloneShallow(this CodeNamespace code)
+        {
+            var clone = new CodeNamespace(code.Name);
+            clone.Comments.AddRange(code.Comments);
+            var imports = new CodeNamespaceImport[code.Imports.Count];
+            for (var i = 0; i < imports.Length; i++)
+            {
+                imports[i] = code.Imports[i];
+            }
+
+            clone.Imports.AddRange(imports);
+            clone.Types.AddRange(code.Types);
+            return clone;
+        }
+
         public static CodeNamespace OrderTypesByName(this CodeNamespace code)
         {
             var types = code.GetTypes().OrderBy(t => t.Name).ToArray();

@@ -23,6 +23,7 @@ namespace DLaB.ModelBuilderExtensions
         public string EntitiesFileName { get => DLaBSettings.EntitiesFileName; set => DLaBSettings.EntitiesFileName = value; }
         public string EntityTypesFolder { get => Settings.EntityTypesFolder; set => Settings.EntityTypesFolder = value; }
         public string FilePrefixText { get => DLaBSettings.FilePrefixText; set => DLaBSettings.FilePrefixText = value; }
+        public string ServiceContextName { get => Settings.ServiceContextName; set => Settings.ServiceContextName = value; }
         public bool GenerateActions { get => Settings.GenerateActions; set => Settings.GenerateActions = value; }
         public bool GroupMessageRequestWithResponse { get => DLaBSettings.GroupMessageRequestWithResponse; set => DLaBSettings.GroupMessageRequestWithResponse = value; }
         public bool GroupLocalOptionSetsByEntity { get => DLaBSettings.GroupLocalOptionSetsByEntity && CreateOneFilePerOptionSet; set => DLaBSettings.GroupLocalOptionSetsByEntity = value; }
@@ -271,10 +272,12 @@ namespace DLaB.ModelBuilderExtensions
                 File.Delete(file.Key);
                 if (CreateOneFilePerEntity)
                 {
+                    // Recreate entity file without Option Sets
                     hack.WriteFileWithoutCustomizations(file.Key, language, file.Value, ServiceProvider);
                 }
                 else
                 {
+                    // Add entity types to single type to be written later
                     if (code == null)
                     {
                         code = file.Value;
@@ -290,7 +293,9 @@ namespace DLaB.ModelBuilderExtensions
 
             if (code != null)
             {
-                hack.WriteFileWithoutCustomizations(Path.Combine(OutDirectory, EntitiesFileName), language, code, ServiceProvider, true);
+                // The service Context will have the proxy types attribute.  If it's not being generated, it should be added to the entity file.
+                var isServiceContextGenerated = !string.IsNullOrWhiteSpace(ServiceContextName);
+                hack.WriteFileWithoutCustomizations(Path.Combine(OutDirectory, EntitiesFileName), language, code, ServiceProvider, !isServiceContextGenerated);
             }
 
             return optionSetsInEntities;
@@ -302,7 +307,8 @@ namespace DLaB.ModelBuilderExtensions
             if (CreateOneFilePerOptionSet)
             {
                 DisplayMessage("Writing OptionSets from Entities.");
-                var code = hack.FilesWritten.First(IsOptionSetFile).Value;
+                var code = hack.FilesWritten.FirstOrDefault(IsOptionSetFile).Value
+                           ?? hack.FilesWritten.First().Value.CloneShallow(); // Generate Global Option Sets is false, so grab a file to use as the template
                 foreach (var optionSet in optionSetsInEntities)
                 {
                     code.Types.Clear();

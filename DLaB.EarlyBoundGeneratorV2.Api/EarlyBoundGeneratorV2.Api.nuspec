@@ -2,7 +2,7 @@
 <package >
 	<metadata>
 		<id>DLaB.Xrm.EarlyBoundGeneratorV2.Api</id>
-		<version>2.2023.4.9</version>
+		<version>2.2023.5.13</version>
 		<title>Early Bound Generator V2 Api</title>
 		<authors>Daryl LaBar</authors>
 		<owners>Daryl LaBar</owners>
@@ -11,7 +11,8 @@
 		<projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses ModelBuilder from the PAC.</description>
-		<releaseNotes>
+		<releaseNotes>V2.2023.5.13
+Duplicate Microsoft.Xrm.Sdk.Client.ProxyTypesAssemblyAttribute() Created #413
 ProxyTypesAssemblyAttribute is generated multiple times on each entity class #408
 Error when generating AttributeNameConsts when attribute name matches entity name #411
 Fix for Exception on generating model with Model Builder V2 nuget #407
