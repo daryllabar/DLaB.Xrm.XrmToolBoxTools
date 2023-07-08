@@ -306,7 +306,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
 
         [Category("1 - Global")]
         [DisplayName("Camel Case Dictionary Relative Path")]
-        [Description("The path relative to the XrmToolBox Plugins directory to a Dictionary file containing a single word on each line.  This is used when auto camel casing names when either the \"Gobal: Camel Case Class Names\" or \"Global: Camel Case Member Names\" is set to true.")]
+        [Description("The path relative to the XrmToolBox Plugins directory to a Dictionary file containing a single word on each line.  This is used when auto camel casing names when either the \"Global: Camel Case Class Names\" or \"Global: Camel Case Member Names\" is set to true.")]
         public string CamelCaseNamesDictionaryRelativePath
         {
             get => Config.ExtensionConfig.CamelCaseNamesDictionaryRelativePath;
