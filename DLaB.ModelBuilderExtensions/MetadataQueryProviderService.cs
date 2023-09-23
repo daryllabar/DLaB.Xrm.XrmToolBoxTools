@@ -7,6 +7,7 @@ using Microsoft.Xrm.Sdk.Query;
 using Source.DLaB.Common;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace DLaB.ModelBuilderExtensions
 {
@@ -68,9 +69,9 @@ namespace DLaB.ModelBuilderExtensions
 
             foreach (var wildCardName in EntityNamesFilter.Where(l => l.Contains("*") || l.Contains('%')))
             {
-                    condition.Values.Clear();
-                    condition.Values.Add(wildCardName.Replace('*', '%'));
-                    entityNames.AddRange(service.RetrieveMultiple(searchQe).Entities.Select(e => e.GetAttributeValue<string>("logicalname")));
+                condition.Values.Clear();
+                condition.Values.Add(wildCardName.Replace('*', '%'));
+                entityNames.AddRange(service.RetrieveMultiple(searchQe).Entities.Select(e => e.GetAttributeValue<string>("logicalname")));
             }
 
             return entityNames.OrderBy(e => e).Distinct().ToList();
@@ -80,9 +81,39 @@ namespace DLaB.ModelBuilderExtensions
             return DefaultService.RetrieveOptionSets(service);
         }
 
+        // MS is including UpsertMultiple by default.  Not sure why.  Removing it if it's not in the filter.
+        private static readonly List<string> _msForcedMessages = new List<string>
+        {
+            "CreateMultiple",
+            "DeleteMultiple",
+            "UpdateMultiple",
+            "UpsertMultiple",
+        };
+
         public SdkMessages RetrieveSdkRequests(IOrganizationService service)
         {
-            return DefaultService.RetrieveSdkRequests(service);
+            var messages = DefaultService.RetrieveSdkRequests(service);
+
+            foreach (var message in _msForcedMessages)
+            {
+                var forcedMessage = messages.MessageCollection.Values.FirstOrDefault(v => v.Name == message);
+                if (forcedMessage != null
+                    && (
+                        !Settings.MessageNamesFilter.Any(WildcardMatches)
+                        || DLaBSettings.MessageBlacklist.Any(WildcardMatches)
+                    ))
+                {
+                    messages.MessageCollection.Remove(forcedMessage.Id);
+                }
+            }
+
+
+            return messages;
+
+            bool WildcardMatches(string f)
+            {
+                return Regex.IsMatch("UpsertMultiple", f.Replace('%', '*'), RegexOptions.IgnoreCase);
+            }
         }
     }
 }

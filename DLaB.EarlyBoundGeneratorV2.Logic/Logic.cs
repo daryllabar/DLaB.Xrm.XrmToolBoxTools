@@ -9,6 +9,7 @@ using System.Speech.Synthesis;
 using System.Text.Json;
 using DLaB.EarlyBoundGeneratorV2.Settings;
 using DLaB.ModelBuilderExtensions;
+using Microsoft.Extensions.Logging;
 
 namespace DLaB.EarlyBoundGeneratorV2
 {
@@ -77,7 +78,10 @@ namespace DLaB.EarlyBoundGeneratorV2
                 {
                     File.Delete(logFilePath);
                 }
-                var runner = new ProcessModelInvoker(GetParameters(parameters));
+
+                Logger.Instance.LogLevel = LogLevel.Information;
+                var runner = new ModelBuilder(Logger.Instance);
+                runner.Parameters.LoadArguments(GetParameters(parameters));
                 var result = runner.Invoke(service);
                 if (result == 0)
                 {
@@ -107,7 +111,7 @@ namespace DLaB.EarlyBoundGeneratorV2
 
         private ModelBuilderInvokeParameters GetParameters()
         {
-            return new ModelBuilderInvokeParameters
+            return new ModelBuilderInvokeParameters(new ModeBuilderLoggerService("DateModelBuilderTests"))
             {
                 SettingsTemplateFile = EarlyBoundGeneratorConfig.SettingsTemplatePath,
                 SplitFilesByObject = true,
@@ -146,8 +150,7 @@ namespace DLaB.EarlyBoundGeneratorV2
             }
 
             Logger.AddDetail("Finished Generating ProcessModelInvoker Parameters.");
-            var values = lines.OrderBy(v => v)
-                .ToArray();
+            var values = lines.OrderBy(v => v).ToArray();
 
             Logger.AddDetail("Command line for Cloud generation:");
             Logger.AddDetail($"PAC modelbuilder build {string.Join(" ", commandLine.Where(v => !v.Contains("splitfiles")))}");

@@ -19,19 +19,39 @@ namespace Source.DLaB.Xrm
 #endif
     public class ReadOnlyCachedService: IOrganizationService
     {
+
         private readonly IOrganizationService _service;
 
         /// <summary>
         /// Default Prefix for all keys used in the Cache
         /// </summary>
         protected const string DefaultKeyPrefix = "{7041D6DF-13AE-4101-934C-BBB5D9409851}-";
-
+        /// <summary>
+        /// Separator for key and value of request Parameter
+        /// </summary>
+        protected const char DefaultRequestParamKeySeparator = '~';
+        /// <summary>
+        /// Separator for kvps of request parameters
+        /// </summary>
+        protected const string DefaultRequestParamKvpSeparator = "|";
+        
         /// <summary>
         /// Prefix for all keys used in the Cache.  Defaults to the DefaultKeyPrefix
         /// </summary>
         protected virtual string KeyPrefix => DefaultKeyPrefix;
+        /// <summary>
+        /// Separator for key and value of request Parameter
+        /// </summary>
+        protected virtual char ParamKeySeparator => DefaultRequestParamKeySeparator;
+        /// <summary>
+        /// Separator for kvps of request parameters
+        /// </summary>
+        protected virtual string ParamKvpSeparator => DefaultRequestParamKvpSeparator;
 
         private MemoryCache _cache;
+        /// <summary>
+        /// Cache that is used to store the results of requests
+        /// </summary>
         public MemoryCache Cache => _cache ?? (_cache = GetCache());
 
         /// <summary>
@@ -112,7 +132,7 @@ namespace Source.DLaB.Xrm
         }
 
         /// <summary>
-        /// Implements the Retrieve and RetrieveMultiple Requests 
+        /// Implements the Cache of Requests
         /// </summary>
         /// <param name="request">The Request</param>
         /// <returns></returns>
@@ -122,19 +142,27 @@ namespace Source.DLaB.Xrm
             switch (request)
             {
                 case RetrieveRequest retrieve:
-                    {
+                {
                         var response = new RetrieveResponse();
                         response[nameof(response.Entity)] = Retrieve(retrieve.Target.LogicalName, retrieve.Target.Id, retrieve.ColumnSet);
                         return response;
-                    }
+                }
                 case RetrieveMultipleRequest retrieveMultiple:
-                    {
+                {
                         var response = new RetrieveMultipleResponse();
                         response[nameof(response.EntityCollection)] = RetrieveMultiple(retrieveMultiple.Query);
                         return response;
-                    }
+                }
                 default:
-                    throw new NotImplementedException();
+                    if (!request.RequestName.StartsWith("Retrieve"))
+                    {
+                        throw new NotImplementedException("ReadOnlyCachedService by default only supports messages that \"Retrieve\" message requests.");
+                    }
+
+                    var key = GetKey(request);
+                    return Cache.GetOrAdd(KeyPrefix + key,
+                        k => _service.Execute(request),
+                        GetExpirationTime);
             }
         }
 
@@ -178,6 +206,33 @@ namespace Source.DLaB.Xrm
                 GetExpirationTime).Clone();
         }
 
+        /// <summary>
+        /// Retrieves the entities from the cache or the system if not in the cache
+        /// </summary>
+        /// <param name="request">The Request</param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        protected virtual RetrieveEntityResponse RetrieveEntity(RetrieveEntityRequest request)
+        {
+            var key = GetKey(request);
+            return (RetrieveEntityResponse) Cache.GetOrAdd(KeyPrefix + key,
+                k => _service.Execute(request),
+                GetExpirationTime);
+        }
+
+        protected virtual RetrieveAttributeResponse RetrieveAttribute(RetrieveAttributeRequest request)
+        {
+            var key = GetKey(request);
+            return (RetrieveAttributeResponse)Cache.GetOrAdd(KeyPrefix + key,
+                               k => _service.Execute(request),
+                                              GetExpirationTime);
+        }
+
+        /// <summary>
+        /// Gets a cache key for the specified query.
+        /// </summary>
+        /// <param name="query">The query to get a cache key for.</param>
+        /// <returns>A cache key for the specified query.</returns>
         protected virtual string GetKey(QueryBase query)
         {
             switch (query)
@@ -193,6 +248,24 @@ namespace Source.DLaB.Xrm
                     return $"{qba.EntityName}|Atts({string.Join("|", qba.Attributes)})|Values({string.Join("|", qba.Values.Select(v => v.ObjectToStringDebug()))})";
                 default:
                     throw new NotImplementedException($"Unknown QueryBase {query.GetType().FullName}!");
+            }
+        }
+
+        /// <summary>
+        /// Generates a key from the input <paramref name="request"/> by replacing separators in each parameter key value pair and joining them into a string.
+        /// </summary>
+        /// <param name="request">The organization request whose parameters will be used to generate a key.</param>
+        /// <returns>A string representing the generated key.</returns>
+        protected virtual string GetKey(OrganizationRequest request)
+        {
+            var parts = request.Parameters.Select(kvp => ReplaceSeparators(kvp.Key) + ParamKeySeparator + ReplaceSeparators(kvp.Value?.ToString()));
+            return string.Join(ParamKvpSeparator, parts);
+
+            string ReplaceSeparators(string value)
+            {
+                return string.IsNullOrWhiteSpace(value)
+                    ? string.Empty 
+                    : value.Replace(ParamKeySeparator, ' ').Replace(ParamKvpSeparator, " ");
             }
         }
     }

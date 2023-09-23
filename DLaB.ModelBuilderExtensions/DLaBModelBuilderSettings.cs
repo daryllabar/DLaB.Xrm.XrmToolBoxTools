@@ -314,7 +314,7 @@ namespace DLaB.ModelBuilderExtensions
     public class DLaBModelBuilderSettings
     {
         [JsonPropertyName("dLaB.ModelBuilder")]
-        public DLaBModelBuilder DLaBModelBuilder { get; set; }
+        public DLaBModelBuilder DLaBModelBuilder { get; set; } = new DLaBModelBuilder();
 
         #region ModelBuilder Properties
 
@@ -322,7 +322,7 @@ namespace DLaB.ModelBuilderExtensions
         public bool EmitFieldsClasses { get; set; }
 
         [JsonPropertyName("entityNamesFilter")]
-        public List<string> EntityNamesFilter { get; set; }
+        public List<string> EntityNamesFilter { get; set; } = new List<string>();
 
         [JsonPropertyName("entityTypesFolder")]
         public string EntityTypesFolder { get; set; }
@@ -334,7 +334,7 @@ namespace DLaB.ModelBuilderExtensions
         public bool GenerateGlobalOptionSets { get; set; }
 
         [JsonPropertyName("messageNamesFilter")]
-        public List<string> MessageNamesFilter { get; set; }
+        public List<string> MessageNamesFilter { get; set; } = new List<string>();
 
         [JsonPropertyName("messagesTypesFolder")]
         public string MessagesTypesFolder { get; set; }
@@ -364,13 +364,6 @@ namespace DLaB.ModelBuilderExtensions
         public bool SuppressINotifyPattern { get; set; }
 
         #endregion ModelBuilder Properties
-
-        public DLaBModelBuilderSettings()
-        {
-            DLaBModelBuilder = new DLaBModelBuilder();
-            EntityNamesFilter = new List<string>();
-            MessageNamesFilter = new List<string>();
-        }
     }
 
 
