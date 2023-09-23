@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace DLaB.Log
 {
-#if MS_Ext_Log
+#if MS_EXT_LOG
     using Microsoft.Extensions.Logging;
 
     public class Logger : ILogger
