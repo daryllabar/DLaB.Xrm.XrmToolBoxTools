@@ -2,16 +2,21 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGeneratorV2</id>
-	<version>2.2023.5.13</version>
-	<title>Early Bound Generator V2</title>
+	  <version>2.2023.9.21</version>
+	  <title>Early Bound Generator V2</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
     <license type="expression">MIT</license>
     <icon>images\DLaB_Dynamics_Logo_Square_32x32.png</icon>
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V2.2023.5.13
+    <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
+    <releaseNotes>V2.2023.9.21
+Add Ability to Trace Model Builder #444
+Capitalize BookableResourceTypes choice correctly #443
+Fix fir UpsertMultiple request is always get generated #442
+
+V2.2023.5.13
 Duplicate Microsoft.Xrm.Sdk.Client.ProxyTypesAssemblyAttribute() Created #413
 ProxyTypesAssemblyAttribute is generated multiple times on each entity class #408
 Error when generating AttributeNameConsts when attribute name matches entity name #411
@@ -84,13 +89,6 @@ Allow for not updating Settings File #357
 Member names cannot be the same as their enclosing type with generated Actions #349
 EarlyBoundGenerator.Api doesn't return any indication when an error occurs #332
 Order settings a bit better #321
-
-V1.2022.9.22
-Fix for Object Reference Not Set to Instance of Object after using clientid/secret connection? #333
-	    
-V1.2022.5.3
-Fix for Unable to run from Google Drive #317
-Fix for Deleting files Deletes from Temporary Folder, not output folder #318
     </releaseNotes>
     <copyright>Copyright 2019</copyright>
 	  <tags>PAC ModelBuilder Dataverse Xrm EarlyBound Generator XrmToolBox Plugins</tags>
@@ -103,6 +101,7 @@ Fix for Deleting files Deletes from Temporary Folder, not output folder #318
     <file src="bin\Release\DLaB.ModelBuilderExtensions.dll"                       target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\DLaB.ModelBuilderExtensions.dll" />
     <file src="bin\Release\Microsoft.AI.ServerTelemetryChannel.dll"               target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\Microsoft.AI.ServerTelemetryChannel.dll" />
     <file src="bin\Release\Microsoft.ApplicationInsights.dll"                     target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\Microsoft.ApplicationInsights.dll" />
+    <file src="bin\Release\Microsoft.Extensions.*"                                target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2" />
     <file src="bin\Release\Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" />
     <file src="bin\Release\DLaB.EarlyBoundGeneratorV2\*.*"                        target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2" />
     <file src="bin\Release\DLaB.EarlyBoundGeneratorV2\alphabets\*.*"              target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\alphabets" />

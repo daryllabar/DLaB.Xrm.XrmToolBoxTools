@@ -251,7 +251,9 @@
     <None Include="bin\coretools\SolutionPackager.exe.config" />
     <None Include="Metadata\2016.zip" />
     <None Include="packages.config" />
-    <EmbeddedResource Include="Resources\DefaultBuilderSettings.json" />
+    <EmbeddedResource Include="Resources\DefaultBuilderSettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\coretools\CrmSvcUtil.exe" />

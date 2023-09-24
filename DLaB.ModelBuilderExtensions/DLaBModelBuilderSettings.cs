@@ -159,6 +159,9 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("messagesFileName")]
         public string MessagesFileName { get; set; }
 
+        [JsonPropertyName("modelBuilderLogLevel")]
+        public string ModelBuilderLogLevel { get; set; }
+
         [JsonPropertyName("optionSetsFileName")]
         public string OptionSetsFileName { get; set; }
 

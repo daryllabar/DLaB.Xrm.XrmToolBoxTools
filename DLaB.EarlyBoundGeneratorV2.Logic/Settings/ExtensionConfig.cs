@@ -185,6 +185,16 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         /// </summary>
         public string LocalOptionSetFormat { get; set; }
         /// <summary>
+        /// Trace = 0 - Logs that contain the most detailed messages. These messages may contain sensitive application data.  These messages are disabled by default and should never be enabled in a production environment.
+        /// Debug = 1 - Logs that are used for interactive investigation during development.  These logs should primarily contain information useful for debugging and have no long-term value.
+        /// Information = 2 - Logs that track the general flow of the application. These logs should have long-term value.
+        /// Warning = 3 - Logs that highlight an abnormal or unexpected event in the application flow, but do not otherwise cause the application execution to stop.
+        /// Error = 4 - Logs that highlight when the current flow of execution is stopped due to a failure. These should indicate a failure in the current activity, not an application-wide failure.
+        /// Critical = 5 - Logs that describe an unrecoverable application or system crash, or a catastrophic failure that requires immediate attention.
+        /// None = 6 - Not used for writing log messages. Specifies that a logging category should not write any messages.
+        /// </summary>
+        public string ModelBuilderLogLevel { get; set; }
+        /// <summary>
         /// Overrides the default (English:1033) language code used for generating Option Set Value names (the value, not the option set)
         /// </summary>
         public int? OptionSetLanguageCodeOverride { get; set; }
@@ -324,6 +334,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 MakeAllFieldsEditable = false,
                 MakeReadonlyFieldsEditable = false,
                 MakeResponseActionsEditable = true,
+                ModelBuilderLogLevel = "2",
                 OptionSetLanguageCodeOverride = null,
                 OptionSetNames = null,
                 ProjectNameForEarlyBoundFiles = string.Empty,
@@ -390,6 +401,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             MakeReadonlyFieldsEditable = poco.MakeReadonlyFieldsEditable ?? MakeReadonlyFieldsEditable;
             MakeResponseActionsEditable = poco.MakeResponseActionsEditable ?? MakeResponseActionsEditable;
             LocalOptionSetFormat = poco.LocalOptionSetFormat ?? LocalOptionSetFormat;
+            ModelBuilderLogLevel = GetValueOrDefault(poco.ModelBuilderLogLevel, ModelBuilderLogLevel);
             OptionSetLanguageCodeOverride = poco.OptionSetLanguageCodeOverride ?? OptionSetLanguageCodeOverride;
             OptionSetNames = GetValueOrDefault(poco.OptionSetNames, OptionSetNames);
             ProjectNameForEarlyBoundFiles = poco.ProjectNameForEarlyBoundFiles ?? ProjectNameForEarlyBoundFiles;
@@ -450,12 +462,13 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddProperty(nameof(GroupMessageRequestWithResponse), GroupMessageRequestWithResponse);
             writer.AddProperty(nameof(settings.IncludeCommandLine), settings.IncludeCommandLine);
             writer.AddProperty(nameof(InvalidCSharpNamePrefix), InvalidCSharpNamePrefix);
+            writer.AddProperty(nameof(LocalOptionSetFormat), LocalOptionSetFormat);
             writer.AddProperty(nameof(MakeAllFieldsEditable), MakeAllFieldsEditable);
             writer.AddProperty(nameof(MakeReadonlyFieldsEditable), MakeReadonlyFieldsEditable);
             writer.AddProperty(AsMessage(nameof(MakeResponseActionsEditable)), MakeResponseActionsEditable);
             writer.AddPropertyArray("MessageBlacklist", ActionsToSkip?.Replace("-", ""));
             AddOptionalProperty("MessagesFileName", settings.MessageTypesFolder, !CreateOneFilePerAction);
-            writer.AddProperty(nameof(LocalOptionSetFormat), LocalOptionSetFormat);
+            writer.AddProperty(nameof(ModelBuilderLogLevel), ModelBuilderLogLevel);
             AddOptionalProperty("OptionSetsFileName", settings.OptionSetsTypesFolder, !CreateOneFilePerOptionSet);
             writer.AddProperty(nameof(OptionSetLanguageCodeOverride), OptionSetLanguageCodeOverride?.ToString());
             writer.AddPropertyDictionaryStringString(nameof(OptionSetNames), OptionSetNames);
@@ -576,6 +589,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings.POCO
         public bool? MakeAllFieldsEditable { get; set; }
         public bool? MakeReadonlyFieldsEditable { get; set; }
         public bool? MakeResponseActionsEditable { get; set; }
+        public string ModelBuilderLogLevel { get; set; }
         public string OptionSetNames { get; set; }
         public int? OptionSetLanguageCodeOverride { get; set; }
         public string PropertyEnumMappings { get; set; }

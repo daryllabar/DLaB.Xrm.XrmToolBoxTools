@@ -63,6 +63,7 @@ namespace DLaB.EarlyBoundGeneratorV2
         {
             var currentOut = Console.Out;
             var logger = new LoggerTextWriter();
+            var initialLogLevel = Logger.Instance.LogLevel;
             Console.SetOut(logger);
             try
             {
@@ -79,7 +80,10 @@ namespace DLaB.EarlyBoundGeneratorV2
                     File.Delete(logFilePath);
                 }
 
-                Logger.Instance.LogLevel = LogLevel.Information;
+                if (int.TryParse(EarlyBoundGeneratorConfig.ExtensionConfig.ModelBuilderLogLevel, out var logLevel))
+                {
+                    Logger.Instance.LogLevel = (LogLevel)logLevel;
+                }
                 var runner = new ModelBuilder(Logger.Instance);
                 runner.Parameters.LoadArguments(GetParameters(parameters));
                 var result = runner.Invoke(service);
@@ -106,6 +110,7 @@ namespace DLaB.EarlyBoundGeneratorV2
             {
                 logger.FlushLogger();
                 Console.SetOut(currentOut);
+                Logger.Instance.LogLevel = initialLogLevel;
             }
         }
 

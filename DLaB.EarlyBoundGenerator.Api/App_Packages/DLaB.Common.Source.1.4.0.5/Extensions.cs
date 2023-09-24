@@ -1333,9 +1333,10 @@ namespace Source.DLaB.Common
         /// <param name="value">The Value to serialize to JSON</param>
         /// <param name="settings">The settings.</param>
         /// <param name="encoding">The encoding.  Defaults to Encoding.UTF8</param>
+        /// <param name="formatJson">Formats the outputted JSON</param>
         /// <returns></returns>
         /// <exception cref="System.ArgumentNullException">text</exception>
-        public static string SerializeToJson<T>(this T value, DataContractJsonSerializerSettings settings = null, Encoding encoding = null)
+        public static string SerializeToJson<T>(this T value, DataContractJsonSerializerSettings settings = null, Encoding encoding = null, bool formatJson = false)
         {
             if (value == null)
             {
@@ -1347,8 +1348,18 @@ namespace Source.DLaB.Common
 
             using (var memoryStream = new MemoryStream())
             {
-                var serializer = new DataContractJsonSerializer(typeof(T), settings);
-                serializer.WriteObject(memoryStream, value);
+                if (formatJson)
+                {
+                    using (var writer = JsonReaderWriterFactory.CreateJsonWriter(memoryStream, encoding, true, true, "  "))
+                    {
+                        var serializer = new DataContractJsonSerializer(typeof(T), settings);
+                        serializer.WriteObject(writer, value);
+                        writer.Flush();
+                        return encoding.GetString(memoryStream.ToArray());
+                    }
+                }
+
+                new DataContractJsonSerializer(typeof(T), settings).WriteObject(memoryStream, value);
                 return encoding.GetString(memoryStream.ToArray());
             }
         }

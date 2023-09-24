@@ -20,6 +20,15 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         #region Debug
 
         [Category("7 - Debug")]
+        [DisplayName("Model Builder Log Level")]
+        [Description("Trace = 0 - Logs that contain the most detailed messages. These messages may contain sensitive application data.  These messages are disabled by default and should never be enabled in a production environment.\r\nDebug = 1 - Logs that are used for interactive investigation during development.  These logs should primarily contain information useful for debugging and have no long-term value.\r\nInformation = 2 - Logs that track the general flow of the application. These logs should have long-term value.\r\nWarning = 3 - Logs that highlight an abnormal or unexpected event in the application flow, but do not otherwise cause the application execution to stop.\r\nError = 4 - Logs that highlight when the current flow of execution is stopped due to a failure. These should indicate a failure in the current activity, not an application-wide failure.\r\nCritical = 5 - Logs that describe an unrecoverable application or system crash, or a catastrophic failure that requires immediate attention.\r\nNone = 6 - Not used for writing log messages. Specifies that a logging category should not write any messages.")]
+        public string ModelBuilderLogLevel
+        {
+            get => Config.ExtensionConfig.ModelBuilderLogLevel;
+            set => Config.ExtensionConfig.ModelBuilderLogLevel = byte.TryParse(value, out var result) && result <= 6 ? result.ToString() : "2";
+        }
+
+        [Category("7 - Debug")]
         [DisplayName("Read Serialized Metadata")]
         [Description("For Debugging Only!  Used to not communicate to the server for the metadata, but to use the local metadata file instead.  Should only be used for testing generation outputs.  Set Serialize Metadata to true first to connect to the server and retrieve the metadata, then set it back to false to not write it again since it's already local.")]
         public bool ReadSerializedMetadata

@@ -616,6 +616,8 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             SetOutputFolderProperty(BuilderSettingsJsonNames.OptionSetsTypesFolder, OptionSetsTypesFolder, defaultSettings.OptionSetsTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.ServiceContextName, ServiceContextName);
 
+            return;
+
             void SetOutputFolderProperty(string propertyName, string typeName, string @default, bool remove = false)
             {
                 if (remove)

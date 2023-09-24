@@ -19,7 +19,7 @@ namespace DLaB.Log
                 return;
             }
 
-            AddDetail($"[{eventId.Id, 2}: {logLevel, -12}] - {formatter(state, exception)}.{Environment.NewLine}");
+            AddDetail($"[{eventId.Id, 2}: {logLevel, -12}] - {formatter(state, exception)}");
         }
 
         public bool IsEnabled(LogLevel logLevel)
