@@ -20,6 +20,7 @@ namespace DLaB.EarlyBoundGeneratorV2
     {
         private readonly object _speakToken = new object();
         private EarlyBoundGeneratorConfig EarlyBoundGeneratorConfig { get; }
+        // ReSharper disable StringLiteralTypo
         private static readonly HashSet<string> ModelBuilderSwitches = new HashSet<string>(new[]
         {
             "emitfieldsclasses",
@@ -39,13 +40,15 @@ namespace DLaB.EarlyBoundGeneratorV2
         private static readonly HashSet<string> ModelBuilderParametersToSkip = new HashSet<string>(new[]
         {
             // Parameters that are in the template file
+            "emitEntityETC",
+            "emitVirtualAttributes",
             "entitytypesfolder",
+            "generatesdkmessages",
             "language",
             "messagestypesfolder",
-            "optionsetstypesfolder",
-            // Not Valid?
-            "includeMessages"
-        });
+            "optionsetstypesfolder"
+        }); 
+        // ReSharper restore StringLiteralTypo
 
         /// <summary>
         /// Initializes a new Logic class.

@@ -296,7 +296,6 @@
     <Compile Include="Entity\MemberAttributes.cs" />
     <Compile Include="ConfigHelper.cs" />
     <Compile Include="Entity\AnonymousTypeConstructorGenerator.cs" />
-    <Compile Include="Entity\RemoveEntityTypeCodeService.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FileToWrite.cs" />
     <Compile Include="Metadata.cs" />
@@ -307,7 +306,6 @@
     <Compile Include="OptionSet\CustomizeCodeDomService.cs" />
     <Compile Include="CustomizeCodeDomService.cs" />
     <Compile Include="Entity\OptionSetPropertyGenerator.cs" />
-    <Compile Include="OptionSet\FilterOptionSetEnums.cs" />
     <Compile Include="CodeWriterFilterService.cs" />
     <Compile Include="OptionSet\CodeWriterFilterService.cs" />
     <Compile Include="OptionSet\Transliteration\AlphabetPoco.cs" />

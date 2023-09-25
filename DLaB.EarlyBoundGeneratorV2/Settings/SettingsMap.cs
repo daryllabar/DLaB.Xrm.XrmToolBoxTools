@@ -87,6 +87,15 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         }
 
         [Category("2 - Entities")]
+        [DisplayName("Emit Virtual Attributes")]
+        [Description("When set, includes the Virtual Attributes of entities in the generated code.")]
+        public bool EmitVirtualAttributes
+        {
+            get => Config.EmitVirtualAttributes;
+            set => Config.EmitVirtualAttributes = value;
+        }
+
+        [Category("2 - Entities")]
         [DisplayName("Entity Relative Output Path")]
         [Description("This is realtive to the Path of the Settings File.  If \"Create One File Per Entity\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
         [Editor(typeof(PathEditor), typeof(UITypeEditor))]
@@ -174,8 +183,8 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         [Description("By default the ModelBuilder generates the Entity Type Code, this is considered dangerous to use and is not recommended since it is a system generated value, and not one defined in the solution metadata, changing from environment to environment.")]
         public bool GenerateEntityTypeCode
         {
-            get => Config.ExtensionConfig.GenerateEntityTypeCode;
-            set => Config.ExtensionConfig.GenerateEntityTypeCode = value;
+            get => Config.EmitEntityETC;
+            set => Config.EmitEntityETC = value;
         }
 
         [Category("2 - Entities")]
@@ -250,7 +259,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
 
         [Category("2 - Entities")]
         [DisplayName("Use Enum For State Codes")]
-        [Description("The CrmSvcUtil generates state codes as enums properties.  This allows for generating just this property as an enum.  Only valid when Replace Option Set Properties with Enum is false.")]
+        [Description("The PAC ModelBuilder generates state codes as enums properties.  This allows for generating just this property as an enum.  Only valid when Replace Option Set Properties with Enum is false.")]
         public bool UseEnumForStateCodes
         {
             get => Config.ExtensionConfig.UseEnumForStateCodes;

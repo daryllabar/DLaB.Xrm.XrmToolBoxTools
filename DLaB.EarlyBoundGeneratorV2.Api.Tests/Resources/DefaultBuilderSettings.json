@@ -21,7 +21,6 @@
     "generateAnonymousTypeConstructor": true,
     "generateConstructorsSansLogicalName": true,
     "generateEntityRelationships": true,
-    "generateEntityTypeCode": false,
     "generateOptionSetProperties": false,
     "generateOptionSetMetadataAttribute": true,
     "generateTypesAsInternal": false,
@@ -83,7 +82,9 @@
     "useTfsToCheckoutFiles": false,
     "waitForAttachedDebugger": false
   },
+  "emitEntityETC": false,
   "emitFieldsClasses": true,
+  "emitVirtualAttributes": true,
   "entityNamesFilter": [
     "activityparty",
     "activitypointer",

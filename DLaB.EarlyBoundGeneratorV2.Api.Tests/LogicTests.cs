@@ -37,9 +37,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Api.Tests
             var parameters = _sut.GetParameters(modelParameters);
             var expected = new []
             {
-                "/emitEntityETC:False",
-                "/emitVirtualAttributes:False",
-                "/generatesdkmessages:False",
                 "/out:TestOutputFilePath",
                 "/settingsTemplateFile:SettingsTemplateFilePath",
                 "/splitfiles"

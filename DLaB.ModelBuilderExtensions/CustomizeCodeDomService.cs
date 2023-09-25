@@ -17,7 +17,6 @@ namespace DLaB.ModelBuilderExtensions
         public bool AddPrimaryAttributeConsts { get => DLaBSettings.AddPrimaryAttributeConsts; set => DLaBSettings.AddPrimaryAttributeConsts = value; }
         public bool GenerateAnonymousTypeConstructor { get => DLaBSettings.GenerateAnonymousTypeConstructor; set => DLaBSettings.GenerateAnonymousTypeConstructor = value; }
         public bool GenerateConstructorsSansLogicalName { get => DLaBSettings.GenerateConstructorsSansLogicalName; set => DLaBSettings.GenerateConstructorsSansLogicalName = value; }
-        public bool GenerateEntityTypeCode { get => DLaBSettings.GenerateEntityTypeCode; set => DLaBSettings.GenerateEntityTypeCode = value; }
         public bool GenerateOptionSetProperties { get => DLaBSettings.GenerateOptionSetProperties; set => DLaBSettings.GenerateOptionSetProperties = value; }
         public bool GenerateTypesAsInternal { get => DLaBSettings.GenerateTypesAsInternal; set => DLaBSettings.GenerateTypesAsInternal = value; }
         public bool GenerateOptionSetMetadataAttribute { get => DLaBSettings.GenerateOptionSetMetadataAttribute; set => DLaBSettings.GenerateOptionSetMetadataAttribute = value; }
@@ -144,16 +143,11 @@ namespace DLaB.ModelBuilderExtensions
             }
 
             new RelationshipConstGenerator(DefaultService, Settings).CustomizeCodeDom(codeUnit, services);
-            new AttributeConstGenerator(DefaultService, ServiceCache, Settings).CustomizeCodeDom(codeUnit, services);
+            new AttributeConstGenerator(DefaultService, Settings).CustomizeCodeDom(codeUnit, services);
 
             if (GenerateAnonymousTypeConstructor)
             {
                 new AnonymousTypeConstructorGenerator(ServiceCache.EntityMetadataByLogicalName).CustomizeCodeDom(codeUnit, services);
-            }
-
-            if (!GenerateEntityTypeCode)
-            {
-                new RemoveEntityTypeCodeService().CustomizeCodeDom(codeUnit, services);
             }
 
             if (GenerateOptionSetProperties)

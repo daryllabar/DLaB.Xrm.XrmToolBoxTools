@@ -12,9 +12,11 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
     <releaseNotes>V2.2023.9.21
+Utilize EmitEntityETC Setting #446 		
+Use emitVirtualAttributes #445
 Add Ability to Trace Model Builder #444
 Capitalize BookableResourceTypes choice correctly #443
-Fix fir UpsertMultiple request is always get generated #442
+Fix for UpsertMultiple request always getting generated #442
 
 V2.2023.5.13
 Duplicate Microsoft.Xrm.Sdk.Client.ProxyTypesAssemblyAttribute() Created #413

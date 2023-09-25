@@ -156,7 +156,7 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
 
         /// <summary>
         /// Ideally, we wouldn't generate any attributes, but we must in order to leverage
-        /// the logic in CrmSvcUtil.  If the attribute for an OptionSet is not generated,
+        /// the logic in PAC ModelBuilder.  If the attribute for an OptionSet is not generated,
         /// then a null reference exception is thrown when attempting to create the
         /// OptionSet.  We will remove these in our ICustomizeCodeDomService implementation.
         /// </summary>
@@ -169,7 +169,7 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
 
         /// <summary>
         /// Ideally, we wouldn't generate any entities, but we must in order to leverage
-        /// the logic in CrmSvcUtil.  If an entity which contains a custom OptionSet
+        /// the logic in PAC ModelBuilder.  If an entity which contains a custom OptionSet
         /// attribute is not generated, then the custom OptionSet will not be generated,
         /// either.  We will remove these in our ICustomizeCodeDomService implementation.
         /// </summary>

@@ -125,10 +125,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         /// </summary>
         public bool GenerateEntityRelationships { get; set; }
         /// <summary>
-        /// By default the Model Builder generates the Entity Type Code, this is considered dangerous and not recommended since it is a system generated value, and not one defined in the solution metadata, changing from environment to environment.
-        /// </summary>
-        public bool GenerateEntityTypeCode { get; set; }
-        /// <summary>
         /// Specifies the generation of Enum properties for option sets
         /// </summary>                                          
         public bool GenerateEnumProperties { get; set; }
@@ -320,7 +316,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 GenerateAttributeNameConsts = true,
                 GenerateConstructorsSansLogicalName = true,
                 GenerateEntityRelationships = true,
-                GenerateEntityTypeCode = false,
                 GenerateEnumProperties = true,
                 GenerateGeneratedCodeAttribute = false,
                 GenerateGlobalOptionSets = false,
@@ -387,7 +382,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             GenerateAnonymousTypeConstructor = poco.GenerateAnonymousTypeConstructor ?? GenerateAnonymousTypeConstructor;
             GenerateConstructorsSansLogicalName = poco.GenerateConstructorsSansLogicalName ?? GenerateConstructorsSansLogicalName;
             GenerateEntityRelationships = poco.GenerateEntityRelationships ?? GenerateEntityRelationships;
-            GenerateEntityTypeCode = poco.GenerateEntityTypeCode ?? GenerateEntityTypeCode;
             GenerateEnumProperties = poco.GenerateEnumProperties ?? GenerateEnumProperties;
             GenerateGeneratedCodeAttribute = poco.GenerateGeneratedCodeAttribute ?? GenerateGeneratedCodeAttribute;
             GenerateGlobalOptionSets = poco.GenerateGlobalOptionSets ?? GenerateGlobalOptionSets;
@@ -454,7 +448,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddProperty(nameof(GenerateAnonymousTypeConstructor), GenerateAnonymousTypeConstructor);
             writer.AddProperty(nameof(GenerateConstructorsSansLogicalName), GenerateConstructorsSansLogicalName);
             writer.AddProperty(nameof(GenerateEntityRelationships), GenerateEntityRelationships);
-            writer.AddProperty(nameof(GenerateEntityTypeCode), GenerateEntityTypeCode);
             writer.AddProperty("GenerateOptionSetProperties", generateOptionSetProperties);
             writer.AddProperty(nameof(GenerateOptionSetMetadataAttribute), GenerateOptionSetMetadataAttribute);
             writer.AddProperty(nameof(GenerateTypesAsInternal), GenerateTypesAsInternal);
@@ -570,6 +563,10 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings.POCO
         public bool? GenerateAnonymousTypeConstructor { get; set; }
         public bool? GenerateConstructorsSansLogicalName { get; set; }
         public bool? GenerateEntityRelationships { get; set; }
+        /// <summary>
+        /// Now moved to the Dataverse Model Builder as EmitEntityETC
+        /// </summary>
+        [Obsolete("Now moved to the Dataverse Model Builder as EmitEntityETC")]
         public bool? GenerateEntityTypeCode { get; set; }
         public bool? GenerateEnumProperties { get; set; }
         public bool? GenerateGeneratedCodeAttribute { get; set; }
