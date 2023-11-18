@@ -216,7 +216,7 @@ namespace DLaB.ModelBuilderExtensions
         private string Transliterate(OptionMetadata optionMetadata, string englishName)
         {
             var localizedLabels = optionMetadata.Label.LocalizedLabels;
-            if (LanguageCodeOverride < 0 /*|| LanguageCodeOverride == English*/)
+            if (LanguageCodeOverride < 0 || LanguageCodeOverride == optionMetadata.Label.LocalizedLabels.FirstOrDefault()?.LanguageCode)
             {
                 if (IsLabelPopulated(englishName))
                 {
