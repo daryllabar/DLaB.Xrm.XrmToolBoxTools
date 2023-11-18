@@ -5,8 +5,37 @@ using System.Windows.Forms;
 
 namespace DLaB.Log
 {
+#if MS_EXT_LOG
+    using Microsoft.Extensions.Logging;
+
+    public class Logger : ILogger
+    {
+        public LogLevel LogLevel { get; set; } = LogLevel.Information;
+
+        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
+        {
+            if (!IsEnabled(logLevel))
+            {
+                return;
+            }
+
+            AddDetail($"[{eventId.Id, 2}: {logLevel, -12}] - {formatter(state, exception)}");
+        }
+
+        public bool IsEnabled(LogLevel logLevel)
+        {
+            return LogLevel <= logLevel && logLevel != LogLevel.None;
+        }
+
+        public IDisposable BeginScope<TState>(TState state) 
+        {
+            return default;
+        }
+
+#else
     public class Logger
     {
+#endif
         public static Logger Instance = new Logger();
 
         public delegate void LogHandler(LogMessageInfo info);

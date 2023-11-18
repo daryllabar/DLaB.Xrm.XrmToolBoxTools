@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Microsoft.Xrm.Sdk.Query;
 
 #if DLAB_UNROOT_NAMESPACE || DLAB_XRM
 using DLaB.Common;
@@ -67,6 +68,18 @@ namespace Source.DLaB.Xrm.Plugin
         /// Requires all columns are in the attributes collection with a non-null value
         /// </summary>
         /// <param name="entityType">The entity type</param>
+        /// <param name="columns">The column names</param>
+        /// <returns></returns>
+        public RequirementValidator Contains(ContextEntity entityType, ColumnSet columns)
+        {
+            Get(entityType).RequiredColumns.AddMissing(columns.Columns);
+            return this;
+        }
+
+        /// <summary>
+        /// Requires all columns are in the attributes collection with a non-null value
+        /// </summary>
+        /// <param name="entityType">The entity type</param>
         /// <param name="anonymousTypeInitializer">The type initializer</param>
         /// <returns></returns>
         public RequirementValidator Contains<T>(ContextEntity entityType, Expression<Func<T, object>> anonymousTypeInitializer) where T : Entity
@@ -83,6 +96,18 @@ namespace Source.DLaB.Xrm.Plugin
         public RequirementValidator ContainsAny(ContextEntity entityType, params string[] columnNames)
         {
             Get(entityType).RequiredOrColumns.Add(new List<string>(columnNames));
+            return this;
+        }
+
+        /// <summary>
+        /// Requires at least one column is in the attributes collection with a non-null value
+        /// </summary>
+        /// <param name="entityType">The entity type</param>
+        /// <param name="columns">The column names</param>
+        /// <returns></returns>
+        public RequirementValidator ContainsAny(ContextEntity entityType, ColumnSet columns)
+        {
+            Get(entityType).RequiredOrColumns.Add(columns.Columns.ToList());
             return this;
         }
 
@@ -117,6 +142,18 @@ namespace Source.DLaB.Xrm.Plugin
         /// Requires all columns are in the attributes collection (Allows nulls)
         /// </summary>
         /// <param name="entityType">The entity type</param>
+        /// <param name="columns">The column names</param>
+        /// <returns></returns>
+        public RequirementValidator ContainsNullable(ContextEntity entityType, ColumnSet columns)
+        {
+            Get(entityType).RequiredColumnsAllowNulls.AddMissing(columns.Columns);
+            return this;
+        }
+
+        /// <summary>
+        /// Requires all columns are in the attributes collection (Allows nulls)
+        /// </summary>
+        /// <param name="entityType">The entity type</param>
         /// <param name="anonymousTypeInitializer">The type initializer</param>
         /// <returns></returns>
         public RequirementValidator ContainsNullable<T>(ContextEntity entityType, Expression<Func<T, object>> anonymousTypeInitializer) where T: Entity
@@ -133,6 +170,18 @@ namespace Source.DLaB.Xrm.Plugin
         public RequirementValidator ContainsAnyNullable(ContextEntity entityType, params string[] columnNames)
         {
             Get(entityType).RequiredOrColumnsAllowNulls.Add(new List<string>(columnNames));
+            return this;
+        }
+
+        /// <summary>
+        /// Requires at least one column is in the attributes collection (Allows nulls)
+        /// </summary>
+        /// <param name="entityType">The entity type</param>
+        /// <param name="columns">The column names</param>
+        /// <returns></returns>
+        public RequirementValidator ContainsAnyNullable(ContextEntity entityType, ColumnSet columns)
+        {
+            Get(entityType).RequiredOrColumnsAllowNulls.Add(columns.Columns.ToList());
             return this;
         }
 
@@ -167,6 +216,18 @@ namespace Source.DLaB.Xrm.Plugin
         /// Requires all columns are in the attributes collection with a null value
         /// </summary>
         /// <param name="entityType">The entity type</param>
+        /// <param name="columns">The column names</param>
+        /// <returns></returns>
+        public RequirementValidator ContainsNull(ContextEntity entityType, ColumnSet columns)
+        {
+            Get(entityType).RequiredNullColumns.AddMissing(columns.Columns);
+            return this;
+        }
+
+        /// <summary>
+        /// Requires all columns are in the attributes collection with a null value
+        /// </summary>
+        /// <param name="entityType">The entity type</param>
         /// <param name="anonymousTypeInitializer">The type initializer</param>
         /// <returns></returns>
         public RequirementValidator ContainsNull<T>(ContextEntity entityType, Expression<Func<T, object>> anonymousTypeInitializer) where T : Entity
@@ -183,6 +244,18 @@ namespace Source.DLaB.Xrm.Plugin
         public RequirementValidator ContainsAnyNull(ContextEntity entityType, params string[] columnNames)
         {
             Get(entityType).RequiredNullOrColumns.Add(new List<string>(columnNames));
+            return this;
+        }
+
+        /// <summary>
+        /// Requires at least one column is in the attributes collection with a null value
+        /// </summary>
+        /// <param name="entityType">The entity type</param>
+        /// <param name="columns">The column names</param>
+        /// <returns></returns>
+        public RequirementValidator ContainsAnyNull(ContextEntity entityType, ColumnSet columns)
+        {
+            Get(entityType).RequiredNullOrColumns.Add(columns.Columns.ToList());
             return this;
         }
 
@@ -245,6 +318,17 @@ namespace Source.DLaB.Xrm.Plugin
         }
 
         /// <summary>
+        /// Requires all columns have been updated to a non-null value that is different than the pre-image value
+        /// </summary>
+        /// <param name="columns">The column names</param>
+        /// <returns></returns>
+        public RequirementValidator Updated(ColumnSet columns)
+        {
+            Get(ContextEntity.Target).UpdatedColumns.AddMissing(columns.Columns);
+            return this;
+        }
+
+        /// <summary>
         /// Requires all columns to have been updated to a non-null value that is different than the pre-image value
         /// </summary>
         /// <param name="anonymousTypeInitializer">The type initializer</param>
@@ -262,6 +346,17 @@ namespace Source.DLaB.Xrm.Plugin
         public RequirementValidator UpdatedAny(params string[] columnNames)
         {
             Get(ContextEntity.Target).UpdatedOrColumns.Add(new List<string>(columnNames));
+            return this;
+        }
+
+        /// <summary>
+        /// Requires at least one column has been updated to a non-null value that is different than the pre-image value
+        /// </summary>
+        /// <param name="columns">The column names</param>
+        /// <returns></returns>
+        public RequirementValidator UpdatedAny(ColumnSet columns)
+        {
+            Get(ContextEntity.Target).UpdatedOrColumns.Add(columns.Columns.ToList());
             return this;
         }
 
@@ -293,6 +388,17 @@ namespace Source.DLaB.Xrm.Plugin
         /// <summary>
         /// Requires all columns to have been updated to a value that is different than the pre-image (allows updating to null)
         /// </summary>
+        /// <param name="columns">The column names</param>
+        /// <returns></returns>
+        public RequirementValidator Changed(ColumnSet columns)
+        {
+            Get(ContextEntity.Target).UpdatedColumnsAllowNulls.AddMissing(columns.Columns);
+            return this;
+        }
+
+        /// <summary>
+        /// Requires all columns to have been updated to a value that is different than the pre-image (allows updating to null)
+        /// </summary>
         /// <param name="anonymousTypeInitializer">The type initializer</param>
         /// <returns></returns>
         public RequirementValidator Changed<T>(Expression<Func<T, object>> anonymousTypeInitializer) where T : Entity
@@ -308,6 +414,17 @@ namespace Source.DLaB.Xrm.Plugin
         public RequirementValidator ChangedAny(params string[] columnNames)
         {
             Get(ContextEntity.Target).UpdatedOrColumnsAllowNulls.Add(new List<string>(columnNames));
+            return this;
+        }
+
+        /// <summary>
+        /// Requires at least one column has been updated to a value that is different than the pre-image value (allows updating to null)
+        /// </summary>
+        /// <param name="columns">The column names</param>
+        /// <returns></returns>
+        public RequirementValidator ChangedAny(ColumnSet columns)
+        {
+            Get(ContextEntity.Target).UpdatedOrColumnsAllowNulls.Add(columns.Columns.ToList());
             return this;
         }
 
@@ -339,6 +456,17 @@ namespace Source.DLaB.Xrm.Plugin
         /// <summary>
         /// Requires all columns to have been updated from a non-null value to a null value
         /// </summary>
+        /// <param name="columns">The column names</param>
+        /// <returns></returns>
+        public RequirementValidator Cleared(ColumnSet columns)
+        {
+            Get(ContextEntity.Target).UpdatedNullColumns.AddMissing(columns.Columns);
+            return this;
+        }
+
+        /// <summary>
+        /// Requires all columns to have been updated from a non-null value to a null value
+        /// </summary>
         /// <param name="anonymousTypeInitializer">The type initializer</param>
         /// <returns></returns>
         public RequirementValidator Cleared<T>(Expression<Func<T, object>> anonymousTypeInitializer) where T : Entity
@@ -354,6 +482,17 @@ namespace Source.DLaB.Xrm.Plugin
         public RequirementValidator ClearedAny(params string[] columnNames)
         {
             Get(ContextEntity.Target).UpdatedNullOrColumns.Add(new List<string>(columnNames));
+            return this;
+        }
+
+        /// <summary>
+        /// Requires at least one column has been updated from a non-null value to a null value)
+        /// </summary>
+        /// <param name="columns">The column names</param>
+        /// <returns></returns>
+        public RequirementValidator ClearedAny(ColumnSet columns)
+        {
+            Get(ContextEntity.Target).UpdatedNullOrColumns.Add(columns.Columns.ToList());
             return this;
         }
 

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using Source.DLaB.Xrm;
+using System.IdentityModel.Protocols.WSTrust;
 
 namespace DLaB.ModelBuilderExtensions
 {
@@ -23,7 +24,7 @@ namespace DLaB.ModelBuilderExtensions
 
         public HashSet<string> ClassesToMakeStatic { get; set; }
 
-        public PacModelBuilderCodeGenHack(DLaBModelBuilderSettings settings, ICodeGenerationService defaultService,  bool splitFilesByObject, bool legacyMode, string filePrefixText)
+        public PacModelBuilderCodeGenHack(DLaBModelBuilderSettings settings, ICodeGenerationService defaultService,  bool splitFilesByObject, bool legacyMode)
         {
             ClassesToMakeStatic = new HashSet<string>();
             DefaultService = defaultService;
@@ -53,23 +54,24 @@ namespace DLaB.ModelBuilderExtensions
             IServiceProvider serviceProvider)
         {
             FilesWritten.Clear();
-            ProcessModelInvoker.ModelBuilderLogger.TraceMethodStart("Entering {0}", nameof(Write));
+            // _parameters.Logger.TraceMethodStart();
             if (SplitFilesByObject)
             {
-                Dictionary<string, CodeNamespace> dictionary = CodeGenerationService_BuildCodeDom2(organizationMetadata, outputNamespace, serviceProvider, language, LegacyMode);
-                string str = string.IsNullOrWhiteSpace(Settings.ServiceContextName) ? "##@" : Settings.ServiceContextName;
-                foreach (KeyValuePair<string, CodeNamespace> keyValuePair in dictionary)
+                Dictionary<string, CodeNamespace> codenamespaces = CodeGenerationService_BuildCodeDom2(organizationMetadata, outputNamespace, serviceProvider, language, LegacyMode);
+                string ctxName = string.IsNullOrWhiteSpace(Settings.ServiceContextName) ? "@##" : Settings.ServiceContextName;
+                foreach (var codeNSGroup in codenamespaces)
                 {
-                    var filePath = GetFilePath(keyValuePair.Key, keyValuePair.Value);
-                    CodeGenerationService_WriteFile(filePath, language, keyValuePair.Value, serviceProvider, keyValuePair.Key.Contains(str), true);
-                    MakeConfiguredClassesStatic(filePath, keyValuePair.Value);
-                    FilesWritten.Add(filePath, keyValuePair.Value);
+                    var filePath = GetFilePath(codeNSGroup.Key, codeNSGroup.Value);
+                    // will write the proxy attribute only in the servicecontext file. if no servicecontext file, will not write the proxy attribute.
+                    CodeGenerationService_WriteFile(filePath, language, codeNSGroup.Value, serviceProvider, codeNSGroup.Key.Contains(ctxName), true);
+                    MakeConfiguredClassesStatic(filePath, codeNSGroup.Value);
+                    FilesWritten.Add(filePath, codeNSGroup.Value);
                 }
 
-                if (string.IsNullOrEmpty(str))
+                if (ctxName.Equals("@##"))
                 {
-                    ProcessModelInvoker.ModelBuilderLogger.TraceWarning("ProxyTypesAssemblyAttribute not written, Please add this to a file in your class");
-                    Console.Out.WriteLine("ProxyTypesAssemblyAttribute not written, Please add [assembly: Microsoft.Xrm.Sdk.Client.ProxyTypesAssemblyAttribute()] to a file in your class");
+                    // _parameters.Logger.WriteConsoleWarning("ProxyTypesAssemblyAttribute not written, Please add [assembly: Microsoft.Xrm.Sdk.Client.ProxyTypesAssemblyAttribute()] to a file in your class if you require Linq or direct casting support.", true, Status.ProcessStage.FileGeneration);
+                    Console.Out.WriteLine("ProxyTypesAssemblyAttribute not written, Please add [assembly: Microsoft.Xrm.Sdk.Client.ProxyTypesAssemblyAttribute()] to a file in your class if you require Linq or direct casting support.");
                 }
             }
             else
@@ -79,7 +81,6 @@ namespace DLaB.ModelBuilderExtensions
                 MakeConfiguredClassesStatic(outputFile);
                 FilesWritten.Add(outputFile, codenamespace);
             }
-            ProcessModelInvoker.ModelBuilderLogger.TraceMethodStop("Exiting {0}", nameof(Write));
         }
 
         public void MakeConfiguredClassesStatic(string filePath, CodeNamespace code)
@@ -203,53 +204,86 @@ namespace DLaB.ModelBuilderExtensions
               bool writeProxyAttrib = true,
               bool isFileSplit = false)
         {
-            ProcessModelInvoker.ModelBuilderLogger.TraceMethodStart("Entering {0}", (object)MethodBase.GetCurrentMethod().Name);
-            FileInfo fileInfo = new FileInfo(outputFile);
-            if (!fileInfo.Directory.Exists)
-                fileInfo.Directory.Create();
-            CodeCompileUnit codeCompileUnit = new CodeCompileUnit();
-            codeCompileUnit.Namespaces.Add(codenamespace);
+            //_parameters.Logger.TraceMethodStart();
+
+            // force create path to file if required.
+            FileInfo fi = new FileInfo(outputFile);
+            if (!fi.Directory.Exists)
+            {
+                fi.Directory.Create();
+            }
+
+            // Use the CodeCompileUnit instead of the namespace directly so you get the
+            // <autogenerated /> comments in the generated code.
+            CodeCompileUnit compileUnit = new CodeCompileUnit();
+            compileUnit.Namespaces.Add(codenamespace);
             if (writeProxyAttrib)
-                codeCompileUnit.AssemblyCustomAttributes.Add(new CodeAttributeDeclaration(new CodeTypeReference(typeof(ProxyTypesAssemblyAttribute))));
-            serviceProvider.GetService<ICustomizeCodeDomService>().CustomizeCodeDom(codeCompileUnit, (IServiceProvider)serviceProvider);
+            {
+                compileUnit.AssemblyCustomAttributes.Add(Attribute(typeof(Microsoft.Xrm.Sdk.Client.ProxyTypesAssemblyAttribute)));
+            }
+
+            //serviceProvider.CodeCustomizationService.CustomizeCodeDom(compileUnit, serviceProvider);
+            serviceProvider.GetService<ICustomizeCodeDomService>().CustomizeCodeDom(compileUnit, serviceProvider);
+
             CodeGeneratorOptions options = new CodeGeneratorOptions();
             options.BlankLinesBetweenMembers = true;
             options.BracingStyle = "C";
             options.IndentString = "\t";
             options.VerbatimOrder = true;
-            bool flag1 = language.Equals("CS", StringComparison.OrdinalIgnoreCase);
-            bool flag2 = language.Equals("VB", StringComparison.OrdinalIgnoreCase);
+
+            bool isCS = language.Equals("CS", StringComparison.OrdinalIgnoreCase);
+            bool isVB = language.Equals("VB", StringComparison.OrdinalIgnoreCase);
+
             var commandLine = GetCommandLineToGenerate(codenamespace);
-            using (var writer = Settings.DLaBModelBuilder.RemoveRuntimeVersionComment ? (TextWriter) new CustomTextWriter(new StreamWriter(outputFile), true): new StreamWriter(outputFile))
+            //using (StreamWriter fileWriter = new StreamWriter(outputFile))
+            using (var fileWriter = Settings.DLaBModelBuilder.RemoveRuntimeVersionComment ? (TextWriter)new CustomTextWriter(new StreamWriter(outputFile), true) : new StreamWriter(outputFile))
             {
                 using (CodeDomProvider provider = CodeDomProvider.CreateProvider(language))
                 {
-                    if (flag1)
+                    if (isCS) // Handle CS here.
                     {
                         if (!string.IsNullOrWhiteSpace(Settings.DLaBModelBuilder.FilePrefixText))
                         {
-                            provider.GenerateCodeFromCompileUnit(new CodeSnippetCompileUnit(string.Format(Settings.DLaBModelBuilder.FilePrefixText, Path.GetFileName(outputFile)) + Environment.NewLine), writer, options);
+                            provider.GenerateCodeFromCompileUnit(new CodeSnippetCompileUnit(string.Format(Settings.DLaBModelBuilder.FilePrefixText, Path.GetFileName(outputFile)) + Environment.NewLine), fileWriter, options);
                         }
-                        provider.GenerateCodeFromCompileUnit((CodeCompileUnit)new CodeSnippetCompileUnit("#pragma warning disable CS1591"), (TextWriter)writer, options);
+                        provider.GenerateCodeFromCompileUnit(new CodeSnippetCompileUnit("#pragma warning disable CS1591"), fileWriter, options);
                         if (Settings.SuppressGeneratedCodeAttribute)
                         {
-                            provider.GenerateCodeFromCompileUnit((CodeCompileUnit)new CodeSnippetCompileUnit("// Code Generated by " + ApplicationName /*+ " (" + ApplicationVersion + ")"*/), (TextWriter)writer, options);
+                            provider.GenerateCodeFromCompileUnit(new CodeSnippetCompileUnit("// Code Generated by " + ApplicationName /*+ " (" + ApplicationVersion + ")"*/), fileWriter, options);
                         }
-                        if(!string.IsNullOrWhiteSpace(commandLine))
+                        if (!string.IsNullOrWhiteSpace(commandLine))
                         {
-                            provider.GenerateCodeFromCompileUnit(new CodeSnippetCompileUnit(commandLine), (TextWriter)writer, options);
+                            provider.GenerateCodeFromCompileUnit(new CodeSnippetCompileUnit(commandLine), (TextWriter)fileWriter, options);
                         }
                     }
-                    if (flag2 && Settings.SuppressGeneratedCodeAttribute)
-                        provider.GenerateCodeFromCompileUnit((CodeCompileUnit)new CodeSnippetCompileUnit("' Code Generated by " + ApplicationName + " (" + ApplicationVersion + ")"), (TextWriter)writer, options);
-                    provider.GenerateCodeFromCompileUnit(codeCompileUnit, (TextWriter)writer, options);
-                    if (flag1)
-                        provider.GenerateCodeFromCompileUnit((CodeCompileUnit)new CodeSnippetCompileUnit("#pragma warning restore CS1591"), (TextWriter)writer, options);
+
+                    provider.GenerateCodeFromCompileUnit(compileUnit, fileWriter, options);
+
+                    if (isCS)
+                    {
+                        provider.GenerateCodeFromCompileUnit(new CodeSnippetCompileUnit("#pragma warning restore CS1591"), fileWriter, options);
+                    }
                 }
             }
-            ProcessModelInvoker.ModelBuilderLogger.TraceInformation("Exit {0}: Code file written to {1}", (object)MethodBase.GetCurrentMethod().Name, (object)outputFile);
-            Console.Out.WriteLine(string.Format((IFormatProvider)CultureInfo.InvariantCulture, "\tCode written to {0}.", (object)Path.GetFullPath(outputFile)));
+
+            //_parameters.Logger.TraceMethodStop();
+            //_parameters.Logger.WriteConsole(String.Format(CultureInfo.InvariantCulture, "Code written to {0}.", System.IO.Path.GetFullPath(outputFile)), true, Status.ProcessStage.FileGeneration);
+            Console.Out.WriteLine(string.Format((IFormatProvider)CultureInfo.InvariantCulture, "\tCode written to {0}.", Path.GetFullPath(outputFile)));
         }
+
+        #region Helper Methods From CodeGenerationService
+
+        private static CodeAttributeDeclaration Attribute(Type type)
+        {
+            return new CodeAttributeDeclaration(TypeRef(type));
+        }
+
+        private static CodeTypeReference TypeRef(Type type)
+        {
+            return new CodeTypeReference(type);
+        }
+
+        #endregion Helper Methods From CodeGenerationService
 
         private string GetCommandLineToGenerate(CodeNamespace codenamespace)
         {

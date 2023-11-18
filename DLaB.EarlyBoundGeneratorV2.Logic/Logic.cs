@@ -9,6 +9,7 @@ using System.Speech.Synthesis;
 using System.Text.Json;
 using DLaB.EarlyBoundGeneratorV2.Settings;
 using DLaB.ModelBuilderExtensions;
+using Microsoft.Extensions.Logging;
 
 namespace DLaB.EarlyBoundGeneratorV2
 {
@@ -19,6 +20,7 @@ namespace DLaB.EarlyBoundGeneratorV2
     {
         private readonly object _speakToken = new object();
         private EarlyBoundGeneratorConfig EarlyBoundGeneratorConfig { get; }
+        // ReSharper disable StringLiteralTypo
         private static readonly HashSet<string> ModelBuilderSwitches = new HashSet<string>(new[]
         {
             "emitfieldsclasses",
@@ -38,13 +40,15 @@ namespace DLaB.EarlyBoundGeneratorV2
         private static readonly HashSet<string> ModelBuilderParametersToSkip = new HashSet<string>(new[]
         {
             // Parameters that are in the template file
+            "emitEntityETC",
+            "emitVirtualAttributes",
             "entitytypesfolder",
+            "generatesdkmessages",
             "language",
             "messagestypesfolder",
-            "optionsetstypesfolder",
-            // Not Valid?
-            "includeMessages"
-        });
+            "optionsetstypesfolder"
+        }); 
+        // ReSharper restore StringLiteralTypo
 
         /// <summary>
         /// Initializes a new Logic class.
@@ -62,6 +66,7 @@ namespace DLaB.EarlyBoundGeneratorV2
         {
             var currentOut = Console.Out;
             var logger = new LoggerTextWriter();
+            var initialLogLevel = Logger.Instance.LogLevel;
             Console.SetOut(logger);
             try
             {
@@ -77,7 +82,13 @@ namespace DLaB.EarlyBoundGeneratorV2
                 {
                     File.Delete(logFilePath);
                 }
-                var runner = new ProcessModelInvoker(GetParameters(parameters));
+
+                if (int.TryParse(EarlyBoundGeneratorConfig.ExtensionConfig.ModelBuilderLogLevel, out var logLevel))
+                {
+                    Logger.Instance.LogLevel = (LogLevel)logLevel;
+                }
+                var runner = new ModelBuilder(Logger.Instance);
+                runner.Parameters.LoadArguments(GetParameters(parameters));
                 var result = runner.Invoke(service);
                 if (result == 0)
                 {
@@ -102,12 +113,13 @@ namespace DLaB.EarlyBoundGeneratorV2
             {
                 logger.FlushLogger();
                 Console.SetOut(currentOut);
+                Logger.Instance.LogLevel = initialLogLevel;
             }
         }
 
         private ModelBuilderInvokeParameters GetParameters()
         {
-            return new ModelBuilderInvokeParameters
+            return new ModelBuilderInvokeParameters(new ModeBuilderLoggerService("DateModelBuilderTests"))
             {
                 SettingsTemplateFile = EarlyBoundGeneratorConfig.SettingsTemplatePath,
                 SplitFilesByObject = true,
@@ -146,8 +158,7 @@ namespace DLaB.EarlyBoundGeneratorV2
             }
 
             Logger.AddDetail("Finished Generating ProcessModelInvoker Parameters.");
-            var values = lines.OrderBy(v => v)
-                .ToArray();
+            var values = lines.OrderBy(v => v).ToArray();
 
             Logger.AddDetail("Command line for Cloud generation:");
             Logger.AddDetail($"PAC modelbuilder build {string.Join(" ", commandLine.Where(v => !v.Contains("splitfiles")))}");

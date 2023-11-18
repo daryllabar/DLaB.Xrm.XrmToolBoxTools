@@ -92,6 +92,9 @@ namespace Source.DLaB.Common
         /// <summary>Gets or sets a secure string that contains the user password to use when starting the process.</summary>
         /// <returns>The user password to use when starting the process.</returns>
         /// <filterpriority>1</filterpriority>
+#if NET
+        [System.Runtime.Versioning.SupportedOSPlatform("windows")]
+#endif
         public SecureString Password { get; set; }
 
         /// <summary>Gets or sets the user password in clear text to use when starting the process.</summary>
@@ -101,11 +104,17 @@ namespace Source.DLaB.Common
         /// <summary>Gets or sets a value that identifies the domain to use when starting the process. </summary>
         /// <returns>The Active Directory domain to use when starting the process. The domain property is primarily of interest to users within enterprise environments that use Active Directory.</returns>
         /// <filterpriority>1</filterpriority>
+#if NET
+        [System.Runtime.Versioning.SupportedOSPlatform("windows")]
+#endif
         public string Domain { get; set; }
 
         /// <summary>Gets or sets a value that indicates whether the Windows user profile is to be loaded from the registry. </summary>
         /// <returns>true if the Windows user profile should be loaded; otherwise, false. The default is false.</returns>
         /// <filterpriority>1</filterpriority>
+#if NET
+        [System.Runtime.Versioning.SupportedOSPlatform("windows")]
+#endif
         public bool? LoadUserProfile { get; set; }
 
         /// <summary>Gets or sets the application or document to start.</summary>
@@ -215,7 +224,11 @@ namespace Source.DLaB.Common
                 info.UserName = UserName;
             }
 
+#if NET
+            if (OperatingSystem.IsWindows() && Password != null)
+#else
             if (Password != null)
+#endif
             {
                 info.Password = Password;
             }
@@ -225,12 +238,20 @@ namespace Source.DLaB.Common
                 ((dynamic)info).PasswordInClearText = PasswordInClearText;
             }
 
+#if NET
+            if (OperatingSystem.IsWindows() && Domain != null)
+#else
             if (Domain != null)
+#endif
             {
                 info.Domain = Domain;
             }
 
+#if NET
+            if (OperatingSystem.IsWindows() && LoadUserProfile.HasValue)
+#else
             if (LoadUserProfile.HasValue)
+#endif
             {
                 info.LoadUserProfile = LoadUserProfile.Value;
             }

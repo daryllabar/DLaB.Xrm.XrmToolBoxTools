@@ -26,9 +26,9 @@ namespace DLaB.ModelBuilderExtensions.Entity
                         if (get is CodeConditionStatement ifStatement)
                         {
                             // Now change
-                            // return System.Linq.Enumerable.Cast<Hc.Merlin.Entities.ActivityParty>(collection.Entities);
+                            // return System.Linq.Enumerable.Cast<Acme.Entities.ActivityParty>(collection.Entities);
                             // To be
-                            // return System.Linq.Enumerable.Select<Microsoft.Xrm.Sdk.Entity, Hc.Merlin.Entities.ActivityParty>(collection.Entities, e => e.ToEntity<Hc.Merlin.Entities.ActivityParty>());
+                            // return System.Linq.Enumerable.Select<Microsoft.Xrm.Sdk.Entity, Acme.Entities.ActivityParty>(collection.Entities, e => e.ToEntity<Acme.Entities.ActivityParty>());
 
                             ifStatement.TrueStatements.Clear();
 

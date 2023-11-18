@@ -11,7 +11,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
         protected const string XrmRelationshipSchemaName = "Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute";
 
         public override string AttributeConstsClassName { get => DLaBSettings.RelationshipConstsClassName; set => DLaBSettings.RelationshipConstsClassName = value; }
-        public override bool GenerateAttributeNameConsts { get => DLaBSettings.GenerateAttributeNameConsts; set => DLaBSettings.GenerateAttributeNameConsts = value; }
+        public override bool GenerateAttributeNameConsts { get => Settings.EmitFieldsClasses ; set => Settings.EmitFieldsClasses = value; }
         public override int InsertIndex => 1;
 
         public RelationshipConstGenerator(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)

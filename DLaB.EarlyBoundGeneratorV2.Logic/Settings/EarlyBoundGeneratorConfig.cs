@@ -51,6 +51,17 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         public string CodeWriterMessageFilterService { get; set; }
 
         /// <summary>
+        /// When set, includes the entity ETC ( entity type code ) in the generated code.
+        /// </summary>
+        // ReSharper disable once InconsistentNaming
+        public bool EmitEntityETC { get; set; }
+        
+        /// <summary>
+        /// When set, includes the Virtual Attributes of entities in the generated code.
+        /// </summary>
+        public bool EmitVirtualAttributes { get; set; }
+
+        /// <summary>
         /// Entity output path
         /// </summary>
         public string EntityTypesFolder { get; set; }
@@ -221,6 +232,8 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             CodeGenerationService          =  poco.CodeGenerationService          ?? @default.CodeGenerationService;
             CodeWriterFilterService        =  poco.CodeWriterFilterService        ?? @default.CodeWriterFilterService;
             CodeWriterMessageFilterService =  poco.CodeWriterMessageFilterService ?? @default.CodeWriterMessageFilterService;
+            EmitEntityETC                  =  poco.EmitEntityETC                  ?? @default.EmitEntityETC;
+            EmitVirtualAttributes          =  poco.EmitVirtualAttributes          ?? @default.EmitVirtualAttributes;
             EntityTypesFolder              =  poco.EntityTypesFolder              ?? @default.EntityTypesFolder;
             IncludeCommandLine             =  poco.IncludeCommandLine             ?? @default.IncludeCommandLine;
             GenerateMessages               =  poco.GenerateMessages               ?? @default.GenerateMessages;
@@ -336,6 +349,18 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 Logger.AddDetail("Check out the update documentation!");
                 Logger.AddDetail("https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/wiki/Version-2.2023.4.3-Upgrade-To-PAC-ModelBuilder");
             }
+
+            if (pocoVersion < new Version("2.2023.9.20"))
+            {
+#pragma warning disable CS0618 // Type or member is obsolete
+                Logger.AddDetail("Updating config to 1.2023.9.21 settings.");
+                // Entity Type Codes are not handled by the Model Builder
+                if (pocoConfig.GenerateEntityTypeCode == true)
+                {
+                    poco.EmitEntityETC = true;
+                }
+#pragma warning restore CS0618 // Type or member is obsolete
+            }
         }
 
         private static string InjectMissingWildcards(string value)
@@ -426,6 +451,8 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 CodeGenerationService = "DLaB.ModelBuilderExtensions.CodeGenerationService,DLaB.ModelBuilderExtensions",
                 CodeWriterFilterService = "DLaB.ModelBuilderExtensions.CodeWriterFilterService,DLaB.ModelBuilderExtensions",
                 CodeWriterMessageFilterService = "DLaB.ModelBuilderExtensions.CodeWriterMessageFilterService,DLaB.ModelBuilderExtensions",
+                EmitEntityETC = false,
+                EmitVirtualAttributes = true,
                 EntityTypesFolder = "Entities",
                 ExtensionConfig = ExtensionConfig.GetDefault(),
                 GenerateMessages = true,
@@ -580,6 +607,9 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             public const string CodeWriterFilterService = "codeWriterFilterService";
             public const string CodeWriterMessageFilterService = "codeWriterMessageFilterService";
             public const string EmitFieldsClasses = "emitFieldsClasses";
+            // ReSharper disable once InconsistentNaming
+            public const string EmitEntityETC = "emitEntityETC";
+            public const string EmitVirtualAttributes = "emitVirtualAttributes";
             public const string EntityNamesFilter = "entityNamesFilter";
             public const string EntityTypesFolder = "entityTypesFolder";
             public const string GenerateActions = "generateActions";
@@ -608,6 +638,8 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             properties.SetJsonPropertyIfPopulated(BuilderSettingsJsonNames.MetadataProviderService, MetadataProviderService);
             properties.SetJsonPropertyIfPopulated(BuilderSettingsJsonNames.MetadataQueryProviderService, MetadataQueryProviderService);
 
+            properties.SetJsonProperty(BuilderSettingsJsonNames.EmitEntityETC, EmitEntityETC);
+            properties.SetJsonProperty(BuilderSettingsJsonNames.EmitVirtualAttributes, EmitVirtualAttributes);
             SetOutputFolderProperty(BuilderSettingsJsonNames.EntityTypesFolder, EntityTypesFolder, defaultSettings.EntityTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.GenerateActions, GenerateMessages);
             SetOutputFolderProperty(BuilderSettingsJsonNames.MessagesTypesFolder, MessageTypesFolder, defaultSettings.MessageTypesFolder, !GenerateMessages);
@@ -615,6 +647,8 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             properties.SetJsonPropertyIfPopulated(BuilderSettingsJsonNames.NamingService, NamingService);
             SetOutputFolderProperty(BuilderSettingsJsonNames.OptionSetsTypesFolder, OptionSetsTypesFolder, defaultSettings.OptionSetsTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.ServiceContextName, ServiceContextName);
+
+            return;
 
             void SetOutputFolderProperty(string propertyName, string typeName, string @default, bool remove = false)
             {
@@ -646,6 +680,9 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings.POCO
         public string CodeGenerationService { get; set; }
         public string CodeWriterFilterService { get; set; }
         public string CodeWriterMessageFilterService { get; set; }
+        // ReSharper disable once InconsistentNaming
+        public bool? EmitEntityETC { get; set; }
+        public bool? EmitVirtualAttributes { get; set; }
         public string EntityTypesFolder { get; set; }
         public ExtensionConfig ExtensionConfig { get; set; }
         public List<Argument> ExtensionArguments { get; set; }

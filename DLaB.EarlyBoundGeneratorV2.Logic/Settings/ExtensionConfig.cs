@@ -125,10 +125,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         /// </summary>
         public bool GenerateEntityRelationships { get; set; }
         /// <summary>
-        /// By default the Model Builder generates the Entity Type Code, this is considered dangerous and not recommended since it is a system generated value, and not one defined in the solution metadata, changing from environment to environment.
-        /// </summary>
-        public bool GenerateEntityTypeCode { get; set; }
-        /// <summary>
         /// Specifies the generation of Enum properties for option sets
         /// </summary>                                          
         public bool GenerateEnumProperties { get; set; }
@@ -184,6 +180,16 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         /// The format Specified in the SDK is {0}{1}, but the default is {0}_{1}, but used to be prefix_{0}_{1}(all lower case)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
         /// </summary>
         public string LocalOptionSetFormat { get; set; }
+        /// <summary>
+        /// Trace = 0 - Logs that contain the most detailed messages. These messages may contain sensitive application data.  These messages are disabled by default and should never be enabled in a production environment.
+        /// Debug = 1 - Logs that are used for interactive investigation during development.  These logs should primarily contain information useful for debugging and have no long-term value.
+        /// Information = 2 - Logs that track the general flow of the application. These logs should have long-term value.
+        /// Warning = 3 - Logs that highlight an abnormal or unexpected event in the application flow, but do not otherwise cause the application execution to stop.
+        /// Error = 4 - Logs that highlight when the current flow of execution is stopped due to a failure. These should indicate a failure in the current activity, not an application-wide failure.
+        /// Critical = 5 - Logs that describe an unrecoverable application or system crash, or a catastrophic failure that requires immediate attention.
+        /// None = 6 - Not used for writing log messages. Specifies that a logging category should not write any messages.
+        /// </summary>
+        public string ModelBuilderLogLevel { get; set; }
         /// <summary>
         /// Overrides the default (English:1033) language code used for generating Option Set Value names (the value, not the option set)
         /// </summary>
@@ -310,7 +316,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 GenerateAttributeNameConsts = true,
                 GenerateConstructorsSansLogicalName = true,
                 GenerateEntityRelationships = true,
-                GenerateEntityTypeCode = false,
                 GenerateEnumProperties = true,
                 GenerateGeneratedCodeAttribute = false,
                 GenerateGlobalOptionSets = false,
@@ -324,6 +329,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 MakeAllFieldsEditable = false,
                 MakeReadonlyFieldsEditable = false,
                 MakeResponseActionsEditable = true,
+                ModelBuilderLogLevel = "2",
                 OptionSetLanguageCodeOverride = null,
                 OptionSetNames = null,
                 ProjectNameForEarlyBoundFiles = string.Empty,
@@ -376,7 +382,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             GenerateAnonymousTypeConstructor = poco.GenerateAnonymousTypeConstructor ?? GenerateAnonymousTypeConstructor;
             GenerateConstructorsSansLogicalName = poco.GenerateConstructorsSansLogicalName ?? GenerateConstructorsSansLogicalName;
             GenerateEntityRelationships = poco.GenerateEntityRelationships ?? GenerateEntityRelationships;
-            GenerateEntityTypeCode = poco.GenerateEntityTypeCode ?? GenerateEntityTypeCode;
             GenerateEnumProperties = poco.GenerateEnumProperties ?? GenerateEnumProperties;
             GenerateGeneratedCodeAttribute = poco.GenerateGeneratedCodeAttribute ?? GenerateGeneratedCodeAttribute;
             GenerateGlobalOptionSets = poco.GenerateGlobalOptionSets ?? GenerateGlobalOptionSets;
@@ -390,6 +395,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             MakeReadonlyFieldsEditable = poco.MakeReadonlyFieldsEditable ?? MakeReadonlyFieldsEditable;
             MakeResponseActionsEditable = poco.MakeResponseActionsEditable ?? MakeResponseActionsEditable;
             LocalOptionSetFormat = poco.LocalOptionSetFormat ?? LocalOptionSetFormat;
+            ModelBuilderLogLevel = GetValueOrDefault(poco.ModelBuilderLogLevel, ModelBuilderLogLevel);
             OptionSetLanguageCodeOverride = poco.OptionSetLanguageCodeOverride ?? OptionSetLanguageCodeOverride;
             OptionSetNames = GetValueOrDefault(poco.OptionSetNames, OptionSetNames);
             ProjectNameForEarlyBoundFiles = poco.ProjectNameForEarlyBoundFiles ?? ProjectNameForEarlyBoundFiles;
@@ -442,7 +448,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddProperty(nameof(GenerateAnonymousTypeConstructor), GenerateAnonymousTypeConstructor);
             writer.AddProperty(nameof(GenerateConstructorsSansLogicalName), GenerateConstructorsSansLogicalName);
             writer.AddProperty(nameof(GenerateEntityRelationships), GenerateEntityRelationships);
-            writer.AddProperty(nameof(GenerateEntityTypeCode), GenerateEntityTypeCode);
             writer.AddProperty("GenerateOptionSetProperties", generateOptionSetProperties);
             writer.AddProperty(nameof(GenerateOptionSetMetadataAttribute), GenerateOptionSetMetadataAttribute);
             writer.AddProperty(nameof(GenerateTypesAsInternal), GenerateTypesAsInternal);
@@ -450,12 +455,13 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddProperty(nameof(GroupMessageRequestWithResponse), GroupMessageRequestWithResponse);
             writer.AddProperty(nameof(settings.IncludeCommandLine), settings.IncludeCommandLine);
             writer.AddProperty(nameof(InvalidCSharpNamePrefix), InvalidCSharpNamePrefix);
+            writer.AddProperty(nameof(LocalOptionSetFormat), LocalOptionSetFormat);
             writer.AddProperty(nameof(MakeAllFieldsEditable), MakeAllFieldsEditable);
             writer.AddProperty(nameof(MakeReadonlyFieldsEditable), MakeReadonlyFieldsEditable);
             writer.AddProperty(AsMessage(nameof(MakeResponseActionsEditable)), MakeResponseActionsEditable);
             writer.AddPropertyArray("MessageBlacklist", ActionsToSkip?.Replace("-", ""));
             AddOptionalProperty("MessagesFileName", settings.MessageTypesFolder, !CreateOneFilePerAction);
-            writer.AddProperty(nameof(LocalOptionSetFormat), LocalOptionSetFormat);
+            writer.AddProperty(nameof(ModelBuilderLogLevel), ModelBuilderLogLevel);
             AddOptionalProperty("OptionSetsFileName", settings.OptionSetsTypesFolder, !CreateOneFilePerOptionSet);
             writer.AddProperty(nameof(OptionSetLanguageCodeOverride), OptionSetLanguageCodeOverride?.ToString());
             writer.AddPropertyDictionaryStringString(nameof(OptionSetNames), OptionSetNames);
@@ -557,6 +563,10 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings.POCO
         public bool? GenerateAnonymousTypeConstructor { get; set; }
         public bool? GenerateConstructorsSansLogicalName { get; set; }
         public bool? GenerateEntityRelationships { get; set; }
+        /// <summary>
+        /// Now moved to the Dataverse Model Builder as EmitEntityETC
+        /// </summary>
+        [Obsolete("Now moved to the Dataverse Model Builder as EmitEntityETC")]
         public bool? GenerateEntityTypeCode { get; set; }
         public bool? GenerateEnumProperties { get; set; }
         public bool? GenerateGeneratedCodeAttribute { get; set; }
@@ -576,6 +586,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings.POCO
         public bool? MakeAllFieldsEditable { get; set; }
         public bool? MakeReadonlyFieldsEditable { get; set; }
         public bool? MakeResponseActionsEditable { get; set; }
+        public string ModelBuilderLogLevel { get; set; }
         public string OptionSetNames { get; set; }
         public int? OptionSetLanguageCodeOverride { get; set; }
         public string PropertyEnumMappings { get; set; }

@@ -20,6 +20,15 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         #region Debug
 
         [Category("7 - Debug")]
+        [DisplayName("Model Builder Log Level")]
+        [Description("Trace = 0 - Logs that contain the most detailed messages. These messages may contain sensitive application data.  These messages are disabled by default and should never be enabled in a production environment.\r\nDebug = 1 - Logs that are used for interactive investigation during development.  These logs should primarily contain information useful for debugging and have no long-term value.\r\nInformation = 2 - Logs that track the general flow of the application. These logs should have long-term value.\r\nWarning = 3 - Logs that highlight an abnormal or unexpected event in the application flow, but do not otherwise cause the application execution to stop.\r\nError = 4 - Logs that highlight when the current flow of execution is stopped due to a failure. These should indicate a failure in the current activity, not an application-wide failure.\r\nCritical = 5 - Logs that describe an unrecoverable application or system crash, or a catastrophic failure that requires immediate attention.\r\nNone = 6 - Not used for writing log messages. Specifies that a logging category should not write any messages.")]
+        public string ModelBuilderLogLevel
+        {
+            get => Config.ExtensionConfig.ModelBuilderLogLevel;
+            set => Config.ExtensionConfig.ModelBuilderLogLevel = byte.TryParse(value, out var result) && result <= 6 ? result.ToString() : "2";
+        }
+
+        [Category("7 - Debug")]
         [DisplayName("Read Serialized Metadata")]
         [Description("For Debugging Only!  Used to not communicate to the server for the metadata, but to use the local metadata file instead.  Should only be used for testing generation outputs.  Set Serialize Metadata to true first to connect to the server and retrieve the metadata, then set it back to false to not write it again since it's already local.")]
         public bool ReadSerializedMetadata
@@ -75,6 +84,15 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         {
             get => Config.ExtensionConfig.CreateOneFilePerEntity;
             set => Config.ExtensionConfig.CreateOneFilePerEntity = value;
+        }
+
+        [Category("2 - Entities")]
+        [DisplayName("Emit Virtual Attributes")]
+        [Description("When set, includes the Virtual Attributes of entities in the generated code.")]
+        public bool EmitVirtualAttributes
+        {
+            get => Config.EmitVirtualAttributes;
+            set => Config.EmitVirtualAttributes = value;
         }
 
         [Category("2 - Entities")]
@@ -165,8 +183,8 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         [Description("By default the ModelBuilder generates the Entity Type Code, this is considered dangerous to use and is not recommended since it is a system generated value, and not one defined in the solution metadata, changing from environment to environment.")]
         public bool GenerateEntityTypeCode
         {
-            get => Config.ExtensionConfig.GenerateEntityTypeCode;
-            set => Config.ExtensionConfig.GenerateEntityTypeCode = value;
+            get => Config.EmitEntityETC;
+            set => Config.EmitEntityETC = value;
         }
 
         [Category("2 - Entities")]
@@ -241,7 +259,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
 
         [Category("2 - Entities")]
         [DisplayName("Use Enum For State Codes")]
-        [Description("The CrmSvcUtil generates state codes as enums properties.  This allows for generating just this property as an enum.  Only valid when Replace Option Set Properties with Enum is false.")]
+        [Description("The PAC ModelBuilder generates state codes as enums properties.  This allows for generating just this property as an enum.  Only valid when Replace Option Set Properties with Enum is false.")]
         public bool UseEnumForStateCodes
         {
             get => Config.ExtensionConfig.UseEnumForStateCodes;
@@ -306,7 +324,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
 
         [Category("1 - Global")]
         [DisplayName("Camel Case Dictionary Relative Path")]
-        [Description("The path relative to the XrmToolBox Plugins directory to a Dictionary file containing a single word on each line.  This is used when auto camel casing names when either the \"Gobal: Camel Case Class Names\" or \"Global: Camel Case Member Names\" is set to true.")]
+        [Description("The path relative to the XrmToolBox Plugins directory to a Dictionary file containing a single word on each line.  This is used when auto camel casing names when either the \"Global: Camel Case Class Names\" or \"Global: Camel Case Member Names\" is set to true.")]
         public string CamelCaseNamesDictionaryRelativePath
         {
             get => Config.ExtensionConfig.CamelCaseNamesDictionaryRelativePath;

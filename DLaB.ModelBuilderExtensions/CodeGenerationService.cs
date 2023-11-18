@@ -134,7 +134,7 @@ namespace DLaB.ModelBuilderExtensions
 
             var timePriorToFileGeneration = DateTime.Now;
             // Write the files out as normal
-            var hack = new PacModelBuilderCodeGenHack(Settings, DefaultService, true, false, FilePrefixText);
+            var hack = new PacModelBuilderCodeGenHack(Settings, DefaultService, true, false);
             hack.Write(organizationMetadata, language, outputFile, targetNamespace, services);
 
             CleanupLocalOptionSets(hack, timePriorToFileGeneration);

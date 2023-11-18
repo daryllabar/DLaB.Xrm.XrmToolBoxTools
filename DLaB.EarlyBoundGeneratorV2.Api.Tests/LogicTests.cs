@@ -28,7 +28,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Api.Tests
         [TestMethod]
         public void GetParameters_ShouldRemoveParametersInTemplateFile()
         {
-            var modelParameters = new ModelBuilderInvokeParameters
+            var modelParameters = new ModelBuilderInvokeParameters(new ModeBuilderLoggerService("LogicTests"))
             {
                 OutputFile = "TestOutputFilePath",
                 SettingsTemplateFile = "SettingsTemplateFilePath",

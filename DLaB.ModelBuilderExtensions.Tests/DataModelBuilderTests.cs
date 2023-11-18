@@ -1,4 +1,5 @@
-﻿using Microsoft.PowerPlatform.Dataverse.Client;
+﻿using Microsoft.Extensions.Logging;
+using Microsoft.PowerPlatform.Dataverse.Client;
 using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
@@ -69,7 +70,8 @@ namespace DLaB.ModelBuilderExtensions.Tests
             {
                 var settingsPath = CreateBuilderSettingsConfig(tmp, serializedMetadataPath);
                 var parameters = CreateParameters(settingsPath, tmp);
-                var runner = new ProcessModelInvoker(parameters);
+                var runner = new ModelBuilder(Logger.Instance);
+                runner.Parameters.LoadArguments(parameters);
                 var invoke = runner.Invoke(client);
                 Assert.AreEqual(0, invoke);
             }
@@ -77,7 +79,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
 
         private string[] CreateParameters(string settingsPath, ITempDir tmp)
         {
-            var parameters = new ModelBuilderInvokeParameters
+            var parameters = new ModelBuilderInvokeParameters(new ModeBuilderLoggerService("DateModelBuilderTests"))
             {
                 SettingsTemplateFile = settingsPath,
                 OutDirectory = tmp.Name,

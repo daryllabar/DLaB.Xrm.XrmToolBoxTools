@@ -99,9 +99,6 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("generateMessageAttributeNameConsts")]
         public bool GenerateMessageAttributeNameConsts { get; set; }
 
-        [JsonPropertyName("generateAttributeNameConsts")]
-        public bool GenerateAttributeNameConsts { get; set; }
-
         [JsonPropertyName("generateAnonymousTypeConstructor")]
         public bool GenerateAnonymousTypeConstructor { get; set; }
 
@@ -110,9 +107,6 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("generateEntityRelationships")]
         public bool GenerateEntityRelationships { get; set; }
-
-        [JsonPropertyName("generateEntityTypeCode")]
-        public bool GenerateEntityTypeCode { get; set; }
 
         [JsonPropertyName("generateOptionSetProperties")]
         public bool GenerateOptionSetProperties { get; set; }
@@ -158,6 +152,9 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("messagesFileName")]
         public string MessagesFileName { get; set; }
+
+        [JsonPropertyName("modelBuilderLogLevel")]
+        public string ModelBuilderLogLevel { get; set; }
 
         [JsonPropertyName("optionSetsFileName")]
         public string OptionSetsFileName { get; set; }
@@ -314,17 +311,24 @@ namespace DLaB.ModelBuilderExtensions
     public class DLaBModelBuilderSettings
     {
         [JsonPropertyName("dLaB.ModelBuilder")]
-        public DLaBModelBuilder DLaBModelBuilder { get; set; }
+        public DLaBModelBuilder DLaBModelBuilder { get; set; } = new DLaBModelBuilder();
 
         #region ModelBuilder Properties
+        // ReSharper disable InconsistentNaming
+
+        [JsonPropertyName("emitEntityETC")]
+        public bool EmitEntityETC { get; set; }
 
         [JsonPropertyName("emitFieldsClasses")]
         public bool EmitFieldsClasses { get; set; }
-
+        
         [JsonPropertyName("entityNamesFilter")]
-        public List<string> EntityNamesFilter { get; set; }
+        public List<string> EntityNamesFilter { get; set; } = new List<string>();
 
-        [JsonPropertyName("entityTypesFolder")]
+        [JsonPropertyName("emitVirtualAttributes")]
+        public bool EmitVirtualAttributes { get; set; }
+
+    [JsonPropertyName("entityTypesFolder")]
         public string EntityTypesFolder { get; set; }
 
         [JsonPropertyName("generateActions")]
@@ -334,7 +338,7 @@ namespace DLaB.ModelBuilderExtensions
         public bool GenerateGlobalOptionSets { get; set; }
 
         [JsonPropertyName("messageNamesFilter")]
-        public List<string> MessageNamesFilter { get; set; }
+        public List<string> MessageNamesFilter { get; set; } = new List<string>();
 
         [JsonPropertyName("messagesTypesFolder")]
         public string MessagesTypesFolder { get; set; }
@@ -363,14 +367,8 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("suppressINotifyPattern")]
         public bool SuppressINotifyPattern { get; set; }
 
+        // ReSharper restore InconsistentNaming
         #endregion ModelBuilder Properties
-
-        public DLaBModelBuilderSettings()
-        {
-            DLaBModelBuilder = new DLaBModelBuilder();
-            EntityNamesFilter = new List<string>();
-            MessageNamesFilter = new List<string>();
-        }
     }
 
 
