@@ -213,14 +213,14 @@ namespace DLaB.ModelBuilderExtensions
             return AppendValueForDuplicateOptionSetValueNames(optionSetMetadata, possiblyDuplicateName, optionMetadata.Value.GetValueOrDefault(), services);
         }
 
-        private string Transliterate(OptionMetadata optionMetadata, string englishName)
+        private string Transliterate(OptionMetadata optionMetadata, string defaultName)
         {
             var localizedLabels = optionMetadata.Label.LocalizedLabels;
-            if (LanguageCodeOverride < 0 || LanguageCodeOverride == optionMetadata.Label.LocalizedLabels.FirstOrDefault()?.LanguageCode)
+            if (LanguageCodeOverride <= 0)
             {
-                if (IsLabelPopulated(englishName))
+                if (IsLabelPopulated(defaultName))
                 {
-                    return englishName.RemoveDiacritics();
+                    return defaultName.RemoveDiacritics();
                 }
             }
             else
@@ -237,7 +237,7 @@ namespace DLaB.ModelBuilderExtensions
             var localizedLabel = localizedLabels.FirstOrDefault(x => TransliterationService.HasCode(x.LanguageCode) && IsLabelPopulated(x.Label));
 
             return localizedLabel == null ?
-                localizedLabels.FirstOrDefault(x => IsLabelPopulated(x.Label))?.Label?.RemoveDiacritics() ?? string.Empty : 
+                localizedLabels.FirstOrDefault(x => IsLabelPopulated(x.Label))?.Label?.RemoveDiacritics() ?? string.Empty :
                 TransliterationService.Transliterate(localizedLabel);
         }
 

@@ -312,6 +312,7 @@
     <Compile Include="OptionSet\Transliteration\TransliterationAlphabet.cs" />
     <Compile Include="OptionSet\Transliteration\TransliterationService.cs" />
     <Compile Include="PacModelBuilderCodeGenHack.cs" />
+    <Compile Include="ArgumentBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\MetadataFilter.cs" />
     <Compile Include="Serialization\MetadataMessage.cs" />

@@ -1,11 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.PowerPlatform.Dataverse.Client;
+﻿using Microsoft.PowerPlatform.Dataverse.Client;
 using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
 using Source.DLaB.Common;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -15,31 +13,6 @@ namespace DLaB.ModelBuilderExtensions.Tests
     [TestClass]
     public class DataModelBuilderTests
     {
-        private readonly HashSet<string> _switches = new HashSet<string>(new[]
-        {
-            "emitfieldsclasses",
-            "generateActions",
-            "generateGlobalOptionSets",
-            "emitfieldsclasses",
-            "interactivelogin",
-            "help",
-            "legacyMode",
-            "nologo",
-            "splitfiles",
-            "suppressGeneratedCodeAttribute",
-            "suppressINotifyPattern",
-            "writesettingsTemplateFile"
-        });
-
-        private readonly HashSet<string> _notValid = new HashSet<string>(new[]
-        {
-            "entitytypesfolder",
-            "language",
-            "messagestypesfolder",
-            "optionsetstypesfolder",
-            "includeMessages"
-        });
-
         /// <summary>
         /// Used to manually test generation using either a real connection, or serialized metadata.
         /// </summary>
@@ -69,46 +42,12 @@ namespace DLaB.ModelBuilderExtensions.Tests
             using (var tmp = TempDir.Create())
             {
                 var settingsPath = CreateBuilderSettingsConfig(tmp, serializedMetadataPath);
-                var parameters = CreateParameters(settingsPath, tmp);
+                var argumentBuilder = new ArgumentBuilder(settingsPath, tmp.Name);
                 var runner = new ModelBuilder(Logger.Instance);
-                runner.Parameters.LoadArguments(parameters);
+                runner.Parameters.LoadArguments(argumentBuilder.GetArguments());
                 var invoke = runner.Invoke(client);
                 Assert.AreEqual(0, invoke);
             }
-        }
-
-        private string[] CreateParameters(string settingsPath, ITempDir tmp)
-        {
-            var parameters = new ModelBuilderInvokeParameters(new ModeBuilderLoggerService("DateModelBuilderTests"))
-            {
-                SettingsTemplateFile = settingsPath,
-                OutDirectory = tmp.Name,
-                SplitFilesByObject = true,
-            };
-
-            var lines = new List<string>();
-
-            foreach (var kvp in parameters.ToDictionary().Where(kvp => !string.IsNullOrWhiteSpace(kvp.Value)))
-            {
-                if (_notValid.Contains(kvp.Key))
-                {
-                    // do nothing...
-                }
-                else if (_switches.Contains(kvp.Key))
-                {
-                    if (bool.TryParse(kvp.Value, out var boolVal) && boolVal)
-                    {
-                        lines.Add($"/{kvp.Key}");
-                    }
-                }
-                else
-                {
-                    lines.Add($"/{kvp.Key}:{kvp.Value}");
-                }
-            }
-
-            var linesArray = lines.OrderBy(v => v).ToArray();
-            return linesArray;
         }
 
         private static string CreateBuilderSettingsConfig(ITempDir tmp, string serializedMetadataPath)
