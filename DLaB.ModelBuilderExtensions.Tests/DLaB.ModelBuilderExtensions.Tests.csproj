@@ -242,6 +242,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ArgumentBuilderTests.cs" />
     <Compile Include="CamelCaserTests.cs" />
     <Compile Include="Entity\MetadataProviderServiceTests.cs" />
     <Compile Include="Logger.cs" />

@@ -87,6 +87,9 @@ namespace DLaB.EarlyBoundGeneratorV2
             }
         }
 
+        /// <summary>
+        /// Checks that this given path is valid and accessible
+        /// </summary>
         protected bool AbleToMakeFileAccessible(string filePath)
         {
             var directory = Path.GetDirectoryName(filePath);
@@ -117,7 +120,6 @@ namespace DLaB.EarlyBoundGeneratorV2
             Logger.AddDetail("File \"" + filePath + "\" is read only, please checkout the file before running");
             return false;
         }
-
 
         public void UpdateBuilderSettingsJson()
         {

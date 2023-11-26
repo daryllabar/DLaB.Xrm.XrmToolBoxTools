@@ -1,5 +1,4 @@
 ﻿using DLaB.EarlyBoundGeneratorV2.Settings;
-using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
@@ -22,29 +21,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Api.Tests
             {
                 var line = settings[i];
                 Assert.AreEqual(expected[i].Trim(), line.Trim(), $"Line {i+1} does not match the expected!");
-            }
-        }
-
-        [TestMethod]
-        public void GetParameters_ShouldRemoveParametersInTemplateFile()
-        {
-            var modelParameters = new ModelBuilderInvokeParameters(new ModeBuilderLoggerService("LogicTests"))
-            {
-                OutputFile = "TestOutputFilePath",
-                SettingsTemplateFile = "SettingsTemplateFilePath",
-                SplitFilesByObject = true
-            };
-            var parameters = _sut.GetParameters(modelParameters);
-            var expected = new []
-            {
-                "/out:TestOutputFilePath",
-                "/settingsTemplateFile:SettingsTemplateFilePath",
-                "/splitfiles"
-            };
-            for (var i = 0; i < parameters.Length; i++)
-            {
-                var line = parameters[i];
-                Assert.AreEqual(expected[i].Trim(), line.Trim(), $"Line {i + 1} does not match the expected!");
             }
         }
 
