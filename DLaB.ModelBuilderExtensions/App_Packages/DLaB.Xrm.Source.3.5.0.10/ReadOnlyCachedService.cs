@@ -220,6 +220,11 @@ namespace Source.DLaB.Xrm
                 GetExpirationTime);
         }
 
+        /// <summary>
+        /// Retrieves the attribute from the cache or the system if not in the cache
+        /// </summary>
+        /// <param name="request">The Request</param>
+        /// <returns></returns>
         protected virtual RetrieveAttributeResponse RetrieveAttribute(RetrieveAttributeRequest request)
         {
             var key = GetKey(request);

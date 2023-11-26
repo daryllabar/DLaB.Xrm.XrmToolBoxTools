@@ -48,25 +48,7 @@ namespace Source.DLaB.Xrm.Comparers
                 //    break;
 
                 case EntityReference entityRef:
-                    var preEntityRef = (EntityReference)preValue;
-#if !PRE_KEYATTRIBUTE
-                    var entityRefHasAttributes = entityRef.Id == Guid.Empty
-                                                 && entityRef.KeyAttributes?.Any() == true;
-                    var preEntityRefHasAttributes = preEntityRef.Id == Guid.Empty
-                                                    && preEntityRef.KeyAttributes?.Any() == true;
-                    if (entityRefHasAttributes != preEntityRefHasAttributes)
-                    {
-                        if (entityRefHasAttributes)
-                        {
-                            entityRef = GetEntityReferenceWithoutKeyAttributes(service, entityRef);
-                        }
-                        else
-                        {
-                            preEntityRef = GetEntityReferenceWithoutKeyAttributes(service, preEntityRef);
-                        }
-                    }
-#endif
-                    return entityRef.Equals(preEntityRef);
+                    return EntityReferencesAreEqual(service, preValue, entityRef);
 
                 case EntityCollection entities:
                     throw new NotImplementedException("EntityCollection is not Implemented!");
@@ -75,9 +57,7 @@ namespace Source.DLaB.Xrm.Comparers
                     throw new NotImplementedException("EntityReferenceCollection is not Implemented!");
 
                 case Dictionary<string, string> dict:
-                    var preDict = (Dictionary<string, string>)preValue;
-                    return dict.Keys.OrderBy(k => k).SequenceEqual(preDict.Keys.OrderBy(k => k))
-                           && dict.OrderBy(k => k.Key).Select(kvp => kvp.Value).SequenceEqual(preDict.OrderBy(k => k.Key).Select(kvp => kvp.Value));
+                    return StringDictionariesAreEqual(preValue, dict);
 
                 case FetchExpression fetch:
                     throw new NotImplementedException("FetchExpression is not Implemented!");
@@ -86,35 +66,7 @@ namespace Source.DLaB.Xrm.Comparers
                     return imageArray.SequenceEqual((byte[])preValue);
 
                 case IEnumerable enumerable when !(enumerable is string):
-
-                    var preItems = new Dictionary<Type, List<object>>();
-                    var preCount = 0;
-                    foreach (var item in ((IEnumerable)preValue))
-                    {
-                        preItems.AddOrAppend(item.GetType(), item);
-                        preCount++;
-                    }
-
-                    var items = new List<object>();
-                    foreach (var item in enumerable)
-                    {
-                        if (!preItems.TryGetValue(item.GetType(), out var typedValues))
-                        {
-                            return false;
-                        }
-
-                        var match = typedValues.FirstOrDefault(v => ValuesAreEqual(service, item, v));
-                        if (match == null)
-                        {
-                            return false;
-                        }
-
-                        typedValues.Remove(match);
-                        items.Add(item);
-                    }
-
-                    return items.Count == preCount;
-
+                    return NonStringIEnumerablesAreEqual(service, preValue, enumerable);
 
                 case OptionSetValue optionSet:
                     return optionSet.Value == ((OptionSetValue)preValue).Value;
@@ -130,6 +82,68 @@ namespace Source.DLaB.Xrm.Comparers
             }
         }
 
+        private static bool EntityReferencesAreEqual(IOrganizationService service, object preValue, EntityReference entityRef)
+        {
+            var preEntityRef = (EntityReference)preValue;
+#if !PRE_KEYATTRIBUTE
+            var entityRefHasAttributes = entityRef.Id == Guid.Empty
+                                         && entityRef.KeyAttributes?.Any() == true;
+            var preEntityRefHasAttributes = preEntityRef.Id == Guid.Empty
+                                            && preEntityRef.KeyAttributes?.Any() == true;
+            if (entityRefHasAttributes != preEntityRefHasAttributes)
+            {
+                if (entityRefHasAttributes)
+                {
+                    entityRef = GetEntityReferenceWithoutKeyAttributes(service, entityRef);
+                }
+                else
+                {
+                    preEntityRef = GetEntityReferenceWithoutKeyAttributes(service, preEntityRef);
+                }
+            }
+#endif
+            return entityRef.Equals(preEntityRef);
+        }
+
+        private static bool StringDictionariesAreEqual(object preValue, Dictionary<string, string> dict)
+        {
+            var preDict = (Dictionary<string, string>)preValue;
+            return dict.Keys.OrderBy(k => k).SequenceEqual(preDict.Keys.OrderBy(k => k))
+                   && dict.OrderBy(k => k.Key).Select(kvp => kvp.Value).SequenceEqual(preDict.OrderBy(k => k.Key).Select(kvp => kvp.Value));
+        }
+
+        private static bool NonStringIEnumerablesAreEqual(IOrganizationService service, object preValue, IEnumerable enumerable)
+        {
+            var preItems = new Dictionary<Type, List<object>>();
+            var preCount = 0;
+            foreach (var item in ((IEnumerable)preValue))
+            {
+                preItems.AddOrAppend(item.GetType(), item);
+                preCount++;
+            }
+
+            var items = new List<object>();
+            foreach (var item in enumerable)
+            {
+                if (!preItems.TryGetValue(item.GetType(), out var typedValues))
+                {
+                    return false;
+                }
+
+                var match = typedValues.FirstOrDefault(v => ValuesAreEqual(service, item, v));
+                if (match == null)
+                {
+                    return false;
+                }
+
+                typedValues.Remove(match);
+                items.Add(item);
+            }
+
+            return items.Count == preCount;
+        }
+
+#if !PRE_KEYATTRIBUTE
         private static EntityReference GetEntityReferenceWithoutKeyAttributes(IOrganizationService service, EntityReference entityRef)
         {
             if (entityRef.Id == Guid.Empty
@@ -141,5 +155,6 @@ namespace Source.DLaB.Xrm.Comparers
 
             return entityRef;
         }
+#endif
     }
 }

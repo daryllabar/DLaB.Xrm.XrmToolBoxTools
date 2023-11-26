@@ -33,6 +33,7 @@ namespace Source.DLaB.Common
                 {
                     return _instance;
                 }
+
                 lock (SingletonLock)
                 {
                     if (_instance != null)
@@ -40,23 +41,31 @@ namespace Source.DLaB.Common
                         return _instance;
                     }
 
-                    InitalizeProvider(ConfigurationManager.AppSettings); 
-                    // TODO: Figure out why resharper is complaining
-                    // ReSharper disable once ReadAccessInDoubleCheckLocking
-                    return _instance;
+                    InitializeProvider(ConfigurationManager.AppSettings); 
                 }
+
+                return _instance;
             }
         }
 
         private ConfigProvider() { }
 
         /// <summary>
-        /// Initalizes the provider.
+        /// Initializes the provider.
         /// </summary>
         /// <param name="appSettings">The application settings.</param>
-        public static void InitalizeProvider(NameValueCollection appSettings)
+        public static void InitializeProvider(NameValueCollection appSettings)
         {
             _instance = appSettings;
+        }
+
+        /// <summary>
+        /// Initializes the provider.
+        /// </summary>
+        /// <param name="appSettings">The application settings.</param>
+        public static void InitializeProvider(KeyValueConfigurationCollection appSettings)
+        {
+            _instance =  appSettings.ToNameValueCollection();
         }
 }
 }

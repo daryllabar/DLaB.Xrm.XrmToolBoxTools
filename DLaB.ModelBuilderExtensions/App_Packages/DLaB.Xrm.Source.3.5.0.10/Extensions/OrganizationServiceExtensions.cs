@@ -27,6 +27,54 @@ namespace Source.DLaB.Xrm
     public static partial class Extensions
     {
 
+        /// <summary>
+        /// Uses the string value to get a deterministic day value between 1-365 to get the newest email older than that day, and updates it's currency to acquire a DB lock.
+        /// If no email is found, the oldest Business Unit's Fax is updated instead.
+        /// </summary>
+        /// <param name="service">The Service.</param>
+        /// <param name="value">The string value to ensure uniqueness of to lock on.  For example, the e-mail to ensure that a contact with a duplicate email address, will not be created.</param>
+        /// <param name="tracer">The Tracing Service.</param>
+        /// <param name="initialTable">The table to use to initially acquire a lock on.  It will use the value parameter to select a date within the last year to attempt to find a record in this table that it can lock, to allow multiple locks to be acquired simultaneously for different values.</param>
+        /// <param name="initialTableColumn">The column to update in the initial table.</param>
+        /// <param name="backupTable">The backup table to use if no record is found in the initial table.  This table has to exist, or an exception will be thrown.</param>
+        /// <param name="backupTableColumn">The Column to update in the backup table.</param>
+        // ReSharper disable StringLiteralTypo
+        public static void AcquireLock(this IOrganizationService service, string value, ITracingService tracer = null,
+            string initialTable = "email", string initialTableColumn = "transactioncurrencyid",
+            string backupTable = "businessunit", string backupTableColumn = "address2_fax")
+        {
+            const string createdOn = "createdon";
+            // ReSharper restore StringLiteralTypo
+            // Use the hashcode to get a count that is deterministic, between 1-365, to get a random day in the last year
+            var deterministic365DayCount = new Random(value.GetDeterministicHashCode()).Next(1, 366);
+            // Query for the newest email that is older than the random day in the last year
+            var qe = new QueryExpression(initialTable);
+            qe.ColumnSet.AddColumns(initialTableColumn);
+            qe.Criteria.AddCondition(createdOn, ConditionOperator.LessThan, DateTime.UtcNow.AddDays(-1 * deterministic365DayCount));
+            qe.AddOrder(createdOn, OrderType.Descending);
+            var initial = service.GetFirstOrDefault(qe);
+            if (initial == null)
+            {
+                tracer?.Trace("No email found older than {0} days.  Get the oldest Business Unit.", deterministic365DayCount);
+                qe = new QueryExpression(backupTable);
+                qe.ColumnSet.AddColumns(backupTableColumn);
+                qe.AddOrder(createdOn, OrderType.Descending);
+                var backup = service.GetFirst(qe);
+                service.Update(new Entity(backupTable)
+                {
+                    Id = backup.Id, 
+                    [backupTableColumn] = backup.GetAttributeValue<object>(backupTableColumn)
+                });
+                return;
+            }
+
+            service.Update(new Entity(initialTable)
+            {
+                Id = initial.Id,
+                [initialTableColumn] = initial.GetAttributeValue<object>(initialTableColumn)
+            });
+        }
+
         #region Assign
 
         /// <summary>
@@ -602,6 +650,19 @@ namespace Source.DLaB.Xrm
         #endregion GetEntities
 
         #region GetFirst
+
+        /// <summary>
+        /// Gets the first entity that matches the query expression.  An exception is thrown if none are found.
+        /// </summary>
+        /// <param name="service">The service.</param>
+        /// <param name="qe">The query expression.</param>
+        /// <returns></returns>
+        public static Entity GetFirst(this IOrganizationService service, QueryExpression qe)
+        {
+            var entity = service.GetFirstOrDefault(qe);
+            AssertExists(entity, qe);
+            return entity;
+        }
 
         /// <summary>
         /// Gets the first entity that matches the query expression.  An exception is thrown if none are found.

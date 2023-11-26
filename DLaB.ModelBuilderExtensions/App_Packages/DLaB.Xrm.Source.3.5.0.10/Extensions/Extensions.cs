@@ -20,9 +20,9 @@ using Microsoft.Xrm.Sdk.Metadata;
 using DLaB.Common;
 #else
 using Source.DLaB.Common;
+#endif
 using System.Collections.Concurrent;
 using System.Runtime.Caching;
-#endif
 #if DLAB_UNROOT_NAMESPACE || DLAB_XRM
 using DLaB.Xrm.Exceptions;
 
@@ -606,7 +606,7 @@ namespace Source.DLaB.Xrm
                 throw new ArgumentException("lambda must return an object initializer");
             }
 
-            // Search for and replace any occurence of Id with the actual Entity's Id
+            // Search for and replace any occurrence of Id with the actual Entity's Id
             return initializer.Members.Select(GetLogicalAttributeName<T>).ToArray();
         }
 

@@ -435,6 +435,10 @@ namespace Source.DLaB.Xrm
 
         #region Object
 
+        /// <summary>
+        /// Converts the object to a json like string
+        /// </summary>
+        /// <returns></returns>
         public static string ObjectToStringDebug(this object obj, StringDebugInfo info = null)
         {
             return ObjectToStringDebugInternal(obj, info ?? StringDebugInfo.Default);
