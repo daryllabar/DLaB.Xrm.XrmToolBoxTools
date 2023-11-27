@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;MS_EXT_LOG</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -376,15 +376,28 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DLaB.Log\DLaB.Log.csproj">
+      <Project>{c2fa0c39-cb9e-4c4b-9995-fecdd795b5c2}</Project>
+      <Name>DLaB.Log</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DLaB.ModelBuilderExtensions\DLaB.ModelBuilderExtensions.csproj">
       <Project>{7827fcaf-6aa2-46b9-bb88-0d3ca9dd4d32}</Project>
       <Name>DLaB.ModelBuilderExtensions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DLaB.Xrm.Entities.XrmToolBoxCommon\DLaB.Xrm.Entities.XrmToolBoxCommon.csproj">
+      <Project>{bd522185-e050-4eb0-bf14-4ee5283c84d9}</Project>
+      <Name>DLaB.Xrm.Entities.XrmToolBoxCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DLaB.Xrm.Entities\DLaB.Xrm.Entities.csproj">
+      <Project>{afcde5b1-e45e-43e6-a0ea-ae4d43a08bb7}</Project>
+      <Name>DLaB.Xrm.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.csproj">
+      <Project>{e98fb2e7-13f8-40a6-9ff3-6f64e930b5ed}</Project>
+      <Name>DLaB.XrmToolBoxCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\DLaB.EarlyBoundGeneratorV2.Logic\DLaB.EarlyBoundGeneratorV2.Logic.projitems" Label="Shared" />
-  <Import Project="..\DLaB.Log\DLaB.Log.projitems" Label="Shared" />
-  <Import Project="..\DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems" Label="Shared" />
-  <Import Project="..\DLaB.Xrm.Entities\DLaB.Xrm.Entities.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>REM Copy New Content Files

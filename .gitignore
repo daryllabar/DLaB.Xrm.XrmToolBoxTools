@@ -63,8 +63,11 @@ artifacts/
 *.tmp
 *.tmp_proj
 *.log
-!DLaB.Log/DLaB.Log.projitems
-!DLaB.Log/DLaB.Log.shproj
+!DLaB.Log/DLaB.Log.csproj
+!DLaB.Log/DLaB.Log.Shared.projitems
+!DLaB.Log/DLaB.Log.Shared.shproj
+!DLaB.Log/packages.config
+!DLaB.Log/Properties/AssemblyInfo.cs
 *.vspscc
 *.vssscc
 .builds

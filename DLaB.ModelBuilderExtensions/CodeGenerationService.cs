@@ -1,6 +1,6 @@
 ﻿using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
-using Source.DLaB.Common;
-using Source.DLaB.Common.VersionControl;
+using DLaB.Common;
+using DLaB.Common.VersionControl;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;

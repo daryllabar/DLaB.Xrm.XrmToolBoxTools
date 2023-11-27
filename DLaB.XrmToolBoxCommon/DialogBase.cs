@@ -22,11 +22,7 @@ namespace DLaB.XrmToolBoxCommon
         public DialogBase(PluginControlBase callingControl)
             : this()
         {
-            if (callingControl == null)
-            {
-                throw new ArgumentNullException(nameof(callingControl));
-            }
-            CallingControl = callingControl;
+            CallingControl = callingControl ?? throw new ArgumentNullException(nameof(callingControl));
         }
 
         #region Helper Methods

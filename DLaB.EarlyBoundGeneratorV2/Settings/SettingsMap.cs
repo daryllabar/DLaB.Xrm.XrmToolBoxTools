@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Drawing.Design;
+using DLaB.Common;
 using DLaB.XrmToolBoxCommon.Editors;
-using CommonConfig = Source.DLaB.Common.Config;
-using Source.DLaB.Common;
+using CommonConfig = DLaB.Common.Config;
 using XrmToolBox.Extensibility;
 
 // ReSharper disable UnusedMember.Global
