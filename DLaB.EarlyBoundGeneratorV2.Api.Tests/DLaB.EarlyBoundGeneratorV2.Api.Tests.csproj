@@ -161,6 +161,10 @@
       <Project>{A78782E0-E6BA-4443-BEBF-45507F58048D}</Project>
       <Name>DLaB.EarlyBoundGeneratorV2.Api</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DLaB.EarlyBoundGeneratorV2.Logic\DLaB.EarlyBoundGeneratorV2.Logic.csproj">
+      <Project>{46fa9089-9d5f-4c61-a6e6-196bf3d81371}</Project>
+      <Name>DLaB.EarlyBoundGeneratorV2.Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

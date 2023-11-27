@@ -179,13 +179,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DLaB.EarlyBoundGeneratorV2.Logic\DLaB.EarlyBoundGeneratorV2.Logic.csproj">
+      <Project>{46fa9089-9d5f-4c61-a6e6-196bf3d81371}</Project>
+      <Name>DLaB.EarlyBoundGeneratorV2.Logic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DLaB.ModelBuilderExtensions\DLaB.ModelBuilderExtensions.csproj">
       <Project>{7827fcaf-6aa2-46b9-bb88-0d3ca9dd4d32}</Project>
       <Name>DLaB.ModelBuilderExtensions</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="..\DLaB.Log\DLaB.Log.projitems" Label="Shared" />
-  <Import Project="..\DLaB.EarlyBoundGeneratorV2.Logic\DLaB.EarlyBoundGeneratorV2.Logic.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>REM Copy New Content Files

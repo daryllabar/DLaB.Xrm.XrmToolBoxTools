@@ -376,6 +376,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DLaB.EarlyBoundGeneratorV2.Logic\DLaB.EarlyBoundGeneratorV2.Logic.csproj">
+      <Project>{46fa9089-9d5f-4c61-a6e6-196bf3d81371}</Project>
+      <Name>DLaB.EarlyBoundGeneratorV2.Logic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DLaB.Log\DLaB.Log.csproj">
       <Project>{c2fa0c39-cb9e-4c4b-9995-fecdd795b5c2}</Project>
       <Name>DLaB.Log</Name>
@@ -397,7 +401,6 @@
       <Name>DLaB.XrmToolBoxCommon</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="..\DLaB.EarlyBoundGeneratorV2.Logic\DLaB.EarlyBoundGeneratorV2.Logic.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>REM Copy New Content Files
