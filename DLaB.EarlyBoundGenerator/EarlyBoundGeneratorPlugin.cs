@@ -63,6 +63,7 @@ namespace DLaB.EarlyBoundGenerator
             }
 
             SetConnectionSettingOnLoad();
+            TxtOutput.AppendText("You are running V1 of the XTB Early Bound Generator.  If you Please consider upgrading to V2, which is much faster and has many more features!" + Environment.NewLine);
             HydrateUiFromSettings(ConnectionSettings.FullSettingsPath);
             Telemetry.Enabled = Options.Instance.AllowLogUsage ?? true;
             // Totally security by obscurity
@@ -178,9 +179,17 @@ namespace DLaB.EarlyBoundGenerator
             EnableForm(false);
 
             HydrateSettingsFromUI();
-            if (new Version(Settings.Version) < new Version(Settings.SettingsVersion))
+            var ebgVersion = new Version(Settings.Version);
+            var settingsVersion = new Version(Settings.SettingsVersion);
+            if (settingsVersion.Major > ebgVersion.Major)
             {
-                if(MessageBox.Show($@"This version of the Early Bound Generator ({Settings.Version}) is older than the previous ran version from the settings ({Settings.SettingsVersion}).  You should probably update the plugin before running.  Are you sure you want to continue?", @"Older Version detected", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation) != DialogResult.Yes)
+                MessageBox.Show($@"This version of the Early Bound Generator ({Settings.Version}) is not compatible with the previous ran version from the settings ({Settings.SettingsVersion}).  Please Update to the matching version of the tool before running again.", @"Newer Major Settings Version Detected!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                EnableForm(true);
+                return;
+            }
+            if (ebgVersion < settingsVersion)
+            {
+                if (MessageBox.Show($@"This version of the Early Bound Generator ({Settings.Version}) is older than the previous ran version from the settings ({Settings.SettingsVersion}).  You should probably update the plugin before running.  Are you sure you want to continue?", @"Older Version detected!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation) != DialogResult.Yes)
                 {
                     EnableForm(true);
                     return;
@@ -255,7 +264,12 @@ namespace DLaB.EarlyBoundGenerator
         private void HydrateSettingsFromUI()
         {
             if (ConnectionDetail != null)
-            {   
+            {
+                if (ConnectionDetail.UseOnline)
+                {
+                    TxtOutput.AppendText("You are using an older, slower version of the the Early Bound Generator.  Please consider installing the Early Bound Generator V2 from the XrmToolBox plugin store!" + Environment.NewLine);
+                }
+
                 TxtOutput.AppendText("CRM Authentication Type Detected: " + ConnectionDetail.AuthType + Environment.NewLine);
                 Settings.Domain = GetUserDomain();
                 Settings.Password = ConnectionDetail.GetUserPassword();

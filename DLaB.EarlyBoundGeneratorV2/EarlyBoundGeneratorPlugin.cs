@@ -221,9 +221,17 @@ Please consider clicking the save button in the top right to save the settings w
             EnableForm(false);
 
             HydrateSettingsFromUI();
-            if (new Version(Settings.Version) < new Version(Settings.SettingsVersion))
+            var ebgVersion = new Version(Settings.Version);
+            var settingsVersion = new Version(Settings.SettingsVersion);
+            if (settingsVersion.Major > ebgVersion.Major)
             {
-                if(MessageBox.Show($@"This version of the Early Bound Generator ({Settings.Version}) is older than the previous ran version from the settings ({Settings.SettingsVersion}).  You should probably update the plugin before running.  Are you sure you want to continue?", @"Older Version detected", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation) != DialogResult.Yes)
+                MessageBox.Show($@"This version of the Early Bound Generator ({Settings.Version}) is not compatible with the previous ran version from the settings ({Settings.SettingsVersion}).  Please Update to the matching version of the tool before running again.", @"Newer Major Settings Version Detected!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                EnableForm(true);
+                return; 
+            }
+            if (ebgVersion < settingsVersion)
+            {
+                if(MessageBox.Show($@"This version of the Early Bound Generator ({Settings.Version}) is older than the previous ran version from the settings ({Settings.SettingsVersion}).  You should probably update the plugin before running.  Are you sure you want to continue?", @"Older Version detected!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation) != DialogResult.Yes)
                 {
                     EnableForm(true);
                     return;
