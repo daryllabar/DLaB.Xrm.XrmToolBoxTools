@@ -11,7 +11,10 @@
 		<projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses ModelBuilder from the PAC.</description>
-		<releaseNotes>V2.2023.9.21
+		<releaseNotes>V2.2023.?.??
+Add setting to specify output folder location #451
+
+V2.2023.9.21
 Utilize EmitEntityETC Setting #446 		
 Use emitVirtualAttributes #445
 Add Ability to Trace Model Builder #444
@@ -103,8 +106,7 @@ Order settings a bit better #321
 	</metadata>
 	<files>
 		<!-- lib -->
-		<file src="bin\Release\DLaB.ModelBuilderExtensions.dll" target="lib\net48" />
-		<file src="bin\Release\DLaB.EarlyBoundGeneratorV2.Api.dll" target="lib\net48" />
+		<file src="bin\Release\DLaB.*.*" target="lib\net48" />
 		<!-- content -->
 		<file src="bin\Release\DLaB.Dictionary.txt" target="content\bin\DLaB.EarlyBoundGeneratorV2\DLaB.Dictionary.txt" />
 		<file src="bin\Release\alphabets\*.*" target="content\bin\DLaB.EarlyBoundGeneratorV2\alphabets" />

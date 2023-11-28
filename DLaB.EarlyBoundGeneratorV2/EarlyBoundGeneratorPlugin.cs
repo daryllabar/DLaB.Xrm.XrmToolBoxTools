@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Media;
 using System.Windows.Forms;
+using DLaB.ModelBuilderExtensions;
 using XrmToolBox;
 using XrmToolBox.Extensibility;
 using XrmToolBox.Extensibility.Interfaces;
@@ -103,7 +104,12 @@ namespace DLaB.EarlyBoundGeneratorV2
         {
             Settings = config;
             Settings.ExtensionConfig.XrmToolBoxPluginPath = Paths.PluginsPath;
-            SettingsMap = new SettingsMap(this, Settings) { SettingsPath = settingsPath };
+            SettingsMap = new SettingsMap(this, Settings)
+            {
+                SettingsPath = string.IsNullOrWhiteSpace(Settings.ExtensionConfig.OutputRelativeDirectory) 
+                    ? settingsPath 
+                    : Settings.ExtensionConfig.OutputRelativeDirectory
+            };
             PropertiesGrid.SelectedObject = SettingsMap;
             HideUnusedCategories();
             SkipSaveSettings = false;
@@ -289,7 +295,10 @@ Please consider clicking the save button in the top right to save the settings w
             }
 
             SettingsMap.PushChanges();
-            Settings.RootPath = Path.GetDirectoryName(Path.GetFullPath(TxtSettingsPath.Text));
+            var settingsDirectory = Path.GetDirectoryName(Path.GetFullPath(TxtSettingsPath.Text));
+            Settings.RootPath = string.IsNullOrWhiteSpace(SettingsMap.OutputRelativeDirectory)
+                ? settingsDirectory
+                : SettingsMap.OutputRelativeDirectory.RootPath(settingsDirectory); ;
 
             var defaultConfig = EarlyBoundGeneratorConfig.GetDefault();
             defaultConfig.ExtensionConfig.XrmToolBoxPluginPath = Paths.PluginsPath;

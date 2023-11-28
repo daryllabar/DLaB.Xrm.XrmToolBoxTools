@@ -97,7 +97,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
 
         [Category("2 - Entities")]
         [DisplayName("Entity Relative Output Path")]
-        [Description("This is realtive to the Path of the Settings File.  If \"Create One File Per Entity\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
+        [Description("This is realtive to the Path of the Output Relative Directory (or if not populated, the Settings File).  If \"Create One File Per Entity\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
         [Editor(typeof(PathEditor), typeof(UITypeEditor))]
         [DynamicRelativePathEditor(nameof(SettingsPath), nameof(CreateOneFilePerEntity), "C# files|*.cs", "cs", false)]
         public string EntityTypesFolder
@@ -290,7 +290,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
 
         [Category("1 - Global")]
         [DisplayName("Builder Settings Json Relative Path")]
-        [Description("This is relative to the Path of the Settings File.  This should end with the a \".json\" extension.")]
+        [Description("This is relative to the Path of the Output Relative Directory (or if not populated, the Settings File).  This should end with the a \".json\" extension.")]
         public string BuilderSettingsJsonRelativePath
         {
             get => Config.ExtensionConfig.BuilderSettingsJsonRelativePath;
@@ -405,6 +405,17 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         }
 
         [Category("1 - Global")]
+        [DisplayName("Output Relative Directory")]
+        [Description("By default, this is the directory of the Settings file.  But if populated, this directory will be used instead, and all other paths will be relative to this one.")]
+        [Editor(typeof(PathEditor), typeof(UITypeEditor))]
+        [DynamicRelativePathEditor(nameof(SettingsPath), true, checkFileExists: false)]
+        public string OutputRelativeDirectory
+        {
+            get => Config.ExtensionConfig.OutputRelativeDirectory;
+            set => Config.ExtensionConfig.OutputRelativeDirectory = value;
+        }
+
+        [Category("1 - Global")]
         [DisplayName("Project Name For Early Bound Files")]
         [Description("(Optional) Defines the actual project name to search for when searching for a project file. If no value is provided, the first project file found will be used.")]
         public string ProjectNameForEarlyBoundFiles
@@ -455,7 +466,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
 
         [Category("4 - Messages")]
         [DisplayName("Message Relative Output Path")]
-        [Description("This is realtive to the Path of the Settings File.  If \"Create One File Per Message\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
+        [Description("This is realtive to the Path of the Output Relative Directory (or if not populated, the Settings File).  If \"Create One File Per Message\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
         [Editor(typeof(PathEditor), typeof(UITypeEditor))]
         [DynamicRelativePathEditor(nameof(SettingsPath), nameof(CreateOneFilePerMessage), "C# files|*.cs", "cs", false)]
         public string MessageTypesFolder
@@ -613,7 +624,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
 
         [Category("3 - Option Sets")]
         [DisplayName("Option Set Output Relative Path")]
-        [Description("This is realtive to the Path of the Settings File.  If \"Create One File Per Option Set\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
+        [Description("This is realtive to the Path of the Output Relative Directory (or if not populated, the Settings File).  If \"Create One File Per Option Set\" is enabled, this needs to be a file path that ends in \".cs\", else, this needs to be a path to a directory.")]
         [Editor(typeof(PathEditor), typeof(UITypeEditor))]
         [DynamicRelativePathEditor(nameof(SettingsPath), nameof(CreateOneFilePerOptionSet), "C# files|*.cs", "cs", false)]
         public string OptionSetsTypesFolder

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json.Serialization;
+using System.Windows.Shapes;
 
 namespace DLaB.ModelBuilderExtensions
 {
@@ -56,7 +57,7 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("camelCaseNamesDictionaryRelativePath")]
         public string CamelCaseNamesDictionaryPath
         {
-            get => ConvertRelativePathToAbsolute(_camelCaseNamesDictionaryRelativePath);
+            get => _camelCaseNamesDictionaryRelativePath.RootPath(XrmToolBoxPluginPath);
             set => _camelCaseNamesDictionaryRelativePath = value;
         }
 
@@ -184,6 +185,9 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("orgEntityClassName")]
         public string OrgEntityClassName { get; set; }
 
+        [JsonPropertyName("outputRelativeDirectory")]
+        public string OutputRelativeDirectory { get; set; }
+
         [JsonPropertyName("projectNameForEarlyBoundFiles")]
         public string ProjectNameForEarlyBoundFiles { get; set; }
 
@@ -220,7 +224,7 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("transliterationRelativePath")]
         public string TransliterationPath
         {
-            get => ConvertRelativePathToAbsolute(_transliterationRelativePath);
+            get => _transliterationRelativePath.RootPath(XrmToolBoxPluginPath);
             set => _transliterationRelativePath = value;
         }
 
@@ -293,18 +297,6 @@ namespace DLaB.ModelBuilderExtensions
             TokenCapitalizationOverrides = new List<string>();
             UserEntityClassName = "UserOwnedEntity";
             ValidCSharpNameRegEx = @"[^a-zA-Z0-9_]";
-        }
-
-        private string ConvertRelativePathToAbsolute(string path)
-        {
-            if (string.IsNullOrWhiteSpace(path))
-            {
-                return path;
-            }
-
-            return Path.IsPathRooted(path)
-                ? path
-                : Path.Combine(XrmToolBoxPluginPath ?? AppDomain.CurrentDomain.BaseDirectory, path);
         }
     }
 

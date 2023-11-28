@@ -199,6 +199,10 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         /// </summary>
         public string OptionSetNames { get; set; }
         /// <summary>
+        /// By default, this is the directory of the Settings file.  But if populated, this directory will be used instead, and all other paths will be relative to this one.
+        /// </summary>
+        public string OutputRelativeDirectory { get; set; }
+        /// <summary>
         /// The name of the project to add newly created files to. If not value is provided, the first one found will be used.
         /// </summary>
         public string ProjectNameForEarlyBoundFiles { get; set; }
@@ -332,6 +336,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 ModelBuilderLogLevel = "2",
                 OptionSetLanguageCodeOverride = null,
                 OptionSetNames = null,
+                OutputRelativeDirectory = null,
                 ProjectNameForEarlyBoundFiles = string.Empty,
                 PropertyEnumMappings = string.Empty,
                 ReadSerializedMetadata = false,
@@ -398,6 +403,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             ModelBuilderLogLevel = GetValueOrDefault(poco.ModelBuilderLogLevel, ModelBuilderLogLevel);
             OptionSetLanguageCodeOverride = poco.OptionSetLanguageCodeOverride ?? OptionSetLanguageCodeOverride;
             OptionSetNames = GetValueOrDefault(poco.OptionSetNames, OptionSetNames);
+            OutputRelativeDirectory = GetValueOrDefault(poco.OutputRelativeDirectory, OutputRelativeDirectory);
             ProjectNameForEarlyBoundFiles = poco.ProjectNameForEarlyBoundFiles ?? ProjectNameForEarlyBoundFiles;
             PropertyEnumMappings = GetValueOrDefault(poco.PropertyEnumMappings, PropertyEnumMappings);
             ReadSerializedMetadata = poco.ReadSerializedMetadata ?? ReadSerializedMetadata;
@@ -470,6 +476,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddProperty(nameof(ReadSerializedMetadata), ReadSerializedMetadata);
             writer.AddProperty(nameof(RemoveRuntimeVersionComment), RemoveRuntimeVersionComment);
             AddOptionalBoolProperty("ReplaceEnumPropertiesWithOptionSet", !GenerateEnumProperties, generateOptionSetProperties);
+            writer.AddProperty(nameof(OutputRelativeDirectory), OutputRelativeDirectory);
             writer.AddProperty(nameof(SerializeMetadata), SerializeMetadata);
             writer.AddPropertyArray(nameof(TokenCapitalizationOverrides), TokenCapitalizationOverrides);
             writer.AddProperty(nameof(TransliterationRelativePath), TransliterationRelativePath);
@@ -589,6 +596,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings.POCO
         public string ModelBuilderLogLevel { get; set; }
         public string OptionSetNames { get; set; }
         public int? OptionSetLanguageCodeOverride { get; set; }
+        public string OutputRelativeDirectory { get; set; }
         public string PropertyEnumMappings { get; set; }
         public string ProjectNameForEarlyBoundFiles { get; set; }
         public bool? ReadSerializedMetadata { get; set; }

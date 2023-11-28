@@ -13,6 +13,7 @@
     <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
     <releaseNotes>V2.2023.?.??
 Audible Completion Notification setting don't work #452
+Add setting to specify output folder location #451
 
 V2.2023.9.21
 Utilize EmitEntityETC Setting #446 		
@@ -102,9 +103,9 @@ Order settings a bit better #321
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2.dll"             target="lib\net462\plugins" />
-    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2\*.*"             target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2" />
-    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2\alphabets\*.*"   target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\alphabets" />
+    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2.dll"             target="lib\net48\plugins" />
+    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2\*.*"             target="lib\net48\plugins\DLaB.EarlyBoundGeneratorV2" />
+    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2\alphabets\*.*"   target="lib\net48\plugins\DLaB.EarlyBoundGeneratorV2\alphabets" />
     <file src="bin\Release\Images\DLaB_Dynamics_Logo_Square_32x32.png" target="images\" />
   </files>
 </package>

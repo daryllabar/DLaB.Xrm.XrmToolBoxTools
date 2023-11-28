@@ -3,6 +3,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -383,6 +384,19 @@ namespace DLaB.ModelBuilderExtensions
                                 where unicodeCategory != UnicodeCategory.NonSpacingMark
                                 select c;
             return new string(diacriticLess.ToArray()).Normalize(NormalizationForm.FormC);
+        }
+
+        /// <summary>
+        /// If the path is not already rooted, uses the defaultRootDirectory to root it.
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="defaultRootDirectory">Defaults to the AppDomain.CurrentDomain.BaseDirectory if not provided</param>
+        /// <returns></returns>
+        public static string RootPath(this string filePath, string defaultRootDirectory = null)
+        {
+            return Path.IsPathRooted(filePath)
+                ? filePath
+                : Path.GetFullPath(Path.Combine(defaultRootDirectory ?? AppDomain.CurrentDomain.BaseDirectory, filePath));
         }
 
         #endregion String

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using DLaB.ModelBuilderExtensions;
 using McTools.Xrm.Connection;
 using XrmToolBox.Extensibility;
 
@@ -10,7 +11,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
     {
         public string SettingsPath { get; set; }
 
-        public string FullSettingsPath => Path.IsPathRooted(SettingsPath) ? SettingsPath : Path.GetFullPath(Path.Combine(Paths.PluginsPath, SettingsPath));
+        public string FullSettingsPath => SettingsPath.RootPath(Paths.PluginsPath);
 
         public string SettingsDirectoryName => Path.GetDirectoryName(FullSettingsPath);
 

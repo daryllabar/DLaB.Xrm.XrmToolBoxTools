@@ -128,7 +128,7 @@ namespace DLaB.EarlyBoundGeneratorV2
 
         private static void UpdateBuilderSettingsJson(EarlyBoundGeneratorConfig earlyBoundGeneratorConfig, bool allowRetry)
         {
-            var path = GetJsonConfigPath(earlyBoundGeneratorConfig);
+            var path = earlyBoundGeneratorConfig.SettingsTemplatePath;
 
             if (!Directory.Exists(Path.GetDirectoryName(path)))
             {
@@ -195,20 +195,12 @@ namespace DLaB.EarlyBoundGeneratorV2
             }
         }
 
-        private static string GetJsonConfigPath(EarlyBoundGeneratorConfig earlyBoundGeneratorConfig)
-        {
-            var path = Path.IsPathRooted(earlyBoundGeneratorConfig.ExtensionConfig.BuilderSettingsJsonRelativePath)
-                ? earlyBoundGeneratorConfig.ExtensionConfig.BuilderSettingsJsonRelativePath
-                : Path.Combine(earlyBoundGeneratorConfig.RootPath, earlyBoundGeneratorConfig.ExtensionConfig.BuilderSettingsJsonRelativePath);
-            return path;
-        }
-
         /// <summary>
         /// The Extensions to the Pac Model Builder will live in a different assembly.  To ensure that users can run against the PAC commandline, reset the namespace to the PAC version
         /// </summary>
         public void RemoveXrmToolBoxPluginPath()
         {
-            var path = GetJsonConfigPath(EarlyBoundGeneratorConfig);
+            var path = EarlyBoundGeneratorConfig.SettingsTemplatePath;
 
             var contents = File.ReadAllLines(path);
 

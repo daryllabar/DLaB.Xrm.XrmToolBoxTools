@@ -94,6 +94,10 @@ namespace DLaB.XrmToolBoxCommon.Editors
 
         public virtual string GetDefaultFileName(ITypeDescriptorContext context, string currentPath)
         {
+            if (currentPath == null)
+            {
+                return null;
+            }
             return File.Exists(currentPath)
                     || Directory.Exists(currentPath)
                 ? currentPath
@@ -126,7 +130,7 @@ namespace DLaB.XrmToolBoxCommon.Editors
             {
                 BasePath = Path.GetDirectoryName(BasePath);
             }
-            var absolutePath = Path.Combine(BasePath?? "NULL", currentPath);
+            var absolutePath = Path.Combine(BasePath?? "NULL", currentPath ?? string.Empty);
             return base.GetDefaultFileName(context, absolutePath);
         }
 
@@ -181,6 +185,11 @@ namespace DLaB.XrmToolBoxCommon.Editors
             DirectoryFlagPropertyName = directoryFlagPropertyName;
         }
 
+        public DynamicRelativePathEditorAttribute(string relativePathPropertyName, bool isDirectory, string filter = "All Files (*.*)|*.*", string defaultExt = "", bool checkFileExists = true, bool checkPathExists = true) : base(null, filter, defaultExt, checkFileExists, checkPathExists, isDirectory)
+        {
+            RelativePathPropertyName = relativePathPropertyName;
+        }
+
         public override string GetDefaultFileName(ITypeDescriptorContext context, string currentPath)
         {
             var prop = context.Instance.GetType().GetProperty(RelativePathPropertyName, BindingFlags.Public | BindingFlags.Instance);
@@ -194,6 +203,11 @@ namespace DLaB.XrmToolBoxCommon.Editors
 
         public override bool GetDirectoryFlag(ITypeDescriptorContext context)
         {
+            if (DirectoryFlagPropertyName == null)
+            {
+                return base.GetDirectoryFlag(context);
+            }
+
             var prop = context.Instance.GetType().GetProperty(DirectoryFlagPropertyName, BindingFlags.Public | BindingFlags.Instance);
             if (prop == null)
             {

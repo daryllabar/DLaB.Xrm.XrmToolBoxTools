@@ -152,24 +152,15 @@ namespace DLaB.ModelBuilderExtensions
                 Messages = metadata.Messages
             };
 
-            filePath = RootPath(filePath);
+            filePath = filePath.RootPath();
             Console.WriteLine("[**** Writing Metadata to File {0} ****]", filePath);
             File.WriteAllText(filePath, Serialize(localMetadata,true));
             Console.WriteLine("[**** Finished Writing Metadata ****]", filePath);
         }
 
-        private static string RootPath(string filePath)
-        {
-            if (!Path.IsPathRooted(filePath))
-            {
-                filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, filePath);
-            }
-            return filePath;
-        }
-
         public static IOrganizationMetadata DeserializeMetadata(string filePath)
         {
-            filePath = RootPath(filePath);
+            filePath = filePath.RootPath(filePath);
             return DeserializeDataObject<Metadata>(File.ReadAllText(filePath));
         }
 
