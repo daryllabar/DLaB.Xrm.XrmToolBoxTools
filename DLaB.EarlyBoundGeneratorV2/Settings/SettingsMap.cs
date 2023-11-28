@@ -110,14 +110,14 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         [DisplayName("Entities Blacklist")]
         [Description("Contains Entities to not generate.")]
         [Editor(typeof(EntitiesHashEditor), typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public HashSet<string> EntitiesBlacklist { get; set; }
 
         [Category("2 - Entities")]
         [DisplayName("Entities Whitelist")]
         [Description("Contains only the Entities to generate.  If empty, all Entities will be included.")]
         [Editor(typeof(EntitiesHashEditor), typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         [CollectionCount("All Entities")]
         public HashSet<string> EntitiesWhitelist { get; set; }
 
@@ -125,21 +125,21 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         [DisplayName("Attribute Capitalization Override")]
         [Description("Allows for the ability to specify the capitalization of an attribute on an entity.")]
         [Editor(typeof(SpecifyAttributesCaseEditor), typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public Dictionary<string, HashSet<string>> EntityAttributeSpecifiedNames { get; set; }
 
         [Category("2 - Entities")]
         [DisplayName("Entities RegEx Blacklist")]
         [Description("RegEx used to exclude entities from being generated.  If the entity logical name matches the given regex, it will not be generated. (Reminder, a wild card is \".*\" in regex)")]
         [Editor(StringEditorName, typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public List<string> EntityRegExBlacklist { get; set; }
 
         [Category("2 - Entities")]
         [DisplayName("Entities Wildcard Whitelist")]
         [Description("Entity wildcard \"*\" to generate.  If the Entity matches the wildcard search value it will be included.")]
         [Editor(StringEditorName, typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public List<string> EntityWildcardWhitelist { get; set; }
 
         [Category("2 - Entities")]
@@ -236,7 +236,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         [DisplayName("Property Enum Mapping")]
         [Description("Manually specifies an enum mapping for an OptionSetValue Property on an entity.\n\rThis is useful if you have multiple local options that really are the same value.  This then allows easier comparision since the enums don't have to be converted.")]
         [Editor(typeof(AttributesToEnumMapperEditor), typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public List<string> PropertyEnumMappings { get; set; }
 
         [Category("2 - Entities")]
@@ -319,7 +319,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         [DisplayName("Camel Case Custom Words")]
         [Description("Custom words to add to the standard dictionary file.  Allows for more control of the camel case naming convention, without having to check the entire dictionary file in.")]
         [Editor(StringEditorName, typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public List<string> CamelCaseCustomWords { get; set; }
 
         [Category("1 - Global")]
@@ -427,7 +427,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         [DisplayName("Token Capitalization Overrides")]
         [Description("Used in conjunction with Camel Case Class Names and Camel Case Member Names to override any defaults.")]
         [Editor(StringEditorName, typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public List<string> TokenCapitalizationOverrides { get; set; }
 
         [Category("1 - Global")]
@@ -468,21 +468,21 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         [DisplayName("Message Wildcard Whitelist")]
         [Description("Message wildcard \"*\" to generate.  If the Message matches the wildcard search value it will be included.")]
         [Editor(StringEditorName, typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public List<string> MessageWildcardWhitelist { get; set; }
 
         [Category("4 - Messages")]
         [DisplayName("Messages Whitelist")]
         [Description("Allows for the ability to specify Messages that will be included in generation.  \"*\" wildcards are valid. ")]
         [Editor(typeof(ActionsHashEditor), typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public HashSet<string> MessageWhitelist { get; set; }
 
         [Category("4 - Messages")]
         [DisplayName("Messages Blacklist")]
         [Description("Allows for the ability to specify Messages to not generate.")]
         [Editor(typeof(ActionsHashEditor), typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public HashSet<string> MessageBlacklist { get; set; }
 
         [Category("4 - Messages")]
@@ -653,7 +653,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         [DisplayName("Option Set Names")]
         [Description("If Option Sets have idential names to Entities, it will cause naming conflicts.  By default this is overcome by postfixing \"_Enum\" to the Option Set name.  This setting allows a custom mapping for option set names to be specified.")]
         [Editor(typeof(DictionaryEditor), typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public Dictionary<string, string> OptionSetNames { get; set; }
 
         #endregion Option Sets

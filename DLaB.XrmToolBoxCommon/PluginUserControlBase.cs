@@ -38,7 +38,7 @@ namespace DLaB.XrmToolBoxCommon
         private Assembly AssemblyResolveEventHandler(object sender, ResolveEventArgs args)
         {
             Assembly loadAssembly = null;
-            Assembly currAssembly = Assembly.GetExecutingAssembly();
+            Assembly currAssembly = GetType().Assembly;
 
             // base name of the assembly that failed to resolve
             var argName = args.Name.Substring(0, args.Name.IndexOf(","));
