@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using DLaB.Log;
 using McTools.Xrm.Connection;
 using Microsoft.Xrm.Sdk.Metadata;
-using Source.DLaB.Xrm;
 using XrmToolBox.Extensibility;
 
 namespace DLaB.XrmToolBoxCommon
@@ -182,6 +181,35 @@ namespace DLaB.XrmToolBoxCommon
                 Select(e => new ObjectCollectionItem<EntityMetadata>(e.GetDisplayNameWithLogical(), e)).
                 OrderBy(r => r.DisplayName).Cast<object>().ToArray();
         }
+
+        /// <summary>
+        /// Gets the text value of the di.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <returns></returns>
+        private static string GetDisplayNameWithLogical(this EntityMetadata entity)
+        {
+            return entity.DisplayName.GetLocalOrDefaultText(entity.SchemaName) + " (" + entity.LogicalName + ")";
+        }
+
+        /// <summary>
+        /// Gets the local or default text.
+        /// </summary>
+        /// <param name="label">The label.</param>
+        /// <param name="defaultIfNull">The default if null.</param>
+        /// <returns></returns>
+        private static string GetLocalOrDefaultText(this Microsoft.Xrm.Sdk.Label label, string defaultIfNull = null)
+        {
+            var local = label.UserLocalizedLabel ?? label.LocalizedLabels.FirstOrDefault();
+
+            if (local == null)
+            {
+                return defaultIfNull;
+            }
+
+            return local.Label ?? defaultIfNull;
+        }
+
 
         #endregion // IEnumerable<EntityMetadata>
 

@@ -1,5 +1,5 @@
-﻿using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
-using Microsoft.Xrm.Sdk.Client;
+﻿using DLaB.Xrm;
+using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using System;
 using System.CodeDom;
 using System.CodeDom.Compiler;
@@ -9,8 +9,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using Source.DLaB.Xrm;
-using System.IdentityModel.Protocols.WSTrust;
 
 namespace DLaB.ModelBuilderExtensions
 {

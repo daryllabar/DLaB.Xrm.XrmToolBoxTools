@@ -3,7 +3,7 @@ using System.Reflection;
 using System;
 using System.Text.Json;
 using static DLaB.EarlyBoundGeneratorV2.Settings.EarlyBoundGeneratorConfig;
-using Source.DLaB.Common;
+using DLaB.Common;
 
 namespace DLaB.EarlyBoundGeneratorV2.Settings
 {

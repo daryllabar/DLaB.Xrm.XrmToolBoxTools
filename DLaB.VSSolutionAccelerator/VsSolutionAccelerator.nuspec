@@ -33,10 +33,8 @@ V1.2019.10.11
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\Plugins\DLaB.VSSolutionAccelerator.dll" target="lib\net462\plugins" />
-    <file src="bin\Release\DLaB.ModelBuilderExtensions.dll" target="lib\net462\plugins\DLaB.VSSolutionAccelerator\DLaB.ModelBuilderExtensions.dll" />
-    <file src="bin\Release\Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" target="lib\net462\plugins\DLaB.VSSolutionAccelerator\Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" />
-    <file src="bin\Release\Plugins\DLaB.VSSolutionAccelerator\Template.zip" target="lib\net462\plugins\DLaB.VSSolutionAccelerator\Template.zip" />
+    <file src="bin\Release\Plugins\DLaB.VSSolutionAccelerator.dll"     target="lib\net462\plugins" />
+    <file src="bin\Release\DLaB.VSSolutionAccelerator\*.*"             target="lib\net462\plugins\DLaB.VSSolutionAccelerator" />
     <file src="bin\Release\Images\DLaB_Dynamics_Logo_Square_32x32.png" target="images\" />
-  </files>
+	</files>
 </package>

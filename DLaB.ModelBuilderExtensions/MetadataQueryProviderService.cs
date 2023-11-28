@@ -4,7 +4,7 @@ using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Metadata;
 using Microsoft.Xrm.Sdk.Metadata.Query;
 using Microsoft.Xrm.Sdk.Query;
-using Source.DLaB.Common;
+using DLaB.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;

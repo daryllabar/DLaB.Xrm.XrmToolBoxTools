@@ -51,7 +51,7 @@
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Crm.Sdk.Proxy, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.50\lib\net462\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.51\lib\net462\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.Configuration, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Configuration.3.1.8\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
@@ -106,7 +106,7 @@
       <HintPath>..\packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.50\lib\net462\Microsoft.Xrm.Sdk.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.51\lib\net462\Microsoft.Xrm.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xrm.Sdk.Deployment, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CrmSdk.Deployment.9.0.2.34\lib\net462\Microsoft.Xrm.Sdk.Deployment.dll</HintPath>
@@ -129,26 +129,8 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="NuGet.Common, Version=6.5.0.154, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\NuGet.Common.6.5.0\lib\netstandard2.0\NuGet.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="NuGet.Configuration, Version=6.5.0.154, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\NuGet.Configuration.6.5.0\lib\netstandard2.0\NuGet.Configuration.dll</HintPath>
-    </Reference>
     <Reference Include="NuGet.Core, Version=2.14.0.832, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\NuGet.Core.2.14.0\lib\net40-Client\NuGet.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="NuGet.Frameworks, Version=6.5.0.154, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\NuGet.Frameworks.6.5.0\lib\netstandard2.0\NuGet.Frameworks.dll</HintPath>
-    </Reference>
-    <Reference Include="NuGet.Packaging, Version=6.5.0.154, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\NuGet.Packaging.6.5.0\lib\netstandard2.0\NuGet.Packaging.dll</HintPath>
-    </Reference>
-    <Reference Include="NuGet.Protocol, Version=6.5.0.154, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\NuGet.Protocol.6.5.0\lib\netstandard2.0\NuGet.Protocol.dll</HintPath>
-    </Reference>
-    <Reference Include="NuGet.Versioning, Version=6.5.0.154, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\NuGet.Versioning.6.5.0\lib\netstandard2.0\NuGet.Versioning.dll</HintPath>
     </Reference>
     <Reference Include="ScintillaNET, Version=3.6.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\jacobslusser.ScintillaNET.3.6.3\lib\net40\ScintillaNET.dll</HintPath>
@@ -283,17 +265,14 @@
       <HintPath>..\packages\DockPanelSuite.ThemeVS2015.3.1.0\lib\net40\WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
-    <Reference Include="XrmToolBox, Version=1.2023.6.65, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XrmToolBoxPackage.1.2023.7.65\lib\net462\XrmToolBox.exe</HintPath>
+    <Reference Include="XrmToolBox, Version=1.2023.10.67, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XrmToolBoxPackage.1.2023.10.67\lib\net462\XrmToolBox.exe</HintPath>
     </Reference>
-    <Reference Include="XrmToolBox.Extensibility, Version=1.2023.6.65, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XrmToolBoxPackage.1.2023.7.65\lib\net462\XrmToolBox.Extensibility.dll</HintPath>
+    <Reference Include="XrmToolBox.Extensibility, Version=1.2023.10.67, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XrmToolBoxPackage.1.2023.10.67\lib\net462\XrmToolBox.Extensibility.dll</HintPath>
     </Reference>
-    <Reference Include="XrmToolBox.PluginsStore, Version=1.2023.1.63, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XrmToolBoxPackage.1.2023.7.65\lib\net462\XrmToolBox.PluginsStore.dll</HintPath>
-    </Reference>
-    <Reference Include="XrmToolBox.ToolLibrary, Version=1.2023.6.65, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XrmToolBoxPackage.1.2023.7.65\lib\net462\XrmToolBox.ToolLibrary.dll</HintPath>
+    <Reference Include="XrmToolBox.ToolLibrary, Version=1.2023.10.67, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XrmToolBoxPackage.1.2023.10.67\lib\net462\XrmToolBox.ToolLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -398,18 +377,41 @@
     <Content Include="Reference\Wizard.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DLaB.EarlyBoundGeneratorV2.Logic\DLaB.EarlyBoundGeneratorV2.Logic.csproj">
+      <Project>{46fa9089-9d5f-4c61-a6e6-196bf3d81371}</Project>
+      <Name>DLaB.EarlyBoundGeneratorV2.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DLaB.Log\DLaB.Log.csproj">
+      <Project>{c2fa0c39-cb9e-4c4b-9995-fecdd795b5c2}</Project>
+      <Name>DLaB.Log</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DLaB.ModelBuilderExtensions\DLaB.ModelBuilderExtensions.csproj">
       <Project>{7827fcaf-6aa2-46b9-bb88-0d3ca9dd4d32}</Project>
       <Name>DLaB.ModelBuilderExtensions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DLaB.Xrm.Entities.XrmToolBoxCommon\DLaB.Xrm.Entities.XrmToolBoxCommon.csproj">
+      <Project>{bd522185-e050-4eb0-bf14-4ee5283c84d9}</Project>
+      <Name>DLaB.Xrm.Entities.XrmToolBoxCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DLaB.Xrm.Entities\DLaB.Xrm.Entities.csproj">
+      <Project>{afcde5b1-e45e-43e6-a0ea-ae4d43a08bb7}</Project>
+      <Name>DLaB.Xrm.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.csproj">
+      <Project>{e98fb2e7-13f8-40a6-9ff3-6f64e930b5ed}</Project>
+      <Name>DLaB.XrmToolBoxCommon</Name>
+    </ProjectReference>
   </ItemGroup>
-  <Import Project="..\DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems" Label="Shared" />
-  <Import Project="..\DLaB.Xrm.Entities\DLaB.Xrm.Entities.projitems" Label="Shared" />
-  <Import Project="..\DLaB.Log\DLaB.Log.projitems" Label="Shared" />
-  <Import Project="..\DLaB.EarlyBoundGeneratorV2.Logic\DLaB.EarlyBoundGeneratorV2.Logic.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>IF NOT EXIST Plugins mkdir Plugins
+    <PostBuildEvent>xcopy /I /Y "$(TargetDir)Microsoft.AI.ServerTelemetryChannel.dll" "$(TargetDir)$(TargetName)"
+xcopy /I /Y "$(TargetDir)Microsoft.ApplicationInsights.dll" "$(TargetDir)$(TargetName)"
+xcopy /I /Y "$(TargetDir)Microsoft.Extensions.*.dll" "$(TargetDir)$(TargetName)"
+xcopy /I /Y "$(TargetDir)Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" "$(TargetDir)$(TargetName)"
+xcopy /I /Y "$(TargetDir)DLaB.*.dll" "$(TargetDir)$(TargetName)"
+del "$(TargetDir)$(TargetName)\$(TargetFileName)"
+
+IF NOT EXIST Plugins mkdir Plugins
 move /Y $(TargetFileName) Plugins
 
 if NOT EXIST "$(SolutionDir)..\XrmUnitTest.Example" goto :error

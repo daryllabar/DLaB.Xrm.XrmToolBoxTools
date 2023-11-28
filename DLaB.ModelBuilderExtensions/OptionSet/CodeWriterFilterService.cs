@@ -21,7 +21,6 @@ using System.Collections.Generic;
 using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.Xrm.Sdk.Metadata;
 using System.Linq;
-using Source.DLaB.Common;
 
 namespace DLaB.ModelBuilderExtensions.OptionSet
 {

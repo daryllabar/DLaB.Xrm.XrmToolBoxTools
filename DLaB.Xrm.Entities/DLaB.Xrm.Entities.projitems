@@ -9,13 +9,6 @@
     <Import_RootNamespace>DLaB.Xrm.Entities</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)DLaB.XrmToolBoxCommon\Editors\ActionsHashEditor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DLaB.XrmToolBoxCommon\Forms\SpecifyActionsDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)DLaB.XrmToolBoxCommon\Forms\SpecifyActionsDialog.Designer.cs">
-      <DependentUpon>SpecifyActionsDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Account.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\AccountLeads.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\ActivityMimeAttachment.cs" />
@@ -788,10 +781,5 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Entities\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)DLaB.XrmToolBoxCommon\Forms\SpecifyActionsDialog.resx">
-      <DependentUpon>SpecifyActionsDialog.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>

@@ -1,6 +1,6 @@
 ﻿using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.Xrm.Sdk.Metadata;
-using Source.DLaB.Xrm;
+using DLaB.Xrm;
 using System;
 using System.Collections.Generic;
 using System.Linq;

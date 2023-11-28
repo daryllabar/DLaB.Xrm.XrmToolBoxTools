@@ -11,7 +11,10 @@
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V2.2023.9.21
+    <releaseNotes>V2.2023.?.??
+Audible Completion Notification setting don't work #452
+
+V2.2023.9.21
 Utilize EmitEntityETC Setting #446 		
 Use emitVirtualAttributes #445
 Add Ability to Trace Model Builder #444
@@ -99,14 +102,9 @@ Order settings a bit better #321
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2.dll"                        target="lib\net462\plugins" />
-    <file src="bin\Release\DLaB.ModelBuilderExtensions.dll"                       target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\DLaB.ModelBuilderExtensions.dll" />
-    <file src="bin\Release\Microsoft.AI.ServerTelemetryChannel.dll"               target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\Microsoft.AI.ServerTelemetryChannel.dll" />
-    <file src="bin\Release\Microsoft.ApplicationInsights.dll"                     target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\Microsoft.ApplicationInsights.dll" />
-    <file src="bin\Release\Microsoft.Extensions.*"                                target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2" />
-    <file src="bin\Release\Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" />
-    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2\*.*"                        target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2" />
-    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2\alphabets\*.*"              target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\alphabets" />
-    <file src="bin\Release\Images\DLaB_Dynamics_Logo_Square_32x32.png"            target="images\" />
+    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2.dll"             target="lib\net462\plugins" />
+    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2\*.*"             target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2" />
+    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2\alphabets\*.*"   target="lib\net462\plugins\DLaB.EarlyBoundGeneratorV2\alphabets" />
+    <file src="bin\Release\Images\DLaB_Dynamics_Logo_Square_32x32.png" target="images\" />
   </files>
 </package>

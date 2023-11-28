@@ -1,5 +1,6 @@
-using Source.DLaB.Common;
-using Source.DLaB.Common.VersionControl;
+using DLaB.Common;
+using DLaB.Common.VersionControl;
+using DLaB.Log;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +10,6 @@ using System.Reflection;
 using System.Text.Json;
 using System.Xml;
 using System.Xml.Serialization;
-using DLaB.Log;
 
 namespace DLaB.EarlyBoundGeneratorV2.Settings
 {

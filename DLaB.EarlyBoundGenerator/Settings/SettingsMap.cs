@@ -36,21 +36,21 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [DisplayName("Action Prefixes Whitelist")]
         [Description("Allows for the ability to specify Action prefixes that will be included in generation.")]
         [Editor(StringEditorName, typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public List<string> ActionPrefixesWhitelist { get; set; }
 
         [Category("Actions")]
         [DisplayName("Actions Whitelist")]
         [Description("Allows for the ability to specify Actions that will be included in generation.")]
         [Editor(typeof(ActionsHashEditor), typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public HashSet<string> ActionsWhitelist { get; set; }
 
         [Category("Actions")]
         [DisplayName("Actions Blacklist")]
         [Description("Allows for the ability to specify Actions to not generate.")]
         [Editor(typeof(ActionsHashEditor), typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public HashSet<string> ActionsToSkip { get; set; }
 
         [Category("Actions")]
@@ -84,7 +84,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [DisplayName("Workflowless Actions")]
         [Description("Some actions are being created by MS that are not workflows, and don't show up in the list of actions for adding to whitelist/blacklist, but are getting genereated and causing errors.  This setting is used to manually add action names to the selected lists.")]
         [Editor(StringEditorName, typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public List<string> WorkflowlessActions { get; set; }
 
         #endregion Actions
@@ -155,14 +155,14 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [DisplayName("Entities Blacklist")]
         [Description("Contains Entities to not generate.")]
         [Editor(typeof(EntitiesHashEditor), typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public HashSet<string> EntitiesToSkip { get; set; }
 
         [Category("Entities")]
         [DisplayName("Entities Whitelist")]
         [Description("Contains only the Entities to generate.  If empty, all Entities will be included.")]
         [Editor(typeof(EntitiesHashEditor), typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         [CollectionCount("All Entities")]
         public HashSet<string> EntitiesWhitelist { get; set; }
 
@@ -170,21 +170,21 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [DisplayName("Attribute Capitalization Override")]
         [Description("Allows for the ability to specify the capitalization of an attribute on an entity.")]
         [Editor(typeof(SpecifyAttributesCaseEditor), typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public Dictionary<string, HashSet<string>> EntityAttributeSpecifiedNames { get; set; }
 
         [Category("Entities")]
         [DisplayName("Entities Prefix Blacklist")]
         [Description("Contains list of prefixes to not generate.  If the Entity starts with the given prefix, it will not be generated.")]
         [Editor(StringEditorName, typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public List<string> EntityPrefixesToSkip { get; set; }
 
         [Category("Entities")]
         [DisplayName("Entities Prefix Whitelist")]
         [Description("Contains list of prefixes to generate.  If the Entity starts with the given prefix, it will be generated.")]
         [Editor(StringEditorName, typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public List<string> EntityPrefixesWhitelist { get; set; }
 
         [Category("Entities")]
@@ -272,7 +272,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [DisplayName("Property Enum Mapping")]
         [Description("Manually specifies an enum mapping for an OptionSetValue Property on an entity.\n\rThis is useful if you have multiple local options that really are the same value.  This then allows easier comparision since the enums don't have to be converted.")]
         [Editor(typeof(AttributesToEnumMapperEditor), typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public List<string> PropertyEnumMappings { get; set; }
 
         [Category("Entities")]
@@ -297,7 +297,7 @@ namespace DLaB.EarlyBoundGenerator.Settings
         [DisplayName("Unmapped Properties")]
         [Description("Allows for the ability to specify an OptionSetValue Property of an entity that doesn't have an enum mapping.")]
         [Editor(typeof(SpecifyAttributesEditor), typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public Dictionary<string, HashSet<string>> UnmappedProperties { get; set; }
 
         #endregion Entities
@@ -436,7 +436,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         [DisplayName("Token Capitalization Overrides")]
         [Description("Used in conjunction with Camel Case Class Names and Camel Case Member Names to override any defaults.")]
         [Editor(StringEditorName, typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public List<string> TokenCapitalizationOverrides { get; set; }
 
         [Category("Global")]
@@ -544,14 +544,14 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         [DisplayName("Option Set Prefix Blacklist")]
         [Description("Contains list of prefixes to not generate.  If the Option Set starts with the given prefix, it will not be generated.")]
         [Editor(StringEditorName, typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public List<string> OptionSetPrefixesToSkip { get; set; }
 
         [Category("Option Sets")]
         [DisplayName("Option Sets Blacklist")]
         [Description("Allows for the ability to specify OptionSets to not generate.")]
         [Editor(typeof(OptionSetsHashEditor), typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public HashSet<string> OptionSetsToSkip { get; set; }
 
         [Category("Option Sets")]
@@ -567,7 +567,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         [DisplayName("Option Set Names")]
         [Description("If Option Sets have idential names to Entities, it will cause naming conflicts.  By default this is overcome by postfixing \"_Enum\" to the Option Set name.  This setting allows a custom mapping for option set names to be specified.")]
         [Editor(typeof(DictionaryEditor), typeof(UITypeEditor))]
-        [TypeConverter(CollectionCountConverter.Name)]
+        [TypeConverter(typeof(CollectionCountConverter))]
         public Dictionary<string, string> OptionSetNames { get; set; }
 
         [Category("Option Sets")]
