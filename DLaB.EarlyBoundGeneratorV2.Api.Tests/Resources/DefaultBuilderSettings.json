@@ -34,7 +34,6 @@
     "makeResponseMessagesEditable": true,
     "modelBuilderLogLevel": "2",
     "readSerializedMetadata": false,
-    "outputRelativeDirectory": "null",
     "removeRuntimeVersionComment": true,
     "serializeMetadata": false,
     "tokenCapitalizationOverrides": [
