@@ -7,7 +7,7 @@
     <ProjectGuid>{46FA9089-9D5F-4C61-A6E6-196BF3D81371}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DLaB.EarlyBoundGeneratorV2.Logic</RootNamespace>
+    <RootNamespace>DLaB.EarlyBoundGeneratorV2</RootNamespace>
     <AssemblyName>DLaB.EarlyBoundGeneratorV2.Logic</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -167,4 +167,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>REM Copy New Content Files
+SET myCmd= "$(SolutionDir)References\NuGetContentInstaller.exe" "$(SolutionDir) " "$(ProjectPath)"
+echo %25myCmd%25
+%25myCmd%25
+
+if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.exe" "$(ProjectDir)Properties\AssemblyInfo.cs"
+</PreBuildEvent>
+  </PropertyGroup>
 </Project>

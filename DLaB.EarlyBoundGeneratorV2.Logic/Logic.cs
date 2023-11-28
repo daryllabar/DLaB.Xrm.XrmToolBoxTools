@@ -217,6 +217,10 @@ namespace DLaB.EarlyBoundGeneratorV2
 
         private void Speak(string words)
         {
+            if (!EarlyBoundGeneratorConfig.AudibleCompletionNotification)
+            {
+                return;
+            }
             var speaker = new SpeechSynthesizer();
             lock (_speakToken)
             {

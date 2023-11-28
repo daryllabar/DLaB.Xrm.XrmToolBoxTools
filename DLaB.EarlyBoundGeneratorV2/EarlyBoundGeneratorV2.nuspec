@@ -11,7 +11,10 @@
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V2.2023.9.21
+    <releaseNotes>V2.2023.?.??
+Audible Completion Notification setting don't work #452
+
+V2.2023.9.21
 Utilize EmitEntityETC Setting #446 		
 Use emitVirtualAttributes #445
 Add Ability to Trace Model Builder #444
