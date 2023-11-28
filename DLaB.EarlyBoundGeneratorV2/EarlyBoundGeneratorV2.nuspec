@@ -12,6 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
     <releaseNotes>V2.2023.?.??
+Fix for "Delete Files from Output folders" fails if "Generate Messages" = False #447
 Audible Completion Notification setting don't work #452
 Add setting to specify output folder location #451
 

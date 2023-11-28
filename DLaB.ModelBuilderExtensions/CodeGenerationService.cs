@@ -450,7 +450,10 @@ namespace DLaB.ModelBuilderExtensions
             }
 
             DeleteCSharpFilesInDirectory(Path.Combine(OutDirectory, EntityTypesFolder));
-            DeleteCSharpFilesInDirectory(Path.Combine(OutDirectory, MessageTypesFolder));
+            if (GenerateActions)
+            {
+                DeleteCSharpFilesInDirectory(Path.Combine(OutDirectory, MessageTypesFolder));
+            }
             DeleteCSharpFilesInDirectory(Path.Combine(OutDirectory, OptionSetTypesFolder));
         }
 
