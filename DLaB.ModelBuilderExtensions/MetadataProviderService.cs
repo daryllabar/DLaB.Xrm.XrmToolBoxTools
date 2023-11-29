@@ -160,8 +160,7 @@ namespace DLaB.ModelBuilderExtensions
 
         public static IOrganizationMetadata DeserializeMetadata(string filePath)
         {
-            filePath = filePath.RootPath(filePath);
-            return DeserializeDataObject<Metadata>(File.ReadAllText(filePath));
+            return DeserializeDataObject<Metadata>(File.ReadAllText(filePath.RootPath()));
         }
 
         /// <summary>
