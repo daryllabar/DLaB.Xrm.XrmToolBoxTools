@@ -252,13 +252,13 @@ namespace DLaB.ModelBuilderExtensions
         }
 
         /// <summary>
-        /// Checks to make sure that the name begins with a valid character. If the name does not begin with a valid character, then add an underscore to the beginning of the name.
+        /// Checks to make sure that the name begins with a valid character. If the name does not begin with a valid character, then add the InvalidCSharpNamePrefix to the beginning of the name.
         /// </summary>
         private string GetValidCSharpName(string name)
         {
             //remove spaces and special characters
             name = Regex.Replace(name, ValidCSharpNameRegEx, string.Empty);
-            if (name.Length > 0 && !char.IsLetter(name, 0))
+            if (name.Length > 0 && !char.IsLetter(name, 0) && name[0] != '_')
             {
                 name = InvalidCSharpNamePrefix + name;
             }
