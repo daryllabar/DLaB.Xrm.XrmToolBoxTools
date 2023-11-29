@@ -57,7 +57,9 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         private void OnAddOptionSetMetadataAttributeChange(PropertyValueChangedEventArgs args)
         {
             SetGenerateOptionSetMetadataAttributeVisibility();
+            SetGenerateAllOptionSetLabelMetadataVisibility();
             GenerateOptionSetMetadataAttribute = AddOptionSetMetadataAttribute;
+            GenerateAllOptionSetLabelMetadata = false;
         }
 
         /// <summary>
@@ -204,6 +206,11 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         private void SetGenerateOptionSetMetadataAttributeVisibility()
         {
             SetPropertyBrowsable(nameof(GenerateOptionSetMetadataAttribute), AddOptionSetMetadataAttribute);
+        }
+        
+        private void SetGenerateAllOptionSetLabelMetadataVisibility()
+        {
+            SetPropertyBrowsable(nameof(GenerateAllOptionSetLabelMetadata), AddOptionSetMetadataAttribute);
         }
 
         private void SetGroupLocalOptionSetsByEntityVisibility()

@@ -206,15 +206,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         }
 
         [Category("2 - Entities")]
-        [DisplayName("Generate Option Set Metadata Attribute")]
-        [Description("Generates an OptionSetMetadataAttribute class used to allow for storing of the metadata of OptionSetValues i.e. display order, name, description, etc.  Only used if Add Option Set Metadata Attribute is true.")]
-        public bool GenerateOptionSetMetadataAttribute
-        {
-            get => Config.ExtensionConfig.GenerateOptionSetMetadataAttribute;
-            set => Config.ExtensionConfig.GenerateOptionSetMetadataAttribute = value;
-        }
-
-        [Category("2 - Entities")]
         [DisplayName("Make All Fields Editable")]
         [Description("Defines that Entities should be created with all attributes as editable.  This may be confusing for some developers because attempts to update FullName on the contact will silently fail.")]
         public bool MakeAllFieldsEditable
@@ -561,7 +552,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
 
         [Category("3 - Option Sets")]
         [DisplayName("Add Option Set Metadata Attribute")]
-        [Description("Adds the OptionSetMetadataAttribute to enums to be able to access enum metadata.  Ensure Generate Option Set Metadata Attribute is true to generate the attribute definition, unless this has been handled in some other manner.")]
+        [Description("Adds the OptionSetMetadataAttribute to enums to be able to access enum metadata.  Ensure Generate Option Set Metadata Attribute Class is true to generate the attribute definition, unless this has been handled in some other manner.")]
         public bool AddOptionSetMetadataAttribute
         {
             get => Config.ExtensionConfig.AddOptionSetMetadataAttribute;
@@ -587,12 +578,30 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         }
 
         [Category("3 - Option Sets")]
+        [DisplayName("Generate All Labels")]
+        [Description("Generates all labels by language code in the Option Set Metadata Attributes.  Only used if Add Option Set Metadata Attribute is true.")]
+        public bool GenerateAllOptionSetLabelMetadata
+        {
+            get => Config.ExtensionConfig.GenerateAllOptionSetLabelMetadata;
+            set => Config.ExtensionConfig.GenerateAllOptionSetLabelMetadata = value;
+        }
+
+        [Category("3 - Option Sets")]
         [DisplayName("Generate Global Option Sets")]
         [Description("Generate all Global OptionSets, note: if an entity contains a reference to a global optionset, it will be emitted even if this switch is not present.")]
         public bool GenerateGlobalOptionSets
         {
             get => Config.ExtensionConfig.GenerateGlobalOptionSets;
             set => Config.ExtensionConfig.GenerateGlobalOptionSets = value;
+        }
+
+        [Category("3 - Option Sets")]
+        [DisplayName("Generate Option Set Metadata Attribute Class")]
+        [Description("Generates an OptionSetMetadataAttribute class used to allow for storing of the metadata of OptionSetValues i.e. display order, name, description, etc.  Only used if Add Option Set Metadata Attribute is true.")]
+        public bool GenerateOptionSetMetadataAttribute
+        {
+            get => Config.ExtensionConfig.GenerateOptionSetMetadataAttribute;
+            set => Config.ExtensionConfig.GenerateOptionSetMetadataAttribute = value;
         }
 
         [Category("3 - Option Sets")]

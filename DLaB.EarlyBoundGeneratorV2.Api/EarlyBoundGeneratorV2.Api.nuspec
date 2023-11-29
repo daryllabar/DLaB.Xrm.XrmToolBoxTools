@@ -12,6 +12,7 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses ModelBuilder from the PAC.</description>
 		<releaseNotes>V2.2023.?.??
+Added Option to import all languages label - Early Bound Generator #426		
 Added Character substitution list for Danish #441
 Fix for "Delete Files from Output folders" fails if "Generate Messages" = False #447
 Add setting to specify output folder location #451

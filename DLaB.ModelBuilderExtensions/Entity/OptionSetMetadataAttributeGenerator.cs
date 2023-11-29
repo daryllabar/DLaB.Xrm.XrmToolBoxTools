@@ -9,7 +9,7 @@ using CodeDomMemberAttributes = System.CodeDom.MemberAttributes;
 namespace DLaB.ModelBuilderExtensions.Entity
 {
     /// <summary>
-    /// TODO: This really should be changed so the code generator service generates this code into a separate file, rather than adding it to the namespace via the CustomizeCodeDomeService
+    /// TODO: This really should be changed so the code generator service generates this code into a separate file, rather than adding it to the namespace via the CustomizeCodeDomService
     /// </summary>
     public class OptionSetMetadataAttributeGenerator : ICustomizeCodeDomService
     {
@@ -32,26 +32,25 @@ namespace DLaB.ModelBuilderExtensions.Entity
         {
 	        public string Color { get; set; }
 	        public string Description { get; set; }
+            public System.Collections.Generic.Dictionary<int, string> Namess { get; set; }
 	        public int ExternalValue { get; set; }
 	        public int Index { get; set; }
 	        public string Name { get; set; }
 
-	        public OptionSetMetadataAttribute(string name, string description = null, string color = null) : this(name, int.MinValue, int.MinValue, description, color) { }
-
-	        public OptionSetMetadataAttribute(string name, int externalValue, int index, string description = null, string color = null)
+	        public OptionSetMetadataAttribute(string name, int displayIndex, string color = null, string description = null, string externalValue = null, System.Collections.Generic.Dictionary<int, string> names = null)
 	        {
-		        Color = color;
-		        Description = description;
-		        ExternalValue = externalValue;
-		        Index = index;
-		        Name = name;
+		        this.Color = color;
+                this.Description = description;
+                this._nameObjects = names
+                this.ExternalValue = externalValue;
+                this.DisplayIndex = displayIndex;
+                this.Name = name;
 	        }
         }
 
         */
         private static CodeTypeDeclaration CreateOptionSetMetadataAttributeClass()
         {
-
             var attributeClass = new CodeTypeDeclaration("OptionSetMetadataAttribute")
             {
                 CustomAttributes = CreateOptionSetMetdataCustomAttributes(),
@@ -60,9 +59,13 @@ namespace DLaB.ModelBuilderExtensions.Entity
             };
             attributeClass.Comments.AddRange(CreateOptionSetMetadataClassComments());
             attributeClass.BaseTypes.Add(new CodeTypeReference(typeof(Attribute))); // : System.Attribute
+
+            attributeClass.Members.Add(new CodeMemberField(typeof(object[]), "_nameObjects"));
+            attributeClass.Members.Add(new CodeMemberField(typeof(Dictionary<int,string>), "_names"));
             attributeClass.Members.AddRange(CreateOptionSetMetadataProperties());
             //attributeClass.Members.Add(CreateOptionSetMetadataConstructor(attributeClass.Name, true));
             attributeClass.Members.Add(CreateOptionSetMetadataConstructor(attributeClass.Name, false));
+            attributeClass.Members.Add(CreateNamesMethod());
 
             return attributeClass;
         }
@@ -89,7 +92,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
         {
             return Properties.OrderBy(p => p.PropertyName)
                              .Select(p =>
-                                 new CodeSnippetTypeMember($@"{"\t\t"}public {p.TypeDisplayName} {p.PropertyName} {{ get; set; }}")
+                                 new CodeSnippetTypeMember(p.GetPropertySnippet())
                                  {
                                      Comments =
                                      {
@@ -111,13 +114,14 @@ namespace DLaB.ModelBuilderExtensions.Entity
             // public OptionSetMetadataAttribute(string name, string description = null, string color = null): this(name, int.MinValue, int.MinValue, color, description) { }
 
             // basicConstructor == true
-            // public OptionSetMetadataAttribute(string name, int index, int externalValue, string color = null, string description = null)
+            // public OptionSetMetadataAttribute(string name, int index, int externalValue, string color = null, string description = null, params object[] names)
             // {
             //     Color = color;
             //     Description = description;
             //     ExternalValue = externalValue;
             //     Index = index;
             //     Name = name;
+            //     _nameObjects = names;
             // }
             var constructor = new CodeConstructor
             {
@@ -152,14 +156,14 @@ namespace DLaB.ModelBuilderExtensions.Entity
         {
             return Properties.Where(p => p.IsValidForConstructor(basicConstructor))
                              .OrderBy(p => p.ParameterIndex(basicConstructor))
-                             .Select(p => new CodeParameterDeclarationExpression(p.Type, p.VariableNameDeclaration)).ToArray();
+                             .Select(p => p.GetParameterDeclaration()).ToArray();
         }
 
         private static CodeExpression[] GetConstructorChainedArgs(bool basicConstructor)
         {
             if (!basicConstructor)
             {
-                return new CodeExpression[0];
+                return Array.Empty<CodeExpression>();
             }
 
             return Properties.Where(p => p.IsValidForConstructor(false))
@@ -174,32 +178,90 @@ namespace DLaB.ModelBuilderExtensions.Entity
         {
             if (basicConstructor)
             {
-                return new CodeStatement[0];
+                return Array.Empty<CodeStatement>();
             }
 
-            return Properties.Select(p =>
-                new CodeAssignStatement(new CodePropertyReferenceExpression(new CodeThisReferenceExpression(), p.PropertyName), new CodeVariableReferenceExpression(p.VariableName))
-            ).Cast<CodeStatement>().ToArray();
+            return Properties.Select(p => p.GetConstructorAssignment()).ToArray();
         }
 
         #endregion Constructors
 
-        private static List<PropertyInfo> Properties = new List<PropertyInfo>
+        private static CodeMemberMethod CreateNamesMethod()
+        {
+            var method = new CodeMemberMethod
+            {
+                Name = "CreateNames",
+                ReturnType = new CodeTypeReference(typeof(Dictionary<int, string>))
+            };
+
+            var namesVariable = new CodeVariableDeclarationStatement(typeof(Dictionary<int, string>), "names")
+                {
+                    InitExpression = new CodeObjectCreateExpression(typeof(Dictionary<int, string>))
+                };
+
+            var loop = new CodeIterationStatement
+            {
+                InitStatement = new CodeVariableDeclarationStatement(typeof(int), "i", new CodePrimitiveExpression(0)),
+                TestExpression = new CodeBinaryOperatorExpression(new CodeVariableReferenceExpression("i"), CodeBinaryOperatorType.LessThan, new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("_nameObjects"), "Length")),
+                IncrementStatement = new CodeAssignStatement(new CodeVariableReferenceExpression("i"), new CodeBinaryOperatorExpression(new CodeVariableReferenceExpression("i"), CodeBinaryOperatorType.Add, new CodePrimitiveExpression(2)))
+            };
+
+            var addStatement = new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("names"), "Add");
+            addStatement.Parameters.Add(new CodeCastExpression(typeof(int), new CodeArrayIndexerExpression(new CodeVariableReferenceExpression("_nameObjects"), new CodeVariableReferenceExpression("i"))));
+            addStatement.Parameters.Add(new CodeCastExpression(typeof(string), new CodeArrayIndexerExpression(new CodeVariableReferenceExpression("_nameObjects"), new CodeBinaryOperatorExpression(new CodeVariableReferenceExpression("i"), CodeBinaryOperatorType.Add, new CodePrimitiveExpression(1)))));
+
+            loop.Statements.Add(addStatement);
+
+            method.Statements.Add(namesVariable);
+            method.Statements.Add(loop);
+            method.Statements.Add(new CodeMethodReturnStatement(new CodeVariableReferenceExpression("names")));
+
+            return method;
+        }
+
+        private static readonly List<PropertyInfo> Properties = new List<PropertyInfo>
         {
             new PropertyInfo(2, 2, typeof(string), "Color"),
             new PropertyInfo(3, 3, typeof(string), "Description"),
+            new PropertyInfo(-1, 5, typeof(object[]), "Names")
+            {
+                CustomConstructorAssignmentName = "_nameObjects",
+                CustomPropertySnippet = @"		public System.Collections.Generic.Dictionary<int, string> Names
+		{
+			get
+			{
+				return _names ?? (_names = CreateNames());
+			} 
+			set
+			{
+				_names = value;
+				if (value == null)
+				{
+				    _nameObjects = new object[0];
+				}
+				else
+				{
+				    _nameObjects = null;
+				}
+			}
+		}",
+                IsParamsParameter = true
+            },
             new PropertyInfo(-1, 4, typeof(string), "ExternalValue", "External value"),
             new PropertyInfo(1, 1, typeof(int), "DisplayIndex", "Display order index"),
             new PropertyInfo(0, 0, typeof(string), "Name"),
         };
+
         private class PropertyInfo
         {
             // ReSharper disable MemberCanBePrivate.Local
             // ReSharper disable AutoPropertyCanBeMadeGetOnly.Local
             public string PropertyName { get; set; }
+            public bool IsParamsParameter { get; set; }
             public string VariableName { get; private set; }
             public string VariableNameDeclaration { get {
                 if (PropertyName == "Name"
+                    || PropertyName == "Names"
                     || Type == typeof(int) )
                 {
                     return VariableName;
@@ -211,10 +273,10 @@ namespace DLaB.ModelBuilderExtensions.Entity
             public string CommentName { get; set; }
             public int BasicConstructorIndex { get; set; }
             public int FullConstructorIndex { get; set; }
+            public string CustomPropertySnippet { get; set; }
+            public string CustomConstructorAssignmentName { get; set; }
 
-            public string TypeDisplayName => Type == typeof(int)
-                ? "int"
-                : Type.Name.ToLower();
+            public string TypeDisplayName => GetTypeDisplayName(Type);
             // ReSharper restore AutoPropertyCanBeMadeGetOnly.Local
             // ReSharper restore MemberCanBePrivate.Local
 
@@ -232,6 +294,23 @@ namespace DLaB.ModelBuilderExtensions.Entity
                 }
             }
 
+            public CodeParameterDeclarationExpression GetParameterDeclaration()
+            {
+                var declaration = new CodeParameterDeclarationExpression(Type, VariableNameDeclaration);
+                if (IsParamsParameter)
+                {
+                    declaration.CustomAttributes.Add(new CodeAttributeDeclaration(new CodeTypeReference(typeof(ParamArrayAttribute))));
+                }
+                return declaration;
+            }
+
+            public string GetPropertySnippet()
+            {
+                return string.IsNullOrWhiteSpace(CustomPropertySnippet) 
+                    ? $@"{"\t\t"}public {TypeDisplayName} {PropertyName} {{ get; set; }}"
+                    : CustomPropertySnippet;
+            }
+
             public bool IsValidForConstructor(bool basicConstructor)
             {
                 return !basicConstructor || BasicConstructorIndex >= 0;
@@ -242,6 +321,25 @@ namespace DLaB.ModelBuilderExtensions.Entity
                 return basicConstructor 
                        ? BasicConstructorIndex
                        : FullConstructorIndex;
+            }
+
+            private string GetTypeDisplayName(Type type)
+            {
+                var nonGenericTypeName = type == typeof(int)
+                    ? "int"
+                    : type.Name.ToLower();
+                return type.IsGenericType
+                    ? $"{type.Namespace}.{type.Name.Split('`')[0]}<{string.Join(", ", type.GenericTypeArguments.Select(GetTypeDisplayName))}>"
+                    : nonGenericTypeName;
+            }
+
+            public CodeStatement GetConstructorAssignment()
+            {
+                var name = string.IsNullOrWhiteSpace(CustomConstructorAssignmentName)
+                    ? PropertyName
+                    : CustomConstructorAssignmentName;
+
+                return new CodeAssignStatement(new CodePropertyReferenceExpression(new CodeThisReferenceExpression(), name), new CodeVariableReferenceExpression(VariableName));
             }
         }
 

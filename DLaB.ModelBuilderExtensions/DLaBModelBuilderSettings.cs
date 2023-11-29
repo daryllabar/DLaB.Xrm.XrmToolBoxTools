@@ -97,6 +97,9 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("filePrefixText")]
         public string FilePrefixText { get; set; }
 
+        [JsonPropertyName("generateAllOptionSetLabelMetadata")]
+        public bool GenerateAllOptionSetLabelMetadata { get; set; }
+
         [JsonPropertyName("generateMessageAttributeNameConsts")]
         public bool GenerateMessageAttributeNameConsts { get; set; }
 

@@ -109,6 +109,10 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         /// </summary>
         public bool GenerateActionAttributeNameConsts { get; set; }
         /// <summary>
+        /// Generates all labels by language code in the Option Set Metadata Attributes
+        /// </summary>
+        public bool GenerateAllOptionSetLabelMetadata { get; set; }
+        /// <summary>
         /// Specifies the generation of an Attributes Struct containing logical names for all attributes for the Entity
         /// </summary>
         public bool GenerateAttributeNameConsts { get; set; }
@@ -316,6 +320,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 EntityPrefixesWhitelist = null,
                 FilePrefixText = null,
                 GenerateActionAttributeNameConsts = true,
+                GenerateAllOptionSetLabelMetadata = false,
                 GenerateAnonymousTypeConstructor = true,
                 GenerateAttributeNameConsts = true,
                 GenerateConstructorsSansLogicalName = true,
@@ -383,6 +388,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             EntityPrefixesWhitelist = GetValueOrDefault(poco.EntityPrefixesWhitelist, EntityPrefixesWhitelist);
             FilePrefixText = GetValueOrDefault(poco.FilePrefixText, FilePrefixText);
             GenerateActionAttributeNameConsts = poco.GenerateActionAttributeNameConsts ?? GenerateActionAttributeNameConsts;
+            GenerateAllOptionSetLabelMetadata = poco.GenerateAllOptionSetLabelMetadata ?? GenerateAllOptionSetLabelMetadata;
             GenerateAttributeNameConsts = poco.GenerateAttributeNameConsts ?? GenerateAttributeNameConsts;
             GenerateAnonymousTypeConstructor = poco.GenerateAnonymousTypeConstructor ?? GenerateAnonymousTypeConstructor;
             GenerateConstructorsSansLogicalName = poco.GenerateConstructorsSansLogicalName ?? GenerateConstructorsSansLogicalName;
@@ -450,6 +456,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddPropertyArray("EntityRegExBlacklist", EntityPrefixesToSkip);
             writer.AddProperty(nameof(FilePrefixText), FilePrefixText, true);
             writer.AddProperty(AsMessage(nameof(GenerateActionAttributeNameConsts)), GenerateActionAttributeNameConsts);
+            AddOptionalBoolProperty(nameof(GenerateAllOptionSetLabelMetadata), GenerateAllOptionSetLabelMetadata, AddOptionSetMetadataAttribute);
             writer.AddProperty(nameof(GenerateAttributeNameConsts), GenerateAttributeNameConsts);
             writer.AddProperty(nameof(GenerateAnonymousTypeConstructor), GenerateAnonymousTypeConstructor);
             writer.AddProperty(nameof(GenerateConstructorsSansLogicalName), GenerateConstructorsSansLogicalName);
@@ -566,6 +573,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings.POCO
         public string EntityPrefixesWhitelist { get; set; }
         public string FilePrefixText { get; set; }
         public bool? GenerateActionAttributeNameConsts { get; set; }
+        public bool? GenerateAllOptionSetLabelMetadata { get; set; }
         public bool? GenerateAttributeNameConsts { get; set; }
         public bool? GenerateAnonymousTypeConstructor { get; set; }
         public bool? GenerateConstructorsSansLogicalName { get; set; }

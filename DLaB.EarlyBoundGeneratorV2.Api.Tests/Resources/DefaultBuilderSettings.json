@@ -17,6 +17,7 @@
     "createOneFilePerOptionSet": true,
     "deleteFilesFromOutputFolders": false,
     "generateMessageAttributeNameConsts": true,
+    "generateAllOptionSetLabelMetadata": false,
     "generateAttributeNameConsts": true,
     "generateAnonymousTypeConstructor": true,
     "generateConstructorsSansLogicalName": true,
