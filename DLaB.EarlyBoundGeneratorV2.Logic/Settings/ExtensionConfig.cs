@@ -133,10 +133,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         /// </summary>                                          
         public bool GenerateEnumProperties { get; set; }
         /// <summary>
-        /// Specifies that generated files should contains a header comment with the auto-generated tag
-        /// </summary>
-        public bool GenerateGeneratedCodeAttribute { get; set; }
-        /// <summary>
         /// Generate all Global OptionSets, note: if an entity contains a reference to a global optionset, it will be emitted even if this switch is not present.
         /// </summary>
         public bool GenerateGlobalOptionSets { get; set; }
@@ -326,7 +322,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 GenerateConstructorsSansLogicalName = true,
                 GenerateEntityRelationships = true,
                 GenerateEnumProperties = true,
-                GenerateGeneratedCodeAttribute = false,
                 GenerateGlobalOptionSets = false,
                 GenerateINotifyPattern = false,
                 GenerateOptionSetMetadataAttribute = true,
@@ -394,7 +389,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             GenerateConstructorsSansLogicalName = poco.GenerateConstructorsSansLogicalName ?? GenerateConstructorsSansLogicalName;
             GenerateEntityRelationships = poco.GenerateEntityRelationships ?? GenerateEntityRelationships;
             GenerateEnumProperties = poco.GenerateEnumProperties ?? GenerateEnumProperties;
-            GenerateGeneratedCodeAttribute = poco.GenerateGeneratedCodeAttribute ?? GenerateGeneratedCodeAttribute;
             GenerateGlobalOptionSets = poco.GenerateGlobalOptionSets ?? GenerateGlobalOptionSets;
             GenerateINotifyPattern = poco.GenerateINotifyPattern ?? GenerateINotifyPattern;
             GenerateOptionSetMetadataAttribute = poco.GenerateOptionSetMetadataAttribute ?? GenerateOptionSetMetadataAttribute;
@@ -522,7 +516,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             properties.SetJsonArrayProperty(BuilderSettingsJsonNames.EntityNamesFilter, JoinWhiteLists(EntitiesWhitelist, EntityPrefixesWhitelist));
             properties.SetJsonProperty(BuilderSettingsJsonNames.GenerateGlobalOptionSets, GenerateGlobalOptionSets);
             properties.SetJsonArrayProperty(BuilderSettingsJsonNames.MessageNamesFilter, generateMessages ? JoinWhiteLists(ActionsWhitelist, ActionPrefixesWhitelist) : null);
-            properties.SetJsonProperty(BuilderSettingsJsonNames.SuppressGeneratedCodeAttribute, !GenerateGeneratedCodeAttribute);
             properties.SetJsonProperty(BuilderSettingsJsonNames.SuppressINotifyPattern, !GenerateINotifyPattern);
         }
 
@@ -584,7 +577,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings.POCO
         [Obsolete("Now moved to the Dataverse Model Builder as EmitEntityETC")]
         public bool? GenerateEntityTypeCode { get; set; }
         public bool? GenerateEnumProperties { get; set; }
-        public bool? GenerateGeneratedCodeAttribute { get; set; }
         public bool? GenerateGlobalOptionSets { get; set; }
         public bool? GenerateINotifyPattern { get; set; }
         /// <summary>

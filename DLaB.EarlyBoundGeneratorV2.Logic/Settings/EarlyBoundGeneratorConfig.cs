@@ -647,6 +647,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             properties.SetJsonPropertyIfPopulated(BuilderSettingsJsonNames.NamingService, NamingService);
             SetOutputFolderProperty(BuilderSettingsJsonNames.OptionSetsTypesFolder, OptionSetsTypesFolder, defaultSettings.OptionSetsTypesFolder);
             properties.SetJsonProperty(BuilderSettingsJsonNames.ServiceContextName, ServiceContextName);
+            properties.SetJsonProperty(BuilderSettingsJsonNames.SuppressGeneratedCodeAttribute, SuppressGeneratedCodeAttribute);
 
             return;
 
