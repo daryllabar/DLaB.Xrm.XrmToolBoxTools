@@ -378,10 +378,19 @@ namespace DLaB.CrmSvcUtilExtensions
 
         public string GetNameForEntity(EntityMetadata entityMetadata, IServiceProvider services)
         {
-            var defaultName = DefaultService.GetNameForEntity(entityMetadata, services);
-            return CamelCaseClassNames
-                ? CamelCaser.Case(defaultName)
-                : defaultName;
+            try
+            {
+
+                var defaultName = DefaultService.GetNameForEntity(entityMetadata, services);
+                return CamelCaseClassNames
+                    ? CamelCaser.Case(defaultName)
+                    : defaultName;
+            }
+            catch (System.Reflection.ReflectionTypeLoadException ex)
+            {
+                ex.LoaderExceptions.ToList().ForEach(e => Console.WriteLine(e.Message));
+                throw ex.LoaderExceptions.First();
+            }
         }
 
         public string GetNameForRequestField(SdkMessageRequest request, SdkMessageRequestField requestField, IServiceProvider services)
