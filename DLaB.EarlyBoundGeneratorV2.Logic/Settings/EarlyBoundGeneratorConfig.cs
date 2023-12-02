@@ -347,7 +347,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
 
                 Logger.AddDetail("Finished Updating Config to 2.2023.4.3 settings!");
                 Logger.AddDetail("Check out the update documentation!");
-                Logger.AddDetail("https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/wiki/Version-2.2023.4.3-Upgrade-To-PAC-ModelBuilder");
+                Logger.AddDetail("https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/wiki/EBG-%E2%80%90-Version-2.2023.4.3-Upgrade-To-PAC-ModelBuilder");
             }
 
             if (pocoVersion < new Version("2.2023.9.20"))
