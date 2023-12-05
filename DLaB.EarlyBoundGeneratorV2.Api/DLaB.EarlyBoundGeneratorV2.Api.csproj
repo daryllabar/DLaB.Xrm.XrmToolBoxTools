@@ -170,7 +170,7 @@
     <None Include="App.config" />
     <None Include="ApplicationInsights.config" />
     <None Include="DLaB.EarlyBoundGeneratorV2.Api.Key.snk" />
-    <None Include="EarlyBoundGeneratorV2.Api.nuspec" />
+    <None Include="DLaB.EarlyBoundGeneratorV2.Api.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

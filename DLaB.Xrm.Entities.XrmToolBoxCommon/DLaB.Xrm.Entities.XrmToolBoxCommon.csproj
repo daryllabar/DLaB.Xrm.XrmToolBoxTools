@@ -212,9 +212,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Editors\ActionsHashEditor.cs" />
-    <Compile Include="Forms\SpecifyActionsDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\SpecifyActionsDialog.cs" />
     <Compile Include="Forms\SpecifyActionsDialog.Designer.cs">
       <DependentUpon>SpecifyActionsDialog.cs</DependentUpon>
     </Compile>

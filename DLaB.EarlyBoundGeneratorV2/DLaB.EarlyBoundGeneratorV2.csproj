@@ -414,6 +414,7 @@ if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.
   <PropertyGroup>
     <PostBuildEvent>xcopy /I /Y "$(SolutionDir)DLaB.ModelBuilderExtensions\OptionSet\Transliteration\Alphabets\*" "$(TargetDir)$(TargetName)\alphabets"
 xcopy /I /Y "$(SolutionDir)DLaB.ModelBuilderExtensions\DLaB.Dictionary.txt" "$(TargetDir)$(TargetName)"
+xcopy /I /Y "$(SolutionDir)DLaB.XrmToolBoxCommon\Images\*32x32.png" "$(TargetDir)Images"
 xcopy /I /Y "$(TargetDir)Microsoft.AI.ServerTelemetryChannel.dll" "$(TargetDir)$(TargetName)"
 xcopy /I /Y "$(TargetDir)Microsoft.ApplicationInsights.dll" "$(TargetDir)$(TargetName)"
 xcopy /I /Y "$(TargetDir)Microsoft.Extensions.*.dll" "$(TargetDir)$(TargetName)"
