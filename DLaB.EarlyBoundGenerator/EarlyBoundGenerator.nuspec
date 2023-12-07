@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGenerator</id>
-	  <version>1.2023.12.1</version>
+	  <version>1.2023.12.6</version>
 	  <title>Early Bound Generator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,11 @@
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Actions.  Uses CrmSvcUtil from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V1.2023.12.1
+    <releaseNotes>V1.2023.12.6
+Microsoft.Xrm.Tooling.Connector login Newtonsoft.Json assembly mismatch #460
+Handle Xml File Formatting #461
+
+V1.2023.12.1
 Fix for Invalid Upgrade URL for EBGV2 #457
 
 V1.2023.11.29

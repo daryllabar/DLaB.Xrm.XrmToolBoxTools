@@ -610,7 +610,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             {
                 propertyToParse = propertyName;
                 propertyValue = value;
-                return value?.Replace(" ", string.Empty).Replace("\n", string.Empty).Replace("\r", string.Empty);
+                return value?.Replace(" ", string.Empty).Replace("\n", string.Empty).Replace("\r", string.Empty).Replace("\t", string.Empty);
             }
 
             try
