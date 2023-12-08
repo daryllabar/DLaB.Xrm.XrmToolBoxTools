@@ -38,7 +38,7 @@ namespace Source.DLaB.Common
             }
             catch (Exception ex)
             {
-                throw new FormatException($"Error occured processing app setting \"{appSetting}\" with default value \"{defaultValue}\"", ex);
+                throw new FormatException($"Error occurred processing app setting \"{appSetting}\" with default value \"{defaultValue}\"", ex);
             }
         }
 
@@ -61,7 +61,7 @@ namespace Source.DLaB.Common
             }
             catch (Exception ex)
             {
-                throw new FormatException("Error occured processing app setting " + appSetting, ex);
+                throw new FormatException("Error occurred processing app setting " + appSetting, ex);
             }
         }
 
@@ -106,7 +106,7 @@ namespace Source.DLaB.Common
             }
             catch (Exception ex)
             {
-                throw new FormatException($"Error occured processing app setting \"{appSetting}\" with default value \"{defaultValue}\"", ex);
+                throw new FormatException($"Error occurred processing app setting \"{appSetting}\" with default value \"{defaultValue}\"", ex);
             }
         }
 
@@ -144,7 +144,7 @@ namespace Source.DLaB.Common
             }
             catch (Exception ex)
             {
-                throw new FormatException($"Error occured processing app setting \"{appSetting}\" for key \"{key}\" with default value \"{defaultValue}\"", ex);
+                throw new FormatException($"Error occurred processing app setting \"{appSetting}\" for key \"{key}\" with default value \"{defaultValue}\"", ex);
             }
         }
 
@@ -183,7 +183,7 @@ namespace Source.DLaB.Common
             }
             catch (Exception ex)
             {
-                throw new FormatException($"Error occured parsing list for app setting \"{appSetting}\"", ex);
+                throw new FormatException($"Error occurred parsing list for app setting \"{appSetting}\"", ex);
             }
         }
 
@@ -205,7 +205,7 @@ namespace Source.DLaB.Common
             }
             catch (Exception ex)
             {
-                throw new FormatException($"Error occured parsing list for app setting \"{appSetting}\"", ex);
+                throw new FormatException($"Error occurred parsing list for app setting \"{appSetting}\"", ex);
             }
         }
 
@@ -227,7 +227,7 @@ namespace Source.DLaB.Common
             }
             catch (Exception ex)
             {
-                throw new FormatException($"Error occured parsing list for app setting \"{appSetting}\"", ex);
+                throw new FormatException($"Error occurred parsing list for app setting \"{appSetting}\"", ex);
             }
         }
 
@@ -259,7 +259,7 @@ namespace Source.DLaB.Common
             }
             catch (Exception ex)
             {
-                throw new FormatException($"Error occured parsing dictionary for app setting \"{appSetting}\"", ex);
+                throw new FormatException($"Error occurred parsing dictionary for app setting \"{appSetting}\"", ex);
             }
         }
 
@@ -287,7 +287,7 @@ namespace Source.DLaB.Common
             }
             catch (Exception ex)
             {
-                throw new FormatException($"Error occured parsing dictionary for app setting \"{appSetting}\"", ex);
+                throw new FormatException($"Error occurred parsing dictionary for app setting \"{appSetting}\"", ex);
             }
         }
 
@@ -315,7 +315,7 @@ namespace Source.DLaB.Common
             }
             catch (Exception ex)
             {
-                throw new FormatException($"Error occured parsing dictionary for app setting \"{appSetting}\", with defaultValue, \"{defaultValue}\"", ex);
+                throw new FormatException($"Error occurred parsing dictionary for app setting \"{appSetting}\", with defaultValue, \"{defaultValue}\"", ex);
             }
         }
 
@@ -347,7 +347,7 @@ namespace Source.DLaB.Common
             }
             catch (Exception ex)
             {
-                throw new FormatException($"Error occured parsing dictionary list for app setting \"{appSetting}\"", ex);
+                throw new FormatException($"Error occurred parsing dictionary list for app setting \"{appSetting}\"", ex);
             }
         }
 
@@ -375,7 +375,7 @@ namespace Source.DLaB.Common
             }
             catch (Exception ex)
             {
-                throw new FormatException($"Error occured parsing dictionary list for app setting \"{appSetting}\", with default value \"{defaultValue}\"", ex);
+                throw new FormatException($"Error occurred parsing dictionary list for app setting \"{appSetting}\", with default value \"{defaultValue}\"", ex);
             }
         }
 
@@ -403,7 +403,7 @@ namespace Source.DLaB.Common
             }
             catch (Exception ex)
             {
-                throw new FormatException($"Error occured parsing dictionary list for app setting \"{appSetting}\"", ex);
+                throw new FormatException($"Error occurred parsing dictionary list for app setting \"{appSetting}\"", ex);
             }
         }
 
@@ -435,7 +435,7 @@ namespace Source.DLaB.Common
             }
             catch (Exception ex)
             {
-                throw new FormatException($"Error occured parsing dictionary Hash for app setting \"{appSetting}\"", ex);
+                throw new FormatException($"Error occurred parsing dictionary Hash for app setting \"{appSetting}\"", ex);
             }
         }
 
@@ -463,7 +463,7 @@ namespace Source.DLaB.Common
             }
             catch (Exception ex)
             {
-                throw new FormatException($"Error occured parsing dictionary Hash for app setting \"{appSetting}\", with default value \"{defaultValue}\"", ex);
+                throw new FormatException($"Error occurred parsing dictionary Hash for app setting \"{appSetting}\", with default value \"{defaultValue}\"", ex);
             }
         }
 
@@ -491,7 +491,7 @@ namespace Source.DLaB.Common
             }
             catch (Exception ex)
             {
-                throw new FormatException($"Error occured parsing dictionary Hash for app setting \"{appSetting}\"", ex);
+                throw new FormatException($"Error occurred parsing dictionary Hash for app setting \"{appSetting}\"", ex);
             }
         }
 
@@ -517,7 +517,7 @@ namespace Source.DLaB.Common
             }
             catch (Exception ex)
             {
-                throw new FormatException($"Error occured parsing hash for app setting \"{appSetting}\"", ex);
+                throw new FormatException($"Error occurred parsing hash for app setting \"{appSetting}\"", ex);
             }
         }
 
@@ -538,7 +538,7 @@ namespace Source.DLaB.Common
             }
             catch (Exception ex)
             {
-                throw new FormatException($"Error occured parsing hash for app setting \"{appSetting}\"", ex);
+                throw new FormatException($"Error occurred parsing hash for app setting \"{appSetting}\"", ex);
             }
         }
 
@@ -559,7 +559,7 @@ namespace Source.DLaB.Common
             }
             catch (Exception ex)
             {
-                throw new FormatException($"Error occured parsing hash for app setting \"{appSetting}\"", ex);
+                throw new FormatException($"Error occurred parsing hash for app setting \"{appSetting}\"", ex);
             }
         }
 

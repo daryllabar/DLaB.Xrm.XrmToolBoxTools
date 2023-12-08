@@ -5,6 +5,8 @@ using System.Linq.Expressions;
 using System.Runtime.Serialization;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
@@ -774,6 +776,26 @@ namespace Source.DLaB.Common
 #endif
         #endregion IExtensibleDataObject
 
+        #region KeyValueConfigurationCollection
+
+        /// <summary>
+        /// Converts the KeyValueConfigurationCollection to a NameValueCollection
+        /// </summary>
+        /// <param name="collection"></param>
+        /// <returns></returns>
+        public static NameValueCollection ToNameValueCollection(this KeyValueConfigurationCollection collection)
+        {
+            var nvc = new NameValueCollection();
+            foreach (KeyValueConfigurationElement element in collection)
+            {
+                nvc.Set(element.Key, element.Value);
+            }
+
+            return nvc;
+        }
+
+        #endregion KeyValueConfigurationCollection
+
         #region MemberInfo
 
         /// <summary>
@@ -889,6 +911,32 @@ namespace Source.DLaB.Common
             {
                 var serializer = new DataContractJsonSerializer(typeof(T), settings);
                 return (T)serializer.ReadObject(reader);
+            }
+        }
+
+        /// <summary>
+        /// The standard string.GetHashCode can result in different domains.  This is a deterministic version of the hash code so it will always return the same int value for the given string.
+        /// Warning: it's not safe to use in any situations vulnerable to hash-based attacks!
+        /// </summary>
+        /// <param name="str"></param>
+        /// <remarks>Taken from https://andrewlock.net/why-is-string-gethashcode-different-each-time-i-run-my-program-in-net-core/#a-deterministic-gethashcode-implementation</remarks>
+        /// <returns></returns>
+        public static int GetDeterministicHashCode(this string str)
+        {
+            unchecked
+            {
+                var hash1 = (5381 << 16) + 5381;
+                var hash2 = hash1;
+
+                for (var i = 0; i < str.Length; i += 2)
+                {
+                    hash1 = ((hash1 << 5) + hash1) ^ str[i];
+                    if (i == str.Length - 1)
+                        break;
+                    hash2 = ((hash2 << 5) + hash2) ^ str[i + 1];
+                }
+
+                return hash1 + hash2 * 1566083941;
             }
         }
 

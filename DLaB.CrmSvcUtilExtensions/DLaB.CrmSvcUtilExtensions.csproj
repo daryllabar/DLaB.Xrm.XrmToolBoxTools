@@ -71,7 +71,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Xrm.Sdk.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.Workflow.9.0.2.50\lib\net462\Microsoft.Xrm.Sdk.Workflow.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CrmSdk.Workflow.9.0.2.51\lib\net462\Microsoft.Xrm.Sdk.Workflow.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Xrm.Tooling.Connector, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -89,7 +89,8 @@
       <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.WpfControls.9.1.0.110\lib\net462\Microsoft.Xrm.Tooling.WebResourceUtility.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -114,8 +115,8 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.IO.Compression" />
-    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
@@ -177,23 +178,23 @@
     <Compile Include="Action\CodeWriterFilterService.cs" />
     <Compile Include="Action\CustomizeCodeDomService.cs" />
     <Compile Include="Action\CustomCodeGenerationService.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\Config.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ConfigKeyValueSplitInfo.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ConfigKeyValuesSplitInfo.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ConfigProvider.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ConfigValuesSplitInfo.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\DLaBConfig.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\Exceptions\DictionaryDuplicateKeyException.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\Exceptions\EnumCaseUndefinedException.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\Exceptions\TypeArgumentException.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\Extensions.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ProcessExecutor.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\ProcessExecutorInfo.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\TypeSafeEnumBase.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\VersionControl\ISourceControlProvider.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\VersionControl\NoSourceControlProvider.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\VersionControl\SourceControl.cs" />
-    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.5\VersionControl\VsTfsSourceControlProvider.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.7\Config.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.7\ConfigKeyValueSplitInfo.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.7\ConfigKeyValuesSplitInfo.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.7\ConfigProvider.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.7\ConfigValuesSplitInfo.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.7\DLaBConfig.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.7\Exceptions\DictionaryDuplicateKeyException.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.7\Exceptions\EnumCaseUndefinedException.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.7\Exceptions\TypeArgumentException.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.7\Extensions.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.7\ProcessExecutor.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.7\ProcessExecutorInfo.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.7\TypeSafeEnumBase.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.7\VersionControl\ISourceControlProvider.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.7\VersionControl\NoSourceControlProvider.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.7\VersionControl\SourceControl.cs" />
+    <Compile Include="App_Packages\DLaB.Common.Source.1.4.0.7\VersionControl\VsTfsSourceControlProvider.cs" />
     <Compile Include="AttributeConstGeneratorBase.cs" />
     <Compile Include="BaseCustomCodeGenerationService.cs" />
     <Compile Include="CamelCaser.cs" />
