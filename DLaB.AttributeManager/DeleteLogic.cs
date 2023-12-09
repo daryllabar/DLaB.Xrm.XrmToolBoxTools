@@ -1,13 +1,13 @@
-﻿using System;
-using System.Linq;
-using Source.DLaB.Common;
-using Source.DLaB.Xrm;
-using DLaB.Xrm.Entities;
+﻿using DLaB.Xrm.Entities;
 using Microsoft.Crm.Sdk.Messages;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Metadata;
 using Microsoft.Xrm.Sdk.Query;
+using Source.DLaB.Common;
+using Source.DLaB.Xrm;
+using System;
+using System.Linq;
 
 namespace DLaB.AttributeManager
 {
@@ -101,7 +101,8 @@ namespace DLaB.AttributeManager
                 service.Update(new SdkMessageProcessingStepImage
                 {
                     Id = image.Id,
-                    Attributes1 = attributes
+                    Attributes1 = attributes,
+                    SdkMessageProcessingStepId = image.SdkMessageProcessingStepId
                 });
             }
         }

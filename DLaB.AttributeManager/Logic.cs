@@ -62,7 +62,7 @@ namespace DLaB.AttributeManager
         {
             SupportsExecuteMultipleRequest = connectionDetail.OrganizationMajorVersion >= Crm2013 ||
                                              (connectionDetail.OrganizationMajorVersion >= Crm2011 && int.Parse(connectionDetail.OrganizationVersion.Split('.')[3]) >= Rollup12);
-            Service = service;
+            Service = new RetryOrgService(service, Trace);
             TempPostfix = tempPostFix;
             MigrateData = migrateData;
             ValidLanguageCodes = GetValidLanguageCodes();
@@ -603,12 +603,14 @@ namespace DLaB.AttributeManager
 
         private void UpdateCharts(IOrganizationService service, AttributeMetadata from, AttributeMetadata to)
         {
+            var found = false;
+            Trace("Checking for Chart Dependencies");
             foreach (var chart in GetSystemChartsWithAttribute(service, from))
             {
                 Trace("Updating Chart " + chart.Name);
                 chart.DataDescription = ReplaceFetchXmlAttribute(chart.DataDescription, from.LogicalName, to.LogicalName);
-
                 service.Update(chart);
+                found = true;
             }
 
             foreach (var chart in GetUserChartsWithAttribute(service, from))
@@ -616,7 +618,11 @@ namespace DLaB.AttributeManager
                 Trace("Updating Chart " + chart.Name);
                 chart.DataDescription = ReplaceFetchXmlAttribute(chart.DataDescription, from.LogicalName, to.LogicalName);
                 service.Update(chart);
+                found = true;
             }
+            Trace(found
+                ? "Finished updating Chart Dependencies"
+                : "No Chart Dependencies Found");
         }
 
         private List<SavedQueryVisualization> GetSystemChartsWithAttribute(IOrganizationService service, AttributeMetadata from)
@@ -680,7 +686,8 @@ namespace DLaB.AttributeManager
              *   </cell>
              * </row>
              */
-
+            var found = false;
+            Trace("Checking for Form Dependencies");
             foreach (var form in GetFormsWithAttribute(service, from))
             {
                 Trace("Updating Form " + form.Name);
@@ -711,7 +718,11 @@ namespace DLaB.AttributeManager
                 form.FormXml = xml.Replace(fromControlStart + from.LogicalName + "\"", fromControlStart + to.LogicalName + "\"")
                                   .Replace(fromDataFieldStart, "datafieldname=\"" + to.LogicalName + "\"");
                 service.Update(form);
+                found = true;
             }
+            Trace(found
+                ? "Finished updating Form Dependencies"
+                : "No Form Dependencies Found");
         }
 
         private string GetClassId(AttributeMetadata att)
@@ -780,6 +791,7 @@ namespace DLaB.AttributeManager
 
         private void UpdatePluginStepFilters(IOrganizationService service, AttributeMetadata att, AttributeMetadata to)
         {
+            Trace("Checking for Plugin Step Filters Dependencies");
             var steps = GetPluginStepsContainingAtt(service, att);
             foreach (var step in steps)
             {
@@ -791,6 +803,9 @@ namespace DLaB.AttributeManager
                     FilteringAttributes = filter
                 });
             }
+            Trace(steps.Count > 0
+                ? "Finished updating Plugin Step Filter Dependencies"
+                : "No Plugin Step Filter Dependencies Found");
         }
 
         private List<SdkMessageProcessingStep> GetPluginStepsContainingAtt(IOrganizationService service, AttributeMetadata att)
@@ -843,17 +858,23 @@ namespace DLaB.AttributeManager
 
         private void UpdatePluginStepImages(IOrganizationService service, AttributeMetadata att, AttributeMetadata to)
         {
-            var steps = GetPluginImagesContainingAtt(service, att);
-            foreach (var step in steps)
+            Trace("Checking for Plugin Step Image Dependencies");
+            var images = GetPluginImagesContainingAtt(service, att);
+            foreach (var image in images)
             {
-                var filter = ReplaceCsvValues(step.Attributes1, att.LogicalName, to.LogicalName);
-                Trace("Updating {0} - \"{1}\" to \"{2}\"", step.Name, step.Attributes1, filter);
+                var filter = ReplaceCsvValues(image.Attributes1, att.LogicalName, to.LogicalName);
+                Trace("Updating {0} - \"{1}\" to \"{2}\"", image.Name, image.Attributes1, filter);
                 service.Update(new SdkMessageProcessingStepImage
                 {
-                    Id = step.Id,
-                    Attributes1 = filter
+                    Id = image.Id,
+                    Attributes1 = filter,
+                    SdkMessageProcessingStepId = image.SdkMessageProcessingStepId
                 });
             }
+
+            Trace(images.Count > 0
+                ? "Finished updating Plugin Step Image Dependencies"
+                : "No Plugin Step Image Dependencies Found");
         }
 
         private List<SdkMessageProcessingStepImage> GetPluginImagesContainingAtt(IOrganizationService service, AttributeMetadata att)
@@ -977,6 +998,8 @@ namespace DLaB.AttributeManager
 
         private void UpdateViews(IOrganizationService service, AttributeMetadata from, AttributeMetadata to)
         {
+            var found = false;
+            Trace("Checking for View Dependencies");
             foreach (var query in GetViewsWithAttribute(service, from)
                 .Union(GetUserViewsWithAttribute(service, from)))
             {
@@ -989,7 +1012,11 @@ namespace DLaB.AttributeManager
                     toUpdate.LayoutXml = ReplaceFetchXmlAttribute(query.LayoutXml, from.LogicalName, to.LogicalName, true);
                 }
                 service.Update((Entity)toUpdate);
+                found = true;
             }
+            Trace(found
+                ? "Finished updating View Dependencies"
+                : "No View Dependencies Found");
         }
 
         private IEnumerable<IQuery> GetViewsWithAttribute(IOrganizationService service, AttributeMetadata from)
@@ -1000,7 +1027,8 @@ namespace DLaB.AttributeManager
                 q.Name,
                 q.QueryType,
                 q.FetchXml,
-                q.LayoutXml
+                q.LayoutXml,
+                q.ReturnedTypeCode
             });
 
             AddFetchXmlCriteria(qe, SavedQuery.Fields.FetchXml, from.EntityLogicalName, from.LogicalName);
@@ -1018,7 +1046,8 @@ namespace DLaB.AttributeManager
                 q.Name,
                 q.QueryType,
                 q.FetchXml,
-                q.LayoutXml
+                q.LayoutXml,
+                q.ReturnedTypeCode
             });
 
             AddFetchXmlCriteria(qe, UserQuery.Fields.FetchXml, from.EntityLogicalName, from.LogicalName);

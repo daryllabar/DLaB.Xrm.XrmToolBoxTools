@@ -397,6 +397,7 @@
     <Compile Include="PropertyInterface\IActions.cs" />
     <Compile Include="PropertyInterface\IEntityMetadatas.cs" />
     <Compile Include="PropertyInterface\IGlobalOptionSets.cs" />
+    <Compile Include="RetryOrgService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

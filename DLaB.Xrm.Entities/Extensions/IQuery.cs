@@ -18,12 +18,12 @@ namespace DLaB.Xrm.Entities
 
     public partial class UserQuery : IQuery
     {
-        public IQuery CreateForUpdate() { return new UserQuery{ Id = Id}; }
+        public IQuery CreateForUpdate() { return new UserQuery { Id = Id, ReturnedTypeCode = ReturnedTypeCode }; }
     }
 
     public partial class SavedQuery : IQuery
     {
-        public IQuery CreateForUpdate() { return new SavedQuery{Id = Id}; }
+        public IQuery CreateForUpdate() { return new SavedQuery {Id = Id, ReturnedTypeCode = ReturnedTypeCode }; }
     }
 
     // ReSharper disable once InconsistentNaming

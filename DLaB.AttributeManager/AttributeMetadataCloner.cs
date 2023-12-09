@@ -245,28 +245,34 @@ namespace DLaB.AttributeManager
             var clone = (LookupAttributeMetadata)CloneAttributes(existingAtt, newSchemaName, null);
             foreach (var relationship in Metadata.ManyToOneRelationships.Where(r => r.ReferencingAttribute == existingAtt.LogicalName && r.ReferencingEntity == existingAtt.EntityLogicalName))
             {
-                UpdateRelationshipSchemaName(relationship, newSchemaName);
+                UpdateRelationshipMetadata(relationship, newSchemaName);
 
                 relationship.ReferencingAttribute = null;
                 relationship.ReferencedAttribute = null;
+                relationship.ReferencedEntityNavigationPropertyName = null;
+                relationship.ReferencingEntityNavigationPropertyName = null;
                 Trace("Creating Relationship " + relationship.SchemaName);
-                service.Execute(new CreateOneToManyRequest { OneToManyRelationship = relationship, Lookup = clone });
+                var response = (CreateOneToManyResponse)service.Execute(new CreateOneToManyRequest { OneToManyRelationship = relationship, Lookup = clone });
+                clone.MetadataId = response.AttributeId;
             }
 
             foreach (var relationship in Metadata.OneToManyRelationships.Where(r => r.ReferencedAttribute == existingAtt.LogicalName && r.ReferencedEntity == existingAtt.EntityLogicalName))
             {
-                UpdateRelationshipSchemaName(relationship, newSchemaName);
+                UpdateRelationshipMetadata(relationship, newSchemaName);
 
                 relationship.ReferencingAttribute = null;
                 relationship.ReferencedAttribute = null;
+                relationship.ReferencedEntityNavigationPropertyName = null;
+                relationship.ReferencingEntityNavigationPropertyName = null;
                 Trace("Creating Relationship " + relationship.SchemaName);
-                service.Execute(new CreateOneToManyRequest { OneToManyRelationship = relationship, Lookup = clone });
+                var response = (CreateOneToManyResponse)service.Execute(new CreateOneToManyRequest { OneToManyRelationship = relationship, Lookup = clone });
+                clone.MetadataId = response.AttributeId;
             }
 
             return clone;
         }
 
-        private void UpdateRelationshipSchemaName(OneToManyRelationshipMetadata relationship, string newSchemaName)
+        private void UpdateRelationshipMetadata(OneToManyRelationshipMetadata relationship, string newSchemaName)
         {
             // Add or Remove Temp Post Fix or update last index of existing Att Schema to newSchema
             if (relationship.SchemaName.EndsWith(TempPostfix))
@@ -275,7 +281,7 @@ namespace DLaB.AttributeManager
             }
             else if (newSchemaName.EndsWith(TempPostfix))
             {
-                relationship.SchemaName = relationship.SchemaName + TempPostfix;
+                relationship.SchemaName += TempPostfix;
             }
             else
             {
