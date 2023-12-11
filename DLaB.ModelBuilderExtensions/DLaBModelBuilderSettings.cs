@@ -235,7 +235,7 @@ namespace DLaB.ModelBuilderExtensions
         }
 
         /// <summary>
-        /// No Config
+        /// Fix for https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/issues/464
         /// </summary>
         [JsonPropertyName("updateEnumerableEntityProperties")]
         public bool UpdateEnumerableEntityProperties { get; set; }
@@ -301,6 +301,7 @@ namespace DLaB.ModelBuilderExtensions
             RelationshipConstsClassName = "Relationships";
             RemoveRuntimeVersionComment = true;
             TokenCapitalizationOverrides = new List<string>();
+            UpdateEnumerableEntityProperties = true;
             UserEntityClassName = "UserOwnedEntity";
             ValidCSharpNameRegEx = @"[^a-zA-Z0-9_]";
         }

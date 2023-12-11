@@ -23539,6 +23539,8 @@ claviers
 claviform
 claviforms
 clavus
+claw
+clawback
 clawed
 clawer
 clawers
