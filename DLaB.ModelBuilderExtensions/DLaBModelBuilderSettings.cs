@@ -235,7 +235,7 @@ namespace DLaB.ModelBuilderExtensions
         }
 
         /// <summary>
-        /// Fix for https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/issues/464
+        /// No Config.  Fix for https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/issues/464
         /// </summary>
         [JsonPropertyName("updateEnumerableEntityProperties")]
         public bool UpdateEnumerableEntityProperties { get; set; }
