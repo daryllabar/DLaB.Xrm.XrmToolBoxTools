@@ -303,7 +303,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             {
                 ActionPrefixesWhitelist = null,
                 ActionsToSkip = null,
-                ActionsWhitelist = null,
+                ActionsWhitelist = "analyze",
                 AddDebuggerNonUserCode = true,
                 AddNewFilesToProject = true,
                 AddOptionSetMetadataAttribute = true,
@@ -371,7 +371,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         public void SetPopulatedValues(POCO.ExtensionConfig poco)
         {
             ActionPrefixesWhitelist = GetValueOrDefault(poco.ActionPrefixesWhitelist, ActionPrefixesWhitelist);
-            ActionsWhitelist = GetValueOrDefault(poco.ActionsWhitelist, ActionsWhitelist);
+            ActionsWhitelist = poco.ActionsWhitelist ?? ActionsWhitelist;
             ActionsToSkip = GetValueOrDefault(poco.ActionsToSkip, ActionsToSkip);
             AddDebuggerNonUserCode = poco.AddDebuggerNonUserCode ?? AddDebuggerNonUserCode;
             AddNewFilesToProject = poco.AddNewFilesToProject ?? AddNewFilesToProject;

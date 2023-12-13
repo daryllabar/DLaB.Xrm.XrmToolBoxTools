@@ -486,6 +486,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         [Description("Allows for the ability to specify Messages that will be included in generation.  \"*\" wildcards are valid. ")]
         [Editor(typeof(ActionsHashEditor), typeof(UITypeEditor))]
         [TypeConverter(typeof(CollectionCountConverter))]
+        [CollectionCount("All Messages")]
         public HashSet<string> MessageWhitelist { get; set; }
 
         [Category("4 - Messages")]
