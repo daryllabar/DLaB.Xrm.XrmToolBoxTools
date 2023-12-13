@@ -99,6 +99,9 @@
   "entityTypesFolder": "Entities",
   "generateActions": true,
   "generateGlobalOptionSets": false,
+  "messageNamesFilter": [
+    "analyze*"
+  ],
   "messagesTypesFolder": "Messages",
   "metadataProviderService": "DLaB.ModelBuilderExtensions.MetadataProviderService,DLaB.ModelBuilderExtensions",
   "metadataQueryProviderService": "DLaB.ModelBuilderExtensions.MetadataQueryProviderService,DLaB.ModelBuilderExtensions",
