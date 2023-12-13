@@ -1,8 +1,5 @@
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text.Json.Serialization;
-using System.Windows.Shapes;
 
 namespace DLaB.ModelBuilderExtensions
 {
@@ -90,6 +87,9 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("entityBlacklist")]
         public List<string> EntityBlacklist { get; set; }
+
+        [JsonPropertyName("entityClassNameOverrides")]
+        public Dictionary<string, string> EntityClassNameOverrides { get; set; }
 
         [JsonPropertyName("entityRegExBlacklist")]
         public List<string> EntityRegExBlacklist { get; set; }
@@ -284,8 +284,9 @@ namespace DLaB.ModelBuilderExtensions
             CamelCaseCustomWords = new List<string>();
             EnableFileDataType = true;
             EntitiesFileName = "Entities.cs";
-            EntityBlacklist = new List<string>();
             EntityAttributeSpecifiedNames = new Dictionary<string, HashSet<string>>();
+            EntityBlacklist = new List<string>();
+            EntityClassNameOverrides = new Dictionary<string, string>();
             EntityRegExBlacklist = new List<string>();
             GenerateEntityRelationships = true;
             GroupMessageRequestWithResponse = true;

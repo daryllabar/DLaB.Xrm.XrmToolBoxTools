@@ -17,6 +17,7 @@ namespace DLaB.ModelBuilderExtensions
         public bool CamelCaseMemberNames { get => DLaBSettings.CamelCaseMemberNames; set => DLaBSettings.CamelCaseMemberNames = value; }
         public bool CamelCaseOptionSetNames { get => DLaBSettings.CamelCaseOptionSetNames; set => DLaBSettings.CamelCaseOptionSetNames = value; }
         public Dictionary<string, HashSet<string>> EntityAttributeSpecifiedNames { get => DLaBSettings.EntityAttributeSpecifiedNames; set => DLaBSettings.EntityAttributeSpecifiedNames = value; }
+        public Dictionary<string, string> EntityClassNameOverrides { get => DLaBSettings.EntityClassNameOverrides; set => DLaBSettings.EntityClassNameOverrides = value; }
         public string InvalidCSharpNamePrefix { get => DLaBSettings.InvalidCSharpNamePrefix; set => DLaBSettings.InvalidCSharpNamePrefix = value; }
         public int LanguageCodeOverride { get => DLaBSettings.OptionSetLanguageCodeOverride; set => DLaBSettings.OptionSetLanguageCodeOverride = value; }
         public string LocalOptionSetFormat { get => DLaBSettings.LocalOptionSetFormat; set => DLaBSettings.LocalOptionSetFormat = value; }
@@ -83,7 +84,22 @@ namespace DLaB.ModelBuilderExtensions
                 const int stateLength = 10;
                 name = name.Substring(0, name.Length - stateLength) + "State";
             }
-            return OptionSetNames.TryGetValue(name.ToLower(), out var overriden) ? overriden : name;
+
+            if(OptionSetNames.TryGetValue(name.ToLower(), out var overriden))
+            {
+                return overriden;
+            }
+
+            // Override State Code When Entity Class Name is Overriden
+            if(entityMetadata != null
+                && EntityClassNameOverrides.ContainsKey(entityMetadata.LogicalName)
+                && optionSetMetadata.Name.EndsWith("_statecode")
+                && optionSetMetadata.Name.Substring(0, optionSetMetadata.Name.Length - "_statecode".Length) == entityMetadata.LogicalName)
+            {
+                name = GetNameForEntity(entityMetadata, services) + name.Substring(entityMetadata.LogicalName.Length - 1);
+            }
+
+            return name;
         }
 
         private string GetPossiblyConflictedNameForOptionSet(EntityMetadata entityMetadata, OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
@@ -124,7 +140,6 @@ namespace DLaB.ModelBuilderExtensions
                         GetNameForAttribute(entityMetadata, attribute, services, CamelCaseClassNames, UseLogicalNames));
                 }
             }
-
 
             return UpdateCasingForGlobalOptionSets(defaultName, optionSetMetadata);
         }
@@ -407,6 +422,11 @@ namespace DLaB.ModelBuilderExtensions
             if (UseDisplayNameForBpfName)
             {
                 defaultName = GetBpfNameToDisplay(defaultName, entityMetadata);
+            }
+
+            if(EntityClassNameOverrides.TryGetValue(entityMetadata.LogicalName, out var overriden))
+            {
+                defaultName = overriden;
             }
 
             return CamelCaseClassNames

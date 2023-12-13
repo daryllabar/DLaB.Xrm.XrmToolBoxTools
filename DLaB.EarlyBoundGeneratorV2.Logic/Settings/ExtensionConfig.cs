@@ -93,6 +93,10 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         /// </summary>
         public string EntityAttributeSpecifiedNames { get; set; }
         /// <summary>
+        /// Allows for specifying a specific name or casing for an Entity class.  For example, if the business refers to an 'Account' as a 'Family', specifying a mapping from 'account' to 'Family' will result in the name of the C# class being 'Family', even though the logical name would still be 'account'.
+        /// </summary>
+        public string EntityClassNameOverrides { get; set; }
+        /// <summary>
         /// Pipe delimited string containing prefixes of entities to not generate.
         /// </summary>
         public string EntityPrefixesToSkip { get; set; }
@@ -316,6 +320,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 EntitiesToSkip = null,
                 EntitiesWhitelist = "activityparty|activitypointer|businessunit|contact|email|systemuser|transactioncurrency",
                 EntityAttributeSpecifiedNames = null,
+                EntityClassNameOverrides = null,
                 EntityPrefixesToSkip = null,
                 EntityPrefixesWhitelist = null,
                 FilePrefixText = null,
@@ -384,6 +389,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             EntitiesToSkip = GetValueOrDefault(poco.EntitiesToSkip, EntitiesToSkip);
             EntitiesWhitelist = poco.EntitiesWhitelist ?? EntitiesWhitelist;
             EntityAttributeSpecifiedNames = GetValueOrDefault(poco.EntityAttributeSpecifiedNames, EntityAttributeSpecifiedNames);
+            EntityClassNameOverrides = GetValueOrDefault(poco.EntityClassNameOverrides, EntityClassNameOverrides);
             EntityPrefixesToSkip = GetValueOrDefault(poco.EntityPrefixesToSkip, EntityPrefixesToSkip);
             EntityPrefixesWhitelist = GetValueOrDefault(poco.EntityPrefixesWhitelist, EntityPrefixesWhitelist);
             FilePrefixText = GetValueOrDefault(poco.FilePrefixText, FilePrefixText);
@@ -451,6 +457,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddProperty(nameof(CreateOneFilePerOptionSet), CreateOneFilePerOptionSet);
             writer.AddProperty(nameof(DeleteFilesFromOutputFolders), DeleteFilesFromOutputFolders);
             writer.AddPropertyDictionaryStringHashString(nameof(EntityAttributeSpecifiedNames), EntityAttributeSpecifiedNames, false);
+            writer.AddPropertyDictionaryStringString(nameof(EntityClassNameOverrides), EntityClassNameOverrides);
             AddOptionalProperty("EntitiesFileName", settings.EntityTypesFolder, !CreateOneFilePerEntity);
             writer.AddPropertyArray("EntityBlacklist", EntitiesToSkip);
             writer.AddPropertyArray("EntityRegExBlacklist", EntityPrefixesToSkip);
@@ -569,6 +576,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings.POCO
         public string EntitiesToSkip { get; set; }
         public string EntitiesWhitelist { get; set; }
         public string EntityAttributeSpecifiedNames { get; set; }
+        public string EntityClassNameOverrides { get; set; }
         public string EntityPrefixesToSkip { get; set; }
         public string EntityPrefixesWhitelist { get; set; }
         public string FilePrefixText { get; set; }

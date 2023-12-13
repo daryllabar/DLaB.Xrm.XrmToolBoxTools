@@ -318,6 +318,7 @@
     </Compile>
     <Compile Include="AttributesToEnumMapperEditor.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="SpecifyEntityNameEditor.cs" />
     <Compile Include="SpecifyAttributesCaseEditor.cs" />
     <Compile Include="Settings\ConnectionSettings.cs" />
     <Compile Include="Settings\SettingsMap.cs" />

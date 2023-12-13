@@ -120,6 +120,10 @@ namespace DLaB.ModelBuilderExtensions
                     return GenerateFilePath(bpfType.Name);
                 }
             }
+            else if(Settings.DLaBModelBuilder.EntityClassNameOverrides.TryGetValue(fileName.ToLower(), out var overrideName))
+            {
+                fileName = overrideName;
+            }
             
             string actionFileName = null;
             foreach (var type in code.GetTypes())

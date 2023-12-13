@@ -1,12 +1,12 @@
+using DLaB.Common;
+using DLaB.XrmToolBoxCommon.Editors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Drawing.Design;
-using DLaB.Common;
-using DLaB.XrmToolBoxCommon.Editors;
-using CommonConfig = DLaB.Common.Config;
 using XrmToolBox.Extensibility;
+using CommonConfig = DLaB.Common.Config;
 
 // ReSharper disable UnusedMember.Global
 namespace DLaB.EarlyBoundGeneratorV2.Settings
@@ -127,6 +127,13 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         [Editor(typeof(SpecifyAttributesCaseEditor), typeof(UITypeEditor))]
         [TypeConverter(typeof(CollectionCountConverter))]
         public Dictionary<string, HashSet<string>> EntityAttributeSpecifiedNames { get; set; }
+
+        [Category("2 - Entities")]
+        [DisplayName("Entity Class Name Overrides")]
+        [Description("Allows for specifying a specific name or casing for an Entity class.  For example, if the business refers to an 'Account' as a 'Family', specifying a mapping from 'account' to 'Family' will result in the name of the C# class being 'Family', even though the logical name would still be 'account'.")]
+        [Editor(typeof(SpecifyEntityNameEditor), typeof(UITypeEditor))]
+        [TypeConverter(typeof(CollectionCountConverter))]
+        public Dictionary<string,string> EntityClassNameOverrides { get;set;}
 
         [Category("2 - Entities")]
         [DisplayName("Entities RegEx Blacklist")]
@@ -786,6 +793,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
                 EntitiesBlacklist = RemoveWhiteSpace(nameof(EntitiesBlacklist), config.ExtensionConfig.EntitiesToSkip).GetHashSet<string>();
                 EntitiesWhitelist = RemoveWhiteSpace(nameof(EntitiesWhitelist), config.ExtensionConfig.EntitiesWhitelist).GetHashSet<string>();
                 EntityAttributeSpecifiedNames = RemoveWhiteSpace(nameof(EntityAttributeSpecifiedNames), config.ExtensionConfig.EntityAttributeSpecifiedNames).GetDictionaryHash<string, string>();
+                EntityClassNameOverrides = RemoveWhiteSpace(nameof(EntityClassNameOverrides), config.ExtensionConfig.EntityClassNameOverrides).GetDictionary<string, string>();
                 EntityRegExBlacklist = RemoveWhiteSpace(nameof(EntityRegExBlacklist), config.ExtensionConfig.EntityPrefixesToSkip).GetList<string>();
                 EntityWildcardWhitelist = RemoveWhiteSpace(nameof(EntityWildcardWhitelist), config.ExtensionConfig.EntityPrefixesWhitelist).GetList<string>();
                 MessageBlacklist = RemoveWhiteSpace(nameof(MessageBlacklist), config.ExtensionConfig.ActionsToSkip).GetHashSet<string>(info);
@@ -818,6 +826,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             Config.ExtensionConfig.EntitiesToSkip = CommonConfig.ToStringSorted(EntitiesBlacklist);
             Config.ExtensionConfig.EntitiesWhitelist = CommonConfig.ToStringSorted(EntitiesWhitelist);
             Config.ExtensionConfig.EntityAttributeSpecifiedNames = CommonConfig.ToStringSorted(EntityAttributeSpecifiedNames);
+            Config.ExtensionConfig.EntityClassNameOverrides = CommonConfig.ToStringSorted(EntityClassNameOverrides);
             Config.ExtensionConfig.EntityPrefixesToSkip = CommonConfig.ToStringSorted(EntityRegExBlacklist);
             Config.ExtensionConfig.EntityPrefixesWhitelist = CommonConfig.ToStringSorted(EntityWildcardWhitelist);
             Config.ExtensionConfig.PropertyEnumMappings = CommonConfig.ToStringSorted(PropertyEnumMappings);
