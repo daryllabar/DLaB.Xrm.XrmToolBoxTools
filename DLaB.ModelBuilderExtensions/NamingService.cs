@@ -96,10 +96,10 @@ namespace DLaB.ModelBuilderExtensions
                 && optionSetMetadata.Name.EndsWith("_statecode")
                 && optionSetMetadata.Name.Substring(0, optionSetMetadata.Name.Length - "_statecode".Length) == entityMetadata.LogicalName)
             {
-                name = GetNameForEntity(entityMetadata, services) + name.Substring(entityMetadata.LogicalName.Length - 1);
+                name = GetNameForEntity(entityMetadata, services) + name.Substring(entityMetadata.LogicalName.Length);
             }
 
-            return name;
+            return name; 
         }
 
         private string GetPossiblyConflictedNameForOptionSet(EntityMetadata entityMetadata, OptionSetMetadataBase optionSetMetadata, IServiceProvider services)

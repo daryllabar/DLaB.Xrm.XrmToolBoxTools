@@ -310,9 +310,7 @@
     <Compile Include="AttributeCaseSpecifierDialog.Designer.cs">
       <DependentUpon>AttributeCaseSpecifierDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="AttributesToEnumMapperDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="AttributesToEnumMapperDialog.cs" />
     <Compile Include="AttributesToEnumMapperDialog.Designer.cs">
       <DependentUpon>AttributesToEnumMapperDialog.cs</DependentUpon>
     </Compile>

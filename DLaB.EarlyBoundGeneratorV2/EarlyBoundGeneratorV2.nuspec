@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGeneratorV2</id>
-	  <version>2.2023.12.13</version>
+	  <version>2.2023.12.14</version>
 	  <title>Early Bound Generator V2</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,10 @@
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V2.2023.12.13
+    <releaseNotes>V2.2023.12.14
+State Name is incorrect when using Entity Class Name Overrides #469
+
+V2.2023.12.13
 Add a default Messages Whitelist #468
 
 V2.2023.12.12
