@@ -27,8 +27,11 @@ namespace DLaB.ModelBuilderExtensions
         public bool UseLogicalNames { get => DLaBSettings.UseLogicalNames; set => DLaBSettings.UseLogicalNames = value; }
         public string ValidCSharpNameRegEx { get => DLaBSettings.ValidCSharpNameRegEx; set => DLaBSettings.ValidCSharpNameRegEx = value; }
 
+
+
         private HashSet<string> _entityNames;
         private readonly Dictionary<string,string> _generatedBpfLogicalNamesByClassName = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> _generatedOptionSetsNames = new Dictionary<string, string>();
 
         private TransliterationService TransliterationService { get; set; }
 
@@ -68,6 +71,11 @@ namespace DLaB.ModelBuilderExtensions
         /// </summary>
         public string GetNameForOptionSet(EntityMetadata entityMetadata, OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
         {
+            var optionSetKey = entityMetadata?.LogicalName + "|!|" + optionSetMetadata?.Name;
+            if (_generatedOptionSetsNames.TryGetValue(optionSetKey, out var generatedName))
+            {
+                return generatedName;
+            }
             SetServiceCache(services);
             var name = GetPossiblyConflictedNameForOptionSet(entityMetadata, optionSetMetadata, services);
             var entityNames = GetEntityNames(services);
@@ -77,16 +85,16 @@ namespace DLaB.ModelBuilderExtensions
             }
 
             if(UseCrmSvcUtilStateEnumNamingConvention
-               && optionSetMetadata.IsGlobal != true
-               && name.ToLower().EndsWith("_statecode")
-               && entityMetadata.Attributes.FirstOrDefault(a => a.AttributeType == AttributeTypeCode.State) != null)
+                && optionSetMetadata.IsGlobal != true
+                && name.ToLower().EndsWith("_statecode")
+                && entityMetadata.Attributes.FirstOrDefault(a => a.AttributeType == AttributeTypeCode.State) != null)
             {
-                const int stateLength = 10;
-                name = name.Substring(0, name.Length - stateLength) + "State";
+                name = GetNameForEntity(entityMetadata, services) + "State";
             }
 
             if(OptionSetNames.TryGetValue(name.ToLower(), out var overriden))
             {
+                _generatedOptionSetsNames[optionSetKey] = overriden;
                 return overriden;
             }
 
@@ -98,8 +106,8 @@ namespace DLaB.ModelBuilderExtensions
             {
                 name = GetNameForEntity(entityMetadata, services) + name.Substring(entityMetadata.LogicalName.Length);
             }
-
-            return name; 
+            _generatedOptionSetsNames[optionSetKey] = name;
+            return name;
         }
 
         private string GetPossiblyConflictedNameForOptionSet(EntityMetadata entityMetadata, OptionSetMetadataBase optionSetMetadata, IServiceProvider services)

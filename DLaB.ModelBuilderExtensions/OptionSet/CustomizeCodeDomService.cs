@@ -173,7 +173,7 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
                 }
 
 
-                foreach (var optionSet in optionSets.OrderBy(s => s.Name))
+                foreach (var optionSet in optionSets.OrderByDescending(s => s.Name))
                 {
                     nameSpace.Types[indexQueue.Dequeue()] = optionSet;
                 }
