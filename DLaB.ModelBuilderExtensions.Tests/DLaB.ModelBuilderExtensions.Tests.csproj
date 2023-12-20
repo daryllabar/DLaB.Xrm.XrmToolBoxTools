@@ -253,6 +253,7 @@
     <Compile Include="ArgumentBuilderTests.cs" />
     <Compile Include="CamelCaserTests.cs" />
     <Compile Include="Entity\MetadataProviderServiceTests.cs" />
+    <Compile Include="Entity\PrimaryAttributeGeneratorTests.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Metadata\Provider.cs" />
     <Compile Include="DataModelBuilderTests.cs" />

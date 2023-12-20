@@ -1,5 +1,6 @@
 ﻿// ReSharper disable BitwiseOperatorOnEnumWithoutFlags
 using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
+using Microsoft.Xrm.Sdk.Metadata;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
@@ -57,7 +58,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
                 if (entity.Metadata.Keys != null && entity.Metadata.Keys.Length > 0)
                 {
-                    var value = string.Join("|", entity.Metadata.Keys.Select(k => string.Join(",", k.KeyAttributes.OrderBy(a => a))).Select(_ => _));
+                    var value = GenerateAlternateKeyValue(entity.Metadata.Keys);
                     entity.Type.Members.Insert(1,
                         new CodeMemberField
                         {
@@ -68,6 +69,11 @@ namespace DLaB.ModelBuilderExtensions.Entity
                         });
                 }
             }
+        }
+
+        public static string GenerateAlternateKeyValue(IEnumerable<EntityKeyMetadata> keys)
+        {
+            return string.Join("|", keys.Select(k => string.Join(",", k.KeyAttributes.OrderBy(a => a.ToLower()))).OrderBy(k => k.ToLower()));
         }
     }
 }

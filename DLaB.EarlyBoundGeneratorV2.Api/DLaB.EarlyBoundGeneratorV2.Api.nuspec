@@ -12,6 +12,7 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses ModelBuilder from the PAC.</description>
 		<releaseNotes>V2.2023.12.?
+Alternate Keys aren't ordered #474		
 Fix Error with StateCode when overriding EntityName #473
 
 V2.2023.12.16
