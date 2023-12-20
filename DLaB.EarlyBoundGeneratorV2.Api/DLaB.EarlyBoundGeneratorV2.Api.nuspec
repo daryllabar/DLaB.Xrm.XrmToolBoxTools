@@ -11,7 +11,10 @@
 		<projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses ModelBuilder from the PAC.</description>
-		<releaseNotes>V2.2023.12.16
+		<releaseNotes>V2.2023.12.?
+Fix Error with StateCode when overriding EntityName #473
+
+V2.2023.12.16
 Fix Ordering of local Enums #472
 Fix "Use Enum for State Codes" generates enum with lowercase first letter #439
 

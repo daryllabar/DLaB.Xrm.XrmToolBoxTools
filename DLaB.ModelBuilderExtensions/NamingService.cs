@@ -98,14 +98,6 @@ namespace DLaB.ModelBuilderExtensions
                 return overriden;
             }
 
-            // Override State Code When Entity Class Name is Overriden
-            if(entityMetadata != null
-                && EntityClassNameOverrides.ContainsKey(entityMetadata.LogicalName)
-                && optionSetMetadata.Name.EndsWith("_statecode")
-                && optionSetMetadata.Name.Substring(0, optionSetMetadata.Name.Length - "_statecode".Length) == entityMetadata.LogicalName)
-            {
-                name = GetNameForEntity(entityMetadata, services) + name.Substring(entityMetadata.LogicalName.Length);
-            }
             _generatedOptionSetsNames[optionSetKey] = name;
             return name;
         }

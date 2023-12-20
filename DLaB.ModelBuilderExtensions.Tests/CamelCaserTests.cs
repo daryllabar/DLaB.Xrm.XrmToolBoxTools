@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Activities.Expressions;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DLaB.ModelBuilderExtensions.Tests
@@ -64,6 +65,18 @@ namespace DLaB.ModelBuilderExtensions.Tests
 
             Assert.AreEqual("CoStar", sut.CaseWord("costar"));
         }
+
+        // Not sure if this is something that we want to do?
+        //[TestMethod]
+        //public void Case_TreatNonAlphanumericOrInvalidCSharpCharactersAsSpaces()
+        //{
+        //    var sut = new CamelCaser("no", "show", "sub", "category");
+        //
+        //    Assert.AreEqual("NoShow", sut.CaseWord("no-show"));
+        //    Assert.AreEqual("NoShow", sut.CaseWord("no--show"));
+        //    Assert.AreEqual("NoShow", sut.CaseWord("no!$#show"));
+        //    Assert.AreEqual("SubCategory", sut.CaseWord("sub-category"));
+        //}
 
         [TestMethod]
         public void Case_ShouldIgnoreSplitByNumbers()
