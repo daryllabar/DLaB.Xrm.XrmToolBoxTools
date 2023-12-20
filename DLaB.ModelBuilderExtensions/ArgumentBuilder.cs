@@ -54,7 +54,8 @@ namespace DLaB.ModelBuilderExtensions
             {
                 SettingsTemplateFile = SettingsPath,
                 SplitFilesByObject = true,
-                OutDirectory = OutputPath
+                OutDirectory = OutputPath,
+                //SystemDefaultLanguageId = 1033, Don't think this works or is valid
             };
             var lines = new List<string>();
             var commandLine = new List<string>();

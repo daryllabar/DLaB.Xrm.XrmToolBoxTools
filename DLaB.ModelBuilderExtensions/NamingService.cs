@@ -27,8 +27,7 @@ namespace DLaB.ModelBuilderExtensions
         public bool UseLogicalNames { get => DLaBSettings.UseLogicalNames; set => DLaBSettings.UseLogicalNames = value; }
         public string ValidCSharpNameRegEx { get => DLaBSettings.ValidCSharpNameRegEx; set => DLaBSettings.ValidCSharpNameRegEx = value; }
 
-
-
+        //private readonly int _languageCode;
         private HashSet<string> _entityNames;
         private readonly Dictionary<string,string> _generatedBpfLogicalNamesByClassName = new Dictionary<string, string>();
         private readonly Dictionary<string, string> _generatedOptionSetsNames = new Dictionary<string, string>();
@@ -45,14 +44,43 @@ namespace DLaB.ModelBuilderExtensions
         public NamingService(INamingService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
             TransliterationService = new TransliterationService(DLaBSettings);
+            //_languageCode = GetLanguageCode(defaultService);
         }
 
         public NamingService(INamingService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
         {
             TransliterationService = new TransliterationService(DLaBSettings);
+            //_languageCode = GetLanguageCode(defaultService);
         }
 
         #endregion Constructors   
+
+        /// <summary>
+        /// Could be used to determine the language code used by the default service, but it is not currently used.
+        /// </summary>
+        /// <param name="defaultService"></param>
+        /// <returns></returns>
+        private int GetLanguageCode(INamingService defaultService)
+        {
+            var languageCode = LanguageCodeOverride <= 0
+                ? English
+                : LanguageCodeOverride;
+            var parametersField = defaultService.GetType().GetField("_parameters", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            if (!(parametersField?.GetValue(defaultService) is ModelBuilderInvokeParameters modelParameters)) {
+                return languageCode;
+            }
+
+            if (LanguageCodeOverride > 0)
+            {
+                modelParameters.SystemDefaultLanguageId = LanguageCodeOverride;
+            }
+            else
+            {
+                languageCode = modelParameters.SystemDefaultLanguageId ?? languageCode;
+            }
+
+            return languageCode;
+        }
 
         public HashSet<string> GetEntityNames(IServiceProvider services)
         {
