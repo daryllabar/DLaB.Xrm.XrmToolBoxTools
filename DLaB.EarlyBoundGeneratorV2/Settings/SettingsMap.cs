@@ -570,6 +570,15 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         }
 
         [Category("3 - Option Sets")]
+        [DisplayName("Adjust Casing For Enum Options")]
+        [Description("By default, the Dataverse Model Builder will convert the Option labels into a C# friendly name, and not adjust the casing of enum.  This could results in a Label of \"This is a very long label with some capitals (JSON / XML / CSV)\" being created as ThisisaverylonglabelwithsomecapitalsJSONXMLCSV, instead of a much more readable ThisIsAVeryLongLabelWithSomeCapitalsJsonXmlCsv,")]
+        public bool AdjustCasingForEnumOptions
+        {
+            get => Config.ExtensionConfig.AdjustCasingForEnumOptions;
+            set => Config.ExtensionConfig.AdjustCasingForEnumOptions = value;
+        }
+
+        [Category("3 - Option Sets")]
         [DisplayName("Cleanup CrmSvcUtil Local Option Sets")]
         [Description("The PAC ModelBuilder generates local option sets in the same files as the entity class, but the CrmSvcUtil created these option sets separately.  This setting will look for these files and delete them from the disk.  After the upgrade, this should be disabled.  It is recommended to enable \"1 - Global - Add New Files To Project\" as well to cleanup the files from the project.")]
         public bool CleanupCrmSvcUtilLocalOptionSets

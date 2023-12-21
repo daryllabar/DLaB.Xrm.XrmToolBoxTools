@@ -7,6 +7,7 @@
     "addDebuggerNonUserCode": true,
     "addNewFilesToProject": true,
     "addOptionSetMetadataAttribute": true,
+    "adjustCasingForEnumOptions": true,
     "builderSettingsJsonRelativePath": "builderSettings.json",
     "camelCaseClassNames": true,
     "camelCaseMemberNames": true,

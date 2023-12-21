@@ -40,6 +40,10 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         /// </summary>
         public bool AddOptionSetMetadataAttribute { get; set; }
         /// <summary>
+        /// By default, the Dataverse Model Builder will convert the Option labels into a C# friendly name, and not adjust the casing of enum.  This could results in a Label of "This is a very long label with some capitals (JSON / XML / CSV)" being created as ThisisaverylonglabelwithsomecapitalsJSONXMLCSV, instead of a much more readable ThisIsAVeryLongLabelWithSomeCapitalsJsonXmlCsv,
+        /// </summary>
+        public bool AdjustCasingForEnumOptions { get; set; }
+        /// <summary>
         /// This is relative to the Path of the Settings File.  This should end with the a ".json" extension.
         /// </summary>
         public string BuilderSettingsJsonRelativePath { get; set; }
@@ -307,6 +311,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 AddDebuggerNonUserCode = true,
                 AddNewFilesToProject = true,
                 AddOptionSetMetadataAttribute = true,
+                AdjustCasingForEnumOptions = true,
                 BuilderSettingsJsonRelativePath = "builderSettings.json",
                 CamelCaseClassNames = true,
                 CamelCaseCustomWords = null,
@@ -376,6 +381,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             AddDebuggerNonUserCode = poco.AddDebuggerNonUserCode ?? AddDebuggerNonUserCode;
             AddNewFilesToProject = poco.AddNewFilesToProject ?? AddNewFilesToProject;
             AddOptionSetMetadataAttribute = poco.AddOptionSetMetadataAttribute ?? AddOptionSetMetadataAttribute;
+            AdjustCasingForEnumOptions = poco.AdjustCasingForEnumOptions ?? AdjustCasingForEnumOptions;
             BuilderSettingsJsonRelativePath = GetValueOrDefault(poco.BuilderSettingsJsonRelativePath, BuilderSettingsJsonRelativePath);
             CamelCaseClassNames = poco.CamelCaseClassNames ?? CamelCaseClassNames;
             CamelCaseCustomWords = GetValueOrDefault(poco.CamelCaseCustomWords, CamelCaseCustomWords);
@@ -446,6 +452,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddProperty(nameof(AddDebuggerNonUserCode), AddDebuggerNonUserCode);
             writer.AddProperty(nameof(AddNewFilesToProject), AddNewFilesToProject);
             writer.AddProperty(nameof(AddOptionSetMetadataAttribute), AddOptionSetMetadataAttribute);
+            writer.AddProperty(nameof(AdjustCasingForEnumOptions), AdjustCasingForEnumOptions);
             writer.AddProperty(nameof(BuilderSettingsJsonRelativePath), BuilderSettingsJsonRelativePath);
             writer.AddProperty(nameof(CamelCaseClassNames), CamelCaseClassNames);
             writer.AddPropertyArray(nameof(CamelCaseCustomWords), CamelCaseCustomWords);
@@ -562,6 +569,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings.POCO
         public bool? AddDebuggerNonUserCode { get; set; }
         public bool? AddNewFilesToProject { get; set; }
         public bool? AddOptionSetMetadataAttribute { get; set; }
+        public bool? AdjustCasingForEnumOptions { get; set; }
         public string BuilderSettingsJsonRelativePath { get; set; }
         public bool? CamelCaseClassNames { get; set; }
         public string CamelCaseCustomWords { get; set; }

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using FakeItEasy;
-using Microsoft.Extensions.Options;
+﻿using FakeItEasy;
 using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk.Metadata;
+using System;
+using System.Collections.Generic;
 
 namespace DLaB.ModelBuilderExtensions.Tests
 {
@@ -80,6 +79,19 @@ namespace DLaB.ModelBuilderExtensions.Tests
                 IsGlobal = false,
                 Name = schemaName.ToLower() + "_statuscode"
             }, A.Fake<IServiceProvider>()));
+        }
+
+        [TestMethod]
+        public void GetNameFromLabel_Test()
+        {
+            var sut = new NamingService(null, new DLaBModelBuilderSettings());
+
+            Assert.AreEqual("NoShow", sut.GetNameFromLabel("no show"));
+            Assert.AreEqual("NoShow", sut.GetNameFromLabel("no-show"));
+            Assert.AreEqual("NoShow", sut.GetNameFromLabel("no--show"));
+            Assert.AreEqual("NoShow", sut.GetNameFromLabel("no!$#show"));
+            Assert.AreEqual("NoShow", sut.GetNameFromLabel("nO sHOW"));
+            Assert.AreEqual("NoShow", sut.GetNameFromLabel("NO SHOW"));
         }
     }
 }

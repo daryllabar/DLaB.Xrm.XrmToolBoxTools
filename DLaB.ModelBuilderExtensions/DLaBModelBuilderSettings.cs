@@ -26,6 +26,9 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("addPrimaryAttributeConsts")]
         public bool AddPrimaryAttributeConsts { get; set; }
 
+        [JsonPropertyName("adjustCasingForEnumOptions")]
+        public bool AdjustCasingForEnumOptions { get; set; }
+
         /// <summary>
         /// No Config
         /// </summary>

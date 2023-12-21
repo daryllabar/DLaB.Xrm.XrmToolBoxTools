@@ -353,13 +353,19 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             if (pocoVersion < new Version("2.2023.9.20"))
             {
 #pragma warning disable CS0618 // Type or member is obsolete
-                Logger.AddDetail("Updating config to 1.2023.9.21 settings.");
+                Logger.AddDetail("Updating config to 2.2023.9.21 settings.");
                 // Entity Type Codes are not handled by the Model Builder
                 if (pocoConfig.GenerateEntityTypeCode == true)
                 {
                     poco.EmitEntityETC = true;
                 }
 #pragma warning restore CS0618 // Type or member is obsolete
+            }
+            if (pocoVersion < new Version("2.2023.12.21"))
+            {
+                Logger.AddDetail("Updating config to 2.2023.12.21 settings.");
+                Logger.AddDetail(" - Setting AdjustCasingForEnumOptions to false.  Consider updating to true to increase readability of enum values.");
+                pocoConfig.AdjustCasingForEnumOptions = false;
             }
         }
 
