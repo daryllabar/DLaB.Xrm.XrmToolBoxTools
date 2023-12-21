@@ -16,6 +16,7 @@ using XrmToolBox;
 using XrmToolBox.Extensibility;
 using XrmToolBox.Extensibility.Interfaces;
 using PropertyInterface = DLaB.XrmToolBoxCommon.PropertyInterface;
+using DLaB.XrmToolBoxCommon.Controls;
 
 namespace DLaB.EarlyBoundGeneratorV2
 {
@@ -53,6 +54,7 @@ namespace DLaB.EarlyBoundGeneratorV2
         {
             FormLoaded = false;
             InitializeComponent();
+            PropertiesGrid.FilterableGrid.PropertyValueChanged += PropertiesGrid_PropertyValueChanged;
         }
 
         private void EarlyBoundGenerator_Load(object sender, EventArgs e)
@@ -135,7 +137,7 @@ Please consider clicking the save button in the top right to save the settings w
 
         private void HideUnusedCategories()
         {
-            foreach (var category in PropertiesGrid.GetAllGridItems()
+            foreach (var category in PropertiesGrid.FilterableGrid.GetAllGridItems()
                          .Where(i => i.Label != null
                                      && i.GridItemType == GridItemType.Category 
                                      && i.Label[0] > '4'))

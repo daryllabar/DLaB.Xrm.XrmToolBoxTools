@@ -7,7 +7,7 @@ using DLaB.XrmToolBoxCommon.Forms;
 
 namespace DLaB.XrmToolBoxCommon.Editors
 {
-    internal class OptionSetsHashEditor : UITypeEditor
+    public class OptionSetsHashEditor : UITypeEditor
     {
         public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context)
         {

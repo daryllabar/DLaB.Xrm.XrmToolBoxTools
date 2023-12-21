@@ -317,7 +317,6 @@
       <DependentUpon>AttributesToEnumMapperDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="AttributesToEnumMapperEditor.cs" />
-    <Compile Include="Extensions.cs" />
     <Compile Include="SpecifyEntityNameEditor.cs" />
     <Compile Include="SpecifyAttributesCaseEditor.cs" />
     <Compile Include="Settings\ConnectionSettings.cs" />
@@ -403,6 +402,7 @@
       <Name>DLaB.XrmToolBoxCommon</Name>
     </ProjectReference>
   </ItemGroup>
+  <Import Project="..\DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>REM Copy New Content Files

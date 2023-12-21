@@ -1,6 +1,4 @@
-﻿using XrmToolBox.Extensibility;
-
-namespace DLaB.EarlyBoundGeneratorV2
+﻿namespace DLaB.EarlyBoundGeneratorV2
 {
     partial class EarlyBoundGeneratorPlugin
     {
@@ -42,7 +40,7 @@ namespace DLaB.EarlyBoundGeneratorV2
             this.BtnReloadSettings = new System.Windows.Forms.Button();
             this.BtnResetSettings = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.PropertiesGrid = new System.Windows.Forms.PropertyGrid();
+            this.PropertiesGrid = new DLaB.XrmToolBoxCommon.Controls.SearchablePropertyGrid();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -181,7 +179,6 @@ namespace DLaB.EarlyBoundGeneratorV2
             this.PropertiesGrid.Name = "PropertiesGrid";
             this.PropertiesGrid.Size = new System.Drawing.Size(887, 945);
             this.PropertiesGrid.TabIndex = 36;
-            this.PropertiesGrid.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.PropertiesGrid_PropertyValueChanged);
             // 
             // splitContainer1
             // 
@@ -259,7 +256,7 @@ namespace DLaB.EarlyBoundGeneratorV2
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button BtnOpenSettingsPathDialog;
         private System.Windows.Forms.TextBox TxtSettingsPath;
-        private System.Windows.Forms.PropertyGrid PropertiesGrid;
+        private DLaB.XrmToolBoxCommon.Controls.SearchablePropertyGrid PropertiesGrid;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button BtnSaveSettingsPathDialog;

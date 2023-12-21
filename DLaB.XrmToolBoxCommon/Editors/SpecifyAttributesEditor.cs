@@ -7,7 +7,7 @@ using DLaB.XrmToolBoxCommon.Editors;
 
 namespace DLaB.XrmToolBoxCommon.Forms
 {
-    internal class SpecifyAttributesEditor : UITypeEditor
+    public class SpecifyAttributesEditor : UITypeEditor
     {
         public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context)
         {

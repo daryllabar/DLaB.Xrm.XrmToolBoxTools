@@ -32,9 +32,9 @@ Project file corrupted after import #402
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator.dll" target="lib\net462\plugins" />
-    <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\*.*" target="lib\net462\plugins\DLaB.EarlyBoundGenerator" />
-	  <file src="bin\Release\MscrmTools\XrmToolBox\Plugins\DLaB.EarlyBoundGenerator\alphabets\*.*" target="lib\net462\plugins\DLaB.EarlyBoundGenerator\alphabets" />
+    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2.dll"             target="lib\net462\plugins" />
+    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2\*.*"             target="lib\net462\plugins\DLaB.EarlyBoundGenerator" exclude="bin\Release\DLaB.EarlyBoundGenerator.dll" />
+    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2\alphabets\*.*"   target="lib\net462\plugins\DLaB.EarlyBoundGenerator\alphabets" />
     <file src="bin\Release\Images\DLaB_Dynamics_Logo_Square_32x32.png" target="images\" />
-  </files>
+	</files>
 </package>
