@@ -19,6 +19,7 @@ namespace DLaB.ModelBuilderExtensions
         public Dictionary<string, HashSet<string>> EntityAttributeSpecifiedNames { get => DLaBSettings.EntityAttributeSpecifiedNames; set => DLaBSettings.EntityAttributeSpecifiedNames = value; }
         public Dictionary<string, string> EntityClassNameOverrides { get => DLaBSettings.EntityClassNameOverrides; set => DLaBSettings.EntityClassNameOverrides = value; }
         public string InvalidCSharpNamePrefix { get => DLaBSettings.InvalidCSharpNamePrefix; set => DLaBSettings.InvalidCSharpNamePrefix = value; }
+        public Dictionary<string, string> LabelTextReplacement { get => DLaBSettings.LabelTextReplacement; set => DLaBSettings.LabelTextReplacement = value; }
         public int LanguageCodeOverride { get => DLaBSettings.OptionSetLanguageCodeOverride; set => DLaBSettings.OptionSetLanguageCodeOverride = value; }
         public string LocalOptionSetFormat { get => DLaBSettings.LocalOptionSetFormat; set => DLaBSettings.LocalOptionSetFormat = value; }
         public Dictionary<string, string> OptionSetNames { get => DLaBSettings.OptionSetNames; set => DLaBSettings.OptionSetNames = value; }
@@ -338,7 +339,7 @@ namespace DLaB.ModelBuilderExtensions
 
         private string GetPossiblyDuplicateNameForOption(OptionSetMetadataBase metadata, IServiceProvider services, OptionMetadata option)
         {
-            var defaultName = DefaultService.GetNameForOption(metadata, option, services);
+            var defaultName = GetDefaultNameForOptionWithLabelReplacements(metadata, services, option);
             defaultName = Transliterate(option, defaultName);
 
             var name = GetValidCSharpName(defaultName);
@@ -350,6 +351,33 @@ namespace DLaB.ModelBuilderExtensions
             return CamelCaseOptionSetNames
                 ? CamelCaser.Case(name)
                 : name;
+        }
+
+        private string GetDefaultNameForOptionWithLabelReplacements(OptionSetMetadataBase metadata, IServiceProvider services, OptionMetadata option)
+        {
+            var updatedLabels = new Dictionary<Guid, string>();
+            var labels = new List<LocalizedLabel>();
+            labels.AddRange(option.Label.LocalizedLabels);
+            labels.Add(option.Label.UserLocalizedLabel);
+            foreach (var replacement in LabelTextReplacement)
+            {
+                foreach (var label in labels.Where(l => l.Label.Contains(replacement.Key)))
+                {
+                    label.MetadataId = label.MetadataId ?? Guid.NewGuid();
+                    updatedLabels[label.MetadataId.Value] = label.Label;
+                    label.Label = label.Label.Replace(replacement.Key, replacement.Value);
+                }
+            }
+
+            var defaultName = DefaultService.GetNameForOption(metadata, option, services);
+            foreach (var updatedLabel in updatedLabels)
+            {
+                foreach (var label in labels.Where(l => l.MetadataId == updatedLabel.Key)){
+                    label.Label = updatedLabel.Value;
+                }
+            }
+
+            return defaultName;
         }
 
         private static string AppendState(OptionMetadata option, string name)

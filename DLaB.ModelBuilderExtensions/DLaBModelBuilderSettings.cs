@@ -132,6 +132,12 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("invalidCSharpNamePrefix")]
         public string InvalidCSharpNamePrefix { get; set; }
+        
+        /// <summary>
+        /// No Config
+        /// </summary>
+        [JsonPropertyName("labelTextReplacement")]
+        public Dictionary<string, string> LabelTextReplacement { get; set; }
 
         [JsonPropertyName("localOptionSetFormat")]
         public string LocalOptionSetFormat { get; set; }
@@ -291,6 +297,11 @@ namespace DLaB.ModelBuilderExtensions
             GenerateEntityRelationships = true;
             GroupMessageRequestWithResponse = true;
             InvalidCSharpNamePrefix = "_";
+            LabelTextReplacement = new Dictionary<string, string>()
+            {
+                { "$", string.Empty },
+                { "(", string.Empty }
+            };
             LocalOptionSetFormat = "{0}_{1}";
             MessageBlacklist = new List<string>();
             MessagesFileName = "Messages.cs";
