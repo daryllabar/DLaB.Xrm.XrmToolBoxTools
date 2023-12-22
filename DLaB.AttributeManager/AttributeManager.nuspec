@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.AttributeManager</id>
-	<version>1.2023.12.7</version>
+	<version>1.2023.12.21</version>
 	<title>Attribute Manager</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,10 @@
     <icon>images\DLaB_Dynamics_Logo_Square_32x32.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>BETA! - Used to rename/delete/or change the type of an attribute.</description>
-    <releaseNotes>V1.2023.12.7
+    <releaseNotes>V1.2023.12.21
+Potential Conflict with Early Bound Generator V2
+
+V1.2023.12.7
 Implement Retry Logic #463
 Fix for Fails to update Plugin Step Image #462		
 Fix for Null Exception error when replacing an attribute #454

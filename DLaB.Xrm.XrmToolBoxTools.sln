@@ -248,16 +248,10 @@ Global
 		SolutionGuid = {097D800D-2F9C-4108-88C8-B236EAA12F1F}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		DLaB.EarlyBoundGenerator.Logic\DLaB.EarlyBoundGenerator.Logic.projitems*{0a143e92-0ede-4630-9bfe-c670bf4c310a}*SharedItemsImports = 4
-		DLaB.Log\DLaB.Log.projitems*{0a143e92-0ede-4630-9bfe-c670bf4c310a}*SharedItemsImports = 4
 		DLaB.Xrm.Entities\DLaB.Xrm.Entities.projitems*{555b6bb7-c5b3-426a-9e23-a9c09aa7715c}*SharedItemsImports = 13
-		DLaB.EarlyBoundGenerator.Logic\DLaB.EarlyBoundGenerator.Logic.projitems*{7de85f1a-794c-4e95-9e23-fa29dc110aba}*SharedItemsImports = 4
-		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{7de85f1a-794c-4e95-9e23-fa29dc110aba}*SharedItemsImports = 4
-		DLaB.Log\DLaB.Log.projitems*{8cdeed18-34a8-482e-910f-c75173690d1d}*SharedItemsImports = 4
-		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{8cdeed18-34a8-482e-910f-c75173690d1d}*SharedItemsImports = 4
 		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{9d4a0246-7f6d-459b-988c-26a47f6dbb6e}*SharedItemsImports = 13
 		DLaB.Log\DLaB.Log.projitems*{a1789142-7510-42d5-aff4-1bb37f2b08f8}*SharedItemsImports = 13
 		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{df755d05-ecad-433c-ad2c-01649b27f238}*SharedItemsImports = 4
-		DLaB.EarlyBoundGenerator.Logic\DLaB.EarlyBoundGenerator.Logic.projitems*{fe8b91e7-c778-4712-bbf0-537736442b51}*SharedItemsImports = 13
+		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{fcb8a4e4-622b-413a-a531-b612e5f1436c}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal
