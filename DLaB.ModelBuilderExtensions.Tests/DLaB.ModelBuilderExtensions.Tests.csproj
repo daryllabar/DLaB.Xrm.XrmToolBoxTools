@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\MSTest.TestAdapter.3.1.1\build\net462\MSTest.TestAdapter.props" Condition="Exists('..\packages\MSTest.TestAdapter.3.1.1\build\net462\MSTest.TestAdapter.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -255,6 +256,7 @@
     <Compile Include="Entity\MetadataProviderServiceTests.cs" />
     <Compile Include="Entity\PrimaryAttributeGeneratorTests.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="LogicTests.cs" />
     <Compile Include="Metadata\Provider.cs" />
     <Compile Include="DataModelBuilderTests.cs" />
     <Compile Include="NamingServiceTests.cs" />
@@ -272,6 +274,7 @@
     <None Include="bin\coretools\SolutionPackager.exe.config" />
     <None Include="Metadata\2016.zip" />
     <None Include="packages.config" />
+    <EmbeddedResource Include="Resources\DefaultBuilderSettings.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\coretools\CrmSvcUtil.exe" />
@@ -299,9 +302,16 @@
   <ItemGroup>
     <Folder Include="bin\Debug\" />
     <Folder Include="bin\Release\" />
-    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DLaB.EarlyBoundGeneratorV2.Logic\DLaB.EarlyBoundGeneratorV2.Logic.csproj">
+      <Project>{46FA9089-9D5F-4C61-A6E6-196BF3D81371}</Project>
+      <Name>DLaB.EarlyBoundGeneratorV2.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DLaB.EarlyBoundGeneratorV2\DLaB.EarlyBoundGeneratorV2.csproj">
+      <Project>{df755d05-ecad-433c-ad2c-01649b27f238}</Project>
+      <Name>DLaB.EarlyBoundGeneratorV2</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DLaB.ModelBuilderExtensions\DLaB.ModelBuilderExtensions.csproj">
       <Project>{7827fcaf-6aa2-46b9-bb88-0d3ca9dd4d32}</Project>
       <Name>DLaB.ModelBuilderExtensions</Name>
@@ -333,6 +343,14 @@ SET myCmd= "$(SolutionDir)References\NuGetContentInstaller.exe" "$(SolutionDir) 
 echo %25myCmd%25
 %25myCmd%25</PreBuildEvent>
   </PropertyGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MSTest.TestAdapter.3.1.1\build\net462\MSTest.TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.3.1.1\build\net462\MSTest.TestAdapter.props'))" />
+    <Error Condition="!Exists('..\packages\MSTest.TestAdapter.3.1.1\build\net462\MSTest.TestAdapter.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.3.1.1\build\net462\MSTest.TestAdapter.targets'))" />
+  </Target>
+  <Import Project="..\packages\MSTest.TestAdapter.3.1.1\build\net462\MSTest.TestAdapter.targets" Condition="Exists('..\packages\MSTest.TestAdapter.3.1.1\build\net462\MSTest.TestAdapter.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

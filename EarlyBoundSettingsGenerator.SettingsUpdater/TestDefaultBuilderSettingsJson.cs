@@ -3,15 +3,15 @@ using System.Linq;
 
 namespace EarlyBoundSettingsGenerator.SettingsUpdater
 {
-    public class ApiTestDefaultBuilderSettingsJson: FileUpdateBase
+    public class TestDefaultBuilderSettingsJson: FileUpdateBase
     {
         public const string FileName = @"DefaultBuilderSettings.json";
 
-        public ApiTestDefaultBuilderSettingsJson(PropertyInfo property) : base(property) { }
+        public TestDefaultBuilderSettingsJson(PropertyInfo property) : base(property) { }
         
         public override void UpdateFile()
         {
-            var path = GetApiTestResourcesPath(FileName);
+            var path = GetTestResourcesPath(FileName);
             var file = File.ReadAllLines(path);
 
             AddProperty(file);

@@ -7,9 +7,19 @@ namespace DLaB.ModelBuilderExtensions.Tests
 {
     public static class TestProject
     {
+        public static string GetResourceText<T>(string fullNamespaceName)
+        {
+            return typeof(T).Assembly.GetResourceText(fullNamespaceName);
+        }
+
         public static string GetResourceText(string fullNamespaceName)
         {
             var asm = Assembly.GetExecutingAssembly();
+            return asm.GetResourceText(fullNamespaceName);
+        }
+
+        private static string GetResourceText(this Assembly asm, string fullNamespaceName)
+        {
             var resources = asm.GetManifestResourceNames();
             if (!resources.Contains(fullNamespaceName))
             {
@@ -18,6 +28,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
                 {
                     assemblyTitle = assemblyTitle.Substring(0, assemblyTitle.Length - 4);
                 }
+
                 var relativeName = assemblyTitle + "." + fullNamespaceName;
                 if (!resources.Contains(relativeName))
                 {
@@ -26,6 +37,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
 
                 fullNamespaceName = relativeName;
             }
+
             using (var stream = asm.GetManifestResourceStream(fullNamespaceName))
             {
                 return stream == null

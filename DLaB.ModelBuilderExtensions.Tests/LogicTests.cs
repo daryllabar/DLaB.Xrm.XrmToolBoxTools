@@ -1,9 +1,10 @@
-﻿using DLaB.EarlyBoundGeneratorV2.Settings;
+﻿using DLaB.EarlyBoundGeneratorV2;
+using DLaB.EarlyBoundGeneratorV2.Settings;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
 
-namespace DLaB.EarlyBoundGeneratorV2.Api.Tests
+namespace DLaB.ModelBuilderExtensions.Tests
 {
     [TestClass]
     public class LogicTests

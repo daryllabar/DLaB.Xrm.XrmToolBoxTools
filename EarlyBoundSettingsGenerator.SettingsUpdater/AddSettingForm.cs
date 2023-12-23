@@ -82,7 +82,7 @@ namespace EarlyBoundSettingsGenerator.SettingsUpdater
             new EarlyBoundGeneratorConfigLogic(info).UpdateFile();
             new SettingsMap(info).UpdateFile();
             new ModelBuilderSettings(info).UpdateFile();
-            new ApiTestDefaultBuilderSettingsJson(info).UpdateFile();
+            new TestDefaultBuilderSettingsJson(info).UpdateFile();
 
             MessageBox.Show("Finished!", "Property Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

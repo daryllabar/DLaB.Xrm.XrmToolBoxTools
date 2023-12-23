@@ -11,6 +11,7 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
     public class CustomizeCodeDomService : TypedServiceBase<ICustomizeCodeDomService>, ICustomizeCodeDomService
     {
         public bool AddOptionSetMetadataAttribute { get => DLaBSettings.AddOptionSetMetadataAttribute; set => DLaBSettings.AddOptionSetMetadataAttribute = value; }
+        public bool EmitEntityETC { get => Settings.EmitEntityETC; set => Settings.EmitEntityETC = value; }
         public bool GenerateAllOptionSetLabelMetadata { get => DLaBSettings.GenerateAllOptionSetLabelMetadata; set => DLaBSettings.GenerateAllOptionSetLabelMetadata = value; }
 
         #region Constructors
@@ -32,7 +33,11 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
             //Trace.TraceInformation("Entering ICustomizeCodeDomService.CustomizeCodeDom");
             //Trace.TraceInformation("Number of Namespaces generated: {0}", codeUnit.Namespaces.Count);
 
-            //RemoveNonOptionSetDefinitions(codeUnit);
+            if (!EmitEntityETC)
+            {
+                // Remove Connection record1objecttypecode Enums since they are Connection_Record1ObjectTypeCode and Connection_Record2ObjectTypeCode
+            }
+
             AddMetadataAttributes(codeUnit);
             SortOptionSets(codeUnit);
             //Trace.TraceInformation("Exiting ICustomizeCodeDomService.CustomizeCodeDom");

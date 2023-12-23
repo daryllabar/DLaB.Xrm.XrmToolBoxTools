@@ -71,7 +71,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
             serializedMetadataPath = $"    \"serializedMetadataRelativeFilePath\": \"{serializedMetadataPath.Replace("\\", "\\\\")}\",";
             var readSerialized = "    \"readSerializedMetadata\": true,";
             var modelBuilderIndex = -1;
-            var updateJsonPath = sourceJsonPath != "DEFAULT";
+            var updateJsonPath = true;//sourceJsonPath != "DEFAULT";
             for (var i = 0; i < lines.Count; i++)
             {
                 var line = lines[i];

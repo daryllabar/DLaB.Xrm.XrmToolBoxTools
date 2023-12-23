@@ -10,6 +10,7 @@ namespace DLaB.ModelBuilderExtensions
         public BlacklistLogic EntityApprover { get; set; }
 
         private bool EnableFileDataType { get => DLaBSettings.EnableFileDataType; set => DLaBSettings.EnableFileDataType = value; }
+        private bool EmitEntityETC { get => Settings.EmitEntityETC; set => Settings.EmitEntityETC = value; }
 
         public bool GenerateEntityRelationships { get => DLaBSettings.GenerateEntityRelationships; set => DLaBSettings.GenerateEntityRelationships = value; }
 
@@ -75,9 +76,12 @@ namespace DLaB.ModelBuilderExtensions
             //}
             //else
             //{
-                return DefaultService.GenerateOptionSet(optionSetMetadata, services);
+            return (EmitEntityETC
+                    || (optionSetMetadata.Name != "connection_record1objecttypecode"
+                        && optionSetMetadata.Name != "connection_record2objecttypecode"))
+                   &&
+                   DefaultService.GenerateOptionSet(optionSetMetadata, services);
             // }
-
         }
 
         #endregion

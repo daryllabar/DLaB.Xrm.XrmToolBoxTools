@@ -5,6 +5,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xrm.Sdk.Metadata;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DLaB.ModelBuilderExtensions.Entity
 {
@@ -65,6 +66,14 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
                     if (!ReplaceEnumPropertiesWithOptionSet)
                     {
+                        var enumType = property.Type.BaseType
+                            .Replace("?", string.Empty)
+                            .Replace("System.Collections.Generic.IEnumerable<", string.Empty)
+                            .Replace(">", string.Empty);
+                        if (!ServiceCache.MetadataForEnumsByName.ContainsKey(enumType)) { 
+                            // OptionSet is not generated, skip generating Enum property
+                            continue;
+                        }
                         property.Name += "Enum";
                         type.Members.Insert(enumProp.Key + 1, property);
                     }
