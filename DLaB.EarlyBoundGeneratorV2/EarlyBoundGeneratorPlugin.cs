@@ -16,7 +16,6 @@ using XrmToolBox;
 using XrmToolBox.Extensibility;
 using XrmToolBox.Extensibility.Interfaces;
 using PropertyInterface = DLaB.XrmToolBoxCommon.PropertyInterface;
-using DLaB.XrmToolBoxCommon.Controls;
 
 namespace DLaB.EarlyBoundGeneratorV2
 {

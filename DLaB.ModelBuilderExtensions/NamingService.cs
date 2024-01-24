@@ -365,7 +365,12 @@ namespace DLaB.ModelBuilderExtensions
             var updatedLabels = new Dictionary<Guid, string>();
             var labels = new List<LocalizedLabel>();
             labels.AddRange(option.Label.LocalizedLabels);
-            labels.Add(option.Label.UserLocalizedLabel);
+             
+            if(option.Label.UserLocalizedLabel != null)
+            {
+                labels.Add(option.Label.UserLocalizedLabel);
+            }
+
             foreach (var replacement in LabelTextReplacement)
             {
                 foreach (var label in labels.Where(l => l.Label.Contains(replacement.Key)))
