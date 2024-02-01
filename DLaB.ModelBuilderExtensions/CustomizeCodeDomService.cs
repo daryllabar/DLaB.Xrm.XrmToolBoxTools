@@ -20,6 +20,7 @@ namespace DLaB.ModelBuilderExtensions
         public bool GenerateOptionSetProperties { get => DLaBSettings.GenerateOptionSetProperties; set => DLaBSettings.GenerateOptionSetProperties = value; }
         public bool GenerateTypesAsInternal { get => DLaBSettings.GenerateTypesAsInternal; set => DLaBSettings.GenerateTypesAsInternal = value; }
         public bool GenerateOptionSetMetadataAttribute { get => DLaBSettings.GenerateOptionSetMetadataAttribute; set => DLaBSettings.GenerateOptionSetMetadataAttribute = value; }
+        public bool MakeAllFieldsEditable { get => DLaBSettings.MakeAllFieldsEditable; set => DLaBSettings.MakeAllFieldsEditable = value; }
         public bool UpdateMultiOptionSetAttributes { get => DLaBSettings.UpdateMultiOptionSetAttributes; set => DLaBSettings.UpdateMultiOptionSetAttributes = value; }
         public bool UpdateEnumerableEntityProperties { get => DLaBSettings.UpdateEnumerableEntityProperties; set => DLaBSettings.UpdateEnumerableEntityProperties = value; }
 
@@ -153,6 +154,11 @@ namespace DLaB.ModelBuilderExtensions
             if (GenerateOptionSetProperties)
             {
                 OptionSetPropertyCustomizer.CustomizeCodeDom(codeUnit, services);
+            }
+
+            if (MakeAllFieldsEditable)
+            {
+                new EditableFormattedValuesUpdater().CustomizeCodeDom(codeUnit, services);
             }
 
             if (AddDebuggerNonUserCode)

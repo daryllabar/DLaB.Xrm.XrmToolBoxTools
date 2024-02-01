@@ -254,6 +254,7 @@
     <Compile Include="ArgumentBuilderTests.cs" />
     <Compile Include="CamelCaserTests.cs" />
     <Compile Include="Entity\MetadataProviderServiceTests.cs" />
+    <Compile Include="Entity\EditableFormattedValuesUpdatedTests.cs" />
     <Compile Include="Entity\PrimaryAttributeGeneratorTests.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="LogicTests.cs" />
@@ -262,6 +263,7 @@
     <Compile Include="NamingServiceTests.cs" />
     <Compile Include="OptionSetMetadataAttributeGeneratorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Resources\EditableFormattedValuesGeneration.txt" />
     <Compile Include="TempDir.cs" />
     <Compile Include="TestProject.cs" />
     <Compile Include="BlacklistLogicTests.cs" />
