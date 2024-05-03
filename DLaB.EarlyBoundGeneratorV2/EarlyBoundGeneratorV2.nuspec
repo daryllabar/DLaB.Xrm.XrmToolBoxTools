@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGeneratorV2</id>
-	  <version>2.2024.2.1</version>
+	  <version>2.2024.5.2</version>
 	  <title>Early Bound Generator V2</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,10 @@
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V2.2024.2.1
+    <releaseNotes>V2.2024.5.2
+Allow for Blacklist of Attribute Names #494
+
+V2.2024.2.1
 Virtual Attributes with Make all fields Editable Creates invalid setters #484
 
 V2.2024.1.23
@@ -68,75 +71,6 @@ V2.2023.5.13
 Duplicate Microsoft.Xrm.Sdk.Client.ProxyTypesAssemblyAttribute() Created #413
 ProxyTypesAssemblyAttribute is generated multiple times on each entity class #408
 Error when generating AttributeNameConsts when attribute name matches entity name #411
-
-V2.2023.4.21
-Fix for Exception on generating model with Model Builder V2 nuget #407
-Fields Const file should generate related entity name fields #406
-
-V2.2023.4.17
-Make Fields Class Partial #405
-Error on Transliteration #404
-
-V2.2023.4.12
-Use BPF Display Name for Relationship Attributes #403
-Project file corrupted after import #402
-Allow For Custom Dictionary Entries #401
-
-V2.2023.4.9
-Increase Dictionary #400
-Whitelist Prefix Doesn't work #399
-Unable to clear Whitelist of Entities #398
-AlternateKeys Order Should be sorted alphabetically #397
-Local Multi-Select Option Sets are Generated Twice #395
-Generate BPFs with a better name then Publisher_bpf_GUID #391
-
-V2.2023.4.6
-Allow StateCode to be Enum Specifically #393
-Enum Postfixed Properties are not getting generated #392
-
-V2.2023.4.5
-The Updated Settings Are Not Reflected Immediately Until the XrmToolBox is Closed And Reopened #390
-Don't write message filter if not generating messages #389
-UseCrmSvcUtilStateEnumNamingConvention gets reset #388
-Switching from one file per entity leaves slash in path #387
-Update Builder Settings to False Breaks Immediately #386
-
-V2.2023.4.4
-Error when Not Writing Messages #385
-Write to Error log to then read from error log. #384
-Rooting Path Uses the Current directory, rather than the executing Assemblies current directory #383
-	    
-V2.2023.4.3
-Warn on Default Settings Loaded #382
-Default location errors #381
-Output Folders not converting to Output File Name #380
-Allow for configurable Transliteration Path #379
-Hide Message Properties when not generated #378
-Removal of Microsoft.Xrm.Client #377
-Remove Base Class Generation #376
-Implement Entities Category Settings #375
-Implement Global Settings #374
-Create Group Message By Request Setting #373
-Implement Suppress Generated Code Attribute #372
-Add option to split Actions/Messages #371
-Allow for Legacy CrmSvcUtil State Enums #370
-Allow For Single Files #369
-Remove All App Config References #368
-Implement CodeGenerationService #367
-Implement CodeWriterFilterService #366
-Implement IMetadataProviderService #365
-Cleanup Local Option Set files #364
-Enum names aren't being cased #362
-Update the config for Field Generation #361
-Enable CustomizeCodeDomService SettingsMap Settings #358
-Update to use new PAC ModelBuilder #352
-PAC Modelbuilder Utilize DLaB Naming Service #353
-Enable generation of Entity Consts #354
-Enable NamingService SettingsMap Settings #355
-Allow for not updating Settings File #357
-Member names cannot be the same as their enclosing type with generated Actions #349
-EarlyBoundGenerator.Api doesn't return any indication when an error occurs #332
-Order settings a bit better #321
     </releaseNotes>
     <copyright>Copyright 2019</copyright>
 	  <tags>PAC ModelBuilder Dataverse Xrm EarlyBound Generator XrmToolBox Plugins</tags>

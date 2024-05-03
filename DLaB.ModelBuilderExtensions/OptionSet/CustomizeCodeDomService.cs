@@ -11,7 +11,7 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
     public class CustomizeCodeDomService : TypedServiceBase<ICustomizeCodeDomService>, ICustomizeCodeDomService
     {
         public bool AddOptionSetMetadataAttribute { get => DLaBSettings.AddOptionSetMetadataAttribute; set => DLaBSettings.AddOptionSetMetadataAttribute = value; }
-        public bool EmitEntityETC { get => Settings.EmitEntityETC; set => Settings.EmitEntityETC = value; }
+        public bool EmitEntityETC { get => Settings.EmitEntityEtc; set => Settings.EmitEntityEtc = value; }
         public bool GenerateAllOptionSetLabelMetadata { get => DLaBSettings.GenerateAllOptionSetLabelMetadata; set => DLaBSettings.GenerateAllOptionSetLabelMetadata = value; }
 
         #region Constructors

@@ -16,6 +16,7 @@ using XrmToolBox;
 using XrmToolBox.Extensibility;
 using XrmToolBox.Extensibility.Interfaces;
 using PropertyInterface = DLaB.XrmToolBoxCommon.PropertyInterface;
+using DLaB.Common;
 
 namespace DLaB.EarlyBoundGeneratorV2
 {
@@ -173,6 +174,7 @@ Please consider clicking the save button in the top right to save the settings w
         {
             SettingsMap.PushChanges();
             var isValid =
+                IsAttributeBlackListValid() &&
                 IsValidPath(SettingsMap.EntityTypesFolder, SettingsMap.CreateOneFilePerEntity, "Entities") &&
                 IsValidPath(SettingsMap.OptionSetsTypesFolder, SettingsMap.CreateOneFilePerOptionSet, "OptionSets") &&
                 IsValidPath(SettingsMap.MessageTypesFolder, SettingsMap.CreateOneFilePerMessage, "Actions") &&
@@ -203,6 +205,49 @@ Please consider clicking the save button in the top right to save the settings w
                 }
             }
             return isValid;
+        }
+
+        private bool IsAttributeBlackListValid()
+        {
+            var lineNumber = 0;
+            foreach (var line in SettingsMap.AttributeBlacklist)
+            {
+                lineNumber++;
+                var parts = line.Split('.');
+                string error = null;
+                if (parts.Length > 2)
+                {
+                    error = @"The Attribute Blacklist can not contain more than '.' per line!";
+                } 
+                else if (!line.All(c => char.IsLetterOrDigit(c) || c == '.' || c == '_' || c == '*'))
+                {
+                    error = @"Invalid character found for the Attribute Blacklist.  Only letters, numbers, asterisks, underscores and one period is allowed!";
+                }
+                else if (parts.Length == 2)
+                {
+                    if (parts[0].Contains('*'))
+                    {
+                        error = @"Invalid character found for the Attribute Blacklist.  Entity names are not allowed to contain an asterisk!";
+                    }
+                    else if (char.IsDigit(parts[0][0]))
+                    {
+                        error = @"Invalid character found for the Attribute Blacklist.  Entity names are not allowed to start with a digit!";
+                    }
+                    else if (parts[0][0] == '_')
+                    {
+                        error = @"Invalid character found for the Attribute Blacklist.  Entity names are not allowed to start with an underscore!";
+                    }
+                }
+
+                if (error != null)
+                {
+                    MessageBox.Show($@"{error}{Environment.NewLine}Error on Line Number {lineNumber}{Environment.NewLine} Line: {line}", @"Configuration Validation / Invalid Attribute Blacklist format!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+            }
+
+            return true;
         }
 
         private bool IsNamespaceDifferentThanContext()

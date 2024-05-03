@@ -6,12 +6,12 @@ namespace DLaB.ModelBuilderExtensions
 {
     public class BlacklistLogic
     {
-        public HashSet<string> BlackList { get; }
+        public HashSet<string> Blacklist { get; }
         public List<string> BlacklistPrefixes { get; }
 
-        public BlacklistLogic(HashSet<string> blackList, List<string> blacklistPrefixes)
+        public BlacklistLogic(HashSet<string> blacklist, List<string> blacklistPrefixes)
         {
-            BlackList = blackList;
+            Blacklist = blacklist;
             BlacklistPrefixes = blacklistPrefixes;
         }
 
@@ -22,7 +22,7 @@ namespace DLaB.ModelBuilderExtensions
 
         private bool IsBlacklisted(string value)
         {
-            return BlackList.Contains(value)
+            return Blacklist.Contains(value)
                    || BlacklistPrefixes.Any(pattern => Regex.Match(value, pattern).Success);
         }
     }

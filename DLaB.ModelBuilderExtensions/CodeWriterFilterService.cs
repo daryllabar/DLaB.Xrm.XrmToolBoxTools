@@ -8,19 +8,26 @@ namespace DLaB.ModelBuilderExtensions
     public class CodeWriterFilterService : TypedServiceSettings<ICodeWriterFilterService>, ICodeWriterFilterService
     {
         public BlacklistLogic EntityApprover { get; set; }
+        public AttributeBlacklistLogic AttributeApprover { get; set;}
 
         private bool EnableFileDataType { get => DLaBSettings.EnableFileDataType; set => DLaBSettings.EnableFileDataType = value; }
-        private bool EmitEntityETC { get => Settings.EmitEntityETC; set => Settings.EmitEntityETC = value; }
+        private bool EmitEntityEtc { get => Settings.EmitEntityEtc; set => Settings.EmitEntityEtc = value; }
 
         public bool GenerateEntityRelationships { get => DLaBSettings.GenerateEntityRelationships; set => DLaBSettings.GenerateEntityRelationships = value; }
 
         public CodeWriterFilterService(ICodeWriterFilterService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
-            EntityApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.EntityBlacklist), DLaBSettings.EntityRegExBlacklist);
+            Init();
         }
 
         public CodeWriterFilterService(ICodeWriterFilterService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
         {
+            Init();
+        }
+
+        private void Init()
+        {
+            AttributeApprover = new AttributeBlacklistLogic(DLaBSettings.AttributeBlackList);
             EntityApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.EntityBlacklist), DLaBSettings.EntityRegExBlacklist);
         }
 
@@ -42,8 +49,9 @@ namespace DLaB.ModelBuilderExtensions
 
         public bool GenerateAttribute(AttributeMetadata metadata, IServiceProvider services)
         {
-            return EnableFileDataType && IsFileDataTypeAttribute(metadata)
-                   || DefaultService.GenerateAttribute(metadata, services);
+            return AttributeApprover.IsAllowed(metadata.EntityLogicalName, metadata.LogicalName)
+                && (EnableFileDataType && IsFileDataTypeAttribute(metadata)
+                   || DefaultService.GenerateAttribute(metadata, services));
         }
 
         public bool GenerateEntity(EntityMetadata entityMetadata, IServiceProvider services)
@@ -63,7 +71,8 @@ namespace DLaB.ModelBuilderExtensions
 
         public bool GenerateRelationship(RelationshipMetadataBase relationshipMetadata, EntityMetadata otherEntityMetadata, IServiceProvider services)
         {
-            return GenerateEntityRelationships && DefaultService.GenerateRelationship(relationshipMetadata, otherEntityMetadata, services);
+            return GenerateEntityRelationships 
+                && DefaultService.GenerateRelationship(relationshipMetadata, otherEntityMetadata, services);
         }
 
         public bool GenerateOptionSet(OptionSetMetadataBase optionSetMetadata, IServiceProvider services)
@@ -76,7 +85,7 @@ namespace DLaB.ModelBuilderExtensions
             //}
             //else
             //{
-            return (EmitEntityETC
+            return (EmitEntityEtc
                     || (optionSetMetadata.Name != "connection_record1objecttypecode"
                         && optionSetMetadata.Name != "connection_record2objecttypecode"))
                    &&

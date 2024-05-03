@@ -44,6 +44,10 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         /// </summary>
         public bool AdjustCasingForEnumOptions { get; set; }
         /// <summary>
+        /// Pipe Delimited String containing the attributes for entities that will not be included in generation.  Attributes can be Entity specific by using a period "." to separate the entity logical name from the attribute logical name.  "*" wildcards are valid for the attribute name only.  
+        /// </summary>
+        public string AttributeBlacklist { get; set; }
+        /// <summary>
         /// This is relative to the Path of the Settings File.  This should end with the a ".json" extension.
         /// </summary>
         public string BuilderSettingsJsonRelativePath { get; set; }
@@ -312,6 +316,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 AddNewFilesToProject = true,
                 AddOptionSetMetadataAttribute = true,
                 AdjustCasingForEnumOptions = true,
+                AttributeBlacklist = null,
                 BuilderSettingsJsonRelativePath = "builderSettings.json",
                 CamelCaseClassNames = true,
                 CamelCaseCustomWords = null,
@@ -382,6 +387,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             AddNewFilesToProject = poco.AddNewFilesToProject ?? AddNewFilesToProject;
             AddOptionSetMetadataAttribute = poco.AddOptionSetMetadataAttribute ?? AddOptionSetMetadataAttribute;
             AdjustCasingForEnumOptions = poco.AdjustCasingForEnumOptions ?? AdjustCasingForEnumOptions;
+            AttributeBlacklist = GetValueOrDefault(poco.AttributeBlackList, AttributeBlacklist);
             BuilderSettingsJsonRelativePath = GetValueOrDefault(poco.BuilderSettingsJsonRelativePath, BuilderSettingsJsonRelativePath);
             CamelCaseClassNames = poco.CamelCaseClassNames ?? CamelCaseClassNames;
             CamelCaseCustomWords = GetValueOrDefault(poco.CamelCaseCustomWords, CamelCaseCustomWords);
@@ -453,6 +459,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddProperty(nameof(AddNewFilesToProject), AddNewFilesToProject);
             writer.AddProperty(nameof(AddOptionSetMetadataAttribute), AddOptionSetMetadataAttribute);
             writer.AddProperty(nameof(AdjustCasingForEnumOptions), AdjustCasingForEnumOptions);
+            writer.AddProperty(nameof(AttributeBlacklist), AttributeBlacklist);
             writer.AddProperty(nameof(BuilderSettingsJsonRelativePath), BuilderSettingsJsonRelativePath);
             writer.AddProperty(nameof(CamelCaseClassNames), CamelCaseClassNames);
             writer.AddPropertyArray(nameof(CamelCaseCustomWords), CamelCaseCustomWords);
@@ -570,6 +577,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings.POCO
         public bool? AddNewFilesToProject { get; set; }
         public bool? AddOptionSetMetadataAttribute { get; set; }
         public bool? AdjustCasingForEnumOptions { get; set; }
+        public string AttributeBlackList { get; set; }
         public string BuilderSettingsJsonRelativePath { get; set; }
         public bool? CamelCaseClassNames { get; set; }
         public string CamelCaseCustomWords { get; set; }

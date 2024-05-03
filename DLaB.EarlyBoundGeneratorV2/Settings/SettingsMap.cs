@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Drawing.Design;
+using System.Linq;
 using XrmToolBox.Extensibility;
 using CommonConfig = DLaB.Common.Config;
 
@@ -77,6 +78,13 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             get => Config.ExtensionConfig.AddDebuggerNonUserCode;
             set => Config.ExtensionConfig.AddDebuggerNonUserCode = value;
         }
+
+        [Category("2 - Entities")]
+        [DisplayName("Attribute Blacklist")]
+        [Description("Allows for the ability to specify attributes for entities that will not be included in generation.  One entry per line.  Attributes can be Entity specific by using a period \".\" to separate the entity logical name from the attribute logical name.  \"*\" wildcards are valid for the attribute name only.  ")]
+        [Editor(StringEditorName, typeof(UITypeEditor))]
+        [TypeConverter(typeof(CollectionCountConverter))]
+        public HashSet<string> AttributeBlacklist { get; set; }
 
         [Category("2 - Entities")]
         [DisplayName("Create One File Per Entity")]
@@ -493,7 +501,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         [Category("4 - Messages")]
         [DisplayName("Messages Blacklist")]
         [Description("Allows for the ability to specify Messages to not generate.")]
-        [Editor(typeof(ActionsHashEditor), typeof(UITypeEditor))]
+        [Editor(typeof(SpecifyStringValuesDialog), typeof(UITypeEditor))]
         [TypeConverter(typeof(CollectionCountConverter))]
         public HashSet<string> MessageBlacklist { get; set; }
 
@@ -787,45 +795,41 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             Plugin = plugin;
             Config = config;
 
-            var propertyToParse = nameof(MessageWildcardWhitelist);
-            var propertyValue = string.Empty;
-            string RemoveWhiteSpace(string propertyName, string value)
-            {
-                propertyToParse = propertyName;
-                propertyValue = value;
-                return value?.Replace(" ", string.Empty).Replace("\n", string.Empty).Replace("\r", string.Empty).Replace("\t", string.Empty);
-            }
-
-            try
-            {
-
-                var info = new ConfigKeyValueSplitInfo {ConvertKeysToLower = false};
-                CamelCaseCustomWords = RemoveWhiteSpace(nameof(CamelCaseCustomWords), config.ExtensionConfig.CamelCaseCustomWords?.ToLower()).GetList<string>();
-                EntitiesBlacklist = RemoveWhiteSpace(nameof(EntitiesBlacklist), config.ExtensionConfig.EntitiesToSkip).GetHashSet<string>();
-                EntitiesWhitelist = RemoveWhiteSpace(nameof(EntitiesWhitelist), config.ExtensionConfig.EntitiesWhitelist).GetHashSet<string>();
-                EntityAttributeSpecifiedNames = RemoveWhiteSpace(nameof(EntityAttributeSpecifiedNames), config.ExtensionConfig.EntityAttributeSpecifiedNames).GetDictionaryHash<string, string>();
-                EntityClassNameOverrides = RemoveWhiteSpace(nameof(EntityClassNameOverrides), config.ExtensionConfig.EntityClassNameOverrides).GetDictionary<string, string>();
-                EntityRegExBlacklist = RemoveWhiteSpace(nameof(EntityRegExBlacklist), config.ExtensionConfig.EntityPrefixesToSkip).GetList<string>();
-                EntityWildcardWhitelist = RemoveWhiteSpace(nameof(EntityWildcardWhitelist), config.ExtensionConfig.EntityPrefixesWhitelist).GetList<string>();
-                MessageBlacklist = RemoveWhiteSpace(nameof(MessageBlacklist), config.ExtensionConfig.ActionsToSkip).GetHashSet<string>(info);
-                MessageWhitelist = RemoveWhiteSpace(nameof(MessageWhitelist), config.ExtensionConfig.ActionsWhitelist).GetHashSet<string>();
-                MessageWildcardWhitelist = RemoveWhiteSpace(nameof(MessageWildcardWhitelist), config.ExtensionConfig.ActionPrefixesWhitelist).GetList<string>();
-                PropertyEnumMappings = RemoveWhiteSpace(nameof(PropertyEnumMappings), config.ExtensionConfig.PropertyEnumMappings).GetList<string>();
-                OptionSetNames = RemoveWhiteSpace(nameof(OptionSetNames), Config.ExtensionConfig.OptionSetNames).GetDictionary<string,string>();
-                TokenCapitalizationOverrides = RemoveWhiteSpace(nameof(TokenCapitalizationOverrides), config.ExtensionConfig.TokenCapitalizationOverrides).GetList<string>();
-            }
-            catch (Exception ex)
-            {
-                throw new FormatException("Unable parsing property " + propertyToParse + Environment.NewLine + "Value: " + propertyValue + Environment.NewLine, ex);
-            }
+            var info = new ConfigKeyValueSplitInfo {ConvertKeysToLower = false};
+            AttributeBlacklist = RemoveWhiteSpace(nameof(AttributeBlacklist), config.ExtensionConfig.AttributeBlacklist).GetHashSet<string>(info);
+            CamelCaseCustomWords = RemoveWhiteSpace(nameof(CamelCaseCustomWords), config.ExtensionConfig.CamelCaseCustomWords?.ToLower()).GetList<string>();
+            EntitiesBlacklist = RemoveWhiteSpace(nameof(EntitiesBlacklist), config.ExtensionConfig.EntitiesToSkip).GetHashSet<string>();
+            EntitiesWhitelist = RemoveWhiteSpace(nameof(EntitiesWhitelist), config.ExtensionConfig.EntitiesWhitelist).GetHashSet<string>();
+            EntityAttributeSpecifiedNames = RemoveWhiteSpace(nameof(EntityAttributeSpecifiedNames), config.ExtensionConfig.EntityAttributeSpecifiedNames).GetDictionaryHash<string, string>();
+            EntityClassNameOverrides = RemoveWhiteSpace(nameof(EntityClassNameOverrides), config.ExtensionConfig.EntityClassNameOverrides).GetDictionary<string, string>();
+            EntityRegExBlacklist = RemoveWhiteSpace(nameof(EntityRegExBlacklist), config.ExtensionConfig.EntityPrefixesToSkip).GetList<string>();
+            EntityWildcardWhitelist = RemoveWhiteSpace(nameof(EntityWildcardWhitelist), config.ExtensionConfig.EntityPrefixesWhitelist).GetList<string>();
+            MessageBlacklist = RemoveWhiteSpace(nameof(MessageBlacklist), config.ExtensionConfig.ActionsToSkip).GetHashSet<string>(info);
+            MessageWhitelist = RemoveWhiteSpace(nameof(MessageWhitelist), config.ExtensionConfig.ActionsWhitelist).GetHashSet<string>();
+            MessageWildcardWhitelist = RemoveWhiteSpace(nameof(MessageWildcardWhitelist), config.ExtensionConfig.ActionPrefixesWhitelist).GetList<string>();
+            PropertyEnumMappings = RemoveWhiteSpace(nameof(PropertyEnumMappings), config.ExtensionConfig.PropertyEnumMappings).GetList<string>();
+            OptionSetNames = RemoveWhiteSpace(nameof(OptionSetNames), Config.ExtensionConfig.OptionSetNames).GetDictionary<string,string>();
+            TokenCapitalizationOverrides = RemoveWhiteSpace(nameof(TokenCapitalizationOverrides), config.ExtensionConfig.TokenCapitalizationOverrides).GetList<string>();
 
             SetupCustomTypeDescriptor();
             OnChangeMap = GetOnChangeHandlers();
             ProcessDynamicallyVisibleProperties();
+            return;
+
+            string RemoveWhiteSpace(string propertyName, string value)
+            {
+                try { 
+                    return value?.Replace(" ", string.Empty).Replace("\n", string.Empty).Replace("\r", string.Empty).Replace("\t", string.Empty);
+                }
+                catch (Exception ex)
+                {
+                    throw new FormatException($"Unable parsing property {propertyName}{Environment.NewLine}Value: {value}{Environment.NewLine}", ex);
+                }
+            }
         }
 
         /// <summary>
-        /// The display values are different than the serialized versions and have to be updated.
+        /// The display values are different from the serialized versions and have to be updated.
         /// </summary>
         public void PushChanges()
         {
@@ -833,6 +837,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             Config.ExtensionConfig.ActionPrefixesWhitelist = CommonConfig.ToStringSorted(MessageWildcardWhitelist, info);
             Config.ExtensionConfig.ActionsWhitelist = CommonConfig.ToStringSorted(MessageWhitelist, info);
             Config.ExtensionConfig.ActionsToSkip = CommonConfig.ToStringSorted(MessageBlacklist, info);
+            Config.ExtensionConfig.AttributeBlacklist = CommonConfig.ToStringSorted(AttributeBlacklist, info);
             Config.ExtensionConfig.CamelCaseCustomWords = CommonConfig.ToStringSorted(CamelCaseCustomWords);
             Config.ExtensionConfig.EntitiesToSkip = CommonConfig.ToStringSorted(EntitiesBlacklist);
             Config.ExtensionConfig.EntitiesWhitelist = CommonConfig.ToStringSorted(EntitiesWhitelist);
