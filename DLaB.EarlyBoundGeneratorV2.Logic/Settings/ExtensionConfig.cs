@@ -387,7 +387,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             AddNewFilesToProject = poco.AddNewFilesToProject ?? AddNewFilesToProject;
             AddOptionSetMetadataAttribute = poco.AddOptionSetMetadataAttribute ?? AddOptionSetMetadataAttribute;
             AdjustCasingForEnumOptions = poco.AdjustCasingForEnumOptions ?? AdjustCasingForEnumOptions;
-            AttributeBlacklist = GetValueOrDefault(poco.AttributeBlackList, AttributeBlacklist);
+            AttributeBlacklist = GetValueOrDefault(poco.AttributeBlacklist, AttributeBlacklist);
             BuilderSettingsJsonRelativePath = GetValueOrDefault(poco.BuilderSettingsJsonRelativePath, BuilderSettingsJsonRelativePath);
             CamelCaseClassNames = poco.CamelCaseClassNames ?? CamelCaseClassNames;
             CamelCaseCustomWords = GetValueOrDefault(poco.CamelCaseCustomWords, CamelCaseCustomWords);
@@ -577,7 +577,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings.POCO
         public bool? AddNewFilesToProject { get; set; }
         public bool? AddOptionSetMetadataAttribute { get; set; }
         public bool? AdjustCasingForEnumOptions { get; set; }
-        public string AttributeBlackList { get; set; }
+        public string AttributeBlacklist { get; set; }
         public string BuilderSettingsJsonRelativePath { get; set; }
         public bool? CamelCaseClassNames { get; set; }
         public string CamelCaseCustomWords { get; set; }
