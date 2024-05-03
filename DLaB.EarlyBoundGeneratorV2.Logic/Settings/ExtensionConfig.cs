@@ -459,7 +459,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddProperty(nameof(AddNewFilesToProject), AddNewFilesToProject);
             writer.AddProperty(nameof(AddOptionSetMetadataAttribute), AddOptionSetMetadataAttribute);
             writer.AddProperty(nameof(AdjustCasingForEnumOptions), AdjustCasingForEnumOptions);
-            writer.AddProperty(nameof(AttributeBlacklist), AttributeBlacklist);
+            writer.AddPropertyArray(nameof(AttributeBlacklist), AttributeBlacklist);
             writer.AddProperty(nameof(BuilderSettingsJsonRelativePath), BuilderSettingsJsonRelativePath);
             writer.AddProperty(nameof(CamelCaseClassNames), CamelCaseClassNames);
             writer.AddPropertyArray(nameof(CamelCaseCustomWords), CamelCaseCustomWords);

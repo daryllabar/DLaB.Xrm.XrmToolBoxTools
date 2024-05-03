@@ -29,8 +29,8 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("adjustCasingForEnumOptions")]
         public bool AdjustCasingForEnumOptions { get; set; }
 
-        [JsonPropertyName("attributeBlackList")]
-        public HashSet<string> AttributeBlackList { get; set; }
+        [JsonPropertyName("attributeBlacklist")]
+        public HashSet<string> AttributeBlacklist { get; set; }
 
         /// <summary>
         /// No Config
@@ -293,7 +293,7 @@ namespace DLaB.ModelBuilderExtensions
             MessageLogicalFieldName = "ActionLogicalName";
             AddPrimaryAttributeConsts = true;
             AttributeConstsClassName = "Fields";
-            AttributeBlackList = new HashSet<string>();
+            AttributeBlacklist = new HashSet<string>();
             CamelCaseCustomWords = new List<string>();
             EnableFileDataType = true;
             EntitiesFileName = "Entities.cs";

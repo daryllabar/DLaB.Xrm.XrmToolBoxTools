@@ -27,7 +27,7 @@ namespace DLaB.ModelBuilderExtensions
 
         private void Init()
         {
-            AttributeApprover = new AttributeBlacklistLogic(DLaBSettings.AttributeBlackList);
+            AttributeApprover = new AttributeBlacklistLogic(DLaBSettings.AttributeBlacklist);
             EntityApprover = new BlacklistLogic(new HashSet<string>(DLaBSettings.EntityBlacklist), DLaBSettings.EntityRegExBlacklist);
         }
 
