@@ -84,7 +84,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         [Description("Allows for the ability to specify attributes for entities that will not be included in generation.  One entry per line.  Attributes can be Entity specific by using a period \".\" to separate the entity logical name from the attribute logical name.  \"*\" wildcards are valid for the attribute name only.  ")]
         [Editor(StringEditorName, typeof(UITypeEditor))]
         [TypeConverter(typeof(CollectionCountConverter))]
-        public HashSet<string> AttributeBlacklist { get; set; }
+        public List<string> AttributeBlacklist { get; set; }
 
         [Category("2 - Entities")]
         [DisplayName("Create One File Per Entity")]
@@ -796,7 +796,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             Config = config;
 
             var info = new ConfigKeyValueSplitInfo {ConvertKeysToLower = false};
-            AttributeBlacklist = RemoveWhiteSpace(nameof(AttributeBlacklist), config.ExtensionConfig.AttributeBlacklist).GetHashSet<string>(info);
+            AttributeBlacklist = RemoveDuplicates(RemoveWhiteSpace(nameof(AttributeBlacklist), config.ExtensionConfig.AttributeBlacklist).GetList<string>());
             CamelCaseCustomWords = RemoveWhiteSpace(nameof(CamelCaseCustomWords), config.ExtensionConfig.CamelCaseCustomWords?.ToLower()).GetList<string>();
             EntitiesBlacklist = RemoveWhiteSpace(nameof(EntitiesBlacklist), config.ExtensionConfig.EntitiesToSkip).GetHashSet<string>();
             EntitiesWhitelist = RemoveWhiteSpace(nameof(EntitiesWhitelist), config.ExtensionConfig.EntitiesWhitelist).GetHashSet<string>();
@@ -826,6 +826,11 @@ This helps to alleviate unnecessary differences that pop up when the classes are
                     throw new FormatException($"Unable parsing property {propertyName}{Environment.NewLine}Value: {value}{Environment.NewLine}", ex);
                 }
             }
+
+            List<string> RemoveDuplicates(List<string> input)
+            {
+                return new HashSet<string>(input).ToList();
+            }
         }
 
         /// <summary>
@@ -837,7 +842,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             Config.ExtensionConfig.ActionPrefixesWhitelist = CommonConfig.ToStringSorted(MessageWildcardWhitelist, info);
             Config.ExtensionConfig.ActionsWhitelist = CommonConfig.ToStringSorted(MessageWhitelist, info);
             Config.ExtensionConfig.ActionsToSkip = CommonConfig.ToStringSorted(MessageBlacklist, info);
-            Config.ExtensionConfig.AttributeBlacklist = CommonConfig.ToStringSorted(AttributeBlacklist, info);
+            Config.ExtensionConfig.AttributeBlacklist = CommonConfig.ToStringSorted(AttributeBlacklist);
             Config.ExtensionConfig.CamelCaseCustomWords = CommonConfig.ToStringSorted(CamelCaseCustomWords);
             Config.ExtensionConfig.EntitiesToSkip = CommonConfig.ToStringSorted(EntitiesBlacklist);
             Config.ExtensionConfig.EntitiesWhitelist = CommonConfig.ToStringSorted(EntitiesWhitelist);
