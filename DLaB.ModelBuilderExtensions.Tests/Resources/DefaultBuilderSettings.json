@@ -33,6 +33,7 @@
     "localOptionSetFormat": "{0}_{1}",
     "makeAllFieldsEditable": false,
     "makeReadonlyFieldsEditable": false,
+    "makeReferenceTypesNullable": false,
     "makeResponseMessagesEditable": true,
     "modelBuilderLogLevel": "2",
     "readSerializedMetadata": false,

@@ -2,7 +2,7 @@
 <package >
 	<metadata>
 		<id>DLaB.Xrm.EarlyBoundGeneratorV2.Api</id>
-		<version>2.2024.5.8</version>
+		<version>2.2024.5.15</version>
 		<title>Early Bound Generator V2 Api</title>
 		<authors>Daryl LaBar</authors>
 		<owners>Daryl LaBar</owners>
@@ -11,7 +11,10 @@
 		<projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses ModelBuilder from the PAC.</description>
-		<releaseNotes>V2.2024.5.8
+		<releaseNotes>V2.2024.5.15
+Add option to mark all attributes as nullable (C# 8.0) #311
+
+V2.2024.5.8
 Allow for specifying more than 100 entities in entity whitelist #493
 
 V2.2024.5.4
@@ -61,18 +64,6 @@ Use emitVirtualAttributes #445
 Add Ability to Trace Model Builder #444
 Capitalize BookableResourceTypes choice correctly #443
 Fix for UpsertMultiple request always getting generated #442
-
-V2.2023.5.13
-Duplicate Microsoft.Xrm.Sdk.Client.ProxyTypesAssemblyAttribute() Created #413
-ProxyTypesAssemblyAttribute is generated multiple times on each entity class #408
-Error when generating AttributeNameConsts when attribute name matches entity name #411
-Fix for Exception on generating model with Model Builder V2 nuget #407
-Fields Const file should generate related entity name fields #406
-Make Fields Class Partial #405
-Error on Transliteration #404
-Use BPF Display Name for Relationship Attributes #403
-Project file corrupted after import #402
-Allow For Custom Dictionary Entries #401
 		</releaseNotes>
 		<copyright>Copyright 2019</copyright>
 		<tags>PAC ModelBuilder Dataverse Xrm EarlyBound Generator</tags>

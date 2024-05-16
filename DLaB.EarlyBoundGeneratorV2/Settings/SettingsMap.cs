@@ -395,6 +395,15 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         }
 
         [Category("1 - Global")]
+        [DisplayName("Make Reference Types Nullable")]
+        [Description("Adds support for defining Reference Types as Nullable Reference types (C# 8.0).  \"public string FirstName\" would instead be generated as \"public string? FirstName\"")]
+        public bool MakeReferenceTypesNullable
+        {
+            get => Config.ExtensionConfig.MakeReferenceTypesNullable;
+            set => Config.ExtensionConfig.MakeReferenceTypesNullable = value;
+        }
+
+        [Category("1 - Global")]
         [DisplayName("Namespace")]
         [Description("The Namespace generated code will be placed in.")]
         public string Namespace

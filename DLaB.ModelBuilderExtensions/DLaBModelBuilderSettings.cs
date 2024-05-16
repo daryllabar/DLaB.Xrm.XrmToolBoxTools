@@ -160,6 +160,9 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("makeReadonlyFieldsEditable")]
         public bool MakeReadonlyFieldsEditable { get; set; }
 
+        [JsonPropertyName("makeReferenceTypesNullable")]
+        public bool MakeReferenceTypesNullable { get; set; }
+
         [JsonPropertyName("makeResponseMessagesEditable")]
         public bool MakeResponseMessagesEditable { get; set; }
 

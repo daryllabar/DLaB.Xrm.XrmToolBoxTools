@@ -193,6 +193,10 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         /// </summary>
         public string LocalOptionSetFormat { get; set; }
         /// <summary>
+        /// Adds support for defining Reference Types as Nullable Reference types (C# 8.0).  "public string FirstName" would instead be generated as "public string? FirstName"
+        /// </summary>
+        public bool MakeReferenceTypesNullable { get; set; }
+        /// <summary>
         /// Trace = 0 - Logs that contain the most detailed messages. These messages may contain sensitive application data.  These messages are disabled by default and should never be enabled in a production environment.
         /// Debug = 1 - Logs that are used for interactive investigation during development.  These logs should primarily contain information useful for debugging and have no long-term value.
         /// Information = 2 - Logs that track the general flow of the application. These logs should have long-term value.
@@ -351,6 +355,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 LocalOptionSetFormat = "{0}_{1}",
                 MakeAllFieldsEditable = false,
                 MakeReadonlyFieldsEditable = false,
+                MakeReferenceTypesNullable = false,
                 MakeResponseActionsEditable = true,
                 ModelBuilderLogLevel = "2",
                 OptionSetLanguageCodeOverride = null,
@@ -423,6 +428,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             MakeReadonlyFieldsEditable = poco.MakeReadonlyFieldsEditable ?? MakeReadonlyFieldsEditable;
             MakeResponseActionsEditable = poco.MakeResponseActionsEditable ?? MakeResponseActionsEditable;
             LocalOptionSetFormat = poco.LocalOptionSetFormat ?? LocalOptionSetFormat;
+            MakeReferenceTypesNullable = poco.MakeReferenceTypesNullable ?? MakeReferenceTypesNullable;
             ModelBuilderLogLevel = GetValueOrDefault(poco.ModelBuilderLogLevel, ModelBuilderLogLevel);
             OptionSetLanguageCodeOverride = poco.OptionSetLanguageCodeOverride ?? OptionSetLanguageCodeOverride;
             OptionSetNames = GetValueOrDefault(poco.OptionSetNames, OptionSetNames);
@@ -492,6 +498,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddProperty(nameof(LocalOptionSetFormat), LocalOptionSetFormat);
             writer.AddProperty(nameof(MakeAllFieldsEditable), MakeAllFieldsEditable);
             writer.AddProperty(nameof(MakeReadonlyFieldsEditable), MakeReadonlyFieldsEditable);
+            writer.AddProperty(nameof(MakeReferenceTypesNullable), MakeReferenceTypesNullable);
             writer.AddProperty(AsMessage(nameof(MakeResponseActionsEditable)), MakeResponseActionsEditable);
             writer.AddPropertyArray("MessageBlacklist", ActionsToSkip?.Replace("-", ""));
             AddOptionalProperty("MessagesFileName", settings.MessageTypesFolder, !CreateOneFilePerAction);
@@ -623,6 +630,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings.POCO
         public string LocalOptionSetFormat { get; set; }
         public bool? MakeAllFieldsEditable { get; set; }
         public bool? MakeReadonlyFieldsEditable { get; set; }
+        public bool? MakeReferenceTypesNullable { get; set; }
         public bool? MakeResponseActionsEditable { get; set; }
         public string ModelBuilderLogLevel { get; set; }
         public string OptionSetNames { get; set; }
