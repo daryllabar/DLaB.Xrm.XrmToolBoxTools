@@ -2,7 +2,7 @@
 <package >
 	<metadata>
 		<id>DLaB.Xrm.EarlyBoundGeneratorV2.Api</id>
-		<version>2.2024.5.15</version>
+		<version>2.2024.5.16</version>
 		<title>Early Bound Generator V2 Api</title>
 		<authors>Daryl LaBar</authors>
 		<owners>Daryl LaBar</owners>
@@ -11,7 +11,7 @@
 		<projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses ModelBuilder from the PAC.</description>
-		<releaseNotes>V2.2024.5.15
+		<releaseNotes>V2.2024.5.16
 Add option to mark all attributes as nullable (C# 8.0) #311
 
 V2.2024.5.8
