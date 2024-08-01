@@ -72,6 +72,14 @@ namespace DLaB.AttributeManager
                 FormulaDefinition = formulaDefinition
             };
         }
+        public static AttributeMetadata CreateWholeNumberBig(long? minValue = BigIntAttributeMetadata.MinSupportedValue, long? maxValue = BigIntAttributeMetadata.MaxSupportedValue)
+        {
+            return new BigIntAttributeMetadata()
+            {
+                MaxValue = maxValue,
+                MinValue = minValue,
+            };
+        }
 
         public static AttributeMetadata CreateFloatingPoint(double? minValue = 0, double? maxValue = 1000000000, int? precision = 2, ImeMode? mode = ImeMode.Auto)
         {
