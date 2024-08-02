@@ -73,7 +73,6 @@ namespace DLaB.AttributeManager
             cmbNewAttributeType.Visible = false;
             SetTabVisible(tabStringAttribute, false);
             SetTabVisible(tabNumberAttribute, false);
-            SetTabVisible(tabNumberBigAttribute, false);
             SetTabVisible(tabOptionSetAttribute, false);
             SetTabVisible(tabDelete, false);
             SetMappingFileVisible();
@@ -798,7 +797,6 @@ namespace DLaB.AttributeManager
         {
             SetTabVisible(tabStringAttribute, false);
             SetTabVisible(tabNumberAttribute, false);
-            SetTabVisible(tabNumberBigAttribute, false);
             SetTabVisible(tabOptionSetAttribute, false);
             SetTabVisible(tabDelete, false);
         }
@@ -927,7 +925,6 @@ namespace DLaB.AttributeManager
             }
 
             SetTabVisible(tabNumberAttribute, numberTabVisible);
-            SetTabVisible(tabNumberBigAttribute, numberBigTabVisible);
             SetTabVisible(tabStringAttribute, stringTabVisible);
             SetTabVisible(tabOptionSetAttribute, optionTabVisible);
         }
