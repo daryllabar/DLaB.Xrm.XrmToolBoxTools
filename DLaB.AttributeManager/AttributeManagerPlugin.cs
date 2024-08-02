@@ -815,11 +815,11 @@ namespace DLaB.AttributeManager
             SetTabVisible(tabDelete, chkDelete.Checked);
 
             chkConvertAttributeType.Visible = !chkDelete.Checked;
-            chkMigrate.Visible = !chkDelete.Checked;
-            lblNewAttributeGrid.Visible = !chkDelete.Checked;
-            txtNewAttributeName.Visible = !chkDelete.Checked;
-            txtDisplayName.Visible = !chkDelete.Checked;
-            cmbNewAttributeType.Visible = !chkDelete.Checked;
+            chkMigrate.Visible =              !chkDelete.Checked;
+            lblNewAttributeGrid.Visible =     !chkDelete.Checked;
+            txtNewAttributeName.Visible =     !chkDelete.Checked;
+            txtDisplayName.Visible =          !chkDelete.Checked;
+            cmbNewAttributeType.Visible =     !chkDelete.Checked;
 
             UpdateDisplayedSteps();
         }
