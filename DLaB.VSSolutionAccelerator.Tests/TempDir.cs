@@ -1,5 +1,4 @@
 ﻿using System;
-using System.CodeDom;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
@@ -67,7 +66,8 @@ namespace DLaB.VSSolutionAccelerator.Tests
             // delete all files in temp directory
             foreach (var file in Directory.EnumerateFiles(Name, "*.*", SearchOption.AllDirectories))
             {
-                File.Delete(file);
+                // Long file name support
+                File.Delete(@"\\?\" + file);
             }
 
             // and then the directory

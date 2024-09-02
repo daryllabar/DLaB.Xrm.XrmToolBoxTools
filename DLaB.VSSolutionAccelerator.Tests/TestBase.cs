@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Reflection;
 
 namespace DLaB.VSSolutionAccelerator.Tests
@@ -20,8 +21,25 @@ namespace DLaB.VSSolutionAccelerator.Tests
                 }
                 catch
                 {
-                    System.Threading.Thread.Sleep(2000);
-                    dir.Delete(true);
+                    foreach(var i in new[] {200, 2000, 10000 })
+                    {
+                        System.Threading.Thread.Sleep(i);
+                        if (dir.Exists)
+                        {
+                            try
+                            {
+                                System.Threading.Thread.Sleep(2000);
+                                if (dir.Exists)
+                                {
+                                    dir.Delete(true);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(@"Unable to delete directory {0} due to error: {1}.  Potentially trying again, post thead sleep.", dir.FullName, ex);
+                            }
+                        }
+                    }
                 }
             }
         }
