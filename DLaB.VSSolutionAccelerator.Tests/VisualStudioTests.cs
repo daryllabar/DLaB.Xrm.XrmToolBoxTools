@@ -14,7 +14,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
         {
             void AssertSnippetCreated(string[] snippets, string snippet)
             {
-                Assert.That.ExistsLineContaining(snippets, snippet, $"Snippet {snippet} was not copied!");
+                Assert.That.ALineContains(snippets, snippet, $"Snippet {snippet} was not copied!");
             }
 
             var pluginPath = TestBase.GetPluginsPath();

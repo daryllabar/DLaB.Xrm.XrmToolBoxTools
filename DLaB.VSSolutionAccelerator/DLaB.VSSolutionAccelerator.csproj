@@ -278,7 +278,10 @@
   <ItemGroup>
     <Compile Include="AddProjectToSolutionInfo.cs" />
     <Compile Include="InitializeSolutionInfo.cs" />
+    <Compile Include="Logic\FileGroup.cs" />
     <Compile Include="Logic\NuGetSettings.cs" />
+    <Compile Include="Logic\LegacyProjectFileParser.cs" />
+    <Compile Include="Logic\ProjectFileLineReference.cs" />
     <Compile Include="Logic\SolutionUpdater.cs" />
     <Compile Include="Logic\SolutionEditor.cs" />
     <Compile Include="Logic\SolutionInitializer.cs" />
@@ -311,9 +314,7 @@
     <Compile Include="Wizard\ProjectSelectorPage.Designer.cs">
       <DependentUpon>ProjectSelectorPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wizard\NuGetVersionSelectorPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Wizard\NuGetVersionSelectorPage.cs" />
     <Compile Include="Wizard\NuGetVersionSelectorPage.Designer.cs">
       <DependentUpon>NuGetVersionSelectorPage.cs</DependentUpon>
     </Compile>
@@ -330,7 +331,6 @@
     </Compile>
     <Compile Include="Wizard\NuGetVersionSelectorPageWizard.cs">
       <DependentUpon>NuGetVersionSelectorPage.cs</DependentUpon>
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Wizard\PathQuestionInfo.cs" />
     <Compile Include="Wizard\ProjectSelectorPageWizard.cs">
@@ -421,7 +421,6 @@ ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Code Generation" "$(TargetDir)Plu
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
 ROBOCOPY "$(SolutionDir)References" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\bin" /MIR /NJS /NJH /XF Microsoft* Set*
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-xcopy "$(SolutionDir)..\XrmUnitTest.Example\Xyz.ruleset" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.ruleset" /Y
 ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.WorkflowCore" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.WorkflowCore" /MIR /NJS /NJH
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
 ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm" /MIR /NJS /NJH /XD Entities
@@ -438,9 +437,7 @@ ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Plugin.Tests" "$(TargetDi
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
 ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Test" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test" /MIR /NJS /NJH /XD bin obj
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\Assumptions\Entity Xml" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\Assumptions\Entity Xml" /MIR /NJS /NJH /XD
-if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.TestCore" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.TestCore" /MIR /NJS /NJH /XD
+REM ROBOCOPY "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\Assumptions\Entity Xml" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\Assumptions\Entity Xml" /MIR /NJS /NJH /XD
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
 
 REM Delete zip file to allow pack batch to rebuild it.

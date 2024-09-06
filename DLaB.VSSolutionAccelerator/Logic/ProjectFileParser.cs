@@ -7,53 +7,62 @@ namespace DLaB.VSSolutionAccelerator.Logic
 {
     public class ProjectFileParser
     {
-        public Guid Id { get; private set; }
-        public string Namespace { get; private set; }
-        public string AssemblyName { get; private set; }
-        private string CurrentOpenItemGroup { get; set; }
-        public List<List<string>> Chooses { get; set; }
-        public List<string> PrePropertyGroups { get; set; }
-        public List<PropertyGroup> PropertyGroups { get; set; }
-        public Dictionary<string, List<string>> ItemGroups { get; set; }
-        public List<string> Imports { get; set; }
-        public List<string> PostImports { get; set; }
-
-
         public enum States
         {
-            PrePropertyGroup,
+            Root,
             PropertyGroup,
             ItemGroup,
-            Choose,
-            Imports,
-            PostItemGroup,
+            Generic,
+            Target
         }
+
+        private bool _isNewProjectSdkFormat;
+        public string AssemblyDescription { get; private set; }
+        public string Authors { get; private set; }
+        public string Company { get; private set; }
+        public string Configurations { get; private set; }
+        private FileGroup CurrentGroup => Groups.Last();
+        public bool GenerateAssemblyInfo { get; private set; }
+        public List<FileGroup> Groups { get; set; }
+        public string Namespace { get; private set; }
+        public string Path { get; set; }
+        public string PackageName { get; private set; }
+        public Dictionary<string, string> PackageReferences { get; } = new Dictionary<string, string>();
+        public List<string> ProjectReferences { get; } = new List<string>();
+        public List<string> SharedProjectReferences { get; } = new List<string>();
+        public string ProjectTypeGuids { get; private set; }
+        public bool SignAssembly { get; private set; }
+        public string StrongNameKey { get; private set; }
+        /// <summary>
+        /// Contains a reference to the line that was used to populate a property, so that it can be updated.
+        /// This is only used for setting the assembly key, not sure if it is worth maintaining.
+        /// </summary>
+        private Dictionary<string, ProjectFileLineReference> ProjectFileLineReferencesByProperty { get; set; } = new Dictionary<string, ProjectFileLineReference>();
 
         public Dictionary<States, Action<string>> StateProcessor => new Dictionary<States, Action<string>>
         {
-            {States.PrePropertyGroup, ParsePrePropertyGroup},
+            {States.Root, ParseRoot},
             {States.PropertyGroup, ParsePropertyGroup},
             {States.ItemGroup, ParseItemGroup},
-            {States.Choose, ParseChoose},
-            {States.PostItemGroup, ParsePostItemGroup},
+            {States.Target, ParseTarget},
+            {States.Generic, ParseGeneric},
         };
 
         public struct LineMarkers
         {
-            public const string ChooseEnd = "</Choose>";
-            public const string ChooseStart = "<Choose>";
-            public const string ItemGroupEmpty = "<ItemGroup />";
+            public const string Import = "<Import Project"; // Shared Project
             public const string ItemGroupEnd = "</ItemGroup>";
-            public const string ItemGroupStart = "<ItemGroup>";
-            public const string ImportStart = "<Import Project";
+            public const string ItemGroupStart = "<ItemGroup";
             public const string PropertyGroupEnd = "</PropertyGroup>";
             public const string PropertyGroupStart = "<PropertyGroup";
+            public const string TargetGroupStart = "<Target";
+            public const string TargetGroupEnd = "</Target>";
+
         }
 
         public struct ItemGroupTypes
         {
             public const string Analyzer = "Analyzer";
-            public const string Compile = "Compile";
             public const string Content = "Content";
             public const string ProjectReference = "ProjectReference";
             public const string None = "None";
@@ -62,20 +71,19 @@ namespace DLaB.VSSolutionAccelerator.Logic
 
         public States State { get; set; }
 
-        public ProjectFileParser(IEnumerable<string> project)
+        public ProjectFileParser(string path, IEnumerable<string> project)
         {
+            Path = path;
             if (project == null)
             {
                 project = CreateNewEmptyProject();
             }
 
-            State = States.PrePropertyGroup;
-            PrePropertyGroups = new List<string>();
-            Imports = new List<string>();
-            PropertyGroups = new List<PropertyGroup>();
-            ItemGroups = new Dictionary<string, List<string>>();
-            PostImports = new List<string>();
-            Chooses = new List<List<string>>();
+            State = States.Root;
+            Groups = new List<FileGroup>
+            {
+                new FileGroup(GroupType.Root)
+            };
 
             foreach (var line in project)
             {
@@ -83,99 +91,160 @@ namespace DLaB.VSSolutionAccelerator.Logic
             }
         }
 
-        private void ParsePrePropertyGroup(string line)
+        private void ParseRoot(string line)
         {
-            if (!IsStartOfState(line))
+            if (IsStartOfState(line))
             {
-                PrePropertyGroups.Add(line);
+                if (!_isNewProjectSdkFormat)
+                {
+                    _isNewProjectSdkFormat = Groups.First().Lines.Any(l => l.Contains("<Project Sdk=\"Microsoft.NET.Sdk\">"));
+                    if (!_isNewProjectSdkFormat)
+                    {
+                        throw new Exception($"The Project {Path} is not in the new SDK Style format!");
+                    }
+                }
+
+                return;
             }
+
+            if(CurrentGroup.GroupType != GroupType.Root)
+            {
+                Groups.Add(new FileGroup(GroupType.Root));
+            }
+            CurrentGroup.AddLine(line);
         }
 
         private void ParsePropertyGroup(string line)
         {
-            if (IsStartOfState(line)) { return; }
+            CurrentGroup.AddLine(line);
 
-            PropertyGroups.Last().AddLine(line);
-            if (line.Contains("<RootNamespace>"))
+            if (line.TrimStart().StartsWith(LineMarkers.PropertyGroupEnd))
             {
-                Namespace = line.SubstringByString("<RootNamespace>", "</RootNamespace>");
+                State = States.Root;
+                return;
             }
-            else if (line.Contains("<AssemblyName>"))
-            {
-                AssemblyName = line.SubstringByString("<AssemblyName>", "</AssemblyName>");
-            }else if (line.Contains("<ProjectGuid>"))
-            {
-                Id = new Guid(line.SubstringByString("<ProjectGuid>", "</ProjectGuid>"));
-            }
+
+            SetPropertyFromLine(CurrentGroup, line);
+        }
+        public void SetPropertyFromLine(string propertyName, string line, string FutureEnumUsedToDetermineWhereToPlaceBrandNewValues = null)
+        {
+            SetPropertyFromLine(null, line);
         }
 
-        private void ParseItemGroup(string line)
+        private void SetPropertyFromLine(FileGroup group, string line)
         {
-            if (IsStartOfState(line) 
-                || line.TrimStart().StartsWith(LineMarkers.ItemGroupEnd)
-                || line.TrimStart() == LineMarkers.ItemGroupEmpty)
+            SetPropertyFromLine(group, nameof(AssemblyDescription), "<Description>", "</Description>", line);
+            SetPropertyFromLine(group, nameof(Authors), "<Authors>", "</Authors>", line);
+            SetPropertyFromLine(group, nameof(Company), "<Company>", "</Company>", line);
+            SetPropertyFromLine(group, nameof(Configurations), "<Configurations>", "</Configurations>", line);
+            SetPropertyFromLine(group, nameof(GenerateAssemblyInfo), "<GenerateAssemblyInfo>", "</GenerateAssemblyInfo>", line);
+            SetPropertyFromLine(group, nameof(Namespace), "<RootNamespace>", "</RootNamespace>", line);
+            SetPropertyFromLine(group, nameof(PackageName), "<PackageId>", "</PackageId>", line);
+            SetPropertyFromLine(group, nameof(ProjectTypeGuids), "<ProjectTypeGuids>", "</ProjectTypeGuids>", line);
+            SetPropertyFromLine(group, nameof(SignAssembly), "<SignAssembly>", "</SignAssembly>", line);
+            SetPropertyFromLine(group, nameof(StrongNameKey), "<AssemblyOriginatorKeyFile>", "</AssemblyOriginatorKeyFile>", line);
+        }
+
+        private void SetPropertyFromLine(FileGroup group, string propertyName, string projectStartString, string projectEndString, string line)
+        {
+            if (!line.Contains(projectStartString))
             {
                 return;
             }
 
-            var itemGroupType = GetCurrentOrNewItemGroup(line);
-            if (!ItemGroups.TryGetValue(itemGroupType, out var lines))
+            if (group == null)
             {
-                lines = new List<string>();
-                ItemGroups[itemGroupType] = lines;
-                
+                // TODO: External callers that set a value must define the File Group that the value should be in if it does not already exist.
+                ProjectFileLineReferencesByProperty[propertyName].Line = line;
             }
-
-            lines.Add(line);
+            else
+            {
+                ProjectFileLineReferencesByProperty[propertyName] = new ProjectFileLineReference(group);
+            }
+            SetPropertyValue(propertyName, projectStartString, projectEndString, line);
         }
 
-        private void ParseChoose(string line)
+        private void SetPropertyValue(string propertyName, string projectStartString, string projectEndString, string line)
         {
-            if (line.TrimStart().StartsWith(LineMarkers.ChooseEnd))
+            var property = GetType().GetProperty(propertyName);
+            if (property == null)
             {
-                State = States.ItemGroup;
+                throw new Exception($"Property with name {propertyName} was not found!");
             }
 
-            Chooses.Last().Add(line);
+            if (property.PropertyType == typeof(bool))
+            {
+                property.SetValue(this, ParseBool(line.SubstringByString(projectStartString, projectEndString)));
+                return;
+            }
+
+            property.SetValue(this, line.SubstringByString(projectStartString, projectEndString));
         }
 
-        private string GetCurrentOrNewItemGroup(string line)
+        private bool ParseBool(string value)
         {
-            var itemGroupType = CurrentOpenItemGroup ?? line.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries).First();
-            if (CurrentOpenItemGroup != null)
-            {
-                if (line.TrimStart().StartsWith(CurrentOpenItemGroup.Replace("<", "</") + ">"))
-                {
-                    CurrentOpenItemGroup = null;
-                }
-            }
-            else if(!line.TrimEnd().EndsWith("/>"))
-            {
-                CurrentOpenItemGroup = itemGroupType;
-            }
-
-            if (itemGroupType.StartsWith("<"))
-            {
-                itemGroupType = itemGroupType.Substring(1, itemGroupType.Length - 1);
-            }
-
-            return itemGroupType;
+            return value?.ToLower().Trim() == "true";
         }
 
-        private void ParsePostItemGroup(string line)
+        private void ParseItemGroup(string line)
         {
-            if (!IsImportPostItemGroupStart(line))
+            CurrentGroup.AddLine(line);
+
+            if (line.TrimStart().StartsWith(LineMarkers.ItemGroupEnd))
             {
-                PostImports.Add(line);
+                State = States.Root;
+                return;
+            }
+
+            if (line.TrimStart().StartsWith("<ProjectReference Include"))
+            {
+                ProjectReferences.Add(line.SubstringByString("\"", "\""));
+            }
+            if (line.TrimStart().StartsWith("<PackageReference Include"))
+            {
+                PackageReferences.Add(line.SubstringByString("Include=\"", "\""), line.SubstringByString("Version=\"", "\""));
+            }
+        }
+
+        private void ParseTarget(string line)
+        {
+            CurrentGroup.AddLine(line);
+
+            if (line.TrimStart().StartsWith(LineMarkers.TargetGroupEnd))
+            {
+                State = States.Root;
+            }
+        }
+
+        private void ParseGeneric(string line)
+        {
+            if (IsStartOfState(line))
+            {
+                return;
+            }
+
+            if (CurrentGroup.GroupType != GroupType.Generic)
+            {
+                Groups.Add(new FileGroup(GroupType.Generic));
+            }
+            CurrentGroup.AddLine(line);
+
+            if (line.TrimStart().StartsWith(LineMarkers.Import))
+            {
+                SharedProjectReferences.Add(line.SubstringByString("\"", "\""));
             }
         }
 
         private bool IsStartOfState(string line)
         {
+            if (line.Contains("/>"))
+            {
+                // empty element treat as root
+                return false;
+            }
             return IsPropertyGroupStart(line)
                 || IsItemGroupStart(line)
-                || IsChooseStart(line)
-                || IsImportPostItemGroupStart(line);
+                || IsTargetStart(line);
         }
 
         private bool IsPropertyGroupStart(string line)
@@ -183,7 +252,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
             var isStart = line.TrimStart().StartsWith(LineMarkers.PropertyGroupStart);
             if (isStart)
             {
-                PropertyGroups.Add(new PropertyGroup(line));
+                Groups.Add(new PropertyGroup(line));
                 State = States.PropertyGroup;
             }
 
@@ -195,35 +264,20 @@ namespace DLaB.VSSolutionAccelerator.Logic
             var isStart = line.TrimStart().StartsWith(LineMarkers.ItemGroupStart);
             if (isStart)
             {
+                Groups.Add(new FileGroup(GroupType.ItemGroup, line));
                 State = States.ItemGroup;
             }
             
             return isStart;
         }
 
-        private bool IsChooseStart(string line)
+        private bool IsTargetStart(string line)
         {
-            var isStart = line.TrimStart().StartsWith(LineMarkers.ChooseStart);
+            var isStart = line.TrimStart().StartsWith(LineMarkers.TargetGroupStart);
             if (isStart)
             {
-                State = States.Choose;
-                if (!(Chooses.LastOrDefault()?.Count > 0))
-                {
-                    Chooses.Add(new List<string> { line });
-                }
-            }
-
-            return isStart;
-        }
-
-        private bool IsImportPostItemGroupStart(string line)
-        {
-            var isStart = line.TrimStart().StartsWith(LineMarkers.ImportStart)
-                && (PropertyGroups.Count > 0 || ItemGroups.Count > 0);
-            if (isStart)
-            {
-                State = States.PostItemGroup;
-                Imports.Add(line);
+                Groups.Add(new FileGroup(GroupType.Target, line));
+                State = States.Target;
             }
 
             return isStart;
@@ -231,63 +285,36 @@ namespace DLaB.VSSolutionAccelerator.Logic
 
         private static IEnumerable<string> CreateNewEmptyProject()
         {
-            return $@"<?xml version=""1.0"" encoding=""utf-8""?>
-<Project ToolsVersion=""15.0"" xmlns=""http://schemas.microsoft.com/developer/msbuild/2003"">
-  <Import Project=""$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"" Condition=""Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"" />
+            return @"<Project Sdk=""Microsoft.NET.Sdk"">
   <PropertyGroup>
-    <Configuration Condition="" '$(Configuration)' == '' "">Debug</Configuration>
-    <Platform Condition="" '$(Platform)' == '' "">AnyCPU</Platform>
-    <ProjectGuid>{Guid.NewGuid().ToString().ToUpper()}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Empty</RootNamespace>
-    <AssemblyName>Empty</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
+	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	  <Configurations>Debug;Release;DevDeploy</Configurations>
+	  <LangVersion>12</LangVersion>
+	  <OutputType>Library</OutputType>
+	  <SignAssembly>false</SignAssembly>
+	  <TargetFramework>net462</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition="" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' "">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition="" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' "">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include=""System"" />
-    <Reference Include=""System.Core"" />
-    <Reference Include=""System.Xml.Linq"" />
-    <Reference Include=""System.Data.DataSetExtensions"" />
-    <Reference Include=""Microsoft.CSharp"" />
-    <Reference Include=""System.Data"" />
-    <Reference Include=""System.Net.Http"" />
-    <Reference Include=""System.Xml"" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include=""Properties\AssemblyInfo.cs"" />
-  </ItemGroup>
-  <Import Project=""$(MSBuildToolsPath)\Microsoft.CSharp.targets"" />
 </Project>
 ".Split(new[] {Environment.NewLine}, StringSplitOptions.None);
         }
 
         public IEnumerable<string> GetProject()
         {
+            foreach (var group in Groups)
+            {
+                foreach(var line in SplitByNewLine(group.Lines))
+                {
+                    yield return line;
+                }
+            }
+
+            yield break;
+
             IEnumerable<string> SplitByNewLine(IEnumerable<string> lines)
             {
                 foreach (var line in lines)
                 {
-                    var parts = line.Split(new[] {Environment.NewLine}, StringSplitOptions.None);
+                    var parts = line.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
                     if (parts.Length > 1)
                     {
                         foreach (var part in parts)
@@ -300,44 +327,6 @@ namespace DLaB.VSSolutionAccelerator.Logic
                         yield return line;
                     }
                 }
-            }
-
-            foreach (var line in PrePropertyGroups)
-            {
-                yield return line;
-            }
-
-            foreach (var line in SplitByNewLine(PropertyGroups.SelectMany(g => g.Lines)))
-            {
-                yield return line;
-            }
-
-            foreach (var itemGroup in ItemGroups)
-            {
-                yield return "  " + LineMarkers.ItemGroupStart;
-                foreach (var line in SplitByNewLine(itemGroup.Value))
-                {
-                    yield return line;
-                }
-                yield return "  " + LineMarkers.ItemGroupEnd;
-            }
-
-            foreach (var choose in Chooses)
-            {
-                foreach (var line in choose)
-                {
-                    yield return line;
-                }
-            }
-
-            foreach (var line in SplitByNewLine(Imports))
-            {
-                yield return line;
-            }
-
-            foreach (var line in SplitByNewLine(PostImports))
-            {
-                yield return line;
             }
         }
     }  

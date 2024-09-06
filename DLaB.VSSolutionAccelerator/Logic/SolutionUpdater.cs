@@ -14,14 +14,10 @@ namespace DLaB.VSSolutionAccelerator.Logic
         {
             var projects = new Dictionary<string, ProjectInfo>();
             AddExistingSharedProjectDependencies(info, projects);
-
-            if (info.CreatePlugin)
+            AddPlugin(projects, info);
+            if (info.CreatePluginTest)
             {
-                AddPlugin(projects, info);
-                if (info.CreatePluginTest)
-                {
-                    AddPluginTest(projects, info);
-                }
+                AddPluginTest(projects, info);
             }
             if (info.CreateWorkflow)
             {
@@ -32,7 +28,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 }
             }
 
-            AddNugetPostUpdateCommandsToProjects(info.XrmVersion, projects);
+            //AddNugetPostUpdateCommandsToProjects(info.XrmVersion, projects);
             return projects;
         }
 
@@ -71,20 +67,12 @@ namespace DLaB.VSSolutionAccelerator.Logic
         {
             if (info.CreatePluginTest || info.CreateWorkflowTest)
             {
-                projects[ProjectInfo.Keys.TestCore] = new ProjectInfo
-                {
-                    Type = ProjectInfo.ProjectType.SharedProj,
-                    Key = ProjectInfo.Keys.TestCore,
-                    AddToSolution = false,
-                    Name = info.SharedTestCoreProject
-                };
-
                 projects[ProjectInfo.Keys.Test] = new ProjectInfo
                 {
                     Type = ProjectInfo.ProjectType.CsProj,
                     Key = ProjectInfo.Keys.Test,
                     AddToSolution = false,
-                    Name = info.SharedTestProject.AssemblyName
+                    Name = info.SharedTestCoreProject
                 };
             }
         }

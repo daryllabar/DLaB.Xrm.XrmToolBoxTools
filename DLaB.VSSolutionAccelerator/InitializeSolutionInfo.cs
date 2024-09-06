@@ -1,26 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using DLaB.VSSolutionAccelerator.Wizard;
-using Source.DLaB.Common;
 
 namespace DLaB.VSSolutionAccelerator
 {
     public class InitializeSolutionInfo : SolutionEditorInfo
     {
         public bool CreateSolution { get; set; }
-        public NuGetPackage XrmPackage { get; set; }
+        // public NuGetPackage XrmPackage { get; set; }
         public bool ConfigureEarlyBound { get; set; }
         public bool ConfigureXrmUnitTest { get; set; }
         public string RootNamespace { get; set; }
-        public override Version XrmVersion => XrmPackage.Version;
+        //public override Version XrmVersion => XrmPackage.Version;
 
         private struct Page
         {
             public const int SolutionPath = 0;
             public const int RootNamespace = 1;
-            public const int UseXrmUnitTest = 6;
-            public const int CreatePlugin = 7;
+            public const int EarlyBound = 2;
+            public const int CommonName = 3;
+            public const int CommonWorkflowName = 4;
+            public const int UseXrmUnitTest = 5;
+            public const int CreatePlugin = 6;
+            public const int PluginAssembly = 7;
+            public const int PluginTest = 8;
             public const int CreateWorkflow = 9;
+            public const int WorkflowTest = 10;
         }
 
         public static List<IWizardPage> InitializePages()
@@ -29,16 +34,17 @@ namespace DLaB.VSSolutionAccelerator
             var pages = new List<IWizardPage>();
             AddSolutionNameQuestion(pages); // 0
             AddRootNamespaceQuestion(pages);
-            AddXrmNuGetVersionQuestion(pages);
+            // AddXrmNuGetVersionQuestion(pages);
             AddUseEarlyBoundQuestion(pages);
             AddSharedCommonNameQuestion(pages);
-            AddSharedCommonWorkflowNameQuestion(pages); // 5
-            AddUseXrmUnitTestQuestion(pages);
+            AddSharedCommonWorkflowNameQuestion(pages); 
+            AddUseXrmUnitTestQuestion(pages); // 5
             AddCreatePluginProjectQuestion(pages);
+            AddPluginAssemblyInfoQuestions(pages);
             AddPluginTestProjectNameQuestion(pages);
             AddCreateWorkflowProjectQuestion(pages);
             AddWorkflowTestProjectNameQuestion(pages); // 10
-            AddInstallCodeSnippetAndAddCodeGenerationQuestion(pages); // 10
+            AddInstallCodeSnippetAndAddCodeGenerationQuestion(pages);
             return pages;
         }
 
@@ -79,13 +85,13 @@ namespace DLaB.VSSolutionAccelerator
             }));
         }
 
-        private static void AddXrmNuGetVersionQuestion(List<IWizardPage> pages)
-        {
-            pages.Add(NuGetVersionSelectorPage.Create(
-                "What version of the SDK?",
-                PackageLister.Ids.CoreXrmAssemblies,
-                "This will determine the NuGet packages referenced and the version of the .Net Framework to use."));
-        }
+        //private static void AddXrmNuGetVersionQuestion(List<IWizardPage> pages)
+        //{
+        //    pages.Add(NuGetVersionSelectorPage.Create(
+        //        "What version of the SDK?",
+        //        PackageLister.Ids.CoreXrmAssemblies,
+        //        "This will determine the NuGet packages referenced and the version of the .Net Framework to use."));
+        //}
 
         private static void AddUseEarlyBoundQuestion(List<IWizardPage> pages)
         {
@@ -124,14 +130,9 @@ namespace DLaB.VSSolutionAccelerator
                 Yes = new TextQuestionInfo("What do you want the Test Settings project to be called?")
                 {
                     DefaultResponse = GenericPage.GetSaveResultsFormat(Page.RootNamespace) + ".Test",
-                    Description = "The Test Settings project will contain the single test settings config file and assumption xml files."
+                    Description = "The shared Test Project will contain all other shared test code (Assumption Definitions/Xml, Builders, Test Base Class, etc) and the single test settings config file."
                 },
-                Yes2 = new TextQuestionInfo("What do you want the shared core test project to be called?")
-                {
-                    DefaultResponse = GenericPage.GetSaveResultsFormat(Page.RootNamespace) + ".TestCore",
-                    Description = "The shared Test Project will contain all other shared test code (Assumption Definitions, Builders, Test Base Class, etc)"
-                },
-                Description = "This will add the appropriate NuGet References and create the appropriate isolation projects."
+                Description = "This create the appropriate isolation projects."
             }));
         }
 
@@ -151,6 +152,29 @@ namespace DLaB.VSSolutionAccelerator
                 },
                 Description = "This will add a new plugin project to the solution and wire up the appropriate references."
             }));
+        }
+
+        private static void AddPluginAssemblyInfoQuestions(List<IWizardPage> pages)
+        {
+            var companyName = GenericPage.GetSaveResultsFormat(Page.RootNamespace, 0) ?? "Company";
+            companyName = companyName.Replace("Xrm", string.Empty)
+                                     .Replace("Dataverse", string.Empty);
+            companyName = string.Join(" ", companyName.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries));
+            companyName = string.Join(" ", companyName.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
+
+            var page = GenericPage.Create(new TextQuestionInfo("What is the name of the Company to use with the Plugin Assembly?")
+            {
+                DefaultResponse = companyName,
+                Description = "This information will be used in the plugin project file and will be used when generating the plugin assembly.",
+            }, new TextQuestionInfo("Plugin Assembly Description?") { 
+                DefaultResponse = "Plugin with Dependent Assemblies",
+            }, new TextQuestionInfo("Deployment PAC CLI Auth Name?") {
+                DefaultResponse = companyName.Replace(" ", string.Empty) + " Dev",
+                Description = "The PAC CLI Auth Name is the name of the used to PAC Auth context to use when deploying the plugin to dev."
+            });
+
+            page.AddSavedValuedRequiredCondition(Page.CreatePlugin, "Y");
+            pages.Add(page);
         }
 
         private static void AddPluginTestProjectNameQuestion(List<IWizardPage> pages)
@@ -213,16 +237,23 @@ namespace DLaB.VSSolutionAccelerator
         {
             InitializeSolution(new YesNoResult(queue.Dequeue())); // 0
             RootNamespace = (string)queue.Dequeue();
-            XrmPackage = (NuGetPackage)queue.Dequeue();
+            //XrmPackage = (NuGetPackage)queue.Dequeue();
             ConfigureEarlyBound = queue.Dequeue().ToString() == "Y";
             SharedCommonProject = (string)queue.Dequeue();
-            SharedCommonWorkflowProject = (string)queue.Dequeue(); // 5
-            InitializeXrmUnitTest(new YesNoResult(queue.Dequeue()));
+            SharedCommonWorkflowProject = (string)queue.Dequeue(); 
+            InitializeXrmUnitTest(new YesNoResult(queue.Dequeue())); // 5
             InitializePlugin(new YesNoResult(queue.Dequeue()));
+            InitializePluginAssembly((List<string>) queue.Dequeue());
             PluginTestName = (string)queue.Dequeue();
             InitializeWorkflow(new YesNoResult(queue.Dequeue()));
-            WorkflowTestName = (string)queue.Dequeue(); // 10
-            InitializeCodeGeneration((List<string>)queue.Dequeue());
+            WorkflowTestName = (string)queue.Dequeue(); 
+            InitializeCodeGeneration((List<string>)queue.Dequeue()); // 10
+
+            if (ConfigureXrmUnitTest)
+            {
+                CreatePluginTest = CreatePlugin;
+                CreateWorkflowTest = CreateWorkflow;
+            }
         }
 
         public static InitializeSolutionInfo InitializeSolution(object[] values)
@@ -248,6 +279,13 @@ namespace DLaB.VSSolutionAccelerator
             CreatePlugin = result.IsYes;
             PluginName = result[1];
             IncludeExamplePlugins = result[2] == "0";
+        }
+
+        private void InitializePluginAssembly(List<string> result)
+        {
+            PluginPackage.Company = result[0];
+            PluginPackage.Description = result[1];
+            PluginPackage.PacAuthName = result[2];
         }
 
         private void InitializeWorkflow(YesNoResult result)

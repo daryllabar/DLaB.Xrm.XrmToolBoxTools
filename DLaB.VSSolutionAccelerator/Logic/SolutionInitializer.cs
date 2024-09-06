@@ -1,10 +1,9 @@
-﻿using System;
+﻿using DLaB.Log;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-using DLaB.Log;
 
 namespace DLaB.VSSolutionAccelerator.Logic
 {
@@ -20,41 +19,22 @@ namespace DLaB.VSSolutionAccelerator.Logic
             var projects = new Dictionary<string, ProjectInfo>();
             AddSharedCommonProject(projects, info);
             AddSharedWorkflowProject(projects, info);
-            if (info.ConfigureXrmUnitTest)
-            {
-                AddSharedTestCoreProject(projects, info);
-                AddBaseTestProject(projects, info);
-            }
-            if (info.CreatePlugin)
-            {
-                AddPlugin(projects, info);
-                if (info.ConfigureXrmUnitTest)
-                {
-                    AddPluginTest(projects, info);
-                }
-            }
-            if (info.CreateWorkflow)
-            {
-                AddWorkflow(projects, info);
-                if (info.ConfigureXrmUnitTest)
-                {
-                    AddWorkflowTest(projects, info);
-                }
-            }
-
-            AddNugetPostUpdateCommandsToProjects(info.XrmPackage.Version, projects);
+            AddBaseTestProject(projects, info);
+            AddPlugin(projects, info);
+            AddPluginTest(projects, info);
+            AddWorkflow(projects, info);
+            AddWorkflowTest(projects, info);
+            //AddNugetPostUpdateCommandsToProjects(info.XrmPackage.Version, projects);
             return projects;
         }
 
         private void AddSharedCommonProject(Dictionary<string, ProjectInfo> projects, InitializeSolutionInfo info)
         {
-            var project = CreateDefaultSharedProjectInfo(
+            var project = CreateDefaultProjectInfo(
                 ProjectInfo.Keys.Common,
-                info.SharedCommonProject);
+                info.SharedCommonProject,
+                info);
 
-            var projItems = project.Files.First(f => f.Name.EndsWith(".projitems"));
-            projItems.Removals.Add("$(MSBuildThisFileDirectory)Entities");
-            projItems.RemovalsToSkip.Add(@"$(MSBuildThisFileDirectory)Entities\Actions\xyz");
             projects.Add(project.Key, project);
         }
 
@@ -68,33 +48,14 @@ namespace DLaB.VSSolutionAccelerator.Logic
             projects.Add(project.Key, project);
         }
 
-        private void AddSharedTestCoreProject(Dictionary<string, ProjectInfo> projects, InitializeSolutionInfo info)
-        {
-            var project = CreateDefaultSharedProjectInfo(
-                ProjectInfo.Keys.TestCore,
-                info.SharedTestCoreProject, 
-                ProjectInfo.Keys.Test,
-                info.TestBaseProject);
-
-            projects.Add(project.Key, project);
-        }
-
         private void AddBaseTestProject(Dictionary<string, ProjectInfo> projects, InitializeSolutionInfo info)
         {
-            var project = CreateDefaultProjectInfo(
-                ProjectInfo.Keys.Test,
-                info.TestBaseProject,
-                "v4.6.2",
-                info.SharedCommonProject);
-            project.Files.Add(new ProjectFile
+            if (!info.ConfigureXrmUnitTest)
             {
-                Name = @"Assumptions\Entity Xml\Product_Install.xml",
-                Replacements = new Dictionary<string, string>
-                {
-                    {"Xyz.Xrm.Plugin", info.PluginName ?? info.WorkflowName ?? info.RootNamespace + ".Plugin"},
-                    {"Xyz.Xrm", info.RootNamespace}
-                }
-            });
+                return;
+            }
+            
+            var project = CreateDefaultProjectInfo(ProjectInfo.Keys.Test, info.TestBaseProject, info);
             projects.Add(project.Key, project);
         }
 

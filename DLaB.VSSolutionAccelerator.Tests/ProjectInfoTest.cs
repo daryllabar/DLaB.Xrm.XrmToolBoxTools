@@ -15,7 +15,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
         {
             /*
                  Should Generate the following output
-                Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Xyz.Xrm", "Xyz.Xrm\Xyz.Xrm.shproj", "{B22B3BC6-0AC6-4CDD-A118-16E318818AD7}"
+                Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xyz.Xrm", "Xyz.Xrm\Xyz.Xrm.shproj", "{B22B3BC6-0AC6-4CDD-A118-16E318818AD7}"
                 EndProject
              */
             var sut = new ProjectInfo()

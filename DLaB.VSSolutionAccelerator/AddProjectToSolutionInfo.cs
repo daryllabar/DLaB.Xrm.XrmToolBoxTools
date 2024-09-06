@@ -12,8 +12,6 @@ namespace DLaB.VSSolutionAccelerator
     public class AddProjectToSolutionInfo : SolutionEditorInfo
     {
         private SolutionSettings SolutionSettings { get; set; }
-        public bool CreatePluginTest { get; set; }
-        public bool CreateWorkflowTest { get; set; }
         public ProjectFileParser SharedTestProject { get; private set; }
 
         private struct Page
@@ -138,7 +136,7 @@ namespace DLaB.VSSolutionAccelerator
                 }
                 else if (projectLine.Contains(ProjectInfo.GetTypeId(ProjectInfo.ProjectType.CsProj)))
                 {
-                    projects.Add(new ProjectFileParser(File.ReadAllLines(path)));
+                    projects.Add(new ProjectFileParser(path, File.ReadAllLines(path)));
                 }
             }
             InstantiateSharedProjects(sharedProjects);
@@ -167,8 +165,7 @@ namespace DLaB.VSSolutionAccelerator
         {
             Logger.AddDetail("Searching For the Shared Test Project, which is a project containing the 'UnitTestSettings.config' file.");
             var project = projects.FirstOrDefault(p =>
-                p.ItemGroups.TryGetValue(ProjectFileParser.ItemGroupTypes.None, out var noneItemGroup)
-                && noneItemGroup.Any(l => l.Contains("<None Include=\"UnitTestSettings.config\">")));
+                File.Exists(Path.Combine(Path.GetDirectoryName(p.Path) ?? Environment.GetLogicalDrives()[0], "UnitTestSettings.config")));
             SharedTestProject = project ?? throw new Exception("Unable to find the Shared Test Project!");
         }
 

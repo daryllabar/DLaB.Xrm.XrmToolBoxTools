@@ -38,25 +38,24 @@ namespace DLaB.VSSolutionAccelerator.Logic
             UpdateProjectsPostSolutionRestore();
         }
 
-        protected void AddNugetPostUpdateCommandsToProjects(Version xrmPackageVersion, Dictionary<string, ProjectInfo> projects)
-        {
-            foreach (var project in projects.Values.Where(p => p.Type != ProjectInfo.ProjectType.SharedProj))
-            {
-                var mapper = new NuGetMapper(NuGetSettings, 
-                    xrmPackageVersion, 
-                    Path.Combine(TemplateDirectory, project.Key, "packages.config"), 
-                    Path.Combine(OutputBaseDirectory, project.Name, "packages.config"));
-                project.AddNugetPostUpdateCommands(mapper,
-                    NuGetSettings.ContentInstallerPath,
-                    OutputBaseDirectory);
-            }
-        }
+        //protected void AddNugetPostUpdateCommandsToProjects(Version xrmPackageVersion, Dictionary<string, ProjectInfo> projects)
+        //{
+        //    foreach (var project in projects.Values.Where(p => p.Type != ProjectInfo.ProjectType.SharedProj))
+        //    {
+        //        var mapper = new NuGetMapper(NuGetSettings, 
+        //            xrmPackageVersion, 
+        //            Path.Combine(TemplateDirectory, project.Key, "packages.config"), 
+        //            Path.Combine(OutputBaseDirectory, project.Name, "packages.config"));
+        //        project.AddNugetPostUpdateCommands(mapper,
+        //            NuGetSettings.ContentInstallerPath,
+        //            OutputBaseDirectory);
+        //    }
+        //}
 
-        protected ProjectInfo CreateDefaultProjectInfo(string key, string name, string dotNetFramework, string sharedCommonProject)
+        protected ProjectInfo CreateDefaultProjectInfo(string key, string name, SolutionEditorInfo info)
         {
             Logger.AddDetail($"Configuring Project {name} based on {key}.");
             var id = Guid.NewGuid();
-            var trademark = "[assembly: AssemblyTrademark(\"\")]";
             var project = new ProjectInfo
             {
                 Key = key,
@@ -71,34 +70,14 @@ namespace DLaB.VSSolutionAccelerator.Logic
                         Name = name + ".csproj",
                         Replacements = new Dictionary<string, string>
                         {
-                            {ProjectInfo.IdByKey[key], id.ToString().ToUpper()},
-                            {$"<RootNamespace>{key}</RootNamespace>", $"<RootNamespace>{name}</RootNamespace>"},
-                            {$"<AssemblyName>{key}</AssemblyName>", $"<AssemblyName>{name}</AssemblyName>"},
-                            {"<TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>", $"<TargetFrameworkVersion>{dotNetFramework}</TargetFrameworkVersion>"},
-                            {"<TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>", $"<TargetFrameworkVersion>{dotNetFramework}</TargetFrameworkVersion>"},
                             {$"<AssemblyOriginatorKeyFile>{key}.Key.snk</AssemblyOriginatorKeyFile>", $"<AssemblyOriginatorKeyFile>{name}.Key.snk</AssemblyOriginatorKeyFile>"},
-                            {$"<None Include=\"{key}.Key.snk\" />", $"<None Include=\"{name}.Key.snk\" />"},
-                            {@"<Import Project=""..\Xyz.Xrm\Xyz.Xrm.projitems"" Label=""Shared"" />", $@"<Import Project=""..\{sharedCommonProject}\{sharedCommonProject}.projitems"" Label=""Shared"" />"},
-                            {@"<Import Project=""..\Xyz.Xrm.TestCore\Xyz.Xrm.TestCore.projitems"" Label=""Shared"" />", $@"<Import Project=""..\{sharedCommonProject}\{sharedCommonProject}.projitems"" Label=""Shared"" />"},
+                            {@"<Import Project=""..\Xyz.Xrm.WorkflowCore\Xyz.Xrm.WorkflowCore.projitems"" Label=""Shared"" />", $@"<Import Project=""..\{info.SharedCommonWorkflowProject}\{info.SharedCommonWorkflowProject}.projitems"" Label=""Shared"" />"},
+                            {@"<ProjectReference Include=""..\Xyz.Xrm\Xyz.Xrm.csproj"" />", $@"<ProjectReference Include=""..\{info.SharedCommonProject}\{info.SharedCommonProject}.csproj"" />" },
+                            {@"<ProjectReference Include=""..\Xyz.Xrm.Plugin\Xyz.Xrm.Plugin.csproj"" />", $@"<ProjectReference Include=""..\{info.PluginName}\{info.PluginName}.csproj"" />" },
+                            {@"<ProjectReference Include=""..\Xyz.Xrm.Test\Xyz.Xrm.Test.csproj"" />", $@"<ProjectReference Include=""..\{info.TestBaseProject}\{info.TestBaseProject}.csproj"" />" },
+                            {@"<ProjectReference Include=""..\Xyz.Xrm.Workflow\Xyz.Xrm.Workflow.csproj"" />", $@"<ProjectReference Include=""..\{info.WorkflowName}\{info.WorkflowName}.csproj"" />" },
                         },
-                        Removals = new List<string>
-                        {
-                            "<CodeAnalysisRuleSet>"
-                        }
-                    },
-                    new ProjectFile
-                    {
-                        Name = "Properties\\AssemblyInfo.cs",
-                        Replacements = new Dictionary<string, string>
-                        {
-                            {ProjectInfo.IdByKey[key].ToLower(), id.ToString()},
-                            {$"(\"{key}\")]", $"(\"{name}\")]"},
-                            {trademark, $"[assembly: AssemblyCopyright(\"Copyright ©  {DateTime.Now.Year}\")]{Environment.NewLine}{trademark}"}
-                        },
-                        Removals = new List<string>
-                        {
-                            "Copyright ©"
-                        },
+                        Removals = new List<string>()
                     }
                 },
             };
@@ -108,26 +87,21 @@ namespace DLaB.VSSolutionAccelerator.Logic
 
         protected void AddPlugin(Dictionary<string, ProjectInfo> projects, SolutionEditorInfo info)
         {
-            var project = CreateDefaultProjectInfo(
-                ProjectInfo.Keys.Plugin,
-                info.PluginName,
-                info.GetPluginAssemblyVersionForSdk(),
-                info.SharedCommonProject);
-            project.AddRegenKeyPostUpdateCommand(StrongNamePath);
-            project.SharedProjectsReferences.Add(projects[ProjectInfo.Keys.Common]);
-            RemovePluginExampleFiles(info.IncludeExamplePlugins, project);
-            AddPluginCompileTimeConstants(project, info);
-            projects.Add(project.Key, project);
-        }
-
-        private void AddPluginCompileTimeConstants(ProjectInfo project, SolutionEditorInfo info)
-        {
-            if (info.XrmVersion >= new Version(7, 0, 0, 0))
+            if (!info.CreatePlugin)
             {
                 return;
             }
 
-            project.CompileConstants = "PRE_KEYATTRIBUTE";
+            var project = CreateDefaultProjectInfo(ProjectInfo.Keys.Plugin, info.PluginName, info);
+            var pluginProjectFile = project.Files.First();
+            pluginProjectFile.Replacements.Add(@"<PackageId>Xyz.Xrm.Plugin</PackageId>", $@"<PackageId>{info.PluginName}</PackageId>");
+            pluginProjectFile.Replacements.Add(@"<Authors>Matt Barbour</Authors>", $@"<Authors>{info.PluginPackage.Company}</Authors>");
+            pluginProjectFile.Replacements.Add(@"<Company>Xyz</Company>", $@"<Company>{info.PluginPackage.Company}</Company>");
+            pluginProjectFile.Replacements.Add(@"<Description>Plugin with Dependent Assemblies</Description>", $@"<Description>{info.PluginPackage.Description}</Description>");
+            pluginProjectFile.Replacements.Add(@"<DeploymentPacAuthName>Xyz Dev</DeploymentPacAuthName>", $@"<DeploymentPacAuthName>{info.PluginPackage.PacAuthName}</DeploymentPacAuthName>");
+
+            RemovePluginExampleFiles(info.IncludeExamplePlugins, project);
+            projects.Add(project.Key, project);
         }
 
         private void RemovePluginExampleFiles(bool includeExamples, ProjectInfo project)
@@ -145,22 +119,24 @@ namespace DLaB.VSSolutionAccelerator.Logic
                     @"RaceConditionPlugin.cs",
                     @"RemovePhoneNumberFormatting.cs",
                     @"RenameLogic.cs",
-                    @"SyncContactToAccount.cs"
+                    @"ServicesExamplePlugin.cs",
+                    @"SyncContactToAccount.cs",
+                    @"ValidateEmailRouterApproval"
                 });
         }
 
         protected void AddPluginTest(Dictionary<string, ProjectInfo> projects, SolutionEditorInfo info)
         {
-            var project = CreateDefaultProjectInfo(
-                ProjectInfo.Keys.PluginTests,
-                info.PluginTestName,
-                info.GetPluginAssemblyVersionForSdk(),
-                info.SharedTestCoreProject);
+            if (!info.CreatePlugin || !info.CreatePluginTest)
+            {
+                return;
+            }
+            var project = CreateDefaultProjectInfo(ProjectInfo.Keys.PluginTests, info.PluginTestName, info);
 
             RemoveExamplePluginTests(info, project);
             project.ProjectsReferences.Add(projects[ProjectInfo.Keys.Plugin]);
             project.ProjectsReferences.Add(projects[ProjectInfo.Keys.Test]);
-            project.SharedProjectsReferences.Add(projects[ProjectInfo.Keys.TestCore]);
+            project.ProjectsReferences.Add(projects[ProjectInfo.Keys.Common]);
             projects.Add(project.Key, project);
         }
 
@@ -174,26 +150,26 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 new[]
                 {
                     "AssumptionExampleTests.cs",
-                    "TestMethodClassExampleTests.cs",
                     "EntityBuilderExampleTests.cs",
-                    "RemovePhoneNumberFormattingTests.cs",
-                    "MsFakesVsXrmUnitTestExampleTests.cs",
                     "LocalOrServerPluginTest.cs",
+                    "MsFakesVsXrmUnitTestExampleTests.cs",
+                    "RaceConditionPluginTests.cs",
+                    "RemovePhoneNumberFormattingTests.cs",
+                    "ServicesExamplePluginTests.cs",
+                    "TestMethodClassExampleTests.cs",
+                    "ValidateEmailRouterApprovalTests.cs",
                 });
         }
 
         protected void AddWorkflow(Dictionary<string, ProjectInfo> projects, SolutionEditorInfo info)
         {
-            var project = CreateDefaultProjectInfo(
-                ProjectInfo.Keys.Workflow,
-                info.WorkflowName,
-                info.GetPluginAssemblyVersionForSdk(),
-                info.SharedCommonProject);
+            if (!info.CreateWorkflow)
+            {
+                return;
+            }
+
+            var project = CreateDefaultProjectInfo(ProjectInfo.Keys.Workflow, info.WorkflowName, info);
             project.AddRegenKeyPostUpdateCommand(StrongNamePath);
-            project.SharedProjectsReferences.Add(projects[ProjectInfo.Keys.Common]);
-            project.Files.First().Replacements.Add(
-                @"<Import Project=""..\Xyz.Xrm.WorkflowCore\Xyz.Xrm.WorkflowCore.projitems"" Label=""Shared"" />",
-                $@"<Import Project=""..\{info.SharedCommonWorkflowProject}\{info.SharedCommonWorkflowProject}.projitems"" Label=""Shared"" />");
             if (!info.IncludeExampleWorkflow)
             {
                 project.FilesToRemove.Add("CreateGuidActivity.cs");
@@ -203,22 +179,22 @@ namespace DLaB.VSSolutionAccelerator.Logic
 
         protected void AddWorkflowTest(Dictionary<string, ProjectInfo> projects, SolutionEditorInfo info)
         {
-            var project = CreateDefaultProjectInfo(
-                ProjectInfo.Keys.WorkflowTests,
-                info.WorkflowTestName,
-                info.GetPluginAssemblyVersionForSdk(),
-                info.SharedTestCoreProject);
+            if (!info.CreateWorkflow || !info.CreateWorkflowTest)
+            {
+                return;
+            }
+
+            var project = CreateDefaultProjectInfo(ProjectInfo.Keys.WorkflowTests, info.WorkflowTestName, info);
 
             if (!info.IncludeExampleWorkflow)
             {
                 project.FilesToRemove.AddRange(
                     new[]{
-                        "WorkflowActivityExampleTests.cs"
+                        "WorkflowActivityExampleTests.cs"   
                     });
             }
             project.ProjectsReferences.Add(projects[ProjectInfo.Keys.Workflow]);
             project.ProjectsReferences.Add(projects[ProjectInfo.Keys.Test]);
-            project.SharedProjectsReferences.Add(projects[ProjectInfo.Keys.TestCore]);
             projects.Add(project.Key, project);
         }
 

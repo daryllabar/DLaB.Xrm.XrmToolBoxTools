@@ -10,7 +10,7 @@ namespace DLaB.VSSolutionAccelerator.Wizard
         public UserControl Content => this;
 
         /// <summary>
-        /// Contains index of the saved value and the string value that that if the saved value is equal to, triggers the page as required.
+        /// Contains index of the saved value and the string value that if the saved value is equal to, triggers the page as required.
         /// </summary>
         public List<KeyValuePair<int,string>> SavedValueRequiredValue;
 
@@ -27,8 +27,12 @@ namespace DLaB.VSSolutionAccelerator.Wizard
 
                 return ResponseTextIsValid(ResponseText)
                     && ResponseTextIsValid(Response2Text)
+                    && ResponseTextIsValid(Response3Text)
+                    && ResponseTextIsValid(Response4Text)
                     && PathTextIsValid(Path, CheckFileExists)
-                    && PathTextIsValid(Path2, CheckFile2Exists);
+                    && PathTextIsValid(Path2, CheckFile2Exists)
+                    && PathTextIsValid(Path3, CheckFile3Exists)
+                    && PathTextIsValid(Path4, CheckFile4Exists);
             }
         }
 
@@ -66,6 +70,12 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             AddValue(response, Response2Text);
             AddValue(response, Path2);
             AddValue(response, Combo2);
+            AddValue(response, Response3Text);
+            AddValue(response, Path3);
+            AddValue(response, Combo3);
+            AddValue(response, Response4Text);
+            AddValue(response, Path4);
+            AddValue(response, Combo4);
             return response.Count == 1 
                 ? (object)response.First()
                 : response;

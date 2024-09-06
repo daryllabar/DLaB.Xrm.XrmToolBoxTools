@@ -21,7 +21,6 @@ namespace DLaB.VSSolutionAccelerator.Logic
             public const string Common = "Xyz.Xrm";
             public const string Plugin = "Xyz.Xrm.Plugin";
             public const string PluginTests = "Xyz.Xrm.Plugin.Tests";
-            public const string TestCore = "Xyz.Xrm.TestCore";
             public const string Test = "Xyz.Xrm.Test";
             public const string Workflow = "Xyz.Xrm.Workflow";
             public const string WorkflowCommon = "Xyz.Xrm.WorkflowCore";
@@ -36,7 +35,6 @@ namespace DLaB.VSSolutionAccelerator.Logic
             { Keys.WorkflowCommon, "dd5aa002-c1ff-4c0e-b9a5-3d63c7809b07" },
             { Keys.WorkflowTests, "7056423A-373E-463D-B552-D2F305F5C041" },
             { Keys.Common, "b22b3bc6-0ac6-4cdd-a118-16e318818ad7" },
-            { Keys.TestCore, "8f91efc7-351b-4802-99aa-6c6f16110505" },
             { Keys.Test, "F62103E9-D25D-4F99-AABE-ECF348424366" },
         };
 
@@ -215,20 +213,20 @@ namespace DLaB.VSSolutionAccelerator.Logic
             }
         }
 
-        public void AddNugetPostUpdateCommands(NuGetMapper nuGetMapper, string nugetContentInstallerPath, string solutionDirectory)
-        {
-            if (!File.Exists(nuGetMapper.SourcePackagesConfigPath))
-            {
-                return;
-            }
-
-            nuGetMapper.AddUpdateCommands(PostUpdateCommands);
-            var packages = File.ReadAllText(nuGetMapper.SourcePackagesConfigPath);
-            if (packages.Contains("DLaB.Xrm.Source") || packages.Contains("DLaB.Xrm.Common.Source"))
-            {
-                PostSolutionRestoreCommands.Add(new ProcessExecutorInfo(nugetContentInstallerPath, $@"""{solutionDirectory}"" ""{Path.Combine(solutionDirectory, Name, Name + "." + GetProjectPostfix())}"""));
-            }
-        }
+        //public void AddNugetPostUpdateCommands(NuGetMapper nuGetMapper, string nugetContentInstallerPath, string solutionDirectory)
+        //{
+        //    if (!File.Exists(nuGetMapper.SourcePackagesConfigPath))
+        //    {
+        //        return;
+        //    }
+        //
+        //    nuGetMapper.AddUpdateCommands(PostUpdateCommands);
+        //    var packages = File.ReadAllText(nuGetMapper.SourcePackagesConfigPath);
+        //    if (packages.Contains("DLaB.Xrm.Source") || packages.Contains("DLaB.Xrm.Common.Source"))
+        //    {
+        //        PostSolutionRestoreCommands.Add(new ProcessExecutorInfo(nugetContentInstallerPath, $@"""{solutionDirectory}"" ""{Path.Combine(solutionDirectory, Name, Name + "." + GetProjectPostfix())}"""));
+        //    }
+        //}
 
         public void RenameFiles()
         {
@@ -257,77 +255,32 @@ namespace DLaB.VSSolutionAccelerator.Logic
 
             //Perform updates
             var projectFilePath = Path.Combine(NewDirectory, $"{Name}.csproj");
-            var parser = new ProjectFileParser(File.ReadAllLines(projectFilePath));
-            var localNugetBuild = parser.PropertyGroups.FirstOrDefault(g => g.OpenTag.Contains("'LocalNuget|AnyCPU'"));
-            parser.PropertyGroups.Remove(localNugetBuild);
-            foreach (var group in parser.PropertyGroups.Where(g => g.Type == PropertyGroupType.CompileConfiguration))
+            var parser = new ProjectFileParser(projectFilePath, File.ReadAllLines(projectFilePath));
+            if (!string.IsNullOrWhiteSpace(parser.StrongNameKey))
             {
-                UpdateCompilePropertyGroup(@group);
+                parser.SetPropertyFromLine(nameof(parser.StrongNameKey), $"\t\t<AssemblyOriginatorKeyFile>{Name}.Key.snk</AssemblyOriginatorKeyFile>");
             }
-            var keyGroup = parser.PropertyGroups.FirstOrDefault(g => g.Type == PropertyGroupType.KeyFile);
-            if (keyGroup != null)
-            {
-                var openTag = keyGroup.Lines.First();
-                var closeTag = keyGroup.Lines.Last();
-                keyGroup.Lines.Clear();
-                keyGroup.Lines.Add(openTag);
-                keyGroup.Lines.Add($"    <AssemblyOriginatorKeyFile>{Name}.Key.snk</AssemblyOriginatorKeyFile>");
-                keyGroup.Lines.Add(closeTag);
-            }
-            if (parser.ItemGroups.TryGetValue(ProjectFileParser.ItemGroupTypes.ProjectReference, out var references))
-            {
-                var newReferences = new List<string>();
-                foreach (var reference in references)
-                {
-                    var local = reference;
-                    foreach (var project in ProjectsReferences)
-                    {
-                        while (local.Contains(project.Key))
-                        {
-                            local = local.Replace(project.Key, project.Name);
-                        }
-                    }
-                    newReferences.Add(local);
-                }
 
-                parser.ItemGroups[ProjectFileParser.ItemGroupTypes.ProjectReference] = newReferences;
-            }
-            // ItemGroup references to the SDK might need to be updated...
-            //   <Reference Include="Microsoft.Crm.Sdk.Proxy, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-            //     <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.4\lib\net452\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
-            //   </Reference>
-            if (parser.ItemGroups.ContainsKey(ProjectFileParser.ItemGroupTypes.Analyzer))
-            {
-                parser.ItemGroups.Remove(ProjectFileParser.ItemGroupTypes.Analyzer);
-            }
-            //if (parser.ItemGroups.ContainsKey(ProjectFileParser.ItemGroupTypes.Content))
+            //if (parser.ItemGroups.TryGetValue(ProjectFileParser.ItemGroupTypes.ProjectReference, out var references))
             //{
-            //    parser.ItemGroups.Remove(ProjectFileParser.ItemGroupTypes.Content);
+            //    var newReferences = new List<string>();
+            //    foreach (var reference in references)
+            //    {
+            //        var local = reference;
+            //        foreach (var project in ProjectsReferences)
+            //        {
+            //            while (local.Contains(project.Key))
+            //            {
+            //                local = local.Replace(project.Key, project.Name);
+            //            }
+            //        }
+            //        newReferences.Add(local);
+            //    }
+            //
+            //    parser.ItemGroups[ProjectFileParser.ItemGroupTypes.ProjectReference] = newReferences;
             //}
-            if (parser.ItemGroups.TryGetValue(ProjectFileParser.ItemGroupTypes.Compile, out var compileGroup))
-            {
-                compileGroup.RemoveAll(l => FilesToRemove.Any(f => l.Contains($@"<Compile Include=""{f}"" />")));
-            }
+
             File.WriteAllLines(projectFilePath, parser.GetProject());
-        }
-
-        private void UpdateCompilePropertyGroup(PropertyGroup group)
-        {
-            group.Lines.RemoveAll(l => l.Contains("<CodeAnalysisRuleSet>"));
-            if (string.IsNullOrWhiteSpace(CompileConstants)) {return;}
-            
-            var constants = group.Lines.FirstOrDefault(l => l.TrimStart().StartsWith("<DefineConstants>")) ?? "    <DefineConstants></DefineConstants>";
-            var index = group.Lines.IndexOf(constants);
-            if (index > 0)
-            {
-                group.Lines.RemoveAt(index);
-            }
-            else
-            {
-                index = 1; // First item in group
-            }
-
-            group.Lines.Insert(index, constants.Insert(constants.IndexOf("</DefineConstants>"), ";" + CompileConstants));
         }
 
         private void RenameRootProjectFile(string oldName, string newName)
