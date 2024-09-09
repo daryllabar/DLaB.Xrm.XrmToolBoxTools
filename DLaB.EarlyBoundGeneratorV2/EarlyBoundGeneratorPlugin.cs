@@ -29,6 +29,7 @@ namespace DLaB.EarlyBoundGeneratorV2
         public IEnumerable<OptionSetMetadataBase> GlobalOptionSets { get; set; }
         public ConnectionSettings ConnectionSettings { get; set; }
         private bool SkipSaveSettings { get; set; }
+        private bool SkipLoadingSettingsFileFromConnection { get; set; }
         private bool FormLoaded { get; set; }
         private SettingsMap SettingsMap { get; set; }
 
@@ -483,7 +484,7 @@ Please consider clicking the save button in the top right to save the settings w
 
             var localSettings = ConnectionSettings.GetForConnection(ConnectionDetail);
 
-            if (localSettings == null)
+            if (localSettings == null || SkipLoadingSettingsFileFromConnection)
             {
                 // New Connection did not have a settings file associated with it, use current
                 ConnectionSettings.Save(ConnectionDetail);
@@ -495,6 +496,8 @@ Please consider clicking the save button in the top right to save the settings w
                 TxtSettingsPath.Text = ConnectionSettings.SettingsPath;
                 HydrateUiFromSettings(ConnectionSettings.FullSettingsPath);
             }
+
+            SkipLoadingSettingsFileFromConnection = false;
         }
 
         private void SetConnectionSettingOnSettingsFileChanged()
@@ -569,6 +572,10 @@ Please consider clicking the save button in the top right to save the settings w
                     if (request.TryGetValue("path", out var path)) {
                         TxtSettingsPath.Text = path as string;
                         ValidatedSettingsPath();
+                        if (ConnectionDetail == null)
+                        {
+                            SkipLoadingSettingsFileFromConnection = true;
+                        }
                     }
                 }
                 else
