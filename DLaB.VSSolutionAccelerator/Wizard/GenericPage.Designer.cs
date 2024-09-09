@@ -199,7 +199,7 @@
             this.Path.Location = new System.Drawing.Point(4, 4);
             this.Path.Name = "Path";
             this.Path.Size = new System.Drawing.Size(455, 20);
-            this.Path.TabIndex = 0;
+            this.Path.TabIndex = 3;
             // 
             // Combo
             // 
@@ -208,7 +208,7 @@
             this.Combo.Location = new System.Drawing.Point(53, 152);
             this.Combo.Name = "Combo";
             this.Combo.Size = new System.Drawing.Size(488, 21);
-            this.Combo.TabIndex = 8;
+            this.Combo.TabIndex = 4;
             // 
             // Question2Label
             // 
@@ -226,7 +226,7 @@
             this.Response2Text.Location = new System.Drawing.Point(53, 192);
             this.Response2Text.Name = "Response2Text";
             this.Response2Text.Size = new System.Drawing.Size(488, 20);
-            this.Response2Text.TabIndex = 7;
+            this.Response2Text.TabIndex = 5;
             // 
             // panel2
             // 
@@ -256,7 +256,7 @@
             this.Path2.Location = new System.Drawing.Point(4, 4);
             this.Path2.Name = "Path2";
             this.Path2.Size = new System.Drawing.Size(455, 20);
-            this.Path2.TabIndex = 0;
+            this.Path2.TabIndex = 6;
             // 
             // Combo2
             // 
@@ -265,7 +265,7 @@
             this.Combo2.Location = new System.Drawing.Point(53, 248);
             this.Combo2.Name = "Combo2";
             this.Combo2.Size = new System.Drawing.Size(488, 21);
-            this.Combo2.TabIndex = 9;
+            this.Combo2.TabIndex = 7;
             // 
             // Question3Label
             // 
@@ -283,7 +283,7 @@
             this.Response3Text.Location = new System.Drawing.Point(53, 288);
             this.Response3Text.Name = "Response3Text";
             this.Response3Text.Size = new System.Drawing.Size(488, 20);
-            this.Response3Text.TabIndex = 7;
+            this.Response3Text.TabIndex = 8;
             // 
             // panel3
             // 
@@ -313,7 +313,7 @@
             this.Path3.Location = new System.Drawing.Point(4, 4);
             this.Path3.Name = "Path3";
             this.Path3.Size = new System.Drawing.Size(487, 20);
-            this.Path3.TabIndex = 0;
+            this.Path3.TabIndex = 9;
             // 
             // Combo3
             // 
@@ -322,7 +322,7 @@
             this.Combo3.Location = new System.Drawing.Point(53, 334);
             this.Combo3.Name = "Combo3";
             this.Combo3.Size = new System.Drawing.Size(488, 21);
-            this.Combo3.TabIndex = 9;
+            this.Combo3.TabIndex = 10;
             // 
             // Question4Label
             // 
@@ -340,7 +340,7 @@
             this.Response4Text.Location = new System.Drawing.Point(53, 374);
             this.Response4Text.Name = "Response4Text";
             this.Response4Text.Size = new System.Drawing.Size(488, 20);
-            this.Response4Text.TabIndex = 7;
+            this.Response4Text.TabIndex = 11;
             // 
             // panel4
             // 
@@ -370,7 +370,7 @@
             this.Path4.Location = new System.Drawing.Point(4, 4);
             this.Path4.Name = "Path4";
             this.Path4.Size = new System.Drawing.Size(487, 20);
-            this.Path4.TabIndex = 0;
+            this.Path4.TabIndex = 12;
             // 
             // Combo4
             // 
@@ -379,7 +379,7 @@
             this.Combo4.Location = new System.Drawing.Point(53, 420);
             this.Combo4.Name = "Combo4";
             this.Combo4.Size = new System.Drawing.Size(488, 21);
-            this.Combo4.TabIndex = 9;
+            this.Combo4.TabIndex = 13;
             // 
             // DescriptionText
             // 
@@ -392,7 +392,7 @@
             this.DescriptionText.ReadOnly = true;
             this.DescriptionText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.DescriptionText.Size = new System.Drawing.Size(488, 62);
-            this.DescriptionText.TabIndex = 4;
+            this.DescriptionText.TabIndex = 14;
             // 
             // GenericPage
             // 

@@ -182,33 +182,27 @@ EndGlobal
                 return;
             }
             var settings = EarlyBoundGeneratorV2.Settings.EarlyBoundGeneratorConfig.GetDefault();
-            var settingsDirectory = Path.Combine(Path.GetDirectoryName(info.SolutionPath)?? "", info.SharedCommonProject, "Entities");
+            settings.EntityTypesFolder = settings.ExtensionConfig.CreateOneFilePerEntity ? @"Entities" : @"Entities.cs";
             // ReSharper disable StringLiteralTypo
             settings.ExtensionConfig.ActionsToSkip = "AcceptProposedBooking|AcceptTeamRecommendation|AddInvoiceLineDetails|applyworktemplate|applyworktemplateforresources|ApprovalStatusApprove|ApprovalStatusReject|AssignGenericResource|AutoGenerateProjectTeam|batchentityCUD|BookingResource|BookingResourceRequirement|BulkCreatePredecessorsForTask|BulkDeletePredecessorsForTask|CancelBookings|CloseAllOpportunityQuotes|CloseQuoteAsLost|CloseQuoteAsWon|CompleteResourceRequest|CopyProject|CopyRelatedProjectEntitiesFromTemplate|CopyWbsToProject|CorrectInvoice|CreateContractLineDetailsFromEstimate|CreateContractSpecificPriceList|createinvoicefrominvoiceschedule|CreateQuoteFromOpportunity|CreateQuoteLineDetailsFromEstimate|CreateQuoteSpecificPriceList|createrequestfromrequirement|CreateSharepointDocumentLocation|CreateTaskBasedEstimatesForProject|CreateTemplateFromProject|CreateEstimateLines|CreateEstimatesForProjectTask|CreateExtensionRequirement|DeleteEstimateLines|DeleteEstimatesForProjectTask|EnableSharePoint|EnableLinkedInDataValidation|ExpenseApproveAction|ExpenseEntriesApprove|ExpenseEntriesPendingApproval|ExpenseEntriesRecall|ExpenseEntriesReject|ExpenseEntriesSubmit|ExpenseRejectAction|ExpenseSubmitAction|ExportActual|FetchProjectCalendarWorkHours|FieldServiceSystemAction|FulfillResourceDemand|GDPROptoutContact|GDPROptoutLead|GDPROptoutUser|GenerateContractLineInvoiceSchedule|GenerateContractLineScheduleOfValues|GenerateQuoteLineScheduleOfValues|GenerateQuoteLineInvoiceSchedule|GetACIMarsConnectorStatus|GetDocumentManagementSettings|GetDocumentStorePath|GetOfficeGroupForEntity|GetProjectMapForContractLine|GetProjectMapForQuoteLine|GetProjectTaskCategories|GetResourceAvailability|GetResourceDemandTimeLine|GetRIProvisioningStatus|GetRITenantEndpoint|GetBookingDetailsByResource|GetCollectionData|GetContractLineChargeability|GetDataForContractPerformance|GetDataForRadialGauge|GetGenericResourceDetails|GetLegalAcceptanceStatus|GetMyChangedSkills|GetNotesAnalysis|GetPrice|GetProcessNotes|GetProductLine|GetProductLines|GetProjectCoparticipation|GetProjectCurrencies|GetProjectDetails|GetProjects|GetProjectsForContract|GetProjectsForQuote|GetQuoteLineChargeability|GetRecordUsers|GetResourceAvailabilitySummary|GetResourceBookingByProject|GetResourceBookingDetails|GetResourceBookingFormParameters|GetResourcePopupDetails|GetResources|GetSIPackageStatus|GetSummaryBookings|GetTalkingPoints|GetTimelineData|GetTransactionUnitPrices|GetUserTimeZoneName|IndentWBSTask|InvoicePaid|InvoiceRecalculate|InvokeServiceStoredProc|IsLinkedInDataValidationEnabled|IsProjectTemplatesView|JoinProjectTeam|LoadFactTableEstimate|LogFindWorkEvent|MarketingListMetadataUpdate|MarketingMetadataUpdate|MarkIntegrationJobAsFailedAsync|MoveProject|MoveDownWBSTask|MoveUpWBSTask|MSProject_ExportToProject|MSProject_LinkToProject|MSProject_PublishToExistingProject|MSProject_ReadFromExistingProject|MSProject_ReadProjectTeamMembers|MSProject_UnlinkFromProject|NewInvoiceContract|OutdentWBSTask|PerformNotesAnalysisAction|PostInvoice|PostJournal|ProjectTeamMemberSignupprocessaccept|ProjectTeamMemberSignUpProcess|ProjectTeamUpdateMembershipStatus|ProvisionSharePointDocumentLibraries|QueryExchange|ReadEstimateLines|RecommendWork|RefreshBusinessProcessStage|RejectProposedBooking|RemoveMarketingListMembersByIds|ResAssignResourcesForTask|ResGetResourceDetail|ResourceAssignmentDetailUpdate|FpsAction|GeocodeAddress|RetrieveDistanceMatrix|RetrieveResourceAvailability|ResourceReservationCancel|ResourceSubstitution|ResourceUtilization|ResourceUtilizationChart|RetrieveKPIvaluesfromDCI|RetrieveTypeValuesFromDCI|SaveProjectLineTasks|SetFeatureStatus|SetSharePointDocumentStatus|SetTeamsDocumentStatus|SetDefaultRole|SetLegalAcceptanceStatus|SetTalkingPointLikedStatus|StartRIProvisioning|SubmitCategoriesAndPriceLists|SubmitRolesAndPriceLists|TimeEntriesApprove|TimeEntriesCopyPaste|TimeEntriesPaste|TimeEntriesPendingApproval|TimeEntriesRecall|TimeEntriesReject|TimeEntriesSubmit|TrackExchangeActivity|Updatefeatureconfig|updateprojecttask|updateremainingresourcerequirement|UpdateRITenantInfo|UpdateAllEstimatesForProject|UpdateChangedSkills|UpdateEstimateLineDetails|UpdateEstimateLines|UpgradeTelemetry|ValidateFixedPriceLineTotals|IsSharePointEnabled";
             // ReSharper restore StringLiteralTypo
+            settings.ExtensionConfig.AddNewFilesToProject = false;
             settings.ExtensionConfig.CreateOneFilePerAction = true;
-            settings.ExtensionConfig.GenerateActionAttributeNameConsts = true;
-            settings.MessageTypesFolder = settings.ExtensionConfig.CreateOneFilePerAction ? @"Actions" : @"Actions.cs";
             settings.ExtensionConfig.CreateOneFilePerEntity = true;
+            settings.ExtensionConfig.DeleteFilesFromOutputFolders = true;
+            settings.ExtensionConfig.GenerateActionAttributeNameConsts = true;
             settings.ExtensionConfig.GenerateEnumProperties = true;
             settings.ExtensionConfig.GenerateAttributeNameConsts = true;
             settings.ExtensionConfig.EntitiesWhitelist = "account|businessunit|competitor|contact|lead|product|site|systemuser";
             settings.ExtensionConfig.ReplaceOptionSetPropertiesWithEnum = true;
-            settings.EntityTypesFolder = settings.ExtensionConfig.CreateOneFilePerEntity ? @"Entities" : @"Entities.cs";
             settings.ExtensionConfig.CreateOneFilePerOptionSet = true;
+            settings.MessageTypesFolder = settings.ExtensionConfig.CreateOneFilePerAction ? @"Messages" : @"Messages.cs";
+            settings.Namespace = $"{info.RootNamespace}.Entities";
             settings.OptionSetsTypesFolder = settings.ExtensionConfig.CreateOneFilePerOptionSet ? @"OptionSets" : @"OptionSets.cs";
-            settings.ExtensionConfig.DeleteFilesFromOutputFolders = true;
-            settings.Namespace = $"{info.SharedCommonProject}.Entities";
-            settings.ServiceContextName = "CdsContext";
-            settings.Version = "1.2019.3.12"; // Set to minimum required version of the EBG since the Default version will be the version of the VSSolutionAccelerator, not the EBG
-            var settingsPath = Path.Combine(settingsDirectory, "EBG." + info.RootNamespace + ".Settings.xml");
-            Directory.CreateDirectory(Path.GetDirectoryName(settingsPath)??"");
-            settings.Save(Path.Combine(settingsDirectory, settingsPath));
-            RunCopyToClipboard(settingsPath);
-            Logger.AddDetail(@"Now you should generate your Early Bound Entities for your Org!");
-            Logger.AddDetail($@"Open the Early Bound Generator XrmToolBox plugin, connect to your org, and then set the Settings Path to ""{settingsPath}"" (which has been already been copied to your clipboard for your convenience) and generate your entities." + Environment.NewLine);
-            Logger.AddDetail($@"These settings should be checked into TFS and should be the settings used by all individuals on your project plugin for generating entities!");
-            MessageBox.Show(@"Please refer to the instructions in the text box for generating your early bound entities.", @"Generate Early Bound Entities!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            settings.ServiceContextName = "DataverseContext";
+            settings.Version = "2.2024.9.7"; // Set to minimum required version of the EBG since the Default version will be the version of the VSSolutionAccelerator, not the EBG
+
+            settings.Save(info.GetEarlyBoundSettingsPath());
         }
 
         /// <summary>

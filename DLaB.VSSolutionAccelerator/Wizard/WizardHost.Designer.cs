@@ -56,13 +56,13 @@
             this.tableLayoutPanel.RowCount = 2;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(594, 452);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(594, 552);
             this.tableLayoutPanel.TabIndex = 0;
             // 
             // btnFirst
             // 
             this.btnFirst.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnFirst.Location = new System.Drawing.Point(5, 417);
+            this.btnFirst.Location = new System.Drawing.Point(5, 517);
             this.btnFirst.Margin = new System.Windows.Forms.Padding(5);
             this.btnFirst.Name = "btnFirst";
             this.btnFirst.Size = new System.Drawing.Size(138, 30);
@@ -74,7 +74,7 @@
             // btnPrevious
             // 
             this.btnPrevious.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPrevious.Location = new System.Drawing.Point(153, 417);
+            this.btnPrevious.Location = new System.Drawing.Point(153, 517);
             this.btnPrevious.Margin = new System.Windows.Forms.Padding(5);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(138, 30);
@@ -86,7 +86,7 @@
             // btnNext
             // 
             this.btnNext.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnNext.Location = new System.Drawing.Point(301, 417);
+            this.btnNext.Location = new System.Drawing.Point(301, 517);
             this.btnNext.Margin = new System.Windows.Forms.Padding(5);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(138, 30);
@@ -98,7 +98,7 @@
             // btnLast
             // 
             this.btnLast.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnLast.Location = new System.Drawing.Point(449, 417);
+            this.btnLast.Location = new System.Drawing.Point(449, 517);
             this.btnLast.Margin = new System.Windows.Forms.Padding(5);
             this.btnLast.Name = "btnLast";
             this.btnLast.Size = new System.Drawing.Size(140, 30);
@@ -114,7 +114,7 @@
             this.contentPanel.Location = new System.Drawing.Point(0, 0);
             this.contentPanel.Margin = new System.Windows.Forms.Padding(0);
             this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(594, 412);
+            this.contentPanel.Size = new System.Drawing.Size(594, 512);
             this.contentPanel.TabIndex = 4;
             // 
             // WizardHost
@@ -122,7 +122,7 @@
             this.AcceptButton = this.btnNext;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(594, 452);
+            this.ClientSize = new System.Drawing.Size(594, 552);
             this.Controls.Add(this.tableLayoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

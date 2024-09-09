@@ -197,15 +197,15 @@ namespace DLaB.VSSolutionAccelerator.Logic
         private static IEnumerable<string> CreateNewEmptySolution()
         {
             return $@"Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.329
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35201.131
 MinimumVisualStudioVersion = 10.0.40219.1
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {{{Guid.NewGuid().ToString().ToUpper()}}}
+		SolutionGuid = {{{{{{Guid.NewGuid().ToString().ToUpper()}}}}}}
 	EndGlobalSection
 EndGlobal
 ".Split(new[] {Environment.NewLine}, StringSplitOptions.None);

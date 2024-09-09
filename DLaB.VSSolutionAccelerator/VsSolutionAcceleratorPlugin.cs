@@ -1,22 +1,19 @@
-﻿using System;
+﻿using DLaB.VSSolutionAccelerator.Wizard;
+using DLaB.XrmToolBoxCommon;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.Composition;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
-using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
-using DLaB.VSSolutionAccelerator.Wizard;
-using DLaB.XrmToolBoxCommon;
 using XrmToolBox.Extensibility;
 using XrmToolBox.Extensibility.Interfaces;
 using Exception = System.Exception;
 
 namespace DLaB.VSSolutionAccelerator
 {
-    public partial class VsSolutionAcceleratorPlugin : DLaBPluginControlBase
+    public partial class VsSolutionAcceleratorPlugin : DLaBPluginControlBase, IMessageBusHost
     {
         public Settings Settings { get; set; }
 
@@ -173,29 +170,23 @@ namespace DLaB.VSSolutionAccelerator
 
         private void GenerateWithDefaultSettings()
         {
-            var results = new object[]
+            var results = new AddAllWizardResults
             {
-                new List<string>{"Y", "C:\\Temp\\AdvXTB\\Abc.Xrm\\Abc.Xrm.sln" },
-                "Abc.Xrm",
-                new NuGetPackage
-                {
-                    Id = "Microsoft.CrmSdk.CoreAssemblies",
-                    LicenseUrl = "http://download.microsoft.com/download/E/1/8/E18C0FAD-FEC8-44CD-9A16-98EDC4DAC7A2/LicenseTerms.docx",
-                    Name = "Microsoft Dynamics 365 SDK core assemblies",
-                    Version = new Version("9.0.2.5"),
-                    VersionText = "9.0.2.5",
-                    XrmToolingClient = false
-                },
-                "Y",
-                "Abc.Xrm",
-                "Abc.Xrm.WorkflowCore",
-                new List<string> {"Y", "Abc.Xrm.Test", "Abc.Xrm.TestCore"},
-                new List<string> {"Y", "Abc.Xrm.Plugin", "0"},
-                "Abc.Xrm.Plugin.Tests",
-                new List<string> {"Y", "Abc.Xrm.Workflow", "1"},
-                "Abc.Xrm.Workflow.Tests",
-                new List<string> {"0", "0"},
-            };
+                P0AddToExistingSolution = false,
+                P0SolutionPath = "C:\\Temp\\VSA\\Acme.Dataverse.sln",
+                P1Namespace = "Acme.Dataverse",
+                P2EarlyBound = true,
+                P3SharedCommonAssemblyName = "Acme.Dataverse",
+                P4SharedWorkflowProjectName = "Acme.Dataverse.WorkflowCore",
+                P5UseXrmUnitTest = true, P5TestSettingsProjectName = "Acme.Dataverse.Test",
+                P6CreatePluginProject = true, P6PluginProjectName = "Acme.Dataverse.Plugin", P6IncludeExamples = true,
+                P7CompanyName = "Acme", P7PluginDescription = "Default Description For Plugin", P7PacAuthName = "Daryl Dev",
+                P8PluginTestProjectName = "Acme.Dataverse.Plugin.Tests",
+                P9CreateWorkflowProject = true, P9WorkflowProjectName = "Acme.Dataverse.Workflow", P9IncludeExamples = true,
+                P10WorkflowTestProjectName = "Acme.Dataverse.Workflow.Tests",
+                P11InstallCodeSnippets = true, P11IncludeCodeGen = true
+
+            }.GetResults();
 
             var info = InitializeSolutionInfo.InitializeSolution(results);
             var solutionDir = Path.GetDirectoryName(info.SolutionPath) ?? Guid.NewGuid().ToString();
@@ -207,7 +198,6 @@ namespace DLaB.VSSolutionAccelerator
                 Directory.CreateDirectory(solutionDir);
             } while (!Directory.Exists(solutionDir));
 
-            File.Copy("C:\\Temp\\AdvXTB\\Abc.Xrm.sln", info.SolutionPath);
             Execute(info);
         }
 
@@ -253,7 +243,7 @@ namespace DLaB.VSSolutionAccelerator
 
         private void GenerateAddAssemblyWithDefaultSettings()
         {
-            if (File.Exists(@"C:\Temp\AdvXTB\Abc.Xrm\Abc.Xrm.Lead.Plugin\Abc.Xrm.Lead.Plugin.csproj"))
+            if (File.Exists(@"C:\Temp\VSA\Acme.Dataverse.Lead.Plugin\Acme.Dataverse.Lead.Plugin.csproj"))
             {
                 GenerateWithDefaultSettings();
                 while (!Enabled)
@@ -261,14 +251,14 @@ namespace DLaB.VSSolutionAccelerator
                     Thread.Sleep(10);
                 }
             }
-            var results = new object[]
+            var results = new AddPluginWorkflowWizardResults
             {
-                @"C:\Temp\AdvXTB\Abc.Xrm\Abc.Xrm.sln",
-                new List<string> {"Y", "Abc.Xrm.Lead.Plugin"},
-                new List<string> {"Y", "Abc.Xrm.Lead.Plugin.Tests"},
-                new List<string> {"Y", "Abc.Xrm.Lead.Workflow"},
-                new List<string> {"Y", "Abc.Xrm.Lead.Workflow.Tests"},
-            };
+                P0SolutionPath = @"C:\Temp\VSA\Acme.Dataverse.sln",
+                P1CreatePluginProject = true, P1PluginProjectName = "Acme.Dataverse.Lead.Plugin",
+                P2CreatePluginXrmUnitTest = true, P2PluginTestProjectName = "Acme.Dataverse.Lead.Plugin.Tests",
+                P3CreateWorkflowProject = true, P3WorkflowProjectName = "Acme.Dataverse.Lead.Workflow",
+                P4CreateWorkflowXrmUnitTest = true, P4WorkflowTestProjectName ="Acme.Dataverse.Lead.Workflow.Tests",
+            }.GetResults();
 
             var info = AddProjectToSolutionInfo.Create(results);
             Execute(info);
@@ -290,78 +280,58 @@ namespace DLaB.VSSolutionAccelerator
                         Logic.VisualStudio.InstallCodeSnippets(Paths.PluginsPath);
                     }
                     Logic.SolutionInitializer.Execute(solutionInfo, templatePath, nuGetSettings: nuGetSettings);
+                    if (solutionInfo.ConfigureEarlyBound)
+                    {
+                        e.Result = solutionInfo.GetEarlyBoundSettingsPath();
+                    }
                 }
                 else if (e.Argument is AddProjectToSolutionInfo projectInfo)
                 {
                     Logic.SolutionUpdater.Execute(projectInfo, templatePath, nuGetSettings: nuGetSettings);
                 }
-            }).WithLogger(this, TxtOutput, info));
+            }).WithLogger(this, TxtOutput, info, onComplete: e =>
+            {
+                if (e.Result is string path)
+                {
+                    MessageBox.Show(@"The Early Bound Generator will now be opened in order to generate the early bound entities for your project.  Click the ""Generate"" button in the Early Bound Generator to generate your entities.", @"Generate Early Bound Entities!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    OpenEarlyBoundGeneratorWithSettings(path);
+                }
+            }));
         }
 
         private void ActionCmb_SelectedIndexChanged(object sender, EventArgs e)
         {
             ExecuteBttn.Enabled = ActionCmb.SelectedIndex >= 0;
         }
-    }
 
-    [Export(typeof(IXrmToolBoxPlugin)),
-     ExportMetadata("Name", "Visual Studio Solution Accelerator"),
-     ExportMetadata("Description", "Adds recommended isolation/accelerator projects for use with the DLaB.Xrm and XrmUnitTest framework to your Visual Studio solution."),
-     ExportMetadata("SmallImageBase64", SmallImage32X32), // null for "no logo" image or base64 image content 
-     ExportMetadata("BigImageBase64", LargeImage120X120), // null for "no logo" image or base64 image content 
-     ExportMetadata("BackgroundColor", "White"), // Use a HTML color name
-     ExportMetadata("PrimaryFontColor", "#000000"), // Or an hexadecimal code
-     ExportMetadata("SecondaryFontColor", "DarkGray")]
-    public class VsSolutionAccelerator : PluginFactory, INoConnectionRequired
-    {
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public VsSolutionAccelerator()
+        public event EventHandler<MessageBusEventArgs> OnOutgoingMessage;
+
+        public void OnIncomingMessage(MessageBusEventArgs message)
         {
-            // If you have external assemblies that you need to load, uncomment the following to
-            // hook into the event that will fire when an Assembly fails to resolve
-            AppDomain.CurrentDomain.AssemblyResolve += AssemblyResolveEventHandler;
-        }
-
-        public override IXrmToolBoxPluginControl GetControl()
-        {
-            return new VsSolutionAcceleratorPlugin();
-        }
-
-        private Assembly AssemblyResolveEventHandler(object sender, ResolveEventArgs args)
-        {
-            Assembly loadAssembly = null;
-            Assembly currAssembly = Assembly.GetExecutingAssembly();
-
-            // base name of the assembly that failed to resolve
-            var argName = args.Name.Substring(0, args.Name.IndexOf(","));
-
-            // check to see if the failing assembly is one that we reference.
-            List<AssemblyName> refAssemblies = currAssembly.GetReferencedAssemblies().ToList();
-            var refAssembly = refAssemblies.Where(a => a.Name == argName).FirstOrDefault();
-
-            // if the current unresolved assembly is referenced by our plugin, attempt to load
-            if (refAssembly != null)
+            if (message.SourcePlugin != "Visual Studio Solution Accelerator")
             {
-                // load from the path to this plugin assembly, not host executable
-                string dir = Path.GetDirectoryName(currAssembly.Location).ToLower();
-                string folder = Path.GetFileNameWithoutExtension(currAssembly.Location);
-                dir = Path.Combine(dir, folder);
+                return;
+            }
+            throw new NotImplementedException();
+        }
 
-                var assmbPath = Path.Combine(dir, $"{argName}.dll");
-
-                if (File.Exists(assmbPath))
-                {
-                    loadAssembly = Assembly.LoadFrom(assmbPath);
-                }
-                else
-                {
-                    throw new FileNotFoundException($"Unable to locate dependency: {assmbPath}");
-                }
+        private void OpenEarlyBoundGeneratorWithSettings(string path)
+        {
+            if (OnOutgoingMessage is null)
+            {
+                var message = @"No events are registered on the OnOutgoingMessage event!  Unable to open the Early Bound Generator!";
+                MessageBox.Show(message, @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TxtOutput.AppendText(Environment.NewLine + message);
+                return;
             }
 
-            return loadAssembly;
+            var request = new Dictionary<string, object>{
+                { "path", path }
+            };
+            OnOutgoingMessage(this, new MessageBusEventArgs("Early Bound Generator V2")
+            {
+                TargetArgument = request
+            });
         }
     }
 }

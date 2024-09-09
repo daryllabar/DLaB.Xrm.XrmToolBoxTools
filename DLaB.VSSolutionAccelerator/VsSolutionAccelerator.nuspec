@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.VsSolutionAccelerator</id>
-	  <version>1.2020.6.30</version>
+	  <version>1.2024.9.6</version>
 	  <title>Visual Studio Solution Accelerator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,20 +11,8 @@
     <icon>images\DLaB_Dynamics_Logo_Square_32x32.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Adds recommended isolation/accelerator projects for use with the DLaB.Xrm and XrmUnitTest framework to your Visual Studio solution.</description>
-    <releaseNotes>V1.2020.6.30
-- Fix assumptions Plugin assembly name should change #252
-
-V1.2020.6.28
-- Update of Template Files to newer version #236 and NuGet Fix for specifying NuGet version
-- Updated context of standard EBG to be CdsContext
-
-V1.2020.4.29
-- Upgraded the Entity Generation, Testing, and SDK to the latest version.
-
-V1.2019.10.11
-- Upgraded NuGet Packages to newest versions.
-- Added new snippet for assumptions and added auto add Namespacing.
-
+    <releaseNotes>V1.2024.9.6
+- Switch Solution Accelerator to Dependent Assemblies #513
     </releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>XrmToolBox Plugins Xrm</tags>

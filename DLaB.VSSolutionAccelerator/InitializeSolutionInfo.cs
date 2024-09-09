@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using DLaB.VSSolutionAccelerator.Wizard;
 
 namespace DLaB.VSSolutionAccelerator
@@ -62,7 +63,7 @@ namespace DLaB.VSSolutionAccelerator
                     Filter = "Solution Files (*.sln)|*.sln",
                     Description = "This Wizard will walk through the process of adding isolation/plugin/workflow/testing projects based on the DLaB/XrmUnitTest framework.  The configured projects will be add to a new solution created at the path defined here.",
                     RequireFileExists = false,
-                    DefaultResponse = "C:\\FolderUnderSourceControl\\YourCompanyAbbreviation.Xrm.sln"
+                    DefaultResponse = "C:\\FolderUnderSourceControl\\YourCompanyAbbreviation.Dataverse.sln"
                 },
             }));
         }
@@ -74,14 +75,14 @@ namespace DLaB.VSSolutionAccelerator
                 DefaultResponse = GenericPage.GetSaveResultsFormat(Page.SolutionPath,1),
                 EditDefaultResponse = (value) =>
                 {
-                    value = System.IO.Path.GetFileNameWithoutExtension(value) ?? "MyCompanyAbrv.Xrm";
-                    if (!value.ToUpper().Contains("XRM"))
+                    value = System.IO.Path.GetFileNameWithoutExtension(value) ?? "MyCompanyAbrv.Dataverse";
+                    if (!value.ToLower().Contains("dataverse"))
                     {
-                        value += ".Xrm";
+                        value += ".Dataverse";
                     }
                     return value;
                 },
-                Description = "This is the root namespace that will the Plugin and (if desired) Early Bound Entities will be appended to."
+                Description = "This is the root namespace that the Plugin and (if desired) Early Bound Entities will be appended to."
             }));
         }
 
@@ -156,25 +157,34 @@ namespace DLaB.VSSolutionAccelerator
 
         private static void AddPluginAssemblyInfoQuestions(List<IWizardPage> pages)
         {
-            var companyName = GenericPage.GetSaveResultsFormat(Page.RootNamespace, 0) ?? "Company";
-            companyName = companyName.Replace("Xrm", string.Empty)
-                                     .Replace("Dataverse", string.Empty);
-            companyName = string.Join(" ", companyName.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries));
-            companyName = string.Join(" ", companyName.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
-
             var page = GenericPage.Create(new TextQuestionInfo("What is the name of the Company to use with the Plugin Assembly?")
             {
-                DefaultResponse = companyName,
+                DefaultResponse = GenericPage.GetSaveResultsFormat(Page.RootNamespace),
                 Description = "This information will be used in the plugin project file and will be used when generating the plugin assembly.",
+                EditDefaultResponse = GetCompanyName
             }, new TextQuestionInfo("Plugin Assembly Description?") { 
                 DefaultResponse = "Plugin with Dependent Assemblies",
             }, new TextQuestionInfo("Deployment PAC CLI Auth Name?") {
-                DefaultResponse = companyName.Replace(" ", string.Empty) + " Dev",
-                Description = "The PAC CLI Auth Name is the name of the used to PAC Auth context to use when deploying the plugin to dev."
+                DefaultResponse = GenericPage.GetSaveResultsFormat(Page.RootNamespace),
+                Description = "The PAC CLI Auth Name is the name of the used to PAC Auth context to use when deploying the plugin to dev.",
+                EditDefaultResponse = (value) =>
+                {
+                    var companyName = GetCompanyName(value);
+                    return string.IsNullOrWhiteSpace(companyName) ? "Dev" : companyName.Replace(" ", string.Empty) + " Dev";
+                }
             });
 
             page.AddSavedValuedRequiredCondition(Page.CreatePlugin, "Y");
             pages.Add(page);
+
+            string GetCompanyName(string value)
+            {
+                value = value.Replace("Xrm", string.Empty)
+                    .Replace("Dataverse", string.Empty);
+                value = string.Join(" ", value.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries));
+                value = string.Join(" ", value.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
+                return value;
+            }
         }
 
         private static void AddPluginTestProjectNameQuestion(List<IWizardPage> pages)
@@ -259,6 +269,13 @@ namespace DLaB.VSSolutionAccelerator
         public static InitializeSolutionInfo InitializeSolution(object[] values)
         {
             return new InitializeSolutionInfo(new Queue<object>(values));
+        }
+
+        public string GetEarlyBoundSettingsPath()
+        {
+            var settingsDirectory = Path.Combine(Path.GetDirectoryName(SolutionPath) ?? "", SharedCommonProject, "Entities");
+            Directory.CreateDirectory(settingsDirectory);
+            return Path.Combine(settingsDirectory, "DLB.EarlyBoundGenerator.Settings.xml");
         }
 
         private void InitializeSolution(YesNoResult result)

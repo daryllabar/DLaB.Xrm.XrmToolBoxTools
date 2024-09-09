@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters;
 using DLaB.Log;
 using Source.DLaB.Common;
 
@@ -41,7 +40,6 @@ namespace DLaB.VSSolutionAccelerator.Logic
         public Guid Id { get; set; }
         public string Key { get; set; }
         public bool AddToSolution { get; set; }
-        public string CompileConstants { get; set; }
         public string Name { get; set; }
         public ProjectType Type { get; set; }
         public List<ProjectFile> Files { get; set; }
