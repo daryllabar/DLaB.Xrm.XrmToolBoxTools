@@ -20,7 +20,7 @@ using DLaB.Common;
 
 namespace DLaB.EarlyBoundGeneratorV2
 {
-    public partial class EarlyBoundGeneratorPlugin : DLaBPluginControlBase, PropertyInterface.IEntityMetadatas, PropertyInterface.IGlobalOptionSets, PropertyInterface.IActions, IGetEditorSetting
+    public partial class EarlyBoundGeneratorPlugin : DLaBPluginControlBase, PropertyInterface.IEntityMetadatas, PropertyInterface.IGlobalOptionSets, PropertyInterface.IActions, IGetEditorSetting, IMessageBusHost
     {
         public EarlyBoundGeneratorConfig Settings { get; set; }
         public IEnumerable<Entity> SdkMessages { get; set; }
@@ -155,8 +155,14 @@ Please consider clicking the save button in the top right to save the settings w
         public override void ClosingPlugin(PluginCloseInfo info)
         {
             base.ClosingPlugin(info);
+            if(!FormLoaded)
+            {
+                return;
+            }
+
             HydrateSettingsFromUI();
             SaveSettings();
+
             if (info.Cancel || SkipSaveSettings) return;
 
             ConnectionDetail = null; // Don't save the Connection Details when closing.
@@ -546,6 +552,41 @@ Please consider clicking the save button in the top right to save the settings w
         public string GetEditorSetting(EditorSetting key)
         {
             return null;
+        }
+
+        public event EventHandler<MessageBusEventArgs> OnOutgoingMessage;
+
+        public void OnIncomingMessage(MessageBusEventArgs message)
+        {
+            try
+            {
+                if (message.TargetPlugin != "Early Bound Generator V2")
+                {
+                    return;
+                }
+                if (message.TargetArgument is Dictionary<string, object> request)
+                {
+                    if (request.TryGetValue("path", out var path)) {
+                        TxtSettingsPath.Text = path as string;
+                        ValidatedSettingsPath();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show($@"Invalid Message Received!  Expected Type string, but type '{message.TargetArgument?.GetType().FullName ?? "NULL"}' was received!");
+                }
+            }
+            catch(Exception ex)
+            {
+                try
+                {
+                    TxtOutput.AppendText(ex + Environment.NewLine);
+                }
+                catch
+                {
+                    // Uncle
+                }
+            }
         }
     }
 

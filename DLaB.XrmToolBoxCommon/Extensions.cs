@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.IO;
 using System.Linq;
@@ -269,7 +270,13 @@ namespace DLaB.XrmToolBoxCommon
 
         #region WorkAsyncInfo
 
-        public static WorkAsyncInfo WithLogger(this WorkAsyncInfo info, PluginControlBase plugin, TextBox output, object asyncArgument = null, string successMessage = "Finished Successfully!", int? successPercent = 99)
+        public static WorkAsyncInfo WithLogger(this WorkAsyncInfo info,
+            PluginControlBase plugin,
+            TextBox output,
+            object asyncArgument = null,
+            string successMessage = "Finished Successfully!",
+            int? successPercent = 99,
+            Action<RunWorkerCompletedEventArgs> onComplete = null)
         {
             plugin.Enabled = false;
             var oldWork = info.Work;
@@ -304,6 +311,7 @@ namespace DLaB.XrmToolBoxCommon
             {
                 Logger.DisplayLog(e, output);
                 plugin.Enabled = true;
+                onComplete?.Invoke(e);
             };
             info.ProgressChanged = e => // Logic wants to display an update
             {
