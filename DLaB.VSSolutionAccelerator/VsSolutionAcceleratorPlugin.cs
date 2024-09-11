@@ -4,23 +4,19 @@ using DLaB.XrmToolBoxCommon;
 using McTools.Xrm.Connection;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
+using NuGet;
 using Source.DLaB.Xrm;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
-using System.IO.Packaging;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-using System.Xml;
-using Microsoft.Crm.Sdk.Messages;
 using XrmToolBox.Extensibility;
 using XrmToolBox.Extensibility.Interfaces;
 using Exception = System.Exception;
-using NuGet;
-using System.ComponentModel;
 
 namespace DLaB.VSSolutionAccelerator
 {
@@ -91,13 +87,11 @@ namespace DLaB.VSSolutionAccelerator
 
         private void ShowAddAcceleratorsWizard()
         {
-            using (var host = new WizardHost
+            using (var host = new WizardHost())
             {
-                Text = @"Add Accelerators Wizard",
-                ShowFirstButton = false,
-                ShowLastButton = false
-            })
-            {
+                host.Text = @"Add Accelerators Wizard";
+                host.ShowFirstButton = false;
+                host.ShowLastButton = false;
                 var names = GetSolutionNamesByIndex();
                 foreach (var page in InitializeSolutionInfo.InitializePages(names))
                 {
@@ -130,13 +124,11 @@ namespace DLaB.VSSolutionAccelerator
 
         private void ShowAddAssemblyWizard()
         {
-            using (var host = new WizardHost
+            using (var host = new WizardHost())
             {
-                Text = @"Add Accelerators Wizard",
-                ShowFirstButton = false,
-                ShowLastButton = false
-            })
-            {
+                host.Text = @"Add Accelerators Wizard";
+                host.ShowFirstButton = false;
+                host.ShowLastButton = false;
                 foreach (var page in AddProjectToSolutionInfo.InitializePages())
                 {
                     host.WizardPages.Add(page);
@@ -351,8 +343,10 @@ namespace DLaB.VSSolutionAccelerator
                         {
                             Logic.VisualStudio.InstallCodeSnippets(Paths.PluginsPath);
                         }
-                        SetPluginPackageId(w, solutionInfo, solutions);
+
+                        Logic.PluginPackageInitializer.SetPluginPackageId(Service, solutionInfo, solutions);
                         Logic.SolutionInitializer.Execute(solutionInfo, templatePath, nuGetSettings: nuGetSettings);
+                        Logic.GitIgnoreEditor.AddXrmUnitTestConfig(solutionInfo);
                         if (solutionInfo.ConfigureEarlyBound)
                         {
                             e.Result = solutionInfo.GetEarlyBoundSettingsPath();
@@ -361,7 +355,7 @@ namespace DLaB.VSSolutionAccelerator
                         break;
                     }
                     case AddProjectToSolutionInfo projectInfo:
-                        SetPluginPackageId(w, projectInfo, solutions);
+                        Logic.PluginPackageInitializer.SetPluginPackageId(Service, projectInfo, solutions);
                         Logic.SolutionUpdater.Execute(projectInfo, templatePath, nuGetSettings: nuGetSettings);
                         break;
                 }
@@ -369,7 +363,7 @@ namespace DLaB.VSSolutionAccelerator
             {
                 if (info.CreatePlugin)
                 {
-                    TxtOutput.Text += string.Format("{0}{0}{1}{0}{1}{0}{0}", Environment.NewLine, "****************************************************************************************************");
+                    TxtOutput.Text += string.Format(@"{0}{0}{1}{0}{1}{0}{0}", Environment.NewLine, "****************************************************************************************************");
                     TxtOutput.Text += $@"In order to build your plugin using the DevDeploy solution configuration to deploy your plugin to your dev environment, be sure that you've created a PAC Auth connection with the name '{info.PluginPackage.PacAuthName}'.{Environment.NewLine}";
                     TxtOutput.Text += @"Refer to this article if you need assistance with creating the named PAC Auth connection: https://nicknow.net/power-platform-pac-cli-installing-connecting-and-selecting-an-organization/" + Environment.NewLine + Environment.NewLine;
                 }
@@ -379,123 +373,6 @@ namespace DLaB.VSSolutionAccelerator
                     OpenEarlyBoundGeneratorWithSettings(path);
                 }
             }));
-        }
-
-        private void SetPluginPackageId(BackgroundWorker worker, SolutionEditorInfo solutionInfo, List<Solution> solutions)
-        {
-            if (!solutionInfo.CreatePlugin)
-            {
-                return;
-            }
-            var solution = solutions.First(s => s.Id == solutionInfo.PluginPackage.SolutionId);
-            solutionInfo.PluginPackage.PackageId = GeneratePluginPackageId(worker, solution, solutionInfo.PluginName);
-        }
-
-        private string GeneratePluginPackageId(BackgroundWorker worker, Solution solution, string pluginName)
-        {
-            var id = Guid.Empty;
-            worker.ReportProgress(0, "Creating Package...");
-            var pluginPackage = InstantiatePackage(solution, pluginName);
-            id = Service.Create(pluginPackage);
-
-            worker.ReportProgress(0, "Looking up Solution Component Definition to solution...");
-
-            // Find the right component type for the current environment
-            var scd = Service.RetrieveMultiple(new QueryExpression("solutioncomponentdefinition")
-            {
-                ColumnSet = new ColumnSet("solutioncomponenttype"),
-                Criteria = new FilterExpression
-                {
-                    Conditions =
-                    {
-                        new ConditionExpression("primaryentityname", ConditionOperator.Equal, "pluginpackage")
-                    }
-                }
-            }).Entities.FirstOrDefault();
-
-            if (scd == null)
-            {
-                throw new Exception("Unable to find the solution component type for table pluginpackage");
-            }
-
-            worker.ReportProgress(0, "Adding Package to Solution...");
-
-            Service.Execute(new AddSolutionComponentRequest
-            {
-                AddRequiredComponents = false,
-                ComponentId = id,
-                ComponentType = scd.GetAttributeValue<int>("solutioncomponenttype"),
-                SolutionUniqueName = solution.UniqueName
-            });
-
-            return id.ToString();
-        }
-
-        private Entity InstantiatePackage(Solution solution, string pluginName)
-        {
-            var packagePath = Path.Combine(Paths.PluginsPath, Settings.TemplateFolder, "DefaultPluginPackage.nupkg");
-            if (!File.Exists(packagePath))
-            {
-                MessageBox.Show(this, $@"File not found : {packagePath}", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-
-            var package = new Entity("pluginpackage")
-            {
-                ["solutionid"] = solution.Id
-            };
-            using (var p = Package.Open(packagePath, FileMode.Open))
-            {
-                foreach (var part in p.GetParts())
-                {
-                    if (!part.Uri.ToString().EndsWith(".nuspec"))
-                    {
-                        continue;
-                    }
-
-                    using (var stream = part.GetStream())
-                    {
-                        var xReader = new XmlTextReader(stream);
-                        var doc = new XmlDocument();
-                        doc.Load(xReader);
-
-                        XmlNamespaceManager nsmgr = new XmlNamespaceManager(doc.NameTable);
-                        nsmgr.AddNamespace("ns", doc.DocumentElement.NamespaceURI);
-
-                        var metadata = doc.SelectSingleNode("ns:package/ns:metadata", nsmgr);
-
-                        if (metadata == null)
-                        {
-                            MessageBox.Show(this, "Package metadata not found\r\n\r\nCould not find the package/metadata node in " + part.Uri, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return null;
-                        }
-
-                        var version = metadata.SelectSingleNode("ns:version", nsmgr)?.InnerText;
-                        if (version == null)
-                        {
-                            MessageBox.Show(this, "Package metadata not found\r\n\r\nCould not find the package/metadata/version node in " + part.Uri, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return null;
-                        }
-
-                        var name = solution.GetAliasedEntity<Publisher>().CustomizationPrefix + "_" + pluginName;
-                        package["name"] = name;
-                        package["version"] = version;
-                        package["uniquename"] = name;
-                    }
-                }
-            }
-
-            using (var reader = new FileStream(packagePath, FileMode.Open))
-            {
-                using (var ms = new MemoryStream())
-                {
-                    reader.CopyTo(ms);
-
-                    package["content"] = Convert.ToBase64String(ms.ToArray());
-                }
-            }
-
-            return package;
         }
 
         private void ActionCmb_SelectedIndexChanged(object sender, EventArgs e)

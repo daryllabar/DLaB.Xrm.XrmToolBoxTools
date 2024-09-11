@@ -28,24 +28,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
             File.Copy(Path.Combine(testSolutionTemplatePath ?? "", @"SolutionTemplate\Abc.Xrm.sln"), solutionPath, true);
             File.Copy(Path.Combine(testSolutionTemplatePath ?? "", @"SolutionTemplate\DLaB.EBG.Settings.xml"), ebgPath, true);
 
-            var results = new AddAllWizardResults
-            {
-                P0AddToExistingSolution = true, P0SolutionPath = solutionPath,
-                P1Namespace = "Abc.Xrm",
-                P2EarlyBound = true,
-                P3SharedCommonAssemblyName = "Abc.Xrm",
-                P4SharedWorkflowProjectName = "Abc.Xrm.Workflow",
-                P5UseXrmUnitTest = true, P5TestSettingsProjectName = "Abc.Xrm.Test",
-                P6CreatePluginProject = true, P6PluginProjectName = "Abc.Xrm.Plugin", P6IncludeExamples = true,
-                P7CompanyName = "Acme", P7PluginDescription = "Test Description For Plugin", P7PluginSolutionIndex = 0, P7PacAuthName = "Abc Dev",
-                P8PluginTestProjectName = "Abc.Xrm.Plugin.Tests",
-                P9CreateWorkflowProject = true, P9WorkflowProjectName = "Abc.Xrm.Workflow", P9IncludeExamples = true,
-                P10WorkflowTestProjectName = "Abc.Xrm.Workflow.Tests",
-                P11InstallCodeSnippets = true, P11IncludeCodeGen = true
-
-            }.GetResults();
-            var solutions = new Dictionary<int, Guid> { { 0, Guid.Empty } };
-            var info = InitializeSolutionInfo.InitializeSolution(results, solutions);
+            var info = TestBase.InitializeSolutionInfo(solutionPath);
             info.PluginPackage.PackageId = Guid.NewGuid().ToString();
             setCustomSettings?.Invoke(info);
 

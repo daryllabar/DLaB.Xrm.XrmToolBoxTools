@@ -279,8 +279,10 @@
     <Compile Include="AddProjectToSolutionInfo.cs" />
     <Compile Include="InitializeSolutionInfo.cs" />
     <Compile Include="Logic\FileGroup.cs" />
+    <Compile Include="Logic\GitIgnoreEditor.cs" />
     <Compile Include="Logic\NuGetSettings.cs" />
     <Compile Include="Logic\LegacyProjectFileParser.cs" />
+    <Compile Include="Logic\PluginPackageInitializer.cs" />
     <Compile Include="Logic\ProjectFileLineReference.cs" />
     <Compile Include="Logic\SolutionUpdater.cs" />
     <Compile Include="Logic\SolutionEditor.cs" />

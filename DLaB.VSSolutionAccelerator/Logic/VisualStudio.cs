@@ -39,6 +39,5 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 }
             }
         }
-
     }
 }
