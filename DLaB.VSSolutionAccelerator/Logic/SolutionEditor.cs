@@ -93,12 +93,14 @@ namespace DLaB.VSSolutionAccelerator.Logic
             }
 
             var project = CreateDefaultProjectInfo(ProjectInfo.Keys.Plugin, info.PluginName, info);
+            project.HasDevDeployBuild = true;
             var pluginProjectFile = project.Files.First();
             pluginProjectFile.Replacements.Add(@"<PackageId>Xyz.Xrm.Plugin</PackageId>", $@"<PackageId>{info.PluginName}</PackageId>");
             pluginProjectFile.Replacements.Add(@"<Authors>Matt Barbour</Authors>", $@"<Authors>{info.PluginPackage.Company}</Authors>");
             pluginProjectFile.Replacements.Add(@"<Company>Xyz</Company>", $@"<Company>{info.PluginPackage.Company}</Company>");
             pluginProjectFile.Replacements.Add(@"<Description>Plugin with Dependent Assemblies</Description>", $@"<Description>{info.PluginPackage.Description}</Description>");
             pluginProjectFile.Replacements.Add(@"<DeploymentPacAuthName>Xyz Dev</DeploymentPacAuthName>", $@"<DeploymentPacAuthName>{info.PluginPackage.PacAuthName}</DeploymentPacAuthName>");
+            pluginProjectFile.Replacements.Add(@"<PluginPackageId>deadbeef-dead-beef-dead-beefdeadbeef</PluginPackageId>", $@"<PluginPackageId>{info.PluginPackage.PackageId}</PluginPackageId>");
 
             RemovePluginExampleFiles(info.IncludeExamplePlugins, project);
             projects.Add(project.Key, project);

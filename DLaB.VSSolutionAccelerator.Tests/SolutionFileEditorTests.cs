@@ -32,6 +32,8 @@ namespace DLaB.VSSolutionAccelerator.Tests
                 },
             };
             projects[2].SharedProjectsReferences.Add(projects[0]);
+            projects[1].HasDevDeployBuild = true;
+            projects[2].HasDevDeployBuild = false;
             return projects;
         }
 
@@ -39,10 +41,11 @@ namespace DLaB.VSSolutionAccelerator.Tests
         public void AddMissingProjects_ForEmptySolution_Should_AddMissingSections()
         {
             var result = SolutionFileEditor.AddMissingProjects(null, GetProjectsWithSharedReference());
+            var a = string.Join(Environment.NewLine, result);
             var expected = @"
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.329
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35201.131
 MinimumVisualStudioVersion = 10.0.40219.1
 Project(""{D954291E-2A0B-460D-934E-DC6B0785DB48}"") = ""P1"", ""P1\P1.shproj"", ""{21E587DF-00A7-4015-8992-6AF82C55C970}""
 EndProject
@@ -51,21 +54,21 @@ EndProject
 Project(""{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"") = ""P3"", ""P3\P3.csproj"", ""{80F91288-CC6C-49D7-A4D0-7E06FEDF3888}""
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		P1\P1.projitems*{21e587df-00a7-4015-8992-6af82c55c970}*SharedItemsImports = 13
-		P1\P1.projitems*{80f91288-cc6c-49d7-a4d0-7e06fedf3888}*SharedItemsImports = 4
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		DevDeploy|Any CPU = DevDeploy|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{7956eba3-330f-4ccb-aaaa-221dfc833b46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7956eba3-330f-4ccb-aaaa-221dfc833b46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7956eba3-330f-4ccb-aaaa-221dfc833b46}.DevDeploy|Any CPU.ActiveCfg = DevDeploy|Any CPU
+		{7956eba3-330f-4ccb-aaaa-221dfc833b46}.DevDeploy|Any CPU.Build.0 = DevDeploy|Any CPU
 		{7956eba3-330f-4ccb-aaaa-221dfc833b46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7956eba3-330f-4ccb-aaaa-221dfc833b46}.Release|Any CPU.Build.0 = Release|Any CPU
 		{80f91288-cc6c-49d7-a4d0-7e06fedf3888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{80f91288-cc6c-49d7-a4d0-7e06fedf3888}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80f91288-cc6c-49d7-a4d0-7e06fedf3888}.DevDeploy|Any CPU.ActiveCfg = Debug|Any CPU
 		{80f91288-cc6c-49d7-a4d0-7e06fedf3888}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80f91288-cc6c-49d7-a4d0-7e06fedf3888}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
@@ -74,6 +77,10 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A603CAAE-8991-405D-906A-4D5ABE1E9314}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		P1\P1.projitems*{21e587df-00a7-4015-8992-6af82c55c970}*SharedItemsImports = 13
+		P1\P1.projitems*{80f91288-cc6c-49d7-a4d0-7e06fedf3888}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal";
             Assert.That.LinesAreEqual(expected, result);

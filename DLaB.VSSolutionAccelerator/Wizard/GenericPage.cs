@@ -1,6 +1,7 @@
 ﻿using Source.DLaB.Common;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -135,7 +136,7 @@ namespace DLaB.VSSolutionAccelerator.Wizard
 
         private int SetValues2(QuestionInfo info)
         {
-            var separateText = string.IsNullOrWhiteSpace(DescriptionText.Text)
+            var separateText = string.IsNullOrWhiteSpace(DescriptionText.Text) || string.IsNullOrWhiteSpace(info.Description)
                 ? string.Empty
                 : Environment.NewLine + Environment.NewLine;
             Question2Label.Text = info.Question;
@@ -174,7 +175,7 @@ namespace DLaB.VSSolutionAccelerator.Wizard
 
         private int SetValues3(QuestionInfo info)
         {
-            var separateText = string.IsNullOrWhiteSpace(DescriptionText.Text)
+            var separateText = string.IsNullOrWhiteSpace(DescriptionText.Text) || string.IsNullOrWhiteSpace(info.Description)
                 ? string.Empty
                 : Environment.NewLine + Environment.NewLine;
             Question3Label.Text = info.Question;
@@ -213,7 +214,7 @@ namespace DLaB.VSSolutionAccelerator.Wizard
 
         private int SetValues4(QuestionInfo info)
         {
-            var separateText = string.IsNullOrWhiteSpace(DescriptionText.Text)
+            var separateText = string.IsNullOrWhiteSpace(DescriptionText.Text) || string.IsNullOrWhiteSpace(info.Description)
                 ? string.Empty
                 : Environment.NewLine + Environment.NewLine;
             Question4Label.Text = info.Question;
@@ -534,16 +535,53 @@ namespace DLaB.VSSolutionAccelerator.Wizard
                 path = Path2;
             }
 
-            OpenFileDialog.Multiselect = false;
-            OpenFileDialog.Filter = filter;
-            if (!string.IsNullOrWhiteSpace(path.Text))
+            if (filter == "Folder")
             {
-                OpenFileDialog.FileName = path.Text;
-            }
+                var fileName = System.IO.Path.GetFileName(path.Text);
+                var folder = Directory.Exists(path.Text)
+                    ? path.Text
+                    : File.Exists(path.Text)
+                        ? System.IO.Path.GetDirectoryName(path.Text)
+                        : path.Text;
 
-            if (OpenFileDialog.ShowDialog(this) == DialogResult.OK)
+                while (!string.IsNullOrWhiteSpace(folder))
+                {
+                    if (Directory.Exists(folder))
+                    {
+                        break;
+                    }
+                    folder = System.IO.Path.GetDirectoryName(folder);
+                }
+
+                if (string.IsNullOrWhiteSpace(folder))
+                {
+                    folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                }
+                var dlg = new FolderPicker
+                {
+                    InputPath = folder
+                };
+
+                if (dlg.ShowDialog() == true)
+                {
+                    path.Text = System.IO.Path.Combine(dlg.ResultPath, fileName.EndsWith(".sln")
+                        ? fileName
+                        : "YourCompanyAbbreviation.Dataverse.sln");
+                }
+            }
+            else
             {
-                path.Text = OpenFileDialog.FileName;
+                OpenFileDialog.Multiselect = false;
+                OpenFileDialog.Filter = filter;
+                if (!string.IsNullOrWhiteSpace(path.Text))
+                {
+                    OpenFileDialog.FileName = path.Text;
+                }
+
+                if (OpenFileDialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    path.Text = OpenFileDialog.FileName;
+                }
             }
         }
     }

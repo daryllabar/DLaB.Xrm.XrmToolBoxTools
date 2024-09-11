@@ -50,6 +50,8 @@ namespace DLaB.VSSolutionAccelerator
             public string Company { get; set; }
             public string Description { get; set; }
             public string PacAuthName { get; set; }
+            public Guid SolutionId { get; set; }
+            public string PackageId { get; set; }
         }
     }
 }

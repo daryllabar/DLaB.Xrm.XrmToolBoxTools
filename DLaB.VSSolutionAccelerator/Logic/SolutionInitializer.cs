@@ -35,6 +35,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 info.SharedCommonProject,
                 info);
 
+            project.HasDevDeployBuild = true;
             projects.Add(project.Key, project);
         }
 
@@ -160,8 +161,8 @@ EndProject");
                 File.WriteAllText(info.SolutionPath, $@"
 
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.329
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35201.131
 MinimumVisualStudioVersion = 10.0.40219.1
 Global
 	GlobalSection(SolutionProperties) = preSolution
@@ -189,7 +190,7 @@ EndGlobal
             settings.ExtensionConfig.AddNewFilesToProject = false;
             settings.ExtensionConfig.CreateOneFilePerAction = true;
             settings.ExtensionConfig.CreateOneFilePerEntity = true;
-            settings.ExtensionConfig.DeleteFilesFromOutputFolders = true;
+            settings.ExtensionConfig.DeleteFilesFromOutputFolders = false;
             settings.ExtensionConfig.GenerateActionAttributeNameConsts = true;
             settings.ExtensionConfig.GenerateEnumProperties = true;
             settings.ExtensionConfig.GenerateAttributeNameConsts = true;
@@ -200,7 +201,7 @@ EndGlobal
             settings.Namespace = $"{info.RootNamespace}.Entities";
             settings.OptionSetsTypesFolder = settings.ExtensionConfig.CreateOneFilePerOptionSet ? @"OptionSets" : @"OptionSets.cs";
             settings.ServiceContextName = "DataverseContext";
-            settings.Version = "2.2024.9.7"; // Set to minimum required version of the EBG since the Default version will be the version of the VSSolutionAccelerator, not the EBG
+            settings.Version = "2.2024.9.8"; // Set to minimum required version of the EBG since the Default version will be the version of the VSSolutionAccelerator, not the EBG
 
             settings.Save(info.GetEarlyBoundSettingsPath());
         }

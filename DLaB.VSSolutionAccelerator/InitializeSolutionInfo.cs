@@ -1,7 +1,7 @@
-﻿using System;
+﻿using DLaB.VSSolutionAccelerator.Wizard;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using DLaB.VSSolutionAccelerator.Wizard;
 
 namespace DLaB.VSSolutionAccelerator
 {
@@ -29,7 +29,7 @@ namespace DLaB.VSSolutionAccelerator
             public const int WorkflowTest = 10;
         }
 
-        public static List<IWizardPage> InitializePages()
+        public static List<IWizardPage> InitializePages(List<KeyValuePair<int, string>> solutionNames)
         {
             // ReSharper disable once UseObjectOrCollectionInitializer
             var pages = new List<IWizardPage>();
@@ -41,7 +41,7 @@ namespace DLaB.VSSolutionAccelerator
             AddSharedCommonWorkflowNameQuestion(pages); 
             AddUseXrmUnitTestQuestion(pages); // 5
             AddCreatePluginProjectQuestion(pages);
-            AddPluginAssemblyInfoQuestions(pages);
+            AddPluginAssemblyInfoQuestions(pages, solutionNames);
             AddPluginTestProjectNameQuestion(pages);
             AddCreateWorkflowProjectQuestion(pages);
             AddWorkflowTestProjectNameQuestion(pages); // 10
@@ -58,9 +58,9 @@ namespace DLaB.VSSolutionAccelerator
                     Filter = "Solution Files (*.sln)|*.sln",
                     Description = "This Wizard will walk through the process of adding isolation/plugin/workflow/testing projects based on the DLaB/XrmUnitTest framework.  The configured projects will be add to the solution defined here."
                 },
-                No = new PathQuestionInfo("What Solution?")
+                No = new PathQuestionInfo("Please enter the solution path to create.")
                 {
-                    Filter = "Solution Files (*.sln)|*.sln",
+                    Filter = "Folder",
                     Description = "This Wizard will walk through the process of adding isolation/plugin/workflow/testing projects based on the DLaB/XrmUnitTest framework.  The configured projects will be add to a new solution created at the path defined here.",
                     RequireFileExists = false,
                     DefaultResponse = "C:\\FolderUnderSourceControl\\YourCompanyAbbreviation.Dataverse.sln"
@@ -155,7 +155,7 @@ namespace DLaB.VSSolutionAccelerator
             }));
         }
 
-        private static void AddPluginAssemblyInfoQuestions(List<IWizardPage> pages)
+        private static void AddPluginAssemblyInfoQuestions(List<IWizardPage> pages, List<KeyValuePair<int, string>> solutionNames)
         {
             var page = GenericPage.Create(new TextQuestionInfo("What is the name of the Company to use with the Plugin Assembly?")
             {
@@ -164,6 +164,10 @@ namespace DLaB.VSSolutionAccelerator
                 EditDefaultResponse = GetCompanyName
             }, new TextQuestionInfo("Plugin Assembly Description?") { 
                 DefaultResponse = "Plugin with Dependent Assemblies",
+            }, new ComboQuestionInfo("Solution to Deploy the Plugin to?")
+            {
+                Description = "The prefix of the solution publisher will be used to name the plugin package as well as upload a temporary plugin to for setting up a dev deployment build.",
+                Options = solutionNames
             }, new TextQuestionInfo("Deployment PAC CLI Auth Name?") {
                 DefaultResponse = GenericPage.GetSaveResultsFormat(Page.RootNamespace),
                 Description = "The PAC CLI Auth Name is the name of the used to PAC Auth context to use when deploying the plugin to dev.",
@@ -176,6 +180,7 @@ namespace DLaB.VSSolutionAccelerator
 
             page.AddSavedValuedRequiredCondition(Page.CreatePlugin, "Y");
             pages.Add(page);
+            return;
 
             string GetCompanyName(string value)
             {
@@ -243,7 +248,7 @@ namespace DLaB.VSSolutionAccelerator
             pages.Add(page);
         }
 
-        private InitializeSolutionInfo(Queue<object> queue)
+        private InitializeSolutionInfo(Queue<object> queue, Dictionary<int, Guid> solutionIdsByIndex)
         {
             InitializeSolution(new YesNoResult(queue.Dequeue())); // 0
             RootNamespace = (string)queue.Dequeue();
@@ -253,7 +258,7 @@ namespace DLaB.VSSolutionAccelerator
             SharedCommonWorkflowProject = (string)queue.Dequeue(); 
             InitializeXrmUnitTest(new YesNoResult(queue.Dequeue())); // 5
             InitializePlugin(new YesNoResult(queue.Dequeue()));
-            InitializePluginAssembly((List<string>) queue.Dequeue());
+            InitializePluginAssembly((List<string>) queue.Dequeue(), solutionIdsByIndex);
             PluginTestName = (string)queue.Dequeue();
             InitializeWorkflow(new YesNoResult(queue.Dequeue()));
             WorkflowTestName = (string)queue.Dequeue(); 
@@ -266,9 +271,9 @@ namespace DLaB.VSSolutionAccelerator
             }
         }
 
-        public static InitializeSolutionInfo InitializeSolution(object[] values)
+        public static InitializeSolutionInfo InitializeSolution(object[] values, Dictionary<int, Guid> solutionIdsByIndex)
         {
-            return new InitializeSolutionInfo(new Queue<object>(values));
+            return new InitializeSolutionInfo(new Queue<object>(values), solutionIdsByIndex);
         }
 
         public string GetEarlyBoundSettingsPath()
@@ -298,11 +303,12 @@ namespace DLaB.VSSolutionAccelerator
             IncludeExamplePlugins = result[2] == "0";
         }
 
-        private void InitializePluginAssembly(List<string> result)
+        private void InitializePluginAssembly(List<string> result, Dictionary<int, Guid> solutionIdsByIndex)
         {
             PluginPackage.Company = result[0];
             PluginPackage.Description = result[1];
-            PluginPackage.PacAuthName = result[2];
+            PluginPackage.SolutionId = solutionIdsByIndex[int.Parse(result[2])];
+            PluginPackage.PacAuthName = result[3];
         }
 
         private void InitializeWorkflow(YesNoResult result)

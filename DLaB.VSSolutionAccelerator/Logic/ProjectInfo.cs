@@ -52,6 +52,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
         public List<string> PostUpdateCommandResults { get; private set; }
         public List<string> PostSolutionRestoreCommandResults { get; private set; }
         public List<string> FilesToRemove { get; internal set; }
+        public bool HasDevDeployBuild { get; set; }
 
         public ProjectInfo()
         {
@@ -132,8 +133,14 @@ namespace DLaB.VSSolutionAccelerator.Logic
             var lines = new List<string>();
             foreach (var platform in solutionConfigurationPlatforms)
             {
-                lines.Add($"\t\t{{{Id.ToString()}}}.{platform.Trim().Replace(" = ", ".ActiveCfg = ")}");
-                lines.Add($"\t\t{{{Id.ToString()}}}.{platform.Trim().Replace(" = ", ".Build.0 = ")}");
+                var localPlatform = platform.Trim();
+                if (localPlatform.StartsWith("DevDeploy|") && !HasDevDeployBuild)
+                {
+                    lines.Add($"\t\t{{{Id.ToString()}}}.{localPlatform.Replace(" = ", ".ActiveCfg = ").Replace(" = DevDeploy", " = Debug")}");
+                    continue;
+                }
+                lines.Add($"\t\t{{{Id.ToString()}}}.{localPlatform.Replace(" = ", ".ActiveCfg = ")}");
+                lines.Add($"\t\t{{{Id.ToString()}}}.{localPlatform.Replace(" = ", ".Build.0 = ")}");
             }
 
             return string.Join(Environment.NewLine, lines);

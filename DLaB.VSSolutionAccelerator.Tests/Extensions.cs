@@ -27,7 +27,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
 
             for (var i = 0; i < expected.Length; i++)
             {
-                Assert.IsTrue(i < splitActual.Length, "Actual is missing lines!");
+                Assert.IsTrue(i < splitActual.Length, $"Actual was expected to have {expected.Length} lines, but only has {splitActual.Length} lines.  Actual is missing lines!");
                 if (expected[i].Contains("SolutionGuid = "))
                 {
                     Assert.IsTrue(splitActual[i].Contains("SolutionGuid = "), "Expected the Solution Guid, instead found " + splitActual);

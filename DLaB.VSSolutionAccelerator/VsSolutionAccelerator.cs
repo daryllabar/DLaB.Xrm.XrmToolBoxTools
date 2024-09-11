@@ -17,7 +17,7 @@ namespace DLaB.VSSolutionAccelerator
          ExportMetadata("BackgroundColor", "White"), // Use a HTML color name
          ExportMetadata("PrimaryFontColor", "#000000"), // Or an hexadecimal code
          ExportMetadata("SecondaryFontColor", "DarkGray")]
-    public class VsSolutionAccelerator : PluginFactory, INoConnectionRequired
+    public class VsSolutionAccelerator : PluginFactory
     {
         /// <summary>
         /// Constructor

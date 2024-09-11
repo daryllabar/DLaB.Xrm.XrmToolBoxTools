@@ -17,6 +17,7 @@ namespace DLaB.VSSolutionAccelerator.Wizard
         public bool P6IncludeExamples { get; set; }
         public string P7CompanyName { get; set; }
         public string P7PluginDescription { get; set; }
+        public int P7PluginSolutionIndex { get; set; }
         public string P7PacAuthName { get; set; }
         public string P8PluginTestProjectName { get; set; }
         public bool P9CreateWorkflowProject { get; set; }
@@ -46,7 +47,7 @@ namespace DLaB.VSSolutionAccelerator.Wizard
                     P4SharedWorkflowProjectName,
                     new List<string>{ToYn(P5UseXrmUnitTest), P5TestSettingsProjectName },
                     new List<string>{ToYn(P6CreatePluginProject), P6PluginProjectName, To01(P6IncludeExamples) },
-                    new List<string>{P7CompanyName, P7PluginDescription, P7PacAuthName },
+                    new List<string>{P7CompanyName, P7PluginDescription, P7PluginSolutionIndex.ToString(), P7PacAuthName },
                     P8PluginTestProjectName,
                     new List<string>{ToYn(P9CreateWorkflowProject), P9WorkflowProjectName, To01(P9IncludeExamples) },
                     P10WorkflowTestProjectName,

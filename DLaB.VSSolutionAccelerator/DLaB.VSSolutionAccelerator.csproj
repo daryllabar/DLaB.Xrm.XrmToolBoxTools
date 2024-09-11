@@ -404,6 +404,7 @@
       <Name>DLaB.XrmToolBoxCommon</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="..\DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
@@ -411,8 +412,10 @@
 xcopy /I /Y "$(TargetDir)Microsoft.ApplicationInsights.dll" "$(TargetDir)$(TargetName)"
 xcopy /I /Y "$(TargetDir)Microsoft.Extensions.*.dll" "$(TargetDir)$(TargetName)"
 xcopy /I /Y "$(TargetDir)Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" "$(TargetDir)$(TargetName)"
-xcopy /I /Y "$(TargetDir)DLaB.*.dll" "$(TargetDir)$(TargetName)"
-del "$(TargetDir)$(TargetName)\$(TargetFileName)"
+xcopy /I /Y "$(TargetDir)DLaB.*.dll" "$(TargetDir)Plugins\$(TargetName)"
+xcopy /I /Y "$(TargetDir)Nuget*.dll" "$(TargetDir)Plugins\$(TargetName)"
+copy /Y "$(ProjectDir)DefaultPluginPackage.zip" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\DefaultPluginPackage.nupkg"
+del "$(TargetDir)Plugins\$(TargetName)\$(TargetFileName)"
 
 IF NOT EXIST Plugins mkdir Plugins
 move /Y $(TargetFileName) Plugins

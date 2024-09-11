@@ -2,6 +2,7 @@
 using DLaB.VSSolutionAccelerator.Wizard;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
@@ -36,14 +37,16 @@ namespace DLaB.VSSolutionAccelerator.Tests
                 P4SharedWorkflowProjectName = "Abc.Xrm.Workflow",
                 P5UseXrmUnitTest = true, P5TestSettingsProjectName = "Abc.Xrm.Test",
                 P6CreatePluginProject = true, P6PluginProjectName = "Abc.Xrm.Plugin", P6IncludeExamples = true,
-                P7CompanyName = "Acme", P7PluginDescription = "Test Description For Plugin", P7PacAuthName = "Abc Dev",
+                P7CompanyName = "Acme", P7PluginDescription = "Test Description For Plugin", P7PluginSolutionIndex = 0, P7PacAuthName = "Abc Dev",
                 P8PluginTestProjectName = "Abc.Xrm.Plugin.Tests",
                 P9CreateWorkflowProject = true, P9WorkflowProjectName = "Abc.Xrm.Workflow", P9IncludeExamples = true,
                 P10WorkflowTestProjectName = "Abc.Xrm.Workflow.Tests",
                 P11InstallCodeSnippets = true, P11IncludeCodeGen = true
 
             }.GetResults();
-            var info = InitializeSolutionInfo.InitializeSolution(results);
+            var solutions = new Dictionary<int, Guid> { { 0, Guid.Empty } };
+            var info = InitializeSolutionInfo.InitializeSolution(results, solutions);
+            info.PluginPackage.PackageId = Guid.NewGuid().ToString();
             setCustomSettings?.Invoke(info);
 
             var templatePath = TestBase.GetTemplatePath();
@@ -245,14 +248,15 @@ namespace DLaB.VSSolutionAccelerator.Tests
         private static string[] TestPluginProjectCreation(InitializeSolutionTestInfo context, string key, string newName, string arbitraryFile, string newNameSpace = null)
         {
             var lines = TestProjectCreation(context, key, newName, arbitraryFile, newNameSpace);
-
             var plugin = context.Info.PluginPackage;
+
             // PropertyGroup
             Assert.That.ALineContains(lines, $"<PackageId>{newName}</PackageId>", $"The <PackageId/> should have been updated to {newName}");
             Assert.That.ALineContains(lines, $"<Authors>{plugin.Company}</Authors>", $"The <Authors/> should have been updated to {plugin.Company}");
             Assert.That.ALineContains(lines, $"<Company>{plugin.Company}</Company>", $"The <Company/> should have been updated to {plugin.Company}");
             Assert.That.ALineContains(lines, $"<Description>{plugin.Description}</Description>", $"The <Description/> should have been updated to {plugin.Description}");
             Assert.That.ALineContains(lines, $"<DeploymentPacAuthName>{plugin.PacAuthName}</DeploymentPacAuthName>", $"The <DeploymentPacAuthName/> should have been updated to {plugin.PacAuthName}");
+            Assert.That.ALineContains(lines, $"<PluginPackageId>{plugin.PackageId}</PluginPackageId>", $"The <PluginPackageId/> should have been updated to {plugin.PackageId}");
 
             return lines;
         }
