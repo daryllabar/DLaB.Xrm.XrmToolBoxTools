@@ -17,12 +17,14 @@ namespace DLaB.VSSolutionAccelerator.Logic
         public Dictionary<string, ProjectInfo> GetProjectInfos(InitializeSolutionInfo info)
         {
             var projects = new Dictionary<string, ProjectInfo>();
+            info.CreateCommonWorkflowProject = info.CreateWorkflow;
+
             AddSharedCommonProject(projects, info);
-            AddSharedWorkflowProject(projects, info);
             AddBaseTestProject(projects, info);
             AddPlugin(projects, info);
             AddPluginTest(projects, info);
             AddWorkflow(projects, info);
+            AddSharedWorkflowProject(projects, info, info.RootNamespace + ".Workflow");
             AddWorkflowTest(projects, info);
             //AddNugetPostUpdateCommandsToProjects(info.XrmPackage.Version, projects);
             return projects;
@@ -39,16 +41,6 @@ namespace DLaB.VSSolutionAccelerator.Logic
             projects.Add(project.Key, project);
         }
 
-        private void AddSharedWorkflowProject(Dictionary<string, ProjectInfo> projects, InitializeSolutionInfo info)
-        {
-            var project = CreateDefaultSharedProjectInfo(
-                ProjectInfo.Keys.WorkflowCommon,
-                info.SharedCommonWorkflowProject,
-                "Xyz.Xrm.Workflow",
-                info.RootNamespace + ".Workflow");
-            projects.Add(project.Key, project);
-        }
-
         private void AddBaseTestProject(Dictionary<string, ProjectInfo> projects, InitializeSolutionInfo info)
         {
             if (!info.ConfigureXrmUnitTest)
@@ -58,44 +50,6 @@ namespace DLaB.VSSolutionAccelerator.Logic
             
             var project = CreateDefaultProjectInfo(ProjectInfo.Keys.Test, info.TestBaseProject, info);
             projects.Add(project.Key, project);
-        }
-
-        private ProjectInfo CreateDefaultSharedProjectInfo(string key, string name, string originalNamespace = null, string newNamespace = null)
-        {
-            Logger.AddDetail($"Configuring Project {name} based on {key}.");
-            originalNamespace = originalNamespace ?? key;
-            newNamespace = newNamespace ?? name;
-            var id = Guid.NewGuid();
-            var project = new ProjectInfo
-            {
-                Key = key,
-                Id = id,
-                Type = ProjectInfo.ProjectType.SharedProj,
-                NewDirectory = Path.Combine(OutputBaseDirectory, name),
-                Name = name,
-                Files = new List<ProjectFile>
-                {
-                    new ProjectFile
-                    {
-                        Name = name + ".projitems",
-                        Replacements = new Dictionary<string, string>
-                        {
-                            {ProjectInfo.IdByKey[key], id.ToString()},
-                            {$"<Import_RootNamespace>{originalNamespace}</Import_RootNamespace>", $"<Import_RootNamespace>{newNamespace}</Import_RootNamespace>"}
-                        },
-                    },
-                    new ProjectFile
-                    {
-                        Name = name + ".shproj",
-                        Replacements = new Dictionary<string, string>
-                        {
-                            {ProjectInfo.IdByKey[key], id.ToString()},
-                            { key +".projitems", name + ".projitems"}
-                        }
-                    },
-                }
-            };
-            return project;
         }
 
         public static void Execute(InitializeSolutionInfo info, string templateDirectory, string strongNamePath = null, NuGetSettings nuGetSettings = null)

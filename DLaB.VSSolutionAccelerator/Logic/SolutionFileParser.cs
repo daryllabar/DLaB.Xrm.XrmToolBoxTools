@@ -103,7 +103,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
             {
                 if (line.TrimStart().StartsWith(LineMarkers.ProjectStart))
                 {
-                    StateProcessor[State](line);
+                    Projects.Add(line);
                 }
                 else
                 {

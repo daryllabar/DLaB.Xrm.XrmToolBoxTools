@@ -1,10 +1,9 @@
 ﻿using DLaB.VSSolutionAccelerator.Logic;
-using DLaB.VSSolutionAccelerator.Wizard;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace DLaB.VSSolutionAccelerator.Tests
@@ -95,17 +94,15 @@ namespace DLaB.VSSolutionAccelerator.Tests
             using (var context = InitializeTest(i => { i.IncludeExamplePlugins = false; }))
             {
                 var project = context.SolutionInitializer.Projects[ProjectInfo.Keys.Plugin];
-                var lines = TestPluginProjectCreation(context,
+                TestPluginProjectCreation(context,
                     project.Key,
                     context.Info.PluginName,
                     null,
                     "Abc.Xrm.Plugin");
                 Assert.IsTrue(project.FilesToRemove.Count > 0, "There should have existed files to be removed.");
-                foreach (var file in project.FilesToRemove)
-                {
-                    var path = Path.Combine(project.NewDirectory, file);
-                    Assert.IsFalse(File.Exists(path), $"File '{path}' should have been deleted.");
-                }
+                var files = Directory.GetFiles(project.NewDirectory);
+                Assert.AreEqual(1, files.Length, $"Only the .csproj file should exist in the directory!  Files found: {string.Join(", ", files.Select(Path.GetFileName))}");
+                Assert.IsFalse(Directory.Exists(Path.Combine(project.NewDirectory, "PluginBaseExamples")), "The PluginBaseExamples file should have been removed.");
             }
         }
 
@@ -170,7 +167,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
             using (var context = InitializeTest(i => { i.IncludeExampleWorkflow = false; }))
             {
                 var project = context.SolutionInitializer.Projects[ProjectInfo.Keys.Workflow];
-                var lines = TestWorkflowProjectCreation(context,
+                TestWorkflowProjectCreation(context,
                     ProjectInfo.Keys.Workflow,
                     context.Info.WorkflowName,
                     null,
@@ -263,7 +260,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
 
             AssertCsFileNamespaceUpdated(context, newName, arbitraryFile, newNameSpace);
 
-            return File.ReadAllLines(filePath); ;
+            return File.ReadAllLines(filePath);
         }
     }
 }

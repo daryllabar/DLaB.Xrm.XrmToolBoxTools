@@ -15,7 +15,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
         {
             /*
                  Should Generate the following output
-                Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xyz.Xrm", "Xyz.Xrm\Xyz.Xrm.shproj", "{B22B3BC6-0AC6-4CDD-A118-16E318818AD7}"
+                Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xyz.Xrm", "Xyz.Xrm\Xyz.Xrm.shproj", "{B22B3BC6-0AC6-4CDD-A118-16E318818AD7}"
                 EndProject
              */
             var sut = new ProjectInfo()
@@ -24,7 +24,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
                 Name = "CsProjTest",
                 Id = Guid.NewGuid()
             };
-            Assert.AreEqual("Project(\"{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}\") = \"CsProjTest\", \"CsProjTest\\CsProjTest.csproj\", \"{" + sut.Id.ToString().ToUpper() + "}\"" + Environment.NewLine + "EndProject", sut.SolutionProjectHeader);
+            Assert.AreEqual("Project(\"{9A19103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"CsProjTest\", \"CsProjTest\\CsProjTest.csproj\", \"{" + sut.Id.ToString().ToUpper() + "}\"" + Environment.NewLine + "EndProject", sut.SolutionProjectHeader);
         }
 
         [TestMethod]

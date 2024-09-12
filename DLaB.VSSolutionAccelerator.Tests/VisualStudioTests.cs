@@ -41,7 +41,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
                 folders.Add(backupFolder, existingFolder);
             }
 
-            Logic.VisualStudio.InstallCodeSnippets(pluginPath);
+            Logic.VisualStudio.InstallCodeSnippets(pluginPath, "DLaB.Dataverse");
 
             foreach (var value in folders.Select(i => new { SnippetFolder = i.Value, Backup = i.Key}))
             {
@@ -50,6 +50,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
                 AssertSnippetCreated(snippets, "crmplugin.snippet");
                 AssertSnippetCreated(snippets, "crmplugintest.snippet");
                 AssertSnippetCreated(snippets, "crmtestmethodclass.snippet");
+                AssertSnippetCreated(snippets, "reg.snippet");
                 // ReSharper restore StringLiteralTypo
                 AssertSnippetCreated(snippets, "region.snippet");
 

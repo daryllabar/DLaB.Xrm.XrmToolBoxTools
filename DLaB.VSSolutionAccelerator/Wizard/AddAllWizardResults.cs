@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DLaB.VSSolutionAccelerator.Logic;
 
 namespace DLaB.VSSolutionAccelerator.Wizard
 {
@@ -9,51 +10,71 @@ namespace DLaB.VSSolutionAccelerator.Wizard
         public string P1Namespace { get; set; }
         public bool P2EarlyBound { get; set; }
         public string P3SharedCommonAssemblyName { get; set; }
-        public string P4SharedWorkflowProjectName { get; set; }
-        public bool P5UseXrmUnitTest { get; set; }
-        public string P5TestSettingsProjectName { get; set; }
-        public bool P6CreatePluginProject { get; set; }
-        public string P6PluginProjectName { get; set; }
-        public bool P6IncludeExamples { get; set; }
-        public string P7CompanyName { get; set; }
-        public string P7PluginDescription { get; set; }
-        public int P7PluginSolutionIndex { get; set; }
-        public string P7PacAuthName { get; set; }
-        public string P8PluginTestProjectName { get; set; }
-        public bool P9CreateWorkflowProject { get; set; }
-        public string P9WorkflowProjectName { get; set; }
-        public bool P9IncludeExamples { get; set; }
+        public string P9SharedWorkflowProjectName { get; set; }
+        public bool P4UseXrmUnitTest { get; set; }
+        public string P4TestSettingsProjectName { get; set; }
+        public bool P5CreatePluginProject { get; set; }
+        public string P5PluginProjectName { get; set; }
+        public bool P5IncludeExamples { get; set; }
+        public string P6CompanyName { get; set; }
+        public string P6PluginDescription { get; set; }
+        public int P6PluginSolutionIndex { get; set; }
+        public string P6PacAuthName { get; set; }
+        public string P7PluginTestProjectName { get; set; }
+        public bool P8CreateWorkflowProject { get; set; }
+        public string P8WorkflowProjectName { get; set; }
+        public bool P8IncludeExamples { get; set; }
         public string P10WorkflowTestProjectName { get; set; }
         public bool P11InstallCodeSnippets { get; set; }
         public bool P11IncludeCodeGen { get; set; }
 
         public object[] GetResults()
         {
-            return new object[]
+            var results = new List<object>();
+            for (var i = 0; i <= InitializeSolutionInfo.Page.CodeSnippets; i++)
             {
-                    new List<string>{ToYn(P0AddToExistingSolution), P0SolutionPath },
-                    P1Namespace,
-                    //new NuGetPackage
-                    //{
-                    //    Id = "Microsoft.CrmSdk.CoreAssemblies",
-                    //    LicenseUrl = "http://download.microsoft.com/download/E/1/8/E18C0FAD-FEC8-44CD-9A16-98EDC4DAC7A2/LicenseTerms.docx",
-                    //    Name = "Microsoft Dynamics 365 SDK core assemblies",
-                    //    Version = new Version("9.2.0.56"),
-                    //    VersionText = "9.2.0.56",
-                    //    XrmToolingClient = false
-                    //},
-                    ToYn(P2EarlyBound),
-                    P3SharedCommonAssemblyName,
-                    P4SharedWorkflowProjectName,
-                    new List<string>{ToYn(P5UseXrmUnitTest), P5TestSettingsProjectName },
-                    new List<string>{ToYn(P6CreatePluginProject), P6PluginProjectName, To01(P6IncludeExamples) },
-                    new List<string>{P7CompanyName, P7PluginDescription, P7PluginSolutionIndex.ToString(), P7PacAuthName },
-                    P8PluginTestProjectName,
-                    new List<string>{ToYn(P9CreateWorkflowProject), P9WorkflowProjectName, To01(P9IncludeExamples) },
-                    P10WorkflowTestProjectName,
-                    new List<string>{To01(P11InstallCodeSnippets), To01(P11IncludeCodeGen) },
-            };
+                switch (i)
+                {
+                    case InitializeSolutionInfo.Page.SolutionPath:
+                        results.Add(new List<string> { ToYn(P0AddToExistingSolution), P0SolutionPath });
+                        break;
+                    case InitializeSolutionInfo.Page.RootNamespace:
+                        results.Add(P1Namespace);
+                        break;
+                    case InitializeSolutionInfo.Page.EarlyBound:
+                        results.Add(ToYn(P2EarlyBound));
+                        break;
+                    case InitializeSolutionInfo.Page.CommonName:
+                        results.Add(P3SharedCommonAssemblyName);
+                        break;
+                    case InitializeSolutionInfo.Page.UseXrmUnitTest:
+                        results.Add(new List<string>{ToYn(P4UseXrmUnitTest), P4TestSettingsProjectName });
+                        break;
+                    case InitializeSolutionInfo.Page.CreatePlugin:
+                        results.Add(new List<string>{ToYn(P5CreatePluginProject), P5PluginProjectName, To01(P5IncludeExamples) });
+                        break;
+                    case InitializeSolutionInfo.Page.PluginAssembly:
+                        results.Add(new List<string>{P6CompanyName, P6PluginDescription, P6PluginSolutionIndex.ToString(), P6PacAuthName });
+                        break;
+                    case InitializeSolutionInfo.Page.PluginTest:
+                        results.Add(P7PluginTestProjectName);
+                        break;
+                    case InitializeSolutionInfo.Page.CreateWorkflow:
+                        results.Add(new List<string>{ToYn(P8CreateWorkflowProject), P8WorkflowProjectName, To01(P8IncludeExamples) });
+                        break;
+                    case InitializeSolutionInfo.Page.CommonWorkflowName:
+                        results.Add(P9SharedWorkflowProjectName);
+                        break;
+                    case InitializeSolutionInfo.Page.WorkflowTest:
+                        results.Add(P10WorkflowTestProjectName);
+                        break;
+                    case InitializeSolutionInfo.Page.CodeSnippets:
+                        results.Add(new List<string>{To01(P11InstallCodeSnippets), To01(P11IncludeCodeGen) });
+                        break;
+                }
+            }
 
+            return results.ToArray();
             string ToYn(bool value)
             {
                 return value ? "Y" : "N";

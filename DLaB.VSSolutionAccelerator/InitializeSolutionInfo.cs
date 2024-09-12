@@ -5,6 +5,9 @@ using System.IO;
 
 namespace DLaB.VSSolutionAccelerator
 {
+    /// <summary>
+    /// Defines the Pages to add to the wizard via InitializePages, and then maps the results to its own properties via the Create method.
+    /// </summary>
     public class InitializeSolutionInfo : SolutionEditorInfo
     {
         public bool CreateSolution { get; set; }
@@ -14,38 +17,67 @@ namespace DLaB.VSSolutionAccelerator
         public string RootNamespace { get; set; }
         //public override Version XrmVersion => XrmPackage.Version;
 
-        private struct Page
+        public struct Page
         {
             public const int SolutionPath = 0;
             public const int RootNamespace = 1;
             public const int EarlyBound = 2;
             public const int CommonName = 3;
-            public const int CommonWorkflowName = 4;
-            public const int UseXrmUnitTest = 5;
-            public const int CreatePlugin = 6;
-            public const int PluginAssembly = 7;
-            public const int PluginTest = 8;
-            public const int CreateWorkflow = 9;
+            public const int UseXrmUnitTest = 4;
+            public const int CreatePlugin = 5;
+            public const int PluginAssembly = 6;
+            public const int PluginTest = 7;
+            public const int CreateWorkflow = 8;
+            public const int CommonWorkflowName = 9;
             public const int WorkflowTest = 10;
+            public const int CodeSnippets = 11;
         }
 
         public static List<IWizardPage> InitializePages(List<KeyValuePair<int, string>> solutionNames)
         {
-            // ReSharper disable once UseObjectOrCollectionInitializer
             var pages = new List<IWizardPage>();
-            AddSolutionNameQuestion(pages); // 0
-            AddRootNamespaceQuestion(pages);
-            // AddXrmNuGetVersionQuestion(pages);
-            AddUseEarlyBoundQuestion(pages);
-            AddSharedCommonNameQuestion(pages);
-            AddSharedCommonWorkflowNameQuestion(pages); 
-            AddUseXrmUnitTestQuestion(pages); // 5
-            AddCreatePluginProjectQuestion(pages);
-            AddPluginAssemblyInfoQuestions(pages, solutionNames);
-            AddPluginTestProjectNameQuestion(pages);
-            AddCreateWorkflowProjectQuestion(pages);
-            AddWorkflowTestProjectNameQuestion(pages); // 10
-            AddInstallCodeSnippetAndAddCodeGenerationQuestion(pages);
+            for (var i = 0; i <= Page.CodeSnippets; i++)
+            {
+                switch (i)
+                {
+                    case Page.SolutionPath:
+                        AddSolutionNameQuestion(pages);
+                        break;
+                    case Page.RootNamespace:
+                        AddRootNamespaceQuestion(pages);
+                        break;
+                    case Page.EarlyBound:
+                        AddUseEarlyBoundQuestion(pages);
+                        break;
+                    case Page.CommonName:
+                        AddSharedCommonNameQuestion(pages);
+                        break;
+                    case Page.UseXrmUnitTest:
+                        AddUseXrmUnitTestQuestion(pages); 
+                        break;
+                    case Page.CreatePlugin:
+                        AddCreatePluginProjectQuestion(pages);
+                        break;
+                    case Page.PluginAssembly:
+                        AddPluginAssemblyInfoQuestions(pages, solutionNames);
+                        break;
+                    case Page.PluginTest:
+                        AddPluginTestProjectNameQuestion(pages);
+                        break;
+                    case Page.CreateWorkflow:
+                        AddCreateWorkflowProjectQuestion(pages);
+                        break;
+                    case Page.CommonWorkflowName:
+                        AddSharedCommonWorkflowNameQuestion(pages); 
+                        break;
+                    case Page.WorkflowTest:
+                        AddWorkflowTestProjectNameQuestion(pages);
+                        break;
+                    case Page.CodeSnippets:
+                        AddInstallCodeSnippetAndAddCodeGenerationQuestion(pages);
+                        break;
+                }
+            }
             return pages;
         }
 
@@ -117,11 +149,14 @@ namespace DLaB.VSSolutionAccelerator
 
         private static void AddSharedCommonWorkflowNameQuestion(List<IWizardPage> pages)
         {
-            pages.Add(GenericPage.Create(new TextQuestionInfo("What do you want the name of the shared common workflow assembly to be?")
+            var page = GenericPage.Create(new TextQuestionInfo("What do you want the name of the shared common workflow assembly to be?")
             {
                 DefaultResponse = GenericPage.GetSaveResultsFormat(Page.RootNamespace) + ".WorkflowCore",
                 Description = "This will be the name of a shared C# project that contains references to the workflow code.  It would only be required by assemblies containing a workflow."
-            }));
+            });
+            pages.Add(page);
+
+            page.AddSavedValuedRequiredCondition(Page.CreateWorkflow, "Y");
         }
 
         private static void AddUseXrmUnitTestQuestion(List<IWizardPage> pages)
@@ -250,19 +285,48 @@ namespace DLaB.VSSolutionAccelerator
 
         private InitializeSolutionInfo(Queue<object> queue, Dictionary<int, Guid> solutionIdsByIndex)
         {
-            InitializeSolution(new YesNoResult(queue.Dequeue())); // 0
-            RootNamespace = (string)queue.Dequeue();
-            //XrmPackage = (NuGetPackage)queue.Dequeue();
-            ConfigureEarlyBound = queue.Dequeue().ToString() == "Y";
-            SharedCommonProject = (string)queue.Dequeue();
-            SharedCommonWorkflowProject = (string)queue.Dequeue(); 
-            InitializeXrmUnitTest(new YesNoResult(queue.Dequeue())); // 5
-            InitializePlugin(new YesNoResult(queue.Dequeue()));
-            InitializePluginAssembly((List<string>) queue.Dequeue(), solutionIdsByIndex);
-            PluginTestName = (string)queue.Dequeue();
-            InitializeWorkflow(new YesNoResult(queue.Dequeue()));
-            WorkflowTestName = (string)queue.Dequeue(); 
-            InitializeCodeGeneration((List<string>)queue.Dequeue()); // 10
+            for (var i = 0; i <= Page.CodeSnippets; i++)
+            {
+                switch (i)
+                {
+                    case Page.SolutionPath:
+                        InitializeSolution(new YesNoResult(queue.Dequeue()));
+                        break;                      
+                    case Page.RootNamespace:
+                        RootNamespace = (string)queue.Dequeue();
+                        break;
+                    case Page.EarlyBound:
+                        ConfigureEarlyBound = queue.Dequeue().ToString() == "Y";
+                        break;
+                    case Page.CommonName:
+                        SharedCommonProject = (string)queue.Dequeue();
+                        break;
+                    case Page.UseXrmUnitTest:
+                        InitializeXrmUnitTest(new YesNoResult(queue.Dequeue()));
+                        break;
+                    case Page.CreatePlugin:
+                        InitializePlugin(new YesNoResult(queue.Dequeue()));
+                        break;
+                    case Page.PluginAssembly:
+                        InitializePluginAssembly((List<string>) queue.Dequeue(), solutionIdsByIndex);
+                        break;
+                    case Page.PluginTest:
+                        PluginTestName = (string)queue.Dequeue();
+                        break;
+                    case Page.CreateWorkflow:
+                        InitializeWorkflow(new YesNoResult(queue.Dequeue()));
+                        break;
+                    case Page.CommonWorkflowName:
+                        SharedCommonWorkflowProject = (string)queue.Dequeue(); 
+                        break;
+                    case Page.WorkflowTest:
+                        WorkflowTestName = (string)queue.Dequeue(); 
+                        break;
+                    case Page.CodeSnippets:
+                        InitializeCodeGeneration((List<string>)queue.Dequeue());
+                        break;
+                }
+            }
 
             if (ConfigureXrmUnitTest)
             {
@@ -271,7 +335,7 @@ namespace DLaB.VSSolutionAccelerator
             }
         }
 
-        public static InitializeSolutionInfo InitializeSolution(object[] values, Dictionary<int, Guid> solutionIdsByIndex)
+        public static InitializeSolutionInfo Create(object[] values, Dictionary<int, Guid> solutionIdsByIndex)
         {
             return new InitializeSolutionInfo(new Queue<object>(values), solutionIdsByIndex);
         }
@@ -293,7 +357,6 @@ namespace DLaB.VSSolutionAccelerator
         {
             ConfigureXrmUnitTest = result.IsYes;
             TestBaseProject = result[1];
-            SharedTestCoreProject = result[2];
         }
 
         private void InitializePlugin(YesNoResult result)
@@ -301,14 +364,6 @@ namespace DLaB.VSSolutionAccelerator
             CreatePlugin = result.IsYes;
             PluginName = result[1];
             IncludeExamplePlugins = result[2] == "0";
-        }
-
-        private void InitializePluginAssembly(List<string> result, Dictionary<int, Guid> solutionIdsByIndex)
-        {
-            PluginPackage.Company = result[0];
-            PluginPackage.Description = result[1];
-            PluginPackage.SolutionId = solutionIdsByIndex[int.Parse(result[2])];
-            PluginPackage.PacAuthName = result[3];
         }
 
         private void InitializeWorkflow(YesNoResult result)

@@ -12,6 +12,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
         public enum ProjectType
         {
             CsProj,
+            LegacyCsProj,
             SharedProj
         }
 
@@ -73,6 +74,9 @@ namespace DLaB.VSSolutionAccelerator.Logic
             switch (type)
             {
                 case ProjectType.CsProj:
+                    return "{9A19103F-16F7-4668-BE54-9A1E7A4F7556}";
+
+                case ProjectType.LegacyCsProj:
                     return "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}";
 
                 case ProjectType.SharedProj:
@@ -167,11 +171,23 @@ namespace DLaB.VSSolutionAccelerator.Logic
         {
             foreach (var file in FilesToRemove)
             {
-                var path = Path.Combine(NewDirectory, file);
-                if (File.Exists(path))
+                if (file.EndsWith(@"\"))
                 {
-                    Logger.AddDetail($"Deleting unused file '{path}'.");
-                    File.Delete(path);
+                    var directory = Path.Combine(NewDirectory, file.Substring(0, file.Length -1));
+                    if (Directory.Exists(directory))
+                    {
+                        Logger.AddDetail($"Deleting unused directory '{directory}'.");
+                        Directory.Delete(directory, true);
+                    }
+                }
+                else
+                {
+                    var path = Path.Combine(NewDirectory, file);
+                    if (File.Exists(path))
+                    {
+                        Logger.AddDetail($"Deleting unused file '{path}'.");
+                        File.Delete(path);
+                    }
                 }
             }
         }

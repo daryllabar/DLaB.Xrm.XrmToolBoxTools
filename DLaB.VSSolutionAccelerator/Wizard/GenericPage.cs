@@ -67,7 +67,7 @@ namespace DLaB.VSSolutionAccelerator.Wizard
                 SizeType = r.SizeType,
                 Parent = r
             }));
-            SavedValueRequiredValue = new List<KeyValuePair<int, string>>();
+            SavedValueRequiredValue = new List<KeyValuePair<Tuple<int,int>, string>>();
             DefaultYesNoText = new string[4];
         }
 

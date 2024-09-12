@@ -13,6 +13,7 @@ namespace DLaB.VSSolutionAccelerator
         public bool InstallSnippets { get; set; }
 
         public bool IncludeExamplePlugins { get; set; }
+        public bool CreateCommonWorkflowProject { get; set; }
         public bool CreateWorkflow { get; set; }
         public bool IncludeExampleWorkflow { get; set; }
         public string PluginName { get; set; }
@@ -23,8 +24,15 @@ namespace DLaB.VSSolutionAccelerator
         public string SharedCommonProject { get; set; }
         public string SharedCommonWorkflowProject { get; set; }
         public string TestBaseProject { get; set; }
-        public string SharedTestCoreProject { get; set; }
-        public virtual Version XrmVersion { get; set; }
+
+
+        protected void InitializePluginAssembly(List<string> result, Dictionary<int, Guid> solutionIdsByIndex)
+        {
+            PluginPackage.Company = result[0];
+            PluginPackage.Description = result[1];
+            PluginPackage.SolutionId = solutionIdsByIndex[int.Parse(result[2])];
+            PluginPackage.PacAuthName = result[3];
+        }
 
         protected class YesNoResult
         {

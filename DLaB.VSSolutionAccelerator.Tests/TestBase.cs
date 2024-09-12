@@ -67,18 +67,18 @@ namespace DLaB.VSSolutionAccelerator.Tests
                 P1Namespace = "Abc.Xrm",
                 P2EarlyBound = true,
                 P3SharedCommonAssemblyName = "Abc.Xrm",
-                P4SharedWorkflowProjectName = "Abc.Xrm.Workflow",
-                P5UseXrmUnitTest = true, P5TestSettingsProjectName = "Abc.Xrm.Test",
-                P6CreatePluginProject = true, P6PluginProjectName = "Abc.Xrm.Plugin", P6IncludeExamples = true,
-                P7CompanyName = "Acme", P7PluginDescription = "Test Description For Plugin", P7PluginSolutionIndex = 0, P7PacAuthName = "Abc Dev",
-                P8PluginTestProjectName = "Abc.Xrm.Plugin.Tests",
-                P9CreateWorkflowProject = true, P9WorkflowProjectName = "Abc.Xrm.Workflow", P9IncludeExamples = true,
+                P4UseXrmUnitTest = true, P4TestSettingsProjectName = "Abc.Xrm.Test",
+                P5CreatePluginProject = true, P5PluginProjectName = "Abc.Xrm.Plugin", P5IncludeExamples = true,
+                P6CompanyName = "Acme", P6PluginDescription = "Test Description For Plugin", P6PluginSolutionIndex = 0, P6PacAuthName = "Abc Dev",
+                P7PluginTestProjectName = "Abc.Xrm.Plugin.Tests",
+                P8CreateWorkflowProject = true, P8WorkflowProjectName = "Abc.Xrm.Workflow", P8IncludeExamples = true,
+                P9SharedWorkflowProjectName = "Abc.Xrm.Workflow",
                 P10WorkflowTestProjectName = "Abc.Xrm.Workflow.Tests",
                 P11InstallCodeSnippets = true, P11IncludeCodeGen = true
 
             }).GetResults();
             solutions = solutions ?? new Dictionary<int, Guid> { { 0, Guid.Empty } };
-            return VSSolutionAccelerator.InitializeSolutionInfo.InitializeSolution(values, solutions);
+            return VSSolutionAccelerator.InitializeSolutionInfo.Create(values, solutions);
         }
     }
 }

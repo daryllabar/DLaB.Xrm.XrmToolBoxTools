@@ -118,12 +118,13 @@ namespace DLaB.VSSolutionAccelerator.Logic
                     @"PluginBaseExamples\EntityAccess.cs",
                     @"PluginBaseExamples\ContextExample.cs",
                     @"PluginBaseExamples\VoidPayment.cs",
+                    @"PluginBaseExamples\",
                     @"RaceConditionPlugin.cs",
                     @"RemovePhoneNumberFormatting.cs",
                     @"RenameLogic.cs",
                     @"ServicesExamplePlugin.cs",
                     @"SyncContactToAccount.cs",
-                    @"ValidateEmailRouterApproval"
+                    @"ValidateEmailRouterApproval.cs"
                 });
         }
 
@@ -177,6 +178,60 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 project.FilesToRemove.Add("CreateGuidActivity.cs");
             }
             projects.Add(project.Key, project);
+        }
+
+        protected void AddSharedWorkflowProject(Dictionary<string, ProjectInfo> projects, SolutionEditorInfo info, string newNamespace)
+        {
+            if (!info.CreateCommonWorkflowProject)
+            {
+                return;
+            }
+
+            var project = CreateDefaultSharedProjectInfo(
+                ProjectInfo.Keys.WorkflowCommon,
+                info.SharedCommonWorkflowProject,
+                "Xyz.Xrm.Workflow",
+                newNamespace);
+            projects.Add(project.Key, project);
+        }
+
+        protected ProjectInfo CreateDefaultSharedProjectInfo(string key, string name, string originalNamespace = null, string newNamespace = null)
+        {
+            Logger.AddDetail($"Configuring Project {name} based on {key}.");
+            originalNamespace = originalNamespace ?? key;
+            newNamespace = newNamespace ?? name;
+            var id = Guid.NewGuid();
+            var project = new ProjectInfo
+            {
+                AddToSolution = true,
+                Key = key,
+                Id = id,
+                Type = ProjectInfo.ProjectType.SharedProj,
+                NewDirectory = Path.Combine(OutputBaseDirectory, name),
+                Name = name,
+                Files = new List<ProjectFile>
+                {
+                    new ProjectFile
+                    {
+                        Name = name + ".projitems",
+                        Replacements = new Dictionary<string, string>
+                        {
+                            {ProjectInfo.IdByKey[key], id.ToString()},
+                            {$"<Import_RootNamespace>{originalNamespace}</Import_RootNamespace>", $"<Import_RootNamespace>{newNamespace}</Import_RootNamespace>"}
+                        },
+                    },
+                    new ProjectFile
+                    {
+                        Name = name + ".shproj",
+                        Replacements = new Dictionary<string, string>
+                        {
+                            {ProjectInfo.IdByKey[key], id.ToString()},
+                            { key +".projitems", name + ".projitems"}
+                        }
+                    },
+                }
+            };
+            return project;
         }
 
         protected void AddWorkflowTest(Dictionary<string, ProjectInfo> projects, SolutionEditorInfo info)

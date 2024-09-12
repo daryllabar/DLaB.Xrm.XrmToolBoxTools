@@ -6,7 +6,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
 {
     public class VisualStudio
     {
-        public static void InstallCodeSnippets(string pluginPath)
+        public static void InstallCodeSnippets(string pluginPath, string rootNamespace)
         {
             var codeGenPath = Path.GetFullPath(Path.Combine(pluginPath, Settings.TemplateFolder, "CodeGeneration"));
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -34,7 +34,8 @@ namespace DLaB.VSSolutionAccelerator.Logic
                     {
                         Directory.CreateDirectory(Path.GetDirectoryName(newFile) ?? "");
                         Logger.AddDetail($"Installing snippet '{newFile}'...");
-                        File.Copy(file, newFile);
+                        var contents = File.ReadAllText(file);
+                        File.WriteAllText(newFile, contents.Replace("<Namespace>Xyz.Xrm", $"<Namespace>{rootNamespace}"));
                     }
                 }
             }

@@ -101,7 +101,7 @@ namespace DLaB.VSSolutionAccelerator
                 if (host.ShowDialog() == DialogResult.OK)
                 {
                     var results = host.SaveResults;
-                    var info = InitializeSolutionInfo.InitializeSolution(results, GetSolutionIdsByIndex());
+                    var info = InitializeSolutionInfo.Create(results, GetSolutionIdsByIndex());
 
                     Execute(info);
                 }
@@ -129,7 +129,8 @@ namespace DLaB.VSSolutionAccelerator
                 host.Text = @"Add Accelerators Wizard";
                 host.ShowFirstButton = false;
                 host.ShowLastButton = false;
-                foreach (var page in AddProjectToSolutionInfo.InitializePages())
+                var names = GetSolutionNamesByIndex();
+                foreach (var page in AddProjectToSolutionInfo.InitializePages(names))
                 {
                     host.WizardPages.Add(page);
                 }
@@ -137,7 +138,7 @@ namespace DLaB.VSSolutionAccelerator
                 if (host.ShowDialog() == DialogResult.OK)
                 {
                     var results = host.SaveResults;
-                    var info = AddProjectToSolutionInfo.Create(results);
+                    var info = AddProjectToSolutionInfo.Create(results, GetSolutionIdsByIndex());
                     Execute(info);
                 }
 
@@ -145,11 +146,35 @@ namespace DLaB.VSSolutionAccelerator
             }
         }
 
-        private void ExecuteInstallCodeSnippets()
+        private void ShowSnippetWizard()
+        {
+            using (var host = new WizardHost())
+            {
+                host.Text = @"Install Snippets Wizard";
+                host.ShowFirstButton = false;
+                host.ShowLastButton = false;
+                var page = GenericPage.Create(new TextQuestionInfo("What is the default Namespace?")
+                {
+                    Description = "This will be used to replace the namespace in the snippets."
+                });
+                host.WizardPages.Add(page);
+                
+                host.LoadWizard();
+                if (host.ShowDialog() == DialogResult.OK)
+                {
+                    var results = host.SaveResults;
+                    ExecuteInstallCodeSnippets(results[0]?.ToString() ?? "DLaB");
+                }
+
+                host.Close();
+            }
+        }
+
+        private void ExecuteInstallCodeSnippets(string rootNamespace)
         {
             WorkAsync(new WorkAsyncInfo("Installing Code Snippets...", (w, e) => // Work To Do Asynchronously
             {
-                Logic.VisualStudio.InstallCodeSnippets(Paths.PluginsPath);
+                Logic.VisualStudio.InstallCodeSnippets(Paths.PluginsPath, rootNamespace);
             }).WithLogger(this, TxtOutput));
         }
 
@@ -209,7 +234,7 @@ namespace DLaB.VSSolutionAccelerator
                         ShowAddAssemblyWizard();
                         break;
                     case 2:
-                        ExecuteInstallCodeSnippets();
+                        ShowSnippetWizard();
                         break;
                     case 3:
                         GenerateWithDefaultSettings();
@@ -237,18 +262,18 @@ namespace DLaB.VSSolutionAccelerator
                 P1Namespace = "Acme.Dataverse",
                 P2EarlyBound = true,
                 P3SharedCommonAssemblyName = "Acme.Dataverse",
-                P4SharedWorkflowProjectName = "Acme.Dataverse.WorkflowCore",
-                P5UseXrmUnitTest = true, P5TestSettingsProjectName = "Acme.Dataverse.Test",
-                P6CreatePluginProject = true, P6PluginProjectName = "Acme.Dataverse.Plugin", P6IncludeExamples = true,
-                P7CompanyName = "Acme", P7PluginDescription = "Default Description For Plugin", P7PluginSolutionIndex = 1, P7PacAuthName = "Daryl Dev",
-                P8PluginTestProjectName = "Acme.Dataverse.Plugin.Tests",
-                P9CreateWorkflowProject = true, P9WorkflowProjectName = "Acme.Dataverse.Workflow", P9IncludeExamples = true,
+                P9SharedWorkflowProjectName = "Acme.Dataverse.WorkflowCore",
+                P4UseXrmUnitTest = true, P4TestSettingsProjectName = "Acme.Dataverse.Test",
+                P5CreatePluginProject = true, P5PluginProjectName = "Acme.Dataverse.Plugin", P5IncludeExamples = true,
+                P6CompanyName = "Acme", P6PluginDescription = "Default Description For Plugin", P6PluginSolutionIndex = 1, P6PacAuthName = "Daryl Dev",
+                P7PluginTestProjectName = "Acme.Dataverse.Plugin.Tests",
+                P8CreateWorkflowProject = true, P8WorkflowProjectName = "Acme.Dataverse.Workflow", P8IncludeExamples = true,
                 P10WorkflowTestProjectName = "Acme.Dataverse.Workflow.Tests",
                 P11InstallCodeSnippets = true, P11IncludeCodeGen = true
 
             }.GetResults();
 
-            var info = InitializeSolutionInfo.InitializeSolution(results, GetSolutionIdsByIndex());
+            var info = InitializeSolutionInfo.Create(results, GetSolutionIdsByIndex());
             var solutionDir = Path.GetDirectoryName(info.SolutionPath) ?? Guid.NewGuid().ToString();
             DeleteDirectory(solutionDir);
 
@@ -320,7 +345,7 @@ namespace DLaB.VSSolutionAccelerator
                 P4CreateWorkflowXrmUnitTest = true, P4WorkflowTestProjectName ="Acme.Dataverse.Lead.Workflow.Tests",
             }.GetResults();
 
-            var info = AddProjectToSolutionInfo.Create(results);
+            var info = AddProjectToSolutionInfo.Create(results, GetSolutionIdsByIndex());
             Execute(info);
         }
 
@@ -341,7 +366,7 @@ namespace DLaB.VSSolutionAccelerator
                     {
                         if (solutionInfo.InstallSnippets)
                         {
-                            Logic.VisualStudio.InstallCodeSnippets(Paths.PluginsPath);
+                            Logic.VisualStudio.InstallCodeSnippets(Paths.PluginsPath, solutionInfo.RootNamespace);
                         }
 
                         Logic.PluginPackageInitializer.SetPluginPackageId(Service, solutionInfo, solutions);

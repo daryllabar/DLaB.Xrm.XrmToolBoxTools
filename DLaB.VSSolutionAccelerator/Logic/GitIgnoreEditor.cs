@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using DLaB.Log;
 
 namespace DLaB.VSSolutionAccelerator.Logic
 {
@@ -26,6 +27,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
             var gitIgnorePath = Path.Combine(Path.GetDirectoryName(info.SolutionPath) ?? string.Empty, @".gitignore");
             if (!File.Exists(gitIgnorePath))
             {
+                Logger.AddDetail($"Creating '.gitignore' at path: {gitIgnorePath}");
                 File.WriteAllText(gitIgnorePath, UserSpecificSection);
                 return;
             }
@@ -33,6 +35,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
             var lines = File.ReadAllLines(gitIgnorePath);
             if (lines.Any(l => l.Trim() == IgnoreXrmUnitTestUserConfig))
             {
+                Logger.AddDetail($"'.gitignore' at '{gitIgnorePath}' already has XrmUnitTest User Config ignore.  Skipping update of file.");
                 return;
             }
 
@@ -40,10 +43,12 @@ namespace DLaB.VSSolutionAccelerator.Logic
             var userSpecificFilesIndex = Array.FindIndex(lines, l => l.Trim() == "# User-specific files");
             if (userSpecificFilesIndex >= 0)
             {
+                Logger.AddDetail($"Adding XrmUnitTest User Config ignore to '.gitignore' at '{gitIgnorePath}'.");
                 updatedLines.Insert(userSpecificFilesIndex + 1, IgnoreXrmUnitTestUserConfig);
             }
             else
             {
+                Logger.AddDetail($"Adding User ignore section to '.gitignore' at '{gitIgnorePath}'.");
                 updatedLines.Add(UserSpecificSection);
             }
             File.WriteAllLines(gitIgnorePath, updatedLines);
