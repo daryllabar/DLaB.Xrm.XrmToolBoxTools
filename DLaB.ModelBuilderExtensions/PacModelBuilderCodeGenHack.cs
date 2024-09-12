@@ -247,6 +247,11 @@ namespace DLaB.ModelBuilderExtensions
                     {
                         provider.GenerateCodeFromCompileUnit(new CodeSnippetCompileUnit(string.Format(Settings.DLaBModelBuilder.FilePrefixText, Path.GetFileName(outputFile)) + Environment.NewLine), fileWriter, options);
                     }
+
+                    if (Settings.DLaBModelBuilder.MakeReferenceTypesNullable)
+                    {
+                        provider.GenerateCodeFromCompileUnit(new CodeSnippetCompileUnit("#nullable enable"), fileWriter, options);
+                    }
                     provider.GenerateCodeFromCompileUnit(new CodeSnippetCompileUnit("#pragma warning disable CS1591"), fileWriter, options);
                     if (!string.IsNullOrWhiteSpace(commandLine))
                     {
