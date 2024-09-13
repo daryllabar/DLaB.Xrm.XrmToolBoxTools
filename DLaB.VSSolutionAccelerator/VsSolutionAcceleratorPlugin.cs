@@ -54,13 +54,23 @@ namespace DLaB.VSSolutionAccelerator
                 return;
             }
 
-            var tmp = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
             File.SetAttributes(zipPath, FileAttributes.Normal);
-            File.Move(zipPath, tmp);
-            DeleteDirectory(zipDirectory);
-            Directory.CreateDirectory(zipDirectory);
-            ZipFile.ExtractToDirectory(tmp, zipDirectory);
-            File.Delete(tmp);
+
+            // Delete all files except dlls since they wil be loaded, and the file to unzip
+            foreach(var file in Directory.GetFiles(zipDirectory))
+            {
+                if(Path.GetExtension(file) != ".dll" && Path.GetExtension(file) != ".zip")
+                {
+                    File.Delete(file);
+                }
+            }
+            foreach(var subDirectory in Directory.GetDirectories(zipDirectory))
+            {
+                Directory.Delete(subDirectory);
+            }
+            
+            ZipFile.ExtractToDirectory(zipPath, zipDirectory);
+            File.Delete(zipPath);
         }
 
         private void MyPluginControl_Load(object sender, EventArgs e)

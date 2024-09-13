@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.VsSolutionAccelerator</id>
-	  <version>2.2024.9.10</version>
+	  <version>2.2024.9.13</version>
 	  <title>Visual Studio Solution Accelerator</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,7 @@
     <icon>images\DLaB_Dynamics_Logo_Square_32x32.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Adds recommended isolation/accelerator projects for use with the DLaB.Xrm and XrmUnitTest framework to your Visual Studio solution.</description>
-    <releaseNotes>V2.2024.9.10
+    <releaseNotes>V2.2024.9.13
 - Switch Solution Accelerator to Dependent Assemblies #513
 - Added support for DevDeploy
 - Utilize EBG to accept a path to a settings file. #514 
@@ -26,7 +26,7 @@
   </metadata>
   <files>
     <file src="bin\Release\Plugins\DLaB.VSSolutionAccelerator.dll"     target="lib\net48\plugins" />
-    <file src="bin\Release\Plugins\DLaB.VSSolutionAccelerator\*.*"     target="lib\net48\plugins\DLaB.VSSolutionAccelerator" exclude="bin\Release\DLaB.VSSolutionAccelerator.dll"  />
+    <file src="bin\Release\Plugins\DLaB.VSSolutionAccelerator\*.*"     target="lib\net48\plugins\DLaB.VSSolutionAccelerator" exclude="bin\Release\DLaB.VSSolutionAccelerator.dll" />
     <file src="..\DLaB.XrmToolBoxCommon\Images\DLaB_Dynamics_Logo_Square_32x32.png" target="images\" />
 	</files>
 </package>

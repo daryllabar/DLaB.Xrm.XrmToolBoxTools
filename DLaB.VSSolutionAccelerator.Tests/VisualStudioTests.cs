@@ -12,11 +12,6 @@ namespace DLaB.VSSolutionAccelerator.Tests
         [TestMethod]
         public void InstallCodeSnippets_WhenEmpty_Should_CreateNew()
         {
-            void AssertSnippetCreated(string[] snippets, string snippet)
-            {
-                Assert.That.ALineContains(snippets, snippet, $"Snippet {snippet} was not copied!");
-            }
-
             var pluginPath = TestBase.GetPluginsPath();
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             var vsDirectories = Directory.GetDirectories(documentsPath, "Visual Studio *");
@@ -57,6 +52,12 @@ namespace DLaB.VSSolutionAccelerator.Tests
                 TestBase.ClearDirectory(value.SnippetFolder);
                 Directory.Delete(value.SnippetFolder);
                 Directory.Move(value.Backup, value.SnippetFolder);
+            }
+            return;
+
+            void AssertSnippetCreated(string[] snippets, string snippet)
+            {
+                Assert.That.ALineContains(snippets, snippet, $"Snippet {snippet} was not copied!");
             }
         }
     }
