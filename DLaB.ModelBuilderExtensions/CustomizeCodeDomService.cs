@@ -15,6 +15,7 @@ namespace DLaB.ModelBuilderExtensions
 
         public bool AddDebuggerNonUserCode { get => DLaBSettings.AddDebuggerNonUserCode; set => DLaBSettings.AddDebuggerNonUserCode = value; }
         public bool AddPrimaryAttributeConsts { get => DLaBSettings.AddPrimaryAttributeConsts; set => DLaBSettings.AddPrimaryAttributeConsts = value; }
+        public bool EmitEntityEtc { get => Settings.EmitEntityEtc; set => Settings.EmitEntityEtc = value; }
         public bool GenerateAnonymousTypeConstructor { get => DLaBSettings.GenerateAnonymousTypeConstructor; set => DLaBSettings.GenerateAnonymousTypeConstructor = value; }
         public bool GenerateConstructorsSansLogicalName { get => DLaBSettings.GenerateConstructorsSansLogicalName; set => DLaBSettings.GenerateConstructorsSansLogicalName = value; }
         public bool GenerateOptionSetProperties { get => DLaBSettings.GenerateOptionSetProperties; set => DLaBSettings.GenerateOptionSetProperties = value; }
@@ -154,6 +155,12 @@ namespace DLaB.ModelBuilderExtensions
             if (GenerateOptionSetProperties)
             {
                 OptionSetPropertyCustomizer.CustomizeCodeDom(codeUnit, services);
+            }
+
+            if (!EmitEntityEtc && !GenerateOptionSetProperties)
+            {
+                // Since Type Codes are not being generated, the enum will not be generated, but the property with the type code enum type will.  Need to revert it to int.
+                new OptionSetToIntPropertyGenerator(DefaultService, Settings).CustomizeCodeDom(codeUnit, services);
             }
 
             if (MakeAllFieldsEditable)

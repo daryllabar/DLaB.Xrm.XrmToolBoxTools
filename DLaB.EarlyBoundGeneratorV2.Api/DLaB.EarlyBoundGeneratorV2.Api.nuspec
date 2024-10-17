@@ -2,7 +2,7 @@
 <package >
 	<metadata>
 		<id>DLaB.Xrm.EarlyBoundGeneratorV2.Api</id>
-		<version>2.2024.9.11</version>
+		<version>2.2024.10.16</version>
 		<title>Early Bound Generator V2 Api</title>
 		<authors>Daryl LaBar</authors>
 		<owners>Daryl LaBar</owners>
@@ -11,7 +11,11 @@
 		<projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses ModelBuilder from the PAC.</description>
-		<releaseNotes>V2.2024.9.11
+		<releaseNotes>V2.2024.10.16
+Fix for EBGv2: Entity constructor that takes anonymousType throws NullReferenceException resolves #521 Thank you Jānis Veinbergs for reporting!
+Fix for Connection_Record1ObjectTypeCode is missing in generated optionsets resolves #520 Thank you Matt Ritchie for reporting!
+
+V2.2024.9.11
 Fix for make reference types nullable" should generate a nullable opt-in directive #500 Thank you Oliver Tressler!
 
 V2.2024.9.8
@@ -64,13 +68,6 @@ Added Option to import all languages label - Early Bound Generator #426
 Added Character substitution list for Danish #441
 Fix for "Delete Files from Output folders" fails if "Generate Messages" = False #447
 Add setting to specify output folder location #451
-
-V2.2023.9.21
-Utilize EmitEntityETC Setting #446 		
-Use emitVirtualAttributes #445
-Add Ability to Trace Model Builder #444
-Capitalize BookableResourceTypes choice correctly #443
-Fix for UpsertMultiple request always getting generated #442
 		</releaseNotes>
 		<copyright>Copyright 2019</copyright>
 		<tags>PAC ModelBuilder Dataverse Xrm EarlyBound Generator</tags>

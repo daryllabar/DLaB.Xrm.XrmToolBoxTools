@@ -43,7 +43,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
 					new CodeCommentStatement(@"</summary>", true)});
 
 
-            constructor.Parameters.Add(new CodeParameterDeclarationExpression(typeof (Object), "anonymousType"));
+            constructor.Parameters.Add(new CodeParameterDeclarationExpression(typeof (object), "anonymousType"));
             constructor.ChainedConstructorArgs.Add(new CodeSnippetExpression(""));
             const string indent = "            ";
             // Rather than attempt to do this all through CodeDom, hard code this as C#
@@ -52,7 +52,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
             "{{{0}" +
             "    var value = p.GetValue(anonymousType, null);{0}" +
             "    var name = p.Name.ToLower();{0}{0}" +
-            "    if (name.EndsWith(\"enum\") && value.GetType().BaseType == typeof(System.Enum)){0}" +
+            "    if (value != null && name.EndsWith(\"enum\") && value.GetType().BaseType == typeof(System.Enum)){0}" +
             "    {{{0}" +
             "        value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);{0}" +
             "        name = name.Remove(name.Length - \"enum\".Length);{0}" +
