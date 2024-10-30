@@ -404,6 +404,13 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         }
 
         [Category("1 - Global")]
+        [DisplayName("Make Reference Types Nullable Blacklist")]
+        [Description("Exclude specified additional types from being marked as nullable")]
+        [Editor(StringEditorName, typeof(UITypeEditor))]
+        [TypeConverter(typeof(CollectionCountConverter))]
+        public List<string> MakeReferenceTypesNullableBlacklist { get; set; }
+
+        [Category("1 - Global")]
         [DisplayName("Namespace")]
         [Description("The Namespace generated code will be placed in.")]
         public string Namespace
@@ -819,6 +826,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             PropertyEnumMappings = RemoveWhiteSpace(nameof(PropertyEnumMappings), config.ExtensionConfig.PropertyEnumMappings).GetList<string>();
             OptionSetNames = RemoveWhiteSpace(nameof(OptionSetNames), Config.ExtensionConfig.OptionSetNames).GetDictionary<string,string>();
             TokenCapitalizationOverrides = RemoveWhiteSpace(nameof(TokenCapitalizationOverrides), config.ExtensionConfig.TokenCapitalizationOverrides).GetList<string>();
+            MakeReferenceTypesNullableBlacklist = RemoveWhiteSpace(nameof(MakeReferenceTypesNullableBlacklist), config.ExtensionConfig.MakeReferenceTypesNullableBlacklist).GetList<string>();
 
             SetupCustomTypeDescriptor();
             OnChangeMap = GetOnChangeHandlers();
@@ -862,6 +870,8 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             Config.ExtensionConfig.PropertyEnumMappings = CommonConfig.ToStringSorted(PropertyEnumMappings);
             Config.ExtensionConfig.OptionSetNames = CommonConfig.ToStringSorted(OptionSetNames);
             Config.ExtensionConfig.TokenCapitalizationOverrides = CommonConfig.ToStringSorted(TokenCapitalizationOverrides);
+            Config.ExtensionConfig.MakeReferenceTypesNullableBlacklist = CommonConfig.ToStringSorted(MakeReferenceTypesNullableBlacklist, info);
+
         }
 
         public EarlyBoundGeneratorPlugin GetPluginControl()

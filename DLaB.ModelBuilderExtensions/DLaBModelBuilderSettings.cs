@@ -163,6 +163,9 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("makeReferenceTypesNullable")]
         public bool MakeReferenceTypesNullable { get; set; }
 
+        [JsonPropertyName("makeReferenceTypesNullableBlacklist")]
+        public List<string> MakeReferenceTypesNullableBlacklist { get; set; }
+
         [JsonPropertyName("makeResponseMessagesEditable")]
         public bool MakeResponseMessagesEditable { get; set; }
 
