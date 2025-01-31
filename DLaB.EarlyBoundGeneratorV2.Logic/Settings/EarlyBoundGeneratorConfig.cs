@@ -536,6 +536,16 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 Indent = true,
                 NewLineOnAttributes = true,
             };
+
+            if (!File.Exists(filePath))
+            {
+                var directory = Path.GetDirectoryName(filePath);
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+                File.WriteAllText(filePath, string.Empty);
+            }
             using (var xmlWriter = XmlWriter.Create(filePath, xmlWriterSettings))
             {
                 serializer.Serialize(xmlWriter, this);

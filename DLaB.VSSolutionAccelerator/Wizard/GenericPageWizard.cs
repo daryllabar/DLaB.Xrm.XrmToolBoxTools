@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -10,9 +11,14 @@ namespace DLaB.VSSolutionAccelerator.Wizard
         public UserControl Content => this;
 
         /// <summary>
-        /// Contains index of the saved value and the string value that that if the saved value is equal to, triggers the page as required.
+        /// Contains index of the saved value and the string value that if the saved value is equal to, triggers the page as required.
         /// </summary>
-        public List<KeyValuePair<int,string>> SavedValueRequiredValue;
+        public List<KeyValuePair<Tuple<int,int>, string>> SavedValueRequiredValue { get; set; }
+
+        /// <summary>
+        /// Allows for the page to calculate a value post save of the default controls on the page.
+        /// </summary>
+        public Action<List<string>> PostSave { get; set; }
 
         public bool PageValid
         {
@@ -27,8 +33,12 @@ namespace DLaB.VSSolutionAccelerator.Wizard
 
                 return ResponseTextIsValid(ResponseText)
                     && ResponseTextIsValid(Response2Text)
+                    && ResponseTextIsValid(Response3Text)
+                    && ResponseTextIsValid(Response4Text)
                     && PathTextIsValid(Path, CheckFileExists)
-                    && PathTextIsValid(Path2, CheckFile2Exists);
+                    && PathTextIsValid(Path2, CheckFile2Exists)
+                    && PathTextIsValid(Path3, CheckFile3Exists)
+                    && PathTextIsValid(Path4, CheckFile4Exists);
             }
         }
 
@@ -66,6 +76,15 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             AddValue(response, Response2Text);
             AddValue(response, Path2);
             AddValue(response, Combo2);
+            AddValue(response, Response3Text);
+            AddValue(response, Path3);
+            AddValue(response, Combo3);
+            AddValue(response, Response4Text);
+            AddValue(response, Path4);
+            AddValue(response, Combo4);
+
+            PostSave?.Invoke(response);
+
             return response.Count == 1 
                 ? (object)response.First()
                 : response;
@@ -93,9 +112,14 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             OnLoadAction?.Invoke(this, saveResults);
         }
 
-        public void AddSavedValuedRequiredCondition(int savedValueIndex, string equalToValue)
+        public void AddSavedValuedRequiredCondition(int savedPageIndex, string equalToValue)
         {
-            SavedValueRequiredValue.Add(new KeyValuePair<int, string>(savedValueIndex, equalToValue));
+            SavedValueRequiredValue.Add(new KeyValuePair<Tuple<int,int>, string>(new Tuple<int, int>(savedPageIndex, 0), equalToValue));
+        }
+
+        public void AddSavedValuedRequiredCondition(int savedPageIndex, int savedValueIndex, string equalToValue)
+        {
+            SavedValueRequiredValue.Add(new KeyValuePair<Tuple<int, int>, string>(new Tuple<int, int>(savedPageIndex, savedValueIndex), equalToValue));
         }
 
         bool IWizardPage.IsRequired(object[] saveResults)
@@ -108,10 +132,10 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             var isRequired = true;
             foreach (var condition in SavedValueRequiredValue)
             {
-                var value = saveResults[condition.Key];
+                var value = saveResults[condition.Key.Item1];
                 if (value is List<string> list)
                 {
-                    value = list.FirstOrDefault();
+                    value = list[condition.Key.Item2];
                 }
 
                 if (!string.Equals(value?.ToString(), condition.Value))

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections;
+﻿using Source.DLaB.Common;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Source.DLaB.Common;
 
 namespace DLaB.VSSolutionAccelerator.Wizard
 {
@@ -20,8 +20,16 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             public const int Text2 = 7;
             public const int Path2Text = 8;
             public const int Combo2 = 9;
-            public const int Description = 10;
-            public static readonly int[] All = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+            public const int Question3 = 10;
+            public const int Text3 = 11;
+            public const int Path3Text = 12;
+            public const int Combo3 = 13;
+            public const int Question4 = 14;
+            public const int Text4 = 15;
+            public const int Path4Text = 16;
+            public const int Combo4 = 17;
+            public const int Description = 18;
+            public static readonly int[] All = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 };
         }
 
         public const string SaveResultsPrefix = "SaveResults[";
@@ -39,9 +47,13 @@ namespace DLaB.VSSolutionAccelerator.Wizard
         private ConditionalYesNoQuestionInfo YesNoInfo { get; set; }
         private PathQuestionInfo PathInfo { get; set; }
         private PathQuestionInfo Path2Info { get; set; }
+        private PathQuestionInfo Path3Info { get; set; }
+        private PathQuestionInfo Path4Info { get; set; }
         private List<Row> Heights { get; }
         private bool CheckFileExists { get; set; }
         private bool CheckFile2Exists { get; set; }
+        private bool CheckFile3Exists { get; set; }
+        private bool CheckFile4Exists { get; set; }
         private string[] DefaultYesNoText { get; set; }
 
         public GenericPage()
@@ -55,9 +67,11 @@ namespace DLaB.VSSolutionAccelerator.Wizard
                 SizeType = r.SizeType,
                 Parent = r
             }));
-            SavedValueRequiredValue = new List<KeyValuePair<int, string>>();
+            SavedValueRequiredValue = new List<KeyValuePair<Tuple<int,int>, string>>();
             DefaultYesNoText = new string[4];
         }
+
+        #region Values 1
 
         private int SetValues(ComboQuestionInfo info)
         {
@@ -91,6 +105,10 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             return Rows.Text;
         }
 
+        #endregion Values 1
+
+        #region Values 2
+
         private int SetValues2(ComboQuestionInfo info)
         {
             SetValues2((QuestionInfo)info);
@@ -118,13 +136,93 @@ namespace DLaB.VSSolutionAccelerator.Wizard
 
         private int SetValues2(QuestionInfo info)
         {
-            var separateText = string.IsNullOrWhiteSpace(DescriptionText.Text)
+            var separateText = string.IsNullOrWhiteSpace(DescriptionText.Text) || string.IsNullOrWhiteSpace(info.Description)
                 ? string.Empty
                 : Environment.NewLine + Environment.NewLine;
             Question2Label.Text = info.Question;
             DescriptionText.Text += separateText + info.Description;
             return Rows.Text2;
         }
+
+        #endregion Values 2
+
+        #region Values 3
+
+        private int SetValues3(ComboQuestionInfo info)
+        {
+            SetValues3((QuestionInfo)info);
+            Combo3.DataSource = info.Options;
+            Combo3.ValueMember = "Key";
+            Combo3.DisplayMember = "Value";
+            SetDefaultOnLoad(Combo3, info.DefaultResponse, info.DefaultSaveResultIndex);
+            return Rows.Combo3;
+        }
+
+        private int SetValues3(PathQuestionInfo info)
+        {
+            SetValues3((QuestionInfo)info);
+            Path3Info = info;
+            SetDefaultOnLoad(Path3, info.DefaultResponse, info.EditDefaultResponse);
+            CheckFile3Exists = info.RequireFileExists;
+            return Rows.Path3Text;
+        }
+
+        private int SetValues3(TextQuestionInfo info)
+        {
+            SetDefaultOnLoad(Response3Text, info.DefaultResponse, info.EditDefaultResponse);
+            return SetValues3((QuestionInfo)info);
+        }
+
+        private int SetValues3(QuestionInfo info)
+        {
+            var separateText = string.IsNullOrWhiteSpace(DescriptionText.Text) || string.IsNullOrWhiteSpace(info.Description)
+                ? string.Empty
+                : Environment.NewLine + Environment.NewLine;
+            Question3Label.Text = info.Question;
+            DescriptionText.Text += separateText + info.Description;
+            return Rows.Text3;
+        }
+
+        #endregion Values 3
+
+        #region Values 4
+
+        private int SetValues4(ComboQuestionInfo info)
+        {
+            SetValues4((QuestionInfo)info);
+            Combo4.DataSource = info.Options;
+            Combo4.ValueMember = "Key";
+            Combo4.DisplayMember = "Value";
+            SetDefaultOnLoad(Combo4, info.DefaultResponse, info.DefaultSaveResultIndex);
+            return Rows.Combo4;
+        }
+
+        private int SetValues4(PathQuestionInfo info)
+        {
+            SetValues4((QuestionInfo)info);
+            Path4Info = info;
+            SetDefaultOnLoad(Path4, info.DefaultResponse, info.EditDefaultResponse);
+            CheckFile4Exists = info.RequireFileExists;
+            return Rows.Path4Text;
+        }
+
+        private int SetValues4(TextQuestionInfo info)
+        {
+            SetDefaultOnLoad(Response4Text, info.DefaultResponse, info.EditDefaultResponse);
+            return SetValues4((QuestionInfo)info);
+        }
+
+        private int SetValues4(QuestionInfo info)
+        {
+            var separateText = string.IsNullOrWhiteSpace(DescriptionText.Text) || string.IsNullOrWhiteSpace(info.Description)
+                ? string.Empty
+                : Environment.NewLine + Environment.NewLine;
+            Question4Label.Text = info.Question;
+            DescriptionText.Text += separateText + info.Description;
+            return Rows.Text4;
+        }
+
+        #endregion Values 4
 
         private void SetDefaultOnLoad(TextBox box, string defaultText, Func<string, string> editDefaultResponse)
         {
@@ -231,15 +329,28 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             return format;
         }
 
-        public static GenericPage Create(QuestionInfo info, QuestionInfo info2 = null)
+        public static GenericPage Create(QuestionInfo info, QuestionInfo info2 = null, QuestionInfo info3 = null, QuestionInfo info4 = null)
         {
             var page = new GenericPage();
-            var rows = new List<int> {Rows.Question, Rows.Description};
-            rows.Add(page.SetValues((dynamic) info));
+            var rows = new List<int>
+            {
+                Rows.Question, Rows.Description,
+                page.SetValues((dynamic)info)
+            };
             if (info2 != null)
             {
                 rows.Add(Rows.Question2);
                 rows.Add(page.SetValues2((dynamic) info2));
+            }
+            if (info3 != null)
+            {
+                rows.Add(Rows.Question3);
+                rows.Add(page.SetValues3((dynamic)info3));
+            }
+            if (info4 != null)
+            {
+                rows.Add(Rows.Question4);
+                rows.Add(page.SetValues4((dynamic)info4));
             }
 
             page.HideAllExceptRows(rows.ToArray());
@@ -424,16 +535,53 @@ namespace DLaB.VSSolutionAccelerator.Wizard
                 path = Path2;
             }
 
-            OpenFileDialog.Multiselect = false;
-            OpenFileDialog.Filter = filter;
-            if (!string.IsNullOrWhiteSpace(path.Text))
+            if (filter == "Folder")
             {
-                OpenFileDialog.FileName = path.Text;
-            }
+                var fileName = System.IO.Path.GetFileName(path.Text);
+                var folder = Directory.Exists(path.Text)
+                    ? path.Text
+                    : File.Exists(path.Text)
+                        ? System.IO.Path.GetDirectoryName(path.Text)
+                        : path.Text;
 
-            if (OpenFileDialog.ShowDialog(this) == DialogResult.OK)
+                while (!string.IsNullOrWhiteSpace(folder))
+                {
+                    if (Directory.Exists(folder))
+                    {
+                        break;
+                    }
+                    folder = System.IO.Path.GetDirectoryName(folder);
+                }
+
+                if (string.IsNullOrWhiteSpace(folder))
+                {
+                    folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                }
+                var dlg = new FolderPicker
+                {
+                    InputPath = folder
+                };
+
+                if (dlg.ShowDialog() == true)
+                {
+                    path.Text = System.IO.Path.Combine(dlg.ResultPath, fileName.EndsWith(".sln")
+                        ? fileName
+                        : "YourCompanyAbbreviation.Dataverse.sln");
+                }
+            }
+            else
             {
-                path.Text = OpenFileDialog.FileName;
+                OpenFileDialog.Multiselect = false;
+                OpenFileDialog.Filter = filter;
+                if (!string.IsNullOrWhiteSpace(path.Text))
+                {
+                    OpenFileDialog.FileName = path.Text;
+                }
+
+                if (OpenFileDialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    path.Text = OpenFileDialog.FileName;
+                }
             }
         }
     }

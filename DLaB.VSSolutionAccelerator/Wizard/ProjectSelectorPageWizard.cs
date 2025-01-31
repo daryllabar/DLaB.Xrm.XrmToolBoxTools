@@ -56,60 +56,13 @@ namespace DLaB.VSSolutionAccelerator.Wizard
             }
 
             var solutionParser = new SolutionFileParser(File.ReadAllLines(solutionPath));
-            var defaultFound = false;
             foreach (var project in solutionParser.Projects
                 .Where(l => !Info.ProjectFilter.HasValue || l.Contains(ProjectInfo.GetTypeId(Info.ProjectFilter.Value)))
                 .Select(CreateTreeNode).OrderBy(n => n.Text))
             {
-                if (Info.DefaultProjectWithFile != null && !defaultFound)
-                {
-                    var path = project.Tag.ToString();
-                    var setAsDefault = IsDefaultNode(path);
-
-                    if (setAsDefault)
-                    {
-                        defaultFound = true;
-                        project.Checked = true;
-                    }
-                }
                 SolutionView.Nodes.Add(project);
             }
             SolutionView.EndUpdate();
-        }
-
-        private bool IsDefaultNode(string path)
-        {
-            var setAsDefault = false;
-            if (path.EndsWith(".shproj"))
-            {
-                setAsDefault = File.ReadAllLines(path.Substring(0, path.Length - "shproj".Length) + "projitems")
-                    .Any(l => l.Contains(Info.DefaultProjectWithFile + "\""));
-            }
-            else
-            {
-                var parser = new ProjectFileParser(File.ReadAllLines(path));
-                if (parser.ItemGroups.TryGetValue(ProjectFileParser.ItemGroupTypes.Compile, out var compileItems))
-                {
-                    setAsDefault = ContainsDefaultProjectFile(compileItems);
-                }
-
-                if (!setAsDefault && parser.ItemGroups.TryGetValue(ProjectFileParser.ItemGroupTypes.None, out var noneItems))
-                {
-                    setAsDefault = ContainsDefaultProjectFile(noneItems);
-                }
-
-                if (!setAsDefault && parser.ItemGroups.TryGetValue(ProjectFileParser.ItemGroupTypes.Content, out var contentItems))
-                {
-                    setAsDefault = ContainsDefaultProjectFile(contentItems);
-                }
-            }
-
-            return setAsDefault;
-        }
-
-        private bool ContainsDefaultProjectFile(List<string> items)
-        {
-            return items.Any(i => i.Contains($@"""{Info.DefaultProjectWithFile}"""));
         }
 
         bool IWizardPage.IsRequired(object[] saveResults)

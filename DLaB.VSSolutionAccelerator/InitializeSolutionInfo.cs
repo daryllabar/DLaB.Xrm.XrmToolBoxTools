@@ -1,44 +1,83 @@
-﻿using System;
+﻿using DLaB.VSSolutionAccelerator.Wizard;
+using System;
 using System.Collections.Generic;
-using DLaB.VSSolutionAccelerator.Wizard;
-using Source.DLaB.Common;
+using System.IO;
 
 namespace DLaB.VSSolutionAccelerator
 {
+    /// <summary>
+    /// Defines the Pages to add to the wizard via InitializePages, and then maps the results to its own properties via the Create method.
+    /// </summary>
     public class InitializeSolutionInfo : SolutionEditorInfo
     {
         public bool CreateSolution { get; set; }
-        public NuGetPackage XrmPackage { get; set; }
+        // public NuGetPackage XrmPackage { get; set; }
         public bool ConfigureEarlyBound { get; set; }
         public bool ConfigureXrmUnitTest { get; set; }
         public string RootNamespace { get; set; }
-        public override Version XrmVersion => XrmPackage.Version;
+        //public override Version XrmVersion => XrmPackage.Version;
 
-        private struct Page
+        public struct Page
         {
             public const int SolutionPath = 0;
             public const int RootNamespace = 1;
-            public const int UseXrmUnitTest = 6;
-            public const int CreatePlugin = 7;
-            public const int CreateWorkflow = 9;
+            public const int EarlyBound = 2;
+            public const int CommonName = 3;
+            public const int UseXrmUnitTest = 4;
+            public const int CreatePlugin = 5;
+            public const int PluginAssembly = 6;
+            public const int PluginTest = 7;
+            public const int CreateWorkflow = 8;
+            public const int CommonWorkflowName = 9;
+            public const int WorkflowTest = 10;
+            public const int CodeSnippets = 11;
         }
 
-        public static List<IWizardPage> InitializePages()
+        public static List<IWizardPage> InitializePages(List<KeyValuePair<int, string>> solutionNames)
         {
-            // ReSharper disable once UseObjectOrCollectionInitializer
             var pages = new List<IWizardPage>();
-            AddSolutionNameQuestion(pages); // 0
-            AddRootNamespaceQuestion(pages);
-            AddXrmNuGetVersionQuestion(pages);
-            AddUseEarlyBoundQuestion(pages);
-            AddSharedCommonNameQuestion(pages);
-            AddSharedCommonWorkflowNameQuestion(pages); // 5
-            AddUseXrmUnitTestQuestion(pages);
-            AddCreatePluginProjectQuestion(pages);
-            AddPluginTestProjectNameQuestion(pages);
-            AddCreateWorkflowProjectQuestion(pages);
-            AddWorkflowTestProjectNameQuestion(pages); // 10
-            AddInstallCodeSnippetAndAddCodeGenerationQuestion(pages); // 10
+            for (var i = 0; i <= Page.CodeSnippets; i++)
+            {
+                switch (i)
+                {
+                    case Page.SolutionPath:
+                        AddSolutionNameQuestion(pages);
+                        break;
+                    case Page.RootNamespace:
+                        AddRootNamespaceQuestion(pages);
+                        break;
+                    case Page.EarlyBound:
+                        AddUseEarlyBoundQuestion(pages);
+                        break;
+                    case Page.CommonName:
+                        AddSharedCommonNameQuestion(pages);
+                        break;
+                    case Page.UseXrmUnitTest:
+                        AddUseXrmUnitTestQuestion(pages); 
+                        break;
+                    case Page.CreatePlugin:
+                        AddCreatePluginProjectQuestion(pages);
+                        break;
+                    case Page.PluginAssembly:
+                        AddPluginAssemblyInfoQuestions(pages, solutionNames);
+                        break;
+                    case Page.PluginTest:
+                        AddPluginTestProjectNameQuestion(pages);
+                        break;
+                    case Page.CreateWorkflow:
+                        AddCreateWorkflowProjectQuestion(pages);
+                        break;
+                    case Page.CommonWorkflowName:
+                        AddSharedCommonWorkflowNameQuestion(pages); 
+                        break;
+                    case Page.WorkflowTest:
+                        AddWorkflowTestProjectNameQuestion(pages);
+                        break;
+                    case Page.CodeSnippets:
+                        AddInstallCodeSnippetAndAddCodeGenerationQuestion(pages);
+                        break;
+                }
+            }
             return pages;
         }
 
@@ -51,12 +90,12 @@ namespace DLaB.VSSolutionAccelerator
                     Filter = "Solution Files (*.sln)|*.sln",
                     Description = "This Wizard will walk through the process of adding isolation/plugin/workflow/testing projects based on the DLaB/XrmUnitTest framework.  The configured projects will be add to the solution defined here."
                 },
-                No = new PathQuestionInfo("What Solution?")
+                No = new PathQuestionInfo("Please enter the solution path to create.")
                 {
-                    Filter = "Solution Files (*.sln)|*.sln",
+                    Filter = "Folder",
                     Description = "This Wizard will walk through the process of adding isolation/plugin/workflow/testing projects based on the DLaB/XrmUnitTest framework.  The configured projects will be add to a new solution created at the path defined here.",
                     RequireFileExists = false,
-                    DefaultResponse = "C:\\FolderUnderSourceControl\\YourCompanyAbbreviation.Xrm.sln"
+                    DefaultResponse = "C:\\FolderUnderSourceControl\\YourCompanyAbbreviation.Dataverse.sln"
                 },
             }));
         }
@@ -68,24 +107,24 @@ namespace DLaB.VSSolutionAccelerator
                 DefaultResponse = GenericPage.GetSaveResultsFormat(Page.SolutionPath,1),
                 EditDefaultResponse = (value) =>
                 {
-                    value = System.IO.Path.GetFileNameWithoutExtension(value) ?? "MyCompanyAbrv.Xrm";
-                    if (!value.ToUpper().Contains("XRM"))
+                    value = System.IO.Path.GetFileNameWithoutExtension(value) ?? "MyCompanyAbrv.Dataverse";
+                    if (!value.ToLower().Contains("dataverse"))
                     {
-                        value += ".Xrm";
+                        value += ".Dataverse";
                     }
                     return value;
                 },
-                Description = "This is the root namespace that will the Plugin and (if desired) Early Bound Entities will be appended to."
+                Description = "This is the root namespace that the Plugin and (if desired) Early Bound Entities will be appended to."
             }));
         }
 
-        private static void AddXrmNuGetVersionQuestion(List<IWizardPage> pages)
-        {
-            pages.Add(NuGetVersionSelectorPage.Create(
-                "What version of the SDK?",
-                PackageLister.Ids.CoreXrmAssemblies,
-                "This will determine the NuGet packages referenced and the version of the .Net Framework to use."));
-        }
+        //private static void AddXrmNuGetVersionQuestion(List<IWizardPage> pages)
+        //{
+        //    pages.Add(NuGetVersionSelectorPage.Create(
+        //        "What version of the SDK?",
+        //        PackageLister.Ids.CoreXrmAssemblies,
+        //        "This will determine the NuGet packages referenced and the version of the .Net Framework to use."));
+        //}
 
         private static void AddUseEarlyBoundQuestion(List<IWizardPage> pages)
         {
@@ -110,11 +149,14 @@ namespace DLaB.VSSolutionAccelerator
 
         private static void AddSharedCommonWorkflowNameQuestion(List<IWizardPage> pages)
         {
-            pages.Add(GenericPage.Create(new TextQuestionInfo("What do you want the name of the shared common workflow assembly to be?")
+            var page = GenericPage.Create(new TextQuestionInfo("What do you want the name of the shared common workflow assembly to be?")
             {
                 DefaultResponse = GenericPage.GetSaveResultsFormat(Page.RootNamespace) + ".WorkflowCore",
                 Description = "This will be the name of a shared C# project that contains references to the workflow code.  It would only be required by assemblies containing a workflow."
-            }));
+            });
+            pages.Add(page);
+
+            page.AddSavedValuedRequiredCondition(Page.CreateWorkflow, "Y");
         }
 
         private static void AddUseXrmUnitTestQuestion(List<IWizardPage> pages)
@@ -124,14 +166,9 @@ namespace DLaB.VSSolutionAccelerator
                 Yes = new TextQuestionInfo("What do you want the Test Settings project to be called?")
                 {
                     DefaultResponse = GenericPage.GetSaveResultsFormat(Page.RootNamespace) + ".Test",
-                    Description = "The Test Settings project will contain the single test settings config file and assumption xml files."
+                    Description = "The shared Test Project will contain all other shared test code (Assumption Definitions/Xml, Builders, Test Base Class, etc) and the single test settings config file."
                 },
-                Yes2 = new TextQuestionInfo("What do you want the shared core test project to be called?")
-                {
-                    DefaultResponse = GenericPage.GetSaveResultsFormat(Page.RootNamespace) + ".TestCore",
-                    Description = "The shared Test Project will contain all other shared test code (Assumption Definitions, Builders, Test Base Class, etc)"
-                },
-                Description = "This will add the appropriate NuGet References and create the appropriate isolation projects."
+                Description = "This create the appropriate isolation projects."
             }));
         }
 
@@ -151,6 +188,43 @@ namespace DLaB.VSSolutionAccelerator
                 },
                 Description = "This will add a new plugin project to the solution and wire up the appropriate references."
             }));
+        }
+
+        private static void AddPluginAssemblyInfoQuestions(List<IWizardPage> pages, List<KeyValuePair<int, string>> solutionNames)
+        {
+            var page = GenericPage.Create(new TextQuestionInfo("What is the name of the Company to use with the Plugin Assembly?")
+            {
+                DefaultResponse = GenericPage.GetSaveResultsFormat(Page.RootNamespace),
+                Description = "This information will be used in the plugin project file and will be used when generating the plugin assembly.",
+                EditDefaultResponse = GetCompanyName
+            }, new TextQuestionInfo("Plugin Assembly Description?") { 
+                DefaultResponse = "Plugin with Dependent Assemblies",
+            }, new ComboQuestionInfo("Solution to Deploy the Plugin to?")
+            {
+                Description = "The prefix of the solution publisher will be used to name the plugin package as well as upload a temporary plugin to for setting up a dev deployment build.",
+                Options = solutionNames
+            }, new TextQuestionInfo("Deployment PAC CLI Auth Name?") {
+                DefaultResponse = GenericPage.GetSaveResultsFormat(Page.RootNamespace),
+                Description = "The PAC CLI Auth Name is the name of the used to PAC Auth context to use when deploying the plugin to dev.",
+                EditDefaultResponse = (value) =>
+                {
+                    var companyName = GetCompanyName(value);
+                    return string.IsNullOrWhiteSpace(companyName) ? "Dev" : companyName.Replace(" ", string.Empty) + " Dev";
+                }
+            });
+
+            page.AddSavedValuedRequiredCondition(Page.CreatePlugin, "Y");
+            pages.Add(page);
+            return;
+
+            string GetCompanyName(string value)
+            {
+                value = value.Replace("Xrm", string.Empty)
+                    .Replace("Dataverse", string.Empty);
+                value = string.Join(" ", value.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries));
+                value = string.Join(" ", value.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
+                return value;
+            }
         }
 
         private static void AddPluginTestProjectNameQuestion(List<IWizardPage> pages)
@@ -209,25 +283,68 @@ namespace DLaB.VSSolutionAccelerator
             pages.Add(page);
         }
 
-        private InitializeSolutionInfo(Queue<object> queue)
+        private InitializeSolutionInfo(Queue<object> queue, Dictionary<int, Guid> solutionIdsByIndex)
         {
-            InitializeSolution(new YesNoResult(queue.Dequeue())); // 0
-            RootNamespace = (string)queue.Dequeue();
-            XrmPackage = (NuGetPackage)queue.Dequeue();
-            ConfigureEarlyBound = queue.Dequeue().ToString() == "Y";
-            SharedCommonProject = (string)queue.Dequeue();
-            SharedCommonWorkflowProject = (string)queue.Dequeue(); // 5
-            InitializeXrmUnitTest(new YesNoResult(queue.Dequeue()));
-            InitializePlugin(new YesNoResult(queue.Dequeue()));
-            PluginTestName = (string)queue.Dequeue();
-            InitializeWorkflow(new YesNoResult(queue.Dequeue()));
-            WorkflowTestName = (string)queue.Dequeue(); // 10
-            InitializeCodeGeneration((List<string>)queue.Dequeue());
+            for (var i = 0; i <= Page.CodeSnippets; i++)
+            {
+                switch (i)
+                {
+                    case Page.SolutionPath:
+                        InitializeSolution(new YesNoResult(queue.Dequeue()));
+                        break;                      
+                    case Page.RootNamespace:
+                        RootNamespace = (string)queue.Dequeue();
+                        break;
+                    case Page.EarlyBound:
+                        ConfigureEarlyBound = queue.Dequeue().ToString() == "Y";
+                        break;
+                    case Page.CommonName:
+                        SharedCommonProject = (string)queue.Dequeue();
+                        break;
+                    case Page.UseXrmUnitTest:
+                        InitializeXrmUnitTest(new YesNoResult(queue.Dequeue()));
+                        break;
+                    case Page.CreatePlugin:
+                        InitializePlugin(new YesNoResult(queue.Dequeue()));
+                        break;
+                    case Page.PluginAssembly:
+                        InitializePluginAssembly((List<string>) queue.Dequeue(), solutionIdsByIndex);
+                        break;
+                    case Page.PluginTest:
+                        PluginTestName = (string)queue.Dequeue();
+                        break;
+                    case Page.CreateWorkflow:
+                        InitializeWorkflow(new YesNoResult(queue.Dequeue()));
+                        break;
+                    case Page.CommonWorkflowName:
+                        SharedCommonWorkflowProject = (string)queue.Dequeue(); 
+                        break;
+                    case Page.WorkflowTest:
+                        WorkflowTestName = (string)queue.Dequeue(); 
+                        break;
+                    case Page.CodeSnippets:
+                        InitializeCodeGeneration((List<string>)queue.Dequeue());
+                        break;
+                }
+            }
+
+            if (ConfigureXrmUnitTest)
+            {
+                CreatePluginTest = CreatePlugin;
+                CreateWorkflowTest = CreateWorkflow;
+            }
         }
 
-        public static InitializeSolutionInfo InitializeSolution(object[] values)
+        public static InitializeSolutionInfo Create(object[] values, Dictionary<int, Guid> solutionIdsByIndex)
         {
-            return new InitializeSolutionInfo(new Queue<object>(values));
+            return new InitializeSolutionInfo(new Queue<object>(values), solutionIdsByIndex);
+        }
+
+        public string GetEarlyBoundSettingsPath()
+        {
+            var settingsDirectory = Path.Combine(Path.GetDirectoryName(SolutionPath) ?? "", SharedCommonProject, "Entities");
+            Directory.CreateDirectory(settingsDirectory);
+            return Path.Combine(settingsDirectory, "DLB.EarlyBoundGenerator.Settings.xml");
         }
 
         private void InitializeSolution(YesNoResult result)
@@ -240,7 +357,6 @@ namespace DLaB.VSSolutionAccelerator
         {
             ConfigureXrmUnitTest = result.IsYes;
             TestBaseProject = result[1];
-            SharedTestCoreProject = result[2];
         }
 
         private void InitializePlugin(YesNoResult result)

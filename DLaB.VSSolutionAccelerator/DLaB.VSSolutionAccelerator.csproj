@@ -278,7 +278,12 @@
   <ItemGroup>
     <Compile Include="AddProjectToSolutionInfo.cs" />
     <Compile Include="InitializeSolutionInfo.cs" />
+    <Compile Include="Logic\FileGroup.cs" />
+    <Compile Include="Logic\GitIgnoreEditor.cs" />
     <Compile Include="Logic\NuGetSettings.cs" />
+    <Compile Include="Logic\LegacyProjectFileParser.cs" />
+    <Compile Include="Logic\PluginPackageInitializer.cs" />
+    <Compile Include="Logic\ProjectFileLineReference.cs" />
     <Compile Include="Logic\SolutionUpdater.cs" />
     <Compile Include="Logic\SolutionEditor.cs" />
     <Compile Include="Logic\SolutionInitializer.cs" />
@@ -302,6 +307,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="Wizard\AddPluginWorkflowWizardResults.cs" />
     <Compile Include="Wizard\ComboQuestionInfo.cs" />
     <Compile Include="Wizard\ConditionalYesNoQuestionInfo.cs" />
     <Compile Include="Wizard\ProjectSelectorInfo.cs" />
@@ -311,9 +317,7 @@
     <Compile Include="Wizard\ProjectSelectorPage.Designer.cs">
       <DependentUpon>ProjectSelectorPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wizard\NuGetVersionSelectorPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Wizard\NuGetVersionSelectorPage.cs" />
     <Compile Include="Wizard\NuGetVersionSelectorPage.Designer.cs">
       <DependentUpon>NuGetVersionSelectorPage.cs</DependentUpon>
     </Compile>
@@ -330,7 +334,6 @@
     </Compile>
     <Compile Include="Wizard\NuGetVersionSelectorPageWizard.cs">
       <DependentUpon>NuGetVersionSelectorPage.cs</DependentUpon>
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Wizard\PathQuestionInfo.cs" />
     <Compile Include="Wizard\ProjectSelectorPageWizard.cs">
@@ -346,6 +349,7 @@
       <DependentUpon>WizardHost.cs</DependentUpon>
     </Compile>
     <Compile Include="Wizard\WizardPageCollection.cs" />
+    <Compile Include="Wizard\AddAllWizardResults.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -402,15 +406,18 @@
       <Name>DLaB.XrmToolBoxCommon</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="..\DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /I /Y "$(TargetDir)Microsoft.AI.ServerTelemetryChannel.dll" "$(TargetDir)$(TargetName)"
-xcopy /I /Y "$(TargetDir)Microsoft.ApplicationInsights.dll" "$(TargetDir)$(TargetName)"
-xcopy /I /Y "$(TargetDir)Microsoft.Extensions.*.dll" "$(TargetDir)$(TargetName)"
-xcopy /I /Y "$(TargetDir)Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" "$(TargetDir)$(TargetName)"
-xcopy /I /Y "$(TargetDir)DLaB.*.dll" "$(TargetDir)$(TargetName)"
-del "$(TargetDir)$(TargetName)\$(TargetFileName)"
+    <PostBuildEvent>xcopy /I /Y "$(TargetDir)Microsoft.AI.ServerTelemetryChannel.dll" "$(TargetDir)Plugins\$(TargetName)"
+xcopy /I /Y "$(TargetDir)Microsoft.ApplicationInsights.dll" "$(TargetDir)Plugins\$(TargetName)"
+xcopy /I /Y "$(TargetDir)Microsoft.Extensions.*.dll" "$(TargetDir)Plugins\$(TargetName)"
+xcopy /I /Y "$(TargetDir)Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" "$(TargetDir)Plugins\$(TargetName)"
+xcopy /I /Y "$(TargetDir)DLaB.*.dll" "$(TargetDir)Plugins\$(TargetName)"
+xcopy /I /Y "$(TargetDir)Nuget*.dll" "$(TargetDir)Plugins\$(TargetName)"
+copy /Y "$(ProjectDir)DefaultPluginPackage.zip" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\DefaultPluginPackage.nupkg"
+del "$(TargetDir)Plugins\$(TargetName)\$(TargetFileName)"
 
 IF NOT EXIST Plugins mkdir Plugins
 move /Y $(TargetFileName) Plugins
@@ -421,12 +428,11 @@ ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Code Generation" "$(TargetDir)Plu
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
 ROBOCOPY "$(SolutionDir)References" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\bin" /MIR /NJS /NJH /XF Microsoft* Set*
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-COPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.ruleset" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.ruleset"
 ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.WorkflowCore" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.WorkflowCore" /MIR /NJS /NJH
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
 ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm" /MIR /NJS /NJH /XD Entities
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm\Entities\Actions" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm\Entities\Actions" /MIR /NJS /NJH /XF Actions.cs
+ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm\Entities\Messages" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm\Entities\Messages" /MIR /NJS /NJH /XF Actions.cs
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
 ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Workflow" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Workflow" /MIR /NJS /NJH /XD bin obj App_Packages
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
@@ -438,9 +444,7 @@ ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Plugin.Tests" "$(TargetDi
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
 ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Test" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test" /MIR /NJS /NJH /XD bin obj
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\Assumptions\Entity Xml" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\Assumptions\Entity Xml" /MIR /NJS /NJH /XD
-if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.TestCore" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.TestCore" /MIR /NJS /NJH /XD
+REM ROBOCOPY "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\Assumptions\Entity Xml" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\Assumptions\Entity Xml" /MIR /NJS /NJH /XD
 if %25errorlevel%25 GTR 4 exit %25errorlevel%25
 
 REM Delete zip file to allow pack batch to rebuild it.

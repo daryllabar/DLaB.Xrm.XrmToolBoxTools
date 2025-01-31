@@ -13,15 +13,11 @@ namespace DLaB.VSSolutionAccelerator.Logic
         public Dictionary<string, ProjectInfo> GetProjectInfos(AddProjectToSolutionInfo info)
         {
             var projects = new Dictionary<string, ProjectInfo>();
-            AddExistingSharedProjectDependencies(info, projects);
-
-            if (info.CreatePlugin)
+            AddExistingSharedProjectDependencies(projects, info);
+            AddPlugin(projects, info);
+            if (info.CreatePluginTest)
             {
-                AddPlugin(projects, info);
-                if (info.CreatePluginTest)
-                {
-                    AddPluginTest(projects, info);
-                }
+                AddPluginTest(projects, info);
             }
             if (info.CreateWorkflow)
             {
@@ -32,17 +28,17 @@ namespace DLaB.VSSolutionAccelerator.Logic
                 }
             }
 
-            AddNugetPostUpdateCommandsToProjects(info.XrmVersion, projects);
+            //AddNugetPostUpdateCommandsToProjects(info.XrmVersion, projects);
             return projects;
         }
 
-        private static void AddExistingSharedProjectDependencies(AddProjectToSolutionInfo info, Dictionary<string, ProjectInfo> projects)
+        private void AddExistingSharedProjectDependencies(Dictionary<string, ProjectInfo> projects, AddProjectToSolutionInfo info)
         {
             AddExistingPluginSharedProjectDependencies(info, projects);
             AddExistingTestSharedProjectDependencies(info, projects);
         }
 
-        private static void AddExistingPluginSharedProjectDependencies(AddProjectToSolutionInfo info, Dictionary<string, ProjectInfo> projects)
+        private void AddExistingPluginSharedProjectDependencies(AddProjectToSolutionInfo info, Dictionary<string, ProjectInfo> projects)
         {
             if (info.CreatePlugin || info.CreateWorkflow)
             {
@@ -54,7 +50,15 @@ namespace DLaB.VSSolutionAccelerator.Logic
                     Name = info.SharedCommonProject
                 };
 
-                if (info.CreateWorkflow)
+            }
+
+            if (info.CreateWorkflow)
+            {
+                if (info.CreateCommonWorkflowProject)
+                {
+                    AddSharedWorkflowProject(projects, info, info.WorkflowName);
+                }
+                else
                 {
                     projects[ProjectInfo.Keys.WorkflowCommon] = new ProjectInfo
                     {
@@ -63,6 +67,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
                         AddToSolution = false,
                         Name = info.SharedCommonWorkflowProject
                     };
+
                 }
             }
         }
@@ -71,20 +76,12 @@ namespace DLaB.VSSolutionAccelerator.Logic
         {
             if (info.CreatePluginTest || info.CreateWorkflowTest)
             {
-                projects[ProjectInfo.Keys.TestCore] = new ProjectInfo
-                {
-                    Type = ProjectInfo.ProjectType.SharedProj,
-                    Key = ProjectInfo.Keys.TestCore,
-                    AddToSolution = false,
-                    Name = info.SharedTestCoreProject
-                };
-
                 projects[ProjectInfo.Keys.Test] = new ProjectInfo
                 {
                     Type = ProjectInfo.ProjectType.CsProj,
                     Key = ProjectInfo.Keys.Test,
                     AddToSolution = false,
-                    Name = info.SharedTestProject.AssemblyName
+                    Name = info.TestBaseProject
                 };
             }
         }
@@ -94,7 +91,7 @@ namespace DLaB.VSSolutionAccelerator.Logic
             Logger.AddDetail($"Starting to process solution '{info.SolutionPath}' using templates from '{templateDirectory}'");
             var adder = new SolutionUpdater(info.SolutionPath, templateDirectory, strongNamePath, nuGetSettings);
             adder.Projects = adder.GetProjectInfos(info);
-            adder.CreateProjects(string.Empty);
+            adder.CreateProjects(adder.Projects[ProjectInfo.Keys.Common].Name);
             IEnumerable<string> solution = File.ReadAllLines(adder.SolutionPath);
             solution = SolutionFileEditor.AddMissingProjects(solution, adder.Projects.Values);
             File.WriteAllLines(adder.SolutionPath, solution);

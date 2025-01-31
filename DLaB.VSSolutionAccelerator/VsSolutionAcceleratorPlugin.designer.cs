@@ -78,7 +78,7 @@
             this.ActionCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ActionCmb.FormattingEnabled = true;
             this.ActionCmb.Items.AddRange(new object[] {
-            "Add Accelerator Isolation Libraries to my Solution",
+            "Add Accelerator Isolation Libraries to your Solution",
             "Add Plugin/Workflow Project to an Accelerated Solution",
             "Install Snippets"});
             this.ActionCmb.Location = new System.Drawing.Point(69, 36);

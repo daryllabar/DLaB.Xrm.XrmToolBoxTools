@@ -1,24 +1,29 @@
-﻿using System;
+﻿using DLaB.VSSolutionAccelerator.Wizard;
+using DLaB.Xrm.Entities;
+using DLaB.XrmToolBoxCommon;
+using McTools.Xrm.Connection;
+using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Query;
+using NuGet;
+using Source.DLaB.Xrm;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.Composition;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
-using DLaB.VSSolutionAccelerator.Wizard;
-using DLaB.XrmToolBoxCommon;
 using XrmToolBox.Extensibility;
 using XrmToolBox.Extensibility.Interfaces;
 using Exception = System.Exception;
 
 namespace DLaB.VSSolutionAccelerator
 {
-    public partial class VsSolutionAcceleratorPlugin : DLaBPluginControlBase
+    public partial class VsSolutionAcceleratorPlugin : DLaBPluginControlBase, IMessageBusHost
     {
         public Settings Settings { get; set; }
+        private List<Solution> _solutions = new List<Solution>();
 
         public VsSolutionAcceleratorPlugin()
         {
@@ -49,13 +54,23 @@ namespace DLaB.VSSolutionAccelerator
                 return;
             }
 
-            var tmp = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
             File.SetAttributes(zipPath, FileAttributes.Normal);
-            File.Move(zipPath, tmp);
-            DeleteDirectory(zipDirectory);
-            Directory.CreateDirectory(zipDirectory);
-            ZipFile.ExtractToDirectory(tmp, zipDirectory);
-            File.Delete(tmp);
+
+            // Delete all files except dlls since they wil be loaded, and the file to unzip
+            foreach(var file in Directory.GetFiles(zipDirectory))
+            {
+                if(Path.GetExtension(file) != ".dll" && Path.GetExtension(file) != ".zip")
+                {
+                    File.Delete(file);
+                }
+            }
+            foreach(var subDirectory in Directory.GetDirectories(zipDirectory))
+            {
+                Directory.Delete(subDirectory);
+            }
+            
+            ZipFile.ExtractToDirectory(zipPath, zipDirectory);
+            File.Delete(zipPath);
         }
 
         private void MyPluginControl_Load(object sender, EventArgs e)
@@ -82,14 +97,13 @@ namespace DLaB.VSSolutionAccelerator
 
         private void ShowAddAcceleratorsWizard()
         {
-            using (var host = new WizardHost
+            using (var host = new WizardHost())
             {
-                Text = @"Add Accelerators Wizard",
-                ShowFirstButton = false,
-                ShowLastButton = false
-            })
-            {
-                foreach (var page in InitializeSolutionInfo.InitializePages())
+                host.Text = @"Add Accelerators Wizard";
+                host.ShowFirstButton = false;
+                host.ShowLastButton = false;
+                var names = GetSolutionNamesByIndex();
+                foreach (var page in InitializeSolutionInfo.InitializePages(names))
                 {
                     host.WizardPages.Add(page);
                 }
@@ -97,25 +111,36 @@ namespace DLaB.VSSolutionAccelerator
                 if (host.ShowDialog() == DialogResult.OK)
                 {
                     var results = host.SaveResults;
-                    var info = InitializeSolutionInfo.InitializeSolution(results);
+                    var info = InitializeSolutionInfo.Create(results, GetSolutionIdsByIndex());
 
                     Execute(info);
                 }
 
                 host.Close();
             }
+        }
+
+        private List<KeyValuePair<int, string>> GetSolutionNamesByIndex()
+        {
+            return _solutions.Select((s, i) => new KeyValuePair<int, string>(i, s.FriendlyName)).ToList();
+        }
+
+        private Dictionary<int, Guid> GetSolutionIdsByIndex()
+        {
+            var solutionIdsByIndex = new Dictionary<int, Guid>();
+            solutionIdsByIndex.AddRange(_solutions.Select((s, i) => new KeyValuePair<int, Guid>(i, s.Id)));
+            return solutionIdsByIndex;
         }
 
         private void ShowAddAssemblyWizard()
         {
-            using (var host = new WizardHost
+            using (var host = new WizardHost())
             {
-                Text = @"Add Accelerators Wizard",
-                ShowFirstButton = false,
-                ShowLastButton = false
-            })
-            {
-                foreach (var page in AddProjectToSolutionInfo.InitializePages())
+                host.Text = @"Add Accelerators Wizard";
+                host.ShowFirstButton = false;
+                host.ShowLastButton = false;
+                var names = GetSolutionNamesByIndex();
+                foreach (var page in AddProjectToSolutionInfo.InitializePages(names))
                 {
                     host.WizardPages.Add(page);
                 }
@@ -123,7 +148,7 @@ namespace DLaB.VSSolutionAccelerator
                 if (host.ShowDialog() == DialogResult.OK)
                 {
                     var results = host.SaveResults;
-                    var info = AddProjectToSolutionInfo.Create(results);
+                    var info = AddProjectToSolutionInfo.Create(results, GetSolutionIdsByIndex());
                     Execute(info);
                 }
 
@@ -131,19 +156,86 @@ namespace DLaB.VSSolutionAccelerator
             }
         }
 
-        private void ExecuteInstallCodeSnippets()
+        private void ShowSnippetWizard()
+        {
+            using (var host = new WizardHost())
+            {
+                host.Text = @"Install Snippets Wizard";
+                host.ShowFirstButton = false;
+                host.ShowLastButton = false;
+                var page = GenericPage.Create(new TextQuestionInfo("What is the default Namespace?")
+                {
+                    Description = "This will be used to replace the namespace in the snippets."
+                });
+                host.WizardPages.Add(page);
+                
+                host.LoadWizard();
+                if (host.ShowDialog() == DialogResult.OK)
+                {
+                    var results = host.SaveResults;
+                    ExecuteInstallCodeSnippets(results[0]?.ToString() ?? "DLaB");
+                }
+
+                host.Close();
+            }
+        }
+
+        private void ExecuteInstallCodeSnippets(string rootNamespace)
         {
             WorkAsync(new WorkAsyncInfo("Installing Code Snippets...", (w, e) => // Work To Do Asynchronously
             {
-                Logic.VisualStudio.InstallCodeSnippets(Paths.PluginsPath);
+                Logic.VisualStudio.InstallCodeSnippets(Paths.PluginsPath, rootNamespace);
             }).WithLogger(this, TxtOutput));
         }
 
         private void ExecuteBttn_Click(object sender, EventArgs e)
         {
+            Execute(ActionCmb.SelectedIndex);
+        }
+
+        public override void UpdateConnection(IOrganizationService newService, ConnectionDetail detail, string actionName, object parameter)
+        {
+            _solutions.Clear();
+            base.UpdateConnection(newService, detail, actionName, parameter);
+        }
+
+        private void Execute(int actionIndex)
+        {
+            if(_solutions.Count > 0 || actionIndex == 2)
+            {
+                ExecuteAction(actionIndex);
+                return;
+            }
+
+            Enabled = false;
+            WorkAsync(new WorkAsyncInfo("Retrieving Solutions...",
+                e =>
+                {
+                    var qe = QueryExpressionFactory.Create<Solution>(s => new { s.SolutionId, s.FriendlyName, s.Version, s.PublisherId, s.UniqueName });
+                    qe.Query.Distinct = true;
+                    qe.WhereEqual(
+                        Solution.Fields.IsManaged, false,
+                        Solution.Fields.IsVisible, true,
+                        new ConditionExpression(Solution.Fields.UniqueName, ConditionOperator.NotEqual, "Default")
+                    );
+                    qe.AddLink<Publisher>(Solution.Fields.PublisherId, p => new {p.CustomizationPrefix });
+                    qe.AddOrder(Solution.Fields.FriendlyName, OrderType.Ascending);
+                    e.Result = Service.GetEntities(qe);
+                }) {
+                PostWorkCallBack = e =>
+                {
+                    _solutions = (List<Solution>)e.Result;
+                    ExecuteAction(actionIndex);
+                    Enabled = true;
+                }
+            });
+        }
+
+        private void ExecuteAction(int actionIndex)
+        {
             try
             {
-                switch (ActionCmb.SelectedIndex)
+                switch (actionIndex)
                 {
                     case 0:
                         ShowAddAcceleratorsWizard();
@@ -152,7 +244,7 @@ namespace DLaB.VSSolutionAccelerator
                         ShowAddAssemblyWizard();
                         break;
                     case 2:
-                        ExecuteInstallCodeSnippets();
+                        ShowSnippetWizard();
                         break;
                     case 3:
                         GenerateWithDefaultSettings();
@@ -173,31 +265,25 @@ namespace DLaB.VSSolutionAccelerator
 
         private void GenerateWithDefaultSettings()
         {
-            var results = new object[]
+            var results = new AddAllWizardResults
             {
-                new List<string>{"Y", "C:\\Temp\\AdvXTB\\Abc.Xrm\\Abc.Xrm.sln" },
-                "Abc.Xrm",
-                new NuGetPackage
-                {
-                    Id = "Microsoft.CrmSdk.CoreAssemblies",
-                    LicenseUrl = "http://download.microsoft.com/download/E/1/8/E18C0FAD-FEC8-44CD-9A16-98EDC4DAC7A2/LicenseTerms.docx",
-                    Name = "Microsoft Dynamics 365 SDK core assemblies",
-                    Version = new Version("9.0.2.5"),
-                    VersionText = "9.0.2.5",
-                    XrmToolingClient = false
-                },
-                "Y",
-                "Abc.Xrm",
-                "Abc.Xrm.WorkflowCore",
-                new List<string> {"Y", "Abc.Xrm.Test", "Abc.Xrm.TestCore"},
-                new List<string> {"Y", "Abc.Xrm.Plugin", "0"},
-                "Abc.Xrm.Plugin.Tests",
-                new List<string> {"Y", "Abc.Xrm.Workflow", "1"},
-                "Abc.Xrm.Workflow.Tests",
-                new List<string> {"0", "0"},
-            };
+                P0AddToExistingSolution = false,
+                P0SolutionPath = "C:\\Temp\\VSA\\Acme.Dataverse.sln",
+                P1Namespace = "Acme.Dataverse",
+                P2EarlyBound = true,
+                P3SharedCommonAssemblyName = "Acme.Dataverse",
+                P9SharedWorkflowProjectName = "Acme.Dataverse.WorkflowCore",
+                P4UseXrmUnitTest = true, P4TestSettingsProjectName = "Acme.Dataverse.Test",
+                P5CreatePluginProject = true, P5PluginProjectName = "Acme.Dataverse.Plugin", P5IncludeExamples = true,
+                P6CompanyName = "Acme", P6PluginDescription = "Default Description For Plugin", P6PluginSolutionIndex = 1, P6PacAuthName = "Daryl Dev",
+                P7PluginTestProjectName = "Acme.Dataverse.Plugin.Tests",
+                P8CreateWorkflowProject = true, P8WorkflowProjectName = "Acme.Dataverse.Workflow", P8IncludeExamples = true,
+                P10WorkflowTestProjectName = "Acme.Dataverse.Workflow.Tests",
+                P11InstallCodeSnippets = true, P11IncludeCodeGen = true
 
-            var info = InitializeSolutionInfo.InitializeSolution(results);
+            }.GetResults();
+
+            var info = InitializeSolutionInfo.Create(results, GetSolutionIdsByIndex());
             var solutionDir = Path.GetDirectoryName(info.SolutionPath) ?? Guid.NewGuid().ToString();
             DeleteDirectory(solutionDir);
 
@@ -207,7 +293,6 @@ namespace DLaB.VSSolutionAccelerator
                 Directory.CreateDirectory(solutionDir);
             } while (!Directory.Exists(solutionDir));
 
-            File.Copy("C:\\Temp\\AdvXTB\\Abc.Xrm.sln", info.SolutionPath);
             Execute(info);
         }
 
@@ -253,7 +338,7 @@ namespace DLaB.VSSolutionAccelerator
 
         private void GenerateAddAssemblyWithDefaultSettings()
         {
-            if (File.Exists(@"C:\Temp\AdvXTB\Abc.Xrm\Abc.Xrm.Lead.Plugin\Abc.Xrm.Lead.Plugin.csproj"))
+            if (File.Exists(@"C:\Temp\VSA\Acme.Dataverse.Lead.Plugin\Acme.Dataverse.Lead.Plugin.csproj"))
             {
                 GenerateWithDefaultSettings();
                 while (!Enabled)
@@ -261,20 +346,20 @@ namespace DLaB.VSSolutionAccelerator
                     Thread.Sleep(10);
                 }
             }
-            var results = new object[]
+            var results = new AddPluginWorkflowWizardResults
             {
-                @"C:\Temp\AdvXTB\Abc.Xrm\Abc.Xrm.sln",
-                new List<string> {"Y", "Abc.Xrm.Lead.Plugin"},
-                new List<string> {"Y", "Abc.Xrm.Lead.Plugin.Tests"},
-                new List<string> {"Y", "Abc.Xrm.Lead.Workflow"},
-                new List<string> {"Y", "Abc.Xrm.Lead.Workflow.Tests"},
-            };
+                P0SolutionPath = @"C:\Temp\VSA\Acme.Dataverse.sln",
+                P1CreatePluginProject = true, P1PluginProjectName = "Acme.Dataverse.Lead.Plugin",
+                P2CreatePluginXrmUnitTest = true, P2PluginTestProjectName = "Acme.Dataverse.Lead.Plugin.Tests",
+                P3CreateWorkflowProject = true, P3WorkflowProjectName = "Acme.Dataverse.Lead.Workflow",
+                P4CreateWorkflowXrmUnitTest = true, P4WorkflowTestProjectName ="Acme.Dataverse.Lead.Workflow.Tests",
+            }.GetResults();
 
-            var info = AddProjectToSolutionInfo.Create(results);
+            var info = AddProjectToSolutionInfo.Create(results, GetSolutionIdsByIndex());
             Execute(info);
         }
 
-        private void Execute(object info)
+        private void Execute(SolutionEditorInfo info)
         {
             WorkAsync(new WorkAsyncInfo("Performing requested operations...", (w, e) => // Work To Do Asynchronously
             {
@@ -283,85 +368,81 @@ namespace DLaB.VSSolutionAccelerator
                 {
                     Sources = Settings.NugetSourcesList
                 };
-                if (e.Argument is InitializeSolutionInfo solutionInfo)
+                var arg = (object[])e.Argument;
+                var solutions = (List<Solution>)arg[1];
+                switch (arg[0])
                 {
-                    if (solutionInfo.InstallSnippets)
+                    case InitializeSolutionInfo solutionInfo:
                     {
-                        Logic.VisualStudio.InstallCodeSnippets(Paths.PluginsPath);
+                        if (solutionInfo.InstallSnippets)
+                        {
+                            Logic.VisualStudio.InstallCodeSnippets(Paths.PluginsPath, solutionInfo.RootNamespace);
+                        }
+
+                        Logic.PluginPackageInitializer.SetPluginPackageId(Service, solutionInfo, solutions);
+                        Logic.SolutionInitializer.Execute(solutionInfo, templatePath, nuGetSettings: nuGetSettings);
+                        Logic.GitIgnoreEditor.AddXrmUnitTestConfig(solutionInfo);
+                        if (solutionInfo.ConfigureEarlyBound)
+                        {
+                            e.Result = solutionInfo.GetEarlyBoundSettingsPath();
+                        }
+
+                        break;
                     }
-                    Logic.SolutionInitializer.Execute(solutionInfo, templatePath, nuGetSettings: nuGetSettings);
+                    case AddProjectToSolutionInfo projectInfo:
+                        Logic.PluginPackageInitializer.SetPluginPackageId(Service, projectInfo, solutions);
+                        Logic.SolutionUpdater.Execute(projectInfo, templatePath, nuGetSettings: nuGetSettings);
+                        break;
                 }
-                else if (e.Argument is AddProjectToSolutionInfo projectInfo)
+            }).WithLogger(this, TxtOutput, new [] { (object)info, _solutions }, onComplete: e =>
+            {
+                if (info.CreatePlugin)
                 {
-                    Logic.SolutionUpdater.Execute(projectInfo, templatePath, nuGetSettings: nuGetSettings);
+                    TxtOutput.Text += string.Format(@"{0}{0}{1}{0}{1}{0}{0}", Environment.NewLine, "****************************************************************************************************");
+                    TxtOutput.Text += $@"In order to build your plugin using the DevDeploy solution configuration to deploy your plugin to your dev environment, be sure that you've created a PAC Auth connection with the name '{info.PluginPackage.PacAuthName}'.{Environment.NewLine}";
+                    TxtOutput.Text += @"Refer to this article if you need assistance with creating the named PAC Auth connection: https://nicknow.net/power-platform-pac-cli-installing-connecting-and-selecting-an-organization/" + Environment.NewLine + Environment.NewLine;
                 }
-            }).WithLogger(this, TxtOutput, info));
+                if (e.Result is string path)
+                {
+                    MessageBox.Show(@"The Early Bound Generator will now be opened in order to generate the early bound entities for your project.  Click the ""Generate"" button in the Early Bound Generator to generate your entities.  After generating the early bound entities, return to this tool for any additional directions!", @"Generate Early Bound Entities!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    OpenEarlyBoundGeneratorWithSettings(path);
+                }
+            }));
         }
 
         private void ActionCmb_SelectedIndexChanged(object sender, EventArgs e)
         {
             ExecuteBttn.Enabled = ActionCmb.SelectedIndex >= 0;
         }
-    }
 
-    [Export(typeof(IXrmToolBoxPlugin)),
-     ExportMetadata("Name", "Visual Studio Solution Accelerator"),
-     ExportMetadata("Description", "Adds recommended isolation/accelerator projects for use with the DLaB.Xrm and XrmUnitTest framework to your Visual Studio solution."),
-     ExportMetadata("SmallImageBase64", SmallImage32X32), // null for "no logo" image or base64 image content 
-     ExportMetadata("BigImageBase64", LargeImage120X120), // null for "no logo" image or base64 image content 
-     ExportMetadata("BackgroundColor", "White"), // Use a HTML color name
-     ExportMetadata("PrimaryFontColor", "#000000"), // Or an hexadecimal code
-     ExportMetadata("SecondaryFontColor", "DarkGray")]
-    public class VsSolutionAccelerator : PluginFactory, INoConnectionRequired
-    {
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public VsSolutionAccelerator()
+        public event EventHandler<MessageBusEventArgs> OnOutgoingMessage;
+
+        public void OnIncomingMessage(MessageBusEventArgs message)
         {
-            // If you have external assemblies that you need to load, uncomment the following to
-            // hook into the event that will fire when an Assembly fails to resolve
-            AppDomain.CurrentDomain.AssemblyResolve += AssemblyResolveEventHandler;
-        }
-
-        public override IXrmToolBoxPluginControl GetControl()
-        {
-            return new VsSolutionAcceleratorPlugin();
-        }
-
-        private Assembly AssemblyResolveEventHandler(object sender, ResolveEventArgs args)
-        {
-            Assembly loadAssembly = null;
-            Assembly currAssembly = Assembly.GetExecutingAssembly();
-
-            // base name of the assembly that failed to resolve
-            var argName = args.Name.Substring(0, args.Name.IndexOf(","));
-
-            // check to see if the failing assembly is one that we reference.
-            List<AssemblyName> refAssemblies = currAssembly.GetReferencedAssemblies().ToList();
-            var refAssembly = refAssemblies.Where(a => a.Name == argName).FirstOrDefault();
-
-            // if the current unresolved assembly is referenced by our plugin, attempt to load
-            if (refAssembly != null)
+            if (message.SourcePlugin != "Visual Studio Solution Accelerator")
             {
-                // load from the path to this plugin assembly, not host executable
-                string dir = Path.GetDirectoryName(currAssembly.Location).ToLower();
-                string folder = Path.GetFileNameWithoutExtension(currAssembly.Location);
-                dir = Path.Combine(dir, folder);
+                return;
+            }
+            throw new NotImplementedException();
+        }
 
-                var assmbPath = Path.Combine(dir, $"{argName}.dll");
-
-                if (File.Exists(assmbPath))
-                {
-                    loadAssembly = Assembly.LoadFrom(assmbPath);
-                }
-                else
-                {
-                    throw new FileNotFoundException($"Unable to locate dependency: {assmbPath}");
-                }
+        private void OpenEarlyBoundGeneratorWithSettings(string path)
+        {
+            if (OnOutgoingMessage is null)
+            {
+                var message = @"No events are registered on the OnOutgoingMessage event!  Unable to open the Early Bound Generator!";
+                MessageBox.Show(message, @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TxtOutput.AppendText(Environment.NewLine + message);
+                return;
             }
 
-            return loadAssembly;
+            var request = new Dictionary<string, object>{
+                { "path", path }
+            };
+            OnOutgoingMessage(this, new MessageBusEventArgs("Early Bound Generator V2")
+            {
+                TargetArgument = request
+            });
         }
     }
 }

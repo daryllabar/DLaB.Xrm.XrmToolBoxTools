@@ -416,6 +416,12 @@ namespace DLaB.ModelBuilderExtensions
                 return;
             }
 
+            if (project.IsSdkStyleProject)
+            {
+                Log($"Project file {project.ProjectPath} is an SDK Style project and as such, will not have generated files added manually to the project file.");
+                return;
+            }
+
             foreach (var file in files)
             {
                 if (File.Exists(file))
@@ -912,6 +918,7 @@ namespace DLaB.ModelBuilderExtensions
             private SortedDictionary<string, string> ProjectFiles { get; }
             internal bool ProjectUpdated { get; private set; }
             private string LineFormat { get; }
+            public bool IsSdkStyleProject { get; set; }
             private CodeGenerationService CodeGenService { get; }
             private Dictionary<string, string> InitialFiles { get; }
 
@@ -933,6 +940,7 @@ namespace DLaB.ModelBuilderExtensions
                 Lines = File.ReadAllLines(ProjectPath).ToList();
                 CombineMultiLinedCompileStatements();
 
+                IsSdkStyleProject = Lines.Any(l => l.Contains("<Project Sdk="));
                 ProjectDir = Path.GetDirectoryName(ProjectPath) ?? "NULL";
                 if (!Lines.Any(l => l.Contains("<Compile Include=")))
                 {

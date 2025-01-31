@@ -138,6 +138,12 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("invalidCSharpNamePrefix")]
         public string InvalidCSharpNamePrefix { get; set; }
+
+        /// <summary>
+        /// No Config
+        /// </summary>
+        [JsonPropertyName("invalidStringsForPropertiesNeedingNullableTypes")]
+        public List<string> InvalidStringsForPropertiesNeedingNullableTypes { get; set; }
         
         /// <summary>
         /// No Config
@@ -307,6 +313,18 @@ namespace DLaB.ModelBuilderExtensions
             GenerateEntityRelationships = true;
             GroupMessageRequestWithResponse = true;
             InvalidCSharpNamePrefix = "_";
+            InvalidStringsForPropertiesNeedingNullableTypes = new List<string>
+            {
+                "?",
+                ":",
+                "(",
+                " const ",
+                " class ",
+                " enum ",
+                " System.Nullable<",
+                " System.Collections.Generic.IEnumerable<",
+                " System.Linq.IQueryable<",
+            };
             LabelTextReplacement = new Dictionary<string, string>()
             {
                 { "$", string.Empty },

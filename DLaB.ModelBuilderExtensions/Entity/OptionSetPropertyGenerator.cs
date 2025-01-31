@@ -1,11 +1,10 @@
 ﻿using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Metadata;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Xrm.Sdk.Metadata;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace DLaB.ModelBuilderExtensions.Entity
 {
@@ -46,7 +45,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
                         continue;
                     }
                     var attribute = metadata.Attributes.FirstOrDefault(a => a.LogicalName == property.GetLogicalName());
-                    if (SkipProperty(property, type, attribute))
+                    if (SkipProperty(property, attribute))
                     {
                         continue;
                     }
@@ -81,7 +80,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
             }
         }
 
-        private bool SkipProperty(CodeMemberProperty property, CodeTypeDeclaration type, AttributeMetadata attribute)
+        private bool SkipProperty(CodeMemberProperty property, AttributeMetadata attribute)
         {
             return property == null ||
                    attribute == null ||

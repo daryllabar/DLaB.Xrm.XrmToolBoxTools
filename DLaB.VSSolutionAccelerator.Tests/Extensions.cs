@@ -9,13 +9,13 @@ namespace DLaB.VSSolutionAccelerator.Tests
     public static class Extensions
     {
         [DebuggerHidden]
-        public static void ExistsLineContaining(this Assert assert, string[] lines, string value, string message = null)
+        public static void ALineContains(this Assert assert, string[] lines, string value, string message = null)
         {
-            Assert.IsTrue(lines.Count(l => l.Contains(value)) >= 1, message);
+            Assert.IsTrue(lines.Any(l => l.Contains(value)), message);
         }
 
         [DebuggerHidden]
-        public static void NotExistsLineContaining(this Assert assert, string[] lines, string value, string message = null)
+        public static void NoLineContains(this Assert assert, string[] lines, string value, string message = null)
         {
             Assert.IsFalse(lines.Any(l => l.Contains(value)), message);
         }
@@ -27,7 +27,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
 
             for (var i = 0; i < expected.Length; i++)
             {
-                Assert.IsTrue(i < splitActual.Length, "Actual is missing lines!");
+                Assert.IsTrue(i < splitActual.Length, $"Actual was expected to have {expected.Length} lines, but only has {splitActual.Length} lines.  Actual is missing lines!");
                 if (expected[i].Contains("SolutionGuid = "))
                 {
                     Assert.IsTrue(splitActual[i].Contains("SolutionGuid = "), "Expected the Solution Guid, instead found " + splitActual);

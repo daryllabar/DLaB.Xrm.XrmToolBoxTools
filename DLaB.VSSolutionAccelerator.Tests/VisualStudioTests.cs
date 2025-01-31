@@ -12,11 +12,6 @@ namespace DLaB.VSSolutionAccelerator.Tests
         [TestMethod]
         public void InstallCodeSnippets_WhenEmpty_Should_CreateNew()
         {
-            void AssertSnippetCreated(string[] snippets, string snippet)
-            {
-                Assert.That.ExistsLineContaining(snippets, snippet, $"Snippet {snippet} was not copied!");
-            }
-
             var pluginPath = TestBase.GetPluginsPath();
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             var vsDirectories = Directory.GetDirectories(documentsPath, "Visual Studio *");
@@ -41,7 +36,7 @@ namespace DLaB.VSSolutionAccelerator.Tests
                 folders.Add(backupFolder, existingFolder);
             }
 
-            Logic.VisualStudio.InstallCodeSnippets(pluginPath);
+            Logic.VisualStudio.InstallCodeSnippets(pluginPath, "DLaB.Dataverse");
 
             foreach (var value in folders.Select(i => new { SnippetFolder = i.Value, Backup = i.Key}))
             {
@@ -50,12 +45,19 @@ namespace DLaB.VSSolutionAccelerator.Tests
                 AssertSnippetCreated(snippets, "crmplugin.snippet");
                 AssertSnippetCreated(snippets, "crmplugintest.snippet");
                 AssertSnippetCreated(snippets, "crmtestmethodclass.snippet");
+                AssertSnippetCreated(snippets, "reg.snippet");
                 // ReSharper restore StringLiteralTypo
                 AssertSnippetCreated(snippets, "region.snippet");
 
                 TestBase.ClearDirectory(value.SnippetFolder);
                 Directory.Delete(value.SnippetFolder);
                 Directory.Move(value.Backup, value.SnippetFolder);
+            }
+            return;
+
+            void AssertSnippetCreated(string[] snippets, string snippet)
+            {
+                Assert.That.ALineContains(snippets, snippet, $"Snippet {snippet} was not copied!");
             }
         }
     }

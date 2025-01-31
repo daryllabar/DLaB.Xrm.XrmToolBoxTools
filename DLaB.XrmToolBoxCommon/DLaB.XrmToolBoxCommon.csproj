@@ -108,6 +108,7 @@
     <Reference Include="NuGet.Versioning, Version=5.9.3.3, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\NuGet.Versioning.5.9.3\lib\net472\NuGet.Versioning.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="ScintillaNET, Version=3.6.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\jacobslusser.ScintillaNET.3.6.3\lib\net40\ScintillaNET.dll</HintPath>
@@ -363,6 +364,7 @@
     <Compile Include="Editors\PathEditor.cs" />
     <Compile Include="Editors\SpecifyAttributesEditor.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="FolderPicker.cs" />
     <Compile Include="Forms\DictionaryDialog.cs">
       <SubType>Form</SubType>
     </Compile>

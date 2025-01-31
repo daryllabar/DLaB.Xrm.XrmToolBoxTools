@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace DLaB.VSSolutionAccelerator.Logic
+﻿namespace DLaB.VSSolutionAccelerator.Logic
 {
     public enum PropertyGroupType
     {
@@ -11,11 +9,10 @@ namespace DLaB.VSSolutionAccelerator.Logic
         Unknown
     }
 
-    public class PropertyGroup
+    public class PropertyGroup : FileGroup
     {
         public string OpenTag { get; set; }
         public PropertyGroupType Type { get; set; }
-        public List<string> Lines { get; set; }
 
         public struct ConfigTags
         {
@@ -25,18 +22,17 @@ namespace DLaB.VSSolutionAccelerator.Logic
             public const string TargetFrameworkVersion = "<TargetFrameworkVersion>";
         }
 
-        public PropertyGroup(string openTag)
+        public PropertyGroup(string openTag) : base(GroupType.PropertyGroup, openTag)
         {
             OpenTag = openTag;
             Type = openTag.Contains("PropertyGroup Condition=")
                 ? PropertyGroupType.CompileConfiguration
                 : PropertyGroupType.Unknown;
-            Lines = new List<string> {openTag};
         }
 
-        public void AddLine(string line)
+        public override void AddLine(string line)
         {
-            Lines.Add(line);
+            base.AddLine(line);
             if (Type != PropertyGroupType.Unknown)
             {
                 return;
