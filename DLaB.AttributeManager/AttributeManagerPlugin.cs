@@ -108,7 +108,7 @@ namespace DLaB.AttributeManager
             WorkAsync(new WorkAsyncInfo("Retrieving Entities...",
                 e =>
                 {
-                    e.Result = Service.Execute(new RetrieveAllEntitiesRequest() {EntityFilters = EntityFilters.Entity, RetrieveAsIfPublished = true});
+                    e.Result = Service.Execute(new RetrieveAllEntitiesRequest() { EntityFilters = EntityFilters.Entity, RetrieveAsIfPublished = true });
                 })
             {
                 PostWorkCallBack = e =>
@@ -117,7 +117,7 @@ namespace DLaB.AttributeManager
                     cmbEntities.Items.Clear();
                     OptionSetsMetadata = null; // Clear to be loaded again
 
-                    var result = ((RetrieveAllEntitiesResponse) e.Result).EntityMetadata.
+                    var result = ((RetrieveAllEntitiesResponse)e.Result).EntityMetadata.
                         Select(m => new ObjectCollectionItem<EntityMetadata>(m.DisplayName.GetLocalOrDefaultText("N/A") + " (" + m.LogicalName + ")", m)).
                         OrderBy(r => r.DisplayName);
 
@@ -158,10 +158,10 @@ namespace DLaB.AttributeManager
             {
                 PostWorkCallBack = e =>
                 {
-                    Metadata = ((RetrieveEntityResponse) e.Result).EntityMetadata;
-                    var attributes = Metadata.Attributes.Where(a => 
-                            !a.IsManaged.GetValueOrDefault() && 
-                            a.AttributeOf == null && 
+                    Metadata = ((RetrieveEntityResponse)e.Result).EntityMetadata;
+                    var attributes = Metadata.Attributes.Where(a =>
+                            !a.IsManaged.GetValueOrDefault() &&
+                            a.AttributeOf == null &&
                             a.IsCustomizable.Value &&
                             !a.IsPrimaryId.GetValueOrDefault() &&
                             !IsBaseCurrency(a)).
@@ -191,7 +191,7 @@ namespace DLaB.AttributeManager
 
         private bool IsBaseCurrency(AttributeMetadata attribute)
         {
-            return attribute.AttributeType == AttributeTypeCode.Money && ((MoneyAttributeMetadata) attribute).IsBaseCurrency.GetValueOrDefault(false);
+            return attribute.AttributeType == AttributeTypeCode.Money && ((MoneyAttributeMetadata)attribute).IsBaseCurrency.GetValueOrDefault(false);
         }
 
         #region Steps
@@ -240,7 +240,7 @@ namespace DLaB.AttributeManager
             }
 
             if ((steps.HasFlag(Logic.Steps.CreateNewAttribute)
-                    || steps.HasFlag(Logic.Steps.CreateTemp)) 
+                    || steps.HasFlag(Logic.Steps.CreateTemp))
                 && cmbNewAttributeType.Text == @"Global Option Set"
                 && optAttGlobalOptionSetCmb.SelectedItem == null)
             {
@@ -256,7 +256,7 @@ namespace DLaB.AttributeManager
 
             WorkAsync(new WorkAsyncInfo("Performing Steps...", (w, e) =>
             {
-                var info = (ExecuteStepsInfo) e.Argument;
+                var info = (ExecuteStepsInfo)e.Argument;
                 Logic.LogHandler onLog = m => w.ReportProgress(0, m);
                 info.Migrator.OnLog += onLog;
                 var result = new ExecuteStepsResult
@@ -284,7 +284,7 @@ namespace DLaB.AttributeManager
             {
                 PostWorkCallBack = e =>
                 {
-                    var result = (ExecuteStepsResult) e.Result;
+                    var result = (ExecuteStepsResult)e.Result;
                     if (result.Steps.HasFlag(Logic.Steps.MigrateToNewAttribute) && result.Successful)
                     {
                         AttributesNeedLoaded = true;
@@ -333,8 +333,8 @@ namespace DLaB.AttributeManager
                     att = NewTypeAttributeCreationLogic.CreateText(int.Parse(strAttTxtMaximumLength.Text), GetStringFormat(), GetStringImeMode());
                     break;
                 case "Global Option Set":
-                    var optionSet = (ObjectCollectionItem<OptionSetMetadata>) optAttGlobalOptionSetCmb.SelectedItem;
-                    var defaultValue = (ObjectCollectionItem<int?>) optAttDefaultValueCmb.SelectedItem;
+                    var optionSet = (ObjectCollectionItem<OptionSetMetadata>)optAttGlobalOptionSetCmb.SelectedItem;
+                    var defaultValue = (ObjectCollectionItem<int?>)optAttDefaultValueCmb.SelectedItem;
                     att = NewTypeAttributeCreationLogic.CreateOptionSet(optionSet.Value, defaultValue?.Value);
                     break;
                 case "Local Option Set":
@@ -360,6 +360,20 @@ namespace DLaB.AttributeManager
                         intmax = inttmp;
                     }
                     att = NewTypeAttributeCreationLogic.CreateWholeNumber(GetIntergerFormat(), intmin, intmax);
+                    break;
+                case "Whole Number (big)":
+                    long longtmp;
+                    long? longmin = null;
+                    long? longmax = null;
+                    if (long.TryParse(numAttMinTxt.Text, out longtmp))
+                    {
+                        longmin = longtmp;
+                    }
+                    if (long.TryParse(numAttMaxTxt.Text, out longtmp))
+                    {
+                        longmax = longtmp;
+                    }
+                    att = NewTypeAttributeCreationLogic.CreateWholeNumberBig(longmin, longmax);
                     break;
                 case "Floating Point Number":
                     double dbltmp;
@@ -533,7 +547,7 @@ namespace DLaB.AttributeManager
             numAttPrecisionTxt.Text = "";
             numAttCurrencyPrecisionCmb.SelectedIndex = -1;
         }
-        
+
         private void SetDecimalNumberVisible()
         {
             HideNumberAttributes();
@@ -589,6 +603,14 @@ namespace DLaB.AttributeManager
             numAttFormatCmb.SelectedIndex = 0;
             numAttMinTxt.Text = IntegerAttributeMetadata.MinSupportedValue.ToString(CultureInfo.InvariantCulture);
             numAttMaxTxt.Text = IntegerAttributeMetadata.MaxSupportedValue.ToString(CultureInfo.InvariantCulture);
+        }
+        private void SetWholeNumberBigVisible()
+        {
+            HideNumberAttributes();
+            numAttMinLbl.Visible = true;
+            numAttMinTxt.Visible = true;
+            numAttMinTxt.Text = BigIntAttributeMetadata.MinSupportedValue.ToString(CultureInfo.InvariantCulture);
+            numAttMaxTxt.Text = BigIntAttributeMetadata.MaxSupportedValue.ToString(CultureInfo.InvariantCulture);
         }
 
         private IntegerFormat GetIntergerFormat()
@@ -652,7 +674,7 @@ namespace DLaB.AttributeManager
 
         private void cmbEntities_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
             AttributesNeedLoaded = true;
             cmbAttributes.Items.Clear();
             cmbAttributes.SelectedItem = null;
@@ -709,7 +731,7 @@ namespace DLaB.AttributeManager
                     var optionSetAtt = attribute as PicklistAttributeMetadata;
                     if (optionSetAtt?.OptionSet != null)
                     {
-                        displayValue = (optionSetAtt.OptionSet.IsGlobal.GetValueOrDefault() ? "Global Option Set - " : "Local Option Set - ") + 
+                        displayValue = (optionSetAtt.OptionSet.IsGlobal.GetValueOrDefault() ? "Global Option Set - " : "Local Option Set - ") +
                             optionSetAtt.OptionSet.DisplayName.GetLocalOrDefaultText() + $" ({optionSetAtt.OptionSet.Name})";
                     }
 
@@ -791,11 +813,11 @@ namespace DLaB.AttributeManager
             SetTabVisible(tabDelete, chkDelete.Checked);
 
             chkConvertAttributeType.Visible = !chkDelete.Checked;
-            chkMigrate.Visible              = !chkDelete.Checked;
-            lblNewAttributeGrid.Visible     = !chkDelete.Checked;
-            txtNewAttributeName.Visible     = !chkDelete.Checked;
-            txtDisplayName.Visible          = !chkDelete.Checked;
-            cmbNewAttributeType.Visible     = !chkDelete.Checked;
+            chkMigrate.Visible =              !chkDelete.Checked;
+            lblNewAttributeGrid.Visible =     !chkDelete.Checked;
+            txtNewAttributeName.Visible =     !chkDelete.Checked;
+            txtDisplayName.Visible =          !chkDelete.Checked;
+            cmbNewAttributeType.Visible =     !chkDelete.Checked;
 
             UpdateDisplayedSteps();
         }
@@ -824,6 +846,7 @@ namespace DLaB.AttributeManager
             var stringTabVisible = false;
             var optionTabVisible = false;
             var numberTabVisible = false;
+            var numberBigTabVisible = false;
             if (cmbNewAttributeType.SelectedIndex == -1)
             {
                 return;
@@ -865,6 +888,11 @@ namespace DLaB.AttributeManager
                     numberTabVisible = true;
                     pNumberType.Visible = true;
                     SetWholeNumberVisible();
+                    break;
+                case "Whole Number (big)":
+                    numberBigTabVisible = true;
+                    pNumberType.Visible = true;
+                    SetWholeNumberBigVisible();
                     break;
                 case "Floating Point Number":
                     numberTabVisible = true;
@@ -908,11 +936,11 @@ namespace DLaB.AttributeManager
                 return;
             }
 
-            WorkAsync(new WorkAsyncInfo("Retrieving OptionSets...", e => { e.Result = ((RetrieveAllOptionSetsResponse) Service.Execute(new RetrieveAllOptionSetsRequest())).OptionSetMetadata; })
+            WorkAsync(new WorkAsyncInfo("Retrieving OptionSets...", e => { e.Result = ((RetrieveAllOptionSetsResponse)Service.Execute(new RetrieveAllOptionSetsRequest())).OptionSetMetadata; })
             {
                 PostWorkCallBack = e =>
                 {
-                    OptionSetsMetadata = (IEnumerable<OptionSetMetadataBase>) e.Result;
+                    OptionSetsMetadata = (IEnumerable<OptionSetMetadataBase>)e.Result;
                     LoadOptionSets(OptionSetsMetadata);
                 }
             });
@@ -926,7 +954,7 @@ namespace DLaB.AttributeManager
                 optAttGlobalOptionSetCmb.Items.Clear();
                 optAttGlobalOptionSetCmb.Text = null;
 
-                var values = optionSets.Where(m => m.IsGlobal.GetValueOrDefault() && m is OptionSetMetadata).Select(e => new ObjectCollectionItem<OptionSetMetadata>(e.Name, (OptionSetMetadata) e)).OrderBy(r => r.DisplayName).Cast<object>().ToArray();
+                var values = optionSets.Where(m => m.IsGlobal.GetValueOrDefault() && m is OptionSetMetadata).Select(e => new ObjectCollectionItem<OptionSetMetadata>(e.Name, (OptionSetMetadata)e)).OrderBy(r => r.DisplayName).Cast<object>().ToArray();
 
                 optAttGlobalOptionSetCmb.Items.AddRange(values);
             }
@@ -1091,7 +1119,7 @@ namespace DLaB.AttributeManager
             {
                 // Partial Completion.  Need to allow for Migrate to Temp and Remove
                 var steps = StepMapper.Where(p => (p.Value == Logic.Steps.MigrateDataToTemp && chkMigrate.Checked)
-                                                  || p.Value == Logic.Steps.MigrateToNewAttribute 
+                                                  || p.Value == Logic.Steps.MigrateToNewAttribute
                                                   || p.Value == Logic.Steps.RemoveTemp).Select(v => v.Key);
                 clbSteps.LoadItems(steps.ToObjectArray());
             }
@@ -1132,7 +1160,7 @@ namespace DLaB.AttributeManager
             }
 
             // only allow one decimal point
-            if (e.KeyChar == '.' && (((TextBox) sender).Text.IndexOf('.') > -1))
+            if (e.KeyChar == '.' && (((TextBox)sender).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }
@@ -1140,7 +1168,7 @@ namespace DLaB.AttributeManager
 
         private void optAttGlobalOptionSetCmb_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            var optionSet = (ObjectCollectionItem<OptionSetMetadata>) optAttGlobalOptionSetCmb.SelectedItem;
+            var optionSet = (ObjectCollectionItem<OptionSetMetadata>)optAttGlobalOptionSetCmb.SelectedItem;
             optAttDefaultValueCmb.BeginUpdate();
             optAttDefaultValueCmb.Items.Clear();
             try
@@ -1188,8 +1216,8 @@ namespace DLaB.AttributeManager
         }
     }
 
-    [Export(typeof (IXrmToolBoxPlugin)),
-        ExportMetadata("Name", "Attribute Manager"),   
+    [Export(typeof(IXrmToolBoxPlugin)),
+        ExportMetadata("Name", "Attribute Manager"),
         ExportMetadata("Description", "Handles Creating/Updating an attribute for an Entity."),
         ExportMetadata("SmallImageBase64", SmallImage32X32), // null for "no logo" image or base64 image content 
         ExportMetadata("BigImageBase64", LargeImage120X120), // null for "no logo" image or base64 image content 

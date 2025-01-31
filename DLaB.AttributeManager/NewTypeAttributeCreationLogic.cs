@@ -6,7 +6,7 @@ namespace DLaB.AttributeManager
     public class NewTypeAttributeCreationLogic
     {
         public static AttributeMetadata CreateText(int? maxLength = null, StringFormatName formatName = null, ImeMode? imeMode = ImeMode.Auto, string yomiOf = null, string formulaDefinition = null)
-        {            
+        {
             maxLength = maxLength != null ? maxLength : (formulaDefinition != null ? 4000 : 100);
 
             return new StringAttributeMetadata
@@ -31,7 +31,7 @@ namespace DLaB.AttributeManager
         public static AttributeMetadata CreateOptionSet(OptionSetMetadata optionSet, int? defaultFormValue = null, string formulaDefinition = null)
         {
             if (optionSet.IsGlobal.GetValueOrDefault())
-            {   
+            {
                 // Can't send Global Option Set Options
                 optionSet.Options.Clear();
             }
@@ -70,6 +70,14 @@ namespace DLaB.AttributeManager
                 MaxValue = maxValue,
                 MinValue = minValue,
                 FormulaDefinition = formulaDefinition
+            };
+        }
+        public static AttributeMetadata CreateWholeNumberBig(long? minValue = BigIntAttributeMetadata.MinSupportedValue, long? maxValue = BigIntAttributeMetadata.MaxSupportedValue)
+        {
+            return new BigIntAttributeMetadata()
+            {
+                //MaxValue = maxValue,
+                //MinValue = minValue,
             };
         }
 
@@ -137,7 +145,7 @@ namespace DLaB.AttributeManager
                 PrecisionSource = precisionSource,
                 CalculationOf = calculationOf,
                 FormulaDefinition = formulaDefinition
-            }; 
+            };
         }
 
         public static AttributeMetadata CreateDateTime(DateTimeFormat? format = DateTimeFormat.DateOnly, ImeMode? mode = ImeMode.Auto, string formulaDefinition = null)

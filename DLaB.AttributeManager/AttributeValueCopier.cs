@@ -119,6 +119,28 @@ namespace DLaB.AttributeManager
             return null;
         }
 
+        private object CopyValueInternal(AttributeMetadata oldAttribute, BigIntAttributeMetadata newAttribute, object value, Dictionary<string, string> migrationMapping)
+        {
+            var unformatted = value.ToString();
+            unformatted = migrationMapping.TryGetValue(unformatted, out var mappedValue) ? mappedValue : unformatted;
+
+            // Handle 1.0000
+            if (unformatted.Contains("."))
+            {
+                while (unformatted.EndsWith("0") || unformatted.EndsWith("."))
+                {
+                    unformatted = unformatted.Substring(0, unformatted.Length - 1);
+                }
+            }
+
+            if (long.TryParse(unformatted, out var output))
+            {
+                return output;
+            }
+            Trace("Unable to convert value \"" + value + "\" of type \"" + value.GetType().Name + "\" to Integer");
+            return null;
+        }
+
         private object CopyValueInternal(AttributeMetadata oldAttribute, LookupAttributeMetadata newAttribute, object value, Dictionary<string, string> migrationMapping)
         {
             CopyValueInternal((object)oldAttribute, newAttribute, value, migrationMapping);

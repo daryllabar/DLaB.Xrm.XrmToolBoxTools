@@ -495,6 +495,7 @@ namespace DLaB.AttributeManager
             "Two Options",
             "Image",
             "Whole Number",
+            "Whole Number (big)",
             "Floating Point Number",
             "Decimal Number",
             "Currency",
