@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 using DLaB.XrmToolBoxCommon;
 
@@ -13,6 +14,43 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         private void SetupCustomTypeDescriptor()
         {
             Descriptor = ProviderInstaller.Install(this);
+
+            SetDefaultValues(Descriptor);
+        }
+
+        private void SetDefaultValues(DynamicCustomTypeDescriptor descriptor)
+        {
+            var toIgnore = new string[] {
+                nameof(EarlyBoundGeneratorConfig.ExtensionConfig),
+                nameof(ExtensionConfig.EntitiesWhitelist),
+                nameof(ExtensionConfig.TokenCapitalizationOverrides),
+                nameof(ExtensionConfig.PropertyEnumMappings)
+            };
+
+            var config = EarlyBoundGeneratorConfig.GetDefault();
+            
+            AddDefaultValueAttributes(descriptor, typeof(EarlyBoundGeneratorConfig), config, toIgnore);
+
+            AddDefaultValueAttributes(descriptor, typeof(ExtensionConfig), config.ExtensionConfig, toIgnore);
+        }
+
+        private void AddDefaultValueAttributes(DynamicCustomTypeDescriptor descriptor, Type configType, Object config, string[] toIgnore)
+        {
+            foreach (var property in Descriptor.GetProperties())
+            {
+                var propertyDescriptor = property as CustomPropertyDescriptor;
+                if (propertyDescriptor == null || toIgnore.Contains(propertyDescriptor.Name))
+                {
+                    continue;
+                }
+
+                var defaultValue = configType.GetProperty(propertyDescriptor.Name)?.GetValue(config, null);
+                if (defaultValue != null)
+                {
+                    propertyDescriptor.AllAttributes.Add(new DefaultValueAttribute(defaultValue));
+                    propertyDescriptor.DefaultValue = defaultValue;
+                }
+            }
         }
 
 
