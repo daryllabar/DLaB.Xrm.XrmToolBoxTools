@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using System.Windows.Forms;
 using DLaB.Xrm.Entities;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
+using Newtonsoft.Json.Linq;
 using Source.DLaB.Xrm;
 using XrmToolBox.Extensibility;
 
@@ -172,7 +174,19 @@ namespace DLaB.XrmToolBoxCommon.Forms
                 qe.AddLink<SdkMessagePair>(SdkMessagePair.Fields.SdkMessageId)
                     .WhereEqual(SdkMessagePair.Fields.Endpoint, @"2011/Organization.svc");
                 qe.AddLink<SdkMessageFilter>(SdkMessageFilter.Fields.SdkMessageId)
-                    .WhereEqual(SdkMessageFilter.Fields.IsVisible, true );
+                    .WhereEqual(SdkMessageFilter.Fields.IsVisible, true);
+                qe.Where(SdkMessage.Fields.Name, ConditionOperator.NotIn,
+                    "create",
+                    "createmultiple",
+                    "delete",
+                    "deletemultiple",
+                    "retrieve",
+                    "retrievemultiple",
+                    "update",
+                    "updatemultiple",
+                    "upsert",
+                    "upsertmultiple"
+                );
                 qe.AddOrder(SdkMessage.Fields.Name, OrderType.Ascending);
                 qe.Query.Distinct = true;
 
