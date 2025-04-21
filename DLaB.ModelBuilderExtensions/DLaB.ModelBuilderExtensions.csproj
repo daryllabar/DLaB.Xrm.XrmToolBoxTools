@@ -283,6 +283,7 @@
     <Compile Include="CustomizeCodeDomServiceEmpty.cs" />
     <Compile Include="CustomTextWriter.cs" />
     <Compile Include="Entity\EditableFormattedValuesUpdater.cs" />
+    <Compile Include="Entity\OptionSetAttributeEnumPostFixRemover.cs" />
     <Compile Include="Entity\OptionSetToIntPropertyGenerator.cs" />
     <Compile Include="ErrorLogger.cs" />
     <Compile Include="Message\AttributeConstGenerator.cs" />

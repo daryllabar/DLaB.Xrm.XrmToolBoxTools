@@ -38,7 +38,6 @@ namespace DLaB.ModelBuilderExtensions.Tests
         [DataRow("Acme_Something", null, DisplayName = "Entity name in State and Status Code names are replaced")]
         public void GetNameForOptionSet_Tests(string schemaName, string overrideName)
         {
-            ;
             var fakeNamingService = A.Fake<INamingService>();
             A.CallTo(() => fakeNamingService.GetNameForEntity(A<EntityMetadata>._, A<IServiceProvider>._)).Returns(overrideName ?? schemaName);
             

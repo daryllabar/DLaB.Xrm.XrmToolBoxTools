@@ -262,6 +262,7 @@
     <Compile Include="Metadata\Provider.cs" />
     <Compile Include="DataModelBuilderTests.cs" />
     <Compile Include="NamingServiceTests.cs" />
+    <Compile Include="OptionSetAttributeEnumPostFixRemoverTests.cs" />
     <Compile Include="OptionSetMetadataAttributeGeneratorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Resources\EditableFormattedValuesGeneration.txt" />

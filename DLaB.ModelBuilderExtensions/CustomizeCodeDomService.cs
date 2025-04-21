@@ -163,6 +163,8 @@ namespace DLaB.ModelBuilderExtensions
                 new OptionSetToIntPropertyGenerator(DefaultService, Settings).CustomizeCodeDom(codeUnit, services);
             }
 
+            new OptionSetAttributeEnumPostFixRemover(DefaultService, Settings).CustomizeCodeDom(codeUnit, services);
+
             if (MakeAllFieldsEditable)
             {
                 new EditableFormattedValuesUpdater().CustomizeCodeDom(codeUnit, services);
