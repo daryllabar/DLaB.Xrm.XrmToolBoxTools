@@ -208,8 +208,21 @@ namespace DLaB.ModelBuilderExtensions
                          where propDom != null && !propDom.HasSet
                          select propDom)
                 {
+                    var resultsName = prop.Name;
+                    if (prop.HasGet)
+                    {
+                        // Theoretically this should be a call to the NamingService.GetNameForResponseField(response, field, serviceProvider), but the parameters aren't readily available, so this is easier.
+                        try
+                        {
+                            resultsName = ((CodePrimitiveExpression)((CodeMethodInvokeExpression)((CodeConditionStatement)prop.GetStatements[0]).Condition).Parameters[0]).Value.ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            Trace.TraceError(ex.Message + Environment.NewLine + Environment.NewLine + ex);
+                        }
+                    }
                     var thisMember = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), "Results");
-                    var indexOf = new CodeArrayIndexerExpression(thisMember, new CodePrimitiveExpression(prop.Name));
+                    var indexOf = new CodeArrayIndexerExpression(thisMember, new CodePrimitiveExpression(resultsName));
                     prop.SetStatements.Add(new CodeAssignStatement(indexOf, new CodePropertySetValueReferenceExpression()));
                 }
             }

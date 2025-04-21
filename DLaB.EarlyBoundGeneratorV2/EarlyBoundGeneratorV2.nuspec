@@ -12,6 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
     <releaseNotes>
+Fix for Early-bound "Responses" for messages have incorrect capitalization of attributes #519
 Fix for Create standard message not exported #522
 Fix for Enum property generated with wrong type #537
 Fix for Add Czech language (cs-CZ; 1029) as alphabet for the Option Sets transliteration #529  Thank you Luboš Jánský for providing the alphabet transliteration file!
