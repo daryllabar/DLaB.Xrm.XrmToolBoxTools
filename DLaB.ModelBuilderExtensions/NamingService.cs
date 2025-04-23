@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Microsoft.Xrm.Sdk.Extensions;
 
 namespace DLaB.ModelBuilderExtensions
 {
@@ -633,10 +634,15 @@ namespace DLaB.ModelBuilderExtensions
         public string GetNameForRequestField(SdkMessageRequest request, SdkMessageRequestField requestField, IServiceProvider services)
         {
             SetServiceCache(services);
+            var className = services.Get<INamingService>().GetNameForMessagePair(request.MessagePair, services) + "Request";
             var defaultName = DefaultService.GetNameForRequestField(request, requestField, services);
-            return CamelCaseMemberNames
+            var desiredName = CamelCaseMemberNames
                 ? CamelCaser.Case(defaultName)
                 : defaultName;
+
+            // Request Messages have their values default in the constructor.  If the name is the same as the class name, then the code dom will append __Member to the end of the name of the property, but not when setting the property in the constructor.
+            // Just add __Member to the property name so the constructor is set correctly.
+            return desiredName + (className == desiredName ? "__Member": string.Empty);
         }
 
         public string GetNameForResponseField(SdkMessageResponse response, SdkMessageResponseField responseField, IServiceProvider services)

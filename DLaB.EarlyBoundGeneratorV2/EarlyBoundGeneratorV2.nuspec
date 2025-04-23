@@ -11,7 +11,10 @@
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>2.2025.4.20
+    <releaseNotes>
+Fix for msdynmkt_PersonalizationDynamicTextAiRequest does not generate properly #502
+
+2.2025.4.20
 Fix for Early-bound "Responses" for messages have incorrect capitalization of attributes #519
 Fix for Create standard message not exported #522
 Fix for Enum property generated with wrong type #537

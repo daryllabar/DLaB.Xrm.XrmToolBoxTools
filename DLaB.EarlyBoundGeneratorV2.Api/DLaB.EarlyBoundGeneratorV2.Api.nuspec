@@ -11,7 +11,10 @@
 		<projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses ModelBuilder from the PAC.</description>
-		<releaseNotes>V2.2025.4.20
+		<releaseNotes>
+Fix for msdynmkt_PersonalizationDynamicTextAiRequest does not generate properly #502
+
+2.2025.4.20
 Fix for Early-bound "Responses" for messages have incorrect capitalization of attributes #519
 Fix for Enum property generated with wrong type #537
 Fix for Add Czech language (cs-CZ; 1029) as alphabet for the Option Sets transliteration #529  Thank you Luboš Jánský for providing the alphabet transliteration file!
