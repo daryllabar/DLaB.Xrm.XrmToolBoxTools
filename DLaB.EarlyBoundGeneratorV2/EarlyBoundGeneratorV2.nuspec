@@ -13,6 +13,7 @@
     <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
     <releaseNotes>
 Fix for msdynmkt_PersonalizationDynamicTextAiRequest does not generate properly #502
+Create Save Settings button #544
 
 2.2025.4.20
 Fix for Early-bound "Responses" for messages have incorrect capitalization of attributes #519
@@ -34,15 +35,6 @@ V2.2024.9.8
 Don't update Project file for .NET SDK Style Projects #491				
 Allow EBG to accept a path to a settings file. #514 		
 Special characters not generating in V2 (ë) #506
-
-V2.2024.5.16
-Add option to mark all attributes as nullable (C# 8.0) #311
-
-V2.2024.5.8
-Allow for specifying more than 100 entities in entity whitelist #493
-
-V2.2024.5.4
-Allow for Blacklist of Attribute Names #494
     </releaseNotes>
     <copyright>Copyright 2019</copyright>
 	  <tags>PAC ModelBuilder Dataverse Xrm EarlyBound Generator XrmToolBox Plugins</tags>

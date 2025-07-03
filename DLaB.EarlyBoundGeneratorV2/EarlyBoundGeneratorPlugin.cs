@@ -431,11 +431,16 @@ Please consider clicking the save button in the top right to save the settings w
             HydrateUiFromSettings(EarlyBoundGeneratorConfig.GetDefault(), ConnectionSettings.FullSettingsPath);
         }
 
+        private void BtnSaveSettings_Click(object sender, EventArgs e)
+        {
+            SaveSettingsToFileSpecifiedInPath();
+        }
+
         private void BtnSaveSettingsPathDialog_Click(object sender, EventArgs e)
         {
             if (saveFileDialog1.SetXmlFilePath(TxtSettingsPath))
             {
-                SaveSettingsToNewFile();
+                SaveSettingsToFileSpecifiedInPath();
             }
         }
 
@@ -517,7 +522,7 @@ Please consider clicking the save button in the top right to save the settings w
             }
         }
 
-        private void SaveSettingsToNewFile()
+        private void SaveSettingsToFileSpecifiedInPath()
         {
             ConnectionSettings.SettingsPath = TxtSettingsPath.Text;
             SaveSettings();

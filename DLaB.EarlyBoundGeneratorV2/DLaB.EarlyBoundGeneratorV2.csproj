@@ -317,6 +317,11 @@
       <DependentUpon>AttributesToEnumMapperDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="AttributesToEnumMapperEditor.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SpecifyEntityNameEditor.cs" />
     <Compile Include="SpecifyAttributesCaseEditor.cs" />
     <Compile Include="Settings\ConnectionSettings.cs" />
@@ -355,6 +360,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AttributesToEnumMapperDialog.resx">
       <DependentUpon>AttributesToEnumMapperDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SpecifyStringValuesDialog.resx">
       <DependentUpon>SpecifyStringValuesDialog.cs</DependentUpon>

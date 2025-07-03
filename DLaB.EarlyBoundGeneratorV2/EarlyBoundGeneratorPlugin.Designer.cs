@@ -39,6 +39,7 @@
             this.BtnSaveSettingsPathDialog = new System.Windows.Forms.Button();
             this.BtnReloadSettings = new System.Windows.Forms.Button();
             this.BtnResetSettings = new System.Windows.Forms.Button();
+            this.BtnSaveSettings = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.PropertiesGrid = new DLaB.XrmToolBoxCommon.Controls.SearchablePropertyGrid();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -96,7 +97,7 @@
             this.BtnOpenSettingsPathDialog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.helpProvider1.SetHelpString(this.BtnOpenSettingsPathDialog, "Overrides Capitalization of Entity Attributes");
             this.BtnOpenSettingsPathDialog.Image = ((System.Drawing.Image)(resources.GetObject("BtnOpenSettingsPathDialog.Image")));
-            this.BtnOpenSettingsPathDialog.Location = new System.Drawing.Point(779, 4);
+            this.BtnOpenSettingsPathDialog.Location = new System.Drawing.Point(708, 7);
             this.BtnOpenSettingsPathDialog.Margin = new System.Windows.Forms.Padding(6);
             this.BtnOpenSettingsPathDialog.Name = "BtnOpenSettingsPathDialog";
             this.helpProvider1.SetShowHelp(this.BtnOpenSettingsPathDialog, true);
@@ -113,7 +114,7 @@
             this.TxtSettingsPath.Location = new System.Drawing.Point(92, 15);
             this.TxtSettingsPath.Margin = new System.Windows.Forms.Padding(6);
             this.TxtSettingsPath.Name = "TxtSettingsPath";
-            this.TxtSettingsPath.Size = new System.Drawing.Size(551, 20);
+            this.TxtSettingsPath.Size = new System.Drawing.Size(480, 20);
             this.TxtSettingsPath.TabIndex = 13;
             this.TxtSettingsPath.Leave += new System.EventHandler(this.TxtSettingsPath_Leave);
             // 
@@ -122,13 +123,13 @@
             this.BtnSaveSettingsPathDialog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.helpProvider1.SetHelpString(this.BtnSaveSettingsPathDialog, "Overrides Capitalization of Entity Attributes");
             this.BtnSaveSettingsPathDialog.Image = ((System.Drawing.Image)(resources.GetObject("BtnSaveSettingsPathDialog.Image")));
-            this.BtnSaveSettingsPathDialog.Location = new System.Drawing.Point(841, 4);
+            this.BtnSaveSettingsPathDialog.Location = new System.Drawing.Point(770, 7);
             this.BtnSaveSettingsPathDialog.Margin = new System.Windows.Forms.Padding(6);
             this.BtnSaveSettingsPathDialog.Name = "BtnSaveSettingsPathDialog";
             this.helpProvider1.SetShowHelp(this.BtnSaveSettingsPathDialog, true);
             this.BtnSaveSettingsPathDialog.Size = new System.Drawing.Size(50, 41);
             this.BtnSaveSettingsPathDialog.TabIndex = 37;
-            this.toolTip1.SetToolTip(this.BtnSaveSettingsPathDialog, "Save to new settings file");
+            this.toolTip1.SetToolTip(this.BtnSaveSettingsPathDialog, "Save As - Saves Settings to new settings file");
             this.BtnSaveSettingsPathDialog.UseVisualStyleBackColor = true;
             this.BtnSaveSettingsPathDialog.Click += new System.EventHandler(this.BtnSaveSettingsPathDialog_Click);
             // 
@@ -137,7 +138,7 @@
             this.BtnReloadSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.helpProvider1.SetHelpString(this.BtnReloadSettings, "Overrides Capitalization of Entity Attributes");
             this.BtnReloadSettings.Image = ((System.Drawing.Image)(resources.GetObject("BtnReloadSettings.Image")));
-            this.BtnReloadSettings.Location = new System.Drawing.Point(717, 6);
+            this.BtnReloadSettings.Location = new System.Drawing.Point(646, 7);
             this.BtnReloadSettings.Margin = new System.Windows.Forms.Padding(6);
             this.BtnReloadSettings.Name = "BtnReloadSettings";
             this.helpProvider1.SetShowHelp(this.BtnReloadSettings, true);
@@ -152,7 +153,7 @@
             this.BtnResetSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.helpProvider1.SetHelpString(this.BtnResetSettings, "Overrides Capitalization of Entity Attributes");
             this.BtnResetSettings.Image = ((System.Drawing.Image)(resources.GetObject("BtnResetSettings.Image")));
-            this.BtnResetSettings.Location = new System.Drawing.Point(655, 7);
+            this.BtnResetSettings.Location = new System.Drawing.Point(584, 7);
             this.BtnResetSettings.Margin = new System.Windows.Forms.Padding(6);
             this.BtnResetSettings.Name = "BtnResetSettings";
             this.helpProvider1.SetShowHelp(this.BtnResetSettings, true);
@@ -161,6 +162,21 @@
             this.toolTip1.SetToolTip(this.BtnResetSettings, "Reset Settings to Default");
             this.BtnResetSettings.UseVisualStyleBackColor = true;
             this.BtnResetSettings.Click += new System.EventHandler(this.BtnResetSettings_Click);
+            // 
+            // BtnSaveSettings
+            // 
+            this.BtnSaveSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.helpProvider1.SetHelpString(this.BtnSaveSettings, "Overrides Capitalization of Entity Attributes");
+            this.BtnSaveSettings.Image = ((System.Drawing.Image)(resources.GetObject("BtnSaveSettings.Image")));
+            this.BtnSaveSettings.Location = new System.Drawing.Point(832, 7);
+            this.BtnSaveSettings.Margin = new System.Windows.Forms.Padding(6);
+            this.BtnSaveSettings.Name = "BtnSaveSettings";
+            this.helpProvider1.SetShowHelp(this.BtnSaveSettings, true);
+            this.BtnSaveSettings.Size = new System.Drawing.Size(50, 41);
+            this.BtnSaveSettings.TabIndex = 40;
+            this.toolTip1.SetToolTip(this.BtnSaveSettings, "Save to settings to file");
+            this.BtnSaveSettings.UseVisualStyleBackColor = true;
+            this.BtnSaveSettings.Click += new System.EventHandler(this.BtnSaveSettings_Click);
             // 
             // openFileDialog1
             // 
@@ -177,7 +193,8 @@
             this.PropertiesGrid.Location = new System.Drawing.Point(4, 54);
             this.PropertiesGrid.Margin = new System.Windows.Forms.Padding(6);
             this.PropertiesGrid.Name = "PropertiesGrid";
-            this.PropertiesGrid.Size = new System.Drawing.Size(887, 945);
+            this.PropertiesGrid.SelectedObject = null;
+            this.PropertiesGrid.Size = new System.Drawing.Size(878, 945);
             this.PropertiesGrid.TabIndex = 36;
             // 
             // splitContainer1
@@ -196,6 +213,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.BtnSaveSettings);
             this.splitContainer1.Panel2.Controls.Add(this.BtnResetSettings);
             this.splitContainer1.Panel2.Controls.Add(this.BtnSaveSettingsPathDialog);
             this.splitContainer1.Panel2.Controls.Add(this.BtnReloadSettings);
@@ -264,5 +282,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button BtnReloadSettings;
         private System.Windows.Forms.Button BtnResetSettings;
+        private System.Windows.Forms.Button BtnSaveSettings;
     }
 }
