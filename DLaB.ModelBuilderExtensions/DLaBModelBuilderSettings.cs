@@ -322,7 +322,6 @@ namespace DLaB.ModelBuilderExtensions
                 " class ",
                 " enum ",
                 " System.Nullable<",
-                " System.Collections.Generic.IEnumerable<",
                 " System.Linq.IQueryable<",
             };
             LabelTextReplacement = new Dictionary<string, string>()

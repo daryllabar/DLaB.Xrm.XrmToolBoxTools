@@ -22,7 +22,6 @@ namespace DLaB.ModelBuilderExtensions
         public bool DeleteFilesFromOutputFolders { get => DLaBSettings.DeleteFilesFromOutputFolders; set => DLaBSettings.DeleteFilesFromOutputFolders = value; }
         public string EntitiesFileName { get => DLaBSettings.EntitiesFileName; set => DLaBSettings.EntitiesFileName = value; }
         public string EntityTypesFolder { get => Settings.EntityTypesFolder; set => Settings.EntityTypesFolder = value; }
-        public string FilePrefixText { get => DLaBSettings.FilePrefixText; set => DLaBSettings.FilePrefixText = value; }
         public string ServiceContextName { get => Settings.ServiceContextName; set => Settings.ServiceContextName = value; }
         public bool GenerateActions { get => Settings.GenerateActions; set => Settings.GenerateActions = value; }
         public bool GroupMessageRequestWithResponse { get => DLaBSettings.GroupMessageRequestWithResponse; set => DLaBSettings.GroupMessageRequestWithResponse = value; }

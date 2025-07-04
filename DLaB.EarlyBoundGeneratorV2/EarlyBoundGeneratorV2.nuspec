@@ -12,6 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
     <releaseNotes>
+Fix "Make Reference Types Nullable" setting generates code with nullability errors #533			
 Actually Add ExchangeRate token for #536
 Fix Early Bound classes not compiling if Connection included as Entity and Make all fields editable is false #532
 Honor custom OptionSet name casing #541
