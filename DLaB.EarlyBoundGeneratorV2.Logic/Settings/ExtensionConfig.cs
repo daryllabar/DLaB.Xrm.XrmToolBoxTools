@@ -211,7 +211,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         /// </summary>
         public int? OptionSetLanguageCodeOverride { get; set; }
         /// <summary>
-        /// If Option Sets have identical names to Entities, it will cause naming conflicts.  By default this is overcome by post-fixing "_Enum" to the Option Set name.  This setting allows a custom mapping for option set names to be specified.
+        /// If Option Sets have identical names to Entities, it will cause naming conflicts.  By default, this is overcome by post-fixing "1" to the Option Set name.  This setting allows a custom mapping for option set names to be specified.
         /// </summary>
         public string OptionSetNames { get; set; }
         /// <summary>
@@ -505,7 +505,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddProperty(nameof(ModelBuilderLogLevel), ModelBuilderLogLevel);
             AddOptionalProperty("OptionSetsFileName", settings.OptionSetsTypesFolder, !CreateOneFilePerOptionSet);
             writer.AddProperty(nameof(OptionSetLanguageCodeOverride), OptionSetLanguageCodeOverride?.ToString());
-            writer.AddPropertyDictionaryStringString(nameof(OptionSetNames), OptionSetNames);
+            writer.AddPropertyDictionaryStringString(nameof(OptionSetNames), OptionSetNames, false);
             writer.AddProperty(nameof(ProjectNameForEarlyBoundFiles), ProjectNameForEarlyBoundFiles ?? string.Empty);
             writer.AddPropertyDictionaryStringString(nameof(PropertyEnumMappings), PropertyEnumMappings, false);
             writer.AddProperty(nameof(ReadSerializedMetadata), ReadSerializedMetadata);

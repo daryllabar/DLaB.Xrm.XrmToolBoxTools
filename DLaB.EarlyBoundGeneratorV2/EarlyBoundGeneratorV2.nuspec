@@ -12,8 +12,9 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
     <releaseNotes>
-Fix for msdynmkt_PersonalizationDynamicTextAiRequest does not generate properly #502
+Honor custom OptionSet name casing #541
 Create Save Settings button #544
+Fix for msdynmkt_PersonalizationDynamicTextAiRequest does not generate properly #502
 
 2.2025.4.20
 Fix for Early-bound "Responses" for messages have incorrect capitalization of attributes #519
