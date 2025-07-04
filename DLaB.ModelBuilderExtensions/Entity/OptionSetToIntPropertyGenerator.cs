@@ -66,11 +66,6 @@ namespace DLaB.ModelBuilderExtensions.Entity
             // }
             // return null;
 
-            if (!enumProp.HasSet)
-            {
-                return;
-            }
-
             enumProp.GetStatements.Clear();
             var optionSetValueType = new CodeTypeReference(typeof(OptionSetValue));
             // Microsoft.Xrm.Sdk.OptionSetValue value = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("attributeLogicalName");
@@ -125,7 +120,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
             // Generates the following:
             // if (value.HasValue)
             // {
-            //     this.SetAttributeValue("attributeLogicalName", new Microsoft.Xrm.Sdk.OptionSetValue(value));
+            //     this.SetAttributeValue("attributeLogicalName", new Microsoft.Xrm.Sdk.OptionSetValue(value.Value);
             // }
             // else
             // {
@@ -136,7 +131,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
                     // if (value.HasValue)
                     new CodePropertyReferenceExpression(new CodePropertySetValueReferenceExpression(), "HasValue"),
 
-                    //     this.SetAttributeValue("attributeLogicalName", new Microsoft.Xrm.Sdk.OptionSetValue(value));        
+                    //     this.SetAttributeValue("attributeLogicalName", new Microsoft.Xrm.Sdk.OptionSetValue(value.Value);        
                     new CodeStatement[]
                     {
                         new CodeExpressionStatement(
@@ -146,7 +141,10 @@ namespace DLaB.ModelBuilderExtensions.Entity
                                 new CodePrimitiveExpression(logicalName),
                                 new CodeObjectCreateExpression(
                                     new CodeTypeReference(typeof(OptionSetValue)),
-                                    new CodePropertySetValueReferenceExpression()
+                                    new CodePropertyReferenceExpression(
+                                        new CodeVariableReferenceExpression("value"),
+                                        "Value"
+                                    )
                                 )
                             )
                         )
