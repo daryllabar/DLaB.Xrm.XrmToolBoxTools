@@ -12,6 +12,7 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses ModelBuilder from the PAC.</description>
 		<releaseNotes>
+Actually Add ExchangeRate token for #536
 Fix Early Bound classes not compiling if Connection included as Entity and Make all fields editable is false #532
 Fix for msdynmkt_PersonalizationDynamicTextAiRequest does not generate properly #502
 
