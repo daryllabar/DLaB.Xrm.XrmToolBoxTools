@@ -14,6 +14,7 @@ namespace DLaB.ModelBuilderExtensions
     public class NamingService : TypedServiceBase<INamingService>, INamingService
     {
         public const int English = 1033;
+        public const string PropertyCollisionPostFix = "__Member";
 
         public bool AdjustCasingForEnumOptions { get => DLaBSettings.AdjustCasingForEnumOptions; set => DLaBSettings.AdjustCasingForEnumOptions = value; }
         public bool CamelCaseClassNames { get => DLaBSettings.CamelCaseClassNames; set => DLaBSettings.CamelCaseClassNames = value; }
@@ -564,7 +565,7 @@ namespace DLaB.ModelBuilderExtensions
             if (GetNameForEntity(entityMetadata, services) == attributeName)
             {
                 // Naming collision, add Postfix
-                attributeName += "__Member";
+                attributeName += PropertyCollisionPostFix;
             }
 
             return attributeName;
@@ -649,7 +650,7 @@ namespace DLaB.ModelBuilderExtensions
 
             // Request Messages have their values default in the constructor.  If the name is the same as the class name, then the code dom will append __Member to the end of the name of the property, but not when setting the property in the constructor.
             // Just add __Member to the property name so the constructor is set correctly.
-            return desiredName + (className == desiredName ? "__Member": string.Empty);
+            return desiredName + (className == desiredName ? PropertyCollisionPostFix : string.Empty);
         }
 
         public string GetNameForResponseField(SdkMessageResponse response, SdkMessageResponseField responseField, IServiceProvider services)

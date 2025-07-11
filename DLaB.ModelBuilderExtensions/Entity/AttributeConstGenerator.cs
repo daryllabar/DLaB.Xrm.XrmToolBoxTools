@@ -27,18 +27,24 @@ namespace DLaB.ModelBuilderExtensions.Entity
                 {
                     continue;
                 }
-
+                var collisionString = NamingService.PropertyCollisionPostFix + " = \"";
+                var checkForMemberReplacement = constsClass.Text.Contains(collisionString);
                 var lines = constsClass.Text.Replace($"public static class {OobConstsClassName}", $"public static partial class {AttributeConstsClassName}")
                     .Replace($"\" +{Environment.NewLine}\t\t\"","")
                     .Split(new [] {
                     Environment.NewLine
                 }, StringSplitOptions.None).ToList();
-                
+               
                 var start = lines.FindIndex(l => l.StartsWith("\t\t\tpublic const string "));
                 var end = lines.FindIndex(l => l.StartsWith("\t\t}"));
                 var attributes = lines.Skip(start).Take(end - start).ToList();
                 lines.RemoveRange(start, end - start);
                 lines.InsertRange(start, attributes.OrderBy(a => a.Split(' ').Last()));
+                if (checkForMemberReplacement)
+                {
+                    var collisionIndex = lines.FindIndex(l => l.Contains(collisionString));
+                    lines[collisionIndex] = lines[collisionIndex].Replace(collisionString, " = \"");
+                }
                 constsClass.Text = string.Join(Environment.NewLine, lines);
             }
         }
