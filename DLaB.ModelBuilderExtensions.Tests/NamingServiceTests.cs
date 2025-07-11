@@ -81,6 +81,25 @@ namespace DLaB.ModelBuilderExtensions.Tests
         }
 
         [TestMethod]
+        [DataRow("acme_Something", "acme_Something", "acme_Something__Member", DisplayName = "Matching Names, should append postfix")]
+        [DataRow("acme_Something", "acme_SomethingElse", "acme_SomethingElse", DisplayName = "Unique Names, should not append postfix")]
+        public void GetNameForAttribute_Tests(string entitySchemaName, string attributeSchemaName, string expectedName)
+        {
+            var fakeNamingService = A.Fake<INamingService>();
+            A.CallTo(() => fakeNamingService.GetNameForEntity(A<EntityMetadata>._, A<IServiceProvider>._)).Returns(entitySchemaName);
+            A.CallTo(() => fakeNamingService.GetNameForAttribute(A<EntityMetadata>._, A<AttributeMetadata>._, A<IServiceProvider>._)).Returns(attributeSchemaName);
+            var sut = new NamingService(fakeNamingService, new DLaBModelBuilderSettings
+            {
+                DLaBModelBuilder = new DLaBModelBuilder()
+            });
+
+            Assert.AreEqual(expectedName, sut.GetNameForAttribute(
+                new EntityMetadata { LogicalName = entitySchemaName.ToLower() },
+                new AttributeMetadata { LogicalName = attributeSchemaName.ToLower()},
+                A.Fake<IServiceProvider>()));
+        }
+
+        [TestMethod]
         public void GetNameFromLabel_Test()
         {
             var sut = new NamingService(null, new DLaBModelBuilderSettings());

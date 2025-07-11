@@ -546,9 +546,10 @@ namespace DLaB.ModelBuilderExtensions
             if (EntityAttributeSpecifiedNames.TryGetValue(entityMetadata.LogicalName.ToLower(), out var specifiedNames) &&
                 specifiedNames.Any(s => string.Equals(s, attributeMetadata.LogicalName, StringComparison.OrdinalIgnoreCase)))
             {
-                attributeName = specifiedNames.First(s => string.Equals(s, attributeMetadata.LogicalName, StringComparison.OrdinalIgnoreCase));
+                return specifiedNames.First(s => string.Equals(s, attributeMetadata.LogicalName, StringComparison.OrdinalIgnoreCase));
             }
-            else if (useLogicalNames)
+
+            if (useLogicalNames)
             {
                 attributeName = attributeMetadata.LogicalName;
             }
@@ -558,6 +559,12 @@ namespace DLaB.ModelBuilderExtensions
                 attributeName = camelCase
                     ? CamelCaser.Case(attributeName)
                     : attributeName;
+            }
+
+            if (GetNameForEntity(entityMetadata, services) == attributeName)
+            {
+                // Naming collision, add Postfix
+                attributeName += "__Member";
             }
 
             return attributeName;
