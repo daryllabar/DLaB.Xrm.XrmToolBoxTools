@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGeneratorV2</id>
-	  <version>2.2025.7.11</version>
+	  <version>2.2025.7.22</version>
 	  <title>Early Bound Generator V2</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,7 +11,10 @@
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V2.2025.7.11
+    <releaseNotes>V2.2025.7.22
+Fix Invalid Position Casing #546
+
+V2.2025.7.11
 Fix for Naming Collision for Entity and Attribute Names #545
 
 V2.2025.7.3
