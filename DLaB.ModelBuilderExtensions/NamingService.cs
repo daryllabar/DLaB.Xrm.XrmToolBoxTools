@@ -26,6 +26,7 @@ namespace DLaB.ModelBuilderExtensions
         public Dictionary<string, string> LabelTextReplacement { get => DLaBSettings.LabelTextReplacement; set => DLaBSettings.LabelTextReplacement = value; }
         public int LanguageCodeOverride { get => DLaBSettings.OptionSetLanguageCodeOverride; set => DLaBSettings.OptionSetLanguageCodeOverride = value; }
         public string LocalOptionSetFormat { get => DLaBSettings.LocalOptionSetFormat; set => DLaBSettings.LocalOptionSetFormat = value; }
+        public Dictionary<string, string> OptionNameOverrides { get => DLaBSettings.OptionNameOverrides; set => DLaBSettings.OptionNameOverrides = value; }
         public Dictionary<string, string> OptionSetNames { get => DLaBSettings.OptionSetNames; set => DLaBSettings.OptionSetNames = value; }
         public bool UseCrmSvcUtilStateEnumNamingConvention { get => DLaBSettings.UseCrmSvcUtilStateEnumNamingConvention; set => DLaBSettings.UseCrmSvcUtilStateEnumNamingConvention = value; }
         public bool UseDisplayNameForBpfName { get => DLaBSettings.UseDisplayNameForBpfName; set => DLaBSettings.UseDisplayNameForBpfName = value; }
@@ -458,6 +459,7 @@ namespace DLaB.ModelBuilderExtensions
             return name;
         }
 
+
         public string GetNameFromLabel(string label)
         {
             var underScoredName = Regex.Replace(label, ValidCSharpNameRegEx, "_");
@@ -470,8 +472,17 @@ namespace DLaB.ModelBuilderExtensions
                     continue;
                 }
                 words[i] = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(word.ToLower());
+                foreach (var nameOverride in OptionNameOverrides.Where(nameOverride => words[i].ToLower().Contains(nameOverride.Key)))
+                {
+                    words[i] = ReplaceIgnoreCase(words[i], nameOverride.Key, nameOverride.Value);
+                }
             }
             return string.Join("", words);
+        }
+
+        private static string ReplaceIgnoreCase(string input, string search, string replacement)
+        {
+            return Regex.Replace(input, Regex.Escape(search), replacement, RegexOptions.IgnoreCase);
         }
 
         private static string AppendState(OptionMetadata option, string name)
@@ -498,7 +509,7 @@ namespace DLaB.ModelBuilderExtensions
                 OptionNameValueDuplicates[optionSetMetadata] = duplicateNameValues;
             }
 
-            if (!duplicateNameValues[name])
+            if (!duplicateNameValues.TryGetValue(name, out var isDup) || !isDup)
             {
                 // No Dup, return
                 return name;

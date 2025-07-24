@@ -4,6 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk.Metadata;
 using System;
 using System.Collections.Generic;
+using Microsoft.Xrm.Sdk;
 
 namespace DLaB.ModelBuilderExtensions.Tests
 {
@@ -31,6 +32,53 @@ namespace DLaB.ModelBuilderExtensions.Tests
             });
 
             Assert.AreEqual(expectedName, sut.GetNameForEntity(new EntityMetadata { LogicalName = schemaName.ToLower()}, A.Fake<IServiceProvider>()));
+        }
+
+        [TestMethod]
+        [DataRow("10Th", "_10th", DisplayName = "10Th is 10th")]
+        [DataRow("1St", "_1st", DisplayName = "1St is 1st")]
+        [DataRow("2Nd", "_2nd", DisplayName = "2Nd is 2nd")]
+        [DataRow("3Rd", "_3rd", DisplayName = "3Rd is 3rd")]
+        [DataRow("4Th", "_4th", DisplayName = "4Th is 4th")]
+        [DataRow("5Th", "_5th", DisplayName = "5Th is 5th")]
+        [DataRow("6Th", "_6th", DisplayName = "6Th is 6th")]
+        [DataRow("7Th", "_7th", DisplayName = "7Th is 7th")]
+        [DataRow("8Th", "_8th", DisplayName = "8Th is 8th")]
+        [DataRow("9Th", "_9th", DisplayName = "9Th is 9th")]
+        public void GetNameForOption_Tests(string schemaName, string expected)
+        {
+            var fakeNamingService = A.Fake<INamingService>();
+            A.CallTo(() => fakeNamingService.GetNameForEntity(A<EntityMetadata>._, A<IServiceProvider>._)).Returns(expected ?? schemaName);
+
+            var serviceCache = ServiceCache.GetDefault(A.Fake<IServiceProvider>());
+            var optionSetMetadata = new OptionSetMetadata
+            {
+                
+            };
+
+            var optionMetadata = new OptionMetadata
+            {
+                Label = new Label
+                {
+                    UserLocalizedLabel = new LocalizedLabel
+                    {
+                        Label = schemaName
+                    }
+                },
+            };
+
+            //typeof(EntityMetadata).GetProperty(nameof(EntityMetadata.Attributes))?.SetValue(optionSetMetadata, new AttributeMetadata[] { });
+
+            var sut = new NamingService(fakeNamingService, new DLaBModelBuilderSettings
+            {
+                DLaBModelBuilder = new DLaBModelBuilder
+                {
+                    AdjustCasingForEnumOptions = true
+                }
+            });
+
+            A.CallTo(() => fakeNamingService.GetNameForOption(A<OptionSetMetadataBase>._, A<OptionMetadata>._, A<IServiceProvider>._)).Returns(schemaName);
+            Assert.AreEqual((expected ?? schemaName.ToLower()), sut.GetNameForOption(optionSetMetadata, optionMetadata, A.Fake<IServiceProvider>()));
         }
 
         [TestMethod]
