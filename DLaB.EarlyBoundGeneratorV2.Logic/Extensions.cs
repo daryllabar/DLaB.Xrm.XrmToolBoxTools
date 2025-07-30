@@ -53,17 +53,23 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         private static JsonProperty CreateJsonProperty(string name, JsonElement element)
         {
             var jsonPropertyConstructor = typeof(JsonProperty).GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null,
-                new[] { typeof(JsonElement), typeof(string) }, null);
+                new[] { typeof(JsonElement)}, null);
             if (jsonPropertyConstructor == null)
             {
-                throw new NullReferenceException("Unable to lookup the non-public JsonProperty Constructor JsonProperty(JsonElement, string)!");
+                throw new NullReferenceException("Unable to lookup the non-public JsonProperty Constructor JsonProperty(JsonElement, string)!  A new version of System.Text.Json has been referenced and the DLaB.EarlyBoundGeneratorV2.Logic needs to be updated to match.");
             }
 
             var property = (JsonProperty)jsonPropertyConstructor.Invoke(new object[]
             {
-                element,
-                name
+                element
             });
+
+            var nameField = typeof(JsonProperty).GetField("_name", BindingFlags.NonPublic | BindingFlags.Instance);
+            if (nameField == null)
+            {
+                throw new NullReferenceException("Unable to lookup the non-public JsonProperty Field Property Name!  A new version of System.Text.Json has been referenced and the DLaB.EarlyBoundGeneratorV2.Logic needs to be updated to match");
+            }
+            nameField.SetValue(property, name);
             return property;
         }
 
