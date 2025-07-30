@@ -1,15 +1,11 @@
-﻿using System;
+﻿using DLaB.Log;
+using Microsoft.Xrm.Sdk.Metadata;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Configuration;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Security.Cryptography;
-using System.Text;
 using System.Windows.Forms;
-using DLaB.Log;
-using Microsoft.Xrm.Sdk.Metadata;
 using XrmToolBox.Extensibility;
 
 namespace DLaB.XrmToolBoxCommon

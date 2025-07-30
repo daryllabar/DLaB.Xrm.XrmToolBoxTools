@@ -19,8 +19,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{4209BA61
 	ProjectSection(SolutionItems) = preProject
 		DLaB.AttributeManager\AttributeManager.nuspec = DLaB.AttributeManager\AttributeManager.nuspec
 		DLaB.EarlyBoundGeneratorV2.Api\DLaB.EarlyBoundGeneratorV2.Api.nuspec = DLaB.EarlyBoundGeneratorV2.Api\DLaB.EarlyBoundGeneratorV2.Api.nuspec
-		DLaB.EarlyBoundGenerator.Api\EarlyBoundGenerator.Api.nuspec = DLaB.EarlyBoundGenerator.Api\EarlyBoundGenerator.Api.nuspec
-		DLaB.EarlyBoundGenerator\EarlyBoundGenerator.nuspec = DLaB.EarlyBoundGenerator\EarlyBoundGenerator.nuspec
 		DLaB.EarlyBoundGeneratorV2\EarlyBoundGeneratorV2.nuspec = DLaB.EarlyBoundGeneratorV2\EarlyBoundGeneratorV2.nuspec
 		DLaB.OutlookTimesheetCalculator\OutlookTimesheetCalculator.nuspec = DLaB.OutlookTimesheetCalculator\OutlookTimesheetCalculator.nuspec
 		DLaB.VSSolutionAccelerator\VsSolutionAccelerator.nuspec = DLaB.VSSolutionAccelerator\VsSolutionAccelerator.nuspec
@@ -49,18 +47,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.EarlyBoundGeneratorV2.Api", "DLaB.EarlyBoundGeneratorV2.Api\DLaB.EarlyBoundGeneratorV2.Api.csproj", "{A78782E0-E6BA-4443-BEBF-45507F58048D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EarlyBoundV2", "EarlyBoundV2", "{041DE07D-2395-4C8E-AEF6-633C0A8FFB91}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.CrmSvcUtilExtensions", "DLaB.CrmSvcUtilExtensions\DLaB.CrmSvcUtilExtensions.csproj", "{D2A3139A-54BD-4DC3-BF6C-D1562D4F4644}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.CrmSvcUtilExtensions.Tests", "DLaB.CrmSvcUtilExtensions.Tests\DLaB.CrmSvcUtilExtensions.Tests.csproj", "{421ABA56-C7A2-4DAD-BE87-DB080CD0DDF9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.EarlyBoundGenerator", "DLaB.EarlyBoundGenerator\DLaB.EarlyBoundGenerator.csproj", "{7DE85F1A-794C-4E95-9E23-FA29DC110ABA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.EarlyBoundGenerator.Api", "DLaB.EarlyBoundGenerator.Api\DLaB.EarlyBoundGenerator.Api.csproj", "{0A143E92-0EDE-4630-9BFE-C670BF4C310A}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DLaB.EarlyBoundGenerator.Logic", "DLaB.EarlyBoundGenerator.Logic\DLaB.EarlyBoundGenerator.Logic.shproj", "{FE8B91E7-C778-4712-BBF0-537736442B51}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EarlyBound", "EarlyBound", "{9CE96A55-E851-478D-954A-55D727AC2262}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.Log", "DLaB.Log\DLaB.Log.csproj", "{C2FA0C39-CB9E-4C4B-9995-FECDD795B5C2}"
 EndProject
@@ -144,38 +130,6 @@ Global
 		{A78782E0-E6BA-4443-BEBF-45507F58048D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A78782E0-E6BA-4443-BEBF-45507F58048D}.Release|x86.ActiveCfg = Release|Any CPU
 		{A78782E0-E6BA-4443-BEBF-45507F58048D}.Release|x86.Build.0 = Release|Any CPU
-		{D2A3139A-54BD-4DC3-BF6C-D1562D4F4644}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D2A3139A-54BD-4DC3-BF6C-D1562D4F4644}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D2A3139A-54BD-4DC3-BF6C-D1562D4F4644}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{D2A3139A-54BD-4DC3-BF6C-D1562D4F4644}.Debug|x86.Build.0 = Debug|Any CPU
-		{D2A3139A-54BD-4DC3-BF6C-D1562D4F4644}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D2A3139A-54BD-4DC3-BF6C-D1562D4F4644}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D2A3139A-54BD-4DC3-BF6C-D1562D4F4644}.Release|x86.ActiveCfg = Release|Any CPU
-		{D2A3139A-54BD-4DC3-BF6C-D1562D4F4644}.Release|x86.Build.0 = Release|Any CPU
-		{421ABA56-C7A2-4DAD-BE87-DB080CD0DDF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{421ABA56-C7A2-4DAD-BE87-DB080CD0DDF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{421ABA56-C7A2-4DAD-BE87-DB080CD0DDF9}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{421ABA56-C7A2-4DAD-BE87-DB080CD0DDF9}.Debug|x86.Build.0 = Debug|Any CPU
-		{421ABA56-C7A2-4DAD-BE87-DB080CD0DDF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{421ABA56-C7A2-4DAD-BE87-DB080CD0DDF9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{421ABA56-C7A2-4DAD-BE87-DB080CD0DDF9}.Release|x86.ActiveCfg = Release|Any CPU
-		{421ABA56-C7A2-4DAD-BE87-DB080CD0DDF9}.Release|x86.Build.0 = Release|Any CPU
-		{7DE85F1A-794C-4E95-9E23-FA29DC110ABA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7DE85F1A-794C-4E95-9E23-FA29DC110ABA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7DE85F1A-794C-4E95-9E23-FA29DC110ABA}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{7DE85F1A-794C-4E95-9E23-FA29DC110ABA}.Debug|x86.Build.0 = Debug|Any CPU
-		{7DE85F1A-794C-4E95-9E23-FA29DC110ABA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7DE85F1A-794C-4E95-9E23-FA29DC110ABA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7DE85F1A-794C-4E95-9E23-FA29DC110ABA}.Release|x86.ActiveCfg = Release|Any CPU
-		{7DE85F1A-794C-4E95-9E23-FA29DC110ABA}.Release|x86.Build.0 = Release|Any CPU
-		{0A143E92-0EDE-4630-9BFE-C670BF4C310A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A143E92-0EDE-4630-9BFE-C670BF4C310A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A143E92-0EDE-4630-9BFE-C670BF4C310A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{0A143E92-0EDE-4630-9BFE-C670BF4C310A}.Debug|x86.Build.0 = Debug|Any CPU
-		{0A143E92-0EDE-4630-9BFE-C670BF4C310A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A143E92-0EDE-4630-9BFE-C670BF4C310A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0A143E92-0EDE-4630-9BFE-C670BF4C310A}.Release|x86.ActiveCfg = Release|Any CPU
-		{0A143E92-0EDE-4630-9BFE-C670BF4C310A}.Release|x86.Build.0 = Release|Any CPU
 		{C2FA0C39-CB9E-4C4B-9995-FECDD795B5C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C2FA0C39-CB9E-4C4B-9995-FECDD795B5C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2FA0C39-CB9E-4C4B-9995-FECDD795B5C2}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -226,11 +180,6 @@ Global
 		{9E7917B8-42E9-44CA-993A-15D7E60363EF} = {041DE07D-2395-4C8E-AEF6-633C0A8FFB91}
 		{DF755D05-ECAD-433C-AD2C-01649B27F238} = {041DE07D-2395-4C8E-AEF6-633C0A8FFB91}
 		{A78782E0-E6BA-4443-BEBF-45507F58048D} = {041DE07D-2395-4C8E-AEF6-633C0A8FFB91}
-		{D2A3139A-54BD-4DC3-BF6C-D1562D4F4644} = {9CE96A55-E851-478D-954A-55D727AC2262}
-		{421ABA56-C7A2-4DAD-BE87-DB080CD0DDF9} = {9CE96A55-E851-478D-954A-55D727AC2262}
-		{7DE85F1A-794C-4E95-9E23-FA29DC110ABA} = {9CE96A55-E851-478D-954A-55D727AC2262}
-		{0A143E92-0EDE-4630-9BFE-C670BF4C310A} = {9CE96A55-E851-478D-954A-55D727AC2262}
-		{FE8B91E7-C778-4712-BBF0-537736442B51} = {9CE96A55-E851-478D-954A-55D727AC2262}
 		{46FA9089-9D5F-4C61-A6E6-196BF3D81371} = {041DE07D-2395-4C8E-AEF6-633C0A8FFB91}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
