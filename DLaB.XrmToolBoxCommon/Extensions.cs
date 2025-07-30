@@ -9,7 +9,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 using DLaB.Log;
-using McTools.Xrm.Connection;
 using Microsoft.Xrm.Sdk.Metadata;
 using XrmToolBox.Extensibility;
 
@@ -19,158 +18,158 @@ namespace DLaB.XrmToolBoxCommon
     {
         #region ConnectionDetail
 
-        public static string GetUrlString(this ConnectionDetail detail)
-        {
-            var orgName = detail.GetOrgName();
-            var onPremUrl = detail.WebApplicationUrl;
-            onPremUrl = onPremUrl != null && !onPremUrl.ToLower().EndsWith(orgName.ToLower())
-                ? onPremUrl + orgName
-                : onPremUrl;
-            var url = detail.UseOnline
-                ? detail.OrganizationServiceUrl
-                : onPremUrl;
-            return url?.Replace(@"/XRMServices/2011/Organization.svc", string.Empty);
-        }
+        //public static string GetUrlString(this ConnectionDetail detail)
+        //{
+        //    var orgName = detail.GetOrgName();
+        //    var onPremUrl = detail.WebApplicationUrl;
+        //    onPremUrl = onPremUrl != null && !onPremUrl.ToLower().EndsWith(orgName.ToLower())
+        //        ? onPremUrl + orgName
+        //        : onPremUrl;
+        //    var url = detail.UseOnline
+        //        ? detail.OrganizationServiceUrl
+        //        : onPremUrl;
+        //    return url?.Replace(@"/XRMServices/2011/Organization.svc", string.Empty);
+        //}
+        //
+        //public static string GetOrgName(this ConnectionDetail detail)
+        //{
+        //    var orgName = detail.OrganizationUrlName;
+        //    if (string.IsNullOrWhiteSpace(orgName)
+        //        && !string.IsNullOrWhiteSpace(detail.WebApplicationUrl))
+        //    {
+        //        var startIndex = detail.WebApplicationUrl.LastIndexOf('/') + 1;
+        //        var length = detail.WebApplicationUrl.IndexOf('.') - startIndex;
+        //        if (length > 0)
+        //        {
+        //            orgName = detail.WebApplicationUrl.Substring(startIndex, length);
+        //        }
+        //    }
+        //
+        //    return orgName ?? string.Empty;
+        //}
 
-        public static string GetOrgName(this ConnectionDetail detail)
-        {
-            var orgName = detail.OrganizationUrlName;
-            if (string.IsNullOrWhiteSpace(orgName)
-                && !string.IsNullOrWhiteSpace(detail.WebApplicationUrl))
-            {
-                var startIndex = detail.WebApplicationUrl.LastIndexOf('/') + 1;
-                var length = detail.WebApplicationUrl.IndexOf('.') - startIndex;
-                if (length > 0)
-                {
-                    orgName = detail.WebApplicationUrl.Substring(startIndex, length);
-                }
-            }
-
-            return orgName ?? string.Empty;
-        }
-
-        /// <summary>
-        /// Handles returning the url for Certificate, ClientSecret and OAuth with MFA
-        /// </summary>
-        public static string GetNonUserConnectionString(this ConnectionDetail detail)
-        {
-            switch (detail.NewAuthType)
-            {
-                case Microsoft.Xrm.Tooling.Connector.AuthenticationType.Certificate:
-                    return $"AuthType=Certificate;Url={detail.GetUrlString()};ThumbPrint={detail.Certificate.Thumbprint};ClientId={detail.AzureAdAppId};";
-
-                case Microsoft.Xrm.Tooling.Connector.AuthenticationType.ClientSecret:
-                    return $"AuthType=ClientSecret;Url={detail.GetUrlString()};ClientId={detail.AzureAdAppId};ClientSecret={detail.GetClientSecret()};";
-
-                case Microsoft.Xrm.Tooling.Connector.AuthenticationType.OAuth:
-                    if (detail.UseMfa)
-                    {
-                        var path = Path.Combine(Path.GetTempPath(), detail.ConnectionId.Value.ToString("B"));
-
-                        return $"AuthType=OAuth;Username={detail.UserName};Url={detail.GetUrlString()};AppId={detail.AzureAdAppId};RedirectUri={detail.ReplyUrl};TokenCacheStorePath={path};LoginPrompt=Auto";
-                    }
-                    break;
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// Attempts to lookup the user password.  First by reflection of the userPassword, then by the old public property, then by a config value, then by crying uncle and prompting the user for the password 
-        /// </summary>
-        /// <returns></returns>
-        public static string GetUserPassword(this ConnectionDetail connection)
-        {
-            return ExtractEncryptedValueFromConnectionDetail(connection, connection.PasswordIsEmpty, "userPassword", "UserPassword", "EarlyBoundGenerator.CrmSvcUtil.UserPassword");
-        }
-
-        /// <summary>
-        /// Attempts to lookup the client password.  First by reflection of the clientPassword, then by a config value, then by crying uncle and prompting the user for the password 
-        /// </summary>
-        /// <returns></returns>
-        public static string GetClientSecret(this ConnectionDetail connection)
-        {
-            return ExtractEncryptedValueFromConnectionDetail(connection, connection.ClientSecretIsEmpty, "clientSecret", "EarlyBoundGenerator.CrmSvcUtil.ClientSecret");
-        }
-
-        private static string ExtractEncryptedValueFromConnectionDetail(ConnectionDetail connection, bool isEmpty, string privateFieldName, string ebgAppSetting, string oldPublicProperty = null)
-        {
-            try
-            {
-                if (isEmpty)
-                {
-                    return string.Empty;
-                }
-            }
-            // ReSharper disable once EmptyGeneralCatchClause
-            catch
-            {
-                // Probably a previous version of the XTB.  Attempt to soldier on...
-            }
-
-            var field = connection.GetType().GetField(privateFieldName, BindingFlags.Instance | BindingFlags.NonPublic);
-            if (field != null)
-            {
-                // Please Tanguy, be nice and never change this!
-                // \_/
-                //  |._
-                //  |'."-._.-""--.-"-.__.-'/
-                //  |  \                  (
-                //  |   |                  )
-                //  |   |                 /
-                //  |  /                 /
-                //  |.'                 (
-                //  |.-"-.__.-""-.__.-"-.)
-                //  |
-                //  |
-                //  | ^ White Flag ^
-                return Decrypt((string)field.GetValue(connection), "MsCrmTools", "Tanguy 92*", "SHA1", 2, "ahC3@bCa2Didfc3d", 256);
-            }
-
-            if(oldPublicProperty != null)
-            {
-                // Lookup Old Public Property
-                var prop = connection.GetType().GetProperty(oldPublicProperty, BindingFlags.Instance | BindingFlags.Public);
-                if (prop != null)
-                {
-                    return (string)prop.GetValue(connection);
-                }
-            }
-
-            // Lookup Config Value
-            var password = ConfigurationManager.AppSettings[ebgAppSetting];
-            if (!string.IsNullOrWhiteSpace(password))
-            {
-                return password;
-            }
-
-            MessageBox.Show($"Unable to find \"{ebgAppSetting}\" in app.config.");
-
-            // Ask User for value
-            while (string.IsNullOrWhiteSpace(password))
-            {
-                password = privateFieldName == "clientSecret"
-                    ? Prompt.ShowDialog("Please enter your client secret:", "Enter Client Secret")
-                    : Prompt.ShowDialog("Please enter your password:", "Enter Password");
-            }
-            return password;
-        }
-
-        public static string Decrypt(string cipherText, string passPhrase, string saltValue, string hashAlgorithm, int passwordIterations, string initVector, int keySize)
-        {
-            var bytes1 = Encoding.ASCII.GetBytes(initVector);
-            var bytes2 = Encoding.ASCII.GetBytes(saltValue);
-            var buffer = Convert.FromBase64String(cipherText);
-            var bytes3 = new PasswordDeriveBytes(passPhrase, bytes2, hashAlgorithm, passwordIterations).GetBytes(keySize / 8);
-            var rijndaelManaged = new RijndaelManaged {Mode = CipherMode.CBC};
-            var decryptor = rijndaelManaged.CreateDecryptor(bytes3, bytes1);
-            var memoryStream = new MemoryStream(buffer);
-            var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read);
-            var numArray = new byte[buffer.Length];
-            var count = cryptoStream.Read(numArray, 0, numArray.Length);
-            memoryStream.Close();
-            cryptoStream.Close();
-            return Encoding.UTF8.GetString(numArray, 0, count);
-        }
+        ///// <summary>
+        ///// Handles returning the url for Certificate, ClientSecret and OAuth with MFA
+        ///// </summary>
+        //public static string GetNonUserConnectionString(this ConnectionDetail detail)
+        //{
+        //    switch (detail.NewAuthType)
+        //    {
+        //        case Microsoft.Xrm.Tooling.Connector.AuthenticationType.Certificate:
+        //            return $"AuthType=Certificate;Url={detail.GetUrlString()};ThumbPrint={detail.Certificate.Thumbprint};ClientId={detail.AzureAdAppId};";
+        //
+        //        case Microsoft.Xrm.Tooling.Connector.AuthenticationType.ClientSecret:
+        //            return $"AuthType=ClientSecret;Url={detail.GetUrlString()};ClientId={detail.AzureAdAppId};ClientSecret={detail.GetClientSecret()};";
+        //
+        //        case Microsoft.Xrm.Tooling.Connector.AuthenticationType.OAuth:
+        //            if (detail.UseMfa)
+        //            {
+        //                var path = Path.Combine(Path.GetTempPath(), detail.ConnectionId.Value.ToString("B"));
+        //
+        //                return $"AuthType=OAuth;Username={detail.UserName};Url={detail.GetUrlString()};AppId={detail.AzureAdAppId};RedirectUri={detail.ReplyUrl};TokenCacheStorePath={path};LoginPrompt=Auto";
+        //            }
+        //            break;
+        //    }
+        //    return null;
+        //}
+        //
+        ///// <summary>
+        ///// Attempts to lookup the user password.  First by reflection of the userPassword, then by the old public property, then by a config value, then by crying uncle and prompting the user for the password 
+        ///// </summary>
+        ///// <returns></returns>
+        //public static string GetUserPassword(this ConnectionDetail connection)
+        //{
+        //    return ExtractEncryptedValueFromConnectionDetail(connection, connection.PasswordIsEmpty, "userPassword", "UserPassword", "EarlyBoundGenerator.CrmSvcUtil.UserPassword");
+        //}
+        //
+        ///// <summary>
+        ///// Attempts to lookup the client password.  First by reflection of the clientPassword, then by a config value, then by crying uncle and prompting the user for the password 
+        ///// </summary>
+        ///// <returns></returns>
+        //public static string GetClientSecret(this ConnectionDetail connection)
+        //{
+        //    return ExtractEncryptedValueFromConnectionDetail(connection, connection.ClientSecretIsEmpty, "clientSecret", "EarlyBoundGenerator.CrmSvcUtil.ClientSecret");
+        //}
+        //
+        //private static string ExtractEncryptedValueFromConnectionDetail(ConnectionDetail connection, bool isEmpty, string privateFieldName, string ebgAppSetting, string oldPublicProperty = null)
+        //{
+        //    try
+        //    {
+        //        if (isEmpty)
+        //        {
+        //            return string.Empty;
+        //        }
+        //    }
+        //    // ReSharper disable once EmptyGeneralCatchClause
+        //    catch
+        //    {
+        //        // Probably a previous version of the XTB.  Attempt to soldier on...
+        //    }
+        //
+        //    var field = connection.GetType().GetField(privateFieldName, BindingFlags.Instance | BindingFlags.NonPublic);
+        //    if (field != null)
+        //    {
+        //        // Please Tanguy, be nice and never change this!
+        //        // \_/
+        //        //  |._
+        //        //  |'."-._.-""--.-"-.__.-'/
+        //        //  |  \                  (
+        //        //  |   |                  )
+        //        //  |   |                 /
+        //        //  |  /                 /
+        //        //  |.'                 (
+        //        //  |.-"-.__.-""-.__.-"-.)
+        //        //  |
+        //        //  |
+        //        //  | ^ White Flag ^
+        //        return Decrypt((string)field.GetValue(connection), "MsCrmTools", "Tanguy 92*", "SHA1", 2, "ahC3@bCa2Didfc3d", 256);
+        //    }
+        //
+        //    if(oldPublicProperty != null)
+        //    {
+        //        // Lookup Old Public Property
+        //        var prop = connection.GetType().GetProperty(oldPublicProperty, BindingFlags.Instance | BindingFlags.Public);
+        //        if (prop != null)
+        //        {
+        //            return (string)prop.GetValue(connection);
+        //        }
+        //    }
+        //
+        //    // Lookup Config Value
+        //    var password = ConfigurationManager.AppSettings[ebgAppSetting];
+        //    if (!string.IsNullOrWhiteSpace(password))
+        //    {
+        //        return password;
+        //    }
+        //
+        //    MessageBox.Show($"Unable to find \"{ebgAppSetting}\" in app.config.");
+        //
+        //    // Ask User for value
+        //    while (string.IsNullOrWhiteSpace(password))
+        //    {
+        //        password = privateFieldName == "clientSecret"
+        //            ? Prompt.ShowDialog("Please enter your client secret:", "Enter Client Secret")
+        //            : Prompt.ShowDialog("Please enter your password:", "Enter Password");
+        //    }
+        //    return password;
+        //}
+        //
+        //public static string Decrypt(string cipherText, string passPhrase, string saltValue, string hashAlgorithm, int passwordIterations, string initVector, int keySize)
+        //{
+        //    var bytes1 = Encoding.ASCII.GetBytes(initVector);
+        //    var bytes2 = Encoding.ASCII.GetBytes(saltValue);
+        //    var buffer = Convert.FromBase64String(cipherText);
+        //    var bytes3 = new PasswordDeriveBytes(passPhrase, bytes2, hashAlgorithm, passwordIterations).GetBytes(keySize / 8);
+        //    var rijndaelManaged = new RijndaelManaged {Mode = CipherMode.CBC};
+        //    var decryptor = rijndaelManaged.CreateDecryptor(bytes3, bytes1);
+        //    var memoryStream = new MemoryStream(buffer);
+        //    var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read);
+        //    var numArray = new byte[buffer.Length];
+        //    var count = cryptoStream.Read(numArray, 0, numArray.Length);
+        //    memoryStream.Close();
+        //    cryptoStream.Close();
+        //    return Encoding.UTF8.GetString(numArray, 0, count);
+        //}
 
         #endregion ConnectionDetail
 
