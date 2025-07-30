@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Reflection;
-using System;
 using System.Text.Json;
 using static DLaB.EarlyBoundGeneratorV2.Settings.EarlyBoundGeneratorConfig;
 using DLaB.Common;
@@ -9,7 +7,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
 {
     public static class Extensions
     {
-        public static void SetJsonArrayProperty(this Dictionary<string, JsonProperty> properties, string name, string value)
+        public static void SetJsonArrayElement(this Dictionary<string, JsonElement> properties, string name, string value)
         {
             name = name.LowerFirstChar();
             value = value.FormatValueForConfig().Trim();
@@ -37,62 +35,40 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 }
             }
 
-            properties[name] = CreateJsonProperty(name, $"[\"{string.Join("\", \"", parts)}\"]");
+            properties[name] = CreateJsonElement($"[\"{string.Join("\", \"", parts)}\"]");
         }
 
-        private static JsonProperty CreateJsonProperty(string name, string json)
+        private static JsonElement CreateJsonElement(string json)
         {
-            return CreateJsonProperty(name, JsonDocument.Parse(json).RootElement);
+            return JsonDocument.Parse(json).RootElement.Clone();
         }
 
-        private static JsonProperty CreateJsonObjectProperty(string name, string value)
-        {
-            return CreateJsonProperty(name, JsonDocument.Parse("{\"value\": " + value + "}").RootElement.GetProperty("value"));
-        }
-
-        private static JsonProperty CreateJsonProperty(string name, JsonElement element)
-        {
-            var jsonPropertyConstructor = typeof(JsonProperty).GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null,
-                new[] { typeof(JsonElement)}, null);
-            if (jsonPropertyConstructor == null)
-            {
-                throw new NullReferenceException("Unable to lookup the non-public JsonProperty Constructor JsonProperty(JsonElement, string)!  A new version of System.Text.Json has been referenced and the DLaB.EarlyBoundGeneratorV2.Logic needs to be updated to match.");
-            }
-
-            var property = (JsonProperty)jsonPropertyConstructor.Invoke(new object[]
-            {
-                element
-            });
-
-            var nameField = typeof(JsonProperty).GetField("_name", BindingFlags.NonPublic | BindingFlags.Instance);
-            if (nameField == null)
-            {
-                throw new NullReferenceException("Unable to lookup the non-public JsonProperty Field Property Name!  A new version of System.Text.Json has been referenced and the DLaB.EarlyBoundGeneratorV2.Logic needs to be updated to match");
-            }
-            nameField.SetValue(property, name);
-            return property;
-        }
-
-        public static void SetJsonPropertyIfPopulated(this Dictionary<string, JsonProperty> properties, string name, string value)
+        public static void SetJsonPropertyIfPopulated(this Dictionary<string, JsonElement> properties, string name, string value)
         {
             if (string.IsNullOrWhiteSpace(value))
             {
                 return;
             }
-            properties.SetJsonProperty(name,value);
+            properties.SetJsonElementString(name, value);
         }
 
-        public static void SetJsonProperty(this Dictionary<string, JsonProperty> properties, string name, string value)
+        public static void SetJsonElementString(this Dictionary<string, JsonElement> properties, string name, string value)
         {
             name = name.LowerFirstChar();
             value = value.Replace(@"\", @"\\").Replace(@"""", @"\""");
-            properties[name] = CreateJsonProperty(name, $"\"{value}\"");
+            properties[name] = CreateJsonElement($"\"{value}\"");
         }
 
-        public static void SetJsonProperty(this Dictionary<string, JsonProperty> properties, string name, bool value)
+        public static void SetJsonElement(this Dictionary<string, JsonElement> properties, string name, string value)
         {
             name = name.LowerFirstChar();
-            properties[name] = CreateJsonObjectProperty(name, value.ToString().ToLower());
+            properties[name] = CreateJsonElement(value);
+        }
+
+        public static void SetJsonElement(this Dictionary<string, JsonElement> properties, string name, bool value)
+        {
+            name = name.LowerFirstChar();
+            properties[name] = CreateJsonElement(value.ToString().ToLower());
         }
 
         public static void AddProperty(this Utf8JsonWriter writer, string key, string value, bool keepWhiteSpace = false)

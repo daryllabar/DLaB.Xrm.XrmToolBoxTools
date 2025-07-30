@@ -545,13 +545,13 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             }
         }
 
-        public void PopulateBuilderProperties(Dictionary<string, JsonProperty> properties, bool generateMessages)
+        public void PopulateBuilderProperties(Dictionary<string, JsonElement> properties, bool generateMessages)
         {
-            properties.SetJsonProperty(BuilderSettingsJsonNames.EmitFieldsClasses, GenerateAttributeNameConsts);
-            properties.SetJsonArrayProperty(BuilderSettingsJsonNames.EntityNamesFilter, JoinWhiteLists(EntitiesWhitelist, EntityPrefixesWhitelist));
-            properties.SetJsonProperty(BuilderSettingsJsonNames.GenerateGlobalOptionSets, GenerateGlobalOptionSets);
-            properties.SetJsonArrayProperty(BuilderSettingsJsonNames.MessageNamesFilter, generateMessages ? JoinWhiteLists(ActionsWhitelist, ActionPrefixesWhitelist) : null);
-            properties.SetJsonProperty(BuilderSettingsJsonNames.SuppressINotifyPattern, !GenerateINotifyPattern);
+            properties.SetJsonElement(BuilderSettingsJsonNames.EmitFieldsClasses, GenerateAttributeNameConsts);
+            properties.SetJsonArrayElement(BuilderSettingsJsonNames.EntityNamesFilter, JoinWhiteLists(EntitiesWhitelist, EntityPrefixesWhitelist));
+            properties.SetJsonElement(BuilderSettingsJsonNames.GenerateGlobalOptionSets, GenerateGlobalOptionSets);
+            properties.SetJsonArrayElement(BuilderSettingsJsonNames.MessageNamesFilter, generateMessages ? JoinWhiteLists(ActionsWhitelist, ActionPrefixesWhitelist) : null);
+            properties.SetJsonElement(BuilderSettingsJsonNames.SuppressINotifyPattern, !GenerateINotifyPattern);
         }
 
         private string JoinWhiteLists(string entities, string prefixes)

@@ -643,7 +643,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             public const string SuppressINotifyPattern = "suppressINotifyPattern";
         }
 
-        public void PopulateBuilderProperties(Dictionary<string, JsonProperty> properties)
+        public void PopulateBuilderProperties(Dictionary<string, JsonElement> properties)
         {
             var defaultSettings = GetDefault();
 
@@ -654,16 +654,16 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             properties.SetJsonPropertyIfPopulated(BuilderSettingsJsonNames.MetadataProviderService, MetadataProviderService);
             properties.SetJsonPropertyIfPopulated(BuilderSettingsJsonNames.MetadataQueryProviderService, MetadataQueryProviderService);
 
-            properties.SetJsonProperty(BuilderSettingsJsonNames.EmitEntityETC, EmitEntityETC);
-            properties.SetJsonProperty(BuilderSettingsJsonNames.EmitVirtualAttributes, EmitVirtualAttributes);
+            properties.SetJsonElement(BuilderSettingsJsonNames.EmitEntityETC, EmitEntityETC);
+            properties.SetJsonElement(BuilderSettingsJsonNames.EmitVirtualAttributes, EmitVirtualAttributes);
             SetOutputFolderProperty(BuilderSettingsJsonNames.EntityTypesFolder, EntityTypesFolder, defaultSettings.EntityTypesFolder);
-            properties.SetJsonProperty(BuilderSettingsJsonNames.GenerateActions, GenerateMessages);
+            properties.SetJsonElement(BuilderSettingsJsonNames.GenerateActions, GenerateMessages);
             SetOutputFolderProperty(BuilderSettingsJsonNames.MessagesTypesFolder, MessageTypesFolder, defaultSettings.MessageTypesFolder, !GenerateMessages);
-            properties.SetJsonProperty(BuilderSettingsJsonNames.Namespace, Namespace);
+            properties.SetJsonElementString(BuilderSettingsJsonNames.Namespace, Namespace);
             properties.SetJsonPropertyIfPopulated(BuilderSettingsJsonNames.NamingService, NamingService);
             SetOutputFolderProperty(BuilderSettingsJsonNames.OptionSetsTypesFolder, OptionSetsTypesFolder, defaultSettings.OptionSetsTypesFolder);
-            properties.SetJsonProperty(BuilderSettingsJsonNames.ServiceContextName, ServiceContextName);
-            properties.SetJsonProperty(BuilderSettingsJsonNames.SuppressGeneratedCodeAttribute, SuppressGeneratedCodeAttribute);
+            properties.SetJsonElementString(BuilderSettingsJsonNames.ServiceContextName, ServiceContextName);
+            properties.SetJsonElement(BuilderSettingsJsonNames.SuppressGeneratedCodeAttribute, SuppressGeneratedCodeAttribute);
 
             return;
 

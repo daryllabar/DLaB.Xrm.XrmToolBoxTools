@@ -152,15 +152,14 @@ namespace DLaB.EarlyBoundGeneratorV2
                 {
                     stream.SetLength(0);
                     using (var writer = new Utf8JsonWriter(stream, new JsonWriterOptions
-                           {
-                               Indented = true
-                           }))
+                        {
+                            Indented = true
+                        }))
                     {
-                        var properties = document.RootElement.EnumerateObject().ToDictionary(k => k.Name);
-                        properties["dLaB.ModelBuilder"] = new JsonProperty();
+                        var properties = document.RootElement.EnumerateObject().ToDictionary(p => p.Name, p => p.Value.Clone());
+                        properties.SetJsonElement("dLaB.ModelBuilder", "{}");
                         earlyBoundGeneratorConfig.PopulateBuilderProperties(properties);
                         earlyBoundGeneratorConfig.ExtensionConfig.PopulateBuilderProperties(properties, earlyBoundGeneratorConfig.GenerateMessages);
-
 
                         writer.WriteStartObject();
                         foreach (var kvp in properties.OrderBy(p => p.Key))
@@ -174,6 +173,7 @@ namespace DLaB.EarlyBoundGeneratorV2
                             }
                             else
                             {
+                                writer.WritePropertyName(kvp.Key);
                                 kvp.Value.WriteTo(writer);
                             }
                         }

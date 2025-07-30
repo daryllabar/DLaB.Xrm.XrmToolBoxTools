@@ -260,7 +260,6 @@
     <Compile Include="Entity\MetadataProviderServiceTests.cs" />
     <Compile Include="Entity\EditableFormattedValuesUpdatedTests.cs" />
     <Compile Include="Entity\PrimaryAttributeGeneratorTests.cs" />
-    <Compile Include="JsonTests.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="LogicTests.cs" />
     <Compile Include="Metadata\Provider.cs" />
