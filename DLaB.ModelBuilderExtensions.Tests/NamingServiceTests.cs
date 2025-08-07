@@ -50,11 +50,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
             var fakeNamingService = A.Fake<INamingService>();
             A.CallTo(() => fakeNamingService.GetNameForEntity(A<EntityMetadata>._, A<IServiceProvider>._)).Returns(expected ?? schemaName);
 
-            var serviceCache = ServiceCache.GetDefault(A.Fake<IServiceProvider>());
-            var optionSetMetadata = new OptionSetMetadata
-            {
-                
-            };
+            var optionSetMetadata = new OptionSetMetadata();
 
             var optionMetadata = new OptionMetadata
             {
@@ -67,18 +63,30 @@ namespace DLaB.ModelBuilderExtensions.Tests
                 },
             };
 
-            //typeof(EntityMetadata).GetProperty(nameof(EntityMetadata.Attributes))?.SetValue(optionSetMetadata, new AttributeMetadata[] { });
-
             var sut = new NamingService(fakeNamingService, new DLaBModelBuilderSettings
             {
                 DLaBModelBuilder = new DLaBModelBuilder
                 {
-                    AdjustCasingForEnumOptions = true
+                    AdjustCasingForEnumOptions = true,
+                    OptionNameOverrides = new Dictionary<string, string>
+                    {
+                        { "1st", "1st" },
+                        { "2nd", "2nd" },
+                        { "3rd", "3rd" },
+                        { "4th", "4th" },
+                        { "5th", "5th" },
+                        { "6th", "6th" },
+                        { "7th", "7th" },
+                        { "8th", "8th" },
+                        { "9th", "9th" },
+                        { "0th", "0th" }
+                    }
                 }
             });
 
             A.CallTo(() => fakeNamingService.GetNameForOption(A<OptionSetMetadataBase>._, A<OptionMetadata>._, A<IServiceProvider>._)).Returns(schemaName);
-            Assert.AreEqual((expected ?? schemaName.ToLower()), sut.GetNameForOption(optionSetMetadata, optionMetadata, A.Fake<IServiceProvider>()));
+            var name = sut.GetNameForOption(optionSetMetadata, optionMetadata, A.Fake<IServiceProvider>());
+            Assert.AreEqual(expected ?? schemaName.ToLower(), name);
         }
 
         [TestMethod]
