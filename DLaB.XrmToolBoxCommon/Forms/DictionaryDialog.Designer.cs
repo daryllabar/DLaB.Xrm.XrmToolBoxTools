@@ -40,6 +40,7 @@ namespace DLaB.XrmToolBoxCommon.Forms
             this.MainTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.MainTxt.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainTxt.Location = new System.Drawing.Point(12, 25);
             this.MainTxt.Multiline = true;
             this.MainTxt.Name = "MainTxt";

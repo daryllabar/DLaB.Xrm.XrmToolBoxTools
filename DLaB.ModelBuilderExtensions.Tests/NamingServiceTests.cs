@@ -166,6 +166,8 @@ namespace DLaB.ModelBuilderExtensions.Tests
             Assert.AreEqual("NoShow", sut.GetNameFromLabel("no!$#show"));
             Assert.AreEqual("NoShow", sut.GetNameFromLabel("nO sHOW"));
             Assert.AreEqual("NoShow", sut.GetNameFromLabel("NO SHOW"));
+            Assert.AreEqual("NoShows", sut.GetNameFromLabel("NO SHOW's"));
+            Assert.AreEqual("NosShow", sut.GetNameFromLabel("NO's Show"));
         }
     }
 }

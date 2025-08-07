@@ -476,6 +476,11 @@ namespace DLaB.ModelBuilderExtensions
 
         public string GetNameFromLabel(string label)
         {
+            label = label.Replace("'s ", "s ").Replace("'S ", "S ");// Remove Possessives
+            if (label.ToLower().EndsWith("'s"))
+            {
+                label = label.Substring(0, label.Length - 2) + "s"; // Remove Possessives
+            }
             var underScoredName = Regex.Replace(label, ValidCSharpNameRegEx, "_");
             var words = underScoredName.Split(new[] { "_" }, StringSplitOptions.RemoveEmptyEntries);
             for (var i = 0; i < words.Length; i++)

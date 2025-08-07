@@ -364,7 +364,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 ModelBuilderLogLevel = "2",
                 OptionSetLanguageCodeOverride = null,
                 OptionSetNames = null,
-                OptionNameOverrides = "1st:1st|2nd:2nd|3rd:3rd|4th:4th|5th:5th|6th:6th|7th:7th|8th:8th|9th:9th|0th:0th",
+                OptionNameOverrides = "1st:1st|2nd:2nd|3rd:3rd|4th:4th|5th:5th|6th:6th|7th:7th|8th:8th|9th:9th|0th:0th|conversationIndex:ConversationIndex|customcorrelation:CustomCorrelation|fedex:FedEx|groupme:GroupMe|linkedin:LinkedIn|nontransient:NonTransient|notset:NotSet|reminderexpired:ReminderExpired|reminderinvalid:ReminderInvalid|reminderset:ReminderSet|smartmatching:SmartMatching|trackingtoken:TrackingToken|xheader:XHeader",
                 OutputRelativeDirectory = null,
                 ProjectNameForEarlyBoundFiles = string.Empty,
                 PropertyEnumMappings = string.Empty,
