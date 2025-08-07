@@ -15,12 +15,12 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         {
             Descriptor = ProviderInstaller.Install(this);
 
-            SetDefaultValues(Descriptor);
+            SetDefaultValues();
         }
 
-        private void SetDefaultValues(DynamicCustomTypeDescriptor descriptor)
+        private void SetDefaultValues()
         {
-            var toIgnore = new string[] {
+            var toIgnore = new[] {
                 nameof(EarlyBoundGeneratorConfig.ExtensionConfig),
                 nameof(ExtensionConfig.EntitiesWhitelist),
                 nameof(ExtensionConfig.TokenCapitalizationOverrides),
@@ -29,12 +29,12 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
 
             var config = EarlyBoundGeneratorConfig.GetDefault();
             
-            AddDefaultValueAttributes(descriptor, typeof(EarlyBoundGeneratorConfig), config, toIgnore);
+            AddDefaultValueAttributes(typeof(EarlyBoundGeneratorConfig), config, toIgnore);
 
-            AddDefaultValueAttributes(descriptor, typeof(ExtensionConfig), config.ExtensionConfig, toIgnore);
+            AddDefaultValueAttributes(typeof(ExtensionConfig), config.ExtensionConfig, toIgnore);
         }
 
-        private void AddDefaultValueAttributes(DynamicCustomTypeDescriptor descriptor, Type configType, Object config, string[] toIgnore)
+        private void AddDefaultValueAttributes(Type configType, object config, string[] toIgnore)
         {
             foreach (var property in Descriptor.GetProperties())
             {
@@ -74,6 +74,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             {
                 { nameof(AddNewFilesToProject), OnAddNewFilesToProjectChange },
                 { nameof(AddOptionSetMetadataAttribute), OnAddOptionSetMetadataAttributeChange },
+                { nameof(AdjustCasingForEnumOptions), OnAdjustCasingForEnumOptionsChange },
                 { nameof(CamelCaseClassNames), OnCamelCaseChange },
                 { nameof(CamelCaseMemberNames), OnCamelCaseChange },
                 { nameof(CreateOneFilePerEntity), OnCreateOneFilePerEntityChange },
@@ -98,6 +99,11 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             SetGenerateAllOptionSetLabelMetadataVisibility();
             GenerateOptionSetMetadataAttribute = AddOptionSetMetadataAttribute;
             GenerateAllOptionSetLabelMetadata = false;
+        }
+
+        private void OnAdjustCasingForEnumOptionsChange(PropertyValueChangedEventArgs args)
+        {
+            SetVisibilityForControlsDependentOnAdjustCasingForEnumOptions();
         }
 
         /// <summary>
@@ -170,6 +176,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             SetPropertyEnumMappingVisibility();
             SetReplaceOptionSetPropertiesWithEnumVisibility();
             SetUseLogicalNamesVisibility();
+            SetVisibilityForControlsDependentOnAdjustCasingForEnumOptions();
             SetVisibilityForControlsDependentOnCamelCasing();
             SetVisibilityForControlsDependentOnFileCreations();
             SetVisibilityForControlsDependentOnGenerateMessages();
@@ -178,6 +185,11 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             EntityTypesFolder = EntityTypesFolder;
             OptionSetsTypesFolder = OptionSetsTypesFolder;
             TypeDescriptor.Refresh(this);
+        }
+
+        private void SetVisibilityForControlsDependentOnAdjustCasingForEnumOptions()
+        {
+            SetOptionNameOverridesVisibility();
         }
 
         private void SetVisibilityForControlsDependentOnCamelCasing()
@@ -261,6 +273,11 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             SetPropertyBrowsable(nameof(GroupMessageRequestWithResponse), CreateOneFilePerMessage && GenerateMessages);
         }
 
+        private void SetOptionNameOverridesVisibility()
+        {
+            SetPropertyBrowsable(nameof(OptionNameOverrides), AdjustCasingForEnumOptions);
+        }
+
         private void SetMakeReadonlyFieldsEditableVisibility()
         {
             SetPropertyBrowsable(nameof(MakeReadonlyFieldsEditable), MakeAllFieldsEditable);
@@ -318,7 +335,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             SetPropertyBrowsable(nameof(UseLogicalNames), !CamelCaseMemberNames);
         }
 
-        private const string NotImplemented = "{Not Implemented} ";
+        //private const string NotImplemented = "{Not Implemented} ";
 
         private void SetPropertyBrowsable(string propertyName, bool browsable)
         {
@@ -326,18 +343,18 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             prop.SetIsBrowsable(browsable);
         }
 
-        private void SetPropertyDisabled(string propertyName, bool disabled)
-        {
-            var prop = Descriptor.GetProperty(propertyName);
-            if (disabled)
-            {
-                prop.SetDisplayName(NotImplemented + prop.DisplayName);
-            }
-            else
-            {
-                prop.SetDisplayName(prop.DisplayName.Replace(NotImplemented, string.Empty));
-            }
-            prop.SetIsReadOnly(disabled);
-        }
+        //private void SetPropertyDisabled(string propertyName, bool disabled)
+        //{
+        //    var prop = Descriptor.GetProperty(propertyName);
+        //    if (disabled)
+        //    {
+        //        prop.SetDisplayName(NotImplemented + prop.DisplayName);
+        //    }
+        //    else
+        //    {
+        //        prop.SetDisplayName(prop.DisplayName.Replace(NotImplemented, string.Empty));
+        //    }
+        //    prop.SetIsReadOnly(disabled);
+        //}
     }
 }

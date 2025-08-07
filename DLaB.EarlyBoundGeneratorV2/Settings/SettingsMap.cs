@@ -688,6 +688,13 @@ This helps to alleviate unnecessary differences that pop up when the classes are
         }
 
         [Category("3 - Option Sets")]
+        [DisplayName("Option Name Overrides")]
+        [Description("Allows for replacing text, as well as updating: \"Ny\" -> \"NewYork\" or \"Abc\" to \"ABC\".  Rules for forcing valid C# names and avoiding naming collisions will be applied after the naming replacement.")]
+        [Editor(typeof(DictionaryEditor), typeof(UITypeEditor))]
+        [TypeConverter(typeof(CollectionCountConverter))]
+        public Dictionary<string, string> OptionNameOverrides { get; set; }
+
+        [Category("3 - Option Sets")]
         [DisplayName("Transliteration Relative Path")]
         [Description("The path relative, to the XrmToolBox Plugins directory, to a folder containing the language code json files to be used for transliteration.")]
         public string TransliterationRelativePath
@@ -818,6 +825,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             MessageWildcardWhitelist = RemoveWhiteSpace(nameof(MessageWildcardWhitelist), config.ExtensionConfig.ActionPrefixesWhitelist).GetList<string>();
             PropertyEnumMappings = RemoveWhiteSpace(nameof(PropertyEnumMappings), config.ExtensionConfig.PropertyEnumMappings).GetList<string>();
             OptionSetNames = RemoveWhiteSpace(nameof(OptionSetNames), Config.ExtensionConfig.OptionSetNames).GetDictionary<string,string>();
+            OptionNameOverrides = RemoveWhiteSpace(nameof(OptionNameOverrides), Config.ExtensionConfig.OptionNameOverrides).GetDictionary<string,string>();
             TokenCapitalizationOverrides = RemoveWhiteSpace(nameof(TokenCapitalizationOverrides), config.ExtensionConfig.TokenCapitalizationOverrides).GetList<string>();
 
             SetupCustomTypeDescriptor();
@@ -861,6 +869,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             Config.ExtensionConfig.EntityPrefixesWhitelist = CommonConfig.ToStringSorted(EntityWildcardWhitelist);
             Config.ExtensionConfig.PropertyEnumMappings = CommonConfig.ToStringSorted(PropertyEnumMappings);
             Config.ExtensionConfig.OptionSetNames = CommonConfig.ToStringSorted(OptionSetNames);
+            Config.ExtensionConfig.OptionNameOverrides = CommonConfig.ToStringSorted(OptionNameOverrides);
             Config.ExtensionConfig.TokenCapitalizationOverrides = CommonConfig.ToStringSorted(TokenCapitalizationOverrides);
         }
 

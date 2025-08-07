@@ -215,6 +215,10 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         /// </summary>
         public string OptionSetNames { get; set; }
         /// <summary>
+        /// Allows for replacing text, as well as updating: "Ny" -> "NewYork" or "Abc" to "ABC" or "1St" to "1st".  Rules for forcing valid C# names and avoiding naming collisions will be applied after the naming replacement.
+        /// </summary>
+        public string OptionNameOverrides { get; set; }
+        /// <summary>
         /// By default, this is the directory of the Settings file.  But if populated, this directory will be used instead, and all other paths will be relative to this one.
         /// </summary>
         public string OutputRelativeDirectory { get; set; }
@@ -360,6 +364,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 ModelBuilderLogLevel = "2",
                 OptionSetLanguageCodeOverride = null,
                 OptionSetNames = null,
+                OptionNameOverrides = "1st:1st|2nd:2nd|3rd:3rd|4th:4th|5th:5th|6th:6th|7th:7th|8th:8th|9th:9th|0th:0th",
                 OutputRelativeDirectory = null,
                 ProjectNameForEarlyBoundFiles = string.Empty,
                 PropertyEnumMappings = string.Empty,
@@ -432,6 +437,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             ModelBuilderLogLevel = GetValueOrDefault(poco.ModelBuilderLogLevel, ModelBuilderLogLevel);
             OptionSetLanguageCodeOverride = poco.OptionSetLanguageCodeOverride ?? OptionSetLanguageCodeOverride;
             OptionSetNames = GetValueOrDefault(poco.OptionSetNames, OptionSetNames);
+            OptionNameOverrides = GetValueOrDefault(poco.OptionNameOverrides, OptionNameOverrides);
             OutputRelativeDirectory = GetValueOrDefault(poco.OutputRelativeDirectory, OutputRelativeDirectory);
             ProjectNameForEarlyBoundFiles = poco.ProjectNameForEarlyBoundFiles ?? ProjectNameForEarlyBoundFiles;
             PropertyEnumMappings = GetValueOrDefault(poco.PropertyEnumMappings, PropertyEnumMappings);
@@ -506,6 +512,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             AddOptionalProperty("OptionSetsFileName", settings.OptionSetsTypesFolder, !CreateOneFilePerOptionSet);
             writer.AddProperty(nameof(OptionSetLanguageCodeOverride), OptionSetLanguageCodeOverride?.ToString());
             writer.AddPropertyDictionaryStringString(nameof(OptionSetNames), OptionSetNames, false);
+            writer.AddPropertyDictionaryStringString(nameof(OptionNameOverrides), OptionNameOverrides, false);
             writer.AddProperty(nameof(ProjectNameForEarlyBoundFiles), ProjectNameForEarlyBoundFiles ?? string.Empty);
             writer.AddPropertyDictionaryStringString(nameof(PropertyEnumMappings), PropertyEnumMappings, false);
             writer.AddProperty(nameof(ReadSerializedMetadata), ReadSerializedMetadata);
@@ -635,6 +642,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings.POCO
         public string ModelBuilderLogLevel { get; set; }
         public string OptionSetNames { get; set; }
         public int? OptionSetLanguageCodeOverride { get; set; }
+        public string OptionNameOverrides { get; set; }
         public string OutputRelativeDirectory { get; set; }
         public string PropertyEnumMappings { get; set; }
         public string ProjectNameForEarlyBoundFiles { get; set; }

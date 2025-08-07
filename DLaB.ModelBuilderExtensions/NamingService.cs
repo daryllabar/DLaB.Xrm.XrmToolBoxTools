@@ -350,7 +350,7 @@ namespace DLaB.ModelBuilderExtensions
         private string GetPossiblyDuplicateNameForOption(OptionSetMetadataBase metadata, IServiceProvider services, OptionMetadata option)
         {
             var defaultName = GetDefaultNameForOptionWithLabelReplacements(metadata, services, option);
-            defaultName = Transliterate(option, defaultName);
+            //defaultName = Transliterate(option, defaultName);
 
             var name = GetValidCSharpName(defaultName);
             if (defaultName == string.Empty)
@@ -384,12 +384,28 @@ namespace DLaB.ModelBuilderExtensions
                 }
             }
 
+            if (LanguageCodeOverride > 0)
+            {
+                var labelToBeUsed = option.Label.LocalizedLabels.FirstOrDefault(l => l.LanguageCode == LanguageCodeOverride && IsLabelPopulated(l.Label) && TransliterationService.HasCode(l.LanguageCode))
+                    ?? option.Label.LocalizedLabels.FirstOrDefault(x => TransliterationService.HasCode(x.LanguageCode) && IsLabelPopulated(x.Label));
+                
+                if (labelToBeUsed != null)
+                {
+                    labelToBeUsed.MetadataId = labelToBeUsed.MetadataId ?? Guid.NewGuid();
+                    updatedLabels[labelToBeUsed.MetadataId.Value] = labelToBeUsed.Label;
+                    labelToBeUsed.Label = TransliterationService.Transliterate(labelToBeUsed);
+                }
+            }
+
             var defaultName = AdjustCasingForEnumOptions
-                ? GetNameForOption_Hack(metadata, option, services)
-                : DefaultService.GetNameForOption(metadata, option, services);
+                ? GetNameForOption_Hack(metadata, option).RemoveDiacritics()
+                : DefaultService.GetNameForOption(metadata, option, services).RemoveDiacritics();
+
+            // Reset Label values for comments
             foreach (var updatedLabel in updatedLabels)
             {
-                foreach (var label in labels.Where(l => l.MetadataId == updatedLabel.Key)){
+                foreach (var label in labels.Where(l => l.MetadataId == updatedLabel.Key))
+                {
                     label.Label = updatedLabel.Value;
                 }
             }
@@ -402,19 +418,17 @@ namespace DLaB.ModelBuilderExtensions
         /// </summary>
         /// <param name="optionSetMetadata"></param>
         /// <param name="optionMetadata"></param>
-        /// <param name="services"></param>
         /// <returns></returns>
-        private string GetNameForOption_Hack(OptionSetMetadataBase optionSetMetadata, OptionMetadata optionMetadata, IServiceProvider services)
+        private string GetNameForOption_Hack(OptionSetMetadataBase optionSetMetadata, OptionMetadata optionMetadata)
         {
-            var generatedKey = $"Option:{optionSetMetadata?.Name}|!|{optionMetadata?.Value.GetValueOrDefault()}";
+            var generatedKey = $"Option:{optionSetMetadata?.Name}|!|{optionMetadata.Value.GetValueOrDefault()}";
             if (_generatedNames.TryGetValue(generatedKey, out var generatedName))
             {
                 return generatedName;
             }
 
             string name = string.Empty;
-            StateOptionMetadata stateOption = optionMetadata as StateOptionMetadata;
-            if (stateOption != null)
+            if (optionMetadata is StateOptionMetadata stateOption)
             {
                 name = stateOption.InvariantName;
             }
@@ -432,7 +446,7 @@ namespace DLaB.ModelBuilderExtensions
                 }
 
                 if (string.IsNullOrEmpty(name)
-                    && optionMetadata.Label.UserLocalizedLabel != null)
+                    && optionMetadata.Label?.UserLocalizedLabel != null)
                 {
                     name = optionMetadata.Label.UserLocalizedLabel.Label;
                 }

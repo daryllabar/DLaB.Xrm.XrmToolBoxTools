@@ -199,17 +199,10 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("optionSetNames")]
         public Dictionary<string, string> OptionSetNames { get; set; }
-
-        /// <summary>
-        /// No Config
-        /// </summary>
         [JsonPropertyName("optionNameOverrides")]
         public Dictionary<string, string> OptionNameOverrides { get; set; }
-
-
         [JsonIgnore]
         public int OptionSetLanguageCodeOverride { get; set; }
-
         /// <summary>
         /// No Config
         /// </summary>
@@ -340,19 +333,7 @@ namespace DLaB.ModelBuilderExtensions
             MessageBlacklist = new List<string>();
             MessagesFileName = "Messages.cs";
             SerializedMetadataRelativeFilePath = "metadata.xml";
-            OptionNameOverrides = new Dictionary<string, string>
-            {
-                { "1st", "1st" },
-                { "2nd", "2nd" },
-                { "3rd", "3rd" },
-                { "4th", "4th" },
-                { "5th", "5th" },
-                { "6th", "6th" },
-                { "7th", "7th" },
-                { "8th", "8th" },
-                { "9th", "9th" },
-                { "0th", "0th" }
-            };
+            OptionNameOverrides = new Dictionary<string, string>();
             OptionSetNames = new Dictionary<string, string>();
             OptionSetsFileName = "OptionSet.cs";
             OrgEntityClassName = "OrganizationOwnedEntity";
