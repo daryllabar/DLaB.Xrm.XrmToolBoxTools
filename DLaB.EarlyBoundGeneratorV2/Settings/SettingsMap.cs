@@ -240,6 +240,15 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         }
 
         [Category("2 - Entities")]
+        [DisplayName("Obsolete Deprecated Attributes")]
+        [Description("Columns that contain \"(Deprecated)\" will be marked as obsolete when generated.")]
+        public bool ObsoleteDeprecated
+        {
+            get => Config.ExtensionConfig.ObsoleteDeprecated;
+            set => Config.ExtensionConfig.ObsoleteDeprecated = value;
+        }
+
+        [Category("2 - Entities")]
         [DisplayName("Property Enum Mapping")]
         [Description("Manually specifies an enum mapping for an OptionSetValue Property on an entity.\n\rThis is useful if you have multiple local options that really are the same value.  This then allows easier comparision since the enums don't have to be converted.")]
         [Editor(typeof(AttributesToEnumMapperEditor), typeof(UITypeEditor))]

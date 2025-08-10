@@ -37,6 +37,7 @@
     "makeResponseMessagesEditable": true,
     "modelBuilderLogLevel": "2",
     "optionNameOverrides": {
+    "obsoleteDeprecated": true,
       "1st": "1st",
       "2nd": "2nd",
       "3rd": "3rd",

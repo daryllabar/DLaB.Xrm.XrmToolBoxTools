@@ -180,6 +180,14 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("modelBuilderLogLevel")]
         public string ModelBuilderLogLevel { get; set; }
+        /// <summary>
+        [JsonPropertyName("obsoleteDeprecated")]
+        public bool ObsoleteDeprecated { get; set; }
+
+        /// No Config
+        /// </summary>
+        [JsonPropertyName("ObsoleteTokens")]
+        public List<string> ObsoleteTokens { get; set; }
 
         [JsonPropertyName("optionSetsFileName")]
         public string OptionSetsFileName { get; set; }
@@ -324,7 +332,7 @@ namespace DLaB.ModelBuilderExtensions
                 " System.Nullable<",
                 " System.Linq.IQueryable<",
             };
-            LabelTextReplacement = new Dictionary<string, string>()
+            LabelTextReplacement = new Dictionary<string, string>
             {
                 { "$", string.Empty },
                 { "(", string.Empty }
@@ -333,6 +341,10 @@ namespace DLaB.ModelBuilderExtensions
             MessageBlacklist = new List<string>();
             MessagesFileName = "Messages.cs";
             SerializedMetadataRelativeFilePath = "metadata.xml";
+            ObsoleteTokens = new List<string>
+            {
+                "*(Deprecated)*"
+            };
             OptionNameOverrides = new Dictionary<string, string>();
             OptionSetNames = new Dictionary<string, string>();
             OptionSetsFileName = "OptionSet.cs";

@@ -12,8 +12,6 @@ namespace DLaB.ModelBuilderExtensions
     public class CustomizeCodeDomService : TypedServiceBase<ICustomizeCodeDomService>, ICustomizeCodeDomService
     {
         #region Entity Properties
-
-        public bool AddDebuggerNonUserCode { get => DLaBSettings.AddDebuggerNonUserCode; set => DLaBSettings.AddDebuggerNonUserCode = value; }
         public bool AddPrimaryAttributeConsts { get => DLaBSettings.AddPrimaryAttributeConsts; set => DLaBSettings.AddPrimaryAttributeConsts = value; }
         public bool EmitEntityEtc { get => Settings.EmitEntityEtc; set => Settings.EmitEntityEtc = value; }
         public bool GenerateAnonymousTypeConstructor { get => DLaBSettings.GenerateAnonymousTypeConstructor; set => DLaBSettings.GenerateAnonymousTypeConstructor = value; }
@@ -169,11 +167,8 @@ namespace DLaB.ModelBuilderExtensions
             {
                 new EditableFormattedValuesUpdater().CustomizeCodeDom(codeUnit, services);
             }
+            new Entity.MemberAttributes(DefaultService, Settings).CustomizeCodeDom(codeUnit, services);
 
-            if (AddDebuggerNonUserCode)
-            {
-                new Entity.MemberAttributes().CustomizeCodeDom(codeUnit, services);
-            }
         }
 
         #endregion
