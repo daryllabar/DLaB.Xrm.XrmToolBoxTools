@@ -36,8 +36,8 @@
     "makeReferenceTypesNullable": false,
     "makeResponseMessagesEditable": true,
     "modelBuilderLogLevel": "2",
-    "optionNameOverrides": {
     "obsoleteDeprecated": true,
+    "optionNameOverrides": {
       "1st": "1st",
       "2nd": "2nd",
       "3rd": "3rd",
