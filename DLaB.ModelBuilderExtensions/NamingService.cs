@@ -481,7 +481,7 @@ namespace DLaB.ModelBuilderExtensions
             {
                 label = label.Substring(0, label.Length - 2) + "s"; // Remove Possessives
             }
-            var underScoredName = Regex.Replace(label, ValidCSharpNameRegEx, "_");
+            var underScoredName = RemoveInvalidCSharpIdentifierChars(label);
             var words = underScoredName.Split(new[] { "_" }, StringSplitOptions.RemoveEmptyEntries);
             for (var i = 0; i < words.Length; i++)
             {
@@ -497,6 +497,35 @@ namespace DLaB.ModelBuilderExtensions
                 }
             }
             return string.Join("", words);
+        }
+
+        // Helper method to remove characters that are not valid C# identifier characters (Unicode letter, digit, or connecting/combining/formatting character)
+        private static string RemoveInvalidCSharpIdentifierChars(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                return input;
+            }
+
+            var sb = new System.Text.StringBuilder(input.Length);
+            foreach (var c in input)
+            {
+                var cat = char.GetUnicodeCategory(c);
+                // Valid C# identifier parts: Letter, DecimalDigit, ConnectorPunctuation, NonSpacingMark, SpacingCombiningMark, Format
+                if (char.IsLetterOrDigit(c) ||
+                    cat == UnicodeCategory.ConnectorPunctuation ||
+                    cat == UnicodeCategory.NonSpacingMark ||
+                    cat == UnicodeCategory.SpacingCombiningMark ||
+                    cat == UnicodeCategory.Format)
+                {
+                    sb.Append(c);
+                }
+                else
+                {
+                    sb.Append("_");
+                }
+            }
+            return sb.ToString();
         }
 
         private static string ReplaceIgnoreCase(string input, string search, string replacement)
