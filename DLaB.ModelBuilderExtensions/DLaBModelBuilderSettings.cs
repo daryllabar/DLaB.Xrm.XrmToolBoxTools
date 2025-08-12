@@ -184,7 +184,7 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("obsoleteDeprecated")]
         public bool ObsoleteDeprecated { get; set; }
         
-        [JsonPropertyName("ObsoleteTokens")]
+        [JsonPropertyName("obsoleteTokens")]
         public List<string> ObsoleteTokens { get; set; }
 
         [JsonPropertyName("optionSetsFileName")]
