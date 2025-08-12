@@ -180,12 +180,10 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("modelBuilderLogLevel")]
         public string ModelBuilderLogLevel { get; set; }
-        /// <summary>
+        
         [JsonPropertyName("obsoleteDeprecated")]
         public bool ObsoleteDeprecated { get; set; }
-
-        /// No Config
-        /// </summary>
+        
         [JsonPropertyName("ObsoleteTokens")]
         public List<string> ObsoleteTokens { get; set; }
 
@@ -341,10 +339,7 @@ namespace DLaB.ModelBuilderExtensions
             MessageBlacklist = new List<string>();
             MessagesFileName = "Messages.cs";
             SerializedMetadataRelativeFilePath = "metadata.xml";
-            ObsoleteTokens = new List<string>
-            {
-                "*(Deprecated)*"
-            };
+            ObsoleteTokens = new List<string>();
             OptionNameOverrides = new Dictionary<string, string>();
             OptionSetNames = new Dictionary<string, string>();
             OptionSetsFileName = "OptionSet.cs";

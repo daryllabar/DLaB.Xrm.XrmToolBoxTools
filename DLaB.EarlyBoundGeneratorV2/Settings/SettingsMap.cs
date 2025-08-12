@@ -249,6 +249,13 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         }
 
         [Category("2 - Entities")]
+        [DisplayName("Obsolete Tokens")]
+        [Description("List of tokens to search for in attribute display name to determine if it should be marked as Obsolete. If a token is found, the property will be generated with the Obsolete Attribute.  Supports * wildcards. Only used if Obsolete Deprecated Attributes is true.")]
+        [Editor(StringEditorName, typeof(UITypeEditor))]
+        [TypeConverter(typeof(CollectionCountConverter))]
+        public List<string> ObsoleteTokens { get; set; }
+
+        [Category("2 - Entities")]
         [DisplayName("Property Enum Mapping")]
         [Description("Manually specifies an enum mapping for an OptionSetValue Property on an entity.\n\rThis is useful if you have multiple local options that really are the same value.  This then allows easier comparision since the enums don't have to be converted.")]
         [Editor(typeof(AttributesToEnumMapperEditor), typeof(UITypeEditor))]
@@ -833,6 +840,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             MessageWhitelist = RemoveWhiteSpace(nameof(MessageWhitelist), config.ExtensionConfig.ActionsWhitelist).GetHashSet<string>();
             MessageWildcardWhitelist = RemoveWhiteSpace(nameof(MessageWildcardWhitelist), config.ExtensionConfig.ActionPrefixesWhitelist).GetList<string>();
             PropertyEnumMappings = RemoveWhiteSpace(nameof(PropertyEnumMappings), config.ExtensionConfig.PropertyEnumMappings).GetList<string>();
+            ObsoleteTokens = RemoveWhiteSpace(nameof(ObsoleteTokens), config.ExtensionConfig.ObsoleteTokens).GetList<string>();
             OptionSetNames = RemoveWhiteSpace(nameof(OptionSetNames), Config.ExtensionConfig.OptionSetNames).GetDictionary<string,string>();
             OptionNameOverrides = RemoveWhiteSpace(nameof(OptionNameOverrides), Config.ExtensionConfig.OptionNameOverrides).GetDictionary<string,string>();
             TokenCapitalizationOverrides = RemoveWhiteSpace(nameof(TokenCapitalizationOverrides), config.ExtensionConfig.TokenCapitalizationOverrides).GetList<string>();
@@ -877,6 +885,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             Config.ExtensionConfig.EntityPrefixesToSkip = CommonConfig.ToStringSorted(EntityRegExBlacklist);
             Config.ExtensionConfig.EntityPrefixesWhitelist = CommonConfig.ToStringSorted(EntityWildcardWhitelist);
             Config.ExtensionConfig.PropertyEnumMappings = CommonConfig.ToStringSorted(PropertyEnumMappings);
+            Config.ExtensionConfig.ObsoleteTokens = CommonConfig.ToStringSorted(ObsoleteTokens);
             Config.ExtensionConfig.OptionSetNames = CommonConfig.ToStringSorted(OptionSetNames);
             Config.ExtensionConfig.OptionNameOverrides = CommonConfig.ToStringSorted(OptionNameOverrides);
             Config.ExtensionConfig.TokenCapitalizationOverrides = CommonConfig.ToStringSorted(TokenCapitalizationOverrides);

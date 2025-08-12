@@ -23,8 +23,10 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             var toIgnore = new[] {
                 nameof(EarlyBoundGeneratorConfig.ExtensionConfig),
                 nameof(ExtensionConfig.EntitiesWhitelist),
+                nameof(ExtensionConfig.ObsoleteTokens),
+                nameof(ExtensionConfig.OptionNameOverrides),
+                nameof(ExtensionConfig.PropertyEnumMappings),
                 nameof(ExtensionConfig.TokenCapitalizationOverrides),
-                nameof(ExtensionConfig.PropertyEnumMappings)
             };
 
             var config = EarlyBoundGeneratorConfig.GetDefault();
@@ -82,9 +84,10 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 { nameof(CreateOneFilePerMessage), OnCreateOneFilePerMessageChange },
                 { nameof(DeleteFilesFromOutputFolders), OnDeleteFilesFromOutputFoldersChange },
                 { nameof(GenerateEnumProperties), OnGenerateEnumPropertiesChange },
-                { nameof(ReplaceOptionSetPropertiesWithEnum), OnReplaceOptionSetPropertiesWithEnumChange },
                 { nameof(GenerateMessages), OnGenerateMessagesChange },
                 { nameof(MakeAllFieldsEditable), OnMakeAllFieldsEditableChange },
+                { nameof(ObsoleteDeprecated), OnObsoleteDeprecatedChange },
+                { nameof(ReplaceOptionSetPropertiesWithEnum), OnReplaceOptionSetPropertiesWithEnumChange },
             };
         }
 
@@ -153,6 +156,11 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         private void OnGenerateMessagesChange(PropertyValueChangedEventArgs args)
         {
             SetVisibilityForControlsDependentOnGenerateMessages();
+        }
+
+        private void OnObsoleteDeprecatedChange(PropertyValueChangedEventArgs args)
+        {
+            SetObsoleteTokensVisibility();
         }
 
         private void OnMakeAllFieldsEditableChange(PropertyValueChangedEventArgs args)
@@ -271,6 +279,11 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         private void SetGroupMessageRequestWithResponseVisibility()
         {
             SetPropertyBrowsable(nameof(GroupMessageRequestWithResponse), CreateOneFilePerMessage && GenerateMessages);
+        }
+
+        private void SetObsoleteTokensVisibility()
+        {
+            SetPropertyBrowsable(nameof(ObsoleteTokens), ObsoleteDeprecated);
         }
 
         private void SetOptionNameOverridesVisibility()

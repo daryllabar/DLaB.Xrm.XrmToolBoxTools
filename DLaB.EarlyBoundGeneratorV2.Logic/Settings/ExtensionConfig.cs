@@ -211,6 +211,10 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         /// </summary>
         public bool ObsoleteDeprecated { get; set; }
         /// <summary>
+        /// List of tokens to search for in attribute display name to determine if it should be marked as Obsolete. If a token is found, the property will be generated with the Obsolete Attribute.  Supports * wildcards. Only used if Obsolete Deprecated Attributes is true.
+        /// </summary>
+        public string ObsoleteTokens { get; set; }
+        /// <summary>
         /// Overrides the default (English:1033) language code used for generating Option Set Value names (the value, not the option set)
         /// </summary>
         public int? OptionSetLanguageCodeOverride { get; set; }
@@ -367,6 +371,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 MakeResponseActionsEditable = true,
                 ModelBuilderLogLevel = "2",
                 ObsoleteDeprecated = true,
+                ObsoleteTokens = "*(Deprecated)*",
                 OptionSetLanguageCodeOverride = null,
                 OptionSetNames = null,
                 OptionNameOverrides = "1st:1st|2nd:2nd|3rd:3rd|4th:4th|5th:5th|6th:6th|7th:7th|8th:8th|9th:9th|0th:0th|conversationIndex:ConversationIndex|customcorrelation:CustomCorrelation|fedex:FedEx|groupme:GroupMe|linkedin:LinkedIn|nontransient:NonTransient|notset:NotSet|reminderexpired:ReminderExpired|reminderinvalid:ReminderInvalid|reminderset:ReminderSet|smartmatching:SmartMatching|trackingtoken:TrackingToken|xheader:XHeader",
@@ -441,6 +446,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             MakeReferenceTypesNullable = poco.MakeReferenceTypesNullable ?? MakeReferenceTypesNullable;
             ModelBuilderLogLevel = GetValueOrDefault(poco.ModelBuilderLogLevel, ModelBuilderLogLevel);
             ObsoleteDeprecated = poco.ObsoleteDeprecated ?? ObsoleteDeprecated;
+            ObsoleteTokens = GetValueOrDefault(poco.ObsoleteTokens, ObsoleteTokens);
             OptionSetLanguageCodeOverride = poco.OptionSetLanguageCodeOverride ?? OptionSetLanguageCodeOverride;
             OptionSetNames = GetValueOrDefault(poco.OptionSetNames, OptionSetNames);
             OptionNameOverrides = GetValueOrDefault(poco.OptionNameOverrides, OptionNameOverrides);
@@ -516,6 +522,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             AddOptionalProperty("MessagesFileName", settings.MessageTypesFolder, !CreateOneFilePerAction);
             writer.AddProperty(nameof(ModelBuilderLogLevel), ModelBuilderLogLevel);
             writer.AddProperty(nameof(ObsoleteDeprecated), ObsoleteDeprecated);
+            writer.AddPropertyArray(nameof(ObsoleteTokens), ObsoleteTokens);
             AddOptionalProperty("OptionSetsFileName", settings.OptionSetsTypesFolder, !CreateOneFilePerOptionSet);
             writer.AddProperty(nameof(OptionSetLanguageCodeOverride), OptionSetLanguageCodeOverride?.ToString());
             writer.AddPropertyDictionaryStringString(nameof(OptionSetNames), OptionSetNames, false);
@@ -648,6 +655,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings.POCO
         public bool? MakeResponseActionsEditable { get; set; }
         public string ModelBuilderLogLevel { get; set; }
         public bool? ObsoleteDeprecated { get; set; }
+        public string ObsoleteTokens { get; set; }
         public string OptionSetNames { get; set; }
         public int? OptionSetLanguageCodeOverride { get; set; }
         public string OptionNameOverrides { get; set; }

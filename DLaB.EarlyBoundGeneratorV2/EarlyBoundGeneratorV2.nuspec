@@ -12,6 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
     <releaseNotes>V2.2025.8.11
+Expose Obsolete Token config for other languages #548
 Fix for unwanted System.Diagnostics.DebuggerNonUserCode() #551
 Add missing characters in alphabet 1045 (#553)
 Fix non-english characters getting stripped #552
