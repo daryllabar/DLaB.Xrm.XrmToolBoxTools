@@ -50,7 +50,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
                 {
                     if (code.Member is CodeMemberProperty property
                         && obsoleteAttributes.Contains(code.EntityLogicalName + "." + property.GetLogicalName())) {
-                        property.CustomAttributes.Add(new CodeAttributeDeclaration("System.Obsolete", new CodeAttributeArgument(new CodePrimitiveExpression("This attribute is deprecated."))));
+                        AddCodeAttributeIfMissing(property, new CodeAttributeDeclaration("System.Obsolete", new CodeAttributeArgument(new CodePrimitiveExpression("This attribute is deprecated."))));
                     }
                 }
             }
@@ -80,14 +80,14 @@ namespace DLaB.ModelBuilderExtensions.Entity
                         type.Members.AddRange(items.ToArray());
                     }
                 }
-            }
 
-            foreach (var member in from CodeTypeDeclaration type in codeUnit.Namespaces[0].Types
-                                    where type.IsClass
-                                    from dynamic member in type.Members
-                                    select member )
-            {
-                AddCodeAttributeDeclaration(member);
+                foreach (var member in from CodeTypeDeclaration type in codeUnit.Namespaces[0].Types
+                                       where type.IsClass
+                                       from dynamic member in type.Members
+                                       select member)
+                {
+                    AddCodeAttributeDeclaration(member);
+                }
             }
         }
 
@@ -146,12 +146,24 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
         private void AddCodeAttributeDeclaration(CodeMemberProperty member)
         {
-            member.CustomAttributes.Add(new CodeAttributeDeclaration("System.Diagnostics.DebuggerNonUserCode"));
+            AddCodeAttributeIfMissing(member, new CodeAttributeDeclaration("System.Diagnostics.DebuggerNonUserCode"));
         }
 
         private void AddCodeAttributeDeclaration(CodeMemberMethod member)
         {
-            member.CustomAttributes.Add(new CodeAttributeDeclaration("System.Diagnostics.DebuggerNonUserCode"));
+            AddCodeAttributeIfMissing(member, new CodeAttributeDeclaration("System.Diagnostics.DebuggerNonUserCode"));
+        }
+
+        private static void AddCodeAttributeIfMissing(CodeTypeMember member, CodeAttributeDeclaration codeAttribute)
+        {
+            var hasDebuggerNonUserCode = member.CustomAttributes
+                .OfType<CodeAttributeDeclaration>()
+                .Any(attr => string.Equals(attr.Name, codeAttribute.Name, StringComparison.Ordinal));
+
+            if (!hasDebuggerNonUserCode)
+            {
+                member.CustomAttributes.Add(codeAttribute);
+            }
         }
     }
 }
