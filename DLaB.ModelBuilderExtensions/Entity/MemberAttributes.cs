@@ -158,12 +158,29 @@ namespace DLaB.ModelBuilderExtensions.Entity
         {
             var hasDebuggerNonUserCode = member.CustomAttributes
                 .OfType<CodeAttributeDeclaration>()
-                .Any(attr => string.Equals(attr.Name, codeAttribute.Name, StringComparison.Ordinal));
+                .Any(attr => AreEqualAttributeNames(attr.Name, codeAttribute.Name));
 
             if (!hasDebuggerNonUserCode)
             {
                 member.CustomAttributes.Add(codeAttribute);
             }
+        }
+
+        private static bool AreEqualAttributeNames(string name, string otherName)
+        {
+            if (string.Equals(name, otherName, StringComparison.Ordinal))
+            {
+                return true;
+            }
+
+            name = name.EndsWith("Attribute", StringComparison.Ordinal)
+                ? name.Substring(0, name.Length - "Attribute".Length)
+                : name;
+            otherName = otherName.EndsWith("Attribute", StringComparison.Ordinal)
+                ? otherName.Substring(0, name.Length - "Attribute".Length)
+                : otherName;
+
+            return string.Equals(name, otherName, StringComparison.Ordinal);
         }
     }
 }
