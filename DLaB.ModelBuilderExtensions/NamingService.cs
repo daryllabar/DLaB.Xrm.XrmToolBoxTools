@@ -399,7 +399,7 @@ namespace DLaB.ModelBuilderExtensions
 
             var defaultName = AdjustCasingForEnumOptions
                 ? GetNameForOption_Hack(metadata, option).RemoveDiacritics()
-                : DefaultService.GetNameForOption(metadata, option, services).RemoveDiacritics();
+                : Transliterate(option, DefaultService.GetNameForOption(metadata, option, services));
 
             // Reset Label values for comments
             foreach (var updatedLabel in updatedLabels)
