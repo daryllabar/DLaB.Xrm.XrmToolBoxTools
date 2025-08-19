@@ -442,40 +442,27 @@
 	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 	<PropertyGroup>
 		<PreBuildEvent>
-			REM Copy New Content Files
-			SET myCmd= "$(SolutionDir)References\NuGetContentInstaller.exe" "$(SolutionDir) " "$(ProjectPath)"
-			echo %25myCmd%25
-			%25myCmd%25
-
-			if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.exe" "$(ProjectDir)Properties\AssemblyInfo.cs"
 		</PreBuildEvent>
 	</PropertyGroup>
 	<PropertyGroup>
 		<PostBuildEvent>
-			xcopy /I /Y "$(SolutionDir)DLaB.ModelBuilderExtensions\OptionSet\Transliteration\Alphabets\*" "$(TargetDir)$(TargetName)\alphabets"
-			xcopy /I /Y "$(SolutionDir)DLaB.ModelBuilderExtensions\DLaB.Dictionary.txt" "$(TargetDir)$(TargetName)"
-			xcopy /I /Y "$(SolutionDir)DLaB.XrmToolBoxCommon\Images\*32x32.png" "$(TargetDir)Images"
-			xcopy /I /Y "$(TargetDir)DLaB.*.dll" "$(TargetDir)$(TargetName)"
-			xcopy /I /Y "$(TargetDir)Microsoft.AI.ServerTelemetryChannel.dll" "$(TargetDir)$(TargetName)"
-			xcopy /I /Y "$(TargetDir)Microsoft.ApplicationInsights.dll" "$(TargetDir)$(TargetName)"
-			xcopy /I /Y "$(TargetDir)Microsoft.BclAsyncInterfaces.dll" "$(TargetDir)$(TargetName)"
-			xcopy /I /Y "$(TargetDir)Microsoft.Crm.Sdk.Proxy.dll" "$(TargetDir)$(TargetName)"
-			xcopy /I /Y "$(TargetDir)Microsoft.Extensions.*.dll" "$(TargetDir)$(TargetName)"
-			xcopy /I /Y "$(TargetDir)Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" "$(TargetDir)$(TargetName)"
-			xcopy /I /Y "$(TargetDir)Microsoft.Xrm.Sdk.dll" "$(TargetDir)$(TargetName)"
-			xcopy /I /Y "$(TargetDir)System.*.dll" "$(TargetDir)$(TargetName)"
-			del "$(TargetDir)$(TargetName)\$(TargetFileName)"
+			if $(ConfigurationName) == Debug (
+			IF NOT EXIST Plugins mkdir Plugins
+			move "DLaB.EarlyBoundGeneratorV2.dll" Plugins
+			IF NOT EXIST Plugins\DLaB.EarlyBoundGeneratorV2 mkdir Plugins\DLaB.EarlyBoundGeneratorV2
+			move /Y "Dlab*.dll" Plugins\DLaB.EarlyBoundGeneratorV2
+			)
 		</PostBuildEvent>
 	</PropertyGroup>
 	<Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
 		<PropertyGroup>
 			<ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
 		</PropertyGroup>
-		<Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.21.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.21.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets'))" />
 		<Error Condition="!Exists('..\packages\Microsoft.Web.WebView2.1.0.3351.48\build\Microsoft.Web.WebView2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Web.WebView2.1.0.3351.48\build\Microsoft.Web.WebView2.targets'))" />
+		<Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.23.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.23.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets'))" />
 	</Target>
-	<Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.21.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.21.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" />
 	<Import Project="..\packages\Microsoft.Web.WebView2.1.0.3351.48\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.3351.48\build\Microsoft.Web.WebView2.targets')" />
+	<Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.23.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.23.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" />
 	<!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
