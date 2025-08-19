@@ -187,6 +187,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		DLaB.Xrm.Entities\DLaB.Xrm.Entities.projitems*{555b6bb7-c5b3-426a-9e23-a9c09aa7715c}*SharedItemsImports = 13
+		DLaB.Log\DLaB.Log.projitems*{8cdeed18-34a8-482e-910f-c75173690d1d}*SharedItemsImports = 4
+		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{8cdeed18-34a8-482e-910f-c75173690d1d}*SharedItemsImports = 4
 		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{8ee4091f-3d10-433d-a59a-ee2f070fa22f}*SharedItemsImports = 4
 		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{9d4a0246-7f6d-459b-988c-26a47f6dbb6e}*SharedItemsImports = 13
 		DLaB.Log\DLaB.Log.projitems*{a1789142-7510-42d5-aff4-1bb37f2b08f8}*SharedItemsImports = 13

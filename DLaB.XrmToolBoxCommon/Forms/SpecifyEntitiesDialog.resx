@@ -117,4 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnFilter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DgAACw4BQL7hQQAAAO1JREFUOE/N000rRUEYB/AfohSiGxaWSj6ApbfFtVF2unwDG8lKWSglCxsL2UoW
+        7krZkKK81S2fwyfRaE5Nz0Vn6VenM+f5P1Nz5szhvxrBApYxHsO/DOIMbzjGIR7QRiM2R/25eTMGWEIH
+        ozEo7WInj7dxg7kiX8V58dzlHQNoYS+GWepJK+3Sg+c8nkFfyCsXmI7Fymu+r6M3ZJVrTMVi5R4TsVhI
+        r5c28lcruIzFwgG2YjHaxxUmi9owTvCJWywW2Y+auMuHKV1P2MARTvNmz8dJdaRD9II1fGA2NtQxlr/W
+        I4ZiWFeamP6Zb19EoR++GxAdCAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="tmFilter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>115, 17</value>
+  </metadata>
 </root>

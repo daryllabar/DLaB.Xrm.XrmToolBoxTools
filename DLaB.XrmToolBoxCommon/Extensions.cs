@@ -70,7 +70,7 @@ namespace DLaB.XrmToolBoxCommon
         //}
         //
         ///// <summary>
-        ///// Attempts to lookup the user password.  First by reflection of the userPassword, then by the old public property, then by a config value, then by crying uncle and prompting the user for the password 
+        ///// Attempts to lookup the user password.  First by reflection of the userPassword, then by the old public property, then by a config value, then by crying uncle and prompting the user for the password
         ///// </summary>
         ///// <returns></returns>
         //public static string GetUserPassword(this ConnectionDetail connection)
@@ -79,7 +79,7 @@ namespace DLaB.XrmToolBoxCommon
         //}
         //
         ///// <summary>
-        ///// Attempts to lookup the client password.  First by reflection of the clientPassword, then by a config value, then by crying uncle and prompting the user for the password 
+        ///// Attempts to lookup the client password.  First by reflection of the clientPassword, then by a config value, then by crying uncle and prompting the user for the password
         ///// </summary>
         ///// <returns></returns>
         //public static string GetClientSecret(this ConnectionDetail connection)
@@ -206,8 +206,20 @@ namespace DLaB.XrmToolBoxCommon
             return local.Label ?? defaultIfNull;
         }
 
+        public static string GetDisplayName(this EntityMetadata e, string defaultIfNull = null)
+        {
+            if (e?.DisplayName?.GetLocalOrDefaultText() is string label && !string.IsNullOrEmpty(label) && label != "N/A")
+            {
+                return label;
+            }
+            if (e?.IsIntersect == true)
+            {
+                return "M:M";
+            }
+            return defaultIfNull ?? "N/A";
+        }
 
-        #endregion // IEnumerable<EntityMetadata>
+        #endregion IEnumerable<EntityMetadata>
 
         #region OpenFileDialog
 
@@ -298,7 +310,6 @@ namespace DLaB.XrmToolBoxCommon
                 {
                     Logger.UnwireFromReportProgress(w);
                 }
-
             };
             info.AsyncArgument = asyncArgument;
 
