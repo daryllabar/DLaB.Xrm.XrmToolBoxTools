@@ -130,7 +130,6 @@ namespace DLaB.XrmToolBoxCommon.Forms
                     LoadSolutions();
                 }
                 cmbFilterBy.Items.Clear();
-                cmbFilterBy.Items.Add("");
                 cmbFilterBy.Items.AddRange(solutions
                     .Select(s => new EntityProxy(s, $"{s.GetAttributeValue<string>("friendlyname")} ({s.GetAliasedValue<string>("P.friendlyname")})"))
                     .ToArray());
@@ -142,16 +141,8 @@ namespace DLaB.XrmToolBoxCommon.Forms
                     LoadPublishers();
                 }
                 cmbFilterBy.Items.Clear();
-                cmbFilterBy.Items.Add("");
                 cmbFilterBy.Items.AddRange(publishers
                     .Select(p => new EntityProxy(p, $"{p.GetAttributeValue<string>("friendlyname")} ({p.GetAttributeValue<string>("customizationprefix")})"))
-                    .ToArray());
-            }
-            else
-            {
-                // Show all entities
-                lvAvailableEntities.Items.AddRange(allEntities
-                    .Select(e => new ListViewItem(e.GetDisplayName("N/A")) { Tag = e, SubItems = { e.LogicalName } })
                     .ToArray());
             }
             ShowEntitiesByFiltering();
@@ -194,12 +185,18 @@ namespace DLaB.XrmToolBoxCommon.Forms
                 }
             }
 
+            filteredEntityGuids = filteredEntityGuids.Distinct().ToList();
             var selectedentities = lvSelectedEntities.Items.Cast<ListViewItem>().Select(i => i.Tag as EntityMetadata).ToList();
+            var filtertext = panFilter.Visible ? txtFilter.Text.Trim() : string.Empty;
 
             lvAvailableEntities.Items.AddRange(allEntities
                 .Where(e => filteredEntityGuids.Contains(e.MetadataId ?? Guid.Empty))
                 .Where(e => !selectedentities.Contains(e))
-                .Select(e => new ListViewItem(e.DisplayName.UserLocalizedLabel?.Label ?? "N/A") { Tag = e, SubItems = { e.LogicalName } })
+                .Where(e =>
+                    string.IsNullOrEmpty(filtertext) ||
+                    e.GetDisplayName().IndexOf(filtertext, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    e.LogicalName.IndexOf(filtertext, StringComparison.OrdinalIgnoreCase) >= 0)
+                .Select(e => new ListViewItem(e.GetDisplayName()) { Tag = e, SubItems = { e.LogicalName } })
                 .ToArray());
             panFilterAvailable.Height = rbAvailAll.Checked ? 24 : 48;
             cmbFilterBy.Enabled = !rbAvailAll.Checked;
@@ -236,6 +233,7 @@ namespace DLaB.XrmToolBoxCommon.Forms
             var query = new QueryExpression("solution");
             query.ColumnSet.AddColumns("friendlyname", "uniquename", "ismanaged", "version");
             query.Criteria.AddCondition("isvisible", ConditionOperator.Equal, true);
+            query.Criteria.AddCondition("uniquename", ConditionOperator.NotEqual, "Default");
             var query_solutioncomponent = new LinkEntity("solution", "solutioncomponent", "solutionid", "solutionid", JoinOperator.Any);
             query_solutioncomponent.LinkCriteria.AddCondition("componenttype", ConditionOperator.Equal, 1);
             query.Criteria.AnyAllFilterLinkEntity = query_solutioncomponent;
@@ -275,10 +273,31 @@ namespace DLaB.XrmToolBoxCommon.Forms
             {
                 CallingControl.ShowErrorDialog(ex, "Loading Publishers");
             }
-            finally
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            panFilter.Visible = !panFilter.Visible;
+            btnFilter.FlatStyle = panFilter.Visible ? FlatStyle.Flat : FlatStyle.Standard;
+            if (panFilter.Visible)
             {
-                Cursor = Cursors.Default;
+                txtFilter.Focus();
             }
+            else
+            {
+                lvAvailableEntities.Focus();
+            }
+        }
+
+        private void txtFilter_TextChanged(object sender, EventArgs e)
+        {
+            tmFilter.Start();
+        }
+
+        private void tmFilter_Tick(object sender, EventArgs e)
+        {
+            tmFilter.Stop();
+            ShowEntitiesByFiltering();
         }
     }
 

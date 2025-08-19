@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpecifyEntitiesDialog));
             this.BtnSave = new System.Windows.Forms.Button();
             this.BtnAdd = new System.Windows.Forms.Button();
             this.BtnRemove = new System.Windows.Forms.Button();
@@ -38,7 +39,11 @@
             this.lvAvailableEntities = new System.Windows.Forms.ListView();
             this.chDisplayName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chLogicalName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.panFilter = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtFilter = new System.Windows.Forms.TextBox();
             this.panFilterAvailable = new System.Windows.Forms.Panel();
+            this.btnFilter = new System.Windows.Forms.Button();
             this.rbAvailPublisher = new System.Windows.Forms.RadioButton();
             this.rbAvailSolution = new System.Windows.Forms.RadioButton();
             this.rbAvailAll = new System.Windows.Forms.RadioButton();
@@ -50,8 +55,10 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.pnlFooter = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.tmFilter = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.gbEntitiesAvailable.SuspendLayout();
+            this.panFilter.SuspendLayout();
             this.panFilterAvailable.SuspendLayout();
             this.gbEntitiesSelected.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -122,7 +129,9 @@
             // 
             // gbEntitiesAvailable
             // 
+            this.gbEntitiesAvailable.Controls.Add(this.btnFilter);
             this.gbEntitiesAvailable.Controls.Add(this.lvAvailableEntities);
+            this.gbEntitiesAvailable.Controls.Add(this.panFilter);
             this.gbEntitiesAvailable.Controls.Add(this.panFilterAvailable);
             this.gbEntitiesAvailable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbEntitiesAvailable.Location = new System.Drawing.Point(3, 3);
@@ -140,9 +149,10 @@
             this.chLogicalName});
             this.lvAvailableEntities.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvAvailableEntities.FullRowSelect = true;
-            this.lvAvailableEntities.Location = new System.Drawing.Point(3, 64);
+            this.lvAvailableEntities.HideSelection = false;
+            this.lvAvailableEntities.Location = new System.Drawing.Point(3, 86);
             this.lvAvailableEntities.Name = "lvAvailableEntities";
-            this.lvAvailableEntities.Size = new System.Drawing.Size(317, 307);
+            this.lvAvailableEntities.Size = new System.Drawing.Size(317, 285);
             this.lvAvailableEntities.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.lvAvailableEntities.TabIndex = 20;
             this.lvAvailableEntities.UseCompatibleStateImageBehavior = false;
@@ -160,6 +170,36 @@
             this.chLogicalName.Text = "Logical Name";
             this.chLogicalName.Width = 150;
             // 
+            // panFilter
+            // 
+            this.panFilter.Controls.Add(this.label1);
+            this.panFilter.Controls.Add(this.txtFilter);
+            this.panFilter.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panFilter.Location = new System.Drawing.Point(3, 64);
+            this.panFilter.Name = "panFilter";
+            this.panFilter.Size = new System.Drawing.Size(317, 22);
+            this.panFilter.TabIndex = 15;
+            this.panFilter.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Filter";
+            // 
+            // txtFilter
+            // 
+            this.txtFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFilter.Location = new System.Drawing.Point(38, 0);
+            this.txtFilter.Name = "txtFilter";
+            this.txtFilter.Size = new System.Drawing.Size(276, 20);
+            this.txtFilter.TabIndex = 0;
+            this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
+            // 
             // panFilterAvailable
             // 
             this.panFilterAvailable.Controls.Add(this.rbAvailPublisher);
@@ -171,6 +211,20 @@
             this.panFilterAvailable.Name = "panFilterAvailable";
             this.panFilterAvailable.Size = new System.Drawing.Size(317, 48);
             this.panFilterAvailable.TabIndex = 10;
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFilter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnFilter.Image = ((System.Drawing.Image)(resources.GetObject("btnFilter.Image")));
+            this.btnFilter.Location = new System.Drawing.Point(288, 11);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(27, 25);
+            this.btnFilter.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.btnFilter, "Click to search / filter by name.\r\nClick again to hide it.");
+            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // rbAvailPublisher
             // 
@@ -217,7 +271,7 @@
             this.cmbFilterBy.Location = new System.Drawing.Point(1, 24);
             this.cmbFilterBy.Name = "cmbFilterBy";
             this.cmbFilterBy.Size = new System.Drawing.Size(313, 21);
-            this.cmbFilterBy.TabIndex = 3;
+            this.cmbFilterBy.TabIndex = 10;
             this.cmbFilterBy.SelectedIndexChanged += new System.EventHandler(this.ShowEntitiesByFiltering);
             // 
             // gbEntitiesSelected
@@ -238,6 +292,7 @@
             this.columnHeader2});
             this.lvSelectedEntities.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvSelectedEntities.FullRowSelect = true;
+            this.lvSelectedEntities.HideSelection = false;
             this.lvSelectedEntities.Location = new System.Drawing.Point(3, 16);
             this.lvSelectedEntities.Name = "lvSelectedEntities";
             this.lvSelectedEntities.Size = new System.Drawing.Size(318, 355);
@@ -278,6 +333,11 @@
             this.pnlFooter.Size = new System.Drawing.Size(699, 40);
             this.pnlFooter.TabIndex = 10;
             // 
+            // tmFilter
+            // 
+            this.tmFilter.Interval = 500;
+            this.tmFilter.Tick += new System.EventHandler(this.tmFilter_Tick);
+            // 
             // SpecifyEntitiesDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -294,6 +354,8 @@
             this.Load += new System.EventHandler(this.SpecifyEntitiesDialog_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.gbEntitiesAvailable.ResumeLayout(false);
+            this.panFilter.ResumeLayout(false);
+            this.panFilter.PerformLayout();
             this.panFilterAvailable.ResumeLayout(false);
             this.panFilterAvailable.PerformLayout();
             this.gbEntitiesSelected.ResumeLayout(false);
@@ -326,5 +388,10 @@
         private System.Windows.Forms.RadioButton rbAvailAll;
         private System.Windows.Forms.ComboBox cmbFilterBy;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Panel panFilter;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtFilter;
+        private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.Timer tmFilter;
     }
 }
