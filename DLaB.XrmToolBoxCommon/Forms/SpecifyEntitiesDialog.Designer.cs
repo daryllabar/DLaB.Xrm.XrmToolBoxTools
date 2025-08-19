@@ -140,7 +140,6 @@
             this.chLogicalName});
             this.lvAvailableEntities.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvAvailableEntities.FullRowSelect = true;
-            this.lvAvailableEntities.HideSelection = false;
             this.lvAvailableEntities.Location = new System.Drawing.Point(3, 64);
             this.lvAvailableEntities.Name = "lvAvailableEntities";
             this.lvAvailableEntities.Size = new System.Drawing.Size(317, 307);
@@ -148,6 +147,7 @@
             this.lvAvailableEntities.TabIndex = 20;
             this.lvAvailableEntities.UseCompatibleStateImageBehavior = false;
             this.lvAvailableEntities.View = System.Windows.Forms.View.Details;
+            this.lvAvailableEntities.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(Helper.SortListView_OnColumnClick);
             this.lvAvailableEntities.DoubleClick += new System.EventHandler(this.BtnAdd_Click);
             // 
             // chDisplayName
@@ -238,7 +238,6 @@
             this.columnHeader2});
             this.lvSelectedEntities.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvSelectedEntities.FullRowSelect = true;
-            this.lvSelectedEntities.HideSelection = false;
             this.lvSelectedEntities.Location = new System.Drawing.Point(3, 16);
             this.lvSelectedEntities.Name = "lvSelectedEntities";
             this.lvSelectedEntities.Size = new System.Drawing.Size(318, 355);
@@ -246,6 +245,7 @@
             this.lvSelectedEntities.TabIndex = 7;
             this.lvSelectedEntities.UseCompatibleStateImageBehavior = false;
             this.lvSelectedEntities.View = System.Windows.Forms.View.Details;
+            this.lvSelectedEntities.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(Helper.SortListView_OnColumnClick);
             this.lvSelectedEntities.DoubleClick += new System.EventHandler(this.BtnRemove_Click);
             // 
             // columnHeader1
