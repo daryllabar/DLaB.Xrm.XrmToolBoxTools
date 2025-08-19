@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.BtnSave = new System.Windows.Forms.Button();
             this.BtnAdd = new System.Windows.Forms.Button();
             this.BtnRemove = new System.Windows.Forms.Button();
             this.BtnRefresh = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.bgEntitiesKeep = new System.Windows.Forms.GroupBox();
+            this.gbEntitiesAvailable = new System.Windows.Forms.GroupBox();
             this.lvAvailableEntities = new System.Windows.Forms.ListView();
             this.chDisplayName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chLogicalName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -42,16 +43,17 @@
             this.rbAvailSolution = new System.Windows.Forms.RadioButton();
             this.rbAvailAll = new System.Windows.Forms.RadioButton();
             this.cmbFilterBy = new System.Windows.Forms.ComboBox();
-            this.gbEntitiesExclude = new System.Windows.Forms.GroupBox();
+            this.gbEntitiesSelected = new System.Windows.Forms.GroupBox();
             this.lvSelectedEntities = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel4 = new System.Windows.Forms.Panel();
             this.pnlFooter = new System.Windows.Forms.Panel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
-            this.bgEntitiesKeep.SuspendLayout();
+            this.gbEntitiesAvailable.SuspendLayout();
             this.panFilterAvailable.SuspendLayout();
-            this.gbEntitiesExclude.SuspendLayout();
+            this.gbEntitiesSelected.SuspendLayout();
             this.panel4.SuspendLayout();
             this.pnlFooter.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +61,7 @@
             // BtnSave
             // 
             this.BtnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSave.Location = new System.Drawing.Point(540, 15);
+            this.BtnSave.Location = new System.Drawing.Point(531, 8);
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(75, 23);
             this.BtnSave.TabIndex = 0;
@@ -92,7 +94,7 @@
             // BtnRefresh
             // 
             this.BtnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnRefresh.Location = new System.Drawing.Point(621, 15);
+            this.BtnRefresh.Location = new System.Drawing.Point(612, 8);
             this.BtnRefresh.Name = "BtnRefresh";
             this.BtnRefresh.Size = new System.Drawing.Size(75, 23);
             this.BtnRefresh.TabIndex = 8;
@@ -106,29 +108,30 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.bgEntitiesKeep, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.gbEntitiesExclude, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.gbEntitiesAvailable, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.gbEntitiesSelected, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 370F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(699, 370);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 380F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(699, 380);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
-            // bgEntitiesKeep
+            // gbEntitiesAvailable
             // 
-            this.bgEntitiesKeep.Controls.Add(this.lvAvailableEntities);
-            this.bgEntitiesKeep.Controls.Add(this.panFilterAvailable);
-            this.bgEntitiesKeep.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bgEntitiesKeep.Location = new System.Drawing.Point(3, 3);
-            this.bgEntitiesKeep.Name = "bgEntitiesKeep";
-            this.bgEntitiesKeep.Size = new System.Drawing.Size(323, 364);
-            this.bgEntitiesKeep.TabIndex = 0;
-            this.bgEntitiesKeep.TabStop = false;
-            this.bgEntitiesKeep.Text = "Available Entities";
+            this.gbEntitiesAvailable.Controls.Add(this.lvAvailableEntities);
+            this.gbEntitiesAvailable.Controls.Add(this.panFilterAvailable);
+            this.gbEntitiesAvailable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbEntitiesAvailable.Location = new System.Drawing.Point(3, 3);
+            this.gbEntitiesAvailable.Name = "gbEntitiesAvailable";
+            this.gbEntitiesAvailable.Size = new System.Drawing.Size(323, 374);
+            this.gbEntitiesAvailable.TabIndex = 0;
+            this.gbEntitiesAvailable.TabStop = false;
+            this.gbEntitiesAvailable.Text = "Available Entities";
+            this.toolTip1.SetToolTip(this.gbEntitiesAvailable, "Total number of entities");
             // 
             // lvAvailableEntities
             // 
@@ -140,7 +143,7 @@
             this.lvAvailableEntities.HideSelection = false;
             this.lvAvailableEntities.Location = new System.Drawing.Point(3, 64);
             this.lvAvailableEntities.Name = "lvAvailableEntities";
-            this.lvAvailableEntities.Size = new System.Drawing.Size(317, 297);
+            this.lvAvailableEntities.Size = new System.Drawing.Size(317, 307);
             this.lvAvailableEntities.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.lvAvailableEntities.TabIndex = 20;
             this.lvAvailableEntities.UseCompatibleStateImageBehavior = false;
@@ -172,24 +175,24 @@
             // rbAvailPublisher
             // 
             this.rbAvailPublisher.AutoSize = true;
-            this.rbAvailPublisher.Location = new System.Drawing.Point(48, 3);
+            this.rbAvailPublisher.Location = new System.Drawing.Point(131, 3);
             this.rbAvailPublisher.Name = "rbAvailPublisher";
             this.rbAvailPublisher.Size = new System.Drawing.Size(68, 17);
-            this.rbAvailPublisher.TabIndex = 2;
+            this.rbAvailPublisher.TabIndex = 3;
             this.rbAvailPublisher.Text = "Publisher";
             this.rbAvailPublisher.UseVisualStyleBackColor = true;
-            this.rbAvailPublisher.CheckedChanged += new System.EventHandler(this.PlummingFilterAvailable);
+            this.rbAvailPublisher.CheckedChanged += new System.EventHandler(this.PopulateFilter);
             // 
             // rbAvailSolution
             // 
             this.rbAvailSolution.AutoSize = true;
-            this.rbAvailSolution.Location = new System.Drawing.Point(122, 3);
+            this.rbAvailSolution.Location = new System.Drawing.Point(58, 3);
             this.rbAvailSolution.Name = "rbAvailSolution";
             this.rbAvailSolution.Size = new System.Drawing.Size(63, 17);
-            this.rbAvailSolution.TabIndex = 3;
+            this.rbAvailSolution.TabIndex = 2;
             this.rbAvailSolution.Text = "Solution";
             this.rbAvailSolution.UseVisualStyleBackColor = true;
-            this.rbAvailSolution.CheckedChanged += new System.EventHandler(this.PlummingFilterAvailable);
+            this.rbAvailSolution.CheckedChanged += new System.EventHandler(this.PopulateFilter);
             // 
             // rbAvailAll
             // 
@@ -202,7 +205,7 @@
             this.rbAvailAll.TabStop = true;
             this.rbAvailAll.Text = "All";
             this.rbAvailAll.UseVisualStyleBackColor = true;
-            this.rbAvailAll.CheckedChanged += new System.EventHandler(this.PlummingFilterAvailable);
+            this.rbAvailAll.CheckedChanged += new System.EventHandler(this.PopulateFilter);
             // 
             // cmbFilterBy
             // 
@@ -217,16 +220,16 @@
             this.cmbFilterBy.TabIndex = 3;
             this.cmbFilterBy.SelectedIndexChanged += new System.EventHandler(this.ShowEntitiesByFiltering);
             // 
-            // gbEntitiesExclude
+            // gbEntitiesSelected
             // 
-            this.gbEntitiesExclude.Controls.Add(this.lvSelectedEntities);
-            this.gbEntitiesExclude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbEntitiesExclude.Location = new System.Drawing.Point(372, 3);
-            this.gbEntitiesExclude.Name = "gbEntitiesExclude";
-            this.gbEntitiesExclude.Size = new System.Drawing.Size(324, 364);
-            this.gbEntitiesExclude.TabIndex = 1;
-            this.gbEntitiesExclude.TabStop = false;
-            this.gbEntitiesExclude.Text = "Selected Entities";
+            this.gbEntitiesSelected.Controls.Add(this.lvSelectedEntities);
+            this.gbEntitiesSelected.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbEntitiesSelected.Location = new System.Drawing.Point(372, 3);
+            this.gbEntitiesSelected.Name = "gbEntitiesSelected";
+            this.gbEntitiesSelected.Size = new System.Drawing.Size(324, 374);
+            this.gbEntitiesSelected.TabIndex = 1;
+            this.gbEntitiesSelected.TabStop = false;
+            this.gbEntitiesSelected.Text = "Selected Entities";
             // 
             // lvSelectedEntities
             // 
@@ -238,7 +241,7 @@
             this.lvSelectedEntities.HideSelection = false;
             this.lvSelectedEntities.Location = new System.Drawing.Point(3, 16);
             this.lvSelectedEntities.Name = "lvSelectedEntities";
-            this.lvSelectedEntities.Size = new System.Drawing.Size(318, 345);
+            this.lvSelectedEntities.Size = new System.Drawing.Size(318, 355);
             this.lvSelectedEntities.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.lvSelectedEntities.TabIndex = 7;
             this.lvSelectedEntities.UseCompatibleStateImageBehavior = false;
@@ -262,7 +265,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(332, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(34, 364);
+            this.panel4.Size = new System.Drawing.Size(34, 374);
             this.panel4.TabIndex = 2;
             // 
             // pnlFooter
@@ -270,9 +273,9 @@
             this.pnlFooter.Controls.Add(this.BtnRefresh);
             this.pnlFooter.Controls.Add(this.BtnSave);
             this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlFooter.Location = new System.Drawing.Point(0, 370);
+            this.pnlFooter.Location = new System.Drawing.Point(0, 380);
             this.pnlFooter.Name = "pnlFooter";
-            this.pnlFooter.Size = new System.Drawing.Size(699, 50);
+            this.pnlFooter.Size = new System.Drawing.Size(699, 40);
             this.pnlFooter.TabIndex = 10;
             // 
             // SpecifyEntitiesDialog
@@ -290,10 +293,10 @@
             this.Text = "Select Entities";
             this.Load += new System.EventHandler(this.SpecifyEntitiesDialog_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.bgEntitiesKeep.ResumeLayout(false);
+            this.gbEntitiesAvailable.ResumeLayout(false);
             this.panFilterAvailable.ResumeLayout(false);
             this.panFilterAvailable.PerformLayout();
-            this.gbEntitiesExclude.ResumeLayout(false);
+            this.gbEntitiesSelected.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.pnlFooter.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -307,8 +310,8 @@
         private System.Windows.Forms.Button BtnRemove;
         private System.Windows.Forms.Button BtnRefresh;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.GroupBox bgEntitiesKeep;
-        private System.Windows.Forms.GroupBox gbEntitiesExclude;
+        private System.Windows.Forms.GroupBox gbEntitiesAvailable;
+        private System.Windows.Forms.GroupBox gbEntitiesSelected;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel pnlFooter;
         private System.Windows.Forms.ListView lvAvailableEntities;
@@ -322,5 +325,6 @@
         private System.Windows.Forms.RadioButton rbAvailSolution;
         private System.Windows.Forms.RadioButton rbAvailAll;
         private System.Windows.Forms.ComboBox cmbFilterBy;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

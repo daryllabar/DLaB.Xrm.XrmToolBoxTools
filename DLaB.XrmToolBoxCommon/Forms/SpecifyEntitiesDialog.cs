@@ -16,6 +16,7 @@ namespace DLaB.XrmToolBoxCommon.Forms
         private List<EntityMetadata> allEntities;
         private List<Entity> solutions;
         private List<Entity> publishers;
+        private List<Guid> filteredEntityGuids;
 
         public HashSet<string> SpecifiedEntities { get; set; }
 
@@ -46,8 +47,11 @@ namespace DLaB.XrmToolBoxCommon.Forms
                 lvSelectedEntities.Items.Clear();
                 allEntities = entities.ToList(); // Keep from multiple Enumerations
 
-                lvSelectedEntities.Items.AddRange(allEntities.Where(e => SpecifiedEntities.Contains(e.LogicalName)).Select(e => new ListViewItem(e.DisplayName.UserLocalizedLabel?.Label ?? "N/A") { SubItems = { e.LogicalName }, Tag = e }).ToArray());
-                ShowEntitiesByFiltering();
+                lvSelectedEntities.Items.AddRange(allEntities
+                    .Where(e => SpecifiedEntities.Contains(e.LogicalName))
+                    .Select(e => new ListViewItem(e.GetDisplayName("N/A")) { SubItems = { e.LogicalName }, Tag = e })
+                    .ToArray());
+                PopulateFilter();
             }
             finally
             {
@@ -79,6 +83,10 @@ namespace DLaB.XrmToolBoxCommon.Forms
         {
             Enable(false);
 
+            allEntities = null;
+            solutions = null;
+            publishers = null;
+
             // Clear existing entity list
             ((PropertyInterface.IEntityMetadatas)CallingControl).EntityMetadatas = null;
 
@@ -94,6 +102,7 @@ namespace DLaB.XrmToolBoxCommon.Forms
                 lvAvailableEntities.Items.Remove(value);
             }
             lvSelectedEntities.Items.AddRange(values);
+            UpdateCounts();
         }
 
         private void BtnRemove_Click(object sender, EventArgs e)
@@ -104,9 +113,10 @@ namespace DLaB.XrmToolBoxCommon.Forms
                 lvSelectedEntities.Items.Remove(value);
             }
             lvAvailableEntities.Items.AddRange(values);
+            UpdateCounts();
         }
 
-        private void PlummingFilterAvailable(object sender = null, EventArgs ea = null)
+        private void PopulateFilter(object sender = null, EventArgs ea = null)
         {
             lvAvailableEntities.Items.Clear();
             if (allEntities == null)
@@ -124,7 +134,6 @@ namespace DLaB.XrmToolBoxCommon.Forms
                 cmbFilterBy.Items.AddRange(solutions
                     .Select(s => new EntityProxy(s, $"{s.GetAttributeValue<string>("friendlyname")} ({s.GetAliasedValue<string>("P.friendlyname")})"))
                     .ToArray());
-                cmbFilterBy.Enabled = true;
             }
             else if (rbAvailPublisher.Checked)
             {
@@ -135,17 +144,15 @@ namespace DLaB.XrmToolBoxCommon.Forms
                 cmbFilterBy.Items.Clear();
                 cmbFilterBy.Items.Add("");
                 cmbFilterBy.Items.AddRange(publishers
-                    .Select(p => new EntityProxy(p, $"{p.GetAttributeValue<string>("friendlyname")} ({p.GetAliasedValue<string>("customizationprefix")})"))
+                    .Select(p => new EntityProxy(p, $"{p.GetAttributeValue<string>("friendlyname")} ({p.GetAttributeValue<string>("customizationprefix")})"))
                     .ToArray());
-                cmbFilterBy.Enabled = true;
             }
             else
             {
                 // Show all entities
                 lvAvailableEntities.Items.AddRange(allEntities
-                    .Select(e => new ListViewItem(e.DisplayName.UserLocalizedLabel?.Label ?? "N/A") { Tag = e, SubItems = { e.LogicalName } })
+                    .Select(e => new ListViewItem(e.GetDisplayName("N/A")) { Tag = e, SubItems = { e.LogicalName } })
                     .ToArray());
-                cmbFilterBy.Enabled = false;
             }
             ShowEntitiesByFiltering();
         }
@@ -153,10 +160,10 @@ namespace DLaB.XrmToolBoxCommon.Forms
         private void ShowEntitiesByFiltering(object sender = null, EventArgs ea = null)
         {
             lvAvailableEntities.Items.Clear();
-            var selectedentityguids = new List<Guid>();
+            filteredEntityGuids = new List<Guid>();
             if (rbAvailAll.Checked)
             {
-                selectedentityguids = allEntities.Select(e => e.MetadataId ?? Guid.Empty).ToList();
+                filteredEntityGuids = allEntities.Select(e => e.MetadataId ?? Guid.Empty).ToList();
             }
             else if (cmbFilterBy.SelectedItem is EntityProxy proxy && proxy.Entity is Entity selected)
             {
@@ -179,7 +186,7 @@ namespace DLaB.XrmToolBoxCommon.Forms
                 try
                 {
                     var result = CallingControl.Service.RetrieveMultiple(query);
-                    selectedentityguids = result.Entities.Select(e => e.GetAttributeValue<Guid>("objectid")).ToList();
+                    filteredEntityGuids = result.Entities.Select(e => e.GetAttributeValue<Guid>("objectid")).ToList();
                 }
                 catch (Exception ex)
                 {
@@ -190,10 +197,33 @@ namespace DLaB.XrmToolBoxCommon.Forms
             var selectedentities = lvSelectedEntities.Items.Cast<ListViewItem>().Select(i => i.Tag as EntityMetadata).ToList();
 
             lvAvailableEntities.Items.AddRange(allEntities
-                .Where(e => selectedentityguids.Contains(e.MetadataId ?? Guid.Empty))
+                .Where(e => filteredEntityGuids.Contains(e.MetadataId ?? Guid.Empty))
                 .Where(e => !selectedentities.Contains(e))
                 .Select(e => new ListViewItem(e.DisplayName.UserLocalizedLabel?.Label ?? "N/A") { Tag = e, SubItems = { e.LogicalName } })
                 .ToArray());
+            panFilterAvailable.Height = rbAvailAll.Checked ? 24 : 48;
+            cmbFilterBy.Enabled = !rbAvailAll.Checked;
+            UpdateCounts();
+        }
+
+        private void UpdateCounts()
+        {
+            if ((allEntities?.Count ?? 0) == lvAvailableEntities.Items.Count)
+            {
+                gbEntitiesAvailable.Text = $"Available Entities: {allEntities?.Count ?? 0}";
+                toolTip1.SetToolTip(gbEntitiesAvailable, "Total number of entities");
+            }
+            else if (allEntities?.Count == filteredEntityGuids?.Count)
+            {
+                gbEntitiesAvailable.Text = $"Available Entities: {allEntities?.Count ?? 0} / {lvAvailableEntities.Items.Count}";
+                toolTip1.SetToolTip(gbEntitiesAvailable, "Total number of entities / Not added entities");
+            }
+            else
+            {
+                gbEntitiesAvailable.Text = $"Available Entities: {allEntities?.Count ?? 0} / {filteredEntityGuids.Count} / {lvAvailableEntities.Items.Count}";
+                toolTip1.SetToolTip(gbEntitiesAvailable, "Total number of entities / Filtered out entities / Not added entities");
+            }
+            gbEntitiesSelected.Text = $"Selected Entities: {lvSelectedEntities.Items.Count}";
         }
 
         private void LoadSolutions()
@@ -204,8 +234,11 @@ namespace DLaB.XrmToolBoxCommon.Forms
                 return;
             }
             var query = new QueryExpression("solution");
-            query.ColumnSet.AddColumns("friendlyname", "uniquename", "ismanaged", "isvisible", "version");
+            query.ColumnSet.AddColumns("friendlyname", "uniquename", "ismanaged", "version");
             query.Criteria.AddCondition("isvisible", ConditionOperator.Equal, true);
+            var query_solutioncomponent = new LinkEntity("solution", "solutioncomponent", "solutionid", "solutionid", JoinOperator.Any);
+            query_solutioncomponent.LinkCriteria.AddCondition("componenttype", ConditionOperator.Equal, 1);
+            query.Criteria.AnyAllFilterLinkEntity = query_solutioncomponent;
             query.AddOrder("ismanaged", OrderType.Descending);
             query.AddOrder("friendlyname", OrderType.Ascending);
             var publisher = query.AddLink("publisher", "publisherid", "publisherid");
