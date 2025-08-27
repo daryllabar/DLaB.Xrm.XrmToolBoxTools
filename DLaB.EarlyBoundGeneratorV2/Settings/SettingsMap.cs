@@ -840,7 +840,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             MessageWhitelist = RemoveWhiteSpace(nameof(MessageWhitelist), config.ExtensionConfig.ActionsWhitelist).GetHashSet<string>();
             MessageWildcardWhitelist = RemoveWhiteSpace(nameof(MessageWildcardWhitelist), config.ExtensionConfig.ActionPrefixesWhitelist).GetList<string>();
             PropertyEnumMappings = RemoveWhiteSpace(nameof(PropertyEnumMappings), config.ExtensionConfig.PropertyEnumMappings).GetList<string>();
-            ObsoleteTokens = RemoveWhiteSpace(nameof(ObsoleteTokens), config.ExtensionConfig.ObsoleteTokens).GetList<string>();
+            ObsoleteTokens = TrimWhiteSpace(nameof(ObsoleteTokens), config.ExtensionConfig.ObsoleteTokens).GetList<string>();
             OptionSetNames = RemoveWhiteSpace(nameof(OptionSetNames), Config.ExtensionConfig.OptionSetNames).GetDictionary<string,string>();
             OptionNameOverrides = RemoveWhiteSpace(nameof(OptionNameOverrides), Config.ExtensionConfig.OptionNameOverrides).GetDictionary<string,string>();
             TokenCapitalizationOverrides = RemoveWhiteSpace(nameof(TokenCapitalizationOverrides), config.ExtensionConfig.TokenCapitalizationOverrides).GetList<string>();
@@ -854,6 +854,17 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             {
                 try { 
                     return value?.Replace(" ", string.Empty).Replace("\n", string.Empty).Replace("\r", string.Empty).Replace("\t", string.Empty);
+                }
+                catch (Exception ex)
+                {
+                    throw new FormatException($"Unable parsing property {propertyName}{Environment.NewLine}Value: {value}{Environment.NewLine}", ex);
+                }
+            }
+
+            string TrimWhiteSpace(string propertyName, string value)
+            {
+                try { 
+                    return value?.Replace("\n", string.Empty).Replace("\r", string.Empty).Replace("\t", string.Empty).Trim();
                 }
                 catch (Exception ex)
                 {
