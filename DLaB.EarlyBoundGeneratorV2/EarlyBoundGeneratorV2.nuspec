@@ -11,7 +11,11 @@
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
-    <releaseNotes>V2.2.2025.8.13
+    <releaseNotes>
+Added Search box for Entities #543
+Allow for filtering entities by solution #320
+
+V2.2.2025.8.13
 Fix for duplicate Obsolete values
 Fix for non-adjust casing enum transliteration
 
