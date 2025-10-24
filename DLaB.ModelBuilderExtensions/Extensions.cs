@@ -141,6 +141,19 @@ namespace DLaB.ModelBuilderExtensions
 
         #region CodeMemberProperty
 
+        public static void AddGetAttributeValueGet(this CodeMemberProperty property, string logicalName)
+        {
+            // return this.GetAttributeValue<TYPE>("logicalName")
+            var returnExpression = new CodeMethodInvokeExpression(
+                new CodeMethodReferenceExpression(
+                    new CodeThisReferenceExpression(),
+                    "GetAttributeValue",
+                    property.Type)
+                , new CodePrimitiveExpression(logicalName));
+
+            property.GetStatements.Add(new CodeMethodReturnStatement(returnExpression));
+        }
+
         public static string GetLogicalName(this CodeMemberProperty property)
         {
             return 

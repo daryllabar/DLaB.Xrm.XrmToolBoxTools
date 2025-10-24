@@ -12,6 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
 		<releaseNotes>
+File attributes don't have the file name that ends with _name closes #568			
 Fix for how to utilize "Option Name Overrides" effectively? #565
 
 V2.2.2025.8.26

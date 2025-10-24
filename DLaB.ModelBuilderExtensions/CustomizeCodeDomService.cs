@@ -19,6 +19,7 @@ namespace DLaB.ModelBuilderExtensions
         public bool GenerateOptionSetProperties { get => DLaBSettings.GenerateOptionSetProperties; set => DLaBSettings.GenerateOptionSetProperties = value; }
         public bool GenerateTypesAsInternal { get => DLaBSettings.GenerateTypesAsInternal; set => DLaBSettings.GenerateTypesAsInternal = value; }
         public bool GenerateOptionSetMetadataAttribute { get => DLaBSettings.GenerateOptionSetMetadataAttribute; set => DLaBSettings.GenerateOptionSetMetadataAttribute = value; }
+        public bool UpdateFileAttributes { get => DLaBSettings.UpdateFileAttributes; set => DLaBSettings.UpdateFileAttributes = value; }
         public bool MakeAllFieldsEditable { get => DLaBSettings.MakeAllFieldsEditable; set => DLaBSettings.MakeAllFieldsEditable = value; }
         public bool UpdateMultiOptionSetAttributes { get => DLaBSettings.UpdateMultiOptionSetAttributes; set => DLaBSettings.UpdateMultiOptionSetAttributes = value; }
         public bool UpdateEnumerableEntityProperties { get => DLaBSettings.UpdateEnumerableEntityProperties; set => DLaBSettings.UpdateEnumerableEntityProperties = value; }
@@ -122,6 +123,11 @@ namespace DLaB.ModelBuilderExtensions
 
         private void ProcessEntity(CodeCompileUnit codeUnit, IServiceProvider services)
         {
+            if (UpdateFileAttributes)
+            {
+                new FileAttributeUpdater().CustomizeCodeDom(codeUnit, services);
+            }
+
             if (UpdateMultiOptionSetAttributes)
             {
                 new MultiOptionSetAttributeUpdater().CustomizeCodeDom(codeUnit, services);

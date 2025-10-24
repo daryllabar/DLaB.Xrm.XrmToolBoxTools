@@ -284,6 +284,12 @@ namespace DLaB.ModelBuilderExtensions
         /// <summary>
         /// No Config
         /// </summary>
+        [JsonPropertyName("updateFileAttributes")]
+        public bool UpdateFileAttributes { get; set; } = true;
+
+        /// <summary>
+        /// No Config
+        /// </summary>
         [JsonPropertyName("updateMultiOptionSetAttributes")]
         public bool UpdateMultiOptionSetAttributes { get; set; }
 

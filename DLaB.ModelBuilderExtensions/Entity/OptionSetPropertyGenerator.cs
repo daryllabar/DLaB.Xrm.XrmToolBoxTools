@@ -118,23 +118,9 @@ namespace DLaB.ModelBuilderExtensions.Entity
             property.Parameters.AddRange(enumProp.Parameters);
 
             var logicalName = enumProp.GetLogicalName();
-            AddOptionSetGet(property, logicalName);
+            property.AddGetAttributeValueGet(logicalName);
             AddOptionSetSet(property, logicalName);
             return property;
-        }
-
-        private void AddOptionSetGet(CodeMemberProperty property, string logicalName)
-        {
-            // return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValueCollection>(attributeLogicalName)
-            // return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("logicalName")
-            var returnExpression = new CodeMethodInvokeExpression(
-                new CodeMethodReferenceExpression(
-                    new CodeThisReferenceExpression(),
-                    "GetAttributeValue",
-                    property.Type)
-                , new CodePrimitiveExpression(logicalName));
-
-            property.GetStatements.Add(new CodeMethodReturnStatement(returnExpression));
         }
 
         private void AddOptionSetSet(CodeMemberProperty property, string logicalName)
