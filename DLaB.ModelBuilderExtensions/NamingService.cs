@@ -734,6 +734,7 @@ namespace DLaB.ModelBuilderExtensions
             {
                 var logicalName = oneToMany.ReferencedEntityNavigationPropertyName == defaultName
                                   && oneToMany.ReferencingEntity != "processsession"
+                                  && oneToMany.ReferencingEntity != "asyncoperation"
                     ? oneToMany.ReferencingEntity
                     : oneToMany.ReferencedEntity;
                 defaultName = GetBpfNameToDisplay(defaultName, logicalName);

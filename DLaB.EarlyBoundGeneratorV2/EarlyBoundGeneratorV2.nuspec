@@ -12,6 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
 		<releaseNotes>
+Duplicate relationship within AsyncOperation when having 2 Business Process Flows #569
 File attributes don't have the file name that ends with _name closes #568			
 Fix for how to utilize "Option Name Overrides" effectively? #565
 

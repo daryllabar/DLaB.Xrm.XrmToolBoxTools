@@ -275,7 +275,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         /// </summary>
         public bool UseCrmSvcUtilStateEnumNamingConvention { get; set; }
         /// <summary>
-        /// By default, Business Process Flows entities are named with the format {PublisherPrefix}_bpf_GUID. This will instead generate the bpf clases with the format {PublisherPrefix}_bpf_{DisplayName} and entity relationships with similarly, guid replaced by display name, formats.
+        /// By default, Business Process Flows entities are named with the format {PublisherPrefix}_bpf_GUID. This will instead generate the bpf classes with the format {PublisherPrefix}_bpf_{DisplayName} and entity relationships with similarly, guid replaced by display name, formats.
         /// </summary>
         public bool UseDisplayNameForBpfName { get; set; }
         /// <summary>
