@@ -11,7 +11,10 @@
 		<projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses ModelBuilder from the PAC.</description>
-		<releaseNotes>V2.2.2025.8.26
+		<releaseNotes>
+Fix for how to utilize "Option Name Overrides" effectively? #565
+
+V2.2.2025.8.26
 Preserver Spacing for ObsoleteTokens #556
 Added Search box for Entities #543
 Allow for filtering entities by solution #320

@@ -35,6 +35,8 @@ namespace DLaB.ModelBuilderExtensions.Tests
         }
 
         [TestMethod]
+        [DataRow("Hello World", "HelloWorld", DisplayName = "No Override Should default")]
+        [DataRow("Hello World", "HElloworld", "ellow|Ellow", DisplayName = "Override Should Capitalize Words")]
         [DataRow("10Th", "_10th", DisplayName = "10Th is 10th")]
         [DataRow("1St", "_1st", DisplayName = "1St is 1st")]
         [DataRow("2Nd", "_2nd", DisplayName = "2Nd is 2nd")]
@@ -45,10 +47,10 @@ namespace DLaB.ModelBuilderExtensions.Tests
         [DataRow("7Th", "_7th", DisplayName = "7Th is 7th")]
         [DataRow("8Th", "_8th", DisplayName = "8Th is 8th")]
         [DataRow("9Th", "_9th", DisplayName = "9Th is 9th")]
-        public void GetNameForOption_Tests(string schemaName, string expected)
+        public void GetNameForOption_Tests(string combinedLabelText, string expected, string overrideName = null)
         {
             var fakeNamingService = A.Fake<INamingService>();
-            A.CallTo(() => fakeNamingService.GetNameForEntity(A<EntityMetadata>._, A<IServiceProvider>._)).Returns(expected ?? schemaName);
+            A.CallTo(() => fakeNamingService.GetNameForEntity(A<EntityMetadata>._, A<IServiceProvider>._)).Returns(expected ?? combinedLabelText);
 
             var optionSetMetadata = new OptionSetMetadata();
 
@@ -58,7 +60,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
                 {
                     UserLocalizedLabel = new LocalizedLabel
                     {
-                        Label = schemaName
+                        Label = combinedLabelText
                     }
                 },
             };
@@ -84,18 +86,23 @@ namespace DLaB.ModelBuilderExtensions.Tests
                 }
             });
 
-            A.CallTo(() => fakeNamingService.GetNameForOption(A<OptionSetMetadataBase>._, A<OptionMetadata>._, A<IServiceProvider>._)).Returns(schemaName);
+            if (overrideName != null)
+            {
+                var parts = overrideName.Split('|');
+                sut.OptionNameOverrides[parts[0]] = parts[1];
+            }
+
+            A.CallTo(() => fakeNamingService.GetNameForOption(A<OptionSetMetadataBase>._, A<OptionMetadata>._, A<IServiceProvider>._)).Returns(combinedLabelText);
             var name = sut.GetNameForOption(optionSetMetadata, optionMetadata, A.Fake<IServiceProvider>());
-            Assert.AreEqual(expected ?? schemaName.ToLower(), name);
+            Assert.AreEqual(expected ?? combinedLabelText.ToLower(), name);
         }
 
         [TestMethod]
-        //[DataRow("Acme_Something", "Acme_SomethingElse", DisplayName = "Entity name in State and Status Code names are replaced")]
-        [DataRow("Acme_Something", null, DisplayName = "Entity name in State and Status Code names are replaced")]
-        public void GetNameForOptionSet_Tests(string schemaName, string overrideName)
+        public void GetNameForOptionSet_EntityNameInStateAndStatusCodeNamesAreReplaced()
         {
+            var schemaName = "Acme_Something";
             var fakeNamingService = A.Fake<INamingService>();
-            A.CallTo(() => fakeNamingService.GetNameForEntity(A<EntityMetadata>._, A<IServiceProvider>._)).Returns(overrideName ?? schemaName);
+            A.CallTo(() => fakeNamingService.GetNameForEntity(A<EntityMetadata>._, A<IServiceProvider>._)).Returns(schemaName);
             
             var serviceCache = ServiceCache.GetDefault(A.Fake<IServiceProvider>());
             var entityMetadata = new EntityMetadata {
@@ -109,31 +116,21 @@ namespace DLaB.ModelBuilderExtensions.Tests
                 { schemaName.ToLower(), entityMetadata },
             };
 
-            var sut = new NamingService(fakeNamingService, new DLaBModelBuilderSettings
-            {
-                DLaBModelBuilder = new DLaBModelBuilder
-                {
-                    EntityClassNameOverrides = overrideName == null 
-                        ? new Dictionary<string, string>()
-                        : new Dictionary<string, string>
-                        {
-                            { schemaName.ToLower(), overrideName},
-                        }
-                }
-            });
+            var sut = new NamingService(fakeNamingService, new DLaBModelBuilderSettings());
 
             A.CallTo(() => fakeNamingService.GetNameForOptionSet(A<EntityMetadata>._, A<OptionSetMetadataBase>._, A<IServiceProvider>._)).Returns(schemaName.ToLower() + "State");
-            Assert.AreEqual((overrideName ?? schemaName.ToLower()) + "State", sut.GetNameForOptionSet(entityMetadata, new OptionSetMetadata
+            Assert.AreEqual(schemaName.ToLower() + "State", sut.GetNameForOptionSet(entityMetadata, new OptionSetMetadata
             {
                 Name = schemaName.ToLower() + "_statecode"
             }, A.Fake<IServiceProvider>()));
             A.CallTo(() => fakeNamingService.GetNameForOptionSet(A<EntityMetadata>._, A<OptionSetMetadataBase>._, A<IServiceProvider>._)).Returns(schemaName.ToLower() + "_statuscode");
-            Assert.AreEqual((overrideName ?? schemaName) + "_StatusCode", sut.GetNameForOptionSet(entityMetadata, new OptionSetMetadata
+            Assert.AreEqual(schemaName + "_StatusCode", sut.GetNameForOptionSet(entityMetadata, new OptionSetMetadata
             {
                 OptionSetType = OptionSetType.Status,
                 IsGlobal = false,
                 Name = schemaName.ToLower() + "_statuscode"
             }, A.Fake<IServiceProvider>()));
+
         }
 
         [TestMethod]

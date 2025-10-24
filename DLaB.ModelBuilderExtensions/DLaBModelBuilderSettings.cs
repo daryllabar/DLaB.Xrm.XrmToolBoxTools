@@ -9,7 +9,7 @@ namespace DLaB.ModelBuilderExtensions
         /// No Config
         /// </summary>
         [JsonPropertyName("messageLogicalFieldName")]
-        public string MessageLogicalFieldName { get; set; }
+        public string MessageLogicalFieldName { get; set; } = "ActionLogicalName";
 
         [JsonPropertyName("addDebuggerNonUserCode")]
         public bool AddDebuggerNonUserCode { get; set; }
@@ -24,19 +24,19 @@ namespace DLaB.ModelBuilderExtensions
         /// No Config
         /// </summary>
         [JsonPropertyName("addPrimaryAttributeConsts")]
-        public bool AddPrimaryAttributeConsts { get; set; }
+        public bool AddPrimaryAttributeConsts { get; set; } = true;
 
         [JsonPropertyName("adjustCasingForEnumOptions")]
         public bool AdjustCasingForEnumOptions { get; set; }
 
         [JsonPropertyName("attributeBlacklist")]
-        public HashSet<string> AttributeBlacklist { get; set; }
+        public HashSet<string> AttributeBlacklist { get; set; } = new HashSet<string>();
 
         /// <summary>
         /// No Config
         /// </summary>
         [JsonPropertyName("attributeConstsClassName")]
-        public string AttributeConstsClassName { get; set; }
+        public string AttributeConstsClassName { get; set; } = "Fields";
 
         [JsonPropertyName("builderSettingsJsonRelativePath")]
         public string BuilderSettingsJsonRelativePath { get; set; }
@@ -45,7 +45,7 @@ namespace DLaB.ModelBuilderExtensions
         public bool CamelCaseClassNames { get; set; }
 
         [JsonPropertyName("camelCaseCustomWords")]
-        public List<string> CamelCaseCustomWords { get; set; }
+        public List<string> CamelCaseCustomWords { get; set; } = new List<string>();
 
         [JsonPropertyName("camelCaseMemberNames")]
         public bool CamelCaseMemberNames { get; set; }
@@ -83,22 +83,22 @@ namespace DLaB.ModelBuilderExtensions
         /// No Config
         /// </summary>
         [JsonPropertyName("enableFileDataType")]
-        public bool EnableFileDataType { get; set; }
+        public bool EnableFileDataType { get; set; } = true;
 
         [JsonPropertyName("entityAttributeSpecifiedNames")]
-        public Dictionary<string, HashSet<string>> EntityAttributeSpecifiedNames { get; set; }
+        public Dictionary<string, HashSet<string>> EntityAttributeSpecifiedNames { get; set; } = new Dictionary<string, HashSet<string>>();
 
         [JsonPropertyName("entitiesFileName")]
-        public string EntitiesFileName { get; set; }
+        public string EntitiesFileName { get; set; } = "Entities.cs";
 
         [JsonPropertyName("entityBlacklist")]
-        public List<string> EntityBlacklist { get; set; }
+        public List<string> EntityBlacklist { get; set; } = new List<string>();
 
         [JsonPropertyName("entityClassNameOverrides")]
-        public Dictionary<string, string> EntityClassNameOverrides { get; set; }
+        public Dictionary<string, string> EntityClassNameOverrides { get; set; } = new Dictionary<string, string>();
 
         [JsonPropertyName("entityRegExBlacklist")]
-        public List<string> EntityRegExBlacklist { get; set; }
+        public List<string> EntityRegExBlacklist { get; set; } = new List<string>();
 
         [JsonPropertyName("filePrefixText")]
         public string FilePrefixText { get; set; }
@@ -116,7 +116,7 @@ namespace DLaB.ModelBuilderExtensions
         public bool GenerateConstructorsSansLogicalName { get; set; }
 
         [JsonPropertyName("generateEntityRelationships")]
-        public bool GenerateEntityRelationships { get; set; }
+        public bool GenerateEntityRelationships { get; set; } = true;
 
         [JsonPropertyName("generateOptionSetProperties")]
         public bool GenerateOptionSetProperties { get; set; }
@@ -131,28 +131,42 @@ namespace DLaB.ModelBuilderExtensions
         public bool GroupLocalOptionSetsByEntity { get; set; }
 
         [JsonPropertyName("groupMessageRequestWithResponse")]
-        public bool GroupMessageRequestWithResponse { get; set; }
+        public bool GroupMessageRequestWithResponse { get; set; } = true;
 
         [JsonPropertyName("includeCommandLine")]
         public bool IncludeCommandLine { get; set; }
 
         [JsonPropertyName("invalidCSharpNamePrefix")]
-        public string InvalidCSharpNamePrefix { get; set; }
+        public string InvalidCSharpNamePrefix { get; set; } = "_";
 
         /// <summary>
         /// No Config
         /// </summary>
         [JsonPropertyName("invalidStringsForPropertiesNeedingNullableTypes")]
-        public List<string> InvalidStringsForPropertiesNeedingNullableTypes { get; set; }
-        
+        public List<string> InvalidStringsForPropertiesNeedingNullableTypes { get; set; } = new List<string>
+        {
+            "?",
+            ":",
+            "(",
+            " const ",
+            " class ",
+            " enum ",
+            " System.Nullable<",
+            " System.Linq.IQueryable<",
+        };
+
         /// <summary>
         /// No Config
         /// </summary>
         [JsonPropertyName("labelTextReplacement")]
-        public Dictionary<string, string> LabelTextReplacement { get; set; }
+        public Dictionary<string, string> LabelTextReplacement { get; set; } = new Dictionary<string, string>
+        {
+            { "$", string.Empty },
+            { "(", string.Empty }
+        };
 
         [JsonPropertyName("localOptionSetFormat")]
-        public string LocalOptionSetFormat { get; set; }
+        public string LocalOptionSetFormat { get; set; } = "{0}_{1}";
 
         /// <summary>
         /// No Config
@@ -173,22 +187,22 @@ namespace DLaB.ModelBuilderExtensions
         public bool MakeResponseMessagesEditable { get; set; }
 
         [JsonPropertyName("messageBlacklist")]
-        public List<string> MessageBlacklist { get; set; }
+        public List<string> MessageBlacklist { get; set; } = new List<string>();
 
         [JsonPropertyName("messagesFileName")]
-        public string MessagesFileName { get; set; }
+        public string MessagesFileName { get; set; } = "Messages.cs";
 
         [JsonPropertyName("modelBuilderLogLevel")]
         public string ModelBuilderLogLevel { get; set; }
         
         [JsonPropertyName("obsoleteDeprecated")]
         public bool ObsoleteDeprecated { get; set; }
-        
+
         [JsonPropertyName("obsoleteTokens")]
-        public List<string> ObsoleteTokens { get; set; }
+        public List<string> ObsoleteTokens { get; set; } = new List<string>();
 
         [JsonPropertyName("optionSetsFileName")]
-        public string OptionSetsFileName { get; set; }
+        public string OptionSetsFileName { get; set; } = "OptionSet.cs";
 
         private string _optionSetLanguageCodeOverride;
         [JsonPropertyName("optionSetLanguageCodeOverride")]
@@ -204,16 +218,16 @@ namespace DLaB.ModelBuilderExtensions
         }
 
         [JsonPropertyName("optionSetNames")]
-        public Dictionary<string, string> OptionSetNames { get; set; }
+        public Dictionary<string, string> OptionSetNames { get; set; } = new Dictionary<string, string>();
         [JsonPropertyName("optionNameOverrides")]
-        public Dictionary<string, string> OptionNameOverrides { get; set; }
+        public Dictionary<string, string> OptionNameOverrides { get; set; } = new Dictionary<string, string>();
         [JsonIgnore]
         public int OptionSetLanguageCodeOverride { get; set; }
         /// <summary>
         /// No Config
         /// </summary>
         [JsonPropertyName("orgEntityClassName")]
-        public string OrgEntityClassName { get; set; }
+        public string OrgEntityClassName { get; set; } = "OrganizationOwnedEntity";
 
         [JsonPropertyName("outputRelativeDirectory")]
         public string OutputRelativeDirectory { get; set; }
@@ -222,18 +236,18 @@ namespace DLaB.ModelBuilderExtensions
         public string ProjectNameForEarlyBoundFiles { get; set; }
 
         [JsonPropertyName("propertyEnumMappings")]
-        public Dictionary<string, string> PropertyEnumMappings { get; set; }
+        public Dictionary<string, string> PropertyEnumMappings { get; set; } = new Dictionary<string, string>();
 
         [JsonPropertyName("readSerializedMetadata")]
         public bool ReadSerializedMetadata { get; set; }
 
         [JsonPropertyName("removeRuntimeVersionComment")]
-        public bool RemoveRuntimeVersionComment { get; set; }
+        public bool RemoveRuntimeVersionComment { get; set; } = true;
         /// <summary>
         /// No Config
         /// </summary>
         [JsonPropertyName("relationshipConstsClassName")]
-        public string RelationshipConstsClassName { get; set; }
+        public string RelationshipConstsClassName { get; set; } = "Relationships";
 
         [JsonPropertyName("replaceEnumPropertiesWithOptionSet")]
         public bool ReplaceEnumPropertiesWithOptionSet { get; set; }
@@ -242,7 +256,7 @@ namespace DLaB.ModelBuilderExtensions
         /// No Config
         /// </summary>
         [JsonPropertyName("serializedMetadataRelativeFilePath")]
-        public string SerializedMetadataRelativeFilePath { get; set; }
+        public string SerializedMetadataRelativeFilePath { get; set; } = "metadata.xml";
 
         [JsonPropertyName("serializeMetadata")]
         public bool SerializeMetadata { get; set; }
@@ -251,7 +265,7 @@ namespace DLaB.ModelBuilderExtensions
         public bool SuppressAutogeneratedFileHeaderComment { get; set; }
 
         [JsonPropertyName("tokenCapitalizationOverrides")]
-        public List<string> TokenCapitalizationOverrides { get; set; }
+        public List<string> TokenCapitalizationOverrides { get; set; } = new List<string>();
 
         private string _transliterationRelativePath;
         [JsonPropertyName("transliterationRelativePath")]
@@ -265,7 +279,7 @@ namespace DLaB.ModelBuilderExtensions
         /// No Config.  Fix for https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/issues/464
         /// </summary>
         [JsonPropertyName("updateEnumerableEntityProperties")]
-        public bool UpdateEnumerableEntityProperties { get; set; }
+        public bool UpdateEnumerableEntityProperties { get; set; } = true;
 
         /// <summary>
         /// No Config
@@ -286,7 +300,7 @@ namespace DLaB.ModelBuilderExtensions
         /// No Config
         /// </summary>
         [JsonPropertyName("userEntityClassName")]
-        public string UserEntityClassName { get; set; }
+        public string UserEntityClassName { get; set; } = "UserOwnedEntity";
 
         [JsonPropertyName("useLogicalNames")]
         public bool UseLogicalNames { get; set; }
@@ -295,63 +309,13 @@ namespace DLaB.ModelBuilderExtensions
         public bool UseTfsToCheckoutFiles { get; set; }
 
         [JsonPropertyName("validCSharpNameRegEx")]
-        public string ValidCSharpNameRegEx { get; set; }
+        public string ValidCSharpNameRegEx { get; set; } = @"[^a-zA-Z0-9_]";
 
         [JsonPropertyName("waitForAttachedDebugger")]
         public bool WaitForAttachedDebugger { get; set; }
 
         [JsonPropertyName("xrmToolBoxPluginPath")]
         public string XrmToolBoxPluginPath { get; set; }
-
-        public DLaBModelBuilder()
-        {
-            MessageLogicalFieldName = "ActionLogicalName";
-            AddPrimaryAttributeConsts = true;
-            AttributeConstsClassName = "Fields";
-            AttributeBlacklist = new HashSet<string>();
-            CamelCaseCustomWords = new List<string>();
-            EnableFileDataType = true;
-            EntitiesFileName = "Entities.cs";
-            EntityAttributeSpecifiedNames = new Dictionary<string, HashSet<string>>();
-            EntityBlacklist = new List<string>();
-            EntityClassNameOverrides = new Dictionary<string, string>();
-            EntityRegExBlacklist = new List<string>();
-            GenerateEntityRelationships = true;
-            GroupMessageRequestWithResponse = true;
-            InvalidCSharpNamePrefix = "_";
-            InvalidStringsForPropertiesNeedingNullableTypes = new List<string>
-            {
-                "?",
-                ":",
-                "(",
-                " const ",
-                " class ",
-                " enum ",
-                " System.Nullable<",
-                " System.Linq.IQueryable<",
-            };
-            LabelTextReplacement = new Dictionary<string, string>
-            {
-                { "$", string.Empty },
-                { "(", string.Empty }
-            };
-            LocalOptionSetFormat = "{0}_{1}";
-            MessageBlacklist = new List<string>();
-            MessagesFileName = "Messages.cs";
-            SerializedMetadataRelativeFilePath = "metadata.xml";
-            ObsoleteTokens = new List<string>();
-            OptionNameOverrides = new Dictionary<string, string>();
-            OptionSetNames = new Dictionary<string, string>();
-            OptionSetsFileName = "OptionSet.cs";
-            OrgEntityClassName = "OrganizationOwnedEntity";
-            PropertyEnumMappings = new Dictionary<string, string>();
-            RelationshipConstsClassName = "Relationships";
-            RemoveRuntimeVersionComment = true;
-            TokenCapitalizationOverrides = new List<string>();
-            UpdateEnumerableEntityProperties = true;
-            UserEntityClassName = "UserOwnedEntity";
-            ValidCSharpNameRegEx = @"[^a-zA-Z0-9_]";
-        }
     }
 
     public class DLaBModelBuilderSettings

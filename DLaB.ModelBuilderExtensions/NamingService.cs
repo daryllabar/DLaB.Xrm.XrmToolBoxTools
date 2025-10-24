@@ -124,9 +124,9 @@ namespace DLaB.ModelBuilderExtensions
             }
 
             if(UseCrmSvcUtilStateEnumNamingConvention
-                && optionSetMetadata.IsGlobal != true
+                && optionSetMetadata?.IsGlobal != true
                 && name.ToLower().EndsWith("_statecode")
-                && entityMetadata.Attributes.FirstOrDefault(a => a.AttributeType == AttributeTypeCode.State) != null)
+                && entityMetadata?.Attributes.FirstOrDefault(a => a.AttributeType == AttributeTypeCode.State) != null)
             {
                 name = GetNameForEntity(entityMetadata, services) + "State";
             }
@@ -491,12 +491,15 @@ namespace DLaB.ModelBuilderExtensions
                     continue;
                 }
                 words[i] = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(word.ToLower());
-                foreach (var nameOverride in OptionNameOverrides.Where(nameOverride => words[i].ToLower().Contains(nameOverride.Key)))
-                {
-                    words[i] = ReplaceIgnoreCase(words[i], nameOverride.Key, nameOverride.Value);
-                }
             }
-            return string.Join("", words);
+
+            var combinedName = string.Join("", words);
+            foreach (var nameOverride in OptionNameOverrides.Where(nameOverride => combinedName.ToLower().Contains(nameOverride.Key)))
+            {
+                combinedName = ReplaceIgnoreCase(combinedName, nameOverride.Key, nameOverride.Value);
+            }
+
+            return combinedName;
         }
 
         // Helper method to remove characters that are not valid C# identifier characters (Unicode letter, digit, or connecting/combining/formatting character)
