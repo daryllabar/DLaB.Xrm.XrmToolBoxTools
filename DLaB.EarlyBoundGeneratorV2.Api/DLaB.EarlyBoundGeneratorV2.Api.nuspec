@@ -34,7 +34,7 @@ Fix non-english characters getting stripped #552
 V2.2025.8.8
 Set [Obsolete] on deprecated attributes closes #548
 FileName should be FileName, not Filename #550
-		
+
 V2.2025.8.6
 Allow for Option-set capitalization overrides #549
 
@@ -59,7 +59,7 @@ Fix for Enum property generated with wrong type #537
 Fix for Add Czech language (cs-CZ; 1029) as alphabet for the Option Sets transliteration #529  Thank you Luboš Jánský for providing the alphabet transliteration file!
 
 V2.2024.11.8
-Fix for Customizable CustomTextWriter.InvalidStringsForPropertiesNeedingNullableTypes  
+Fix for Customizable CustomTextWriter.InvalidStringsForPropertiesNeedingNullableTypes
 
 V2.2024.10.16
 Fix for EBGv2: Entity constructor that takes anonymousType throws NullReferenceException resolves #521 Thank you Jānis Veinbergs for reporting!
@@ -69,7 +69,7 @@ V2.2024.9.11
 Fix for make reference types nullable" should generate a nullable opt-in directive #500 Thank you Oliver Tressler!
 
 V2.2024.9.8
-Don't update Project file for .NET SDK Style Projects #491		
+Don't update Project file for .NET SDK Style Projects #491
 Special characters not generating in V2 (ë) #506
 		</releaseNotes>
 		<copyright>Copyright 2019</copyright>
@@ -79,7 +79,7 @@ Special characters not generating in V2 (ë) #506
 			<frameworkAssembly assemblyName="System.Runtime.Serialization" />
 		</frameworkAssemblies>
 		<contentFiles>
-			<files include="any\any\DLaB.EarlyBoundGenerator\**\*.*" buildAction="None" copyToOutput="true" />
+			<files include="any\any\DLaB.EarlyBoundGenerator2\**\*.*" buildAction="None" copyToOutput="true" />
 		</contentFiles>
 		<dependencies>
 			<group targetFramework=".NETFramework4.8">
