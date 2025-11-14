@@ -2,7 +2,7 @@
 <package >
 	<metadata>
 		<id>DLaB.Xrm.EarlyBoundGeneratorV2.Api</id>
-		<version>2.2025.8.26</version>
+		<version>2.2025.11.14</version>
 		<title>Early Bound Generator V2 Api</title>
 		<authors>Daryl LaBar</authors>
 		<owners>Daryl LaBar</owners>
@@ -12,6 +12,8 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses ModelBuilder from the PAC.</description>
 		<releaseNotes>
+V2.2.2025.11.14
+Nuspec contentFiles folder fix #575
 Duplicate relationship within AsyncOperation when having 2 Business Process Flows #569
 File attributes don't have the file name that ends with _name #568
 Fix for how to utilize "Option Name Overrides" effectively? #565
