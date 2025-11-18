@@ -2,7 +2,7 @@
 <package >
 	<metadata>
 		<id>DLaB.Xrm.EarlyBoundGeneratorV2.Api</id>
-		<version>2.2025.11.14</version>
+		<version>2.2025.11.15</version>
 		<title>Early Bound Generator V2 Api</title>
 		<authors>Daryl LaBar</authors>
 		<owners>Daryl LaBar</owners>
@@ -81,7 +81,7 @@ Special characters not generating in V2 (ë) #506
 			<frameworkAssembly assemblyName="System.Runtime.Serialization" />
 		</frameworkAssemblies>
 		<contentFiles>
-			<files include="any\any\DLaB.EarlyBoundGenerator2\**\*.*" buildAction="None" copyToOutput="true" />
+			<files include="any\any\DLaB.EarlyBoundGeneratorV2\**\*.*" buildAction="None" copyToOutput="true" />
 		</contentFiles>
 		<dependencies>
 			<group targetFramework=".NETFramework4.8">
