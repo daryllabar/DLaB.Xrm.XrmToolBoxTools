@@ -55,6 +55,8 @@ namespace DLaB.ModelBuilderExtensions
                     ? new DLaBModelBuilderSettings()
                     : JsonSerializer.Deserialize<DLaBModelBuilderSettings>(File.ReadAllText(settingsPath)) ?? new DLaBModelBuilderSettings();
 
+                _settings.ProcessCustomFlags();
+
                 if (!string.IsNullOrWhiteSpace(_settings.OutDirectory))
                 {
                     return;

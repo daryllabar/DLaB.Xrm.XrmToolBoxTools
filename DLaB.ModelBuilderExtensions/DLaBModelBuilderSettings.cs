@@ -3,14 +3,79 @@ using System.Text.Json.Serialization;
 
 namespace DLaB.ModelBuilderExtensions
 {
-    public class DLaBModelBuilder
+    /// <summary>
+    /// Contains settings not configurable via the EBG UI
+    /// </summary>
+    public class DLaBModelBuilderFlags
     {
-        /// <summary>
-        /// No Config
-        /// </summary>
         [JsonPropertyName("messageLogicalFieldName")]
         public string MessageLogicalFieldName { get; set; } = "ActionLogicalName";
 
+        [JsonPropertyName("addPrimaryAttributeConsts")]
+        public bool AddPrimaryAttributeConsts { get; set; } = true;
+
+        [JsonPropertyName("attributeConstsClassName")]
+        public string AttributeConstsClassName { get; set; } = "Fields";
+
+        [JsonPropertyName("camelCaseOptionSetNames")]
+        public bool CamelCaseOptionSetNames { get; set; }
+
+        [JsonPropertyName("invalidStringsForPropertiesNeedingNullableTypes")]
+        public List<string> InvalidStringsForPropertiesNeedingNullableTypes { get; set; } = new List<string>
+        {
+            "?",
+            ":",
+            "(",
+            " const ",
+            " class ",
+            " enum ",
+            " System.Nullable<",
+            " System.Linq.IQueryable<",
+        };
+
+        [JsonPropertyName("labelTextReplacement")]
+        public Dictionary<string, string> LabelTextReplacement { get; set; } = new Dictionary<string, string>
+        {
+            { "$", string.Empty },
+            { "(", string.Empty }
+        };
+
+        [JsonPropertyName("enableFileDataType")]
+        public bool EnableFileDataType { get; set; } = true;
+
+        [JsonPropertyName("loggingEnabled")]
+        public bool LoggingEnabled { get; set; }
+
+        [JsonPropertyName("namingServiceMethodsToUseDefault")]
+        public NamingServiceMethods NamingServiceMethodsToUseDefault { get; set; } = NamingServiceMethods.None;
+
+        [JsonPropertyName("orgEntityClassName")]
+        public string OrgEntityClassName { get; set; } = "OrganizationOwnedEntity";
+
+        [JsonPropertyName("relationshipConstsClassName")]
+        public string RelationshipConstsClassName { get; set; } = "Relationships";
+
+        [JsonPropertyName("serializedMetadataRelativeFilePath")]
+        public string SerializedMetadataRelativeFilePath { get; set; } = "metadata.xml";
+
+        /// <summary>
+        /// Fix for https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/issues/464
+        /// </summary>
+        [JsonPropertyName("updateEnumerableEntityProperties")]
+        public bool UpdateEnumerableEntityProperties { get; set; } = true;
+
+        [JsonPropertyName("updateFileAttributes")]
+        public bool UpdateFileAttributes { get; set; } = true;
+
+        [JsonPropertyName("updateMultiOptionSetAttributes")]
+        public bool UpdateMultiOptionSetAttributes { get; set; }
+
+        [JsonPropertyName("userEntityClassName")]
+        public string UserEntityClassName { get; set; } = "UserOwnedEntity";
+    }
+
+    public class DLaBModelBuilder : DLaBModelBuilderFlags
+    {
         [JsonPropertyName("addDebuggerNonUserCode")]
         public bool AddDebuggerNonUserCode { get; set; }
 
@@ -20,23 +85,11 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("addOptionSetMetadataAttribute")]
         public bool AddOptionSetMetadataAttribute { get; set; }
 
-        /// <summary>
-        /// No Config
-        /// </summary>
-        [JsonPropertyName("addPrimaryAttributeConsts")]
-        public bool AddPrimaryAttributeConsts { get; set; } = true;
-
         [JsonPropertyName("adjustCasingForEnumOptions")]
         public bool AdjustCasingForEnumOptions { get; set; }
 
         [JsonPropertyName("attributeBlacklist")]
         public HashSet<string> AttributeBlacklist { get; set; } = new HashSet<string>();
-
-        /// <summary>
-        /// No Config
-        /// </summary>
-        [JsonPropertyName("attributeConstsClassName")]
-        public string AttributeConstsClassName { get; set; } = "Fields";
 
         [JsonPropertyName("builderSettingsJsonRelativePath")]
         public string BuilderSettingsJsonRelativePath { get; set; }
@@ -49,12 +102,6 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("camelCaseMemberNames")]
         public bool CamelCaseMemberNames { get; set; }
-
-        /// <summary>
-        /// No Config
-        /// </summary>
-        [JsonPropertyName("camelCaseOptionSetNames")]
-        public bool CamelCaseOptionSetNames { get; set; }
 
         private string _camelCaseNamesDictionaryRelativePath;
         [JsonPropertyName("camelCaseNamesDictionaryRelativePath")]
@@ -78,12 +125,6 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("deleteFilesFromOutputFolders")]
         public bool DeleteFilesFromOutputFolders { get; set; }
-
-        /// <summary>
-        /// No Config
-        /// </summary>
-        [JsonPropertyName("enableFileDataType")]
-        public bool EnableFileDataType { get; set; } = true;
 
         [JsonPropertyName("entityAttributeSpecifiedNames")]
         public Dictionary<string, HashSet<string>> EntityAttributeSpecifiedNames { get; set; } = new Dictionary<string, HashSet<string>>();
@@ -139,40 +180,8 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("invalidCSharpNamePrefix")]
         public string InvalidCSharpNamePrefix { get; set; } = "_";
 
-        /// <summary>
-        /// No Config
-        /// </summary>
-        [JsonPropertyName("invalidStringsForPropertiesNeedingNullableTypes")]
-        public List<string> InvalidStringsForPropertiesNeedingNullableTypes { get; set; } = new List<string>
-        {
-            "?",
-            ":",
-            "(",
-            " const ",
-            " class ",
-            " enum ",
-            " System.Nullable<",
-            " System.Linq.IQueryable<",
-        };
-
-        /// <summary>
-        /// No Config
-        /// </summary>
-        [JsonPropertyName("labelTextReplacement")]
-        public Dictionary<string, string> LabelTextReplacement { get; set; } = new Dictionary<string, string>
-        {
-            { "$", string.Empty },
-            { "(", string.Empty }
-        };
-
         [JsonPropertyName("localOptionSetFormat")]
         public string LocalOptionSetFormat { get; set; } = "{0}_{1}";
-
-        /// <summary>
-        /// No Config
-        /// </summary>
-        [JsonPropertyName("loggingEnabled")]
-        public bool LoggingEnabled { get; set; }
 
         [JsonPropertyName("makeAllFieldsEditable")]
         public bool MakeAllFieldsEditable { get; set; }
@@ -194,7 +203,7 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("modelBuilderLogLevel")]
         public string ModelBuilderLogLevel { get; set; }
-        
+
         [JsonPropertyName("obsoleteDeprecated")]
         public bool ObsoleteDeprecated { get; set; }
 
@@ -212,6 +221,7 @@ namespace DLaB.ModelBuilderExtensions
             {
                 _optionSetLanguageCodeOverride = value;
                 OptionSetLanguageCodeOverride = string.IsNullOrWhiteSpace(value)
+        
                     ? int.MinValue
                     : int.Parse(value);
             }
@@ -223,12 +233,6 @@ namespace DLaB.ModelBuilderExtensions
         public Dictionary<string, string> OptionNameOverrides { get; set; } = new Dictionary<string, string>();
         [JsonIgnore]
         public int OptionSetLanguageCodeOverride { get; set; }
-        /// <summary>
-        /// No Config
-        /// </summary>
-        [JsonPropertyName("orgEntityClassName")]
-        public string OrgEntityClassName { get; set; } = "OrganizationOwnedEntity";
-
         [JsonPropertyName("outputRelativeDirectory")]
         public string OutputRelativeDirectory { get; set; }
 
@@ -243,20 +247,8 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("removeRuntimeVersionComment")]
         public bool RemoveRuntimeVersionComment { get; set; } = true;
-        /// <summary>
-        /// No Config
-        /// </summary>
-        [JsonPropertyName("relationshipConstsClassName")]
-        public string RelationshipConstsClassName { get; set; } = "Relationships";
-
         [JsonPropertyName("replaceEnumPropertiesWithOptionSet")]
         public bool ReplaceEnumPropertiesWithOptionSet { get; set; }
-
-        /// <summary>
-        /// No Config
-        /// </summary>
-        [JsonPropertyName("serializedMetadataRelativeFilePath")]
-        public string SerializedMetadataRelativeFilePath { get; set; } = "metadata.xml";
 
         [JsonPropertyName("serializeMetadata")]
         public bool SerializeMetadata { get; set; }
@@ -275,23 +267,6 @@ namespace DLaB.ModelBuilderExtensions
             set => _transliterationRelativePath = value;
         }
 
-        /// <summary>
-        /// No Config.  Fix for https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/issues/464
-        /// </summary>
-        [JsonPropertyName("updateEnumerableEntityProperties")]
-        public bool UpdateEnumerableEntityProperties { get; set; } = true;
-
-        /// <summary>
-        /// No Config
-        /// </summary>
-        [JsonPropertyName("updateFileAttributes")]
-        public bool UpdateFileAttributes { get; set; } = true;
-
-        /// <summary>
-        /// No Config
-        /// </summary>
-        [JsonPropertyName("updateMultiOptionSetAttributes")]
-        public bool UpdateMultiOptionSetAttributes { get; set; }
 
         [JsonPropertyName("useCrmSvcUtilStateEnumNamingConvention")]
         public bool UseCrmSvcUtilStateEnumNamingConvention { get; set; }
@@ -301,12 +276,6 @@ namespace DLaB.ModelBuilderExtensions
 
         [JsonPropertyName("useEnumForStateCodes")]
         public bool UseEnumForStateCodes { get; set; }
-
-        /// <summary>
-        /// No Config
-        /// </summary>
-        [JsonPropertyName("userEntityClassName")]
-        public string UserEntityClassName { get; set; } = "UserOwnedEntity";
 
         [JsonPropertyName("useLogicalNames")]
         public bool UseLogicalNames { get; set; }
@@ -328,6 +297,9 @@ namespace DLaB.ModelBuilderExtensions
     {
         [JsonPropertyName("dLaB.ModelBuilder")]
         public DLaBModelBuilder DLaBModelBuilder { get; set; } = new DLaBModelBuilder();
+        
+        [JsonPropertyName("dLaB.ModelBuilder.Flags")]
+        public DLaBModelBuilderFlags DLaBModelBuilderFlags { get; set; }
 
         #region ModelBuilder Properties
         // ReSharper disable InconsistentNaming
@@ -344,7 +316,7 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("emitVirtualAttributes")]
         public bool EmitVirtualAttributes { get; set; }
 
-    [JsonPropertyName("entityTypesFolder")]
+        [JsonPropertyName("entityTypesFolder")]
         public string EntityTypesFolder { get; set; }
 
         [JsonPropertyName("generateActions")]
@@ -385,7 +357,50 @@ namespace DLaB.ModelBuilderExtensions
 
         // ReSharper restore InconsistentNaming
         #endregion ModelBuilder Properties
+
+        /// <summary>
+        /// Since the EBG will override the dLaB.ModelBuilder setting, we need to process any flag values here.
+        /// </summary>
+        public void ProcessCustomFlags()
+        {
+            if (DLaBModelBuilderFlags == null)
+            {
+                return;
+            }
+
+            var customType = DLaBModelBuilderFlags.GetType();
+            var properties = customType.GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+
+            foreach (var property in properties)
+            {
+                if (!property.CanRead || !property.CanWrite)
+                {
+                    continue;
+                }
+
+                var customValue = property.GetValue(DLaBModelBuilderFlags);
+                
+                // Skip null values
+                if (customValue == null)
+                {
+                    continue;
+                }
+
+                // For collection types, check if they have items
+                if (customValue is System.Collections.ICollection collection && collection.Count == 0)
+                {
+                    continue;
+                }
+
+                // For string types, check if they're not empty
+                if (customValue is string str && string.IsNullOrEmpty(str))
+                {
+                    continue;
+                }
+
+                // Copy non-null value to DLaBModelBuilder
+                property.SetValue(DLaBModelBuilder, customValue);
+            }
+        }
     }
-
-
 }

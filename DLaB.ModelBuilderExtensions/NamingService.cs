@@ -1,13 +1,13 @@
 ﻿using DLaB.ModelBuilderExtensions.OptionSet.Transliteration;
 using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Extensions;
 using Microsoft.Xrm.Sdk.Metadata;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Microsoft.Xrm.Sdk.Extensions;
 
 namespace DLaB.ModelBuilderExtensions
 {
@@ -26,6 +26,7 @@ namespace DLaB.ModelBuilderExtensions
         public Dictionary<string, string> LabelTextReplacement { get => DLaBSettings.LabelTextReplacement; set => DLaBSettings.LabelTextReplacement = value; }
         public int LanguageCodeOverride { get => DLaBSettings.OptionSetLanguageCodeOverride; set => DLaBSettings.OptionSetLanguageCodeOverride = value; }
         public string LocalOptionSetFormat { get => DLaBSettings.LocalOptionSetFormat; set => DLaBSettings.LocalOptionSetFormat = value; }
+        public NamingServiceMethods MethodsToDefault { get => DLaBSettings.NamingServiceMethodsToUseDefault; set => DLaBSettings.NamingServiceMethodsToUseDefault = value; }
         public Dictionary<string, string> OptionNameOverrides { get => DLaBSettings.OptionNameOverrides; set => DLaBSettings.OptionNameOverrides = value; }
         public Dictionary<string, string> OptionSetNames { get => DLaBSettings.OptionSetNames; set => DLaBSettings.OptionSetNames = value; }
         public bool UseCrmSvcUtilStateEnumNamingConvention { get => DLaBSettings.UseCrmSvcUtilStateEnumNamingConvention; set => DLaBSettings.UseCrmSvcUtilStateEnumNamingConvention = value; }
@@ -116,6 +117,12 @@ namespace DLaB.ModelBuilderExtensions
                 return generatedName;
             }
             SetServiceCache(services);
+
+            if (MethodsToDefault.HasFlag(NamingServiceMethods.GetNameForOptionSet))
+            {
+                return DefaultService.GetNameForOptionSet(entityMetadata, optionSetMetadata, services);
+            }
+
             var name = GetPossiblyConflictedNameForOptionSet(entityMetadata, optionSetMetadata, services);
             var entityNames = GetEntityNames(services);
             while (entityNames.Contains(name))
@@ -263,6 +270,10 @@ namespace DLaB.ModelBuilderExtensions
         public string GetNameForOption(OptionSetMetadataBase optionSetMetadata, OptionMetadata optionMetadata, IServiceProvider services)
         {
             SetServiceCache(services);
+            if (MethodsToDefault.HasFlag(NamingServiceMethods.GetNameForOption))
+            {
+                return DefaultService.GetNameForOption(optionSetMetadata, optionMetadata, services);
+            }
             var possiblyDuplicateName = GetPossiblyDuplicateNameForOption(optionSetMetadata, services, optionMetadata);
             return AppendValueForDuplicateOptionSetValueNames(optionSetMetadata, possiblyDuplicateName, optionMetadata.Value.GetValueOrDefault(), services);
         }
@@ -467,7 +478,7 @@ namespace DLaB.ModelBuilderExtensions
             name = GetNameFromLabel(name);
 
             if (string.IsNullOrEmpty(name))
-                name = string.Format(CultureInfo.InvariantCulture, "UnknownLabel{0}", optionMetadata.Value.Value);
+                name = string.Format(CultureInfo.InvariantCulture, "UnknownLabel{0}", optionMetadata.Value.GetValueOrDefault());
 
             _generatedNames[generatedKey] = name;
             return name;
@@ -599,7 +610,9 @@ namespace DLaB.ModelBuilderExtensions
         public string GetNameForAttribute(EntityMetadata entityMetadata, AttributeMetadata attributeMetadata, IServiceProvider services)
         {
             SetServiceCache(services);
-            return GetNameForAttribute(entityMetadata, attributeMetadata, services, CamelCaseMemberNames, UseLogicalNames);
+            return MethodsToDefault.HasFlag(NamingServiceMethods.GetNameForAttribute)
+                ? DefaultService.GetNameForAttribute(entityMetadata, attributeMetadata, services)
+                : GetNameForAttribute(entityMetadata, attributeMetadata, services, CamelCaseMemberNames, UseLogicalNames);
         }
 
         private string GetNameForAttribute(EntityMetadata entityMetadata, AttributeMetadata attributeMetadata, IServiceProvider services, bool camelCase, bool useLogicalNames)
@@ -636,6 +649,12 @@ namespace DLaB.ModelBuilderExtensions
         public string GetNameForEntity(EntityMetadata entityMetadata, IServiceProvider services)
         {
             SetServiceCache(services);
+
+            if (MethodsToDefault.HasFlag(NamingServiceMethods.GetNameForEntity))
+            {
+                return DefaultService.GetNameForEntity(entityMetadata, services);
+            }
+
             var defaultName = DefaultService.GetNameForEntity(entityMetadata, services);
             
             if (UseDisplayNameForBpfName)
@@ -695,6 +714,11 @@ namespace DLaB.ModelBuilderExtensions
         public string GetNameForMessagePair(SdkMessagePair messagePair, IServiceProvider services)
         {
             SetServiceCache(services);
+            if (MethodsToDefault.HasFlag(NamingServiceMethods.GetNameForMessagePair))
+            {
+                return DefaultService.GetNameForMessagePair(messagePair, services);
+            }
+
             var defaultName = DefaultService.GetNameForMessagePair(messagePair, services);
             return CamelCaseMemberNames
                 ? CamelCaser.Case(defaultName)
@@ -704,6 +728,11 @@ namespace DLaB.ModelBuilderExtensions
         public string GetNameForRequestField(SdkMessageRequest request, SdkMessageRequestField requestField, IServiceProvider services)
         {
             SetServiceCache(services);
+            if (MethodsToDefault.HasFlag(NamingServiceMethods.GetNameForRequestField))
+            {
+                return DefaultService.GetNameForRequestField(request, requestField, services);
+            }
+
             var className = services.Get<INamingService>().GetNameForMessagePair(request.MessagePair, services) + "Request";
             var defaultName = DefaultService.GetNameForRequestField(request, requestField, services);
             var desiredName = CamelCaseMemberNames
@@ -718,6 +747,10 @@ namespace DLaB.ModelBuilderExtensions
         public string GetNameForResponseField(SdkMessageResponse response, SdkMessageResponseField responseField, IServiceProvider services)
         {
             SetServiceCache(services);
+            if (MethodsToDefault.HasFlag(NamingServiceMethods.GetNameForResponseField))
+            {
+                return DefaultService.GetNameForResponseField(response, responseField, services);
+            }
             var defaultName = DefaultService.GetNameForResponseField(response, responseField, services);
             return CamelCaseMemberNames
                 ? CamelCaser.Case(defaultName)
@@ -727,6 +760,11 @@ namespace DLaB.ModelBuilderExtensions
         public string GetNameForRelationship(EntityMetadata entityMetadata, RelationshipMetadataBase relationshipMetadata, EntityRole? reflexiveRole, IServiceProvider services)
         {
             SetServiceCache(services);
+            if (MethodsToDefault.HasFlag(NamingServiceMethods.GetNameForRelationship))
+            {
+                return DefaultService.GetNameForRelationship(entityMetadata, relationshipMetadata, reflexiveRole, services);
+            }
+
             var defaultName = DefaultService.GetNameForRelationship(entityMetadata, relationshipMetadata, reflexiveRole, services);
 
             if (UseDisplayNameForBpfName

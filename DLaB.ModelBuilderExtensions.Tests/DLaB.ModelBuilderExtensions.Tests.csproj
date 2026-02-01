@@ -292,6 +292,7 @@
     <Compile Include="ArgumentBuilderTests.cs" />
     <Compile Include="AttributeBlacklistLogicTests.cs" />
     <Compile Include="CamelCaserTests.cs" />
+    <Compile Include="DLaBModelBuilderSettingsTests.cs" />
     <Compile Include="Entity\MetadataProviderServiceTests.cs" />
     <Compile Include="Entity\EditableFormattedValuesUpdatedTests.cs" />
     <Compile Include="Entity\PrimaryAttributeGeneratorTests.cs" />

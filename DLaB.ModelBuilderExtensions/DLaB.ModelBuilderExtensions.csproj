@@ -320,6 +320,7 @@
     <Compile Include="MetadataProviderService.cs" />
     <Compile Include="NamingService.cs" />
     <Compile Include="Entity\OptionSetMetadataAttributeGenerator.cs" />
+    <Compile Include="NamingServiceMethods.cs" />
     <Compile Include="OptionSet\CustomizeCodeDomService.cs" />
     <Compile Include="CustomizeCodeDomService.cs" />
     <Compile Include="Entity\OptionSetPropertyGenerator.cs" />
