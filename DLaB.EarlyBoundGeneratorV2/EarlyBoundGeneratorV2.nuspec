@@ -12,71 +12,73 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
 		<releaseNotes>
-V2.2.2025.11.14
-Duplicate relationship within AsyncOperation when having 2 Business Process Flows #569
-File attributes don't have the file name that ends with _name closes #568			
-Fix for how to utilize "Option Name Overrides" effectively? #565
-
-V2.2.2025.8.26
-Preserver Spacing for ObsoleteTokens #556
-Added Search box for Entities #543
-Allow for filtering entities by solution #320
-
-V2.2.2025.8.13
-Fix for duplicate Obsolete values
-Fix for non-adjust casing enum transliteration
-
-V2.2025.8.11
-Expose Obsolete Token config for other languages #548
-Fix for unwanted System.Diagnostics.DebuggerNonUserCode() #551
-Add missing characters in alphabet 1045 (#553)
-Fix non-english characters getting stripped #552
+			Fix Issue with the capitalization of generated attributes in messages closes #579
 			
-V2.2025.8.8
-Set [Obsolete] on deprecated attributes closes #548
-FileName should be FileName, not Filename #550
-		
-V2.2025.8.6
-Allow for Option-set capitalization overrides #549
+			V2.2.2025.11.14
+			Duplicate relationship within AsyncOperation when having 2 Business Process Flows #569
+			File attributes don't have the file name that ends with _name closes #568
+			Fix for how to utilize "Option Name Overrides" effectively? #565
 
-V2.2025.7.29
-Fix Unable to lookup the non-public JsonProperty Constructor #547
+			V2.2.2025.8.26
+			Preserver Spacing for ObsoleteTokens #556
+			Added Search box for Entities #543
+			Allow for filtering entities by solution #320
 
-V2.2025.7.22
-Fix Invalid Position Casing #546
+			V2.2.2025.8.13
+			Fix for duplicate Obsolete values
+			Fix for non-adjust casing enum transliteration
 
-V2.2025.7.11
-Fix for Naming Collision for Entity and Attribute Names #545
+			V2.2025.8.11
+			Expose Obsolete Token config for other languages #548
+			Fix for unwanted System.Diagnostics.DebuggerNonUserCode() #551
+			Add missing characters in alphabet 1045 (#553)
+			Fix non-english characters getting stripped #552
 
-V2.2025.7.3
-Fix "Make Reference Types Nullable" setting generates code with nullability errors #533			
-Actually Add ExchangeRate token for #536
-Fix Early Bound classes not compiling if Connection included as Entity and Make all fields editable is false #532
-Honor custom OptionSet name casing #541
-Create Save Settings button #544
-Fix for msdynmkt_PersonalizationDynamicTextAiRequest does not generate properly #502
+			V2.2025.8.8
+			Set [Obsolete] on deprecated attributes closes #548
+			FileName should be FileName, not Filename #550
 
-V2.2025.4.20
-Fix for Early-bound "Responses" for messages have incorrect capitalization of attributes #519
-Fix for Create standard message not exported #522
-Fix for Enum property generated with wrong type #537
-Fix for Add Czech language (cs-CZ; 1029) as alphabet for the Option Sets transliteration #529  Thank you Luboš Jánský for providing the alphabet transliteration file!
-			
-V2.2024.11.8
-Fix for Customizable CustomTextWriter.InvalidStringsForPropertiesNeedingNullableTypes  
+			V2.2025.8.6
+			Allow for Option-set capitalization overrides #549
 
-V2.2024.10.16
-Fix for EBGv2: Entity constructor that takes anonymousType throws NullReferenceException resolves #521 Thank you Jānis Veinbergs for reporting!
-Fix for Connection_Record1ObjectTypeCode is missing in generated optionsets resolves #520 Thank you Matt Ritchie for reporting!
+			V2.2025.7.29
+			Fix Unable to lookup the non-public JsonProperty Constructor #547
 
-V2.2024.9.11
-Fix for make reference types nullable" should generate a nullable opt-in directive #500 Thank you Oliver Tressler!
+			V2.2025.7.22
+			Fix Invalid Position Casing #546
 
-V2.2024.9.8
-Don't update Project file for .NET SDK Style Projects #491				
-Allow EBG to accept a path to a settings file. #514 		
-Special characters not generating in V2 (ë) #506
-    </releaseNotes>
+			V2.2025.7.11
+			Fix for Naming Collision for Entity and Attribute Names #545
+
+			V2.2025.7.3
+			Fix "Make Reference Types Nullable" setting generates code with nullability errors #533
+			Actually Add ExchangeRate token for #536
+			Fix Early Bound classes not compiling if Connection included as Entity and Make all fields editable is false #532
+			Honor custom OptionSet name casing #541
+			Create Save Settings button #544
+			Fix for msdynmkt_PersonalizationDynamicTextAiRequest does not generate properly #502
+
+			V2.2025.4.20
+			Fix for Early-bound "Responses" for messages have incorrect capitalization of attributes #519
+			Fix for Create standard message not exported #522
+			Fix for Enum property generated with wrong type #537
+			Fix for Add Czech language (cs-CZ; 1029) as alphabet for the Option Sets transliteration #529  Thank you Luboš Jánský for providing the alphabet transliteration file!
+
+			V2.2024.11.8
+			Fix for Customizable CustomTextWriter.InvalidStringsForPropertiesNeedingNullableTypes
+
+			V2.2024.10.16
+			Fix for EBGv2: Entity constructor that takes anonymousType throws NullReferenceException resolves #521 Thank you Jānis Veinbergs for reporting!
+			Fix for Connection_Record1ObjectTypeCode is missing in generated optionsets resolves #520 Thank you Matt Ritchie for reporting!
+
+			V2.2024.9.11
+			Fix for make reference types nullable" should generate a nullable opt-in directive #500 Thank you Oliver Tressler!
+
+			V2.2024.9.8
+			Don't update Project file for .NET SDK Style Projects #491
+			Allow EBG to accept a path to a settings file. #514
+			Special characters not generating in V2 (ë) #506
+		</releaseNotes>
     <copyright>Copyright 2019</copyright>
 	  <tags>PAC ModelBuilder Dataverse Xrm EarlyBound Generator XrmToolBox Plugins</tags>
     <dependencies>

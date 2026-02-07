@@ -69,7 +69,23 @@ namespace DLaB.ModelBuilderExtensions
 
         protected virtual string GetAttributeLogicalName(CodeMemberProperty prop)
         {
-            return prop.Name;
+	        foreach (CodeStatement statement in prop.SetStatements)
+	        {
+		        if (statement is CodeAssignStatement assignStatement
+			        && assignStatement.Left is CodeIndexerExpression indexerExpression)
+		        {
+			        foreach (CodeExpression index in indexerExpression.Indices)
+			        {
+				        if (index is CodePrimitiveExpression primitiveExpression)
+				        {
+					        return primitiveExpression.Value?.ToString();
+				        }
+			        }
+		        }
+	        }
+
+	        // Fallback to property name if structure doesn't match expected pattern
+	        return prop.Name;
         }
         private void CreateAttributeConstForProperty(CodeTypeDeclaration type, CodeMemberProperty prop, HashSet<string> attributes)
         {
