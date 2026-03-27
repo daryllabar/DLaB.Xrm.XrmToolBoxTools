@@ -30,10 +30,10 @@ namespace DLaB.VSSolutionAccelerator.Wizard
                 return value ? "Y" : "N";
             }
 
-            string To01(bool value)
-            {
-                return value ? "0" : "1";
-            }
+            //string To01(bool value)
+            //{
+            //    return value ? "0" : "1";
+            //}
         }
     }
 }

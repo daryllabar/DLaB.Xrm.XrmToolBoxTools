@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.IO;
 using System.IO.Compression;
 using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
@@ -14,9 +13,9 @@ namespace DLaB.ModelBuilderExtensions.Tests.Metadata
         public Provider(string fileName)
         {
             var startupPath = AppDomain.CurrentDomain.BaseDirectory;
-            var pathItems = startupPath.Split(Path.DirectorySeparatorChar);
-            var projectPath = string.Join(Path.DirectorySeparatorChar.ToString(), pathItems.Take(pathItems.Length - 2));
-            var path = Path.Combine(projectPath, "Metadata", fileName);
+            //var pathItems = startupPath.Split(Path.DirectorySeparatorChar);
+            //var projectPath = string.Join(Path.DirectorySeparatorChar.ToString(), pathItems.Take(pathItems.Length - 2));
+            var path = Path.Combine(startupPath, "Metadata", fileName);
             UnzipMetadata(path);
             _metadata = MetadataProviderService.DeserializeMetadata(path);
         }

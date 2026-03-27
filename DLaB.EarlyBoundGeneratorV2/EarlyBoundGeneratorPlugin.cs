@@ -562,7 +562,9 @@ Please consider clicking the save button in the top right to save the settings w
             return null;
         }
 
+#pragma warning disable CS0067 // The event 'EarlyBoundGeneratorPlugin.OnOutgoingMessage' is never used
         public event EventHandler<MessageBusEventArgs> OnOutgoingMessage;
+#pragma warning restore CS0067
 
         public void OnIncomingMessage(MessageBusEventArgs message)
         {
