@@ -293,10 +293,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         /// </summary>
         public bool UseLogicalNames { get; set; }
         /// <summary>
-        /// Uses TFS to checkout files
-        /// </summary>
-        public bool UseTfsToCheckoutFiles { get; set; }
-        /// <summary>
         /// For Debugging Only!
         /// Waits until a debugger is attached to the ModelBuilder before processing the command.
         /// </summary>
@@ -389,7 +385,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 UseDisplayNameForBpfName = true,
                 UseEnumForStateCodes = false,
                 UseLogicalNames = false,
-                UseTfsToCheckoutFiles = false,
                 WaitForAttachedDebugger = false,
             };
         }
@@ -464,7 +459,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             UseDisplayNameForBpfName = poco.UseDisplayNameForBpfName ?? UseDisplayNameForBpfName;
             UseEnumForStateCodes = poco.UseEnumForStateCodes ?? UseEnumForStateCodes;
             UseLogicalNames = poco.UseLogicalNames ?? UseLogicalNames;
-            UseTfsToCheckoutFiles = poco.UseTfsToCheckoutFiles ?? UseTfsToCheckoutFiles;
             WaitForAttachedDebugger = poco.WaitForAttachedDebugger ?? WaitForAttachedDebugger;
 
             string GetValueOrDefault(string value, string defaultValue)
@@ -541,7 +535,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddProperty(nameof(UseCrmSvcUtilStateEnumNamingConvention), UseCrmSvcUtilStateEnumNamingConvention);
             writer.AddProperty(nameof(UseDisplayNameForBpfName), UseDisplayNameForBpfName);
             AddOptionalBoolProperty(nameof(UseEnumForStateCodes), UseEnumForStateCodes, generateOptionSetProperties && !ReplaceOptionSetPropertiesWithEnum);
-            writer.AddProperty(nameof(UseTfsToCheckoutFiles), UseTfsToCheckoutFiles);
             writer.AddProperty(nameof(WaitForAttachedDebugger), WaitForAttachedDebugger);
 
             void AddOptionalProperty(string fileNameKey, string fileNameValue, bool createProperty)
@@ -672,7 +665,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings.POCO
         public bool? UseDisplayNameForBpfName { get; set; }
         public bool? UseEnumForStateCodes { get; set; }
         public bool? UseLogicalNames { get; set; }
-        public bool? UseTfsToCheckoutFiles { get; set; }
         public bool? WaitForAttachedDebugger { get; set; }
     }
 }

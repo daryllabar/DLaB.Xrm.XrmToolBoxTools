@@ -483,16 +483,6 @@ This helps to alleviate unnecessary differences that pop up when the classes are
             set => Config.ExtensionConfig.UseDisplayNameForBpfName = value;
         }
 
-        [Category("1 - Global")]
-        [DisplayName("Use Tfs")]
-        [Description("Will use TFS to attempt to check out the early bound classes.  Not needed for Git based repositories.")]
-        [Browsable(false)]
-        public bool UseTfsToCheckoutFiles
-        {
-            get => Config.ExtensionConfig.UseTfsToCheckoutFiles;
-            set => Config.ExtensionConfig.UseTfsToCheckoutFiles = value;
-        }
-
         #endregion Global Properties
 
         #region Messages

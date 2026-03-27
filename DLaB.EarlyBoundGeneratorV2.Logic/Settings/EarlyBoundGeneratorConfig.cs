@@ -579,32 +579,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             }
 
             attributes &= ~FileAttributes.ReadOnly;
-            if (ExtensionConfig.UseTfsToCheckoutFiles)
-            {
-                try
-                {
-                    var tfs = new VsTfsSourceControlProvider();
-                    tfs.Checkout(filePath);
-                    if (File.GetAttributes(filePath).HasFlag(FileAttributes.ReadOnly))
-                    {
-                        // something failed, just make it editable.
-                        File.SetAttributes(filePath, attributes);
-                    }
-                    else
-                    {
-                        undoCheckoutIfUnchanged = true;
-                    }
-                }
-                catch
-                {
-                    // eat it and just make it editable.
-                    File.SetAttributes(filePath, attributes);
-                }
-            }
-            else
-            {
-                File.SetAttributes(filePath, attributes);
-            }
+            File.SetAttributes(filePath, attributes);
 
             return undoCheckoutIfUnchanged;
         }

@@ -113,7 +113,6 @@
     "useLogicalNames": false,
     "useCrmSvcUtilStateEnumNamingConvention": false,
     "useDisplayNameForBpfName": true,
-    "useTfsToCheckoutFiles": false,
     "waitForAttachedDebugger": false
   },
   "emitEntityETC": false,

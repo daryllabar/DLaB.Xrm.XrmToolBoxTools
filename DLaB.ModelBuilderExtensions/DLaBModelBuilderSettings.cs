@@ -280,9 +280,6 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("useLogicalNames")]
         public bool UseLogicalNames { get; set; }
 
-        [JsonPropertyName("useTfsToCheckoutFiles")]
-        public bool UseTfsToCheckoutFiles { get; set; }
-
         [JsonPropertyName("validCSharpNameRegEx")]
         public string ValidCSharpNameRegEx { get; set; } = @"[^a-zA-Z0-9_]";
 

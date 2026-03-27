@@ -12,7 +12,6 @@ namespace DLaB.ModelBuilderExtensions
 {
     public class CodeGenerationService : TypedServiceBase<ICodeGenerationService>, ICodeGenerationService
     {
-        public bool UseTfsToCheckoutFiles { get; } = false; //ConfigHelper.GetAppSettingOrDefault("UseTfsToCheckoutFiles", false);
 
         public bool AddNewFilesToProject { get => DLaBSettings.AddNewFilesToProject; set => DLaBSettings.AddNewFilesToProject = value; }
         public bool CleanupCrmSvcUtilLocalOptionSets { get => DLaBSettings.CleanupCrmSvcUtilLocalOptionSets && !DeleteFilesFromOutputFolders; set => DLaBSettings.CleanupCrmSvcUtilLocalOptionSets = value; }
@@ -35,8 +34,6 @@ namespace DLaB.ModelBuilderExtensions
         public string ProjectNameForEarlyBoundFiles { get => DLaBSettings.ProjectNameForEarlyBoundFiles; set => DLaBSettings.ProjectNameForEarlyBoundFiles = value; }
 
         public bool RemoveRuntimeVersionComment { get => DLaBSettings.RemoveRuntimeVersionComment; set => DLaBSettings.RemoveRuntimeVersionComment = value; }
-
-        private VsTfsSourceControlProvider Tfs { get; set; }
 
         public CodeGenerationService(ICodeGenerationService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
@@ -119,15 +116,6 @@ namespace DLaB.ModelBuilderExtensions
             {
                 throw new ArgumentNullException(nameof(OutDirectory));
             }
-
-            if (UseTfsToCheckoutFiles)
-            {
-                Tfs = new VsTfsSourceControlProvider(null, new ProcessExecutorInfo
-                {
-                    OnOutputReceived = Log,
-                    OnErrorReceived = DisplayMessage
-                });
-            }
             
             DeleteExistingFiles();
 
@@ -140,45 +128,6 @@ namespace DLaB.ModelBuilderExtensions
             ConditionallyCombineFiles(language, hack);
             ConditionallySplitMessageFiles(language, hack);
             UpdateProjectFile(hack.FilesWritten.Keys);
-
-
-            // TODO: Move removal of Runtime Version to Code Gen
-            // Handle 
-            // Check if the Header needs to be updated and or the file needs to be split
-            //if (RemoveRuntimeVersionComment)
-            //{
-            //    var lines = GetFileTextWithUpdatedClassComment(fileContents, CommandLineText, RemoveRuntimeVersionComment);
-            //    if (CreateOneFilePerCodeUnit)
-            //    {
-            //        DisplayMessage($"Splitting File {outputFile} By Code Unit");
-            //        SplitFileByCodeUnit(SplitByCodeUnit, outputFile, lines);
-            //    }
-            //    else
-            //    {
-            //        DisplayMessage($"Updating File {outputFile}");
-            //        File.WriteAllLines(outputFile, new []{ GetFormattedPrefixText(outputFile) }.Concat(lines));
-            //        if (UseTfsToCheckoutFiles && UndoCheckoutIfUnchanged(outputFile))
-            //        {
-            //            Console.WriteLine(outputFile + " was unchanged.");
-            //        }
-            //    }
-            //}
-            //else if (CreateOneFilePerCodeUnit)
-            //{
-            //    //TODO handle combining files
-            //    DisplayMessage($"Splitting File {outputFile} By Code Unit");
-            //    SplitFileByCodeUnit(SplitByCodeUnit, outputFile, File.ReadAllLines(tempFile));
-            //}
-            //else
-            //{
-            //    DisplayMessage($"Copying File {outputFile}");
-            //    fileContents[0] = GetFormattedPrefixText(outputFile) + fileContents[0];
-            //    File.WriteAllLines(outputFile, fileContents);
-            //    if (UseTfsToCheckoutFiles && UndoCheckoutIfUnchanged(outputFile))
-            //    {
-            //        Console.WriteLine(outputFile + " was unchanged.");
-            //    }
-            //}
         }
 
         private void ConditionallySplitMessageFiles(string language, PacModelBuilderCodeGenHack hack)
@@ -509,27 +458,6 @@ namespace DLaB.ModelBuilderExtensions
 
         #endregion // Insert Command Line Into Header
 
-        #region Checkout File / Remove Readonly Flag
-
-        /// <summary>
-        /// Returns true if the file was unchanged and an undo operation was performed
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns></returns>
-        protected bool UndoCheckoutIfUnchanged(string fileName)
-        {
-            if (!UseTfsToCheckoutFiles)
-            {
-                return false;
-            }
-
-            Log("Checking accessibility for file " + fileName);
-
-            return Tfs.UndoCheckoutIfUnchanged(fileName);
-        }
-
-        #endregion // Checkout File / Remove Readonly Flag
-
         #region Split File Into Multiple Files By Class
 
         //private void SplitFileByCodeUnit(CodeUnit codeUnit, string filePath, IEnumerable<string> lines)
@@ -683,59 +611,16 @@ namespace DLaB.ModelBuilderExtensions
         //{
         //    var project = new ProjectFile(files, this);
         //
-        //    if (UseTfsToCheckoutFiles)
+        //    if (Debugger.IsAttached)
         //    {
-        //        DisplayMessage("Creating Required Directories");
-        //        foreach (var dir in files.Select(f => f.Directory).Distinct())
+        //        foreach (var file in files)
         //        {
-        //            if (dir != null && !Directory.Exists(dir))
-        //            {
-        //                Directory.CreateDirectory(dir);
-        //            }
-        //        }
-        //        DisplayMessage("Getting Latest from TFS");
-        //        // Get Latest Version of all files
-        //        foreach (var batch in files.Select(f => f.Path).Batch(50))
-        //        {
-        //            Tfs.Get(true, batch.ToArray());
-        //        }
-        //
-        //        if (Debugger.IsAttached)
-        //        {
-        //            DisplayMessage("Creating Temporary Files");
-        //            foreach (var file in files)
-        //            {
-        //                WriteFilesForTfs(project, file);
-        //            }
-        //            CheckoutChangedFiles(files);
-        //            DisplayMessage("Updating Changed Files");
-        //            foreach (var file in files)
-        //            {
-        //                CopyChangedFiles(file);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            DisplayMessage("Creating Temporary Files");
-        //            Parallel.ForEach(files, f => WriteFilesForTfs(project, f));
-        //            CheckoutChangedFiles(files);
-        //            DisplayMessage("Updating Changed Files");
-        //            Parallel.ForEach(files, CopyChangedFiles);
+        //            WriteFileIfDifferent(project, file);
         //        }
         //    }
         //    else
         //    {
-        //        if (Debugger.IsAttached)
-        //        {
-        //            foreach (var file in files)
-        //            {
-        //                WriteFileIfDifferent(project, file);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            Parallel.ForEach(files, f => WriteFileIfDifferent(project, f));
-        //        }
+        //        Parallel.ForEach(files, f => WriteFileIfDifferent(project, f));
         //    }
         //
         //    if (AddNewFilesToProject && !project.ProjectFound)
@@ -795,49 +680,6 @@ namespace DLaB.ModelBuilderExtensions
         //private void WriteFileIfDifferent(ProjectFile project, FileToWrite file)
         //{
         //    Log("Processing file: " + file.Path);
-        //    if (UseTfsToCheckoutFiles)
-        //    {
-        //        if (File.Exists(file.Path))
-        //        {
-        //            Trace.TraceInformation(Path.GetFileName(file.Path) + " Checking out and updating if different.");
-        //            var tempFile = Path.Combine(file.Directory, "zzzTempEarlyBoundGenerator." + Path.GetFileName(file.Path) + ".tmp");
-        //            try
-        //            {
-        //                Log("Creating Temp File " + tempFile);
-        //                File.WriteAllText(tempFile, file.Contents);
-        //                var hasChanged = Tfs.AreDifferent(file.Path, tempFile);
-        //                if (hasChanged)
-        //                {
-        //                    Console.WriteLine($"{file.Path} was changed.  Checking Out from TFS.");
-        //                    Tfs.Checkout(file.Path);
-        //                    Log("Updating File locally");
-        //                    File.Copy(tempFile, file.Path ?? "Unknown", true);
-        //
-        //                }
-        //                var message = file.Path + $" was {(hasChanged ? "" : "un")}changed.";
-        //                if (file.IsMainFile)
-        //                {
-        //                    Console.WriteLine(message);
-        //                }
-        //                else
-        //                {
-        //                    Log(message);
-        //                }
-        //            }
-        //            finally
-        //            {
-        //                File.Delete(tempFile);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            File.WriteAllText(file.Path, file.Contents);
-        //            Tfs.Add(file.Path);
-        //            Console.WriteLine(file.Path + " created.");
-        //            project.AddFileIfMissing(file.Path);
-        //        }
-        //        return;
-        //    }
         //
         //    //EnsureFileIsAccessible(file.Path);
         //    project.AddFileIfMissing(file.Path);
@@ -1054,10 +896,6 @@ namespace DLaB.ModelBuilderExtensions
 
                     Log("Project \"{0}\" does not contains file \"{1}\"", ProjectPath, path);
                     ProjectFiles.Add(line, line);
-                }
-                if (CodeGenService.UseTfsToCheckoutFiles)
-                {
-                    CodeGenService.Tfs.Add(path);
                 }
                 
                 Console.WriteLine(path + " added to project.");
