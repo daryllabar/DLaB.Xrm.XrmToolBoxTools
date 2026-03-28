@@ -177,7 +177,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
                 ? name.Substring(0, name.Length - "Attribute".Length)
                 : name;
             otherName = otherName.EndsWith("Attribute", StringComparison.Ordinal)
-                ? otherName.Substring(0, name.Length - "Attribute".Length)
+                ? otherName.Substring(0, otherName.Length - "Attribute".Length)
                 : otherName;
 
             return string.Equals(name, otherName, StringComparison.Ordinal);
