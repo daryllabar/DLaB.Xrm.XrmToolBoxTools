@@ -4,7 +4,7 @@
     <TargetFrameworks>net48;net8.0</TargetFrameworks>
     <RootNamespace>DLaB.ModelBuilderExtensions</RootNamespace>
     <AssemblyName>DLaB.ModelBuilderExtensions</AssemblyName>
-    <LangVersion>14</LangVersion>
+    <LangVersion>latest</LangVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>DLaB.ModelBuilderExtensions.Key.snk</AssemblyOriginatorKeyFile>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
