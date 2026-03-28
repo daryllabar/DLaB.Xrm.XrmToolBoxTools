@@ -1,10 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net48;net8.0</TargetFrameworks>
+    <TargetFrameworks>net48;net10.0</TargetFrameworks>
     <RootNamespace>DLaB.ModelBuilderExtensions</RootNamespace>
     <AssemblyName>DLaB.ModelBuilderExtensions</AssemblyName>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>13</LangVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>DLaB.ModelBuilderExtensions.Key.snk</AssemblyOriginatorKeyFile>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -17,12 +17,12 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0'">
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net10.0'">
     <NoWarn>$(NoWarn);SYSLIB0051</NoWarn>
   </PropertyGroup>
 
-  <!-- net8.0: DLaB.*.Source packages inject the same sources via contentFiles (netcoreapp); skip vendored App_Packages to avoid duplicate types. -->
-  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+  <!-- net10.0: DLaB.*.Source packages inject the same sources via contentFiles (netcoreapp); skip vendored App_Packages to avoid duplicate types. -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
     <Compile Remove="App_Packages\**\*" />
   </ItemGroup>
 
@@ -46,7 +46,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- net48: App_Packages + separate Common package. net8.0: Xrm.Source contentFiles include DLaB.Common; do not reference Common.Source twice. -->
+    <!-- net48: App_Packages + separate Common package. net10.0: Xrm.Source contentFiles include DLaB.Common; do not reference Common.Source twice. -->
     <PackageReference Include="DLaB.Common.Source" Version="1.4.0.7" Condition="'$(TargetFramework)' == 'net48'" />
     <PackageReference Include="DLaB.Xrm.Source" Version="3.5.0.10" />
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="9.0.7" />
@@ -71,7 +71,7 @@
     <PackageReference Include="System.Xml.XmlDocument" Version="4.3.0" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
     <PackageReference Include="System.Runtime.Caching" Version="8.0.0" />
   </ItemGroup>

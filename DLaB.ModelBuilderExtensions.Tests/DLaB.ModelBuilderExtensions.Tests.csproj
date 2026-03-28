@@ -1,10 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
 		<TargetFramework>net48</TargetFramework>
     <RootNamespace>DLaB.ModelBuilderExtensions.Tests</RootNamespace>
     <AssemblyName>DLaB.ModelBuilderExtensions.Tests</AssemblyName>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+	  <LangVersion>13</LangVersion>
   </PropertyGroup>
 
   <!-- Direct Package References Only (transitive dependencies handled automatically) -->
