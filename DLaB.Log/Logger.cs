@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+#if !NET
 using System.Windows.Forms;
+#endif
 
 namespace DLaB.Log
 {
@@ -101,7 +103,7 @@ namespace DLaB.Log
                 OnLog -= callback;
             }
         }
-
+#if !NET
         public static void DisplayLog(ProgressChangedEventArgs args, Action<string, int, int> setWorkingMessage, TextBox detailTextBox)
         {
             Instance.DisplayInstanceLog(args, setWorkingMessage, detailTextBox);
@@ -167,5 +169,6 @@ namespace DLaB.Log
                 detailTextBox.AppendText(result.Detail + Environment.NewLine);
             }
         }
+#endif
     }
 }

@@ -1,11 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFrameworks>net48;net8.0</TargetFrameworks>
     <OutputType>Library</OutputType>
     <RootNamespace>DLaB.EarlyBoundGeneratorV2</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
-  <ItemGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data.OracleClient" />
@@ -24,13 +29,14 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\DLaB.Log\DLaB.Log.csproj" />
     <ProjectReference Include="..\DLaB.ModelBuilderExtensions\DLaB.ModelBuilderExtensions.csproj" />
   </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="9.0.7" />
-    <PackageReference Include="Microsoft.CrmSdk.CoreAssemblies" Version="9.0.2.59" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.8" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.8" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="3.1.8" />
@@ -41,11 +47,25 @@
     <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.7" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="9.0.7" />
     <PackageReference Include="Microsoft.PowerPlatform.Dataverse.ModelBuilderLib" Version="2.0.16" />
-    <PackageReference Include="System.Buffers" Version="4.5.1" />
     <PackageReference Include="System.CodeDom" Version="6.0.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
     <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="9.0.7" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.10.3" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="4.10.3" />
+    <PackageReference Include="System.Text.Encodings.Web" Version="9.0.7" />
+    <PackageReference Include="System.Text.Json" Version="9.0.7" />
+    <PackageReference Include="System.Xml.XmlDocument" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows'">
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
+    <PackageReference Include="System.Speech" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <PackageReference Include="Microsoft.CrmSdk.CoreAssemblies" Version="9.0.2.59" />
+    <PackageReference Include="System.Buffers" Version="4.5.1" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
     <PackageReference Include="System.IO.Pipelines" Version="9.0.7" />
     <PackageReference Include="System.Memory" Version="4.5.5" />
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
@@ -53,13 +73,8 @@
     <PackageReference Include="System.Security.AccessControl" Version="6.0.0" />
     <PackageReference Include="System.Security.Permissions" Version="6.0.0" />
     <PackageReference Include="System.Security.Principal.Windows" Version="5.0.0" />
-    <PackageReference Include="System.ServiceModel.Http" Version="4.10.3" />
-    <PackageReference Include="System.ServiceModel.Primitives" Version="4.10.3" />
-    <PackageReference Include="System.Text.Encodings.Web" Version="9.0.7" />
-    <PackageReference Include="System.Text.Json" Version="9.0.7" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
-    <PackageReference Include="System.Xml.XmlDocument" Version="4.3.0" />
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="Exists('$(SolutionDir)References\SetAssemblyVersion.exe')">

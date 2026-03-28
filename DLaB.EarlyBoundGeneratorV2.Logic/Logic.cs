@@ -7,7 +7,9 @@ using Microsoft.Xrm.Sdk;
 using System;
 using System.IO;
 using System.Linq;
+#if !NET
 using System.Speech.Synthesis;
+#endif
 using System.Text.Json;
 
 namespace DLaB.EarlyBoundGeneratorV2
@@ -213,11 +215,13 @@ namespace DLaB.EarlyBoundGeneratorV2
             {
                 return;
             }
+#if !NET
             var speaker = new SpeechSynthesizer();
             lock (_speakToken)
             {
                 speaker.Speak(words);
             }
+#endif
         }
     }
 }
