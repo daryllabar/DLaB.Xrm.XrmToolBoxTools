@@ -1,4 +1,4 @@
-﻿using DLaB.Xrm;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using System;
 using System.CodeDom;

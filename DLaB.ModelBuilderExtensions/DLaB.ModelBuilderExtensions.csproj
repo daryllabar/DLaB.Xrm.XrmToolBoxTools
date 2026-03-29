@@ -1,148 +1,150 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>net48;net10.0</TargetFrameworks>
-    <RootNamespace>DLaB.ModelBuilderExtensions</RootNamespace>
-    <AssemblyName>DLaB.ModelBuilderExtensions</AssemblyName>
-    <LangVersion>13</LangVersion>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>DLaB.ModelBuilderExtensions.Key.snk</AssemblyOriginatorKeyFile>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <DefineConstants>TRACE;DLAB_PUBLIC;DLAB_UNROOT_NAMESPACE;DLAB_UNROOT_COMMON_NAMESPACE</DefineConstants>
-    <Nullable>disable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net48;net10.0</TargetFrameworks>
+		<RootNamespace>DLaB.ModelBuilderExtensions</RootNamespace>
+		<AssemblyName>DLaB.ModelBuilderExtensions</AssemblyName>
+		<LangVersion>13</LangVersion>
+		<SignAssembly>true</SignAssembly>
+		<AssemblyOriginatorKeyFile>DLaB.ModelBuilderExtensions.Key.snk</AssemblyOriginatorKeyFile>
+		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+		<DefineConstants>TRACE;DLAB_PUBLIC;DLAB_UNROOT_NAMESPACE;DLAB_UNROOT_COMMON_NAMESPACE</DefineConstants>
+		<Nullable>disable</Nullable>
+		<Title>DLaB.ModelBuilderExtensions</Title>
+		<Company>D La B</Company>
+		<Product>DLaB.ModelBuilderExtensions</Product>
+		<Copyright>Copyright © 2014</Copyright>
+		<Version>2.2025.11.15</Version>
+		<AssemblyVersion>2.2025.11.15</AssemblyVersion>
+		<FileVersion>2.2025.11.15</FileVersion>
+		<ComVisible>false</ComVisible>
+		<Guid>68d9990d-f7cd-43e4-9272-5db114713c1c</Guid>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
-    <DefineConstants>$(DefineConstants);NETFRAMEWORK</DefineConstants>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
+		<DefineConstants>$(DefineConstants);NETFRAMEWORK</DefineConstants>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net10.0'">
-    <NoWarn>$(NoWarn);SYSLIB0051</NoWarn>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net10.0'">
+		<NoWarn>$(NoWarn);SYSLIB0051</NoWarn>
+	</PropertyGroup>
 
-  <!-- net10.0: DLaB.*.Source packages inject the same sources via contentFiles (netcoreapp); skip vendored App_Packages to avoid duplicate types. -->
-  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
-    <Compile Remove="App_Packages\**\*" />
-  </ItemGroup>
+	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
+		<DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>full</DebugType>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
-    <DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)'=='Release'">
+		<DebugType>pdbonly</DebugType>
+		<Optimize>true</Optimize>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net48|AnyCPU'">
+		<WarningLevel>8</WarningLevel>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net48|AnyCPU'">
-    <WarningLevel>8</WarningLevel>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net48|AnyCPU'">
+		<WarningLevel>8</WarningLevel>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net48|AnyCPU'">
-    <WarningLevel>8</WarningLevel>
-  </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="DLaB.Common.Source" Version="1.6.0.12" />
+		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="9.0.7" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.8" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.8" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="3.1.8" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.7" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.7" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.7" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.7" />
+		<PackageReference Include="Microsoft.Extensions.Options" Version="9.0.7" />
+		<PackageReference Include="Microsoft.Extensions.Primitives" Version="9.0.7" />
+		<PackageReference Include="Microsoft.PowerPlatform.Dataverse.ModelBuilderLib" Version="2.0.16" />
+		<PackageReference Include="System.CodeDom" Version="6.0.0" />
+		<PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+		<PackageReference Include="System.Diagnostics.DiagnosticSource" Version="9.0.7" />
+		<PackageReference Include="System.Security.Cryptography.Pkcs" Version="9.0.0" />
+		<PackageReference Include="System.ServiceModel.Http" Version="4.10.3" />
+		<PackageReference Include="System.ServiceModel.Primitives" Version="4.10.3" />
+		<PackageReference Include="System.Text.Encodings.Web" Version="9.0.7" />
+		<PackageReference Include="System.Text.Json" Version="9.0.7" />
+		<PackageReference Include="System.Xml.XmlDocument" Version="4.3.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <!-- net48: App_Packages + separate Common package. net10.0: Xrm.Source contentFiles include DLaB.Common; do not reference Common.Source twice. -->
-    <PackageReference Include="DLaB.Common.Source" Version="1.4.0.7" Condition="'$(TargetFramework)' == 'net48'" />
-    <PackageReference Include="DLaB.Xrm.Source" Version="3.5.0.10" />
-    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="9.0.7" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.8" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.8" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="3.1.8" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.7" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.7" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.7" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.7" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.7" />
-    <PackageReference Include="Microsoft.Extensions.Primitives" Version="9.0.7" />
-    <PackageReference Include="Microsoft.PowerPlatform.Dataverse.ModelBuilderLib" Version="2.0.16" />
-    <PackageReference Include="System.CodeDom" Version="6.0.0" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
-    <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="9.0.7" />
-    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="9.0.0" />
-    <PackageReference Include="System.ServiceModel.Http" Version="4.10.3" />
-    <PackageReference Include="System.ServiceModel.Primitives" Version="4.10.3" />
-    <PackageReference Include="System.Text.Encodings.Web" Version="9.0.7" />
-    <PackageReference Include="System.Text.Json" Version="9.0.7" />
-    <PackageReference Include="System.Xml.XmlDocument" Version="4.3.0" />
-  </ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+		<PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
+		<PackageReference Include="System.Runtime.Caching" Version="8.0.0" />
+	</ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
-    <PackageReference Include="System.Runtime.Caching" Version="8.0.0" />
-  </ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+		<PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
+		<PackageReference Include="Microsoft.CrmSdk.CoreAssemblies" Version="9.0.2.59" />
+		<PackageReference Include="System.Buffers" Version="4.5.1" />
+		<PackageReference Include="System.IO.Pipelines" Version="9.0.7" />
+		<PackageReference Include="System.Memory" Version="4.5.5" />
+		<PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
+		<PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
+		<PackageReference Include="System.Security.AccessControl" Version="6.0.0" />
+		<PackageReference Include="System.Security.Permissions" Version="6.0.0" />
+		<PackageReference Include="System.Security.Principal.Windows" Version="5.0.0" />
+		<PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
+		<PackageReference Include="System.ValueTuple" Version="4.5.0" />
+	</ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
-    <PackageReference Include="Microsoft.CrmSdk.CoreAssemblies" Version="9.0.2.59" />
-    <PackageReference Include="System.Buffers" Version="4.5.1" />
-    <PackageReference Include="System.IO.Pipelines" Version="9.0.7" />
-    <PackageReference Include="System.Memory" Version="4.5.5" />
-    <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
-    <PackageReference Include="System.Security.AccessControl" Version="6.0.0" />
-    <PackageReference Include="System.Security.Permissions" Version="6.0.0" />
-    <PackageReference Include="System.Security.Principal.Windows" Version="5.0.0" />
-    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
-    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
-  </ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+		<Reference Include="PresentationCore" />
+		<Reference Include="PresentationFramework" />
+		<Reference Include="System.Activities" />
+		<Reference Include="System.Activities.Presentation" />
+		<Reference Include="System.ComponentModel.Composition" />
+		<Reference Include="System.ComponentModel.DataAnnotations" />
+		<Reference Include="System.Configuration" />
+		<Reference Include="System.Data.OracleClient" />
+		<Reference Include="System.Data.Services" />
+		<Reference Include="System.Data.Services.Client" />
+		<Reference Include="System.Design" />
+		<Reference Include="System.DirectoryServices" />
+		<Reference Include="System.DirectoryServices.AccountManagement" />
+		<Reference Include="System.Drawing" />
+		<Reference Include="System.IdentityModel" />
+		<Reference Include="System.Net" />
+		<Reference Include="System.Net.Http" />
+		<Reference Include="System.Net.Http.WebRequest" />
+		<Reference Include="System.Runtime" />
+		<Reference Include="System.Runtime.Caching" />
+		<Reference Include="System.Runtime.Serialization" />
+		<Reference Include="System.Security" />
+		<Reference Include="System.ServiceModel" />
+		<Reference Include="System.ServiceModel.Web" />
+		<Reference Include="System.ServiceProcess" />
+		<Reference Include="System.Transactions" />
+		<Reference Include="System.Web" />
+		<Reference Include="System.Web.ApplicationServices" />
+		<Reference Include="System.Web.Extensions" />
+		<Reference Include="System.Web.Services" />
+		<Reference Include="System.Workflow.Activities" />
+		<Reference Include="System.Workflow.ComponentModel" />
+		<Reference Include="System.Workflow.Runtime" />
+		<Reference Include="System.Xaml" />
+		<Reference Include="WindowsBase" />
+	</ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="System.Activities" />
-    <Reference Include="System.Activities.Presentation" />
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Data.OracleClient" />
-    <Reference Include="System.Data.Services" />
-    <Reference Include="System.Data.Services.Client" />
-    <Reference Include="System.Design" />
-    <Reference Include="System.DirectoryServices" />
-    <Reference Include="System.DirectoryServices.AccountManagement" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.IdentityModel" />
-    <Reference Include="System.Net" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Net.Http.WebRequest" />
-    <Reference Include="System.Runtime" />
-    <Reference Include="System.Runtime.Caching" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ServiceModel.Web" />
-    <Reference Include="System.ServiceProcess" />
-    <Reference Include="System.Transactions" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Services" />
-    <Reference Include="System.Workflow.Activities" />
-    <Reference Include="System.Workflow.ComponentModel" />
-    <Reference Include="System.Workflow.Runtime" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="WindowsBase" />
-  </ItemGroup>
+	<ItemGroup>
+		<!-- Exclude all bin and obj content files from the old project -->
+		<Content Remove="bin\**\*" />
+		<None Remove="bin\**\*" />
+		<Compile Remove="bin\**\*" />
 
-  <ItemGroup>
-    <!-- Exclude all bin and obj content files from the old project -->
-    <Content Remove="bin\**\*" />
-    <None Remove="bin\**\*" />
-    <Compile Remove="bin\**\*" />
+		<!-- Include specific embedded resources -->
+		<None Include="OptionSet\Transliteration\Alphabets\*.json" />
+		<None Include="DLaB.ModelBuilderExtensions.Key.snk" />
+		<None Include="DLaB.Dictionary.txt" />
+	</ItemGroup>
 
-    <!-- Include specific embedded resources -->
-    <None Include="OptionSet\Transliteration\Alphabets\*.json" />
-    <None Include="DLaB.ModelBuilderExtensions.Key.snk" />
-    <None Include="DLaB.Dictionary.txt" />
-  </ItemGroup>
-
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="Exists('$(SolutionDir)References\SetAssemblyVersion.exe')">
-    <Exec Command="if $(ConfigurationName) == Release &quot;$(SolutionDir)References\SetAssemblyVersion.exe&quot; &quot;$(ProjectDir)Properties\AssemblyInfo.cs&quot;" />
-  </Target>
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="Exists('$(SolutionDir)References\SetAssemblyVersion.exe')">
+		<Exec Command="if $(ConfigurationName) == Release &quot;$(SolutionDir)References\SetAssemblyVersion.exe&quot; &quot;$(ProjectPath)&quot;" />
+	</Target>
 
 </Project>

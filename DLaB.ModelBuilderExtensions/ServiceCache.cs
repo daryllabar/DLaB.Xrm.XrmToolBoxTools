@@ -1,6 +1,6 @@
-﻿using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.Xrm.Sdk.Metadata;
-using DLaB.Xrm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ namespace DLaB.ModelBuilderExtensions
         {
             get
             {
-                return _entities ?? (_entities = ServiceProvider.GetService<IMetadataProviderService>().LoadMetadata(ServiceProvider).Entities.ToDictionary(e => e.LogicalName));
+                return _entities ??= ServiceProvider.GetService<IMetadataProviderService>().LoadMetadata(ServiceProvider).Entities.ToDictionary(e => e.LogicalName);
             }
             set => _entities = value;
         }
