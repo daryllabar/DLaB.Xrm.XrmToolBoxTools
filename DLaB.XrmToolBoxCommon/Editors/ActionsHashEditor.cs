@@ -8,7 +8,7 @@ using DLaB.XrmToolBoxCommon.Forms;
 #endif
 
 // ReSharper disable once CheckNamespace
-namespace DLaB.XrmToolBoxCommon.Editors
+namespace DLaB.Xrm.Entities.XrmToolBoxCommon.Editors
 {
 #if !DLAB_XRM_ENTITIES
     [Obsolete("Requires DLAB_XRM_ENTITIES", true)]

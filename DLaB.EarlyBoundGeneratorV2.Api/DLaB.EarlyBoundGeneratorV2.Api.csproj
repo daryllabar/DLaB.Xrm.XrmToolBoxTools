@@ -94,8 +94,8 @@
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
-  
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="Exists('$(SolutionDir)References\SetAssemblyVersion.exe')">
+
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="Exists('$(SolutionDir)References\SetAssemblyVersion.exe') AND '$(ConfigurationName)|$(TargetFramework)' == 'Release|Net48'">
     <Exec Command="if $(ConfigurationName) == Release &quot;$(SolutionDir)References\SetAssemblyVersion.exe&quot; &quot;$(ProjectDir)Properties\AssemblyInfo.cs&quot;" />
   </Target>
 

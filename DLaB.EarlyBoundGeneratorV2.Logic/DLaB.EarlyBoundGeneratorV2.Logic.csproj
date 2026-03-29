@@ -1,16 +1,24 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net48;net10.0</TargetFrameworks>
     <OutputType>Library</OutputType>
     <RootNamespace>DLaB.EarlyBoundGeneratorV2</RootNamespace>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-	  <LangVersion>13</LangVersion>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <LangVersion>13</LangVersion>
+    <!-- Assembly Attributes (migrated from AssemblyInfo.cs) -->
+    <Title>DLaB.EarlyBoundGeneratorV2.Logic</Title>
+    <Product>DLaB.EarlyBoundGeneratorV2.Logic</Product>
+    <Copyright>Copyright © 2023</Copyright>
+    <Version>2.2025.11.15</Version>
+    <AssemblyVersion>2.2025.11.15</AssemblyVersion>
+    <FileVersion>2.2025.11.15</FileVersion>
+    <ComVisible>false</ComVisible>
+    <Guid>46fa9089-9d5f-4c61-a6e6-196bf3d81371</Guid>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-
   <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -30,12 +38,10 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\DLaB.Log\DLaB.Log.csproj" />
     <ProjectReference Include="..\DLaB.ModelBuilderExtensions\DLaB.ModelBuilderExtensions.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="9.0.7" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.8" />
@@ -57,11 +63,9 @@
     <PackageReference Include="System.Text.Json" Version="9.0.7" />
     <PackageReference Include="System.Xml.XmlDocument" Version="4.3.0" />
   </ItemGroup>
-
   <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
   </ItemGroup>
-
   <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
     <PackageReference Include="Microsoft.CrmSdk.CoreAssemblies" Version="9.0.2.59" />
     <PackageReference Include="System.Buffers" Version="4.5.1" />
@@ -76,8 +80,7 @@
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
-
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="Exists('$(SolutionDir)References\SetAssemblyVersion.exe')">
-    <Exec Command="if $(ConfigurationName) == Release &quot;$(SolutionDir)References\SetAssemblyVersion.exe&quot; &quot;$(ProjectDir)Properties\AssemblyInfo.cs&quot;" />
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="Exists('$(SolutionDir)References\SetAssemblyVersion.exe') AND '$(ConfigurationName)|$(TargetFramework)' == 'Release|Net48'">
+    <Exec Command="if $(ConfigurationName) == Release &quot;$(SolutionDir)References\SetAssemblyVersion.exe&quot; &quot;$(ProjectPath)&quot;" />
   </Target>
 </Project>

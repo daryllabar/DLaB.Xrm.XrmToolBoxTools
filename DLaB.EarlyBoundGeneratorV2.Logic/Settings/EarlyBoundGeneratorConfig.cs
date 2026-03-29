@@ -1,5 +1,4 @@
 using DLaB.Common;
-using DLaB.Common.VersionControl;
 using DLaB.Log;
 using System;
 using System.Collections.Generic;
@@ -556,12 +555,6 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             var xml = File.ReadAllText(filePath);
             xml = xml.Replace("|", "|" + Environment.NewLine);
             File.WriteAllText(filePath, xml);
-
-            if (undoCheckoutIfUnchanged)
-            {
-                var tfs = new VsTfsSourceControlProvider();
-                tfs.UndoCheckoutIfUnchanged(filePath);
-            }
         }
 
         private bool FileRequiresUndoCheckout(string filePath)

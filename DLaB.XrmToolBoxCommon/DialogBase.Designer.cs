@@ -1,6 +1,4 @@
-﻿using DLaB.XrmToolBoxCommon.Properties;
-
-namespace DLaB.XrmToolBoxCommon
+﻿namespace DLaB.XrmToolBoxCommon
 {
     partial class DialogBase
     {
@@ -30,7 +28,7 @@ namespace DLaB.XrmToolBoxCommon
         /// </summary>
         private void InitializeComponent()
         {
-            global::System.Resources.ResourceManager resources = new global::System.Resources.ResourceManager(typeof(Resources).Assembly.GetName().Name + ".Properties.CommonResources", typeof(Resources).Assembly);
+            global::System.Resources.ResourceManager resources = new global::System.Resources.ResourceManager(this.GetType().Assembly.GetName().Name + ".Properties.CommonResources", this.GetType().Assembly);
             this.SuspendLayout();
             // 
             // DialogBase
