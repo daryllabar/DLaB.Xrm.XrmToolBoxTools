@@ -1,0 +1,39 @@
+name: Build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2
+
+      - name: Restore NuGet packages
+        run: nuget restore DLaB.Xrm.XrmToolBoxTools.sln
+
+      - name: Build solution
+        run: msbuild DLaB.Xrm.XrmToolBoxTools.sln /p:Configuration=Release /p:Platform="Any CPU"
+
+      - name: Run tests
+        uses: microsoft/vstest-action@v1.0.0
+        with:
+          testAssembly: |
+            **/*Tests.dll
+          searchFolder: .\
+          runInParallel: true
+          vstestLocationMethod: version
+          vsTestVersion: latest
