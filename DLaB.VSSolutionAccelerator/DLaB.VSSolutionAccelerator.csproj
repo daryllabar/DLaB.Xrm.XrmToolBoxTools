@@ -468,6 +468,7 @@ if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>COPY "$(SolutionDir)DLaB.VSSolutionAccelerator\$(OutDir)Plugins\DLaB.VSSolutionAccelerator.dll" "$(SolutionDir)DLaB.VSSolutionAccelerator\$(OutDir)DLaB.VSSolutionAccelerator.dll"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>
