@@ -430,8 +430,22 @@
   <ItemGroup />
   <Import Project="..\DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>xcopy /I /Y "$(TargetDir)Microsoft.AI.ServerTelemetryChannel.dll" "$(TargetDir)Plugins\$(TargetName)"
+
+  <Target Name="PackageVssolutionAccelerator"
+          AfterTargets="Build"
+          Condition="'$(Configuration)' == 'Release'">
+	  <!-- If the external templates folder isn't present, just skip packaging instead of failing CI -->
+	  <PropertyGroup>
+		  <XrmUnitTestExampleDir>$(SolutionDir)..\XrmUnitTest.Example</XrmUnitTestExampleDir>
+	  </PropertyGroup>
+
+	  <Message Importance="high" Text="Packaging VSSolutionAccelerator from '$(XrmUnitTestExampleDir)'" />
+	  <Warning Condition="!Exists('$(XrmUnitTestExampleDir)')"
+	           Text="Skipping packaging: XrmUnitTest.Example not found at '$(XrmUnitTestExampleDir)'." />
+
+	  <!-- Only run the copy/robocopy steps if the folder exists -->
+	  <Exec Condition="Exists('$(XrmUnitTestExampleDir)')"
+	        Command='xcopy /I /Y "$(TargetDir)Microsoft.AI.ServerTelemetryChannel.dll" "$(TargetDir)Plugins\$(TargetName)"
 xcopy /I /Y "$(TargetDir)Microsoft.ApplicationInsights.dll" "$(TargetDir)Plugins\$(TargetName)"
 xcopy /I /Y "$(TargetDir)Microsoft.Extensions.*.dll" "$(TargetDir)Plugins\$(TargetName)"
 xcopy /I /Y "$(TargetDir)Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" "$(TargetDir)Plugins\$(TargetName)"
@@ -483,8 +497,10 @@ ECHO I appologize for this hack, but to not have to maintain duplicate code, the
 ECHO The Example project was not found at "$(SolutionDir)..\XrmUnitTest.Example"
 if $(ConfigurationName) == Release ROBOCOPY MISSING_XRMUNITTEST.EXAMPLE THROW_ERROR
 
-:exit</PostBuildEvent>
-  </PropertyGroup>
+:exit' />
+
+	  <!-- repeat other ROBOCOPY/DEL steps with the same Exists(...) guard -->
+  </Target>
   <PropertyGroup>
     <PreBuildEvent>REM Copy New Content Files
 SET myCmd= "$(SolutionDir)References\NuGetContentInstaller.exe" "$(SolutionDir) " "$(ProjectPath)"

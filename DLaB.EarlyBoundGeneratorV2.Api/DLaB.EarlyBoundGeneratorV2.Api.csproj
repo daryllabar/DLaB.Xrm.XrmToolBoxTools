@@ -99,10 +99,20 @@
     <Exec Command="if $(ConfigurationName) == Release &quot;$(SolutionDir)References\SetAssemblyVersion.exe&quot; &quot;$(ProjectDir)Properties\AssemblyInfo.cs&quot;" />
   </Target>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Condition="'$(TargetFramework)' == 'net48'" Command="xcopy /I /Y &quot;$(MSBuildProjectDirectory)\..\DLaB.ModelBuilderExtensions\bin\Debug\DLaB.ModelBuilderExtensions.dll&quot; &quot;$(TargetDir)&quot;" />
-    <Exec Condition="'$(TargetFramework)' == 'net10.0'" Command="xcopy /I /Y &quot;$(MSBuildProjectDirectory)\..\DLaB.ModelBuilderExtensions\bin\Debug\net10.0\DLaB.ModelBuilderExtensions.dll&quot; &quot;$(TargetDir)&quot;" />
-    <Exec Command="xcopy /I /Y &quot;$(MSBuildProjectDirectory)\..\DLaB.ModelBuilderExtensions\DLaB.Dictionary.txt&quot; &quot;$(TargetDir)&quot;" />
-    <Exec Command="xcopy /I /Y &quot;$(MSBuildProjectDirectory)\..\DLaB.ModelBuilderExtensions\OptionSet\Transliteration\Alphabets\*&quot; &quot;$(TargetDir)alphabets&quot;" />
-  </Target>
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<PropertyGroup>
+			<ModelBuilderExtOutDir>$(MSBuildProjectDirectory)\..\DLaB.ModelBuilderExtensions\bin\$(Configuration)\</ModelBuilderExtOutDir>
+		</PropertyGroup>
+
+		<!-- net48 output -->
+		<Exec Condition="'$(TargetFramework)' == 'net48'"
+		      Command='xcopy /I /Y "$(ModelBuilderExtOutDir)DLaB.ModelBuilderExtensions.dll" "$(TargetDir)"' />
+
+		<!-- net10.0 output -->
+		<Exec Condition="'$(TargetFramework)' == 'net10.0'"
+		      Command='xcopy /I /Y "$(ModelBuilderExtOutDir)net10.0\DLaB.ModelBuilderExtensions.dll" "$(TargetDir)"' />
+
+		<Exec Command='xcopy /I /Y "$(MSBuildProjectDirectory)\..\DLaB.ModelBuilderExtensions\DLaB.Dictionary.txt" "$(TargetDir)"' />
+		<Exec Command='xcopy /I /Y "$(MSBuildProjectDirectory)\..\DLaB.ModelBuilderExtensions\OptionSet\Transliteration\Alphabets\*" "$(TargetDir)alphabets"' />
+	</Target>
 </Project>
