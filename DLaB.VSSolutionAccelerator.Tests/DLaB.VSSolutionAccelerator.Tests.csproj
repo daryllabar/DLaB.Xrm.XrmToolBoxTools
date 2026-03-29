@@ -203,7 +203,8 @@
     </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>COPY "$(SolutionDir)DLaB.VSSolutionAccelerator\$(OutDir)Plugins\DLaB.VSSolutionAccelerator.dll" "$(SolutionDir)DLaB.VSSolutionAccelerator\$(OutDir)DLaB.VSSolutionAccelerator.dll"</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

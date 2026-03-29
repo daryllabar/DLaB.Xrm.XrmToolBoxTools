@@ -430,76 +430,16 @@
   <ItemGroup />
   <Import Project="..\DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-
-  <Target Name="PackageVssolutionAccelerator"
-          AfterTargets="Build"
-          Condition="'$(Configuration)' == 'Release'">
-	  <!-- If the external templates folder isn't present, just skip packaging instead of failing CI -->
-	  <PropertyGroup>
-		  <XrmUnitTestExampleDir>$(SolutionDir)..\XrmUnitTest.Example</XrmUnitTestExampleDir>
-	  </PropertyGroup>
-
-	  <Message Importance="high" Text="Packaging VSSolutionAccelerator from '$(XrmUnitTestExampleDir)'" />
-	  <Warning Condition="!Exists('$(XrmUnitTestExampleDir)')"
-	           Text="Skipping packaging: XrmUnitTest.Example not found at '$(XrmUnitTestExampleDir)'." />
-
-	  <!-- Only run the copy/robocopy steps if the folder exists -->
-	  <Exec Condition="Exists('$(XrmUnitTestExampleDir)')"
-	        Command='xcopy /I /Y "$(TargetDir)Microsoft.AI.ServerTelemetryChannel.dll" "$(TargetDir)Plugins\$(TargetName)"
-xcopy /I /Y "$(TargetDir)Microsoft.ApplicationInsights.dll" "$(TargetDir)Plugins\$(TargetName)"
-xcopy /I /Y "$(TargetDir)Microsoft.Extensions.*.dll" "$(TargetDir)Plugins\$(TargetName)"
-xcopy /I /Y "$(TargetDir)Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" "$(TargetDir)Plugins\$(TargetName)"
-xcopy /I /Y "$(TargetDir)DLaB.*.dll" "$(TargetDir)Plugins\$(TargetName)"
-xcopy /I /Y "$(TargetDir)Nuget*.dll" "$(TargetDir)Plugins\$(TargetName)"
-copy /Y "$(ProjectDir)DefaultPluginPackage.zip" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\DefaultPluginPackage.nupkg"
-del "$(TargetDir)Plugins\$(TargetName)\$(TargetFileName)"
-
-IF NOT EXIST Plugins mkdir Plugins
-move /Y $(TargetFileName) Plugins
-
-if NOT EXIST "$(SolutionDir)..\XrmUnitTest.Example" goto :error
-
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Code Generation" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\CodeGeneration" /S /MIR /NJS /NJH
-if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)References" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\bin" /MIR /NJS /NJH /XF Microsoft* Set*
-if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.WorkflowCore" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.WorkflowCore" /MIR /NJS /NJH
-if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm" /MIR /NJS /NJH /XD Entities
-if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm\Entities\Messages" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm\Entities\Messages" /MIR /NJS /NJH /XF Actions.cs
-if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Workflow" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Workflow" /MIR /NJS /NJH /XD bin obj App_Packages
-if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Workflow.Tests" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Workflow.Tests" /MIR /NJS /NJH /XD bin obj
-if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Plugin" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Plugin" /MIR /NJS /NJH /XD bin obj App_Packages
-if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Plugin.Tests" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Plugin.Tests" /MIR /NJS /NJH /XD bin obj
-if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Test" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test" /MIR /NJS /NJH /XD bin obj
-if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-REM ROBOCOPY "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\Assumptions\Entity Xml" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\Assumptions\Entity Xml" /MIR /NJS /NJH /XD
-if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-
-REM Delete zip file to allow pack batch to rebuild it.
-IF EXIST "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Template.zip" DEL /F "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Template.zip"
-if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-
-IF EXIST "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\UnitTestSettings.user.config" DEL /F "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\UnitTestSettings.user.config"
-if %25errorlevel%25 GTR 4 exit %25errorlevel%25
-
-if %25errorlevel%25 LEQ 4 exit 0
-goto :exit
-
-:error
-ECHO I appologize for this hack, but to not have to maintain duplicate code, the XrmUnitTest.Example Project is used as templates
-ECHO The Example project was not found at "$(SolutionDir)..\XrmUnitTest.Example"
-if $(ConfigurationName) == Release ROBOCOPY MISSING_XRMUNITTEST.EXAMPLE THROW_ERROR
-
-:exit' />
-
-	  <!-- repeat other ROBOCOPY/DEL steps with the same Exists(...) guard -->
+  <Target Name="PackageVssolutionAccelerator" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
+    <!-- If the external templates folder isn't present, just skip packaging instead of failing CI -->
+    <PropertyGroup>
+      <XrmUnitTestExampleDir>$(SolutionDir)..\XrmUnitTest.Example</XrmUnitTestExampleDir>
+    </PropertyGroup>
+    <Message Importance="high" Text="Packaging VSSolutionAccelerator from '$(XrmUnitTestExampleDir)'" />
+    <Warning Condition="!Exists('$(XrmUnitTestExampleDir)')" Text="Skipping packaging: XrmUnitTest.Example not found at '$(XrmUnitTestExampleDir)'." />
+    <!-- Only run the copy/robocopy steps if the folder exists -->
+    <Exec Condition="Exists('$(XrmUnitTestExampleDir)')" Command="xcopy /I /Y &quot;$(TargetDir)Microsoft.AI.ServerTelemetryChannel.dll&quot; &quot;$(TargetDir)Plugins\$(TargetName)&quot;&#xD;&#xA;xcopy /I /Y &quot;$(TargetDir)Microsoft.ApplicationInsights.dll&quot; &quot;$(TargetDir)Plugins\$(TargetName)&quot;&#xD;&#xA;xcopy /I /Y &quot;$(TargetDir)Microsoft.Extensions.*.dll&quot; &quot;$(TargetDir)Plugins\$(TargetName)&quot;&#xD;&#xA;xcopy /I /Y &quot;$(TargetDir)Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll&quot; &quot;$(TargetDir)Plugins\$(TargetName)&quot;&#xD;&#xA;xcopy /I /Y &quot;$(TargetDir)DLaB.*.dll&quot; &quot;$(TargetDir)Plugins\$(TargetName)&quot;&#xD;&#xA;xcopy /I /Y &quot;$(TargetDir)Nuget*.dll&quot; &quot;$(TargetDir)Plugins\$(TargetName)&quot;&#xD;&#xA;copy /Y &quot;$(ProjectDir)DefaultPluginPackage.zip&quot; &quot;$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\DefaultPluginPackage.nupkg&quot;&#xD;&#xA;del &quot;$(TargetDir)Plugins\$(TargetName)\$(TargetFileName)&quot;&#xD;&#xA;&#xD;&#xA;IF NOT EXIST Plugins mkdir Plugins&#xD;&#xA;move /Y $(TargetFileName) Plugins&#xD;&#xA;&#xD;&#xA;if NOT EXIST &quot;$(SolutionDir)..\XrmUnitTest.Example&quot; goto :error&#xD;&#xA;&#xD;&#xA;ROBOCOPY &quot;$(SolutionDir)..\XrmUnitTest.Example\Code Generation&quot; &quot;$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\CodeGeneration&quot; /S /MIR /NJS /NJH&#xD;&#xA;if %25errorlevel%25 GTR 4 exit %25errorlevel%25&#xD;&#xA;ROBOCOPY &quot;$(SolutionDir)References&quot; &quot;$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\bin&quot; /MIR /NJS /NJH /XF Microsoft* Set*&#xD;&#xA;if %25errorlevel%25 GTR 4 exit %25errorlevel%25&#xD;&#xA;ROBOCOPY &quot;$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.WorkflowCore&quot; &quot;$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.WorkflowCore&quot; /MIR /NJS /NJH&#xD;&#xA;if %25errorlevel%25 GTR 4 exit %25errorlevel%25&#xD;&#xA;ROBOCOPY &quot;$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm&quot; &quot;$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm&quot; /MIR /NJS /NJH /XD Entities&#xD;&#xA;if %25errorlevel%25 GTR 4 exit %25errorlevel%25&#xD;&#xA;ROBOCOPY &quot;$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm\Entities\Messages&quot; &quot;$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm\Entities\Messages&quot; /MIR /NJS /NJH /XF Actions.cs&#xD;&#xA;if %25errorlevel%25 GTR 4 exit %25errorlevel%25&#xD;&#xA;ROBOCOPY &quot;$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Workflow&quot; &quot;$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Workflow&quot; /MIR /NJS /NJH /XD bin obj App_Packages&#xD;&#xA;if %25errorlevel%25 GTR 4 exit %25errorlevel%25&#xD;&#xA;ROBOCOPY &quot;$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Workflow.Tests&quot; &quot;$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Workflow.Tests&quot; /MIR /NJS /NJH /XD bin obj&#xD;&#xA;if %25errorlevel%25 GTR 4 exit %25errorlevel%25&#xD;&#xA;ROBOCOPY &quot;$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Plugin&quot; &quot;$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Plugin&quot; /MIR /NJS /NJH /XD bin obj App_Packages&#xD;&#xA;if %25errorlevel%25 GTR 4 exit %25errorlevel%25&#xD;&#xA;ROBOCOPY &quot;$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Plugin.Tests&quot; &quot;$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Plugin.Tests&quot; /MIR /NJS /NJH /XD bin obj&#xD;&#xA;if %25errorlevel%25 GTR 4 exit %25errorlevel%25&#xD;&#xA;ROBOCOPY &quot;$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Test&quot; &quot;$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test&quot; /MIR /NJS /NJH /XD bin obj&#xD;&#xA;if %25errorlevel%25 GTR 4 exit %25errorlevel%25&#xD;&#xA;REM ROBOCOPY &quot;$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\Assumptions\Entity Xml&quot; &quot;$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\Assumptions\Entity Xml&quot; /MIR /NJS /NJH /XD&#xD;&#xA;if %25errorlevel%25 GTR 4 exit %25errorlevel%25&#xD;&#xA;&#xD;&#xA;REM Delete zip file to allow pack batch to rebuild it.&#xD;&#xA;IF EXIST &quot;$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Template.zip&quot; DEL /F &quot;$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Template.zip&quot;&#xD;&#xA;if %25errorlevel%25 GTR 4 exit %25errorlevel%25&#xD;&#xA;&#xD;&#xA;IF EXIST &quot;$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\UnitTestSettings.user.config&quot; DEL /F &quot;$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\UnitTestSettings.user.config&quot;&#xD;&#xA;if %25errorlevel%25 GTR 4 exit %25errorlevel%25&#xD;&#xA;&#xD;&#xA;if %25errorlevel%25 LEQ 4 exit 0&#xD;&#xA;goto :exit&#xD;&#xA;&#xD;&#xA;:error&#xD;&#xA;ECHO I appologize for this hack, but to not have to maintain duplicate code, the XrmUnitTest.Example Project is used as templates&#xD;&#xA;ECHO The Example project was not found at &quot;$(SolutionDir)..\XrmUnitTest.Example&quot;&#xD;&#xA;if $(ConfigurationName) == Release ROBOCOPY MISSING_XRMUNITTEST.EXAMPLE THROW_ERROR&#xD;&#xA;&#xD;&#xA;:exit" />
+    <!-- repeat other ROBOCOPY/DEL steps with the same Exists(...) guard -->
   </Target>
   <PropertyGroup>
     <PreBuildEvent>REM Copy New Content Files
@@ -527,4 +467,7 @@ if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.
   <Target Name="AfterBuild">
   </Target>
   -->
+  <PropertyGroup>
+    <PostBuildEvent>COPY "$(SolutionDir)DLaB.VSSolutionAccelerator\$(OutDir)Plugins\DLaB.VSSolutionAccelerator.dll" "$(SolutionDir)DLaB.VSSolutionAccelerator\$(OutDir)DLaB.VSSolutionAccelerator.dll"</PostBuildEvent>
+  </PropertyGroup>
 </Project>
