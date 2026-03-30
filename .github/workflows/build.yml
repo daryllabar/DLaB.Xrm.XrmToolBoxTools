@@ -30,9 +30,6 @@ jobs:
       - name: Setup MSBuild (for .NET Framework 4.8/4.8.1)
         uses: microsoft/setup-msbuild@v2
 
-      - name: Display .NET info
-        run: dotnet --info
-
       - name: Restore NuGet packages
         run: dotnet restore DLaB.Xrm.XrmToolBoxTools.sln
 
