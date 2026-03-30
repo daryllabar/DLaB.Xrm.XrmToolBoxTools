@@ -16,12 +16,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup NuGet.exe
-        uses: NuGet/setup-nuget@v2
-
-      - name: Restore packages.config packages
-        run: nuget restore DLaB.Xrm.XrmToolBoxTools.sln
-
       - name: Setup .NET 10 SDK
         uses: actions/setup-dotnet@v4
         with:
@@ -50,13 +44,11 @@ jobs:
             Format-Table -AutoSize
 
       - name: Run tests
-        uses: microsoft/vstest-action@v1.0.0
+        run: dotnet test DLaB.Xrm.XrmToolBoxTools.sln -c Release --no-build --no-restore --logger "trx;LogFileName=test_results.trx" --verbosity normal
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          testAssembly: |
-            **/*Tests.dll
-            !**/obj/**
-            !**/ref/**
-          searchFolder: .\
-          runInParallel: true
-          vstestLocationMethod: version
-          vsTestVersion: latest
+          name: test-results
+          path: '**/TestResults/*.trx'
