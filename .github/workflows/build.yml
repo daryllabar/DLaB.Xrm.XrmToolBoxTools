@@ -13,31 +13,43 @@ jobs:
       contents: read
 
     steps:
-      - name: Setup .NET SDK
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 10 SDK
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
 
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup MSBuild (for net48)
+      - name: Setup MSBuild (for .NET Framework 4.8/4.8.1)
         uses: microsoft/setup-msbuild@v2
 
-      - name: Restore
-        run: dotnet restore DLaB.Xrm.XrmToolBoxTools.sln
+      - name: Display .NET info
+        run: dotnet --info
 
       - name: Restore NuGet packages
-        run: nuget restore DLaB.Xrm.XrmToolBoxTools.sln
+        run: dotnet restore DLaB.Xrm.XrmToolBoxTools.sln
 
-      - name: Build solution
+      - name: Build solution (all frameworks)
         run: dotnet build DLaB.Xrm.XrmToolBoxTools.sln -c Release --no-restore
+        
+      - name: Display build outputs
+        shell: pwsh
+        run: |
+          Write-Host "Build outputs by framework:"
+          Get-ChildItem -Path . -Recurse -Directory -Filter "bin" | 
+            ForEach-Object { Get-ChildItem $_.FullName -Recurse -Filter "*.dll" } |
+            Where-Object { $_.Directory.Name -match "net48|net481|net10\.0|Release" } |
+            Select-Object FullName |
+            Format-Table -AutoSize
 
       - name: Run tests
         uses: microsoft/vstest-action@v1.0.0
         with:
           testAssembly: |
             **/*Tests.dll
+            !**/obj/**
+            !**/ref/**
           searchFolder: .\
           runInParallel: true
           vstestLocationMethod: version
