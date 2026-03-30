@@ -13,20 +13,19 @@ jobs:
       contents: read
 
     steps:
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v2
-
-      - name: Setup NuGet
-        uses: NuGet/setup-nuget@v2
-
-      - name: Restore NuGet packages
-        run: nuget restore DLaB.Xrm.XrmToolBoxTools.sln
+      - name: Restore
+        run: dotnet restore DLaB.Xrm.XrmToolBoxTools.sln
 
       - name: Build solution
-        run: msbuild DLaB.Xrm.XrmToolBoxTools.sln /p:Configuration=Release /p:Platform="Any CPU"
+        run: dotnet build DLaB.Xrm.XrmToolBoxTools.sln -c Release --no-restore
 
       - name: Run tests
         uses: microsoft/vstest-action@v1.0.0
