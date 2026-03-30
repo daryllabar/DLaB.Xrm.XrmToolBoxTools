@@ -8,7 +8,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <UseWPF>true</UseWPF>
     <LangVersion>13</LangVersion>
-		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <AssemblyTitle>DLaB.VSSolutionAccelerator</AssemblyTitle>
     <Description>Adds recommended isolation/accelerator projects for use with the DLaB.Xrm and XrmUnitTest framework to your Visual Studio solution.</Description>
@@ -171,6 +171,75 @@
   <ItemGroup>
     <Content Include="Reference\Wizard.ico" />
   </ItemGroup>
+	<!-- TODO: This broke when switching to SDK Project.  This logic cops items out of the build, into the Plugins folder, and then into the plugin package.  Need to re-evalulate and update as needed.
+	<PropertyGroup>
+		<PostBuildEvent>
+			xcopy /I /Y "$(TargetDir)Microsoft.AI.ServerTelemetryChannel.dll" "$(TargetDir)Plugins\$(TargetName)"
+			xcopy /I /Y "$(TargetDir)Microsoft.ApplicationInsights.dll" "$(TargetDir)Plugins\$(TargetName)"
+			xcopy /I /Y "$(TargetDir)Microsoft.Extensions.*.dll" "$(TargetDir)Plugins\$(TargetName)"
+			xcopy /I /Y "$(TargetDir)Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll" "$(TargetDir)Plugins\$(TargetName)"
+			xcopy /I /Y "$(TargetDir)DLaB.*.dll" "$(TargetDir)Plugins\$(TargetName)"
+			xcopy /I /Y "$(TargetDir)Nuget*.dll" "$(TargetDir)Plugins\$(TargetName)"
+			copy /Y "$(ProjectDir)DefaultPluginPackage.zip" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\DefaultPluginPackage.nupkg"
+			del "$(TargetDir)Plugins\$(TargetName)\$(TargetFileName)"
+
+			IF NOT EXIST Plugins mkdir Plugins
+			move /Y $(TargetFileName) Plugins
+
+			if NOT EXIST "$(SolutionDir)..\XrmUnitTest.Example" goto :error
+
+			ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Code Generation" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\CodeGeneration" /S /MIR /NJS /NJH
+			if %25errorlevel%25 GTR 4 exit %25errorlevel%25
+			ROBOCOPY "$(SolutionDir)References" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\bin" /MIR /NJS /NJH /XF Microsoft* Set*
+			if %25errorlevel%25 GTR 4 exit %25errorlevel%25
+			ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.WorkflowCore" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.WorkflowCore" /MIR /NJS /NJH
+			if %25errorlevel%25 GTR 4 exit %25errorlevel%25
+			ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm" /MIR /NJS /NJH /XD Entities
+			if %25errorlevel%25 GTR 4 exit %25errorlevel%25
+			ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm\Entities\Messages" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm\Entities\Messages" /MIR /NJS /NJH /XF Actions.cs
+			if %25errorlevel%25 GTR 4 exit %25errorlevel%25
+			ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Workflow" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Workflow" /MIR /NJS /NJH /XD bin obj App_Packages
+			if %25errorlevel%25 GTR 4 exit %25errorlevel%25
+			ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Workflow.Tests" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Workflow.Tests" /MIR /NJS /NJH /XD bin obj
+			if %25errorlevel%25 GTR 4 exit %25errorlevel%25
+			ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Plugin" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Plugin" /MIR /NJS /NJH /XD bin obj App_Packages
+			if %25errorlevel%25 GTR 4 exit %25errorlevel%25
+			ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Plugin.Tests" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Plugin.Tests" /MIR /NJS /NJH /XD bin obj
+			if %25errorlevel%25 GTR 4 exit %25errorlevel%25
+			ROBOCOPY "$(SolutionDir)..\XrmUnitTest.Example\Xyz.Xrm.Test" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test" /MIR /NJS /NJH /XD bin obj
+			if %25errorlevel%25 GTR 4 exit %25errorlevel%25
+			REM ROBOCOPY "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\Assumptions\Entity Xml" "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\Assumptions\Entity Xml" /MIR /NJS /NJH /XD
+			if %25errorlevel%25 GTR 4 exit %25errorlevel%25
+
+			REM Delete zip file to allow pack batch to rebuild it.
+			IF EXIST "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Template.zip" DEL /F "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Template.zip"
+			if %25errorlevel%25 GTR 4 exit %25errorlevel%25
+
+			IF EXIST "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\UnitTestSettings.user.config" DEL /F "$(TargetDir)Plugins\DLaB.VSSolutionAccelerator\Xyz.Xrm.Test\UnitTestSettings.user.config"
+			if %25errorlevel%25 GTR 4 exit %25errorlevel%25
+
+			if %25errorlevel%25 LEQ 4 exit 0
+			goto :exit
+
+			:error
+			ECHO I appologize for this hack, but to not have to maintain duplicate code, the XrmUnitTest.Example Project is used as templates
+			ECHO The Example project was not found at "$(SolutionDir)..\XrmUnitTest.Example"
+			if $(ConfigurationName) == Release ROBOCOPY MISSING_XRMUNITTEST.EXAMPLE THROW_ERROR
+
+			:exit
+		</PostBuildEvent>
+	</PropertyGroup>
+	<PropertyGroup>
+		<PreBuildEvent>
+			REM Copy New Content Files
+			SET myCmd= "$(SolutionDir)References\NuGetContentInstaller.exe" "$(SolutionDir) " "$(ProjectPath)"
+			echo %25myCmd%25
+			%25myCmd%25
+
+			if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.exe" "$(ProjectDir)Properties\AssemblyInfo.cs"
+		</PreBuildEvent>
+	</PropertyGroup> -->
+	
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="Exists('$(SolutionDir)References\SetAssemblyVersion.exe') AND '$(ConfigurationName)|$(TargetFramework)' == 'Release|Net48'">
     <Exec Command="if $(ConfigurationName) == Release &quot;$(SolutionDir)References\SetAssemblyVersion.exe&quot; &quot;$(ProjectPath)&quot;" />
   </Target>
