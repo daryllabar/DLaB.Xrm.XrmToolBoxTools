@@ -23,7 +23,7 @@ namespace DLaB.ModelBuilderExtensions
 
         }
 
-        protected AttributeConstGeneratorBase(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
+        protected AttributeConstGeneratorBase(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings? settings = null) : base(defaultService, settings ?? new DLaBModelBuilderSettings())
         {
 
         }
