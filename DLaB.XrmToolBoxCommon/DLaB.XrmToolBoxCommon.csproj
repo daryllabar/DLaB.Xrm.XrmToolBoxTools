@@ -10,7 +10,7 @@
     <Deterministic>true</Deterministic>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <LangVersion>13</LangVersion>
-    <!-- Assembly Attributes (migrated from AssemblyInfo.cs) -->
+	  <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
     <Title>DLaB.XrmToolBoxCommon</Title>
     <Product>DLaB.XrmToolBoxCommon</Product>
     <Copyright>Copyright © 2023</Copyright>
@@ -31,7 +31,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
   </PropertyGroup>
-  <ItemGroup>
+	<ItemGroup>
     <PackageReference Include="DockPanelSuite" Version="3.0.6" />
     <PackageReference Include="DockPanelSuite.ThemeVS2015" Version="3.0.6" />
     <PackageReference Include="jacobslusser.ScintillaNET" Version="3.6.3" />
@@ -60,7 +60,7 @@
     <PackageReference Include="NuGet.Protocol" Version="6.14.0" />
     <PackageReference Include="NuGet.Versioning" Version="6.14.0" />
     <PackageReference Include="System.Buffers" Version="4.5.1" />
-    <PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
+    <PackageReference Include="System.Collections.Immutable" Version="9.0.0" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
     <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="9.0.7" />
     <PackageReference Include="System.IO" Version="4.3.0" />
@@ -68,6 +68,7 @@
     <PackageReference Include="System.Memory" Version="4.5.5" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
+		<PackageReference Include="System.Resources.Extensions" Version="9.0.0" />
     <PackageReference Include="System.Runtime" Version="4.3.1" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
     <PackageReference Include="System.Security.AccessControl" Version="6.0.0" />

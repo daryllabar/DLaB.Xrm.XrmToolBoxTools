@@ -9,7 +9,7 @@
     <AssemblyOriginatorKeyFile>DLaB.ModelBuilderExtensions.Key.snk</AssemblyOriginatorKeyFile>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <DefineConstants>TRACE;DLAB_PUBLIC;DLAB_UNROOT_NAMESPACE;DLAB_UNROOT_COMMON_NAMESPACE</DefineConstants>
-    <Nullable>disable</Nullable>
+    <Nullable>enable</Nullable>
     <Title>DLaB.ModelBuilderExtensions</Title>
     <Company>D La B</Company>
     <Product>DLaB.ModelBuilderExtensions</Product>
