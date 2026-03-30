@@ -36,8 +36,8 @@ jobs:
       - name: Build net48 with MSBuild.exe
         run: msbuild DLaB.Xrm.XrmToolBoxTools.sln /t:Build /p:Configuration=Release
 
-      - name: Build net10 projects
-        run: dotnet build DLaB.EarlyBoundGeneratorV2.Api/DLaB.EarlyBoundGeneratorV2.Api.csproj -c Release
+#      - name: Build net10 projects
+#        run: dotnet build DLaB.EarlyBoundGeneratorV2.Api/DLaB.EarlyBoundGeneratorV2.Api.csproj -c Release
         
       - name: Display build outputs
         shell: pwsh
