@@ -9,7 +9,7 @@
     <UseWPF>true</UseWPF>
     <LangVersion>13</LangVersion>
     <Deterministic>true</Deterministic>
-    <!-- Assembly Information (migrated from AssemblyInfo.cs) -->
+		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <AssemblyTitle>Attribute Manager</AssemblyTitle>
     <Description>Renames an attribute for an Entity, optionally preserving Data as well</Description>
