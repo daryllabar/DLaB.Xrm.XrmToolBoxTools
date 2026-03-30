@@ -16,6 +16,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup NuGet.exe
+        uses: NuGet/setup-nuget@v2
+
+      - name: Restore packages.config packages
+        run: nuget restore DLaB.Xrm.XrmToolBoxTools.sln
+
       - name: Setup .NET 10 SDK
         uses: actions/setup-dotnet@v4
         with:
