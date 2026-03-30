@@ -33,8 +33,11 @@ jobs:
       - name: Restore NuGet packages
         run: dotnet restore DLaB.Xrm.XrmToolBoxTools.sln
 
-      - name: Build solution (all frameworks)
-        run: dotnet build DLaB.Xrm.XrmToolBoxTools.sln -c Release --no-restore
+      - name: Build net48 with MSBuild.exe
+        run: msbuild DLaB.Xrm.XrmToolBoxTools.sln /t:Build /p:Configuration=Release
+
+      - name: Build net10 projects
+        run: dotnet build DLaB.EarlyBoundGeneratorV2.Api/DLaB.EarlyBoundGeneratorV2.Api.csproj -c Release
         
       - name: Display build outputs
         shell: pwsh
