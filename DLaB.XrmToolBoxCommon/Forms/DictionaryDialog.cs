@@ -7,7 +7,7 @@ namespace DLaB.XrmToolBoxCommon.Forms
 {
     public partial class DictionaryDialog : Form
     {
-        public Dictionary<string, string> Mapping { get; set; }
+        public Dictionary<string, string> Mapping { get; set; } = null!;
 
         public DictionaryDialog()
         {
@@ -23,7 +23,7 @@ namespace DLaB.XrmToolBoxCommon.Forms
             {
                 foreach(var line in lines.Where(l => !string.IsNullOrWhiteSpace(l)))
                 {
-                    string error = null;
+                    string? error = null;
                     var parts = line.Split(',');
                     if (parts.Length != 2)
                     {

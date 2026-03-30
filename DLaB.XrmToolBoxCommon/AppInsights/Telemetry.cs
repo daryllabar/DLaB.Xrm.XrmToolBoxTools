@@ -9,13 +9,13 @@ namespace DLaB.XrmToolBoxCommon.AppInsightsHelper
 {
     public static class Telemetry
     {
-        private static TelemetryClient _telemetry = GetAppInsightsClient();
+        private static TelemetryClient? _telemetry = GetAppInsightsClient();
 
         public static bool Enabled { get; set; } = true;
-        public static string InstrumentationKey { get; private set; }
-        public static string ConnectionString { get; private set; }
+        public static string InstrumentationKey { get; private set; } = null!;
+        public static string ConnectionString { get; private set; } = null!;
 
-        private static TelemetryClient GetAppInsightsClient()
+        private static TelemetryClient? GetAppInsightsClient()
         {
             if (string.IsNullOrEmpty(InstrumentationKey))
             {
@@ -39,7 +39,7 @@ namespace DLaB.XrmToolBoxCommon.AppInsightsHelper
 
         public static void SetUser(string user)
         {
-            _telemetry.Context.User.AuthenticatedUserId = user;
+            _telemetry!.Context.User.AuthenticatedUserId = user;
         }
 
         [Obsolete("Use InitAiConnection")]
@@ -55,7 +55,7 @@ namespace DLaB.XrmToolBoxCommon.AppInsightsHelper
             _telemetry = GetAppInsightsClient();
         }
 
-        public static void TrackEvent(string eventName, IDictionary<string, string> properties = null, IDictionary<string, double> metrics = null)
+        public static void TrackEvent(string eventName, IDictionary<string, string>? properties = null, IDictionary<string, double> metrics = null)
         {
             if (Enabled)
             {
@@ -63,7 +63,7 @@ namespace DLaB.XrmToolBoxCommon.AppInsightsHelper
             }
         }
 
-        public static void TrackException(Exception ex)
+        public static void TrackException(Exception? ex)
         {
             if (ex != null && Enabled)
             {

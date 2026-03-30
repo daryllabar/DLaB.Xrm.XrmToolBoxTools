@@ -8,7 +8,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <UseWPF>true</UseWPF>
     <LangVersion>13</LangVersion>
-    <!-- Assembly Information (migrated from AssemblyInfo.cs) -->
+		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <AssemblyTitle>DLaB.VSSolutionAccelerator</AssemblyTitle>
     <Description>Adds recommended isolation/accelerator projects for use with the DLaB.Xrm and XrmUnitTest framework to your Visual Studio solution.</Description>

@@ -19,6 +19,7 @@
     <FileVersion>2.2025.11.15</FileVersion>
     <ComVisible>false</ComVisible>
     <Guid>e98fb2e7-13f8-40a6-9ff3-6f64e930b5ed</Guid>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
     <DefineConstants>TRACE;DEBUG;DLAB_PUBLIC</DefineConstants>
