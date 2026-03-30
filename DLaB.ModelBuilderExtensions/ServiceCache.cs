@@ -10,7 +10,7 @@ namespace DLaB.ModelBuilderExtensions
     public class ServiceCache
     {
         private Dictionary<string, EntityMetadata> _entities;
-        private static ServiceCache _default;
+        private static ServiceCache _default = null!;
 
         public Dictionary<string, EntityMetadata> EntityMetadataByLogicalName
         {
@@ -144,12 +144,12 @@ namespace DLaB.ModelBuilderExtensions
 
         public static ServiceCache GetDefault(IServiceProvider services)
         {
-            return _default ?? (_default = new ServiceCache(services));
+            return _default ??= new ServiceCache(services);
         }
 
         public static void ClearCache()
         {
-            _default = null;
+            _default = null!;
         }
     }
 }

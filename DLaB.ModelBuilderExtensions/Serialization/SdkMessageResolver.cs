@@ -22,7 +22,7 @@ namespace DLaB.ModelBuilderExtensions.Serialization
 
 
         public override bool TryResolveType(Type type,
-                                            Type declaredType,
+                                            Type? declaredType,
                                             DataContractResolver knownTypeResolver,
                                             out XmlDictionaryString typeName,
                                             out XmlDictionaryString typeNamespace)
@@ -86,7 +86,7 @@ namespace DLaB.ModelBuilderExtensions.Serialization
             return value;
         }
 
-        public override Type ResolveName(string typeName, string typeNamespace, Type declaredType, DataContractResolver knownTypeResolver)
+        public override Type? ResolveName(string typeName, string? typeNamespace, Type? declaredType, DataContractResolver knownTypeResolver)
         {
             if (typeNamespace == CrmSvcUtilNamespace)
             {

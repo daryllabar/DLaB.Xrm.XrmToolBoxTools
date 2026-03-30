@@ -41,7 +41,7 @@ namespace DLaB.ModelBuilderExtensions
         public string SettingsPath { get; }
         public string OutputPath { get; }
 
-        public ArgumentBuilder(string settingsPath, string outputPath, Action<string> log = null)
+        public ArgumentBuilder(string settingsPath, string outputPath, Action<string>? log = null)
         {
             _log = log ?? Console.WriteLine;
             SettingsPath = settingsPath;

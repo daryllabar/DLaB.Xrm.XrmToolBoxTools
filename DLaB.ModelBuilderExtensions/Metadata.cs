@@ -15,7 +15,7 @@ namespace DLaB.ModelBuilderExtensions
         private OptionSetMetadataBase[] _optionSets = Array.Empty<OptionSetMetadataBase>();
 
         [DataMember]
-        public EntityMetadata[] Entities { get; set; }
+        public EntityMetadata[] Entities { get; set; } = Array.Empty<EntityMetadata>();
         
         [DataMember]
         public OptionSetMetadataBase[] OptionSets {
@@ -35,7 +35,7 @@ namespace DLaB.ModelBuilderExtensions
             }
         }
 
-        private SdkMessages _messages;
+        private SdkMessages? _messages;
         public SdkMessages Messages
         {
             get => _messages ?? (_messages = MetadataMessages);
@@ -49,9 +49,9 @@ namespace DLaB.ModelBuilderExtensions
         }
 
         [DataMember]
-        public MetadataMessages MetadataMessages { get; set; }
+        public MetadataMessages MetadataMessages { get; set; } = null!;
 
-        public ExtensionDataObject ExtensionData { get; set; }
+        public ExtensionDataObject? ExtensionData { get; set; }
 
         public void AddOptionSetInfo(OptionSetMetadata optionSet)
         {

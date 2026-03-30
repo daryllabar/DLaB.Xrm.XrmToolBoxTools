@@ -38,7 +38,7 @@ namespace DLaB.ModelBuilderExtensions
             foreach (var type in codeUnit.GetEntityTypes())
             {
                 var typeEntityName = GetEntityLogicalName(type);
-                if (entityTypesByLogicalName.TryGetValue(typeEntityName, out var entityMetadata))
+                if (typeEntityName != null && entityTypesByLogicalName.TryGetValue(typeEntityName, out var entityMetadata))
                 {
                     entityTypes.Add(new Tuple<CodeTypeDeclaration, EntityMetadata>(type, entityMetadata));
                 }
@@ -154,20 +154,20 @@ namespace DLaB.ModelBuilderExtensions
             property.GetStatements.Add(new CodeMethodReturnStatement(returnExpression));
         }
 
-        public static string GetLogicalName(this CodeMemberProperty property)
+        public static string? GetLogicalName(this CodeMemberProperty property)
         {
             return 
                 (from CodeAttributeDeclaration att in property.CustomAttributes
                 where att.AttributeType.BaseType == XrmAttributeLogicalName
-                select ((CodePrimitiveExpression) att.Arguments[0].Value).Value.ToString()).FirstOrDefault();
+                select ((CodePrimitiveExpression) att.Arguments[0].Value).Value?.ToString()).FirstOrDefault();
         }
 
-        public static string GetRelationshipLogicalName(this CodeMemberProperty property)
+        public static string? GetRelationshipLogicalName(this CodeMemberProperty property)
         {
             return 
                 (from CodeAttributeDeclaration att in property.CustomAttributes
                     where att.AttributeType.BaseType == XrmRelationshipSchemaName
-                    select ((CodePrimitiveExpression) att.Arguments[0].Value).Value.ToString()).FirstOrDefault();
+                    select ((CodePrimitiveExpression) att.Arguments[0].Value).Value?.ToString()).FirstOrDefault();
         }
 
         #endregion CodeMemberProperty
@@ -201,22 +201,22 @@ namespace DLaB.ModelBuilderExtensions
 
         #region CodeTypeDeclaration
 
-        public static string GetFieldInitializedValue(this CodeTypeDeclaration type, string fieldName)
+        public static string? GetFieldInitializedValue(this CodeTypeDeclaration type, string fieldName)
         {
             var field = type.Members.OfType<CodeMemberField>().FirstOrDefault(f => f.Name == fieldName);
-            if (field != null)
+            if (field?.InitExpression is CodePrimitiveExpression primitiveExpression)
             {
-                return ((CodePrimitiveExpression)field.InitExpression).Value.ToString();
+                return primitiveExpression.Value?.ToString();
             }
 
             throw new Exception("Field " + fieldName + " was not found for type " + type.Name);
         }
 
-        public static string GetEntityLogicalName(this CodeTypeDeclaration type)
+        public static string? GetEntityLogicalName(this CodeTypeDeclaration type)
         {
             try
             {
-                return ((CodePrimitiveExpression)type.GetCustomAttribute("Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute")?.Arguments[0].Value)?.Value.ToString();
+                return ((CodePrimitiveExpression?)type.GetCustomAttribute("Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute")?.Arguments[0].Value)?.Value?.ToString();
             }
             catch (Exception ex)
             {
@@ -224,11 +224,11 @@ namespace DLaB.ModelBuilderExtensions
             }
         }
 
-        public static string GetRequestProxyAttribute(this CodeTypeDeclaration type)
+        public static string? GetRequestProxyAttribute(this CodeTypeDeclaration type)
         {
             try
             {
-                return ((CodePrimitiveExpression)type.GetCustomAttribute("Microsoft.Xrm.Sdk.Client.RequestProxyAttribute")?.Arguments[0].Value)?.Value.ToString();
+                return ((CodePrimitiveExpression?)type.GetCustomAttribute("Microsoft.Xrm.Sdk.Client.RequestProxyAttribute")?.Arguments[0].Value)?.Value?.ToString();
             }
             catch (Exception ex)
             {
@@ -236,11 +236,11 @@ namespace DLaB.ModelBuilderExtensions
             }
         }
 
-        public static string GetResponseProxyAttribute(this CodeTypeDeclaration type)
+        public static string? GetResponseProxyAttribute(this CodeTypeDeclaration type)
         {
             try
             {
-                return ((CodePrimitiveExpression)type.GetCustomAttribute("Microsoft.Xrm.Sdk.Client.ResponseProxyAttribute")?.Arguments[0].Value)?.Value.ToString();
+                return ((CodePrimitiveExpression?)type.GetCustomAttribute("Microsoft.Xrm.Sdk.Client.ResponseProxyAttribute")?.Arguments[0].Value)?.Value?.ToString();
             }
             catch (Exception ex)
             {
@@ -248,7 +248,7 @@ namespace DLaB.ModelBuilderExtensions
             }
         }
 
-        public static CodeAttributeDeclaration GetCustomAttribute(this CodeTypeDeclaration type, string attributeName)
+        public static CodeAttributeDeclaration? GetCustomAttribute(this CodeTypeDeclaration type, string attributeName)
         {
             try
             {
@@ -302,7 +302,7 @@ namespace DLaB.ModelBuilderExtensions
 
         #region IDictionary<string,string>
 
-        public static string GetFirstKey(this IDictionary<string, string> dict, params string[] keys)
+        public static string? GetFirstKey(this IDictionary<string, string> dict, params string[] keys)
         {
             foreach (var key in keys)
             {
@@ -326,15 +326,18 @@ namespace DLaB.ModelBuilderExtensions
             {
                 throw new NotImplementedException("Unable to determine the dictionary field for the IServiceProvider in UpdateService!");
             }
-            var dictionary = (Dictionary<Type, object>)dictionaryField.GetValue(services);
-            dictionary[typeof(T)] = service;
+            var dictionary = (Dictionary<Type, object>?)dictionaryField.GetValue(services);
+            if (dictionary != null)
+            {
+                dictionary[typeof(T)] = service!;
+            }
         }
 
         #endregion IServiceProvider
 
         #region Label
 
-        public static string GetLocalOrDefaultText(this Label label, string defaultIfNull = null)
+        public static string? GetLocalOrDefaultText(this Label label, string? defaultIfNull = null)
         {
             var local = label.UserLocalizedLabel ?? label.LocalizedLabels.FirstOrDefault();
 
@@ -385,7 +388,7 @@ namespace DLaB.ModelBuilderExtensions
         /// </summary>
         /// <param name="text">The text.</param>
         /// <returns></returns>
-        public static string RemoveDiacritics(this string text)
+        public static string? RemoveDiacritics(this string? text)
         {
             if (text == null)
             {
@@ -405,7 +408,7 @@ namespace DLaB.ModelBuilderExtensions
         /// <param name="filePath"></param>
         /// <param name="defaultRootDirectory">Defaults to the AppDomain.CurrentDomain.BaseDirectory if not provided</param>
         /// <returns></returns>
-        public static string RootPath(this string filePath, string defaultRootDirectory = null)
+        public static string RootPath(this string filePath, string? defaultRootDirectory = null)
         {
             return Path.IsPathRooted(filePath)
                 ? filePath

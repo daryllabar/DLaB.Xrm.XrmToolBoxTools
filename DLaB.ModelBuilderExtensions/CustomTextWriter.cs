@@ -33,7 +33,7 @@ namespace DLaB.ModelBuilderExtensions
             _invalidStringsForPropertiesNeedingNullableTypes = invalidStringsForPropertiesNeedingNullableTypes;
         }
 
-        public override void WriteLine(string s)
+        public override void WriteLine(string? s)
         {
             if (_skipEntireHeaderComment)
             {
@@ -66,7 +66,7 @@ namespace DLaB.ModelBuilderExtensions
             _default.WriteLine(s);
         }
 
-        public override void Write(string value)
+        public override void Write(string? value)
         {
             if (_skipCurrentLine)
             {

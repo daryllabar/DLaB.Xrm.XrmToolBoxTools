@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.4.33205.214
+# Visual Studio Version 18
+VisualStudioVersion = 18.1.11312.151 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", "{07E3CEC6-C64C-4967-9C8C-634FF91E7C05}"
 	ProjectSection(SolutionItems) = preProject
@@ -189,10 +189,10 @@ Global
 		DLaB.Xrm.Entities\DLaB.Xrm.Entities.projitems*{555b6bb7-c5b3-426a-9e23-a9c09aa7715c}*SharedItemsImports = 13
 		DLaB.Log\DLaB.Log.projitems*{8cdeed18-34a8-482e-910f-c75173690d1d}*SharedItemsImports = 4
 		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{8cdeed18-34a8-482e-910f-c75173690d1d}*SharedItemsImports = 4
-		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{8ee4091f-3d10-433d-a59a-ee2f070fa22f}*SharedItemsImports = 4
+		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{8ee4091f-3d10-433d-a59a-ee2f070fa22f}*SharedItemsImports = 5
 		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{9d4a0246-7f6d-459b-988c-26a47f6dbb6e}*SharedItemsImports = 13
 		DLaB.Log\DLaB.Log.projitems*{a1789142-7510-42d5-aff4-1bb37f2b08f8}*SharedItemsImports = 13
-		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{df755d05-ecad-433c-ad2c-01649b27f238}*SharedItemsImports = 4
-		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{fcb8a4e4-622b-413a-a531-b612e5f1436c}*SharedItemsImports = 4
+		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{df755d05-ecad-433c-ad2c-01649b27f238}*SharedItemsImports = 5
+		DLaB.XrmToolBoxCommon\DLaB.XrmToolBoxCommon.projitems*{fcb8a4e4-622b-413a-a531-b612e5f1436c}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal
