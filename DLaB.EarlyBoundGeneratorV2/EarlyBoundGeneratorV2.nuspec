@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DLaB.Xrm.EarlyBoundGeneratorV2</id>
-	  <version>2.2025.11.14</version>
+	  <version>2.2026.4.19</version>
 	  <title>Early Bound Generator V2</title>
     <authors>Daryl LaBar</authors>
     <owners>Daryl LaBar</owners>
@@ -11,9 +11,10 @@
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
-		<releaseNotes>
+		<releaseNotes>V2.2026.4.19
+			Fix Missing dll References for Microsoft.PowerPlatform.Dataverse.ModelBuilderLib #593
 			Fix Issue with the capitalization of generated attributes in messages closes #579
-			
+
 			V2.2.2025.11.14
 			Duplicate relationship within AsyncOperation when having 2 Business Process Flows #569
 			File attributes don't have the file name that ends with _name closes #568
@@ -82,13 +83,16 @@
     <copyright>Copyright 2019</copyright>
 	  <tags>PAC ModelBuilder Dataverse Xrm EarlyBound Generator XrmToolBox Plugins</tags>
     <dependencies>
-      <dependency id="XrmToolBox" version="1.2023.12.68" />
+      <!-- Group must match lib\net48\ so pack does not warn NU5128 -->
+      <group targetFramework=".NETFramework4.8">
+        <dependency id="XrmToolBox" version="1.2023.12.68" />
+      </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2.dll"             target="lib\net48\plugins" />
-    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2\*.*"             target="lib\net48\plugins\DLaB.EarlyBoundGeneratorV2" exclude="bin\Release\DLaB.EarlyBoundGeneratorV2.dll" />
-    <file src="bin\Release\DLaB.EarlyBoundGeneratorV2\alphabets\*.*"   target="lib\net48\plugins\DLaB.EarlyBoundGeneratorV2\alphabets" />
-    <file src="bin\Release\Images\DLaB_Dynamics_Logo_Square_32x32.png" target="images\" />
+    <file src="bin\Release\net48\DLaB.EarlyBoundGeneratorV2.dll"             target="lib\net48\plugins" />
+    <file src="bin\Release\net48\DLaB.EarlyBoundGeneratorV2\*.*"             target="lib\net48\plugins\DLaB.EarlyBoundGeneratorV2" exclude="bin\Release\DLaB.EarlyBoundGeneratorV2.dll" />
+    <file src="bin\Release\net48\DLaB.EarlyBoundGeneratorV2\alphabets\*.*"   target="lib\net48\plugins\DLaB.EarlyBoundGeneratorV2\alphabets" />
+    <file src="bin\Release\net48\Images\DLaB_Dynamics_Logo_Square_32x32.png" target="images\" />
   </files>
 </package>

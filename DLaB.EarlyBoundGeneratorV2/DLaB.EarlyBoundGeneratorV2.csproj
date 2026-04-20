@@ -17,9 +17,9 @@
     <Company>D La B</Company>
     <Product>DLaB.EarlyBoundGeneratorV2</Product>
     <Copyright>Copyright © 2023</Copyright>
-    <Version>2.2025.11.15</Version>
-    <AssemblyVersion>2.2025.11.15</AssemblyVersion>
-    <FileVersion>2.2025.11.15</FileVersion>
+    <Version>2.2026.4.19</Version>
+    <AssemblyVersion>2.2026.4.19</AssemblyVersion>
+    <FileVersion>2.2026.4.19</FileVersion>
     <NeutralLanguage>en-US</NeutralLanguage>
     <!-- COM Visibility -->
     <ComVisible>false</ComVisible>
@@ -200,7 +200,12 @@
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="Exists('$(SolutionDir)References\SetAssemblyVersion.exe') AND '$(ConfigurationName)|$(TargetFramework)' == 'Release|Net48'">
     <Exec Command="if $(ConfigurationName) == Release &quot;$(SolutionDir)References\SetAssemblyVersion.exe&quot; &quot;$(ProjectPath)&quot;" />
   </Target>
+  <!-- Stage all dependency DLLs from bin into a per-plugin subfolder so EarlyBoundGeneratorV2.nuspec can pack lib\net48\plugins\DLaB.EarlyBoundGeneratorV2\** -->
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy /I /Y &quot;$(SolutionDir)DLaB.ModelBuilderExtensions\OptionSet\Transliteration\Alphabets\*&quot; &quot;$(TargetDir)$(TargetName)\alphabets&quot;&#xD;&#xA;xcopy /I /Y &quot;$(SolutionDir)DLaB.ModelBuilderExtensions\DLaB.Dictionary.txt&quot; &quot;$(TargetDir)$(TargetName)&quot;&#xD;&#xA;xcopy /I /Y &quot;$(SolutionDir)DLaB.XrmToolBoxCommon\Images\*32x32.png&quot; &quot;$(TargetDir)Images&quot;&#xD;&#xA;xcopy /I /Y &quot;$(TargetDir)DLaB.*.dll&quot; &quot;$(TargetDir)$(TargetName)&quot;&#xD;&#xA;xcopy /I /Y &quot;$(TargetDir)Microsoft.AI.ServerTelemetryChannel.dll&quot; &quot;$(TargetDir)$(TargetName)&quot;&#xD;&#xA;xcopy /I /Y &quot;$(TargetDir)Microsoft.ApplicationInsights.dll&quot; &quot;$(TargetDir)$(TargetName)&quot;&#xD;&#xA;xcopy /I /Y &quot;$(TargetDir)Microsoft.BclAsyncInterfaces.dll&quot; &quot;$(TargetDir)$(TargetName)&quot;&#xD;&#xA;xcopy /I /Y &quot;$(TargetDir)Microsoft.Crm.Sdk.Proxy.dll&quot; &quot;$(TargetDir)$(TargetName)&quot;&#xD;&#xA;xcopy /I /Y &quot;$(TargetDir)Microsoft.Extensions.*.dll&quot; &quot;$(TargetDir)$(TargetName)&quot;&#xD;&#xA;xcopy /I /Y &quot;$(TargetDir)Microsoft.PowerPlatform.Dataverse.ModelBuilderLib.dll&quot; &quot;$(TargetDir)$(TargetName)&quot;&#xD;&#xA;xcopy /I /Y &quot;$(TargetDir)Microsoft.Xrm.Sdk.dll&quot; &quot;$(TargetDir)$(TargetName)&quot;&#xD;&#xA;xcopy /I /Y &quot;$(TargetDir)System.*.dll&quot; &quot;$(TargetDir)$(TargetName)&quot;&#xD;&#xA;del &quot;$(TargetDir)$(TargetName)\$(TargetFileName)&quot;" />
+    <Exec Command="xcopy /I /Y &quot;$(SolutionDir)DLaB.ModelBuilderExtensions\OptionSet\Transliteration\Alphabets\*&quot; &quot;$(TargetDir)$(TargetName)\alphabets&quot;&#xD;&#xA;xcopy /I /Y &quot;$(SolutionDir)DLaB.ModelBuilderExtensions\DLaB.Dictionary.txt&quot; &quot;$(TargetDir)$(TargetName)&quot;&#xD;&#xA;xcopy /I /Y &quot;$(SolutionDir)DLaB.XrmToolBoxCommon\Images\*32x32.png&quot; &quot;$(TargetDir)Images&quot;" />
+    <ItemGroup>
+      <_PluginDependencyDlls Include="$(TargetDir)*.dll" Exclude="$(TargetDir)$(TargetFileName)" />
+    </ItemGroup>
+    <Copy SourceFiles="@(_PluginDependencyDlls)" DestinationFolder="$(TargetDir)$(TargetName)\" SkipUnchangedFiles="true" />
   </Target>
 </Project>

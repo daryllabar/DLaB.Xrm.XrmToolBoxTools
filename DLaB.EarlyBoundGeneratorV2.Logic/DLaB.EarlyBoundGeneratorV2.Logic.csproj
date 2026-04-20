@@ -10,9 +10,9 @@
     <Title>DLaB.EarlyBoundGeneratorV2.Logic</Title>
     <Product>DLaB.EarlyBoundGeneratorV2.Logic</Product>
     <Copyright>Copyright © 2023</Copyright>
-    <Version>2.2025.11.15</Version>
-    <AssemblyVersion>2.2025.11.15</AssemblyVersion>
-    <FileVersion>2.2025.11.15</FileVersion>
+    <Version>2.2026.4.19</Version>
+    <AssemblyVersion>2.2026.4.19</AssemblyVersion>
+    <FileVersion>2.2026.4.19</FileVersion>
     <ComVisible>false</ComVisible>
     <Guid>46fa9089-9d5f-4c61-a6e6-196bf3d81371</Guid>
   </PropertyGroup>
