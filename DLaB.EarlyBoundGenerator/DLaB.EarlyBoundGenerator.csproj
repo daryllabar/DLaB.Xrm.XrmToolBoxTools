@@ -106,31 +106,32 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="NuGet.Common, Version=6.14.0.116, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\NuGet.Common.6.14.0\lib\net472\NuGet.Common.dll</HintPath>
+    <Reference Include="NuGet.Common, Version=7.3.1.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\NuGet.Common.7.3.1\lib\net472\NuGet.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NuGet.Configuration, Version=6.14.0.116, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\NuGet.Configuration.6.14.0\lib\net472\NuGet.Configuration.dll</HintPath>
+    <Reference Include="NuGet.Configuration, Version=7.3.1.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\NuGet.Configuration.7.3.1\lib\net472\NuGet.Configuration.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NuGet.Core, Version=2.14.0.832, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\NuGet.Core.2.14.0\lib\net40-Client\NuGet.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="NuGet.Frameworks, Version=6.14.0.116, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\NuGet.Frameworks.6.14.0\lib\net472\NuGet.Frameworks.dll</HintPath>
+    <Reference Include="NuGet.Frameworks, Version=7.3.1.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\NuGet.Frameworks.7.3.1\lib\net472\NuGet.Frameworks.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NuGet.Packaging, Version=5.11.6.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\NuGet.Packaging.5.11.6\lib\net472\NuGet.Packaging.dll</HintPath>
+    <Reference Include="NuGet.Packaging, Version=7.3.1.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\NuGet.Packaging.7.3.1\lib\net472\NuGet.Packaging.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NuGet.Protocol, Version=5.9.1.11, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\NuGet.Protocol.5.9.1\lib\netstandard2.0\NuGet.Protocol.dll</HintPath>
+    <Reference Include="NuGet.Protocol, Version=5.11.7.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\NuGet.Protocol.5.11.7\lib\net472\NuGet.Protocol.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="NuGet.Versioning, Version=6.14.0.116, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\NuGet.Versioning.6.14.0\lib\net472\NuGet.Versioning.dll</HintPath>
+    <Reference Include="NuGet.Versioning, Version=7.3.1.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\NuGet.Versioning.7.3.1\lib\net472\NuGet.Versioning.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationFramework" />
