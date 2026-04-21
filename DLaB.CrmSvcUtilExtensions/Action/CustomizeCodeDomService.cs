@@ -101,13 +101,60 @@ namespace DLaB.CrmSvcUtilExtensions.Action
             {
                 foreach (var prop in from CodeTypeMember member in action.Members
                                        let propDom = member as CodeMemberProperty
-                                       where propDom != null && !propDom.HasSet 
+                                       where propDom != null && (!propDom.HasSet || ResponseSetterUsesParametersCollection(propDom))
                                        select propDom)
                 {
                     var thisMember = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), "Results");
                     var indexOf = new CodeArrayIndexerExpression(thisMember, new CodePrimitiveExpression(prop.Name));
+                    prop.SetStatements.Clear();
                     prop.SetStatements.Add(new CodeAssignStatement(indexOf, new CodePropertySetValueReferenceExpression()));
                 }
+            }
+        }
+
+        /// <summary>
+        /// Returns true if the SET accessor of a response property incorrectly references
+        /// <c>this.Parameters[...]</c> (which belongs to <see cref="Microsoft.Xrm.Sdk.OrganizationRequest"/>)
+        /// instead of the correct <c>this.Results[...]</c>.
+        /// </summary>
+        private static bool ResponseSetterUsesParametersCollection(CodeMemberProperty prop)
+        {
+            foreach (CodeStatement statement in prop.SetStatements)
+            {
+                if (statement is CodeAssignStatement assignStatement)
+                {
+                    if (GetIndexerTarget(assignStatement.Left) == "Parameters")
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private static string GetIndexerTarget(CodeExpression expression)
+        {
+            switch (expression)
+            {
+                case CodeArrayIndexerExpression arrayIndexer:
+                    return GetReferenceExpressionName(arrayIndexer.TargetObject);
+                case CodeIndexerExpression indexer:
+                    return GetReferenceExpressionName(indexer.TargetObject);
+                default:
+                    return null;
+            }
+        }
+
+        private static string GetReferenceExpressionName(CodeExpression expression)
+        {
+            switch (expression)
+            {
+                case CodeFieldReferenceExpression fieldRef:
+                    return fieldRef.FieldName;
+                case CodePropertyReferenceExpression propRef:
+                    return propRef.PropertyName;
+                default:
+                    return null;
             }
         }
 
