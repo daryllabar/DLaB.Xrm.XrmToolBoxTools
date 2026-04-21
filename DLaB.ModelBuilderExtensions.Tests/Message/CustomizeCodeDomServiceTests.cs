@@ -184,7 +184,7 @@ namespace DLaB.ModelBuilderExtensions.Tests.Message
         }
 
         [TestMethod]
-        public void ProcessMessage_MakeResponseActionsEditableFalse_ShouldNotModifyProperties()
+        public void ProcessMessage_MakeResponseMessagesEditableFalse_ShouldNotModifyProperties()
         {
             var responseType = CreateResponseClass();
             responseType.Members.Add(CreateOutputPropertyWithParametersSetter("OutputParam", "Base64PNGImage"));
@@ -194,7 +194,7 @@ namespace DLaB.ModelBuilderExtensions.Tests.Message
             sut.CustomizeCodeDom(code, null);
 
             var prop = responseType.Members.OfType<CodeMemberProperty>().First();
-            // When MakeResponseActionsEditable is false, setter should remain as-is (using Parameters)
+            // When MakeResponseMessagesEditable is false, setter should remain as-is (using Parameters)
             Assert.AreEqual(1, prop.SetStatements.Count);
             var assign = (CodeAssignStatement)prop.SetStatements[0];
             var target = ((CodeIndexerExpression)assign.Left).TargetObject as CodePropertyReferenceExpression;
