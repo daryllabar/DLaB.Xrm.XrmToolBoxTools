@@ -131,7 +131,8 @@ namespace DLaB.ModelBuilderExtensions.Tests.Message
             responseType.Members.Add(CreateOutputPropertyWithParametersSetter("OutputParam", "Base64PNGImage"));
             var code = BuildCodeUnit(responseType);
 
-            var sut = new CustomizeCodeDomService(null, new DLaBModelBuilderSettings { MakeResponseMessagesEditable = true });
+            var sut = new CustomizeCodeDomService(null, new DLaBModelBuilderSettings());
+            sut.MakeResponseActionsEditable = true;
             sut.CustomizeCodeDom(code, null);
 
             var prop = responseType.Members.OfType<CodeMemberProperty>().First();
@@ -146,7 +147,8 @@ namespace DLaB.ModelBuilderExtensions.Tests.Message
             responseType.Members.Add(CreateOutputPropertyWithNoSetter("OutputParam", "Base64PNGImage"));
             var code = BuildCodeUnit(responseType);
 
-            var sut = new CustomizeCodeDomService(null, new DLaBModelBuilderSettings { MakeResponseMessagesEditable = true });
+            var sut = new CustomizeCodeDomService(null, new DLaBModelBuilderSettings());
+            sut.MakeResponseActionsEditable = true;
             sut.CustomizeCodeDom(code, null);
 
             var prop = responseType.Members.OfType<CodeMemberProperty>().First();
@@ -173,7 +175,8 @@ namespace DLaB.ModelBuilderExtensions.Tests.Message
             requestType.Members.Add(inputProp);
             var code = BuildCodeUnit(requestType);
 
-            var sut = new CustomizeCodeDomService(null, new DLaBModelBuilderSettings { MakeResponseMessagesEditable = true });
+            var sut = new CustomizeCodeDomService(null, new DLaBModelBuilderSettings());
+            sut.MakeResponseActionsEditable = true;
             sut.CustomizeCodeDom(code, null);
 
             var prop = requestType.Members.OfType<CodeMemberProperty>().First();
@@ -190,11 +193,12 @@ namespace DLaB.ModelBuilderExtensions.Tests.Message
             responseType.Members.Add(CreateOutputPropertyWithParametersSetter("OutputParam", "Base64PNGImage"));
             var code = BuildCodeUnit(responseType);
 
-            var sut = new CustomizeCodeDomService(null, new DLaBModelBuilderSettings { MakeResponseMessagesEditable = false });
+            var sut = new CustomizeCodeDomService(null, new DLaBModelBuilderSettings());
+            sut.MakeResponseActionsEditable = false;
             sut.CustomizeCodeDom(code, null);
 
             var prop = responseType.Members.OfType<CodeMemberProperty>().First();
-            // When MakeResponseMessagesEditable is false, setter should remain as-is (using Parameters)
+            // When MakeResponseActionsEditable is false, setter should remain as-is (using Parameters)
             Assert.AreEqual(1, prop.SetStatements.Count);
             var assign = (CodeAssignStatement)prop.SetStatements[0];
             var target = ((CodeIndexerExpression)assign.Left).TargetObject as CodePropertyReferenceExpression;
