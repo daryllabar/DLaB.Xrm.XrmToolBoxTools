@@ -7,10 +7,6 @@
 		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-  </PropertyGroup>
-
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DefineConstants>TRACE;DEBUG;MS_EXT_LOG</DefineConstants>
   </PropertyGroup>
