@@ -15,9 +15,9 @@
     <Company>D La B</Company>
     <Product>DLaB.VSSolutionAccelerator</Product>
     <Copyright>Copyright © 2019</Copyright>
-    <Version>2.2025.11.15</Version>
-    <AssemblyVersion>2.2025.11.15</AssemblyVersion>
-    <FileVersion>2.2025.11.15</FileVersion>
+    <Version>2.2026.4.19</Version>
+    <AssemblyVersion>2.2026.4.19</AssemblyVersion>
+    <FileVersion>2.2026.4.19</FileVersion>
     <NeutralLanguage>en-US</NeutralLanguage>
     <!-- COM Visibility -->
     <ComVisible>false</ComVisible>
@@ -171,7 +171,7 @@
   <ItemGroup>
     <Content Include="Reference\Wizard.ico" />
   </ItemGroup>
-	<!-- TODO: This broke when switching to SDK Project.  This logic cops items out of the build, into the Plugins folder, and then into the plugin package.  Need to re-evalulate and update as needed.
+  <!-- TODO: This broke when switching to SDK Project.  This logic cops items out of the build, into the Plugins folder, and then into the plugin package.  Need to re-evalulate and update as needed.
 	<PropertyGroup>
 		<PostBuildEvent>
 			xcopy /I /Y "$(TargetDir)Microsoft.AI.ServerTelemetryChannel.dll" "$(TargetDir)Plugins\$(TargetName)"
@@ -239,7 +239,6 @@
 			if $(ConfigurationName) == Release "$(SolutionDir)References\SetAssemblyVersion.exe" "$(ProjectDir)Properties\AssemblyInfo.cs"
 		</PreBuildEvent>
 	</PropertyGroup> -->
-	
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="Exists('$(SolutionDir)References\SetAssemblyVersion.exe') AND '$(ConfigurationName)|$(TargetFramework)' == 'Release|Net48'">
     <Exec Command="if $(ConfigurationName) == Release &quot;$(SolutionDir)References\SetAssemblyVersion.exe&quot; &quot;$(ProjectPath)&quot;" />
   </Target>

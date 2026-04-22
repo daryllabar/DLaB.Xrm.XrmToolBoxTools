@@ -9,6 +9,88 @@ namespace DLaB.ModelBuilderExtensions.Tests.Message
     [TestClass]
     public class CustomizeCodeDomServiceTests
     {
+        private CustomizeCodeDomService _sut;
+        private CodeTypeDeclaration _responseType;
+
+        [TestInitialize]
+        public void Initialize()
+        {
+            _sut = new CustomizeCodeDomService(null!, new DLaBModelBuilderSettings())
+            {
+                MakeResponseActionsEditable = true
+            };
+            _responseType = CreateResponseClass();
+            _responseType.Members.Add(CreateOutputPropertyWithParametersSetter("OutputParam", "Base64PNGImage"));
+        }
+
+        [TestMethod]
+        public void ProcessMessage_ResponseProperty_WithParametersSetter_ShouldBeReplacedWithResultsSetter()
+        {
+            var code = BuildCodeUnit(_responseType);
+
+            _sut.CustomizeCodeDom(code, null!);
+
+            var prop = _responseType.Members.OfType<CodeMemberProperty>().First();
+            Assert.IsTrue(SetterUsesResults(prop), "SET accessor should reference this.Results, not this.Parameters.");
+            Assert.AreEqual(1, prop.SetStatements.Count, "Should have exactly one set statement.");
+        }
+
+        [TestMethod]
+        public void ProcessMessage_ResponseProperty_WithoutSetter_ShouldAddResultsSetter()
+        {
+            var code = BuildCodeUnit(_responseType);
+
+            _sut.CustomizeCodeDom(code, null!);
+
+            var prop = _responseType.Members.OfType<CodeMemberProperty>().First();
+            Assert.IsTrue(SetterUsesResults(prop), "SET accessor should reference this.Results.");
+            Assert.AreEqual(1, prop.SetStatements.Count, "Should have exactly one set statement.");
+        }
+
+        [TestMethod]
+        public void ProcessMessage_RequestProperty_WithParametersSetter_ShouldNotBeModified()
+        {
+            var requestType = CreateRequestClass();
+            var inputProp = new CodeMemberProperty
+            {
+                Name = "InputParam",
+                Type = new CodeTypeReference(typeof(string)),
+                Attributes = MemberAttributes.Public
+            };
+            // Request property correctly uses Parameters
+            inputProp.SetStatements.Add(new CodeAssignStatement(
+                new CodeIndexerExpression(
+                    new CodePropertyReferenceExpression(new CodeThisReferenceExpression(), "Parameters"),
+                    new CodePrimitiveExpression("InputParam")),
+                new CodePropertySetValueReferenceExpression()));
+            requestType.Members.Add(inputProp);
+            var code = BuildCodeUnit(requestType);
+
+            _sut.CustomizeCodeDom(code, null!);
+
+            var prop = requestType.Members.OfType<CodeMemberProperty>().First();
+            Assert.AreEqual(1, prop.SetStatements.Count, "Request property setter should remain unchanged.");
+            var assign = (CodeAssignStatement)prop.SetStatements[0];
+            var target = ((CodeIndexerExpression)assign.Left).TargetObject as CodePropertyReferenceExpression;
+            Assert.AreEqual("Parameters", target?.PropertyName, "Request property should still use Parameters collection.");
+        }
+
+        [TestMethod]
+        public void ProcessMessage_MakeResponseMessagesEditableFalse_ShouldNotModifyProperties()
+        {
+            var code = BuildCodeUnit(_responseType);
+
+            _sut.MakeResponseActionsEditable = false;
+            _sut.CustomizeCodeDom(code, null!);
+
+            var prop = _responseType.Members.OfType<CodeMemberProperty>().First();
+            // When MakeResponseActionsEditable is false, setter should remain as-is (using Parameters)
+            Assert.AreEqual(1, prop.SetStatements.Count);
+            var assign = (CodeAssignStatement)prop.SetStatements[0];
+            var target = ((CodeIndexerExpression)assign.Left).TargetObject as CodePropertyReferenceExpression;
+            Assert.AreEqual("Parameters", target?.PropertyName, "When disabled, setter should not be modified.");
+        }
+
         private static CodeCompileUnit BuildCodeUnit(CodeTypeDeclaration type)
         {
             var code = new CodeCompileUnit();
@@ -51,18 +133,16 @@ namespace DLaB.ModelBuilderExtensions.Tests.Message
                     new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), "Results"),
                     "Contains",
                     new CodePrimitiveExpression(fieldKey)),
-                new CodeStatement[]
-                {
+                [
                     new CodeMethodReturnStatement(
                         new CodeCastExpression(typeof(string),
                             new CodeArrayIndexerExpression(
                                 new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), "Results"),
                                 new CodePrimitiveExpression(fieldKey))))
-                },
-                new CodeStatement[]
-                {
+                ],
+                [
                     new CodeMethodReturnStatement(new CodePrimitiveExpression(null))
-                }));
+                ]));
 
             // Wrong SET: this.Parameters["fieldKey"] = value  (bug — should be this.Results)
             prop.SetStatements.Add(new CodeAssignStatement(
@@ -88,18 +168,16 @@ namespace DLaB.ModelBuilderExtensions.Tests.Message
                     new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), "Results"),
                     "Contains",
                     new CodePrimitiveExpression(fieldKey)),
-                new CodeStatement[]
-                {
+                [
                     new CodeMethodReturnStatement(
                         new CodeCastExpression(typeof(string),
                             new CodeArrayIndexerExpression(
                                 new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), "Results"),
                                 new CodePrimitiveExpression(fieldKey))))
-                },
-                new CodeStatement[]
-                {
+                ],
+                [
                     new CodeMethodReturnStatement(new CodePrimitiveExpression(null))
-                }));
+                ]));
 
             return prop;
         }
@@ -124,85 +202,5 @@ namespace DLaB.ModelBuilderExtensions.Tests.Message
             return target == "Results";
         }
 
-        [TestMethod]
-        public void ProcessMessage_ResponseProperty_WithParametersSetter_ShouldBeReplacedWithResultsSetter()
-        {
-            var responseType = CreateResponseClass();
-            responseType.Members.Add(CreateOutputPropertyWithParametersSetter("OutputParam", "Base64PNGImage"));
-            var code = BuildCodeUnit(responseType);
-
-            var sut = new CustomizeCodeDomService(null, new DLaBModelBuilderSettings());
-            sut.MakeResponseActionsEditable = true;
-            sut.CustomizeCodeDom(code, null);
-
-            var prop = responseType.Members.OfType<CodeMemberProperty>().First();
-            Assert.IsTrue(SetterUsesResults(prop), "SET accessor should reference this.Results, not this.Parameters.");
-            Assert.AreEqual(1, prop.SetStatements.Count, "Should have exactly one set statement.");
-        }
-
-        [TestMethod]
-        public void ProcessMessage_ResponseProperty_WithoutSetter_ShouldAddResultsSetter()
-        {
-            var responseType = CreateResponseClass();
-            responseType.Members.Add(CreateOutputPropertyWithNoSetter("OutputParam", "Base64PNGImage"));
-            var code = BuildCodeUnit(responseType);
-
-            var sut = new CustomizeCodeDomService(null, new DLaBModelBuilderSettings());
-            sut.MakeResponseActionsEditable = true;
-            sut.CustomizeCodeDom(code, null);
-
-            var prop = responseType.Members.OfType<CodeMemberProperty>().First();
-            Assert.IsTrue(SetterUsesResults(prop), "SET accessor should reference this.Results.");
-            Assert.AreEqual(1, prop.SetStatements.Count, "Should have exactly one set statement.");
-        }
-
-        [TestMethod]
-        public void ProcessMessage_RequestProperty_WithParametersSetter_ShouldNotBeModified()
-        {
-            var requestType = CreateRequestClass();
-            var inputProp = new CodeMemberProperty
-            {
-                Name = "InputParam",
-                Type = new CodeTypeReference(typeof(string)),
-                Attributes = MemberAttributes.Public
-            };
-            // Request property correctly uses Parameters
-            inputProp.SetStatements.Add(new CodeAssignStatement(
-                new CodeIndexerExpression(
-                    new CodePropertyReferenceExpression(new CodeThisReferenceExpression(), "Parameters"),
-                    new CodePrimitiveExpression("InputParam")),
-                new CodePropertySetValueReferenceExpression()));
-            requestType.Members.Add(inputProp);
-            var code = BuildCodeUnit(requestType);
-
-            var sut = new CustomizeCodeDomService(null, new DLaBModelBuilderSettings());
-            sut.MakeResponseActionsEditable = true;
-            sut.CustomizeCodeDom(code, null);
-
-            var prop = requestType.Members.OfType<CodeMemberProperty>().First();
-            Assert.AreEqual(1, prop.SetStatements.Count, "Request property setter should remain unchanged.");
-            var assign = (CodeAssignStatement)prop.SetStatements[0];
-            var target = ((CodeIndexerExpression)assign.Left).TargetObject as CodePropertyReferenceExpression;
-            Assert.AreEqual("Parameters", target?.PropertyName, "Request property should still use Parameters collection.");
-        }
-
-        [TestMethod]
-        public void ProcessMessage_MakeResponseMessagesEditableFalse_ShouldNotModifyProperties()
-        {
-            var responseType = CreateResponseClass();
-            responseType.Members.Add(CreateOutputPropertyWithParametersSetter("OutputParam", "Base64PNGImage"));
-            var code = BuildCodeUnit(responseType);
-
-            var sut = new CustomizeCodeDomService(null, new DLaBModelBuilderSettings());
-            sut.MakeResponseActionsEditable = false;
-            sut.CustomizeCodeDom(code, null);
-
-            var prop = responseType.Members.OfType<CodeMemberProperty>().First();
-            // When MakeResponseActionsEditable is false, setter should remain as-is (using Parameters)
-            Assert.AreEqual(1, prop.SetStatements.Count);
-            var assign = (CodeAssignStatement)prop.SetStatements[0];
-            var target = ((CodeIndexerExpression)assign.Left).TargetObject as CodePropertyReferenceExpression;
-            Assert.AreEqual("Parameters", target?.PropertyName, "When disabled, setter should not be modified.");
-        }
     }
 }
