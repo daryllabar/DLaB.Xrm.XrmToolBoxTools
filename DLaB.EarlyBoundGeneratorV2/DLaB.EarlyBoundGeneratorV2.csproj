@@ -17,9 +17,9 @@
     <Company>D La B</Company>
     <Product>DLaB.EarlyBoundGeneratorV2</Product>
     <Copyright>Copyright © 2023</Copyright>
-    <Version>2.2026.4.21</Version>
-    <AssemblyVersion>2.2026.4.21</AssemblyVersion>
-    <FileVersion>2.2026.4.21</FileVersion>
+    <Version>2.2026.4.22</Version>
+    <AssemblyVersion>2.2026.4.22</AssemblyVersion>
+    <FileVersion>2.2026.4.22</FileVersion>
     <NeutralLanguage>en-US</NeutralLanguage>
     <!-- COM Visibility -->
     <ComVisible>false</ComVisible>
