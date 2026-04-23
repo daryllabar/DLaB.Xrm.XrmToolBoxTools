@@ -10,7 +10,6 @@
     <Deterministic>true</Deterministic>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <LangVersion>13</LangVersion>
-    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
     <Title>DLaB.XrmToolBoxCommon</Title>
     <Product>DLaB.XrmToolBoxCommon</Product>
     <Copyright>Copyright © 2023</Copyright>
@@ -69,7 +68,6 @@
     <PackageReference Include="System.Memory" Version="4.5.5" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
-    <PackageReference Include="System.Resources.Extensions" Version="9.0.0" />
     <PackageReference Include="System.Runtime" Version="4.3.1" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
     <PackageReference Include="System.Security.AccessControl" Version="6.0.0" />
