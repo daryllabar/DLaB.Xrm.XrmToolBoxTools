@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            global::System.Resources.ResourceManager resources = new global::System.Resources.ResourceManager(this.GetType().Assembly.GetName().Name + ".Properties.CommonResources", this.GetType().Assembly);
+            global::System.Resources.ResourceManager resources = new global::System.Resources.ResourceManager(typeof(DialogBase).Assembly.GetName().Name + ".Properties.CommonResources", typeof(DialogBase).Assembly);
             this.SuspendLayout();
             // 
             // DialogBase
