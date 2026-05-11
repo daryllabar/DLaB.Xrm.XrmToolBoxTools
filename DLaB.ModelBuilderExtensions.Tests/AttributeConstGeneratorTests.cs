@@ -1,4 +1,6 @@
-﻿using DLaB.ModelBuilderExtensions.Entity;
+using DLaB.ModelBuilderExtensions.Entity;
+using FakeItEasy;
+using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.CodeDom;
@@ -12,7 +14,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
         [TestMethod]
         public void CustomizeCodeDom_ShouldReplaceFieldsCommentTypo_InConstClassSnippet()
         {
-            var sut = new AttributeConstGenerator(null!, new DLaBModelBuilderSettings
+            var sut = new AttributeConstGenerator(A.Fake<ICustomizeCodeDomService>(), new DLaBModelBuilderSettings
             {
                 EmitFieldsClasses = true
             });
