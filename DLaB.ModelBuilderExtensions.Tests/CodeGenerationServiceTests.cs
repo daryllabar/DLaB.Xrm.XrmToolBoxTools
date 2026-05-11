@@ -17,6 +17,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
                 var missingFile = Path.Combine(tmp.Name, "Missing.cs");
                 File.WriteAllText(typoFile, "/// Available fields, a the time of codegen, for the account entity");
                 File.WriteAllText(untouchedFile, "/// Available fields, at the time of codegen, for the contact entity");
+                Assert.IsFalse(File.Exists(missingFile));
 
                 var method = typeof(CodeGenerationService).GetMethod("CorrectGeneratedText", BindingFlags.NonPublic | BindingFlags.Static);
                 Assert.IsNotNull(method);
@@ -27,6 +28,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
                 Assert.IsTrue(typoContents.Contains("Available fields, at the time of codegen, for the account entity"));
                 Assert.IsFalse(typoContents.Contains("Available fields, a the time of codegen, for the account entity"));
                 Assert.AreEqual("/// Available fields, at the time of codegen, for the contact entity", File.ReadAllText(untouchedFile));
+                Assert.IsFalse(File.Exists(missingFile));
             }
         }
     }
