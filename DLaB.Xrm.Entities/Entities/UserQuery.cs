@@ -31,7 +31,7 @@ namespace DLaB.Xrm.Entities
     {
 
         /// <summary>
-        /// Available fields, at the time of codegen, for the userquery entity
+        /// Available fields, a the time of codegen, for the userquery entity
         /// </summary>
         public partial class Fields
         {

@@ -126,7 +126,24 @@ namespace DLaB.ModelBuilderExtensions
             CleanupLocalOptionSets(hack, timePriorToFileGeneration);
             ConditionallyCombineFiles(language, hack);
             ConditionallySplitMessageFiles(language, hack);
+            CorrectGeneratedText(hack.FilesWritten.Keys);
             UpdateProjectFile(hack.FilesWritten.Keys);
+        }
+
+        private static void CorrectGeneratedText(IEnumerable<string> filePaths)
+        {
+            const string typo = "Available fields, a the time of codegen, for the ";
+            const string corrected = "Available fields, at the time of codegen, for the ";
+
+            foreach (var path in filePaths.Where(File.Exists))
+            {
+                var contents = File.ReadAllText(path);
+                var updated = contents.Replace(typo, corrected);
+                if (!string.Equals(contents, updated, StringComparison.Ordinal))
+                {
+                    File.WriteAllText(path, updated);
+                }
+            }
         }
 
         private void ConditionallySplitMessageFiles(string language, PacModelBuilderCodeGenHack hack)
