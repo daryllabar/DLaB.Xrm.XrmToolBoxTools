@@ -153,6 +153,11 @@ namespace DLaB.ModelBuilderExtensions
             };
 
             filePath = filePath.RootPath();
+            var directory = Path.GetDirectoryName(filePath);
+            if (!string.IsNullOrWhiteSpace(directory) && !Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
             Console.WriteLine("[**** Writing Metadata to File {0} ****]", filePath);
             File.WriteAllText(filePath, Serialize(localMetadata,true));
             Console.WriteLine("[**** Finished Writing Metadata ****]", filePath);

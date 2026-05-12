@@ -166,6 +166,12 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         /// </summary>
         [XmlIgnore]
         [Browsable(false)]
+        public string SettingsFilePath { get; set; }
+        /// <summary>
+        /// Set during Execution
+        /// </summary>
+        [XmlIgnore]
+        [Browsable(false)]
         public bool SupportsActions { get; set; }
 
         /// <summary>

@@ -360,6 +360,7 @@ Please consider clicking the save button in the top right to save the settings w
             Settings.RootPath = string.IsNullOrWhiteSpace(SettingsMap.OutputRelativeDirectory)
                 ? settingsDirectory
                 : SettingsMap.OutputRelativeDirectory.RootPath(settingsDirectory); ;
+            Settings.SettingsFilePath = ConnectionSettings.FullSettingsPath;
 
             var defaultConfig = EarlyBoundGeneratorConfig.GetDefault();
             defaultConfig.ExtensionConfig.XrmToolBoxPluginPath = Paths.PluginsPath;
