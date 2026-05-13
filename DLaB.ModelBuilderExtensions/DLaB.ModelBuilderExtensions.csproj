@@ -14,9 +14,9 @@
     <Company>D La B</Company>
     <Product>DLaB.ModelBuilderExtensions</Product>
     <Copyright>Copyright © 2014</Copyright>
-    <Version>2.2026.5.5</Version>
-    <AssemblyVersion>2.2026.5.5</AssemblyVersion>
-    <FileVersion>2.2026.5.5</FileVersion>
+    <Version>2.2026.5.12</Version>
+    <AssemblyVersion>2.2026.5.12</AssemblyVersion>
+    <FileVersion>2.2026.5.12</FileVersion>
     <ComVisible>false</ComVisible>
     <Guid>68d9990d-f7cd-43e4-9272-5db114713c1c</Guid>
   </PropertyGroup>
