@@ -9,7 +9,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
     public class DLaBModelBuilderSettingsTests
     {
         [TestMethod]
-        public void DLaBModelBuilder_ShouldUseLogsPathForSerializedMetadataByDefault()
+        public void SerializedMetadataRelativeFilePath_ShouldDefaultToLogsPath()
         {
             var settings = new DLaBModelBuilderSettings();
 
