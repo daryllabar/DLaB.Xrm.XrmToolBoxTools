@@ -36,6 +36,17 @@ namespace DLaB.ModelBuilderExtensions.Tests
             Assert.AreEqual(Path.Combine("Logs", "EBGV2.Metadata.xml"), config.ExtensionConfig.SerializedMetadataRelativeFilePath);
         }
 
+        [TestMethod]
+        public void SetPopulatedValues_ShouldPreserveSerializedMetadataRelativeFilePath()
+        {
+            var config = EarlyBoundGeneratorConfig.GetDefault();
+            config.ExtensionConfig.SerializedMetadataRelativeFilePath = @"Custom\Metadata.xml";
+
+            config.ExtensionConfig.SetPopulatedValues(new DLaB.EarlyBoundGeneratorV2.Settings.POCO.ExtensionConfig());
+
+            Assert.AreEqual(@"Custom\Metadata.xml", config.ExtensionConfig.SerializedMetadataRelativeFilePath);
+        }
+
         private static EarlyBoundGeneratorConfig CreateConfig()
         {
             var config = EarlyBoundGeneratorConfig.GetDefault();
