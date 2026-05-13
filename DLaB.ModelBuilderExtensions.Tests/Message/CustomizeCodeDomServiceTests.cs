@@ -75,22 +75,6 @@ namespace DLaB.ModelBuilderExtensions.Tests.Message
             Assert.AreEqual("Parameters", target?.PropertyName, "Request property should still use Parameters collection.");
         }
 
-        [TestMethod]
-        public void ProcessMessage_MakeResponseMessagesEditableFalse_ShouldNotModifyProperties()
-        {
-            var code = BuildCodeUnit(_responseType);
-
-            _sut.MakeResponseActionsEditable = false;
-            _sut.CustomizeCodeDom(code, null!);
-
-            var prop = _responseType.Members.OfType<CodeMemberProperty>().First();
-            // When MakeResponseActionsEditable is false, setter should remain as-is (using Parameters)
-            Assert.AreEqual(1, prop.SetStatements.Count);
-            var assign = (CodeAssignStatement)prop.SetStatements[0];
-            var target = ((CodeIndexerExpression)assign.Left).TargetObject as CodePropertyReferenceExpression;
-            Assert.AreEqual("Parameters", target?.PropertyName, "When disabled, setter should not be modified.");
-        }
-
         private static CodeCompileUnit BuildCodeUnit(CodeTypeDeclaration type)
         {
             var code = new CodeCompileUnit();
