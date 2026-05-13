@@ -8,6 +8,9 @@ namespace DLaB.ModelBuilderExtensions.Entity
 {
     public class AttributeConstGenerator : AttributeConstGeneratorBase
     {
+        private const string Typo = "Available fields, a the time of codegen, for the ";
+        private const string Corrected = "Available fields, at the time of codegen, for the ";
+
         public override bool GenerateAttributeNameConsts { get => Settings.EmitFieldsClasses; set => Settings.EmitFieldsClasses = value; }
 
         public AttributeConstGenerator(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
@@ -29,7 +32,9 @@ namespace DLaB.ModelBuilderExtensions.Entity
                 }
                 var collisionString = NamingService.PropertyCollisionPostFix + " = \"";
                 var checkForMemberReplacement = constsClass.Text.Contains(collisionString);
-                var lines = constsClass.Text.Replace($"public static class {OobConstsClassName}", $"public static partial class {AttributeConstsClassName}")
+                var lines = constsClass.Text
+                    .Replace(Typo, Corrected)
+                    .Replace($"public static class {OobConstsClassName}", $"public static partial class {AttributeConstsClassName}")
                     .Replace($"\" +{Environment.NewLine}\t\t\"","")
                     .Split(new [] {
                     Environment.NewLine
