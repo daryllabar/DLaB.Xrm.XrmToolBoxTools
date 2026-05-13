@@ -257,7 +257,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         public bool ReplaceOptionSetPropertiesWithEnum { get; set; }
         /// <summary>
         /// For Debugging Only!
-        /// Relative path of the serialized metadata file. Defaults to the XrmToolBox logs folder when not populated.
+        /// Relative path of the serialized metadata file. Defaults to the XrmToolBox logs folder and can be customized.
         /// </summary>
         public string SerializedMetadataRelativeFilePath { get; set; }
         /// <summary>
