@@ -41,7 +41,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
 
         [Category("7 - Debug")]
         [DisplayName("Serialize Metadata")]
-        [Description("For Debugging Only!  Serializes the Metadata to a local file on disk.  By default, this writes to a file named \"metadata.xml\" in the directory of the XrmToolBox.exe file. (Generates a 200-400+ mb xml file).")]
+        [Description("For Debugging Only!  Serializes the Metadata to a local file on disk.  By default, this writes to \"EBGV2.Metadata.xml\" in the XrmToolBox logs directory. (Generates a 200-400+ mb xml file).")]
         public bool SerializeMetadata
         {
             get => Config.ExtensionConfig.SerializeMetadata;
