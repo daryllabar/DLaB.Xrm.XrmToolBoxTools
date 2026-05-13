@@ -202,29 +202,35 @@ namespace DLaB.ModelBuilderExtensions
         private void ProcessMessage(CodeTypeDeclaration message)
         {
             var orgResponse = new CodeTypeReference(typeof(Microsoft.Xrm.Sdk.OrganizationResponse)).BaseType;
-            if (MakeResponseActionsEditable && message.BaseTypes.OfType<CodeTypeReference>().Any(r => r.BaseType == orgResponse))
+            if (!message.BaseTypes.OfType<CodeTypeReference>().Any(r => r.BaseType == orgResponse))
             {
-                foreach (var prop in from CodeTypeMember member in message.Members
-                         let propDom = member as CodeMemberProperty
-                         where propDom != null && (!propDom.HasSet || ResponseSetterUsesParametersCollection(propDom))
-                         select propDom)
+                return;
+            }
+            foreach (var prop in from CodeTypeMember member in message.Members
+                     let propDom = member as CodeMemberProperty
+                     where propDom != null && (!propDom.HasSet || ResponseSetterUsesParametersCollection(propDom))
+                     select propDom)
+            {
+                var resultsName = prop.Name;
+                if (prop.HasGet)
                 {
-                    var resultsName = prop.Name;
-                    if (prop.HasGet)
+                    // Theoretically this should be a call to the NamingService.GetNameForResponseField(response, field, serviceProvider), but the parameters aren't readily available, so this is easier.
+                    try
                     {
-                        // Theoretically this should be a call to the NamingService.GetNameForResponseField(response, field, serviceProvider), but the parameters aren't readily available, so this is easier.
-                        try
-                        {
-                            resultsName = ((CodePrimitiveExpression)((CodeMethodInvokeExpression)((CodeConditionStatement)prop.GetStatements[0]).Condition).Parameters[0]).Value.ToString();
-                        }
-                        catch (Exception ex)
-                        {
-                            Trace.TraceError(ex.Message + Environment.NewLine + Environment.NewLine + ex);
-                        }
+                        resultsName = ((CodePrimitiveExpression)((CodeMethodInvokeExpression)((CodeConditionStatement)prop.GetStatements[0]).Condition).Parameters[0]).Value.ToString();
                     }
+                    catch (Exception ex)
+                    {
+                        Trace.TraceError(ex.Message + Environment.NewLine + Environment.NewLine + ex);
+                    }
+                }
+
+                if (MakeResponseActionsEditable || prop.HasSet)
+                {
+                    // Normally we don't need to recreate this set, but there is a bug where the generated code references this.Parameters[...] instead of this.Results[...], so we need to recreate the set statements to fix that. See #603
+                    prop.SetStatements.Clear();
                     var thisMember = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), "Results");
                     var indexOf = new CodeArrayIndexerExpression(thisMember, new CodePrimitiveExpression(resultsName));
-                    prop.SetStatements.Clear();
                     prop.SetStatements.Add(new CodeAssignStatement(indexOf, new CodePropertySetValueReferenceExpression()));
                 }
             }
