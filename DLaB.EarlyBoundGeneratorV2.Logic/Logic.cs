@@ -205,7 +205,8 @@ namespace DLaB.EarlyBoundGeneratorV2
                 return;
             }
 
-            var directory = Path.GetDirectoryName(extensionConfig.SerializedMetadataRelativeFilePath.RootPath());
+            var serializedMetadataPath = extensionConfig.SerializedMetadataRelativeFilePath.RootPath();
+            var directory = Path.GetDirectoryName(serializedMetadataPath);
             if (!string.IsNullOrWhiteSpace(directory))
             {
                 Directory.CreateDirectory(directory);
