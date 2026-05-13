@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json.Serialization;
@@ -16,7 +17,7 @@ namespace DLaB.ModelBuilderExtensions
 #if NETFRAMEWORK
             Path.Combine(Paths.LogsPath, "EBGV2.Metadata.xml");
 #else
-            Path.Combine("Logs", "EBGV2.Metadata.xml");
+            Path.Combine(AppContext.BaseDirectory, "Logs", "EBGV2.Metadata.xml");
 #endif
 
         [JsonPropertyName("messageLogicalFieldName")]
