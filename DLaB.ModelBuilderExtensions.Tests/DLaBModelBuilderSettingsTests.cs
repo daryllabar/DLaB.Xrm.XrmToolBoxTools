@@ -1,21 +1,11 @@
 using System.Collections.Generic;
-using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using XrmToolBox.Extensibility;
 
 namespace DLaB.ModelBuilderExtensions.Tests
 {
     [TestClass]
     public class DLaBModelBuilderSettingsTests
     {
-        [TestMethod]
-        public void SerializedMetadataRelativeFilePath_ShouldDefaultToLogsPath()
-        {
-            var settings = new DLaBModelBuilderSettings();
-
-            Assert.AreEqual(Path.Combine(Paths.LogsPath, "EBGV2.Metadata.xml"), settings.DLaBModelBuilder.SerializedMetadataRelativeFilePath);
-        }
-
         [TestMethod]
         public void ProcessFlags_ShouldNotCopyNullValues()
         {

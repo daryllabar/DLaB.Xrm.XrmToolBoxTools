@@ -1,10 +1,5 @@
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text.Json.Serialization;
-#if NETFRAMEWORK
-using XrmToolBox.Extensibility;
-#endif
 
 namespace DLaB.ModelBuilderExtensions
 {
@@ -13,13 +8,6 @@ namespace DLaB.ModelBuilderExtensions
     /// </summary>
     public class DLaBModelBuilderFlags
     {
-        private static readonly string DefaultSerializedMetadataRelativeFilePath =
-#if NETFRAMEWORK
-            Path.Combine(Paths.LogsPath, "EBGV2.Metadata.xml");
-#else
-            Path.Combine(AppContext.BaseDirectory, "Logs", "EBGV2.Metadata.xml");
-#endif
-
         [JsonPropertyName("messageLogicalFieldName")]
         public string MessageLogicalFieldName { get; set; } = "ActionLogicalName";
 
@@ -68,7 +56,7 @@ namespace DLaB.ModelBuilderExtensions
         public string RelationshipConstsClassName { get; set; } = "Relationships";
 
         [JsonPropertyName("serializedMetadataRelativeFilePath")]
-        public string SerializedMetadataRelativeFilePath { get; set; } = DefaultSerializedMetadataRelativeFilePath;
+        public string SerializedMetadataRelativeFilePath { get; set; } = "metadata.xml";
 
         /// <summary>
         /// Fix for https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools/issues/464

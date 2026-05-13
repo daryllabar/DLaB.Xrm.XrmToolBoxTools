@@ -25,6 +25,17 @@ namespace DLaB.ModelBuilderExtensions.Tests
             }
         }
 
+        [TestMethod]
+        public void SetPopulatedValues_ShouldDefaultSerializedMetadataRelativeFilePath()
+        {
+            var config = EarlyBoundGeneratorConfig.GetDefault();
+            config.ExtensionConfig.SerializedMetadataRelativeFilePath = null;
+
+            config.ExtensionConfig.SetPopulatedValues(new DLaB.EarlyBoundGeneratorV2.Settings.POCO.ExtensionConfig());
+
+            Assert.AreEqual(Path.Combine("Logs", "EBGV2.Metadata.xml"), config.ExtensionConfig.SerializedMetadataRelativeFilePath);
+        }
+
         private static EarlyBoundGeneratorConfig CreateConfig()
         {
             var config = EarlyBoundGeneratorConfig.GetDefault();
