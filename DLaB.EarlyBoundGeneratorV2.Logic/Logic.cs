@@ -131,6 +131,7 @@ namespace DLaB.EarlyBoundGeneratorV2
         private static void UpdateBuilderSettingsJson(EarlyBoundGeneratorConfig earlyBoundGeneratorConfig, bool allowRetry)
         {
             var path = earlyBoundGeneratorConfig.SettingsTemplatePath;
+            CreateSerializedMetadataDirectory(earlyBoundGeneratorConfig.ExtensionConfig);
 
             if (!Directory.Exists(Path.GetDirectoryName(path)))
             {
@@ -194,6 +195,20 @@ namespace DLaB.EarlyBoundGeneratorV2
                 File.Delete(path);
                 File.WriteAllText(path, @"{}");
                 UpdateBuilderSettingsJson(earlyBoundGeneratorConfig, false);
+            }
+        }
+
+        private static void CreateSerializedMetadataDirectory(ExtensionConfig extensionConfig)
+        {
+            if (!extensionConfig.SerializeMetadata && !extensionConfig.ReadSerializedMetadata)
+            {
+                return;
+            }
+
+            var directory = Path.GetDirectoryName(extensionConfig.SerializedMetadataRelativeFilePath.RootPath());
+            if (!string.IsNullOrWhiteSpace(directory))
+            {
+                Directory.CreateDirectory(directory);
             }
         }
 
