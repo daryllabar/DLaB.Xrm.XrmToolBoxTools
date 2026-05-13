@@ -14,7 +14,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
     [Serializable]
     public class ExtensionConfig
     {
-        private static readonly string DefaultSerializedMetadataRelativeFilePath = Path.Combine("Logs", "EBGV2.Metadata.xml");
+        public static readonly string DefaultSerializedMetadataRelativeFilePath = Path.Combine("Logs", "EBGV2.Metadata.xml");
 
         /// <summary>
         /// Pipe Delimited String containing the prefixes of Actions to be generated.

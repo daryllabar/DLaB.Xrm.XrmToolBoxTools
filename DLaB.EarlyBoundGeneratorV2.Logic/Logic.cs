@@ -131,7 +131,6 @@ namespace DLaB.EarlyBoundGeneratorV2
         private static void UpdateBuilderSettingsJson(EarlyBoundGeneratorConfig earlyBoundGeneratorConfig, bool allowRetry)
         {
             var path = earlyBoundGeneratorConfig.SettingsTemplatePath;
-            CreateSerializedMetadataDirectory(earlyBoundGeneratorConfig.ExtensionConfig);
 
             if (!Directory.Exists(Path.GetDirectoryName(path)))
             {
@@ -142,6 +141,8 @@ namespace DLaB.EarlyBoundGeneratorV2
                 }
                 // else is it rooted?  When does GetDirectoryName return null?
             }
+
+            CreateSerializedMetadataDirectory(earlyBoundGeneratorConfig.ExtensionConfig);
 
             if (!File.Exists(path))
             {
