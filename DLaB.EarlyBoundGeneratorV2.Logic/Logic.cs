@@ -206,12 +206,13 @@ namespace DLaB.EarlyBoundGeneratorV2
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(extensionConfig.SerializedMetadataRelativeFilePath))
+            var serializedMetadataRelativeFilePath = extensionConfig.SerializedMetadataRelativeFilePath;
+            if (string.IsNullOrWhiteSpace(serializedMetadataRelativeFilePath))
             {
                 return;
             }
 
-            var serializedMetadataPath = extensionConfig.SerializedMetadataRelativeFilePath.RootPath();
+            var serializedMetadataPath = serializedMetadataRelativeFilePath.RootPath();
             var directory = Path.GetDirectoryName(serializedMetadataPath);
             if (!string.IsNullOrWhiteSpace(directory))
             {
