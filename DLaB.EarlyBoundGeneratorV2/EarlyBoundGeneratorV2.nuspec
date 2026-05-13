@@ -12,6 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
 		<releaseNotes>
+Update Name and folder while writing metadata to xml file #604
 Fix for Incorrect English #600
 
 V2.2026.5.5
