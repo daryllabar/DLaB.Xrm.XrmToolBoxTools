@@ -25,16 +25,23 @@ namespace DLaB.ModelBuilderExtensions.Entity
         {
             foreach (var entity in codeUnit.GetEntityTypes())
             {
-                var obsoleteProperties = new HashSet<string>(
-                    entity.GetMembers<CodeMemberProperty>()
-                        .Where(p => p.CustomAttributes.Cast<CodeAttributeDeclaration>().Any(a => IsObsoleteAttribute(a.Name)))
-                        .Select(p => p.Name));
+                var obsoleteProperties = (from p in entity.GetMembers<CodeMemberProperty>()
+                                          let obsoleteAttribute = p.CustomAttributes.OfType<CodeAttributeDeclaration>()
+                                              .FirstOrDefault(a => IsObsoleteAttribute(a.Name))
+                                          where obsoleteAttribute != null
+                                          select new
+                                          {
+                                              p.Name,
+                                              Message = GetObsoleteMessage(obsoleteAttribute)
+                                          })
+                    .ToDictionary(p => p.Name, p => p.Message);
 
                 var constsClass = entity.GetMembers<CodeSnippetTypeMember>().FirstOrDefault(s => s.Text.Contains($"public partial class {OobConstsClassName}"));
                 if (constsClass == null)
                 {
                     continue;
                 }
+
                 var collisionString = NamingService.PropertyCollisionPostFix + " = \"";
                 var checkForMemberReplacement = constsClass.Text.Contains(collisionString);
                 var lines = constsClass.Text
@@ -61,6 +68,17 @@ namespace DLaB.ModelBuilderExtensions.Entity
             }
         }
 
+        private static string GetObsoleteMessage(CodeAttributeDeclaration obsoleteAttribute)
+        {
+            const string defaultMessage = "This attribute is deprecated.";
+            if (obsoleteAttribute.Arguments.Count == 0 || !(obsoleteAttribute.Arguments[0].Value is CodePrimitiveExpression expression))
+            {
+                return defaultMessage;
+            }
+
+            return expression.Value as string ?? defaultMessage;
+        }
+
         private static bool IsObsoleteAttribute(string name)
         {
             return string.Equals(name, "System.Obsolete", StringComparison.Ordinal)
@@ -69,41 +87,58 @@ namespace DLaB.ModelBuilderExtensions.Entity
                    || string.Equals(name, "ObsoleteAttribute", StringComparison.Ordinal);
         }
 
-        private static void AddObsoleteAttributesToFieldConstants(List<string> lines, HashSet<string> obsoleteProperties)
+        private static void AddObsoleteAttributesToFieldConstants(List<string> lines, IDictionary<string, string> obsoleteProperties)
         {
             if (!obsoleteProperties.Any())
             {
                 return;
             }
 
-            const string constPrefix = "\t\t\tpublic const string ";
+            const string constPrefix = "public const string ";
             for (var i = 0; i < lines.Count; i++)
             {
-                if (!lines[i].StartsWith(constPrefix, StringComparison.Ordinal))
+                var trimmedLine = lines[i].TrimStart();
+                if (!trimmedLine.StartsWith(constPrefix, StringComparison.Ordinal))
                 {
                     continue;
                 }
 
-                var end = lines[i].IndexOf(" = ", constPrefix.Length, StringComparison.Ordinal);
+                var end = trimmedLine.IndexOf(" = ", constPrefix.Length, StringComparison.Ordinal);
                 if (end < 0)
                 {
                     continue;
                 }
 
-                var fieldName = lines[i].Substring(constPrefix.Length, end - constPrefix.Length);
-                if (!obsoleteProperties.Contains(fieldName))
+                var fieldName = trimmedLine.Substring(constPrefix.Length, end - constPrefix.Length);
+                if (!obsoleteProperties.TryGetValue(fieldName, out var message))
                 {
                     continue;
                 }
 
-                if (i > 0 && lines[i - 1].IndexOf("[System.Obsolete", StringComparison.Ordinal) >= 0)
+                var previousLine = i > 0 ? lines[i - 1].Trim() : string.Empty;
+                if (string.IsNullOrWhiteSpace(previousLine) && i > 1)
+                {
+                    previousLine = lines[i - 2].Trim();
+                }
+                if (previousLine.StartsWith("[System.Obsolete", StringComparison.Ordinal))
                 {
                     continue;
                 }
 
-                lines.Insert(i, "\t\t\t[System.Obsolete(\"This attribute is deprecated.\")]");
+                var indent = lines[i].Substring(0, lines[i].Length - trimmedLine.Length);
+                lines.Insert(i, $"{indent}[System.Obsolete(\"{EscapeObsoleteMessage(message)}\")]");
                 i++;
             }
+        }
+
+        private static string EscapeObsoleteMessage(string message)
+        {
+            return message
+                .Replace("\\", "\\\\")
+                .Replace("\"", "\\\"")
+                .Replace("\r", "\\r")
+                .Replace("\n", "\\n")
+                .Replace("\t", "\\t");
         }
     }
 }

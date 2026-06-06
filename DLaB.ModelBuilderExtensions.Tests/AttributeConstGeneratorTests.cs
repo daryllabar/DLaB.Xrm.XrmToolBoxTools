@@ -49,6 +49,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
         [TestMethod]
         public void CustomizeCodeDom_ShouldAddObsoleteAttributeToFieldConst_WhenPropertyIsObsolete()
         {
+            const string message = "Deprecated for test.";
             var sut = new AttributeConstGenerator(A.Fake<ICustomizeCodeDomService>(), new DLaBModelBuilderSettings
             {
                 EmitFieldsClasses = true
@@ -71,7 +72,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
                 HasSet = true
             });
             entity.GetMembers<CodeMemberProperty>().Single().CustomAttributes.Add(
-                new CodeAttributeDeclaration("System.Obsolete", new CodeAttributeArgument(new CodePrimitiveExpression("This attribute is deprecated."))));
+                new CodeAttributeDeclaration("System.Obsolete", new CodeAttributeArgument(new CodePrimitiveExpression(message))));
             entity.Members.Add(new CodeSnippetTypeMember(
                 """
                 		public partial class Fields
@@ -86,8 +87,8 @@ namespace DLaB.ModelBuilderExtensions.Tests
             sut.CustomizeCodeDom(code, null!);
 
             var fieldsClass = entity.Members.OfType<CodeSnippetTypeMember>().First(m => m.Text.Contains("public partial class Fields"));
-            Assert.IsTrue(fieldsClass.Text.Contains("[System.Obsolete(\"This attribute is deprecated.\")]" + System.Environment.NewLine + "\t\t\tpublic const string DeprecatedField = \"deprecatedfield\";"));
-            Assert.IsFalse(fieldsClass.Text.Contains("[System.Obsolete(\"This attribute is deprecated.\")]" + System.Environment.NewLine + "\t\t\tpublic const string ActiveField = \"activefield\";"));
+            Assert.IsTrue(fieldsClass.Text.Contains($"[System.Obsolete(\"{message}\")]" + System.Environment.NewLine + "\t\t\tpublic const string DeprecatedField = \"deprecatedfield\";"));
+            Assert.IsFalse(fieldsClass.Text.Contains($"[System.Obsolete(\"{message}\")]" + System.Environment.NewLine + "\t\t\tpublic const string ActiveField = \"activefield\";"));
         }
     }
 }
