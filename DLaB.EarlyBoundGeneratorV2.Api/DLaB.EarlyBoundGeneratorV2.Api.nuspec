@@ -2,7 +2,7 @@
 <package >
 	<metadata>
 		<id>DLaB.Xrm.EarlyBoundGeneratorV2.Api</id>
-		<version>2.2026.5.12</version>
+		<version>2.2026.6.4</version>
 		<title>Early Bound Generator V2 Api</title>
 		<authors>Daryl LaBar</authors>
 		<owners>Daryl LaBar</owners>
@@ -11,7 +11,10 @@
 		<projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses ModelBuilder from the PAC.</description>
-		<releaseNotes>V2.2026.5.12
+		<releaseNotes>V2.2026.6.4
+Added support for .NET 10.0
+
+V2.2026.5.12
 Custom API message response set fails #603
 Update Name and folder while writing metadata to xml file #604
 Fix for Incorrect English #600
@@ -77,13 +80,17 @@ Fix for msdynmkt_PersonalizationDynamicTextAiRequest does not generate properly 
 		</contentFiles>
 		<dependencies>
 			<group targetFramework=".NETFramework4.8">
-				<dependency id="Microsoft.PowerPlatform.Dataverse.ModelBuilderLib" version="2.0.6" />
+				<dependency id="Microsoft.PowerPlatform.Dataverse.ModelBuilderLib" version="2.0.16" />
+			</group>
+			<group targetFramework="net10.0">
+				<dependency id="Microsoft.PowerPlatform.Dataverse.ModelBuilderLib" version="2.0.16" />
 			</group>
 		</dependencies>
 	</metadata>
 	<files>
 		<!-- lib -->
 		<file src="bin\Release\net48\DLaB.*.*" target="lib\net48" />
+		<file src="bin\Release\net10.0\DLaB.*.*" target="lib\net10.0" />
 		<!-- content -->
 		<file src="bin\Release\net48\DLaB.Dictionary.txt" target="content\bin\DLaB.EarlyBoundGeneratorV2\DLaB.Dictionary.txt" />
 		<file src="bin\Release\net48\alphabets\*.*" target="content\bin\DLaB.EarlyBoundGeneratorV2\alphabets" />
