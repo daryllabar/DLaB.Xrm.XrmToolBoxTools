@@ -16,7 +16,6 @@ namespace DLaB.ModelBuilderExtensions.Entity
     {
         public bool AddDebuggerNonUserCode { get => DLaBSettings.AddDebuggerNonUserCode; set => DLaBSettings.AddDebuggerNonUserCode = value; }
         public bool ObsoleteDeprecated { get => DLaBSettings.ObsoleteDeprecated; set => DLaBSettings.ObsoleteDeprecated = value; }
-        public List<string> ObsoleteTokens { get => DLaBSettings.ObsoleteTokens; set => DLaBSettings.ObsoleteTokens = value; }
 
         public MemberAttributes(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
         {
@@ -33,7 +32,6 @@ namespace DLaB.ModelBuilderExtensions.Entity
                 return;
             }
 
-            var obsoleteAttributes = GetObsoleteAttributes(services);
             var provider = CodeDomProvider.CreateProvider("CSharp");
             var options = new CodeGeneratorOptions()
             {
@@ -43,10 +41,11 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
             if (ObsoleteDeprecated)
             {
+                var obsoleteAttributes = services.GetServiceOrLoadDefault<IObsoleteAttributesProviderService>(() => new ObsoleteAttributesProviderService(Settings)).GetObsoleteAttributes(services);
                 foreach (var code in from CodeTypeDeclaration type in codeUnit.Namespaces[0].Types
-                         where type.IsClass
-                         from dynamic member in type.Members
-                         select new { EntityLogicalName = type.GetEntityLogicalName(), Member = member })
+                                     where type.IsClass
+                                     from dynamic member in type.Members
+                                     select new { EntityLogicalName = type.GetEntityLogicalName(), Member = member })
                 {
                     if (code.Member is CodeMemberProperty property
                         && obsoleteAttributes.Contains(code.EntityLogicalName + "." + property.GetLogicalName())) {
@@ -89,28 +88,6 @@ namespace DLaB.ModelBuilderExtensions.Entity
                     AddCodeAttributeDeclaration(member);
                 }
             }
-        }
-
-        private HashSet<string> GetObsoleteAttributes(IServiceProvider services)
-        {
-            var metadata = services.GetService<IMetadataProviderService>().LoadMetadata(services);
-            if (!ObsoleteDeprecated)
-            {
-                return new HashSet<string>();
-            }
-
-            var obsoleteMatches = new TextMatcher(ObsoleteTokens);
-            var concurrentObsoleteAttributes = new System.Collections.Concurrent.ConcurrentBag<string>();
-
-            System.Threading.Tasks.Parallel.ForEach(metadata.Entities, entity =>
-            {
-                foreach (var attribute in entity.Attributes.Where(a => obsoleteMatches.HasMatch(a.DisplayName.GetLocalOrDefaultText())))
-                {
-                    concurrentObsoleteAttributes.Add(entity.LogicalName + "." + attribute.LogicalName);
-                }
-            });
-
-            return new HashSet<string>(concurrentObsoleteAttributes);
         }
 
         private CodeTypeMember AddPropertyAttributes(CodeDomProvider provider, CodeGeneratorOptions options, StringWriter sourceWriter, CodeMemberProperty property)

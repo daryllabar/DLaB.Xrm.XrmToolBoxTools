@@ -2,19 +2,16 @@
 
 namespace DLaB.ModelBuilderExtensions
 {
-    public abstract class TypedServiceSettings<T>
+    public abstract class TypedServiceSettings<T>: CustomServiceSettings
     {
         protected T DefaultService { get; set; }
-        protected DLaBModelBuilderSettings Settings { get; set; }
-        protected DLaBModelBuilder DLaBSettings => Settings.DLaBModelBuilder;
-
-        protected TypedServiceSettings(T defaultService, DLaBModelBuilderSettings settings = null)
+        protected TypedServiceSettings(T defaultService, DLaBModelBuilderSettings? settings = null): base(settings)
         {
             DefaultService = defaultService;
             Settings = settings ?? new DLaBModelBuilderSettings();
         }
 
-        protected TypedServiceSettings(T defaultService, IDictionary<string, string> parameters)
+        protected TypedServiceSettings(T defaultService, IDictionary<string, string> parameters): base(parameters)
         {
             DefaultService = defaultService;
             ConfigHelper.Initialize(parameters);

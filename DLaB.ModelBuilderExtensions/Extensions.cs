@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 
@@ -318,6 +319,26 @@ namespace DLaB.ModelBuilderExtensions
         #endregion Dictionary<string,string>
 
         #region IServiceProvider
+
+        /// <summary>
+        /// Gets the service of type T if it exists, otherwise uses the defaultServiceLoader to load it, adds it to the service provider and returns it.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="services"></param>
+        /// <param name="defaultServiceLoader"></param>
+        /// <returns></returns>
+        public static T GetServiceOrLoadDefault<T>(this IServiceProvider services, Func<T> defaultServiceLoader)
+        {
+            var service = services.GetService<T>();
+            if (service != null)
+            {
+                return service;
+            }
+
+            service = defaultServiceLoader();
+            services.UpdateService(service);
+            return service;
+        }
 
         public static void UpdateService<T>(this IServiceProvider services, T service)
         {
