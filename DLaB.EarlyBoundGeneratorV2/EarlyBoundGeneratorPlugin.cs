@@ -365,7 +365,14 @@ Please consider clicking the save button in the top right to save the settings w
             defaultConfig.ExtensionConfig.XrmToolBoxPluginPath = Paths.PluginsPath;
             // Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter, defaultConfig.GetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.CodeWriterFilter).Value);
             // Settings.SetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService, defaultConfig.GetExtensionArgument(CreationType.OptionSets, CrmSrvUtilService.NamingService).Value);
-            Settings.ExtensionConfig.SerializedMetadataRelativeFilePath = Path.Combine(Paths.LogsPath, "EBGV2.Metadata.xml");
+            if (Settings.ExtensionConfig.ReadSerializedMetadata || Settings.ExtensionConfig.SerializeMetadata)
+            {
+                Settings.ExtensionConfig.SerializedMetadataRelativeFilePath = Path.Combine(Paths.LogsPath, "EBGV2.Metadata.xml");
+            }
+            else
+            {
+                Settings.ExtensionConfig.SerializedMetadataRelativeFilePath = null;
+            }
         }
 
         private void LogConfigSettings()

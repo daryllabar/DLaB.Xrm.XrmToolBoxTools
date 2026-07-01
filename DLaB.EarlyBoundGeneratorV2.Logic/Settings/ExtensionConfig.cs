@@ -535,7 +535,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddProperty(nameof(ReadSerializedMetadata), ReadSerializedMetadata);
             writer.AddProperty(nameof(RemoveRuntimeVersionComment), RemoveRuntimeVersionComment);
             AddOptionalBoolProperty("ReplaceEnumPropertiesWithOptionSet", !GenerateEnumProperties, generateOptionSetProperties);
-            if (!string.IsNullOrWhiteSpace(SerializedMetadataRelativeFilePath))
+            if (!string.IsNullOrWhiteSpace(SerializedMetadataRelativeFilePath) && (ReadSerializedMetadata || SerializeMetadata))
             {
                 writer.AddProperty("SerializedMetadataRelativeFilePath", SerializedMetadataRelativeFilePath);
             }
