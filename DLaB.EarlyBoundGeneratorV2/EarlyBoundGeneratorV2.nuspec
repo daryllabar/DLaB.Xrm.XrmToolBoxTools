@@ -11,7 +11,9 @@
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
-		<releaseNotes>V2.2026.6.7
+		<releaseNotes>Skip writing serializedMetadataRelativeFilePath when metadata serialization is unused #609
+
+V2.2026.6.7
 Obsolete attributed should be added to Field Name too, not only to Property #571
 			
 V2.2026.5.12
