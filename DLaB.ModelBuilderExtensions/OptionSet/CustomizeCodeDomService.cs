@@ -13,6 +13,9 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
         public bool AddOptionSetMetadataAttribute { get => DLaBSettings.AddOptionSetMetadataAttribute; set => DLaBSettings.AddOptionSetMetadataAttribute = value; }
         public bool EmitEntityETC { get => Settings.EmitEntityEtc; set => Settings.EmitEntityEtc = value; }
         public bool GenerateAllOptionSetLabelMetadata { get => DLaBSettings.GenerateAllOptionSetLabelMetadata; set => DLaBSettings.GenerateAllOptionSetLabelMetadata = value; }
+        private int EffectiveLanguageCode => DLaBSettings.OptionSetLanguageCodeOverride > 0
+            ? DLaBSettings.OptionSetLanguageCodeOverride
+            : NamingService.English;
 
         #region Constructors
 
@@ -94,13 +97,13 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
                     && metadataByValue.TryGetValue(intValue, out var metadata))
                 {
                     var attribute = new CodeAttributeDeclaration("OptionSetMetadataAttribute", 
-                        new CodeAttributeArgument(new CodePrimitiveExpression(metadata.Label.GetLocalOrDefaultText())),
+                        new CodeAttributeArgument(new CodePrimitiveExpression(metadata.Label.GetLocalOrDefaultText(EffectiveLanguageCode))),
                         new CodeAttributeArgument(new CodePrimitiveExpression(orderIndexByValue[intValue]))
                     );
                     var optionalArs = new Stack<string>(new[]
                     {
                         metadata.Color,
-                        metadata.Description.GetLocalOrDefaultText(),
+                        metadata.Description.GetLocalOrDefaultText(EffectiveLanguageCode),
                         metadata.ExternalValue
                     });
 

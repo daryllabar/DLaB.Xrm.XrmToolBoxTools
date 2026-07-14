@@ -686,7 +686,7 @@ This helps to alleviate unnecessary differences that pop up when the classes are
 
         [Category("3 - Option Sets")]
         [DisplayName("Option Set Value Language Code Override")]
-        [Description("Overrides the default (English:1033) language code used for generating Option Set Value names (the value, not the option set).")]
+        [Description("Overrides the default (English:1033) language code used for generating labels in code. This affects Option Set Value names, Option Set Metadata Attribute labels/descriptions, Business Process Flow names, and global option set names. Use this to ensure consistent output when team members have different Dataverse UI language preferences.")]
         public int? OptionSetLanguageCodeOverride
         {
             get => Config.ExtensionConfig.OptionSetLanguageCodeOverride;

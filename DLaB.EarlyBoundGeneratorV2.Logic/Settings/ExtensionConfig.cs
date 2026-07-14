@@ -215,7 +215,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         /// </summary>
         public string ObsoleteTokens { get; set; }
         /// <summary>
-        /// Overrides the default (English:1033) language code used for generating Option Set Value names (the value, not the option set)
+        /// Overrides the default (English:1033) language code used for generating labels in code. This affects Option Set Value names, Option Set Metadata Attribute labels/descriptions, Business Process Flow names, and global option set names. Use this to ensure consistent output when team members have different Dataverse UI language preferences.
         /// </summary>
         public int? OptionSetLanguageCodeOverride { get; set; }
         /// <summary>
