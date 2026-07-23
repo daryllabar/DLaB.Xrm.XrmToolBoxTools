@@ -10,6 +10,7 @@ namespace DLaB.ModelBuilderExtensions
     {
         public bool ObsoleteDeprecated { get => DLaBSettings.ObsoleteDeprecated; set => DLaBSettings.ObsoleteDeprecated = value; }
         public List<string> ObsoleteTokens { get => DLaBSettings.ObsoleteTokens; set => DLaBSettings.ObsoleteTokens = value; }
+        private int OptionSetLanguageCodeOverride { get => DLaBSettings.OptionSetLanguageCodeOverride; set => DLaBSettings.OptionSetLanguageCodeOverride = value; }
 
         private HashSet<string>? _obsoleteAttributes;
 
@@ -38,7 +39,7 @@ namespace DLaB.ModelBuilderExtensions
             var entities = serviceProvider.GetRequiredService<IMetadataProviderService>().LoadMetadata(serviceProvider).Entities;
             System.Threading.Tasks.Parallel.ForEach(entities, entity =>
             {
-                foreach (var attribute in entity.Attributes.Where(a => obsoleteMatches.HasMatch(a.DisplayName!.GetLocalOrDefaultText() ?? string.Empty)))
+                foreach (var attribute in entity.Attributes.Where(a => obsoleteMatches.HasMatch(a.DisplayName!.GetLocalOrDefaultText(OptionSetLanguageCodeOverride) ?? string.Empty)))
                 {
                     concurrentObsoleteAttributes.Add(entity.LogicalName + "." + attribute.LogicalName);
                 }

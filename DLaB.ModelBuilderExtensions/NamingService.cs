@@ -237,7 +237,7 @@ namespace DLaB.ModelBuilderExtensions
         private string UpdateCasingForCustomGlobalOptionSets(string name, OptionSetMetadataBase optionSetMetadata)
         {
             var preferredEndings = new [] {"StateCode", "Status", "State"};
-            var displayName = optionSetMetadata.DisplayName?.GetLocalOrDefaultText() ?? string.Empty;
+            var displayName = optionSetMetadata.DisplayName?.GetLocalOrDefaultText(_languageCode) ?? string.Empty;
             if (string.IsNullOrWhiteSpace(displayName))
             {
                 return CamelCaseClassNames
@@ -691,7 +691,7 @@ namespace DLaB.ModelBuilderExtensions
             }
 
             entityMetadata = entityMetadata ?? ServiceCache.EntityMetadataByLogicalName[entityLogicalName];
-            name = bpf.Prefix + GetValidCSharpName(entityMetadata.DisplayName.GetLocalOrDefaultText()) + bpf.Postfix;
+            name = bpf.Prefix + GetValidCSharpName(entityMetadata.DisplayName.GetLocalOrDefaultText(_languageCode)) + bpf.Postfix;
             name = MakeNameUniqueIfAlreadyUsedByDifferentLogicalName(name, entityMetadata, bpf);
 
             return name;

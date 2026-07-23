@@ -11,11 +11,12 @@
     <projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Generates Early Bound Entities/Option Sets/Messages.  Uses the DataverseModelBuilder from the SDK, and shows command line used to create the classes.</description>
-		<releaseNotes>Skip writing serializedMetadataRelativeFilePath when metadata serialization is unused #609
+		<releaseNotes>Fix language inconsistency in EBG V2 generated labels #611
+Skip writing serializedMetadataRelativeFilePath when metadata serialization is unused #609
 
 V2.2026.6.7
 Obsolete attributed should be added to Field Name too, not only to Property #571
-			
+
 V2.2026.5.12
 Custom API message response set fails #603
 Update Name and folder while writing metadata to xml file #604
@@ -63,20 +64,6 @@ Allow for Option-set capitalization overrides #549
 
 V2.2025.7.29
 Fix Unable to lookup the non-public JsonProperty Constructor #547
-
-V2.2025.7.22
-Fix Invalid Position Casing #546
-
-V2.2025.7.11
-Fix for Naming Collision for Entity and Attribute Names #545
-
-V2.2025.7.3
-Fix "Make Reference Types Nullable" setting generates code with nullability errors #533
-Actually Add ExchangeRate token for #536
-Fix Early Bound classes not compiling if Connection included as Entity and Make all fields editable is false #532
-Honor custom OptionSet name casing #541
-Create Save Settings button #544
-Fix for msdynmkt_PersonalizationDynamicTextAiRequest does not generate properly #502
 		</releaseNotes>
     <copyright>Copyright 2019</copyright>
 	  <tags>PAC ModelBuilder Dataverse Xrm EarlyBound Generator XrmToolBox Plugins</tags>

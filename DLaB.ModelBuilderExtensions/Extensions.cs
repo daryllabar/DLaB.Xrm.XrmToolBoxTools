@@ -372,6 +372,25 @@ namespace DLaB.ModelBuilderExtensions
             }
         }
 
+        /// <summary>
+        /// Returns the text for the given language code, falling back to UserLocalizedLabel or the first available label.
+        /// </summary>
+        /// <param name="label">The label to get text from.</param>
+        /// <param name="languageCode">The preferred language code. When greater than zero, this language is checked first in LocalizedLabels before falling back to UserLocalizedLabel.</param>
+        /// <param name="defaultIfNull">Value to return if no label is found.</param>
+        public static string? GetLocalOrDefaultText(this Label label, int languageCode, string? defaultIfNull = null)
+        {
+            if (languageCode <= 0)
+            {
+                return label.GetLocalOrDefaultText(defaultIfNull);
+            }
+
+            var localizedLabel = label.LocalizedLabels.FirstOrDefault(l => l.LanguageCode == languageCode);
+            return localizedLabel != null && !string.IsNullOrEmpty(localizedLabel.Label)
+                ? localizedLabel.Label
+                : label.GetLocalOrDefaultText(defaultIfNull);
+        }
+
         #endregion // Label
 
         #region OptionSetMetadataBase
