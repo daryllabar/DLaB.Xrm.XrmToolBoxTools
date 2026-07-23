@@ -9,10 +9,12 @@ namespace DLaB.ModelBuilderExtensions.Entity
     internal class AnonymousTypeConstructorGenerator : ICustomizeCodeDomService
     {
         private Dictionary<string, EntityMetadata> Entities { get; set; }
+        private bool MakeReferenceTypesNullable { get; set; }
 
-        internal AnonymousTypeConstructorGenerator(Dictionary<string, EntityMetadata> entities)
+        internal AnonymousTypeConstructorGenerator(Dictionary<string, EntityMetadata> entities, bool makeReferenceTypesNullable)
         {
             Entities = entities;
+            MakeReferenceTypesNullable = makeReferenceTypesNullable;
         }
 
         #region ICustomizeCodeDomService Members
@@ -45,6 +47,8 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
             constructor.Parameters.Add(new CodeParameterDeclarationExpression(typeof (object), "anonymousType"));
             constructor.ChainedConstructorArgs.Add(new CodeSnippetExpression(""));
+            var guidValue = MakeReferenceTypesNullable ? "(value ?? System.Guid.Empty)" : "value";
+            var formattedValueCollectionValue = MakeReferenceTypesNullable ? "(value ?? new Microsoft.Xrm.Sdk.FormattedValueCollection())" : "value";
             const string indent = "            ";
             // Rather than attempt to do this all through CodeDom, hard code this as C#
             constructor.Statements.Add(new CodeSnippetStatement(string.Format(indent +
@@ -60,7 +64,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
             "    switch (name){0}" +
             "    {{{0}" +
             "        case \"id\":{0}" +
-            "            base.Id = (System.Guid)value;{0}" +
+            "            base.Id = (System.Guid){2};{0}" +
             "            Attributes[\"{1}\"] = base.Id;{0}" +
             "            break;{0}" +
             "        case \"{1}\":{0}" +
@@ -71,13 +75,13 @@ namespace DLaB.ModelBuilderExtensions.Entity
             "            break;{0}" +
             "        case \"formattedvalues\":{0}" +
             "            // Add Support for FormattedValues{0}" +
-            "            FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);{0}" +
+            "            FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection){3});{0}" +
             "            break;{0}" +
             "        default:{0}" +
             "            Attributes[name] = value;{0}" +
             "            break;{0}" +
             "    }}{0}" +
-            "}}", Environment.NewLine + indent, data.PrimaryIdAttribute)));
+            "}}", Environment.NewLine + indent, data.PrimaryIdAttribute, guidValue, formattedValueCollectionValue)));
 
             return constructor;
         }

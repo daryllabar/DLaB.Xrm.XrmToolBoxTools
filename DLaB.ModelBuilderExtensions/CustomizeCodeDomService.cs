@@ -21,8 +21,10 @@ namespace DLaB.ModelBuilderExtensions
         public bool GenerateOptionSetMetadataAttribute { get => DLaBSettings.GenerateOptionSetMetadataAttribute; set => DLaBSettings.GenerateOptionSetMetadataAttribute = value; }
         public bool UpdateFileAttributes { get => DLaBSettings.UpdateFileAttributes; set => DLaBSettings.UpdateFileAttributes = value; }
         public bool MakeAllFieldsEditable { get => DLaBSettings.MakeAllFieldsEditable; set => DLaBSettings.MakeAllFieldsEditable = value; }
+        public bool MakeReferenceTypesNullable { get => DLaBSettings.MakeReferenceTypesNullable; set => DLaBSettings.MakeReferenceTypesNullable = value; }
         public bool UpdateMultiOptionSetAttributes { get => DLaBSettings.UpdateMultiOptionSetAttributes; set => DLaBSettings.UpdateMultiOptionSetAttributes = value; }
         public bool UpdateEnumerableEntityProperties { get => DLaBSettings.UpdateEnumerableEntityProperties; set => DLaBSettings.UpdateEnumerableEntityProperties = value; }
+
 
         #endregion Entity Properties
 
@@ -153,7 +155,7 @@ namespace DLaB.ModelBuilderExtensions
 
             if (GenerateAnonymousTypeConstructor)
             {
-                new AnonymousTypeConstructorGenerator(ServiceCache.EntityMetadataByLogicalName).CustomizeCodeDom(codeUnit, services);
+                new AnonymousTypeConstructorGenerator(ServiceCache.EntityMetadataByLogicalName, MakeReferenceTypesNullable).CustomizeCodeDom(codeUnit, services);
             }
 
             if (GenerateOptionSetProperties)
