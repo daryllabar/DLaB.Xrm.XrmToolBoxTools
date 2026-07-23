@@ -110,23 +110,21 @@ namespace DLaB.ModelBuilderExtensions.Tests
         }
 
         [TestMethod]
-        public void GetObsoleteAttributes_WhenGermanUserLocalizedAndEnglishTokens_MatchesEnglishLocalizedLabels()
+        public void GetObsoleteAttributes_WhenGermanUserLocalizedAndGermanTokens_MatchesUserLocalizedLabels()
         {
-            // Simulate a German user: attribute has German UserLocalizedLabel, but English is in LocalizedLabels
+            // Simulate a German user: attribute has German UserLocalizedLabel, with English also available in LocalizedLabels
             var entity = BuildEntityWithLanguages("account",
                 ("name", "Vollst\u00e4ndiger Name (Veraltet)", 1031, "Full Name (Deprecated)", 1033),
                 ("emailaddress1", "E-Mail", 1031, "Email", 1033));
 
             var serviceProvider = BuildServiceProvider(BuildMetadata(entity));
-            // English obsolete token - should match against English LocalizedLabel, not German UserLocalizedLabel
-            var sut = BuildSut(obsoleteDeprecated: true, obsoleteTokens: new List<string> { "*Deprecated*" });
+            // No language override: should evaluate UserLocalizedLabel (German)
+            var sut = BuildSut(obsoleteDeprecated: true, obsoleteTokens: new List<string> { "*Veraltet*" });
 
             var result = sut.GetObsoleteAttributes(serviceProvider);
 
-            Assert.IsTrue(result.Contains("account.name"),
-                "Should match English LocalizedLabel when UserLocalizedLabel is German.");
-            Assert.IsFalse(result.Contains("account.emailaddress1"),
-                "Attribute without the deprecated token should be excluded.");
+            Assert.IsTrue(result.Contains("account.name"), "Should match German UserLocalizedLabel when no language override is configured.");
+            Assert.IsFalse(result.Contains("account.emailaddress1"), "Attribute without the obsolete token should be excluded.");
         }
 
         private static EntityMetadata BuildEntityWithLanguages(string logicalName,
