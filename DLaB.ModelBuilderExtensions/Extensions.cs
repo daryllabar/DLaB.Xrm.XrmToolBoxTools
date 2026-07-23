@@ -380,15 +380,15 @@ namespace DLaB.ModelBuilderExtensions
         /// <param name="defaultIfNull">Value to return if no label is found.</param>
         public static string? GetLocalOrDefaultText(this Label label, int languageCode, string? defaultIfNull = null)
         {
-            if (languageCode > 0)
+            if (languageCode <= 0)
             {
-                var localizedLabel = label.LocalizedLabels.FirstOrDefault(l => l.LanguageCode == languageCode);
-                if (localizedLabel != null && !string.IsNullOrEmpty(localizedLabel.Label))
-                {
-                    return localizedLabel.Label;
-                }
+                return label.GetLocalOrDefaultText(defaultIfNull);
             }
-            return label.GetLocalOrDefaultText(defaultIfNull);
+
+            var localizedLabel = label.LocalizedLabels.FirstOrDefault(l => l.LanguageCode == languageCode);
+            return localizedLabel != null && !string.IsNullOrEmpty(localizedLabel.Label)
+                ? localizedLabel.Label
+                : label.GetLocalOrDefaultText(defaultIfNull);
         }
 
         #endregion // Label

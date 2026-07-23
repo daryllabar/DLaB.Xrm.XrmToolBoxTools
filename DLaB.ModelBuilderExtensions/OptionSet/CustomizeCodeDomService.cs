@@ -11,11 +11,9 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
     public class CustomizeCodeDomService : TypedServiceBase<ICustomizeCodeDomService>, ICustomizeCodeDomService
     {
         public bool AddOptionSetMetadataAttribute { get => DLaBSettings.AddOptionSetMetadataAttribute; set => DLaBSettings.AddOptionSetMetadataAttribute = value; }
-        public bool EmitEntityETC { get => Settings.EmitEntityEtc; set => Settings.EmitEntityEtc = value; }
+        public bool EmitEntityEtc { get => Settings.EmitEntityEtc; set => Settings.EmitEntityEtc = value; }
         public bool GenerateAllOptionSetLabelMetadata { get => DLaBSettings.GenerateAllOptionSetLabelMetadata; set => DLaBSettings.GenerateAllOptionSetLabelMetadata = value; }
-        private int EffectiveLanguageCode => DLaBSettings.OptionSetLanguageCodeOverride > 0
-            ? DLaBSettings.OptionSetLanguageCodeOverride
-            : NamingService.English;
+        private int LanguageCodeOverride { get => DLaBSettings.OptionSetLanguageCodeOverride; set => DLaBSettings.OptionSetLanguageCodeOverride = value; }
 
         #region Constructors
 
@@ -36,7 +34,7 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
             //Trace.TraceInformation("Entering ICustomizeCodeDomService.CustomizeCodeDom");
             //Trace.TraceInformation("Number of Namespaces generated: {0}", codeUnit.Namespaces.Count);
 
-            if (!EmitEntityETC)
+            if (!EmitEntityEtc)
             {
                 // Remove Connection record1objecttypecode Enums since they are Connection_Record1ObjectTypeCode and Connection_Record2ObjectTypeCode
             }
@@ -97,15 +95,15 @@ namespace DLaB.ModelBuilderExtensions.OptionSet
                     && metadataByValue.TryGetValue(intValue, out var metadata))
                 {
                     var attribute = new CodeAttributeDeclaration("OptionSetMetadataAttribute", 
-                        new CodeAttributeArgument(new CodePrimitiveExpression(metadata.Label.GetLocalOrDefaultText(EffectiveLanguageCode))),
+                        new CodeAttributeArgument(new CodePrimitiveExpression(metadata.Label.GetLocalOrDefaultText(LanguageCodeOverride))),
                         new CodeAttributeArgument(new CodePrimitiveExpression(orderIndexByValue[intValue]))
                     );
-                    var optionalArs = new Stack<string>(new[]
-                    {
+                    var optionalArs = new Stack<string>(
+                    [
                         metadata.Color,
-                        metadata.Description.GetLocalOrDefaultText(EffectiveLanguageCode),
+                        metadata.Description.GetLocalOrDefaultText(LanguageCodeOverride) ?? string.Empty,
                         metadata.ExternalValue
-                    });
+                    ]);
 
                     if(!GenerateAllOptionSetLabelMetadata)
                     {
