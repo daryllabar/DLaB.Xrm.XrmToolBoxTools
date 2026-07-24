@@ -119,7 +119,7 @@ namespace DLaB.ModelBuilderExtensions
             
             if (GenerateOptionSetMetadataAttribute)
             {
-                new OptionSetMetadataAttributeGenerator().CustomizeCodeDom(codeUnit, services);
+                new OptionSetMetadataAttributeGenerator(MakeReferenceTypesNullable).CustomizeCodeDom(codeUnit, services);
             }
         }
 

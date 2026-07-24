@@ -13,13 +13,20 @@ namespace DLaB.ModelBuilderExtensions.Entity
     /// </summary>
     public class OptionSetMetadataAttributeGenerator : ICustomizeCodeDomService
     {
+        private readonly bool _makeReferenceTypesNullable;
+
+        public OptionSetMetadataAttributeGenerator(bool makeReferenceTypesNullable = false)
+        {
+            _makeReferenceTypesNullable = makeReferenceTypesNullable;
+        }
+
         #region ICustomizeCodeDomService Members
 
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
             var types = codeUnit.Namespaces[0].Types;
-            types.Add(CreateOptionSetMetadataAttributeClass());
-            types.Add(CreateOptionSetExtensionClass());
+            types.Add(CreateOptionSetMetadataAttributeClass(_makeReferenceTypesNullable));
+            types.Add(CreateOptionSetExtensionClass(_makeReferenceTypesNullable));
         }
 
         #endregion
@@ -49,7 +56,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
         }
 
         */
-        private static CodeTypeDeclaration CreateOptionSetMetadataAttributeClass()
+        private static CodeTypeDeclaration CreateOptionSetMetadataAttributeClass(bool makeNullable = false)
         {
             var attributeClass = new CodeTypeDeclaration("OptionSetMetadataAttribute")
             {
@@ -62,10 +69,10 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
             attributeClass.Members.Add(new CodeMemberField(typeof(object[]), "_nameObjects"));
             attributeClass.Members.Add(new CodeMemberField(typeof(Dictionary<int,string>), "_names"));
-            attributeClass.Members.AddRange(CreateOptionSetMetadataProperties());
+            attributeClass.Members.AddRange(CreateOptionSetMetadataProperties(makeNullable));
             //attributeClass.Members.Add(CreateOptionSetMetadataConstructor(attributeClass.Name, true));
-            attributeClass.Members.Add(CreateOptionSetMetadataConstructor(attributeClass.Name, false));
-            attributeClass.Members.Add(CreateNamesMethod());
+            attributeClass.Members.Add(CreateOptionSetMetadataConstructor(attributeClass.Name, false, makeNullable));
+            attributeClass.Members.Add(CreateNamesMethod(makeNullable));
 
             return attributeClass;
         }
@@ -88,11 +95,11 @@ namespace DLaB.ModelBuilderExtensions.Entity
                 new CodeCommentStatement(@"</summary>", true)};
         }
 
-        private static CodeTypeMember[] CreateOptionSetMetadataProperties()
+        private static CodeTypeMember[] CreateOptionSetMetadataProperties(bool makeNullable = false)
         {
             return Properties.OrderBy(p => p.PropertyName)
                              .Select(p =>
-                                 new CodeSnippetTypeMember(p.GetPropertySnippet())
+                                 new CodeSnippetTypeMember(p.GetPropertySnippet(makeNullable))
                                  {
                                      Comments =
                                      {
@@ -108,7 +115,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
         #region Constructors
 
-        private static CodeConstructor CreateOptionSetMetadataConstructor(string className, bool basicConstructor)
+        private static CodeConstructor CreateOptionSetMetadataConstructor(string className, bool basicConstructor, bool makeNullable = false)
         {
             // basicConstructor == false
             // public OptionSetMetadataAttribute(string name, string description = null, string color = null): this(name, int.MinValue, int.MinValue, color, description) { }
@@ -129,7 +136,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
                 Name = className
             };
             constructor.Comments.AddRange(GetConstructorComments(className, basicConstructor));
-            constructor.Parameters.AddRange(GetConstructorParameters(basicConstructor));
+            constructor.Parameters.AddRange(GetConstructorParameters(basicConstructor, makeNullable));
             constructor.ChainedConstructorArgs.AddRange(GetConstructorChainedArgs(basicConstructor));
             constructor.Statements.AddRange(GetConstructorStatements(basicConstructor));
 
@@ -152,11 +159,11 @@ namespace DLaB.ModelBuilderExtensions.Entity
             return paramComments.ToArray();
         }
 
-        private static CodeParameterDeclarationExpression[] GetConstructorParameters(bool basicConstructor)
+        private static CodeParameterDeclarationExpression[] GetConstructorParameters(bool basicConstructor, bool makeNullable = false)
         {
             return Properties.Where(p => p.IsValidForConstructor(basicConstructor))
                              .OrderBy(p => p.ParameterIndex(basicConstructor))
-                             .Select(p => p.GetParameterDeclaration()).ToArray();
+                             .Select(p => p.GetParameterDeclaration(makeNullable)).ToArray();
         }
 
         private static CodeExpression[] GetConstructorChainedArgs(bool basicConstructor)
@@ -186,7 +193,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
         #endregion Constructors
 
-        private static CodeMemberMethod CreateNamesMethod()
+        private static CodeMemberMethod CreateNamesMethod(bool makeNullable = false)
         {
             var method = new CodeMemberMethod
             {
@@ -199,10 +206,14 @@ namespace DLaB.ModelBuilderExtensions.Entity
                     InitExpression = new CodeObjectCreateExpression(typeof(Dictionary<int, string>))
                 };
 
+            CodeExpression testExpression = makeNullable
+                ? (CodeExpression)new CodeSnippetExpression("(i < _nameObjects?.Length)")
+                : new CodeBinaryOperatorExpression(new CodeVariableReferenceExpression("i"), CodeBinaryOperatorType.LessThan, new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("_nameObjects"), "Length"));
+
             var loop = new CodeIterationStatement
             {
                 InitStatement = new CodeVariableDeclarationStatement(typeof(int), "i", new CodePrimitiveExpression(0)),
-                TestExpression = new CodeBinaryOperatorExpression(new CodeVariableReferenceExpression("i"), CodeBinaryOperatorType.LessThan, new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("_nameObjects"), "Length")),
+                TestExpression = testExpression,
                 IncrementStatement = new CodeAssignStatement(new CodeVariableReferenceExpression("i"), new CodeBinaryOperatorExpression(new CodeVariableReferenceExpression("i"), CodeBinaryOperatorType.Add, new CodePrimitiveExpression(2)))
             };
 
@@ -294,9 +305,12 @@ namespace DLaB.ModelBuilderExtensions.Entity
                 }
             }
 
-            public CodeParameterDeclarationExpression GetParameterDeclaration()
+            public CodeParameterDeclarationExpression GetParameterDeclaration(bool makeNullable = false)
             {
-                var declaration = new CodeParameterDeclarationExpression(Type, VariableNameDeclaration);
+                var typeRef = (makeNullable && Type == typeof(string) && VariableNameDeclaration.Contains("= null"))
+                    ? new CodeTypeReference("string?")
+                    : new CodeTypeReference(Type);
+                var declaration = new CodeParameterDeclarationExpression(typeRef, VariableNameDeclaration);
                 if (IsParamsParameter)
                 {
                     declaration.CustomAttributes.Add(new CodeAttributeDeclaration(new CodeTypeReference(typeof(ParamArrayAttribute))));
@@ -304,11 +318,18 @@ namespace DLaB.ModelBuilderExtensions.Entity
                 return declaration;
             }
 
-            public string GetPropertySnippet()
+            public string GetPropertySnippet(bool makeNullable = false)
             {
-                return string.IsNullOrWhiteSpace(CustomPropertySnippet) 
-                    ? $@"{"\t\t"}public {TypeDisplayName} {PropertyName} {{ get; set; }}"
-                    : CustomPropertySnippet;
+                if (!string.IsNullOrWhiteSpace(CustomPropertySnippet))
+                {
+                    return CustomPropertySnippet;
+                }
+                var typeDisplayName = TypeDisplayName;
+                if (makeNullable && Type == typeof(string) && PropertyName != "Name")
+                {
+                    typeDisplayName += "?";
+                }
+                return $@"{"\t\t"}public {typeDisplayName} {PropertyName} {{ get; set; }}";
             }
 
             public bool IsValidForConstructor(bool basicConstructor)
@@ -373,7 +394,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
         }
          */
 
-        private static CodeTypeDeclaration CreateOptionSetExtensionClass()
+        private static CodeTypeDeclaration CreateOptionSetExtensionClass(bool makeNullable = false)
         {
             var extClass = new CodeTypeDeclaration("OptionSetExtension")
             {
@@ -381,7 +402,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
                 Attributes = CodeDomMemberAttributes.Public
             };
             extClass.Comments.AddRange(CreateOptionSetExtensionClassComments());
-            extClass.Members.Add(CreateOptionSetExtensionGetMetadataMethod());
+            extClass.Members.Add(CreateOptionSetExtensionGetMetadataMethod(makeNullable));
 
             return extClass;
         }
@@ -394,7 +415,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
                 new CodeCommentStatement(@"</summary>", true)};
         }
 
-        public static CodeMemberMethod CreateOptionSetExtensionGetMetadataMethod()
+        public static CodeMemberMethod CreateOptionSetExtensionGetMetadataMethod(bool makeNullable = false)
         {
             // public static int? GetEnum(Microsoft.Xrm.Sdk.Entity entity, string attributeLogicalName)
             var method = new CodeMemberMethod
@@ -417,8 +438,8 @@ namespace DLaB.ModelBuilderExtensions.Entity
             method.Statements.AddRange(new CodeStatementCollection{ 
                 GetEnumTypeInitializer(),
                 GetThrowIfNotEnumCheck(),
-                GetMemberAttributeInitializer(),
-                GetReturnAttributeLoop(),
+                GetMemberAttributeInitializer(makeNullable),
+                GetReturnAttributeLoop(makeNullable),
                 GetFinalThrowStatement()
             });
 
@@ -459,10 +480,12 @@ namespace DLaB.ModelBuilderExtensions.Entity
                 new CodeThrowExceptionStatement(new CodeObjectCreateExpression(new CodeTypeReference(typeof(ArgumentException)), new CodePrimitiveExpression("T must be an enum!"))));
         }
 
-        private static CodeVariableDeclarationStatement GetMemberAttributeInitializer()
+        private static CodeVariableDeclarationStatement GetMemberAttributeInitializer(bool makeNullable = false)
         {
             // System.Reflection.MemberInfo[] members = enumType.GetMember(value.ToString());
-            var valueToStringCall = new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("value"), "ToString");
+            CodeExpression valueToStringCall = makeNullable
+                ? (CodeExpression)new CodeSnippetExpression("value.ToString() ?? string.Empty")
+                : new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("value"), "ToString");
             return new CodeVariableDeclarationStatement
             {
                 Type = new CodeTypeReference(typeof(MemberInfo[])),
@@ -471,7 +494,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
             };
         }
 
-        private static CodeIterationStatement GetReturnAttributeLoop()
+        private static CodeIterationStatement GetReturnAttributeLoop(bool makeNullable = false)
         {
             /*
             for (var i=0; i < members.Length; i++)
@@ -495,7 +518,9 @@ namespace DLaB.ModelBuilderExtensions.Entity
             var loop = new CodeIterationStatement(loopInit, loopTest, new CodeSnippetStatement("i++"),
                 new CodeVariableDeclarationStatement
                 {
-                    Type = new CodeTypeReference(typeof(Attribute)),
+                    Type = makeNullable
+                        ? new CodeTypeReference("System.Attribute?")
+                        : new CodeTypeReference(typeof(Attribute)),
                     Name = "attribute",
                     InitExpression = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(CustomAttributeExtensions)), "GetCustomAttribute", new CodeVariableReferenceExpression("members[i]"), new CodeTypeOfExpression(new CodeTypeReference("OptionSetMetadataAttribute")))
                 },
