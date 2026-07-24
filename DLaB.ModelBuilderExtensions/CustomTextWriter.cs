@@ -115,12 +115,12 @@ namespace DLaB.ModelBuilderExtensions
                 return s.Substring(0, s.Length - ", value);".Length) + ", value!);";
             }
 
-            if (trimmed == "private object[] _nameObjects;")
+            if (trimmed.StartsWith("private ") && trimmed.Contains("object[]") && trimmed.EndsWith("_nameObjects;"))
             {
                 return s.Replace("object[] _nameObjects", "object[]? _nameObjects");
             }
 
-            if (trimmed == "private System.Collections.Generic.Dictionary<int, string> _names;")
+            if (trimmed.StartsWith("private ") && trimmed.Contains("Dictionary<int, string>") && trimmed.EndsWith("_names;"))
             {
                 return s.Replace("Dictionary<int, string> _names", "Dictionary<int, string>? _names");
             }

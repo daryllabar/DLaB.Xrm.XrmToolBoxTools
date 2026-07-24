@@ -307,7 +307,13 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
             public CodeParameterDeclarationExpression GetParameterDeclaration(bool makeNullable = false)
             {
-                var typeRef = (makeNullable && Type == typeof(string) && VariableNameDeclaration.Contains("= null"))
+                // A parameter requires a nullable string type when it has an optional (= null) default,
+                // which applies to all string properties except "Name" and "Names".
+                var isNullableStringParam = makeNullable
+                    && Type == typeof(string)
+                    && PropertyName != "Name"
+                    && PropertyName != "Names";
+                var typeRef = isNullableStringParam
                     ? new CodeTypeReference("string?")
                     : new CodeTypeReference(Type);
                 var declaration = new CodeParameterDeclarationExpression(typeRef, VariableNameDeclaration);
