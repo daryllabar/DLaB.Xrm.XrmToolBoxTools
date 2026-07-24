@@ -4481,8 +4481,10 @@ namespace DLaB.Xrm.Entities
 			set
 			{
 				this.OnPropertyChanging("system_user_accounts");
-				this.SetRelatedEntity<Entities.SystemUser>("system_user_accounts", null, value);
-				this.OnPropertyChanged("system_user_accounts");
+				// Manual Edit for test for EBG.  Sometimes this is split over multiple lines
+				this.SetRelatedEntity<Entities.SystemUser>("system_user_accounts" +
+					"", null, value);
+                this.OnPropertyChanged("system_user_accounts");
 			}
 		}
 		

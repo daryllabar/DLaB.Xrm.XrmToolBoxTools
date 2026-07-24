@@ -25,13 +25,16 @@ namespace DLaB.ModelBuilderExtensions.Tests
                 }
 
                 var updatedLines = File.ReadAllLines(outputFile);
-                var setRelatedEntityLines = updatedLines.Where(l => l.Contains("SetRelatedEntity<")).ToList();
+                var setRelatedEntityLines = updatedLines.Where(l => l.Contains("SetRelatedEntity<") && !l.EndsWith(" +")).ToList();
 
                 Assert.IsTrue(setRelatedEntityLines.Count > 0, "Expected to find SetRelatedEntity calls in the test file.");
                 foreach (var line in setRelatedEntityLines)
                 {
                     Assert.IsTrue(line.TrimEnd().EndsWith(", value!);"), $"Expected line to end with ', value!);' but was: {line}");
                 }
+
+                Assert.AreEqual(1, updatedLines.Count(l => l.Trim() == @""""", null, value!);"));
+                Assert.AreEqual(0, updatedLines.Count(l => l.Trim() == @""""", null, value);"));
             }
         }
 
@@ -52,7 +55,7 @@ namespace DLaB.ModelBuilderExtensions.Tests
                 }
 
                 var updatedLines = File.ReadAllLines(outputFile);
-                var setRelatedEntityLines = updatedLines.Where(l => l.Contains("SetRelatedEntity<")).ToList();
+                var setRelatedEntityLines = updatedLines.Where(l => l.Contains("SetRelatedEntity<") && !l.EndsWith(" +")).ToList();
 
                 Assert.IsTrue(setRelatedEntityLines.Count > 0, "Expected to find SetRelatedEntity calls in the test file.");
                 foreach (var line in setRelatedEntityLines)
@@ -60,6 +63,9 @@ namespace DLaB.ModelBuilderExtensions.Tests
                     Assert.IsFalse(line.TrimEnd().EndsWith(", value!);"), $"Expected line to NOT end with ', value!);' but was: {line}");
                     Assert.IsTrue(line.TrimEnd().EndsWith(", value);"), $"Expected line to end with ', value);' but was: {line}");
                 }
+
+                Assert.AreEqual(0, updatedLines.Count(l => l.Trim() == @""""", null, value!);"));
+                Assert.AreEqual(1, updatedLines.Count(l => l.Trim() == @""""", null, value);"));
             }
         }
 
