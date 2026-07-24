@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DLaB.ModelBuilderExtensions
 {
-    internal class CustomTextWriter : TextWriter
+    public class CustomTextWriter : TextWriter
     {
         private bool _skipRuntimeVersionComment;
         private bool _skipEntireHeaderComment;
@@ -110,8 +110,17 @@ namespace DLaB.ModelBuilderExtensions
         {
             var trimmed = s.Trim();
 
+            if (trimmed.Contains("SetRelatedEntity<") && trimmed.EndsWith(", value);"))
+            {
+                return s.Substring(0, s.Length - ", value);".Length) + ", value!);";
+            }
+
             if (!trimmed.StartsWith("public")
-                || _invalidStringsForPropertiesNeedingNullableTypes.Any(trimmed.Contains)) return s;
+                || _invalidStringsForPropertiesNeedingNullableTypes.Any(trimmed.Contains))
+            {
+                return s;
+            }
+
             var parts = trimmed.Split(' ');
             if (parts.Length == 3)
             {

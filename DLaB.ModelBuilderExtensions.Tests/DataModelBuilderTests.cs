@@ -68,8 +68,8 @@ namespace DLaB.ModelBuilderExtensions.Tests
             }
 
             var lines = json.Split(new[] { Environment.NewLine }, StringSplitOptions.None).ToList();
+            var readSerialized = $"    \"readSerializedMetadata\": {(serializedMetadataPath != "NONE").ToString().ToLower()},";
             serializedMetadataPath = $"    \"serializedMetadataRelativeFilePath\": \"{serializedMetadataPath.Replace("\\", "\\\\")}\",";
-            var readSerialized = "    \"readSerializedMetadata\": true,";
             var modelBuilderIndex = -1;
             var updateJsonPath = true;//sourceJsonPath != "DEFAULT";
             for (var i = 0; i < lines.Count; i++)
