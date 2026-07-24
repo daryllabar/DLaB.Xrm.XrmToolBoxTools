@@ -6,9 +6,9 @@
     <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
     <LangVersion>13</LangVersion>
     <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
-    <Version>2.2026.6.7</Version>
-    <AssemblyVersion>2.2026.6.7</AssemblyVersion>
-    <FileVersion>2.2026.6.7</FileVersion>
+    <Version>2.2026.7.23</Version>
+    <AssemblyVersion>2.2026.7.23</AssemblyVersion>
+    <FileVersion>2.2026.7.23</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
     <DefineConstants>$(DefineConstants);NETFRAMEWORK</DefineConstants>

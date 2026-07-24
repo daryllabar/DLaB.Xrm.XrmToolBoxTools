@@ -14,9 +14,9 @@
     <Company>D La B</Company>
     <Product>$(AssemblyName)</Product>
     <Copyright>Copyright © 2014</Copyright>
-    <Version>2.2026.6.7</Version>
-    <AssemblyVersion>2.2026.6.7</AssemblyVersion>
-    <FileVersion>2.2026.6.7</FileVersion>
+    <Version>2.2026.7.23</Version>
+    <AssemblyVersion>2.2026.7.23</AssemblyVersion>
+    <FileVersion>2.2026.7.23</FileVersion>
     <ComVisible>false</ComVisible>
     <Guid>68d9990d-f7cd-43e4-9272-5db114713c1c</Guid>
   </PropertyGroup>
