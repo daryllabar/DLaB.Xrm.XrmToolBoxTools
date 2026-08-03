@@ -24,11 +24,8 @@ namespace DLaB.ModelBuilderExtensions
         public string FilePath { get => DLaBSettings.SerializedMetadataRelativeFilePath; set => DLaBSettings.SerializedMetadataRelativeFilePath = value; }
         public bool MakeReadonlyFieldsEditable { get => DLaBSettings.MakeReadonlyFieldsEditable; set => DLaBSettings.MakeReadonlyFieldsEditable = value; }
         public bool MakeAllFieldsEditable { get => DLaBSettings.MakeAllFieldsEditable; set => DLaBSettings.MakeAllFieldsEditable = value; }
-        public bool ObsoleteDeprecated { get => DLaBSettings.ObsoleteDeprecated; set => DLaBSettings.ObsoleteDeprecated = value; }
-        public List<string> ObsoleteTokens { get => DLaBSettings.ObsoleteTokens; set => DLaBSettings.ObsoleteTokens = value; }
         public bool ReadSerializedMetadata { get => DLaBSettings.ReadSerializedMetadata; set => DLaBSettings.ReadSerializedMetadata = value; }
         public bool WriteMetadata { get => DLaBSettings.SerializeMetadata; set => DLaBSettings.SerializeMetadata = value; }
-        private int OptionSetLanguageCodeOverride { get => DLaBSettings.OptionSetLanguageCodeOverride; set => DLaBSettings.OptionSetLanguageCodeOverride = value; }
 
         public MetadataProviderService(IMetadataProviderService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
@@ -99,12 +96,7 @@ namespace DLaB.ModelBuilderExtensions
 
         private void ForceDeprecatedEntityAttributes(IOrganizationMetadata metadata)
         {
-            if (!ObsoleteDeprecated)
-            {
-                return;
-            }
-
-            ObsoleteAttributesProviderService.PopulateDeprecatedVersion(metadata.Entities, ObsoleteTokens, OptionSetLanguageCodeOverride);
+            new ObsoleteAttributesProviderService(Settings).PopulateDeprecatedVersion(metadata.Entities);
         }
 
         private void MakeReadonlyEntityAttributesEditable(IOrganizationMetadata metadata)

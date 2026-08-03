@@ -1,6 +1,7 @@
 ﻿using FakeItEasy;
 using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 using System;
 using System.Collections.Generic;
@@ -33,8 +34,11 @@ namespace DLaB.ModelBuilderExtensions.Tests.Entity
 
             var sut = new MetadataProviderService(defaultService, new DLaBModelBuilderSettings
             {
-                ObsoleteDeprecated = true,
-                ObsoleteTokens = new List<string> { "*Deprecated*" }
+                DLaBModelBuilder = new DLaBModelBuilder
+                {
+                    ObsoleteDeprecated = true,
+                    ObsoleteTokens = new List<string> { "*Deprecated*" }
+                }
             });
 
             sut.LoadMetadata(A.Fake<IServiceProvider>());
@@ -55,8 +59,11 @@ namespace DLaB.ModelBuilderExtensions.Tests.Entity
 
             var sut = new MetadataProviderService(defaultService, new DLaBModelBuilderSettings
             {
-                ObsoleteDeprecated = false,
-                ObsoleteTokens = new List<string> { "*Deprecated*" }
+                DLaBModelBuilder = new DLaBModelBuilder
+                {
+                    ObsoleteDeprecated = false,
+                    ObsoleteTokens = new List<string> { "*Deprecated*" }
+                }
             });
 
             sut.LoadMetadata(A.Fake<IServiceProvider>());
@@ -71,7 +78,7 @@ namespace DLaB.ModelBuilderExtensions.Tests.Entity
             return metadata;
         }
 
-        private static EntityMetadata BuildEntity(string logicalName, params (string logicalName, string displayName, string? deprecatedVersion)[] attributes)
+        private static EntityMetadata BuildEntity(string logicalName, params (string logicalName, string displayName, string deprecatedVersion)[] attributes)
         {
             var entity = new EntityMetadata { LogicalName = logicalName };
             var attributeList = new List<AttributeMetadata>();

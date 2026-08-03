@@ -61,13 +61,18 @@ namespace DLaB.ModelBuilderExtensions
             return new HashSet<string>(concurrentObsoleteAttributes);
         }
 
-        internal static void PopulateDeprecatedVersion(IEnumerable<EntityMetadata> entities, IEnumerable<string>? obsoleteTokens, int optionSetLanguageCodeOverride)
+        internal void PopulateDeprecatedVersion(IEnumerable<EntityMetadata> entities)
         {
-            var obsoleteMatches = new TextMatcher(obsoleteTokens ?? []);
+            if (!ObsoleteDeprecated)
+            {
+                return;
+            }
+
+            var obsoleteMatches = new TextMatcher(ObsoleteTokens);
 
             foreach (var entity in entities)
             {
-                foreach (var attribute in GetMatchingObsoleteAttributes(entity, obsoleteMatches, optionSetLanguageCodeOverride))
+                foreach (var attribute in GetMatchingObsoleteAttributes(entity, obsoleteMatches, OptionSetLanguageCodeOverride))
                 {
                     if (attribute.DeprecatedVersion == null)
                     {
