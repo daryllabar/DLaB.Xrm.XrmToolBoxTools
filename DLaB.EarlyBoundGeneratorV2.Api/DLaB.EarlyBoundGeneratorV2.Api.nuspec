@@ -11,9 +11,11 @@
 		<projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses ModelBuilder from the PAC.</description>
-		<releaseNotes>V2.2026.7.28
+		<releaseNotes>Utilize OOB Obsolete logic #554
+
+V2.2026.7.28
 OptionSetMetadataAttribute Generates Null Ref Warnings #617
-			
+
 V2.2026.7.26
 EntityOptionSetEnum Generates Null Ref Warnings #616
 
