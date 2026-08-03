@@ -4,7 +4,6 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 
 namespace DLaB.ModelBuilderExtensions.Entity
@@ -15,9 +14,9 @@ namespace DLaB.ModelBuilderExtensions.Entity
     public class MemberAttributes : TypedServiceSettings<ICustomizeCodeDomService>, ICustomizeCodeDomService
     {
         public bool AddDebuggerNonUserCode { get => DLaBSettings.AddDebuggerNonUserCode; set => DLaBSettings.AddDebuggerNonUserCode = value; }
-        public bool ObsoleteDeprecated { get => DLaBSettings.ObsoleteDeprecated; set => DLaBSettings.ObsoleteDeprecated = value; }
+        //public bool ObsoleteDeprecated { get => DLaBSettings.ObsoleteDeprecated; set => DLaBSettings.ObsoleteDeprecated = value; }
 
-        public MemberAttributes(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
+        public MemberAttributes(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings? settings = null) : base(defaultService, settings)
         {
         }
 
@@ -27,7 +26,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
-            if (!AddDebuggerNonUserCode && !ObsoleteDeprecated)
+            if (!AddDebuggerNonUserCode /*&& !ObsoleteDeprecated*/)
             {
                 return;
             }
@@ -39,20 +38,20 @@ namespace DLaB.ModelBuilderExtensions.Entity
                 IndentString = "\t",
             };
 
-            if (ObsoleteDeprecated)
-            {
-                var obsoleteAttributes = services.GetServiceOrLoadDefault<IObsoleteAttributesProviderService>(() => new ObsoleteAttributesProviderService(Settings)).GetObsoleteAttributes(services);
-                foreach (var code in from CodeTypeDeclaration type in codeUnit.Namespaces[0].Types
-                                     where type.IsClass
-                                     from dynamic member in type.Members
-                                     select new { EntityLogicalName = type.GetEntityLogicalName(), Member = member })
-                {
-                    if (code.Member is CodeMemberProperty property
-                        && obsoleteAttributes.Contains(code.EntityLogicalName + "." + property.GetLogicalName())) {
-                        AddCodeAttributeIfMissing(property, new CodeAttributeDeclaration("System.Obsolete", new CodeAttributeArgument(new CodePrimitiveExpression("This attribute is deprecated."))));
-                    }
-                }
-            }
+            //if (ObsoleteDeprecated)
+            //{
+            //    var obsoleteAttributes = services.GetServiceOrLoadDefault<IObsoleteAttributesProviderService>(() => new ObsoleteAttributesProviderService(Settings)).GetObsoleteAttributes(services);
+            //    foreach (var code in from CodeTypeDeclaration type in codeUnit.Namespaces[0].Types
+            //                         where type.IsClass
+            //                         from dynamic member in type.Members
+            //                         select new { EntityLogicalName = type.GetEntityLogicalName(), Member = member })
+            //    {
+            //        if (code.Member is CodeMemberProperty property
+            //            && obsoleteAttributes.Contains(code.EntityLogicalName + "." + property.GetLogicalName())) {
+            //            AddCodeAttributeIfMissing(property, new CodeAttributeDeclaration("System.Obsolete", new CodeAttributeArgument(new CodePrimitiveExpression("This attribute is deprecated."))));
+            //        }
+            //    }
+            //}
 
             if (AddDebuggerNonUserCode)
             {

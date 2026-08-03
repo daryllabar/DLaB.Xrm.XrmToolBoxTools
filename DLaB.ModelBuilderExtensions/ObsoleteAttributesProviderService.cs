@@ -8,6 +8,10 @@ using System.Reflection;
 
 namespace DLaB.ModelBuilderExtensions
 {
+    /// <summary>
+    /// Defines a service for retrieving and populating obsolete/deprecated attribute information
+    /// from Dynamics 365/Dataverse metadata.
+    /// </summary>
     public class ObsoleteAttributesProviderService : CustomServiceSettings, IObsoleteAttributesProviderService
     {
         private static readonly PropertyInfo DeprecatedVersionProperty = typeof(AttributeMetadata).GetProperty(nameof(AttributeMetadata.DeprecatedVersion))
@@ -19,6 +23,7 @@ namespace DLaB.ModelBuilderExtensions
         public List<string> ObsoleteTokens { get => DLaBSettings.ObsoleteTokens; set => DLaBSettings.ObsoleteTokens = value; }
         private int OptionSetLanguageCodeOverride { get => DLaBSettings.OptionSetLanguageCodeOverride; set => DLaBSettings.OptionSetLanguageCodeOverride = value; }
 
+        private bool _deprecatedVersionsPopulated;
         private HashSet<string>? _obsoleteAttributes;
 
         public ObsoleteAttributesProviderService(IDictionary<string, string> parameters) : base(parameters)
@@ -29,6 +34,11 @@ namespace DLaB.ModelBuilderExtensions
         {
         }
 
+        /// <summary>
+        /// Retrieves the set of logical names for attributes that are considered obsolete.
+        /// </summary>
+        /// <param name="serviceProvider">The service provider used to access metadata and other services.</param>
+        /// <returns>A <see cref="HashSet{T}"/> of logical attribute names that are obsolete.</returns>
         public HashSet<string> GetObsoleteAttributes(IServiceProvider serviceProvider)
         {
             if (!ObsoleteDeprecated)
@@ -42,26 +52,29 @@ namespace DLaB.ModelBuilderExtensions
             }
 
             var entities = serviceProvider.GetRequiredService<IMetadataProviderService>().LoadMetadata(serviceProvider).Entities;
-            _obsoleteAttributes = GetObsoleteAttributes(entities, ObsoleteTokens, OptionSetLanguageCodeOverride);
+            if (!_deprecatedVersionsPopulated)
+            {
+                PopulateDeprecatedVersion(entities);
+            }
+
+            _obsoleteAttributes = GetObsoleteAttributes(entities);
             return _obsoleteAttributes;
         }
 
-        internal static HashSet<string> GetObsoleteAttributes(IEnumerable<EntityMetadata> entities, IEnumerable<string>? obsoleteTokens, int optionSetLanguageCodeOverride)
+        private HashSet<string> GetObsoleteAttributes(IEnumerable<EntityMetadata> entities)
         {
-            var obsoleteMatches = new TextMatcher(obsoleteTokens ?? []);
-            var concurrentObsoleteAttributes = new System.Collections.Concurrent.ConcurrentBag<string>();
-            System.Threading.Tasks.Parallel.ForEach(entities, entity =>
-            {
-                foreach (var attribute in GetMatchingObsoleteAttributes(entity, obsoleteMatches, optionSetLanguageCodeOverride))
-                {
-                    concurrentObsoleteAttributes.Add(entity.LogicalName + "." + attribute.LogicalName);
-                }
-            });
-
-            return new HashSet<string>(concurrentObsoleteAttributes);
+            return new HashSet<string>(
+                from entity in entities
+                from attribute in entity.Attributes ?? []
+                where attribute.DeprecatedVersion != null
+                select entity.LogicalName + "." + attribute.LogicalName);
         }
 
-        internal void PopulateDeprecatedVersion(IEnumerable<EntityMetadata> entities)
+        /// <summary>
+        /// Populates the deprecated version information on attributes within the provided entity metadata.
+        /// </summary>
+        /// <param name="entities">The collection of <see cref="EntityMetadata"/> whose attributes will be updated with deprecation version info.</param>
+        public void PopulateDeprecatedVersion(IEnumerable<EntityMetadata> entities)
         {
             if (!ObsoleteDeprecated)
             {
@@ -72,7 +85,8 @@ namespace DLaB.ModelBuilderExtensions
 
             foreach (var entity in entities)
             {
-                foreach (var attribute in GetMatchingObsoleteAttributes(entity, obsoleteMatches, OptionSetLanguageCodeOverride))
+                foreach (var attribute in (entity.Attributes ?? [])
+                         .Where(a => obsoleteMatches.HasMatch(a.DisplayName?.GetLocalOrDefaultText(OptionSetLanguageCodeOverride) ?? string.Empty)))
                 {
                     if (attribute.DeprecatedVersion == null)
                     {
@@ -80,17 +94,28 @@ namespace DLaB.ModelBuilderExtensions
                     }
                 }
             }
-        }
 
-        private static IEnumerable<AttributeMetadata> GetMatchingObsoleteAttributes(EntityMetadata entity, TextMatcher obsoleteMatches, int optionSetLanguageCodeOverride)
-        {
-            return (entity.Attributes ?? [])
-                .Where(a => obsoleteMatches.HasMatch(a.DisplayName?.GetLocalOrDefaultText(optionSetLanguageCodeOverride) ?? string.Empty));
+            _deprecatedVersionsPopulated = true;
         }
     }
 
+    /// <summary>
+    /// Defines a service for retrieving and populating obsolete/deprecated attribute information
+    /// from Dynamics 365/Dataverse metadata.
+    /// </summary>
     public interface IObsoleteAttributesProviderService
     {
+        /// <summary>
+        /// Retrieves the set of logical names for attributes that are considered obsolete.
+        /// </summary>
+        /// <param name="serviceProvider">The service provider used to access metadata and other services.</param>
+        /// <returns>A <see cref="HashSet{T}"/> of logical attribute names that are obsolete.</returns>
         HashSet<string> GetObsoleteAttributes(IServiceProvider serviceProvider);
+
+        /// <summary>
+        /// Populates the deprecated version information on attributes within the provided entity metadata.
+        /// </summary>
+        /// <param name="entities">The collection of <see cref="EntityMetadata"/> whose attributes will be updated with deprecation version info.</param>
+        void PopulateDeprecatedVersion(IEnumerable<EntityMetadata> entities);
     }
 }
