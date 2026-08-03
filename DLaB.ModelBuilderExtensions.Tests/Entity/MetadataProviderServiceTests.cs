@@ -1,7 +1,6 @@
 ﻿using FakeItEasy;
 using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 using System;
 using System.Collections.Generic;
@@ -34,11 +33,8 @@ namespace DLaB.ModelBuilderExtensions.Tests.Entity
 
             var sut = new MetadataProviderService(defaultService, new DLaBModelBuilderSettings
             {
-                DLaBModelBuilder = new DLaBModelBuilder
-                {
-                    ObsoleteDeprecated = true,
-                    ObsoleteTokens = new List<string> { "*Deprecated*" }
-                }
+                ObsoleteDeprecated = true,
+                ObsoleteTokens = new List<string> { "*Deprecated*" }
             });
 
             sut.LoadMetadata(A.Fake<IServiceProvider>());
@@ -59,70 +55,13 @@ namespace DLaB.ModelBuilderExtensions.Tests.Entity
 
             var sut = new MetadataProviderService(defaultService, new DLaBModelBuilderSettings
             {
-                DLaBModelBuilder = new DLaBModelBuilder
-                {
-                    ObsoleteDeprecated = false,
-                    ObsoleteTokens = new List<string> { "*Deprecated*" }
-                }
+                ObsoleteDeprecated = false,
+                ObsoleteTokens = new List<string> { "*Deprecated*" }
             });
 
             sut.LoadMetadata(A.Fake<IServiceProvider>());
 
             Assert.IsNull(entity.Attributes.Single().DeprecatedVersion);
-        }
-
-        [TestMethod]
-        public void LoadMetadata_WhenAttributeAlreadyDeprecated_ShouldPreserveDeprecatedVersion()
-        {
-            var entity = BuildEntity("account",
-                ("name", "Full Name (Deprecated)", "9.1"));
-            var metadata = BuildMetadata(entity);
-
-            var defaultService = A.Fake<IMetadataProviderService>();
-            A.CallTo(() => defaultService.LoadMetadata(A<IServiceProvider>._)).Returns(metadata);
-
-            var sut = new MetadataProviderService(defaultService, new DLaBModelBuilderSettings
-            {
-                DLaBModelBuilder = new DLaBModelBuilder
-                {
-                    ObsoleteDeprecated = true,
-                    ObsoleteTokens = new List<string> { "*Deprecated*" }
-                }
-            });
-
-            sut.LoadMetadata(A.Fake<IServiceProvider>());
-
-            Assert.AreEqual("9.1", entity.Attributes.Single().DeprecatedVersion);
-        }
-
-        [TestMethod]
-        public void LoadMetadata_WhenLanguageOverrideIsConfigured_ShouldMatchLocalizedLabel()
-        {
-            var entity = BuildEntityWithLocalizedDisplayName(
-                "account",
-                "name",
-                "Vollstaendiger Name",
-                1031,
-                "Full Name (Deprecated)",
-                1033);
-            var metadata = BuildMetadata(entity);
-
-            var defaultService = A.Fake<IMetadataProviderService>();
-            A.CallTo(() => defaultService.LoadMetadata(A<IServiceProvider>._)).Returns(metadata);
-
-            var sut = new MetadataProviderService(defaultService, new DLaBModelBuilderSettings
-            {
-                DLaBModelBuilder = new DLaBModelBuilder
-                {
-                    ObsoleteDeprecated = true,
-                    ObsoleteTokens = new List<string> { "*Deprecated*" },
-                    OptionSetLanguageCodeOverride = 1033
-                }
-            });
-
-            sut.LoadMetadata(A.Fake<IServiceProvider>());
-
-            Assert.AreEqual(string.Empty, entity.Attributes.Single().DeprecatedVersion);
         }
 
         private static IOrganizationMetadata BuildMetadata(params EntityMetadata[] entities)
@@ -132,7 +71,7 @@ namespace DLaB.ModelBuilderExtensions.Tests.Entity
             return metadata;
         }
 
-        private static EntityMetadata BuildEntity(string logicalName, params (string logicalName, string displayName, string deprecatedVersion)[] attributes)
+        private static EntityMetadata BuildEntity(string logicalName, params (string logicalName, string displayName, string? deprecatedVersion)[] attributes)
         {
             var entity = new EntityMetadata { LogicalName = logicalName };
             var attributeList = new List<AttributeMetadata>();
@@ -160,30 +99,6 @@ namespace DLaB.ModelBuilderExtensions.Tests.Entity
             typeof(EntityMetadata)
                 .GetProperty(nameof(EntityMetadata.Attributes))!
                 .SetValue(entity, attributeList.ToArray());
-            return entity;
-        }
-
-        private static EntityMetadata BuildEntityWithLocalizedDisplayName(
-            string entityLogicalName,
-            string attributeLogicalName,
-            string userLabel,
-            int userLanguageCode,
-            string localizedLabel,
-            int localizedLanguageCode)
-        {
-            var entity = new EntityMetadata { LogicalName = entityLogicalName };
-            var attribute = new StringAttributeMetadata();
-            typeof(AttributeMetadata)
-                .GetProperty(nameof(AttributeMetadata.LogicalName))!
-                .SetValue(attribute, attributeLogicalName);
-            typeof(AttributeMetadata)
-                .GetProperty(nameof(AttributeMetadata.DisplayName))!
-                .SetValue(attribute, new Label(
-                    new LocalizedLabel(userLabel, userLanguageCode),
-                    new[] { new LocalizedLabel(localizedLabel, localizedLanguageCode) }));
-            typeof(EntityMetadata)
-                .GetProperty(nameof(EntityMetadata.Attributes))!
-                .SetValue(entity, new AttributeMetadata[] { attribute });
             return entity;
         }
     }

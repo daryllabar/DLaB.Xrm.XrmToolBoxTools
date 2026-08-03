@@ -55,5 +55,39 @@ namespace DLaB.ModelBuilderExtensions.Tests
             Assert.IsFalse(fieldsClass.Text.Contains("Available fields, a the time of codegen, for the account entity"));
         }
 
+        [TestMethod]
+        public void CustomizeCodeDom_WhenObsoleteDeprecatedIsTrue_ShouldAddObsoleteAttributeToDeprecatedConstants()
+        {
+            var fakeObsoleteService = A.Fake<IObsoleteAttributesProviderService>();
+            A.CallTo(() => fakeObsoleteService.GetObsoleteAttributes(A<IServiceProvider>._))
+                .Returns(new HashSet<string> { "account.name" });
+
+            var serviceProvider = A.Fake<IServiceProvider>();
+            A.CallTo(() => serviceProvider.GetService(typeof(IObsoleteAttributesProviderService)))
+                .Returns(fakeObsoleteService);
+
+            var sut = new AttributeConstGenerator(A.Fake<ICustomizeCodeDomService>(), new DLaBModelBuilderSettings
+            {
+                EmitFieldsClasses = true
+            });
+            sut.ObsoleteDeprecated = true;
+
+            var code = BuildEntityCodeUnit("Account", "account",
+                ("Name", "name"),
+                ("PrimaryContactId", "primarycontactid"));
+
+            sut.CustomizeCodeDom(code, serviceProvider);
+
+            var ns = code.Namespaces[0];
+            var entity = ns.Types.OfType<CodeTypeDeclaration>().First();
+            var fieldsClass = entity.Members.OfType<CodeSnippetTypeMember>().First(m => m.Text.Contains("public partial class Fields"));
+
+            Assert.IsTrue(fieldsClass.Text.Contains("[System.Obsolete(\"This attribute is deprecated.\")]"),
+                "Deprecated constant should have [System.Obsolete] annotation.");
+
+            var obsoleteOccurrences = fieldsClass.Text.Split(new[] { "[System.Obsolete" }, StringSplitOptions.None).Length - 1;
+            Assert.AreEqual(1, obsoleteOccurrences,
+                "Only the deprecated constant should have [System.Obsolete]; non-deprecated constants should not.");
+        }
     }
 }

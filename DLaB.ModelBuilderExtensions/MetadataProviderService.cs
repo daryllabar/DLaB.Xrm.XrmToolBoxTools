@@ -104,7 +104,7 @@ namespace DLaB.ModelBuilderExtensions
                 return;
             }
 
-            ObsoleteAttributeMetadataUpdater.PopulateDeprecatedVersion(metadata.Entities, ObsoleteTokens, OptionSetLanguageCodeOverride);
+            ObsoleteAttributesProviderService.PopulateDeprecatedVersion(metadata.Entities, ObsoleteTokens, OptionSetLanguageCodeOverride);
         }
 
         private void MakeReadonlyEntityAttributesEditable(IOrganizationMetadata metadata)
