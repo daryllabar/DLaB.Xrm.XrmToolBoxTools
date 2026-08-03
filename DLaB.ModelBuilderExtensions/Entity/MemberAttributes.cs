@@ -4,7 +4,6 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 
 namespace DLaB.ModelBuilderExtensions.Entity
@@ -15,8 +14,6 @@ namespace DLaB.ModelBuilderExtensions.Entity
     public class MemberAttributes : TypedServiceSettings<ICustomizeCodeDomService>, ICustomizeCodeDomService
     {
         public bool AddDebuggerNonUserCode { get => DLaBSettings.AddDebuggerNonUserCode; set => DLaBSettings.AddDebuggerNonUserCode = value; }
-        public bool ObsoleteDeprecated { get => DLaBSettings.ObsoleteDeprecated; set => DLaBSettings.ObsoleteDeprecated = value; }
-
         public MemberAttributes(ICustomizeCodeDomService defaultService, DLaBModelBuilderSettings settings = null) : base(defaultService, settings)
         {
         }
@@ -27,7 +24,7 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
         public void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
-            if (!AddDebuggerNonUserCode && !ObsoleteDeprecated)
+            if (!AddDebuggerNonUserCode)
             {
                 return;
             }
@@ -39,54 +36,36 @@ namespace DLaB.ModelBuilderExtensions.Entity
                 IndentString = "\t",
             };
 
-            if (ObsoleteDeprecated)
+            using (var sourceWriter = new StringWriter())
             {
-                var obsoleteAttributes = services.GetServiceOrLoadDefault<IObsoleteAttributesProviderService>(() => new ObsoleteAttributesProviderService(Settings)).GetObsoleteAttributes(services);
-                foreach (var code in from CodeTypeDeclaration type in codeUnit.Namespaces[0].Types
-                                     where type.IsClass
-                                     from dynamic member in type.Members
-                                     select new { EntityLogicalName = type.GetEntityLogicalName(), Member = member })
+                foreach (CodeTypeDeclaration type in codeUnit.Namespaces[0].Types)
                 {
-                    if (code.Member is CodeMemberProperty property
-                        && obsoleteAttributes.Contains(code.EntityLogicalName + "." + property.GetLogicalName())) {
-                        AddCodeAttributeIfMissing(property, new CodeAttributeDeclaration("System.Obsolete", new CodeAttributeArgument(new CodePrimitiveExpression("This attribute is deprecated."))));
+                    if (!type.IsClass)
+                    {
+                        continue;
                     }
+                    var items = new List<CodeTypeMember>();
+                    foreach (CodeTypeMember codeMember in type.Members)
+                    {
+                        var property = codeMember as CodeMemberProperty;
+                        if (property == null)
+                        {
+                            items.Add(codeMember);
+                            continue;
+                        }
+                        items.Add(AddPropertyAttributes(provider, options, sourceWriter, property));
+                    }
+                    type.Members.Clear();
+                    type.Members.AddRange(items.ToArray());
                 }
             }
 
-            if (AddDebuggerNonUserCode)
+            foreach (var member in from CodeTypeDeclaration type in codeUnit.Namespaces[0].Types
+                                   where type.IsClass
+                                   from dynamic member in type.Members
+                                   select member)
             {
-                using (var sourceWriter = new StringWriter())
-                {
-                    foreach (CodeTypeDeclaration type in codeUnit.Namespaces[0].Types)
-                    {
-                        if (!type.IsClass)
-                        {
-                            continue;
-                        }
-                        var items = new List<CodeTypeMember>();
-                        foreach (CodeTypeMember codeMember in type.Members)
-                        {
-                            var property = codeMember as CodeMemberProperty;
-                            if (property == null)
-                            {
-                                items.Add(codeMember);
-                                continue;
-                            }
-                            items.Add(AddPropertyAttributes(provider, options, sourceWriter, property));
-                        }
-                        type.Members.Clear();
-                        type.Members.AddRange(items.ToArray());
-                    }
-                }
-
-                foreach (var member in from CodeTypeDeclaration type in codeUnit.Namespaces[0].Types
-                                       where type.IsClass
-                                       from dynamic member in type.Members
-                                       select member)
-                {
-                    AddCodeAttributeDeclaration(member);
-                }
+                AddCodeAttributeDeclaration(member);
             }
         }
 

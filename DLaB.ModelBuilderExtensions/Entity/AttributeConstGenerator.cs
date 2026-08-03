@@ -12,8 +12,6 @@ namespace DLaB.ModelBuilderExtensions.Entity
         private const string Corrected = "Available fields, at the time of codegen, for the ";
 
         public override bool GenerateAttributeNameConsts { get => Settings.EmitFieldsClasses; set => Settings.EmitFieldsClasses = value; }
-        public bool ObsoleteDeprecated { get => DLaBSettings.ObsoleteDeprecated; set => DLaBSettings.ObsoleteDeprecated = value; }
-
         public AttributeConstGenerator(ICustomizeCodeDomService defaultService, IDictionary<string, string> parameters) : base(defaultService, parameters)
         {
         }
@@ -24,9 +22,6 @@ namespace DLaB.ModelBuilderExtensions.Entity
 
         public override void CustomizeCodeDom(CodeCompileUnit codeUnit, IServiceProvider services)
         {
-            var obsoleteAttributes = ObsoleteDeprecated
-                ? services.GetServiceOrLoadDefault<IObsoleteAttributesProviderService>(() => new ObsoleteAttributesProviderService(Settings)).GetObsoleteAttributes(services)
-                : null;
             foreach (var entity in codeUnit.GetEntityTypes())
             {
                 var constsClass = entity.GetMembers<CodeSnippetTypeMember>().FirstOrDefault(s => s.Text.Contains($"public partial class {OobConstsClassName}"));
@@ -48,10 +43,6 @@ namespace DLaB.ModelBuilderExtensions.Entity
                 var start = lines.FindIndex(l => l.StartsWith("\t\t\tpublic const string "));
                 var end = lines.FindIndex(l => l.StartsWith("\t\t}"));
                 var attributes = lines.Skip(start).Take(end - start).ToList();
-                if (obsoleteAttributes?.Any() == true)
-                {
-                    attributes = attributes.Select(a => UpdateObsoleteAttribute(entity.GetEntityLogicalName(), a, obsoleteAttributes)).ToList();
-                }
                 lines.RemoveRange(start, end - start);
                 lines.InsertRange(start, attributes.OrderBy(a => a.Split(' ').Last()));
                 if (checkForMemberReplacement)
@@ -63,17 +54,5 @@ namespace DLaB.ModelBuilderExtensions.Entity
             }
         }
 
-        private string UpdateObsoleteAttribute(string entityLogicalName, string attribute, HashSet<string> obsoleteAttributes)
-        {
-            var parts = attribute.Split('"');
-            if (parts.Length < 2)
-            {
-                return attribute;
-            }
-            var logicalName = parts[1];
-            return obsoleteAttributes.Contains($"{entityLogicalName}.{logicalName}")
-                ? $"\t\t\t[System.Obsolete(\"This attribute is deprecated.\")]{Environment.NewLine}{attribute}"
-                : attribute;
-        }
     }
 }
