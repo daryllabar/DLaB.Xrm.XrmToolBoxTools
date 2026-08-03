@@ -1,6 +1,8 @@
-﻿using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
+﻿using DLaB.ModelBuilderExtensions.Entity;
+using Microsoft.PowerPlatform.Dataverse.ModelBuilderLib;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
+using Microsoft.Xrm.Sdk.Query;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -22,6 +24,7 @@ namespace DLaB.ModelBuilderExtensions
         public bool IsLiveConnectionRequired => !ReadSerializedMetadata;
 
         public string FilePath { get => DLaBSettings.SerializedMetadataRelativeFilePath; set => DLaBSettings.SerializedMetadataRelativeFilePath = value; }
+        public bool GenerateProcessStageNames { get => DLaBSettings.GenerateProcessStageNames; set => DLaBSettings.GenerateProcessStageNames = value; }
         public bool MakeReadonlyFieldsEditable { get => DLaBSettings.MakeReadonlyFieldsEditable; set => DLaBSettings.MakeReadonlyFieldsEditable = value; }
         public bool MakeAllFieldsEditable { get => DLaBSettings.MakeAllFieldsEditable; set => DLaBSettings.MakeAllFieldsEditable = value; }
         public bool ReadSerializedMetadata { get => DLaBSettings.ReadSerializedMetadata; set => DLaBSettings.ReadSerializedMetadata = value; }
@@ -72,6 +75,11 @@ namespace DLaB.ModelBuilderExtensions
                 {
                     metadata = DefaultService.LoadMetadata(service);
 
+                    if (GenerateProcessStageNames)
+                    {
+                        LoadProcessStageNames(metadata);
+                    }
+
                     if (WriteMetadata)
                     {
                         SerializeMetadata(metadata, FilePath);
@@ -92,6 +100,40 @@ namespace DLaB.ModelBuilderExtensions
         {
             MakeReadonlyEntityAttributesEditable(metadata);
             ForceDeprecatedEntityAttributes(metadata);
+        }
+
+        private void LoadProcessStageNames(IOrganizationMetadata metadata)
+        {
+            var processStageEntity = metadata.Entities?.FirstOrDefault(e => e.LogicalName == "processstage");
+            if (processStageEntity == null || ServiceConnection == null)
+            {
+                return;
+            }
+
+            try
+            {
+                var query = new QueryExpression("processstage")
+                {
+                    Distinct = true,
+                    ColumnSet = new ColumnSet("stagename"),
+                    Orders = { new OrderExpression("stagename", OrderType.Ascending) }
+                };
+
+                var results = ServiceConnection.RetrieveMultiple(query);
+                var stageNames = results.Entities
+                    .Select(e => e.GetAttributeValue<string>("stagename"))
+                    .Where(name => !string.IsNullOrWhiteSpace(name))
+                    .Distinct()
+                    .OrderBy(name => name)
+                    .ToList();
+
+                ProcessStageNameCache.StageNames = stageNames;
+                Console.WriteLine($"[**** Loaded {stageNames.Count} distinct ProcessStage names ****]");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[**** Warning: Unable to load ProcessStage names: {ex.Message} ****]");
+            }
         }
 
         private void ForceDeprecatedEntityAttributes(IOrganizationMetadata metadata)

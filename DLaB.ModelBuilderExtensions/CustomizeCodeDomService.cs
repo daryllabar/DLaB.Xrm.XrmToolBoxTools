@@ -17,6 +17,7 @@ namespace DLaB.ModelBuilderExtensions
         public bool GenerateAnonymousTypeConstructor { get => DLaBSettings.GenerateAnonymousTypeConstructor; set => DLaBSettings.GenerateAnonymousTypeConstructor = value; }
         public bool GenerateConstructorsSansLogicalName { get => DLaBSettings.GenerateConstructorsSansLogicalName; set => DLaBSettings.GenerateConstructorsSansLogicalName = value; }
         public bool GenerateOptionSetProperties { get => DLaBSettings.GenerateOptionSetProperties; set => DLaBSettings.GenerateOptionSetProperties = value; }
+        public bool GenerateProcessStageNames { get => DLaBSettings.GenerateProcessStageNames; set => DLaBSettings.GenerateProcessStageNames = value; }
         public bool GenerateTypesAsInternal { get => DLaBSettings.GenerateTypesAsInternal; set => DLaBSettings.GenerateTypesAsInternal = value; }
         public bool GenerateOptionSetMetadataAttribute { get => DLaBSettings.GenerateOptionSetMetadataAttribute; set => DLaBSettings.GenerateOptionSetMetadataAttribute = value; }
         public bool UpdateFileAttributes { get => DLaBSettings.UpdateFileAttributes; set => DLaBSettings.UpdateFileAttributes = value; }
@@ -152,6 +153,7 @@ namespace DLaB.ModelBuilderExtensions
 
             new RelationshipConstGenerator(DefaultService, Settings).CustomizeCodeDom(codeUnit, services);
             new AttributeConstGenerator(DefaultService, Settings).CustomizeCodeDom(codeUnit, services);
+            new ProcessStageNameConstantsGenerator(DefaultService, Settings).CustomizeCodeDom(codeUnit, services);
 
             if (GenerateAnonymousTypeConstructor)
             {

@@ -150,6 +150,9 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("generateMessageAttributeNameConsts")]
         public bool GenerateMessageAttributeNameConsts { get; set; }
 
+        [JsonPropertyName("generateProcessStageNames")]
+        public bool GenerateProcessStageNames { get; set; }
+
         [JsonPropertyName("generateAnonymousTypeConstructor")]
         public bool GenerateAnonymousTypeConstructor { get; set; }
 
