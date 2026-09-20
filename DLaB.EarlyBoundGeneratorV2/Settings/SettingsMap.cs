@@ -186,6 +186,15 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         }
 
         [Category("2 - Entities")]
+        [DisplayName("Generate DateTime Metadata Attribute")]
+        [Description("Generates a DateTimeMetadataAttribute class, with a Format and TimeZone property, that is applied to all generated DateTime properties, defining the Dataverse Format (Date And Time/Date Only) and Time Zone Adjustment (User Local/Time Zone Independent/Date Only) of the column.")]
+        public bool GenerateDateTimeMetadataAttribute
+        {
+            get => Config.ExtensionConfig.GenerateDateTimeMetadataAttribute;
+            set => Config.ExtensionConfig.GenerateDateTimeMetadataAttribute = value;
+        }
+
+        [Category("2 - Entities")]
         [DisplayName("Generate Entity Relationships")]
         [Description("Specifies if 1:N, N:1, and N:N relationships properties are generated for entities.")]
         public bool GenerateEntityRelationships

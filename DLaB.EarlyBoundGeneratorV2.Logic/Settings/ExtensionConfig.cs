@@ -137,6 +137,10 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
         /// </summary>
         public bool GenerateConstructorsSansLogicalName { get; set; }
         /// <summary>
+        /// Generates a DateTimeMetadataAttribute class, with a Format and TimeZone property, that is applied to all generated DateTime properties, defining the Dataverse Format (Date And Time/Date Only) and Time Zone Adjustment (User Local/Time Zone Independent/Date Only) of the column.
+        /// </summary>
+        public bool GenerateDateTimeMetadataAttribute { get; set; }
+        /// <summary>
         /// Specifies the generation of Relationships properties for Entities
         /// </summary>
         public bool GenerateEntityRelationships { get; set; }
@@ -359,6 +363,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
                 GenerateAnonymousTypeConstructor = true,
                 GenerateAttributeNameConsts = true,
                 GenerateConstructorsSansLogicalName = true,
+                GenerateDateTimeMetadataAttribute = true,
                 GenerateEntityRelationships = true,
                 GenerateEnumProperties = true,
                 GenerateGlobalOptionSets = false,
@@ -433,6 +438,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             GenerateAttributeNameConsts = poco.GenerateAttributeNameConsts ?? GenerateAttributeNameConsts;
             GenerateAnonymousTypeConstructor = poco.GenerateAnonymousTypeConstructor ?? GenerateAnonymousTypeConstructor;
             GenerateConstructorsSansLogicalName = poco.GenerateConstructorsSansLogicalName ?? GenerateConstructorsSansLogicalName;
+            GenerateDateTimeMetadataAttribute = poco.GenerateDateTimeMetadataAttribute ?? GenerateDateTimeMetadataAttribute;
             GenerateEntityRelationships = poco.GenerateEntityRelationships ?? GenerateEntityRelationships;
             GenerateEnumProperties = poco.GenerateEnumProperties ?? GenerateEnumProperties;
             GenerateGlobalOptionSets = poco.GenerateGlobalOptionSets ?? GenerateGlobalOptionSets;
@@ -507,6 +513,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings
             writer.AddProperty(nameof(GenerateAttributeNameConsts), GenerateAttributeNameConsts);
             writer.AddProperty(nameof(GenerateAnonymousTypeConstructor), GenerateAnonymousTypeConstructor);
             writer.AddProperty(nameof(GenerateConstructorsSansLogicalName), GenerateConstructorsSansLogicalName);
+            writer.AddProperty(nameof(GenerateDateTimeMetadataAttribute), GenerateDateTimeMetadataAttribute);
             writer.AddProperty(nameof(GenerateEntityRelationships), GenerateEntityRelationships);
             writer.AddProperty("GenerateOptionSetProperties", generateOptionSetProperties);
             writer.AddProperty(nameof(GenerateOptionSetMetadataAttribute), GenerateOptionSetMetadataAttribute);
@@ -634,6 +641,7 @@ namespace DLaB.EarlyBoundGeneratorV2.Settings.POCO
         public bool? GenerateAttributeNameConsts { get; set; }
         public bool? GenerateAnonymousTypeConstructor { get; set; }
         public bool? GenerateConstructorsSansLogicalName { get; set; }
+        public bool? GenerateDateTimeMetadataAttribute { get; set; }
         public bool? GenerateEntityRelationships { get; set; }
         /// <summary>
         /// Now moved to the Dataverse Model Builder as EmitEntityETC

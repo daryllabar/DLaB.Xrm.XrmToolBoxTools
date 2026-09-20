@@ -16,6 +16,7 @@ namespace DLaB.ModelBuilderExtensions
         public bool EmitEntityEtc { get => Settings.EmitEntityEtc; set => Settings.EmitEntityEtc = value; }
         public bool GenerateAnonymousTypeConstructor { get => DLaBSettings.GenerateAnonymousTypeConstructor; set => DLaBSettings.GenerateAnonymousTypeConstructor = value; }
         public bool GenerateConstructorsSansLogicalName { get => DLaBSettings.GenerateConstructorsSansLogicalName; set => DLaBSettings.GenerateConstructorsSansLogicalName = value; }
+        public bool GenerateDateTimeMetadataAttribute { get => DLaBSettings.GenerateDateTimeMetadataAttribute; set => DLaBSettings.GenerateDateTimeMetadataAttribute = value; }
         public bool GenerateOptionSetProperties { get => DLaBSettings.GenerateOptionSetProperties; set => DLaBSettings.GenerateOptionSetProperties = value; }
         public bool GenerateTypesAsInternal { get => DLaBSettings.GenerateTypesAsInternal; set => DLaBSettings.GenerateTypesAsInternal = value; }
         public bool GenerateOptionSetMetadataAttribute { get => DLaBSettings.GenerateOptionSetMetadataAttribute; set => DLaBSettings.GenerateOptionSetMetadataAttribute = value; }
@@ -121,6 +122,11 @@ namespace DLaB.ModelBuilderExtensions
             {
                 new OptionSetMetadataAttributeGenerator(MakeReferenceTypesNullable).CustomizeCodeDom(codeUnit, services);
             }
+
+            if (GenerateDateTimeMetadataAttribute)
+            {
+                new DateTimeMetadataAttributeGenerator(MakeReferenceTypesNullable).CustomizeCodeDom(codeUnit, services);
+            }
         }
 
         private void ProcessEntity(CodeCompileUnit codeUnit, IServiceProvider services)
@@ -133,6 +139,11 @@ namespace DLaB.ModelBuilderExtensions
             if (UpdateMultiOptionSetAttributes)
             {
                 new MultiOptionSetAttributeUpdater().CustomizeCodeDom(codeUnit, services);
+            }
+
+            if (GenerateDateTimeMetadataAttribute)
+            {
+                new DateTimeMetadataAttributeUpdater().CustomizeCodeDom(codeUnit, services);
             }
 
             if (UpdateEnumerableEntityProperties)

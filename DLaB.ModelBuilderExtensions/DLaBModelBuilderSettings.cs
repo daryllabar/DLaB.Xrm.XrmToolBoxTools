@@ -156,6 +156,9 @@ namespace DLaB.ModelBuilderExtensions
         [JsonPropertyName("generateConstructorsSansLogicalName")]
         public bool GenerateConstructorsSansLogicalName { get; set; }
 
+        [JsonPropertyName("generateDateTimeMetadataAttribute")]
+        public bool GenerateDateTimeMetadataAttribute { get; set; } = true;
+
         [JsonPropertyName("generateEntityRelationships")]
         public bool GenerateEntityRelationships { get; set; } = true;
 
