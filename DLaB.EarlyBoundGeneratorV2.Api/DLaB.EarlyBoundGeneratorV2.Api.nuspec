@@ -2,7 +2,7 @@
 <package >
 	<metadata>
 		<id>DLaB.Xrm.EarlyBoundGeneratorV2.Api</id>
-		<version>2.2026.7.28</version>
+		<version>2.2026.9.20</version>
 		<title>Early Bound Generator V2 Api</title>
 		<authors>Daryl LaBar</authors>
 		<owners>Daryl LaBar</owners>
@@ -11,7 +11,8 @@
 		<projectUrl>https://github.com/daryllabar/DLaB.Xrm.XrmToolBoxTools</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses ModelBuilder from the PAC.</description>
-		<releaseNotes>Utilize OOB Obsolete logic #554
+		<releaseNotes>V2.2026.9.20
+Utilize OOB Obsolete logic #554
 DateTime Sub-Type added to generated DateTime properties #509
 
 V2.2026.7.28
@@ -48,31 +49,6 @@ Nuspec contentFiles folder fix #575
 Duplicate relationship within AsyncOperation when having 2 Business Process Flows #569
 File attributes don't have the file name that ends with _name #568
 Fix for how to utilize "Option Name Overrides" effectively? #565
-
-V2.2.2025.8.26
-Preserver Spacing for ObsoleteTokens #556
-Added Search box for Entities #543
-Allow for filtering entities by solution #320
-
-V2.2.2025.8.13
-Fix for duplicate Obsolete values
-Fix for non-adjust casing enum transliteration
-
-V2.2025.8.11
-Expose Obsolete Token config for other languages #548
-Fix for unwanted System.Diagnostics.DebuggerNonUserCode() #551
-Add missing characters in alphabet 1045 (#553)
-Fix non-english characters getting stripped #552
-
-V2.2025.8.8
-Set [Obsolete] on deprecated attributes closes #548
-FileName should be FileName, not Filename #550
-
-V2.2025.8.6
-Allow for Option-set capitalization overrides #549
-
-V2.2025.7.29
-Fix Unable to lookup the non-public JsonProperty Constructor #547
 		</releaseNotes>
 		<copyright>Copyright 2019</copyright>
 		<tags>PAC ModelBuilder Dataverse Xrm EarlyBound Generator</tags>

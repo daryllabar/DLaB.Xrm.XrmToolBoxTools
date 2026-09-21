@@ -13,9 +13,9 @@
     <Title>DLaB.XrmToolBoxCommon</Title>
     <Product>DLaB.XrmToolBoxCommon</Product>
     <Copyright>Copyright © 2023</Copyright>
-    <Version>2.2026.7.28</Version>
-    <AssemblyVersion>2.2026.7.28</AssemblyVersion>
-    <FileVersion>2.2026.7.28</FileVersion>
+    <Version>2.2026.9.20</Version>
+    <AssemblyVersion>2.2026.9.20</AssemblyVersion>
+    <FileVersion>2.2026.9.20</FileVersion>
     <ComVisible>false</ComVisible>
     <Guid>e98fb2e7-13f8-40a6-9ff3-6f64e930b5ed</Guid>
     <Nullable>enable</Nullable>
