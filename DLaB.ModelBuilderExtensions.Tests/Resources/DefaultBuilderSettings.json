@@ -22,6 +22,7 @@
     "generateAttributeNameConsts": true,
     "generateAnonymousTypeConstructor": true,
     "generateConstructorsSansLogicalName": true,
+    "generateDateTimeMetadataAttribute": true,
     "generateEntityRelationships": true,
     "generateOptionSetProperties": false,
     "generateOptionSetMetadataAttribute": true,

@@ -35,6 +35,11 @@ namespace DLaB.ModelBuilderExtensions
             {
                 ClassesToMakeStatic.Add("OptionSetExtension");
             }
+
+            if (settings.DLaBModelBuilder.GenerateDateTimeMetadataAttribute)
+            {
+                ClassesToMakeStatic.Add(Entity.DateTimeMetadataAttributeGenerator.ExtensionClassName);
+            }
         }
 
         /// <summary>

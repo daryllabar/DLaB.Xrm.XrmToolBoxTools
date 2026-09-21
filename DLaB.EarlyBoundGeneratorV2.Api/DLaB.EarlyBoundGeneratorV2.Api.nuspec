@@ -12,6 +12,7 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Generates Early Bound Entities/Option Sets/Actions Without XrmToolBox Dependencies.  Uses ModelBuilder from the PAC.</description>
 		<releaseNotes>Utilize OOB Obsolete logic #554
+DateTime Sub-Type added to generated DateTime properties #509
 
 V2.2026.7.28
 OptionSetMetadataAttribute Generates Null Ref Warnings #617
